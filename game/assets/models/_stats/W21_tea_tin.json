@@ -1,0 +1,25 @@
+{
+ "id": "W21_tea_tin",
+ "src": "raw/shop_refresh_20261009/W21_tea_tin.glb",
+ "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+ "tris_src": 1347,
+ "tris": 1347,
+ "size_m": [
+  0.114,
+  0.129,
+  0.134
+ ],
+ "godot_size_m_xyz": [
+  0.114,
+  0.134,
+  0.129
+ ],
+ "tex": 2048,
+ "bytes": 248056,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.11,
+ "levelled": false,
+ "lean_deg": 0.11,
+ "base_frac": 0.773
+}

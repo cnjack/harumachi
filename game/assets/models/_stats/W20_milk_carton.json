@@ -1,0 +1,25 @@
+{
+ "id": "W20_milk_carton",
+ "src": "raw/shop_refresh_20261009/W20_milk_carton.glb",
+ "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+ "tris_src": 1646,
+ "tris": 1646,
+ "size_m": [
+  0.099,
+  0.089,
+  0.309
+ ],
+ "godot_size_m_xyz": [
+  0.099,
+  0.309,
+  0.089
+ ],
+ "tex": 2048,
+ "bytes": 256388,
+ "yaw_fix": -36.35,
+ "level": "auto",
+ "lean_src_deg": 0.72,
+ "levelled": false,
+ "lean_deg": 0.68,
+ "base_frac": 0.627
+}

@@ -2302,5 +2302,65 @@
   "square_deg": 0.25,
   "tilt": 0.31,
   "verts": 16310
+ },
+ "W19_flour_bag": {
+  "base_frac": 0.796,
+  "normal": [
+   0.0018,
+   -0.0037,
+   -1.0
+  ],
+  "rect_fill": 0.914,
+  "square_deg": 0.0,
+  "tilt": 0.24,
+  "verts": 6006
+ },
+ "W20_milk_carton": {
+  "base_frac": 0.627,
+  "normal": [
+   -0.0106,
+   -0.0053,
+   -0.9999
+  ],
+  "rect_fill": 0.892,
+  "square_deg": 0.0,
+  "tilt": 0.68,
+  "verts": 1935
+ },
+ "W21_tea_tin": {
+  "base_frac": 0.773,
+  "normal": [
+   -0.002,
+   0.0004,
+   -1.0
+  ],
+  "rect_fill": 0.771,
+  "square_deg": -13.48,
+  "tilt": 0.11,
+  "verts": 1731
+ },
+ "W22_soy_bottle": {
+  "base_frac": 0.491,
+  "normal": [
+   -0.0041,
+   0.0039,
+   -1.0
+  ],
+  "rect_fill": 0.798,
+  "square_deg": -1.39,
+  "tilt": 0.32,
+  "verts": 1697
+ },
+ "W23_egg_carton": {
+  "base_frac": 0.299,
+  "normal": [
+   0.0054,
+   0.0151,
+   -0.9999
+  ],
+  "rect_fill": 0.92,
+  "square_deg": -22.74,
+  "tilt": 0.92,
+  "verts": 7803
  }
 }

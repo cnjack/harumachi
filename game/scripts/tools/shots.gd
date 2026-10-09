@@ -9,6 +9,8 @@ const VIEWS := {
 	"shop_tools": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":10.0,"inside_camera":Vector3(-3.1,1.3,-.9),"inside_focus":Vector3(-4.7,.6,-1.35)},
 	"shop_food": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":10.0,"inside_camera":Vector3(1.85,1.05,4.3),"inside_focus":Vector3(1.85,.63,3.0)},
 	"shop_tv": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":10.0,"inside_camera":Vector3(3.9,1.95,-.78),"inside_focus":Vector3(5.05,1.92,-.8)},
+	"shop_tv_side": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":10.0,"inside_camera":Vector3(4.20,2.05,.02),"inside_focus":Vector3(5.05,1.93,-.8)},
+	"shop_tv_static": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":10.0,"tv_signal":12.08,"inside_camera":Vector3(3.9,1.95,-.78),"inside_focus":Vector3(5.05,1.92,-.8)},
 	"shop_tv_rain": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":10.0,"weather":"rain","inside_camera":Vector3(3.9,1.95,-.78),"inside_focus":Vector3(5.05,1.92,-.8)},
 	"shop_pastries": {"interior":"bakery","at":Vector3(.0,.05,2.0),"face":180.0,"pitch":46.0,"dist":8.6,"time":9.0,"inside_camera":Vector3(-2.7,1.20,1.15),"inside_focus":Vector3(-2.7,.76,-.3)},
 	"shop_cakes": {"interior":"bakery","at":Vector3(.0,.05,2.0),"face":180.0,"pitch":46.0,"dist":8.6,"time":9.0,"inside_camera":Vector3(.48,1.45,2.15),"inside_focus":Vector3(.48,.99,.53)},
@@ -367,6 +369,10 @@ func _run() -> void:
 				main.shop_life._caption_left=0.0
 			for i in 40:
 				await get_tree().process_frame
+			if v.has("tv_signal"):
+				main.shop_life.elapsed=float(v.tv_signal);main.shop_life.tick(0.0)
+				await get_tree().process_frame
+				await RenderingServer.frame_post_draw
 			get_viewport().get_texture().get_image().save_png("%s/%s.png" % [dir, n])
 			print("SHOT ", n)
 			main.in_room = false

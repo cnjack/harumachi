@@ -8313,9 +8313,9 @@
       "node_density_px_m": {
         "cedar__display": 1087.18,
         "cedar_dark__display": 4519.11,
-        "Lettering_\u5f53\u65e5\u9c9c\u852c__display": 46445.82,
-        "Lettering_\u5f53\u65e5\u9c9c\u852c__display.001": 46445.3,
-        "Lettering_\u5f53\u65e5\u9c9c\u852c__display.002": 46445.82,
+        "Lettering_当日鲜蔬__display": 46445.82,
+        "Lettering_当日鲜蔬__display.001": 46445.3,
+        "Lettering_当日鲜蔬__display.002": 46445.82,
         "paper__display": 895.71,
         "Pixal_whole_cucumbers_0__display": 759.71,
         "Pixal_whole_cucumbers_1__display": 759.71,
@@ -10059,6 +10059,261 @@
       },
       "node_density_px_m": {
         "W18_retro_tv": 1682.94
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "W19_flour_bag": {
+      "id": "W19_flour_bag",
+      "sha256": "8be4783415d2bab2c67e6c16820520f6467c045dd65fd250eb4fa8975467ebc5",
+      "source_mtime": 1791535536.166618,
+      "triangles": 4896,
+      "bounds_godot": {
+        "min": [
+          -0.0956386849284172,
+          0.0,
+          -0.07583138346672058
+        ],
+        "max": [
+          0.0956386849284172,
+          0.2694146931171417,
+          0.07583138346672058
+        ]
+      },
+      "size_m": [
+        0.1912773698568344,
+        0.2694146931171417,
+        0.15166276693344116
+      ],
+      "surface_area_m2": 0.207,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 205,
+        "largest_component_area_fraction": 0.7368,
+        "boundary_edge_fraction": 0.56
+      },
+      "uv_density_px_m": {
+        "p10": 1659.38,
+        "median": 2067.58
+      },
+      "material_density_px_m": {
+        "M_W19_flour_bag": {
+          "p10": 1659.38,
+          "median": 2067.58
+        }
+      },
+      "node_density_px_m": {
+        "W19_flour_bag": 2067.58
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "W20_milk_carton": {
+      "id": "W20_milk_carton",
+      "sha256": "1222587933dcb0292bbc41b1df5b3251bb74e11d7f96f91f3b95873773c9edf4",
+      "source_mtime": 1791535536.2134824,
+      "triangles": 1646,
+      "bounds_godot": {
+        "min": [
+          -0.04968634992837906,
+          0.0,
+          -0.044477060437202454
+        ],
+        "max": [
+          0.04968634992837906,
+          0.3087012469768524,
+          0.044477060437202454
+        ]
+      },
+      "size_m": [
+        0.09937269985675812,
+        0.3087012469768524,
+        0.08895412087440491
+      ],
+      "surface_area_m2": 0.114,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 22,
+        "largest_component_area_fraction": 0.9358,
+        "boundary_edge_fraction": 0.5321
+      },
+      "uv_density_px_m": {
+        "p10": 1786.48,
+        "median": 2086.39
+      },
+      "material_density_px_m": {
+        "M_W20_milk_carton": {
+          "p10": 1786.48,
+          "median": 2086.39
+        }
+      },
+      "node_density_px_m": {
+        "W20_milk_carton": 2086.39
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "W21_tea_tin": {
+      "id": "W21_tea_tin",
+      "sha256": "5d0db4bfad8d74facd00ca094f249b7aa76dbe9ce43af536065403357832a1aa",
+      "source_mtime": 1791535536.2633927,
+      "triangles": 1347,
+      "bounds_godot": {
+        "min": [
+          -0.05720604211091995,
+          0.0,
+          -0.06447511166334152
+        ],
+        "max": [
+          0.057206038385629654,
+          0.13365738093852997,
+          0.06447511166334152
+        ]
+      },
+      "size_m": [
+        0.1144120804965496,
+        0.13365738093852997,
+        0.12895022332668304
+      ],
+      "surface_area_m2": 0.063,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 28,
+        "largest_component_area_fraction": 0.5109,
+        "boundary_edge_fraction": 0.5826
+      },
+      "uv_density_px_m": {
+        "p10": 1856.31,
+        "median": 2085.76
+      },
+      "material_density_px_m": {
+        "M_W21_tea_tin": {
+          "p10": 1856.31,
+          "median": 2085.76
+        }
+      },
+      "node_density_px_m": {
+        "W21_tea_tin": 2085.76
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "W22_soy_bottle": {
+      "id": "W22_soy_bottle",
+      "sha256": "f8d326cec8aca451000723a96c812b384eab333e52ffed802a9c5ff1ba327afb",
+      "source_mtime": 1791535536.3119211,
+      "triangles": 1318,
+      "bounds_godot": {
+        "min": [
+          -0.042199861258268356,
+          0.0,
+          -0.04293200373649597
+        ],
+        "max": [
+          0.042199864983558655,
+          0.2623106837272644,
+          0.04293200373649597
+        ]
+      },
+      "size_m": [
+        0.08439972624182701,
+        0.2623106837272644,
+        0.08586400747299194
+      ],
+      "surface_area_m2": 0.065,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 49,
+        "largest_component_area_fraction": 0.4226,
+        "boundary_edge_fraction": 0.5767
+      },
+      "uv_density_px_m": {
+        "p10": 1836.18,
+        "median": 2073.94
+      },
+      "material_density_px_m": {
+        "M_W22_soy_bottle": {
+          "p10": 1836.18,
+          "median": 2073.94
+        }
+      },
+      "node_density_px_m": {
+        "W22_soy_bottle": 2073.94
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "W23_egg_carton": {
+      "id": "W23_egg_carton",
+      "sha256": "bfdadec9544306c4abde5b32de9af8ecc68d03df7053de9f08d0890f742604de",
+      "source_mtime": 1791535536.399688,
+      "triangles": 6686,
+      "bounds_godot": {
+        "min": [
+          -0.09881569445133209,
+          0.0,
+          -0.11888512969017029
+        ],
+        "max": [
+          0.09881570935249329,
+          0.13997118175029755,
+          0.11888512969017029
+        ]
+      },
+      "size_m": [
+        0.19763140380382538,
+        0.13997118175029755,
+        0.23777025938034058
+      ],
+      "surface_area_m2": 0.184,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 186,
+        "largest_component_area_fraction": 0.2793,
+        "boundary_edge_fraction": 0.539
+      },
+      "uv_density_px_m": {
+        "p10": 1625.96,
+        "median": 2053.11
+      },
+      "material_density_px_m": {
+        "M_W23_egg_carton": {
+          "p10": 1625.96,
+          "median": 2053.11
+        }
+      },
+      "node_density_px_m": {
+        "W23_egg_carton": 2053.11
       },
       "untextured_area_fraction": 0.0,
       "inherited_pbr_maps": 0,

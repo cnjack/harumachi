@@ -1,5 +1,9 @@
 # 明年夏祭 · 设计与开发文档
 
+本轮商店专项31项、独占全量1366项通过，源工程修复。
+
+新增[电视曲面、雪花与货架陈列修复](SHOP_DISPLAY_FIX_20261009.md)：按真实玻璃贴合节目画面，加入动态雪花与換台干扰；独立商品分层摆放、烘焙品种和疏密变化。源工程修复，当前包仍以CURRENT_STATUS交付记录为准。
+
 [项目介绍](../../README.md) · [官方网站](https://harumachi.nightc.com/) · [GitHub](https://github.com/cnjack/harumachi)
 
 「明年夏祭」（Harumachi: Next Summer）是中文键鼠的日式小镇生活游戏。空回到奶奶住过的晴町，种菜、做饭、摆摊，与居民一起把停办十五年的夏祭办回来。画风按[ART_STYLE.md](ART_STYLE.md)采用动漫线条、平涂、硬边阴影和通透光色。

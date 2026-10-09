@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
   "title": "晴町素材室",
-  "updated": "2026-10-07",
+  "updated": "2026-10-09",
   "engine": "Godot 4.8-dev7",
-  "count": 596,
+  "count": 601,
   "categories": [
     "全部",
     "树木",
@@ -16690,6 +16690,241 @@
       ],
       "provider": "Hyper3D Rodin",
       "recipe": "绑定导出：art/tools/characters/，完成后以 CH_kazuko 接入游戏。"
+    },
+    {
+      "id": "game/W19_flour_bag",
+      "name": "W19_flour_bag",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/W19_flour_bag.glb",
+      "format": "GLB",
+      "triangles": 4896,
+      "bytes": 406156,
+      "license": "项目生成素材；原Hyper3D账户来源条款",
+      "source": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_W19_flour_bag.png",
+      "uses": [
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+      "raw_path": "art/models/raw/shop_refresh_20261009/W19_flour_bag.glb",
+      "metrics": {
+        "id": "W19_flour_bag",
+        "src": "raw/shop_refresh_20261009/W19_flour_bag.glb",
+        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+        "tris_src": 4896,
+        "tris": 4896,
+        "size_m": [
+          0.191,
+          0.152,
+          0.269
+        ],
+        "godot_size_m_xyz": [
+          0.191,
+          0.269,
+          0.152
+        ],
+        "tex": 2048,
+        "bytes": 406156,
+        "yaw_fix": -34.63,
+        "level": "auto",
+        "lean_src_deg": 0.05,
+        "levelled": false,
+        "lean_deg": 0.24,
+        "base_frac": 0.796
+      },
+      "recipe": "world.spawn(\"W19_flour_bag\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/W20_milk_carton",
+      "name": "W20_milk_carton",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/W20_milk_carton.glb",
+      "format": "GLB",
+      "triangles": 1646,
+      "bytes": 256388,
+      "license": "项目生成素材；原Hyper3D账户来源条款",
+      "source": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_W20_milk_carton.png",
+      "uses": [
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+      "raw_path": "art/models/raw/shop_refresh_20261009/W20_milk_carton.glb",
+      "metrics": {
+        "id": "W20_milk_carton",
+        "src": "raw/shop_refresh_20261009/W20_milk_carton.glb",
+        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+        "tris_src": 1646,
+        "tris": 1646,
+        "size_m": [
+          0.099,
+          0.089,
+          0.309
+        ],
+        "godot_size_m_xyz": [
+          0.099,
+          0.309,
+          0.089
+        ],
+        "tex": 2048,
+        "bytes": 256388,
+        "yaw_fix": -36.35,
+        "level": "auto",
+        "lean_src_deg": 0.72,
+        "levelled": false,
+        "lean_deg": 0.68,
+        "base_frac": 0.627
+      },
+      "recipe": "world.spawn(\"W20_milk_carton\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/W21_tea_tin",
+      "name": "W21_tea_tin",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/W21_tea_tin.glb",
+      "format": "GLB",
+      "triangles": 1347,
+      "bytes": 248056,
+      "license": "项目生成素材；原Hyper3D账户来源条款",
+      "source": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_W21_tea_tin.png",
+      "uses": [
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+      "raw_path": "art/models/raw/shop_refresh_20261009/W21_tea_tin.glb",
+      "metrics": {
+        "id": "W21_tea_tin",
+        "src": "raw/shop_refresh_20261009/W21_tea_tin.glb",
+        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+        "tris_src": 1347,
+        "tris": 1347,
+        "size_m": [
+          0.114,
+          0.129,
+          0.134
+        ],
+        "godot_size_m_xyz": [
+          0.114,
+          0.134,
+          0.129
+        ],
+        "tex": 2048,
+        "bytes": 248056,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.11,
+        "levelled": false,
+        "lean_deg": 0.11,
+        "base_frac": 0.773
+      },
+      "recipe": "world.spawn(\"W21_tea_tin\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/W22_soy_bottle",
+      "name": "W22_soy_bottle",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/W22_soy_bottle.glb",
+      "format": "GLB",
+      "triangles": 1318,
+      "bytes": 246800,
+      "license": "项目生成素材；原Hyper3D账户来源条款",
+      "source": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_W22_soy_bottle.png",
+      "uses": [
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+      "raw_path": "art/models/raw/shop_refresh_20261009/W22_soy_bottle.glb",
+      "metrics": {
+        "id": "W22_soy_bottle",
+        "src": "raw/shop_refresh_20261009/W22_soy_bottle.glb",
+        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+        "tris_src": 1318,
+        "tris": 1318,
+        "size_m": [
+          0.084,
+          0.086,
+          0.262
+        ],
+        "godot_size_m_xyz": [
+          0.084,
+          0.262,
+          0.086
+        ],
+        "tex": 2048,
+        "bytes": 246800,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.32,
+        "levelled": false,
+        "lean_deg": 0.32,
+        "base_frac": 0.491
+      },
+      "recipe": "world.spawn(\"W22_soy_bottle\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/W23_egg_carton",
+      "name": "W23_egg_carton",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/W23_egg_carton.glb",
+      "format": "GLB",
+      "triangles": 6686,
+      "bytes": 474404,
+      "license": "项目生成素材；原Hyper3D账户来源条款",
+      "source": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_W23_egg_carton.png",
+      "uses": [
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+      "raw_path": "art/models/raw/shop_refresh_20261009/W23_egg_carton.glb",
+      "metrics": {
+        "id": "W23_egg_carton",
+        "src": "raw/shop_refresh_20261009/W23_egg_carton.glb",
+        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+        "tris_src": 6686,
+        "tris": 6686,
+        "size_m": [
+          0.198,
+          0.238,
+          0.14
+        ],
+        "godot_size_m_xyz": [
+          0.198,
+          0.14,
+          0.238
+        ],
+        "tex": 2048,
+        "bytes": 474404,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.92,
+        "levelled": false,
+        "lean_deg": 0.92,
+        "base_frac": 0.299
+      },
+      "recipe": "world.spawn(\"W23_egg_carton\", Vector3(0, 0, 0), 0, 0)"
     }
   ]
 }

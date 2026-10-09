@@ -1,0 +1,25 @@
+{
+ "id": "W22_soy_bottle",
+ "src": "raw/shop_refresh_20261009/W22_soy_bottle.glb",
+ "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+ "tris_src": 1318,
+ "tris": 1318,
+ "size_m": [
+  0.084,
+  0.086,
+  0.262
+ ],
+ "godot_size_m_xyz": [
+  0.084,
+  0.262,
+  0.086
+ ],
+ "tex": 2048,
+ "bytes": 246800,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.32,
+ "levelled": false,
+ "lean_deg": 0.32,
+ "base_frac": 0.491
+}

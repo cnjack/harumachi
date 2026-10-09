@@ -45,11 +45,11 @@ PY=/Users/jack/.copilot/session-state/ca10e179-b441-4d77-b938-250cea2ee4c6/files
 BLENDER=/Applications/Blender.app/Contents/MacOS/Blender
 
 $GODOT --headless --path game --import                               # 加了素材或 class_name 之后必须先跑
-$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前1359项；单独运行，套timeout）
+$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前1366项；单独运行，套timeout）
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=scene-quality # 27项牌面、真实路向、材质、房间用途、净空与空间声音
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=motion-clarity # 6项斜跑/横跑帧间稳定、过滤、跑速与镜头复位
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=resident-morning # 32项居民旁观、提问、真实托盘移动、净空、取消与保存恢复
-$GODOT --headless --path game res://scenes/tests.tscn -- --only=shop-life       # 24项实体陈列、欢迎语、电视、真实工作往返与购买
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=shop-life       # 31项实体陈列、欢迎语、电视、真实工作往返与购买
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=summer-flow       # 18项挂法取舍、便笺、花火恢复与严格路径
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=calendar-advance   # 28项日历列、真实邀请、两种准备组合、保存/午夜/备份恢复
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=summer-gathering   # 33项新篮、桌面盘沿、缓存失效、散场与同灯重约

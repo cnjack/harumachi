@@ -27,6 +27,38 @@ func run() -> void:
 	GameState.day=1;GameState.minute=600;GameState.weather="sunny";life.tick(0.0)
 	var tv: Dictionary=life.content.televisions[0]
 	check("an open shop broadcasts on its television",bool(tv.screen.material_override.get_shader_parameter("broadcast_on")))
+	var screen_vertices:=PackedVector3Array()
+	if tv.screen.mesh is ArrayMesh:screen_vertices=tv.screen.mesh.surface_get_arrays(0)[Mesh.ARRAY_VERTEX]
+	var depth_min:=INF;var depth_max:=-INF
+	for vertex: Vector3 in screen_vertices:
+		depth_min=minf(depth_min,vertex.z);depth_max=maxf(depth_max,vertex.z)
+	check("television picture uses a curved surface rather than a flat card",screen_vertices.size()>100 and depth_max-depth_min>.012)
+	var fit_error: float=INF
+	if screen_vertices.size()>100:
+		fit_error=0.0
+		for index: int in [screen_vertices.size()/4,screen_vertices.size()/2,screen_vertices.size()*3/4]:
+			var point: Vector3=screen_vertices[index]+tv.screen.position
+			var height: float=_front_surface(tv.node,Vector2(point.x,point.y),tv.screen)
+			fit_error=maxf(fit_error,absf(point.z-height))
+	check("live picture lies within four millimetres of the actual television glass",fit_error<.004 and tv.screen.get_meta("measured_source_sha256","")==FileAccess.get_sha256("res://assets/models/W18_retro_tv.glb"),str(fit_error))
+	var snow: Variant=tv.screen.material_override.get_shader_parameter("snow_amount")
+	check("powered television has a nonzero animated snow signal",snow is float and float(snow)>=.04)
+	var store_ids: Dictionary={};var bakery_ids: Dictionary={};var stock_turns: Dictionary={};var gondola_rows: Dictionary={}
+	for entry: Dictionary in life.content.products:
+		var item_id: String=str(entry.node.get_meta("model_id",""))
+		if entry.kind=="store":
+			if item_id.begins_with("W") and item_id!="W12_cedar_tray":store_ids[item_id]=true
+			stock_turns[snappedf(rad_to_deg(entry.node.rotation.y),.5)]=true
+			if entry.support.get_meta("model_id","")=="P_gondola":
+				var row_key: String="%d:%.2f"%[entry.support.get_instance_id(),snappedf(float(entry.height),.02)]
+				gondola_rows[row_key]=int(gondola_rows.get(row_key,0))+1
+		elif item_id.begins_with("B"):bakery_ids[item_id]=true
+	check("store carries at least eight independent kinds of solid goods",store_ids.size()>=8,str(store_ids.keys()))
+	check("bakery has at least six bread and pastry shapes",bakery_ids.size()>=6,str(bakery_ids.keys()))
+	check("stocked goods do not all share one repeated facing",stock_turns.size()>=4,str(stock_turns.keys()))
+	var row_counts: Dictionary={}
+	for quantity: int in gondola_rows.values():row_counts[quantity]=true
+	check("gondola rows do not all repeat the same quantity and spacing",row_counts.size()>=2,str(gondola_rows))
 	GameState.weather="rain";life.tick(0.0)
 	check("weather changes reach the television forecast",tv.screen.material_override.get_shader_parameter("rain_amount")==1.0)
 	GameState.minute=21*60;life.tick(0.0)
@@ -63,3 +95,20 @@ func run() -> void:
 	check("buying a new food charges the advertised amount and grants one portion",GameState.buy_item("donut",1)=="" and GameState.count("donut")==owned+1 and GameState.coins==955)
 	check("new shop foods have native UI-kit icons and a solid serving model",UITheme.icon_texture("shop_donut")!=null and MealModels.model_id("donut")=="B07_iced_donut")
 	await main.exit_room();GameState.from_dict(snapshot)
+
+func _front_surface(root: Node3D,point: Vector2,excluded: Node3D) -> float:
+	var best: float=-INF
+	for mesh: MeshInstance3D in WorldBuilder.find_meshes(root):
+		if mesh==excluded or excluded.is_ancestor_of(mesh):continue
+		var transform: Transform3D=root.global_transform.affine_inverse()*mesh.global_transform
+		var faces: PackedVector3Array=mesh.mesh.get_faces()
+		for offset: int in range(0,faces.size(),3):
+			var a: Vector3=transform*faces[offset];var b: Vector3=transform*faces[offset+1];var c: Vector3=transform*faces[offset+2]
+			var edge_b: Vector3=b-a;var edge_c: Vector3=c-a
+			var determinant: float=edge_b.x*edge_c.y-edge_b.y*edge_c.x
+			if absf(determinant)<.000000001:continue
+			var delta: Vector2=point-Vector2(a.x,a.y)
+			var u: float=(delta.x*edge_c.y-delta.y*edge_c.x)/determinant
+			var v: float=(edge_b.x*delta.y-edge_b.y*delta.x)/determinant
+			if u>=-.000001 and v>=-.000001 and u+v<=1.000001:best=maxf(best,a.z+u*edge_b.z+v*edge_c.z)
+	return best

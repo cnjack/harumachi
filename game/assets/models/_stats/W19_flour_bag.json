@@ -1,0 +1,25 @@
+{
+ "id": "W19_flour_bag",
+ "src": "raw/shop_refresh_20261009/W19_flour_bag.glb",
+ "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+ "tris_src": 4896,
+ "tris": 4896,
+ "size_m": [
+  0.191,
+  0.152,
+  0.269
+ ],
+ "godot_size_m_xyz": [
+  0.191,
+  0.269,
+  0.152
+ ],
+ "tex": 2048,
+ "bytes": 406156,
+ "yaw_fix": -34.63,
+ "level": "auto",
+ "lean_src_deg": 0.05,
+ "levelled": false,
+ "lean_deg": 0.24,
+ "base_frac": 0.796
+}

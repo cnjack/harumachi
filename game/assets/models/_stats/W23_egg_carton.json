@@ -1,0 +1,25 @@
+{
+ "id": "W23_egg_carton",
+ "src": "raw/shop_refresh_20261009/W23_egg_carton.glb",
+ "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+ "tris_src": 6686,
+ "tris": 6686,
+ "size_m": [
+  0.198,
+  0.238,
+  0.14
+ ],
+ "godot_size_m_xyz": [
+  0.198,
+  0.14,
+  0.238
+ ],
+ "tex": 2048,
+ "bytes": 474404,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.92,
+ "levelled": false,
+ "lean_deg": 0.92,
+ "base_frac": 0.299
+}

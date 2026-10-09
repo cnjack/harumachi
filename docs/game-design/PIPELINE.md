@@ -1,5 +1,11 @@
 # 模型、工程与交付流程
 
+## 实测电视玻璃与商品拆分（2026-10-09）
+
+prepare_shop_refresh.py使用原W14和W18正式网格：保留包装底色/UV拆出五件商品，按玻璃底色与正面三角面生成2303顶点的曲面数据。拆分模型经game_export、level_check、model_audit及实拍检查；原稿与原模型保留，没有新付费任务。雪花除检查uniform，还用audit_shop_noise.py检查实拍玻璃区域的黑白比例与亮度变化，防止shader参数有值但实际黑屏。来源、复现和31项商店回归见[制作记录](SHOP_DISPLAY_FIX_20261009.md)。
+
+当前事实见[CURRENT_STATUS](CURRENT_STATUS.md)，精确引擎入口为`./tools/godot`。早期失败与日期补充保存在[历史流程记录](history/PIPELINE_HISTORY_20261007.md)，旧数字和旧包不代表最新状态。
+
 当前事实见[CURRENT_STATUS](CURRENT_STATUS.md)，精确引擎入口为`./tools/godot`。早期失败与日期补充保存在[历史流程记录](history/PIPELINE_HISTORY_20261007.md)，旧数字和旧包不代表最新状态。
 
 ## 当前运行与交付

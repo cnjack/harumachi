@@ -1,0 +1,224 @@
+{
+  "date": "2026-10-09",
+  "provider": "Existing imagegen and Hyper3D Rodin W14 source; local connected-part separation and Blender game export",
+  "paid_generations": 0,
+  "new_credit_cost": 0,
+  "original_hyper3d_generation": "43958828-a2f4-4554-ba0d-7d9501de1ac5",
+  "script": "art/tools/prepare_shop_refresh.py",
+  "source_manifest": "art/manifests/models_hyper3d_shop_20261006.json",
+  "assets": {
+    "W19_flour_bag": {
+      "source": "game/assets/models/W14_grocery_stock.glb",
+      "source_sha256": "adfac33234333a164c82b827c6af0760307320ee49e0e3217540b4222c88ec36",
+      "raw": "art/models/raw/shop_refresh_20261009/W19_flour_bag.glb",
+      "triangles": 4937,
+      "size_xyz": [
+        0.20157280564308167,
+        0.2694146931171417,
+        0.2235299050807953
+      ],
+      "uv_and_diffuse_retained": true,
+      "game": "game/assets/models/W19_flour_bag.glb",
+      "game_sha256": "8be4783415d2bab2c67e6c16820520f6467c045dd65fd250eb4fa8975467ebc5",
+      "stats": {
+        "id": "W19_flour_bag",
+        "src": "raw/shop_refresh_20261009/W19_flour_bag.glb",
+        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+        "tris_src": 4896,
+        "tris": 4896,
+        "size_m": [
+          0.191,
+          0.152,
+          0.269
+        ],
+        "godot_size_m_xyz": [
+          0.191,
+          0.269,
+          0.152
+        ],
+        "tex": 2048,
+        "bytes": 406156,
+        "yaw_fix": -34.63,
+        "level": "auto",
+        "lean_src_deg": 0.05,
+        "levelled": false,
+        "lean_deg": 0.24,
+        "base_frac": 0.796
+      }
+    },
+    "W20_milk_carton": {
+      "source": "game/assets/models/W14_grocery_stock.glb",
+      "source_sha256": "adfac33234333a164c82b827c6af0760307320ee49e0e3217540b4222c88ec36",
+      "raw": "art/models/raw/shop_refresh_20261009/W20_milk_carton.glb",
+      "triangles": 1655,
+      "size_xyz": [
+        0.11848996579647064,
+        0.3087012469768524,
+        0.1262374222278595
+      ],
+      "uv_and_diffuse_retained": true,
+      "game": "game/assets/models/W20_milk_carton.glb",
+      "game_sha256": "1222587933dcb0292bbc41b1df5b3251bb74e11d7f96f91f3b95873773c9edf4",
+      "stats": {
+        "id": "W20_milk_carton",
+        "src": "raw/shop_refresh_20261009/W20_milk_carton.glb",
+        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+        "tris_src": 1646,
+        "tris": 1646,
+        "size_m": [
+          0.099,
+          0.089,
+          0.309
+        ],
+        "godot_size_m_xyz": [
+          0.099,
+          0.309,
+          0.089
+        ],
+        "tex": 2048,
+        "bytes": 256388,
+        "yaw_fix": -36.35,
+        "level": "auto",
+        "lean_src_deg": 0.72,
+        "levelled": false,
+        "lean_deg": 0.68,
+        "base_frac": 0.627
+      }
+    },
+    "W21_tea_tin": {
+      "source": "game/assets/models/W14_grocery_stock.glb",
+      "source_sha256": "adfac33234333a164c82b827c6af0760307320ee49e0e3217540b4222c88ec36",
+      "raw": "art/models/raw/shop_refresh_20261009/W21_tea_tin.glb",
+      "triangles": 1353,
+      "size_xyz": [
+        0.1144120842218399,
+        0.13365738093852997,
+        0.12895022332668304
+      ],
+      "uv_and_diffuse_retained": true,
+      "game": "game/assets/models/W21_tea_tin.glb",
+      "game_sha256": "5d0db4bfad8d74facd00ca094f249b7aa76dbe9ce43af536065403357832a1aa",
+      "stats": {
+        "id": "W21_tea_tin",
+        "src": "raw/shop_refresh_20261009/W21_tea_tin.glb",
+        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+        "tris_src": 1347,
+        "tris": 1347,
+        "size_m": [
+          0.114,
+          0.129,
+          0.134
+        ],
+        "godot_size_m_xyz": [
+          0.114,
+          0.134,
+          0.129
+        ],
+        "tex": 2048,
+        "bytes": 248056,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.11,
+        "levelled": false,
+        "lean_deg": 0.11,
+        "base_frac": 0.773
+      }
+    },
+    "W22_soy_bottle": {
+      "source": "game/assets/models/W14_grocery_stock.glb",
+      "source_sha256": "adfac33234333a164c82b827c6af0760307320ee49e0e3217540b4222c88ec36",
+      "raw": "art/models/raw/shop_refresh_20261009/W22_soy_bottle.glb",
+      "triangles": 1327,
+      "size_xyz": [
+        0.08439972996711731,
+        0.2623106837272644,
+        0.08586400747299194
+      ],
+      "uv_and_diffuse_retained": true,
+      "game": "game/assets/models/W22_soy_bottle.glb",
+      "game_sha256": "f8d326cec8aca451000723a96c812b384eab333e52ffed802a9c5ff1ba327afb",
+      "stats": {
+        "id": "W22_soy_bottle",
+        "src": "raw/shop_refresh_20261009/W22_soy_bottle.glb",
+        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+        "tris_src": 1318,
+        "tris": 1318,
+        "size_m": [
+          0.084,
+          0.086,
+          0.262
+        ],
+        "godot_size_m_xyz": [
+          0.084,
+          0.262,
+          0.086
+        ],
+        "tex": 2048,
+        "bytes": 246800,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.32,
+        "levelled": false,
+        "lean_deg": 0.32,
+        "base_frac": 0.491
+      }
+    },
+    "W23_egg_carton": {
+      "source": "game/assets/models/W14_grocery_stock.glb",
+      "source_sha256": "adfac33234333a164c82b827c6af0760307320ee49e0e3217540b4222c88ec36",
+      "raw": "art/models/raw/shop_refresh_20261009/W23_egg_carton.glb",
+      "triangles": 6728,
+      "size_xyz": [
+        0.19763140380382538,
+        0.13997118175029755,
+        0.23777025938034058
+      ],
+      "uv_and_diffuse_retained": true,
+      "game": "game/assets/models/W23_egg_carton.glb",
+      "game_sha256": "bfdadec9544306c4abde5b32de9af8ecc68d03df7053de9f08d0890f742604de",
+      "stats": {
+        "id": "W23_egg_carton",
+        "src": "raw/shop_refresh_20261009/W23_egg_carton.glb",
+        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+        "tris_src": 6686,
+        "tris": 6686,
+        "size_m": [
+          0.198,
+          0.238,
+          0.14
+        ],
+        "godot_size_m_xyz": [
+          0.198,
+          0.14,
+          0.238
+        ],
+        "tex": 2048,
+        "bytes": 474404,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.92,
+        "levelled": false,
+        "lean_deg": 0.92,
+        "base_frac": 0.299
+      }
+    }
+  },
+  "television_surface": "game/data/shop_tv_surface.json",
+  "tv_surface_summary": {
+    "source_model": "W18_retro_tv",
+    "source_sha256": "ac074a6159af76d30bea11f7fa7f2f36adb6de9bff0f39b24b24b1a72127a1f3",
+    "columns": 49,
+    "rows": 47,
+    "glass_offset_m": 0.0018,
+    "measured_points": 9134,
+    "glass_fit_coefficients": [
+      0.16154265007232463,
+      -0.05987409919048092,
+      0.21178947837566217,
+      -0.7687852021778984,
+      0.024057090165333268,
+      -0.837425585652326
+    ],
+    "note": "Actual frontmost triangle depths and diffuse glass aperture. Small source holes use the fitted quadratic glass. UVs follow the rounded silhouette."
+  }
+}

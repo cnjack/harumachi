@@ -1962,6 +1962,68 @@
       "yaw": 0,
       "provider": "Hyper3D CLI Gen-2.5-High, image reference, Quad 4000",
       "note": "Solid anime serving; no plate, hand, or character."
+    },
+    "W19_flour_bag": {
+      "src": "raw/shop_refresh_20261009/W19_flour_bag.glb",
+      "fit": "h",
+      "size": 0.2694146931171417,
+      "tris": 4937,
+      "tex": 2048,
+      "level": "auto",
+      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+      "source_page": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "license": "项目生成素材；原Hyper3D账户来源条款",
+      "note": "Derived from the original exported grocery bundle, no new generation; diffuse and UV retained.",
+      "yaw": -34.63
+    },
+    "W20_milk_carton": {
+      "src": "raw/shop_refresh_20261009/W20_milk_carton.glb",
+      "fit": "h",
+      "size": 0.3087012469768524,
+      "tris": 1655,
+      "tex": 2048,
+      "level": "auto",
+      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+      "source_page": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "license": "项目生成素材；原Hyper3D账户来源条款",
+      "note": "Derived from the original exported grocery bundle, no new generation; diffuse and UV retained.",
+      "yaw": -36.35
+    },
+    "W21_tea_tin": {
+      "src": "raw/shop_refresh_20261009/W21_tea_tin.glb",
+      "fit": "h",
+      "size": 0.13365738093852997,
+      "tris": 1353,
+      "tex": 2048,
+      "level": "auto",
+      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+      "source_page": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "license": "项目生成素材；原Hyper3D账户来源条款",
+      "note": "Derived from the original exported grocery bundle, no new generation; diffuse and UV retained."
+    },
+    "W22_soy_bottle": {
+      "src": "raw/shop_refresh_20261009/W22_soy_bottle.glb",
+      "fit": "h",
+      "size": 0.2623106837272644,
+      "tris": 1327,
+      "tex": 2048,
+      "level": "auto",
+      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+      "source_page": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "license": "项目生成素材；原Hyper3D账户来源条款",
+      "note": "Derived from the original exported grocery bundle, no new generation; diffuse and UV retained."
+    },
+    "W23_egg_carton": {
+      "src": "raw/shop_refresh_20261009/W23_egg_carton.glb",
+      "fit": "h",
+      "size": 0.13997118175029755,
+      "tris": 6728,
+      "tex": 2048,
+      "level": "auto",
+      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+      "source_page": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "license": "项目生成素材；原Hyper3D账户来源条款",
+      "note": "Derived from the original exported grocery bundle, no new generation; diffuse and UV retained."
     }
   },
   "procedural_overrides": {
