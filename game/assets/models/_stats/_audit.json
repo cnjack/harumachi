@@ -155,50 +155,65 @@
     },
     "A12_bench": {
       "id": "A12_bench",
-      "sha256": "fabb7c7684a0397a3467e5c7b3274deb410b3c0b9ba3d929c41ec9e8038b448a",
-      "source_mtime": 1790877354.7580562,
-      "triangles": 2500,
+      "sha256": "91132149f5421c879661ae3acbed7550ec2a2277e52254719cd848e501831a9a",
+      "source_mtime": 1791541244.8417912,
+      "triangles": 1080,
       "bounds_godot": {
         "min": [
-          -0.8997485637664795,
-          -2.70477648882661e-05,
-          -0.3234773874282837
+          -0.8999999761581421,
+          0.0,
+          -0.2800000011920929
         ],
         "max": [
-          0.8998157382011414,
-          0.6189627647399902,
-          0.3236173093318939
+          0.8999999761581421,
+          0.5574999749660492,
+          0.2800000011920929
         ]
       },
       "size_m": [
-        1.7995643019676208,
-        0.6189898125048785,
-        0.6470946967601776
+        1.7999999523162842,
+        0.5574999749660492,
+        0.5600000023841858
       ],
-      "surface_area_m2": 4.379,
+      "surface_area_m2": 4.257,
       "albedo_image_sizes": [
         [
-          1024,
-          1024
+          1254,
+          1254
         ]
       ],
       "topology": {
-        "components": 1,
-        "largest_component_area_fraction": 1.0,
+        "components": 10,
+        "largest_component_area_fraction": 0.2028,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 260.09,
-        "median": 352.52
+        "p10": 996.93,
+        "median": 1649.75
       },
       "material_density_px_m": {
-        "M_A12_bench": {
-          "p10": 260.09,
-          "median": 352.52
+        "CedarAge_0": {
+          "p10": 996.93,
+          "median": 996.93
+        },
+        "CedarAge_1": {
+          "p10": 996.93,
+          "median": 996.93
+        },
+        "CedarAge_2": {
+          "p10": 2273.63,
+          "median": 2327.13
+        },
+        "CedarAge_3": {
+          "p10": 1608.22,
+          "median": 2602.92
         }
       },
       "node_density_px_m": {
-        "A12_bench": 352.52
+        "CedarAge_0": 996.93,
+        "CedarAge_1": 996.93,
+        "CedarAge_2": 2327.13,
+        "CedarAge_3": 2602.92
       },
       "untextured_area_fraction": 0.0,
       "inherited_pbr_maps": 0,
@@ -3842,52 +3857,62 @@
     },
     "G02_goldfish_tank": {
       "id": "G02_goldfish_tank",
-      "sha256": "ef6adb2321e9281b70e13abf4ab3e2135545e1e59c789e8291328fed8e558ba3",
-      "source_mtime": 1790484073.9166667,
-      "triangles": 7000,
+      "sha256": "9777da5fcad7cc328a5b313fbe1fad251fa531bfcc5c528214d97ad0a8b45d87",
+      "source_mtime": 1791541245.1295638,
+      "triangles": 6350,
       "bounds_godot": {
         "min": [
-          -0.7498701810836792,
-          0.00015664007514715195,
-          -0.597100555896759
+          -0.7500000223517418,
+          0.0,
+          -0.5950000286102295
         ],
         "max": [
-          0.7498616576194763,
-          0.4967964291572571,
-          0.597133457660675
+          0.7500000596046448,
+          0.4879999905824661,
+          0.5950000286102295
         ]
       },
       "size_m": [
-        1.4997318387031555,
-        0.49663978908210993,
-        1.194234013557434
+        1.5000000819563866,
+        0.4879999905824661,
+        1.190000057220459
       ],
-      "surface_area_m2": 8.965,
+      "surface_area_m2": 7.669,
       "albedo_image_sizes": [
         [
-          1024,
-          1024
+          1254,
+          1254
         ]
       ],
       "topology": {
-        "components": 7,
-        "largest_component_area_fraction": 0.9008,
-        "boundary_edge_fraction": 0.0
+        "components": 42,
+        "largest_component_area_fraction": 0.3971,
+        "boundary_edge_fraction": 0.0004
       },
       "uv_density_px_m": {
-        "p10": 234.89,
-        "median": 268.8
+        "p10": 1151.87,
+        "median": 1293.23
       },
       "material_density_px_m": {
-        "M_G02_goldfish_tank": {
-          "p10": 234.89,
-          "median": 268.8
+        "CedarAge_0": {
+          "p10": 1293.23,
+          "median": 1293.23
+        },
+        "CedarAge_1": {
+          "p10": 1151.87,
+          "median": 1151.87
+        },
+        "CedarAge_3": {
+          "p10": 3257.99,
+          "median": 3257.99
         }
       },
       "node_density_px_m": {
-        "G02_goldfish_tank": 268.8
+        "CedarAge_0": 1293.23,
+        "CedarAge_1": 1151.87,
+        "CedarAge_3": 3257.99
       },
-      "untextured_area_fraction": 0.0,
+      "untextured_area_fraction": 0.6142,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -4148,52 +4173,62 @@
     },
     "G09_taiko": {
       "id": "G09_taiko",
-      "sha256": "4dce90447c244c87609e0a1c274b7c4514acba3a7f43dcbdb2f26228787b52db",
-      "source_mtime": 1790484076.1573029,
-      "triangles": 6999,
+      "sha256": "e354fd229bc60d71801b795391f81b23b72e2e5c7c6489e198ea37c67f3ae65f",
+      "source_mtime": 1791544154.5604508,
+      "triangles": 10192,
       "bounds_godot": {
         "min": [
-          -0.40379762649536133,
-          0.0001045183016685769,
-          -0.4471573531627655
+          -0.3745477671706451,
+          0.013636007725950527,
+          -0.3150001498200732
         ],
         "max": [
-          0.40371832251548767,
-          1.1505985260009766,
-          0.4472437798976898
+          0.37454771968520484,
+          1.1369939521573724,
+          0.3150002456582564
         ]
       },
       "size_m": [
-        0.807515949010849,
-        1.150494007699308,
-        0.8944011330604553
+        0.7490954868558499,
+        1.123357944431422,
+        0.6300003954783295
       ],
-      "surface_area_m2": 4.314,
+      "surface_area_m2": 3.822,
       "albedo_image_sizes": [
         [
-          1024,
-          1024
+          1254,
+          1254
         ]
       ],
       "topology": {
-        "components": 1,
-        "largest_component_area_fraction": 1.0,
-        "boundary_edge_fraction": 0.0001
+        "components": 61,
+        "largest_component_area_fraction": 0.2506,
+        "boundary_edge_fraction": 0.0052
       },
       "uv_density_px_m": {
-        "p10": 306.82,
-        "median": 357.02
+        "p10": 577.73,
+        "median": 2400.73
       },
       "material_density_px_m": {
-        "M_G09_taiko": {
-          "p10": 306.82,
-          "median": 357.02
+        "CedarAge_1": {
+          "p10": 4214.44,
+          "median": 4925.71
+        },
+        "CedarAge_2": {
+          "p10": 577.02,
+          "median": 595.59
+        },
+        "CedarAge_3": {
+          "p10": 2403.86,
+          "median": 2403.86
         }
       },
       "node_density_px_m": {
-        "G09_taiko": 357.02
+        "CedarAge_1": 4925.71,
+        "CedarAge_2": 595.59,
+        "CedarAge_3": 2403.86
       },
-      "untextured_area_fraction": 0.0,
+      "untextured_area_fraction": 0.3644,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -6470,52 +6505,72 @@
     },
     "P01": {
       "id": "P01",
-      "sha256": "d30bc6ed8b1403fa8ad91c99e99afafe736ef1b505ba739d0fb41cf577f8d5fc",
-      "source_mtime": 1790440046.6000073,
-      "triangles": 8000,
+      "sha256": "6772f2d73704061eb55793c207dac0281ed49e215e0243ae08009d7d186f3cdc",
+      "source_mtime": 1791541244.9315517,
+      "triangles": 7000,
       "bounds_godot": {
         "min": [
-          -2.179684638977051,
-          -7.324033504119143e-05,
-          -2.122777223587036
+          -2.5012946128845215,
+          -1.0982802667314218e-07,
+          -2.280686140060425
         ],
         "max": [
-          2.1802525520324707,
-          2.9996821880340576,
-          2.1234304904937744
+          2.2857155799865723,
+          3.2678894996643066,
+          2.2312726974487305
         ]
       },
       "size_m": [
-        4.3599371910095215,
-        2.999755428369099,
-        4.2462077140808105
+        4.787010192871094,
+        3.2678896094923333,
+        4.511958837509155
       ],
-      "surface_area_m2": 118.236,
+      "surface_area_m2": 170.338,
       "albedo_image_sizes": [
         [
-          1024,
-          1024
+          1254,
+          1254
         ]
       ],
       "topology": {
-        "components": 1,
-        "largest_component_area_fraction": 1.0,
-        "boundary_edge_fraction": 0.0
+        "components": 244,
+        "largest_component_area_fraction": 0.0163,
+        "boundary_edge_fraction": 0.0606
       },
       "uv_density_px_m": {
-        "p10": 63.52,
-        "median": 70.29
+        "p10": 585.99,
+        "median": 766.68
       },
       "material_density_px_m": {
-        "M_P01": {
-          "p10": 63.52,
-          "median": 70.29
+        "CedarAge_0": {
+          "p10": 837.59,
+          "median": 940.5
+        },
+        "CedarAge_1": {
+          "p10": 837.59,
+          "median": 892.24
+        },
+        "CedarAge_2": {
+          "p10": 655.28,
+          "median": 843.93
+        },
+        "CedarAge_3": {
+          "p10": 1085.19,
+          "median": 1348.49
+        },
+        "Foliage_GrapeSprigs": {
+          "p10": 582.35,
+          "median": 669.4
         }
       },
       "node_density_px_m": {
-        "P01": 70.29
+        "CedarAge_0": 940.5,
+        "CedarAge_1": 892.24,
+        "CedarAge_2": 843.93,
+        "CedarAge_3": 1348.49,
+        "Foliage_GrapeSprigs": 669.4
       },
-      "untextured_area_fraction": 0.0,
+      "untextured_area_fraction": 0.0157,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -6674,52 +6729,67 @@
     },
     "P05": {
       "id": "P05",
-      "sha256": "76a109e965aeb37e9fb968e31ac1635ae8f672384b150a84b95935c60776dea9",
-      "source_mtime": 1790877354.822265,
-      "triangles": 8999,
+      "sha256": "ff75c80a6d1c4646f3af7addb07768d5eb5832cdeb7dd9414402c72b76eaa26b",
+      "source_mtime": 1791541245.1860964,
+      "triangles": 2292,
       "bounds_godot": {
         "min": [
-          -1.2861981391906738,
-          0.0007290734793059528,
-          -1.69871187210083
+          -0.7200000248849392,
+          0.0,
+          -1.4228056845087749
         ],
         "max": [
-          1.2869740724563599,
-          2.1997718811035156,
-          1.6997573375701904
+          0.7199999690055847,
+          2.130242009544153,
+          2.0099999606609344
         ]
       },
       "size_m": [
-        2.5731722116470337,
-        2.1990428076242097,
-        3.3984692096710205
+        1.439999993890524,
+        2.130242009544153,
+        3.4328056451697093
       ],
-      "surface_area_m2": 24.269,
+      "surface_area_m2": 17.988,
       "albedo_image_sizes": [
         [
-          1024,
-          1024
+          1254,
+          1254
         ]
       ],
       "topology": {
-        "components": 3,
-        "largest_component_area_fraction": 0.7236,
-        "boundary_edge_fraction": 0.0002
+        "components": 19,
+        "largest_component_area_fraction": 0.2853,
+        "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 102.63,
-        "median": 146.91
+        "p10": 483.32,
+        "median": 1124.11
       },
       "material_density_px_m": {
-        "M_P05": {
-          "p10": 102.63,
-          "median": 146.91
+        "CedarAge_0": {
+          "p10": 483.31,
+          "median": 483.32
+        },
+        "CedarAge_1": {
+          "p10": 1096.19,
+          "median": 1096.19
+        },
+        "CedarAge_2": {
+          "p10": 1124.11,
+          "median": 1124.11
+        },
+        "CedarAge_3": {
+          "p10": 1357.49,
+          "median": 1357.49
         }
       },
       "node_density_px_m": {
-        "P05": 146.91
+        "CedarAge_0": 483.32,
+        "CedarAge_1": 1096.19,
+        "CedarAge_2": 1124.11,
+        "CedarAge_3": 1357.49
       },
-      "untextured_area_fraction": 0.0,
+      "untextured_area_fraction": 0.3354,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -6929,52 +6999,67 @@
     },
     "P10": {
       "id": "P10",
-      "sha256": "59dcb67a4c76736c4ca8b238ceffdd9fac29bc1f78f8684da2a011b9559897ae",
-      "source_mtime": 1790440047.3203769,
-      "triangles": 7999,
+      "sha256": "be0dea1f3509dfdd6f7cf29f8cad2efd5781a80fecd34f89e24d933777dbfe2e",
+      "source_mtime": 1791541245.000016,
+      "triangles": 3874,
       "bounds_godot": {
         "min": [
-          -2.0989298820495605,
-          0.0004563347320072353,
-          -1.131556749343872
+          -2.069999933242798,
+          0.0,
+          -1.100000023841858
         ],
         "max": [
-          2.1000614166259766,
-          2.2740848064422607,
-          1.1316649913787842
+          2.069999933242798,
+          2.150000125169754,
+          1.100000023841858
         ]
       },
       "size_m": [
-        4.198991298675537,
-        2.2736284717102535,
-        2.2632217407226562
+        4.139999866485596,
+        2.150000125169754,
+        2.200000047683716
       ],
-      "surface_area_m2": 33.741,
+      "surface_area_m2": 31.208,
       "albedo_image_sizes": [
         [
-          1024,
-          1024
+          1254,
+          1254
         ]
       ],
       "topology": {
-        "components": 7,
-        "largest_component_area_fraction": 0.9416,
-        "boundary_edge_fraction": 0.0001
+        "components": 56,
+        "largest_component_area_fraction": 0.0626,
+        "boundary_edge_fraction": 0.0072
       },
       "uv_density_px_m": {
-        "p10": 114.37,
-        "median": 125.05
+        "p10": 659.21,
+        "median": 659.21
       },
       "material_density_px_m": {
-        "M_P10": {
-          "p10": 114.37,
-          "median": 125.05
+        "CedarAge_0": {
+          "p10": 659.21,
+          "median": 659.21
+        },
+        "CedarAge_1": {
+          "p10": 659.21,
+          "median": 659.21
+        },
+        "CedarAge_2": {
+          "p10": 896.73,
+          "median": 1016.8
+        },
+        "CedarAge_3": {
+          "p10": 2753.5,
+          "median": 2753.5
         }
       },
       "node_density_px_m": {
-        "P10": 125.05
+        "CedarAge_0": 659.21,
+        "CedarAge_1": 659.21,
+        "CedarAge_2": 1016.8,
+        "CedarAge_3": 2753.5
       },
-      "untextured_area_fraction": 0.0,
+      "untextured_area_fraction": 0.0691,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -8313,9 +8398,9 @@
       "node_density_px_m": {
         "cedar__display": 1087.18,
         "cedar_dark__display": 4519.11,
-        "Lettering_当日鲜蔬__display": 46445.82,
-        "Lettering_当日鲜蔬__display.001": 46445.3,
-        "Lettering_当日鲜蔬__display.002": 46445.82,
+        "Lettering_\u5f53\u65e5\u9c9c\u852c__display": 46445.82,
+        "Lettering_\u5f53\u65e5\u9c9c\u852c__display.001": 46445.3,
+        "Lettering_\u5f53\u65e5\u9c9c\u852c__display.002": 46445.82,
         "paper__display": 895.71,
         "Pixal_whole_cucumbers_0__display": 759.71,
         "Pixal_whole_cucumbers_1__display": 759.71,
@@ -8836,31 +8921,31 @@
     },
     "T05_old_shade_tree": {
       "id": "T05_old_shade_tree",
-      "sha256": "4fe94fd23bb4c850d2a9916e03e9f05e24b83152fc7462655593b45441c6c410",
-      "source_mtime": 1791132486.5193288,
-      "triangles": 157076,
+      "sha256": "76f4b70d222196455bc14cd463bc1f6732491baa00dd77680e69819647f12c37",
+      "source_mtime": 1791567880.69751,
+      "triangles": 178400,
       "bounds_godot": {
         "min": [
-          -6.598077774047852,
-          -0.0961596667766571,
-          -6.199069976806641
+          -6.551371097564697,
+          0.0002383595274295658,
+          -5.520970821380615
         ],
         "max": [
-          6.469334602355957,
-          8.961318016052246,
-          5.356907844543457
+          6.464275360107422,
+          9.150501251220703,
+          5.52219820022583
         ]
       },
       "size_m": [
-        13.067412376403809,
-        9.057477682828903,
-        11.555977821350098
+        13.01564645767212,
+        9.150262891693274,
+        11.043169021606445
       ],
-      "surface_area_m2": 1219.119,
+      "surface_area_m2": 2382.872,
       "albedo_image_sizes": [
         [
-          1368,
-          1150
+          1254,
+          1254
         ],
         [
           2048,
@@ -8868,27 +8953,27 @@
         ]
       ],
       "topology": {
-        "components": 2795,
-        "largest_component_area_fraction": 0.0825,
-        "boundary_edge_fraction": 0.0463
+        "components": 4219,
+        "largest_component_area_fraction": 0.0435,
+        "boundary_edge_fraction": 0.0609
       },
       "uv_density_px_m": {
-        "p10": 727.37,
-        "median": 835.44
+        "p10": 634.69,
+        "median": 728.62
       },
       "material_density_px_m": {
-        "OldTreeLeaves": {
-          "p10": 744.49,
-          "median": 850.15
+        "PaintedOldTreeSprigs": {
+          "p10": 642.28,
+          "median": 736.45
         },
-        "OldTreePaintedBark": {
-          "p10": 48.7,
-          "median": 54.33
+        "model": {
+          "p10": 112.61,
+          "median": 134.4
         }
       },
       "node_density_px_m": {
-        "Foliage_OldTree": 850.15,
-        "Trunk_OldTree": 54.33
+        "Foliage_PlazaOldTree": 736.45,
+        "Trunk_Hyper3D": 134.4
       },
       "untextured_area_fraction": 0.0,
       "inherited_pbr_maps": 0,

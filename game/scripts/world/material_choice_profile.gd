@@ -51,11 +51,20 @@ static func apply(world: WorldBuilder) -> Dictionary:
                 material.set_shader_parameter("root_col",_linear(Vector3(.12,.27,.10)))
                 material.set_shader_parameter("fresh_col",_linear(Vector3(.50,.74,.26)))
                 material.set_shader_parameter("deep_col",_linear(Vector3(.24,.48,.21)))
+                if node.get_meta("grass_style","")=="plaza":
+                    material.set_shader_parameter("height_scale",.95)
+                    material.set_shader_parameter("root_col",_linear(Vector3(.20,.34,.15)))
+                    material.set_shader_parameter("fresh_col",_linear(Vector3(.61,.77,.29)))
+                    material.set_shader_parameter("deep_col",_linear(Vector3(.29,.49,.26)))
             else:
                 material.shader = SURFACE
                 material.set_shader_parameter("surface_kind",4)
                 material.set_shader_parameter("base_color",Color(.37,.55,.23))
                 material.set_shader_parameter("tile",2.6)
+                if node.get_meta("plaza_lawn_transition",false):
+                    material.set_shader_parameter("plaza_lawn",true)
+                    material.set_shader_parameter("feather",original.get_shader_parameter("feather"))
+                    material.set_shader_parameter("base_color",Color(.41,.56,.27))
                 if original.get_shader_parameter("landscape_contours")==true:
                     material.set_shader_parameter("landscape_contours",true)
                     material.set_shader_parameter("terrain_origin",original.get_shader_parameter("terrain_origin"))

@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-10",
+  "generation_id": "e958a9cb-fd96-430b-9881-5c05490505fb",
+  "tier": "Gen-2.5-High",
+  "mesh_mode": "Raw",
+  "quality_requested": 500000,
+  "raw_sha256": "93c4bbd5f28ef8dc0660c99c70269b9ed1b4809f13ce4bfcad168d095e6b3a20",
+  "expected_base_credits": 0.5,
+  "actual_charge_verified": false,
+  "original_account_preserved": true,
+  "reference": "art/references/plaza_paintover_20261009/plaza_full_tree_reference.png",
+  "prompt": "art/manifests/prompts/plaza_full_tree_20261010.txt",
+  "authoring_script": "art/tools/plaza_hero_tree.py",
+  "config": {
+    "src": "raw/T05_plaza_full_hyper3d_20261010/prepared/T05_old_shade_tree.glb",
+    "preserve_parts": true,
+    "preserve_origin": true,
+    "level": false,
+    "tex": 2048,
+    "image_format": "AUTO",
+    "provider": "Hyper3D CLI Gen-2.5-High; Blender UV-preserving cleanup and independent imagegen alpha foliage",
+    "license": "项目自制；生成素材服务条款",
+    "reference_images": [
+      "art/references/plaza_paintover_20261009/plaza_full_tree_reference.png",
+      "art/references/plaza_paintover_20261009/plaza_leaf_sprigs_atlas.png"
+    ],
+    "note": "Owned generated boughs; compact fused roots, healed knot, independently layered crown. Preserve zelkova story and save identity."
+  },
+  "stats": {
+    "id": "T05_old_shade_tree",
+    "src": "raw/T05_plaza_full_hyper3d_20261010/prepared/T05_old_shade_tree.glb",
+    "provider": "Hyper3D CLI Gen-2.5-High; Blender UV-preserving cleanup and independent imagegen alpha foliage",
+    "preserve_parts": true,
+    "origin_preserved": true,
+    "tris": 178400,
+    "tex": 2048,
+    "bytes": 13157668,
+    "godot_size_m_xyz": [
+      13.0156,
+      9.1503,
+      11.0432
+    ],
+    "mesh_nodes": [
+      "Foliage_PlazaOldTree",
+      "Trunk_Hyper3D"
+    ]
+  },
+  "preparation": {
+    "generation_id": "e958a9cb-fd96-430b-9881-5c05490505fb",
+    "uniform_source_height": 6.8,
+    "yaw_degrees": -90,
+    "root_radial_reduction_at_ground": 0.28,
+    "leaf_sprigs": 4200,
+    "godot_size_m_xyz": [
+      13.015645980834961,
+      9.150262832641602,
+      11.043169021606445
+    ],
+    "triangles": 178400,
+    "method": "Owned Hyper3D boughs with original UVs, matte finish, independent alpha crown; no new paid generation."
+  },
+  "accepted_game_sha256": "76f4b70d222196455bc14cd463bc1f6732491baa00dd77680e69819647f12c37",
+  "generation_scope": "Provider crown was sparse; retained boughs and UVs, welded physical seams before reduction, made an independent alpha crown. This is a hybrid asset.",
+  "regression_evidence": [
+    "evidence/plaza_continue_20261010/tree-seam-regression.json",
+    "evidence/plaza_continue_20261010/tree-collision-old.json",
+    "evidence/plaza_continue_20261010/tree-final-checks.json"
+  ],
+  "native_review": "evidence/plaza_continue_20261010/tree-final-native"
+}

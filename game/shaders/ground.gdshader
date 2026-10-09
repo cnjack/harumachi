@@ -27,6 +27,7 @@ uniform vec3 root_col : source_color = vec3(0.11, 0.26, 0.13);
 uniform vec3 fresh_col : source_color = vec3(0.64, 0.85, 0.28);
 uniform vec3 deep_col : source_color = vec3(0.22, 0.49, 0.31);
 uniform float lawn_mix = 0.4;
+uniform float painted_lawn_mix = 0.52;
 // ragged edges: within `feather` metres of the plane's border, pixels drop out by noise
 uniform float feather = 0.0;
 instance uniform vec2 plane_size = vec2(0.0);
@@ -64,7 +65,7 @@ void fragment() {
 		float s2 = noise(wpos.xz * 0.6 + 11.0);
 		lc *= 0.9 + s1 * 0.12 + (s2 - 0.5) * 0.08;
 		vec3 painted = texture(albedo_tex, wpos.xz / tile).rgb;
-		ALBEDO = mix(lc, painted * vec3(0.74, 0.83, 0.70), 0.52) * tint.rgb;
+		ALBEDO = mix(lc, painted * vec3(0.74, 0.83, 0.70), painted_lawn_mix) * tint.rgb;
 	} else {
 	vec2 uv = wpos.xz / tile;
 	vec3 a = texture(albedo_tex, uv).rgb;

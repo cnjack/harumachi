@@ -83,11 +83,17 @@
       "note": "Retained Hyper3D exterior and painted material detail; actual window cavities for 3D display rooms"
     },
     "P01": {
-      "src": "raw/P01/model.glb",
-      "fit": "h",
-      "size": 3.0,
-      "tris": 8000,
-      "tex": 1024
+      "src": "raw/plaza_paintover_20261009/P01.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Blender joinery from accepted imagegen plaza paintover",
+      "license": "项目自制；生成素材服务条款",
+      "reference_images": [
+        "art/references/plaza_paintover_20261009/plaza_facilities_inspiration.png"
+      ]
     },
     "P02": {
       "src": "raw/P02/model.glb",
@@ -104,13 +110,17 @@
       "tex": 1024
     },
     "P05": {
-      "src": "raw/P05_h3d/model.glb",
-      "fit": "h",
-      "size": 2.2,
-      "tris": 9000,
-      "tex": 1024,
-      "provider": "hyper3d rodin gen-2.5 (v0.4 regen)",
-      "prev_src": "raw/P05/model.glb"
+      "src": "raw/plaza_paintover_20261009/P05.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Blender joinery from accepted imagegen plaza paintover",
+      "license": "项目自制；生成素材服务条款",
+      "reference_images": [
+        "art/references/plaza_paintover_20261009/plaza_facilities_inspiration.png"
+      ]
     },
     "P07": {
       "src": "raw/P07/model.glb",
@@ -136,11 +146,17 @@
       "provider": "Hyper3D CLI Gen-2.5-High, empty serving stall reference"
     },
     "P10": {
-      "src": "raw/P10/model.glb",
-      "fit": "w",
-      "size": 4.2,
-      "tris": 8000,
-      "tex": 1024
+      "src": "raw/plaza_paintover_20261009/P10.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Blender joinery from accepted imagegen plaza paintover",
+      "license": "项目自制；生成素材服务条款",
+      "reference_images": [
+        "art/references/plaza_paintover_20261009/plaza_facilities_inspiration.png"
+      ]
     },
     "P11": {
       "src": "raw/P11/model.glb",
@@ -284,12 +300,17 @@
       "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)"
     },
     "A12_bench": {
-      "src": "../../output/japanese-street-shinkai-dry/models/A12_bench/model.glb",
-      "fit": "w",
-      "size": 1.8,
-      "tris": 2500,
-      "tex": 1024,
-      "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)"
+      "src": "raw/plaza_paintover_20261009/A12_bench.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Blender joinery from accepted imagegen plaza paintover",
+      "license": "项目自制；生成素材服务条款",
+      "reference_images": [
+        "art/references/plaza_paintover_20261009/plaza_facilities_inspiration.png"
+      ]
     },
     "A13_chalkboard": {
       "src": "raw/A13_texture_edit_20261001/model.glb",
@@ -596,11 +617,17 @@
       "tex": 1024
     },
     "G02_goldfish_tank": {
-      "src": "raw/G02_goldfish_tank/model.glb",
-      "fit": "w",
-      "size": 1.5,
-      "tris": 7000,
-      "tex": 1024
+      "src": "raw/plaza_paintover_20261009/G02_goldfish_tank.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Blender joinery from accepted imagegen plaza paintover",
+      "license": "项目自制；生成素材服务条款",
+      "reference_images": [
+        "art/references/plaza_paintover_20261009/plaza_facilities_inspiration.png"
+      ]
     },
     "G03_laundry_stand": {
       "src": "raw/G03_laundry_stand/model.glb",
@@ -638,11 +665,17 @@
       "tex": 1024
     },
     "G09_taiko": {
-      "src": "raw/G09_taiko/model.glb",
-      "fit": "h",
-      "size": 1.15,
-      "tris": 7000,
-      "tex": 1024
+      "src": "raw/plaza_paintover_20261009/G09_taiko.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Blender joinery from accepted imagegen plaza paintover",
+      "license": "项目自制；生成素材服务条款",
+      "reference_images": [
+        "art/references/plaza_paintover_20261009/plaza_facilities_inspiration.png"
+      ]
     },
     "T01_courtyard_tree": {
       "src": "raw/free_foliage_20261004/ready/T01_courtyard_tree.glb",
@@ -1738,19 +1771,19 @@
       "note": "Metre scale, root on ground, trunk/foliage split; original UVs and alpha preserved"
     },
     "T05_old_shade_tree": {
-      "src": "raw/hero_shade_tree_20261005/T05_old_shade_tree.glb",
+      "src": "raw/T05_plaza_full_hyper3d_20261010/prepared/T05_old_shade_tree.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 2048,
       "image_format": "AUTO",
-      "provider": "Reference-driven Blender organic skeleton; imagegen anime bark and transparent leaf sprigs",
+      "provider": "Hyper3D CLI Gen-2.5-High; Blender UV-preserving cleanup and independent imagegen alpha foliage",
       "license": "项目自制；生成素材服务条款",
       "reference_images": [
-        "game/assets/ui/prologue/P3_tree.jpg",
-        "art/references/v06/prologue/K4_courtyard.png"
+        "art/references/plaza_paintover_20261009/plaza_full_tree_reference.png",
+        "art/references/plaza_paintover_20261009/plaza_leaf_sprigs_atlas.png"
       ],
-      "note": "A unique courtyard hero tree, not a shared roadside tree; broad low limbs, roots, layered alpha foliage"
+      "note": "Owned generated boughs; compact fused roots, healed knot, independently layered crown. Preserve zelkova story and save identity."
     },
     "CH_kazuko": {
       "src": "character_wave_smile_20261005/exports/CH_kazuko.glb",

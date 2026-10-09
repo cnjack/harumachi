@@ -321,7 +321,7 @@ func _spawn_plant(spec: Array) -> void:
 	if tree:
 		if str(spec[0]).begins_with("T"):
 			rest_on_terrain(tree,-0.03 if float(spec[2]) < -25.2 else .008)
-		var radius: float = {"T05_old_shade_tree": 1.05, "T01_courtyard_tree": 0.5, "M12d_flower_bush": 0.5, "M12b_shrub": 0.4}.get(spec[0], 0.35)
+		var radius: float = {"T05_old_shade_tree": 1.35, "T01_courtyard_tree": 0.5, "M12d_flower_bush": 0.5, "M12b_shrub": 0.4}.get(spec[0], 0.35)
 		_trunk_collider(tree, radius)
 
 
@@ -499,7 +499,19 @@ func _trunk_collider(tree: Node3D, r: float) -> void:
 	sh.height = 2.0
 	cs.shape = sh
 	cs.position.y = 1.0
+	if tree.get_meta("model_id","")=="T05_old_shade_tree":
+		# The generated trunk leans toward +Z; cover its measured standing section.
+		cs.position.z=.55
 	body.add_child(cs)
+	if tree.get_meta("model_id","")=="T05_old_shade_tree":
+		var root_shape:=CollisionShape3D.new()
+		root_shape.name="RootClearance"
+		var root_cylinder:=CylinderShape3D.new()
+		root_cylinder.radius=2.35
+		root_cylinder.height=.70
+		root_shape.shape=root_cylinder
+		root_shape.position.y=.35
+		body.add_child(root_shape)
 	tree.add_child(body)
 
 
@@ -848,7 +860,7 @@ var taiko_drum: Node3D
 
 func _build_mg_stations() -> void:
 	goldfish_tank = spawn("G02_goldfish_tank", Layout.GOLDFISH_POS, 90.0, 1)
-	taiko_drum = spawn("G09_taiko", Layout.TAIKO_POS, 90.0, 1)
+	taiko_drum = spawn("G09_taiko", Layout.TAIKO_POS, 118.0, 1)
 
 
 # ------------------------------------------------------------------ backdrop
@@ -1098,7 +1110,8 @@ func _build_town_v05() -> void:
 	var n := 0
 	var fl := 0
 	for lw in Layout.LAWNS:
-		n += g.lawn([lw[0]], lw[1], "lawn", 6.0, 3 + n)
+		var plaza_lawn: bool=float(lw[0][0])<17.2
+		n += g.lawn([lw[0]], lw[1], "plaza" if plaza_lawn else "lawn", 12.0 if plaza_lawn else 6.0, 3 + n)
 		fl += g.scatter([lw[0]], 0.1, lw[1], GrassField.MIX_FLOWERS, Vector2(0.2, 0.34), 5 + fl)
 	# meadow blades on the flat crest of the exit-lane bank (EXIT_CUT), same style as the farm side's
 	# FarmBuilder._lane_up, so the two ends of the lane match instead of the town side reading as a bare
@@ -1145,6 +1158,7 @@ func _build_nature_accents() -> void:
 	for index in 2:
 		var seat:=spawn("A12_bench",Vector3(.75 if index==0 else 7.25,.065,8.1),90 if index==0 else -90,0)
 		if seat:seat.name="OldTreeSeat_%d"%index;rest_on(seat,.065)
+	PlazaArtDirection.build(self)
 
 
 # ------------------------------------------------------------------ festival decorations

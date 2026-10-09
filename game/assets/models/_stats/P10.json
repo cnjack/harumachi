@@ -1,20 +1,27 @@
 {
  "id": "P10",
- "src": "raw/P10/model.glb",
- "provider": "hunyuan hy-3d-3.1",
- "tris_src": 19993,
- "tris": 7999,
- "size_m": [
-  4.199,
-  2.263,
-  2.274
- ],
+ "src": "raw/plaza_paintover_20261009/P10.glb",
+ "provider": "Blender reference-built joinery from accepted imagegen plaza paintover",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 3874,
+ "tex": 2048,
+ "bytes": 1940644,
  "godot_size_m_xyz": [
-  4.199,
-  2.274,
-  2.263
+  4.14,
+  2.15,
+  2.2
  ],
- "tex": 1024,
- "bytes": 571196,
- "yaw_fix": 0
+ "mesh_nodes": [
+  "CedarAge_0",
+  "CedarAge_1",
+  "CedarAge_2",
+  "CedarAge_3",
+  "Pennant_0",
+  "Pennant_1",
+  "Pennant_2",
+  "Pennant_3",
+  "SpeakerCharcoal",
+  "SpeakerCone"
+ ]
 }

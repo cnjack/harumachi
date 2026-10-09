@@ -8,6 +8,9 @@ uniform vec4 base_color : source_color = vec4(.67,.53,.33,1);
 uniform sampler2D albedo_tex : source_color, filter_linear_mipmap_anisotropic, repeat_enable;
 uniform bool use_paint = false;
 uniform float tile = 2.6;
+uniform bool plaza_lawn = false;
+uniform float feather = 0.0;
+instance uniform vec2 plane_size = vec2(0.0);
 varying vec3 wp;
 float hash(vec2 q) { return fract(sin(dot(q,vec2(127.1,311.7)))*43758.5453); }
 float noise(vec2 q) { vec2 i=floor(q),f=fract(q);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+vec2(1)),f.x),f.y); }
@@ -23,6 +26,12 @@ vec2 stone_cell(vec2 p) {
 void vertex(){wp=(MODEL_MATRIX*vec4(VERTEX,1)).xyz;}
 void fragment(){
     vec2 p=wp.xz;vec2 uv=p/tile;vec3 col=base_color.rgb;
+    if(plaza_lawn && feather>0.0 && plane_size.x>0.0){
+        vec2 edges=min(UV,1.0-UV)*plane_size;
+        float distance_value=min(edges.x,edges.y);
+        float ragged=noise(p*2.3)*.65+noise(p*6.8+3.0)*.35;
+        if(distance_value<feather*ragged){discard;}
+    }
     float macro=floor(noise(p*.65)*3.)/3.;col*=.94+macro*.10;
     if(use_paint)col=texture(albedo_tex,uv).rgb*base_color.rgb;
     if(surface_kind==0){if(!use_paint)col*=.96+floor(noise(p*2.7)*4.)*.012;}
@@ -36,7 +45,14 @@ void fragment(){
     } else if(surface_kind==3){
         vec2 stone=stone_cell(p/.78);float seam=1.-smoothstep(.012,.038,stone.x);
         col*=.91+stone.y*.16;col=mix(col,vec3(.31,.30,.27),seam*.43);
-    } else {col*=.91+macro*.20;}
+    } else {
+        col*=.91+macro*.20;
+        if(plaza_lawn){
+            float growth=noise(p*.75+19.0);
+            col=mix(col,col*vec3(1.10,1.025,.80),smoothstep(.56,.83,growth)*.55);
+            col=mix(col,col*vec3(.88,.94,.90),smoothstep(.70,.94,noise(p*1.8+41.))* .30);
+        }
+    }
     if(landscape_contours){
         float shore=water_distance(wp.xz-terrain_origin.xz);
         float exposed=1.0-smoothstep(-.35,.7,shore);

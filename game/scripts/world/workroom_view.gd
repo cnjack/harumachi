@@ -62,7 +62,7 @@ static func festival_position() -> Vector3:
 	return Vector3(at.x,float(p.height),at.z)
 
 static func festival_base() -> Vector3:
-	return Vector3(-3,0,-3.8) if WorkshopProject.state().purpose=="guide" else Vector3(4,0,9)
+	return Vector3(-3,0,-3.8) if WorkshopProject.state().purpose=="guide" else Vector3(4,0,10.8)
 
 func trial(outdoor: bool = false) -> Dictionary:
 	var lantern: RepresentativeLantern = festival_lantern if outdoor else trial_lantern
@@ -105,7 +105,7 @@ static func observations(outdoor: bool) -> Dictionary:
 		var origin: Vector3=InteriorBuilder.SPECS.workroom.origin
 		return {"far":origin+Vector3(1.8,1.6,3.3),"near":origin+Vector3(.35,1.6,-.8),"end":origin+Vector3(1.8,1.6,-2.8)}
 	if WorkshopProject.state().purpose=="guide": return {"far":Vector3(-3,1.6,-7),"near":Vector3(-4.45,1.6,-4.8),"end":Vector3(-3,1.6,-2.8)}
-	return {"far":Vector3(4,1.6,12),"near":Vector3(1.1,1.6,10),"end":Vector3(4,1.6,8.8)}
+	return {"far":Vector3(4,1.6,12),"near":Vector3(1.1,1.6,11.8),"end":Vector3(4,1.6,10.4)}
 
 func _face_visible(lantern: RepresentativeLantern,viewer: Vector3) -> bool:
 	if lantern.global_basis.z.dot((viewer-lantern.global_position).normalized())<=.35: return false

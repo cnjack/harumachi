@@ -2705,6 +2705,84 @@
       "prompt_id": "night-cat",
       "date": "2026-10-09",
       "sha256": "97024f0a2041bfe7ccedbec54d88eb906784b3e4ce1479651ac53fc8ea407e90"
+    },
+    {
+      "file": "art/references/plaza_paintover_20261009/old_tree_inspiration.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/plaza_paintover_20261009.json",
+      "prompt_key": "old_tree_inspiration",
+      "references": [
+        "/Users/jack/workpath/research/3D model/anime/evidence/plaza_exploration_20261009/current-shots/polish_tree.png"
+      ],
+      "date": "2026-10-09",
+      "sha256": "d5459c850bf1dff864cb411505c168bd888a2a4d462a9c5f3d30dd817aaa5ea2",
+      "usage": "accepted screenshot paintover"
+    },
+    {
+      "file": "art/references/plaza_paintover_20261009/plaza_facilities_inspiration.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/plaza_paintover_20261009.json",
+      "prompt_key": "plaza_facilities_inspiration",
+      "references": [
+        "/Users/jack/workpath/research/3D model/anime/evidence/plaza_exploration_20261009/current-shots/mg_stations.png"
+      ],
+      "date": "2026-10-09",
+      "sha256": "09f069556d464d55659f9be662ac6e8cf97a854d355b6b9420c1a108230bd821",
+      "usage": "accepted screenshot paintover"
+    },
+    {
+      "file": "art/references/plaza_paintover_20261009/plaza_tree_trunk_reference.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/plaza_paintover_20261009.json",
+      "prompt_key": "plaza_tree_trunk_reference",
+      "references": [
+        "/Users/jack/workpath/research/3D model/anime/evidence/plaza_exploration_20261009/imagegen/old_tree_inspiration.png"
+      ],
+      "date": "2026-10-09",
+      "sha256": "6884810cc23be87d7cbea3db8d6562b5acf870bdaecc2aeaf4ed43575bfcbd9f",
+      "usage": "game asset reference/texture"
+    },
+    {
+      "file": "art/references/plaza_paintover_20261009/plaza_leaf_sprigs_atlas.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/plaza_paintover_20261009.json",
+      "prompt_key": "plaza_leaf_sprigs_atlas",
+      "references": [
+        "/Users/jack/workpath/research/3D model/anime/evidence/plaza_exploration_20261009/imagegen/old_tree_inspiration.png"
+      ],
+      "date": "2026-10-09",
+      "sha256": "388976eb0539160a5ff60fb7e74f7840194ba5addfac9f600c0b11605a87a83c",
+      "usage": "game asset reference/texture"
+    },
+    {
+      "file": "art/references/plaza_paintover_20261009/plaza_cedar_atlas.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/plaza_paintover_20261009.json",
+      "prompt_key": "plaza_cedar_atlas",
+      "references": [
+        "/Users/jack/workpath/research/3D model/anime/evidence/plaza_exploration_20261009/imagegen/plaza_facilities_inspiration.png"
+      ],
+      "date": "2026-10-09",
+      "sha256": "5c8404ea5379814ac2b65b55d040a83cf8c686c341a41661fcdf53117fbfcbcf",
+      "usage": "game asset reference/texture"
+    },
+    {
+      "file": "art/references/plaza_paintover_20261009/plaza_full_tree_reference.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/plaza_paintover_20261009.json",
+      "prompt_key": "plaza_full_tree_reference",
+      "references": [
+        "art/references/plaza_paintover_20261009/old_tree_inspiration.png"
+      ],
+      "date": "2026-10-09",
+      "sha256": "f240e07c5339a764bc0eeb81fd3ab832a72297cf8f4ea59499a55976fd848202",
+      "usage": "complete tree 3D reference; replaces rejected bare-trunk candidate"
     }
   ]
 }

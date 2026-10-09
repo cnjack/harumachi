@@ -1,19 +1,19 @@
 {
  "id": "T05_old_shade_tree",
- "src": "raw/hero_shade_tree_20261005/T05_old_shade_tree.glb",
- "provider": "Reference-driven Blender organic skeleton; imagegen anime bark and transparent leaf sprigs",
+ "src": "raw/T05_plaza_full_hyper3d_20261010/prepared/T05_old_shade_tree.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; Blender UV-preserving cleanup and independent imagegen alpha foliage",
  "preserve_parts": true,
  "origin_preserved": true,
- "tris": 157076,
+ "tris": 178400,
  "tex": 2048,
- "bytes": 8957876,
+ "bytes": 13157668,
  "godot_size_m_xyz": [
-  13.0674,
-  9.0575,
-  11.556
+  13.0156,
+  9.1503,
+  11.0432
  ],
  "mesh_nodes": [
-  "Foliage_OldTree",
-  "Trunk_OldTree"
+  "Foliage_PlazaOldTree",
+  "Trunk_Hyper3D"
  ]
 }

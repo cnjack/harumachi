@@ -14,6 +14,7 @@ static var _clumps := {}
 
 ## per style: blade height range (m), blades per clump, clump radius, lean, draw distance, palette tweak
 const STYLES := {
+	"plaza": {"h": Vector2(0.08, 0.22), "n": 9, "r": 0.15, "lean": 0.04, "range": 38.0, "dry": 0.08, "bright": 1.0},
 	"lawn": {"h": Vector2(0.12, 0.24), "n": 15, "r": 0.24, "lean": 0.06, "range": 38.0, "dry": 0.04, "bright": 1.0},
 	"meadow": {"h": Vector2(0.18, 0.42), "n": 17, "r": 0.3, "lean": 0.09, "range": 42.0, "dry": 0.09, "bright": 1.0},
 	"tall": {"h": Vector2(0.45, 0.9), "n": 13, "r": 0.32, "lean": 0.15, "range": 46.0, "dry": 0.2, "bright": 0.94},
@@ -58,6 +59,10 @@ static func blade_material(style: String) -> ShaderMaterial:
 		m.shader = load("res://shaders/grass_blade.gdshader")
 		m.set_shader_parameter("dry_amount", float(STYLES[style].dry))
 		m.set_shader_parameter("brightness", float(STYLES[style].bright))
+		if style=="plaza":
+			m.set_shader_parameter("root_col",Color(.20,.34,.15))
+			m.set_shader_parameter("fresh_col",Color(.61,.77,.29))
+			m.set_shader_parameter("deep_col",Color(.29,.49,.26))
 		_blade_mat[style] = m
 	return _blade_mat[style]
 
@@ -123,6 +128,10 @@ func lawn(rects: Array, avoid: Array = [], style: String = "lawn", density: floa
 		for i in n:
 			var x := rng.randf_range(r[0], r[2])
 			var z := rng.randf_range(r[1], r[3])
+			if style=="plaza":
+				var border: float=minf(minf(x-float(r[0]),float(r[2])-x),minf(z-float(r[1]),float(r[3])-z))
+				var edge_noise: float=.13+.37*(.5+.5*sin(x*4.7+z*3.1))
+				if border<edge_noise and rng.randf()>.28: continue
 			if keep.is_valid() and not bool(keep.call(Vector2(x,z))):
 				continue
 			var edge := _edge_dist(x, z, avoid)
@@ -161,6 +170,7 @@ func lawn(rects: Array, avoid: Array = [], style: String = "lawn", density: floa
 			var mi := MultiMeshInstance3D.new()
 			mi.multimesh = mm
 			mi.material_override = blade_material(style)
+			mi.set_meta("grass_style",style)
 			mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 			mi.visibility_range_end = float(S.range)
 			mi.visibility_range_end_margin = 6.0

@@ -1,20 +1,23 @@
 {
  "id": "P05",
- "src": "raw/P05_h3d/model.glb",
- "provider": "hyper3d rodin gen-2.5 (v0.4 regen)",
- "tris_src": 39997,
- "tris": 8999,
- "size_m": [
-  2.573,
-  3.398,
-  2.199
- ],
+ "src": "raw/plaza_paintover_20261009/P05.glb",
+ "provider": "Blender reference-built joinery from accepted imagegen plaza paintover",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 2292,
+ "tex": 2048,
+ "bytes": 1807876,
  "godot_size_m_xyz": [
-  2.573,
-  2.199,
-  3.398
+  1.44,
+  2.1302,
+  3.4328
  ],
- "tex": 1024,
- "bytes": 479912,
- "yaw_fix": 0
+ "mesh_nodes": [
+  "CedarAge_0",
+  "CedarAge_1",
+  "CedarAge_2",
+  "CedarAge_3",
+  "SlideIndigoBlue",
+  "WarmYellowRails"
+ ]
 }

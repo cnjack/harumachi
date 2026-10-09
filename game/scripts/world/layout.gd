@@ -215,7 +215,7 @@ const MARKET_ROAM := {
 	"haru": [[Vector3(8.6, 0, 14.4), 180.0, "bow", 7.0]],
 	"tanaka": [[Vector3(12.6, 0, 9.4), 200.0, "look", 6.0]],
 	"aoi": [[Vector3(-0.4, 0, 11.4), 180.0, "look", 3.0], [Vector3(-1.6, 0, 4.0), 0.0, "stretch", 4.0],
-		[Vector3(6.8, 0, 4.6), 90.0, "cheer", 3.0]],
+		[Vector3(6.8, 0, 4.6), 90.0, "cheer", 3.0], [Vector3(8.35, 0, 9.55), 135.0, "look", 2.0]],
 	"kazuko": [[Vector3(-1.6, 0, 15.6), 90.0, "look", 6.0]],
 }
 

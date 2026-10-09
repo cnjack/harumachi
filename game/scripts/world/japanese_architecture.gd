@@ -72,6 +72,7 @@ static func courtyard_coping(wall: MeshInstance3D, length: float, height: float)
 	roof.position.y = height / 2.0 + COPING_LIFT
 	wall.add_child(roof)
 	_tile_ends(wall,length,height)
+	_stone_footing(wall,length,height)
 	var pilaster_mat := _flat(Color(0.89, 0.86, 0.77))
 	var count := ceili(length / 3.6)
 	for i in count + 1:
@@ -83,6 +84,23 @@ static func courtyard_coping(wall: MeshInstance3D, length: float, height: float)
 		post.material_override = pilaster_mat
 		post.position.x = -length / 2.0 + length * float(i) / count
 		wall.add_child(post)
+
+
+static func _stone_footing(wall: MeshInstance3D,length: float,height: float) -> void:
+	var stone:=_flat(Color(.68,.69,.65));stone.vertex_color_use_as_albedo=true
+	var mesh:=BoxMesh.new();mesh.size=Vector3(.64,.22,.245)
+	var count:=maxi(1,ceili((length+.16)/.65))
+	var batch:=MultiMesh.new();batch.transform_format=MultiMesh.TRANSFORM_3D;batch.use_colors=true
+	batch.mesh=mesh;batch.instance_count=count
+	var pitch: float=(length+.16)/count
+	for index in count:
+		var at:=Vector3(-(length+.16)*.5+(index+.5)*pitch,-height*.5+.11,0)
+		batch.set_instance_transform(index,Transform3D(Basis.IDENTITY.scaled(Vector3((pitch-.012)/.64,1,1)),at))
+		var tone: float=[.93,1.0,.97,1.035][index%4]
+		batch.set_instance_color(index,Color(tone,tone,tone,1))
+	var footing:=MultiMeshInstance3D.new();footing.name="StoneFooting";footing.multimesh=batch;footing.material_override=stone
+	wall.add_child(footing)
+	wall.set_meta("stone_footing_blocks",count)
 
 static func _tile_ends(wall: MeshInstance3D,length: float,height: float) -> void:
 	var st:=SurfaceTool.new();st.begin(Mesh.PRIMITIVE_TRIANGLES)

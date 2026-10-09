@@ -36,16 +36,16 @@
   "verts": 10613
  },
  "A12_bench": {
-  "base_frac": 0.773,
+  "base_frac": 0.72,
   "normal": [
    0.0,
    0.0,
    -1.0
   ],
   "rect_fill": 1.0,
-  "square_deg": -0.0,
+  "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 2274
+  "verts": 2160
  },
  "A13_chalkboard": {
   "base_frac": 0.737,
@@ -900,7 +900,7 @@
   "verts": 8114
  },
  "G02_goldfish_tank": {
-  "base_frac": 0.871,
+  "base_frac": 0.811,
   "normal": [
    0.0,
    0.0,
@@ -909,7 +909,7 @@
   "rect_fill": 1.0,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 8130
+  "verts": 5628
  },
  "G03_laundry_stand": {
   "base_frac": 0.929,
@@ -972,16 +972,16 @@
   "verts": 4154
  },
  "G09_taiko": {
-  "base_frac": 0.568,
+  "base_frac": 0.656,
   "normal": [
    0.0,
    0.0,
    -1.0
   ],
-  "rect_fill": 0.936,
-  "square_deg": -0.04,
+  "rect_fill": 0.995,
+  "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 7189
+  "verts": 7348
  },
  "G10_store_shelf": {
   "base_frac": 0.903,
@@ -1488,16 +1488,16 @@
   "verts": 2745
  },
  "P01": {
-  "base_frac": 0.922,
+  "base_frac": 0.735,
   "normal": [
    0.0,
    0.0,
    -1.0
   ],
-  "rect_fill": 0.999,
-  "square_deg": -0.0,
+  "rect_fill": 0.986,
+  "square_deg": 0.08,
   "tilt": 0.0,
-  "verts": 12096
+  "verts": 13889
  },
  "P02": {
   "base_frac": 0.896,
@@ -1536,16 +1536,16 @@
   "verts": 13751
  },
  "P05": {
-  "base_frac": 0.866,
+  "base_frac": 0.781,
   "normal": [
-   -0.0012,
-   0.0124,
-   -0.9999
+   0.0,
+   0.0,
+   -1.0
   ],
-  "rect_fill": 0.759,
-  "square_deg": 0.02,
-  "tilt": 0.71,
-  "verts": 6988
+  "rect_fill": 0.907,
+  "square_deg": 0.0,
+  "tilt": 0.0,
+  "verts": 3248
  },
  "P06": {
   "base_frac": 0.723,
@@ -1596,16 +1596,16 @@
   "verts": 5137
  },
  "P10": {
-  "base_frac": 0.86,
+  "base_frac": 0.789,
   "normal": [
-   0.0077,
-   0.0082,
-   -0.9999
+   0.0,
+   0.0,
+   -1.0
   ],
-  "rect_fill": 0.89,
-  "square_deg": -0.0,
-  "tilt": 0.64,
-  "verts": 11158
+  "rect_fill": 1.0,
+  "square_deg": 0.0,
+  "tilt": 0.0,
+  "verts": 6906
  },
  "P11": {
   "base_frac": 0.433,
@@ -2016,16 +2016,16 @@
   "verts": 8099
  },
  "T05_old_shade_tree": {
-  "base_frac": 0.066,
+  "base_frac": 0.074,
   "normal": [
-   -0.034,
-   -0.008,
-   -0.9994
+   0.0,
+   0.0,
+   -1.0
   ],
-  "rect_fill": 0.844,
-  "square_deg": 39.04,
-  "tilt": 2.0,
-  "verts": 104003
+  "rect_fill": 0.802,
+  "square_deg": -3.29,
+  "tilt": 0.0,
+  "verts": 125516
  },
  "V01_fern": {
   "base_frac": 0.009,

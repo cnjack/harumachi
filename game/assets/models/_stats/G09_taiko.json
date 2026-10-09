@@ -1,20 +1,22 @@
 {
  "id": "G09_taiko",
- "src": "raw/G09_taiko/model.glb",
- "provider": "hunyuan hy-3d-3.1",
- "tris_src": 23995,
- "tris": 6999,
- "size_m": [
-  0.808,
-  0.894,
-  1.15
- ],
+ "src": "raw/plaza_paintover_20261009/G09_taiko.glb",
+ "provider": "Blender reference-built joinery from accepted imagegen plaza paintover",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 10192,
+ "tex": 2048,
+ "bytes": 1988892,
  "godot_size_m_xyz": [
-  0.808,
-  1.15,
-  0.894
+  0.7491,
+  1.1234,
+  0.63
  ],
- "tex": 1024,
- "bytes": 415964,
- "yaw_fix": 0
+ "mesh_nodes": [
+  "CedarAge_1",
+  "CedarAge_2",
+  "CedarAge_3",
+  "TaikoStuds",
+  "WarmDrumHide"
+ ]
 }
