@@ -2561,6 +2561,60 @@
       "purpose": "side-profile neutral standing reference; head aligned with torso",
       "reference_review": "evidence/cat_neck_alignment_20261007/reference-review.json",
       "sha256": "efb7c1c421f38c78808af0d5b1d9136db5b757b2aa2a9b17efaf203d766bf156"
+    },
+    {
+      "id": "app_icon_lantern-goldfish_20261009",
+      "file": "art/references/app_icon/options_20261009/A-lantern-goldfish.png",
+      "provider": "imagegen",
+      "prompt": "art/manifests/prompts/app_icon/options_20261009.json",
+      "variant": "A",
+      "purpose": "application icon candidate; 金鱼灯笼",
+      "sha256": "a5eeef3dae92efba344b48822ff7b6d3e7064021eb9e97fcc4a33c726d473935"
+    },
+    {
+      "id": "app_icon_sky-windchime_20261009",
+      "file": "art/references/app_icon/options_20261009/B-sky-windchime.png",
+      "provider": "imagegen",
+      "prompt": "art/manifests/prompts/app_icon/options_20261009.json",
+      "variant": "B",
+      "purpose": "application icon candidate; 晴空风铃",
+      "sha256": "a524d5fb2d995ffabdc52f1411e5b3900a18f3e4a8e01f0d38191c6c4dcea1ed"
+    },
+    {
+      "id": "app_icon_sunlit-townhouse_20261009",
+      "file": "art/references/app_icon/options_20261009/C-sunlit-townhouse.png",
+      "provider": "imagegen",
+      "prompt": "art/manifests/prompts/app_icon/options_20261009.json",
+      "variant": "C",
+      "purpose": "application icon candidate; 夕照小屋",
+      "sha256": "ca68cb30a7661afed4920ce3ab8a0f55226a94492a0161a89e169acfe3f4bddc"
+    },
+    {
+      "id": "app_icon_tea-riceball_20261009",
+      "file": "art/references/app_icon/options_20261009/D-tea-riceball.png",
+      "provider": "imagegen",
+      "prompt": "art/manifests/prompts/app_icon/options_20261009.json",
+      "variant": "D",
+      "purpose": "application icon candidate; 麦茶饭团",
+      "sha256": "d246da7f806c62fa089be8262d9f45e3768b856afea030d1084124747f44a9ce"
+    },
+    {
+      "id": "app_icon_festival-fireworks_20261009",
+      "file": "art/references/app_icon/options_20261009/E-festival-fireworks.png",
+      "provider": "imagegen",
+      "prompt": "art/manifests/prompts/app_icon/options_20261009.json",
+      "variant": "E",
+      "purpose": "application icon candidate; 夏祭花火",
+      "sha256": "674fd308817c9af9f08501711371982651cabdf82829090d73ea438ca74b71d7"
+    },
+    {
+      "id": "app_icon_homecoming-letter_20261009",
+      "file": "art/references/app_icon/options_20261009/F-homecoming-letter.png",
+      "provider": "imagegen",
+      "prompt": "art/manifests/prompts/app_icon/options_20261009.json",
+      "variant": "F",
+      "purpose": "application icon candidate; 归家信笺",
+      "sha256": "c9442591c6ba49b6e6bf084b7da27ae0edfaa41c8ddb1c8022bece19851d4cfe"
     }
   ]
 }
