@@ -1,0 +1,25 @@
+{
+ "id": "W17_display_shelf",
+ "src": "raw/W17_display_shelf_hyper3d/model.glb",
+ "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+ "tris_src": 500000,
+ "tris": 18000,
+ "size_m": [
+  1.091,
+  0.501,
+  1.452
+ ],
+ "godot_size_m_xyz": [
+  1.091,
+  1.452,
+  0.501
+ ],
+ "tex": 2048,
+ "bytes": 997028,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.96,
+ "levelled": false,
+ "lean_deg": 1.23,
+ "base_frac": 0.835
+}

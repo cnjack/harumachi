@@ -1,0 +1,37 @@
+{
+ "id": "F03_compost_bin",
+ "src": "raw/F03_compost_bin_h3d/model.glb",
+ "provider": "hyper3d rodin gen-2.5 (v0.4)",
+ "tris_src": 20000,
+ "tris": 3942,
+ "size_m": [
+  0.851,
+  1.289,
+  1.152
+ ],
+ "godot_size_m_xyz": [
+  0.851,
+  1.152,
+  1.289
+ ],
+ "tex": 1024,
+ "bytes": 380892,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.08,
+ "levelled": false,
+ "lean_deg": 0.08,
+ "base_frac": 0.96,
+ "fit_bounds_blender": {
+  "min": [
+   -0.4246756136417389,
+   -0.6429759860038757,
+   0.0
+  ],
+  "max": [
+   0.42627522349357605,
+   0.6456547379493713,
+   1.1519781351089478
+  ]
+ }
+}

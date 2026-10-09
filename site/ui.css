@@ -1,0 +1,108 @@
+/* Shared with game/ui_kit: generated transparent skins, semantic roles, compact controls. */
+:root {
+  --ui-ink: #2b4540;
+  --ui-muted: #617061;
+  --ui-paper: #fcf6e5;
+  --ui-sage: #4a876e;
+  --ui-gold: #c09955;
+  --ui-coral: #c75243;
+  --ink: var(--ui-ink);
+  --cream: #f7f3e8;
+  --cloud: var(--ui-paper);
+  --red: var(--ui-sage);
+}
+.ui-icon { width: 24px; height: 24px; object-fit: contain; flex: none; }
+:is(.page-tabs button,.device-switch button,.play-launch,.ui-button,.form-row button) {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  min-height: 48px; padding: 1px 5px; 
+  border-width: 14px 26px;
+  border-style: solid;
+  border-color: transparent;
+  border-image: url("assets/ui/secondary_normal.png") 14 26 fill / 14px 26px / 0 stretch;
+  background: transparent; color: var(--ui-ink); box-shadow: none;
+  border-radius: 0; text-decoration: none; white-space: nowrap;
+  font-family: inherit; font-size: .95rem; line-height: 1.1; letter-spacing: .02em;
+  transition: filter .14s ease, color .14s ease;
+}
+:is(.page-tabs button,.device-switch button,.ui-button):hover {
+  border-image-source: url("assets/ui/secondary_hover.png"); color: var(--ui-ink);
+}
+:is(.page-tabs button,.device-switch button,.ui-button):active {
+  border-image-source: url("assets/ui/secondary_pressed.png");
+}
+:is(.page-tabs button[aria-selected="true"],.device-switch button[aria-pressed="true"],.play-launch,.ui-button.primary,.form-row button) {
+  border-image-source: url("assets/ui/primary_normal.png"); color: var(--ui-ink);
+}
+:is(.page-tabs button[aria-selected="true"],.device-switch button[aria-pressed="true"],.play-launch,.ui-button.primary,.form-row button):hover {
+  border-image-source: url("assets/ui/primary_hover.png"); filter: none;
+}
+:is(.play-launch,.ui-button.primary,.form-row button):active { border-image-source: url("assets/ui/primary_pressed.png"); }
+.ui-button:disabled { border-image-source: url("assets/ui/secondary_disabled.png"); color: var(--ui-muted); opacity: .7; cursor: default; }
+:focus-visible { outline: 2px solid var(--ui-gold); outline-offset: 4px; }
+.site-nav {
+  inset: 16px 24px auto; min-height: 72px; padding: 8px 22px;
+  border: 0; background: transparent; box-shadow: none; backdrop-filter: none;
+  isolation: isolate; border-radius: 28px;
+}
+.site-nav::before {
+  content: ""; position: absolute; z-index: -1; inset: 0; pointer-events: none;
+  border: 26px solid transparent;
+  border-image: url("assets/ui/hud_paper.png") 26 fill / 26px / 0 stretch;
+}
+.page-tabs { gap: 8px; }
+.page-tabs button::after { display: none; }
+.site-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ui-ink); }
+.site-brand .ui-icon { width: 29px; height: 29px; }
+.site-brand span { margin-left: 0; color: var(--ui-muted); }
+.hero-content { top: clamp(132px,18vh,195px); }
+.hero-title { color: var(--ui-ink); }
+.hero-english { color: #426b69; }
+.hero-actions { display: flex; gap: 12px; margin: 22px 0 0 8px; flex-wrap: wrap; }
+.coming-badge { border: 0; padding-inline: 0; margin-top: 20px; background: transparent; box-shadow: none; backdrop-filter: none; color: var(--ui-ink); }
+.badge-dot { background: var(--ui-sage); box-shadow: 0 0 0 4px #4a876e20; }
+.hero .scroll-hint { background: #2b454070; }
+:is(.subscribe-card,.record-player,.play-details,.ui-paper) { position: relative; isolation: isolate; background: transparent; border: 0; box-shadow: none; }
+:is(.subscribe-card,.record-player,.play-details,.ui-paper)::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  border: 28px solid transparent;
+  border-image: url("assets/ui/modal_paper.png") 64 fill / 28px / 0 stretch;
+}
+.subscribe-card::before { display: none; }
+.record-player { padding: 30px; }
+.play-details { padding: 28px; gap: 28px; }
+.play-details p { color: var(--ui-muted); line-height: 1.7; }
+.device-switch { gap: 10px; }
+.device-switch button::after { display: none; }
+.device-switch button span { display: none; }
+.wallpaper-picture { border: 0; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 24px #2b454014; }
+.wallpaper-download,.player-links a,.track-download { color: var(--ui-sage); }
+.track-row { border-color: #b6c6b750; }
+.track-row.is-current { background: #dae8d84a; border-radius: 12px; padding-inline: 10px; }
+.track-play { border-color: #92ad9d; color: var(--ui-ink); }
+.track-row.is-playing .track-play { background: var(--ui-sage); border-color: var(--ui-sage); }
+.library-heading h1 { text-wrap: balance; }
+.player-context,.record-note,.library-intro { color: var(--ui-muted); }
+.site-footer { background: #eaf0e3; color: var(--ui-ink); }
+.ui-save-note { display: inline-flex; align-items: center; gap: 8px; color: var(--ui-muted); font-size: .85rem; }
+.ui-save-note .ui-icon { width: 22px; height: 22px; }
+@media (max-width: 900px) {
+  .site-nav { inset: 12px 14px auto; padding: 6px 15px; }
+  .page-tabs { gap: 3px; }
+  .page-tabs button { border-image-width: 12px 18px; border-width: 12px 18px; font-size: .83rem; padding: 2px 0; min-height: 44px; }
+  .page-tabs .ui-icon { width: 20px; height: 20px; }
+}
+@media (max-width: 700px) {
+  .site-nav { flex-wrap: wrap; justify-content: center; gap: 2px; padding-block: 9px; min-height: 102px; }
+  .site-brand { width: 100%; justify-content: center; font-size: 1rem; }
+  .site-brand .ui-icon { width: 24px; height: 24px; }
+  .page-tabs { width: 100%; justify-content: center; gap: 2px; }
+  .page-tabs button { gap: 4px; font-size: .76rem; border-width: 12px 13px; border-image-width: 12px 13px; }
+  .page-tabs .ui-icon { width: 18px; height: 18px; }
+  .hero-content { top: 158px; }
+  .hero-actions { gap: 8px; }
+  .library-page { padding-top: 160px; }
+  .record-player { padding: 26px; }
+  .play-details { padding: 24px; }
+}
+@media (max-width: 360px) { .page-tabs .ui-icon { display: none; }.page-tabs button { padding-inline: 0; }.site-nav { inset-inline: 9px; } }
+@media (prefers-reduced-motion: reduce) { :is(.ui-button,.page-tabs button,.device-switch button) { transition: none; } }

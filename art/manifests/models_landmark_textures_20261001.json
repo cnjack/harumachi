@@ -1,0 +1,55 @@
+{
+  "provider": "Blender preserved geometry + built-in imagegen aged materials",
+  "models": {
+    "P_farm_gate": {
+      "raw": "art/models/raw/landmarks_aged_20261001/P_farm_gate.glb",
+      "blend": "art/models/raw/landmarks_aged_20261001/P_farm_gate.blend",
+      "export": "game/assets/models/P_farm_gate.glb",
+      "script": "art/tools/texture_landmarks.py",
+      "note": "physical origin, separate node hierarchy and collision deck retained"
+    },
+    "P_signpost": {
+      "raw": "art/models/raw/landmarks_aged_20261001/P_signpost.glb",
+      "blend": "art/models/raw/landmarks_aged_20261001/P_signpost.blend",
+      "export": "game/assets/models/P_signpost.glb",
+      "script": "art/tools/texture_landmarks.py",
+      "note": "physical origin, separate node hierarchy and collision deck retained"
+    },
+    "P_bridge": {
+      "raw": "art/models/raw/landmarks_aged_20261001/P_bridge.glb",
+      "blend": "art/models/raw/landmarks_aged_20261001/P_bridge.blend",
+      "export": "game/assets/models/P_bridge.glb",
+      "script": "art/tools/texture_landmarks.py",
+      "note": "physical origin, separate node hierarchy and collision deck retained"
+    },
+    "P_yagura": {
+      "raw": "art/models/raw/landmarks_aged_20261001/P_yagura.glb",
+      "blend": "art/models/raw/landmarks_aged_20261001/P_yagura.blend",
+      "export": "game/assets/models/P_yagura.glb",
+      "script": "art/tools/texture_landmarks.py",
+      "note": "physical origin, separate node hierarchy and collision deck retained"
+    },
+    "P_gondola": {
+      "raw": "art/models/raw/landmarks_aged_20261001/P_gondola.glb",
+      "blend": "art/models/raw/landmarks_aged_20261001/P_gondola.blend",
+      "export": "game/assets/models/P_gondola.glb",
+      "script": "art/tools/texture_landmarks.py",
+      "note": "Existing UV and physical geometry retained; timber aged"
+    },
+    "P_shop_wall_frame": {
+      "raw": "art/models/raw/landmarks_aged_20261001/P_shop_wall_frame.glb",
+      "blend": "art/models/raw/landmarks_aged_20261001/P_shop_wall_frame.blend",
+      "export": "game/assets/models/P_shop_wall_frame.glb",
+      "script": "art/tools/texture_landmarks.py",
+      "note": "Existing UV and physical geometry retained; timber aged"
+    },
+    "P_store_sidepanel": {
+      "raw": "art/models/raw/landmarks_aged_20261001/P_store_sidepanel.glb",
+      "blend": "art/models/raw/landmarks_aged_20261001/P_store_sidepanel.blend",
+      "export": "game/assets/models/P_store_sidepanel.glb",
+      "script": "art/tools/texture_landmarks.py",
+      "note": "Existing UV and physical geometry retained; timber aged"
+    }
+  },
+  "verification": "evidence/model_textures_story_20261001/geometry-check.json"
+}

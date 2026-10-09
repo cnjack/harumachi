@@ -1,0 +1,130 @@
+{
+  "provider": "Hyper3D CLI; existing browser-authorized principal",
+  "date": "2026-10-06",
+  "actual_credit_cost": 1.5,
+  "assets": {
+    "E01_furin": {
+      "generation_id": "ad30a7fe-bed4-4718-bbda-3f1fb64b5ae7",
+      "status": "downloaded",
+      "file": "base_basic_pbr.glb",
+      "display_url": null,
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "requested_faces": 500000,
+      "texture_delight": true,
+      "asset": "E01_furin",
+      "reference": "art/references/environment_life_20261006/furin-clean.png",
+      "reference_sha256": "95d207ffa23c26f611d38a207de3d8cae18e4d6d908a5a5e74073261fa99ec11",
+      "quality": 500000,
+      "image_prompt_file": "art/manifests/prompts/environment_life_20261006.json",
+      "raw": "art/models/raw/E01_furin_hyper3d/model.glb",
+      "game": "game/assets/models/E01_furin.glb",
+      "game_sha256": "35d65d7eebe605a7d03879d6f6aa8d6069ebe6a7443a5fc909cab008f8142276",
+      "stats": {
+        "id": "E01_furin",
+        "src": "raw/E01_furin_hyper3d/ready.glb",
+        "provider": "Hyper3D Rodin Gen-2.5-High Raw; imagegen ceramic goldfish furin; UV-preserving paper hinge split",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 18062,
+        "tex": 2048,
+        "bytes": 987784,
+        "godot_size_m_xyz": [
+          0.1663,
+          0.6403,
+          0.1671
+        ],
+        "mesh_nodes": [
+          "BellBody",
+          "PaperTagMesh"
+        ]
+      }
+    },
+    "V04_daisy_meadow": {
+      "generation_id": "62f55782-849a-4441-9062-74201aceb002",
+      "status": "downloaded",
+      "file": "base_basic_pbr.glb",
+      "display_url": null,
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "requested_faces": 500000,
+      "texture_delight": true,
+      "asset": "V04_daisy_meadow",
+      "reference": "art/references/environment_life_20261006/daisy_clump-clean.png",
+      "reference_sha256": "8a554eff74eda65654401a1fca6d9c87e75c15ade46e3145c793eed5c450b78a",
+      "quality": 500000,
+      "image_prompt_file": "art/manifests/prompts/environment_life_20261006.json",
+      "raw": "art/models/raw/V04_daisy_meadow_hyper3d/model.glb",
+      "game": "game/assets/models/V04_daisy_meadow.glb",
+      "game_sha256": "af0fc6bb829804cf07ca970b4f31741d10c9dab1e1a1e90dd80188b7dd171b5c",
+      "stats": {
+        "id": "V04_daisy_meadow",
+        "src": "raw/V04_daisy_meadow_hyper3d/model.glb",
+        "provider": "Hyper3D Rodin Gen-2.5-High Raw; imagegen anime daisy, clover and meadow tuft",
+        "tris_src": 500000,
+        "tris": 14000,
+        "size_m": [
+          0.446,
+          0.26,
+          0.35
+        ],
+        "godot_size_m_xyz": [
+          0.446,
+          0.35,
+          0.26
+        ],
+        "tex": 2048,
+        "bytes": 1181652,
+        "yaw_fix": 0,
+        "level": false,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.87,
+        "base_frac": 0.529
+      }
+    },
+    "V05_river_reeds": {
+      "generation_id": "709f8c18-f98e-4d60-817a-2ed39e8cce43",
+      "status": "downloaded",
+      "file": "base_basic_pbr.glb",
+      "display_url": null,
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "requested_faces": 500000,
+      "texture_delight": true,
+      "asset": "V05_river_reeds",
+      "reference": "art/references/environment_life_20261006/reed_clump-clean.png",
+      "reference_sha256": "0aba5902998ccdb2734c85bdf72e87cc61b941e0797cd2daa5619cecbd8856c5",
+      "quality": 500000,
+      "image_prompt_file": "art/manifests/prompts/environment_life_20261006.json",
+      "raw": "art/models/raw/V05_river_reeds_hyper3d/model.glb",
+      "game": "game/assets/models/V05_river_reeds.glb",
+      "game_sha256": "b4222d1ae0b50f079a3e9051cfec1814a7f0bc836a7f0ad31017a6b8da8d9d80",
+      "stats": {
+        "id": "V05_river_reeds",
+        "src": "raw/V05_river_reeds_hyper3d/model.glb",
+        "provider": "Hyper3D Rodin Gen-2.5-High Raw; imagegen anime feathery river reed clump",
+        "tris_src": 500000,
+        "tris": 18000,
+        "size_m": [
+          0.867,
+          0.654,
+          1.305
+        ],
+        "godot_size_m_xyz": [
+          0.867,
+          1.305,
+          0.654
+        ],
+        "tex": 2048,
+        "bytes": 1472332,
+        "yaw_fix": 0,
+        "level": false,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.35,
+        "base_frac": 0.096
+      }
+    }
+  }
+}

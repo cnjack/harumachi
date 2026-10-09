@@ -1,0 +1,25 @@
+{
+ "id": "C15_wheat",
+ "src": "raw/C15_wheat_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 938205,
+ "tris": 10300,
+ "size_m": [
+  0.676,
+  0.758,
+  0.869
+ ],
+ "godot_size_m_xyz": [
+  0.676,
+  0.869,
+  0.758
+ ],
+ "tex": 1024,
+ "bytes": 1003600,
+ "yaw_fix": 39.7,
+ "level": "auto",
+ "lean_src_deg": 12.28,
+ "levelled": true,
+ "lean_deg": 0.8,
+ "base_frac": 0.704
+}

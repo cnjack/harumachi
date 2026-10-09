@@ -1,0 +1,9 @@
+[gd_resource type="AtlasTexture" format=3]
+
+[ext_resource type="Texture2D" path="res://ui_kit/assets/navigation_atlas.png" id="1_oqi27"]
+
+[resource]
+resource_name = "UIKitIcon/post"
+atlas = ExtResource("1_oqi27")
+region = Rect2(81, 365, 213, 249)
+filter_clip = true

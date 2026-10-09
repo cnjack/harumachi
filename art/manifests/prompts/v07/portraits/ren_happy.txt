@@ -1,0 +1,6 @@
+Single dialogue portrait for a cozy Japanese small-town life game, Makoto Shinkai inspired luminous 2D anime style: clean fine line art, flat cel shading with hard-edged soft shadows, warm summer light from the upper left. Square image, 1024x1024.
+Character: Ren, 27-year-old baker: black hair under a mustard-yellow bandana, rust-orange shirt with rolled sleeves, off-white apron with straps. Match the attached reference picture exactly: same face, hairstyle, colours and clothes (it is the same character; only redraw it cleanly).
+Framing: ONE head-and-shoulders bust, facing the viewer at a slight three-quarter angle, head in the upper half, the bust cut off by the bottom edge of the image, nothing cropped at the top or sides, generous empty margin around the head.
+Expression: bright happy smile, eyes gently closed from smiling, cheeks lifted.
+BACKGROUND: fully transparent (PNG with an alpha channel, background: transparent). No backdrop, no floor, no shadow, no glow, no frame, no border, no text. If the image tool cannot produce transparency, instead use a perfectly flat, uniform pure chroma green background (#00FF00) with no gradient, no shadow and no green light on the character.
+Every part of the character, including white or cream clothing, must be solid and opaque.

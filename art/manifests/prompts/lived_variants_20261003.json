@@ -1,0 +1,14 @@
+[
+  {
+    "id": "H02_unit_blue",
+    "detail": "The existing right-hand door is sun-faded dusty blue paint with small worn edges around the handle. Behind the same left window, one pane has a rolled reed blind lowered halfway, and the other pane has gathered cream curtains. Two tiny plants sit INSIDE the window at the bottom, behind the existing glass/frame. Keep the electricity meter and every existing object in exactly the same location.",
+    "reference": "art/references/lived_facades_20261003/H02_unit_lived.png",
+    "prompt": "Edit this precise front-projection anime game texture. Keep the exact square canvas, blue-gray margins, outside rectangle and pixel positions of all large architectural features. The existing right-hand door is sun-faded dusty blue paint with small worn edges around the handle. Behind the same left window, one pane has a rolled reed blind lowered halfway, and the other pane has gathered cream curtains. Two tiny plants sit INSIDE the window at the bottom, behind the existing glass/frame. Keep the electricity meter and every existing object in exactly the same location. Retain the detailed warm worn timber, cream plaster, fine nails and readable painted contact shadows. Bright cared-for Japanese lived-in apartment, clean anime drawing, no photographic rendering, no extra external objects, no words, no perspective, no camera or proportions change. This is a variant texture to project onto the identical 3D mesh, so alignment is mandatory."
+  },
+  {
+    "id": "H02_unit_green",
+    "detail": "The existing right-hand door is old muted sage-green paint with subtle brush marks and small worn edges. Behind the same left window are short off-white curtains with a narrow subtle blue hem, drawn slightly to the side. A tiny ceramic bowl and closed book sit INSIDE the window at the bottom. Retain every architectural and hardware feature in exactly the same position.",
+    "reference": "art/references/lived_facades_20261003/H02_unit_lived.png",
+    "prompt": "Edit this precise front-projection anime game texture. Keep the exact square canvas, blue-gray margins, outside rectangle and pixel positions of all large architectural features. The existing right-hand door is old muted sage-green paint with subtle brush marks and small worn edges. Behind the same left window are short off-white curtains with a narrow subtle blue hem, drawn slightly to the side. A tiny ceramic bowl and closed book sit INSIDE the window at the bottom. Retain every architectural and hardware feature in exactly the same position. Retain the detailed warm worn timber, cream plaster, fine nails and readable painted contact shadows. Bright cared-for Japanese lived-in apartment, clean anime drawing, no photographic rendering, no extra external objects, no words, no perspective, no camera or proportions change. This is a variant texture to project onto the identical 3D mesh, so alignment is mandatory."
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "models": [
+    {
+      "character": "sora",
+      "generation_id": "ba5bffd2-b85f-489f-b3b8-a098bd9e8284",
+      "display_url": "https://hyper3d.ai/workspace/rodin/ba5bffd2-b85f-489f-b3b8-a098bd9e8284",
+      "references": [
+        "/Users/jack/workpath/research/3D model/anime/art/poc/character_pipeline_20261003/tpose_20261004/references/sora_tpose_front.png",
+        "/Users/jack/workpath/research/3D model/anime/art/poc/character_pipeline_20261003/tpose_20261004/references/sora_tpose_back.png"
+      ],
+      "request": {
+        "prompt": "Single young adult Japanese anime male Sora, exactly matching the two front/back references. TRUE symmetric T pose, arms straight horizontally at shoulder height, five distinct fingers, upright head and torso, legs slightly apart. Preserve the warm brown tousled hair, face, slim proportions, open mint short-sleeve collared shirt over white T-shirt, chest pocket, beige wide cropped trousers, orange canvas sneakers and left wrist watch. Clean complete rounded sleeve tubes, anatomically correct armpits and shoulders. Large empty space below both arms; no membranes or welded clothing bridges from sleeves to torso. Preserve all clothing silhouette and details. Clean rig-ready topology with smooth elbow and wrist loops, distinct separated fingers, no damaged or floating cloth, no armor, no redesign. Crisp Japanese TV anime flat colors and hard cel shadows, no photorealistic skin or glossy PBR styling. Fully textured single complete character; front and back references are the same person.",
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Quad",
+        "quality_override": 50000,
+        "texture_delight": true,
+        "geometry_file_format": "glb"
+      },
+      "status": "downloaded",
+      "visual_acceptance": "accepted as isolated POC; full wardrobe and production LOD pending",
+      "formal_asset_replaced": false,
+      "rigged_asset": "art/poc/character_pipeline_20261003/tpose_20261004/godot/assets/sora_proxy.glb",
+      "rigging_version": "binding13_sleeves",
+      "rigging_acceptance_evidence": "evidence/character_pipeline_tpose_20261004/sleeves/acceptance.json"
+    },
+    {
+      "character": "mio",
+      "generation_id": "c8a042ea-33b7-4d38-82e6-bd8e88e300d3",
+      "display_url": "https://hyper3d.ai/workspace/rodin/c8a042ea-33b7-4d38-82e6-bd8e88e300d3",
+      "references": [
+        "/Users/jack/workpath/research/3D model/anime/art/poc/character_pipeline_20261003/tpose_20261004/references/mio_tpose_front.png",
+        "/Users/jack/workpath/research/3D model/anime/art/poc/character_pipeline_20261003/tpose_20261004/references/mio_tpose_back.png"
+      ],
+      "request": {
+        "prompt": "Single young adult Japanese anime woman Mio, exactly matching both front/back references. TRUE symmetric T pose, straight horizontal arms, five distinct separated fingers, upright body, legs slightly apart. Preserve face, dark brown shoulder-length bob and left yellow hair clip, slim proportions, cream open cardigan with mid-forearm ribbed cuffs, blue button blouse, navy knee-length pleated skirt, white sneakers and cream tote on anatomical right shoulder/hip. Clean sleeve tubes and smooth joint loops. Both armpits have clear empty space below arms; no membranes or welded bridges joining sleeves to torso or bag. Skirt has a proper open hem with separate legs inside, not welded to thighs. Bag follows torso and is not joined to an arm. Preserve original garment lengths, silhouette, colors and accessories. Clean rig-ready character topology, no broken cloth or generic muscular body. Japanese TV anime flat colors, no photorealism. One fully textured character; the two images are front/back of the same person.",
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Quad",
+        "quality_override": 50000,
+        "texture_delight": true,
+        "geometry_file_format": "glb"
+      },
+      "status": "downloaded",
+      "visual_acceptance": "accepted as isolated POC; full wardrobe and production LOD pending",
+      "formal_asset_replaced": false,
+      "rigged_asset": "art/poc/character_pipeline_20261003/tpose_20261004/godot/assets/mio_proxy.glb",
+      "rigging_version": "binding13_sleeves",
+      "rigging_acceptance_evidence": "evidence/character_pipeline_tpose_20261004/sleeves/acceptance.json"
+    }
+  ],
+  "estimated_credits": 1.0,
+  "billing_verified": false,
+  "scope": "T pose regeneration matching original character design"
+}

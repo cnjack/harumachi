@@ -1,0 +1,219 @@
+{
+  "H01": [
+    {
+      "feature": "vertical facade joinery",
+      "a": [
+        -2.33775,
+        0.678,
+        3.428
+      ],
+      "b": [
+        -2.33775,
+        2.278,
+        3.428
+      ]
+    },
+    {
+      "feature": "rear ground floor is closed behind retained timber",
+      "a": [
+        1.0,
+        0.5,
+        -4.23
+      ],
+      "b": [
+        1.0,
+        2.5,
+        -4.23
+      ],
+      "ray": [
+        0,
+        0,
+        1
+      ],
+      "mesh_prefix": "Rear_wood_infill"
+    }
+  ],
+  "H03": [
+    {
+      "feature": "vertical facade joinery",
+      "a": [
+        -2.33775,
+        0.678,
+        1.748
+      ],
+      "b": [
+        -2.33775,
+        2.278,
+        1.748
+      ]
+    }
+  ],
+  "H02": [
+    {
+      "feature": "vertical facade joinery",
+      "a": [
+        0.976,
+        0.5,
+        1.086
+      ],
+      "b": [
+        0.976,
+        2.6,
+        1.086
+      ]
+    },
+    {
+      "feature": "horizontal balcony rail",
+      "a": [
+        -2.13,
+        3.984,
+        1.057
+      ],
+      "b": [
+        0.65,
+        3.984,
+        1.057
+      ],
+      "ray": [
+        0,
+        -1,
+        0
+      ]
+    }
+  ],
+  "S01": [
+    {
+      "feature": "vertical facade joinery",
+      "a": [
+        0,
+        0.8,
+        2.804
+      ],
+      "b": [
+        0,
+        2.1,
+        2.804
+      ]
+    }
+  ],
+  "S02": [
+    {
+      "feature": "vertical facade joinery",
+      "a": [
+        -0.705,
+        1.02,
+        3.365
+      ],
+      "b": [
+        -0.705,
+        2.1,
+        3.365
+      ]
+    }
+  ],
+  "S03": [
+    {
+      "feature": "vertical facade joinery",
+      "a": [
+        0.703,
+        0.35,
+        3.898
+      ],
+      "b": [
+        0.703,
+        1.8,
+        3.898
+      ]
+    }
+  ],
+  "S05": [
+    {
+      "feature": "vertical facade joinery",
+      "a": [
+        -1.96,
+        0.55,
+        3.998
+      ],
+      "b": [
+        -1.96,
+        2.4,
+        3.998
+      ]
+    }
+  ],
+  "S06": [
+    {
+      "feature": "vertical facade joinery",
+      "a": [
+        -0.52,
+        0.76,
+        4.259
+      ],
+      "b": [
+        -0.52,
+        2.2,
+        4.259
+      ]
+    }
+  ],
+  "S08": [
+    {
+      "feature": "vertical facade joinery",
+      "a": [
+        0.575,
+        0.88,
+        3.173
+      ],
+      "b": [
+        0.575,
+        2.12,
+        3.173
+      ]
+    }
+  ],
+  "M01_timber_machiya": [
+    {
+      "feature": "vertical facade joinery",
+      "a": [
+        1.73,
+        0.5,
+        0.559
+      ],
+      "b": [
+        1.73,
+        2.05,
+        0.559
+      ]
+    }
+  ],
+  "M03_gable_house": [
+    {
+      "feature": "vertical facade joinery",
+      "a": [
+        2.111,
+        0.55,
+        3.533
+      ],
+      "b": [
+        2.111,
+        2.05,
+        3.533
+      ]
+    }
+  ],
+  "M05_residential": [
+    {
+      "feature": "vertical facade joinery",
+      "a": [
+        0.0,
+        0.3,
+        0.898
+      ],
+      "b": [
+        0.0,
+        1.66,
+        0.898
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+ "id": "G10_store_shelf",
+ "src": "raw/G10_store_shelf_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 962307,
+ "tris": 27000,
+ "size_m": [
+  1.333,
+  0.513,
+  1.501
+ ],
+ "godot_size_m_xyz": [
+  1.333,
+  1.501,
+  0.513
+ ],
+ "tex": 2048,
+ "bytes": 2122308,
+ "yaw_fix": -150.0,
+ "level": "auto",
+ "lean_src_deg": 18.61,
+ "levelled": true,
+ "lean_deg": 0.28,
+ "base_frac": 0.871
+}

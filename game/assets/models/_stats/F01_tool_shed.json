@@ -1,0 +1,37 @@
+{
+ "id": "F01_tool_shed",
+ "src": "raw/F01_tool_shed_h3d_audit_20261002/model.glb",
+ "provider": "hyper3d rodin Gen-2.5-High Quad (2026-10-02)",
+ "tris_src": 59417,
+ "tris": 11999,
+ "size_m": [
+  2.197,
+  2.406,
+  2.422
+ ],
+ "godot_size_m_xyz": [
+  2.197,
+  2.422,
+  2.406
+ ],
+ "tex": 2048,
+ "bytes": 876804,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.0,
+ "base_frac": 0.594,
+ "fit_bounds_blender": {
+  "min": [
+   -1.1006627082824707,
+   -1.189043402671814,
+   -0.010378538630902767
+  ],
+  "max": [
+   1.0964168310165405,
+   1.2170642614364624,
+   2.411594867706299
+  ]
+ }
+}

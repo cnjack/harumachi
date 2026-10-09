@@ -1,0 +1,20 @@
+{
+ "id": "P03",
+ "src": "raw/P03/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 12000,
+ "tris": 4000,
+ "size_m": [
+  1.64,
+  1.589,
+  0.78
+ ],
+ "godot_size_m_xyz": [
+  1.64,
+  0.78,
+  1.589
+ ],
+ "tex": 1024,
+ "bytes": 277568,
+ "yaw_fix": 0
+}

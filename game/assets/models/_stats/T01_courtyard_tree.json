@@ -1,0 +1,19 @@
+{
+ "id": "T01_courtyard_tree",
+ "src": "raw/free_foliage_20261004/ready/T01_courtyard_tree.glb",
+ "provider": "Quaternius Stylized Nature MegaKit Standard CommonTree_1",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 6265,
+ "tex": 2048,
+ "bytes": 4531368,
+ "godot_size_m_xyz": [
+  3.8575,
+  6.5,
+  4.0958
+ ],
+ "mesh_nodes": [
+  "Foliage_1",
+  "Trunk_1"
+ ]
+}

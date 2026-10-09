@@ -1,0 +1,25 @@
+{
+ "id": "W08_baguette_basket",
+ "src": "raw/W08_baguette_basket_pixal_modules_20261003/model.glb",
+ "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
+ "tris_src": 926531,
+ "tris": 13399,
+ "size_m": [
+  0.42,
+  0.242,
+  0.348
+ ],
+ "godot_size_m_xyz": [
+  0.42,
+  0.348,
+  0.242
+ ],
+ "tex": 2048,
+ "bytes": 1285220,
+ "yaw_fix": 199.16545651719088,
+ "level": "auto",
+ "lean_src_deg": 20.71,
+ "levelled": true,
+ "lean_deg": 0.64,
+ "base_frac": 0.42
+}

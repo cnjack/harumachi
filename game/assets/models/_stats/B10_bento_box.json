@@ -1,0 +1,25 @@
+{
+ "id": "B10_bento_box",
+ "src": "raw/B10_bento_box_hyper3d/model.glb",
+ "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+ "tris_src": 500000,
+ "tris": 13999,
+ "size_m": [
+  0.26,
+  0.131,
+  0.069
+ ],
+ "godot_size_m_xyz": [
+  0.26,
+  0.069,
+  0.131
+ ],
+ "tex": 2048,
+ "bytes": 1053092,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.61,
+ "levelled": false,
+ "lean_deg": 0.61,
+ "base_frac": 0.876
+}

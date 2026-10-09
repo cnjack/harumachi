@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-03",
+  "user_feedback": "houses were too clean, repetitive and like plain procedural meshes",
+  "geometry": "original Hyper3D H02 and S01 bodies, existing detailed tenant modules retained",
+  "changes": [
+    "imagegen precise orthographic albedo edits",
+    "varied wood boards, fasteners, wear, plaster repairs",
+    "three tenant door/curtain variants",
+    "grocery canvas stitching, tile joins, peeling green paint"
+  ],
+  "tool": "art/tools/project_lived_facade.py",
+  "images": "art/references/lived_facades_20261003",
+  "prompts": [
+    "art/manifests/prompts/lived_facades_20261003.json",
+    "art/manifests/prompts/lived_variants_20261003.json"
+  ],
+  "scope": "H02 and S01 improved this iteration; other buildings retain previous geometry and artwork",
+  "known_limit": "whole-building UV density gate still fails; did not lower it"
+}

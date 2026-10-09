@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-06",
+  "scope": "independent Godot material review; no game model replacements",
+  "hyper3d": {
+    "source": "art/models/raw/H01_hyper3d_modular_trial_20261002/engawa/model.glb",
+    "generation_id": "2ebbb664-4cb4-49a7-84c1-04baaf1b3ccd",
+    "sha256": "24c0a7d56e577d6f8cd668d29d7cdcc20f53ff6c72403d88f11d038fb9caf399",
+    "usage": "existing whole Japanese house rendered in final six seconds",
+    "new_generation": false
+  },
+  "procedural_geometry": [
+    "grass clumps from current GrassField",
+    "bevelled cedar planks",
+    "clipped Voronoi stone slabs",
+    "fine ripple sand mesh",
+    "subdivided flowing water mesh",
+    "bed pebbles"
+  ],
+  "render_verification": "evidence/material_review_20261006_v1/review/verification.json"
+}

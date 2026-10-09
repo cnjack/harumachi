@@ -1,0 +1,25 @@
+{
+ "id": "G11_bread_cart",
+ "src": "raw/G11_bread_cart_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 943022,
+ "tris": 28071,
+ "size_m": [
+  1.133,
+  0.747,
+  1.494
+ ],
+ "godot_size_m_xyz": [
+  1.133,
+  1.494,
+  0.747
+ ],
+ "tex": 2048,
+ "bytes": 2184824,
+ "yaw_fix": -155.0,
+ "level": "auto",
+ "lean_src_deg": 10.53,
+ "levelled": true,
+ "lean_deg": 0.0,
+ "base_frac": 0.426
+}

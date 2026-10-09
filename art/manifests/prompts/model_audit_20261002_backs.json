@@ -1,0 +1,14 @@
+[
+  {
+    "id": "H01",
+    "prompt": "Edit the attached finalized anime building reference by rotating the SAME object 180 degrees to a BACK-LEFT three-quarter view, looking slightly down, near orthographic. Keep exactly the same dimensions, architecture, roof ridge direction, tile scale, colors, straight geometry, clean confident anime outlines and crisp two tone cel shading. This is a consistent second image for multi-view 3D reconstruction, NOT a redesign or a mirrored front facade. Single complete object on uniform pale gray background, no cast ground shadow, no text or detached props. Back wall of the two-storey family house, same main gable roof running front to back. Two simple wood framed windows per storey on rear; the side has exactly the same windows/shutters. Keep the low boundary wall around yard sides, rear boundary continuous, front doorway gap on far side out of view."
+  },
+  {
+    "id": "H02",
+    "prompt": "Edit the attached finalized anime building reference by rotating the SAME object 180 degrees to a BACK-LEFT three-quarter view, looking slightly down, near orthographic. Keep exactly the same dimensions, architecture, roof ridge direction, tile scale, colors, straight geometry, clean confident anime outlines and crisp two tone cel shading. This is a consistent second image for multi-view 3D reconstruction, NOT a redesign or a mirrored front facade. Single complete object on uniform pale gray background, no cast ground shadow, no text or detached props. Rear of same long apartment block. A continuous flat honey brown wooden rear wall, regular cream structural infill strips, four small rectangular rear windows at each storey aligned with the four front units. No rear staircase or rear balconies; the original staircase remains only at the far front-right side."
+  },
+  {
+    "id": "H03",
+    "prompt": "Edit the attached finalized anime building reference by rotating the SAME object 180 degrees to a BACK-LEFT three-quarter view, looking slightly down, near orthographic. Keep exactly the same dimensions, architecture, roof ridge direction, tile scale, colors, straight geometry, clean confident anime outlines and crisp two tone cel shading. This is a consistent second image for multi-view 3D reconstruction, NOT a redesign or a mirrored front facade. Single complete object on uniform pale gray background, no cast ground shadow, no text or detached props. Rear of the same single storey house. The opposite broad rear wall has simple cream wall panels within warm timber posts and two small rectangular sliding wood framed windows, no duplicate front entry steps. Keep the exact broad blue tiled gable and the little projecting roof end."
+  }
+]

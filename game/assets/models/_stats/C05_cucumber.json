@@ -1,0 +1,20 @@
+{
+ "id": "C05_cucumber",
+ "src": "raw/C05_cucumber_h3d/model.glb",
+ "provider": "hyper3d rodin gen-2.5 (v0.4)",
+ "tris_src": 20000,
+ "tris": 4500,
+ "size_m": [
+  0.744,
+  0.65,
+  1.2
+ ],
+ "godot_size_m_xyz": [
+  0.744,
+  1.2,
+  0.65
+ ],
+ "tex": 512,
+ "bytes": 489708,
+ "yaw_fix": 0
+}

@@ -1,0 +1,18 @@
+{
+ "id": "M05_residential",
+ "src": "raw/material_detail_20261003/M05_residential.glb",
+ "provider": "Hyper3D Rodin Gen-2.5 High image-to-3D; Blender UV-preserving optimization and local assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 139999,
+ "tex": 8192,
+ "bytes": 6476740,
+ "godot_size_m_xyz": [
+  3.1759,
+  6.8003,
+  3.2863
+ ],
+ "mesh_nodes": [
+  "Rodin_M05_residential_body"
+ ]
+}

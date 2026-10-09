@@ -1,0 +1,20 @@
+{
+ "id": "I01_deck_oven",
+ "src": "raw/I01_deck_oven_pix/model.glb",
+ "provider": "pixal3d (v0.6)",
+ "tris_src": 955152,
+ "tris": 8792,
+ "size_m": [
+  1.591,
+  1.44,
+  1.743
+ ],
+ "godot_size_m_xyz": [
+  1.591,
+  1.743,
+  1.44
+ ],
+ "tex": 1024,
+ "bytes": 523720,
+ "yaw_fix": 0
+}

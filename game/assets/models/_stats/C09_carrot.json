@@ -1,0 +1,25 @@
+{
+ "id": "C09_carrot",
+ "src": "raw/C09_carrot_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 972825,
+ "tris": 11902,
+ "size_m": [
+  0.294,
+  0.243,
+  0.344
+ ],
+ "godot_size_m_xyz": [
+  0.294,
+  0.344,
+  0.243
+ ],
+ "tex": 1024,
+ "bytes": 1062428,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 15.42,
+ "levelled": true,
+ "lean_deg": 0.12,
+ "base_frac": 0.472
+}

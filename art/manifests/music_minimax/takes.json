@@ -1,0 +1,367 @@
+{
+ "note": "Every MiniMax Music 3 take that was generated for the game, and why it was kept or dropped. Vocal scores come from art/tools/music_vocal_check.py (demucs vocal stem + AudioSet AST); lyric-like segments from Whisper small. Only the kept takes are in art/audio/music_raw.",
+ "kept": {
+  "title": {
+   "seed": 2026092731,
+   "seconds": 72.1,
+   "voc_hot_s": 1,
+   "stem_voice_max": 0.05,
+   "mix_voice_max": 0.02
+  },
+  "day": {
+   "seed": 2026092741,
+   "seconds": 110.1,
+   "voc_hot_s": 0,
+   "stem_voice_max": 0.11,
+   "mix_voice_max": 0.04
+  },
+  "market": {
+   "seed": 2026092751,
+   "seconds": 71.2,
+   "voc_hot_s": 0,
+   "stem_voice_max": 0.3,
+   "mix_voice_max": 0.02,
+   "why_ok": "the one flagged window (40-46 s) sits 28-60 dB under the mix"
+  },
+  "ending": {
+   "seed": 2026092724,
+   "seconds": 37.3,
+   "voc_hot_s": 0,
+   "stem_voice_max": 0.03,
+   "mix_voice_max": 0.02,
+   "why_ok": "decays naturally to -53 dB instead of being cut at the length cap"
+  }
+ },
+ "dropped": [
+  {
+   "track": "title",
+   "seed": 2026092701,
+   "seconds": 72.1,
+   "why": "wordless humming 26-31 s and 44-71 s (stem Humming 0.49, mix Female singing)"
+  },
+  {
+   "track": "title",
+   "seed": 2026092732,
+   "seconds": 45.1,
+   "why": "clean but ends at 45 s; the 72 s take was preferred"
+  },
+  {
+   "track": "day",
+   "seed": 2026092702,
+   "seconds": 110.1,
+   "why": "Whisper found lyric-like syllables at 60-68 s"
+  },
+  {
+   "track": "day",
+   "seed": 2026092712,
+   "seconds": 86.5,
+   "why": "humming 56-72 s (stem Humming 0.35) plus breath noises"
+  },
+  {
+   "track": "day",
+   "seed": 2026092713,
+   "why": "vocal-like segments"
+  },
+  {
+   "track": "day",
+   "seed": 2026092742,
+   "seconds": 66.8,
+   "why": "clean, shorter; the 110 s take was preferred"
+  },
+  {
+   "track": "market",
+   "seed": 2026092703,
+   "seconds": 100.1,
+   "why": "a yodel-like voice at 90-99 s, 4-15 dB under the mix"
+  },
+  {
+   "track": "ending",
+   "seed": 2026092704,
+   "seconds": 42.0,
+   "why": "humming at 28-40 s (stem Humming 0.46) and cut off at the cap"
+  },
+  {
+   "track": "ending",
+   "seed": 2026092721,
+   "seconds": 42.0,
+   "why": "cut off at the length cap"
+  },
+  {
+   "track": "ending",
+   "seed": 2026092722,
+   "seconds": 42.0,
+   "why": "clean but cut off at the length cap"
+  },
+  {
+   "track": "ending",
+   "seed": 2026092723,
+   "seconds": 34.3,
+   "why": "a borderline window at 24 s (stem 0.18)"
+  }
+ ],
+ "prompt_lessons": [
+  "duration_seconds is only a cap. With lyrics '[Instrumental]' alone the model stops after about 24 s.",
+  "Section tags such as [Verse] / [Chorus] fill the length but invite wordless singing; instrument section tags ([Piano Solo], [Interlude], [Strings Solo], [Flute Solo], [Break], [Outro]) fill it without voices.",
+  "Listing what to avoid ('no singing, humming, choir ...') did not help and may have primed voices; a positive 'Pure instrumental ... for piano and strings only' plus 'Vocal Details: None' worked better.",
+  "A take that runs to the cap is cut mid-phrase. For a one-shot cue, cap the length above the planned end and describe the ring-out ('decays naturally to complete silence; nothing new starts after the final chord')."
+ ],
+ "v06_kept": {
+  "bon_odori": {
+   "seed": 2026092904,
+   "seconds": 90.1,
+   "stem_voice_max": 0.08,
+   "mix_voice_max": 0.04
+  },
+  "contest": {
+   "seed": 2026093202,
+   "seconds": 59.1,
+   "stem_voice_max": 0.1,
+   "mix_voice_max": 0.02
+  },
+  "farm": {
+   "seed": 2026093008,
+   "seconds": 83.9,
+   "stem_voice_max": 0.08,
+   "mix_voice_max": 0.02
+  },
+  "hanabi": {
+   "seed": 2026092805,
+   "seconds": 67.1,
+   "stem_voice_max": 0.09,
+   "mix_voice_max": 0.02
+  },
+  "memory": {
+   "seed": 2026092912,
+   "seconds": 50.1,
+   "stem_voice_max": 0.03,
+   "mix_voice_max": 0.01
+  },
+  "natsumatsuri": {
+   "seed": 2026092803,
+   "seconds": 100.1,
+   "stem_voice_max": 0.04,
+   "mix_voice_max": 0.02
+  },
+  "night": {
+   "seed": 2026093109,
+   "seconds": 80.6,
+   "stem_voice_max": 0.14,
+   "mix_voice_max": 0.03
+  },
+  "obon": {
+   "seed": 2026092806,
+   "seconds": 59.0,
+   "stem_voice_max": 0.05,
+   "mix_voice_max": 0.01
+  },
+  "prologue": {
+   "seed": 2026092913,
+   "seconds": 75.1,
+   "stem_voice_max": 0.08,
+   "mix_voice_max": 0.03
+  },
+  "rain": {
+   "seed": 2026092910,
+   "seconds": 51.2,
+   "stem_voice_max": 0.09,
+   "mix_voice_max": 0.02
+  },
+  "shop": {
+   "seed": 2026092911,
+   "seconds": 54.1,
+   "stem_voice_max": 0.05,
+   "mix_voice_max": 0.03
+  },
+  "tanabata": {
+   "seed": 2026092801,
+   "seconds": 54.3,
+   "stem_voice_max": 0.06,
+   "mix_voice_max": 0.02
+  },
+  "tsukimi": {
+   "seed": 2026092807,
+   "seconds": 68.9,
+   "stem_voice_max": 0.08,
+   "mix_voice_max": 0.03
+  }
+ },
+ "v06_dropped": [
+  {
+   "seed": 2026092804,
+   "seconds": 90.1,
+   "stem_voice_max": 0.23,
+   "mix_voice_max": 0.02,
+   "track": "bon_odori",
+   "why": "voice-like content (stem 0.23 / mix 0.02 over the 0.15 / 0.08 limits)"
+  },
+  {
+   "seed": 2026092802,
+   "seconds": 71.5,
+   "stem_voice_max": 0.26,
+   "mix_voice_max": 0.09,
+   "track": "contest",
+   "why": "voice-like content (stem 0.26 / mix 0.09 over the 0.15 / 0.08 limits)"
+  },
+  {
+   "seed": 2026092902,
+   "seconds": 31.3,
+   "stem_voice_max": 0.12,
+   "mix_voice_max": 0.02,
+   "track": "contest",
+   "why": "passed, but the other take was cleaner or longer"
+  },
+  {
+   "seed": 2026093002,
+   "seconds": 25.9,
+   "stem_voice_max": 0.06,
+   "mix_voice_max": 0.02,
+   "track": "contest",
+   "why": "passed, but the other take was cleaner or longer"
+  },
+  {
+   "seed": 2026093102,
+   "seconds": 48.7,
+   "stem_voice_max": 0.14,
+   "mix_voice_max": 0.11,
+   "track": "contest",
+   "why": "voice-like content (stem 0.14 / mix 0.11 over the 0.15 / 0.08 limits)"
+  },
+  {
+   "seed": 2026092808,
+   "seconds": 80.5,
+   "stem_voice_max": 0.58,
+   "mix_voice_max": 0.13,
+   "track": "farm",
+   "why": "voice-like content (stem 0.58 / mix 0.13 over the 0.15 / 0.08 limits)"
+  },
+  {
+   "seed": 2026092908,
+   "seconds": 83.4,
+   "stem_voice_max": 0.41,
+   "mix_voice_max": 0.51,
+   "track": "farm",
+   "why": "voice-like content (stem 0.41 / mix 0.51 over the 0.15 / 0.08 limits)"
+  },
+  {
+   "seed": 2026093108,
+   "seconds": 93.1,
+   "stem_voice_max": 0.59,
+   "mix_voice_max": 0.09,
+   "track": "farm",
+   "why": "voice-like content (stem 0.59 / mix 0.09 over the 0.15 / 0.08 limits)"
+  },
+  {
+   "seed": 2026093208,
+   "seconds": 78.7,
+   "stem_voice_max": 0.53,
+   "mix_voice_max": 0.03,
+   "track": "farm",
+   "why": "voice-like content (stem 0.53 / mix 0.03 over the 0.15 / 0.08 limits)"
+  },
+  {
+   "seed": 2026092905,
+   "seconds": 74.6,
+   "stem_voice_max": 0.28,
+   "mix_voice_max": 0.03,
+   "track": "hanabi",
+   "why": "voice-like content (stem 0.28 / mix 0.03 over the 0.15 / 0.08 limits)"
+  },
+  {
+   "seed": 2026092812,
+   "seconds": 27.0,
+   "stem_voice_max": 0.02,
+   "mix_voice_max": 0.01,
+   "track": "memory",
+   "why": "passed, but the other take was cleaner or longer"
+  },
+  {
+   "seed": 2026092903,
+   "seconds": 62.8,
+   "stem_voice_max": 0.13,
+   "mix_voice_max": 0.1,
+   "track": "natsumatsuri",
+   "why": "voice-like content (stem 0.13 / mix 0.10 over the 0.15 / 0.08 limits)"
+  },
+  {
+   "seed": 2026092809,
+   "seconds": 35.2,
+   "stem_voice_max": 0.06,
+   "mix_voice_max": 0.02,
+   "track": "night",
+   "why": "passed, but the other take was cleaner or longer"
+  },
+  {
+   "seed": 2026092909,
+   "seconds": 72.8,
+   "stem_voice_max": 0.3,
+   "mix_voice_max": 0.02,
+   "track": "night",
+   "why": "voice-like content (stem 0.30 / mix 0.02 over the 0.15 / 0.08 limits)"
+  },
+  {
+   "seed": 2026093009,
+   "seconds": 90.1,
+   "stem_voice_max": 0.78,
+   "mix_voice_max": 0.26,
+   "track": "night",
+   "why": "voice-like content (stem 0.78 / mix 0.26 over the 0.15 / 0.08 limits)"
+  },
+  {
+   "seed": 2026093209,
+   "seconds": 73.5,
+   "stem_voice_max": 0.48,
+   "mix_voice_max": 0.04,
+   "track": "night",
+   "why": "voice-like content (stem 0.48 / mix 0.04 over the 0.15 / 0.08 limits)"
+  },
+  {
+   "seed": 2026092906,
+   "seconds": 70.6,
+   "stem_voice_max": 0.04,
+   "mix_voice_max": 0.12,
+   "track": "obon",
+   "why": "voice-like content (stem 0.04 / mix 0.12 over the 0.15 / 0.08 limits)"
+  },
+  {
+   "seed": 2026092813,
+   "seconds": 53.1,
+   "stem_voice_max": 0.65,
+   "mix_voice_max": 0.13,
+   "track": "prologue",
+   "why": "voice-like content (stem 0.65 / mix 0.13 over the 0.15 / 0.08 limits)"
+  },
+  {
+   "seed": 2026092810,
+   "seconds": 68.2,
+   "stem_voice_max": 0.43,
+   "mix_voice_max": 0.1,
+   "track": "rain",
+   "why": "voice-like content (stem 0.43 / mix 0.10 over the 0.15 / 0.08 limits)"
+  },
+  {
+   "seed": 2026092811,
+   "seconds": 72.2,
+   "stem_voice_max": 0.06,
+   "mix_voice_max": 0.15,
+   "track": "shop",
+   "why": "voice-like content (stem 0.06 / mix 0.15 over the 0.15 / 0.08 limits)"
+  },
+  {
+   "seed": 2026092901,
+   "seconds": 67.0,
+   "stem_voice_max": 0.14,
+   "mix_voice_max": 0.02,
+   "track": "tanabata",
+   "why": "passed, but the other take was cleaner or longer"
+  },
+  {
+   "seed": 2026092907,
+   "seconds": 45.2,
+   "stem_voice_max": 0.04,
+   "mix_voice_max": 0.03,
+   "track": "tsukimi",
+   "why": "passed, but the other take was cleaner or longer"
+  }
+ ],
+ "v06_note": "v0.6: 13 new tracks, 2-3 takes each (farm re-arranged without wind instruments after both first takes failed). Acceptance: stem_voice_max < 0.15 and mix_voice_max < 0.08."
+}

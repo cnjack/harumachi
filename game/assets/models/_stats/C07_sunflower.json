@@ -1,0 +1,20 @@
+{
+ "id": "C07_sunflower",
+ "src": "raw/C07_sunflower_h3d/model.glb",
+ "provider": "hyper3d rodin gen-2.5 (v0.4)",
+ "tris_src": 14990,
+ "tris": 3000,
+ "size_m": [
+  0.728,
+  0.471,
+  1.738
+ ],
+ "godot_size_m_xyz": [
+  0.728,
+  1.738,
+  0.471
+ ],
+ "tex": 512,
+ "bytes": 289760,
+ "yaw_fix": 0
+}

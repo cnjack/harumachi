@@ -1,0 +1,25 @@
+{
+ "id": "C10_potato",
+ "src": "raw/C10_potato_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 950874,
+ "tris": 6223,
+ "size_m": [
+  0.455,
+  0.407,
+  0.488
+ ],
+ "godot_size_m_xyz": [
+  0.455,
+  0.488,
+  0.407
+ ],
+ "tex": 1024,
+ "bytes": 623108,
+ "yaw_fix": 44.4,
+ "level": "auto",
+ "lean_src_deg": 7.35,
+ "levelled": true,
+ "lean_deg": 0.34,
+ "base_frac": 0.347
+}

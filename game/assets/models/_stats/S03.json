@@ -1,0 +1,18 @@
+{
+ "id": "S03",
+ "src": "raw/window_cavities_20261003/S03.glb",
+ "provider": "Hyper3D Rodin Gen-2.5 High image-to-3D; Blender UV-preserving optimization and local assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 174763,
+ "tex": 8192,
+ "bytes": 15615392,
+ "godot_size_m_xyz": [
+  5.8642,
+  5.4505,
+  6.1039
+ ],
+ "mesh_nodes": [
+  "Rodin_S03_body"
+ ]
+}

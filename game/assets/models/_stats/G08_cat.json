@@ -1,0 +1,20 @@
+{
+ "id": "G08_cat",
+ "src": "raw/G08_cat/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 16356,
+ "tris": 5000,
+ "size_m": [
+  0.62,
+  0.62,
+  0.288
+ ],
+ "godot_size_m_xyz": [
+  0.62,
+  0.288,
+  0.62
+ ],
+ "tex": 1024,
+ "bytes": 270976,
+ "yaw_fix": 0
+}

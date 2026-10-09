@@ -1,0 +1,25 @@
+{
+ "id": "D12_flower_planter",
+ "src": "raw/D12_flower_planter_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 943778,
+ "tris": 7228,
+ "size_m": [
+  1.139,
+  0.614,
+  0.568
+ ],
+ "godot_size_m_xyz": [
+  1.139,
+  0.568,
+  0.614
+ ],
+ "tex": 1024,
+ "bytes": 652460,
+ "yaw_fix": -141.0,
+ "level": "auto",
+ "lean_src_deg": 12.71,
+ "levelled": true,
+ "lean_deg": 0.0,
+ "base_frac": 0.606
+}

@@ -1,0 +1,25 @@
+{
+ "id": "W06_lily_vase",
+ "src": "raw/W06_lily_vase_pixal_modules_20261003/model.glb",
+ "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
+ "tris_src": 943386,
+ "tris": 13275,
+ "size_m": [
+  0.415,
+  0.402,
+  0.659
+ ],
+ "godot_size_m_xyz": [
+  0.415,
+  0.659,
+  0.402
+ ],
+ "tex": 2048,
+ "bytes": 1064328,
+ "yaw_fix": 180,
+ "level": true,
+ "lean_src_deg": 9.32,
+ "levelled": true,
+ "lean_deg": 0.0,
+ "base_frac": 0.058
+}

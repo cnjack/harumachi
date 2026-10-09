@@ -1,0 +1,25 @@
+{
+ "id": "D04_stone_lantern",
+ "src": "raw/D04_stone_lantern_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 943114,
+ "tris": 7850,
+ "size_m": [
+  0.479,
+  0.446,
+  1.297
+ ],
+ "godot_size_m_xyz": [
+  0.479,
+  1.297,
+  0.446
+ ],
+ "tex": 1024,
+ "bytes": 549968,
+ "yaw_fix": -148.4,
+ "level": "auto",
+ "lean_src_deg": 12.21,
+ "levelled": true,
+ "lean_deg": 0.11,
+ "base_frac": 0.81
+}

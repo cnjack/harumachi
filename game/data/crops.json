@@ -1,0 +1,226 @@
+{
+	"komatsuna": {
+		"name": "小松菜",
+		"days": 2,
+		"regrow": 0,
+		"yield": 2,
+		"sell": 16,
+		"seed_price": 15,
+		"level": 1,
+		"xp": 3,
+		"model": "C03_komatsuna",
+		"liked_by": [
+			"mio"
+		],
+		"greenhouse": false
+	},
+	"radish": {
+		"name": "萝卜",
+		"days": 3,
+		"regrow": 0,
+		"yield": 1,
+		"sell": 50,
+		"seed_price": 20,
+		"level": 1,
+		"xp": 5,
+		"model": "C02_radish",
+		"liked_by": [
+			"tanaka"
+		],
+		"greenhouse": false
+	},
+	"carrot": {
+		"name": "胡萝卜",
+		"days": 3,
+		"regrow": 0,
+		"yield": 2,
+		"sell": 22,
+		"seed_price": 18,
+		"level": 1,
+		"xp": 5,
+		"model": "C09_carrot",
+		"liked_by": [
+			"aoi"
+		],
+		"greenhouse": false
+	},
+	"sunflower": {
+		"name": "向日葵",
+		"days": 5,
+		"regrow": 0,
+		"yield": 1,
+		"sell": 80,
+		"seed_price": 25,
+		"level": 1,
+		"xp": 9,
+		"model": "C07_sunflower",
+		"liked_by": [
+			"haru",
+			"aoi"
+		],
+		"greenhouse": false
+	},
+	"tomato": {
+		"name": "迷你番茄",
+		"days": 4,
+		"regrow": 2,
+		"yield": 3,
+		"sell": 14,
+		"seed_price": 35,
+		"level": 2,
+		"xp": 4,
+		"model": "C04_tomato",
+		"liked_by": [
+			"mio"
+		],
+		"greenhouse": false
+	},
+	"cucumber": {
+		"name": "黄瓜",
+		"days": 3,
+		"regrow": 2,
+		"yield": 2,
+		"sell": 19,
+		"seed_price": 35,
+		"level": 2,
+		"xp": 4,
+		"model": "C05_cucumber",
+		"liked_by": [
+			"ren"
+		],
+		"greenhouse": false
+	},
+	"potato": {
+		"name": "土豆",
+		"days": 4,
+		"regrow": 0,
+		"yield": 3,
+		"sell": 24,
+		"seed_price": 30,
+		"level": 2,
+		"xp": 7,
+		"model": "C10_potato",
+		"liked_by": [
+			"ren"
+		],
+		"greenhouse": false
+	},
+	"edamame": {
+		"name": "毛豆",
+		"days": 3,
+		"regrow": 0,
+		"yield": 3,
+		"sell": 22,
+		"seed_price": 30,
+		"level": 3,
+		"xp": 6,
+		"model": "C06_edamame",
+		"liked_by": [
+			"tanaka"
+		],
+		"greenhouse": false
+	},
+	"onion": {
+		"name": "洋葱",
+		"days": 4,
+		"regrow": 0,
+		"yield": 3,
+		"sell": 22,
+		"seed_price": 25,
+		"level": 3,
+		"xp": 6,
+		"model": "C16_onion",
+		"liked_by": [],
+		"greenhouse": false
+	},
+	"wheat": {
+		"name": "小麦",
+		"days": 4,
+		"regrow": 0,
+		"yield": 4,
+		"sell": 10,
+		"seed_price": 20,
+		"level": 3,
+		"xp": 6,
+		"model": "C15_wheat",
+		"liked_by": [],
+		"greenhouse": false
+	},
+	"eggplant": {
+		"name": "茄子",
+		"days": 5,
+		"regrow": 3,
+		"yield": 2,
+		"sell": 30,
+		"seed_price": 40,
+		"level": 4,
+		"xp": 7,
+		"model": "C11_eggplant",
+		"liked_by": [
+			"haru"
+		],
+		"greenhouse": false
+	},
+	"corn": {
+		"name": "玉米",
+		"days": 5,
+		"regrow": 0,
+		"yield": 3,
+		"sell": 36,
+		"seed_price": 35,
+		"level": 4,
+		"xp": 11,
+		"model": "C12_corn",
+		"liked_by": [
+			"aoi"
+		],
+		"greenhouse": false
+	},
+	"strawberry": {
+		"name": "草莓",
+		"days": 5,
+		"regrow": 3,
+		"yield": 3,
+		"sell": 28,
+		"seed_price": 60,
+		"level": 5,
+		"xp": 8,
+		"model": "C08_strawberry",
+		"liked_by": [
+			"aoi",
+			"mio"
+		],
+		"greenhouse": true
+	},
+	"pumpkin": {
+		"name": "南瓜",
+		"days": 7,
+		"regrow": 0,
+		"yield": 1,
+		"sell": 170,
+		"seed_price": 70,
+		"level": 6,
+		"xp": 24,
+		"model": "C13_pumpkin",
+		"liked_by": [
+			"haru"
+		],
+		"greenhouse": false
+	},
+	"watermelon": {
+		"name": "西瓜",
+		"days": 8,
+		"regrow": 0,
+		"yield": 1,
+		"sell": 240,
+		"seed_price": 90,
+		"level": 7,
+		"xp": 30,
+		"model": "C14_watermelon",
+		"liked_by": [
+			"aoi",
+			"ren"
+		],
+		"greenhouse": false
+	}
+}

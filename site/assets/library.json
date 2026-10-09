@@ -1,0 +1,246 @@
+{
+  "wallpapers": [
+    {
+      "id": "river-desktop",
+      "title": "晴川夏日",
+      "device": "desktop",
+      "src": "assets/wallpapers/river-desktop.jpg",
+      "preview": "assets/wallpapers/river-desktop.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1205528
+    },
+    {
+      "id": "river-mobile",
+      "title": "晴川夏日",
+      "device": "mobile",
+      "src": "assets/wallpapers/river-mobile.jpg",
+      "preview": "assets/wallpapers/river-mobile.webp",
+      "width": 853,
+      "height": 1844,
+      "bytes": 1044748
+    },
+    {
+      "id": "festival-desktop",
+      "title": "夏祭灯火",
+      "device": "desktop",
+      "src": "assets/wallpapers/festival-desktop.jpg",
+      "preview": "assets/wallpapers/festival-desktop.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1034723
+    },
+    {
+      "id": "festival-mobile",
+      "title": "夏祭灯火",
+      "device": "mobile",
+      "src": "assets/wallpapers/festival-mobile.jpg",
+      "preview": "assets/wallpapers/festival-mobile.webp",
+      "width": 854,
+      "height": 1842,
+      "bytes": 1020646
+    },
+    {
+      "id": "after-rain-desktop",
+      "title": "雨后晴町",
+      "device": "desktop",
+      "src": "assets/wallpapers/after-rain-desktop.jpg",
+      "preview": "assets/wallpapers/after-rain-desktop.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 1184867
+    },
+    {
+      "id": "after-rain-mobile",
+      "title": "雨后晴町",
+      "device": "mobile",
+      "src": "assets/wallpapers/after-rain-mobile.jpg",
+      "preview": "assets/wallpapers/after-rain-mobile.webp",
+      "width": 853,
+      "height": 1844,
+      "bytes": 1115862
+    }
+  ],
+  "tracks": [
+    {
+      "id": "title",
+      "title": "晴町的夏天",
+      "context": "标题画面",
+      "duration": 72.09,
+      "src": "assets/music/title.mp3",
+      "original": "assets/music/title.ogg",
+      "bytes": 1731715,
+      "source": "game/assets/audio/music/title.ogg"
+    },
+    {
+      "id": "prologue",
+      "title": "归来的巴士",
+      "context": "序章",
+      "duration": 75.13,
+      "src": "assets/music/prologue.mp3",
+      "original": "assets/music/prologue.ogg",
+      "bytes": 1804439,
+      "source": "game/assets/audio/music/prologue.ogg"
+    },
+    {
+      "id": "day",
+      "title": "街道午后",
+      "context": "白天的小镇",
+      "duration": 110.13,
+      "src": "assets/music/day.mp3",
+      "original": "assets/music/day.ogg",
+      "bytes": 2644534,
+      "source": "game/assets/audio/music/day.ogg"
+    },
+    {
+      "id": "farm",
+      "title": "河边农园",
+      "context": "种菜的时候",
+      "duration": 83.89,
+      "src": "assets/music/farm.mp3",
+      "original": "assets/music/farm.ogg",
+      "bytes": 2015088,
+      "source": "game/assets/audio/music/farm.ogg"
+    },
+    {
+      "id": "shop",
+      "title": "晴町商店",
+      "context": "走进店里",
+      "duration": 54.06,
+      "src": "assets/music/shop.mp3",
+      "original": "assets/music/shop.ogg",
+      "bytes": 1299124,
+      "source": "game/assets/audio/music/shop.ogg"
+    },
+    {
+      "id": "market",
+      "title": "周六集市",
+      "context": "庭院里的摊位",
+      "duration": 71.16,
+      "src": "assets/music/market.mp3",
+      "original": "assets/music/market.ogg",
+      "bytes": 1709142,
+      "source": "game/assets/audio/music/market.ogg"
+    },
+    {
+      "id": "night",
+      "title": "小镇夜色",
+      "context": "夜晚的小镇",
+      "duration": 80.57,
+      "src": "assets/music/night.mp3",
+      "original": "assets/music/night.ogg",
+      "bytes": 1935467,
+      "source": "game/assets/audio/music/night.ogg"
+    },
+    {
+      "id": "rain",
+      "title": "屋檐下的雨",
+      "context": "雨天",
+      "duration": 51.21,
+      "src": "assets/music/rain.mp3",
+      "original": "assets/music/rain.ogg",
+      "bytes": 1230790,
+      "source": "game/assets/audio/music/rain.ogg"
+    },
+    {
+      "id": "memory",
+      "title": "奶奶的旧物",
+      "context": "回忆",
+      "duration": 50.1,
+      "src": "assets/music/memory.mp3",
+      "original": "assets/music/memory.ogg",
+      "bytes": 1203832,
+      "source": "game/assets/audio/music/memory.ogg"
+    },
+    {
+      "id": "tanabata",
+      "title": "七夕",
+      "context": "许愿的夜晚",
+      "duration": 54.33,
+      "src": "assets/music/tanabata.mp3",
+      "original": "assets/music/tanabata.ogg",
+      "bytes": 1305387,
+      "source": "game/assets/audio/music/tanabata.ogg"
+    },
+    {
+      "id": "contest",
+      "title": "品评会",
+      "context": "邻居们的料理",
+      "duration": 59.06,
+      "src": "assets/music/contest.mp3",
+      "original": "assets/music/contest.ogg",
+      "bytes": 1418866,
+      "source": "game/assets/audio/music/contest.ogg"
+    },
+    {
+      "id": "natsumatsuri",
+      "title": "夏祭",
+      "context": "庭院里的灯火",
+      "duration": 100.12,
+      "src": "assets/music/natsumatsuri.mp3",
+      "original": "assets/music/natsumatsuri.ogg",
+      "bytes": 2404411,
+      "source": "game/assets/audio/music/natsumatsuri.ogg"
+    },
+    {
+      "id": "bon_odori",
+      "title": "盆舞",
+      "context": "灯笼下的舞步",
+      "duration": 90.11,
+      "src": "assets/music/bon_odori.mp3",
+      "original": "assets/music/bon_odori.ogg",
+      "bytes": 2164293,
+      "source": "game/assets/audio/music/bon_odori.ogg"
+    },
+    {
+      "id": "hanabi",
+      "title": "花火",
+      "context": "抬头看烟花",
+      "duration": 67.07,
+      "src": "assets/music/hanabi.mp3",
+      "original": "assets/music/hanabi.ogg",
+      "bytes": 1611333,
+      "source": "game/assets/audio/music/hanabi.ogg"
+    },
+    {
+      "id": "obon",
+      "title": "灯笼流",
+      "context": "晴川上的纸灯",
+      "duration": 59.03,
+      "src": "assets/music/obon.mp3",
+      "original": "assets/music/obon.ogg",
+      "bytes": 1418239,
+      "source": "game/assets/audio/music/obon.ogg"
+    },
+    {
+      "id": "tsukimi",
+      "title": "月见",
+      "context": "秋天的月亮",
+      "duration": 68.92,
+      "src": "assets/music/tsukimi.mp3",
+      "original": "assets/music/tsukimi.ogg",
+      "bytes": 1655846,
+      "source": "game/assets/audio/music/tsukimi.ogg"
+    },
+    {
+      "id": "taiko",
+      "title": "太鼓小游戏",
+      "context": "太鼓与篠笛",
+      "duration": 51.59,
+      "src": "assets/music/taiko.mp3",
+      "original": "assets/music/taiko.ogg",
+      "bytes": 1239568,
+      "source": "game/assets/audio/music/taiko.ogg"
+    },
+    {
+      "id": "ending",
+      "title": "明年再见",
+      "context": "故事的尾声",
+      "duration": 37.28,
+      "src": "assets/music/ending.mp3",
+      "original": "assets/music/ending.ogg",
+      "bytes": 896629,
+      "source": "game/assets/audio/music/ending.ogg"
+    }
+  ]
+}

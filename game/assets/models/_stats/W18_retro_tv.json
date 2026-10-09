@@ -1,0 +1,25 @@
+{
+ "id": "W18_retro_tv",
+ "src": "raw/W18_retro_tv_hyper3d/model.glb",
+ "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+ "tris_src": 500000,
+ "tris": 15000,
+ "size_m": [
+  0.52,
+  0.378,
+  0.383
+ ],
+ "godot_size_m_xyz": [
+  0.52,
+  0.383,
+  0.378
+ ],
+ "tex": 2048,
+ "bytes": 747304,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 8.99,
+ "levelled": true,
+ "lean_deg": 0.31,
+ "base_frac": 0.658
+}

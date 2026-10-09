@@ -1,0 +1,20 @@
+{
+ "id": "A14_hydrangea_pot",
+ "src": "../../output/japanese-street-shinkai-dry/models/A14_hydrangea_pot/model.glb",
+ "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)",
+ "tris_src": 80000,
+ "tris": 4000,
+ "size_m": [
+  0.718,
+  0.743,
+  0.753
+ ],
+ "godot_size_m_xyz": [
+  0.718,
+  0.753,
+  0.743
+ ],
+ "tex": 1024,
+ "bytes": 552340,
+ "yaw_fix": 0
+}

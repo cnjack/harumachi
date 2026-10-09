@@ -1,0 +1,27 @@
+{
+ "id": "CH_tanaka",
+ "src": "character_wave_smile_20261005/exports/CH_tanaka.glb",
+ "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+ "preserve_rigged_character": true,
+ "tris": 89902,
+ "bytes": 9694172,
+ "bones": 54,
+ "animations": [
+  "idle",
+  "walk",
+  "run",
+  "wave",
+  "bow",
+  "look",
+  "stretch",
+  "tend",
+  "talk",
+  "cheer",
+  "dance",
+  "reference"
+ ],
+ "sha256": "f4a593d91eafeafbc784db4b67d65aac681b7a89a6532a1b8404083e2b2d6988",
+ "character_pipeline": "characters-apose-20261004",
+ "individual_review": "20261005",
+ "greeting_review": "20261005"
+}

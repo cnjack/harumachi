@@ -1,0 +1,25 @@
+{
+ "id": "D02_rain_barrel",
+ "src": "raw/D02_rain_barrel_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 943414,
+ "tris": 6595,
+ "size_m": [
+  0.595,
+  0.713,
+  0.947
+ ],
+ "godot_size_m_xyz": [
+  0.595,
+  0.947,
+  0.713
+ ],
+ "tex": 1024,
+ "bytes": 555456,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 16.76,
+ "levelled": true,
+ "lean_deg": 0.34,
+ "base_frac": 0.21
+}

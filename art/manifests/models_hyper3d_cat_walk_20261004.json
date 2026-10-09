@@ -1,0 +1,242 @@
+{
+  "models": [
+    {
+      "id": "AN_cat_orange_walk",
+      "provider": "Hyper3D Rodin",
+      "generation_id": "47e3b6d8-c17b-45a5-bb9f-7775d91444aa",
+      "display_url": "https://hyper3d.ai/workspace/rodin/47e3b6d8-c17b-45a5-bb9f-7775d91444aa",
+      "raw_glb": "/Users/jack/workpath/research/3D model/anime/art/models/raw/cat_walk_20261004/orange_hyper3d/model.glb",
+      "reference": "/Users/jack/workpath/research/3D model/anime/art/poc/cat_motion_20261004/references/orange_stand.png",
+      "bound_asset": "game/assets/models/AN_cat_orange_walk.glb",
+      "rig": "59-joint anatomical quad rig; 12 tail joints; 4 joints per ear; max 8 skin influences",
+      "animations": "short-step Walk/Idle with planted paw IK and a low travelling tail wave; continuous runtime head attention across clip transitions; other Mesh2Motion clips remain POC",
+      "accepted": true,
+      "metadata": {
+        "character": "orange",
+        "height_m": 0.35,
+        "raw_faces": 89559,
+        "game_faces": 40000,
+        "level_correction_degrees": 0.8800304661404382,
+        "yaw_correction_degrees": -15.04154503470052,
+        "paw_centers": [
+          [
+            -0.04905582794696668,
+            -0.08790386848851674
+          ],
+          [
+            0.02542756826043702,
+            -0.07908285622413341
+          ],
+          [
+            -0.032763005756820555,
+            0.08329968089943139
+          ],
+          [
+            0.0746521567352941,
+            0.09310305131654957
+          ]
+        ],
+        "mesh_bounds": [
+          [
+            -0.0800785943865776,
+            -0.1691064089536667,
+            -5.051813332102029e-06
+          ],
+          [
+            0.09397179633378983,
+            0.2497224360704422,
+            0.34999239444732666
+          ]
+        ],
+        "provider": "Hyper3D Rodin",
+        "rig_source": "59-joint anatomical quad rig; 12 tail joints; 4 joints per ear; max 8 skin influences",
+        "proxy_exported": false,
+        "joints": 59,
+        "surface_position_error": 0.0,
+        "motion": {
+          "walk_speed": 0.12,
+          "clips": [
+            "Idle",
+            "Walk",
+            "Run",
+            "Sit",
+            "Jump",
+            "Sneak"
+          ],
+          "source": "short-step Walk/Idle with planted paw IK and a low travelling tail wave; continuous runtime head attention across clip transitions; other Mesh2Motion clips remain POC",
+          "stride_m": 0.1,
+          "gait_period_s": 0.8333333333333334,
+          "duty_factor": 0.76,
+          "sampled_times": 121,
+          "neutral_head_yaw_degrees": -35,
+          "gaze_runtime": "game/scripts/animals/cat_look.gd",
+          "scan_degrees": 45,
+          "maximum_gaze_degrees": 50
+        },
+        "accepted": true,
+        "game_material": "diffuse albedo only; metallic=0, roughness=1, normal map removed"
+      },
+      "accepted_scope": "ambient Walk and Idle; other exported clips are POC only",
+      "sha256": "41b0ef9986f0b398b503496f75200440e78e7391ca84ae721f47956159ee47a7",
+      "validation": {
+        "motion": "evidence/cat_motion_review_20261007/motion-revised.json",
+        "gaze_skin": "evidence/cat_motion_review_20261007/gaze-skin.json",
+        "imported_assets": "evidence/cat_motion_review_20261007/game-assets.json",
+        "level": "evidence/cat_motion_review_20261007/level.json",
+        "world": "evidence/cat_motion_review_20261007/world/runtime.json"
+      },
+      "history": [
+        {
+          "revision": "before-lively-20261007",
+          "sha256": "2ee85034a99040db9f2023894ab376ebb6b5ee179d879f22826d58713b5d518d",
+          "rig": "Mesh2Motion48-joint fitted quad template",
+          "animations": "Mesh2Motion CC0 quadruped animation asset",
+          "validation": {
+            "skin": "evidence/cat_motion_20261004/asset-contract.json",
+            "matte": "evidence/cat_motion_20261004/matte-export.json",
+            "level": "evidence/cat_motion_20261004/cat-bound-rest-level.json",
+            "world": "evidence/cat_motion_20261004/world-roam3/roam.json"
+          }
+        },
+        {
+          "revision": "before-motion-review-20261007",
+          "sha256": "d423b3f1cdefd4b3544af8ee313d150784f8c2185a6e953dfea06b28439fbaf1",
+          "rig": "59-joint anatomical quad rig; 12 tail joints; 4 joints per ear; max 8 skin influences",
+          "animations": "authored coordinated Walk/Idle with paw IK, independent head scanning and travelling tail wave; other Mesh2Motion clips retained as POC",
+          "validation": {
+            "motion": "evidence/cat_lively_motion_20261007/motion-coordinated.json",
+            "imported_assets": "evidence/cat_lively_motion_20261007/game-assets.json",
+            "level": "evidence/cat_lively_motion_20261007/level-final.json",
+            "world": "evidence/cat_lively_motion_20261007/world/runtime.json"
+          }
+        }
+      ],
+      "authoring": "art/poc/cat_motion_review_20261007/outputs/revised/orange.blend",
+      "visual_review": "updated following user feedback; subjective animation review pending",
+      "current": false,
+      "status": "superseded_by_neutral_full_rig",
+      "historical_bound_asset": "art/poc/cat_full_rig_20261007/backup/orange.glb",
+      "superseded_by": "art/manifests/models_hyper3d_cat_neutral_20261007.json"
+    },
+    {
+      "id": "AN_cat_calico_walk",
+      "provider": "Hyper3D Rodin",
+      "generation_id": "0e62c7c3-e63a-45b8-9291-7a8de78c2b23",
+      "display_url": "https://hyper3d.ai/workspace/rodin/0e62c7c3-e63a-45b8-9291-7a8de78c2b23",
+      "raw_glb": "/Users/jack/workpath/research/3D model/anime/art/models/raw/cat_walk_20261004/calico_hyper3d/model.glb",
+      "reference": "/Users/jack/workpath/research/3D model/anime/art/poc/cat_motion_20261004/references/calico_stand.png",
+      "bound_asset": "game/assets/models/AN_cat_calico_walk.glb",
+      "rig": "59-joint anatomical quad rig; 12 tail joints; 4 joints per ear; max 8 skin influences",
+      "animations": "short-step Walk/Idle with planted paw IK and a low travelling tail wave; continuous runtime head attention across clip transitions; other Mesh2Motion clips remain POC",
+      "accepted": true,
+      "metadata": {
+        "character": "calico",
+        "height_m": 0.35,
+        "raw_faces": 87246,
+        "game_faces": 39999,
+        "level_correction_degrees": 0.5566172904099613,
+        "yaw_correction_degrees": -12.796879865986766,
+        "paw_centers": [
+          [
+            -0.06872246338487815,
+            -0.08833249483248598
+          ],
+          [
+            0.03667515124170444,
+            -0.10072552613977694
+          ],
+          [
+            -0.0380368915124132,
+            0.12665924595598335
+          ],
+          [
+            0.09212261198655419,
+            0.09670868806217028
+          ]
+        ],
+        "mesh_bounds": [
+          [
+            -0.09699410200119019,
+            -0.21282128989696503,
+            0.0
+          ],
+          [
+            0.12733140587806702,
+            0.3093003034591675,
+            0.35004717111587524
+          ]
+        ],
+        "provider": "Hyper3D Rodin",
+        "rig_source": "59-joint anatomical quad rig; 12 tail joints; 4 joints per ear; max 8 skin influences",
+        "proxy_exported": false,
+        "joints": 59,
+        "surface_position_error": 0.0,
+        "motion": {
+          "walk_speed": 0.12,
+          "clips": [
+            "Idle",
+            "Walk",
+            "Run",
+            "Sit",
+            "Jump",
+            "Sneak"
+          ],
+          "source": "short-step Walk/Idle with planted paw IK and a low travelling tail wave; continuous runtime head attention across clip transitions; other Mesh2Motion clips remain POC",
+          "stride_m": 0.1,
+          "gait_period_s": 0.8333333333333334,
+          "duty_factor": 0.76,
+          "sampled_times": 121,
+          "neutral_head_yaw_degrees": -30,
+          "gaze_runtime": "game/scripts/animals/cat_look.gd",
+          "scan_degrees": 45,
+          "maximum_gaze_degrees": 50
+        },
+        "accepted": true,
+        "game_material": "diffuse albedo only; metallic=0, roughness=1, normal map removed"
+      },
+      "accepted_scope": "ambient Walk and Idle; other exported clips are POC only",
+      "sha256": "67116c6af78cc36c15c24808a3522baaed79a58ab02f5dbaff5ceb4fc46634db",
+      "validation": {
+        "motion": "evidence/cat_motion_review_20261007/motion-revised.json",
+        "gaze_skin": "evidence/cat_motion_review_20261007/gaze-skin.json",
+        "imported_assets": "evidence/cat_motion_review_20261007/game-assets.json",
+        "level": "evidence/cat_motion_review_20261007/level.json",
+        "world": "evidence/cat_motion_review_20261007/world/runtime.json"
+      },
+      "history": [
+        {
+          "revision": "before-lively-20261007",
+          "sha256": "9f7c0b31ed946558050c460e1c09110d9ffc471d1473e1a19e0d08d8df91469f",
+          "rig": "Mesh2Motion48-joint fitted quad template",
+          "animations": "Mesh2Motion CC0 quadruped animation asset",
+          "validation": {
+            "skin": "evidence/cat_motion_20261004/asset-contract.json",
+            "matte": "evidence/cat_motion_20261004/matte-export.json",
+            "level": "evidence/cat_motion_20261004/cat-bound-rest-level.json",
+            "world": "evidence/cat_motion_20261004/world-roam3/roam.json"
+          }
+        },
+        {
+          "revision": "before-motion-review-20261007",
+          "sha256": "8cec3a9557cd0c7534c6785b5de8208ae2bfe7b5db9053b7dc26e93990e05086",
+          "rig": "59-joint anatomical quad rig; 12 tail joints; 4 joints per ear; max 8 skin influences",
+          "animations": "authored coordinated Walk/Idle with paw IK, independent head scanning and travelling tail wave; other Mesh2Motion clips retained as POC",
+          "validation": {
+            "motion": "evidence/cat_lively_motion_20261007/motion-coordinated.json",
+            "imported_assets": "evidence/cat_lively_motion_20261007/game-assets.json",
+            "level": "evidence/cat_lively_motion_20261007/level-final.json",
+            "world": "evidence/cat_lively_motion_20261007/world/runtime.json"
+          }
+        }
+      ],
+      "authoring": "art/poc/cat_motion_review_20261007/outputs/revised/calico.blend",
+      "visual_review": "updated following user feedback; subjective animation review pending",
+      "current": false,
+      "status": "superseded_by_neutral_full_rig",
+      "historical_bound_asset": "art/poc/cat_full_rig_20261007/backup/calico.glb",
+      "superseded_by": "art/manifests/models_hyper3d_cat_neutral_20261007.json"
+    }
+  ],
+  "scope": "Hyper3D standing game cats, Mesh2Motion quad rig and CC0 motions",
+  "pixal3d_use": "Archived comparison only; user requested Hyper3D for quality-important assets"
+}

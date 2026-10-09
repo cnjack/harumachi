@@ -1,0 +1,8 @@
+{
+  "version": "4.8.dev7.official.c971f93e7",
+  "release_tag": "4.8-dev7",
+  "feature_version": "4.8",
+  "template_version": "4.8.dev7",
+  "release_status": "pre-release",
+  "official_archive": "https://godotengine.org/download/archive/4.8-dev7/"
+}

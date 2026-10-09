@@ -1,0 +1,76 @@
+{
+ "version": 2,
+ "note": "User picks from evidence/voice_samples. Round 1: all but haru. Round 2 (haru, VoiceDesign / WORLD aging): V1. Narrator removed after listening (v0.6): 旁白 stays text only. Haru and Tanaka removed after the in-game listen (v0.6): text only.",
+ "cast": {
+  "mio": {
+   "voice": "B",
+   "label": "Serena · 温柔",
+   "kind": "custom",
+   "speaker": "Serena",
+   "instruct": "温柔清澈的年轻女性，说话轻快、有礼貌。",
+   "shift_semitones": 0,
+   "tempo": 1.0
+  },
+  "ren": {
+   "voice": "A",
+   "label": "Aiden · 爽朗",
+   "kind": "custom",
+   "speaker": "Aiden",
+   "instruct": "爽朗、热情的年轻男性，语气轻松，有点得意。",
+   "shift_semitones": 0,
+   "tempo": 1.0
+  },
+  "haru": null,
+  "tanaka": null,
+  "aoi": {
+   "voice": "B",
+   "label": "Vivian 升调重塑",
+   "kind": "designed",
+   "speaker": "Vivian",
+   "instruct": "天真活泼的小女孩，声音清脆，语气兴奋。",
+   "shift_semitones": 3.5,
+   "tempo": 1.04,
+   "ref_audio": "art/audio/voice_samples/_ref_aoi_B.wav",
+   "ref_text": "我今天去河边走了走，风很舒服，花也开得很好。"
+  },
+  "sora": {
+   "voice": "B",
+   "label": "Ryan · 温暖",
+   "kind": "custom",
+   "speaker": "Ryan",
+   "instruct": "温暖、轻柔的年轻男性，像在回忆往事。",
+   "shift_semitones": 0,
+   "tempo": 1.0
+  },
+  "narrator": null,
+  "kazuko": {
+   "voice": "A",
+   "label": "Vivian · 热心大婶",
+   "kind": "custom",
+   "speaker": "Vivian",
+   "instruct": "五十多岁的热心大婶，嗓门大，热情爽快。",
+   "shift_semitones": 0,
+   "tempo": 1.0
+  },
+  "haru_unused": {
+   "voice": "V1",
+   "label": "VoiceDesign · 慈祥",
+   "kind": "voice_design",
+   "instruct": "一位七十多岁的老奶奶，声音苍老，音调偏低，略带沙哑和气声，说话很慢，温柔慈祥，句尾轻轻上扬，带着笑意。",
+   "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-VoiceDesign-8bit",
+   "ref_audio": "art/audio/voice_samples/_ref_haru_V1.wav",
+   "ref_text": "我今天去河边走了走，风很舒服，花也开得很好。"
+  },
+  "tanaka_unused": {
+   "voice": "B",
+   "label": "Uncle Fu 降调重塑",
+   "kind": "designed",
+   "speaker": "Uncle_Fu",
+   "instruct": "年迈的老爷爷，话少，低沉缓慢。",
+   "shift_semitones": -1.5,
+   "tempo": 0.95,
+   "ref_audio": "art/audio/voice_samples/_ref_tanaka_B.wav",
+   "ref_text": "我今天去河边走了走，风很舒服，花也开得很好。"
+  }
+ }
+}

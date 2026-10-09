@@ -1,0 +1,20 @@
+{
+ "id": "J04_rice_cabinet",
+ "src": "raw/J04_rice_cabinet/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 16000,
+ "tris": 7000,
+ "size_m": [
+  1.2,
+  0.533,
+  0.861
+ ],
+ "godot_size_m_xyz": [
+  1.2,
+  0.861,
+  0.533
+ ],
+ "tex": 1024,
+ "bytes": 376596,
+ "yaw_fix": 0
+}

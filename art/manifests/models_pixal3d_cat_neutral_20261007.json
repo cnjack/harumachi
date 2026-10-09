@@ -1,0 +1,32 @@
+{
+  "models": [
+    {
+      "id": "AN_cat_orange_neutral_candidate",
+      "provider": "Pixal3D",
+      "resolution": 1536,
+      "job_id": "8499c594-b83b-417c-8133-8ae790c996a5",
+      "reference": "art/models/raw/cat_neutral_20261007/orange_pixal/reference.png",
+      "reference_sha256": "26d8c49e72a54bddcbc353c234e38450ecb9de7be8ef688d098185eb9451ee05",
+      "raw_glb": "art/models/raw/cat_neutral_20261007/orange_pixal/model.glb",
+      "candidate_glb": "art/poc/cat_neck_alignment_20261007/outputs/regenerated/orange.glb",
+      "accepted": false,
+      "scope": "unrigged neutral-pose candidate; five native views required",
+      "status": "generating"
+    },
+    {
+      "id": "AN_cat_calico_neutral_candidate",
+      "provider": "Pixal3D",
+      "resolution": 1536,
+      "job_id": "0060e49d-b9fb-48e7-9668-20aa9f68a0ac",
+      "reference": "art/models/raw/cat_neutral_20261007/calico_pixal/reference.png",
+      "reference_sha256": "efb7c1c421f38c78808af0d5b1d9136db5b757b2aa2a9b17efaf203d766bf156",
+      "raw_glb": "art/models/raw/cat_neutral_20261007/calico_pixal/model.glb",
+      "candidate_glb": "art/poc/cat_neck_alignment_20261007/outputs/regenerated/calico.glb",
+      "accepted": false,
+      "scope": "unrigged neutral-pose candidate; five native views required",
+      "status": "rendered_rejected",
+      "review": "Head/body direction improved, but visible surface speckling and face/style mismatch; not production quality.",
+      "native_views": "evidence/cat_neck_alignment_20261007/new-calico-views"
+    }
+  ]
+}

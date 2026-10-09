@@ -1,0 +1,26 @@
+{
+ "id": "B05_anpan",
+ "src": "raw/B05_anpan_atlas_audit_20261002/model.glb",
+ "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
+ "tris_src": 974315,
+ "tris": 1962,
+ "size_m": [
+  0.085,
+  0.094,
+  0.076
+ ],
+ "godot_size_m_xyz": [
+  0.085,
+  0.076,
+  0.094
+ ],
+ "tex": 1254,
+ "bytes": 1848720,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 9.9,
+ "levelled": false,
+ "lean_deg": 15.61,
+ "base_frac": 0.03,
+ "geometry_uv_unchanged": true
+}

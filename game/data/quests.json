@@ -1,0 +1,508 @@
+{
+ "Q00": {
+  "title": "搬家第一天",
+  "giver": "",
+  "order": 0,
+  "steps": [
+   {
+    "id": "mailbox",
+    "desc": "去支巷里的新家，看看门口的信箱"
+   },
+   {
+    "id": "enter_home",
+    "desc": "用钥匙打开家门，进屋看看"
+   }
+  ],
+  "rewards": {},
+  "unlocks": [
+   "Q01"
+  ]
+ },
+ "Q01": {
+  "title": "新邻居",
+  "giver": "mio",
+  "order": 1,
+  "steps": [
+   {
+    "id": "talk_mio",
+    "desc": "到共享庭院门口的公告栏找澪"
+   },
+   {
+    "id": "read_board",
+    "desc": "查看公告栏上的集市准备清单"
+   }
+  ],
+  "rewards": {
+   "key_items": {
+    "checklist": 1
+   }
+  },
+  "unlocks": [
+   "Q02",
+   "Q03",
+   "Q04"
+  ]
+ },
+ "Q02": {
+  "title": "面包香的方向",
+  "giver": "ren",
+  "order": 2,
+  "steps": [
+   {
+    "id": "talk_ren",
+    "desc": "去主街北侧的面包店找莲"
+   },
+   {
+    "id": "deliver_basket",
+    "desc": "把面包篮送到庭院里的集市摊位"
+   }
+  ],
+  "rewards": {
+   "key_items": {
+    "support_token": 1
+   },
+   "items": {
+    "flower_pot": 1
+   },
+   "affinity": {
+    "ren": 1
+   }
+  },
+  "unlocks": []
+ },
+ "Q03": {
+  "title": "庭院的新芽",
+  "giver": "haru",
+  "order": 3,
+  "steps": [
+   {
+    "id": "talk_haru",
+    "desc": "到庭院东南角的菜圃找春"
+   },
+   {
+    "id": "plant",
+    "desc": "在春的种植箱里种下番茄种子"
+   },
+   {
+    "id": "fill_can",
+    "desc": "到庭院的饮水台给洒水壶装水"
+   },
+   {
+    "id": "water",
+    "desc": "给种植箱浇水"
+   },
+   {
+    "id": "report",
+    "desc": "告诉春种好了"
+   }
+  ],
+  "rewards": {
+   "key_items": {
+    "support_token": 1
+   },
+   "coins": 20,
+   "affinity": {
+    "haru": 1
+   }
+  },
+  "unlocks": [
+   "Q06"
+  ]
+ },
+ "Q04": {
+  "title": "把消息告诉大家",
+  "giver": "mio",
+  "order": 4,
+  "steps": [
+   {
+    "id": "get_sign",
+    "desc": "去主街南侧的社区活动中心，取出活动标牌"
+   },
+   {
+    "id": "post_sign",
+    "desc": "把活动标牌贴到庭院门口的公告栏"
+   }
+  ],
+  "rewards": {
+   "key_items": {
+    "support_token": 1
+   },
+   "affinity": {
+    "mio": 1
+   }
+  },
+  "unlocks": []
+ },
+ "Q05": {
+  "title": "今天在这里见",
+  "giver": "mio",
+  "order": 5,
+  "steps": [
+   {
+    "id": "talk_plan",
+    "desc": "带着三枚邻里支持标记去找澪"
+   },
+   {
+    "id": "place_seats",
+    "desc": "在庭院里摆好野餐桌和长椅（可在花店、杂货店买装饰）"
+   },
+   {
+    "id": "invite",
+    "desc": "邀请莲和春来参加集市"
+   },
+   {
+    "id": "start",
+    "desc": "准备好了，就去告诉澪“开始集市”"
+   },
+   {
+    "id": "chat",
+    "desc": "集市开始了！和三位邻居聊聊"
+   }
+  ],
+  "rewards": {
+   "affinity": {
+    "mio": 1
+   }
+  },
+  "unlocks": [
+   "Q09"
+  ]
+ },
+ "Q06": {
+  "title": "河边的菜园",
+  "giver": "haru",
+  "order": 6,
+  "steps": [
+   {
+    "id": "talk_haru6",
+    "desc": "听春说说河边农园的事"
+   },
+   {
+    "id": "go_farm",
+    "desc": "从主街东端下坡，去河边市民农园"
+   },
+   {
+    "id": "talk_tanaka",
+    "desc": "把春的信交给农园的田中爷爷"
+   },
+   {
+    "id": "till",
+    "desc": "用锄头翻开一块荒地"
+   },
+   {
+    "id": "sow",
+    "desc": "在翻好的地里播下种子"
+   },
+   {
+    "id": "water6",
+    "desc": "在手压泵装水，给刚播的种子浇水"
+   },
+   {
+    "id": "report6",
+    "desc": "告诉田中爷爷种好了"
+   }
+  ],
+  "rewards": {
+   "coins": 30,
+   "affinity": {
+    "tanaka": 1,
+    "haru": 1
+   }
+  },
+  "unlocks": [
+   "Q07",
+   "Q08"
+  ]
+ },
+ "Q07": {
+  "title": "第一次收获",
+  "giver": "tanaka",
+  "order": 7,
+  "steps": [
+   {
+    "id": "harvest",
+    "desc": "每天浇水，等作物成熟后收获（成熟的作物会闪光）"
+   },
+   {
+    "id": "sell",
+    "desc": "在农园路边的无人菜摊卖出一份收获"
+   },
+   {
+    "id": "report7",
+    "desc": "告诉田中爷爷第一次收获的心情"
+   }
+  ],
+  "rewards": {
+   "coins": 20,
+   "items": {
+    "seed_strawberry": 1,
+    "fertilizer": 2
+   },
+   "affinity": {
+    "tanaka": 1
+   }
+  },
+  "unlocks": []
+ },
+ "Q08": {
+  "title": "小葵的向日葵",
+  "giver": "aoi",
+  "order": 8,
+  "steps": [
+   {
+    "id": "talk_aoi",
+    "desc": "听听小葵的小心愿"
+   },
+   {
+    "id": "sow_sun",
+    "desc": "把小葵给的向日葵种子种下"
+   },
+   {
+    "id": "bloom",
+    "desc": "每天浇水，等向日葵开花后收获"
+   },
+   {
+    "id": "give_aoi",
+    "desc": "把向日葵交给小葵"
+   }
+  ],
+  "rewards": {
+   "key_items": {
+    "hairclip": 1
+   },
+   "affinity": {
+    "aoi": 1,
+    "haru": 1
+   }
+  },
+  "unlocks": []
+ },
+ "Q09": {
+  "title": "周六的菜摊",
+  "giver": "mio",
+  "order": 9,
+  "steps": [
+   {
+    "id": "sell_market",
+    "desc": "周六傍晚的集市上，在摊位卖出 5 份作物"
+   },
+   {
+    "id": "report9",
+    "desc": "告诉澪菜摊的成绩"
+   }
+  ],
+  "rewards": {
+   "coins": 50,
+   "affinity": {
+    "mio": 1
+   }
+  },
+  "unlocks": []
+ },
+ "Q10": {
+  "title": "奶奶的箱子",
+  "giver": "mio",
+  "order": 10,
+  "chapter": 3,
+  "steps": [
+   {
+    "id": "open_box",
+    "desc": "看看卧室壁橱里奶奶留下的箱子"
+   },
+   {
+    "id": "show_mio",
+    "desc": "把那张旧照片拿给澪看"
+   }
+  ],
+  "rewards": {
+   "coins": 0,
+   "affinity": {
+    "mio": 1
+   }
+  },
+  "unlocks": [
+   "Q11"
+  ]
+ },
+ "Q11": {
+  "title": "町内会的旧账本",
+  "giver": "mio",
+  "order": 11,
+  "chapter": 3,
+  "steps": [
+   {
+    "id": "find_notebook",
+    "desc": "去社区中心的储物间找健一爷爷的账本"
+   },
+   {
+    "id": "show_haru",
+    "desc": "把账本拿给春看"
+   },
+   {
+    "id": "report_mio11",
+    "desc": "把账本交给澪"
+   }
+  ],
+  "rewards": {
+   "coins": 30,
+   "affinity": {
+    "haru": 1,
+    "mio": 1
+   }
+  },
+  "unlocks": [
+   "Q12",
+   "Q13"
+  ]
+ },
+ "Q12": {
+  "title": "重新点亮灯笼",
+  "giver": "haru",
+  "order": 12,
+  "chapter": 3,
+  "steps": [
+   {
+    "id": "buy_washi",
+    "desc": "在杂货铺买 5 张和纸"
+   },
+   {
+    "id": "get_bamboo",
+    "desc": "去河边农园向田中爷爷要竹篾"
+   },
+   {
+    "id": "make_lanterns",
+    "desc": "带着和纸和竹篾去找春，一起糊灯笼"
+   },
+   {
+    "id": "give_lanterns",
+    "desc": "把 5 盏手糊的灯笼交给澪"
+   }
+  ],
+  "rewards": {
+   "coins": 50,
+   "affinity": {
+    "haru": 1,
+    "mio": 1
+   }
+  },
+  "unlocks": []
+ },
+ "Q13": {
+  "title": "健一的盆舞台",
+  "giver": "haru",
+  "order": 13,
+  "chapter": 3,
+  "steps": [
+   {
+    "id": "take_blueprint",
+    "desc": "从春那里拿到健一的盆舞台图纸"
+   },
+   {
+    "id": "ask_tanaka",
+    "desc": "傍晚（17 点后）去河边长椅找田中爷爷"
+   },
+   {
+    "id": "carry_wood",
+    "desc": "在农园的柴堆搬 6 根木料"
+   },
+   {
+    "id": "give_wood",
+    "desc": "把木料交给田中爷爷"
+   }
+  ],
+  "rewards": {
+   "coins": 50,
+   "affinity": {
+    "tanaka": 2
+   }
+  },
+  "unlocks": []
+ },
+ "Q14": {
+  "title": "晴町夏祭",
+  "giver": "mio",
+  "order": 14,
+  "chapter": 3,
+  "steps": [
+   {
+    "id": "go_fest",
+    "desc": "7月20日傍晚去庭院参加夏祭；错过后可找澪另约一晚"
+   },
+   {
+    "id": "bon_odori14",
+    "desc": "夏祭 20 点后加入盆舞；散场后找澪继续"
+   },
+   {
+    "id": "goldfish_mio",
+    "desc": "和澪一起去捞金鱼"
+   }
+  ],
+  "rewards": {
+   "coins": 100,
+   "affinity": {
+    "mio": 2
+   }
+  },
+  "unlocks": [
+   "Q15"
+  ]
+ },
+ "Q15": {
+  "title": "再放一次花火",
+  "giver": "tanaka",
+  "order": 15,
+  "chapter": 3,
+  "steps": [
+   {
+    "id": "take_tube",
+    "desc": "去农园工具棚，取下最高那层架子上的旧花火筒"
+   },
+   {
+    "id": "watch_hanabi",
+    "desc": "7月27日晚上在河边看花火；错过后仍可去长椅听田中讲那晚的记录"
+   }
+  ],
+  "rewards": {
+   "coins": 80,
+   "affinity": {
+    "tanaka": 2
+   }
+  },
+  "unlocks": []
+ },
+ "Q16": {
+  "title": "莲的街坊三明治",
+  "giver": "ren",
+  "order": 16,
+  "chapter": 2,
+  "offer_target": "bakery",
+  "steps": [
+   {
+    "id": "bakery_bake",
+    "desc": "去面包店试吃纸签接受试做；领一份材料，在店里烤箱做街坊三明治"
+   },
+   {
+    "id": "bakery_trial",
+    "desc": "把亲手做的街坊三明治拿给莲（柜台旁的试吃纸签）"
+   },
+   {
+    "id": "bakery_taste",
+    "desc": "请澪、春、和子阿姨中的任意两位试吃；店里找不到和子时去柜台"
+   },
+   {
+    "id": "bakery_menu",
+    "desc": "回面包店的试吃纸签，与莲决定周六的试吃重点"
+   },
+   {
+    "id": "bakery_supply",
+    "desc": "为下一次周六留番茄 2、黄瓜 1，傍晚去庭院摊位；可在试吃纸签改约或取消预留"
+   },
+   {
+    "id": "bakery_followup",
+    "desc": "集市后的第二天，回面包店看看试吃纸签和新订单"
+   }
+  ],
+  "rewards": {},
+  "unlocks": []
+ }
+}

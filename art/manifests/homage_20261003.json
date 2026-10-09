@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-03",
+  "new_original_illustrations": 7,
+  "tool": "built-in imagegen",
+  "source_directory": "art/references/homage_20261003",
+  "game_assets": "game/assets/ui/homage",
+  "prompts": [
+    "art/manifests/prompts/homage_20261003.json",
+    "art/manifests/prompts/homage_variants_20261003.json"
+  ],
+  "world_representation": "small transparent illustrated props and simple wood supports; no paid 3D regeneration",
+  "dialogue": "new silent narrator entries only",
+  "references": [
+    "https://wiki.stardewvalley.net/Community_Center",
+    "https://wiki.stardewvalley.net/Secrets",
+    "https://www.storyofseasons.com/awl/manuals/switch/07/",
+    "https://www.storyofseasons.com/awl/manuals/ps5/16/"
+  ]
+}

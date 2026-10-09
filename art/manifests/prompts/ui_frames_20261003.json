@@ -1,0 +1,19 @@
+{
+  "tool": "built-in imagegen",
+  "reference": "game/assets/ui/refresh_20261003/navigation_atlas.png",
+  "transparent_background": true,
+  "jobs": [
+    {
+      "key": "modal_paper",
+      "prompt": "Use the attached icon atlas ONLY for the restrained warm ivory, mint, dark-teal and gold palette and clean anime illustration style. Create ONE square 1024x1024 UI popup background skin, intended for nine-slice scaling in a Japanese anime summer-town game. A centred warm ivory washi paper panel fills 94 percent of the canvas, softly rounded corners, perfectly flat front view. The paper centre is a broad QUIET EMPTY area, nearly uniform warm ivory with extremely delicate low-contrast paper fibres. An exquisite very thin muted-gold inner contour with tiny dark-teal corner strokes; a tiny understated ginkgo leaf motif confined to the bottom-right corner and one tiny simple corner flourish at top-left. NO text, no letters, no symbols, no icons, no actual interface. Border detail stays strictly in the outer 12 percent so the centre can stretch. The entire panel edge and its understated ambient shadow fade softly into TRANSPARENT alpha; outer corners fully transparent. No thick wooden frame, no bevel, no glossy highlights, no photorealism, no busy pattern. Clean confident hand-drawn Japanese TV anime UI art, matte cel-style colour. Actual fully transparent PNG background outside the panel. Deliver only the reusable paper skin."
+    },
+    {
+      "key": "hud_paper",
+      "prompt": "Use the attached icons ONLY as a colour and clean anime style reference. Generate ONE landscape 3:1 aspect reusable HUD background skin for a Japanese anime town game, 1536x512 composition. One warm ivory washi-paper capsule/pill with subtly irregular hand-drawn edges and softly rounded corners, flat frontal view, centred and occupying 94 percent of the image width and 86 percent of its height. No text, no labels, no icons, no illustration objects. Broad empty quiet ivory centre with barely perceptible fine paper fibres. Border is a delicate almost invisible pale-sage and warm-gold line, one tiny understated ink dash at each extreme end, not a hard stroke. All artwork and shadow softly feather into true transparent alpha outside the capsule. Keep all edge detail within the outer 12 percent for nine-slice scaling. No thick border, no shiny bevel, no photographic paper wrinkles, no dark dirt, no decorative leaves in the centre. Refined, light, compact, matte clean anime UI. Fully transparent PNG background. Deliver the single blank HUD skin only."
+    },
+    {
+      "key": "minimap_ring",
+      "prompt": "Use the attached icons ONLY as the palette and clean anime illustration style reference. Generate ONE square 1024x1024 transparent circular minimap BORDER OVERLAY, exact circle centred at 512,512, flat front view. A very THIN warm ivory washi ring, inner radius roughly 472 pixels and outer radius roughly 496 pixels, with delicate muted-gold hairline edging and a subtle pale-sage inner stroke. Small fine dark-teal ink ticks at north, south, east and west, no letters. A tiny tasteful simple leaf flourish following the ring at the lower-right, confined near the ring. IMPORTANT: the entire large central opening is COMPLETELY TRANSPARENT alpha, NOT paper, NOT white, NOT black. Outside the ring is also completely transparent alpha; the outermost fringe is softly feathered. NO map, no land, no icons, no labels, no text, no numeral, no compass needle, no cast scenery, no opaque centre. The ring should be restrained, exquisite and almost weightless, not thick or ornate. Clean Japanese TV anime cel-style UI artwork, matte ivory, quiet sage, tiny warm-gold details, no glossy 3D. Deliver only the hollow circular rim as PNG with true alpha."
+    }
+  ]
+}

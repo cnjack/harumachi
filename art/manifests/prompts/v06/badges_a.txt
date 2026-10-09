@@ -1,0 +1,6 @@
+Achievement badge icon sheet for a cozy Japanese small-town life game UI, soft hand-painted anime style with clean outlines. Square image with a strict grid of 4 columns x 4 rows of equal cells; each cell holds ONE round badge centred with margin: a cream enamel disc with a thin warm-gold rim and a small ribbon tail at the bottom, and a single simple bold emblem in the middle in warm saturated colours, readable at 64 pixels. Solid flat warm ivory background (#F6F1E7) everywhere, no text, no letters, no numbers, no frames between cells, no watermark.
+Emblems, left to right, row by row:
+1) an old brass house key; 2) a green-and-white striped market stall; 3) a small green sprout in soil; 4) a wheelbarrow full of vegetables;
+5) a fan of colourful seed packets; 6) a garden hoe with a small star; 7) a golden hoe with sparkles; 8) a wooden compost box with a leaf;
+9) a gold ribbon rosette; 10) a rice ball onigiri; 11) a white chef's hat; 12) a golden bread loaf;
+13) a small stack of gold coins; 14) an oval gold koban coin with sparkles; 15) one red heart; 16) two overlapping red hearts.

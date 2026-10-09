@@ -1,0 +1,20 @@
+name: 游戏问题
+description: 报告剧情、操作、存档或画面问题
+body:
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 怎么出现的
+      description: 写明区域、游戏日期/时刻、操作步骤和期望结果。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 画面与日志
+      description: 可以附截图和相关错误；不要附私人存档或凭据。
+  - type: input
+    id: environment
+    attributes:
+      label: 运行版本与环境
+      description: 引擎版本、桌面/Web、系统和浏览器。

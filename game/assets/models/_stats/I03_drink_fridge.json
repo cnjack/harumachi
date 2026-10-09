@@ -1,0 +1,20 @@
+{
+ "id": "I03_drink_fridge",
+ "src": "raw/I03_drink_fridge_pix/model.glb",
+ "provider": "pixal3d (v0.6)",
+ "tris_src": 933965,
+ "tris": 7778,
+ "size_m": [
+  0.824,
+  0.765,
+  1.899
+ ],
+ "godot_size_m_xyz": [
+  0.824,
+  1.899,
+  0.765
+ ],
+ "tex": 1024,
+ "bytes": 559528,
+ "yaw_fix": 0
+}

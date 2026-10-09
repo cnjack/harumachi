@@ -1,0 +1,10 @@
+{
+  "source": "game/assets/models/S02.glb",
+  "source_mtime": 1791024493.5257277,
+  "sha256": "2747ab8bb3fcc2e4481ffb455d6fa08f1ab150ddca4967abc4f529150274805e",
+  "rays": 136,
+  "intrusions": [],
+  "passed": true,
+  "pane_plane_z": 3.327,
+  "allowed_front_margin_m": 0.006
+}

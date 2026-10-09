@@ -1,0 +1,8 @@
+{
+ "model": "MiniMax-Music3-MLX-Serve-8bit",
+ "prompt": "### Global Metadata\nA complete 80-second bright and playful midday piece for a small-town vegetable contest at a summer fair, cheerful and a little comic. 108 BPM, F major. Marimba and xylophone melody, pizzicato strings, a bouncy clarinet, bassoon counter-line, light snare, woodblock and triangle. Pure instrumental ensemble piece.\n\n### Vocal Details\nNone. Instrumental only: marimba and clarinet trade the tune like two friends competing.\n\n### Timed Arrangement\n0-12 seconds: pizzicato strings and woodblock set a bouncy groove. 12-36 seconds: marimba melody with light snare. 36-60 seconds: clarinet takes the tune, bassoon adds a comic counter-line. 60-80 seconds: both together, playful and light. Keep tempo, texture and loudness consistent from start to end; no big climax. The piece must play for the full 80 seconds and must not end early, ending cleanly on the tonic so it can loop.",
+ "lyrics": "[Intro]\n[Instrumental]\n\n[Interlude]\n[Marimba Solo]\n\n[Interlude]\n[Clarinet Solo]\n\n[Outro]\n[Instrumental]",
+ "duration_seconds": 80,
+ "steps": 30,
+ "seed": 2026093002
+}

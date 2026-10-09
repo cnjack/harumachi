@@ -1,0 +1,436 @@
+{
+ "generator": "art/tools/synth_audio.py",
+ "sample_rate": 44100,
+ "game_music": "MiniMax Music 3, see art/manifests/music_minimax/render_stats.json and takes.json",
+ "music": {},
+ "ambience": {
+  "day": {
+   "file": "amb/day.ogg",
+   "seconds": 60.0,
+   "loop": true
+  },
+  "evening": {
+   "file": "amb/evening.ogg",
+   "seconds": 60.0,
+   "loop": true
+  },
+  "room": {
+   "file": "amb/room.ogg",
+   "seconds": 60.0,
+   "loop": true
+  }
+ },
+ "sfx": {
+  "step_stone_0": {
+   "file": "sfx/step_stone_0.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_stone_1": {
+   "file": "sfx/step_stone_1.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_stone_2": {
+   "file": "sfx/step_stone_2.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_stone_3": {
+   "file": "sfx/step_stone_3.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_gravel_0": {
+   "file": "sfx/step_gravel_0.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_gravel_1": {
+   "file": "sfx/step_gravel_1.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_gravel_2": {
+   "file": "sfx/step_gravel_2.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_gravel_3": {
+   "file": "sfx/step_gravel_3.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_grass_0": {
+   "file": "sfx/step_grass_0.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_grass_1": {
+   "file": "sfx/step_grass_1.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_grass_2": {
+   "file": "sfx/step_grass_2.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_grass_3": {
+   "file": "sfx/step_grass_3.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_wood_0": {
+   "file": "sfx/step_wood_0.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_wood_1": {
+   "file": "sfx/step_wood_1.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_wood_2": {
+   "file": "sfx/step_wood_2.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_wood_3": {
+   "file": "sfx/step_wood_3.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_tatami_0": {
+   "file": "sfx/step_tatami_0.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_tatami_1": {
+   "file": "sfx/step_tatami_1.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_tatami_2": {
+   "file": "sfx/step_tatami_2.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "step_tatami_3": {
+   "file": "sfx/step_tatami_3.wav",
+   "seconds": 0.28,
+   "peak_db": -6
+  },
+  "ui_hover": {
+   "file": "sfx/ui_hover.wav",
+   "seconds": 0.03,
+   "peak_db": -14
+  },
+  "ui_click": {
+   "file": "sfx/ui_click.wav",
+   "seconds": 0.09,
+   "peak_db": -5
+  },
+  "ui_open": {
+   "file": "sfx/ui_open.wav",
+   "seconds": 0.32,
+   "peak_db": -5
+  },
+  "ui_close": {
+   "file": "sfx/ui_close.wav",
+   "seconds": 0.32,
+   "peak_db": -5
+  },
+  "ui_next": {
+   "file": "sfx/ui_next.wav",
+   "seconds": 0.18,
+   "peak_db": -8
+  },
+  "ui_select": {
+   "file": "sfx/ui_select.wav",
+   "seconds": 0.3,
+   "peak_db": -5
+  },
+  "ui_invalid": {
+   "file": "sfx/ui_invalid.wav",
+   "seconds": 0.32,
+   "peak_db": -5
+  },
+  "ui_rotate": {
+   "file": "sfx/ui_rotate.wav",
+   "seconds": 0.12,
+   "peak_db": -8
+  },
+  "sting_item": {
+   "file": "sfx/sting_item.wav",
+   "seconds": 1.38,
+   "peak_db": -3
+  },
+  "sting_quest_accept": {
+   "file": "sfx/sting_quest_accept.wav",
+   "seconds": 1.74,
+   "peak_db": -3
+  },
+  "sting_step": {
+   "file": "sfx/sting_step.wav",
+   "seconds": 1.0,
+   "peak_db": -8
+  },
+  "sting_quest_done": {
+   "file": "sfx/sting_quest_done.wav",
+   "seconds": 4.979,
+   "peak_db": -3
+  },
+  "sting_coin": {
+   "file": "sfx/sting_coin.wav",
+   "seconds": 0.6,
+   "peak_db": -3
+  },
+  "sting_save": {
+   "file": "sfx/sting_save.wav",
+   "seconds": 1.67,
+   "peak_db": -3
+  },
+  "sting_sparkle": {
+   "file": "sfx/sting_sparkle.wav",
+   "seconds": 1.76,
+   "peak_db": -8
+  },
+  "sting_fanfare": {
+   "file": "sfx/sting_fanfare.wav",
+   "seconds": 5.159,
+   "peak_db": -3
+  },
+  "fx_door": {
+   "file": "sfx/fx_door.wav",
+   "seconds": 0.9,
+   "peak_db": -4
+  },
+  "fx_mailbox": {
+   "file": "sfx/fx_mailbox.wav",
+   "seconds": 0.7,
+   "peak_db": -4
+  },
+  "fx_water_tap": {
+   "file": "sfx/fx_water_tap.wav",
+   "seconds": 1.8,
+   "peak_db": -4
+  },
+  "fx_water_pour": {
+   "file": "sfx/fx_water_pour.wav",
+   "seconds": 1.8,
+   "peak_db": -4
+  },
+  "fx_soil": {
+   "file": "sfx/fx_soil.wav",
+   "seconds": 0.8,
+   "peak_db": -4
+  },
+  "fx_paper": {
+   "file": "sfx/fx_paper.wav",
+   "seconds": 0.55,
+   "peak_db": -4
+  },
+  "fx_place": {
+   "file": "sfx/fx_place.wav",
+   "seconds": 0.35,
+   "peak_db": -4
+  },
+  "fx_pickup": {
+   "file": "sfx/fx_pickup.wav",
+   "seconds": 0.18,
+   "peak_db": -4
+  },
+  "fx_basket": {
+   "file": "sfx/fx_basket.wav",
+   "seconds": 0.4,
+   "peak_db": -4
+  },
+  "fx_purr": {
+   "file": "sfx/fx_purr.wav",
+   "seconds": 1.6,
+   "peak_db": -6
+  },
+  "mg_count": {
+   "file": "sfx/mg_count.wav",
+   "seconds": 0.5,
+   "peak_db": -5
+  },
+  "mg_go": {
+   "file": "sfx/mg_go.wav",
+   "seconds": 1.24,
+   "peak_db": -5
+  },
+  "mg_good": {
+   "file": "sfx/mg_good.wav",
+   "seconds": 0.45,
+   "peak_db": -5
+  },
+  "mg_perfect": {
+   "file": "sfx/mg_perfect.wav",
+   "seconds": 1.135,
+   "peak_db": -5
+  },
+  "mg_miss": {
+   "file": "sfx/mg_miss.wav",
+   "seconds": 0.28,
+   "peak_db": -5
+  },
+  "mg_result": {
+   "file": "sfx/mg_result.wav",
+   "seconds": 3.658,
+   "peak_db": -4
+  },
+  "mg_rice_scoop": {
+   "file": "sfx/mg_rice_scoop.wav",
+   "seconds": 0.32,
+   "peak_db": -5
+  },
+  "mg_rice_press": {
+   "file": "sfx/mg_rice_press.wav",
+   "seconds": 0.22,
+   "peak_db": -5
+  },
+  "mg_filling": {
+   "file": "sfx/mg_filling.wav",
+   "seconds": 0.25,
+   "peak_db": -5
+  },
+  "mg_nori": {
+   "file": "sfx/mg_nori.wav",
+   "seconds": 0.3,
+   "peak_db": -5
+  },
+  "mg_serve": {
+   "file": "sfx/mg_serve.wav",
+   "seconds": 1.28,
+   "peak_db": -5
+  },
+  "mg_order_bad": {
+   "file": "sfx/mg_order_bad.wav",
+   "seconds": 0.4,
+   "peak_db": -5
+  },
+  "mg_customer_leave": {
+   "file": "sfx/mg_customer_leave.wav",
+   "seconds": 1.4,
+   "peak_db": -5
+  },
+  "mg_pickup": {
+   "file": "sfx/mg_pickup.wav",
+   "seconds": 0.18,
+   "peak_db": -5
+  },
+  "mg_place": {
+   "file": "sfx/mg_place.wav",
+   "seconds": 0.35,
+   "peak_db": -5
+  },
+  "mg_place_good": {
+   "file": "sfx/mg_place_good.wav",
+   "seconds": 0.35,
+   "peak_db": -5
+  },
+  "mg_bump": {
+   "file": "sfx/mg_bump.wav",
+   "seconds": 0.2,
+   "peak_db": -5
+  },
+  "mg_box_open": {
+   "file": "sfx/mg_box_open.wav",
+   "seconds": 0.5,
+   "peak_db": -5
+  },
+  "mg_box_fold": {
+   "file": "sfx/mg_box_fold.wav",
+   "seconds": 0.45,
+   "peak_db": -5
+  },
+  "mg_rotate": {
+   "file": "sfx/mg_rotate.wav",
+   "seconds": 0.09,
+   "peak_db": -5
+  },
+  "mg_slide": {
+   "file": "sfx/mg_slide.wav",
+   "seconds": 0.16,
+   "peak_db": -5
+  },
+  "mg_slide_blocked": {
+   "file": "sfx/mg_slide_blocked.wav",
+   "seconds": 0.14,
+   "peak_db": -5
+  },
+  "mg_hint": {
+   "file": "sfx/mg_hint.wav",
+   "seconds": 1.16,
+   "peak_db": -5
+  },
+  "mg_solved": {
+   "file": "sfx/mg_solved.wav",
+   "seconds": 4.979,
+   "peak_db": -3
+  },
+  "mg_water_in": {
+   "file": "sfx/mg_water_in.wav",
+   "seconds": 0.35,
+   "peak_db": -5
+  },
+  "mg_water_out": {
+   "file": "sfx/mg_water_out.wav",
+   "seconds": 0.35,
+   "peak_db": -5
+  },
+  "mg_catch": {
+   "file": "sfx/mg_catch.wav",
+   "seconds": 0.35,
+   "peak_db": -5
+  },
+  "mg_tear": {
+   "file": "sfx/mg_tear.wav",
+   "seconds": 0.35,
+   "peak_db": -5
+  },
+  "mg_escape": {
+   "file": "sfx/mg_escape.wav",
+   "seconds": 0.35,
+   "peak_db": -5
+  },
+  "mg_splash": {
+   "file": "sfx/mg_splash.wav",
+   "seconds": 0.5,
+   "peak_db": -5
+  },
+  "mg_new_poi": {
+   "file": "sfx/mg_new_poi.wav",
+   "seconds": 0.55,
+   "peak_db": -5
+  },
+  "mg_don": {
+   "file": "sfx/mg_don.wav",
+   "seconds": 0.9,
+   "peak_db": -2
+  },
+  "mg_ka": {
+   "file": "sfx/mg_ka.wav",
+   "seconds": 0.12,
+   "peak_db": -4
+  },
+  "mg_combo": {
+   "file": "sfx/mg_combo.wav",
+   "seconds": 1.0,
+   "peak_db": -5
+  },
+  "mg_full_combo": {
+   "file": "sfx/mg_full_combo.wav",
+   "seconds": 5.159,
+   "peak_db": -3
+  },
+  "cat_meow": {
+   "file": "sfx/cat_meow.wav",
+   "seconds": 0.78,
+   "peak_db": -7.5,
+   "generator": "art/tools/synth_cat_meow.py"
+  }
+ }
+}

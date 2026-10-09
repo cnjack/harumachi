@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>在线试玩 · 明年夏祭</title>
+  <link rel="stylesheet" href="../ui.css">
+  <link rel="stylesheet" href="../play.css">
+  $GODOT_HEAD_INCLUDE
+</head>
+<body data-game-state="waiting">
+  <header class="play-toolbar">
+    <a href="../#play"><img class="ui-icon" src="../assets/ui/icon_home.png" alt="">明年夏祭</a>
+    <nav aria-label="试玩控制">
+      <span id="save-status" role="status"></span>
+      <button class="ui-button" id="web-save" disabled><img class="ui-icon" src="../assets/ui/icon_check.png" alt="">保存</button>
+      <button class="ui-button" id="fullscreen"><img class="ui-icon" src="../assets/ui/icon_map.png" alt="">全屏</button>
+    </nav>
+  </header>
+  <canvas id="canvas" tabindex="0" aria-label="明年夏祭游戏画面">浏览器需要支持游戏画布。</canvas>
+  <section class="loading-screen" id="loading" aria-live="polite">
+    <div class="loading-card ui-paper">
+    <div class="lantern" aria-hidden="true"></div>
+    <h1 id="loading-title">晴町，等你回来。</h1>
+    <p id="loading-copy">网页版使用键盘和鼠标。首次打开需要下载游戏资源，<br>进度会保存在这个浏览器里。</p>
+    <div class="loading-dots" id="loading-dots" aria-hidden="true" hidden><i></i><i></i><i></i></div>
+    <progress id="progress" hidden></progress>
+    <p id="download-status" role="status"></p>
+    <button class="ui-button primary" id="start">开始游玩</button>
+    <button class="ui-button primary" id="retry" hidden>重新加载</button>
+    <p class="play-hint">每天结束自动保存，也可随时手动保存。<br>WASD 移动 · E 互动 · M 地图 · Esc 暂停<br>清除浏览器数据也会清除这里的存档。</p>
+    </div>
+  </section>
+  <noscript>请开启 JavaScript 后再打开试玩。</noscript>
+  <script src="$GODOT_URL"></script>
+  <script>
+    const config = $GODOT_CONFIG;
+    config.canvasResizePolicy = 0;
+    const engine = new Engine(config);
+    const assetBase = config.assetBase || "";
+    const canvas = document.getElementById("canvas");
+    const overlay = document.getElementById("loading");
+    const progress = document.getElementById("progress");
+    const title = document.getElementById("loading-title");
+    const copy = document.getElementById("loading-copy");
+    const status = document.getElementById("download-status");
+    const dots = document.getElementById("loading-dots");
+    function sizeCanvas() {
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      const toolbarHeight = document.querySelector(".play-toolbar").offsetHeight;
+      document.documentElement.style.setProperty("--toolbar-height", `${toolbarHeight}px`);
+      canvas.width = Math.round(window.innerWidth * ratio);
+      canvas.height = Math.round((document.fullscreenElement === canvas ? window.innerHeight : window.innerHeight - toolbarHeight) * ratio);
+    }
+    sizeCanvas();
+    window.addEventListener("resize", sizeCanvas);
+    document.addEventListener("fullscreenchange", sizeCanvas);
+    document.getElementById("fullscreen").addEventListener("click", () => {
+      canvas.requestFullscreen?.().catch(() => { document.getElementById("save-status").textContent = "浏览器暂时未允许全屏。"; });
+    });
+    document.getElementById("web-save").addEventListener("click", () => {
+      if (typeof window.harumachiSave === "function") window.harumachiSave();
+    });
+    document.getElementById("retry").addEventListener("click", () => location.reload());
+    async function downloadPack() {
+      const file = config.mainPack || `${config.executable}.pck`;
+      const size = config.fileSizes[file];
+      const bytes = new Uint8Array(size);
+      const chunkSize = 4 * 1024 * 1024;
+      progress.hidden = false;
+      progress.max = size;
+      for (let start = 0; start < size; start += chunkSize) {
+        const end = Math.min(size - 1, start + chunkSize - 1);
+        let complete = false;
+        for (let attempt = 0; attempt < 4 && !complete; attempt += 1) {
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort(), 90000);
+          try {
+            const response = await fetch(assetBase + file, { headers: { Range: `bytes=${start}-${end}` }, signal: controller.signal });
+            if (response.status !== 206) throw new Error("Resource server did not support range downloads");
+            const piece = new Uint8Array(await response.arrayBuffer());
+            if (piece.byteLength !== end - start + 1) throw new Error("Incomplete resource segment");
+            bytes.set(piece, start);
+            progress.value = end + 1;
+            status.textContent = `${((end + 1) / 1048576).toFixed(1)} / ${(size / 1048576).toFixed(1)} MB`;
+            document.body.dataset.downloadedBytes = String(end + 1);
+            complete = true;
+          } catch (error) {
+            if (attempt === 3) throw error;
+            status.textContent = "网络有些慢，正在重新下载当前部分……";
+          } finally {
+            clearTimeout(timeout);
+          }
+        }
+      }
+      return { file, bytes };
+    }
+    document.getElementById("start").addEventListener("click", async () => {
+      document.getElementById("start").hidden = true;
+      dots.hidden = false;
+      title.textContent = "正在载入晴町";
+      copy.textContent = "第一次需要一点时间，正在准备街道、邻居和音乐。";
+      document.body.dataset.gameState = "loading";
+      const missing = Engine.getMissingFeatures({ threads: $GODOT_THREADS_ENABLED });
+      if (missing.length) {
+        title.textContent = "这个浏览器暂时无法打开试玩";
+        copy.textContent = "请使用支持 WebGL 2 的最新版 Chrome、Edge 或 Firefox。";
+        dots.hidden = true;
+        document.getElementById("retry").hidden = false;
+        document.body.dataset.gameState = "error";
+        return;
+      }
+      try {
+        const args = new URLSearchParams(location.search).has("autoplay") ? ["--", "--autoplay"] : [];
+        title.textContent = "正在准备游戏引擎";
+        await engine.init(assetBase + config.executable);
+        title.textContent = "正在下载晴町";
+        const pack = await downloadPack();
+        await engine.preloadFile(pack.bytes.buffer, pack.file);
+        for (const library of config.gdextensionLibs || []) await engine.preloadFile(assetBase + library, library);
+        title.textContent = "正在打开晴町";
+        status.textContent = "资源已下载，正在准备画面。";
+        await engine.start({
+          canvas,
+          canvasResizePolicy: 0,
+          args: ["--main-pack", pack.file, ...args],
+          onProgress(current, total) {
+            if (total > 0) {
+              progress.hidden = false;
+              progress.max = total;
+              progress.value = current;
+              status.textContent = `${(current / 1048576).toFixed(1)} / ${(total / 1048576).toFixed(1)} MB`;
+              if (current >= total) { title.textContent = "正在打开晴町"; status.textContent = "资源已下载，正在准备画面。"; }
+            } else {
+              progress.hidden = true;
+              status.textContent = "正在准备游戏资源……";
+            }
+          },
+          onPrintError(text) { console.error(text); },
+          onExit(code) {
+            document.body.dataset.gameExitCode = String(code);
+            document.body.dataset.gameState = "exited";
+            document.getElementById("web-save").disabled = true;
+            overlay.hidden = false;
+            title.textContent = "下次，再回晴町看看。";
+            copy.textContent = "已经离开本次游玩，可以回到官网，或重新打开游戏。";
+            status.textContent = "";
+            dots.hidden = true;
+            progress.hidden = true;
+            document.getElementById("retry").textContent = "重新打开";
+            document.getElementById("retry").hidden = false;
+          },
+        });
+        overlay.hidden = true;
+        document.body.dataset.gameState = "ready";
+        canvas.focus();
+      } catch (error) {
+        console.error(error);
+        title.textContent = "这次没能打开晴町";
+        copy.textContent = "请检查网络连接，再重新加载。";
+        status.textContent = "";
+        dots.hidden = true;
+        document.getElementById("retry").hidden = false;
+        document.body.dataset.gameState = "error";
+      }
+    });
+  </script>
+</body>
+</html>

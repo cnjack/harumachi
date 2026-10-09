@@ -1,0 +1,5 @@
+Use case: stylized-concept
+Asset type: production albedo texture for an actual Godot Japanese small-town anime game.
+Style: Japanese TV anime background art, clean shapes, flat painted colours, crisp two-tone marks, bright summer feeling with restrained weathering. Not photorealistic, no gritty PBR noise, no thick painterly brushwork, no strong specular.
+Composition: exact flat orthographic view of the surface, edge to edge. No perspective, scene, backdrop, cast shadows, bevel depth, objects, text, lettering, watermark.
+Square seamless texture, tileable in both axes. A Japanese countryside compacted dirt walking path: warm pale sandy ochre, small embedded grey pebbles, faint irregular scuffed patches and broad quiet powdery areas. Sparse broken pebble groups separated by long calm areas; natural variation without dirtiness. Dry and matte. No footprints, no grass, no tile joints, no large stones, no photographs.

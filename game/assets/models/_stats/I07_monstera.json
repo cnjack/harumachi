@@ -1,0 +1,20 @@
+{
+ "id": "I07_monstera",
+ "src": "raw/I07_monstera/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 15000,
+ "tris": 5000,
+ "size_m": [
+  1.033,
+  0.926,
+  1.2
+ ],
+ "godot_size_m_xyz": [
+  1.033,
+  1.2,
+  0.926
+ ],
+ "tex": 1024,
+ "bytes": 375204,
+ "yaw_fix": 0
+}

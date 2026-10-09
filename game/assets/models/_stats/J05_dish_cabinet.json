@@ -1,0 +1,20 @@
+{
+ "id": "J05_dish_cabinet",
+ "src": "raw/J05_dish_cabinet/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 23994,
+ "tris": 7000,
+ "size_m": [
+  1.117,
+  0.568,
+  1.7
+ ],
+ "godot_size_m_xyz": [
+  1.117,
+  1.7,
+  0.568
+ ],
+ "tex": 1024,
+ "bytes": 428428,
+ "yaw_fix": 0
+}

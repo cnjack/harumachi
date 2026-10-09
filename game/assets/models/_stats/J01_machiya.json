@@ -1,0 +1,25 @@
+{
+ "id": "J01_machiya",
+ "src": "raw/J01_machiya_hyper3d/model.glb",
+ "provider": "Hyper3D Rodin Gen-2.5-Medium via CLI, 2026-10-01",
+ "tris_src": 39955,
+ "tris": 39955,
+ "size_m": [
+  6.353,
+  6.139,
+  6.6
+ ],
+ "godot_size_m_xyz": [
+  6.353,
+  6.6,
+  6.139
+ ],
+ "tex": 2048,
+ "bytes": 1880168,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.0,
+ "base_frac": 0.714
+}

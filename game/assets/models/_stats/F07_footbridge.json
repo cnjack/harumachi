@@ -1,0 +1,37 @@
+{
+ "id": "F07_footbridge",
+ "src": "raw/F07_footbridge_h3d/model.glb",
+ "provider": "hyper3d rodin gen-2.5 (v0.4)",
+ "tris_src": 25000,
+ "tris": 6991,
+ "size_m": [
+  1.78,
+  5.5,
+  1.814
+ ],
+ "godot_size_m_xyz": [
+  1.78,
+  1.814,
+  5.5
+ ],
+ "tex": 1024,
+ "bytes": 495140,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.44,
+ "levelled": false,
+ "lean_deg": 0.45,
+ "base_frac": 0.878,
+ "fit_bounds_blender": {
+  "min": [
+   -0.9004206657409668,
+   -2.749685287475586,
+   -0.0077332621440291405
+  ],
+  "max": [
+   0.8796563148498535,
+   2.75063157081604,
+   1.8058291673660278
+  ]
+ }
+}

@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-04",
+  "sources": {
+    "quaternius_standard": {
+      "license": "CC0-1.0",
+      "source": "https://quaternius.com/packs/stylizednaturemegakit.html",
+      "files": 68,
+      "tested_godot": "4.7.2-stable (official)",
+      "failed": 0,
+      "role": "68 sources verified in Godot; 9 fitted assets registered and placed"
+    },
+    "kenney": {
+      "license": "CC0-1.0",
+      "source": "https://kenney.nl/assets/nature-kit",
+      "role": "catalogued candidates with mesh previews, not placed",
+      "files": 329
+    }
+  },
+  "evidence": "evidence/free_foliage_20261004",
+  "report": "docs/game-design/FREE_FOLIAGE_20261004.md",
+  "adapted_date": "2026-10-05",
+  "integration": "art/library/integration.json",
+  "library": "art/library/catalog.json"
+}

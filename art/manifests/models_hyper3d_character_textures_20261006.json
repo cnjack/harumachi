@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-06",
+  "model_id": "CH_sora",
+  "workflow": "texture-only POC on existing animated mesh",
+  "plan": "Business",
+  "source_asset": "https://hyper3d.ai/workspace/rodin/2911f9f5-3375-4623-9a96-21ba6799ca7c",
+  "paid_credits": 2.5,
+  "raw_directory": "art/models/raw/CH_sora_texture12k_business_20261006",
+  "poc_directory": "art/poc/character_texture12k_20261006/godot",
+  "evidence": "evidence/character_texture12k_business_20261006/verification.json",
+  "adopted": false,
+  "status": "12K capability verified; candidates failed visual acceptance"
+}

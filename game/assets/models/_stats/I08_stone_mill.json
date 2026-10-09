@@ -1,0 +1,25 @@
+{
+ "id": "I08_stone_mill",
+ "src": "raw/I08_stone_mill_pix/model.glb",
+ "provider": "pixal3d (v0.6)",
+ "tris_src": 939247,
+ "tris": 6917,
+ "size_m": [
+  1.052,
+  0.772,
+  0.848
+ ],
+ "godot_size_m_xyz": [
+  1.052,
+  0.848,
+  0.772
+ ],
+ "tex": 1024,
+ "bytes": 511336,
+ "yaw_fix": -141.0,
+ "level": "auto",
+ "lean_src_deg": 25.19,
+ "levelled": true,
+ "lean_deg": 0.05,
+ "base_frac": 0.446
+}

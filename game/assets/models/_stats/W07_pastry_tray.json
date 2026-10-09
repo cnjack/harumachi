@@ -1,0 +1,25 @@
+{
+ "id": "W07_pastry_tray",
+ "src": "raw/W07_pastry_tray_pixal_retry_20261003/model.glb",
+ "provider": "Pixal3D private RTX 4080 image-to-3D, seed77 second reference, job 7cee3dab-1297-4661-8cdc-66bcda6e0df2",
+ "tris_src": 939991,
+ "tris": 13939,
+ "size_m": [
+  0.399,
+  0.217,
+  0.091
+ ],
+ "godot_size_m_xyz": [
+  0.399,
+  0.091,
+  0.217
+ ],
+ "tex": 2048,
+ "bytes": 814520,
+ "yaw_fix": 180,
+ "level": true,
+ "lean_src_deg": 33.96,
+ "levelled": true,
+ "lean_deg": 0.49,
+ "base_frac": 0.167
+}

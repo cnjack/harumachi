@@ -1,0 +1,138 @@
+{
+ "title": {
+  "source": "art/audio/music_raw/title.wav",
+  "file": "game/assets/audio/music/title.ogg",
+  "seconds": 72.09,
+  "sample_rate": 44100,
+  "input_lufs": -15.83,
+  "gain_db": -4.17
+ },
+ "day": {
+  "source": "art/audio/music_raw/day.wav",
+  "file": "game/assets/audio/music/day.ogg",
+  "seconds": 110.13,
+  "sample_rate": 44100,
+  "input_lufs": -13.48,
+  "gain_db": -6.52
+ },
+ "market": {
+  "source": "art/audio/music_raw/market.wav",
+  "file": "game/assets/audio/music/market.ogg",
+  "seconds": 71.16,
+  "sample_rate": 44100,
+  "input_lufs": -13.34,
+  "gain_db": -6.66
+ },
+ "ending": {
+  "source": "art/audio/music_raw/ending.wav",
+  "file": "game/assets/audio/music/ending.ogg",
+  "seconds": 37.28,
+  "sample_rate": 44100,
+  "input_lufs": -21.5,
+  "gain_db": 1.5
+ },
+ "bon_odori": {
+  "source": "art/audio/music_raw/bon_odori.wav",
+  "file": "game/assets/audio/music/bon_odori.ogg",
+  "seconds": 90.11,
+  "sample_rate": 44100,
+  "input_lufs": -15.84,
+  "gain_db": -4.16
+ },
+ "natsumatsuri": {
+  "source": "art/audio/music_raw/natsumatsuri.wav",
+  "file": "game/assets/audio/music/natsumatsuri.ogg",
+  "seconds": 100.12,
+  "sample_rate": 44100,
+  "input_lufs": -13.99,
+  "gain_db": -6.01
+ },
+ "tanabata": {
+  "source": "art/audio/music_raw/tanabata.wav",
+  "file": "game/assets/audio/music/tanabata.ogg",
+  "seconds": 54.33,
+  "sample_rate": 44100,
+  "input_lufs": -14.91,
+  "gain_db": -5.09
+ },
+ "hanabi": {
+  "source": "art/audio/music_raw/hanabi.wav",
+  "file": "game/assets/audio/music/hanabi.ogg",
+  "seconds": 67.07,
+  "sample_rate": 44100,
+  "input_lufs": -17.28,
+  "gain_db": -2.72
+ },
+ "obon": {
+  "source": "art/audio/music_raw/obon.wav",
+  "file": "game/assets/audio/music/obon.ogg",
+  "seconds": 59.03,
+  "sample_rate": 44100,
+  "input_lufs": -14.92,
+  "gain_db": -5.08
+ },
+ "tsukimi": {
+  "source": "art/audio/music_raw/tsukimi.wav",
+  "file": "game/assets/audio/music/tsukimi.ogg",
+  "seconds": 68.92,
+  "sample_rate": 44100,
+  "input_lufs": -12.86,
+  "gain_db": -7.14
+ },
+ "rain": {
+  "source": "art/audio/music_raw/rain.wav",
+  "file": "game/assets/audio/music/rain.ogg",
+  "seconds": 51.21,
+  "sample_rate": 44100,
+  "input_lufs": -25.03,
+  "gain_db": 0.61
+ },
+ "shop": {
+  "source": "art/audio/music_raw/shop.wav",
+  "file": "game/assets/audio/music/shop.ogg",
+  "seconds": 54.06,
+  "sample_rate": 44100,
+  "input_lufs": -15.24,
+  "gain_db": -4.76
+ },
+ "memory": {
+  "source": "art/audio/music_raw/memory.wav",
+  "file": "game/assets/audio/music/memory.ogg",
+  "seconds": 50.1,
+  "sample_rate": 44100,
+  "input_lufs": -15.22,
+  "gain_db": -4.78
+ },
+ "prologue": {
+  "source": "art/audio/music_raw/prologue.wav",
+  "file": "game/assets/audio/music/prologue.ogg",
+  "seconds": 75.13,
+  "sample_rate": 44100,
+  "input_lufs": -20.24,
+  "gain_db": 0.24
+ },
+ "farm": {
+  "source": "art/audio/music_raw/farm.wav",
+  "file": "game/assets/audio/music/farm.ogg",
+  "seconds": 83.89,
+  "sample_rate": 44100,
+  "input_lufs": -15.29,
+  "gain_db": -4.71
+ },
+ "contest": {
+  "source": "art/audio/music_raw/contest.wav",
+  "file": "game/assets/audio/music/contest.ogg",
+  "seconds": 59.06,
+  "sample_rate": 44100,
+  "input_lufs": -14.92,
+  "gain_db": -5.08
+ },
+ "night": {
+  "source": "art/audio/music_raw/night.wav",
+  "file": "game/assets/audio/music/night.ogg",
+  "seconds": 80.57,
+  "sample_rate": 44100,
+  "input_lufs": -15.68,
+  "gain_db": -4.32
+ }
+}

@@ -1,0 +1,39 @@
+{
+  "jobs": [
+    {
+      "id": "W04_sunflower_pot",
+      "reference": "art/references/window_modules_20261003/W04_sunflower_pot.png",
+      "output": "art/models/raw/W04_sunflower_pot_pixal_modules_20261003",
+      "resolution": 1024,
+      "seed": 42
+    },
+    {
+      "id": "W05_hydrangea_pot",
+      "reference": "art/references/window_modules_20261003/W05_hydrangea_pot.png",
+      "output": "art/models/raw/W05_hydrangea_pot_pixal_modules_20261003",
+      "resolution": 1024,
+      "seed": 42
+    },
+    {
+      "id": "W06_lily_vase",
+      "reference": "art/references/window_modules_20261003/W06_lily_vase.png",
+      "output": "art/models/raw/W06_lily_vase_pixal_modules_20261003",
+      "resolution": 1024,
+      "seed": 42
+    },
+    {
+      "id": "W07_pastry_tray",
+      "reference": "art/references/window_modules_20261003/W07_pastry_tray.png",
+      "output": "art/models/raw/W07_pastry_tray_pixal_modules_20261003",
+      "resolution": 1024,
+      "seed": 42
+    },
+    {
+      "id": "W08_baguette_basket",
+      "reference": "art/references/window_modules_20261003/W08_baguette_basket.png",
+      "output": "art/models/raw/W08_baguette_basket_pixal_modules_20261003",
+      "resolution": 1024,
+      "seed": 42
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+ "id": "I01_bed",
+ "src": "raw/I01_bed/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 14998,
+ "tris": 5000,
+ "size_m": [
+  1.251,
+  2.05,
+  0.78
+ ],
+ "godot_size_m_xyz": [
+  1.251,
+  0.78,
+  2.05
+ ],
+ "tex": 1024,
+ "bytes": 254432,
+ "yaw_fix": 0
+}

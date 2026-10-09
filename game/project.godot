@@ -1,0 +1,79 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="明年夏祭"
+config/description="回到晴町的这个夏天，把停了十五年的夏祭办回来。种菜、做饭、摆摊、过节的日式小镇生活游戏。"
+config/version="0.6.0"
+run/main_scene="res://scenes/title.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="晴町日常"
+config/features=PackedStringArray("4.8", "Forward Plus")
+config/icon="res://icon.png"
+config/macos_native_icon="res://harumachi.icns"
+
+[autoload]
+
+SaveDB="*res://scripts/autoload/save_db.gd"
+Audio="*res://scripts/autoload/audio.gd"
+GameState="*res://scripts/autoload/game_state.gd"
+Progress="*res://scripts/autoload/progress.gd"
+Loading="*res://scripts/autoload/loading.gd"
+Browser="*res://scripts/autoload/browser.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=1600
+window/size/window_height_override=900
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[gui]
+
+theme/custom_font="res://assets/fonts/LXGWWenKai-Medium.ttf"
+
+[layer_names]
+
+3d_physics/layer_1="ground"
+3d_physics/layer_2="solid"
+3d_physics/layer_3="actors"
+3d_physics/layer_4="camera_block"
+3d_physics/layer_5="placed"
+
+[physics]
+
+common/physics_interpolation=true
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
+lights_and_shadows/directional_shadow/size=8192
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
+textures/default_filters/anisotropic_filtering_level=3
+anti_aliasing/quality/msaa_3d=2
+environment/defaults/default_clear_color=Color(0.55, 0.72, 0.92, 1)
+
+[shader_globals]
+
+wind_direction={
+"type": "vec2",
+"value": Vector2(0.8, 0.6)
+}
+wind_strength={
+"type": "float",
+"value": 1.0
+}
+grass_push={
+"type": "vec4",
+"value": Vector4(0, -100, 0, 0.9)
+}

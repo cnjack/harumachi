@@ -1,0 +1,19 @@
+{
+ "id": "M12d_flower_bush",
+ "src": "raw/free_foliage_20261004/ready/M12d_flower_bush.glb",
+ "provider": "Quaternius Stylized Nature MegaKit Standard Bush_Common_Flowers",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 1368,
+ "tex": 2048,
+ "bytes": 724436,
+ "godot_size_m_xyz": [
+  1.029,
+  0.85,
+  1.056
+ ],
+ "mesh_nodes": [
+  "Foliage_1",
+  "Foliage_2"
+ ]
+}

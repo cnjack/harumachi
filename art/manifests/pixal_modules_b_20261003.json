@@ -1,0 +1,39 @@
+{
+  "jobs": [
+    {
+      "id": "W09_rice_sacks",
+      "reference": "art/references/window_modules_20261003/W09_rice_sacks.png",
+      "output": "art/models/raw/W09_rice_sacks_pixal_modules_20261003",
+      "resolution": 1024,
+      "seed": 42
+    },
+    {
+      "id": "W10_bottle_crate",
+      "reference": "art/references/window_modules_20261003/W10_bottle_crate.png",
+      "output": "art/models/raw/W10_bottle_crate_pixal_modules_20261003",
+      "resolution": 1024,
+      "seed": 42
+    },
+    {
+      "id": "W11_ceramic_set",
+      "reference": "art/references/window_modules_20261003/W11_ceramic_set.png",
+      "output": "art/models/raw/W11_ceramic_set_pixal_modules_20261003",
+      "resolution": 1024,
+      "seed": 42
+    },
+    {
+      "id": "T03_round_ginkgo",
+      "reference": "art/references/window_modules_20261003/T03_round_ginkgo.png",
+      "output": "art/models/raw/T03_round_ginkgo_pixal_modules_20261003",
+      "resolution": 1024,
+      "seed": 42
+    },
+    {
+      "id": "T04_slender_cedar",
+      "reference": "art/references/window_modules_20261003/T04_slender_cedar.png",
+      "output": "art/models/raw/T04_slender_cedar_pixal_modules_20261003",
+      "resolution": 1024,
+      "seed": 42
+    }
+  ]
+}

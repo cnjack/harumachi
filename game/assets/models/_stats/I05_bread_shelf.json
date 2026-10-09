@@ -1,0 +1,25 @@
+{
+ "id": "I05_bread_shelf",
+ "src": "raw/I05_bread_shelf_pix/model.glb",
+ "provider": "pixal3d (v0.6)",
+ "tris_src": 973138,
+ "tris": 26803,
+ "size_m": [
+  1.073,
+  0.623,
+  1.6
+ ],
+ "godot_size_m_xyz": [
+  1.073,
+  1.6,
+  0.623
+ ],
+ "tex": 2048,
+ "bytes": 1967488,
+ "yaw_fix": 31.0,
+ "level": "auto",
+ "lean_src_deg": 9.3,
+ "levelled": true,
+ "lean_deg": 0.23,
+ "base_frac": 0.758
+}

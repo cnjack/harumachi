@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+"""Run Godot with the repository version lock and local executable selection."""
+import json
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+
+folder = Path(__file__).resolve().parent
+lock = json.loads((folder / "godot-version.json").read_text())
+local = folder / "godot.local.json"
+configured = os.environ.get("HARUMACHI_GODOT_BIN")
+if not configured and local.is_file():
+    configured = json.loads(local.read_text()).get("binary")
+if configured:
+    candidates = [configured]
+else:
+    candidates = [shutil.which("godot"), shutil.which("godot4")]
+    if sys.platform == "darwin":
+        candidates.append("/Applications/Godot.app/Contents/MacOS/Godot")
+errors = []
+for candidate in dict.fromkeys(p for p in candidates if p):
+    binary = Path(candidate).expanduser()
+    if not binary.is_file():
+        errors.append(str(binary) + " is missing")
+        continue
+    try:
+        actual = subprocess.check_output([str(binary), "--version"], text=True).strip()
+    except (OSError, subprocess.CalledProcessError) as error:
+        errors.append(str(error))
+        continue
+    if actual != lock["version"]:
+        errors.append(str(binary) + ": " + actual)
+        continue
+    if sys.argv[1:] == ["--print-path"]:
+        print(binary.resolve())
+        raise SystemExit(0)
+    os.execv(str(binary), [str(binary), *sys.argv[1:]])
+raise SystemExit("Expected Godot " + lock["version"] + ". Set HARUMACHI_GODOT_BIN or tools/godot.local.json. " + "; ".join(errors))

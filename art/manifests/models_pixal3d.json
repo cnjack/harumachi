@@ -1,0 +1,262 @@
+{
+  "provider": "pixal3d (private LAN API, RTX 4080)",
+  "note": "v0.5: quality test against the Hyper3D Rodin results, then new crops and props",
+  "jobs": {
+    "test_F02_hand_pump": {
+      "job_id": "538267c5-07a7-4d54-9eb2-6f63eb547fa3",
+      "resolution": 1536,
+      "ref": "art/references/farm/F02_hand_pump.png",
+      "status": "completed",
+      "file": "art/models/raw/pixal_test/F02_hand_pump.glb",
+      "done_at": "19:14:58"
+    },
+    "test_C04_tomato": {
+      "job_id": "71603999-61e4-4c53-a79d-013c90472074",
+      "resolution": 1536,
+      "ref": "art/references/farm/C04_tomato.png",
+      "status": "completed",
+      "file": "art/models/raw/pixal_test/C04_tomato.glb",
+      "done_at": "19:14:59"
+    },
+    "test_M03_gable_house": {
+      "job_id": "ab95f383-28be-45f8-be0d-0617c8b8ff9e",
+      "resolution": 1536,
+      "ref": "art/references/h3d/M03_gable_house.png",
+      "status": "completed",
+      "file": "art/models/raw/pixal_test/M03_gable_house.glb",
+      "done_at": "19:23:43"
+    },
+    "C09_carrot": {
+      "job_id": "96a9ded2-a594-490c-b807-b014797f75ea",
+      "resolution": 1536,
+      "ref": "art/references/v05/models/C09_carrot.png",
+      "status": "completed",
+      "submitted_at": "19:15:02",
+      "file": "art/models/raw/C09_carrot_pix/model.glb",
+      "done_at": "19:31:01"
+    },
+    "C10_potato": {
+      "job_id": "5d7f636d-02c6-467f-891c-00246b968770",
+      "resolution": 1536,
+      "ref": "art/references/v05/models/C10_potato.png",
+      "status": "completed",
+      "submitted_at": "19:15:04",
+      "file": "art/models/raw/C10_potato_pix/model.glb",
+      "done_at": "19:38:18"
+    },
+    "C11_eggplant": {
+      "job_id": "9bb89323-723b-4739-bca0-3afe7ac1ae97",
+      "resolution": 1536,
+      "ref": "art/references/v05/models/C11_eggplant.png",
+      "status": "completed",
+      "submitted_at": "19:23:45",
+      "file": "art/models/raw/C11_eggplant_pix/model.glb",
+      "done_at": "19:43:20"
+    },
+    "C12_corn": {
+      "job_id": "b7cc3b02-e847-433d-8d43-6d8a51a7c4bf",
+      "resolution": 1536,
+      "ref": "art/references/v05/models/C12_corn.png",
+      "status": "completed",
+      "submitted_at": "19:31:05",
+      "file": "art/models/raw/C12_corn_pix/model.glb",
+      "done_at": "19:48:55"
+    },
+    "C13_pumpkin": {
+      "job_id": "d644cac6-1273-4680-9dbd-f19eb965c27c",
+      "resolution": 1536,
+      "ref": "art/references/v05/models/C13_pumpkin.png",
+      "status": "completed",
+      "submitted_at": "19:38:22",
+      "file": "art/models/raw/C13_pumpkin_pix/model.glb",
+      "done_at": "19:56:13"
+    },
+    "C14_watermelon": {
+      "job_id": "4fc625ee-aa2a-476c-bc2d-e19dbed11f97",
+      "resolution": 1536,
+      "ref": "art/references/v05/models/C14_watermelon.png",
+      "status": "completed",
+      "submitted_at": "19:43:24",
+      "file": "art/models/raw/C14_watermelon_pix/model.glb",
+      "done_at": "20:01:16"
+    },
+    "C15_wheat": {
+      "job_id": "7a61d191-24c2-4a11-8830-c84ef301ab5b",
+      "resolution": 1536,
+      "ref": "art/references/v05/models/C15_wheat.png",
+      "status": "completed",
+      "submitted_at": "19:48:58",
+      "file": "art/models/raw/C15_wheat_pix/model.glb",
+      "done_at": "20:10:10"
+    },
+    "C16_onion": {
+      "job_id": "ffce24a5-86fd-4746-aada-a22fd1288dfe",
+      "resolution": 1536,
+      "ref": "art/references/v05/models/C16_onion.png",
+      "status": "completed",
+      "submitted_at": "19:56:16",
+      "file": "art/models/raw/C16_onion_pix/model.glb",
+      "done_at": "20:16:21"
+    },
+    "G10_store_shelf": {
+      "job_id": "8ec40895-0b1c-4337-89bd-2f3b9bb0d915",
+      "resolution": 1024,
+      "ref": "art/references/v05/models/G10_store_shelf.png",
+      "status": "completed",
+      "submitted_at": "20:54:20",
+      "seed": 7,
+      "retry_of": "944059f3-49c2-4ef0-b311-5b69f1d41a8a",
+      "first_error": "Inference exited with status 1",
+      "file": "art/models/raw/G10_store_shelf_pix/model.glb",
+      "done_at": "21:12:00"
+    },
+    "G11_bread_cart": {
+      "job_id": "b5cffb24-2b48-4b90-9c30-a981a69173e9",
+      "resolution": 1024,
+      "ref": "art/references/v05/models/G11_bread_cart.png",
+      "status": "completed",
+      "submitted_at": "21:01:36",
+      "seed": 7,
+      "retry_of": "0951734b-a984-4993-8fca-82b1a1a59bbb",
+      "first_error": "Inference exited with status 1",
+      "file": "art/models/raw/G11_bread_cart_pix/model.glb",
+      "done_at": "21:18:43"
+    },
+    "E01_yatai": {
+      "job_id": "965d7024-c36d-4c36-961d-905f87ecdffb",
+      "resolution": 1024,
+      "ref": "art/references/v05/models/E01_yatai.png",
+      "status": "completed",
+      "submitted_at": "20:45:58",
+      "seed": 7,
+      "retry_of": "a29f23cb-1dae-495e-be65-48a67835443e",
+      "first_error": "Inference exited with status 1",
+      "file": "art/models/raw/E01_yatai_pix/model.glb",
+      "done_at": "21:06:24"
+    },
+    "E02_tanabata_bamboo": {
+      "job_id": "0c61dfc3-1a0e-42e7-b657-20fef089cedc",
+      "resolution": 1536,
+      "ref": "art/references/v05/models/E02_tanabata_bamboo.png",
+      "status": "completed",
+      "submitted_at": "20:21:17",
+      "file": "art/models/raw/E02_tanabata_bamboo_pix/model.glb",
+      "done_at": "20:37:42"
+    },
+    "D03_veg_crates": {
+      "job_id": "b5449f9a-af74-4f75-b080-83c196725285",
+      "resolution": 1536,
+      "ref": "art/references/v05/models/D03_veg_crates.png",
+      "status": "completed",
+      "submitted_at": "20:26:42",
+      "file": "art/models/raw/D03_veg_crates_pix/model.glb",
+      "done_at": "20:45:55"
+    },
+    "D01_wheelbarrow": {
+      "job_id": "a43aecc0-f6df-43d8-9186-0a075868cddb",
+      "resolution": 1536,
+      "ref": "art/references/v05/models/D01_wheelbarrow.png",
+      "status": "completed",
+      "submitted_at": "20:32:06",
+      "file": "art/models/raw/D01_wheelbarrow_pix/model.glb",
+      "done_at": "20:54:17"
+    },
+    "D02_rain_barrel": {
+      "job_id": "9bc79cd3-ba89-454b-87d5-0a1c43fefc5a",
+      "resolution": 1536,
+      "ref": "art/references/v05/models/D02_rain_barrel.png",
+      "status": "completed",
+      "submitted_at": "20:37:46",
+      "file": "art/models/raw/D02_rain_barrel_pix/model.glb",
+      "done_at": "21:01:32"
+    },
+    "D12_flower_planter": {
+      "job_id": "0349c499-8587-4e4b-834e-b13089f654a2",
+      "resolution": 1024,
+      "ref": "art/references/v05/models/D12_flower_planter.png",
+      "status": "completed",
+      "submitted_at": "21:06:30",
+      "file": "art/models/raw/D12_flower_planter_pix/model.glb",
+      "done_at": "21:24:54"
+    },
+    "D11_reeds": {
+      "job_id": "6cc06ae2-3b3e-4e93-b068-9efc5db0d366",
+      "resolution": 1024,
+      "ref": "art/references/v05/models/D11_reeds.png",
+      "status": "completed",
+      "submitted_at": "21:12:03",
+      "file": "art/models/raw/D11_reeds_pix/model.glb",
+      "done_at": "21:28:57"
+    },
+    "D10_rocks": {
+      "job_id": "d8f7f280-4987-4683-ac08-82f98bf1394a",
+      "resolution": 1024,
+      "ref": "art/references/v05/models/D10_rocks.png",
+      "status": "completed",
+      "submitted_at": "21:18:46",
+      "file": "art/models/raw/D10_rocks_pix/model.glb",
+      "done_at": "21:34:36"
+    },
+    "D04_stone_lantern": {
+      "job_id": "90ab525a-6fa7-44e6-924c-5a84ad4e9c7d",
+      "resolution": 1024,
+      "ref": "art/references/v05/models/D04_stone_lantern.png",
+      "status": "completed",
+      "submitted_at": "21:24:59",
+      "file": "art/models/raw/D04_stone_lantern_pix/model.glb",
+      "done_at": "21:38:37"
+    },
+    "D05_hokora": {
+      "job_id": "0584bb62-ccd1-43f9-8e18-be2a66e11477",
+      "resolution": 1024,
+      "ref": "art/references/v05/models/D05_hokora.png",
+      "status": "completed",
+      "submitted_at": "21:29:01",
+      "file": "art/models/raw/D05_hokora_pix/model.glb",
+      "done_at": "21:43:10"
+    },
+    "D08_tool_rack": {
+      "job_id": "a7fa5a1b-2bfb-4256-82e0-de095ea970d0",
+      "resolution": 1024,
+      "ref": "art/references/v05/models/D08_tool_rack.png",
+      "status": "completed",
+      "submitted_at": "21:34:40",
+      "file": "art/models/raw/D08_tool_rack_pix/model.glb",
+      "done_at": "21:47:43"
+    },
+    "D09_log_pile": {
+      "job_id": "db90592c-2a24-4cb6-af38-02c97f14f48b",
+      "resolution": 1024,
+      "ref": "art/references/v05/models/D09_log_pile.png",
+      "status": "completed",
+      "submitted_at": "21:38:41",
+      "file": "art/models/raw/D09_log_pile_pix/model.glb",
+      "done_at": "21:53:22"
+    },
+    "D06_well": {
+      "job_id": "2bc03ac7-e3c4-4584-991b-9d0ba1ece898",
+      "resolution": 1024,
+      "ref": "art/references/v05/models/D06_well.png",
+      "status": "completed",
+      "submitted_at": "21:43:13",
+      "file": "art/models/raw/D06_well_pix/model.glb",
+      "done_at": "21:57:43"
+    },
+    "D07_kei_truck": {
+      "job_id": "fa9b3efb-0bde-46b6-8548-1c8b1e3ac236",
+      "resolution": 1024,
+      "ref": "art/references/v05/models/D07_kei_truck.png",
+      "status": "completed",
+      "submitted_at": "21:47:47",
+      "file": "art/models/raw/D07_kei_truck_pix/model.glb",
+      "done_at": "22:04:01"
+    },
+    "B01_bus": {
+      "job_id": "809f845a-87ea-4af5-a3c9-5f9470286a4b",
+      "resolution": 1024,
+      "ref": "art/references/town_detail/B01_bus_reference.png",
+      "status": "completed",
+      "file": "art/models/raw/B01_bus_pixal_20261004/model.glb"
+    }
+  }
+}

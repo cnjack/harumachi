@@ -1,0 +1,26 @@
+{
+ "id": "B04_shokupan",
+ "src": "raw/B04_shokupan_atlas_audit_20261002/model.glb",
+ "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
+ "tris_src": 980835,
+ "tris": 2500,
+ "size_m": [
+  0.181,
+  0.256,
+  0.194
+ ],
+ "godot_size_m_xyz": [
+  0.181,
+  0.194,
+  0.256
+ ],
+ "tex": 1254,
+ "bytes": 1738796,
+ "yaw_fix": 37.8,
+ "level": "auto",
+ "lean_src_deg": 12.89,
+ "levelled": true,
+ "lean_deg": 0.17,
+ "base_frac": 0.614,
+ "geometry_uv_unchanged": true
+}

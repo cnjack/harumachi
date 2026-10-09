@@ -1,0 +1,173 @@
+{
+  "models": {
+    "H01": {
+      "source_mtime": 1790997519.8373098,
+      "sha256": "21dc4f8a95e8f409e65b061b0456dcd3a372ff47d422bd9bbe79563f6fddc17e"
+    },
+    "H02": {
+      "source_mtime": 1790997520.8316135,
+      "sha256": "b8696cd3f6efcbcb505f4b9c40a5320ef90de8a592d2df76daf0a2b4d9083dcf"
+    },
+    "H03": {
+      "source_mtime": 1790997521.1322532,
+      "sha256": "842d8eab47dfdcb386c0e5cd4a81e10b2b6337cb20fd01e84d0c5489bd353ced"
+    },
+    "S06": {
+      "source_mtime": 1790998103.6105876,
+      "sha256": "85bc7d60d609b29621455a030033f4b330b8c60fb0d410ab75840db9b21fb97c"
+    },
+    "S01": {
+      "source_mtime": 1791024493.1495378,
+      "sha256": "31a5cfcd15cacc157f71585ebc9e7fe19507bab17287f88d60479549fef4dc87"
+    },
+    "S02": {
+      "source_mtime": 1791024493.5257277,
+      "sha256": "2747ab8bb3fcc2e4481ffb455d6fa08f1ab150ddca4967abc4f529150274805e"
+    },
+    "S03": {
+      "source_mtime": 1791024493.9602947,
+      "sha256": "523f815f75abf9893afcdf622999db4788fc74c3ead9a2b0174ef5e2f2cca9d7"
+    },
+    "S05": {
+      "source_mtime": 1791024494.3302557,
+      "sha256": "58a0152a5775b16a1c429072b4a108556524118a4e8d12630e1a6297e8de5ee3"
+    },
+    "S08": {
+      "source_mtime": 1791024494.76711,
+      "sha256": "e627ca51ed5a12c40f12a0721e87b43bee59807629b44908cef69128777bf2b9"
+    },
+    "M01_timber_machiya": {
+      "source_mtime": 1790998104.4407392,
+      "sha256": "8dab77c5d8e7c84b8384d6756270ab5762367ce7a2477a5a70aa36cdc2cc5c41"
+    },
+    "M03_gable_house": {
+      "source_mtime": 1790998104.8360338,
+      "sha256": "13c7e0f0b12c47294d982fde5084c63880be5a3c4d4cac4334b8aebc756574b7"
+    },
+    "M05_residential": {
+      "source_mtime": 1790998105.121096,
+      "sha256": "a3a11680cd294160b8ed23b572cdcac00825fc0562bbb042a3502a2b1d242847"
+    }
+  },
+  "checks": {
+    "distinct_shop_heights": true,
+    "home_separate_low_wing": true,
+    "florist_real_glass_annex": true,
+    "produce_has_real_volume": true,
+    "different_tenant_cloth": true,
+    "modern_four_hip_slopes": true
+  },
+  "metrics": {
+    "heights_m": {
+      "H01": 6.800000190734863,
+      "H02": 6.801267147064209,
+      "H03": 3.499999761581421,
+      "S06": 5.799211025238037,
+      "S01": 5.24908971786499,
+      "S02": 6.599327564239502,
+      "S03": 5.450450420379639,
+      "S05": 5.599886417388916,
+      "S08": 6.149299144744873,
+      "M01_timber_machiya": 6.600741386413574,
+      "M03_gable_house": 6.600189208984375,
+      "M05_residential": 6.80033016204834
+    },
+    "home_roof_step_m": 3.3000004291534424,
+    "florist_glass_annex": {
+      "min": [
+        -0.03510819748044014,
+        0.15619930624961853,
+        2.2376439571380615
+      ],
+      "max": [
+        2.680631160736084,
+        3.590486526489258,
+        4.049515247344971
+      ]
+    },
+    "produce_geometry": {
+      "produce_cabbage": {
+        "bounds": {
+          "min": [
+            -2.94339656829834,
+            0.9167336821556091,
+            3.083336353302002
+          ],
+          "max": [
+            -1.9558734893798828,
+            1.3047336339950562,
+            3.646817684173584
+          ]
+        },
+        "nonplanar_area_fraction": 0.6897969966786662,
+        "triangles": 3744
+      },
+      "produce_tomato": {
+        "bounds": {
+          "min": [
+            1.9471020698547363,
+            0.9294336438179016,
+            3.102835178375244
+          ],
+          "max": [
+            3.1515862941741943,
+            1.2920336723327637,
+            3.627318859100342
+          ]
+        },
+        "nonplanar_area_fraction": 0.6021978859439183,
+        "triangles": 1344
+      },
+      "produce_cucumber": {
+        "bounds": {
+          "min": [
+            -1.429787039756775,
+            0.8823672533035278,
+            3.161224842071533
+          ],
+          "max": [
+            -0.13006547093391418,
+            1.2749617099761963,
+            3.636247396469116
+          ]
+        },
+        "nonplanar_area_fraction": 0.5253861462109563,
+        "triangles": 35510
+      }
+    },
+    "tenant_cloth": {
+      "cloth_towel": {
+        "min": [
+          -4.062144756317139,
+          3.1629981994628906,
+          1.0099999904632568
+        ],
+        "max": [
+          -3.166013717651367,
+          4.008771896362305,
+          1.1512426137924194
+        ]
+      },
+      "cloth_laundry": {
+        "min": [
+          1.34843111038208,
+          3.049180746078491,
+          1.0099999904632568
+        ],
+        "max": [
+          3.053516387939453,
+          3.9961729049682617,
+          1.1522294282913208
+        ]
+      }
+    },
+    "hip_roof_area_sectors": {
+      "front": 0.19347174318274835,
+      "back": 0.1907474186721842,
+      "left": 0.1877229305542694,
+      "right": 0.1923576917728413
+    }
+  },
+  "passed": true,
+  "scope": "actual exported triangles; visual review required separately"
+}

@@ -1,0 +1,28 @@
+{
+  "asset": "W13_cedar_worktable",
+  "task_id": "cb502e12-9abb-4812-9167-75a25a04bbad",
+  "task_url": "https://hyper3d.ai/workspace/rodin/cb502e12-9abb-4812-9167-75a25a04bbad",
+  "source": "Hyper3D Agentic Business",
+  "raw": "art/models/raw/W13_worktable_hyper3d/worktable.glb",
+  "raw_sha256": "f0159262adc6ead00de973911d798cf7bc4f89d1283e4c7949837673a6ba513d",
+  "reference": "art/references/summer_workroom_20261006/worktable.png",
+  "transform": "uniform scale 1.5, origin kept, no character changes",
+  "raw_size_blender_xyz": [
+    1.2,
+    0.615,
+    0.52
+  ],
+  "game_size_godot_xyz": [
+    1.8,
+    0.78,
+    0.9225
+  ],
+  "verification": {
+    "tilt_deg": 0,
+    "rendered_tabletop_y": 0.7799999714,
+    "full_checks": 864,
+    "failed": 0,
+    "inventory_models": 176,
+    "native_shots": "evidence/summer_goal_20261006/worktable-native-shots"
+  }
+}

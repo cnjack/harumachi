@@ -1,0 +1,37 @@
+{
+ "id": "P_farm_gate",
+ "src": "raw/P_farm_gate_h3d_quality_20261001_v2/model.glb",
+ "provider": "hyper3d rodin Gen-2.5-High Raw, 2026-10-02",
+ "tris_src": 1000000,
+ "tris": 23986,
+ "size_m": [
+  4.9,
+  1.016,
+  3.452
+ ],
+ "godot_size_m_xyz": [
+  4.9,
+  3.452,
+  1.016
+ ],
+ "tex": 2048,
+ "bytes": 1413584,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.84,
+ "levelled": false,
+ "lean_deg": 3.57,
+ "base_frac": 0.097,
+ "fit_bounds_blender": {
+  "min": [
+   -2.450000047683716,
+   -0.5077978372573853,
+   0.0
+  ],
+  "max": [
+   2.450000047683716,
+   0.5077978372573853,
+   3.452024459838867
+  ]
+ }
+}

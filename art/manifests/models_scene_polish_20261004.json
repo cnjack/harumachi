@@ -1,0 +1,157 @@
+{
+  "provider": "Hyper3D Rodin",
+  "jobs": {
+    "cat_sleep": {
+      "record": "art/models/raw/scene_polish_20261004/cat_sleep/generation.json",
+      "source_glb": "art/models/raw/scene_polish_20261004/cat_sleep/model.glb",
+      "generation": {
+        "references": [
+          "/Users/jack/workpath/research/3D model/anime/art/references/scene_polish/cat_sleep.png"
+        ],
+        "request": {
+          "tier": "Gen-2.5-High",
+          "mesh_mode": "Raw",
+          "quality_override": 1000000,
+          "texture_delight": true,
+          "geometry_file_format": "glb",
+          "reference_upload_ids": [
+            "18d5c11d-aabd-4176-b90b-d5d314023a43"
+          ],
+          "prompt": "A cute anatomically coherent Japanese anime calico cat sleeping in a compact curled pose, clean belly support and tucked paws, tail wraps around body, closed eyes, precise nose and separate ears, soft rounded clean contours, complete full body. Flat painted ivory orange charcoal patches and clear face lines, no photorealistic fur."
+        },
+        "generation_id": "04840656-9038-4e16-9b66-05f52ac3e54c",
+        "status": "downloaded",
+        "display_url": "https://hyper3d.ai/workspace/rodin/04840656-9038-4e16-9b66-05f52ac3e54c",
+        "selected_file": "base_basic_pbr.glb"
+      },
+      "use": "A20_cat_sleep"
+    },
+    "cat_sit": {
+      "record": "art/models/raw/scene_polish_20261004/cat_sit/generation.json",
+      "source_glb": "art/models/raw/scene_polish_20261004/cat_sit/model.glb",
+      "generation": {
+        "references": [
+          "/Users/jack/workpath/research/3D model/anime/art/references/scene_polish/cat_sit.png"
+        ],
+        "request": {
+          "tier": "Gen-2.5-High",
+          "mesh_mode": "Raw",
+          "quality_override": 1000000,
+          "texture_delight": true,
+          "geometry_file_format": "glb",
+          "reference_upload_ids": [
+            "4e5392b4-bf65-4eb9-9181-bd4a7af29c1d"
+          ],
+          "prompt": "Anatomically accurate cute Japanese anime orange tabby sitting cat. Smooth clean rounded body contours, precise face eyes ears nose and individual paws, coherent shoulder joints, complete thin curled tail supported on ground. Distinct legs without fused anatomy. Clean flat painted anime fur patterns, no photorealistic texture."
+        },
+        "generation_id": "5f563488-d04f-467b-8508-802daede20d4",
+        "status": "downloaded",
+        "display_url": "https://hyper3d.ai/workspace/rodin/5f563488-d04f-467b-8508-802daede20d4",
+        "selected_file": "base_basic_pbr.glb"
+      },
+      "use": "A22_cat_sit"
+    },
+    "bus": {
+      "record": "art/models/raw/scene_polish_20261004/bus/generation.json",
+      "source_glb": "art/models/raw/scene_polish_20261004/bus/model.glb",
+      "generation": {
+        "references": [
+          "/Users/jack/workpath/research/3D model/anime/art/references/scene_polish/bus.png"
+        ],
+        "request": {
+          "tier": "Gen-2.5-High",
+          "mesh_mode": "Raw",
+          "quality_override": 1000000,
+          "texture_delight": true,
+          "geometry_file_format": "glb",
+          "reference_upload_ids": [
+            "f8fbde58-68c6-4540-97e7-3a478a8846e7"
+          ],
+          "prompt": "Small elegant authentic Japanese rural minibus, rounded ivory and green body, accurate proportions and crisp window frames. Open empty window apertures with visible interior seats. Glass entirely omitted, window openings must remain open, no solid glass faces. Clean exact wheel circles, door, mirrors, lamps, grille and interior details. Anime painted matte colours; no lettering."
+        },
+        "generation_id": "54ec23d8-2ac6-4725-bf2c-5a28e0ba3b24",
+        "status": "downloaded",
+        "display_url": "https://hyper3d.ai/workspace/rodin/54ec23d8-2ac6-4725-bf2c-5a28e0ba3b24",
+        "selected_file": "base_basic_pbr.glb"
+      },
+      "use": "B01_bus"
+    },
+    "broadleaf_crown": {
+      "record": "art/models/raw/scene_polish_20261004/broadleaf_crown/generation.json",
+      "source_glb": "art/models/raw/scene_polish_20261004/broadleaf_crown/model.glb",
+      "generation": {
+        "references": [
+          "/Users/jack/workpath/research/3D model/anime/art/references/scene_polish/broadleaf_crown.png"
+        ],
+        "request": {
+          "tier": "Gen-2.5-High",
+          "mesh_mode": "Raw",
+          "quality_override": 1000000,
+          "texture_delight": true,
+          "geometry_file_format": "glb",
+          "reference_upload_ids": [
+            "20532bd8-12f1-447a-ad46-b6942fb947c9"
+          ],
+          "prompt": "ONLY one complete dense coherent broad umbrella shaped zelkova foliage CROWN. NO trunk, roots, branches, or ground. One connected full solid canopy volume consisting of rounded organic lobe masses, fine embossed small oval leaf detail, leaf masses densely filled without holes or isolated strands, no transparent geometry. Flat painted anime greens, clean silhouette. This is a modular solid foliage crown component."
+        },
+        "generation_id": "cb9ba599-b0e6-4ae3-9a1f-c745301a439b",
+        "status": "downloaded",
+        "display_url": "https://hyper3d.ai/workspace/rodin/cb9ba599-b0e6-4ae3-9a1f-c745301a439b",
+        "selected_file": "base_basic_pbr.glb"
+      },
+      "use": "source study, superseded by CC0 foliage and unique T05"
+    },
+    "broadleaf": {
+      "record": "art/models/raw/scene_polish_20261004/broadleaf/generation.json",
+      "source_glb": "art/models/raw/scene_polish_20261004/broadleaf/model.glb",
+      "generation": {
+        "references": [
+          "/Users/jack/workpath/research/3D model/anime/art/references/scene_polish/broadleaf.png"
+        ],
+        "request": {
+          "tier": "Gen-2.5-High",
+          "mesh_mode": "Raw",
+          "quality_override": 1000000,
+          "texture_delight": true,
+          "geometry_file_format": "glb",
+          "reference_upload_ids": [
+            "b0df0d90-ac5f-49db-9f32-1fe29386b4b3"
+          ],
+          "prompt": "A clean upright Japanese anime zelkova with one tapering connected trunk, orderly branching forks and dense coherent rounded leaf clusters; detailed small oval leaves rather than triangular shards. Complete tree with grounded roots. Preserve flat painted anime colours and organic smooth silhouette."
+        },
+        "generation_id": "f0a93de1-46ab-458a-9070-35b9e26cf598",
+        "status": "downloaded",
+        "display_url": "https://hyper3d.ai/workspace/rodin/f0a93de1-46ab-458a-9070-35b9e26cf598",
+        "selected_file": "base_basic_pbr.glb"
+      },
+      "use": "source study, superseded by CC0 foliage and unique T05"
+    },
+    "conifer": {
+      "record": "art/models/raw/scene_polish_20261004/conifer/generation.json",
+      "source_glb": "art/models/raw/scene_polish_20261004/conifer/model.glb",
+      "generation": {
+        "references": [
+          "/Users/jack/workpath/research/3D model/anime/art/references/scene_polish/conifer.png"
+        ],
+        "request": {
+          "tier": "Gen-2.5-High",
+          "mesh_mode": "Raw",
+          "quality_override": 1000000,
+          "texture_delight": true,
+          "geometry_file_format": "glb",
+          "reference_upload_ids": [
+            "2a8bc364-749e-4488-b58b-b8d00eab1549"
+          ],
+          "prompt": "Graceful Japanese cedar, a single stable upright connected trunk, soft cohesive layered needle tufts with fine complete branches. Rich organic foliage volume, no floating disconnected shards or giant triangular polygons. Clean hand painted anime colours, complete roots to crown."
+        },
+        "generation_id": "830f5be5-6150-4d66-96d3-2dfa3cbb658a",
+        "status": "downloaded",
+        "display_url": "https://hyper3d.ai/workspace/rodin/830f5be5-6150-4d66-96d3-2dfa3cbb658a",
+        "selected_file": "base_basic_pbr.glb"
+      },
+      "use": "source study, superseded by CC0 foliage and unique T05"
+    }
+  },
+  "pipeline": "art/tools/polish_assets.py",
+  "note": "Completed high quality sources; game variants reduce after welding UV-split geometric vertices."
+}

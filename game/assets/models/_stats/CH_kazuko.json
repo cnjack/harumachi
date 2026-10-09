@@ -1,0 +1,26 @@
+{
+ "id": "CH_kazuko",
+ "src": "character_wave_smile_20261005/exports/CH_kazuko.glb",
+ "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+ "preserve_rigged_character": true,
+ "tris": 97948,
+ "bytes": 9764564,
+ "bones": 54,
+ "animations": [
+  "idle",
+  "walk",
+  "run",
+  "wave",
+  "bow",
+  "look",
+  "stretch",
+  "tend",
+  "talk",
+  "cheer",
+  "dance",
+  "reference"
+ ],
+ "sha256": "e2a5c324cc9a114d36a3b653de6cba266f68d501abeed2c1a9a89fab4de5255c",
+ "character_pipeline": "characters-apose-20261004",
+ "greeting_review": "20261005"
+}

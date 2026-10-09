@@ -1,0 +1,25 @@
+{
+ "id": "W03_cucumber_crate",
+ "src": "raw/W03_cucumber_crate_pixal_windows_20261003/model.glb",
+ "provider": "Pixal3D private RTX 4080 image-to-3D 1024; job 989d3412-379e-436c-a064-3f6dd7bf3abf",
+ "tris_src": 998659,
+ "tris": 17755,
+ "size_m": [
+  0.65,
+  0.45,
+  0.228
+ ],
+ "godot_size_m_xyz": [
+  0.65,
+  0.228,
+  0.45
+ ],
+ "tex": 2048,
+ "bytes": 971336,
+ "yaw_fix": 205.67,
+ "level": "auto",
+ "lean_src_deg": 35.5,
+ "levelled": true,
+ "lean_deg": 0.0,
+ "base_frac": 0.763
+}

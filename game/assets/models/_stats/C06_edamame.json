@@ -1,0 +1,20 @@
+{
+ "id": "C06_edamame",
+ "src": "raw/C06_edamame_h3d/model.glb",
+ "provider": "hyper3d rodin gen-2.5 (v0.4)",
+ "tris_src": 15000,
+ "tris": 3500,
+ "size_m": [
+  0.599,
+  0.337,
+  0.61
+ ],
+ "godot_size_m_xyz": [
+  0.599,
+  0.61,
+  0.337
+ ],
+ "tex": 512,
+ "bytes": 379468,
+ "yaw_fix": 0
+}

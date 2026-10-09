@@ -1,0 +1,8 @@
+{
+ "model": "MiniMax-Music3-MLX-Serve-8bit",
+ "prompt": "### Global Metadata\nA complete 90-second gentle Tanabata star-festival evening piece for a small Japanese town, where wishes on paper strips sway on bamboo under the first stars, in the spirit of a Makoto Shinkai summer film. 72 BPM, D major. A koto plays the melody over soft harp arpeggios, a celesta and glockenspiel sparkle like stars, warm legato strings and a round felt piano underneath, light wind chimes. Pure instrumental ensemble piece.\n\n### Vocal Details\nNone. Instrumental only: koto and celesta carry the melody together; strings only sustain chords.\n\n### Timed Arrangement\n0-16 seconds: harp and celesta arpeggios like twinkling stars. 16-44 seconds: the koto states a slow pentatonic-flavoured theme over sustained strings. 44-70 seconds: piano answers the koto, glockenspiel sparkles at phrase ends. 70-90 seconds: the theme returns softly on koto with harp. Keep tempo, texture and loudness consistent from start to end; no big climax. The piece must play for the full 90 seconds and must not end early, ending cleanly on the tonic so it can loop.",
+ "lyrics": "[Intro]\n[Harp Solo]\n\n[Interlude]\n[Koto Solo]\n\n[Interlude]\n[Piano Solo]\n\n[Outro]\n[Instrumental]",
+ "duration_seconds": 90,
+ "steps": 30,
+ "seed": 2026092801
+}

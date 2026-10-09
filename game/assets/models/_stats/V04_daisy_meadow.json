@@ -1,0 +1,25 @@
+{
+ "id": "V04_daisy_meadow",
+ "src": "raw/V04_daisy_meadow_hyper3d/model.glb",
+ "provider": "Hyper3D Rodin Gen-2.5-High Raw; imagegen anime daisy, clover and meadow tuft",
+ "tris_src": 500000,
+ "tris": 14000,
+ "size_m": [
+  0.446,
+  0.26,
+  0.35
+ ],
+ "godot_size_m_xyz": [
+  0.446,
+  0.35,
+  0.26
+ ],
+ "tex": 2048,
+ "bytes": 1181652,
+ "yaw_fix": 0,
+ "level": false,
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.87,
+ "base_frac": 0.529
+}

@@ -1,0 +1,5 @@
+Use case: stylized-concept
+Asset type: production albedo texture for an actual Godot Japanese small-town anime game.
+Style: Japanese TV anime background art, clean shapes, flat painted colours, crisp two-tone marks, bright summer feeling with restrained weathering. Not photorealistic, no gritty PBR noise, no thick painterly brushwork, no strong specular.
+Composition: exact flat orthographic view of the surface, edge to edge. No perspective, scene, backdrop, cast shadows, bevel depth, objects, text, lettering, watermark.
+Square seamless texture, tileable in both axes. Smooth rounded creek stone surface, muted lavender grey and warm pale mineral flecks. Large clean anime painted face regions, a few fine mineral streaks and sparse pale speckles; calm matte surface suitable for a small stream rock mesh. No stone arrangement, no seams, no cracks, no moss, no baked highlights.

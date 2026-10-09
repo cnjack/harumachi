@@ -1,0 +1,25 @@
+{
+ "id": "W10_bottle_crate",
+ "src": "raw/W10_bottle_crate_pixal_modules_20261003/model.glb",
+ "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
+ "tris_src": 967702,
+ "tris": 9037,
+ "size_m": [
+  0.409,
+  0.282,
+  0.312
+ ],
+ "godot_size_m_xyz": [
+  0.409,
+  0.312,
+  0.282
+ ],
+ "tex": 2048,
+ "bytes": 910444,
+ "yaw_fix": 207.0320850520513,
+ "level": "auto",
+ "lean_src_deg": 32.08,
+ "levelled": true,
+ "lean_deg": 0.2,
+ "base_frac": 0.875
+}

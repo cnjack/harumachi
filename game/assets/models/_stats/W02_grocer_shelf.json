@@ -1,0 +1,25 @@
+{
+ "id": "W02_grocer_shelf",
+ "src": "raw/W02_grocer_shelf_pixal_windows_20261003/model.glb",
+ "provider": "Pixal3D private RTX 4080 image-to-3D 1024; job 361afd57-814a-4301-8709-1727bbab1126",
+ "tris_src": 947491,
+ "tris": 21520,
+ "size_m": [
+  1.053,
+  0.452,
+  1.549
+ ],
+ "godot_size_m_xyz": [
+  1.053,
+  1.549,
+  0.452
+ ],
+ "tex": 2048,
+ "bytes": 1494480,
+ "yaw_fix": 204.31779445353433,
+ "level": "auto",
+ "lean_src_deg": 6.72,
+ "levelled": true,
+ "lean_deg": 0.36,
+ "base_frac": 0.689
+}

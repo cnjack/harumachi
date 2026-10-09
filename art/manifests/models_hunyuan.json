@@ -1,0 +1,1464 @@
+{
+ "note": "Generated with Tencent Hunyuan 3D hy-3d-3.1 via TokenHub (Hyper3D Rodin was requested but its key had insufficient funds). Signed download URLs are intentionally omitted.",
+ "jobs": [
+  {
+   "id": "CH_haru",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495454450713354240",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:02:05+0800",
+   "face_count_requested": 40000,
+   "source_image": "art/references/characters/haru_front.png",
+   "raw_glb": "art/models/raw/CH_haru/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/CH_haru.glb",
+     "tris": 14000,
+     "size_m": [
+      0.837,
+      0.354,
+      1.52
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "CH_mio",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495453712444768256",
+   "status": "completed",
+   "submitted_at": "2026-09-26T23:59:09+0800",
+   "face_count_requested": 40000,
+   "source_image": "art/references/characters/mio_front.png",
+   "raw_glb": "art/models/raw/CH_mio/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/CH_mio.glb",
+     "tris": 13998,
+     "size_m": [
+      0.716,
+      0.355,
+      1.58
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "CH_ren",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495453876572127232",
+   "status": "completed",
+   "submitted_at": "2026-09-26T23:59:48+0800",
+   "face_count_requested": 40000,
+   "source_image": "art/references/characters/ren_front.png",
+   "raw_glb": "art/models/raw/CH_ren/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/CH_ren.glb",
+     "tris": 14000,
+     "size_m": [
+      0.613,
+      0.314,
+      1.76
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "CH_sora",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495453200307716096",
+   "status": "completed",
+   "submitted_at": "2026-09-26T23:57:07+0800",
+   "face_count_requested": 40000,
+   "source_image": "art/references/characters/sora_front.png",
+   "raw_glb": "art/models/raw/CH_sora/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/CH_sora.glb",
+     "tris": 14000,
+     "size_m": [
+      0.735,
+      0.323,
+      1.62
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "H01",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495450253066649600",
+   "status": "completed",
+   "submitted_at": "2026-09-26T23:45:24+0800",
+   "face_count_requested": 40000,
+   "source_image": "art/references/community/crops/H01.png",
+   "raw_glb": "art/models/raw/H01/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/H01.glb",
+     "tris": 20000,
+     "size_m": [
+      6.592,
+      8.277,
+      6.999
+     ],
+     "tex": 2048
+    }
+   ]
+  },
+  {
+   "id": "H02",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495450928077029376",
+   "status": "completed",
+   "submitted_at": "2026-09-26T23:48:05+0800",
+   "face_count_requested": 40000,
+   "source_image": "art/references/community/crops/H02.png",
+   "raw_glb": "art/models/raw/H02/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/H02.glb",
+     "tris": 20000,
+     "size_m": [
+      10.894,
+      5.791,
+      6.798
+     ],
+     "tex": 2048
+    }
+   ]
+  },
+  {
+   "id": "H03",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495451338980188160",
+   "status": "completed",
+   "submitted_at": "2026-09-26T23:49:43+0800",
+   "face_count_requested": 40000,
+   "source_image": "art/references/community/crops/H03.png",
+   "raw_glb": "art/models/raw/H03/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/H03.glb",
+     "tris": 20000,
+     "size_m": [
+      7.58,
+      4.884,
+      4.597
+     ],
+     "tex": 2048
+    }
+   ]
+  },
+  {
+   "id": "H04",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495463644489531392",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:38:37+0800",
+   "face_count_requested": 12000,
+   "source_image": "art/references/community/crops/H04.png",
+   "raw_glb": "art/models/raw/H04/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/H04.glb",
+     "tris": 7999,
+     "size_m": [
+      5.0,
+      3.074,
+      2.275
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "H05",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495458689485635584",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:18:56+0800",
+   "face_count_requested": 20000,
+   "source_image": "art/references/community/crops/H05.png",
+   "raw_glb": "art/models/raw/H05/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/H05.glb",
+     "tris": 7999,
+     "size_m": [
+      3.999,
+      2.121,
+      1.744
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "H06",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495461507856547840",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:30:07+0800",
+   "face_count_requested": 20000,
+   "source_image": "art/references/community/crops/H06.png",
+   "raw_glb": "art/models/raw/H06/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/H06.glb",
+     "tris": 8000,
+     "size_m": [
+      3.612,
+      3.403,
+      2.3
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "H07",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495462833130782720",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:35:23+0800",
+   "face_count_requested": 12000,
+   "source_image": "art/references/community/crops/H07.png",
+   "raw_glb": "art/models/raw/H07/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/H07.glb",
+     "tris": 4000,
+     "size_m": [
+      1.576,
+      0.372,
+      1.4
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "H12a",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495450017690763264",
+   "status": "completed",
+   "submitted_at": "2026-09-26T23:44:28+0800",
+   "face_count_requested": 12000,
+   "source_image": "art/references/community/crops/H12a.png",
+   "raw_glb": "art/models/raw/H12a/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/H12a.glb",
+     "tris": 4000,
+     "size_m": [
+      1.198,
+      0.627,
+      0.849
+     ],
+     "tex": 1024
+    },
+    {
+     "file": "game/assets/models/H12a_box.glb",
+     "tris": 1345,
+     "size_m": [
+      1.196,
+      0.622,
+      0.336
+     ],
+     "tex": 512
+    },
+    {
+     "file": "game/assets/models/H12a_plants.glb",
+     "tris": 3499,
+     "size_m": [
+      1.198,
+      0.62,
+      0.525
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "I01_bed",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495463970907095040",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:39:55+0800",
+   "face_count_requested": 15000,
+   "source_image": "art/references/interior/crops/I01_bed.png",
+   "raw_glb": "art/models/raw/I01_bed/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/I01_bed.glb",
+     "tris": 5000,
+     "size_m": [
+      1.251,
+      2.05,
+      0.78
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "I02_desk",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495464456867495936",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:41:51+0800",
+   "face_count_requested": 15000,
+   "source_image": "art/references/interior/crops/I02_desk.png",
+   "raw_glb": "art/models/raw/I02_desk/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/I02_desk.glb",
+     "tris": 5000,
+     "size_m": [
+      1.2,
+      1.083,
+      0.921
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "I03_bookshelf",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495464588782485504",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:42:22+0800",
+   "face_count_requested": 15000,
+   "source_image": "art/references/interior/crops/I03_bookshelf.png",
+   "raw_glb": "art/models/raw/I03_bookshelf/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/I03_bookshelf.glb",
+     "tris": 4999,
+     "size_m": [
+      1.078,
+      0.495,
+      1.8
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "I04_chabudai",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495464748405227520",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:43:00+0800",
+   "face_count_requested": 15000,
+   "source_image": "art/references/interior/crops/I04_chabudai.png",
+   "raw_glb": "art/models/raw/I04_chabudai/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/I04_chabudai.glb",
+     "tris": 5000,
+     "size_m": [
+      0.9,
+      0.981,
+      0.322
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "I05_wardrobe",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495465407594512384",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:45:37+0800",
+   "face_count_requested": 15000,
+   "source_image": "art/references/interior/crops/I05_wardrobe.png",
+   "raw_glb": "art/models/raw/I05_wardrobe/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/I05_wardrobe.glb",
+     "tris": 5000,
+     "size_m": [
+      0.987,
+      0.639,
+      1.9
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "I06_floor_lamp",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495465451412250624",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:45:48+0800",
+   "face_count_requested": 15000,
+   "source_image": "art/references/interior/crops/I06_floor_lamp.png",
+   "raw_glb": "art/models/raw/I06_floor_lamp/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/I06_floor_lamp.glb",
+     "tris": 5000,
+     "size_m": [
+      0.678,
+      0.761,
+      1.5
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "I07_monstera",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495465500385099776",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:45:59+0800",
+   "face_count_requested": 15000,
+   "source_image": "art/references/interior/crops/I07_monstera.png",
+   "raw_glb": "art/models/raw/I07_monstera/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/I07_monstera.glb",
+     "tris": 5000,
+     "size_m": [
+      1.033,
+      0.926,
+      1.2
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "I08_boxes",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495466121234481152",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:48:27+0800",
+   "face_count_requested": 15000,
+   "source_image": "art/references/interior/crops/I08_boxes.png",
+   "raw_glb": "art/models/raw/I08_boxes/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/I08_boxes.glb",
+     "tris": 5000,
+     "size_m": [
+      1.0,
+      0.929,
+      1.157
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "P01",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495455963833958400",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:08:06+0800",
+   "face_count_requested": 20000,
+   "source_image": "art/references/community/crops/P01.png",
+   "raw_glb": "art/models/raw/P01/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/P01.glb",
+     "tris": 8000,
+     "size_m": [
+      4.36,
+      4.246,
+      3.0
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "P02",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495449019706458112",
+   "status": "completed",
+   "submitted_at": "2026-09-26T23:40:30+0800",
+   "face_count_requested": 20000,
+   "source_image": "art/references/community/crops/P02.png",
+   "raw_glb": "art/models/raw/P02/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/P02.glb",
+     "tris": 8000,
+     "size_m": [
+      2.718,
+      0.988,
+      2.301
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "P03",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495449901152026624",
+   "status": "completed",
+   "submitted_at": "2026-09-26T23:44:00+0800",
+   "face_count_requested": 12000,
+   "source_image": "art/references/community/crops/P03.png",
+   "raw_glb": "art/models/raw/P03/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/P03.glb",
+     "tris": 4000,
+     "size_m": [
+      1.64,
+      1.589,
+      0.78
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "P04",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495460782996979712",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:27:15+0800",
+   "face_count_requested": 20000,
+   "source_image": "art/references/community/crops/P04.png",
+   "raw_glb": "art/models/raw/P04/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/P04.glb",
+     "tris": 8000,
+     "size_m": [
+      3.038,
+      1.993,
+      2.4
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "P05",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495461455670951936",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:29:55+0800",
+   "face_count_requested": 20000,
+   "source_image": "art/references/community/crops/P05.png",
+   "raw_glb": "art/models/raw/P05/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/P05.glb",
+     "tris": 8000,
+     "size_m": [
+      3.368,
+      4.312,
+      2.201
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "P06",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495463916175622144",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:39:42+0800",
+   "face_count_requested": 12000,
+   "source_image": "art/references/community/crops/P06.png",
+   "raw_glb": "art/models/raw/P06/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/P06.glb",
+     "tris": 4000,
+     "size_m": [
+      2.0,
+      2.329,
+      0.113
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "P07",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495459540895744000",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:22:18+0800",
+   "face_count_requested": 20000,
+   "source_image": "art/references/community/crops/P07.png",
+   "raw_glb": "art/models/raw/P07/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/P07.glb",
+     "tris": 8000,
+     "size_m": [
+      2.397,
+      2.162,
+      1.313
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "P08",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495460532961820672",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:26:15+0800",
+   "face_count_requested": 20000,
+   "source_image": "art/references/community/crops/P08.png",
+   "raw_glb": "art/models/raw/P08/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/P08.glb",
+     "tris": 8000,
+     "size_m": [
+      2.807,
+      1.405,
+      1.899
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "P09",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495449024785760256",
+   "status": "completed",
+   "submitted_at": "2026-09-26T23:40:31+0800",
+   "face_count_requested": 20000,
+   "source_image": "art/references/community/crops/P09.png",
+   "raw_glb": "art/models/raw/P09/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/P09.glb",
+     "tris": 8000,
+     "size_m": [
+      2.597,
+      1.997,
+      2.023
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "P10",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495457019540226048",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:12:17+0800",
+   "face_count_requested": 20000,
+   "source_image": "art/references/community/crops/P10.png",
+   "raw_glb": "art/models/raw/P10/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/P10.glb",
+     "tris": 7999,
+     "size_m": [
+      4.199,
+      2.263,
+      2.274
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "P11",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495460777888202752",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:27:13+0800",
+   "face_count_requested": 20000,
+   "source_image": "art/references/community/crops/P11.png",
+   "raw_glb": "art/models/raw/P11/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/P11.glb",
+     "tris": 8000,
+     "size_m": [
+      1.834,
+      1.184,
+      2.0
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "P12",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495461658897563648",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:30:43+0800",
+   "face_count_requested": 12000,
+   "source_image": "art/references/community/crops/P12.png",
+   "raw_glb": "art/models/raw/P12/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/P12.glb",
+     "tris": 4000,
+     "size_m": [
+      1.495,
+      1.305,
+      1.097
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "R06",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495450745331138560",
+   "status": "completed",
+   "submitted_at": "2026-09-26T23:47:21+0800",
+   "face_count_requested": 20000,
+   "source_image": "art/references/community/crops/R06.png",
+   "raw_glb": "art/models/raw/R06/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/R06.glb",
+     "tris": 8000,
+     "size_m": [
+      4.444,
+      1.904,
+      2.7
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "R07a",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495463244545916928",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:37:01+0800",
+   "face_count_requested": 12000,
+   "source_image": "art/references/community/crops/R07a.png",
+   "raw_glb": "art/models/raw/R07a/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/R07a.glb",
+     "tris": 4000,
+     "size_m": [
+      1.999,
+      0.5,
+      1.158
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "R08a",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495462233252970496",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:33:00+0800",
+   "face_count_requested": 12000,
+   "source_image": "art/references/community/crops/R08a.png",
+   "raw_glb": "art/models/raw/R08a/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/R08a.glb",
+     "tris": 4000,
+     "size_m": [
+      0.983,
+      1.005,
+      4.201
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "R09",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495462489604481024",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:34:01+0800",
+   "face_count_requested": 12000,
+   "source_image": "art/references/community/crops/R09.png",
+   "raw_glb": "art/models/raw/R09/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/R09.glb",
+     "tris": 4000,
+     "size_m": [
+      1.528,
+      1.501,
+      2.601
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "R10",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495457803480809472",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:15:24+0800",
+   "face_count_requested": 20000,
+   "source_image": "art/references/community/crops/R10.png",
+   "raw_glb": "art/models/raw/R10/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/R10.glb",
+     "tris": 7999,
+     "size_m": [
+      2.6,
+      1.15,
+      1.383
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "R11",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495462573062742016",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:34:21+0800",
+   "face_count_requested": 12000,
+   "source_image": "art/references/community/crops/R11.png",
+   "raw_glb": "art/models/raw/R11/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/R11.glb",
+     "tris": 4000,
+     "size_m": [
+      1.129,
+      0.989,
+      3.2
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "R12",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495463297989468160",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:37:14+0800",
+   "face_count_requested": 12000,
+   "source_image": "art/references/community/crops/R12.png",
+   "raw_glb": "art/models/raw/R12/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/R12.glb",
+     "tris": 4000,
+     "size_m": [
+      1.799,
+      0.49,
+      0.768
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "S01",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495451938883100672",
+   "status": "completed",
+   "submitted_at": "2026-09-26T23:52:06+0800",
+   "face_count_requested": 40000,
+   "source_image": "art/references/community/crops/S01.png",
+   "raw_glb": "art/models/raw/S01/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/S01.glb",
+     "tris": 20000,
+     "size_m": [
+      8.299,
+      7.599,
+      6.6
+     ],
+     "tex": 2048
+    }
+   ]
+  },
+  {
+   "id": "S02",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495449031542718464",
+   "status": "completed",
+   "submitted_at": "2026-09-26T23:40:33+0800",
+   "face_count_requested": 40000,
+   "source_image": "art/references/community/crops/S02.png",
+   "raw_glb": "art/models/raw/S02/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/S02.glb",
+     "tris": 20000,
+     "size_m": [
+      9.268,
+      7.638,
+      6.601
+     ],
+     "tex": 2048
+    }
+   ]
+  },
+  {
+   "id": "S03",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495452393906520064",
+   "status": "completed",
+   "submitted_at": "2026-09-26T23:53:54+0800",
+   "face_count_requested": 40000,
+   "source_image": "art/references/community/crops/S03.png",
+   "raw_glb": "art/models/raw/S03/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/S03.glb",
+     "tris": 20000,
+     "size_m": [
+      8.699,
+      8.456,
+      6.596
+     ],
+     "tex": 2048
+    }
+   ]
+  },
+  {
+   "id": "S05",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495452406191751168",
+   "status": "completed",
+   "submitted_at": "2026-09-26T23:53:57+0800",
+   "face_count_requested": 40000,
+   "source_image": "art/references/community/crops/S05.png",
+   "raw_glb": "art/models/raw/S05/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/S05.glb",
+     "tris": 20000,
+     "size_m": [
+      9.647,
+      9.677,
+      5.599
+     ],
+     "tex": 2048
+    }
+   ]
+  },
+  {
+   "id": "S06",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495453855248236544",
+   "status": "completed",
+   "submitted_at": "2026-09-26T23:59:43+0800",
+   "face_count_requested": 40000,
+   "source_image": "art/references/community/crops/S06.png",
+   "raw_glb": "art/models/raw/S06/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/S06.glb",
+     "tris": 20000,
+     "size_m": [
+      10.039,
+      10.922,
+      5.799
+     ],
+     "tex": 2048
+    }
+   ]
+  },
+  {
+   "id": "S08",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495454839353589760",
+   "status": "completed",
+   "submitted_at": "2026-09-27T00:03:37+0800",
+   "face_count_requested": 40000,
+   "source_image": "art/references/community/crops/S08.png",
+   "raw_glb": "art/models/raw/S08/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/S08.glb",
+     "tris": 20000,
+     "size_m": [
+      8.47,
+      8.519,
+      6.597
+     ],
+     "tex": 2048
+    }
+   ]
+  },
+  {
+   "id": "G01_getabako",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495639667327623168",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 16000,
+   "source_image": "art/references/interior/crops2/G01_getabako.png",
+   "raw_glb": "art/models/raw/G01_getabako/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/G01_getabako.glb",
+     "tris": 6000,
+     "size_m": [
+      0.9,
+      0.501,
+      0.994
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "G02_goldfish_tank",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495639673799589888",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 16000,
+   "source_image": "art/references/interior/crops2/G02_goldfish_tank.png",
+   "raw_glb": "art/models/raw/G02_goldfish_tank/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/G02_goldfish_tank.glb",
+     "tris": 7000,
+     "size_m": [
+      1.5,
+      1.194,
+      0.497
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "G03_laundry_stand",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495639678757322752",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 16000,
+   "source_image": "art/references/interior/crops2/G03_laundry_stand.png",
+   "raw_glb": "art/models/raw/G03_laundry_stand/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/G03_laundry_stand.glb",
+     "tris": 5000,
+     "size_m": [
+      1.521,
+      0.589,
+      1.3
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "G04_bonsai",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495640584315994112",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 16000,
+   "source_image": "art/references/interior/crops2/G04_bonsai.png",
+   "raw_glb": "art/models/raw/G04_bonsai/model.glb",
+   "game_assets": [],
+   "note": "generated but not used: the shape did not read as a bonsai"
+  },
+  {
+   "id": "G05_goldfish_bowl",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495640588313116672",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 16000,
+   "source_image": "art/references/interior/crops2/G05_goldfish_bowl.png",
+   "raw_glb": "art/models/raw/G05_goldfish_bowl/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/G05_goldfish_bowl.glb",
+     "tris": 5000,
+     "size_m": [
+      0.548,
+      0.548,
+      0.42
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "G06_zabuton",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495640594902368256",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 16000,
+   "source_image": "art/references/interior/crops2/G06_zabuton.png",
+   "raw_glb": "art/models/raw/G06_zabuton/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/G06_zabuton.glb",
+     "tris": 4000,
+     "size_m": [
+      0.619,
+      0.605,
+      0.462
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "G07_hall_cabinet",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495641494542827520",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 16000,
+   "source_image": "art/references/interior/crops2/G07_hall_cabinet.png",
+   "raw_glb": "art/models/raw/G07_hall_cabinet/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/G07_hall_cabinet.glb",
+     "tris": 6000,
+     "size_m": [
+      0.873,
+      0.382,
+      1.149
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "G08_cat",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495641505263468544",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 16000,
+   "source_image": "art/references/interior/crops2/G08_cat.png",
+   "raw_glb": "art/models/raw/G08_cat/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/G08_cat.glb",
+     "tris": 5000,
+     "size_m": [
+      0.62,
+      0.62,
+      0.288
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "G09_taiko",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495641705943916544",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 24000,
+   "source_image": "art/references/interior/crops2/G09_taiko.png",
+   "raw_glb": "art/models/raw/G09_taiko/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/G09_taiko.glb",
+     "tris": 6999,
+     "size_m": [
+      0.808,
+      0.894,
+      1.15
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "J01_kitchen_counter",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495642291397607424",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 24000,
+   "source_image": "art/references/interior/crops2/J01_kitchen_counter.png",
+   "raw_glb": "art/models/raw/J01_kitchen_counter/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/J01_kitchen_counter.glb",
+     "tris": 8999,
+     "size_m": [
+      2.2,
+      0.931,
+      1.426
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "J02_fridge",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495642314805862400",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 16000,
+   "source_image": "art/references/interior/crops2/J02_fridge.png",
+   "raw_glb": "art/models/raw/J02_fridge/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/J02_fridge.glb",
+     "tris": 6000,
+     "size_m": [
+      0.727,
+      0.722,
+      1.55
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "J03_dining_set",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495642652426584064",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 16000,
+   "source_image": "art/references/interior/crops2/J03_dining_set.png",
+   "raw_glb": "art/models/raw/J03_dining_set/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/J03_dining_set.glb",
+     "tris": 8000,
+     "size_m": [
+      1.5,
+      1.001,
+      0.893
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "J04_rice_cabinet",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495643019260461056",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 16000,
+   "source_image": "art/references/interior/crops2/J04_rice_cabinet.png",
+   "raw_glb": "art/models/raw/J04_rice_cabinet/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/J04_rice_cabinet.glb",
+     "tris": 7000,
+     "size_m": [
+      1.2,
+      0.533,
+      0.861
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "J05_dish_cabinet",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495643168275578880",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 24000,
+   "source_image": "art/references/interior/crops2/J05_dish_cabinet.png",
+   "raw_glb": "art/models/raw/J05_dish_cabinet/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/J05_dish_cabinet.glb",
+     "tris": 7000,
+     "size_m": [
+      1.117,
+      0.568,
+      1.7
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "J06_tv_board",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495643528947818496",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 24000,
+   "source_image": "art/references/interior/crops2/J06_tv_board.png",
+   "raw_glb": "art/models/raw/J06_tv_board/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/J06_tv_board.glb",
+     "tris": 7000,
+     "size_m": [
+      1.5,
+      0.534,
+      1.056
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "J07_kotatsu",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495643860587397120",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 16000,
+   "source_image": "art/references/interior/crops2/J07_kotatsu.png",
+   "raw_glb": "art/models/raw/J07_kotatsu/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/J07_kotatsu.glb",
+     "tris": 5999,
+     "size_m": [
+      1.45,
+      1.5,
+      0.446
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "J08_fan",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495644216193138688",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 16000,
+   "source_image": "art/references/interior/crops2/J08_fan.png",
+   "raw_glb": "art/models/raw/J08_fan/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/J08_fan.glb",
+     "tris": 5000,
+     "size_m": [
+      0.538,
+      0.63,
+      0.951
+     ],
+     "tex": 1024
+    }
+   ]
+  },
+  {
+   "id": "J09_tansu",
+   "provider": "tencent-hunyuan",
+   "model": "hy-3d-3.1",
+   "job_id": "1495644367804645376",
+   "status": "completed",
+   "batch": "house interior (v0.3)",
+   "face_count_requested": 16000,
+   "source_image": "art/references/interior/crops2/J09_tansu.png",
+   "raw_glb": "art/models/raw/J09_tansu/model.glb",
+   "game_assets": [
+    {
+     "file": "game/assets/models/J09_tansu.glb",
+     "tris": 5000,
+     "size_m": [
+      1.0,
+      0.567,
+      0.751
+     ],
+     "tex": 1024
+    }
+   ]
+  }
+ ]
+}

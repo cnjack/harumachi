@@ -1,0 +1,18 @@
+{
+ "id": "A22_cat_sit",
+ "src": "raw/scene_polish_20261004/assembled/A22_cat_sit.glb",
+ "provider": "Hyper3D Rodin Gen-2.5-High Raw 1000000 faces, imagegen reference; UV-preserving game assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 120000,
+ "tex": 4096,
+ "bytes": 3929684,
+ "godot_size_m_xyz": [
+  0.2539,
+  0.35,
+  0.3101
+ ],
+ "mesh_nodes": [
+  "CatBody"
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "id": "B02_croissant",
+ "src": "raw/B02_croissant_atlas_audit_20261002/model.glb",
+ "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
+ "tris_src": 999166,
+ "tris": 2500,
+ "size_m": [
+  0.166,
+  0.128,
+  0.106
+ ],
+ "godot_size_m_xyz": [
+  0.166,
+  0.106,
+  0.128
+ ],
+ "tex": 1254,
+ "bytes": 2185700,
+ "yaw_fix": 0,
+ "geometry_uv_unchanged": true
+}

@@ -1,0 +1,20 @@
+{
+ "id": "G02_goldfish_tank",
+ "src": "raw/G02_goldfish_tank/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 15990,
+ "tris": 7000,
+ "size_m": [
+  1.5,
+  1.194,
+  0.497
+ ],
+ "godot_size_m_xyz": [
+  1.5,
+  0.497,
+  1.194
+ ],
+ "tex": 1024,
+ "bytes": 442732,
+ "yaw_fix": 0
+}

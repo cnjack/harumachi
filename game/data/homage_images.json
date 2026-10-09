@@ -1,0 +1,100 @@
+{
+  "star_box_empty": {
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha_bbox": [
+      26,
+      121,
+      1238,
+      1254
+    ],
+    "bottom": 1254,
+    "sha256": "517e4c71178097abc2b15518c6154e5f2e472d314bea5c1043efd510eaf96d0a"
+  },
+  "sprite_caps": {
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha_bbox": [
+      0,
+      21,
+      1236,
+      1254
+    ],
+    "bottom": 1254,
+    "sha256": "7e64ceeb4c013a86d20e2b4d1b8f78492fc9a3d30bf0aa15b2320656f13e6057"
+  },
+  "cow_bell": {
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha_bbox": [
+      105,
+      28,
+      1234,
+      1228
+    ],
+    "bottom": 1228,
+    "sha256": "8d6a4e5ab374d591e673f5b7e9b8eed07eb96797f38d801d4f3d68c327bb083d"
+  },
+  "purple_shorts": {
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha_bbox": [
+      16,
+      47,
+      1238,
+      1198
+    ],
+    "bottom": 1198,
+    "sha256": "11e88f4c5c1a8e6e6a9ba5289eab5ac0151a405fdab50f01d37f749a06ceff26"
+  },
+  "blue_feather": {
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha_bbox": [
+      97,
+      30,
+      1194,
+      1242
+    ],
+    "bottom": 1242,
+    "sha256": "fccf7c88c508ea80ae9a72e91060a11170bd01a2f1fae029e9aae0ea8c24991f"
+  },
+  "sprite_caps_empty": {
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha_bbox": [
+      0,
+      21,
+      1233,
+      1216
+    ],
+    "bottom": 1216,
+    "sha256": "bcb382babf926b1cd678deef6fd64a5a6c81607cea4db31feb73dee6a8b62d21"
+  },
+  "star_box": {
+    "size": [
+      1254,
+      1254
+    ],
+    "alpha_bbox": [
+      0,
+      49,
+      1236,
+      1254
+    ],
+    "bottom": 1254,
+    "sha256": "ce039f7ba25191d5956b333457bdbece5cff7694a598c648088b4a81cf031ca6"
+  }
+}

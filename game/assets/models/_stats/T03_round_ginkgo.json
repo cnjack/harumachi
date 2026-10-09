@@ -1,0 +1,19 @@
+{
+ "id": "T03_round_ginkgo",
+ "src": "raw/free_foliage_20261004/ready/T03_round_ginkgo.glb",
+ "provider": "Quaternius Stylized Nature MegaKit Standard CommonTree_5",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 3182,
+ "tex": 2048,
+ "bytes": 4295120,
+ "godot_size_m_xyz": [
+  3.9299,
+  7.5,
+  4.517
+ ],
+ "mesh_nodes": [
+  "Foliage_1",
+  "Trunk_1"
+ ]
+}

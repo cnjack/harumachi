@@ -1,0 +1,19 @@
+{
+ "id": "T02_summer_tree",
+ "src": "raw/free_foliage_20261004/ready/T02_summer_tree.glb",
+ "provider": "Quaternius Stylized Nature MegaKit Standard CommonTree_3",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 3505,
+ "tex": 2048,
+ "bytes": 4333168,
+ "godot_size_m_xyz": [
+  3.4485,
+  8.0,
+  3.5998
+ ],
+ "mesh_nodes": [
+  "Foliage_1",
+  "Trunk_1"
+ ]
+}

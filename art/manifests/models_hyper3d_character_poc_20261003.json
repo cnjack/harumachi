@@ -1,0 +1,287 @@
+{
+  "date": "2026-10-03",
+  "characters": {
+    "sora": "空",
+    "mio": "澪 (按用户的零的读音理解)"
+  },
+  "generator": "Hyper3D Rodin Gen-2.5",
+  "accepted_tasks": [
+    {
+      "experiment": "mio_bang_basic",
+      "generation_id": "5b6ef9f9-a491-41b9-bdf3-df078ee93f08",
+      "display_url": "https://hyper3d.ai/workspace/rodin/5b6ef9f9-a491-41b9-bdf3-df078ee93f08",
+      "status": "downloaded",
+      "source": "art/models/raw/character_pipeline_poc_20261003/mio_bang_basic/generation.json",
+      "request": {
+        "asset_id": "1c2ab80d-c6c6-4b54-9659-5f8f117b4a5d",
+        "instruction": "Separate the character into body including head and limbs, outer shirt or cardigan, inner shirt or blouse, pants or skirt, and shoes. Preserve alignment in the original A pose. The clothes are independent wearable meshes for costume changes.",
+        "strength": 5,
+        "explode_strength": 0,
+        "resolution": "Basic",
+        "geometry_file_format": "glb"
+      },
+      "reference_images": []
+    },
+    {
+      "experiment": "mio_base_quad",
+      "generation_id": "ead2d63a-e5e7-415f-ac08-7f52466bf9bd",
+      "display_url": "https://hyper3d.ai/workspace/rodin/ead2d63a-e5e7-415f-ac08-7f52466bf9bd",
+      "status": "downloaded",
+      "source": "art/models/raw/character_pipeline_poc_20261003/mio_base_quad/generation.json",
+      "request": {
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Quad",
+        "quality_override": 18000,
+        "texture_delight": true,
+        "geometry_file_format": "glb",
+        "reference_upload_ids": [
+          "dec50f3e-4c47-499f-b7a4-768b433de650"
+        ],
+        "prompt": "Single adult anime female base body, symmetric high A pose, palms forward with separated fingers, fitted blue T-shirt and charcoal shorts and white shoes, arms and legs separated, preserve face and slender adult anatomy, front facing, clean deformation topology."
+      },
+      "reference_images": [
+        "/Users/jack/workpath/research/3D model/anime/art/poc/character_pipeline_20261003/mio_base_reference.png"
+      ]
+    },
+    {
+      "experiment": "mio_full_quad",
+      "generation_id": "5fb8d750-152c-4385-b30b-ba3b0fcfd797",
+      "display_url": "https://hyper3d.ai/workspace/rodin/5fb8d750-152c-4385-b30b-ba3b0fcfd797",
+      "status": "downloaded",
+      "source": "art/models/raw/character_pipeline_poc_20261003/mio_full_quad/generation.json",
+      "request": {
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Quad",
+        "quality_override": 18000,
+        "texture_delight": true,
+        "geometry_file_format": "glb",
+        "reference_upload_ids": [
+          "b2efe7b9-b46e-4616-b322-609a283ccf4e"
+        ],
+        "prompt": "Single adult anime female character matching reference, symmetric A pose, arms separated from cardigan and torso, five fingers, clean humanoid anatomy, preserve face, cream cardigan, blue blouse, navy knee-length skirt, white sneakers, front facing."
+      },
+      "reference_images": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/characters/mio_front.png"
+      ]
+    },
+    {
+      "experiment": "mio_full_raw",
+      "generation_id": "1c2ab80d-c6c6-4b54-9659-5f8f117b4a5d",
+      "display_url": "https://hyper3d.ai/workspace/rodin/1c2ab80d-c6c6-4b54-9659-5f8f117b4a5d",
+      "status": "downloaded",
+      "source": "art/models/raw/character_pipeline_poc_20261003/mio_full_raw/generation.json",
+      "request": {
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Raw",
+        "quality_override": 40000,
+        "texture_delight": true,
+        "geometry_file_format": "glb",
+        "reference_upload_ids": [
+          "5276ce62-f604-41ec-ae27-f264aafadf4c"
+        ],
+        "prompt": "Single adult anime female character matching reference, symmetric A pose, arms separated from cardigan and torso, five fingers, clean humanoid anatomy, preserve face, cream cardigan, blue blouse, navy knee-length skirt, white sneakers, front facing."
+      },
+      "reference_images": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/characters/mio_front.png"
+      ]
+    },
+    {
+      "experiment": "sora_bang_basic",
+      "generation_id": "78cfe16f-0de1-4750-b67d-05348a3172b4",
+      "display_url": "https://hyper3d.ai/workspace/rodin/78cfe16f-0de1-4750-b67d-05348a3172b4",
+      "status": "downloaded",
+      "source": "art/models/raw/character_pipeline_poc_20261003/sora_bang_basic/generation.json",
+      "request": {
+        "asset_id": "70b583ce-2456-465e-91f1-69f6a1a59b42",
+        "instruction": "Separate the character into body including head and limbs, outer shirt or cardigan, inner shirt or blouse, pants or skirt, and shoes. Preserve alignment in the original A pose. The clothes are independent wearable meshes for costume changes.",
+        "strength": 5,
+        "explode_strength": 0,
+        "resolution": "Basic",
+        "geometry_file_format": "glb"
+      },
+      "reference_images": []
+    },
+    {
+      "experiment": "sora_base_quad",
+      "generation_id": "e1874987-dc9f-4952-ae8b-16590f259c61",
+      "display_url": "https://hyper3d.ai/workspace/rodin/e1874987-dc9f-4952-ae8b-16590f259c61",
+      "status": "downloaded",
+      "source": "art/models/raw/character_pipeline_poc_20261003/sora_base_quad/generation.json",
+      "request": {
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Quad",
+        "quality_override": 18000,
+        "texture_delight": true,
+        "geometry_file_format": "glb",
+        "reference_upload_ids": [
+          "c0ab8648-c6f7-48ad-867e-a67457f0f954"
+        ],
+        "prompt": "Single adult anime male base body, symmetric high A pose, palms forward with separated fingers, fitted white T-shirt and charcoal shorts and gray shoes, arms and legs separated, preserve face and natural slender anatomy, front facing, clean deformation topology."
+      },
+      "reference_images": [
+        "/Users/jack/workpath/research/3D model/anime/art/poc/character_pipeline_20261003/sora_base_reference.png"
+      ]
+    },
+    {
+      "experiment": "sora_full_quad",
+      "generation_id": "e7e011b3-21cd-4b3c-a562-7c129155ff3f",
+      "display_url": "https://hyper3d.ai/workspace/rodin/e7e011b3-21cd-4b3c-a562-7c129155ff3f",
+      "status": "downloaded",
+      "source": "art/models/raw/character_pipeline_poc_20261003/sora_full_quad/generation.json",
+      "request": {
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Quad",
+        "quality_override": 18000,
+        "texture_delight": true,
+        "geometry_file_format": "glb",
+        "reference_upload_ids": [
+          "4c1e7854-c2ca-42f4-8c92-ed6c01c485d1"
+        ],
+        "prompt": "Single adult anime male character matching reference, symmetric A pose, separated arms and legs, five fingers, clean humanoid anatomy, crisp cel shaded colors, front facing. Preserve face and outfit."
+      },
+      "reference_images": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/characters/sora_front.png"
+      ]
+    },
+    {
+      "experiment": "sora_full_raw",
+      "generation_id": "70b583ce-2456-465e-91f1-69f6a1a59b42",
+      "display_url": "https://hyper3d.ai/workspace/rodin/70b583ce-2456-465e-91f1-69f6a1a59b42",
+      "status": "downloaded",
+      "source": "art/models/raw/character_pipeline_poc_20261003/sora_full_raw/generation.json",
+      "request": {
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Raw",
+        "quality_override": 40000,
+        "texture_delight": true,
+        "geometry_file_format": "glb",
+        "reference_upload_ids": [
+          "c5aa2987-cf28-4d16-b03a-011ab02df6b0"
+        ],
+        "prompt": "Single adult anime male character matching reference, symmetric A pose, separated arms and legs, five fingers, clean humanoid anatomy, crisp cel shaded colors, front facing. Preserve face and outfit."
+      },
+      "reference_images": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/characters/sora_front.png"
+      ]
+    }
+  ],
+  "rejected_requests": [
+    {
+      "experiment": "sora_bang_high",
+      "reason": "High-resolution access is not enabled for this account",
+      "generation_id": null,
+      "source": "art/models/raw/character_pipeline_poc_20261003/sora_bang/submission-response.json"
+    },
+    {
+      "experiment": "mio_bang_high",
+      "reason": "High-resolution access is not enabled for this account",
+      "generation_id": null,
+      "source": "art/models/raw/character_pipeline_poc_20261003/mio_bang/submission-response.json"
+    }
+  ],
+  "credit_estimate": 4,
+  "credit_estimate_verified_against_bill": false,
+  "production_assets_replaced": false,
+  "source_images": [
+    {
+      "character": "sora",
+      "tool": "built-in imagegen",
+      "path": "art/poc/character_pipeline_20261003/sora_base_reference.png",
+      "sha256": "52cb6c7f4723576fcbf7701386f37e43f1aa9dcc8123badf751dc8f4c1a3c367",
+      "prompt": "art/manifests/prompts/character_pipeline_poc_20261003/sora_base.txt"
+    },
+    {
+      "character": "mio",
+      "tool": "built-in imagegen",
+      "path": "art/poc/character_pipeline_20261003/mio_base_reference.png",
+      "sha256": "931f0c204f20eba1991b8cb08c94df9deb546edee53b01045e277f8eed567426",
+      "prompt": "art/manifests/prompts/character_pipeline_poc_20261003/mio_base.txt"
+    }
+  ],
+  "methods": [
+    {
+      "character": "sora",
+      "method": "original",
+      "outcome": "exported",
+      "asset": "art/poc/character_pipeline_20261003/godot/assets/sora_original.glb",
+      "sha256": "dd240ab8a41252573b6337336806b10d46e55ddabf269de2d09ab317f9120e43"
+    },
+    {
+      "character": "sora",
+      "method": "raw_legacy",
+      "outcome": "exported",
+      "asset": "art/poc/character_pipeline_20261003/godot/assets/sora_raw_legacy.glb",
+      "sha256": "366d5bf791333d487586e0c10e7cfcec0da38e9fc270170a2f25a6e6538d8c0e"
+    },
+    {
+      "character": "sora",
+      "method": "quad_legacy",
+      "outcome": "exported",
+      "asset": "art/poc/character_pipeline_20261003/godot/assets/sora_quad_legacy.glb",
+      "sha256": "83b8b9ee6b71b02e27f60654b79f780c196b750eaa89064f13ad97aaedda49bb"
+    },
+    {
+      "character": "sora",
+      "method": "quad_rigify",
+      "outcome": "exported",
+      "asset": "art/poc/character_pipeline_20261003/godot/assets/sora_quad_rigify.glb",
+      "sha256": "2ab0f1199767b0ecd503172982836a103349070fa2ad7227570a4a099a4426cd"
+    },
+    {
+      "character": "sora",
+      "method": "modular",
+      "outcome": "exported",
+      "asset": "art/poc/character_pipeline_20261003/godot/assets/sora_modular.glb",
+      "sha256": "a7af94ccc204fbdcee2e5f47adfa034792ceec6baddc080ce0fe77961ddf2542"
+    },
+    {
+      "character": "sora",
+      "method": "raw_rigify",
+      "outcome": "rejected by zero-weight check",
+      "asset": null,
+      "sha256": null
+    },
+    {
+      "character": "mio",
+      "method": "original",
+      "outcome": "exported",
+      "asset": "art/poc/character_pipeline_20261003/godot/assets/mio_original.glb",
+      "sha256": "94a3ed15406c3059b6a9d5bc97a703ebb723c92429824ad83292e372289c64a8"
+    },
+    {
+      "character": "mio",
+      "method": "raw_legacy",
+      "outcome": "exported",
+      "asset": "art/poc/character_pipeline_20261003/godot/assets/mio_raw_legacy.glb",
+      "sha256": "8b0ce95556ac12abcb7e5d591d14356dbcd6eba0ef5c5e6d66fb3a21cc0ca073"
+    },
+    {
+      "character": "mio",
+      "method": "quad_legacy",
+      "outcome": "exported",
+      "asset": "art/poc/character_pipeline_20261003/godot/assets/mio_quad_legacy.glb",
+      "sha256": "f410d1e9276af44c4c5ca3d0e3df72e4b4e45a83d2d6e5451e42fa4261c082b0"
+    },
+    {
+      "character": "mio",
+      "method": "quad_rigify",
+      "outcome": "exported",
+      "asset": "art/poc/character_pipeline_20261003/godot/assets/mio_quad_rigify.glb",
+      "sha256": "1a21e0ff8207392a5ce8d8bc43ae4de63cc718497e2c0385f8bb2c133136b560"
+    },
+    {
+      "character": "mio",
+      "method": "modular",
+      "outcome": "exported",
+      "asset": "art/poc/character_pipeline_20261003/godot/assets/mio_modular.glb",
+      "sha256": "87b270ad9de2f62ba09bd96b9e7b47e1046703d71564db2e20f607758e37a82f"
+    },
+    {
+      "character": "mio",
+      "method": "raw_rigify",
+      "outcome": "rejected by zero-weight check",
+      "asset": null,
+      "sha256": null
+    }
+  ]
+}

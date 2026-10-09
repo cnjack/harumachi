@@ -1,0 +1,25 @@
+{
+ "id": "W01_flower_buckets",
+ "src": "raw/W01_flower_buckets_pixal_windows_20261003/model.glb",
+ "provider": "Pixal3D private RTX 4080 image-to-3D 1024; job 2904b664-5906-480d-850c-03265423c8e5",
+ "tris_src": 993271,
+ "tris": 26735,
+ "size_m": [
+  0.95,
+  0.643,
+  1.295
+ ],
+ "godot_size_m_xyz": [
+  0.95,
+  1.295,
+  0.643
+ ],
+ "tex": 2048,
+ "bytes": 1904364,
+ "yaw_fix": 157.81281775971294,
+ "level": "auto",
+ "lean_src_deg": 6.98,
+ "levelled": true,
+ "lean_deg": 0.0,
+ "base_frac": 0.342
+}

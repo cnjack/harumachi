@@ -1,0 +1,25 @@
+{
+ "id": "W14_grocery_stock",
+ "src": "raw/W14_grocery_stock_hyper3d/model.glb",
+ "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+ "tris_src": 500000,
+ "tris": 16000,
+ "size_m": [
+  0.58,
+  0.263,
+  0.314
+ ],
+ "godot_size_m_xyz": [
+  0.58,
+  0.314,
+  0.263
+ ],
+ "tex": 2048,
+ "bytes": 895636,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.37,
+ "levelled": false,
+ "lean_deg": 0.48,
+ "base_frac": 0.609
+}

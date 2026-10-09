@@ -1,0 +1,200 @@
+{
+  "models": {
+    "H01": {
+      "samples": 10000,
+      "added_pixel_laplacian_rms": 0.0065457404087714815,
+      "interpolated_jpeg_control_rms": 0.004735478487120537,
+      "source_size": [
+        2048,
+        2048
+      ],
+      "output_size": [
+        8192,
+        8192
+      ],
+      "passed": true,
+      "sha256": "21dc4f8a95e8f409e65b061b0456dcd3a372ff47d422bd9bbe79563f6fddc17e",
+      "source_mtime": 1790997519.8373098
+    },
+    "H02": {
+      "samples": 10000,
+      "added_pixel_laplacian_rms": 0.012072890562777704,
+      "interpolated_jpeg_control_rms": 0.003693747472690154,
+      "source_size": [
+        2048,
+        2048
+      ],
+      "output_size": [
+        8192,
+        8192
+      ],
+      "passed": true,
+      "sha256": "b8696cd3f6efcbcb505f4b9c40a5320ef90de8a592d2df76daf0a2b4d9083dcf",
+      "source_mtime": 1790997520.8316135
+    },
+    "H03": {
+      "samples": 10000,
+      "added_pixel_laplacian_rms": 0.011639010422900574,
+      "interpolated_jpeg_control_rms": 0.009707039268118082,
+      "source_size": [
+        2048,
+        2048
+      ],
+      "output_size": [
+        4096,
+        4096
+      ],
+      "passed": true,
+      "sha256": "842d8eab47dfdcb386c0e5cd4a81e10b2b6337cb20fd01e84d0c5489bd353ced",
+      "source_mtime": 1790997521.1322532
+    },
+    "S06": {
+      "samples": 10000,
+      "added_pixel_laplacian_rms": 0.005965428845731907,
+      "interpolated_jpeg_control_rms": 0.004248791144731278,
+      "source_size": [
+        2048,
+        2048
+      ],
+      "output_size": [
+        8192,
+        8192
+      ],
+      "passed": true,
+      "sha256": "85bc7d60d609b29621455a030033f4b330b8c60fb0d410ab75840db9b21fb97c",
+      "source_mtime": 1790998103.6105876
+    },
+    "S01": {
+      "samples": 10000,
+      "added_pixel_laplacian_rms": 0.004749140137005617,
+      "interpolated_jpeg_control_rms": 0.0036303285781700122,
+      "source_size": [
+        2048,
+        2048
+      ],
+      "output_size": [
+        8192,
+        8192
+      ],
+      "passed": true,
+      "sha256": "31a5cfcd15cacc157f71585ebc9e7fe19507bab17287f88d60479549fef4dc87",
+      "source_mtime": 1791024493.1495378
+    },
+    "S02": {
+      "samples": 10000,
+      "added_pixel_laplacian_rms": 0.008667618203399724,
+      "interpolated_jpeg_control_rms": 0.00478310838663622,
+      "source_size": [
+        2048,
+        2048
+      ],
+      "output_size": [
+        8192,
+        8192
+      ],
+      "passed": true,
+      "sha256": "2747ab8bb3fcc2e4481ffb455d6fa08f1ab150ddca4967abc4f529150274805e",
+      "source_mtime": 1791024493.5257277
+    },
+    "S03": {
+      "samples": 10000,
+      "added_pixel_laplacian_rms": 0.009960357819727783,
+      "interpolated_jpeg_control_rms": 0.004244081786436402,
+      "source_size": [
+        2048,
+        2048
+      ],
+      "output_size": [
+        8192,
+        8192
+      ],
+      "passed": true,
+      "sha256": "523f815f75abf9893afcdf622999db4788fc74c3ead9a2b0174ef5e2f2cca9d7",
+      "source_mtime": 1791024493.9602947
+    },
+    "S05": {
+      "samples": 10000,
+      "added_pixel_laplacian_rms": 0.008095053651357575,
+      "interpolated_jpeg_control_rms": 0.0038157289846243105,
+      "source_size": [
+        2048,
+        2048
+      ],
+      "output_size": [
+        8192,
+        8192
+      ],
+      "passed": true,
+      "sha256": "58a0152a5775b16a1c429072b4a108556524118a4e8d12630e1a6297e8de5ee3",
+      "source_mtime": 1791024494.3302557
+    },
+    "S08": {
+      "samples": 10000,
+      "added_pixel_laplacian_rms": 0.00917580224101289,
+      "interpolated_jpeg_control_rms": 0.003833963223135626,
+      "source_size": [
+        2048,
+        2048
+      ],
+      "output_size": [
+        8192,
+        8192
+      ],
+      "passed": true,
+      "sha256": "e627ca51ed5a12c40f12a0721e87b43bee59807629b44908cef69128777bf2b9",
+      "source_mtime": 1791024494.76711
+    },
+    "M01_timber_machiya": {
+      "samples": 10000,
+      "added_pixel_laplacian_rms": 0.009621679530507047,
+      "interpolated_jpeg_control_rms": 0.004077150989575791,
+      "source_size": [
+        2048,
+        2048
+      ],
+      "output_size": [
+        8192,
+        8192
+      ],
+      "passed": true,
+      "sha256": "8dab77c5d8e7c84b8384d6756270ab5762367ce7a2477a5a70aa36cdc2cc5c41",
+      "source_mtime": 1790998104.4407392
+    },
+    "M03_gable_house": {
+      "samples": 10000,
+      "added_pixel_laplacian_rms": 0.00936560552524245,
+      "interpolated_jpeg_control_rms": 0.00368852670373619,
+      "source_size": [
+        2048,
+        2048
+      ],
+      "output_size": [
+        8192,
+        8192
+      ],
+      "passed": true,
+      "sha256": "13c7e0f0b12c47294d982fde5084c63880be5a3c4d4cac4334b8aebc756574b7",
+      "source_mtime": 1790998104.8360338
+    },
+    "M05_residential": {
+      "samples": 10000,
+      "added_pixel_laplacian_rms": 0.016365320889312862,
+      "interpolated_jpeg_control_rms": 0.005851214392025862,
+      "source_size": [
+        2048,
+        2048
+      ],
+      "output_size": [
+        4096,
+        4096
+      ],
+      "passed": true,
+      "sha256": "a3a11680cd294160b8ed23b572cdcac00825fc0562bbb042a3502a2b1d242847",
+      "source_mtime": 1790998105.121096
+    }
+  },
+  "checks": {
+    "authored_raster_detail": true
+  },
+  "method": "UV-covered area-weighted samples; compared against bilinear source at final texel step; visual acceptance separate"
+}

@@ -1,0 +1,9 @@
+[gd_resource type="AtlasTexture" format=3]
+
+[ext_resource type="Texture2D" path="res://ui_kit/assets/navigation_atlas.png" id="1_ee0of"]
+
+[resource]
+resource_name = "UIKitIcon/backpack"
+atlas = ExtResource("1_ee0of")
+region = Rect2(46, 926, 257, 260)
+filter_clip = true

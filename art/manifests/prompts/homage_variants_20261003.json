@@ -1,0 +1,15 @@
+{
+  "tool": "built-in imagegen",
+  "jobs": [
+    {
+      "key": "star_box_empty",
+      "ref": "/Users/jack/workpath/research/3D model/anime/game/assets/ui/homage/star_box.png",
+      "prompt": "Edit the supplied transparent anime offering-box illustration. Preserve the exact canvas, camera, wooden box outline, compartments, star sign and folded leaf note, colour palette, fine line style and alpha transparency. REMOVE ONLY the radish, tomatoes, cucumber and their leaves, leaving all three compartments EMPTY with clean drawn cedar bottoms. Nothing else changes. No new objects, no text, no background. Same exact square framing. Fully transparent PNG."
+    },
+    {
+      "key": "sprite_caps_empty",
+      "ref": "/Users/jack/workpath/research/3D model/anime/game/assets/ui/homage/sprite_caps.png",
+      "prompt": "Edit the supplied transparent anime tree-hollow illustration. Preserve the exact canvas/camera, tree stump silhouette, moss, three colourful small hats and all linework and alpha transparency. REMOVE ONLY the radish and its leaves, and the envelope. Leave the empty wooden ledge and hollow, with a tiny simple empty shallow wood dish resting where the radish was. No other changes, no characters, no text, no background. Same square framing. Fully transparent PNG."
+    }
+  ]
+}

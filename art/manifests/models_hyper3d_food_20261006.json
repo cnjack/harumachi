@@ -1,0 +1,139 @@
+{
+  "B02_onigiri": {
+    "provider": "Hyper3D CLI",
+    "asset": "B02_onigiri",
+    "tier": "Gen-2.5-High",
+    "mesh_mode": "Quad",
+    "quality": 4000,
+    "geometry_format": "glb",
+    "texture_delight": true,
+    "prompt": "One standalone Japanese onigiri rice ball for a slice-of-life anime game. A real solid rounded triangular 3D mesh, upright on a flat bottom, thick front-to-back volume. Ivory matte rice and a dark green nori band around the lower front/bottom; separate rice and nori materials. Flat cel colours, simple sparse rice-grain details, clean silhouette, no photographic texture, no gloss. No plate, tray, hand, character, text or backdrop mesh. 10.5cm wide, 9cm tall, 5cm thick, centered origin. Watertight mesh, GLB, about 4000 polygons.",
+    "status": "downloaded",
+    "submitted_at": 1791293353.4378119,
+    "submission_count": 1,
+    "exit_code": 0,
+    "response": {
+      "generation_id": "b2dc1c4c-2f23-4922-a1d8-6c6cb31d442b",
+      "status": "queued"
+    },
+    "generation_id": "b2dc1c4c-2f23-4922-a1d8-6c6cb31d442b",
+    "selected_file": "base_basic_pbr.glb",
+    "sha256": "8a9721f5e2c979ce156a15b83595a929f508e2c932f9937a9b61d84d652c2c93",
+    "display_url": null,
+    "task_url": "https://hyper3d.ai/workspace/rodin/b2dc1c4c-2f23-4922-a1d8-6c6cb31d442b",
+    "acceptance": {
+      "shape": "native and neutral stage inspected",
+      "geometry": "real solid mesh, grounded and scaled to plate",
+      "status": "visual_pass"
+    },
+    "game_sha256": "4aaa053c792d89b53681dfaf3c8b9f44b2f317093ccf50f5356d5e06ce6745e3"
+  },
+  "B07_veg_sandwich": {
+    "provider": "Hyper3D CLI",
+    "asset": "B07_veg_sandwich",
+    "tier": "Gen-2.5-High",
+    "mesh_mode": "Quad",
+    "quality": 4000,
+    "geometry_format": "glb",
+    "texture_delight": true,
+    "prompt": "A single triangular vegetable sandwich wedge, two bread layers enclosing red tomato and green cucumber. Match the reference shape and ingredients. Solid thick anime game prop with flat matte colours and simplified texture. Only this one food, no other objects.",
+    "status": "downloaded",
+    "submission_count": 1,
+    "submitted_at": 1791300020.4439418,
+    "reference_image": "game/assets/ui/icons/bread_sandwich.png",
+    "reference_sha256": "d438b3f2f669cb35ab541064672b6e3743355cac18ae5f1be5405bd95c156e09",
+    "response": {
+      "generation_id": "2892b867-f988-4357-a15e-9fabc35cd47e",
+      "status": "queued"
+    },
+    "generation_id": "2892b867-f988-4357-a15e-9fabc35cd47e",
+    "selected_file": "base_basic_pbr.glb",
+    "sha256": "9426c00673f516b9358c0a449de71a433801ec50be98cf1fba3a611e31f18768",
+    "task_url": "https://hyper3d.ai/workspace/rodin/2892b867-f988-4357-a15e-9fabc35cd47e",
+    "rejected_prior_attempt": {
+      "provider": "Hyper3D CLI",
+      "asset": "B07_veg_sandwich",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 4000,
+      "geometry_format": "glb",
+      "texture_delight": true,
+      "prompt": "One standalone solid food portion for a Japanese slice-of-life anime game. Flat cel colours, matte surfaces, simple clean silhouette, no photographic texture, no gloss. No plate, tray, hand, person, text or backdrop mesh. Flat stable bottom, centered origin, separate ingredient colours, watertight GLB, about 4000 polygons. A single triangular sandwich wedge resting on its broad bottom, two ivory bread layers with thin golden crust, clearly visible layers of green cucumber and red tomato between them. About 12cm wide, 6cm tall, 8cm deep. No toothpick.",
+      "status": "downloaded",
+      "submission_count": 1,
+      "submitted_at": 1791299057.5668612,
+      "response": {
+        "generation_id": "115903c0-613f-4fa2-94cb-eae796a4448e",
+        "status": "queued"
+      },
+      "generation_id": "115903c0-613f-4fa2-94cb-eae796a4448e",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "48db45c22647ca8c81f3e6d79dd1091e4e77167dfb86d91a044a89b1613f69e9",
+      "task_url": "https://hyper3d.ai/workspace/rodin/115903c0-613f-4fa2-94cb-eae796a4448e",
+      "acceptance": {
+        "status": "rejected",
+        "reason": "CLI result shape does not match the named single serving; inspected native and model-stage screenshots."
+      }
+    },
+    "acceptance": {
+      "shape": "native and neutral stage inspected",
+      "geometry": "real solid mesh, grounded and scaled to plate",
+      "status": "visual_pass"
+    },
+    "game_sha256": "dca1c581e97713eacf5bfa18718257b8a372030e0f98af6074096fcac5de9b07"
+  },
+  "B08_focaccia": {
+    "provider": "Hyper3D CLI",
+    "asset": "B08_focaccia",
+    "tier": "Gen-2.5-High",
+    "mesh_mode": "Quad",
+    "quality": 4000,
+    "geometry_format": "glb",
+    "texture_delight": true,
+    "prompt": "A single rectangular tomato focaccia bread serving with tomatoes and herbs on top. Match the reference shape and ingredients. Solid thick anime game prop with flat matte colours and simplified texture. Only this one food, no other objects.",
+    "status": "downloaded",
+    "submission_count": 1,
+    "submitted_at": 1791300027.181576,
+    "reference_image": "game/assets/ui/icons/bread_focaccia.png",
+    "reference_sha256": "c088b2be235eeb877f61d4a19cf99c3d3768a9a68d10ee8ed9ac97f1f04329cf",
+    "response": {
+      "generation_id": "e920fa72-9fcd-4f04-951b-14d024ac54b4",
+      "status": "queued"
+    },
+    "generation_id": "e920fa72-9fcd-4f04-951b-14d024ac54b4",
+    "selected_file": "base_basic_pbr.glb",
+    "sha256": "2440089249d88a14a745b7fd81c328f78418cafadb7d9fda6b8f31d6d021653b",
+    "task_url": "https://hyper3d.ai/workspace/rodin/e920fa72-9fcd-4f04-951b-14d024ac54b4",
+    "rejected_prior_attempt": {
+      "provider": "Hyper3D CLI",
+      "asset": "B08_focaccia",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 4000,
+      "geometry_format": "glb",
+      "texture_delight": true,
+      "prompt": "One standalone solid food portion for a Japanese slice-of-life anime game. Flat cel colours, matte surfaces, simple clean silhouette, no photographic texture, no gloss. No plate, tray, hand, person, text or backdrop mesh. Flat stable bottom, centered origin, separate ingredient colours, watertight GLB, about 4000 polygons. One rectangular focaccia serving, thick golden bread with gently rounded corners, two distinct red tomato pieces and sparse green herbs on its upper surface. About 12cm wide, 3cm tall, 9cm deep. Sparse stylized dimples, no realistic bread pores.",
+      "status": "downloaded",
+      "submission_count": 1,
+      "submitted_at": 1791299058.624706,
+      "response": {
+        "generation_id": "0d708dcb-789f-49d0-a799-8c2b15f7b102",
+        "status": "queued"
+      },
+      "generation_id": "0d708dcb-789f-49d0-a799-8c2b15f7b102",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "f8112ba8c055d763c8d4da13f9b83e13b4a6da7c411a86d42bd4765f79948328",
+      "task_url": "https://hyper3d.ai/workspace/rodin/0d708dcb-789f-49d0-a799-8c2b15f7b102",
+      "acceptance": {
+        "status": "rejected",
+        "reason": "CLI result shape does not match the named single serving; inspected native and model-stage screenshots."
+      }
+    },
+    "acceptance": {
+      "shape": "native and neutral stage inspected",
+      "geometry": "real solid mesh, grounded and scaled to plate",
+      "status": "visual_pass"
+    },
+    "game_sha256": "09fe8993c7413cec05eb77af441f908f2b3f128a6238f0a1e6f5c11c2e28b94d"
+  }
+}

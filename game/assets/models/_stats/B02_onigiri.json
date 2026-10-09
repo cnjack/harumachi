@@ -1,0 +1,25 @@
+{
+ "id": "B02_onigiri",
+ "src": "raw/B02_onigiri_hyper3d_cli_20261006/model.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High, Quad 4000 faces, one owned generation",
+ "tris_src": 7692,
+ "tris": 7692,
+ "size_m": [
+  0.105,
+  0.119,
+  0.087
+ ],
+ "godot_size_m_xyz": [
+  0.105,
+  0.087,
+  0.119
+ ],
+ "tex": 1024,
+ "bytes": 252668,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 4.89,
+ "levelled": true,
+ "lean_deg": 0.34,
+ "base_frac": 0.185
+}

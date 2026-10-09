@@ -1,0 +1,25 @@
+{
+ "id": "I04_shop_counter",
+ "src": "raw/I04_shop_counter_pix2/model.glb",
+ "provider": "pixal3d (v0.6 review, seed 7)",
+ "tris_src": 962583,
+ "tris": 19585,
+ "size_m": [
+  2.11,
+  1.147,
+  1.249
+ ],
+ "godot_size_m_xyz": [
+  2.11,
+  1.249,
+  1.147
+ ],
+ "tex": 2048,
+ "bytes": 1177136,
+ "yaw_fix": -150.0,
+ "level": "auto",
+ "lean_src_deg": 10.94,
+ "levelled": true,
+ "lean_deg": 0.07,
+ "base_frac": 0.785
+}

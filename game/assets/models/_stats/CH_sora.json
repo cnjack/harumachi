@@ -1,0 +1,27 @@
+{
+ "id": "CH_sora",
+ "src": "character_wave_smile_20261005/exports/CH_sora.glb",
+ "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+ "preserve_rigged_character": true,
+ "tris": 94032,
+ "bytes": 11458212,
+ "bones": 66,
+ "animations": [
+  "idle",
+  "walk",
+  "run",
+  "wave",
+  "bow",
+  "look",
+  "stretch",
+  "tend",
+  "talk",
+  "cheer",
+  "dance",
+  "reference"
+ ],
+ "sha256": "2243aed7f1901f47525d30c3fa4e144f48a3b1124cf8d33d759d29d9981f59ba",
+ "character_pipeline": "characters-apose-20261004",
+ "individual_review": "20261005",
+ "greeting_review": "20261005"
+}

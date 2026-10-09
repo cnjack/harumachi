@@ -1,0 +1,13 @@
+Japanese TV anime style dialogue portrait, like a clean slice-of-life anime key frame: clean confident fine line art, flat cel shading with crisp two-tone hard-edged shadows, simple precise anime features, bright clean summer colours, Makoto Shinkai inspired luminous warm summer sunlight from the upper left and subtle cool lavender-blue shadows. Not photorealistic, not a painting, not 3D.
+
+Create exactly ONE brand-new image, a single standalone dialogue portrait for a cozy Japanese small-town life game. Square 1024x1024 PNG.
+
+Input image 1 is a CHARACTER IDENTITY AND DRAWING STYLE REFERENCE ONLY, not an edit target. Redraw the same character cleanly from scratch. Preserve the reference woman's exact face design, facial proportions, age, hairstyle, hair colour, skin tone, clothes and clothing colours.
+
+Subject: Haru, a 72-year-old Japanese woman gardener, with the same warm round elderly face, gentle fine smile wrinkles, grey eyebrows and silver-grey hair swept back with a side part and gathered into a low bun behind her head, including the loose face-framing strand seen in the reference. Olive-green diamond-quilted vest with its broad collar over a lavender buttoned shirt. Match the reference vest, shirt and warm skin palette exactly.
+Expression: bright happy open smile, eyes gently closed in happy curved arcs, cheeks lifted, friendly and content.
+Composition: exactly ONE head-and-shoulders bust, facing the viewer at a slight three-quarter angle. Head in the upper half. Whole hairstyle and shoulders must fit inside the canvas without cropping the top or sides. Generous empty transparent margin above and around the head. Bust cut off by the bottom edge only, no hands or extra objects.
+
+BACKGROUND: truly fully transparent PNG alpha, including the empty space around the character. No backdrop, no floor, no cast shadow, no glow, no frame, no border, no text, no watermark. Do not draw a checkerboard pattern. Every part of the character must be solid and opaque, including skin, hair, light highlights and clothing; only the surrounding empty background is transparent. If genuine transparency cannot be produced, use instead a perfectly flat uniform pure chroma green #00FF00 background with no gradient, no shadow and no green spill or reflected green light on the character.
+
+Output only one image. Do not modify the reference image, composite it, or return variants.

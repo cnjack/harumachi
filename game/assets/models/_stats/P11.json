@@ -1,0 +1,25 @@
+{
+ "id": "P11",
+ "src": "raw/P11/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 19986,
+ "tris": 8000,
+ "size_m": [
+  1.83,
+  1.25,
+  2.0
+ ],
+ "godot_size_m_xyz": [
+  1.83,
+  2.0,
+  1.25
+ ],
+ "tex": 1024,
+ "bytes": 538616,
+ "yaw_fix": -2.9,
+ "level": "auto",
+ "lean_src_deg": 0.48,
+ "levelled": false,
+ "lean_deg": 0.44,
+ "base_frac": 0.433
+}

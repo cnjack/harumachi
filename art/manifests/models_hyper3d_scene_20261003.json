@@ -1,0 +1,480 @@
+{
+  "date": "2026-10-03",
+  "status": "12 building types integrated; full 409/410; final props 42/43; global 200 px/m density gate open; review candidate only",
+  "assets": {
+    "H01": {
+      "generation_id": null,
+      "reference": [],
+      "source": "art/models/raw/scene_rodin_20261002/H01.glb",
+      "assembly": {
+        "asset": "H01",
+        "sources": [
+          "H01_main_body",
+          "engawa",
+          "door-game"
+        ],
+        "provider": "Hyper3D Rodin; local Blender aperture cuts and assembly",
+        "parts": [
+          "Rodin_main_house",
+          "Rear_wood_infill",
+          "Rear_service_door",
+          "Rear_shoji_backing",
+          "Rodin_engawa",
+          "DoorFrame_0",
+          "DoorFrame_1",
+          "Shoji_backing",
+          "Summer_towel",
+          "Rodin_summer_pig"
+        ],
+        "door_profiles": [
+          {
+            "feature": "generated door outer stile",
+            "x": -2.3377499999999998,
+            "y0": 0.6779999999999999,
+            "y1": 2.278,
+            "z": 3.4299999999999997
+          },
+          {
+            "feature": "generated door outer stile",
+            "x": 0.07225000000000015,
+            "y0": 0.6779999999999999,
+            "y1": 2.278,
+            "z": 3.4299999999999997
+          }
+        ],
+        "bounds_godot": {
+          "min": [
+            -2.8680918216705322,
+            0.0,
+            -4.9731574058532715
+          ],
+          "max": [
+            2.8680918216705322,
+            6.800000190734863,
+            4.093194961547852
+          ]
+        },
+        "ground_m": 0,
+        "has_independent_lattice": true
+      },
+      "module_provenance": "art/manifests/models_hyper3d_modules_20261002.json; new H01_main body",
+      "game_sha256": "8ada05b91220e2674438a2be951f0df3eee9a4d7d74aedb36ace217dd2ab0b12"
+    },
+    "H02": {
+      "generation_id": "744b3abc-23de-4edd-8009-3b6877a0a7ca",
+      "reference": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_hyper3d_replace_20261003/H02.png"
+      ],
+      "source": "art/models/raw/scene_rodin_20261002/H02.glb",
+      "assembly": {
+        "asset": "H02",
+        "source": "H02_body.glb",
+        "provider": "Hyper3D Rodin image-to-3D; local Blender assembly",
+        "repairs": [
+          "provider laundry assigned independent animated materials",
+          "six independently textured Hyper3D tenant facade modules; uniformly scaled per floor"
+        ],
+        "parts": [
+          "Rodin_H02_body",
+          "Rodin_tenant_0_0",
+          "Rodin_tenant_0_0_curtain",
+          "Rodin_tenant_0_1",
+          "Rodin_tenant_0_1_curtain",
+          "Rodin_tenant_0_2",
+          "Rodin_tenant_0_2_curtain",
+          "Rodin_tenant_1_0",
+          "Rodin_tenant_1_0_curtain",
+          "Rodin_tenant_1_1",
+          "Rodin_tenant_1_1_curtain",
+          "Rodin_tenant_1_2",
+          "Rodin_tenant_1_2_curtain"
+        ],
+        "bounds_godot": {
+          "min": [
+            -6.0953369140625,
+            0.0,
+            -3.586667060852051
+          ],
+          "max": [
+            6.096480369567871,
+            6.801267147064209,
+            2.894078254699707
+          ]
+        }
+      },
+      "module_provenance": "H02_unit generated independently, six instances",
+      "game_sha256": "fb9fc342293cd2b93220514b5b2448df0b5561c096c390d3d1cd559607995bf3"
+    },
+    "H03": {
+      "generation_id": null,
+      "reference": [],
+      "source": "art/models/raw/scene_rodin_20261002/H03.glb",
+      "assembly": {
+        "asset": "H03",
+        "sources": [
+          "engawa",
+          "engawa",
+          "door-game"
+        ],
+        "provider": "Hyper3D Rodin; local Blender aperture cuts and assembly",
+        "parts": [
+          "Rodin_engawa",
+          "DoorFrame_0",
+          "DoorFrame_1",
+          "Shoji_backing",
+          "Summer_towel"
+        ],
+        "door_profiles": [
+          {
+            "feature": "generated door outer stile",
+            "x": -2.3377499999999998,
+            "y0": 0.6779999999999999,
+            "y1": 2.278,
+            "z": 1.7500000000000002
+          },
+          {
+            "feature": "generated door outer stile",
+            "x": 0.07225000000000015,
+            "y0": 0.6779999999999999,
+            "y1": 2.278,
+            "z": 1.7500000000000002
+          }
+        ],
+        "bounds_godot": {
+          "min": [
+            -2.8680918216705322,
+            0.0,
+            -1.653194785118103
+          ],
+          "max": [
+            2.8680918216705322,
+            3.499999761581421,
+            2.4131946563720703
+          ]
+        },
+        "ground_m": 0,
+        "has_independent_lattice": true
+      },
+      "module_provenance": "art/manifests/models_hyper3d_modules_20261002.json; existing engawa and corrected door frames",
+      "game_sha256": "2d9af01b1d6ed2a1f24b0519baab4bfc6d4cf21c8bd5cabb34a5127270ecd498"
+    },
+    "S01": {
+      "generation_id": "63972810-1677-4340-9848-ac7671c75b71",
+      "reference": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_hyper3d_replace_20261003/S01.png"
+      ],
+      "source": "art/models/raw/scene_rodin_20261002/S01.glb",
+      "assembly": {
+        "asset": "S01",
+        "source": "S01_body.glb",
+        "provider": "Hyper3D Rodin image-to-3D; local Blender assembly",
+        "repairs": [
+          "independent textured produce displays retained and moved 36 cm forward"
+        ],
+        "parts": [
+          "Rodin_S01_body",
+          "cedar__display",
+          "cedar_dark__display",
+          "crate_green__display",
+          "ink__display",
+          "leaf__display",
+          "Lettering_当日鲜蔬__display",
+          "Lettering_当日鲜蔬__display.001",
+          "Lettering_当日鲜蔬__display.002",
+          "paper__display",
+          "produce_cabbage__display",
+          "produce_cabbage_light__display",
+          "produce_cucumber__display",
+          "produce_tomato__display",
+          "sign_cream__display",
+          "steel__display"
+        ],
+        "bounds_godot": {
+          "min": [
+            -3.5112245082855225,
+            0.0,
+            -1.3381720781326294
+          ],
+          "max": [
+            3.5105555057525635,
+            5.24908971786499,
+            3.801032543182373
+          ]
+        }
+      },
+      "game_sha256": "654c6a6045f4fad07d2066b6dc6f96774fc865a2d40d4a22380f9114d574060f"
+    },
+    "S02": {
+      "generation_id": "5253abed-e60e-4240-add1-4e57b5aba738",
+      "reference": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_hyper3d_replace_20261003/S02.png"
+      ],
+      "source": "art/models/raw/scene_rodin_20261002/S02.glb",
+      "assembly": {
+        "asset": "S02",
+        "source": "S02_body.glb",
+        "provider": "Hyper3D Rodin image-to-3D; local Blender assembly",
+        "repairs": [
+          "local jamb depth corrected using measured guide; 108 vertices; UVs retained",
+          "local display cavity cleared for interior mapping"
+        ],
+        "parts": [
+          "Rodin_S02_body"
+        ],
+        "bounds_godot": {
+          "min": [
+            -2.202087163925171,
+            0.0,
+            -3.933910369873047
+          ],
+          "max": [
+            2.2012062072753906,
+            6.599327564239502,
+            3.8193464279174805
+          ]
+        }
+      },
+      "game_sha256": "1fb9d1792a39a390fb31f623e4858ed0b2a0bd962c71f9dd4b140ec6fe7b07d7"
+    },
+    "S03": {
+      "generation_id": "04ce4172-3a92-430f-afd8-44c75ac86a1b",
+      "reference": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_hyper3d_replace_20261003/S03.png"
+      ],
+      "source": "art/models/raw/scene_rodin_20261002/S03.glb",
+      "assembly": {
+        "asset": "S03",
+        "source": "S03_body.glb",
+        "provider": "Hyper3D Rodin image-to-3D; local Blender assembly",
+        "repairs": [],
+        "parts": [
+          "Rodin_S03_body"
+        ],
+        "bounds_godot": {
+          "min": [
+            -2.9329593181610107,
+            0.0,
+            -1.8744667768478394
+          ],
+          "max": [
+            2.931281566619873,
+            5.450450420379639,
+            4.229434013366699
+          ]
+        }
+      },
+      "game_sha256": "76001c97651c42c9a620fd59fab39cc41cf71839db6e373ef9d5e66fc5156688"
+    },
+    "S05": {
+      "generation_id": "d4449582-d2d7-414c-8059-08ce07b2398b",
+      "reference": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_hyper3d_replace_20261003/S05.png"
+      ],
+      "source": "art/models/raw/scene_rodin_20261002/S05.glb",
+      "assembly": {
+        "asset": "S05",
+        "source": "S05_body.glb",
+        "provider": "Hyper3D Rodin image-to-3D; local Blender assembly",
+        "repairs": [
+          "garbled provider lettering replaced with a separately editable sign"
+        ],
+        "parts": [
+          "Rodin_S05_body",
+          "Post_office_sign"
+        ],
+        "bounds_godot": {
+          "min": [
+            -4.898370265960693,
+            0.0,
+            -4.221445560455322
+          ],
+          "max": [
+            4.895753860473633,
+            5.599886417388916,
+            4.840234279632568
+          ]
+        }
+      },
+      "game_sha256": "8c282c1d1eeb861633f05963d1700e85ef9dba4170473c9de432ad4b17893692"
+    },
+    "S06": {
+      "generation_id": "a4f69392-c761-4261-a50f-8c89e8270acb",
+      "reference": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_hyper3d_replace_20261003/S06.png"
+      ],
+      "source": "art/models/raw/scene_rodin_20261002/S06.glb",
+      "assembly": {
+        "asset": "S06",
+        "source": "S06_body.glb",
+        "provider": "Hyper3D Rodin image-to-3D; local Blender assembly",
+        "repairs": [],
+        "parts": [
+          "Rodin_S06_body"
+        ],
+        "bounds_godot": {
+          "min": [
+            -6.483275890350342,
+            0.0,
+            -8.52369213104248
+          ],
+          "max": [
+            6.480362892150879,
+            5.799211025238037,
+            5.4607930183410645
+          ]
+        }
+      },
+      "game_sha256": "d53b0e1a3fae85df9673ea4cb6f9908254ddd6b95cfee8b44fe21ddaffd16832"
+    },
+    "S08": {
+      "generation_id": "c048c1b5-25cc-487e-9fab-9d74a3c8c480",
+      "reference": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_hyper3d_replace_20261003/S08.png"
+      ],
+      "source": "art/models/raw/scene_rodin_20261002/S08.glb",
+      "assembly": {
+        "asset": "S08",
+        "source": "S08_body.glb",
+        "provider": "Hyper3D Rodin image-to-3D; local Blender assembly",
+        "repairs": [
+          "local jamb depth corrected using measured guide; 162 vertices; UVs retained",
+          "provider indigo noren assigned animated material"
+        ],
+        "parts": [
+          "Rodin_S08_body"
+        ],
+        "bounds_godot": {
+          "min": [
+            -3.5978689193725586,
+            0.0,
+            -2.493985652923584
+          ],
+          "max": [
+            3.596524238586426,
+            6.149299144744873,
+            4.259391784667969
+          ]
+        }
+      },
+      "game_sha256": "349baed8edea8b12dc28645d8296e0795fb121b7ab182ef91c252709f73ac2cf"
+    },
+    "M01_timber_machiya": {
+      "generation_id": "7d2d8f8b-68a7-4768-a597-0d093f267483",
+      "reference": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_hyper3d_replace_20261003/M01_timber_machiya.png"
+      ],
+      "source": "art/models/raw/scene_rodin_20261002/M01_timber_machiya.glb",
+      "assembly": {
+        "asset": "M01_timber_machiya",
+        "source": "M01_timber_machiya_body.glb",
+        "provider": "Hyper3D Rodin image-to-3D; local Blender assembly",
+        "repairs": [
+          "lower footprint squared with a rigid yaw correction; no axis scaling"
+        ],
+        "parts": [
+          "Rodin_M01_timber_machiya_body"
+        ],
+        "bounds_godot": {
+          "min": [
+            -2.2694802284240723,
+            0.0,
+            -3.6664674282073975
+          ],
+          "max": [
+            2.4329724311828613,
+            6.600741386413574,
+            1.149999976158142
+          ]
+        }
+      },
+      "game_sha256": "fd8d1848614003a4a8643a68ebc49bdf987c582bb5b23919bc71da360c3717f1"
+    },
+    "M03_gable_house": {
+      "generation_id": "dca87828-328f-46d8-bee2-b6a00df409a6",
+      "reference": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_hyper3d_replace_20261003/M03_gable_house.png"
+      ],
+      "source": "art/models/raw/scene_rodin_20261002/M03_gable_house.glb",
+      "assembly": {
+        "asset": "M03_gable_house",
+        "source": "M03_gable_house_body.glb",
+        "provider": "Hyper3D Rodin image-to-3D; local Blender assembly",
+        "repairs": [],
+        "parts": [
+          "Rodin_M03_gable_house_body"
+        ],
+        "bounds_godot": {
+          "min": [
+            -3.772953748703003,
+            0.0,
+            -2.1595051288604736
+          ],
+          "max": [
+            3.770922899246216,
+            6.600189208984375,
+            4.1417670249938965
+          ]
+        }
+      },
+      "game_sha256": "c38d43500a3565ef618d0f776b37a51a6a871fe8140821676ec7655d3b51a5de"
+    },
+    "M05_residential": {
+      "generation_id": "7ae654bb-8817-4f99-8d3e-baeb540a0c9f",
+      "reference": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_hyper3d_replace_20261003/M05_residential.png"
+      ],
+      "source": "art/models/raw/scene_rodin_20261002/M05_residential.glb",
+      "assembly": {
+        "asset": "M05_residential",
+        "source": "M05_residential_body.glb",
+        "provider": "Hyper3D Rodin image-to-3D; local Blender assembly",
+        "repairs": [
+          "local jamb depth corrected using measured guide; 185 vertices; UVs retained"
+        ],
+        "parts": [
+          "Rodin_M05_residential_body"
+        ],
+        "bounds_godot": {
+          "min": [
+            -1.5878705978393555,
+            0.0,
+            -1.975872278213501
+          ],
+          "max": [
+            1.588063359260559,
+            6.80033016204834,
+            1.3104575872421265
+          ]
+        }
+      },
+      "game_sha256": "e4c6c2794aa4fb656f6603d1119780e2e628da1f4a0560c90292dbf1f56c3fad"
+    }
+  },
+  "independent_modules": {
+    "H01_main": {
+      "generation_id": "3d62e9a1-e8f4-47a4-8a66-1e867c803770",
+      "reference": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_hyper3d_replace_20261003/H01_main.png"
+      ],
+      "source": "art/models/raw/scene_rodin_20261002/H01_main_body.glb"
+    },
+    "H02_unit": {
+      "generation_id": "4221a5c5-fc59-455f-92df-f7ff919cfaf9",
+      "reference": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_hyper3d_replace_20261003/H02_unit.png"
+      ],
+      "source": "art/models/raw/scene_rodin_20261002/H02_unit_body.glb"
+    }
+  },
+  "verification": {
+    "model_survey_images": 108,
+    "props_report": "evidence/scene_hyper3d_replace_20261002/final-props-from-full.json",
+    "whole_building_density_gate": "failed; 200 px/m threshold retained",
+    "new_module_guard_old": false,
+    "new_module_guard_current": true,
+    "full_report": "evidence/scene_hyper3d_replace_20261002/full-tests-package.json",
+    "native_autoplay_report": "evidence/scene_hyper3d_replace_20261002/native-autoplay-final.json",
+    "candidate": "builds/HareMachi-Hyper3D-review-20261003.zip",
+    "candidate_report": "evidence/scene_hyper3d_replace_20261002/candidate-verification.json"
+  }
+}

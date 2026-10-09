@@ -1,0 +1,20 @@
+{
+ "id": "E02_tanabata_bamboo",
+ "src": "raw/E02_tanabata_bamboo_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 979799,
+ "tris": 6382,
+ "size_m": [
+  1.343,
+  1.323,
+  2.531
+ ],
+ "godot_size_m_xyz": [
+  1.343,
+  2.531,
+  1.323
+ ],
+ "tex": 1024,
+ "bytes": 774840,
+ "yaw_fix": 0
+}

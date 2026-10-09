@@ -1,0 +1,20 @@
+{
+ "id": "I04_chabudai",
+ "src": "raw/I04_chabudai/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 15000,
+ "tris": 5000,
+ "size_m": [
+  0.9,
+  0.981,
+  0.322
+ ],
+ "godot_size_m_xyz": [
+  0.9,
+  0.322,
+  0.981
+ ],
+ "tex": 1024,
+ "bytes": 262392,
+ "yaw_fix": 0
+}

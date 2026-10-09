@@ -1,0 +1,7 @@
+Use case: illustration-story
+Asset type: downloadable wallpaper for Harumachi: Next Summer
+Primary request: A peaceful Japanese countryside river winding through the valley town Harumachi on a clear summer afternoon. Low tiled roofs, a small wooden footbridge, lush riverside grasses, far green mountains and towering white cumulus clouds. Sparkling turquoise water with simple cel-shaded reflections. A restful open composition, no people.
+Style/medium: Japanese TV anime style key frame, clean confident line art, flat cel shading with crisp two-tone shadows, bright saturated summer colours, simple clearly drawn scenery. Luminous blue skies, large cumulus clouds, warm golden light, cool lavender shadows and backlit rim highlights when appropriate. Must look like a frame from a slice-of-life anime, not photorealistic, not painterly, not a 3D render.
+Composition/framing: Tall portrait phone lock-screen wallpaper, 9:19.5 aspect ratio, ideally 1440 x 3120 pixels. Compose specifically for a portrait screen, with uncluttered sky in the upper third for the clock, scenery in the middle and lower frame. Render one single full-bleed portrait image, never a collage or a landscape image in a phone mockup.
+Text: none.
+Constraints: no text, no typography, no logo, no watermark, no device frame, no panels, no collage. Entire image is original anime scenery. Keep the architecture modest and consistent with a small Japanese valley town.

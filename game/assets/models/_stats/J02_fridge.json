@@ -1,0 +1,20 @@
+{
+ "id": "J02_fridge",
+ "src": "raw/J02_fridge/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 15980,
+ "tris": 6000,
+ "size_m": [
+  0.727,
+  0.722,
+  1.55
+ ],
+ "godot_size_m_xyz": [
+  0.727,
+  1.55,
+  0.722
+ ],
+ "tex": 1024,
+ "bytes": 252592,
+ "yaw_fix": 0
+}

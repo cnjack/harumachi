@@ -1,0 +1,25 @@
+{
+ "id": "C14_watermelon",
+ "src": "raw/C14_watermelon_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 978973,
+ "tris": 6102,
+ "size_m": [
+  0.841,
+  0.752,
+  0.403
+ ],
+ "godot_size_m_xyz": [
+  0.841,
+  0.403,
+  0.752
+ ],
+ "tex": 1024,
+ "bytes": 692144,
+ "yaw_fix": 34.1,
+ "level": "auto",
+ "lean_src_deg": 9.51,
+ "levelled": true,
+ "lean_deg": 0.74,
+ "base_frac": 0.298
+}

@@ -1,0 +1,7 @@
+Dialogue portrait sheet for a cozy Japanese neighborhood life game, Makoto Shinkai inspired luminous 2D anime style, clean fine line art and cel shading, soft warm light. Landscape image with a strict grid of 4 columns x 2 rows of equal cells, generous spacing, each cell containing ONE head-and-shoulders bust portrait facing the viewer at a slight three-quarter angle, centered, same head size in every cell. Solid flat warm ivory background (#F6F1E7) everywhere, no frames, no borders, no text, no labels.
+Columns, left to right (match the attached character reference images exactly: hair, face, clothing colors):
+1) Sora, 20-year-old gender-neutral new resident, short tousled chestnut hair, mint-green open short-sleeve shirt over white T-shirt.
+2) Mio, 24-year-old woman, shoulder-length dark brown bob with small yellow hair clip, cream cardigan over light-blue blouse.
+3) Ren, 27-year-old young man baker, black hair under mustard-yellow bandana, rust-orange shirt, white apron straps.
+4) Haru, 72-year-old woman gardener, grey hair in low bun, olive-green quilted vest over lavender shirt.
+Top row: calm neutral friendly expression. Bottom row: the same character with a bright happy smile (eyes slightly closed from smiling).

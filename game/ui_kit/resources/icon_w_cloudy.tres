@@ -1,0 +1,9 @@
+[gd_resource type="AtlasTexture" format=3]
+
+[ext_resource type="Texture2D" path="res://ui_kit/assets/weather_atlas.png" id="1_1d0fb"]
+
+[resource]
+resource_name = "UIKitIcon/w_cloudy"
+atlas = ExtResource("1_1d0fb")
+region = Rect2(921, 99, 360, 305)
+filter_clip = true

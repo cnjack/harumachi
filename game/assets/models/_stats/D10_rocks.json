@@ -1,0 +1,25 @@
+{
+ "id": "D10_rocks",
+ "src": "raw/D10_rocks_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 966021,
+ "tris": 7417,
+ "size_m": [
+  0.845,
+  0.816,
+  0.696
+ ],
+ "godot_size_m_xyz": [
+  0.845,
+  0.696,
+  0.816
+ ],
+ "tex": 1024,
+ "bytes": 544484,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 9.61,
+ "levelled": true,
+ "lean_deg": 0.47,
+ "base_frac": 0.569
+}

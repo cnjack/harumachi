@@ -1,0 +1,1150 @@
+{
+  "house_key": {
+    "name": "新家钥匙",
+    "key": true,
+    "icon": "house_key",
+    "desc": "晴町 3 丁目 2 号的钥匙，挂着一块刻着叶子的小木牌。"
+  },
+  "welcome_note": {
+    "name": "欢迎便笺",
+    "key": true,
+    "icon": "welcome_note",
+    "desc": "澪写的便笺：“欢迎搬来晴町！方便的时候，来庭院门口的公告栏找我。”"
+  },
+  "bread_basket": {
+    "name": "面包篮",
+    "key": true,
+    "icon": "bread_basket",
+    "desc": "莲刚烤好的试做面包。要送到庭院的集市摊位。"
+  },
+  "seeds": {
+    "name": "番茄种子",
+    "key": true,
+    "icon": "seeds",
+    "desc": "春给的种子袋，写着“迷你番茄 · 耐晒”。"
+  },
+  "watering_can": {
+    "name": "洒水壶",
+    "key": true,
+    "icon": "watering_can",
+    "desc": "春借给你的绿色洒水壶。"
+  },
+  "event_sign": {
+    "name": "活动标牌",
+    "key": true,
+    "icon": "event_poster",
+    "desc": "周末小集市的告示海报，要贴到庭院门口的公告栏上。"
+  },
+  "support_token": {
+    "name": "邻里支持标记",
+    "key": true,
+    "icon": "support_token",
+    "desc": "邻居们表示“我会来帮忙”的木徽章。集齐三枚就能办集市。"
+  },
+  "checklist": {
+    "name": "集市准备清单",
+    "key": true,
+    "icon": "checklist",
+    "desc": "澪整理的准备事项。"
+  },
+  "melon_pan": {
+    "name": "试做菠萝包",
+    "key": false,
+    "icon": "melon_pan",
+    "desc": "莲塞给你的试吃面包，还是温的。",
+    "price": 40,
+    "sell": 20
+  },
+  "onigiri": {
+    "name": "手捏饭团",
+    "key": false,
+    "icon": "onigiri",
+    "desc": "在厨房自己捏的饭团。和邻居说话时可以送一个。"
+  },
+  "flower_pot": {
+    "name": "绣球花盆",
+    "key": false,
+    "icon": "flower_pot",
+    "desc": "可放置的装饰。春很喜欢花。",
+    "placeable": "decor",
+    "price": 25,
+    "model": "A14_hydrangea_pot",
+    "footprint": [
+      1.0,
+      1.0
+    ],
+    "liked_by": "haru"
+  },
+  "bunting": {
+    "name": "彩旗串",
+    "key": false,
+    "icon": "bunting",
+    "desc": "可放置的装饰。两根木杆拉起一串三角彩旗，澪一直想要。",
+    "placeable": "decor",
+    "price": 30,
+    "model": "bunting",
+    "footprint": [
+      3.0,
+      0.5
+    ],
+    "liked_by": "mio"
+  },
+  "lantern": {
+    "name": "纸灯笼",
+    "key": false,
+    "icon": "lantern",
+    "desc": "可放置的装饰。傍晚会亮起来，莲说像老家的夏祭。",
+    "placeable": "decor",
+    "price": 20,
+    "model": "A07_lantern",
+    "footprint": [
+      0.5,
+      0.5
+    ],
+    "liked_by": "ren"
+  },
+  "picnic_table": {
+    "name": "野餐桌",
+    "key": false,
+    "icon": "picnic_table",
+    "desc": "可放置的座位。集市至少需要一张。",
+    "placeable": "seating",
+    "price": 0,
+    "model": "P03",
+    "footprint": [
+      2.0,
+      2.0
+    ]
+  },
+  "bench": {
+    "name": "木长椅",
+    "key": false,
+    "icon": "bench",
+    "desc": "可放置的座位。集市至少需要一张。",
+    "placeable": "seating",
+    "price": 0,
+    "model": "A12_bench",
+    "footprint": [
+      2.0,
+      1.0
+    ]
+  },
+  "seed_radish": {
+    "name": "萝卜种子",
+    "key": false,
+    "icon": "seed_radish",
+    "desc": "白白胖胖的萝卜。3 天成熟，田中爷爷最爱。",
+    "seed": "radish",
+    "price": 20,
+    "sell": 10
+  },
+  "radish": {
+    "name": "萝卜",
+    "key": false,
+    "icon": "crop_radish",
+    "desc": "刚拔出来的萝卜，叶子还带着露水。",
+    "crop": "radish",
+    "sell": 50
+  },
+  "seed_komatsuna": {
+    "name": "小松菜种子",
+    "key": false,
+    "icon": "seed_komatsuna",
+    "desc": "长得最快的小松菜。2 天成熟，一次收 2 把。",
+    "seed": "komatsuna",
+    "price": 15,
+    "sell": 7
+  },
+  "komatsuna": {
+    "name": "小松菜",
+    "key": false,
+    "icon": "crop_komatsuna",
+    "desc": "一把水灵灵的小松菜。",
+    "crop": "komatsuna",
+    "sell": 16
+  },
+  "seed_tomato": {
+    "name": "迷你番茄种子",
+    "key": false,
+    "icon": "seed_tomato",
+    "desc": "迷你番茄。4 天成熟，之后每 2 天还能再摘。",
+    "seed": "tomato",
+    "price": 35,
+    "sell": 17
+  },
+  "tomato": {
+    "name": "迷你番茄",
+    "key": false,
+    "icon": "crop_tomato",
+    "desc": "一串红亮的迷你番茄，甜得像糖。",
+    "crop": "tomato",
+    "sell": 14
+  },
+  "seed_cucumber": {
+    "name": "黄瓜种子",
+    "key": false,
+    "icon": "seed_cucumber",
+    "desc": "爬架子的黄瓜。3 天成熟，之后每 2 天再结。",
+    "seed": "cucumber",
+    "price": 35,
+    "sell": 17
+  },
+  "cucumber": {
+    "name": "黄瓜",
+    "key": false,
+    "icon": "crop_cucumber",
+    "desc": "脆生生的黄瓜，表面还有小刺。",
+    "crop": "cucumber",
+    "sell": 19
+  },
+  "seed_edamame": {
+    "name": "毛豆种子",
+    "key": false,
+    "icon": "seed_edamame",
+    "desc": "毛豆。4 天成熟，一次收 3 串。",
+    "seed": "edamame",
+    "price": 30,
+    "sell": 15
+  },
+  "edamame": {
+    "name": "毛豆",
+    "key": false,
+    "icon": "crop_edamame",
+    "desc": "一串饱满的毛豆，煮一煮就是夏天。",
+    "crop": "edamame",
+    "sell": 22
+  },
+  "seed_sunflower": {
+    "name": "向日葵种子",
+    "key": false,
+    "icon": "seed_sunflower",
+    "desc": "向日葵。5 天开花，适合送人。",
+    "seed": "sunflower",
+    "price": 25,
+    "sell": 12
+  },
+  "sunflower": {
+    "name": "向日葵",
+    "key": false,
+    "icon": "crop_sunflower",
+    "desc": "一朵比脸还大的向日葵。",
+    "crop": "sunflower",
+    "sell": 80
+  },
+  "seed_strawberry": {
+    "name": "草莓苗",
+    "key": false,
+    "icon": "seed_strawberry",
+    "desc": "草莓苗。只能种在温室里，5 天结果，之后每 3 天再结。",
+    "seed": "strawberry",
+    "price": 60,
+    "sell": 30
+  },
+  "strawberry": {
+    "name": "草莓",
+    "key": false,
+    "icon": "crop_strawberry",
+    "desc": "温室里结的草莓，香气扑鼻。",
+    "crop": "strawberry",
+    "sell": 28
+  },
+  "weeds": {
+    "name": "杂草",
+    "key": false,
+    "icon": "weeds",
+    "desc": "翻土时拔出来的杂草。丢进堆肥箱，攒够 3 份就能变成肥料。",
+    "compost": true
+  },
+  "fertilizer": {
+    "name": "堆肥",
+    "key": false,
+    "icon": "fertilizer",
+    "desc": "堆肥箱里发酵好的肥料。撒在地块上：产量 +1，当晚多长 1 天。"
+  },
+  "hoe": {
+    "name": "锄头",
+    "key": true,
+    "icon": "hoe",
+    "desc": "田中爷爷借给你的锄头，木柄被磨得很光滑。用来翻开荒地。"
+  },
+  "farm_can": {
+    "name": "旧洒水壶",
+    "key": true,
+    "icon": "farm_can",
+    "desc": "田中爷爷的旧洒水壶，能装 5 次水。在手压泵、饮水台或家里的水龙头装满。"
+  },
+  "letter_haru": {
+    "name": "春的信",
+    "key": true,
+    "icon": "letter",
+    "desc": "春托你带给河边农园田中爷爷的信，信封上压着一朵干花。"
+  },
+  "hairclip": {
+    "name": "向日葵发夹",
+    "key": true,
+    "icon": "hairclip",
+    "desc": "小葵送你的向日葵发夹。“这是谢礼！要一直戴着哦。”"
+  },
+  "flour": {
+    "name": "面粉",
+    "key": false,
+    "icon": "ing_flour",
+    "desc": "一袋中筋面粉。做面包、可乐饼和天妇罗都要用。",
+    "price": 20,
+    "sell": 10,
+    "ingredient": true
+  },
+  "sugar": {
+    "name": "砂糖",
+    "key": false,
+    "icon": "ing_sugar",
+    "desc": "细砂糖。做果酱和蛋糕。",
+    "price": 15,
+    "sell": 7,
+    "ingredient": true
+  },
+  "salt": {
+    "name": "盐",
+    "key": false,
+    "icon": "ing_salt",
+    "desc": "粗盐，腌黄瓜用得上。",
+    "price": 5,
+    "sell": 2,
+    "ingredient": true
+  },
+  "soy_sauce": {
+    "name": "酱油",
+    "key": false,
+    "icon": "ing_soy_sauce",
+    "desc": "本地酿造的酱油，炖菜的灵魂。",
+    "price": 15,
+    "sell": 7,
+    "ingredient": true
+  },
+  "miso": {
+    "name": "味噌",
+    "key": false,
+    "icon": "ing_miso",
+    "desc": "田中家送来的自制味噌也是这个味道。",
+    "price": 15,
+    "sell": 7,
+    "ingredient": true
+  },
+  "rice": {
+    "name": "米",
+    "key": false,
+    "icon": "ing_rice",
+    "desc": "一小袋新米。",
+    "price": 10,
+    "sell": 5,
+    "ingredient": true
+  },
+  "milk": {
+    "name": "牛奶",
+    "key": false,
+    "icon": "ing_milk",
+    "desc": "玻璃瓶装的牛奶，每天早上送到商店。",
+    "price": 20,
+    "sell": 10,
+    "ingredient": true
+  },
+  "butter": {
+    "name": "黄油",
+    "key": false,
+    "icon": "ing_butter",
+    "desc": "一块黄油。莲说好面包的秘密就在这里。",
+    "price": 30,
+    "sell": 15,
+    "ingredient": true
+  },
+  "egg": {
+    "name": "鸡蛋",
+    "key": false,
+    "icon": "ing_egg",
+    "desc": "附近养鸡人家的鸡蛋。",
+    "price": 10,
+    "sell": 5,
+    "ingredient": true
+  },
+  "curry_roux": {
+    "name": "咖喱块",
+    "key": false,
+    "icon": "ing_curry_roux",
+    "desc": "中辣的咖喱块。",
+    "price": 30,
+    "sell": 15,
+    "ingredient": true
+  },
+  "salad": {
+    "name": "番茄沙拉",
+    "key": false,
+    "icon": "dish_salad",
+    "desc": "迷你番茄和黄瓜拌上一点盐和油。",
+    "sell": 90,
+    "dish": "kitchen",
+    "liked_by": [
+      "mio"
+    ]
+  },
+  "miso_soup": {
+    "name": "小松菜味噌汤",
+    "key": false,
+    "icon": "dish_miso_soup",
+    "desc": "早饭的味道。",
+    "sell": 70,
+    "dish": "kitchen",
+    "liked_by": [
+      "haru"
+    ]
+  },
+  "edamame_onigiri": {
+    "name": "毛豆饭团",
+    "key": false,
+    "icon": "dish_edamame_onigiri",
+    "desc": "毛豆拌进米饭里，一口一颗绿。",
+    "sell": 50,
+    "dish": "kitchen",
+    "liked_by": [
+      "tanaka"
+    ]
+  },
+  "pickles": {
+    "name": "浅渍黄瓜",
+    "key": false,
+    "icon": "dish_pickles",
+    "desc": "腌一个下午就好，脆生生的。",
+    "sell": 65,
+    "dish": "kitchen",
+    "liked_by": [
+      "tanaka"
+    ]
+  },
+  "kinpira": {
+    "name": "金平胡萝卜",
+    "key": false,
+    "icon": "dish_kinpira",
+    "desc": "胡萝卜丝炒得甜辣，便当里的常客。",
+    "sell": 90,
+    "dish": "kitchen",
+    "liked_by": [
+      "ren"
+    ]
+  },
+  "radish_nimono": {
+    "name": "萝卜炖菜",
+    "key": false,
+    "icon": "dish_radish_nimono",
+    "desc": "萝卜炖到透明，筷子一夹就开。",
+    "sell": 95,
+    "dish": "kitchen",
+    "liked_by": [
+      "tanaka",
+      "haru"
+    ]
+  },
+  "korokke": {
+    "name": "土豆可乐饼",
+    "key": false,
+    "icon": "dish_korokke",
+    "desc": "外脆里软，商店街的味道。",
+    "sell": 145,
+    "dish": "kitchen",
+    "liked_by": [
+      "ren"
+    ]
+  },
+  "nasu_dengaku": {
+    "name": "味噌烤茄子",
+    "key": false,
+    "icon": "dish_nasu_dengaku",
+    "desc": "茄子抹上甜味噌烤得油亮。",
+    "sell": 110,
+    "dish": "kitchen",
+    "liked_by": [
+      "tanaka"
+    ]
+  },
+  "corn_soup": {
+    "name": "玉米浓汤",
+    "key": false,
+    "icon": "dish_corn_soup",
+    "desc": "小葵最爱的甜甜的汤。",
+    "sell": 130,
+    "dish": "kitchen",
+    "liked_by": [
+      "aoi"
+    ]
+  },
+  "tempura": {
+    "name": "蔬菜天妇罗",
+    "key": false,
+    "icon": "dish_tempura",
+    "desc": "夏天的蔬菜，裹一层薄衣炸得酥脆。",
+    "sell": 135,
+    "dish": "kitchen",
+    "liked_by": [
+      "tanaka"
+    ]
+  },
+  "curry": {
+    "name": "夏日蔬菜咖喱",
+    "key": false,
+    "icon": "dish_curry",
+    "desc": "澪家的配方：土豆要切得大块一点。",
+    "sell": 185,
+    "dish": "kitchen",
+    "liked_by": [
+      "ren"
+    ]
+  },
+  "strawberry_jam": {
+    "name": "草莓果酱",
+    "key": false,
+    "icon": "dish_strawberry_jam",
+    "desc": "温室草莓熬的果酱，小葵教的。",
+    "sell": 180,
+    "dish": "kitchen",
+    "liked_by": [
+      "aoi",
+      "mio"
+    ]
+  },
+  "pumpkin_nimono": {
+    "name": "南瓜煮物",
+    "key": false,
+    "icon": "dish_pumpkin_nimono",
+    "desc": "春婆婆的拿手菜，甜甜的南瓜。",
+    "sell": 250,
+    "dish": "kitchen",
+    "liked_by": [
+      "haru"
+    ]
+  },
+  "watermelon_slice": {
+    "name": "西瓜切块",
+    "key": false,
+    "icon": "dish_watermelon_slice",
+    "desc": "切成三角形，夏祭和花火大会最受欢迎。",
+    "sell": 70,
+    "dish": "kitchen",
+    "liked_by": [
+      "aoi"
+    ]
+  },
+  "dango": {
+    "name": "月见团子",
+    "key": false,
+    "icon": "fest_dango",
+    "desc": "白白的团子，赏月的时候吃。",
+    "sell": 55,
+    "dish": "kitchen",
+    "liked_by": [
+      "haru"
+    ]
+  },
+  "focaccia": {
+    "name": "番茄佛卡夏",
+    "key": false,
+    "icon": "bread_focaccia",
+    "desc": "莲的烤箱烤出来的，香草和番茄的味道。",
+    "sell": 95,
+    "dish": "oven",
+    "liked_by": [
+      "mio"
+    ]
+  },
+  "sunflower_bread": {
+    "name": "葵花籽面包",
+    "key": false,
+    "icon": "bread_sunflower",
+    "desc": "表面撒满了葵花籽。",
+    "sell": 150,
+    "dish": "oven",
+    "liked_by": [
+      "haru"
+    ]
+  },
+  "veg_sandwich": {
+    "name": "街坊三明治",
+    "key": false,
+    "icon": "bread_sandwich",
+    "desc": "莲说：用街坊种的菜，才叫街坊三明治。",
+    "sell": 145,
+    "dish": "oven",
+    "liked_by": [
+      "ren"
+    ]
+  },
+  "carrot_cake": {
+    "name": "胡萝卜蛋糕",
+    "key": false,
+    "icon": "cake_carrot",
+    "desc": "看不出胡萝卜的胡萝卜蛋糕。",
+    "sell": 165,
+    "dish": "oven",
+    "liked_by": [
+      "aoi"
+    ]
+  },
+  "curry_pan": {
+    "name": "咖喱面包",
+    "key": false,
+    "icon": "bread_curry_pan",
+    "desc": "外面炸得酥脆，里面是土豆咖喱。",
+    "sell": 145,
+    "dish": "oven",
+    "liked_by": [
+      "ren"
+    ]
+  },
+  "corn_bread": {
+    "name": "玉米面包",
+    "key": false,
+    "icon": "bread_corn",
+    "desc": "金黄色的玉米面包。",
+    "sell": 180,
+    "dish": "oven",
+    "liked_by": [
+      "aoi"
+    ]
+  },
+  "shortcake": {
+    "name": "草莓奶油蛋糕",
+    "key": false,
+    "icon": "cake_shortcake",
+    "desc": "晴町最受欢迎的蛋糕。",
+    "sell": 255,
+    "dish": "oven",
+    "liked_by": [
+      "aoi",
+      "mio"
+    ],
+    "price": 340,
+    "model": "B08_strawberry_cake"
+  },
+  "pumpkin_bread": {
+    "name": "南瓜面包",
+    "key": false,
+    "icon": "bread_pumpkin",
+    "desc": "一整个南瓜的分量。",
+    "sell": 310,
+    "dish": "oven",
+    "liked_by": [
+      "haru"
+    ]
+  },
+  "seed_carrot": {
+    "name": "胡萝卜种子",
+    "key": false,
+    "icon": "seed_carrot",
+    "desc": "胡萝卜种子。3 天成熟，一次收 2 根。",
+    "seed": "carrot",
+    "price": 18,
+    "sell": 9
+  },
+  "carrot": {
+    "name": "胡萝卜",
+    "key": false,
+    "icon": "crop_carrot",
+    "desc": "两根橙色的胡萝卜，还带着泥。",
+    "crop": "carrot",
+    "sell": 22
+  },
+  "seed_potato": {
+    "name": "种薯",
+    "key": false,
+    "icon": "seed_potato",
+    "desc": "种薯。4 天成熟，一次挖出 3 个。",
+    "seed": "potato",
+    "price": 30,
+    "sell": 15
+  },
+  "potato": {
+    "name": "土豆",
+    "key": false,
+    "icon": "crop_potato",
+    "desc": "刚挖出来的土豆，圆滚滚的。",
+    "crop": "potato",
+    "sell": 24
+  },
+  "seed_onion": {
+    "name": "洋葱种球",
+    "key": false,
+    "icon": "seed_onion",
+    "desc": "洋葱种球。4 天成熟，做咖喱的必需品。",
+    "seed": "onion",
+    "price": 25,
+    "sell": 12
+  },
+  "onion": {
+    "name": "洋葱",
+    "key": false,
+    "icon": "crop_onion",
+    "desc": "圆圆的洋葱，切的时候会流泪。",
+    "crop": "onion",
+    "sell": 22
+  },
+  "seed_wheat": {
+    "name": "小麦种子",
+    "key": false,
+    "icon": "seed_wheat",
+    "desc": "小麦种子。4 天成熟，可以在面包店磨成面粉。",
+    "seed": "wheat",
+    "price": 20,
+    "sell": 10
+  },
+  "wheat": {
+    "name": "小麦",
+    "key": false,
+    "icon": "crop_wheat",
+    "desc": "一捆金黄的小麦。",
+    "crop": "wheat",
+    "sell": 10
+  },
+  "seed_eggplant": {
+    "name": "茄子苗",
+    "key": false,
+    "icon": "seed_eggplant",
+    "desc": "茄子苗。5 天成熟，之后每 3 天再结。",
+    "seed": "eggplant",
+    "price": 40,
+    "sell": 20
+  },
+  "eggplant": {
+    "name": "茄子",
+    "key": false,
+    "icon": "crop_eggplant",
+    "desc": "油亮的紫茄子。",
+    "crop": "eggplant",
+    "sell": 30
+  },
+  "seed_corn": {
+    "name": "玉米种子",
+    "key": false,
+    "icon": "seed_corn",
+    "desc": "玉米种子。5 天成熟，一株 3 根。",
+    "seed": "corn",
+    "price": 35,
+    "sell": 17
+  },
+  "corn": {
+    "name": "玉米",
+    "key": false,
+    "icon": "crop_corn",
+    "desc": "剥开一角，玉米粒金黄饱满。",
+    "crop": "corn",
+    "sell": 36
+  },
+  "seed_pumpkin": {
+    "name": "南瓜种子",
+    "key": false,
+    "icon": "seed_pumpkin",
+    "desc": "南瓜种子。7 天才成熟，但一个就很值钱。",
+    "seed": "pumpkin",
+    "price": 70,
+    "sell": 35
+  },
+  "pumpkin": {
+    "name": "南瓜",
+    "key": false,
+    "icon": "crop_pumpkin",
+    "desc": "沉甸甸的日本南瓜。",
+    "crop": "pumpkin",
+    "sell": 170
+  },
+  "seed_watermelon": {
+    "name": "西瓜种子",
+    "key": false,
+    "icon": "seed_watermelon",
+    "desc": "西瓜种子。8 天成熟，夏祭的主角。",
+    "seed": "watermelon",
+    "price": 90,
+    "sell": 45
+  },
+  "watermelon": {
+    "name": "西瓜",
+    "key": false,
+    "icon": "crop_watermelon",
+    "desc": "拍一拍，声音很清脆。",
+    "crop": "watermelon",
+    "sell": 240
+  },
+  "can_copper": {
+    "name": "铜洒水壶",
+    "key": true,
+    "icon": "can_copper",
+    "desc": "铜洒水壶，能装 10 次水。需要种植等级 3。",
+    "price": 500,
+    "level": 3,
+    "upgrade": "can",
+    "cap": 10
+  },
+  "tanzaku": {
+    "name": "短册",
+    "key": false,
+    "icon": "fest_tanzaku",
+    "desc": "七夕写愿望用的彩色纸条。",
+    "sell": 0
+  },
+  "toro": {
+    "name": "纸灯笼（灯笼流用）",
+    "key": false,
+    "icon": "fest_toro",
+    "desc": "盂兰盆的晚上，从河边木桥放进河里。",
+    "price": 30,
+    "sell": 0
+  },
+  "uchiwa": {
+    "name": "团扇",
+    "key": false,
+    "icon": "fest_uchiwa",
+    "desc": "夏祭发的团扇，印着晴町的向日葵。",
+    "sell": 0
+  },
+  "candy_apple": {
+    "name": "苹果糖",
+    "key": false,
+    "icon": "fest_candy_apple",
+    "desc": "夏祭摊位上买的苹果糖。送给小葵她会跳起来。",
+    "price": 40,
+    "sell": 0
+  },
+  "sparklers": {
+    "name": "仙女棒",
+    "key": false,
+    "icon": "fest_sparklers",
+    "desc": "一小袋手持烟花。",
+    "price": 30,
+    "sell": 0
+  },
+  "ribbon_gold": {
+    "name": "品评会金奖绶带",
+    "key": true,
+    "icon": "fest_ribbon",
+    "desc": "晴町蔬菜品评会的金奖。"
+  },
+  "card_focaccia": {
+    "name": "配方卡：番茄佛卡夏",
+    "key": true,
+    "icon": "recipe_card",
+    "desc": "莲手写的配方。学会以后就能用面包店的烤箱做「番茄佛卡夏」。",
+    "price": 120,
+    "recipe": "focaccia"
+  },
+  "card_sunflower_bread": {
+    "name": "配方卡：葵花籽面包",
+    "key": true,
+    "icon": "recipe_card",
+    "desc": "莲手写的配方。学会以后就能用面包店的烤箱做「葵花籽面包」。",
+    "price": 150,
+    "recipe": "sunflower_bread"
+  },
+  "card_veg_sandwich": {
+    "name": "配方卡：街坊三明治",
+    "key": true,
+    "icon": "recipe_card",
+    "desc": "莲手写的配方。学会以后就能用面包店的烤箱做「街坊三明治」。",
+    "price": 150,
+    "recipe": "veg_sandwich"
+  },
+  "card_carrot_cake": {
+    "name": "配方卡：胡萝卜蛋糕",
+    "key": true,
+    "icon": "recipe_card",
+    "desc": "莲手写的配方。学会以后就能用面包店的烤箱做「胡萝卜蛋糕」。",
+    "price": 200,
+    "recipe": "carrot_cake"
+  },
+  "card_curry_pan": {
+    "name": "配方卡：咖喱面包",
+    "key": true,
+    "icon": "recipe_card",
+    "desc": "莲手写的配方。学会以后就能用面包店的烤箱做「咖喱面包」。",
+    "price": 220,
+    "recipe": "curry_pan"
+  },
+  "card_corn_bread": {
+    "name": "配方卡：玉米面包",
+    "key": true,
+    "icon": "recipe_card",
+    "desc": "莲手写的配方。学会以后就能用面包店的烤箱做「玉米面包」。",
+    "price": 250,
+    "recipe": "corn_bread"
+  },
+  "card_shortcake": {
+    "name": "配方卡：草莓奶油蛋糕",
+    "key": true,
+    "icon": "recipe_card",
+    "desc": "莲手写的配方。学会以后就能用面包店的烤箱做「草莓奶油蛋糕」。",
+    "price": 300,
+    "recipe": "shortcake"
+  },
+  "card_pumpkin_bread": {
+    "name": "配方卡：南瓜面包",
+    "key": true,
+    "icon": "recipe_card",
+    "desc": "莲手写的配方。学会以后就能用面包店的烤箱做「南瓜面包」。",
+    "price": 350,
+    "recipe": "pumpkin_bread"
+  },
+  "up_bag30": {
+    "name": "大号背包",
+    "key": true,
+    "icon": "bag_upgrade",
+    "desc": "背包扩到 30 格。",
+    "price": 400,
+    "upgrade": "bag",
+    "cap": 30
+  },
+  "up_bag40": {
+    "name": "旅行背包",
+    "key": true,
+    "icon": "bag_upgrade",
+    "desc": "背包扩到 40 格。需要种植等级 5。",
+    "price": 1200,
+    "upgrade": "bag",
+    "cap": 40,
+    "level": 5
+  },
+  "can_gold": {
+    "name": "金洒水壶",
+    "key": true,
+    "icon": "can_gold",
+    "desc": "闪闪发光的洒水壶，能装 20 次水。需要种植等级 7。",
+    "price": 1800,
+    "level": 7,
+    "upgrade": "can",
+    "cap": 20
+  },
+  "up_yard": {
+    "name": "小院扩建",
+    "key": true,
+    "icon": "level_badge",
+    "desc": "田中爷爷帮你在家的小院再开两块菜地。需要种植等级 3。",
+    "price": 600,
+    "level": 3,
+    "upgrade": "yard"
+  },
+  "up_gh": {
+    "name": "温室扩建",
+    "key": true,
+    "icon": "tab_seed",
+    "desc": "在第一间温室后面再盖一间，多两块只种草莓的地。需要种植等级 6。",
+    "price": 900,
+    "level": 6,
+    "upgrade": "gh"
+  },
+  "washi": {
+    "name": "和纸",
+    "key": false,
+    "icon": "washi",
+    "price": 12,
+    "sell": 5,
+    "desc": "糊灯笼用的白和纸，杂货铺的阿健说这是他仓库里最后一批。"
+  },
+  "bamboo_strip": {
+    "name": "竹篾",
+    "key": true,
+    "icon": "bamboo_strip",
+    "desc": "田中爷爷削好的细竹篾，泡过水，一弯就成圈。"
+  },
+  "chochin_hand": {
+    "name": "手糊的灯笼",
+    "key": true,
+    "icon": "chochin",
+    "desc": "和春一起糊的纸灯笼。夏祭那晚要挂在庭院里。"
+  },
+  "wood": {
+    "name": "木料",
+    "key": true,
+    "icon": "wood",
+    "desc": "农园柴堆里挑出来的干木料，搭盆舞台用。"
+  },
+  "bakery_sample": {
+    "name": "街坊三明治试吃小份",
+    "key": true,
+    "icon": "bread_sandwich",
+    "desc": "莲把试做的三明治切成小份。请澪、春或和子阿姨中的两个人尝尝，剩下的一份留给自己。"
+  },
+  "fish_crucian": {
+    "name": "鲫鱼",
+    "key": false,
+    "icon": "fish_crucian",
+    "desc": "银亮的鳞片带一点草青色，河湾和湖边都能遇见。",
+    "sell": 18,
+    "fish": true,
+    "ingredient": true
+  },
+  "fish_carp": {
+    "name": "鲤鱼",
+    "key": false,
+    "icon": "fish_carp",
+    "desc": "喜欢缓慢的湖水，金褐色的鳞片在夕阳里很漂亮。",
+    "sell": 32,
+    "fish": true,
+    "ingredient": true
+  },
+  "fish_ayu": {
+    "name": "香鱼",
+    "key": false,
+    "icon": "fish_ayu",
+    "desc": "晴川清澈水流里的夏日滋味，撒一点盐烤就很好吃。",
+    "sell": 38,
+    "fish": true,
+    "ingredient": true
+  },
+  "fish_trout": {
+    "name": "虹鳟",
+    "key": false,
+    "icon": "fish_trout",
+    "desc": "清晨和傍晚更活跃，小雨时也会游出藏身处。",
+    "sell": 52,
+    "fish": true,
+    "ingredient": true
+  },
+  "fish_bass": {
+    "name": "湖鲈",
+    "key": false,
+    "icon": "fish_bass",
+    "desc": "芦苇旁的猎手，收线时要给它一点余地。",
+    "sell": 46,
+    "fish": true,
+    "ingredient": true
+  },
+  "fish_eel": {
+    "name": "鳗鱼",
+    "key": false,
+    "icon": "fish_eel",
+    "desc": "天色暗下来才肯露面，滑溜溜的，得耐心收线。",
+    "sell": 78,
+    "fish": true,
+    "ingredient": true
+  },
+  "fishing_rod": {
+    "name": "晴川钓竿",
+    "key": true,
+    "icon": "fish_ayu",
+    "desc": "町内会借给居民的轻钓竿。到有浮漂标记的河岸或湖岸按 E 使用。"
+  },
+  "fishing_bait": {
+    "name": "鱼饵",
+    "key": false,
+    "icon": "ing_flour",
+    "price": 3,
+    "sell": 1,
+    "desc": "一小份谷物鱼饵。每次抛竿消耗一份；商店和湖畔补给处有售。"
+  },
+  "grilled_ayu": {
+    "name": "盐烤香鱼",
+    "key": false,
+    "icon": "dish_grilled_ayu",
+    "dish": "kitchen",
+    "sell": 64,
+    "desc": "用自己钓到的鲜鱼做成的家常料理，也可以带去商店或周六集市出售。"
+  },
+  "crucian_soup": {
+    "name": "鲫鱼味噌汤",
+    "key": false,
+    "icon": "dish_crucian_soup",
+    "dish": "kitchen",
+    "sell": 48,
+    "desc": "用自己钓到的鲜鱼做成的家常料理，也可以带去商店或周六集市出售。"
+  },
+  "trout_rice": {
+    "name": "虹鳟炊饭",
+    "key": false,
+    "icon": "dish_trout_rice",
+    "dish": "kitchen",
+    "sell": 92,
+    "desc": "用自己钓到的鲜鱼做成的家常料理，也可以带去商店或周六集市出售。"
+  },
+  "carp_kanroni": {
+    "name": "鲤鱼甘露煮",
+    "key": false,
+    "icon": "dish_carp_kanroni",
+    "dish": "kitchen",
+    "sell": 76,
+    "desc": "把自己的鱼获带回厨房，慢慢做成一餐。商店和湖畔补给处也收购成品料理。"
+  },
+  "butter_bass": {
+    "name": "黄油煎湖鲈",
+    "key": false,
+    "icon": "dish_butter_bass",
+    "dish": "kitchen",
+    "sell": 96,
+    "desc": "把自己的鱼获带回厨房，慢慢做成一餐。商店和湖畔补给处也收购成品料理。"
+  },
+  "eel_rice": {
+    "name": "蒲烧鳗鱼饭",
+    "key": false,
+    "icon": "dish_eel_rice",
+    "dish": "kitchen",
+    "sell": 150,
+    "desc": "把自己的鱼获带回厨房，慢慢做成一餐。商店和湖畔补给处也收购成品料理。"
+  },
+  "home_meal_parcel": {
+    "name": "碗柜旁的米料包",
+    "key": true,
+    "icon": "rice",
+    "desc": "给空留的一小包米和盐，够做两份饭团。便笺署名：和子。"
+  },
+  "life_bread_sample": {
+    "name": "莲留的试吃小份",
+    "key": true,
+    "icon": "melon_pan",
+    "desc": "莲切好的一小份菠萝包；留在纸牌这次的试吃中。"
+  },
+  "donut": {
+    "name": "草莓甜甜圈",
+    "key": false,
+    "icon": "shop_donut",
+    "desc": "店里当日准备的一份草莓甜甜圈。",
+    "price": 45,
+    "sell": 18,
+    "dish": "oven",
+    "model": "B07_iced_donut",
+    "liked_by": [
+      "aoi",
+      "mio"
+    ]
+  },
+  "cream_bun": {
+    "name": "奶油面包",
+    "key": false,
+    "icon": "shop_cream_bun",
+    "desc": "店里当日准备的一份奶油面包。",
+    "price": 42,
+    "sell": 18,
+    "dish": "oven",
+    "model": "B11_cream_bun",
+    "liked_by": [
+      "ren"
+    ]
+  },
+  "sushi_box": {
+    "name": "六味寿司",
+    "key": false,
+    "icon": "shop_sushi",
+    "desc": "店里当日准备的一份六味寿司。",
+    "price": 80,
+    "sell": 30,
+    "dish": "stove",
+    "model": "B09_sushi_tray",
+    "liked_by": [
+      "ren"
+    ]
+  },
+  "bento": {
+    "name": "晴町便当",
+    "key": false,
+    "icon": "shop_bento",
+    "desc": "店里当日准备的一份晴町便当。",
+    "price": 78,
+    "sell": 32,
+    "dish": "stove",
+    "model": "B10_bento_box",
+    "liked_by": [
+      "ren"
+    ]
+  }
+}

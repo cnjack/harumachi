@@ -1,0 +1,25 @@
+{
+ "id": "W12_cedar_tray",
+ "src": "raw/W12_cedar_tray_pixal_modules_20261003/model.glb",
+ "provider": "Pixal3D private RTX 4080 empty tray reference, independent assembly component",
+ "tris_src": 984586,
+ "tris": 11809,
+ "size_m": [
+  0.438,
+  0.253,
+  0.078
+ ],
+ "godot_size_m_xyz": [
+  0.438,
+  0.078,
+  0.253
+ ],
+ "tex": 2048,
+ "bytes": 601980,
+ "yaw_fix": 203.08558123314754,
+ "level": true,
+ "lean_src_deg": 38.37,
+ "levelled": true,
+ "lean_deg": 2.89,
+ "base_frac": 0.364
+}

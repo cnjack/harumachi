@@ -1,0 +1,25 @@
+{
+ "id": "W16_handtools_board",
+ "src": "raw/W16_handtools_board_hyper3d/model.glb",
+ "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+ "tris_src": 500000,
+ "tris": 18000,
+ "size_m": [
+  0.77,
+  0.421,
+  1.101
+ ],
+ "godot_size_m_xyz": [
+  0.77,
+  1.101,
+  0.421
+ ],
+ "tex": 2048,
+ "bytes": 1139104,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.0,
+ "base_frac": 0.912
+}

@@ -1,0 +1,277 @@
+{
+  "date": "2026-10-04",
+  "scope": "Japanese Little Forest public-source research and current Harumachi source review",
+  "verification": "static source inspection only; no game runtime or tests run; game source and voice unchanged",
+  "counts": {
+    "prologue_panels": 7,
+    "quests": 17,
+    "quest_steps": 58,
+    "daily_entries": 205,
+    "daily_main_lines": 300,
+    "daily_choice_reply_lines": 8,
+    "recipes": 30,
+    "lore_collectibles": 13
+  },
+  "valid_periods": [
+    "day",
+    "dusk",
+    "evening",
+    "morning",
+    "night"
+  ],
+  "invalid_period_conditions": [
+    {
+      "entry": "v06_kazuko_02",
+      "invalid_period": "noon"
+    },
+    {
+      "entry": "v06_kazuko_03",
+      "invalid_period": "afternoon"
+    }
+  ],
+  "reviewed_entry_locations": [
+    {
+      "entry": "mio_a2",
+      "file": "game/data/dialogue.json",
+      "line": 223,
+      "when": {
+        "aff_min": 2
+      },
+      "lines": [
+        "跟你说个秘密。我在东京上班的时候，每天挤电车都在想这里的庭院。",
+        "回来以后才发现，它比我记得的还要安静。……所以才想让它热闹起来。"
+      ]
+    },
+    {
+      "entry": "ev_mio5",
+      "file": "game/data/dialogue.json",
+      "line": 438,
+      "when": {
+        "aff_min": 5
+      },
+      "lines": [
+        "我以前总怕，有一天又要离开这里。",
+        "现在不怕了。就算走到哪里，我也知道要回哪儿——这里有你们。"
+      ]
+    },
+    {
+      "entry": "ren_market",
+      "file": "game/data/dialogue.json",
+      "line": 737,
+      "when": {
+        "phase": "market",
+        "done": [
+          "Q06"
+        ]
+      },
+      "lines": [
+        "今天的蔬菜面包一个小时就卖完了！用的是你的菜哦。"
+      ]
+    },
+    {
+      "entry": "ren_cuc",
+      "file": "game/data/dialogue.json",
+      "line": 705,
+      "when": {
+        "flag_min": {
+          "harvests": 3
+        }
+      },
+      "lines": [
+        "这周的黄瓜真好吃。是你种的？……难怪，有阳光的味道。"
+      ]
+    },
+    {
+      "entry": "v06_kazuko_02",
+      "file": "game/data/dialogue.json",
+      "line": 3498,
+      "when": {
+        "period": [
+          "noon"
+        ]
+      },
+      "lines": [
+        "中午总有人冲进来找盐。哎呀，做饭做一半才想起来吧？"
+      ]
+    },
+    {
+      "entry": "v06_kazuko_03",
+      "file": "game/data/dialogue.json",
+      "line": 3514,
+      "when": {
+        "period": [
+          "afternoon"
+        ],
+        "weather": [
+          "cloudy"
+        ]
+      },
+      "lines": [
+        "阴天正好理货！来，帮我看看最上头那包种子写的什么。"
+      ]
+    },
+    {
+      "entry": "sys_store",
+      "file": "game/data/dialogue.json",
+      "line": 2459,
+      "when": {
+        "not_flag": "visited_store"
+      },
+      "lines": [
+        "商店街西头的「晴町商店」卖种子和调料，田村阿姨人很好，就是周三休息。"
+      ]
+    },
+    {
+      "entry": "ev_aoi5",
+      "file": "game/data/dialogue.json",
+      "line": 1872,
+      "when": {
+        "aff_min": 5
+      },
+      "lines": [
+        "暑假结束，我就要回大阪了。",
+        "……明年夏天，你还在晴町吗？",
+        "那拉钩！说好了哦，一百年不许变！"
+      ]
+    }
+  ],
+  "gift_response_case": {
+    "item": "miso_soup",
+    "liked_by": "haru",
+    "gift_points": 3,
+    "source": "game/scripts/story/story_farm.gd::_loved",
+    "static_response": "哎呀，小松菜味噌汤……真漂亮。我要插在老头子的照片旁边。",
+    "note": "Static substitution through the current liked-gift branch; not an executed runtime observation."
+  },
+  "sources": [
+    {
+      "title": "松竹 夏秋篇作品介绍",
+      "url": "https://www.shochiku.co.jp/cinema/lineup/littleforest-summer/",
+      "type": "official distributor synopsis"
+    },
+    {
+      "title": "松竹 冬春篇作品介绍",
+      "url": "https://cinemaplus.shochiku.co.jp/titles/detail/921/",
+      "type": "official distributor synopsis"
+    },
+    {
+      "title": "Soup Stock Tokyo 森淳一访谈",
+      "url": "https://www.soup-stock-tokyo.com/story/soup-friends-vol-51-%E6%A3%AE-%E6%B7%B3%E4%B8%80-%E3%81%95%E3%82%93/",
+      "type": "direct director interview"
+    },
+    {
+      "title": "灯台もと暮らし 2015年公开活动记录",
+      "url": "https://motokurashi.com/littleforest-movie-event/20150223",
+      "type": "reported director Q and A",
+      "event_date": "2015-02-15",
+      "article_date": "2015-02-23"
+    }
+  ],
+  "local_source_sha256": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "ee22aba3daa9bd3652064d40558ccb0b6ca9e466d54cb013bc537c10d2ba707e",
+      "bytes": 15109
+    },
+    {
+      "path": "docs/game-design/README.md",
+      "sha256": "223e52ccb0db10c5bd10eec89ab1bd0de3a4b821e63ccf600dbf25f9049e6a30",
+      "bytes": 17139
+    },
+    {
+      "path": "docs/game-design/LORE.md",
+      "sha256": "302557d43d38a91887137d81e29a14f7325cf6fb5740d0d62cf7ca0d177d48be",
+      "bytes": 8299
+    },
+    {
+      "path": "docs/game-design/GAMEPLAY.md",
+      "sha256": "e507043885e2feb6653375a1cdc06db7301dc06de3c6e54f8bc0bb8ea75821d4",
+      "bytes": 25287
+    },
+    {
+      "path": "docs/game-design/LIVING_TOWN_20261004.md",
+      "sha256": "a9de7c0b976d1e5407dc5b894877d5404fd38aca2c31ca3bacebcc4a73912f6e",
+      "bytes": 6688
+    },
+    {
+      "path": "game/data/dialogue.json",
+      "sha256": "36c31c0c4a5d2d2d538ace234e7341f30d170f3b3827b09ce3e832f19941be91",
+      "bytes": 63493
+    },
+    {
+      "path": "game/data/prologue.json",
+      "sha256": "2490c3643a560a0a6fc340d6b0ba453e4b1504a4c5e66422984ca8fabe78b8b1",
+      "bytes": 1798
+    },
+    {
+      "path": "game/data/quests.json",
+      "sha256": "9ae273c0433801041efdb56d6c84ceec939022f239808b2a82a7e7ae633a684f",
+      "bytes": 8956
+    },
+    {
+      "path": "game/data/recipes.json",
+      "sha256": "4349d59c603345d30fb22d3d9ffc92167d90dc5f10a809c1070a09ee6b96cc9f",
+      "bytes": 7817
+    },
+    {
+      "path": "game/data/items.json",
+      "sha256": "acd7016023c018f926fb976d1e028497a12908297fa165dae4945075e5c821e9",
+      "bytes": 26480
+    },
+    {
+      "path": "game/data/collection.json",
+      "sha256": "ea00208e51c324b588d7115af7978d6b37a88a0ff3ddb0874be2469b911b76bf",
+      "bytes": 4762
+    },
+    {
+      "path": "game/data/homage.json",
+      "sha256": "852d168ad03424c90b96f55f872776ae72d1d19f7aeecf7a04595b0c946ff259",
+      "bytes": 3726
+    },
+    {
+      "path": "game/scripts/story/dialogue.gd",
+      "sha256": "84a52150148cebfee8804ec9a608dc1774907d239c72fb330fda4ac69f810071",
+      "bytes": 3937
+    },
+    {
+      "path": "game/scripts/story/story.gd",
+      "sha256": "3bb76638fe070364b9114a5fb143231ee6af4a968999aca6482a1a8cf781c7a8",
+      "bytes": 42616
+    },
+    {
+      "path": "game/scripts/story/story_bakery.gd",
+      "sha256": "01f4fca28d36942f5e5bbe61ff989dc2d0854afecba87d1f0f6c63dc4fa06fdc",
+      "bytes": 8446
+    },
+    {
+      "path": "game/scripts/story/story_farm.gd",
+      "sha256": "651f64e6e2d1c4e53622994c96195a00aad3621d46a39d671c64200bd82d10f3",
+      "bytes": 22772
+    },
+    {
+      "path": "game/scripts/story/story_fest.gd",
+      "sha256": "8ea578243587b823de274087228b2cbe7fbba7568e611072c3140635af205fe2",
+      "bytes": 8688
+    },
+    {
+      "path": "game/scripts/story/story_homage.gd",
+      "sha256": "3c8011adb1245ea9d5e852ffb3119a950df216c5f44bdcbf729e7720e57ec76b",
+      "bytes": 2017
+    },
+    {
+      "path": "game/scripts/story/story_lore.gd",
+      "sha256": "eb0f924f100ea7ad9f101ac1008e74bb09e835ed24333039f3ea5369ca1e9cc0",
+      "bytes": 24383
+    },
+    {
+      "path": "game/scripts/autoload/game_state.gd",
+      "sha256": "6c1727bad09672f4f08d6ffe263974698208a2a5cc738cb7c468d7638a356a3f",
+      "bytes": 63030
+    },
+    {
+      "path": "game/scripts/ui/panels.gd",
+      "sha256": "6d70db887f161f93919c6815148366e915fc3a75775caff1aadf4fec35d91cc4",
+      "bytes": 26845
+    }
+  ]
+}

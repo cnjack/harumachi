@@ -1,0 +1,36 @@
+{
+  "paid_tasks": 1,
+  "models": [
+    {
+      "character": "haru",
+      "id": "CH_haru",
+      "references": [
+        "art/references/character_neck_haru_20261005/haru_front.png",
+        "art/references/character_neck_haru_20261005/haru_back.png"
+      ],
+      "reference_sha256": [
+        "70b2833fcf5346304e7b65df16909184a468a1060ea22dfcddddcc810e429f16",
+        "6f487a49cbce004f00f04a5002db410ea964014d084ccd7b3adef579f86d1c86"
+      ],
+      "request": {
+        "prompt": "One full-body elderly Japanese anime woman Haru, exactly the same character in both front/back references. Silver gray low bun, kind brown eyes, subtle age lines, olive buttoned quilted vest with gloves in anatomical LEFT pocket, lavender blouse, loose brown trousers, green rubber boots. Prioritize a clear symmetric anime face: readable iris/pupil on both eyes, smooth round cheeks and jaw, small nose, gentle CLOSED-mouth smile. No deep eye sockets, bulging eyes, grimace, realistic skin wrinkles or glossy doll face. Normal short neck seated over torso, head centered above shoulders, no forward-jutting head. Relaxed A pose, arms 45 degrees below horizontal, lowered shoulders, palms toward torso, five distinct fingers. Clean armpit gaps and separate sleeve tubes; no body-arm cloth bridges. Preserve clothing and stature, same front/back proportions. Flat clean TV anime colours and restrained crisp cel shadows, matte textures, no photorealism or glossy PBR.",
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Quad",
+        "quality_override": 50000,
+        "texture_delight": true,
+        "geometry_file_format": "glb",
+        "reference_upload_ids": [
+          "f744d322-162b-4bf3-bff8-5f6652c5d260",
+          "63872a38-5d83-4241-9971-8b41f7f0c7e7"
+        ]
+      },
+      "arm_angle_below_horizontal": 45,
+      "generation_id": "abb0fdaf-2fec-430a-b6d6-2e9daf32cc00",
+      "status": "downloaded",
+      "display_url": "https://hyper3d.ai/workspace/rodin/abb0fdaf-2fec-430a-b6d6-2e9daf32cc00",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "748a39b4301d82cb50f678f0a6041195ea0e613089b1002a9a2602dd7399982b"
+    }
+  ],
+  "status": "installed and verified"
+}

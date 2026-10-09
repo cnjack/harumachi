@@ -1,0 +1,5 @@
+Use case: stylized-concept
+Asset type: production albedo texture for an actual Godot Japanese small-town anime game.
+Style: Japanese TV anime background art, clean shapes, flat painted colours, crisp two-tone marks, bright summer feeling with restrained weathering. Not photorealistic, no gritty PBR noise, no thick painterly brushwork, no strong specular.
+Composition: exact flat orthographic view of the surface, edge to edge. No perspective, scene, backdrop, cast shadows, bevel depth, objects, text, lettering, watermark.
+Square seamless texture, tileable in both axes. Sun-aged cedar bridge wood, warm tan and honey brown. Grain runs horizontally left to right. Several graceful sparse grain lines and occasional tiny knots, irregular pale sunbleached areas, a few hairline surface scratches, understated darker old rain stains and worn fibres. Mostly calm broad painted areas, matte dry wood. Do not add plank seams or deep cracks; actual plank geometry is separate.

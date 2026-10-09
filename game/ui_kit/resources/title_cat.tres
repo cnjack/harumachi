@@ -1,0 +1,102 @@
+[gd_resource type="SpriteFrames" load_steps=14 format=3]
+
+[ext_resource type="Texture2D" path="res://ui_kit/assets/animations/title_cat/orange_walk_idle.png" id="1"]
+
+[sub_resource type="AtlasTexture" id="Frame_0"]
+atlas = ExtResource("1")
+region = Rect2(7, 75, 348, 248)
+margin = Rect2(22, 60, 36, 114)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame_1"]
+atlas = ExtResource("1")
+region = Rect2(363, 74, 351, 249)
+margin = Rect2(19, 59, 33, 113)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame_2"]
+atlas = ExtResource("1")
+region = Rect2(715, 74, 355, 250)
+margin = Rect2(15, 58, 29, 112)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame_3"]
+atlas = ExtResource("1")
+region = Rect2(1072, 74, 358, 249)
+margin = Rect2(16, 59, 26, 113)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame_4"]
+atlas = ExtResource("1")
+region = Rect2(4, 432, 354, 250)
+margin = Rect2(16, 58, 30, 112)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame_5"]
+atlas = ExtResource("1")
+region = Rect2(352, 432, 362, 250)
+margin = Rect2(8, 58, 22, 112)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame_6"]
+atlas = ExtResource("1")
+region = Rect2(714, 432, 357, 250)
+margin = Rect2(13, 58, 27, 112)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame_7"]
+atlas = ExtResource("1")
+region = Rect2(1071, 432, 361, 250)
+margin = Rect2(13, 58, 23, 112)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame_8"]
+atlas = ExtResource("1")
+region = Rect2(1, 776, 354, 260)
+margin = Rect2(16, 48, 30, 102)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame_9"]
+atlas = ExtResource("1")
+region = Rect2(360, 776, 354, 260)
+margin = Rect2(17, 48, 30, 102)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame_10"]
+atlas = ExtResource("1")
+region = Rect2(716, 776, 354, 260)
+margin = Rect2(17, 48, 30, 102)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Frame_11"]
+atlas = ExtResource("1")
+region = Rect2(1072, 776, 356, 260)
+margin = Rect2(15, 48, 28, 102)
+filter_clip = true
+
+[resource]
+animations = [{
+"frames": [
+{"duration": 1.0, "texture": SubResource("Frame_0")},
+{"duration": 1.0, "texture": SubResource("Frame_1")},
+{"duration": 1.0, "texture": SubResource("Frame_2")},
+{"duration": 1.0, "texture": SubResource("Frame_3")},
+{"duration": 1.0, "texture": SubResource("Frame_4")},
+{"duration": 1.0, "texture": SubResource("Frame_5")},
+{"duration": 1.0, "texture": SubResource("Frame_6")},
+{"duration": 1.0, "texture": SubResource("Frame_7")}
+],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}, {
+"frames": [
+{"duration": 3.0, "texture": SubResource("Frame_8")},
+{"duration": 1.0, "texture": SubResource("Frame_9")},
+{"duration": 1.0, "texture": SubResource("Frame_10")},
+{"duration": 1.0, "texture": SubResource("Frame_11")}
+],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]

@@ -1,0 +1,25 @@
+{
+ "id": "C16_onion",
+ "src": "raw/C16_onion_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 969547,
+ "tris": 6656,
+ "size_m": [
+  0.609,
+  0.174,
+  0.438
+ ],
+ "godot_size_m_xyz": [
+  0.609,
+  0.438,
+  0.174
+ ],
+ "tex": 1024,
+ "bytes": 602352,
+ "yaw_fix": 27.5,
+ "level": "auto",
+ "lean_src_deg": 24.82,
+ "levelled": true,
+ "lean_deg": 0.64,
+ "base_frac": 0.484
+}

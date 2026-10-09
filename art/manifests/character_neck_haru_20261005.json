@@ -1,0 +1,26 @@
+{
+  "characters": [
+    {
+      "id": "CH_haru",
+      "character": "haru",
+      "name": "春婆婆",
+      "height_m": 1.52,
+      "references": [
+        "art/references/character_neck_haru_20261005/haru_front.png",
+        "art/references/character_neck_haru_20261005/haru_back.png"
+      ],
+      "rodin_prompt": "art/manifests/prompts/character_neck_haru_20261005/haru_rodin.txt",
+      "raw_directory": "art/models/raw/CH_haru_rodin_face_20261005",
+      "arm_angle_below_horizontal": 45,
+      "status": "installed and verified",
+      "generation_id": "abb0fdaf-2fec-430a-b6d6-2e9daf32cc00",
+      "source_url": "https://hyper3d.ai/workspace/rodin/abb0fdaf-2fec-430a-b6d6-2e9daf32cc00",
+      "image_prompt": "art/manifests/prompts/character_neck_haru_20261005/haru_reference.txt",
+      "reference_tool": "built-in image_gen",
+      "model_prompt": "art/manifests/prompts/character_neck_haru_20261005/haru_rodin.txt",
+      "paid_3d_tasks": 1
+    }
+  ],
+  "verification": "evidence/character_neck_haru_20261005/verification.json",
+  "build": "builds/HareMachi-neck-haru-20261005.zip"
+}

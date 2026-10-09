@@ -1,0 +1,24 @@
+{
+ "id": "B01_bus",
+ "src": "raw/scene_polish_20261004/assembled/B01_bus.glb",
+ "provider": "Hyper3D Rodin Gen-2.5-High Raw 1000000 faces, imagegen reference; UV-preserving game assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 191494,
+ "tex": 4096,
+ "bytes": 9597236,
+ "godot_size_m_xyz": [
+  4.6004,
+  2.1435,
+  2.0546
+ ],
+ "mesh_nodes": [
+  "DoorLeaf_0",
+  "DoorLeaf_1",
+  "GeneratedBody",
+  "Wheel_0",
+  "Wheel_1",
+  "Wheel_2",
+  "Wheel_3"
+ ]
+}

@@ -1,0 +1,9 @@
+[gd_resource type="AtlasTexture" format=3]
+
+[ext_resource type="Texture2D" path="res://ui_kit/assets/navigation_atlas.png" id="1_legaw"]
+
+[resource]
+resource_name = "UIKitIcon/fish"
+atlas = ExtResource("1_legaw")
+region = Rect2(973, 363, 233, 250)
+filter_clip = true

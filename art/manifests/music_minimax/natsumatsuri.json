@@ -1,0 +1,8 @@
+{
+ "model": "MiniMax-Music3-MLX-Serve-8bit",
+ "prompt": "### Global Metadata\nA complete 100-second lively Japanese summer-festival (natsumatsuri) evening piece for a courtyard full of lantern-lit food stalls, festive and joyful matsuri-bayashi feeling. 118 BPM, G major. A bright bamboo shinobue flute melody, taiko drums with a lively matsuri rhythm, a small kane hand gong, shamisen strumming, hand clapping, supported by warm strings and a light modern acoustic bass. Pure instrumental ensemble piece.\n\n### Vocal Details\nNone. Instrumental only: the shinobue flute and shamisen carry the festive melody; drums keep the matsuri rhythm.\n\n### Timed Arrangement\n0-14 seconds: taiko and kane gong kick off the festival rhythm. 14-46 seconds: the shinobue flute plays a festive melody over shamisen and drums. 46-74 seconds: shamisen solo with hand claps, strings lift the harmony. 74-100 seconds: flute and full ensemble return with the main tune, energetic but not loud. Keep tempo, texture and loudness consistent from start to end; no big climax. The piece must play for the full 100 seconds and must not end early, ending cleanly on the tonic so it can loop.",
+ "lyrics": "[Intro]\n[Drum Solo]\n\n[Interlude]\n[Flute Solo]\n\n[Interlude]\n[Instrumental]\n\n[Break]\n[Instrumental]\n\n[Outro]\n[Flute Solo]",
+ "duration_seconds": 100,
+ "steps": 30,
+ "seed": 2026092803
+}

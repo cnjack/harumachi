@@ -1,0 +1,11 @@
+{
+  "jobs": [
+    {
+      "id": "W12_cedar_tray",
+      "reference": "art/references/window_modules_20261003/W12_cedar_tray.png",
+      "output": "art/models/raw/W12_cedar_tray_pixal_modules_20261003",
+      "resolution": 1024,
+      "seed": 42
+    }
+  ]
+}

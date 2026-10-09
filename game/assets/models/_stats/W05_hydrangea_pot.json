@@ -1,0 +1,25 @@
+{
+ "id": "W05_hydrangea_pot",
+ "src": "raw/W05_hydrangea_pot_pixal_modules_20261003/model.glb",
+ "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
+ "tris_src": 983798,
+ "tris": 13161,
+ "size_m": [
+  0.479,
+  0.429,
+  0.455
+ ],
+ "godot_size_m_xyz": [
+  0.479,
+  0.455,
+  0.429
+ ],
+ "tex": 2048,
+ "bytes": 1240432,
+ "yaw_fix": 180,
+ "level": true,
+ "lean_src_deg": 14.9,
+ "levelled": true,
+ "lean_deg": 0.0,
+ "base_frac": 0.1
+}

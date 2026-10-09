@@ -1,0 +1,30 @@
+{
+ "id": "H02",
+ "src": "raw/material_detail_20261003/H02.glb",
+ "provider": "Hyper3D Rodin Gen-2.5 High image-to-3D; Blender UV-preserving optimization and local assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 396894,
+ "tex": 8192,
+ "bytes": 20517936,
+ "godot_size_m_xyz": [
+  12.1918,
+  6.8013,
+  6.4807
+ ],
+ "mesh_nodes": [
+  "Rodin_H02_body",
+  "Rodin_tenant_0_0",
+  "Rodin_tenant_0_0_curtain",
+  "Rodin_tenant_0_1",
+  "Rodin_tenant_0_1_curtain",
+  "Rodin_tenant_0_2",
+  "Rodin_tenant_0_2_curtain",
+  "Rodin_tenant_1_0",
+  "Rodin_tenant_1_0_curtain",
+  "Rodin_tenant_1_1",
+  "Rodin_tenant_1_1_curtain",
+  "Rodin_tenant_1_2",
+  "Rodin_tenant_1_2_curtain"
+ ]
+}

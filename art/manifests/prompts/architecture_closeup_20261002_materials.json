@@ -1,0 +1,16 @@
+[
+  {
+    "id": "cedar",
+    "ref": "game/assets/textures/architecture/cedar-grain.jpg",
+    "prompt": "Edit this existing seamless cedar wood colour texture for close-up Japanese TV anime architecture. Preserve vertical grain direction and seamless edges. Make the colour medium warm honey cedar, clear sparse hand-drawn fine wood fibres, 3-4 subtle small knots, crisp quiet ink grain, restrained broad flat colour differences. It must read as hand-painted anime wood, not a photograph and not fuzzy watercolor. No panel separators, no shadows, no bevels, no text. Grain natural but architectural timber edges will be geometry. Technical seamless square albedo texture, even lighting."
+  },
+  {
+    "id": "plaster",
+    "ref": "game/assets/textures/house/plaster.jpg",
+    "prompt": "Edit this plaster albedo into clean Japanese shikkui plaster for a TV anime town house. Seamless square, muted warm ivory rather than pure white, quiet very subtle warm cream hand-painted broad variations, almost smooth but crisp intentional sparse surface marks. Remove photographic noise and fuzz. Flat drawn material, even light, no cast shadows, no borders, no cracks, no text or structures. Preserve seamless repeat."
+  },
+  {
+    "id": "kawara",
+    "prompt": "Technical square seamless albedo material for Japanese ibushi-gawara blue-grey ceramic roof tiles in a Japanese TV anime game. Only the ceramic surface colour; the actual curved tiles and round tile ends will be 3D geometry. Muted indigo slate blue-grey, clean flat hand-painted colour, a few subtle broad cool lavender and lighter indigo variations, extremely restrained tiny brush marks. Even lighting. No drawn tiles, no seams, no lines, no shapes, no cracks, no shadows, no shiny spots, no photographic grit, no text. Seamless repeat across every edge."
+  }
+]

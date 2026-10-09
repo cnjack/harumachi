@@ -1,0 +1,20 @@
+{
+ "id": "G01_getabako",
+ "src": "raw/G01_getabako/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 16000,
+ "tris": 6000,
+ "size_m": [
+  0.9,
+  0.501,
+  0.994
+ ],
+ "godot_size_m_xyz": [
+  0.9,
+  0.994,
+  0.501
+ ],
+ "tex": 1024,
+ "bytes": 432640,
+ "yaw_fix": 0
+}

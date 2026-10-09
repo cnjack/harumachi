@@ -1,0 +1,237 @@
+{
+  "date": "2026-10-02",
+  "models_scanned": 153,
+  "changed_game_glbs": [
+    "A07_lantern",
+    "A10_vending_machine",
+    "A11_bicycle",
+    "A12_bench",
+    "A13_chalkboard",
+    "A14_hydrangea_pot",
+    "A15_potted_plant",
+    "A16_planter_box",
+    "A20_cat_sleep",
+    "A21_sparrow",
+    "A22_cat_sit",
+    "B01_melon_pan",
+    "B02_croissant",
+    "B03_baguette",
+    "B04_shokupan",
+    "B05_anpan",
+    "B06_curry_pan",
+    "C01_seedling",
+    "C02_radish",
+    "C03_komatsuna",
+    "C04_tomato",
+    "C05_cucumber",
+    "C06_edamame",
+    "C07_sunflower",
+    "C08_strawberry",
+    "CH_aoi",
+    "CH_tanaka",
+    "D07_kei_truck",
+    "F01_tool_shed",
+    "F02_hand_pump",
+    "F03_compost_bin",
+    "F04_scarecrow",
+    "F05_greenhouse",
+    "F06_veggie_stand",
+    "F07_footbridge",
+    "F08_soil_plot",
+    "H01",
+    "H02",
+    "H03",
+    "M01_timber_machiya",
+    "M03_gable_house",
+    "M05_residential",
+    "M07_power_pole",
+    "M12b_shrub",
+    "M12d_flower_bush",
+    "P05",
+    "P06",
+    "P_deck_oven",
+    "P_farm_gate",
+    "P_yagura",
+    "S06",
+    "T01_courtyard_tree"
+  ],
+  "hyper3d_jobs": {
+    "H01": {
+      "generation_id": "6eaaecad-7694-4abf-a958-05bd3c98b076",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "requested_quad_faces": 50000,
+      "references": [
+        "art/references/model_audit_20261002/H01_front.png",
+        "art/references/model_audit_20261002/H01_back.png"
+      ],
+      "source": "art/models/raw/H01_h3d_audit_20261002/model.glb",
+      "source_sha256": "ad806eee7359ffe8a22b8dc87615967bcce2ebae1a59d0b4fb1804de80fe257b",
+      "status": "adopted",
+      "display_url": "https://hyper3d.ai/workspace/rodin/6eaaecad-7694-4abf-a958-05bd3c98b076",
+      "game_triangles": 36000,
+      "game_albedo_size": [
+        [
+          4096,
+          4096
+        ]
+      ]
+    },
+    "H02": {
+      "generation_id": "b2b92328-9602-4281-aabf-94327f3570f0",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "requested_quad_faces": 50000,
+      "references": [
+        "art/references/model_audit_20261002/H02_front.png",
+        "art/references/model_audit_20261002/H02_back.png"
+      ],
+      "source": "art/models/raw/H02_h3d_audit_20261002/model.glb",
+      "source_sha256": "881546939ab6f1bfdfd96d940c9fdcff31221e085e8a94de398c65656edfa80d",
+      "status": "adopted",
+      "display_url": "https://hyper3d.ai/workspace/rodin/b2b92328-9602-4281-aabf-94327f3570f0",
+      "game_triangles": 35995,
+      "game_albedo_size": [
+        [
+          4096,
+          4096
+        ]
+      ]
+    },
+    "H03": {
+      "generation_id": "518ef898-586b-4c13-9ae5-cb022cabcf06",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "requested_quad_faces": 50000,
+      "references": [
+        "art/references/model_audit_20261002/H03_front.png",
+        "art/references/model_audit_20261002/H03_back.png"
+      ],
+      "source": "art/models/raw/H03_h3d_audit_20261002/model.glb",
+      "source_sha256": "370e6540f4deb0c220e01716e05c1bd26757fe0316014845df2143dedfa63f2b",
+      "status": "adopted",
+      "display_url": "https://hyper3d.ai/workspace/rodin/518ef898-586b-4c13-9ae5-cb022cabcf06",
+      "game_triangles": 36336,
+      "game_albedo_size": [
+        [
+          4096,
+          4096
+        ]
+      ]
+    },
+    "S06": {
+      "generation_id": "858ed7dc-3419-4005-b56a-c0af42ca290d",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "requested_quad_faces": 50000,
+      "references": [
+        "art/references/model_audit_20261002/S06_front.png",
+        "art/references/model_audit_20261002/S06_back.png"
+      ],
+      "source": "art/models/raw/S06_h3d_audit_20261002/model.glb",
+      "source_sha256": "6c733a7fd5ff35ecb9d29f40bd6b37177a9d8cacebd44bf958d082efb53beba0",
+      "status": "adopted",
+      "display_url": "https://hyper3d.ai/workspace/rodin/858ed7dc-3419-4005-b56a-c0af42ca290d",
+      "game_triangles": 36000,
+      "game_albedo_size": [
+        [
+          4096,
+          4096
+        ]
+      ]
+    },
+    "F01_tool_shed": {
+      "generation_id": "5c0d23ce-2268-404a-9f4d-cb6a1c8f89e4",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "requested_quad_faces": 30000,
+      "references": [
+        "art/references/model_audit_20261002/F01_tool_shed_front.png",
+        "art/references/model_audit_20261002/F01_tool_shed_back.png"
+      ],
+      "source": "art/models/raw/F01_tool_shed_h3d_audit_20261002/model.glb",
+      "source_sha256": "5347a1e2fa4a1090866ca5165a183e366e59bbbb881dfb5acdcca3aef26c6e18",
+      "status": "adopted",
+      "display_url": "https://hyper3d.ai/workspace/rodin/5c0d23ce-2268-404a-9f4d-cb6a1c8f89e4",
+      "game_triangles": 11999,
+      "game_albedo_size": [
+        [
+          2048,
+          2048
+        ]
+      ]
+    },
+    "A21_sparrow": {
+      "generation_id": "8d7f633d-6c35-4cec-9c32-dcf4d67e410e",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "requested_quad_faces": 12000,
+      "references": [
+        "art/references/model_audit_20261002/A21_sparrow_front.png"
+      ],
+      "source": "art/models/raw/A21_sparrow_h3d_audit_20261002/model.glb",
+      "source_sha256": "e9acaf0fa27b9bd1a6094d01eb2fecea91629544c2f25d5b111936c50379cad9",
+      "status": "adopted",
+      "display_url": "https://hyper3d.ai/workspace/rodin/8d7f633d-6c35-4cec-9c32-dcf4d67e410e",
+      "game_triangles": 4487,
+      "game_albedo_size": [
+        [
+          1024,
+          1024
+        ]
+      ]
+    },
+    "M07_power_pole": {
+      "generation_id": "492e6480-39d8-4fde-8447-4774966748de",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "requested_quad_faces": 18000,
+      "references": [
+        "art/references/model_audit_20261002/M07_power_pole_front.png"
+      ],
+      "source": "art/models/raw/M07_power_pole_h3d_audit_20261002/model.glb",
+      "source_sha256": "1440aceeb7b587d8f0bc111213a70336badcf04e641b8b79e7ff62f0e4dfa6e8",
+      "status": "adopted",
+      "display_url": "https://hyper3d.ai/workspace/rodin/492e6480-39d8-4fde-8447-4774966748de",
+      "game_triangles": 9000,
+      "game_albedo_size": [
+        [
+          2048,
+          2048
+        ]
+      ]
+    }
+  },
+  "accepted_generations": 7,
+  "estimated_credits": 3.5,
+  "billing_note": "estimated from seven accepted 0.5-credit generations; no purchase or billing statement verification",
+  "geometry_repaired_from_existing_sources": [
+    "P_farm_gate",
+    "P_deck_oven",
+    "P_yagura",
+    "F02_hand_pump",
+    "F03_compost_bin",
+    "F04_scarecrow",
+    "F05_greenhouse",
+    "F06_veggie_stand",
+    "F07_footbridge",
+    "F08_soil_plot",
+    "A20_cat_sleep",
+    "A22_cat_sit",
+    "CH_aoi",
+    "CH_tanaka"
+  ],
+  "atlas_edits": [
+    "A07_lantern",
+    "A20_cat_sleep",
+    "A22_cat_sit",
+    "B01_melon_pan",
+    "B02_croissant",
+    "B03_baguette",
+    "B04_shokupan",
+    "B05_anpan",
+    "B06_curry_pan"
+  ],
+  "material_repair_count": 39,
+  "evidence": "evidence/model_audit_20261002/"
+}

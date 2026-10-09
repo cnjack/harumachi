@@ -1,0 +1,119 @@
+{
+  "date": "2026-10-02",
+  "status": "rejected visually by user; procedural architecture route superseded; not released",
+  "concepts": [
+    "art/references/architecture_identity_20261002/homes-concept.png",
+    "art/references/architecture_identity_20261002/street-concept.png"
+  ],
+  "models": {
+    "H01": {
+      "source": "art/models/raw/identity_houses_20261002/H01.glb",
+      "editable_source": "art/models/raw/identity_houses_20261002/H01.blend",
+      "game": "game/assets/models/H01.glb",
+      "sha256": "61eebea93e819d3a3e0341f77fe9493416497b648ae8d228926494715f295dcc",
+      "architecture_provider": "Blender individually designed measured components",
+      "albedo_and_concept_provider": "built-in imagegen",
+      "embedded_hyper3d_prop": "35f687cc-8a2b-4dd8-a3b0-c4cd1822d3c8"
+    },
+    "H02": {
+      "source": "art/models/raw/identity_houses_20261002/H02.glb",
+      "editable_source": "art/models/raw/identity_houses_20261002/H02.blend",
+      "game": "game/assets/models/H02.glb",
+      "sha256": "1afb6a6692f2e687b6f447277631d58850de11e5524bba5357cc0d66ac10eaf1",
+      "architecture_provider": "Blender individually designed measured components",
+      "albedo_and_concept_provider": "built-in imagegen",
+      "embedded_hyper3d_prop": null
+    },
+    "H03": {
+      "source": "art/models/raw/identity_houses_20261002/H03.glb",
+      "editable_source": "art/models/raw/identity_houses_20261002/H03.blend",
+      "game": "game/assets/models/H03.glb",
+      "sha256": "f3f1da0ccbf9d2e6a43664cb38ab5b7def77e7d24c01ae5793746759280f1649",
+      "architecture_provider": "Blender individually designed measured components",
+      "albedo_and_concept_provider": "built-in imagegen",
+      "embedded_hyper3d_prop": null
+    },
+    "S06": {
+      "source": "art/models/raw/identity_houses_20261002/S06.glb",
+      "editable_source": "art/models/raw/identity_houses_20261002/S06.blend",
+      "game": "game/assets/models/S06.glb",
+      "sha256": "35906139cf50f843d27811db412868e285a90bb78045daffb2c08cf69fc9e300",
+      "architecture_provider": "Blender individually designed measured components",
+      "albedo_and_concept_provider": "built-in imagegen",
+      "embedded_hyper3d_prop": null
+    },
+    "S01": {
+      "source": "art/models/raw/identity_houses_20261002/S01.glb",
+      "editable_source": "art/models/raw/identity_houses_20261002/S01.blend",
+      "game": "game/assets/models/S01.glb",
+      "sha256": "fa1e29ded9396ad4c7d1c30281fca8ce6814f633659fba88bb665f0a5b2ea0b2",
+      "architecture_provider": "Blender individually designed measured components",
+      "albedo_and_concept_provider": "built-in imagegen",
+      "embedded_hyper3d_prop": null
+    },
+    "S02": {
+      "source": "art/models/raw/identity_houses_20261002/S02.glb",
+      "editable_source": "art/models/raw/identity_houses_20261002/S02.blend",
+      "game": "game/assets/models/S02.glb",
+      "sha256": "77b898442066a93d998faa2985ae34ebfa06714115f5d3704614d8fcd0bcba62",
+      "architecture_provider": "Blender individually designed measured components",
+      "albedo_and_concept_provider": "built-in imagegen",
+      "embedded_hyper3d_prop": null
+    },
+    "S03": {
+      "source": "art/models/raw/identity_houses_20261002/S03.glb",
+      "editable_source": "art/models/raw/identity_houses_20261002/S03.blend",
+      "game": "game/assets/models/S03.glb",
+      "sha256": "e1753f57fbf1810e36c3f662f99f35e9b4e0414e683e5f6268efd248a0fb2172",
+      "architecture_provider": "Blender individually designed measured components",
+      "albedo_and_concept_provider": "built-in imagegen",
+      "embedded_hyper3d_prop": null
+    },
+    "S05": {
+      "source": "art/models/raw/identity_houses_20261002/S05.glb",
+      "editable_source": "art/models/raw/identity_houses_20261002/S05.blend",
+      "game": "game/assets/models/S05.glb",
+      "sha256": "8338f33a7914df08deca90e4c2530a91b16cc2740f746c2e65c496c330880bae",
+      "architecture_provider": "Blender individually designed measured components",
+      "albedo_and_concept_provider": "built-in imagegen",
+      "embedded_hyper3d_prop": null
+    },
+    "S08": {
+      "source": "art/models/raw/identity_houses_20261002/S08.glb",
+      "editable_source": "art/models/raw/identity_houses_20261002/S08.blend",
+      "game": "game/assets/models/S08.glb",
+      "sha256": "78ed7e43b0a3649b1924915e182adb0393c10f8f2137d62918f9ca4306e4097a",
+      "architecture_provider": "Blender individually designed measured components",
+      "albedo_and_concept_provider": "built-in imagegen",
+      "embedded_hyper3d_prop": null
+    },
+    "M01_timber_machiya": {
+      "source": "art/models/raw/identity_houses_20261002/M01_timber_machiya.glb",
+      "editable_source": "art/models/raw/identity_houses_20261002/M01_timber_machiya.blend",
+      "game": "game/assets/models/M01_timber_machiya.glb",
+      "sha256": "832b2f2f3c1de6a515296afdf30b9716e7beddd9cace11bafba75756bac36078",
+      "architecture_provider": "Blender individually designed measured components",
+      "albedo_and_concept_provider": "built-in imagegen",
+      "embedded_hyper3d_prop": null
+    },
+    "M03_gable_house": {
+      "source": "art/models/raw/identity_houses_20261002/M03_gable_house.glb",
+      "editable_source": "art/models/raw/identity_houses_20261002/M03_gable_house.blend",
+      "game": "game/assets/models/M03_gable_house.glb",
+      "sha256": "1d65a5a249c3ae3aacd0cea877d94120ed3db31b20c111ecd7f62a9333e193aa",
+      "architecture_provider": "Blender individually designed measured components",
+      "albedo_and_concept_provider": "built-in imagegen",
+      "embedded_hyper3d_prop": null
+    },
+    "M05_residential": {
+      "source": "art/models/raw/identity_houses_20261002/M05_residential.glb",
+      "editable_source": "art/models/raw/identity_houses_20261002/M05_residential.blend",
+      "game": "game/assets/models/M05_residential.glb",
+      "sha256": "d513ee609f65b61e6a95a204de737a2993b7c7b1b2381df870a229d1ac133228",
+      "architecture_provider": "Blender individually designed measured components",
+      "albedo_and_concept_provider": "built-in imagegen",
+      "embedded_hyper3d_prop": null
+    }
+  },
+  "next_direction": "Hyper3D image-to-3D with single-building and isolated near-view-module references; compare source geometry and composition before adopting"
+}

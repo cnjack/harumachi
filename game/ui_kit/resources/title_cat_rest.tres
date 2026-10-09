@@ -1,0 +1,95 @@
+[gd_resource type="SpriteFrames" load_steps=14 format=3]
+
+[ext_resource type="Texture2D" path="res://ui_kit/assets/animations/title_cat/orange_lie_dangling.png" id="1"]
+
+[sub_resource type="AtlasTexture" id="Pose_0"]
+atlas = ExtResource("1")
+region = Rect2(11, 89, 349, 260)
+margin = Rect2(23, 48, 67, 180)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Pose_1"]
+atlas = ExtResource("1")
+region = Rect2(362, 122, 359, 229)
+margin = Rect2(14, 79, 57, 211)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Pose_2"]
+atlas = ExtResource("1")
+region = Rect2(735, 160, 343, 191)
+margin = Rect2(28, 117, 73, 249)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Pose_3"]
+atlas = ExtResource("1")
+region = Rect2(1131, 162, 305, 264)
+margin = Rect2(85, 122, 111, 176)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Pose_4"]
+atlas = ExtResource("1")
+region = Rect2(49, 470, 308, 256)
+margin = Rect2(81, 122, 108, 184)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Pose_5"]
+atlas = ExtResource("1")
+region = Rect2(419, 470, 300, 255)
+margin = Rect2(89, 122, 116, 185)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Pose_6"]
+atlas = ExtResource("1")
+region = Rect2(780, 469, 302, 261)
+margin = Rect2(88, 121, 114, 179)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Pose_7"]
+atlas = ExtResource("1")
+region = Rect2(1147, 470, 292, 258)
+margin = Rect2(97, 122, 124, 182)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Pose_8"]
+atlas = ExtResource("1")
+region = Rect2(67, 780, 291, 246)
+margin = Rect2(98, 122, 125, 194)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Pose_9"]
+atlas = ExtResource("1")
+region = Rect2(424, 780, 296, 247)
+margin = Rect2(93, 121, 120, 193)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Pose_10"]
+atlas = ExtResource("1")
+region = Rect2(785, 780, 297, 255)
+margin = Rect2(93, 122, 119, 185)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Pose_11"]
+atlas = ExtResource("1")
+region = Rect2(1142, 780, 298, 250)
+margin = Rect2(91, 121, 118, 190)
+filter_clip = true
+
+[resource]
+resource_name = "UIKitAnimation/title_cat_rest"
+animations = [
+{"frames": [
+{"duration": 1.0, "texture": SubResource("Pose_0")},
+{"duration": 1.0, "texture": SubResource("Pose_1")},
+{"duration": 1.0, "texture": SubResource("Pose_2")},
+{"duration": 1.0, "texture": SubResource("Pose_3")}
+], "loop": false, "name": &"lie_down", "speed": 6},
+{"frames": [
+{"duration": 1.0, "texture": SubResource("Pose_4")}
+], "loop": true, "name": &"rest", "speed": 1},
+{"frames": [
+{"duration": 1.0, "texture": SubResource("Pose_3")},
+{"duration": 1.0, "texture": SubResource("Pose_2")},
+{"duration": 1.0, "texture": SubResource("Pose_1")},
+{"duration": 1.0, "texture": SubResource("Pose_0")}
+], "loop": false, "name": &"get_up", "speed": 6}
+]

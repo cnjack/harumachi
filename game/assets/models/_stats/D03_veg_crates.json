@@ -1,0 +1,25 @@
+{
+ "id": "D03_veg_crates",
+ "src": "raw/D03_veg_crates_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 983367,
+ "tris": 27824,
+ "size_m": [
+  0.569,
+  0.48,
+  0.834
+ ],
+ "godot_size_m_xyz": [
+  0.569,
+  0.834,
+  0.48
+ ],
+ "tex": 2048,
+ "bytes": 2251668,
+ "yaw_fix": -144.6,
+ "level": "auto",
+ "lean_src_deg": 30.05,
+ "levelled": true,
+ "lean_deg": 0.15,
+ "base_frac": 0.81
+}

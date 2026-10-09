@@ -1,0 +1,26 @@
+{
+ "id": "CH_haru",
+ "src": "character_wave_smile_20261005/exports/CH_haru.glb",
+ "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+ "preserve_rigged_character": true,
+ "tris": 89683,
+ "bytes": 8635408,
+ "bones": 54,
+ "animations": [
+  "idle",
+  "walk",
+  "run",
+  "wave",
+  "bow",
+  "look",
+  "stretch",
+  "tend",
+  "talk",
+  "cheer",
+  "dance",
+  "reference"
+ ],
+ "sha256": "3e72246152c2ff8683f5778e6bc0a4eb2987536c989c3fc4f86a81b32b2ed65f",
+ "character_pipeline": "characters-apose-20261004",
+ "greeting_review": "20261005"
+}

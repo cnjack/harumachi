@@ -1,0 +1,18 @@
+{
+ "id": "P_gondola",
+ "src": "raw/landmarks_aged_20261001/P_gondola.glb",
+ "provider": "Blender preserved geometry + imagegen aged timber, 2026-10-01",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 2468,
+ "tex": 2048,
+ "bytes": 708032,
+ "godot_size_m_xyz": [
+  1.84,
+  1.6,
+  0.62
+ ],
+ "mesh_nodes": [
+  "P_gondola"
+ ]
+}

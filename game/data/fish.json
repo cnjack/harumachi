@@ -1,0 +1,140 @@
+{
+  "fish_crucian": {
+    "name": "鲫鱼",
+    "habitats": [
+      "river",
+      "lake"
+    ],
+    "weight": 44,
+    "hours": [
+      [
+        6,
+        24
+      ]
+    ],
+    "sell": 18,
+    "cm": [
+      12,
+      28
+    ],
+    "difficulty": 0.22,
+    "desc": "银亮的鳞片带一点草青色，河湾和湖边都能遇见。",
+    "behaviour": "steady"
+  },
+  "fish_carp": {
+    "name": "鲤鱼",
+    "habitats": [
+      "lake"
+    ],
+    "weight": 32,
+    "hours": [
+      [
+        6,
+        24
+      ]
+    ],
+    "sell": 32,
+    "cm": [
+      25,
+      58
+    ],
+    "difficulty": 0.42,
+    "desc": "喜欢缓慢的湖水，金褐色的鳞片在夕阳里很漂亮。",
+    "behaviour": "dive"
+  },
+  "fish_ayu": {
+    "name": "香鱼",
+    "habitats": [
+      "river"
+    ],
+    "weight": 30,
+    "hours": [
+      [
+        7,
+        18
+      ]
+    ],
+    "sell": 38,
+    "cm": [
+      16,
+      28
+    ],
+    "difficulty": 0.4,
+    "desc": "晴川清澈水流里的夏日滋味，撒一点盐烤就很好吃。",
+    "behaviour": "dart"
+  },
+  "fish_trout": {
+    "name": "虹鳟",
+    "habitats": [
+      "river"
+    ],
+    "weight": 16,
+    "hours": [
+      [
+        6,
+        11
+      ],
+      [
+        16,
+        24
+      ]
+    ],
+    "rain_bonus": 1.7,
+    "sell": 52,
+    "cm": [
+      22,
+      46
+    ],
+    "difficulty": 0.58,
+    "desc": "清晨和傍晚更活跃，小雨时也会游出藏身处。",
+    "behaviour": "dart"
+  },
+  "fish_bass": {
+    "name": "湖鲈",
+    "habitats": [
+      "lake"
+    ],
+    "weight": 22,
+    "hours": [
+      [
+        6,
+        24
+      ]
+    ],
+    "sell": 46,
+    "cm": [
+      20,
+      44
+    ],
+    "difficulty": 0.53,
+    "desc": "芦苇旁的猎手，收线时要给它一点余地。",
+    "behaviour": "dart"
+  },
+  "fish_eel": {
+    "name": "鳗鱼",
+    "habitats": [
+      "lake",
+      "river"
+    ],
+    "weight": 8,
+    "hours": [
+      [
+        6,
+        8
+      ],
+      [
+        18,
+        24
+      ]
+    ],
+    "rain_bonus": 1.8,
+    "sell": 78,
+    "cm": [
+      30,
+      70
+    ],
+    "difficulty": 0.72,
+    "desc": "天色暗下来才肯露面，滑溜溜的，得耐心收线。",
+    "behaviour": "dive"
+  }
+}

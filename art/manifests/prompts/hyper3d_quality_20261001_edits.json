@@ -1,0 +1,22 @@
+[
+  {
+    "name": "gate_back",
+    "path": "/Users/jack/workpath/research/3D model/anime/art/references/hyper3d_quality_20261001/gate_front_right.png",
+    "prompt": "Use case: precise-object-edit. This image is the design reference for a single existing gate. Make one new BACK-LEFT three-quarter reference view of exactly this same gate, viewed from the opposite side, for multi-view image-to-3D. Preserve the gate identity, proportions, two posts, same blue-grey kawara tiles, same gabled roof, same wood joinery, two white lanterns and same stone footings. Show the backside of the blank name plaque and the roof's opposite slope. Preserve the clean Japanese anime cel-shaded art style and plain neutral background. No redesign, no new supports, no extra beams crossing the opening, no plants, no ground slab, no text. The entire prop must be visible with margins."
+  },
+  {
+    "name": "yagura_back",
+    "path": "/Users/jack/workpath/research/3D model/anime/art/references/hyper3d_quality_20261001/yagura_front_right.png",
+    "prompt": "Use case: precise-object-edit. Render one BACK-LEFT three-quarter reference view of exactly this same compact Japanese bon-odori yagura, from the opposite side, for multi-view image-to-3D. Preserve identity, roof shape, square platform, four corner posts, balustrades, wood joinery, red-and-ivory striped draped skirt, dimensions and anime cel-shaded art style. The front ladder is on the far side and should be mostly hidden from this back view; do not duplicate it at the back. Show the other roof slope and rear rail. Whole isolated prop fully visible, plain neutral background, generous margins. No redesign, no extra floors, no characters, no text, no scene, no ground slab."
+  },
+  {
+    "name": "S02_atlas",
+    "path": "/Users/jack/workpath/research/3D model/anime/evidence/hyper3d_quality_20261001/atlas/S02_0.png",
+    "prompt": "Use case: precise-object-edit. Asset type: an existing UV TEXTURE ATLAS for a Japanese bakery building in a Godot anime game. Edit this exact atlas to restore blurry smeared surface detail into crisp hand-painted anime texture detail. This is NOT a picture of a building; it is the flat 2D UV layout and MUST remain a flat texture atlas. Keep every UV island in exactly the same position, shape, scale and orientation, including all rotated and thin strips. Preserve the exact arrangement of blue-grey roof tiles, warm timber beams and lattice frames, off-white plaster, windows, greenery, awnings and tiny bakery illustrations. Within the existing islands, sharpen tile edges and timber joinery, simplify dirty texture noise into clean broad cel-painted colors, remove blurry fake lettering from small signs by making their interiors blank while keeping their frames in place. No new text, no new shapes, no rearranging, no perspective, no full building illustration, no borders or captions. Preserve island boundaries and the colors near all island edges. High-resolution square atlas, intended 2048x2048 or higher. No photorealism or shiny metal."
+  },
+  {
+    "name": "A13_atlas",
+    "path": "/Users/jack/workpath/research/3D model/anime/evidence/hyper3d_quality_20261001/atlas/A13_chalkboard_0.png",
+    "prompt": "Use case: text-localization and precise-object-edit. Asset type: an existing flat UV texture atlas for a small wooden A-frame chalkboard in a Japanese anime town game. Preserve the exact UV island positions, shapes, scale, orientation and layout. Keep the wooden frame pieces and both dark slate chalkboard rectangles exactly where they are. Remove ALL existing garbled white lettering from the two slate rectangles, and replace with clean pale chalk writing that reads exactly: 晴町案内 . These four Chinese characters must be correct and no other text may remain. Keep the text rotated consistently with the original board island orientation: the upper-right board reads correctly after rotating the atlas 90 degrees counterclockwise, the lower-right board reads correctly after rotating the atlas 90 degrees clockwise. Add only a very small simple chalk drawing of a leaf under the title in each board. Refine blurry wood into clean matte hand-painted warm brown timber with broad subtle grain; no baked golden shine. Flat 2D UV atlas only, not a rendered sign, no rearranging or perspective, no watermark. Crisp clean anime illustration texture, 2048x2048 square."
+  }
+]

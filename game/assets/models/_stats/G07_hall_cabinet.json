@@ -1,0 +1,20 @@
+{
+ "id": "G07_hall_cabinet",
+ "src": "raw/G07_hall_cabinet/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 16000,
+ "tris": 6000,
+ "size_m": [
+  0.873,
+  0.382,
+  1.149
+ ],
+ "godot_size_m_xyz": [
+  0.873,
+  1.149,
+  0.382
+ ],
+ "tex": 1024,
+ "bytes": 448944,
+ "yaw_fix": 0
+}

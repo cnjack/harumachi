@@ -1,0 +1,26 @@
+{
+ "id": "B03_baguette",
+ "src": "raw/B03_baguette_atlas_audit_20261002/model.glb",
+ "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
+ "tris_src": 902039,
+ "tris": 2492,
+ "size_m": [
+  0.592,
+  0.132,
+  0.116
+ ],
+ "godot_size_m_xyz": [
+  0.592,
+  0.116,
+  0.132
+ ],
+ "tex": 1254,
+ "bytes": 2118392,
+ "yaw_fix": -27.2,
+ "level": true,
+ "lean_src_deg": 38.88,
+ "levelled": true,
+ "lean_deg": 0.0,
+ "base_frac": 0.109,
+ "geometry_uv_unchanged": true
+}

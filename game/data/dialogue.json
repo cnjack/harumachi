@@ -1,0 +1,4270 @@
+{
+ "version": 6,
+ "entries": [
+  {
+   "id": "mio_m1",
+   "who": "mio",
+   "when": {
+    "period": [
+     "morning"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "早上好！今天也要加油哦。……啊，我是说我自己。每天早上都要这么给自己打一下气。"
+    ]
+   ]
+  },
+  {
+   "id": "mio_m2",
+   "who": "mio",
+   "when": {
+    "period": [
+     "morning"
+    ],
+    "weather": [
+     "sunny"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "早上的公告栏最好看了，阳光正好照在海报上。我每天都第一个来把它擦一擦。"
+    ]
+   ]
+  },
+  {
+   "id": "mio_d1",
+   "who": "mio",
+   "when": {
+    "period": [
+     "day"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "中午我常去千代阿姨的花店帮忙。她说我包花的手法越来越像样了。"
+    ],
+    [
+     "mio",
+     "happy",
+     "……虽然上次把满天星包成了一个拖把。"
+    ]
+   ]
+  },
+  {
+   "id": "mio_d2",
+   "who": "mio",
+   "when": {
+    "period": [
+     "day",
+     "evening"
+    ],
+    "done": [
+     "Q05"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "集市一散，和子阿姨就来问下次哪天办。我连桌子都还没收呢。"
+    ]
+   ]
+  },
+  {
+   "id": "mio_e1",
+   "who": "mio",
+   "when": {
+    "period": [
+     "evening"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "傍晚的庭院有一种……大家快要回家了的味道。我小时候最喜欢这个时候。"
+    ]
+   ]
+  },
+  {
+   "id": "mio_n1",
+   "who": "mio",
+   "when": {
+    "period": [
+     "dusk",
+     "night"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "晚上好。我在想，下次办点什么呢……"
+    ],
+    [
+     "mio",
+     "happy",
+     "夏祭热闹，赏月安静。你更喜欢哪个？"
+    ]
+   ],
+   "choice": {
+    "options": [
+     "夏祭，要有捞金鱼！",
+     "赏月会，安安静静的"
+    ],
+    "replies": [
+     [
+      [
+       "mio",
+       "happy",
+       "那就先记捞金鱼。太鼓也很热闹，我去问问谁愿意打。"
+      ]
+     ],
+     [
+      [
+       "mio",
+       "happy",
+       "那我记下了。等月亮出来，带点团子坐着吃，应该不错。"
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "id": "mio_r1",
+   "who": "mio",
+   "when": {
+    "weather": [
+     "rain"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "下雨天公告栏的纸会卷起来，我得给它们都套上透明袋子。"
+    ],
+    [
+     "mio",
+     "happy",
+     "你看，我是不是很像个管家？"
+    ]
+   ]
+  },
+  {
+   "id": "mio_c1",
+   "who": "mio",
+   "when": {
+    "weather": [
+     "cloudy"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "阴天的时候，远处的山看起来特别近。好像伸手就能摸到。"
+    ]
+   ]
+  },
+  {
+   "id": "mio_sat",
+   "who": "mio",
+   "when": {
+    "weekday": [
+     5
+    ],
+    "period": [
+     "morning",
+     "day"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "周六啦，傍晚庭院要忙起来了。"
+    ],
+    [
+     "mio",
+     "neutral",
+     "以前办夏祭，大家会先挂晴天娃娃。我到现在还留着这个习惯。"
+    ]
+   ]
+  },
+  {
+   "id": "mio_sun",
+   "who": "mio",
+   "when": {
+    "weekday": [
+     6
+    ],
+    "period": [
+     "morning",
+     "day"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "周日早上我本来想睡个懒觉的……结果被鸽子吵醒了。它们在屋顶上开会。"
+    ]
+   ]
+  },
+  {
+   "id": "mio_a2",
+   "who": "mio",
+   "when": {
+    "aff_min": 2
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "同学毕业以后，一个个都去了城里。我一直留在这条街。"
+    ],
+    [
+     "mio",
+     "neutral",
+     "以前这张长椅坐不下，现在我放包都没人说。……所以才想再办点活动。"
+    ]
+   ]
+  },
+  {
+   "id": "mio_a3",
+   "who": "mio",
+   "when": {
+    "aff_min": 3,
+    "period": [
+     "evening",
+     "dusk"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "谢谢你总是来听我说话。以前我总觉得，是我一个人在瞎忙。"
+    ]
+   ]
+  },
+  {
+   "id": "mio_q6",
+   "who": "mio",
+   "when": {
+    "active": [
+     "Q06"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "去农园呀？田中爷爷话少。找不到哪块地，直接问他就行。"
+    ]
+   ]
+  },
+  {
+   "id": "mio_q6d",
+   "who": "mio",
+   "when": {
+    "done": [
+     "Q06"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "听说你在农园租了地！下次集市，要不要把你种的菜也摆上摊？"
+    ]
+   ]
+  },
+  {
+   "id": "mio_aoi",
+   "who": "mio",
+   "when": {
+    "flag": "met_aoi"
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "小葵一来，春婆婆的茶杯都闲不住。刚坐下就又被她拉去看花了。"
+    ]
+   ]
+  },
+  {
+   "id": "mio_h5",
+   "who": "mio",
+   "when": {
+    "flag_min": {
+     "harvests": 5
+    }
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "鞋边沾了这么多土，刚从菜地回来吧？我去花店帮忙，也总弄得这样。"
+    ]
+   ]
+  },
+  {
+   "id": "mio_night",
+   "who": "mio",
+   "when": {
+    "period": [
+     "night"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "这么晚还在外面？路灯亮起来的主街，也不错吧。"
+    ],
+    [
+     "mio",
+     "neutral",
+     "我再坐一会儿就回去。"
+    ]
+   ]
+  },
+  {
+   "id": "mio_week",
+   "who": "mio",
+   "when": {
+    "day_min": 5
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "搬来以后，住得还习惯吗？"
+    ]
+   ],
+   "choice": {
+    "options": [
+     "很喜欢这里",
+     "还在慢慢适应"
+    ],
+    "replies": [
+     [
+      [
+       "mio",
+       "happy",
+       "太好了！……啊，我是不是笑得太明显了。"
+      ]
+     ],
+     [
+      [
+       "mio",
+       "neutral",
+       "嗯，刚来总要认认路。哪家门口放了什么，我也常记错。"
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "id": "mio_market",
+   "who": "mio",
+   "when": {
+    "phase": "market",
+    "done": [
+     "Q05"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "又是周六啦。我一早就把长椅擦好了，谁来都能坐。"
+    ]
+   ]
+  },
+  {
+   "id": "ev_mio4",
+   "who": "mio",
+   "when": {
+    "aff_min": 4,
+    "period": [
+     "evening",
+     "dusk"
+    ],
+    "place": "notice_board"
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "……你现在有空吗？给你看个东西。"
+    ],
+    [
+     "narrator",
+     "",
+     "澪从公告栏背后抽出一张褪了色的照片。"
+    ],
+    [
+     "mio",
+     "neutral",
+     "这是二十年前的集市。你看，庭院里挤满了人，我骑在爸爸的肩膀上，手里拿着棉花糖。"
+    ],
+    [
+     "mio",
+     "happy",
+     "我一直留在晴町，想让这里再变成照片里的样子。……现在，好像真的做到了一点点。"
+    ],
+    [
+     "narrator",
+     "",
+     "澪把照片小心地收回去，冲你笑了笑。"
+    ]
+   ],
+   "event": true,
+   "once": true,
+   "set": "ev_mio4",
+   "priority": 100
+  },
+  {
+   "id": "ev_mio5",
+   "who": "mio",
+   "when": {
+    "aff_min": 5
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "我以前总想，等手头的事忙完，也出去看看。"
+    ],
+    [
+     "mio",
+     "happy",
+     "现在有人一起分担了。下次我出门几天，回来也有人给我留个位置。"
+    ]
+   ],
+   "event": true,
+   "once": true,
+   "set": "ev_mio5",
+   "priority": 100
+  },
+  {
+   "id": "ren_m1",
+   "who": "ren",
+   "when": {
+    "period": [
+     "morning"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "早上五点就起来揉面了。这个时间的晴町，只有面包和猫醒着。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_m2",
+   "who": "ren",
+   "when": {
+    "period": [
+     "morning"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "happy",
+     "今天的第一炉是菠萝包。你闻到了吗？整条街都是黄油味。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_d1",
+   "who": "ren",
+   "when": {
+    "period": [
+     "day"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "happy",
+     "欢迎光临！……哦，是你啊，吓我一跳。中午人多，我都反射性地喊了。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_d2",
+   "who": "ren",
+   "when": {
+    "period": [
+     "day"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "我在试做加了柚子皮的司康，第三次失败了。"
+    ],
+    [
+     "ren",
+     "happy",
+     "第四次一定行。……应该吧。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_e1",
+   "who": "ren",
+   "when": {
+    "period": [
+     "evening",
+     "dusk"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "关了店在庭院坐一会儿，是我一天里最放松的时候。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_e2",
+   "who": "ren",
+   "when": {
+    "period": [
+     "dusk",
+     "night"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "爷爷以前也这样，关了店就坐在这张长椅上。他抽烟，我不抽，我喝牛奶。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_r1",
+   "who": "ren",
+   "when": {
+    "weather": [
+     "rain"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "下雨天面包卖不太动……可是面团发酵得特别好。"
+    ],
+    [
+     "ren",
+     "happy",
+     "这就是面包师的矛盾。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_c1",
+   "who": "ren",
+   "when": {
+    "weather": [
+     "cloudy"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "今天的吐司烤深了一点。光顾着看云，忘了看烤箱。别笑我啊。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_sat",
+   "who": "ren",
+   "when": {
+    "weekday": [
+     5
+    ],
+    "period": [
+     "morning",
+     "day"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "happy",
+     "周六要多烤两炉，集市上的人会来买。给你留一个？"
+    ]
+   ]
+  },
+  {
+   "id": "ren_q6d",
+   "who": "ren",
+   "when": {
+    "done": [
+     "Q06"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "happy",
+     "黄瓜夹面包应该不错。我想试一款晴町蔬菜面包，先做个小的。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_a2",
+   "who": "ren",
+   "when": {
+    "aff_min": 2
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "我小时候住在海边的小城，每年夏祭都跟着爷爷来晴町玩。"
+    ],
+    [
+     "ren",
+     "neutral",
+     "那时候觉得这条街好长，走到头要一整个下午。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_a3",
+   "who": "ren",
+   "when": {
+    "aff_min": 3
+   },
+   "lines": [
+    [
+     "ren",
+     "happy",
+     "刚才听见脚步声，我就知道是你。……别问，店门口那块石板响得不一样。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_aoi",
+   "who": "ren",
+   "when": {
+    "flag": "met_aoi"
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "小葵每天来买一个奶油面包，然后偷偷分一半给猫。"
+    ],
+    [
+     "ren",
+     "happy",
+     "我都看见了，就当没看见。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_night",
+   "who": "ren",
+   "when": {
+    "period": [
+     "night"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "该回去睡了……明天四点半起床。晚安。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_cuc",
+   "who": "ren",
+   "when": {
+    "flag_min": {
+     "harvests": 3
+    }
+   },
+   "lines": [
+    [
+     "ren",
+     "happy",
+     "最近的黄瓜正好，切薄一点，夹进面包里很脆。你下次做的时候也试试。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_mio",
+   "who": "ren",
+   "when": {
+    "done": [
+     "Q05"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "澪最近心情很好吧？她开心的时候会哼歌，整个庭院都听得见。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_market",
+   "who": "ren",
+   "when": {
+    "phase": "market",
+    "done": [
+     "Q06"
+    ],
+    "flag_min": {
+     "bakery_supplies": 1
+    }
+   },
+   "lines": [
+    [
+     "ren",
+     "happy",
+     "上次那篮菜我记着呢。下回还想做一小篮，你忙的话就改天。"
+    ]
+   ]
+  },
+  {
+   "id": "ev_ren4",
+   "who": "ren",
+   "when": {
+    "aff_min": 4,
+    "period": [
+     "morning",
+     "day"
+    ],
+    "flag": "bakery_first_served"
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "等一下，这个给你。"
+    ],
+    [
+     "narrator",
+     "",
+     "莲递来一个温热的三明治，里面夹着薄薄的黄瓜片。"
+    ],
+    [
+     "ren",
+     "neutral",
+     "这个我切小了。拿着顺手吧？"
+    ],
+    [
+     "ren",
+     "happy",
+     "我想叫它街坊三明治。名字是不是有点长？你先尝，吃完再说。"
+    ]
+   ],
+   "event": true,
+   "once": true,
+   "set": "ev_ren4",
+   "priority": 100,
+   "give": {
+    "veg_sandwich": 1
+   }
+  },
+  {
+   "id": "ev_ren5",
+   "who": "ren",
+   "when": {
+    "aff_min": 5,
+    "flag": "bakery_first_served",
+    "done": "Q14"
+   },
+   "lines": [
+    [
+     "ren",
+     "happy",
+     "秋天我想办个面包早市，搭点刚收的菜。现在光想菜单就饿了。"
+    ],
+    [
+     "ren",
+     "happy",
+     "哪天你也想试，来店里找我。咱们先做一小篮。"
+    ]
+   ],
+   "event": true,
+   "once": true,
+   "set": "ev_ren5",
+   "priority": 100
+  },
+  {
+   "id": "haru_m1",
+   "who": "haru",
+   "when": {
+    "period": [
+     "morning"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "早呀。我先看看土，干了才浇。趁太阳还不晒，慢慢做。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_m2",
+   "who": "haru",
+   "when": {
+    "period": [
+     "morning"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "happy",
+     "年纪大了，醒得早。天还没亮，我就在院子里转悠了。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_d1",
+   "who": "haru",
+   "when": {
+    "period": [
+     "day"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "你看这丛紫阳花，今年开得特别蓝。土里埋了几根旧铁钉，颜色就会变蓝。"
+    ],
+    [
+     "haru",
+     "happy",
+     "这是我家老头子教我的。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_d2",
+   "who": "haru",
+   "when": {
+    "period": [
+     "day"
+    ],
+    "weather": [
+     "sunny",
+     "cloudy"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "膝盖说要下雨了……可是天空说不会。我信天空。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_e1",
+   "who": "haru",
+   "when": {
+    "period": [
+     "evening"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "太阳一斜，花的影子就长了。我最喜欢这个时候的庭院。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_r1",
+   "who": "haru",
+   "when": {
+    "weather": [
+     "rain"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "下雨了，花都在喝水呢。你也别淋着，感冒了可不好。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_c1",
+   "who": "haru",
+   "when": {
+    "weather": [
+     "cloudy"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "阴天种菜最好，苗不会被晒蔫。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_sat",
+   "who": "haru",
+   "when": {
+    "weekday": [
+     5
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "周六啊……以前我和老头子会在庭院里摆一张小桌子卖花。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_q6",
+   "who": "haru",
+   "when": {
+    "active": [
+     "Q06"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "happy",
+     "见到田中了吗？他要是板着脸，你就说是春让你去的。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_q6d",
+   "who": "haru",
+   "when": {
+    "done": [
+     "Q06"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "happy",
+     "田中问起你了。他平时只问地里的苗，难得也问问人。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_aoi",
+   "who": "haru",
+   "when": {
+    "flag": "met_aoi",
+    "period": [
+     "morning",
+     "day"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "happy",
+     "小葵起得比我还早，拉着我去看牵牛花开了没有。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_a2",
+   "who": "haru",
+   "when": {
+    "aff_min": 2
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "我年轻的时候在车站前的花店做事，一站就是一整天。"
+    ],
+    [
+     "haru",
+     "happy",
+     "现在想想，那时候的腿真好啊。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_a3",
+   "who": "haru",
+   "when": {
+    "aff_min": 3
+   },
+   "lines": [
+    [
+     "haru",
+     "happy",
+     "有你帮忙，我这把老骨头轻松多了。谢谢你呀，孩子。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_seed",
+   "who": "haru",
+   "when": {
+    "flag_min": {
+     "harvests": 1
+    }
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "我留的种子都装在旧信封里。写上年份，不然到春天又认不清了。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_dusk",
+   "who": "haru",
+   "when": {
+    "period": [
+     "dusk"
+    ],
+    "flag": "met_aoi"
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "该回去做饭了。小葵说今天想吃南瓜炖肉。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_court",
+   "who": "haru",
+   "when": {
+    "flag": "court_plot"
+   },
+   "lines": [
+    [
+     "haru",
+     "happy",
+     "种植箱里的菜，就交给你照顾啦。我每天路过都会看一眼的。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_market",
+   "who": "haru",
+   "when": {
+    "phase": "market",
+    "done": [
+     "Q05"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "happy",
+     "我在这里坐坐。收摊的时候喊我一声，这张小凳子还得带回去。"
+    ]
+   ]
+  },
+  {
+   "id": "ev_haru4",
+   "who": "haru",
+   "when": {
+    "aff_min": 4,
+    "period": [
+     "evening",
+     "day"
+    ],
+    "done": "Q03"
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "这些种植箱，是健一三十年前钉的。"
+    ],
+    [
+     "haru",
+     "neutral",
+     "他手快，钉完才发现有一只矮了半截。"
+    ],
+    [
+     "haru",
+     "neutral",
+     "后来我一个人顾不过来，好些箱子就空着。"
+    ],
+    [
+     "haru",
+     "happy",
+     "现在你又种上了。看见那只矮的没有？我舍不得换。"
+    ]
+   ],
+   "event": true,
+   "once": true,
+   "set": "ev_haru4",
+   "priority": 100
+  },
+  {
+   "id": "ev_haru5",
+   "who": "haru",
+   "when": {
+    "aff_min": 5
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "田中年轻时写过一封信，一直没寄给我。"
+    ],
+    [
+     "haru",
+     "happy",
+     "我早就知道了。他倒还以为藏得好。……要不要跟他说呢？"
+    ]
+   ],
+   "event": true,
+   "once": true,
+   "set": "ev_haru5",
+   "priority": 100,
+   "choice": {
+    "options": [
+     "就让它留在那里吧",
+     "也许该告诉他"
+    ],
+    "replies": [
+     [
+      [
+       "haru",
+       "happy",
+       "那就先不说。哪天他自己想提，我再听。"
+      ]
+     ],
+     [
+      [
+       "haru",
+       "happy",
+       "呵呵……那等我八十岁生日的时候吧。"
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "id": "tan_m1",
+   "who": "tanaka",
+   "when": {
+    "period": [
+     "morning"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "……早。土湿的时候最好翻，你来得正是时候。"
+    ]
+   ]
+  },
+  {
+   "id": "tan_m2",
+   "who": "tanaka",
+   "when": {
+    "period": [
+     "morning"
+    ],
+    "weather": [
+     "sunny"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "河上的雾散了，今天会热。多喝水。"
+    ]
+   ]
+  },
+  {
+   "id": "tan_d1",
+   "who": "tanaka",
+   "when": {
+    "period": [
+     "day"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "这几棵今天还没长多少。我再看看叶子，水够了就不添。"
+    ]
+   ]
+  },
+  {
+   "id": "tan_d2",
+   "who": "tanaka",
+   "when": {
+    "period": [
+     "day",
+     "morning"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "种子要埋它身子两倍那么深。太深了闷，太浅了晒。"
+    ]
+   ]
+  },
+  {
+   "id": "tan_d3",
+   "who": "tanaka",
+   "when": {
+    "period": [
+     "day"
+    ],
+    "done": [
+     "Q06"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "我那把锄头跟了我四十年。你手上那把，是我儿子小时候用的。"
+    ]
+   ]
+  },
+  {
+   "id": "tan_e1",
+   "who": "tanaka",
+   "when": {
+    "period": [
+     "evening",
+     "dusk"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "傍晚的河声最好听。……坐吧。"
+    ]
+   ]
+  },
+  {
+   "id": "tan_e2",
+   "who": "tanaka",
+   "when": {
+    "period": [
+     "evening",
+     "dusk"
+    ],
+    "aff_min": 1
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "这条河叫晴川。发大水那年，全町的人一起堆沙袋。"
+    ],
+    [
+     "tanaka",
+     "neutral",
+     "那时候春还是个扎辫子的小姑娘，一个人扛了二十袋。"
+    ]
+   ]
+  },
+  {
+   "id": "tan_r1",
+   "who": "tanaka",
+   "when": {
+    "weather": [
+     "rain"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "下雨天，地自己会喝水。你今天就歇着吧。"
+    ],
+    [
+     "tanaka",
+     "neutral",
+     "……我？我是习惯了，不来反而睡不着。"
+    ]
+   ]
+  },
+  {
+   "id": "tan_c1",
+   "who": "tanaka",
+   "when": {
+    "weather": [
+     "cloudy"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "阴天，适合移苗。"
+    ]
+   ]
+  },
+  {
+   "id": "tan_market",
+   "who": "tanaka",
+   "when": {
+    "phase": "market"
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "被春拉来的。……不过，热闹也不坏。"
+    ]
+   ]
+  },
+  {
+   "id": "tan_q7",
+   "who": "tanaka",
+   "when": {
+    "active": [
+     "Q07"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "成熟的菜，叶子会亮一下。看到了就摘，别让它等。"
+    ]
+   ]
+  },
+  {
+   "id": "tan_h1",
+   "who": "tanaka",
+   "when": {
+    "flag_min": {
+     "harvests": 1
+    }
+   },
+   "lines": [
+    [
+     "tanaka",
+     "happy",
+     "我第一次收的萝卜，又小又辣。回去蘸盐，还是吃完了。"
+    ]
+   ]
+  },
+  {
+   "id": "tan_a2",
+   "who": "tanaka",
+   "when": {
+    "aff_min": 2
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "我老伴走得早。这块地，是我和她一起开出来的。"
+    ],
+    [
+     "tanaka",
+     "neutral",
+     "现在分给年轻人种，她也会高兴吧。"
+    ]
+   ]
+  },
+  {
+   "id": "tan_a3",
+   "who": "tanaka",
+   "when": {
+    "aff_min": 3
+   },
+   "lines": [
+    [
+     "tanaka",
+     "happy",
+     "我年轻时蹲地边，春总说我挡着她的路。……她比我还爱看苗。"
+    ]
+   ]
+  },
+  {
+   "id": "tan_aoi",
+   "who": "tanaka",
+   "when": {
+    "flag": "met_aoi"
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "那个丫头又来抓蜻蜓了。……别踩到我的萝卜就行。"
+    ]
+   ]
+  },
+  {
+   "id": "tan_compost",
+   "who": "tanaka",
+   "when": {
+    "done": [
+     "Q06"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "堆肥箱里放杂草，三份能换一袋肥。好菜别往里扔，浪费。"
+    ]
+   ]
+  },
+  {
+   "id": "tan_expand",
+   "who": "tanaka",
+   "when": {
+    "flag_min": {
+     "harvests": 2
+    },
+    "done": [
+     "Q07"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "地不够种了？……想多租几块，就跟我说一声。"
+    ]
+   ]
+  },
+  {
+   "id": "ev_tan4",
+   "who": "tanaka",
+   "when": {
+    "aff_min": 4,
+    "period": [
+     "evening",
+     "dusk",
+     "day"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "……春的信，你读过吗？"
+    ],
+    [
+     "tanaka",
+     "neutral",
+     "没读过就好。"
+    ],
+    [
+     "tanaka",
+     "neutral",
+     "五十年前，我也写过一封给她的信。揣在怀里一个夏天，最后塞在了工具棚的梁上。"
+    ],
+    [
+     "tanaka",
+     "neutral",
+     "她后来嫁的那个家伙，是个好人。没寄出去，也好。"
+    ],
+    [
+     "tanaka",
+     "happy",
+     "……今天话说多了。河风太舒服了。"
+    ]
+   ],
+   "event": true,
+   "once": true,
+   "set": "ev_tan4",
+   "priority": 100
+  },
+  {
+   "id": "ev_tan5",
+   "who": "tanaka",
+   "when": {
+    "aff_min": 5
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "拿着。"
+    ],
+    [
+     "narrator",
+     "",
+     "田中把一袋报纸包的种子递过来，纸角写着萝卜两个字。"
+    ],
+    [
+     "tanaka",
+     "happy",
+     "我留的萝卜种。想种了就用，袋口扎好。"
+    ]
+   ],
+   "event": true,
+   "once": true,
+   "set": "ev_tan5",
+   "priority": 100,
+   "give": {
+    "seed_radish": 3
+   }
+  },
+  {
+   "id": "aoi_m1",
+   "who": "aoi",
+   "when": {
+    "period": [
+     "morning"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "happy",
+     "早上好！奶奶说早起的孩子有牵牛花看，我今天看到了三朵！"
+    ]
+   ]
+  },
+  {
+   "id": "aoi_m2",
+   "who": "aoi",
+   "when": {
+    "period": [
+     "morning",
+     "day"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "你知道吗？麻雀是跳着走路的，鸽子是一步一步走的。"
+    ],
+    [
+     "aoi",
+     "happy",
+     "我观察了一个早上！"
+    ]
+   ]
+  },
+  {
+   "id": "aoi_d1",
+   "who": "aoi",
+   "when": {
+    "region": "farm"
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "嘘——！有一只红蜻蜓……"
+    ],
+    [
+     "aoi",
+     "neutral",
+     "啊，飞走了！都怪你！"
+    ],
+    [
+     "aoi",
+     "happy",
+     "……开玩笑的啦。"
+    ]
+   ]
+  },
+  {
+   "id": "aoi_d2",
+   "who": "aoi",
+   "when": {
+    "region": "farm"
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "河里有小鱼！田中爷爷说不能下去抓，会被河童拉走的。"
+    ],
+    [
+     "aoi",
+     "neutral",
+     "……河童是真的吗？"
+    ]
+   ],
+   "choice": {
+    "options": [
+     "是真的，要小心",
+     "骗你的啦"
+    ],
+    "replies": [
+     [
+      [
+       "aoi",
+       "neutral",
+       "……那、那我今天离河远一点。"
+      ]
+     ],
+     [
+      [
+       "aoi",
+       "happy",
+       "我就知道！田中爷爷是怕我掉下去。"
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "id": "aoi_e1",
+   "who": "aoi",
+   "when": {
+    "period": [
+     "evening",
+     "dusk"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "happy",
+     "我在沙坑堆了一座城堡！明天之前谁都不许踩哦！"
+    ]
+   ]
+  },
+  {
+   "id": "aoi_r1",
+   "who": "aoi",
+   "when": {
+    "weather": [
+     "rain"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "下雨天好无聊……"
+    ],
+    [
+     "aoi",
+     "happy",
+     "啊，不过青蛙会出来！你喜欢青蛙吗？"
+    ]
+   ]
+  },
+  {
+   "id": "aoi_c1",
+   "who": "aoi",
+   "when": {
+    "weather": [
+     "cloudy"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "云好厚哦。我觉得它们在开会，讨论要不要下雨。"
+    ]
+   ]
+  },
+  {
+   "id": "aoi_sat",
+   "who": "aoi",
+   "when": {
+    "weekday": [
+     5
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "happy",
+     "集市！集市！我要吃棉花糖！……集市上有棉花糖吗？"
+    ]
+   ]
+  },
+  {
+   "id": "aoi_a2",
+   "who": "aoi",
+   "when": {
+    "aff_min": 2
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "我家在大阪，那边的楼好高，看不到这么大的天空。"
+    ]
+   ]
+  },
+  {
+   "id": "aoi_a3",
+   "who": "aoi",
+   "when": {
+    "aff_min": 3
+   },
+   "lines": [
+    [
+     "aoi",
+     "happy",
+     "你是我在晴町的第一个朋友！第二个是田中爷爷，第三个是那只橘猫。"
+    ]
+   ]
+  },
+  {
+   "id": "aoi_q8",
+   "who": "aoi",
+   "when": {
+    "active": [
+     "Q08"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "我的向日葵长高了吗？要每天浇水哦，它会口渴的！"
+    ]
+   ]
+  },
+  {
+   "id": "aoi_q8d",
+   "who": "aoi",
+   "when": {
+    "done": [
+     "Q08"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "happy",
+     "奶奶把向日葵插在玄关了，每天出门都对着它笑。"
+    ]
+   ]
+  },
+  {
+   "id": "aoi_night",
+   "who": "aoi",
+   "when": {
+    "period": [
+     "dusk",
+     "night"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "奶奶在叫我回去吃饭了！明天见！"
+    ]
+   ]
+  },
+  {
+   "id": "aoi_sun",
+   "who": "aoi",
+   "when": {
+    "flag": "met_aoi"
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "向日葵为什么总是看着太阳呀？"
+    ],
+    [
+     "aoi",
+     "happy",
+     "……一定是因为太阳很好看吧！"
+    ]
+   ]
+  },
+  {
+   "id": "aoi_market",
+   "who": "aoi",
+   "when": {
+    "phase": "market"
+   },
+   "lines": [
+    [
+     "aoi",
+     "happy",
+     "我帮奶奶看摊！一个番茄……呃，多少钱来着？"
+    ]
+   ]
+  },
+  {
+   "id": "ev_aoi4",
+   "who": "aoi",
+   "when": {
+    "aff_min": 4,
+    "period": [
+     "day",
+     "evening"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "happy",
+     "给你！快看！"
+    ],
+    [
+     "narrator",
+     "",
+     "小葵摊开手心。一只红蜻蜓在她指尖停了一下，又飞走了。"
+    ],
+    [
+     "aoi",
+     "neutral",
+     "啊——飞走了……"
+    ],
+    [
+     "aoi",
+     "happy",
+     "不过你看到了吧？看到了就算送给你了！"
+    ]
+   ],
+   "event": true,
+   "once": true,
+   "set": "ev_aoi4",
+   "priority": 100
+  },
+  {
+   "id": "ev_aoi5",
+   "who": "aoi",
+   "when": {
+    "aff_min": 5,
+    "done": [
+     "Q08"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "暑假结束，我就要回大阪了。"
+    ],
+    [
+     "aoi",
+     "neutral",
+     "……明年夏天，你还在晴町吗？"
+    ]
+   ],
+   "event": true,
+   "once": true,
+   "set": "ev_aoi5",
+   "priority": 100,
+   "choice": {
+    "options": [
+     "回来时，我们再去河边玩",
+     "先写信吧，你告诉我学校的事"
+    ],
+    "replies": [
+     [
+      [
+       "aoi",
+       "happy",
+       "好！你回来就来找我。我先想想，下次玩什么。"
+      ]
+     ],
+     [
+      [
+       "aoi",
+       "happy",
+       "嗯！我写好就让奶奶帮我寄。你也要回信哦。"
+      ]
+     ]
+    ],
+    "flag": "aoi_next_summer_answer"
+   }
+  },
+  {
+   "id": "pl_vend_n",
+   "who": "place:vending",
+   "when": {
+    "period": [
+     "night",
+     "dusk"
+    ]
+   },
+   "lines": [
+    [
+     "narrator",
+     "",
+     "自动售货机的灯在夜里特别亮，几只小飞虫绕着它打转。"
+    ]
+   ]
+  },
+  {
+   "id": "pl_vend_r",
+   "who": "place:vending",
+   "when": {
+    "weather": [
+     "rain"
+    ]
+   },
+   "lines": [
+    [
+     "narrator",
+     "",
+     "雨点打在售货机的顶上，嗒嗒嗒的。热饮那一排亮着红灯。"
+    ]
+   ]
+  },
+  {
+   "id": "pl_bus_n",
+   "who": "place:bus_stop",
+   "when": {
+    "period": [
+     "night"
+    ]
+   },
+   "lines": [
+    [
+     "narrator",
+     "",
+     "末班车早就开走了。站牌下的长椅上，落着一片叶子。"
+    ]
+   ]
+  },
+  {
+   "id": "pl_bus_m",
+   "who": "place:bus_stop",
+   "when": {
+    "period": [
+     "morning"
+    ]
+   },
+   "lines": [
+    [
+     "narrator",
+     "",
+     "早班车带走了几个穿制服的学生。站台上还留着他们的笑声。"
+    ]
+   ]
+  },
+  {
+   "id": "pl_lib_r",
+   "who": "place:library",
+   "when": {
+    "weather": [
+     "rain"
+    ]
+   },
+   "lines": [
+    [
+     "narrator",
+     "",
+     "雨天的小书屋里，有人留下了一张便条：“《晴町的四季》读完了，写得真好。”"
+    ]
+   ]
+  },
+  {
+   "id": "pl_bak_m",
+   "who": "place:bakery",
+   "when": {
+    "period": [
+     "morning"
+    ]
+   },
+   "lines": [
+    [
+     "narrator",
+     "",
+     "烤箱的热气从窗缝里冒出来。莲在里面对着面团自言自语。"
+    ]
+   ]
+  },
+  {
+   "id": "pl_bak_n",
+   "who": "place:bakery",
+   "when": {
+    "period": [
+     "night",
+     "dusk"
+    ]
+   },
+   "lines": [
+    [
+     "narrator",
+     "",
+     "面包店已经关门了，橱窗里只剩一只打着哈欠的招财猫。"
+    ]
+   ]
+  },
+  {
+   "id": "pl_bench",
+   "who": "place:farm_bench",
+   "when": {
+    "period": [
+     "day",
+     "morning"
+    ]
+   },
+   "lines": [
+    [
+     "narrator",
+     "",
+     "河水哗哗地流。远处的堤坝上，有人骑着自行车慢慢经过。"
+    ]
+   ]
+  },
+  {
+   "id": "pl_bench_e",
+   "who": "place:farm_bench",
+   "when": {
+    "period": [
+     "evening",
+     "dusk"
+    ]
+   },
+   "lines": [
+    [
+     "narrator",
+     "",
+     "夕阳把河面染成了橘色，蜻蜓贴着水面飞来飞去。"
+    ]
+   ]
+  },
+  {
+   "id": "pl_bench_n",
+   "who": "place:farm_bench",
+   "when": {
+    "period": [
+     "night"
+    ]
+   },
+   "lines": [
+    [
+     "narrator",
+     "",
+     "夜里的河边，萤火虫在草丛里一闪一闪。蛙声连成了一片。"
+    ]
+   ]
+  },
+  {
+   "id": "f_tan_mio",
+   "who": "mio",
+   "when": {
+    "festival": "tanabata"
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "七夕的竹子是我和小葵一起去山上砍的！短册写好了吗？"
+    ],
+    [
+     "mio",
+     "neutral",
+     "我写的是……秘密。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_tan_ren",
+   "who": "ren",
+   "when": {
+    "festival": "tanabata"
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "今晚我烤了星星形状的饼干。织女和牛郎一年才见一次，得吃点甜的。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_tan_haru",
+   "who": "haru",
+   "when": {
+    "festival": "tanabata"
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "抬头看，那条白白的就是银河。晴町的夜空，一直都这么干净。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_tan_aoi",
+   "who": "aoi",
+   "when": {
+    "festival": "tanabata"
+   },
+   "lines": [
+    [
+     "aoi",
+     "happy",
+     "我写了三张短册！一张给奶奶，一张给向日葵，还有一张……不告诉你！"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_tan_tan",
+   "who": "tanaka",
+   "when": {
+    "festival": "tanabata"
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "……笔给小葵吧。我想了半天，还没写出一个字。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_con_mio",
+   "who": "mio",
+   "when": {
+    "festival": "contest"
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "品评会下午三点截止！田中爷爷的萝卜已经连赢三年了，大家都等着有人打败他。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_con_tan",
+   "who": "tanaka",
+   "when": {
+    "festival": "contest"
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "今年的萝卜，是我种了五十年里最好的一根。"
+    ],
+    [
+     "tanaka",
+     "happy",
+     "……你要是能赢，我就服。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_con_haru",
+   "who": "haru",
+   "when": {
+    "festival": "contest"
+   },
+   "lines": [
+    [
+     "haru",
+     "happy",
+     "我的向日葵比我还高呢。你交什么？"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_con_aoi",
+   "who": "aoi",
+   "when": {
+    "festival": "contest"
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "我的草莓好像太小了……但是很甜！评审会尝吗？"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_con_ren",
+   "who": "ren",
+   "when": {
+    "festival": "contest"
+   },
+   "lines": [
+    [
+     "ren",
+     "happy",
+     "评完告诉我谁赢了。我想看看，什么样的菜能赢田中爷爷。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_nat_mio",
+   "who": "mio",
+   "when": {
+    "festival": "natsumatsuri"
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "夏祭！！八点开始跳盆舞，你一定要来！"
+    ],
+    [
+     "mio",
+     "neutral",
+     "你的摊位也开着吧？料理今天能卖双倍价钱，大家都饿着肚子来的。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_nat_ren",
+   "who": "ren",
+   "when": {
+    "festival": "natsumatsuri"
+   },
+   "lines": [
+    [
+     "ren",
+     "happy",
+     "今天卖的是咖喱面包和烤玉米！……玉米是田中爷爷那边的，我只负责刷酱油。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_nat_haru",
+   "who": "haru",
+   "when": {
+    "festival": "natsumatsuri"
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "穿着浴衣的孩子们跑来跑去……和几十年前一模一样。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_nat_aoi",
+   "who": "aoi",
+   "when": {
+    "festival": "natsumatsuri"
+   },
+   "lines": [
+    [
+     "aoi",
+     "happy",
+     "金鱼也想捞，苹果糖也想吃……先去哪边好呢？"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_nat_tan",
+   "who": "tanaka",
+   "when": {
+    "festival": "natsumatsuri"
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "……闻到烤玉米的味道了？酱油得薄薄刷一层。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_han_mio",
+   "who": "mio",
+   "when": {
+    "festival": "hanabi"
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "晴川的花火大会，是町里最大的日子。"
+    ],
+    [
+     "mio",
+     "happy",
+     "我小时候以为烟花是从河里长出来的。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_han_ren",
+   "who": "ren",
+   "when": {
+    "festival": "hanabi"
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "坐这里看得最清楚。……你要坐一下吗？"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_han_haru",
+   "who": "haru",
+   "when": {
+    "festival": "hanabi"
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "第一发总是金色的。一直是这样。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_han_aoi",
+   "who": "aoi",
+   "when": {
+    "festival": "hanabi"
+   },
+   "lines": [
+    [
+     "aoi",
+     "happy",
+     "快坐下快坐下！要开始了！"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_han_tan",
+   "who": "tanaka",
+   "when": {
+    "festival": "hanabi"
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "……这张长椅，我坐惯了。往那边挪点，够两个人。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_obon_haru",
+   "who": "haru",
+   "when": {
+    "festival": "obon"
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "盂兰盆的时候，走了的人会回来看看。灯笼是给他们照路回去的。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_obon_tan",
+   "who": "tanaka",
+   "when": {
+    "festival": "obon"
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "今年的灯笼，比往年多。……因为人多了。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_obon_aoi",
+   "who": "aoi",
+   "when": {
+    "festival": "obon"
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "奶奶说爷爷会顺着灯笼的光回来。那我要把灯笼放得亮亮的。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_obon_mio",
+   "who": "mio",
+   "when": {
+    "festival": "obon"
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "安静的晚上，也很好呢。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "f_obon_ren",
+   "who": "ren",
+   "when": {
+    "festival": "obon"
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "爷爷最喜欢这个晚上。我今天烤了他最爱的红豆面包。"
+    ]
+   ],
+   "priority": 20
+  },
+  {
+   "id": "sys_store",
+   "who": "mio",
+   "when": {
+    "not_flag": "visited_store"
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "商店街西头的「晴町商店」卖种子和调料，和子阿姨人很好，就是周三休息。"
+    ]
+   ]
+  },
+  {
+   "id": "sys_oven",
+   "who": "ren",
+   "when": {
+    "done": [
+     "Q06"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "happy",
+     "对了，你种的菜也可以拿来做面包！买张配方卡，我的烤箱随便用。"
+    ]
+   ]
+  },
+  {
+   "id": "sys_kitchen",
+   "who": "haru",
+   "when": {
+    "done": [
+     "Q06"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "番茄和黄瓜拌在一起就能做一道菜。家里的厨房也有菜谱，想吃时翻翻。"
+    ]
+   ]
+  },
+  {
+   "id": "sys_level",
+   "who": "tanaka",
+   "when": {
+    "done": [
+     "Q06"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "种得越多，手越熟。等你手熟了，商店里就会有更难种的种子卖给你。"
+    ]
+   ]
+  },
+  {
+   "id": "sys_lv4",
+   "who": "tanaka",
+   "when": {
+    "level_min": 4
+   },
+   "lines": [
+    [
+     "tanaka",
+     "happy",
+     "你现在是个像样的农人了。茄子和玉米，可以试试。"
+    ]
+   ]
+  },
+  {
+   "id": "sys_lv6",
+   "who": "tanaka",
+   "when": {
+    "level_min": 6
+   },
+   "lines": [
+    [
+     "tanaka",
+     "happy",
+     "……南瓜也能种了。留宽一点的位置，藤蔓会铺开。"
+    ]
+   ]
+  },
+  {
+   "id": "sys_chest",
+   "who": "aoi",
+   "when": {
+    "flag_min": {
+     "harvests": 6
+    }
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "你的背包好鼓啊！放不下的东西可以放进家里的收纳箱嘛。"
+    ]
+   ]
+  },
+  {
+   "id": "sys_market_dish",
+   "who": "mio",
+   "when": {
+    "done": [
+     "Q05"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "集市上做好的料理卖得比生菜好。不过每样东西一天卖太多，价钱就会掉哦。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_mio_01",
+   "who": "mio",
+   "when": {
+    "done": [
+     "Q05"
+    ],
+    "not_done": [
+     "Q10"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "整理公告栏时，翻出一张旧夜市海报。字褪了，星期六倒还看得清。"
+    ],
+    [
+     "mio",
+     "happy",
+     "我是不是该先把这周的纸贴上去？"
+    ]
+   ]
+  },
+  {
+   "id": "v06_mio_02",
+   "who": "mio",
+   "when": {
+    "done": [
+     "Q10"
+    ],
+    "not_done": [
+     "Q11"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "2011年的合影里，我还抓着那只捞金鱼的小碗。"
+    ],
+    [
+     "mio",
+     "happy",
+     "我认了半天才认出你。小时候的眼力去哪儿了？"
+    ]
+   ]
+  },
+  {
+   "id": "v06_mio_03",
+   "who": "mio",
+   "when": {
+    "active": [
+     "Q11"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "社区中心的储物间，我把架子都翻过了。健一叔的账本会不会压在纸箱底下？"
+    ],
+    [
+     "mio",
+     "happy",
+     "我再找一遍，省得漏了。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_mio_04",
+   "who": "mio",
+   "when": {
+    "done": [
+     "Q11"
+    ],
+    "not_done": [
+     "Q12"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "账本上，灯笼和屋台挤在同一页。健一叔的字可真小。"
+    ],
+    [
+     "mio",
+     "happy",
+     "好，我来誊一张大点的清单。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_mio_05",
+   "who": "mio",
+   "when": {
+    "active": [
+     "Q12"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "五盏灯笼挂哪儿，我已经在庭院里数过位置了。"
+    ],
+    [
+     "mio",
+     "happy",
+     "数到第四盏时被麻雀吓了一跳，又得从头数。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_mio_06",
+   "who": "mio",
+   "when": {
+    "done": [
+     "Q12"
+    ],
+    "not_done": [
+     "Q13"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "灯笼还没点，风一吹就晃起来了。"
+    ],
+    [
+     "mio",
+     "neutral",
+     "我去把绳结再系紧一点。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_mio_07",
+   "who": "mio",
+   "when": {
+    "active": [
+     "Q13"
+    ]
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "盆舞台要放在榉树旁边。那儿的地面，我和田中爷爷量过了。"
+    ],
+    [
+     "mio",
+     "happy",
+     "第一次量，把我的鞋也算进去了。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_mio_08",
+   "who": "mio",
+   "when": {
+    "done": [
+     "Q14"
+    ],
+    "not_done": [
+     "Q15"
+    ],
+    "found": "col_photo_new"
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "这次的合影，我想留一份在盒子里。"
+    ],
+    [
+     "mio",
+     "happy",
+     "水槽边的灯也拍进去了。下次找照片，应该一眼就能认出来。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_ren_01",
+   "who": "ren",
+   "when": {
+    "done": [
+     "Q05"
+    ],
+    "not_done": [
+     "Q10"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "happy",
+     "店是爷爷奶奶1972年开的。老招牌的字，比我的字还端正。"
+    ],
+    [
+     "ren",
+     "neutral",
+     "星期六的面包，以前得提前一晚备好。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_ren_02",
+   "who": "ren",
+   "when": {
+    "done": [
+     "Q10"
+    ],
+    "not_done": [
+     "Q11"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "你那张2011年的照片，我认得面包店的旧遮阳棚。"
+    ],
+    [
+     "ren",
+     "happy",
+     "爷爷嫌它歪，我小时候偏觉得它好看。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_ren_03",
+   "who": "ren",
+   "when": {
+    "active": [
+     "Q11"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "我翻开张那天的相册，想找找爷爷摆屋台的样子。"
+    ],
+    [
+     "ren",
+     "happy",
+     "先找到了他把菠萝包烤焦的照片。这个我得留着！"
+    ]
+   ]
+  },
+  {
+   "id": "v06_ren_04",
+   "who": "ren",
+   "when": {
+    "done": [
+     "Q11"
+    ],
+    "not_done": [
+     "Q12"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "happy",
+     "账本里有屋台的位置？太好了，我先量量面包篮能摆几个。"
+    ],
+    [
+     "ren",
+     "neutral",
+     "别再像上次，篮子到了才发现桌子太小。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_ren_05",
+   "who": "ren",
+   "when": {
+    "active": [
+     "Q12"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "happy",
+     "糊灯笼的浆糊，我搅得可匀了！"
+    ],
+    [
+     "ren",
+     "neutral",
+     "……刚才差点拿去抹面包。还好闻着不对。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_ren_06",
+   "who": "ren",
+   "when": {
+    "active": [
+     "Q13"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "盆舞台搭起来，爷爷的屋台就有地方摆了。"
+    ],
+    [
+     "ren",
+     "happy",
+     "我把旧木牌擦擦，今晚就能挂。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_ren_07",
+   "who": "ren",
+   "when": {
+    "fest_day": "natsumatsuri",
+    "not_done": [
+     "Q14"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "happy",
+     "烤盘已经热了，今晚第一炉得比平时多做点。"
+    ],
+    [
+     "ren",
+     "neutral",
+     "爷爷当年也是这样，一边数面包一边听太鼓。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_ren_08",
+   "who": "ren",
+   "when": {
+    "done": [
+     "Q14"
+    ],
+    "not_done": [
+     "Q15"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "happy",
+     "夏祭那一篮，大家说还想尝。下回得多带几个纸袋。"
+    ],
+    [
+     "ren",
+     "neutral",
+     "花火大会我也想带点面包去。看着河水吃，跟店里不一样。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_haru_01",
+   "who": "haru",
+   "when": {
+    "done": [
+     "Q05"
+    ],
+    "not_done": [
+     "Q10"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "榉树刚种下那年，树荫只够站一个人。"
+    ],
+    [
+     "haru",
+     "happy",
+     "健一还说，等它长大了，要在下面摆好多张桌子。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_haru_02",
+   "who": "haru",
+   "when": {
+    "done": [
+     "Q10"
+    ],
+    "not_done": [
+     "Q11"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "那张2011年的照片呀，健一拍照前还在替孩子们扶灯笼。"
+    ],
+    [
+     "haru",
+     "happy",
+     "他总怕灯笼歪，自己的衣领倒歪着呢。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_haru_03",
+   "who": "haru",
+   "when": {
+    "active": [
+     "Q11"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "健一写账本，会把纸角折一下，省得下回找不到。"
+    ],
+    [
+     "haru",
+     "happy",
+     "你看看储物间里，有没有一角翘起来的本子呀。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_haru_04",
+   "who": "haru",
+   "when": {
+    "active": [
+     "Q12"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "糊灯笼，竹篾弯到这里就停，别拧得太紧。"
+    ],
+    [
+     "haru",
+     "happy",
+     "健一教我埋钉子养蓝紫阳花，我教他糊灯笼。扯平了呀。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_haru_05",
+   "who": "haru",
+   "when": {
+    "done": [
+     "Q12"
+    ],
+    "not_done": [
+     "Q13"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "工具间里有一卷旧麻绳，健一当年搭台子用的。"
+    ],
+    [
+     "haru",
+     "happy",
+     "还结实呢，我拿去晒晒太阳。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_haru_06",
+   "who": "haru",
+   "when": {
+    "active": [
+     "Q13"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "这张盆舞台图纸，他改了三回。最后一回，是为了让孩子上台不绊脚。"
+    ],
+    [
+     "haru",
+     "happy",
+     "健一画线一向直，比我画花盆还认真呀。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_haru_07",
+   "who": "haru",
+   "when": {
+    "done": [
+     "Q13"
+    ],
+    "not_done": [
+     "Q14"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "台阶搭好了，小葵刚才上去试了试。"
+    ],
+    [
+     "haru",
+     "happy",
+     "健一要是看见，准会蹲下去再摸一遍木板边。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_haru_08",
+   "who": "haru",
+   "when": {
+    "done": [
+     "Q14"
+    ]
+   },
+   "lines": [
+    [
+     "haru",
+     "happy",
+     "那支盆舞曲，我现在还会跳呢。"
+    ],
+    [
+     "haru",
+     "neutral",
+     "健一总嫌我转得快。说这话时，他还没跟上拍子呀。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_tanaka_01",
+   "who": "tanaka",
+   "when": {
+    "done": [
+     "Q05"
+    ],
+    "not_done": [
+     "Q10"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "……以前星期六收完菜，天黑前得赶去夜市。"
+    ],
+    [
+     "tanaka",
+     "neutral",
+     "那时候萝卜卖得快。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_tanaka_02",
+   "who": "tanaka",
+   "when": {
+    "done": [
+     "Q10"
+    ],
+    "not_done": [
+     "Q11"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "……2011年的合影？健一拍的吧。"
+    ],
+    [
+     "tanaka",
+     "neutral",
+     "他拍照，总叫人别动。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_tanaka_03",
+   "who": "tanaka",
+   "when": {
+    "active": [
+     "Q11"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "……健一的账本，封皮磨得发白。"
+    ],
+    [
+     "tanaka",
+     "neutral",
+     "他带去农园，搁在锄头上写过。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_tanaka_04",
+   "who": "tanaka",
+   "when": {
+    "active": [
+     "Q12"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "……竹篾挑细的。粗的留着绑菜架。"
+    ],
+    [
+     "tanaka",
+     "neutral",
+     "湿一湿，好弯。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_tanaka_05",
+   "who": "tanaka",
+   "when": {
+    "active": [
+     "Q13"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "……柴堆那六根木料，先挑干的。"
+    ],
+    [
+     "tanaka",
+     "neutral",
+     "搭台子，脚下得稳。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_tanaka_06",
+   "who": "tanaka",
+   "when": {
+    "done": [
+     "Q13"
+    ],
+    "not_done": [
+     "Q14"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "……盆舞台立住了。"
+    ],
+    [
+     "tanaka",
+     "neutral",
+     "健一画的尺寸，还是准。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_tanaka_07",
+   "who": "tanaka",
+   "when": {
+    "active": [
+     "Q15"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "……旧花火筒在工具棚最高那层。"
+    ],
+    [
+     "tanaka",
+     "neutral",
+     "架子上都是灰，拿的时候当心。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_tanaka_08",
+   "who": "tanaka",
+   "when": {
+    "done": [
+     "Q15"
+    ]
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "……那晚河边落了几片花火纸。"
+    ],
+    [
+     "tanaka",
+     "neutral",
+     "我一早去捡，地就干净了。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_aoi_01",
+   "who": "aoi",
+   "when": {
+    "done": [
+     "Q05"
+    ],
+    "not_done": [
+     "Q10"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "和子阿姨说，以前星期六晚上，院子里连猫都没地方坐。"
+    ],
+    [
+     "aoi",
+     "happy",
+     "猫也逛夜市吗？"
+    ]
+   ]
+  },
+  {
+   "id": "v06_aoi_02",
+   "who": "aoi",
+   "when": {
+    "done": [
+     "Q10"
+    ],
+    "not_done": [
+     "Q11"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "照片里那个拿小碗的女孩，是澪姐姐？"
+    ],
+    [
+     "aoi",
+     "happy",
+     "她小时候也会把金鱼捞跑吗？"
+    ]
+   ]
+  },
+  {
+   "id": "v06_aoi_03",
+   "who": "aoi",
+   "when": {
+    "done": [
+     "Q11"
+    ],
+    "not_done": [
+     "Q12"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "账本上写了五盏灯笼，我用手指头数过啦。"
+    ],
+    [
+     "aoi",
+     "happy",
+     "一人拿一盏，我也可以拿吗？"
+    ]
+   ]
+  },
+  {
+   "id": "v06_aoi_04",
+   "who": "aoi",
+   "when": {
+    "active": [
+     "Q12"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "happy",
+     "我糊的那盏有一点皱。挂高一点，是不是就看不出来了？"
+    ]
+   ]
+  },
+  {
+   "id": "v06_aoi_05",
+   "who": "aoi",
+   "when": {
+    "done": [
+     "Q12"
+    ],
+    "not_done": [
+     "Q13"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "奶奶说夏祭前要往榉树上挂晴天娃娃。"
+    ],
+    [
+     "aoi",
+     "happy",
+     "它们挂那么高，能看见云吗？"
+    ]
+   ]
+  },
+  {
+   "id": "v06_aoi_06",
+   "who": "aoi",
+   "when": {
+    "active": [
+     "Q13"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "爷爷画的盆舞台图纸上有好多线。"
+    ],
+    [
+     "aoi",
+     "happy",
+     "哪一条是上去跳舞的路呀？"
+    ]
+   ]
+  },
+  {
+   "id": "v06_aoi_07",
+   "who": "aoi",
+   "when": {
+    "done": [
+     "Q13"
+    ],
+    "not_done": [
+     "Q14"
+    ],
+    "day_min": 16
+   },
+   "lines": [
+    [
+     "aoi",
+     "happy",
+     "我把晴天娃娃挂到榉树上啦！"
+    ],
+    [
+     "aoi",
+     "neutral",
+     "它要是一直歪着头，会不会只照到半边院子呀？"
+    ]
+   ]
+  },
+  {
+   "id": "v06_aoi_08",
+   "who": "aoi",
+   "when": {
+    "done": [
+     "Q14"
+    ],
+    "not_done": [
+     "Q15"
+    ]
+   },
+   "lines": [
+    [
+     "aoi",
+     "happy",
+     "夏祭的灯笼我画了好多。下次要画上盆舞台。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_kazuko_01",
+   "who": "kazuko",
+   "when": {
+    "period": [
+     "morning"
+    ],
+    "weather": [
+     "sunny"
+    ]
+   },
+   "lines": [
+    [
+     "kazuko",
+     "happy",
+     "早啊！门口这筐黄瓜刚摆好，阳光照着，绿得真好看。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_kazuko_02",
+   "who": "kazuko",
+   "when": {
+    "period": [
+     "day"
+    ]
+   },
+   "lines": [
+    [
+     "kazuko",
+     "neutral",
+     "中午总有人冲进来找盐。哎呀，做饭做一半才想起来吧？"
+    ]
+   ]
+  },
+  {
+   "id": "v06_kazuko_03",
+   "who": "kazuko",
+   "when": {
+    "period": [
+     "day"
+    ],
+    "weather": [
+     "cloudy"
+    ]
+   },
+   "lines": [
+    [
+     "kazuko",
+     "happy",
+     "阴天正好理货！来，帮我看看最上头那包种子写的什么。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_kazuko_04",
+   "who": "kazuko",
+   "when": {
+    "period": [
+     "evening"
+    ]
+   },
+   "lines": [
+    [
+     "kazuko",
+     "neutral",
+     "快打烊啦。门边这把伞是谁忘的？明天准会有人来找。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_kazuko_05",
+   "who": "kazuko",
+   "when": {
+    "weather": [
+     "rain"
+    ]
+   },
+   "lines": [
+    [
+     "kazuko",
+     "happy",
+     "下雨还来呀？快进来，先拿块布擦擦袖子！"
+    ]
+   ]
+  },
+  {
+   "id": "v06_kazuko_06",
+   "who": "kazuko",
+   "when": {
+    "period": [
+     "night"
+    ]
+   },
+   "lines": [
+    [
+     "kazuko",
+     "neutral",
+     "卷帘门放下一半了。你走这边，别撞着头！"
+    ]
+   ]
+  },
+  {
+   "id": "v06_kazuko_07",
+   "who": "kazuko",
+   "when": {
+    "done": [
+     "Q05"
+    ],
+    "not_done": [
+     "Q10"
+    ]
+   },
+   "lines": [
+    [
+     "kazuko",
+     "happy",
+     "看这旧价签！夜市那会儿我写的，数字歪得像虫爬。"
+    ],
+    [
+     "kazuko",
+     "neutral",
+     "我妈看了笑半天，还是让我继续写。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_kazuko_08",
+   "who": "kazuko",
+   "when": {
+    "done": [
+     "Q10"
+    ],
+    "not_done": [
+     "Q11"
+    ]
+   },
+   "lines": [
+    [
+     "kazuko",
+     "neutral",
+     "土曜夜市一开，店里的木凳就被人搬到庭院去。"
+    ],
+    [
+     "kazuko",
+     "happy",
+     "散场了才还，凳脚上全是草屑。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_kazuko_09",
+   "who": "kazuko",
+   "when": {
+    "active": [
+     "Q11"
+    ]
+   },
+   "lines": [
+    [
+     "kazuko",
+     "happy",
+     "要找健一的账本？他当年买灯笼纸，最爱在这儿一页页核数。"
+    ],
+    [
+     "kazuko",
+     "neutral",
+     "我嫌他慢，数完又跟着数一遍。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_kazuko_10",
+   "who": "kazuko",
+   "when": {
+    "done": [
+     "Q12"
+    ],
+    "not_done": [
+     "Q13"
+    ]
+   },
+   "lines": [
+    [
+     "kazuko",
+     "happy",
+     "五盏灯笼都糊好啦？等点亮了，我也去看。"
+    ],
+    [
+     "kazuko",
+     "neutral",
+     "这旧价签也该擦擦了。夜市那会儿，我妈让我写的。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_kazuko_11",
+   "who": "kazuko",
+   "when": {
+    "done": [
+     "Q13"
+    ],
+    "not_done": [
+     "Q14"
+    ]
+   },
+   "lines": [
+    [
+     "kazuko",
+     "neutral",
+     "盆舞台搭好了，我这儿的旧扇子也该翻出来了。"
+    ],
+    [
+     "kazuko",
+     "happy",
+     "以前卖完东西，我就拿扇子跑去跳舞！"
+    ]
+   ]
+  },
+  {
+   "id": "v06_kazuko_12",
+   "who": "kazuko",
+   "when": {
+    "done": [
+     "Q10"
+    ],
+    "not_done": [
+     "Q11"
+    ]
+   },
+   "lines": [
+    [
+     "kazuko",
+     "surprised",
+     "哎呀，这张合影！你奶奶那天还来店里借过针线。"
+    ],
+    [
+     "kazuko",
+     "happy",
+     "等会儿，我拿个干净纸袋给你装好。"
+    ]
+   ],
+   "once": true,
+   "priority": 30
+  },
+  {
+   "id": "v06_kazuko_13",
+   "who": "kazuko",
+   "when": {
+    "done": [
+     "Q13"
+    ],
+    "not_done": [
+     "Q14"
+    ]
+   },
+   "lines": [
+    [
+     "kazuko",
+     "happy",
+     "哎哟，盆舞台真立起来了！我把店门口的货箱挪开，让大家好走。"
+    ]
+   ],
+   "once": true,
+   "priority": 30
+  },
+  {
+   "id": "v06_kazuko_14",
+   "who": "kazuko",
+   "when": {
+    "done": [
+     "Q15"
+    ]
+   },
+   "lines": [
+    [
+     "kazuko",
+     "happy",
+     "那发花火，我在店门口看见啦！忙着关门，差点漏了。"
+    ],
+    [
+     "kazuko",
+     "neutral",
+     "明年得早点把卷帘门拉下来。"
+    ]
+   ],
+   "once": true,
+   "priority": 30
+  },
+  {
+   "id": "v06_narrator_01",
+   "who": "place:zelkova",
+   "when": {
+    "done": [
+     "Q10"
+    ],
+    "not_done": [
+     "Q11"
+    ],
+    "period": [
+     "evening"
+    ]
+   },
+   "lines": [
+    [
+     "narrator",
+     "",
+     "旧照片的一角被太阳晒得发黄了。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_narrator_02",
+   "who": "place:zelkova",
+   "when": {
+    "done": [
+     "Q11"
+    ],
+    "not_done": [
+     "Q12"
+    ],
+    "period": [
+     "night"
+    ]
+   },
+   "lines": [
+    [
+     "narrator",
+     "",
+     "夜里的庭院没人，长椅上落了几片榉树叶。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_narrator_03",
+   "who": "place:zelkova",
+   "when": {
+    "done": [
+     "Q12"
+    ],
+    "not_done": [
+     "Q13"
+    ],
+    "period": [
+     "evening"
+    ]
+   },
+   "lines": [
+    [
+     "narrator",
+     "",
+     "五盏纸灯笼挂在屋檐下，排成一排。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_narrator_04",
+   "who": "place:zelkova",
+   "when": {
+    "done": [
+     "Q13"
+    ],
+    "not_done": [
+     "Q14"
+    ],
+    "period": [
+     "night"
+    ]
+   },
+   "lines": [
+    [
+     "narrator",
+     "",
+     "盆舞台边上堆着刨下来的木屑，一股松木味。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_narrator_05",
+   "who": "place:zelkova",
+   "when": {
+    "fest_day": "natsumatsuri",
+    "period": [
+     "morning"
+    ]
+   },
+   "lines": [
+    [
+     "narrator",
+     "",
+     "晴天娃娃挂在榉树枝上，被风吹得转来转去。"
+    ]
+   ]
+  },
+  {
+   "id": "v06_narrator_06",
+   "who": "place:zelkova",
+   "when": {
+    "done": [
+     "Q14"
+    ],
+    "day_min": 18,
+    "period": [
+     "morning"
+    ]
+   },
+   "lines": [
+    [
+     "narrator",
+     "",
+     "早上的盆舞台还没人。栏杆上系着一截红绳，不知道是谁落下的。"
+    ]
+   ],
+   "once": true
+  },
+  {
+   "id": "v06_kazuko_15",
+   "who": "kazuko",
+   "when": {
+    "weekday": [
+     5
+    ]
+   },
+   "lines": [
+    [
+     "kazuko",
+     "happy",
+     "星期六啦！傍晚集市开张前，我得先把找零的硬币数好。"
+    ],
+    [
+     "kazuko",
+     "neutral",
+     "……数到一半又被隔壁叫去帮忙，每周都这样。"
+    ]
+   ]
+  },
+  {
+   "id": "bakery_mio_after",
+   "who": "mio",
+   "when": {
+    "flag": "bakery_first_served"
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "上次的三明治，莲说改成小份了。你那张试吃纸签真管用。"
+    ]
+   ],
+   "once": true,
+   "priority": 12
+  },
+  {
+   "id": "bakery_haru_after",
+   "who": "haru",
+   "when": {
+    "flag": "bakery_first_served"
+   },
+   "lines": [
+    [
+     "haru",
+     "happy",
+     "莲把面包切小了。我一手拿面包，一手还能拿扇子。"
+    ]
+   ],
+   "once": true,
+   "priority": 12
+  },
+  {
+   "id": "bakery_kazuko_after",
+   "who": "kazuko",
+   "when": {
+    "flag": "bakery_first_served"
+   },
+   "lines": [
+    [
+     "kazuko",
+     "happy",
+     "莲后来把番茄沥了水，纸袋没湿。我就说，吃之前得先拿得住嘛。"
+    ]
+   ],
+   "once": true,
+   "priority": 12
+  },
+  {
+   "id": "promise_next",
+   "who": "mio",
+   "when": {
+    "done": "Q14",
+    "flag_equals": {
+     "summer_promise": 0
+    }
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "那张金鱼网我留着呢。下次先挑轻一点的。"
+    ]
+   ],
+   "once": true,
+   "priority": 12
+  },
+  {
+   "id": "promise_return",
+   "who": "mio",
+   "when": {
+    "done": "Q14",
+    "flag_equals": {
+     "summer_promise": 1
+    }
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "以后回来，树下见就行。我会给你留一张网。"
+    ]
+   ],
+   "once": true,
+   "priority": 12
+  },
+  {
+   "id": "promise_photo",
+   "who": "mio",
+   "when": {
+    "done": "Q14",
+    "flag_equals": {
+     "summer_promise": 2
+    },
+    "found": "col_photo_new"
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "照片我收了一份。另一份留给你。"
+    ]
+   ],
+   "once": true,
+   "priority": 12
+  },
+  {
+   "id": "promise_without_photo",
+   "who": "mio",
+   "when": {
+    "done": "Q14",
+    "flag_equals": {
+     "summer_promise": 2
+    },
+    "not_found": "col_photo_new"
+   },
+   "lines": [
+    [
+     "mio",
+     "happy",
+     "能一起在水槽边待一会儿，就很好。想补拍照片的话，再来找我。"
+    ]
+   ],
+   "once": true,
+   "priority": 12
+  },
+  {
+   "id": "mio_place_20261006_0",
+   "who": "mio",
+   "priority": 3,
+   "when": {
+    "place": "notice_board"
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "我每天先看这块公告栏，再去买东西。纸条多的时候，早饭就得带着走。"
+    ]
+   ]
+  },
+  {
+   "id": "mio_place_20261006_1",
+   "who": "mio",
+   "priority": 3,
+   "when": {
+    "place": "courtyard"
+   },
+   "lines": [
+    [
+     "mio",
+     "neutral",
+     "在庭院里说话，大家会慢慢围过来。比挨家敲门轻松多了。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_place_20261006_2",
+   "who": "ren",
+   "priority": 3,
+   "when": {
+    "place": [
+     "bakery",
+     "bakery_front"
+    ]
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "门一开，这一炉的香气就往街上跑。我有时候会站在这里，听别人猜烤的是什么。"
+    ]
+   ]
+  },
+  {
+   "id": "ren_place_20261006_3",
+   "who": "ren",
+   "priority": 3,
+   "when": {
+    "place": "courtyard"
+   },
+   "lines": [
+    [
+     "ren",
+     "neutral",
+     "离开烤箱坐一会儿，脑子里才不全是面团。明天那一炉，等回去再想。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_place_20261006_4",
+   "who": "haru",
+   "priority": 3,
+   "when": {
+    "place": "courtyard"
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "我浇花会先摸摸土。看着干，下面不一定干，别急着一壶倒下去。"
+    ]
+   ]
+  },
+  {
+   "id": "haru_place_20261006_5",
+   "who": "haru",
+   "priority": 3,
+   "when": {
+    "place": "tree_shade"
+   },
+   "lines": [
+    [
+     "haru",
+     "neutral",
+     "树荫挪得很慢。坐一会儿，才会发现脚边那片光换了地方。"
+    ]
+   ]
+  },
+  {
+   "id": "tanaka_place_20261006_6",
+   "who": "tanaka",
+   "priority": 3,
+   "when": {
+    "place": "farm_shed"
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "工具放回原处，下次就少找一阵。年轻时我不信，找过几回锄头才信。"
+    ]
+   ]
+  },
+  {
+   "id": "tanaka_place_20261006_7",
+   "who": "tanaka",
+   "priority": 3,
+   "when": {
+    "place": "farm_plots"
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "……这排苗又高了。我每天先站这里看，哪片叶子蔫了，就先看哪棵。"
+    ]
+   ]
+  },
+  {
+   "id": "tanaka_place_20261006_8",
+   "who": "tanaka",
+   "priority": 3,
+   "when": {
+    "place": "riverbank"
+   },
+   "lines": [
+    [
+     "tanaka",
+     "neutral",
+     "傍晚我到河边站一会儿。风一吹，衣服上那点土腥气就散了。"
+    ]
+   ]
+  },
+  {
+   "id": "aoi_place_20261006_9",
+   "who": "aoi",
+   "priority": 3,
+   "when": {
+    "place": "courtyard"
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "我奶奶泡的麦茶，第一口总有点苦。她说我喝得太急，我才不承认。"
+    ]
+   ]
+  },
+  {
+   "id": "aoi_place_20261006_10",
+   "who": "aoi",
+   "priority": 3,
+   "when": {
+    "place": "riverbank",
+    "weather": "sunny"
+   },
+   "lines": [
+    [
+     "aoi",
+     "neutral",
+     "我喜欢数蜻蜓。数到一半，它们一换地方，我又得从头数。"
+    ]
+   ]
+  },
+  {
+   "id": "kazuko_place_20261006_11",
+   "who": "kazuko",
+   "priority": 3,
+   "when": {
+    "place": [
+     "store",
+     "store_front"
+    ]
+   },
+   "lines": [
+    [
+     "kazuko",
+     "neutral",
+     "忘了东西叫什么，就形容给我听。有人来买“烧汤最后撒的那个”，我也猜得出来。"
+    ]
+   ]
+  },
+  {
+   "id": "kazuko_place_20261006_12",
+   "who": "kazuko",
+   "priority": 3,
+   "when": {
+    "place": "courtyard"
+   },
+   "lines": [
+    [
+     "kazuko",
+     "neutral",
+     "站了一上午，坐下才发现鞋带松了。你说，平时到底忙些什么呢。"
+    ]
+   ]
+  }
+ ]
+}

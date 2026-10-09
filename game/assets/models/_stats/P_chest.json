@@ -1,0 +1,25 @@
+{
+ "id": "P_chest",
+ "src": "raw/P_chest_pix/model.glb",
+ "provider": "pixal3d (v0.6 review, seed 7)",
+ "tris_src": 930611,
+ "tris": 11229,
+ "size_m": [
+  0.897,
+  0.57,
+  0.427
+ ],
+ "godot_size_m_xyz": [
+  0.897,
+  0.427,
+  0.57
+ ],
+ "tex": 2048,
+ "bytes": 810484,
+ "yaw_fix": -153.5,
+ "level": "auto",
+ "lean_src_deg": 14.93,
+ "levelled": true,
+ "lean_deg": 0.24,
+ "base_frac": 0.798
+}

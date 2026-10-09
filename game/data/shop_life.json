@@ -1,0 +1,8 @@
+{
+  "lines": [
+    {"id":"store_morning","who":"kazuko","mood":"happy","text":"欢迎光临！今天的菜刚送到，慢慢挑。"},
+    {"id":"store_later","who":"kazuko","mood":"happy","text":"欢迎光临，缺什么就跟我说。"},
+    {"id":"bakery_morning","who":"ren","mood":"happy","text":"欢迎光临！面包刚出炉，先闻闻香。"},
+    {"id":"bakery_later","who":"ren","mood":"happy","text":"欢迎光临，甜甜圈和小蛋糕也有。"}
+  ]
+}

@@ -1,0 +1,9 @@
+[gd_resource type="AtlasTexture" format=3]
+
+[ext_resource type="Texture2D" path="res://ui_kit/assets/navigation_atlas.png" id="1_dlo38"]
+
+[resource]
+resource_name = "UIKitIcon/exit"
+atlas = ExtResource("1_dlo38")
+region = Rect2(376, 653, 228, 241)
+filter_clip = true

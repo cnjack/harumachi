@@ -1,0 +1,20 @@
+{
+ "id": "A10_vending_machine",
+ "src": "../../output/japanese-street-shinkai-dry/models/A10_vending_machine/model.glb",
+ "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)",
+ "tris_src": 79738,
+ "tris": 4000,
+ "size_m": [
+  1.121,
+  0.808,
+  1.83
+ ],
+ "godot_size_m_xyz": [
+  1.121,
+  1.83,
+  0.808
+ ],
+ "tex": 1024,
+ "bytes": 459840,
+ "yaw_fix": 0
+}

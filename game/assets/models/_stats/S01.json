@@ -1,0 +1,35 @@
+{
+ "id": "S01",
+ "src": "raw/window_cavities_20261003/S01.glb",
+ "provider": "Hyper3D Rodin Gen-2.5 High image-to-3D; Blender UV-preserving optimization and local assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 207202,
+ "tex": 8192,
+ "bytes": 15417944,
+ "godot_size_m_xyz": [
+  7.0218,
+  5.2491,
+  5.1392
+ ],
+ "mesh_nodes": [
+  "Lettering_\u5f53\u65e5\u9c9c\u852c__display",
+  "Lettering_\u5f53\u65e5\u9c9c\u852c__display.001",
+  "Lettering_\u5f53\u65e5\u9c9c\u852c__display.002",
+  "Lettering_\u6674\u753a\u5546\u5e97",
+  "Pixal_whole_cucumbers_0__display",
+  "Pixal_whole_cucumbers_1__display",
+  "Rodin_S01_body",
+  "cedar__display",
+  "cedar_dark__display",
+  "crate_green__display",
+  "ink__display",
+  "leaf__display",
+  "paper__display",
+  "produce_cabbage__display",
+  "produce_cabbage_light__display",
+  "produce_tomato__display",
+  "sign_cream__display",
+  "steel__display"
+ ]
+}

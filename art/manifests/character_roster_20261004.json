@@ -1,0 +1,643 @@
+{
+  "version": 1,
+  "status": "greeting palms, subtle smiles and hand proportions installed; game verification pending",
+  "characters": [
+    {
+      "id": "CH_sora",
+      "character": "sora",
+      "name": "空",
+      "file": "art/models/character_wave_smile_20261005/exports/CH_sora.glb",
+      "preview_path": "art/library/characters/CH_sora.glb",
+      "reference_pose": "A 45 degrees below horizontal",
+      "base_joints": 54,
+      "clothing_joints": 12,
+      "finger_joints": 30,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "wave",
+        "bow",
+        "look",
+        "stretch",
+        "tend",
+        "talk",
+        "cheer",
+        "dance"
+      ],
+      "clip_duration_error": 0,
+      "triangles": 94032,
+      "bytes": 11458212,
+      "sha256": "2243aed7f1901f47525d30c3fa4e144f48a3b1124cf8d33d759d29d9981f59ba",
+      "clothing": {
+        "character": "sora",
+        "source": "/Users/jack/workpath/research/3D model/anime/art/models/character_leads_apose_20261005/drape/authoring/sora_proxy.blend",
+        "sleeves": {
+          "Left": {
+            "vertices": 1840,
+            "faces": 3546,
+            "length": 0.2201793888278426,
+            "skin_radius": 0.017305868657943122,
+            "helper_parent": "mixamorig:LeftArm"
+          },
+          "Right": {
+            "vertices": 2285,
+            "faces": 4435,
+            "length": 0.22197983653565986,
+            "skin_radius": 0.018213126723979414,
+            "helper_parent": "mixamorig:RightArm"
+          }
+        },
+        "original_style_and_textures_preserved": true,
+        "spring_chains": [
+          {
+            "side": "Left",
+            "sector": "Front",
+            "root": "Cloth_Left_Front0",
+            "end": "Cloth_Left_Front2"
+          },
+          {
+            "side": "Left",
+            "sector": "Back",
+            "root": "Cloth_Left_Back0",
+            "end": "Cloth_Left_Back2"
+          },
+          {
+            "side": "Right",
+            "sector": "Front",
+            "root": "Cloth_Right_Front0",
+            "end": "Cloth_Right_Front2"
+          },
+          {
+            "side": "Right",
+            "sector": "Back",
+            "root": "Cloth_Right_Back0",
+            "end": "Cloth_Right_Back2"
+          }
+        ]
+      },
+      "surface_source": "art/models/character_leads_apose_20261005/sora_static.glb",
+      "status": "installed",
+      "generation_id": "027128d0-b34b-44b3-938a-bbf48f96ba58",
+      "source_url": "https://hyper3d.ai/workspace/rodin/027128d0-b34b-44b3-938a-bbf48f96ba58",
+      "references": [
+        "art/library/characters/references/sora_front.png",
+        "art/library/characters/references/sora_back.png"
+      ],
+      "raw_path": "art/models/raw/CH_sora_rodin_apose_20261005/model.glb",
+      "authoring_path": "art/models/character_wave_smile_20261005/authoring/CH_sora.blend",
+      "corrective_shapes": [
+        "Shoulder_Left",
+        "Cuff_Left",
+        "Shoulder_Right",
+        "Cuff_Right"
+      ],
+      "measured_arm_angles_degrees": {
+        "L": 51.59,
+        "R": 52.1
+      },
+      "game_path": "game/assets/models/CH_sora.glb",
+      "head_neck_repair": {
+        "head_start_fraction": 0.855,
+        "pivot_offset_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "head_rigid_vertices": 10235,
+        "neck_blend_vertices": 513,
+        "elderly_gestures": false
+      },
+      "individual_review": "evidence/character_individual_review_20261005/review-status.json",
+      "greeting_review": "evidence/character_wave_smile_20261005/verification.json",
+      "greeting_palm": {
+        "side": "Right",
+        "faces": "recipient / character +Z",
+        "forearm_share": 0.8,
+        "review": "wave-smile-20261005"
+      },
+      "greeting_expression": {
+        "mode": "closed-mouth smile trial",
+        "target": "GreetingSmile",
+        "max_corner_lift_mm": 1.4990343800529198,
+        "eyes_changed": false
+      },
+      "hand_size_review": {
+        "scale": 0.9,
+        "wrist_preserved": true,
+        "fingers_scale_with_palm": true,
+        "review": "wave-smile-20261005"
+      },
+      "reference_sets": {
+        "multiview_20261006": {
+          "path": "art/references/character_multiview_20261006/sora/reference-set.json",
+          "views": {
+            "front": "art/references/character_multiview_20261006/sora/front.png",
+            "left": "art/references/character_multiview_20261006/sora/left.png",
+            "right": "art/references/character_multiview_20261006/sora/right.png",
+            "back": "art/references/character_multiview_20261006/sora/back.png"
+          },
+          "use": "subsequent generation; historical input references unchanged"
+        }
+      }
+    },
+    {
+      "id": "CH_mio",
+      "character": "mio",
+      "name": "澪",
+      "file": "art/models/character_wave_smile_20261005/exports/CH_mio.glb",
+      "preview_path": "art/library/characters/CH_mio.glb",
+      "reference_pose": "A 45 degrees below horizontal",
+      "base_joints": 54,
+      "clothing_joints": 12,
+      "finger_joints": 30,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "wave",
+        "bow",
+        "look",
+        "stretch",
+        "tend",
+        "talk",
+        "cheer",
+        "dance"
+      ],
+      "clip_duration_error": 0,
+      "triangles": 96748,
+      "bytes": 10179364,
+      "sha256": "4d518415d7244aad44fd80858aec1120f4559138ba86fa06839c9b7e658b35af",
+      "clothing": {
+        "character": "mio",
+        "source": "/Users/jack/workpath/research/3D model/anime/art/models/character_leads_apose_20261005/drape/authoring/mio_proxy.blend",
+        "sleeves": {
+          "Left": {
+            "vertices": 1306,
+            "faces": 2512,
+            "length": 0.29334692619845376,
+            "skin_radius": 0.016989242220645344,
+            "helper_parent": "mixamorig:LeftForeArm"
+          },
+          "Right": {
+            "vertices": 1324,
+            "faces": 2538,
+            "length": 0.23932720732665325,
+            "skin_radius": 0.011351688592552214,
+            "helper_parent": "mixamorig:RightForeArm"
+          }
+        },
+        "original_style_and_textures_preserved": true,
+        "spring_chains": [
+          {
+            "side": "Left",
+            "sector": "Front",
+            "root": "Cloth_Left_Front0",
+            "end": "Cloth_Left_Front2"
+          },
+          {
+            "side": "Left",
+            "sector": "Back",
+            "root": "Cloth_Left_Back0",
+            "end": "Cloth_Left_Back2"
+          },
+          {
+            "side": "Right",
+            "sector": "Front",
+            "root": "Cloth_Right_Front0",
+            "end": "Cloth_Right_Front2"
+          },
+          {
+            "side": "Right",
+            "sector": "Back",
+            "root": "Cloth_Right_Back0",
+            "end": "Cloth_Right_Back2"
+          }
+        ]
+      },
+      "surface_source": "art/models/character_leads_apose_20261005/mio_static.glb",
+      "status": "installed",
+      "generation_id": "0d52126c-8342-42af-9b32-2d470fdbc48b",
+      "source_url": "https://hyper3d.ai/workspace/rodin/0d52126c-8342-42af-9b32-2d470fdbc48b",
+      "references": [
+        "art/library/characters/references/mio_front.png",
+        "art/library/characters/references/mio_back.png"
+      ],
+      "raw_path": "art/models/raw/CH_mio_rodin_apose_20261005/model.glb",
+      "authoring_path": "art/models/character_wave_smile_20261005/authoring/CH_mio.blend",
+      "corrective_shapes": [
+        "Shoulder_Left",
+        "Cuff_Left",
+        "Shoulder_Right",
+        "Cuff_Right",
+        "Skirt_Clearance"
+      ],
+      "measured_arm_angles_degrees": {
+        "L": 54.16,
+        "R": 51.43
+      },
+      "game_path": "game/assets/models/CH_mio.glb",
+      "head_neck_repair": {
+        "head_start_fraction": 0.81,
+        "pivot_offset_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "head_rigid_vertices": 12666,
+        "neck_blend_vertices": 56,
+        "elderly_gestures": false
+      },
+      "greeting_review": "evidence/character_wave_smile_20261005/verification.json",
+      "greeting_palm": {
+        "side": "Right",
+        "faces": "recipient / character +Z",
+        "forearm_share": 0.8,
+        "review": "wave-smile-20261005"
+      }
+    },
+    {
+      "id": "CH_ren",
+      "character": "ren",
+      "name": "莲",
+      "file": "art/models/character_wave_smile_20261005/exports/CH_ren.glb",
+      "preview_path": "art/library/characters/CH_ren.glb",
+      "reference_pose": "A 45 degrees below horizontal",
+      "base_joints": 54,
+      "clothing_joints": 0,
+      "finger_joints": 30,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "wave",
+        "bow",
+        "look",
+        "stretch",
+        "tend",
+        "talk",
+        "cheer",
+        "dance"
+      ],
+      "clip_duration_error": 0,
+      "triangles": 94957,
+      "bytes": 11866852,
+      "sha256": "484162fba1a969cee730e7ccd7e29c8d5641de890a3bc1d363823ec1d973960d",
+      "clothing": {
+        "spring_chains": [],
+        "sleeves": {}
+      },
+      "status": "installed",
+      "authoring_path": "art/models/character_wave_smile_20261005/authoring/CH_ren.blend",
+      "corrective_shapes": [],
+      "generation_id": "8fde314d-f354-4843-89b6-9f7dfb15c243",
+      "source_url": "https://hyper3d.ai/workspace/rodin/8fde314d-f354-4843-89b6-9f7dfb15c243",
+      "references": [
+        "art/library/characters/references/ren_front.png",
+        "art/library/characters/references/ren_back.png"
+      ],
+      "raw_path": "art/models/raw/CH_ren_rodin_apose_20261004/model.glb",
+      "measured_arm_angles_degrees": {
+        "L": 46.33,
+        "R": 50.18
+      },
+      "game_path": "game/assets/models/CH_ren.glb",
+      "head_neck_repair": {
+        "head_start_fraction": 0.848,
+        "pivot_offset_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "head_rigid_vertices": 9764,
+        "neck_blend_vertices": 44,
+        "elderly_gestures": false
+      },
+      "individual_review": "evidence/character_individual_review_20261005/review-status.json",
+      "character_pose_review": {
+        "character": "ren",
+        "look_head_factor": 0.62,
+        "look_neck_factor": 0.45,
+        "look_chest_factor": 0.7,
+        "review": "individual-review-20261005"
+      },
+      "greeting_review": "evidence/character_wave_smile_20261005/verification.json",
+      "greeting_palm": {
+        "side": "Right",
+        "faces": "recipient / character +Z",
+        "forearm_share": 0.8,
+        "review": "wave-smile-20261005"
+      },
+      "greeting_expression": {
+        "mode": "closed-mouth smile trial",
+        "target": "GreetingSmile",
+        "max_corner_lift_mm": 1.5,
+        "eyes_changed": false
+      },
+      "hand_size_review": {
+        "scale": 0.9,
+        "wrist_preserved": true,
+        "fingers_scale_with_palm": true,
+        "review": "wave-smile-20261005"
+      }
+    },
+    {
+      "id": "CH_haru",
+      "character": "haru",
+      "name": "春",
+      "file": "art/models/character_wave_smile_20261005/exports/CH_haru.glb",
+      "preview_path": "art/library/characters/CH_haru.glb",
+      "reference_pose": "A 45 degrees below horizontal",
+      "base_joints": 54,
+      "clothing_joints": 0,
+      "finger_joints": 30,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "wave",
+        "bow",
+        "look",
+        "stretch",
+        "tend",
+        "talk",
+        "cheer",
+        "dance"
+      ],
+      "clip_duration_error": 0,
+      "triangles": 89683,
+      "bytes": 8635408,
+      "sha256": "3e72246152c2ff8683f5778e6bc0a4eb2987536c989c3fc4f86a81b32b2ed65f",
+      "clothing": {
+        "spring_chains": [],
+        "sleeves": {}
+      },
+      "status": "installed",
+      "authoring_path": "art/models/character_wave_smile_20261005/authoring/CH_haru.blend",
+      "corrective_shapes": [],
+      "generation_id": "abb0fdaf-2fec-430a-b6d6-2e9daf32cc00",
+      "source_url": "https://hyper3d.ai/workspace/rodin/abb0fdaf-2fec-430a-b6d6-2e9daf32cc00",
+      "references": [
+        "art/library/characters/references/haru_front.png",
+        "art/library/characters/references/haru_back.png"
+      ],
+      "raw_path": "art/models/raw/CH_haru_rodin_face_20261005/model.glb",
+      "measured_arm_angles_degrees": {
+        "L": 45.42,
+        "R": 46.98
+      },
+      "game_path": "game/assets/models/CH_haru.glb",
+      "head_neck_repair": {
+        "head_start_fraction": 0.815,
+        "pivot_offset_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "head_rigid_vertices": 9088,
+        "neck_blend_vertices": 293,
+        "elderly_gestures": true
+      },
+      "surface_source": "art/models/character_neck_haru_20261005/haru_static.glb",
+      "greeting_review": "evidence/character_wave_smile_20261005/verification.json",
+      "greeting_palm": {
+        "side": "Right",
+        "faces": "recipient / character +Z",
+        "forearm_share": 0.8,
+        "review": "wave-smile-20261005"
+      },
+      "hand_size_review": {
+        "scale": 0.9,
+        "wrist_preserved": true,
+        "fingers_scale_with_palm": true,
+        "review": "wave-smile-20261005"
+      }
+    },
+    {
+      "id": "CH_tanaka",
+      "character": "tanaka",
+      "name": "田中爷爷",
+      "file": "art/models/character_wave_smile_20261005/exports/CH_tanaka.glb",
+      "preview_path": "art/library/characters/CH_tanaka.glb",
+      "reference_pose": "A 45 degrees below horizontal",
+      "base_joints": 54,
+      "clothing_joints": 0,
+      "finger_joints": 30,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "wave",
+        "bow",
+        "look",
+        "stretch",
+        "tend",
+        "talk",
+        "cheer",
+        "dance"
+      ],
+      "clip_duration_error": 0,
+      "triangles": 89902,
+      "bytes": 9694172,
+      "sha256": "f4a593d91eafeafbc784db4b67d65aac681b7a89a6532a1b8404083e2b2d6988",
+      "clothing": {
+        "spring_chains": [],
+        "sleeves": {}
+      },
+      "status": "installed",
+      "authoring_path": "art/models/character_wave_smile_20261005/authoring/CH_tanaka.blend",
+      "corrective_shapes": [],
+      "generation_id": "1772f045-fe8c-45c6-8f33-4fe89dfc5143",
+      "source_url": "https://hyper3d.ai/workspace/rodin/1772f045-fe8c-45c6-8f33-4fe89dfc5143",
+      "references": [
+        "art/library/characters/references/tanaka_front.png",
+        "art/library/characters/references/tanaka_back.png"
+      ],
+      "raw_path": "art/models/raw/CH_tanaka_rodin_apose_20261004/model.glb",
+      "measured_arm_angles_degrees": {
+        "L": 29.61,
+        "R": 37.76
+      },
+      "game_path": "game/assets/models/CH_tanaka.glb",
+      "head_neck_repair": {
+        "head_start_fraction": 0.835,
+        "pivot_offset_m": [
+          0.0,
+          0.075,
+          -0.12666568011044924
+        ],
+        "head_rigid_vertices": 5201,
+        "neck_blend_vertices": 309,
+        "elderly_gestures": false
+      },
+      "individual_review": "evidence/character_individual_review_20261005/review-status.json",
+      "character_pose_review": {
+        "character": "tanaka",
+        "limits": {
+          "look": {
+            "mixamorig:Head": 0.55,
+            "mixamorig:Neck": 0.4,
+            "mixamorig:Spine2": 0.65
+          },
+          "bow": {
+            "mixamorig:Head": 0.55,
+            "mixamorig:Spine": 0.8,
+            "mixamorig:Spine2": 0.8
+          },
+          "stretch": {
+            "mixamorig:Head": 0.4,
+            "mixamorig:Spine": 0.7,
+            "mixamorig:Spine2": 0.65
+          }
+        },
+        "review": "individual-review-20261005"
+      },
+      "greeting_review": "evidence/character_wave_smile_20261005/verification.json",
+      "greeting_palm": {
+        "side": "Right",
+        "faces": "recipient / character +Z",
+        "forearm_share": 0.8,
+        "review": "wave-smile-20261005"
+      },
+      "hand_size_review": {
+        "scale": 0.9,
+        "wrist_preserved": true,
+        "fingers_scale_with_palm": true,
+        "review": "wave-smile-20261005"
+      }
+    },
+    {
+      "id": "CH_aoi",
+      "character": "aoi",
+      "name": "小葵",
+      "file": "art/models/character_wave_smile_20261005/exports/CH_aoi.glb",
+      "preview_path": "art/library/characters/CH_aoi.glb",
+      "reference_pose": "A 45 degrees below horizontal",
+      "base_joints": 54,
+      "clothing_joints": 0,
+      "finger_joints": 30,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "wave",
+        "bow",
+        "look",
+        "stretch",
+        "tend",
+        "talk",
+        "cheer",
+        "dance"
+      ],
+      "clip_duration_error": 0,
+      "triangles": 92351,
+      "bytes": 10077764,
+      "sha256": "24211d3f3eb5d129abf37b3ee5602798d8b8b381a99297a70c3aef1310290618",
+      "clothing": {
+        "spring_chains": [],
+        "sleeves": {}
+      },
+      "status": "installed",
+      "authoring_path": "art/models/character_wave_smile_20261005/authoring/CH_aoi.blend",
+      "corrective_shapes": [],
+      "generation_id": "76e516db-ac2e-4aef-9573-7bfd6517db34",
+      "source_url": "https://hyper3d.ai/workspace/rodin/76e516db-ac2e-4aef-9573-7bfd6517db34",
+      "references": [
+        "art/library/characters/references/aoi_front.png",
+        "art/library/characters/references/aoi_back.png"
+      ],
+      "raw_path": "art/models/raw/CH_aoi_rodin_apose_20261004/model.glb",
+      "measured_arm_angles_degrees": {
+        "L": 44.63,
+        "R": 42.58
+      },
+      "game_path": "game/assets/models/CH_aoi.glb",
+      "individual_review": "evidence/character_individual_review_20261005/review-status.json",
+      "head_neck_repair": {
+        "head_start_fraction": 0.785
+      },
+      "character_body_review": {
+        "review": "individual-review-20261005",
+        "shirt_torso_weights": true
+      },
+      "greeting_review": "evidence/character_wave_smile_20261005/verification.json",
+      "greeting_palm": {
+        "side": "Right",
+        "faces": "recipient / character +Z",
+        "forearm_share": 0.8,
+        "review": "wave-smile-20261005"
+      }
+    },
+    {
+      "id": "CH_kazuko",
+      "character": "kazuko",
+      "name": "和子阿姨",
+      "file": "art/models/character_wave_smile_20261005/exports/CH_kazuko.glb",
+      "preview_path": "art/library/characters/CH_kazuko.glb",
+      "reference_pose": "A 45 degrees below horizontal",
+      "base_joints": 54,
+      "clothing_joints": 0,
+      "finger_joints": 30,
+      "animations": [
+        "walk",
+        "run",
+        "idle",
+        "wave",
+        "bow",
+        "look",
+        "stretch",
+        "tend",
+        "talk",
+        "cheer",
+        "dance"
+      ],
+      "clip_duration_error": 0,
+      "triangles": 97948,
+      "bytes": 9764564,
+      "sha256": "e2a5c324cc9a114d36a3b653de6cba266f68d501abeed2c1a9a89fab4de5255c",
+      "clothing": {
+        "spring_chains": [],
+        "sleeves": {}
+      },
+      "status": "installed",
+      "authoring_path": "art/models/character_wave_smile_20261005/authoring/CH_kazuko.blend",
+      "corrective_shapes": [
+        "Apron_Clearance"
+      ],
+      "generation_id": "02faef2e-028f-43e0-933d-47541dcc167b",
+      "source_url": "https://hyper3d.ai/workspace/rodin/02faef2e-028f-43e0-933d-47541dcc167b",
+      "references": [
+        "art/library/characters/references/kazuko_front.png",
+        "art/library/characters/references/kazuko_back.png"
+      ],
+      "raw_path": "art/models/raw/CH_kazuko_rodin_apose_20261004/model.glb",
+      "measured_arm_angles_degrees": {
+        "L": 40.46,
+        "R": 39.51
+      },
+      "game_path": "game/assets/models/CH_kazuko.glb",
+      "head_neck_repair": {
+        "head_start_fraction": 0.835,
+        "pivot_offset_m": [
+          0.0,
+          0.0,
+          0.0781625249211837
+        ],
+        "head_rigid_vertices": 13310,
+        "neck_blend_vertices": 757,
+        "elderly_gestures": false
+      },
+      "greeting_review": "evidence/character_wave_smile_20261005/verification.json",
+      "greeting_palm": {
+        "side": "Right",
+        "faces": "recipient / character +Z",
+        "forearm_share": 0.8,
+        "review": "wave-smile-20261005"
+      }
+    }
+  ],
+  "game_replacement_authorized": true,
+  "browser_preview": "base skin and corrective motion; clothes secondary physics runs in Godot",
+  "verification": "evidence/character_wave_smile_20261005/verification.json",
+  "build": "builds/HareMachi-neck-haru-20261005.zip"
+}

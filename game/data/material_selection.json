@@ -1,0 +1,8 @@
+{
+  "ground": "A",
+  "water": "B",
+  "grass": "B",
+  "sand": "A",
+  "wood_floor": "A",
+  "stone_floor": "A"
+}

@@ -1,0 +1,8 @@
+{
+ "model": "MiniMax-Music3-MLX-Serve-8bit",
+ "prompt": "### Global Metadata\nA complete 110-second sunny pastoral daytime piece for working at a riverside allotment garden in the Japanese countryside, relaxed and warm. 88 BPM, C major. A fingerpicked acoustic guitar melody, mandolin tremolo, accordion chords, a bright marimba counter-melody, glockenspiel, upright bass and gentle hand percussion. Pure instrumental ensemble piece.\n\n### Vocal Details\nNone. Instrumental only: the guitar and the mandolin take turns on the tune; the marimba answers; no wind instruments.\n\n### Timed Arrangement\n0-16 seconds: guitar and bass establish the groove. 16-48 seconds: guitar melody with accordion chords. 48-80 seconds: mandolin takes the melody, hand percussion adds motion. 80-110 seconds: guitar and marimba return with the full ensemble, relaxed. Keep tempo, texture and loudness consistent from start to end; no big climax. The piece must play for the full 110 seconds and must not end early, ending cleanly on the tonic so it can loop.",
+ "lyrics": "[Intro]\n[Guitar Solo]\n\n[Interlude]\n[Guitar Solo]\n\n[Interlude]\n[Instrumental]\n\n[Break]\n[Instrumental]\n\n[Outro]\n[Guitar Solo]",
+ "duration_seconds": 110,
+ "steps": 30,
+ "seed": 2026093008
+}

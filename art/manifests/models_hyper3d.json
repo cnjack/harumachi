@@ -1,0 +1,552 @@
+{
+  "provider": "hyper3d rodin gen-2.5 (MCP)",
+  "note": "v0.4 regeneration of the worst-rated models + new courtyard tree. References: art/references/h3d/*.png (codex) and art/references/community/crops/P05,P06.png",
+  "jobs": {
+    "M03_gable_house": {
+      "generation_id": "00df04e5-9585-44b4-b038-402db77f6a34",
+      "tier": "Gen-2.5-High",
+      "faces": 60000,
+      "ref": "art/references/h3d/M03_gable_house.png",
+      "status": "accepted"
+    },
+    "M12b_shrub": {
+      "generation_id": "3b8733ee-7937-4e97-be2a-b8306d23e6ec",
+      "tier": "Gen-2.5-Medium",
+      "faces": 40000,
+      "ref": "art/references/h3d/M12b_shrub.png",
+      "status": "accepted"
+    },
+    "M12d_flower_bush": {
+      "generation_id": "6120aaf8-d709-44c9-81f1-6297ec6eb480",
+      "tier": "Gen-2.5-Medium",
+      "faces": 40000,
+      "ref": "art/references/h3d/M12d_flower_bush.png",
+      "status": "accepted"
+    },
+    "P05": {
+      "generation_id": "d1e04b3d-dc7c-4af4-b66f-d36ea001060a",
+      "tier": "Gen-2.5-Medium",
+      "faces": 40000,
+      "ref": "art/references/community/crops/P05.png",
+      "status": "accepted"
+    },
+    "P06": {
+      "generation_id": "2a7532cb-aef0-47bd-8890-58bfabfc51a1",
+      "tier": "Gen-2.5-Medium",
+      "faces": 30000,
+      "ref": "art/references/community/crops/P06.png",
+      "status": "accepted"
+    },
+    "T01_courtyard_tree": {
+      "generation_id": "dfe5ff2c-2c18-4896-bbbf-b72e4187ccf8",
+      "tier": "Gen-2.5-High",
+      "faces": 60000,
+      "ref": "art/references/h3d/T01_courtyard_tree.png",
+      "status": "accepted"
+    },
+    "T01_courtyard_tree_v2": {
+      "generation_id": "f53465c9-1354-4db1-a6d5-2f3d8331d616",
+      "tier": "Gen-2.5-High",
+      "faces": 40000,
+      "ref": "art/references/h3d/T01_courtyard_tree_v2.png",
+      "status": "accepted (exported as T01_courtyard_tree)"
+    },
+    "CH_tanaka": {
+      "generation_id": "e9b5378d-8a1e-4500-b773-996066b624fc",
+      "tier": "Gen-2.5-High",
+      "faces": 40000,
+      "ref": [
+        "art/references/characters/tanaka_front.png",
+        "art/references/characters/tanaka_back.png"
+      ],
+      "status": "accepted"
+    },
+    "CH_aoi": {
+      "generation_id": "a0481fbf-070f-4098-b4ec-82af2472af04",
+      "tier": "Gen-2.5-High",
+      "faces": 40000,
+      "ref": [
+        "art/references/characters/aoi_front.png",
+        "art/references/characters/aoi_back.png"
+      ],
+      "status": "accepted"
+    },
+    "F01_tool_shed": {
+      "generation_id": "251b3406-e475-448b-bd4e-12cca9a04073",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/F01_tool_shed.png",
+      "status": "accepted"
+    },
+    "F02_hand_pump": {
+      "generation_id": "22dcea88-c63c-47f6-9659-a39673a4a27b",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/F02_hand_pump.png",
+      "status": "accepted"
+    },
+    "F03_compost_bin": {
+      "generation_id": "2c9875b0-8809-4aea-9058-e0d58d35b787",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/F03_compost_bin.png",
+      "status": "accepted"
+    },
+    "F04_scarecrow": {
+      "generation_id": "21f55736-90c3-47e8-8460-279335315dcc",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/F04_scarecrow.png",
+      "status": "accepted"
+    },
+    "F05_greenhouse": {
+      "generation_id": "cd6ce74a-0dad-4200-87c5-ebae6af560c0",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/F05_greenhouse.png",
+      "status": "accepted"
+    },
+    "F06_veggie_stand": {
+      "generation_id": "a4a353a2-dc43-40d7-8438-f2a886e8b9cc",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/F06_veggie_stand.png",
+      "status": "accepted"
+    },
+    "F07_footbridge": {
+      "generation_id": "fc31a56e-cbe0-40de-8903-6f8535cb5c91",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/F07_footbridge.png",
+      "status": "accepted"
+    },
+    "F08_soil_plot": {
+      "generation_id": "fcd1028e-953c-4fca-a84e-548f0b71ff82",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/F08_soil_plot.png",
+      "status": "accepted"
+    },
+    "C01_seedling": {
+      "generation_id": "91b93943-8efa-4b95-a079-32d0fcbe7658",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/C01_seedling.png",
+      "status": "accepted"
+    },
+    "C02_radish": {
+      "generation_id": "58b61422-6db2-4976-aead-badc279c5cb6",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/C02_radish.png",
+      "status": "accepted"
+    },
+    "C03_komatsuna": {
+      "generation_id": "5d6c50be-535d-4c5c-81df-b7e8b43929b8",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/C03_komatsuna.png",
+      "status": "accepted"
+    },
+    "C04_tomato": {
+      "generation_id": "7a1be92d-65f5-446c-ae6b-f055f232b7b3",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/C04_tomato.png",
+      "status": "accepted"
+    },
+    "C05_cucumber": {
+      "generation_id": "405aa3aa-d82f-47da-b90b-9453bc7e3f2a",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/C05_cucumber.png",
+      "status": "accepted"
+    },
+    "C06_edamame": {
+      "generation_id": "5a0d683f-89cb-4e20-a1ca-9ae4e0fe7599",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/C06_edamame.png",
+      "status": "accepted"
+    },
+    "C07_sunflower": {
+      "generation_id": "829ce39d-fb8d-420d-be97-fc857f407f60",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/C07_sunflower.png",
+      "status": "accepted"
+    },
+    "C08_strawberry": {
+      "generation_id": "307957f3-10d6-4974-a4c8-3e913ae7b34d",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/C08_strawberry.png",
+      "status": "accepted"
+    },
+    "A20_cat_sleep": {
+      "generation_id": "2ad2978c-59de-4ba8-bbea-84e92953a636",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/A20_cat_sleep.png",
+      "status": "accepted"
+    },
+    "A21_sparrow": {
+      "generation_id": "b23af0ec-7a9c-4b8d-a8e1-c588bb585313",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/A21_sparrow.png",
+      "status": "accepted"
+    },
+    "A22_cat_sit": {
+      "generation_id": "c878e78c-af5b-4f7d-99a9-036de2aa2a9f",
+      "tier": "Gen-2.5-Medium",
+      "ref": "art/references/farm/A22_cat_sit.png",
+      "status": "accepted"
+    },
+    "D07_kei_truck": {
+      "generation_id": "bb986042-6304-4245-9709-89176b53b4d9",
+      "tier": "Gen-2.5-Medium",
+      "mesh_mode": "Raw",
+      "quality_override": 30000,
+      "reference": "art/references/v05/models/D07_kei_truck.png",
+      "output": "art/models/raw/D07_kei_truck_h3d/model.glb",
+      "display_url": "https://hyper3d.ai/workspace/rodin/bb986042-6304-4245-9709-89176b53b4d9",
+      "note": "v0.6 review, via the hyper3d-rodin MCP tools; replaces the Pixal3D truck"
+    },
+    "J01_machiya": {
+      "generation_id": "77a6de61-e574-4944-96b5-1b8e5eafb3b3",
+      "tier": "Gen-2.5-Medium",
+      "faces": 39955,
+      "ref": "art/references/architecture/20261001/machiya-house.png",
+      "status": "accepted architectural candidate; separate review scene, not Layout replacement",
+      "submission": "hyper3d CLI, authenticated personal wallet",
+      "intent": "architecture candidate; inspect in game before replacing occupied street buildings",
+      "raw": "art/models/raw/J01_machiya_hyper3d/",
+      "export": "game/assets/models/J01_machiya.glb",
+      "credit_cost": 0.5,
+      "wallet": "subscription",
+      "evidence": "evidence/japanese_architecture_20261001/machiya/",
+      "orientation": "front +Z; yaw 0; tilt 0; square error 0.02 degrees"
+    },
+    "P_farm_gate": {
+      "generation_id": "a47dcd66-c85d-4302-b3ae-63bef2ea7094",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "faces_requested": 1000000,
+      "faces_source_triangles": 1000000,
+      "faces_game": 23997,
+      "tex_game": 2048,
+      "ref": [
+        "art/references/hyper3d_quality_20261001/gate_front_right.png",
+        "art/references/hyper3d_quality_20261001/gate_back_left.png"
+      ],
+      "date": "2026-10-02",
+      "status": "accepted after game review",
+      "display_url": "https://hyper3d.ai/workspace/rodin/a47dcd66-c85d-4302-b3ae-63bef2ea7094",
+      "source": "raw/P_farm_gate_h3d_quality_20261001_v2/model.glb",
+      "note": "Game mesh uses UV re-bake and measured original physical bounds."
+    },
+    "P_yagura": {
+      "generation_id": "75f0d17e-4471-4340-bb34-38b47e4de2e7",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "faces_requested": 50000,
+      "faces_source_triangles": 100624,
+      "faces_game": 28000,
+      "tex_game": 2048,
+      "ref": [
+        "art/references/hyper3d_quality_20261001/yagura_front_right.png",
+        "art/references/hyper3d_quality_20261001/yagura_back_left.png"
+      ],
+      "date": "2026-10-02",
+      "status": "accepted after game review",
+      "display_url": "https://hyper3d.ai/workspace/rodin/75f0d17e-4471-4340-bb34-38b47e4de2e7",
+      "source": "raw/P_yagura_h3d_quality_20261002_quad/model.glb",
+      "note": "Game mesh uses UV re-bake and measured original physical bounds."
+    },
+    "P_deck_oven": {
+      "generation_id": "b6b8327d-a750-4a04-8d8f-cf4ec4299016",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "faces_requested": 1000000,
+      "faces_source_triangles": 1000000,
+      "faces_game": 17997,
+      "tex_game": 2048,
+      "ref": [
+        "art/references/hyper3d_quality_20261001/oven_front_right.png"
+      ],
+      "date": "2026-10-02",
+      "status": "accepted after game review",
+      "display_url": "https://hyper3d.ai/workspace/rodin/b6b8327d-a750-4a04-8d8f-cf4ec4299016",
+      "source": "raw/P_deck_oven_h3d_quality_20261001/fitted.glb",
+      "note": "Game mesh uses UV re-bake and measured original physical bounds."
+    }
+  },
+  "quality_trials_20261002": {
+    "low_gate": {
+      "generation_id": "eba95bf4-efb5-4b8c-8324-3aa50c3d775a",
+      "source_faces": 828,
+      "status": "rejected"
+    },
+    "web_yagura": {
+      "generation_id": "cf8d158d-5d63-4554-85d0-76ea4ae90fbc",
+      "status": "not adopted; web workflow stopped before material confirmation"
+    },
+    "raw_yagura": {
+      "generation_id": "4ef8c359-d7c4-45eb-bb56-2d8ccdeafab8",
+      "source_faces": 1000000,
+      "status": "superseded by cleaner Quad model at the same game face budget"
+    }
+  },
+  "audit_20261002": {
+    "H01": {
+      "generation_id": "6eaaecad-7694-4abf-a958-05bd3c98b076",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "requested_quad_faces": 50000,
+      "references": [
+        "art/references/model_audit_20261002/H01_front.png",
+        "art/references/model_audit_20261002/H01_back.png"
+      ],
+      "source": "art/models/raw/H01_h3d_audit_20261002/model.glb",
+      "source_sha256": "ad806eee7359ffe8a22b8dc87615967bcce2ebae1a59d0b4fb1804de80fe257b",
+      "status": "superseded after user close-up feedback; raw original retained; structural repair in models_architecture_closeup_20261002.json",
+      "display_url": "https://hyper3d.ai/workspace/rodin/6eaaecad-7694-4abf-a958-05bd3c98b076",
+      "game_triangles": 36000,
+      "game_albedo_size": [
+        [
+          4096,
+          4096
+        ]
+      ]
+    },
+    "H02": {
+      "generation_id": "b2b92328-9602-4281-aabf-94327f3570f0",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "requested_quad_faces": 50000,
+      "references": [
+        "art/references/model_audit_20261002/H02_front.png",
+        "art/references/model_audit_20261002/H02_back.png"
+      ],
+      "source": "art/models/raw/H02_h3d_audit_20261002/model.glb",
+      "source_sha256": "881546939ab6f1bfdfd96d940c9fdcff31221e085e8a94de398c65656edfa80d",
+      "status": "superseded after user close-up feedback; raw original retained; structural repair in models_architecture_closeup_20261002.json",
+      "display_url": "https://hyper3d.ai/workspace/rodin/b2b92328-9602-4281-aabf-94327f3570f0",
+      "game_triangles": 35995,
+      "game_albedo_size": [
+        [
+          4096,
+          4096
+        ]
+      ]
+    },
+    "H03": {
+      "generation_id": "518ef898-586b-4c13-9ae5-cb022cabcf06",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "requested_quad_faces": 50000,
+      "references": [
+        "art/references/model_audit_20261002/H03_front.png",
+        "art/references/model_audit_20261002/H03_back.png"
+      ],
+      "source": "art/models/raw/H03_h3d_audit_20261002/model.glb",
+      "source_sha256": "370e6540f4deb0c220e01716e05c1bd26757fe0316014845df2143dedfa63f2b",
+      "status": "superseded after user close-up feedback; raw original retained; structural repair in models_architecture_closeup_20261002.json",
+      "display_url": "https://hyper3d.ai/workspace/rodin/518ef898-586b-4c13-9ae5-cb022cabcf06",
+      "game_triangles": 36336,
+      "game_albedo_size": [
+        [
+          4096,
+          4096
+        ]
+      ]
+    },
+    "S06": {
+      "generation_id": "858ed7dc-3419-4005-b56a-c0af42ca290d",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "requested_quad_faces": 50000,
+      "references": [
+        "art/references/model_audit_20261002/S06_front.png",
+        "art/references/model_audit_20261002/S06_back.png"
+      ],
+      "source": "art/models/raw/S06_h3d_audit_20261002/model.glb",
+      "source_sha256": "6c733a7fd5ff35ecb9d29f40bd6b37177a9d8cacebd44bf958d082efb53beba0",
+      "status": "superseded after user close-up feedback; raw original retained; structural repair in models_architecture_closeup_20261002.json",
+      "display_url": "https://hyper3d.ai/workspace/rodin/858ed7dc-3419-4005-b56a-c0af42ca290d",
+      "game_triangles": 36000,
+      "game_albedo_size": [
+        [
+          4096,
+          4096
+        ]
+      ]
+    },
+    "F01_tool_shed": {
+      "generation_id": "5c0d23ce-2268-404a-9f4d-cb6a1c8f89e4",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "requested_quad_faces": 30000,
+      "references": [
+        "art/references/model_audit_20261002/F01_tool_shed_front.png",
+        "art/references/model_audit_20261002/F01_tool_shed_back.png"
+      ],
+      "source": "art/models/raw/F01_tool_shed_h3d_audit_20261002/model.glb",
+      "source_sha256": "5347a1e2fa4a1090866ca5165a183e366e59bbbb881dfb5acdcca3aef26c6e18",
+      "status": "adopted",
+      "display_url": "https://hyper3d.ai/workspace/rodin/5c0d23ce-2268-404a-9f4d-cb6a1c8f89e4",
+      "game_triangles": 11999,
+      "game_albedo_size": [
+        [
+          2048,
+          2048
+        ]
+      ]
+    },
+    "A21_sparrow": {
+      "generation_id": "8d7f633d-6c35-4cec-9c32-dcf4d67e410e",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "requested_quad_faces": 12000,
+      "references": [
+        "art/references/model_audit_20261002/A21_sparrow_front.png"
+      ],
+      "source": "art/models/raw/A21_sparrow_h3d_audit_20261002/model.glb",
+      "source_sha256": "e9acaf0fa27b9bd1a6094d01eb2fecea91629544c2f25d5b111936c50379cad9",
+      "status": "adopted",
+      "display_url": "https://hyper3d.ai/workspace/rodin/8d7f633d-6c35-4cec-9c32-dcf4d67e410e",
+      "game_triangles": 4487,
+      "game_albedo_size": [
+        [
+          1024,
+          1024
+        ]
+      ]
+    },
+    "M07_power_pole": {
+      "generation_id": "492e6480-39d8-4fde-8447-4774966748de",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "requested_quad_faces": 18000,
+      "references": [
+        "art/references/model_audit_20261002/M07_power_pole_front.png"
+      ],
+      "source": "art/models/raw/M07_power_pole_h3d_audit_20261002/model.glb",
+      "source_sha256": "1440aceeb7b587d8f0bc111213a70336badcf04e641b8b79e7ff62f0e4dfa6e8",
+      "status": "adopted",
+      "display_url": "https://hyper3d.ai/workspace/rodin/492e6480-39d8-4fde-8447-4774966748de",
+      "game_triangles": 9000,
+      "game_albedo_size": [
+        [
+          2048,
+          2048
+        ]
+      ]
+    }
+  },
+  "scene_polish_20261004": {
+    "cat_sleep": {
+      "references": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_polish/cat_sleep.png"
+      ],
+      "request": {
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Raw",
+        "quality_override": 1000000,
+        "texture_delight": true,
+        "geometry_file_format": "glb",
+        "reference_upload_ids": [
+          "18d5c11d-aabd-4176-b90b-d5d314023a43"
+        ],
+        "prompt": "A cute anatomically coherent Japanese anime calico cat sleeping in a compact curled pose, clean belly support and tucked paws, tail wraps around body, closed eyes, precise nose and separate ears, soft rounded clean contours, complete full body. Flat painted ivory orange charcoal patches and clear face lines, no photorealistic fur."
+      },
+      "generation_id": "04840656-9038-4e16-9b66-05f52ac3e54c",
+      "status": "downloaded",
+      "display_url": "https://hyper3d.ai/workspace/rodin/04840656-9038-4e16-9b66-05f52ac3e54c",
+      "selected_file": "base_basic_pbr.glb"
+    },
+    "cat_sit": {
+      "references": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_polish/cat_sit.png"
+      ],
+      "request": {
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Raw",
+        "quality_override": 1000000,
+        "texture_delight": true,
+        "geometry_file_format": "glb",
+        "reference_upload_ids": [
+          "4e5392b4-bf65-4eb9-9181-bd4a7af29c1d"
+        ],
+        "prompt": "Anatomically accurate cute Japanese anime orange tabby sitting cat. Smooth clean rounded body contours, precise face eyes ears nose and individual paws, coherent shoulder joints, complete thin curled tail supported on ground. Distinct legs without fused anatomy. Clean flat painted anime fur patterns, no photorealistic texture."
+      },
+      "generation_id": "5f563488-d04f-467b-8508-802daede20d4",
+      "status": "downloaded",
+      "display_url": "https://hyper3d.ai/workspace/rodin/5f563488-d04f-467b-8508-802daede20d4",
+      "selected_file": "base_basic_pbr.glb"
+    },
+    "bus": {
+      "references": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_polish/bus.png"
+      ],
+      "request": {
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Raw",
+        "quality_override": 1000000,
+        "texture_delight": true,
+        "geometry_file_format": "glb",
+        "reference_upload_ids": [
+          "f8fbde58-68c6-4540-97e7-3a478a8846e7"
+        ],
+        "prompt": "Small elegant authentic Japanese rural minibus, rounded ivory and green body, accurate proportions and crisp window frames. Open empty window apertures with visible interior seats. Glass entirely omitted, window openings must remain open, no solid glass faces. Clean exact wheel circles, door, mirrors, lamps, grille and interior details. Anime painted matte colours; no lettering."
+      },
+      "generation_id": "54ec23d8-2ac6-4725-bf2c-5a28e0ba3b24",
+      "status": "downloaded",
+      "display_url": "https://hyper3d.ai/workspace/rodin/54ec23d8-2ac6-4725-bf2c-5a28e0ba3b24",
+      "selected_file": "base_basic_pbr.glb"
+    },
+    "broadleaf_crown": {
+      "references": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_polish/broadleaf_crown.png"
+      ],
+      "request": {
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Raw",
+        "quality_override": 1000000,
+        "texture_delight": true,
+        "geometry_file_format": "glb",
+        "reference_upload_ids": [
+          "20532bd8-12f1-447a-ad46-b6942fb947c9"
+        ],
+        "prompt": "ONLY one complete dense coherent broad umbrella shaped zelkova foliage CROWN. NO trunk, roots, branches, or ground. One connected full solid canopy volume consisting of rounded organic lobe masses, fine embossed small oval leaf detail, leaf masses densely filled without holes or isolated strands, no transparent geometry. Flat painted anime greens, clean silhouette. This is a modular solid foliage crown component."
+      },
+      "generation_id": "cb9ba599-b0e6-4ae3-9a1f-c745301a439b",
+      "status": "downloaded",
+      "display_url": "https://hyper3d.ai/workspace/rodin/cb9ba599-b0e6-4ae3-9a1f-c745301a439b",
+      "selected_file": "base_basic_pbr.glb"
+    },
+    "broadleaf": {
+      "references": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_polish/broadleaf.png"
+      ],
+      "request": {
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Raw",
+        "quality_override": 1000000,
+        "texture_delight": true,
+        "geometry_file_format": "glb",
+        "reference_upload_ids": [
+          "b0df0d90-ac5f-49db-9f32-1fe29386b4b3"
+        ],
+        "prompt": "A clean upright Japanese anime zelkova with one tapering connected trunk, orderly branching forks and dense coherent rounded leaf clusters; detailed small oval leaves rather than triangular shards. Complete tree with grounded roots. Preserve flat painted anime colours and organic smooth silhouette."
+      },
+      "generation_id": "f0a93de1-46ab-458a-9070-35b9e26cf598",
+      "status": "downloaded",
+      "display_url": "https://hyper3d.ai/workspace/rodin/f0a93de1-46ab-458a-9070-35b9e26cf598",
+      "selected_file": "base_basic_pbr.glb"
+    },
+    "conifer": {
+      "references": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/scene_polish/conifer.png"
+      ],
+      "request": {
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Raw",
+        "quality_override": 1000000,
+        "texture_delight": true,
+        "geometry_file_format": "glb",
+        "reference_upload_ids": [
+          "2a8bc364-749e-4488-b58b-b8d00eab1549"
+        ],
+        "prompt": "Graceful Japanese cedar, a single stable upright connected trunk, soft cohesive layered needle tufts with fine complete branches. Rich organic foliage volume, no floating disconnected shards or giant triangular polygons. Clean hand painted anime colours, complete roots to crown."
+      },
+      "generation_id": "830f5be5-6150-4d66-96d3-2dfa3cbb658a",
+      "status": "downloaded",
+      "display_url": "https://hyper3d.ai/workspace/rodin/830f5be5-6150-4d66-96d3-2dfa3cbb658a",
+      "selected_file": "base_basic_pbr.glb"
+    }
+  }
+}

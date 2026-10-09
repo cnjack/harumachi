@@ -1,0 +1,19 @@
+{
+ "id": "V02_wildflowers",
+ "src": "raw/free_foliage_20261004/ready/V02_wildflowers.glb",
+ "provider": "Quaternius Stylized Nature MegaKit Standard Flower_3_Group",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 755,
+ "tex": 2048,
+ "bytes": 3062364,
+ "godot_size_m_xyz": [
+  0.2898,
+  0.4,
+  0.3097
+ ],
+ "mesh_nodes": [
+  "Foliage_1",
+  "Foliage_2"
+ ]
+}

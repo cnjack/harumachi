@@ -1,0 +1,20 @@
+{
+ "id": "D11_reeds",
+ "src": "raw/D11_reeds_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 964218,
+ "tris": 6796,
+ "size_m": [
+  0.931,
+  1.073,
+  1.33
+ ],
+ "godot_size_m_xyz": [
+  0.931,
+  1.33,
+  1.073
+ ],
+ "tex": 1024,
+ "bytes": 809120,
+ "yaw_fix": 0
+}

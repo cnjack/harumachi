@@ -1,0 +1,20 @@
+{
+ "id": "G05_goldfish_bowl",
+ "src": "raw/G05_goldfish_bowl/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 16000,
+ "tris": 5000,
+ "size_m": [
+  0.548,
+  0.548,
+  0.42
+ ],
+ "godot_size_m_xyz": [
+  0.548,
+  0.42,
+  0.548
+ ],
+ "tex": 1024,
+ "bytes": 264532,
+ "yaw_fix": 0
+}

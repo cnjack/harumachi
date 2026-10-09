@@ -1,0 +1,25 @@
+{
+ "id": "W09_rice_sacks",
+ "src": "raw/W09_rice_sacks_pixal_modules_20261003/model.glb",
+ "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
+ "tris_src": 965128,
+ "tris": 9893,
+ "size_m": [
+  0.494,
+  0.253,
+  0.378
+ ],
+ "godot_size_m_xyz": [
+  0.494,
+  0.378,
+  0.253
+ ],
+ "tex": 2048,
+ "bytes": 699280,
+ "yaw_fix": 180,
+ "level": "auto",
+ "lean_src_deg": 19.85,
+ "levelled": true,
+ "lean_deg": 10.1,
+ "base_frac": 0.164
+}

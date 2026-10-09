@@ -1,0 +1,81 @@
+{
+  "character": "CH_sora",
+  "tool": "built-in image_gen",
+  "generated_sheet": "art/references/character_multiview_20261006/sora/turnaround.png",
+  "sheet_pixels": [
+    1672,
+    941
+  ],
+  "prompt": "art/manifests/prompts/character_multiview_20261006/sora.txt",
+  "inputs": [
+    "art/library/characters/references/sora_front.png",
+    "art/library/characters/references/sora_back.png"
+  ],
+  "views": {
+    "front": {
+      "path": "art/references/character_multiview_20261006/sora/front.png",
+      "pixels": [
+        565,
+        941
+      ],
+      "source_crop": [
+        0,
+        0,
+        556,
+        941
+      ],
+      "sha256": "ae730f102acb34367ec6b2475941c17fb692a2cc1dfcb2ffd5c85e4a7a52df50"
+    },
+    "left": {
+      "path": "art/references/character_multiview_20261006/sora/left.png",
+      "pixels": [
+        565,
+        941
+      ],
+      "source_crop": [
+        556,
+        0,
+        832,
+        941
+      ],
+      "sha256": "cb1d0b43f418162493dc23279c0defc75946d9121b8dd280e4188517a52c860f"
+    },
+    "right": {
+      "path": "art/references/character_multiview_20261006/sora/right.png",
+      "pixels": [
+        565,
+        941
+      ],
+      "source_crop": [
+        832,
+        0,
+        1107,
+        941
+      ],
+      "sha256": "3c621318eaf854063f4219577360ef606be32b2bbadade1eb544662366f9b81c"
+    },
+    "back": {
+      "path": "art/references/character_multiview_20261006/sora/back.png",
+      "pixels": [
+        565,
+        941
+      ],
+      "source_crop": [
+        1107,
+        0,
+        1672,
+        941
+      ],
+      "sha256": "44c549a878181bcd6bd8938284c288b3772399df38b7330ec723a9f3457af2b8"
+    }
+  },
+  "review": {
+    "same_identity_and_clothes": true,
+    "watch_left_wrist_consistent": true,
+    "back_shirt_plain_yoke_seam": true,
+    "arms_45_degrees_front_back": true,
+    "side_views_are_profile_projection": true
+  },
+  "generated_3d_models_changed": false,
+  "used_by_existing_pbr5_pbr7": false
+}

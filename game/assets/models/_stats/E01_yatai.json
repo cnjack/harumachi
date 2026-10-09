@@ -1,0 +1,25 @@
+{
+ "id": "E01_yatai",
+ "src": "raw/E01_yatai_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 953181,
+ "tris": 7678,
+ "size_m": [
+  2.526,
+  2.296,
+  2.4
+ ],
+ "godot_size_m_xyz": [
+  2.526,
+  2.4,
+  2.296
+ ],
+ "tex": 1024,
+ "bytes": 646148,
+ "yaw_fix": -154.0,
+ "level": "auto",
+ "lean_src_deg": 6.59,
+ "levelled": true,
+ "lean_deg": 0.01,
+ "base_frac": 0.312
+}

@@ -1,0 +1,25 @@
+{
+ "id": "D01_wheelbarrow",
+ "src": "raw/D01_wheelbarrow_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 932045,
+ "tris": 7050,
+ "size_m": [
+  1.407,
+  0.616,
+  0.702
+ ],
+ "godot_size_m_xyz": [
+  1.407,
+  0.702,
+  0.616
+ ],
+ "tex": 1024,
+ "bytes": 591324,
+ "yaw_fix": 135.5,
+ "level": "auto",
+ "lean_src_deg": 12.77,
+ "levelled": true,
+ "lean_deg": 1.41,
+ "base_frac": 0.159
+}

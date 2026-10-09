@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-06",
+  "character": "CH_sora",
+  "provider": "Hyper3D Rodin Business account in Edge",
+  "asset_id": "c941cebb-9593-4111-8d56-6dff9a9c6bcc",
+  "actual_input_count": 1,
+  "actual_views": [
+    "front",
+    "left",
+    "right",
+    "back"
+  ],
+  "input_image": "art/references/character_multiview_20261006/sora/turnaround.png",
+  "status": "download and native motion inspection completed; local hand repair checked; not adopted",
+  "intent": "art/models/raw/CH_sora_texture_multiview_20261006/intent.json",
+  "evidence": "evidence/character_texture_multiview_20261006/input-verification.json",
+  "adopted": false,
+  "downloaded": true,
+  "download_file": "art/models/raw/CH_sora_texture_multiview_20261006/base_high_pbr.glb",
+  "download_sha256": "56b29f59d5f70979ce444a0c33943dddcb6a15687cb29cad29162ae895fe592b",
+  "diffuse_pixels": [
+    12288,
+    12288
+  ],
+  "pbr_auxiliary_pixels": [
+    4096,
+    4096
+  ],
+  "candidate_texture_pixels": [
+    4096,
+    4096
+  ],
+  "candidate": "art/poc/character_pbr_sweep_20261006/godot/variants/multiview/CH_sora.glb",
+  "candidate_preservation_contract_passed": true,
+  "download_blocker_resolved_by": "user manually saved base_high_pbr (2).glb",
+  "final_file_pixels_verified": true,
+  "native_review": "evidence/character_texture_multiview_20261006/review.json",
+  "production_adopted": false
+}

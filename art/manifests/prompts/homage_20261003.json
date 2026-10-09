@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-03",
+  "tool": "built-in imagegen",
+  "jobs": [
+    {
+      "key": "star_box",
+      "prompt": "Japanese TV anime style game inventory illustration, clean confident line art, flat cel colour and crisp two-tone shadows, warm golden highlights and cool lavender shadows, not photorealistic, not oil painting, no text, no logo, no watermark. One centered isolated item, square composition, generous clear margin, full object visible. BACKGROUND: fully transparent PNG with alpha channel. Original artwork for a cozy Japanese summer-town game. A small weathered open cedar offering box with three neat compartments, containing one leafy white radish, two ripe red tomatoes, and a long green cucumber. A tiny indigo seal painted with one five-pointed golden star attached to its front and a little folded leaf-shaped paper note. Finely drawn wood grain and dark nail heads. A charming cared-for communal harvest box, three-quarter view."
+    },
+    {
+      "key": "purple_shorts",
+      "prompt": "Japanese TV anime style game inventory illustration, clean confident line art, flat cel colour and crisp two-tone shadows, warm golden highlights and cool lavender shadows, not photorealistic, not oil painting, no text, no logo, no watermark. One centered isolated item, square composition, generous clear margin, full object visible. BACKGROUND: fully transparent PNG with alpha channel. Original artwork for a cozy Japanese summer-town game. A pair of purple cotton summer shorts on a short bamboo laundry pole held by two wooden pegs. Very plain purple shorts, white tied drawstring, tiny hand-sewn patch. A cream paper tag hanging from one peg with only a blank line, NO letters. Subtle fine cloth weave, quaint funny lost-laundry object. Front view."
+    },
+    {
+      "key": "blue_feather",
+      "prompt": "Japanese TV anime style game inventory illustration, clean confident line art, flat cel colour and crisp two-tone shadows, warm golden highlights and cool lavender shadows, not photorealistic, not oil painting, no text, no logo, no watermark. One centered isolated item, square composition, generous clear margin, full object visible. BACKGROUND: fully transparent PNG with alpha channel. Original artwork for a cozy Japanese summer-town game. One graceful bright azure blue feather used as a bookmark, resting diagonally across a small closed old warm cream-and-sage-green notebook, secured by a pale coral ribbon. Delicate clean feather barbs, tiny pressed hydrangea petal at the knot. A quiet keepsake about courage and affection. Three-quarter view, no writing on cover."
+    },
+    {
+      "key": "sprite_caps",
+      "prompt": "Japanese TV anime style game inventory illustration, clean confident line art, flat cel colour and crisp two-tone shadows, warm golden highlights and cool lavender shadows, not photorealistic, not oil painting, no text, no logo, no watermark. One centered isolated item, square composition, generous clear margin, full object visible. BACKGROUND: fully transparent PNG with alpha channel. Original artwork for a cozy Japanese summer-town game. Three tiny rounded hand-sewn pointed cloth caps, leaf green, warm red, and sky blue, lined up on the edge of a small mossy cedar tree hollow. Under the hats lies one freshly harvested leafy white radish and a tiny folded cream envelope sealed with a simple leaf motif. No people, no faces, no characters, no copied sprites. Friendly mysterious forest helpers implied by the small hats. Fine stitching and calm anime wood texture."
+    },
+    {
+      "key": "cow_bell",
+      "prompt": "Japanese TV anime style game inventory illustration, clean confident line art, flat cel colour and crisp two-tone shadows, warm golden highlights and cool lavender shadows, not photorealistic, not oil painting, no text, no logo, no watermark. One centered isolated item, square composition, generous clear margin, full object visible. BACKGROUND: fully transparent PNG with alpha channel. Original artwork for a cozy Japanese summer-town game. A little antique brass cow bell with a pale red leather strap, a sage ribbon and an ivory enamel charm hand-painted with a simple ORIGINAL friendly round black-and-white cow face, small curved horns, wide pale pink muzzle, tiny dot eyes. Fine dull brass wear, gentle tidy object, three-quarter view. No writing, no logo."
+    }
+  ]
+}

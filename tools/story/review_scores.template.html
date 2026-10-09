@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>明年夏祭 · 对话校稿</title>
+<style>
+@font-face{font-family:Wenkai;src:url('__FONT__') format('woff2')}
+:root{--ink:#253e50;--muted:#647986;--paper:#f8f8ef;--blue:#30769b;--old:#8b5546;--new:#356b58}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 Wenkai,"Songti SC",serif}button,input,select{font:inherit}button,select{cursor:pointer}header,main,footer{max-width:1260px;margin:auto;padding:28px 36px}header{padding-top:48px}h1{font-size:42px;font-weight:500;letter-spacing:.08em;line-height:1.3;margin:8px 0 14px}h2{font-size:24px;font-weight:500}.overline{font-size:13px;color:var(--blue);letter-spacing:.18em}.lede{max-width:800px;margin:10px 0;color:var(--muted)}.summary{display:flex;gap:36px;flex-wrap:wrap;margin-top:30px}.summary b{display:block;font-size:32px;font-weight:500}.summary span{font-size:14px;color:var(--muted)}.toolbar{position:sticky;top:0;z-index:2;background:var(--paper);padding:16px 0;display:flex;gap:12px;flex-wrap:wrap;border-block:1px solid #cbd5d4}input,select{background:#fffdf7;border:1px solid #b9c7ca;border-radius:0;padding:8px 10px;color:var(--ink)}input{min-width:270px;flex:1}#count{margin:16px 0;color:var(--muted);font-size:14px}article{padding:26px 0;border-bottom:1px solid #cbd5d4}.entry-top{display:flex;justify-content:space-between;gap:18px;align-items:baseline}.identity{font:14px/1.5 Wenkai,serif;overflow-wrap:anywhere}.grade{white-space:nowrap;font-size:24px}.grade small{font-size:13px;color:var(--muted);margin-right:8px}.reason{max-width:960px;margin:12px 0}.source{font-size:13px;color:var(--muted);overflow-wrap:anywhere}.score-table{border-collapse:collapse;font-size:13px;margin:18px 0;width:100%;max-width:920px}.score-table th,.score-table td{text-align:left;padding:4px 8px;border-bottom:1px solid #dce2df;font-weight:400}.score-table th:first-child,.score-table td:first-child{padding-left:0}.columns{display:grid;grid-template-columns:1fr 1fr;gap:30px}.label{font-size:13px;letter-spacing:.1em;margin-bottom:8px}.old{color:var(--old)}.new{color:var(--new)}.line{margin:0 0 10px;white-space:pre-wrap;overflow-wrap:anywhere}.who{font-size:13px;color:var(--muted);display:block}details{margin-top:18px}summary{cursor:pointer;font-size:14px;color:var(--blue)}pre{overflow:auto;font:12px/1.6 monospace;background:#edf1e9;padding:14px;max-height:460px}.untouched{color:var(--muted)}.global{max-width:690px}footer{font-size:14px;color:var(--muted);padding-bottom:60px}.empty{padding:50px 0;font-size:22px}a{color:var(--blue)}:focus-visible{outline:3px solid var(--blue);outline-offset:3px}@media(max-width:700px){header,main,footer{padding-inline:18px}h1{font-size:30px}.columns{grid-template-columns:1fr}.summary{gap:20px}.score-table{font-size:11px}.score-table th,.score-table td{padding:4px 2px}.entry-top{align-items:start}.grade{font-size:20px}input{min-width:160px}}
+</style>
+<header>
+ <div class="overline">HARUMACHI / EDITORIAL REVIEW / 2026.10.07</div>
+ <h1>明年夏祭<br>对话审阅与修订</h1>
+ <p class="lede">逐组阅读条件、选项和回复后评分。10 分最好；“少 AI 套话”和“少说教”的高分表示这两种味道少。分数是编辑判断，采用粗分档，平均数不代表客观测量精度。</p>
+ <div class="summary" id="summary"></div>
+ <table class="score-table global" id="global"></table>
+ <p class="lede">主要对话按完整条件组或互动函数计数，包含全部分支。动态提示另列；同一函数内的文本不一定在同一次游玩出现。工具演示、历史备份、英文标识与测试脚本未当作正式对白。</p>
+</header>
+<main>
+ <div class="toolbar">
+  <input id="search" aria-label="搜索角色、文本、来源或问题" placeholder="找一句话、一个角色或一个问题">
+  <select id="scope" aria-label="筛选范围"><option value="worst">最差的 20%</option><option value="changed">本轮改善</option><option value="all">全部评分</option><option value="conversation">主要对话</option><option value="dynamic_feedback">动态提示</option><option value="kept">保留原文</option></select>
+  <select id="sort" aria-label="排序方式"><option value="before">改前低分在前</option><option value="after">改后低分在前</option><option value="id">按来源顺序</option></select>
+ </div>
+ <div id="count" aria-live="polite"></div>
+ <div id="entries"></div>
+</main>
+<footer>每条保留源文件、原文、改文、评分理由和条件源码。文学判断与运行验证分开：回归结果、配音校验和修改边界见同目录的报告与 evidence/dialogue_review_20261007。<details><summary>字体许可</summary><pre id="license"></pre></details></footer>
+<script type="application/json" id="data">__DATA__</script>
+<script>
+const data=JSON.parse(document.querySelector('#data').textContent);
+const names={mio:'澪',ren:'莲',haru:'春',tanaka:'田中爷爷',aoi:'小葵',sora:'空',narrator:'旁白',kazuko:'和子阿姨','player-option':'玩家选项',multiple:'多人',context:'选项 / 提示'};
+const escape=s=>String(s??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
+const st=data.stats;
+document.querySelector('#license').textContent=data.font_license||'';
+document.querySelector('#summary').innerHTML=`<div><b>${st.total_scored}</b><span>评分单元（${st.conversations} 对话 + ${st.dynamic_feedback} 提示）</span></div><div><b>${st.improved_units}</b><span>改善 · 含最低的全部 ${st.worst_20_count} 组</span></div><div><b>${st.changed_conversation_texts}</b><span>对话文本修改 · ${(st.changed_conversation_texts/st.conversation_texts_before*100).toFixed(1)}%</span></div>`;
+document.querySelector('#global').innerHTML='<thead><tr><th>主要对话 / 10 分制</th><th>改前</th><th>改后</th></tr></thead><tbody>'+data.dimensions.map((d,i)=>`<tr><td>${escape(d)}</td><td>${st.average_before[i].toFixed(1)}</td><td>${st.average_after[i].toFixed(1)}</td></tr>`).join('')+'</tbody>';
+function lines(arr){return arr.map(t=>`<p class="line"><span class="who">${escape(names[t.speaker]||t.speaker||'提示')}</span>${escape(t.text)}</p>`).join('')}
+function render(){
+ const q=document.querySelector('#search').value.trim().toLowerCase(),scope=document.querySelector('#scope').value,sort=document.querySelector('#sort').value;
+ let rows=data.units.filter(r=>scope==='all'||scope==='worst'&&r.rank_before<=st.worst_20_count||scope==='changed'&&r.changes.length||scope==='kept'&&!r.changes.length||scope===r.kind);
+ if(q)rows=rows.filter(r=>JSON.stringify([r.id,r.file,names[r.speaker],r.reason,r.texts_before,r.texts_after]).toLowerCase().includes(q));
+ rows.sort((a,b)=>sort==='id'?a.file.localeCompare(b.file)||((a.line||0)-(b.line||0))||a.id.localeCompare(b.id):a[sort+'_mean']-b[sort+'_mean']||a.id.localeCompare(b.id));
+ document.querySelector('#count').textContent=`显示 ${rows.length} 组 · ${rows.filter(r=>r.changes.length).length} 组有修改`;
+ document.querySelector('#entries').innerHTML=rows.length?rows.map(r=>`<article><div class="entry-top"><div class="identity">${escape(r.id)}<br><span class="source">${escape(r.file)}${r.line?' : '+r.line:''}</span></div><div class="grade"><small>${r.changes.length?'已改 '+r.changes.length+' 处':'保留'}</small>${r.before_mean.toFixed(1)} → ${r.after_mean.toFixed(1)}</div></div><p class="reason">${escape(r.reason)}</p><table class="score-table"><thead><tr><th></th>${data.dimensions.map(d=>`<th>${escape(d)}</th>`).join('')}</tr></thead><tbody><tr><td>改前</td>${r.before.map(s=>`<td>${s}</td>`).join('')}</tr><tr><td>改后</td>${r.after.map(s=>`<td>${s}</td>`).join('')}</tr></tbody></table>${r.changes.length?'<div class="columns"><div><div class="label old">原文</div>'+r.changes.map(t=>'<p class="line">'+escape(t.before)+'</p>').join('')+'</div><div><div class="label new">改文</div>'+r.changes.map(t=>'<p class="line">'+escape(t.after)+'</p>').join('')+'</div></div>':'<div class="untouched">'+lines(r.texts_before)+'</div>'}<details><summary>完整对话及分支语境</summary><div class="columns"><div><div class="label">完整原文</div>${lines(r.texts_before)}</div><div><div class="label">当前文本</div>${lines(r.texts_after)}</div></div><pre>${escape(typeof r.context==='string'?r.context:JSON.stringify(r.context,null,2))}</pre></details></article>`).join(''):'<div class="empty">没有匹配的文本。</div>';
+}
+for(const id of ['search','scope','sort'])document.getElementById(id).addEventListener(id==='search'?'input':'change',render);
+render();
+</script>
+</html>

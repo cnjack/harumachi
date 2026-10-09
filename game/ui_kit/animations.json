@@ -1,0 +1,29 @@
+{
+  "title_cat": {
+    "resource": "res://ui_kit/resources/title_cat.tres",
+    "source": "assets/animations/title_cat/orange_walk_idle.png",
+    "walk_frames": 8,
+    "idle_frames": 4,
+    "frame_size": [
+      384,
+      362
+    ],
+    "input": "ignored",
+    "runtime": "2D title-heading walk/lie-down/rest/get-up",
+    "metadata": "assets/animations/title_cat/source.json",
+    "display_scale": 0.2,
+    "rest_resource": "res://ui_kit/resources/title_cat_rest.tres"
+  },
+  "resting_cat": {
+    "component": "res://ui_kit/cat_decoration.gd",
+    "factory": "UIKitComponents.resting_cat(width,anchor_fraction)",
+    "tail": "res://ui_kit/resources/cat_rest_tail.tres",
+    "source": "assets/animations/title_cat/orange_lie_dangling.png",
+    "tail_frames": 8,
+    "metadata": "assets/animations/title_cat/rest_source.json",
+    "input": "ignored",
+    "paused_animation": true,
+    "body_resource": "res://ui_kit/resources/cat_rest_body.tres",
+    "body_behavior": "single fixed Sprite2D"
+  }
+}

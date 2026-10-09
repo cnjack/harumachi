@@ -1,0 +1,8 @@
+{
+ "model": "MiniMax-Music3-MLX-Serve-8bit",
+ "prompt": "### Global Metadata\nA complete 70-second emotional, nostalgic opening-movie cue for a small-town summer story in the spirit of a Makoto Shinkai film, starting quiet and blooming into warm hope. 72 BPM, D major. Solo piano opening, then warm legato strings, soft acoustic guitar, a gentle cello melody, light glockenspiel, and a soft timpani swell at the climax. Pure instrumental ensemble piece.\n\n### Vocal Details\nNone. Instrumental only: piano opens alone, the cello takes the theme, the full strings bloom at the end.\n\n### Timed Arrangement\n0-14 seconds: solo piano, quiet and nostalgic. 14-34 seconds: cello theme with guitar and soft strings. 34-54 seconds: strings build with glockenspiel and a soft timpani swell to a warm, hopeful climax. 54-66 seconds: piano returns alone with the theme. End with a gentle final chord that decays naturally to complete silence at about 68 seconds; nothing new starts after the final chord.",
+ "lyrics": "[Intro]\n[Piano Solo]\n\n[Interlude]\n[Strings Solo]\n\n[Interlude]\n[Instrumental]\n\n[Outro]\n[Piano Solo]",
+ "duration_seconds": 80,
+ "steps": 30,
+ "seed": 2026092813
+}

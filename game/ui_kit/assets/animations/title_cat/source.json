@@ -1,0 +1,228 @@
+{
+  "source": "codex image_gen; orange standing cat identity reference",
+  "sheet": "orange_walk_idle.png",
+  "size": [
+    1448,
+    1086
+  ],
+  "virtual_frame_size": [
+    384,
+    362
+  ],
+  "grid": [
+    4,
+    3
+  ],
+  "walk_frames": 8,
+  "idle_frames": 4,
+  "sha256": "c043bb9fd5424bed23c608eefdcce7a494a79df78d1f536ebe7c608370a793f6",
+  "transparent_fraction": 0.6084712005128049,
+  "cells": [
+    {
+      "region": [
+        7,
+        75,
+        348,
+        248
+      ],
+      "margin": [
+        22,
+        60,
+        36,
+        114
+      ],
+      "foot_y": 304,
+      "head_x": 310,
+      "source_head_x": 294.6306752037253
+    },
+    {
+      "region": [
+        363,
+        74,
+        351,
+        249
+      ],
+      "margin": [
+        19,
+        59,
+        33,
+        113
+      ],
+      "foot_y": 304,
+      "head_x": 310,
+      "source_head_x": 653.5595942519019
+    },
+    {
+      "region": [
+        715,
+        74,
+        355,
+        250
+      ],
+      "margin": [
+        15,
+        58,
+        29,
+        112
+      ],
+      "foot_y": 304,
+      "head_x": 310,
+      "source_head_x": 1009.631829644158
+    },
+    {
+      "region": [
+        1072,
+        74,
+        358,
+        249
+      ],
+      "margin": [
+        16,
+        59,
+        26,
+        113
+      ],
+      "foot_y": 304,
+      "head_x": 310,
+      "source_head_x": 1366.2807164847468
+    },
+    {
+      "region": [
+        4,
+        432,
+        354,
+        250
+      ],
+      "margin": [
+        16,
+        58,
+        30,
+        112
+      ],
+      "foot_y": 304,
+      "head_x": 310,
+      "source_head_x": 297.75230640201283
+    },
+    {
+      "region": [
+        352,
+        432,
+        362,
+        250
+      ],
+      "margin": [
+        8,
+        58,
+        22,
+        112
+      ],
+      "foot_y": 304,
+      "head_x": 310,
+      "source_head_x": 653.6628619153676
+    },
+    {
+      "region": [
+        714,
+        432,
+        357,
+        250
+      ],
+      "margin": [
+        13,
+        58,
+        27,
+        112
+      ],
+      "foot_y": 304,
+      "head_x": 310,
+      "source_head_x": 1010.8339330196513
+    },
+    {
+      "region": [
+        1071,
+        432,
+        361,
+        250
+      ],
+      "margin": [
+        13,
+        58,
+        23,
+        112
+      ],
+      "foot_y": 304,
+      "head_x": 310,
+      "source_head_x": 1367.8563918096293
+    },
+    {
+      "region": [
+        1,
+        776,
+        354,
+        260
+      ],
+      "margin": [
+        16,
+        48,
+        30,
+        102
+      ],
+      "foot_y": 304,
+      "head_x": 310,
+      "source_head_x": 295.1215380478623
+    },
+    {
+      "region": [
+        360,
+        776,
+        354,
+        260
+      ],
+      "margin": [
+        17,
+        48,
+        30,
+        102
+      ],
+      "foot_y": 304,
+      "head_x": 310,
+      "source_head_x": 653.2633413783856
+    },
+    {
+      "region": [
+        716,
+        776,
+        354,
+        260
+      ],
+      "margin": [
+        17,
+        48,
+        30,
+        102
+      ],
+      "foot_y": 304,
+      "head_x": 310,
+      "source_head_x": 1009.0132415254237
+    },
+    {
+      "region": [
+        1072,
+        776,
+        356,
+        260
+      ],
+      "margin": [
+        15,
+        48,
+        28,
+        102
+      ],
+      "foot_y": 304,
+      "head_x": 310,
+      "source_head_x": 1366.857833915614
+    }
+  ],
+  "runtime": "AnimatedSprite2D only",
+  "source_pixels_unchanged": true
+}

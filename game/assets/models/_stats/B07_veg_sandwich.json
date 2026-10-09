@@ -1,0 +1,25 @@
+{
+ "id": "B07_veg_sandwich",
+ "src": "raw/B07_veg_sandwich_hyper3d_cli_20261006_reference/model.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High, image reference, Quad 4000",
+ "tris_src": 10876,
+ "tris": 8000,
+ "size_m": [
+  0.12,
+  0.2,
+  0.145
+ ],
+ "godot_size_m_xyz": [
+  0.12,
+  0.145,
+  0.2
+ ],
+ "tex": 1024,
+ "bytes": 350256,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.13,
+ "levelled": false,
+ "lean_deg": 0.06,
+ "base_frac": 0.677
+}

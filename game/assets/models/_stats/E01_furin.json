@@ -1,0 +1,19 @@
+{
+ "id": "E01_furin",
+ "src": "raw/E01_furin_hyper3d/ready.glb",
+ "provider": "Hyper3D Rodin Gen-2.5-High Raw; imagegen ceramic goldfish furin; UV-preserving paper hinge split",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 18062,
+ "tex": 2048,
+ "bytes": 987784,
+ "godot_size_m_xyz": [
+  0.1663,
+  0.6403,
+  0.1671
+ ],
+ "mesh_nodes": [
+  "BellBody",
+  "PaperTagMesh"
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "id": "A16_planter_box",
+ "src": "../../output/japanese-street-shinkai-dry/models/A16_planter_box/model.glb",
+ "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)",
+ "tris_src": 79962,
+ "tris": 4000,
+ "size_m": [
+  1.09,
+  0.524,
+  0.767
+ ],
+ "godot_size_m_xyz": [
+  1.09,
+  0.767,
+  0.524
+ ],
+ "tex": 1024,
+ "bytes": 554932,
+ "yaw_fix": 0
+}

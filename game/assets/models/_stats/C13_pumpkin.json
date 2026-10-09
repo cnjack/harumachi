@@ -1,0 +1,25 @@
+{
+ "id": "C13_pumpkin",
+ "src": "raw/C13_pumpkin_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 924198,
+ "tris": 5610,
+ "size_m": [
+  0.764,
+  0.77,
+  0.363
+ ],
+ "godot_size_m_xyz": [
+  0.764,
+  0.363,
+  0.77
+ ],
+ "tex": 1024,
+ "bytes": 617708,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 12.25,
+ "levelled": true,
+ "lean_deg": 0.54,
+ "base_frac": 0.496
+}

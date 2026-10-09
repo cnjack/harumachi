@@ -1,0 +1,37 @@
+{
+ "id": "F04_scarecrow",
+ "src": "raw/F04_scarecrow_h3d/model.glb",
+ "provider": "hyper3d rodin gen-2.5 (v0.4)",
+ "tris_src": 20000,
+ "tris": 4984,
+ "size_m": [
+  1.47,
+  0.605,
+  1.903
+ ],
+ "godot_size_m_xyz": [
+  1.47,
+  1.903,
+  0.605
+ ],
+ "tex": 1024,
+ "bytes": 487376,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.0,
+ "base_frac": 0.012,
+ "fit_bounds_blender": {
+  "min": [
+   -0.7286838293075562,
+   -0.3012792468070984,
+   -0.002792231971397996
+  ],
+  "max": [
+   0.7410507798194885,
+   0.30370330810546875,
+   1.899999976158142
+  ]
+ }
+}

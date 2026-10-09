@@ -1,0 +1,55 @@
+# Godot imports and editor state; keep authored .import settings and .uid files.
+**/.godot/
+**/.DS_Store
+**/__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+.idea/
+.vscode/
+.impeccable/
+
+# Local credentials and machine-specific configuration.
+.env
+.env.*
+!.env.example
+*.tokens.json
+*.pem
+*.key
+tools/godot.local.json
+tools/.local/
+
+# Generated deliveries, player data, measurements, and historical work copies.
+/builds/
+/output/
+/evidence/
+/open*runtime_cloth_poc.command
+/site/play/
+/site/release.json
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.log
+*.tmp
+*.avi
+*.mp4
+*.blend1
+*.blend2
+*.bak
+
+# Bulky generation experiments and alternate takes remain in the local archive.
+/art/poc/
+/art/models/raw/
+/art/models/archive/
+/art/models/character_*/
+/art/audio/
+/art/ui-kit/
+/art/video/
+/art/drafts/
+
+# Keep source references and authoring files; exclude caches and rendered bundles.
+**/.cache/
+**/.pytest_cache/
+**/.mypy_cache/

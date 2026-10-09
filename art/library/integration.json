@@ -1,0 +1,16 @@
+{
+  "pack": "quaternius_standard",
+  "license": "CC0-1.0",
+  "source_page": "https://quaternius.com/packs/stylizednaturemegakit.html",
+  "assets": {
+    "T01_courtyard_tree": {"source": "CommonTree_1", "height": 6.5, "category": "树木"},
+    "T02_summer_tree": {"source": "CommonTree_3", "height": 8.0, "category": "树木"},
+    "T03_round_ginkgo": {"source": "CommonTree_5", "height": 7.5, "category": "树木"},
+    "T04_slender_cedar": {"source": "Pine_3", "height": 10.0, "category": "树木"},
+    "M12b_shrub": {"source": "Bush_Common", "height": 0.75, "category": "植物"},
+    "M12d_flower_bush": {"source": "Bush_Common_Flowers", "height": 0.85, "category": "植物"},
+    "V01_fern": {"source": "Plant_1", "height": 0.38, "category": "植物"},
+    "V02_wildflowers": {"source": "Flower_3_Group", "height": 0.40, "category": "植物"},
+    "V03_grass_clump": {"source": "Grass_Wispy_Short", "height": 0.28, "category": "草地"}
+  }
+}

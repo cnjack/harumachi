@@ -1,0 +1,8 @@
+{
+ "model": "MiniMax-Music3-MLX-Serve-8bit",
+ "prompt": "### Global Metadata\nA complete 80-second serene autumn moon-viewing (tsukimi) night piece under a huge full moon, with susuki grass swaying and dango on an offering stand. 66 BPM, B-flat major. A koto and harp duet, a soft alto flute melody, warm strings, a gentle music-box celesta, crickets-like light percussion. Pure instrumental ensemble piece.\n\n### Vocal Details\nNone. Instrumental only: flute and koto share the melody; harp keeps flowing arpeggios.\n\n### Timed Arrangement\n0-14 seconds: harp arpeggios and celesta, moonlight. 14-42 seconds: the alto flute plays a calm melody over strings. 42-64 seconds: koto takes the melody, flute answers. 64-80 seconds: the theme returns on flute, soft. Keep tempo, texture and loudness consistent from start to end; no big climax. The piece must play for the full 80 seconds and must not end early, ending cleanly on the tonic so it can loop.",
+ "lyrics": "[Intro]\n[Harp Solo]\n\n[Interlude]\n[Flute Solo]\n\n[Interlude]\n[Koto Solo]\n\n[Outro]\n[Instrumental]",
+ "duration_seconds": 80,
+ "steps": 30,
+ "seed": 2026092807
+}

@@ -1,0 +1,9 @@
+[gd_resource type="AtlasTexture" format=3]
+
+[ext_resource type="Texture2D" path="res://ui_kit/assets/weather_atlas.png" id="1_p0ofi"]
+
+[resource]
+resource_name = "UIKitIcon/level_badge"
+atlas = ExtResource("1_p0ofi")
+region = Rect2(502, 538, 332, 256)
+filter_clip = true

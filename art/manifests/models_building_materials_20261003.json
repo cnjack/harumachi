@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-03",
+  "assets": [
+    "H01",
+    "H02",
+    "H03",
+    "S06",
+    "S01",
+    "S02",
+    "S03",
+    "S05",
+    "S08",
+    "M01_timber_machiya",
+    "M03_gable_house",
+    "M05_residential"
+  ],
+  "geometry_source": "Hyper3D Rodin, existing independently generated modules and local production repairs",
+  "new_paid_3d_generations": 0,
+  "image_generator": "built-in imagegen",
+  "prompts": "art/manifests/prompts/building_materials_20261003.json",
+  "reference_images": "art/references/building_materials_20261003",
+  "method": "Orthographic facade edits and AI-painted metre-scale cedar/plaster/glaze/fabric details baked with Blender emission; original mesh and UVs preserved",
+  "source_directory": "art/models/raw/scene_rodin_20261002",
+  "output_directory": "art/models/raw/material_detail_20261003",
+  "scope": "All twelve building types; existing shop-window interior mapping retained; material details are albedo and do not add silhouette geometry",
+  "density_contract": "Original 200 px/m median threshold retained; 280 px/m minimum for independent apartment modules"
+}

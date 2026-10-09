@@ -1,0 +1,20 @@
+{
+ "id": "P06",
+ "src": "raw/P06_h3d/model.glb",
+ "provider": "hyper3d rodin gen-2.5 (v0.4 regen)",
+ "tris_src": 29977,
+ "tris": 6000,
+ "size_m": [
+  2.002,
+  2.018,
+  0.434
+ ],
+ "godot_size_m_xyz": [
+  2.002,
+  0.434,
+  2.018
+ ],
+ "tex": 1024,
+ "bytes": 526100,
+ "yaw_fix": 0
+}

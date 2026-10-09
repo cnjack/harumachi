@@ -1,0 +1,156 @@
+{
+ "note": "v0.6 Pixal3D jobs (interiors, bread, Kazuko). Inputs: art/references/v06/models/",
+ "jobs": {
+  "CH_kazuko": {
+   "job_id": "fb0a420c-4c29-4233-aa8a-079171253ea8",
+   "resolution": 1536,
+   "ref": "art/references/v06/models/CH_kazuko.png",
+   "status": "completed",
+   "submitted_at": "22:04:57",
+   "file": "art/models/raw/CH_kazuko_pix/model.glb",
+   "done_at": "22:12:14"
+  },
+  "I01_deck_oven": {
+   "job_id": "81e6b5b2-d2a3-4b5c-afcb-6906f9d9ac75",
+   "resolution": 1536,
+   "ref": "art/references/v06/models/I01_deck_oven.png",
+   "status": "completed",
+   "submitted_at": "22:04:59",
+   "file": "art/models/raw/I01_deck_oven_pix/model.glb",
+   "done_at": "22:21:41"
+  },
+  "I04_shop_counter": {
+   "job_id": "3a90a5ec-3f93-419d-820a-624569712917",
+   "resolution": 1536,
+   "ref": "art/references/v06/models/I04_shop_counter.png",
+   "status": "completed",
+   "submitted_at": "22:05:01",
+   "file": "art/models/raw/I04_shop_counter_pix/model.glb",
+   "done_at": "22:28:24"
+  },
+  "I05_bread_shelf": {
+   "job_id": "803a26e3-ad06-4782-b8e2-6c1c5116a864",
+   "resolution": 1536,
+   "ref": "art/references/v06/models/I05_bread_shelf.png",
+   "status": "completed",
+   "submitted_at": "22:12:17",
+   "file": "art/models/raw/I05_bread_shelf_pix/model.glb",
+   "done_at": "22:36:14"
+  },
+  "I06_store_gondola": {
+   "job_id": "e20e6baf-0061-4606-8c88-46baa482b753",
+   "resolution": 1536,
+   "ref": "art/references/v06/models/I06_store_gondola.png",
+   "status": "failed",
+   "submitted_at": "22:21:44"
+  },
+  "I08_stone_mill": {
+   "job_id": "48c21020-dd6f-41a6-80dc-d3954cfc874d",
+   "resolution": 1536,
+   "ref": "art/references/v06/models/I08_stone_mill.png",
+   "status": "completed",
+   "submitted_at": "22:28:28",
+   "file": "art/models/raw/I08_stone_mill_pix/model.glb",
+   "done_at": "22:49:56"
+  },
+  "I02_cake_showcase": {
+   "job_id": "10ff6cb0-f90b-49c2-a3b5-e5af1a10e64b",
+   "resolution": 1024,
+   "ref": "art/references/v06/models/I02_cake_showcase.png",
+   "status": "completed",
+   "submitted_at": "22:36:17",
+   "file": "art/models/raw/I02_cake_showcase_pix/model.glb",
+   "done_at": "22:56:08"
+  },
+  "I03_drink_fridge": {
+   "job_id": "4a574d63-ee9c-4538-8a02-44b080f27380",
+   "resolution": 1024,
+   "ref": "art/references/v06/models/I03_drink_fridge.png",
+   "status": "completed",
+   "submitted_at": "22:41:42",
+   "file": "art/models/raw/I03_drink_fridge_pix/model.glb",
+   "done_at": "23:00:39"
+  },
+  "I07_ice_freezer": {
+   "job_id": "7b658711-cc09-4c6f-a7c8-3e88c26f3f33",
+   "resolution": 1024,
+   "ref": "art/references/v06/models/I07_ice_freezer.png",
+   "status": "completed",
+   "submitted_at": "22:50:00",
+   "file": "art/models/raw/I07_ice_freezer_pix/model.glb",
+   "done_at": "23:07:14"
+  },
+  "B01_melon_pan": {
+   "job_id": "faa115c7-122b-4490-b2a9-3118e3ade818",
+   "resolution": 1536,
+   "ref": "art/references/v06/models/B01_melon_pan.png",
+   "status": "completed",
+   "submitted_at": "22:56:12",
+   "file": "art/models/raw/B01_melon_pan_pix/model.glb",
+   "done_at": "23:16:05"
+  },
+  "B02_croissant": {
+   "job_id": "ec010a56-aa20-46ff-9a6b-e044cded6467",
+   "resolution": 1536,
+   "ref": "art/references/v06/models/B02_croissant.png",
+   "status": "completed",
+   "submitted_at": "23:00:42",
+   "file": "art/models/raw/B02_croissant_pix/model.glb",
+   "done_at": "23:21:39"
+  },
+  "B03_baguette": {
+   "job_id": "7cdce3c4-77ba-4c5a-9918-8e6b5294c729",
+   "resolution": 1536,
+   "ref": "art/references/v06/models/B03_baguette.png",
+   "status": "completed",
+   "submitted_at": "23:07:17",
+   "file": "art/models/raw/B03_baguette_pix/model.glb",
+   "done_at": "23:29:59"
+  },
+  "B04_shokupan": {
+   "job_id": "71466ec8-1d8c-4809-a7d3-17584e5b2a28",
+   "resolution": 1536,
+   "ref": "art/references/v06/models/B04_shokupan.png",
+   "status": "completed",
+   "submitted_at": "23:16:08",
+   "file": "art/models/raw/B04_shokupan_pix/model.glb",
+   "done_at": "23:36:40"
+  },
+  "B05_anpan": {
+   "job_id": "8c3c72e7-8e08-4746-9628-5c98cf5c7efa",
+   "resolution": 1536,
+   "ref": "art/references/v06/models/B05_anpan.png",
+   "status": "completed",
+   "submitted_at": "23:21:42",
+   "file": "art/models/raw/B05_anpan_pix/model.glb",
+   "done_at": "23:46:23"
+  },
+  "B06_curry_pan": {
+   "job_id": "cea68281-35bf-47ba-a428-e07041a69da6",
+   "resolution": 1536,
+   "ref": "art/references/v06/models/B06_curry_pan.png",
+   "status": "completed",
+   "submitted_at": "23:30:03",
+   "file": "art/models/raw/B06_curry_pan_pix/model.glb",
+   "done_at": "23:52:42"
+  },
+  "I04_shop_counter_v2": {
+   "job_id": "b6a227d7-e213-44b9-bc7b-a0438dd2f9c9",
+   "status": "completed",
+   "input": "art/references/v06/models/I04_shop_counter_v2.png",
+   "resolution": 1536,
+   "seed": 7,
+   "output": "art/models/raw/I04_shop_counter_pix2/model.glb",
+   "note": "v0.6 review redo: new reference without loose items; replaces I04_shop_counter"
+  },
+  "P_chest": {
+   "job_id": "c608d844-f64c-4209-8312-88efb2b37fcd",
+   "status": "completed",
+   "input": "art/references/v06/models/P_chest_v2.png",
+   "resolution": 1536,
+   "seed": 7,
+   "output": "art/models/raw/P_chest_pix/model.glb",
+   "note": "v0.6 review: replaces the procedural storage chest"
+  }
+ }
+}

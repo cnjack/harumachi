@@ -1,0 +1,18 @@
+{
+ "id": "V01_fern",
+ "src": "raw/free_foliage_20261004/ready/V01_fern.glb",
+ "provider": "Quaternius Stylized Nature MegaKit Standard Plant_1",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 120,
+ "tex": 2048,
+ "bytes": 2593852,
+ "godot_size_m_xyz": [
+  0.4774,
+  0.38,
+  0.5196
+ ],
+ "mesh_nodes": [
+  "Foliage_1"
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "id": "J01_kitchen_counter",
+ "src": "raw/J01_kitchen_counter/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 23971,
+ "tris": 8999,
+ "size_m": [
+  2.2,
+  0.931,
+  1.426
+ ],
+ "godot_size_m_xyz": [
+  2.2,
+  1.426,
+  0.931
+ ],
+ "tex": 1024,
+ "bytes": 444676,
+ "yaw_fix": 0
+}

@@ -1,0 +1,211 @@
+{
+  "audited_at": "2026-09-26T23:15:35.575072+08:00",
+  "method": "Read GLB JSON indexed TRIANGLES counts; excludes instance multiplicity and runtime visibility. No visual or engine validation performed.",
+  "blender_version": "5.2.1 LTS",
+  "godot_version": "4.8.dev6.official.8898c2b3d",
+  "existing_godot_project": false,
+  "assets": [
+    {
+      "id": "A01_soba_shop",
+      "path": "output/japanese-street-shinkai-dry/models/A01_soba_shop/model.glb",
+      "bytes": 57657996,
+      "stored_mesh_triangles": 299962,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "A02_awning_shop",
+      "path": "output/japanese-street-shinkai-dry/models/A02_awning_shop/model.glb",
+      "bytes": 53596644,
+      "stored_mesh_triangles": 299516,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "A03_utility_pole",
+      "path": "output/japanese-street-shinkai-dry/models/A03_utility_pole/model.glb",
+      "bytes": 32943640,
+      "stored_mesh_triangles": 100000,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "A07_lantern",
+      "path": "output/japanese-street-shinkai-dry/models/A07_lantern/model.glb",
+      "bytes": 35159176,
+      "stored_mesh_triangles": 79994,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "A10_vending_machine",
+      "path": "output/japanese-street-shinkai-dry/models/A10_vending_machine/model.glb",
+      "bytes": 40578716,
+      "stored_mesh_triangles": 80000,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "A11_bicycle",
+      "path": "output/japanese-street-shinkai-dry/models/A11_bicycle/model.glb",
+      "bytes": 35066616,
+      "stored_mesh_triangles": 150008,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "A12_bench",
+      "path": "output/japanese-street-shinkai-dry/models/A12_bench/model.glb",
+      "bytes": 28914016,
+      "stored_mesh_triangles": 80000,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "A13_chalkboard",
+      "path": "output/japanese-street-shinkai-dry/models/A13_chalkboard/model.glb",
+      "bytes": 26338816,
+      "stored_mesh_triangles": 80000,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "A14_hydrangea_pot",
+      "path": "output/japanese-street-shinkai-dry/models/A14_hydrangea_pot/model.glb",
+      "bytes": 30458316,
+      "stored_mesh_triangles": 80000,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "A15_potted_plant",
+      "path": "output/japanese-street-shinkai-dry/models/A15_potted_plant/model.glb",
+      "bytes": 32920556,
+      "stored_mesh_triangles": 79954,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "A16_planter_box",
+      "path": "output/japanese-street-shinkai-dry/models/A16_planter_box/model.glb",
+      "bytes": 29085092,
+      "stored_mesh_triangles": 79962,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "B01_pagoda",
+      "path": "output/japanese-street-shinkai-dry/models/B01_pagoda/model.glb",
+      "bytes": 67738736,
+      "stored_mesh_triangles": 200028,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "B03a_tree_big",
+      "path": "output/japanese-street-shinkai-dry/models/B03a_tree_big/model.glb",
+      "bytes": 36315604,
+      "stored_mesh_triangles": 149328,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "B03c_tree_right",
+      "path": "output/japanese-street-shinkai-dry/models/B03c_tree_right/model.glb",
+      "bytes": 48292544,
+      "stored_mesh_triangles": 300000,
+      "materials": 1,
+      "manifest_provider_model": "unrecorded"
+    },
+    {
+      "id": "M01_timber_machiya",
+      "path": "output/japanese-street-shinkai-dry/models/M01_timber_machiya/model.glb",
+      "bytes": 49362020,
+      "stored_mesh_triangles": 250000,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "M02_cream_shop",
+      "path": "output/japanese-street-shinkai-dry/models/M02_cream_shop/model.glb",
+      "bytes": 50779904,
+      "stored_mesh_triangles": 249432,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "M03_gable_house",
+      "path": "output/japanese-street-shinkai-dry/models/M03_gable_house/model.glb",
+      "bytes": 49722884,
+      "stored_mesh_triangles": 250000,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "M04_boundary_wall",
+      "path": "output/japanese-street-shinkai-dry/models/M04_boundary_wall/model.glb",
+      "bytes": 33022636,
+      "stored_mesh_triangles": 150000,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "M05_residential",
+      "path": "output/japanese-street-shinkai-dry/models/M05_residential/model.glb",
+      "bytes": 48679768,
+      "stored_mesh_triangles": 249878,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "M06_house_cluster",
+      "path": "output/japanese-street-shinkai-dry/models/M06_house_cluster/model.glb",
+      "bytes": 35301672,
+      "stored_mesh_triangles": 199866,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "M07_power_pole",
+      "path": "output/japanese-street-shinkai-dry/models/M07_power_pole/model.glb",
+      "bytes": 31557488,
+      "stored_mesh_triangles": 100084,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "M08_sign_bracket",
+      "path": "output/japanese-street-shinkai-dry/models/M08_sign_bracket/model.glb",
+      "bytes": 32200484,
+      "stored_mesh_triangles": 60000,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "M12b_shrub",
+      "path": "output/japanese-street-shinkai-dry/models/M12b_shrub/model.glb",
+      "bytes": 33620000,
+      "stored_mesh_triangles": 100000,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "M12d_flower_bush",
+      "path": "output/japanese-street-shinkai-dry/models/M12d_flower_bush/model.glb",
+      "bytes": 33298040,
+      "stored_mesh_triangles": 98030,
+      "materials": 1,
+      "manifest_provider_model": "hy-3d-3.1"
+    },
+    {
+      "id": "T01_tree_text",
+      "path": "output/japanese-street-shinkai-dry/models/T01_tree_text/model.glb",
+      "bytes": 39826888,
+      "stored_mesh_triangles": 300000,
+      "materials": 1,
+      "manifest_provider_model": "unrecorded"
+    }
+  ],
+  "total_bytes": 992438252,
+  "total_stored_mesh_triangles": 4066042
+}

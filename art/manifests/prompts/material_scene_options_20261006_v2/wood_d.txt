@@ -1,0 +1,5 @@
+Use case: stylized-concept
+Asset type: production seamless albedo texture for an actual Godot 3D Japanese anime small-town game, alternative material D.
+Style: Japanese TV anime background art, clean simplified shapes, restrained hand-painted marks, flat color and crisp two-tone shading, light and airy. No photographs, no PBR microdetail, no oil painting brushwork.
+Composition: square, perfectly top-down orthographic, only the surface edge to edge, seamlessly tileable in both axes. No scene, no perspective, no slab sides, no backdrop, no baked directional light, no specular, no cast shadows, no text, no labels.
+Material: pale natural cedar wood, fresh light beige with a faint rosy tone. Very restrained sparse fine grey-brown grain running VERTICALLY top to bottom; broad quiet flat areas. Individual grain marks are elegant anime painted lines. No planks, no joints, no borders, no varnish, no rough damage, no knots larger than a few millimetres. Light wood alternative to golden and dark orange wood.

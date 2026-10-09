@@ -1,0 +1,20 @@
+{
+ "id": "J09_tansu",
+ "src": "raw/J09_tansu/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 16012,
+ "tris": 5000,
+ "size_m": [
+  1.0,
+  0.567,
+  0.751
+ ],
+ "godot_size_m_xyz": [
+  1.0,
+  0.751,
+  0.567
+ ],
+ "tex": 1024,
+ "bytes": 292092,
+ "yaw_fix": 0
+}

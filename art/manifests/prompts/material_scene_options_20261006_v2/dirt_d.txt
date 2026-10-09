@@ -1,0 +1,5 @@
+Use case: stylized-concept
+Asset type: production seamless albedo texture for an actual Godot 3D Japanese anime small-town game, alternative material D.
+Style: Japanese TV anime background art, clean simplified shapes, restrained hand-painted marks, flat color and crisp two-tone shading, light and airy. No photographs, no PBR microdetail, no oil painting brushwork.
+Composition: square, perfectly top-down orthographic, only the surface edge to edge, seamlessly tileable in both axes. No scene, no perspective, no slab sides, no backdrop, no baked directional light, no specular, no cast shadows, no text, no labels.
+Material: quiet pale grey-beige compacted dirt path after a dry sunny day. Broad calm limestone-grey and warm cream areas, small sparse flat grey pebbles. Mostly smooth ground with very few marks. Clearly different from orange sandy earth; cool Japanese town lane. No paving stones, no grass, no mud, no cracks. Detail should remain understated.

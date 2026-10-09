@@ -1,0 +1,19 @@
+{
+ "id": "T04_slender_cedar",
+ "src": "raw/free_foliage_20261004/ready/T04_slender_cedar.glb",
+ "provider": "Quaternius Stylized Nature MegaKit Standard Pine_3",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 4964,
+ "tex": 2048,
+ "bytes": 4321592,
+ "godot_size_m_xyz": [
+  4.8854,
+  10.0,
+  5.4054
+ ],
+ "mesh_nodes": [
+  "Foliage_1",
+  "Trunk_1"
+ ]
+}

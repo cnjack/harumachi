@@ -1,0 +1,5 @@
+Use case: stylized-concept
+Asset type: production seamless albedo texture for an actual Godot 3D Japanese anime small-town game, alternative material D.
+Style: Japanese TV anime background art, clean simplified shapes, restrained hand-painted marks, flat color and crisp two-tone shading, light and airy. No photographs, no PBR microdetail, no oil painting brushwork.
+Composition: square, perfectly top-down orthographic, only the surface edge to edge, seamlessly tileable in both axes. No scene, no perspective, no slab sides, no backdrop, no baked directional light, no specular, no cast shadows, no text, no labels.
+Material: smooth clean pale ivory river sand. Calm diffuse cream-white with very gentle light beige winding sand ripple strokes and almost no individual grains. A cool, serene inland sandbank, no beach surf, no footprints, no large pebbles, no noise or glitter. Very restrained clean anime design.

@@ -1,0 +1,18 @@
+{
+ "id": "V03_grass_clump",
+ "src": "raw/free_foliage_20261004/ready/V03_grass_clump.glb",
+ "provider": "Quaternius Stylized Nature MegaKit Standard Grass_Wispy_Short",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 494,
+ "tex": 2048,
+ "bytes": 63552,
+ "godot_size_m_xyz": [
+  0.3454,
+  0.28,
+  0.316
+ ],
+ "mesh_nodes": [
+  "Foliage_1"
+ ]
+}

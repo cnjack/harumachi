@@ -1,0 +1,2566 @@
+{
+  "images": [
+    {
+      "file": "art/references/characters/haru_turnaround.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/characters/haru_turnaround.png.log",
+      "prompt": "art/manifests/prompts/haru.txt"
+    },
+    {
+      "file": "art/references/characters/portraits_sheet",
+      "exists": false,
+      "tool": "codex image_gen",
+      "log": "art/references/characters/portraits_sheet.log",
+      "prompt": "art/manifests/prompts/portraits.txt"
+    },
+    {
+      "file": "art/references/characters/ren_turnaround.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/characters/ren_turnaround.png.log",
+      "prompt": "art/manifests/prompts/ren.txt"
+    },
+    {
+      "file": "art/references/characters/sora_turnaround.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/characters/sora_turnaround.png.log",
+      "prompt": "art/manifests/prompts/sora.txt"
+    },
+    {
+      "file": "art/references/interior/furniture_sheet.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/interior/furniture_sheet.png.log",
+      "prompt": "art/manifests/prompts/furniture.txt"
+    },
+    {
+      "file": "art/references/textures/grass_raw.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/textures/grass_raw.png.log",
+      "prompt": "art/manifests/prompts/tex_grass.txt"
+    },
+    {
+      "file": "art/references/textures/gravel_raw.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/textures/gravel_raw.png.log",
+      "prompt": "art/manifests/prompts/tex_gravel.txt"
+    },
+    {
+      "file": "art/references/textures/stone_raw.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/textures/stone_raw.png.log",
+      "prompt": "art/manifests/prompts/tex_stone.txt"
+    },
+    {
+      "file": "art/references/ui/icons_hud.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/ui/icons_hud.png.log",
+      "prompt": "art/manifests/prompts/hud.txt"
+    },
+    {
+      "file": "art/references/ui/icons_items.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/ui/icons_items.png.log",
+      "prompt": "art/manifests/prompts/icons.txt"
+    },
+    {
+      "file": "art/references/ui/paper_texture.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/ui/paper_texture.png.log",
+      "prompt": "art/manifests/prompts/paper.txt"
+    },
+    {
+      "file": "art/references/ui/title_keyart.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/ui/title_keyart.png.log",
+      "prompt": "art/manifests/prompts/keyart.txt"
+    },
+    {
+      "file": "art/references/world/gameplay_view_concept.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/world/gameplay_view_concept.png.log"
+    },
+    {
+      "file": "art/references/textures/interior/engawa_raw.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/textures/interior/engawa_raw.png.log",
+      "prompt": "art/manifests/prompts/tex_engawa.txt",
+      "batch": "house interior (v0.3)"
+    },
+    {
+      "file": "art/references/textures/interior/fusuma_raw.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/textures/interior/fusuma_raw.png.log",
+      "prompt": "art/manifests/prompts/tex_fusuma.txt",
+      "batch": "house interior (v0.3)"
+    },
+    {
+      "file": "art/references/textures/interior/genkan_raw.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/textures/interior/genkan_raw.png.log",
+      "prompt": "art/manifests/prompts/tex_genkan.txt",
+      "batch": "house interior (v0.3)"
+    },
+    {
+      "file": "art/references/textures/interior/kitchen_tile_raw.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/textures/interior/kitchen_tile_raw.png.log",
+      "prompt": "art/manifests/prompts/tex_kitchen_tile.txt",
+      "batch": "house interior (v0.3)"
+    },
+    {
+      "file": "art/references/textures/interior/plaster_raw.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/textures/interior/plaster_raw.png.log",
+      "prompt": "art/manifests/prompts/tex_plaster.txt",
+      "batch": "house interior (v0.3)"
+    },
+    {
+      "file": "art/references/textures/interior/tatami_raw.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/textures/interior/tatami_raw.png.log",
+      "prompt": "art/manifests/prompts/tex_tatami.txt",
+      "batch": "house interior (v0.3)"
+    },
+    {
+      "file": "art/references/textures/interior/wood_floor_raw.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/textures/interior/wood_floor_raw.png.log",
+      "prompt": "art/manifests/prompts/tex_wood_floor.txt",
+      "batch": "house interior (v0.3)"
+    },
+    {
+      "file": "art/references/world/card_garden.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/world/card_garden.png.log",
+      "prompt": "art/manifests/prompts/card_garden.txt",
+      "batch": "house interior (v0.3)"
+    },
+    {
+      "file": "art/references/world/card_window.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/world/card_window.png.log",
+      "prompt": "art/manifests/prompts/card_window.txt",
+      "batch": "house interior (v0.3)"
+    },
+    {
+      "file": "art/references/interior/furniture_sheet2.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/interior/furniture_sheet2.png.log",
+      "prompt": "art/manifests/prompts/furniture_sheet2.txt",
+      "batch": "house interior (v0.3)"
+    },
+    {
+      "file": "art/references/interior/furniture_sheet3.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "log": "art/references/interior/furniture_sheet3.png.log",
+      "prompt": "art/manifests/prompts/furniture_sheet3.txt",
+      "batch": "house interior (v0.3)"
+    },
+    {
+      "file": "game/assets/minigames/onigiri/",
+      "exists": true,
+      "tool": "codex exec (mini-game agent, image generation)",
+      "credits": "game/assets/minigames/onigiri/CREDITS.md",
+      "batch": "mini-games (v0.3)"
+    },
+    {
+      "file": "game/assets/minigames/unpack/",
+      "exists": true,
+      "tool": "codex exec (mini-game agent, image generation)",
+      "credits": "game/assets/minigames/unpack/CREDITS.md",
+      "batch": "mini-games (v0.3)"
+    },
+    {
+      "file": "game/assets/minigames/puzzle/",
+      "exists": true,
+      "tool": "codex exec (mini-game agent, image generation)",
+      "credits": "game/assets/minigames/puzzle/CREDITS.md",
+      "batch": "mini-games (v0.3)"
+    },
+    {
+      "file": "game/assets/minigames/goldfish/",
+      "exists": true,
+      "tool": "codex exec (mini-game agent, image generation)",
+      "credits": "game/assets/minigames/goldfish/CREDITS.md",
+      "batch": "mini-games (v0.3)"
+    },
+    {
+      "file": "game/assets/minigames/taiko/",
+      "exists": true,
+      "tool": "codex exec (mini-game agent, image generation)",
+      "credits": "game/assets/minigames/taiko/CREDITS.md",
+      "batch": "mini-games (v0.3)"
+    },
+    {
+      "file": "art/references/v06/models/I04_shop_counter_v2.png",
+      "exists": true,
+      "tool": "codex exec (image generation)",
+      "prompt": "art/manifests/prompts/v06/I04_shop_counter_v2.txt",
+      "use": "Pixal3D reference, counter redo",
+      "batch": "v0.6 model review"
+    },
+    {
+      "file": "art/references/v06/models/P_chest_v2.png",
+      "exists": true,
+      "tool": "codex exec (image generation)",
+      "prompt": "art/manifests/prompts/v06/P_chest_v2.txt",
+      "use": "Pixal3D reference, storage trunk",
+      "batch": "v0.6 model review"
+    },
+    {
+      "file": "art/references/v06/tex/fridge_front.png",
+      "exists": true,
+      "tool": "codex exec (image generation)",
+      "prompt": "art/manifests/prompts/v06/tex_fridge_front.txt",
+      "use": "texture on the procedural drinks fridge",
+      "batch": "v0.6 model review"
+    },
+    {
+      "file": "art/references/v06/tex/freezer_top.png",
+      "exists": true,
+      "tool": "codex exec (image generation)",
+      "prompt": "art/manifests/prompts/v06/tex_freezer_top.txt",
+      "use": "texture on the procedural ice freezer",
+      "batch": "v0.6 model review"
+    },
+    {
+      "file": "art/references/v06/prologue_anime/P1_bus.png",
+      "exists": true,
+      "tool": "codex exec -i (image generation, character portraits attached)",
+      "prompt": "art/manifests/prompts/v06/prologue_anime/P1_bus.txt",
+      "use": "prologue slideshow panel",
+      "batch": "v0.6 feedback: anime prologue",
+      "refs": [
+        "game/assets/ui/portraits/sora_neutral.png",
+        "art/references/v06/prologue_anime/P4_memory.png"
+      ]
+    },
+    {
+      "file": "art/references/v06/prologue_anime/P2_street.png",
+      "exists": true,
+      "tool": "codex exec -i (image generation, character portraits attached)",
+      "prompt": "art/manifests/prompts/v06/prologue_anime/P2_street.txt",
+      "use": "prologue slideshow panel",
+      "batch": "v0.6 feedback: anime prologue",
+      "refs": [
+        "game/assets/ui/portraits/sora_neutral.png",
+        "art/references/v06/prologue_anime/P4_memory.png"
+      ]
+    },
+    {
+      "file": "art/references/v06/prologue_anime/P3_tree.png",
+      "exists": true,
+      "tool": "codex exec -i (image generation, character portraits attached)",
+      "prompt": "art/manifests/prompts/v06/prologue_anime/P3_tree.txt",
+      "use": "prologue slideshow panel",
+      "batch": "v0.6 feedback: anime prologue",
+      "refs": [
+        "game/assets/ui/portraits/sora_neutral.png",
+        "art/references/v06/prologue_anime/P4_memory.png"
+      ]
+    },
+    {
+      "file": "art/references/v06/prologue_anime/P4_memory.png",
+      "exists": true,
+      "tool": "codex exec -i (image generation, character portraits attached)",
+      "prompt": "art/manifests/prompts/v06/prologue_anime/P4_memory.txt",
+      "use": "prologue slideshow panel",
+      "batch": "v0.6 feedback: anime prologue",
+      "refs": [
+        "game/assets/ui/portraits/sora_neutral.png",
+        "game/assets/ui/portraits/mio_neutral.png"
+      ]
+    },
+    {
+      "file": "art/references/v06/prologue_anime/P5_empty.png",
+      "exists": true,
+      "tool": "codex exec -i (image generation, character portraits attached)",
+      "prompt": "art/manifests/prompts/v06/prologue_anime/P5_empty.txt",
+      "use": "prologue slideshow panel",
+      "batch": "v0.6 feedback: anime prologue",
+      "refs": [
+        "game/assets/ui/portraits/sora_neutral.png",
+        "art/references/v06/prologue_anime/P4_memory.png"
+      ]
+    },
+    {
+      "file": "art/references/v06/prologue_anime/P6_mailbox.png",
+      "exists": true,
+      "tool": "codex exec -i (image generation, character portraits attached)",
+      "prompt": "art/manifests/prompts/v06/prologue_anime/P6_mailbox.txt",
+      "use": "prologue slideshow panel",
+      "batch": "v0.6 feedback: anime prologue",
+      "refs": [
+        "game/assets/ui/portraits/sora_neutral.png",
+        "art/references/v06/prologue_anime/P4_memory.png"
+      ]
+    },
+    {
+      "file": "art/references/v06/prologue_anime/P7_stay.png",
+      "exists": true,
+      "tool": "codex exec -i (image generation, character portraits attached)",
+      "prompt": "art/manifests/prompts/v06/prologue_anime/P7_stay.txt",
+      "use": "prologue slideshow panel",
+      "batch": "v0.6 feedback: anime prologue",
+      "refs": [
+        "game/assets/ui/portraits/sora_neutral.png",
+        "art/references/v06/prologue_anime/P4_memory.png"
+      ]
+    },
+    {
+      "file": "art/references/site/hero.png",
+      "exists": true,
+      "tool": "codex exec -i (image generation, portraits attached)",
+      "prompt": "art/manifests/prompts/site/hero.txt",
+      "use": "website hero key visual",
+      "batch": "website (coming soon)"
+    },
+    {
+      "file": "art/references/site/night.png",
+      "exists": true,
+      "tool": "codex exec -i (image generation, portraits attached)",
+      "prompt": "art/manifests/prompts/site/night.txt",
+      "use": "website night festival band",
+      "batch": "website (coming soon)"
+    },
+    {
+      "file": "art/references/site/cast.png",
+      "exists": true,
+      "tool": "codex exec -i (image generation, portraits attached)",
+      "prompt": "art/manifests/prompts/site/cast.txt",
+      "use": "website character lineup",
+      "batch": "website (coming soon)"
+    },
+    {
+      "file": "art/references/v07/portraits/gen/sora_neutral.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/portraits/sora_neutral.txt",
+      "refs": [
+        "art/references/v07/portraits/ref_sora_neutral.png"
+      ],
+      "use": "dialogue portrait -> game/assets/ui/portraits/sora_neutral.png (cut_portraits.py only trims and scales)",
+      "batch": "v0.7.3: transparent portraits (the keyed sheets had holes in the clothes)"
+    },
+    {
+      "file": "art/references/v07/portraits/gen/sora_happy.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/portraits/sora_happy.txt",
+      "refs": [
+        "art/references/v07/portraits/ref_sora_happy.png"
+      ],
+      "use": "dialogue portrait -> game/assets/ui/portraits/sora_happy.png (cut_portraits.py only trims and scales)",
+      "batch": "v0.7.3: transparent portraits (the keyed sheets had holes in the clothes)"
+    },
+    {
+      "file": "art/references/v07/portraits/gen/mio_neutral.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/portraits/mio_neutral.txt",
+      "refs": [
+        "art/references/v07/portraits/ref_mio_neutral.png"
+      ],
+      "use": "dialogue portrait -> game/assets/ui/portraits/mio_neutral.png (cut_portraits.py only trims and scales)",
+      "batch": "v0.7.3: transparent portraits (the keyed sheets had holes in the clothes)"
+    },
+    {
+      "file": "art/references/v07/portraits/gen/mio_happy.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/portraits/mio_happy.txt",
+      "refs": [
+        "art/references/v07/portraits/ref_mio_happy.png"
+      ],
+      "use": "dialogue portrait -> game/assets/ui/portraits/mio_happy.png (cut_portraits.py only trims and scales)",
+      "batch": "v0.7.3: transparent portraits (the keyed sheets had holes in the clothes)"
+    },
+    {
+      "file": "art/references/v07/portraits/gen/ren_neutral.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/portraits/ren_neutral.txt",
+      "refs": [
+        "art/references/v07/portraits/ref_ren_neutral.png"
+      ],
+      "use": "dialogue portrait -> game/assets/ui/portraits/ren_neutral.png (cut_portraits.py only trims and scales)",
+      "batch": "v0.7.3: transparent portraits (the keyed sheets had holes in the clothes)"
+    },
+    {
+      "file": "art/references/v07/portraits/gen/ren_happy.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/portraits/ren_happy.txt",
+      "refs": [
+        "art/references/v07/portraits/ref_ren_happy.png"
+      ],
+      "use": "dialogue portrait -> game/assets/ui/portraits/ren_happy.png (cut_portraits.py only trims and scales)",
+      "batch": "v0.7.3: transparent portraits (the keyed sheets had holes in the clothes)"
+    },
+    {
+      "file": "art/references/v07/portraits/gen/haru_neutral.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/portraits/haru_neutral.txt",
+      "refs": [
+        "art/references/v07/portraits/ref_haru_neutral.png"
+      ],
+      "use": "dialogue portrait -> game/assets/ui/portraits/haru_neutral.png (cut_portraits.py only trims and scales)",
+      "batch": "v0.7.3: transparent portraits (the keyed sheets had holes in the clothes)"
+    },
+    {
+      "file": "art/references/v07/portraits/gen/haru_happy.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/portraits/haru_happy.txt",
+      "refs": [
+        "art/references/v07/portraits/ref_haru_happy.png"
+      ],
+      "use": "dialogue portrait -> game/assets/ui/portraits/haru_happy.png (cut_portraits.py only trims and scales)",
+      "batch": "v0.7.3: transparent portraits (the keyed sheets had holes in the clothes)"
+    },
+    {
+      "file": "art/references/v07/portraits/gen/tanaka_neutral.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/portraits/tanaka_neutral.txt",
+      "refs": [
+        "art/references/v07/portraits/ref_tanaka_neutral.png"
+      ],
+      "use": "dialogue portrait -> game/assets/ui/portraits/tanaka_neutral.png (cut_portraits.py only trims and scales)",
+      "batch": "v0.7.3: transparent portraits (the keyed sheets had holes in the clothes)"
+    },
+    {
+      "file": "art/references/v07/portraits/gen/tanaka_happy.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/portraits/tanaka_happy.txt",
+      "refs": [
+        "art/references/v07/portraits/ref_tanaka_happy.png"
+      ],
+      "use": "dialogue portrait -> game/assets/ui/portraits/tanaka_happy.png (cut_portraits.py only trims and scales)",
+      "batch": "v0.7.3: transparent portraits (the keyed sheets had holes in the clothes)"
+    },
+    {
+      "file": "art/references/v07/portraits/gen/aoi_neutral.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/portraits/aoi_neutral.txt",
+      "refs": [
+        "art/references/v07/portraits/ref_aoi_neutral.png"
+      ],
+      "use": "dialogue portrait -> game/assets/ui/portraits/aoi_neutral.png (cut_portraits.py only trims and scales)",
+      "batch": "v0.7.3: transparent portraits (the keyed sheets had holes in the clothes)"
+    },
+    {
+      "file": "art/references/v07/portraits/gen/aoi_happy.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/portraits/aoi_happy.txt",
+      "refs": [
+        "art/references/v07/portraits/ref_aoi_happy.png"
+      ],
+      "use": "dialogue portrait -> game/assets/ui/portraits/aoi_happy.png (cut_portraits.py only trims and scales)",
+      "batch": "v0.7.3: transparent portraits (the keyed sheets had holes in the clothes)"
+    },
+    {
+      "file": "art/references/v07/portraits/gen/kazuko_neutral.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/portraits/kazuko_neutral.txt",
+      "refs": [
+        "art/references/v07/portraits/ref_kazuko_neutral.png"
+      ],
+      "use": "dialogue portrait -> game/assets/ui/portraits/kazuko_neutral.png (cut_portraits.py only trims and scales)",
+      "batch": "v0.7.3: transparent portraits (the keyed sheets had holes in the clothes)"
+    },
+    {
+      "file": "art/references/v07/portraits/gen/kazuko_happy.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/portraits/kazuko_happy.txt",
+      "refs": [
+        "art/references/v07/portraits/ref_kazuko_happy.png"
+      ],
+      "use": "dialogue portrait -> game/assets/ui/portraits/kazuko_happy.png (cut_portraits.py only trims and scales)",
+      "batch": "v0.7.3: transparent portraits (the keyed sheets had holes in the clothes)"
+    },
+    {
+      "file": "art/references/v07/storefront/store_back.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen)",
+      "prompt": "art/manifests/prompts/v07/storefront/store_back.txt",
+      "refs": [
+        "game/assets/ui/prologue/P2_street.jpg"
+      ],
+      "use": "shop window interior (back wall) -> game/assets/textures/storefront/store_back.jpg",
+      "batch": "v0.7.3: interior-mapped shop windows"
+    },
+    {
+      "file": "art/references/v07/storefront/store_mid.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/storefront/store_mid.txt",
+      "refs": [
+        "game/assets/ui/prologue/P2_street.jpg"
+      ],
+      "use": "shop window interior (display furniture layer) -> game/assets/textures/storefront/store_mid.png",
+      "batch": "v0.7.3: interior-mapped shop windows"
+    },
+    {
+      "file": "art/references/v07/storefront/bakery_back.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen)",
+      "prompt": "art/manifests/prompts/v07/storefront/bakery_back.txt",
+      "refs": [
+        "game/assets/ui/prologue/P2_street.jpg"
+      ],
+      "use": "shop window interior (back wall) -> game/assets/textures/storefront/bakery_back.jpg",
+      "batch": "v0.7.3: interior-mapped shop windows"
+    },
+    {
+      "file": "art/references/v07/storefront/bakery_mid.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/storefront/bakery_mid.txt",
+      "refs": [
+        "game/assets/ui/prologue/P2_street.jpg"
+      ],
+      "use": "shop window interior (display furniture layer) -> game/assets/textures/storefront/bakery_mid.png",
+      "batch": "v0.7.3: interior-mapped shop windows"
+    },
+    {
+      "file": "art/references/v07/storefront/florist_back.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen)",
+      "prompt": "art/manifests/prompts/v07/storefront/florist_back.txt",
+      "refs": [
+        "game/assets/ui/prologue/P2_street.jpg"
+      ],
+      "use": "shop window interior (back wall) -> game/assets/textures/storefront/florist_back.jpg",
+      "batch": "v0.7.3: interior-mapped shop windows"
+    },
+    {
+      "file": "art/references/v07/storefront/florist_mid.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/storefront/florist_mid.txt",
+      "refs": [
+        "game/assets/ui/prologue/P2_street.jpg"
+      ],
+      "use": "shop window interior (display furniture layer) -> game/assets/textures/storefront/florist_mid.png",
+      "batch": "v0.7.3: interior-mapped shop windows"
+    },
+    {
+      "file": "art/references/v07/storefront/zakka_back.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen)",
+      "prompt": "art/manifests/prompts/v07/storefront/zakka_back.txt",
+      "refs": [
+        "game/assets/ui/prologue/P2_street.jpg"
+      ],
+      "use": "shop window interior (back wall) -> game/assets/textures/storefront/zakka_back.jpg",
+      "batch": "v0.7.3: interior-mapped shop windows"
+    },
+    {
+      "file": "art/references/v07/storefront/zakka_mid.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/storefront/zakka_mid.txt",
+      "refs": [
+        "game/assets/ui/prologue/P2_street.jpg"
+      ],
+      "use": "shop window interior (display furniture layer) -> game/assets/textures/storefront/zakka_mid.png",
+      "batch": "v0.7.3: interior-mapped shop windows"
+    },
+    {
+      "file": "art/references/v07/storefront/post_back.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen)",
+      "prompt": "art/manifests/prompts/v07/storefront/post_back.txt",
+      "refs": [
+        "game/assets/ui/prologue/P2_street.jpg"
+      ],
+      "use": "shop window interior (back wall) -> game/assets/textures/storefront/post_back.jpg",
+      "batch": "v0.7.3: interior-mapped shop windows"
+    },
+    {
+      "file": "art/references/v07/storefront/post_mid.png",
+      "exists": true,
+      "tool": "codex exec -i (image_gen, transparent background)",
+      "prompt": "art/manifests/prompts/v07/storefront/post_mid.txt",
+      "refs": [
+        "game/assets/ui/prologue/P2_street.jpg"
+      ],
+      "use": "shop window interior (display furniture layer) -> game/assets/textures/storefront/post_mid.png",
+      "batch": "v0.7.3: interior-mapped shop windows"
+    },
+    {
+      "file": "art/references/site/wallpapers/river-desktop.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "prompt": "art/manifests/prompts/site/wallpapers/river-desktop.txt",
+      "generated_source": "/Users/jack/.codex/generated_images/01a0f302-c86a-7053-bb5d-a818f0dccaf4/exec-79bb8de8-2ab4-4ddf-84e0-602b59aef05d.png",
+      "width": 1672,
+      "height": 941,
+      "site_download": "site/assets/wallpapers/river-desktop.jpg",
+      "site_preview": "site/assets/wallpapers/river-desktop.webp",
+      "created_at": "2026-10-01"
+    },
+    {
+      "file": "art/references/site/wallpapers/river-mobile.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "prompt": "art/manifests/prompts/site/wallpapers/river-mobile.txt",
+      "generated_source": "/Users/jack/.codex/generated_images/01a0f302-c86a-7053-bb5d-a818f0dccaf4/exec-a7714dc0-0cba-4bd0-b045-82ed522037aa.png",
+      "width": 853,
+      "height": 1844,
+      "site_download": "site/assets/wallpapers/river-mobile.jpg",
+      "site_preview": "site/assets/wallpapers/river-mobile.webp",
+      "created_at": "2026-10-01"
+    },
+    {
+      "file": "art/references/site/wallpapers/festival-desktop.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "prompt": "art/manifests/prompts/site/wallpapers/festival-desktop.txt",
+      "generated_source": "/Users/jack/.codex/generated_images/01a0f302-c86a-7053-bb5d-a818f0dccaf4/exec-d78e0bf6-13ea-4c50-b3bf-48590fcb4c3b.png",
+      "width": 1672,
+      "height": 941,
+      "site_download": "site/assets/wallpapers/festival-desktop.jpg",
+      "site_preview": "site/assets/wallpapers/festival-desktop.webp",
+      "created_at": "2026-10-01"
+    },
+    {
+      "file": "art/references/site/wallpapers/festival-mobile.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "prompt": "art/manifests/prompts/site/wallpapers/festival-mobile.txt",
+      "generated_source": "/Users/jack/.codex/generated_images/01a0f302-c86a-7053-bb5d-a818f0dccaf4/exec-704505dc-e383-4694-8b47-bd36c5af2f2b.png",
+      "width": 854,
+      "height": 1842,
+      "site_download": "site/assets/wallpapers/festival-mobile.jpg",
+      "site_preview": "site/assets/wallpapers/festival-mobile.webp",
+      "created_at": "2026-10-01"
+    },
+    {
+      "file": "art/references/site/wallpapers/after-rain-desktop.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "prompt": "art/manifests/prompts/site/wallpapers/after-rain-desktop.txt",
+      "generated_source": "/Users/jack/.codex/generated_images/01a0f302-c86a-7053-bb5d-a818f0dccaf4/exec-7fb8915b-455d-44ca-8b99-50caae784e9e.png",
+      "width": 1672,
+      "height": 941,
+      "site_download": "site/assets/wallpapers/after-rain-desktop.jpg",
+      "site_preview": "site/assets/wallpapers/after-rain-desktop.webp",
+      "created_at": "2026-10-01"
+    },
+    {
+      "file": "art/references/site/wallpapers/after-rain-mobile.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "prompt": "art/manifests/prompts/site/wallpapers/after-rain-mobile.txt",
+      "generated_source": "/Users/jack/.codex/generated_images/01a0f302-c86a-7053-bb5d-a818f0dccaf4/exec-d81e0c6a-0bda-4da0-83ec-f1fc123334fe.png",
+      "width": 853,
+      "height": 1844,
+      "site_download": "site/assets/wallpapers/after-rain-mobile.jpg",
+      "site_preview": "site/assets/wallpapers/after-rain-mobile.webp",
+      "created_at": "2026-10-01"
+    },
+    {
+      "file": "art/references/architecture/20261001/cedar-grain.png",
+      "exists": true,
+      "tool": "imagegen built-in",
+      "prompt": "art/manifests/prompts/architecture/20261001/cedar-grain.txt",
+      "use": "Original anime wood grain; colour-only texture for timber joinery; runtime JPG game/assets/textures/architecture/cedar-grain.jpg"
+    },
+    {
+      "file": "art/references/architecture/20261001/machiya-house.png",
+      "exists": true,
+      "tool": "imagegen built-in",
+      "prompt": "art/manifests/prompts/architecture/20261001/machiya-house.txt",
+      "use": "Hyper3D J01_machiya architectural reference; not a screenshot"
+    },
+    {
+      "file": "art/references/materials/aged_20261001/wood.png",
+      "exists": true,
+      "tool": "imagegen built-in",
+      "prompt": "art/manifests/prompts/materials/aged_20261001/wood.txt",
+      "use": "Aged anime landmark material; original physical geometry"
+    },
+    {
+      "file": "art/references/materials/aged_20261001/roof.png",
+      "exists": true,
+      "tool": "imagegen built-in",
+      "prompt": "art/manifests/prompts/materials/aged_20261001/roof.txt",
+      "use": "Aged anime landmark material; original physical geometry"
+    },
+    {
+      "file": "art/references/materials/aged_20261001/cloth.png",
+      "exists": true,
+      "tool": "imagegen built-in",
+      "prompt": "art/manifests/prompts/materials/aged_20261001/cloth.txt",
+      "use": "Aged anime landmark material; original physical geometry"
+    },
+    {
+      "file": "art/references/materials/aged_20261001/forest_a.png",
+      "exists": true,
+      "tool": "imagegen built-in; true transparent background",
+      "prompt": "art/manifests/prompts/materials/aged_20261001/forest_a.txt",
+      "use": "Replace 206-475 pixel forest scenery sprites; no colour-key matting"
+    },
+    {
+      "file": "art/references/materials/aged_20261001/forest_b.png",
+      "exists": true,
+      "tool": "imagegen built-in; true transparent background",
+      "prompt": "art/manifests/prompts/materials/aged_20261001/forest_b.txt",
+      "use": "Replace 206-475 pixel forest scenery sprites; no colour-key matting"
+    },
+    {
+      "file": "art/references/materials/aged_20261001/forest_c.png",
+      "exists": true,
+      "tool": "imagegen built-in; true transparent background",
+      "prompt": "art/manifests/prompts/materials/aged_20261001/forest_c.txt",
+      "use": "Replace 206-475 pixel forest scenery sprites; no colour-key matting"
+    },
+    {
+      "file": "art/references/materials/aged_20261001/stone.png",
+      "exists": true,
+      "tool": "imagegen built-in edit",
+      "prompt": "art/manifests/prompts/materials/aged_20261001/stone.txt",
+      "use": "Simplified aged anime stone; dense first version rejected"
+    },
+    {
+      "file": "art/references/app_icon/harumachi-20261001.png",
+      "exists": true,
+      "tool": "imagegen built-in, transparent rounded tile",
+      "prompt": "art/manifests/prompts/app_icon/lantern-goldfish.txt",
+      "use": "Godot application icon and macOS ICNS: old festival lantern with goldfish emblem"
+    },
+    {
+      "file": "art/references/hyper3d_quality_20261001/gate_front_right.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "date": "2026-10-02",
+      "prompt": "art/manifests/prompts/hyper3d_quality_20261001_refs.json",
+      "prompt_entry": "gate",
+      "size": [
+        1536,
+        1024
+      ],
+      "use": "Hyper3D reference or UV-preserving texture edit"
+    },
+    {
+      "file": "art/references/hyper3d_quality_20261001/yagura_front_right.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "date": "2026-10-02",
+      "prompt": "art/manifests/prompts/hyper3d_quality_20261001_refs.json",
+      "prompt_entry": "yagura",
+      "size": [
+        1214,
+        1295
+      ],
+      "use": "Hyper3D reference or UV-preserving texture edit"
+    },
+    {
+      "file": "art/references/hyper3d_quality_20261001/oven_front_right.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "date": "2026-10-02",
+      "prompt": "art/manifests/prompts/hyper3d_quality_20261001_refs.json",
+      "prompt_entry": "oven",
+      "size": [
+        1024,
+        1536
+      ],
+      "use": "Hyper3D reference or UV-preserving texture edit"
+    },
+    {
+      "file": "art/references/hyper3d_quality_20261001/gate_back_left.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "date": "2026-10-02",
+      "prompt": "art/manifests/prompts/hyper3d_quality_20261001_edits.json",
+      "prompt_entry": "gate_back",
+      "size": [
+        1536,
+        1024
+      ],
+      "use": "Hyper3D reference or UV-preserving texture edit"
+    },
+    {
+      "file": "art/references/hyper3d_quality_20261001/yagura_back_left.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "date": "2026-10-02",
+      "prompt": "art/manifests/prompts/hyper3d_quality_20261001_edits.json",
+      "prompt_entry": "yagura_back",
+      "size": [
+        1215,
+        1295
+      ],
+      "use": "Hyper3D reference or UV-preserving texture edit"
+    },
+    {
+      "file": "art/references/hyper3d_quality_20261001/S02_atlas.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "date": "2026-10-02",
+      "prompt": "art/manifests/prompts/hyper3d_quality_20261001_edits.json",
+      "prompt_entry": "S02_atlas",
+      "size": [
+        1254,
+        1254
+      ],
+      "use": "Hyper3D reference or UV-preserving texture edit"
+    },
+    {
+      "file": "art/references/hyper3d_quality_20261001/A13_atlas.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "date": "2026-10-02",
+      "prompt": "art/manifests/prompts/hyper3d_quality_20261001_edits.json",
+      "prompt_entry": "A13_atlas",
+      "size": [
+        1254,
+        1254
+      ],
+      "use": "Hyper3D reference or UV-preserving texture edit"
+    },
+    {
+      "file": "art/references/hyper3d_quality_20261001/A13_atlas_oriented.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "date": "2026-10-02",
+      "prompt": "art/manifests/prompts/hyper3d_quality_20261001_A13_orientation.txt",
+      "prompt_entry": "orientation_fix",
+      "size": [
+        1254,
+        1254
+      ],
+      "use": "Hyper3D reference or UV-preserving texture edit"
+    },
+    {
+      "file": "art/references/model_audit_20261002/H02_front.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/B04_shokupan_atlas.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/B01_melon_pan_atlas.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/S06_front.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/A20_cat_sleep_atlas.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/B06_curry_pan_atlas.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/H03_front.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/H03_back.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/H02_back.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/M07_power_pole_front.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/F01_tool_shed_back.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/S06_back.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/B02_croissant_atlas.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/B05_anpan_atlas.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/H01_front.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/A22_cat_sit_atlas.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/A07_lantern_atlas.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/B03_baguette_atlas.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/H01_back.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/F01_tool_shed_front.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/model_audit_20261002/A21_sparrow_front.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "prompts": [
+        "art/manifests/prompts/model_audit_20261002_houses.json",
+        "art/manifests/prompts/model_audit_20261002_backs.json",
+        "art/manifests/prompts/model_audit_20261002_other.json",
+        "art/manifests/prompts/model_audit_20261002_other_backs.json",
+        "art/manifests/prompts/model_audit_20261002_atlases.json"
+      ]
+    },
+    {
+      "file": "art/references/architecture_closeup_20261002/cedar.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "purpose": "close-up architectural colour / dedicated produce texture",
+      "prompt": "art/manifests/prompts/architecture_closeup_20261002_materials.json"
+    },
+    {
+      "file": "art/references/architecture_closeup_20261002/plaster.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "purpose": "close-up architectural colour / dedicated produce texture",
+      "prompt": "art/manifests/prompts/architecture_closeup_20261002_materials.json"
+    },
+    {
+      "file": "art/references/architecture_closeup_20261002/kawara.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "purpose": "close-up architectural colour / dedicated produce texture",
+      "prompt": "art/manifests/prompts/architecture_closeup_20261002_materials.json"
+    },
+    {
+      "file": "art/references/architecture_closeup_20261002/produce.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "purpose": "close-up architectural colour / dedicated produce texture",
+      "prompt": "art/manifests/prompts/architecture_closeup_20261002_produce.txt"
+    },
+    {
+      "file": "art/references/architecture_closeup_20261002/glass.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "purpose": "close-up architectural colour / dedicated produce texture",
+      "prompt": "art/manifests/prompts/architecture_closeup_20261002_glass.txt"
+    },
+    {
+      "file": "art/references/architecture_identity_20261002/street-concept.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "purpose": "architecture identity design concept; not an implemented 3D model or game screenshot",
+      "prompt": "art/manifests/prompts/architecture_identity_20261002.json",
+      "reference": "evidence/architecture_closeup_20261002/shots-ready/facade_store.png"
+    },
+    {
+      "file": "art/references/architecture_identity_20261002/homes-concept.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "purpose": "architecture identity design concept; not an implemented 3D model or game screenshot",
+      "prompt": "art/manifests/prompts/architecture_identity_20261002.json",
+      "reference": "evidence/architecture_closeup_20261002/shots-ready/audit_home.png"
+    },
+    {
+      "file": "art/references/architecture_identity_20261002/summer-pig.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-02",
+      "purpose": "single-object Hyper3D reference for veranda ceramic mosquito holder",
+      "prompt": "art/manifests/prompts/architecture_identity_20261002_pig.txt"
+    },
+    {
+      "file": "art/references/architecture_identity_20261002/produce-skins.png",
+      "exists": true,
+      "tool": "built-in imagegen edit",
+      "date": "2026-10-02",
+      "purpose": "vegetable skin atlas for actual three-dimensional grocery produce",
+      "reference": "art/references/architecture_closeup_20261002/produce.png",
+      "prompt": "art/manifests/prompts/architecture_identity_20261002_produce_skins.txt"
+    },
+    {
+      "file": "art/references/architecture_hyper3d_modules_20261002/H01_whole_front.png",
+      "exists": true,
+      "tool": "built-in imagegen edit",
+      "date": "2026-10-02",
+      "reference": "art/references/architecture_identity_20261002/homes-concept.png",
+      "prompt": "art/manifests/prompts/architecture_hyper3d_modules_20261002_front.txt",
+      "purpose": "isolated detailed whole-house image-to-3D reference"
+    },
+    {
+      "file": "art/references/architecture_hyper3d_modules_20261002/H01_whole_back.png",
+      "exists": true,
+      "tool": "built-in imagegen edit",
+      "date": "2026-10-02",
+      "reference": "art/references/architecture_hyper3d_modules_20261002/H01_whole_front.png",
+      "prompt": "art/manifests/prompts/architecture_hyper3d_modules_20261002_edits.json",
+      "purpose": "consistent backside or isolated engawa module image-to-3D reference"
+    },
+    {
+      "file": "art/references/architecture_hyper3d_modules_20261002/H01_engawa_front.png",
+      "exists": true,
+      "tool": "built-in imagegen edit",
+      "date": "2026-10-02",
+      "reference": "art/references/architecture_hyper3d_modules_20261002/H01_whole_front.png",
+      "prompt": "art/manifests/prompts/architecture_hyper3d_modules_20261002_edits.json",
+      "purpose": "consistent backside or isolated engawa module image-to-3D reference"
+    },
+    {
+      "file": "art/references/architecture_hyper3d_modules_20261002/H01_door_frame.png",
+      "exists": true,
+      "tool": "built-in imagegen edit; true alpha",
+      "date": "2026-10-02",
+      "reference": "art/references/architecture_hyper3d_modules_20261002/H01_engawa_front.png",
+      "prompt": "art/manifests/prompts/architecture_hyper3d_modules_20261002_door.txt",
+      "purpose": "isolated hollow door lattice for physical geometry generation"
+    },
+    {
+      "file": "art/references/scene_hyper3d_replace_20261003/H02.png",
+      "exists": true,
+      "tool": "built-in imagegen edit",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/scene_hyper3d_replace_20261003.json",
+      "purpose": "unique Hyper3D building reference"
+    },
+    {
+      "file": "art/references/scene_hyper3d_replace_20261003/S01.png",
+      "exists": true,
+      "tool": "built-in imagegen edit",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/scene_hyper3d_replace_20261003.json",
+      "purpose": "unique Hyper3D building reference"
+    },
+    {
+      "file": "art/references/scene_hyper3d_replace_20261003/S02.png",
+      "exists": true,
+      "tool": "built-in imagegen edit",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/scene_hyper3d_replace_20261003.json",
+      "purpose": "unique Hyper3D building reference"
+    },
+    {
+      "file": "art/references/scene_hyper3d_replace_20261003/S03.png",
+      "exists": true,
+      "tool": "built-in imagegen edit",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/scene_hyper3d_replace_20261003.json",
+      "purpose": "unique Hyper3D building reference"
+    },
+    {
+      "file": "art/references/scene_hyper3d_replace_20261003/S08.png",
+      "exists": true,
+      "tool": "built-in imagegen edit",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/scene_hyper3d_replace_20261003.json",
+      "purpose": "unique Hyper3D building reference"
+    },
+    {
+      "file": "art/references/scene_hyper3d_replace_20261003/H01_main.png",
+      "exists": true,
+      "tool": "built-in imagegen edit",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/scene_hyper3d_replace_20261003_main_body.txt",
+      "purpose": "clean separate rear main house for modular assembly"
+    },
+    {
+      "file": "art/references/scene_hyper3d_replace_20261003/S05.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/scene_hyper3d_replace_20261003_rest.json",
+      "purpose": "S05 independent Hyper3D building reference"
+    },
+    {
+      "file": "art/references/scene_hyper3d_replace_20261003/S06.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/scene_hyper3d_replace_20261003_rest.json",
+      "purpose": "S06 independent Hyper3D building reference"
+    },
+    {
+      "file": "art/references/scene_hyper3d_replace_20261003/M01_timber_machiya.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/scene_hyper3d_replace_20261003_rest.json",
+      "purpose": "M01_timber_machiya independent Hyper3D building reference"
+    },
+    {
+      "file": "art/references/scene_hyper3d_replace_20261003/M03_gable_house.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/scene_hyper3d_replace_20261003_rest.json",
+      "purpose": "M03_gable_house independent Hyper3D building reference"
+    },
+    {
+      "file": "art/references/scene_hyper3d_replace_20261003/M05_residential.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/scene_hyper3d_replace_20261003_rest.json",
+      "purpose": "M05_residential independent Hyper3D building reference"
+    },
+    {
+      "file": "art/references/scene_hyper3d_replace_20261003/H02_unit.png",
+      "exists": true,
+      "tool": "built-in imagegen edit",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/H02_unit_20261003.txt",
+      "purpose": "independent detailed tenant facade for modular apartment"
+    },
+    {
+      "file": "art/references/scene_hyper3d_replace_20261003/curtain.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "purpose": "dedicated high-density anime curtain albedo for Rodin tenant module",
+      "prompt": "art/manifests/prompts/rodin_curtain_20261003.txt"
+    },
+    {
+      "file": "art/references/lived_facades_20261003/H02_unit_lived.png",
+      "exists": true,
+      "tool": "built-in imagegen edit",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/lived_facades_20261003.json",
+      "purpose": "aligned hand-painted lived-in facade albedo projected onto existing Hyper3D geometry"
+    },
+    {
+      "file": "art/references/lived_facades_20261003/S01_lived.png",
+      "exists": true,
+      "tool": "built-in imagegen edit",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/lived_facades_20261003.json",
+      "purpose": "aligned hand-painted lived-in facade albedo projected onto existing Hyper3D geometry"
+    },
+    {
+      "file": "game/assets/ui/icons/fish_crucian.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/lakeside_icons_20261003.json",
+      "purpose": "fish and catch-cooking UI icon, real alpha"
+    },
+    {
+      "file": "game/assets/ui/icons/fish_carp.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/lakeside_icons_20261003.json",
+      "purpose": "fish and catch-cooking UI icon, real alpha"
+    },
+    {
+      "file": "game/assets/ui/icons/fish_ayu.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/lakeside_icons_20261003.json",
+      "purpose": "fish and catch-cooking UI icon, real alpha"
+    },
+    {
+      "file": "game/assets/ui/icons/fish_trout.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/lakeside_icons_20261003.json",
+      "purpose": "fish and catch-cooking UI icon, real alpha"
+    },
+    {
+      "file": "game/assets/ui/icons/fish_bass.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/lakeside_icons_20261003.json",
+      "purpose": "fish and catch-cooking UI icon, real alpha"
+    },
+    {
+      "file": "game/assets/ui/icons/fish_eel.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/lakeside_icons_20261003.json",
+      "purpose": "fish and catch-cooking UI icon, real alpha"
+    },
+    {
+      "file": "game/assets/ui/icons/dish_grilled_ayu.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/lakeside_icons_20261003.json",
+      "purpose": "fish and catch-cooking UI icon, real alpha"
+    },
+    {
+      "file": "game/assets/ui/icons/dish_crucian_soup.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/lakeside_icons_20261003.json",
+      "purpose": "fish and catch-cooking UI icon, real alpha"
+    },
+    {
+      "file": "game/assets/ui/icons/dish_trout_rice.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/lakeside_icons_20261003.json",
+      "purpose": "fish and catch-cooking UI icon, real alpha"
+    },
+    {
+      "file": "game/assets/ui/icons/dish_carp_kanroni.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/lakeside_recipes_extra_20261003.json",
+      "purpose": "catch cooking icon with transparent alpha"
+    },
+    {
+      "file": "game/assets/ui/icons/dish_butter_bass.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/lakeside_recipes_extra_20261003.json",
+      "purpose": "catch cooking icon with transparent alpha"
+    },
+    {
+      "file": "game/assets/ui/icons/dish_eel_rice.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/lakeside_recipes_extra_20261003.json",
+      "purpose": "catch cooking icon with transparent alpha"
+    },
+    {
+      "file": "art/references/lived_facades_20261003/H02_unit_blue_lived.png",
+      "exists": true,
+      "tool": "built-in imagegen edit",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/lived_variants_20261003.json",
+      "purpose": "separate tenant paint, curtains and inside-sill details for existing Hyper3D geometry"
+    },
+    {
+      "file": "art/references/lived_facades_20261003/H02_unit_green_lived.png",
+      "exists": true,
+      "tool": "built-in imagegen edit",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/lived_variants_20261003.json",
+      "purpose": "separate tenant paint, curtains and inside-sill details for existing Hyper3D geometry"
+    },
+    {
+      "file": "art/references/building_materials_20261003/M01_timber_machiya.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/building_materials_20261003.json",
+      "sha256": "a50724aa23e70eb0677cf94be3e5a258ff5dd1ae0f7d91a858cd7f306423481e"
+    },
+    {
+      "file": "art/references/building_materials_20261003/M03_gable_house.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/building_materials_20261003.json",
+      "sha256": "c8b141a8426c901961df3993b4bb0fdd2cd2ddfbf1106d4f944062d951392a27"
+    },
+    {
+      "file": "art/references/building_materials_20261003/M05_residential.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/building_materials_20261003.json",
+      "sha256": "7dc66745bf7c978981c19940e6c7278eb1f899bd3eb827764804f6c231e13e74"
+    },
+    {
+      "file": "art/references/building_materials_20261003/S02.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/building_materials_20261003.json",
+      "sha256": "9485361c605c550bb19e250bc2cf6859d65b7ca0ce28655aded1b96d51337520"
+    },
+    {
+      "file": "art/references/building_materials_20261003/S03.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/building_materials_20261003.json",
+      "sha256": "b268edd0e6b6480a910bdb491990047fc8bdf994419c80e545b4a1e21e9ee535"
+    },
+    {
+      "file": "art/references/building_materials_20261003/S05.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/building_materials_20261003.json",
+      "sha256": "9635273725d91a53aca9a4c9ce2766f13a6fd8f0403d569072eb6ea1ca88c366"
+    },
+    {
+      "file": "art/references/building_materials_20261003/S06.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/building_materials_20261003.json",
+      "sha256": "7e0355ff3b4bdc0b060e604e363974b722e81c5a1d715c922b2d0767ae1151a6"
+    },
+    {
+      "file": "art/references/building_materials_20261003/S08.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/building_materials_20261003.json",
+      "sha256": "5e41aae6be8ad4999018a69e37d397c8bc8b87ad71273e873c94070125967865"
+    },
+    {
+      "file": "art/references/building_materials_20261003/cedar.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/building_materials_20261003.json",
+      "sha256": "e1868694d4b2bffb147a8d626687cf17b1c12e20f0a3e0a163c40d80a216b786"
+    },
+    {
+      "file": "art/references/building_materials_20261003/cloth.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/building_materials_20261003.json",
+      "sha256": "a650d59f652c9f0b33c6f61d5061657a7cb63ee3f4495a62680687ffe2589080"
+    },
+    {
+      "file": "art/references/building_materials_20261003/plaster.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/building_materials_20261003.json",
+      "sha256": "e04ac945c96b65b762739908622c71826b9772fd29d522121f62a47241879313"
+    },
+    {
+      "file": "art/references/building_materials_20261003/tile.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/building_materials_20261003.json",
+      "sha256": "0a7badd4c7999faee41b3f8f6fc5b3eac863928b1adb5b225f2dd883a4e691a7"
+    },
+    {
+      "file": "art/references/homage_20261003/sprite_caps.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/homage_20261003.json",
+      "sha256": "7e64ceeb4c013a86d20e2b4d1b8f78492fc9a3d30bf0aa15b2320656f13e6057"
+    },
+    {
+      "file": "art/references/homage_20261003/cow_bell.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/homage_20261003.json",
+      "sha256": "8d6a4e5ab374d591e673f5b7e9b8eed07eb96797f38d801d4f3d68c327bb083d"
+    },
+    {
+      "file": "art/references/homage_20261003/purple_shorts.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/homage_20261003.json",
+      "sha256": "11e88f4c5c1a8e6e6a9ba5289eab5ac0151a405fdab50f01d37f749a06ceff26"
+    },
+    {
+      "file": "art/references/homage_20261003/blue_feather.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/homage_20261003.json",
+      "sha256": "fccf7c88c508ea80ae9a72e91060a11170bd01a2f1fae029e9aae0ea8c24991f"
+    },
+    {
+      "file": "art/references/homage_20261003/star_box.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/homage_20261003.json",
+      "sha256": "ce039f7ba25191d5956b333457bdbece5cff7694a598c648088b4a81cf031ca6"
+    },
+    {
+      "file": "art/references/homage_20261003/star_box_empty.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/homage_variants_20261003.json",
+      "sha256": "517e4c71178097abc2b15518c6154e5f2e472d314bea5c1043efd510eaf96d0a"
+    },
+    {
+      "file": "art/references/homage_20261003/sprite_caps_empty.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/homage_variants_20261003.json",
+      "sha256": "bcb382babf926b1cd678deef6fd64a5a6c81607cea4db31feb73dee6a8b62d21"
+    },
+    {
+      "file": "art/references/windows3d_20261003/W03_cucumber_crate.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/windows3d_20261003.json",
+      "sha256": "c2ae3c579c83a2790c672c02eea5cf58d52cb3e4a103a58a9f48b293b1d8b436"
+    },
+    {
+      "file": "art/references/windows3d_20261003/W02_grocer_shelf.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/windows3d_20261003.json",
+      "sha256": "d8f017cd862dc61034d02c7b876c8d991645853c16bf44dc67ded52517513947"
+    },
+    {
+      "file": "art/references/windows3d_20261003/W01_flower_buckets.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/windows3d_20261003.json",
+      "sha256": "c89f0bf51926f4312c8b2d4ffbe8471a9e83c07e5cbafe9490cc69a2e536013c"
+    },
+    {
+      "file": "art/references/windows3d_20261003/T02_summer_tree.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/windows3d_20261003.json",
+      "sha256": "faba7e72960f71dbe7063119341d18762336cf092084d18730bf319b98e7ad52"
+    },
+    {
+      "file": "art/references/window_modules_20261003/W07_pastry_tray.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/window_modules_a_20261003.json",
+      "sha256": "e28c1354368c60165f5f92cdabe14d1498764a54c17a96314e2a35df5c4b2a6f"
+    },
+    {
+      "file": "art/references/window_modules_20261003/W05_hydrangea_pot.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/window_modules_a_20261003.json",
+      "sha256": "d3a7b93c5f84f53b9da6ef7ddb08d7da02972c870ff1027efb6c022bd4240be4"
+    },
+    {
+      "file": "art/references/window_modules_20261003/T03_round_ginkgo.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/window_modules_b_20261003.json",
+      "sha256": "5b465b1016416b843eb43feeb39b450ea3ba2ca8edf17b1c8b83b5190ca4daba"
+    },
+    {
+      "file": "art/references/window_modules_20261003/W08_baguette_basket.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/window_modules_a_20261003.json",
+      "sha256": "99d1e5a31c8a483256b4226352e7951d321d8f865bef121469ac095f7cc2adbd"
+    },
+    {
+      "file": "art/references/window_modules_20261003/W10_bottle_crate.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/window_modules_b_20261003.json",
+      "sha256": "adb223b01c8fafe5f527ecab073c5536f1c27790496923799bace0c22e07dd12"
+    },
+    {
+      "file": "art/references/window_modules_20261003/W04_sunflower_pot.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/window_modules_a_20261003.json",
+      "sha256": "37e7902c93d0574af067a44d919af40c2b521d6d84224acc22cd86d80b216d2b"
+    },
+    {
+      "file": "art/references/window_modules_20261003/W11_ceramic_set.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/window_modules_b_20261003.json",
+      "sha256": "36287ae80ea6b86245dd71e5bd1d75a9b960885a406ef999343b07e536ef5c19"
+    },
+    {
+      "file": "art/references/window_modules_20261003/T04_slender_cedar.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/window_modules_b_20261003.json",
+      "sha256": "d93bf20512366ee4e7013bf0f365532789c57f897c38460687c1912c5438b07c"
+    },
+    {
+      "file": "art/references/window_modules_20261003/W06_lily_vase.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/window_modules_a_20261003.json",
+      "sha256": "e67aff400963f0f0235d6309d89886b37bcc382d250726648ade311d4d08d863"
+    },
+    {
+      "file": "art/references/window_modules_20261003/W09_rice_sacks.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/window_modules_b_20261003.json",
+      "sha256": "75dc739aa40f271992b9678610aefc9d4e483e575c6bd39ed6709fae1cda2841"
+    },
+    {
+      "file": "art/references/window_modules_20261003/W07_pastry_tray_retry.png",
+      "exists": true,
+      "tool": "codex built-in imagegen edit",
+      "prompt": "art/manifests/prompts/window_pastry_retry_20261003.json",
+      "sha256": "2f2f7e371a8a3ef900b7d517c96ca36d7d59d249da9aafcc987f7b15a516ab82"
+    },
+    {
+      "file": "art/references/window_modules_20261003/W12_cedar_tray.png",
+      "exists": true,
+      "tool": "codex built-in imagegen edit",
+      "prompt": "art/manifests/prompts/window_empty_tray_20261003.json",
+      "sha256": "b714a8da6ea97f813c33a8c84477d33815f6bae2211432c112c85295ede8db78"
+    },
+    {
+      "file": "game/assets/ui/refresh_20261003/weather_atlas.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/ui_refresh_20261003.json",
+      "transparent_background": true,
+      "sha256": "c466d7a9f688baaf7510b6832993b5465763475b8e51d5bb3249ad9c0b9ac2cf"
+    },
+    {
+      "file": "game/assets/ui/refresh_20261003/navigation_atlas.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/ui_refresh_20261003.json",
+      "transparent_background": true,
+      "sha256": "5b157f64507c63d8190a6057ac85ea974535f77f430329f82545ffb26effd62d"
+    },
+    {
+      "file": "game/assets/ui/refresh_20261003/modal_paper.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/ui_frames_20261003.json",
+      "transparent_background": true,
+      "sha256": "21afadb7b1861cf34470c96e4b37162c2ba5628d6c7c69c9dfd9642e9ad27c13"
+    },
+    {
+      "file": "game/assets/ui/refresh_20261003/hud_paper.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/ui_frames_20261003.json",
+      "transparent_background": true,
+      "sha256": "035c9593b3aa513445a16da1641786a94cc3ec3ec239d052462d09c5c6ee6f38"
+    },
+    {
+      "file": "game/assets/ui/refresh_20261003/minimap_ring.png",
+      "exists": true,
+      "tool": "codex built-in imagegen",
+      "prompt": "art/manifests/prompts/ui_frames_20261003.json",
+      "transparent_background": true,
+      "sha256": "9a9cbfa8e773b4a5bd57e09b2660da05a386926801a9ff29d265235021ccf095"
+    },
+    {
+      "file": "game/ui_kit/assets/buttons_atlas.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/ui_kit_20261003.json",
+      "prompt_key": "buttons",
+      "generated_original": "/Users/jack/.codex/generated_images/01a0f804-ab63-7ce3-b8ed-f40899f7abd1/exec-1aef4618-6f73-4266-b031-f6299526f1c7.png",
+      "transparent_background": true,
+      "sha256": "fcc2c0b958d033424ca691b9a9929e7fd21bd2f692302ad73022575a31b08938"
+    },
+    {
+      "file": "game/ui_kit/assets/controls_atlas.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/ui_kit_20261003.json",
+      "prompt_key": "controls",
+      "generated_original": "/Users/jack/.codex/generated_images/01a0f804-ab63-7ce3-b8ed-f40899f7abd1/exec-0a9abd8c-6521-4b20-8f14-d80799a0fa31.png",
+      "transparent_background": true,
+      "sha256": "199071757badd43209dfa6da4fa0bd8020265c11d9f54a3ed99f9f746af2c986"
+    },
+    {
+      "file": "game/ui_kit/assets/utility_atlas.png",
+      "exists": true,
+      "tool": "built-in imagegen",
+      "date": "2026-10-03",
+      "prompt": "art/manifests/prompts/ui_kit_20261003.json",
+      "prompt_key": "utility",
+      "generated_original": "/Users/jack/.codex/generated_images/01a0f804-ab63-7ce3-b8ed-f40899f7abd1/exec-a10c1092-5f36-44f8-8e32-14fffaf99405.png",
+      "transparent_background": true,
+      "sha256": "7d46c79a3f66ba2d9f1f4ca4304f17e934b623bbb991ee90f9fee4c78d5ab83b"
+    },
+    {
+      "file": "game/assets/ui/fish/anime_atlas_20261004.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "prompt": "art/manifests/prompts/living_town/fish_atlas.txt",
+      "source": "art/references/fish/fish_atlas_trial_20261004.png",
+      "date": "2026-10-04",
+      "note": "六种鱼的动漫平涂图集；原生透明 alpha，Godot AtlasTexture 取区域，不抠底色。"
+    },
+    {
+      "file": "art/poc/character_pipeline_20261003/tpose_20261004/references/sora_tpose_back.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/poc/character_pipeline_20261003/tpose_20261004/reference_prompts.json",
+      "purpose": "character identity-preserving T pose front/back reference"
+    },
+    {
+      "file": "art/poc/character_pipeline_20261003/tpose_20261004/references/sora_tpose_front.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/poc/character_pipeline_20261003/tpose_20261004/reference_prompts.json",
+      "purpose": "character identity-preserving T pose front/back reference"
+    },
+    {
+      "file": "art/poc/character_pipeline_20261003/tpose_20261004/references/mio_tpose_front.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/poc/character_pipeline_20261003/tpose_20261004/reference_prompts.json",
+      "purpose": "character identity-preserving T pose front/back reference"
+    },
+    {
+      "file": "art/poc/character_pipeline_20261003/tpose_20261004/references/mio_tpose_back.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/poc/character_pipeline_20261003/tpose_20261004/reference_prompts.json",
+      "purpose": "character identity-preserving T pose front/back reference"
+    },
+    {
+      "file": "art/references/town_detail/B01_bus_reference.png",
+      "exists": true,
+      "tool": "image_gen text-to-image",
+      "prompt": "art/manifests/prompts/town_detail_bus.txt",
+      "date": "2026-10-04"
+    },
+    {
+      "file": "game/assets/textures/town_detail/grass.png",
+      "exists": true,
+      "tool": "image_gen text-to-image",
+      "prompt": "art/manifests/prompts/town_detail_grass.txt",
+      "date": "2026-10-04"
+    },
+    {
+      "file": "game/assets/textures/town_detail/stone.png",
+      "exists": true,
+      "tool": "image_gen text-to-image",
+      "prompt": "art/manifests/prompts/town_detail_stone.txt",
+      "date": "2026-10-04"
+    },
+    {
+      "file": "game/assets/textures/town_detail/sand.png",
+      "exists": true,
+      "tool": "image_gen text-to-image",
+      "prompt": "art/manifests/prompts/town_detail_sand.txt",
+      "date": "2026-10-04"
+    },
+    {
+      "file": "art/references/scene_polish/bus.png",
+      "exists": true,
+      "tool": "image_gen text-to-image",
+      "prompt": "art/manifests/prompts/scene_polish_bus.txt",
+      "date": "2026-10-04"
+    },
+    {
+      "file": "art/references/scene_polish/broadleaf.png",
+      "exists": true,
+      "tool": "image_gen text-to-image",
+      "prompt": "art/manifests/prompts/scene_polish_broadleaf.txt",
+      "date": "2026-10-04"
+    },
+    {
+      "file": "art/references/scene_polish/conifer.png",
+      "exists": true,
+      "tool": "image_gen text-to-image",
+      "prompt": "art/manifests/prompts/scene_polish_conifer.txt",
+      "date": "2026-10-04"
+    },
+    {
+      "file": "art/references/scene_polish/cat_sit.png",
+      "exists": true,
+      "tool": "image_gen text-to-image",
+      "prompt": "art/manifests/prompts/scene_polish_cat_sit.txt",
+      "date": "2026-10-04"
+    },
+    {
+      "file": "art/references/scene_polish/cat_sleep.png",
+      "exists": true,
+      "tool": "image_gen text-to-image",
+      "prompt": "art/manifests/prompts/scene_polish_cat_sleep.txt",
+      "date": "2026-10-04"
+    },
+    {
+      "file": "art/references/scene_polish/broadleaf_crown.png",
+      "exists": true,
+      "tool": "image_gen edit",
+      "prompt": "art/manifests/prompts/scene_polish_broadleaf_crown.txt",
+      "date": "2026-10-04"
+    },
+    {
+      "file": "art/poc/cat_motion_20261004/references/orange_stand.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "prompt": "art/manifests/prompts/cat_motion_20261004/orange_stand.txt",
+      "references": [
+        "art/references/scene_polish/cat_sit.png"
+      ],
+      "transparent_background": false,
+      "batch": "game cats 20261004",
+      "accepted": true
+    },
+    {
+      "file": "art/poc/cat_motion_20261004/references/calico_stand.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "prompt": "art/manifests/prompts/cat_motion_20261004/calico_stand.txt",
+      "references": [
+        "art/references/scene_polish/cat_sleep.png"
+      ],
+      "transparent_background": false,
+      "batch": "game cats 20261004",
+      "accepted": true
+    },
+    {
+      "file": "game/ui_kit/assets/animations/title_cat/orange_walk_idle.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "prompt": "art/manifests/prompts/cat_motion_20261004/menu_walk_idle.txt",
+      "references": [
+        "art/poc/cat_motion_20261004/references/orange_stand.png"
+      ],
+      "transparent_background": true,
+      "batch": "game cats 20261004",
+      "accepted": true
+    },
+    {
+      "file": "art/poc/cat_motion_20261004/references/ui_rest_horizontal_rejected_20261005.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "prompt": "art/manifests/prompts/cat_motion_20261004/menu_rest_v1_20261005.txt",
+      "references": [
+        "game/ui_kit/assets/animations/title_cat/orange_walk_idle.png"
+      ],
+      "transparent_background": true,
+      "accepted": false,
+      "batch": "UI resting cat 20261005",
+      "sha256": "cc905bca8fd77b2cf0f5a4b18168ac5873b5419241d58a66ef9bed42489ccf4b"
+    },
+    {
+      "file": "game/ui_kit/assets/animations/title_cat/orange_lie_dangling.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "prompt": "art/manifests/prompts/cat_motion_20261004/menu_dangling_tail_20261005.txt",
+      "references": [
+        "art/poc/cat_motion_20261004/references/ui_rest_horizontal_rejected_20261005.png",
+        "art/poc/cat_motion_20261004/references/ui_tail_sketch_20261005.jpg"
+      ],
+      "transparent_background": true,
+      "accepted": true,
+      "batch": "UI resting cat 20261005",
+      "sha256": "4ce72d3eccb7cb17b6e8ffa28ee6103c45b51c866b44311bee177e2722befe94"
+    },
+    {
+      "file": "art/references/hero_tree_20261005/bark.png",
+      "exists": true,
+      "tool": "image_gen reference-guided generation",
+      "prompt": "art/manifests/prompts/hero_tree_bark_20261005.txt",
+      "reference": "game/assets/ui/prologue/P3_tree.jpg",
+      "date": "2026-10-05",
+      "transparent_background": false
+    },
+    {
+      "file": "art/references/hero_tree_20261005/leaves.png",
+      "exists": true,
+      "tool": "image_gen reference-guided generation",
+      "prompt": "art/manifests/prompts/hero_tree_leaves_20261005.txt",
+      "reference": "game/assets/ui/prologue/P3_tree.jpg",
+      "date": "2026-10-05",
+      "transparent_background": true
+    },
+    {
+      "file": "art/references/characters_apose_20261004/ren_sheet.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/characters_apose_20261004/ren_selected.txt",
+      "source_reference": "art/references/characters_apose_20261004/ren_sheet.png",
+      "batch": "character A pose 45 20261004",
+      "selected": true
+    },
+    {
+      "file": "art/references/characters_apose_20261004/ren_front.png",
+      "exists": true,
+      "tool": "deterministic half-sheet crop",
+      "prompt": "art/manifests/prompts/characters_apose_20261004/ren_selected.txt",
+      "source_reference": "art/references/characters_apose_20261004/ren_sheet.png",
+      "batch": "character A pose 45 20261004",
+      "selected": true
+    },
+    {
+      "file": "art/references/characters_apose_20261004/ren_back.png",
+      "exists": true,
+      "tool": "deterministic half-sheet crop",
+      "prompt": "art/manifests/prompts/characters_apose_20261004/ren_selected.txt",
+      "source_reference": "art/references/characters_apose_20261004/ren_sheet.png",
+      "batch": "character A pose 45 20261004",
+      "selected": true
+    },
+    {
+      "file": "art/references/characters_apose_20261004/haru_sheet.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/characters_apose_20261004/haru_selected.txt",
+      "source_reference": "art/references/characters_apose_20261004/haru_sheet.png",
+      "batch": "character A pose 45 20261004",
+      "selected": true
+    },
+    {
+      "file": "art/references/characters_apose_20261004/haru_front.png",
+      "exists": true,
+      "tool": "deterministic half-sheet crop",
+      "prompt": "art/manifests/prompts/characters_apose_20261004/haru_selected.txt",
+      "source_reference": "art/references/characters_apose_20261004/haru_sheet.png",
+      "batch": "character A pose 45 20261004",
+      "selected": true
+    },
+    {
+      "file": "art/references/characters_apose_20261004/haru_back.png",
+      "exists": true,
+      "tool": "deterministic half-sheet crop",
+      "prompt": "art/manifests/prompts/characters_apose_20261004/haru_selected.txt",
+      "source_reference": "art/references/characters_apose_20261004/haru_sheet.png",
+      "batch": "character A pose 45 20261004",
+      "selected": true
+    },
+    {
+      "file": "art/references/characters_apose_20261004/tanaka_sheet.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/characters_apose_20261004/tanaka_selected.txt",
+      "source_reference": "art/references/characters_apose_20261004/tanaka_sheet.png",
+      "batch": "character A pose 45 20261004",
+      "selected": true
+    },
+    {
+      "file": "art/references/characters_apose_20261004/tanaka_front.png",
+      "exists": true,
+      "tool": "deterministic half-sheet crop",
+      "prompt": "art/manifests/prompts/characters_apose_20261004/tanaka_selected.txt",
+      "source_reference": "art/references/characters_apose_20261004/tanaka_sheet.png",
+      "batch": "character A pose 45 20261004",
+      "selected": true
+    },
+    {
+      "file": "art/references/characters_apose_20261004/tanaka_back.png",
+      "exists": true,
+      "tool": "deterministic half-sheet crop",
+      "prompt": "art/manifests/prompts/characters_apose_20261004/tanaka_selected.txt",
+      "source_reference": "art/references/characters_apose_20261004/tanaka_sheet.png",
+      "batch": "character A pose 45 20261004",
+      "selected": true
+    },
+    {
+      "file": "art/references/characters_apose_20261004/aoi_sheet.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/characters_apose_20261004/aoi_selected.txt",
+      "source_reference": "art/references/characters_apose_20261004/aoi_sheet.png",
+      "batch": "character A pose 45 20261004",
+      "selected": true
+    },
+    {
+      "file": "art/references/characters_apose_20261004/aoi_front.png",
+      "exists": true,
+      "tool": "deterministic half-sheet crop",
+      "prompt": "art/manifests/prompts/characters_apose_20261004/aoi_selected.txt",
+      "source_reference": "art/references/characters_apose_20261004/aoi_sheet.png",
+      "batch": "character A pose 45 20261004",
+      "selected": true
+    },
+    {
+      "file": "art/references/characters_apose_20261004/aoi_back.png",
+      "exists": true,
+      "tool": "deterministic half-sheet crop",
+      "prompt": "art/manifests/prompts/characters_apose_20261004/aoi_selected.txt",
+      "source_reference": "art/references/characters_apose_20261004/aoi_sheet.png",
+      "batch": "character A pose 45 20261004",
+      "selected": true
+    },
+    {
+      "file": "art/references/characters_apose_20261004/kazuko_sheet.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/characters_apose_20261004/kazuko_selected.txt",
+      "source_reference": "art/references/characters_apose_20261004/kazuko_sheet.png",
+      "batch": "character A pose 45 20261004",
+      "selected": true
+    },
+    {
+      "file": "art/references/characters_apose_20261004/kazuko_front.png",
+      "exists": true,
+      "tool": "deterministic half-sheet crop",
+      "prompt": "art/manifests/prompts/characters_apose_20261004/kazuko_selected.txt",
+      "source_reference": "art/references/characters_apose_20261004/kazuko_sheet.png",
+      "batch": "character A pose 45 20261004",
+      "selected": true
+    },
+    {
+      "file": "art/references/characters_apose_20261004/kazuko_back.png",
+      "exists": true,
+      "tool": "deterministic half-sheet crop",
+      "prompt": "art/manifests/prompts/characters_apose_20261004/kazuko_selected.txt",
+      "source_reference": "art/references/characters_apose_20261004/kazuko_sheet.png",
+      "batch": "character A pose 45 20261004",
+      "selected": true
+    },
+    {
+      "file": "art/references/character_leads_apose_20261005/sora_sheet.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/character_leads_apose_20261005/sora.txt",
+      "batch": "leads A pose 20261005",
+      "identity_reference": "art/poc/character_pipeline_20261003/tpose_20261004/references/sora_tpose_front.png",
+      "selected": true
+    },
+    {
+      "file": "art/references/character_leads_apose_20261005/sora_front.png",
+      "exists": true,
+      "tool": "deterministic half-sheet crop",
+      "prompt": "art/manifests/prompts/character_leads_apose_20261005/sora.txt",
+      "batch": "leads A pose 20261005",
+      "identity_reference": "art/poc/character_pipeline_20261003/tpose_20261004/references/sora_tpose_front.png",
+      "selected": true
+    },
+    {
+      "file": "art/references/character_leads_apose_20261005/sora_back.png",
+      "exists": true,
+      "tool": "deterministic half-sheet crop",
+      "prompt": "art/manifests/prompts/character_leads_apose_20261005/sora.txt",
+      "batch": "leads A pose 20261005",
+      "identity_reference": "art/poc/character_pipeline_20261003/tpose_20261004/references/sora_tpose_front.png",
+      "selected": true
+    },
+    {
+      "file": "art/references/character_leads_apose_20261005/mio_sheet.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/character_leads_apose_20261005/mio.txt",
+      "batch": "leads A pose 20261005",
+      "identity_reference": "art/poc/character_pipeline_20261003/tpose_20261004/references/mio_tpose_front.png",
+      "selected": true
+    },
+    {
+      "file": "art/references/character_leads_apose_20261005/mio_front.png",
+      "exists": true,
+      "tool": "deterministic half-sheet crop",
+      "prompt": "art/manifests/prompts/character_leads_apose_20261005/mio.txt",
+      "batch": "leads A pose 20261005",
+      "identity_reference": "art/poc/character_pipeline_20261003/tpose_20261004/references/mio_tpose_front.png",
+      "selected": true
+    },
+    {
+      "file": "art/references/character_leads_apose_20261005/mio_back.png",
+      "exists": true,
+      "tool": "deterministic half-sheet crop",
+      "prompt": "art/manifests/prompts/character_leads_apose_20261005/mio.txt",
+      "batch": "leads A pose 20261005",
+      "identity_reference": "art/poc/character_pipeline_20261003/tpose_20261004/references/mio_tpose_front.png",
+      "selected": true
+    },
+    {
+      "file": "art/references/character_neck_haru_20261005/haru_sheet.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/character_neck_haru_20261005/haru_reference.txt",
+      "batch": "Haru face and neck repair 20261005",
+      "identity_reference": "game/assets/ui/portraits/haru_neutral.png",
+      "selected": true
+    },
+    {
+      "file": "art/references/character_neck_haru_20261005/haru_front.png",
+      "exists": true,
+      "tool": "deterministic half-sheet crop",
+      "prompt": "art/manifests/prompts/character_neck_haru_20261005/haru_reference.txt",
+      "batch": "Haru face and neck repair 20261005",
+      "identity_reference": "game/assets/ui/portraits/haru_neutral.png",
+      "selected": true
+    },
+    {
+      "file": "art/references/character_neck_haru_20261005/haru_back.png",
+      "exists": true,
+      "tool": "deterministic half-sheet crop",
+      "prompt": "art/manifests/prompts/character_neck_haru_20261005/haru_reference.txt",
+      "batch": "Haru face and neck repair 20261005",
+      "identity_reference": "game/assets/ui/portraits/haru_neutral.png",
+      "selected": true
+    },
+    {
+      "file": "art/references/character_multiview_20261006/sora/turnaround.png",
+      "exists": true,
+      "tool": "built-in codex image_gen",
+      "prompt": "art/manifests/prompts/character_multiview_20261006/sora.txt",
+      "references": [
+        "art/library/characters/references/sora_front.png",
+        "art/library/characters/references/sora_back.png"
+      ],
+      "views": [
+        "art/references/character_multiview_20261006/sora/front.png",
+        "art/references/character_multiview_20261006/sora/left.png",
+        "art/references/character_multiview_20261006/sora/right.png",
+        "art/references/character_multiview_20261006/sora/back.png"
+      ],
+      "reference_set": "art/references/character_multiview_20261006/sora/reference-set.json",
+      "date": "2026-10-06"
+    },
+    {
+      "file": "art/references/ui/ban_kitchen_anime_20261006.png",
+      "game_file": "game/assets/ui/banners/ban_kitchen_anime.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/ban_kitchen_anime_20261006.txt",
+      "references": [
+        "game/assets/ui/banners/ban_kitchen.jpg"
+      ],
+      "date": "2026-10-06",
+      "sha256": "751027f75b791b1e2731127207879e17662ea74a85c3f97e7a906717807a647f",
+      "role": "flat-cel kitchen banner; composition reference redrawn, no character generation"
+    },
+    {
+      "file": "art/references/material_review_20261006_v1/a_clean_cel.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/material_review_20261006_v1/a_clean_cel.txt",
+      "date": "2026-10-06",
+      "sha256": "43dc94950615a776346100a36583710d92aca008162963ddaf8901898d5e6897",
+      "role": "preview-only 3D anime surface direction sheet; not a Godot screenshot or ready-to-use texture",
+      "grid_order": [
+        "earthen_ground",
+        "water",
+        "grass",
+        "sand",
+        "wood_floor",
+        "stone_floor"
+      ]
+    },
+    {
+      "file": "art/references/material_review_20261006_v1/b_luminous_summer.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/material_review_20261006_v1/b_luminous_summer.txt",
+      "date": "2026-10-06",
+      "sha256": "43becb746fcd0f965b1c309c8f3db0c3e51a638c1b584da66b65e5d514553462",
+      "role": "preview-only 3D anime surface direction sheet; not a Godot screenshot or ready-to-use texture",
+      "grid_order": [
+        "earthen_ground",
+        "water",
+        "grass",
+        "sand",
+        "wood_floor",
+        "stone_floor"
+      ]
+    },
+    {
+      "file": "art/references/material_review_20261006_v1/textures/dirt.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/material_review_20261006_v1/texture_dirt.txt",
+      "date": "2026-10-06",
+      "sha256": "d90c06a6bd9ea43ef8a1949ba4e87611c6de60d1a7fe5f092e91c2aedd3340d7",
+      "role": "actual Godot sample albedo texture"
+    },
+    {
+      "file": "art/references/material_review_20261006_v1/textures/sand.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/material_review_20261006_v1/texture_sand.txt",
+      "date": "2026-10-06",
+      "sha256": "93fe9d233ed6368d842ad6e86ba08e5201abfde53bf130fe1eafc5e77205861f",
+      "role": "actual Godot sample albedo texture"
+    },
+    {
+      "file": "art/references/material_review_20261006_v1/textures/wood.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/material_review_20261006_v1/texture_wood.txt",
+      "date": "2026-10-06",
+      "sha256": "19737e16f9c27dc47178d3a87e1b5a812d75dfef272d145421734742745e7b24",
+      "role": "actual Godot sample albedo texture"
+    },
+    {
+      "file": "art/references/material_review_20261006_v1/textures/stone.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/material_review_20261006_v1/texture_stone.txt",
+      "date": "2026-10-06",
+      "sha256": "9d2a45a558e8d576869076e4b921b9007a0fc1c0b04d1972b50b1e55d0eb36fb",
+      "role": "actual Godot sample albedo texture"
+    },
+    {
+      "file": "art/references/environment_life_20261006/furin-clean.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/environment_life_20261006.json",
+      "date": "2026-10-06",
+      "sha256": "95d207ffa23c26f611d38a207de3d8cae18e4d6d908a5a5e74073261fa99ec11",
+      "role": "image-to-3D reference for actual Hyper3D game environment model"
+    },
+    {
+      "file": "art/references/environment_life_20261006/daisy_clump-clean.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/environment_life_20261006.json",
+      "date": "2026-10-06",
+      "sha256": "8a554eff74eda65654401a1fca6d9c87e75c15ade46e3145c793eed5c450b78a",
+      "role": "image-to-3D reference for actual Hyper3D game environment model"
+    },
+    {
+      "file": "art/references/environment_life_20261006/reed_clump-clean.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/environment_life_20261006.json",
+      "date": "2026-10-06",
+      "sha256": "0aba5902998ccdb2734c85bdf72e87cc61b941e0797cd2daa5619cecbd8856c5",
+      "role": "image-to-3D reference for actual Hyper3D game environment model"
+    },
+    {
+      "file": "art/references/material_scene_options_20261006_v2/dirt_d.png",
+      "game_file": "game/assets/textures/material_options/dirt_d.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/material_scene_options_20261006_v2/dirt_d.txt",
+      "date": "2026-10-06",
+      "sha256": "568045b1e69d298ed5c224464a59596d94bae13e6edcd19089b120bcb6b2951a",
+      "role": "actual current-scene opt-in material D albedo"
+    },
+    {
+      "file": "art/references/material_scene_options_20261006_v2/sand_d.png",
+      "game_file": "game/assets/textures/material_options/sand_d.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/material_scene_options_20261006_v2/sand_d.txt",
+      "date": "2026-10-06",
+      "sha256": "190e86d908e8d2806d97eb0a77babcca08ead58091cb5a606db694b7411f0422",
+      "role": "actual current-scene opt-in material D albedo"
+    },
+    {
+      "file": "art/references/material_scene_options_20261006_v2/wood_d.png",
+      "game_file": "game/assets/textures/material_options/wood_d.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/material_scene_options_20261006_v2/wood_d.txt",
+      "date": "2026-10-06",
+      "sha256": "aef8139d556e4c09d334f49bd86dea50557da8441aa6bb31261f8282f9af2623",
+      "role": "actual current-scene opt-in material D albedo"
+    },
+    {
+      "file": "art/references/material_scene_options_20261006_v2/stone_d.png",
+      "game_file": "game/assets/textures/material_options/stone_d.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/material_scene_options_20261006_v2/stone_d.txt",
+      "date": "2026-10-06",
+      "sha256": "12c16cf6b363ffbaf067848eba552ec15f4859b14e0454c52aa34724f815c9fb",
+      "role": "actual current-scene opt-in material D albedo"
+    },
+    {
+      "file": "art/references/shop_life_20261006/B07_iced_donut.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/shop_food_20261006.json",
+      "prompt_key": "B07_iced_donut",
+      "source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-b03ef244-74fd-40e9-9904-def0fb17e3cb.png",
+      "sha256": "91d05485332de02f01605095d0c9853f213a6c9a436c16ec63ba2fc066ba984f"
+    },
+    {
+      "file": "art/references/shop_life_20261006/B08_strawberry_cake.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/shop_food_20261006.json",
+      "prompt_key": "B08_strawberry_cake",
+      "source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-3d35ebe7-c0c1-4694-aebf-fdcc2559f291.png",
+      "sha256": "e654ed0119ef9316ab92ebd0c3af5cf961e664ff74f915f9f7a1a50ba834ad97"
+    },
+    {
+      "file": "art/references/shop_life_20261006/B09_sushi_tray.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/shop_food_20261006.json",
+      "prompt_key": "B09_sushi_tray",
+      "source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-e39201ff-ffa3-440f-9a9e-cacb1116399f.png",
+      "sha256": "b8bf3f1152ce03c0765d3df6a40244d3b96afe2d567ba6aea04145f14b3eebb3"
+    },
+    {
+      "file": "art/references/shop_life_20261006/B10_bento_box.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/shop_food_20261006.json",
+      "prompt_key": "B10_bento_box",
+      "source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-b7eb88e6-bdb7-4765-b612-2cf4ffe782e6.png",
+      "sha256": "fd275ea46573046b51ec7c6d16fb031ffc652d24f7c92d681400dcb895a45345"
+    },
+    {
+      "file": "art/references/shop_life_20261006/B11_cream_bun.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/shop_food_20261006.json",
+      "prompt_key": "B11_cream_bun",
+      "source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-8ac59e36-ed2d-46ff-b1b6-976e2c4e0ea8.png",
+      "sha256": "3cb042feee26b4425d47db872ce22835fb849b89341a47a9f1b9c77965102b17"
+    },
+    {
+      "file": "art/references/shop_life_20261006/W14_grocery_stock.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/shop_fixtures_20261006.json",
+      "prompt_key": "W14_grocery_stock",
+      "source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-69a0507b-2c9e-4d48-bf9d-e7b099f993c2.png",
+      "sha256": "013407afbe4a02b28751ef7f185b3d21bc3902da318baf92534d468c06a0173c"
+    },
+    {
+      "file": "art/references/shop_life_20261006/W15_produce_basket.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/shop_fixtures_20261006.json",
+      "prompt_key": "W15_produce_basket",
+      "source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-0c0a704b-fcef-487e-8e4e-b698c4dc24d1.png",
+      "sha256": "37375c45b2657c5ed0b1e1b9fad180c4b026e60cc3f4c1fedcb6d6053037bdc6"
+    },
+    {
+      "file": "art/references/shop_life_20261006/W16_handtools_board.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/shop_fixtures_20261006.json",
+      "prompt_key": "W16_handtools_board",
+      "source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-0433df55-0adc-44ab-a5b8-6be896aff37d.png",
+      "sha256": "e8a9632bb735bc3e2c99b0170316a178eaef756978599be9d49febc8745e0415"
+    },
+    {
+      "file": "art/references/shop_life_20261006/W17_display_shelf.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/shop_fixtures_20261006.json",
+      "prompt_key": "W17_display_shelf",
+      "source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-87c21ede-0fcf-4ccd-aed3-752820f5a0e5.png",
+      "sha256": "8675d1cc9b021e5a63c4254a9d7817d58a1d4e00b655d10476788b03da89dc68"
+    },
+    {
+      "file": "art/references/shop_life_20261006/W18_retro_tv.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/shop_fixtures_20261006.json",
+      "prompt_key": "W18_retro_tv",
+      "source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-aab351c2-2424-4c4b-b579-5cd005ea9480.png",
+      "sha256": "1c66bcf403cf572fc9a452a1f7952446c15820073ce009b7cae56db7db9cbbde"
+    },
+    {
+      "file": "game/assets/textures/shop_life/bakery_poster.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/shop_art_20261006.json",
+      "prompt_key": "bakery_poster",
+      "source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-49cae647-ab4b-4b1f-ac31-11c7beafa5ec.png",
+      "sha256": "b6276755ebfc44b3aa7c3531814e0341d84d7014c44267ebddabd3ff1ed295ed"
+    },
+    {
+      "file": "game/assets/textures/shop_life/store_poster.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/shop_art_20261006.json",
+      "prompt_key": "store_poster",
+      "source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-e8f38890-a65a-4f66-adaa-55eb2ba2556d.png",
+      "sha256": "b78dd12daef6c2456879250434a693091d3ef5b844acd99ddda36b1f9afb7544"
+    },
+    {
+      "file": "game/assets/textures/shop_life/tools_poster.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/shop_art_20261006.json",
+      "prompt_key": "tools_poster",
+      "source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-524e019a-30fe-42de-831c-7ef795fcfa56.png",
+      "sha256": "97463244b79652dace3f9927da43c9bf52c8b61ac8146baa58eb88f055e6697f"
+    },
+    {
+      "file": "game/assets/textures/shop_life/tv_town.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/shop_art_20261006.json",
+      "prompt_key": "tv_town",
+      "source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-8544c009-71ca-443a-8f96-2805b7579e00.png",
+      "sha256": "076ee5cc8717391b6cd808af901c6f5d59b4a44b40e6453a04ec73eeccdfe4ce"
+    },
+    {
+      "file": "game/assets/textures/shop_life/tv_farm.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/shop_art_20261006.json",
+      "prompt_key": "tv_farm",
+      "source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-b4ae5a16-4288-404d-aac0-30826d0606b1.png",
+      "sha256": "50dd85e9e33ae2d88bcad0cae047558fde2100bfba8e557448f9b0815b09f1fe"
+    },
+    {
+      "file": "art/references/lakeside_polish_20261007/bridge_wood.png",
+      "game_file": "game/assets/textures/lakeside_polish/bridge_wood.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/lakeside_polish_20261007/bridge_wood.txt",
+      "date": "2026-10-07",
+      "role": "actual lakeside material albedo",
+      "sha256": "43aa5c48dd6bff69e86bd1be1d7c32973ee5d53d6d5d32a15218e85aebf08797"
+    },
+    {
+      "file": "art/references/lakeside_polish_20261007/path.png",
+      "game_file": "game/assets/textures/lakeside_polish/path.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/lakeside_polish_20261007/path.txt",
+      "date": "2026-10-07",
+      "role": "actual lakeside material albedo",
+      "sha256": "03293dd21e37105b4bd355873e2eebf822e074350a6dc6d25fc4d184f22a09e6"
+    },
+    {
+      "file": "art/references/lakeside_polish_20261007/creek_stone.png",
+      "game_file": "game/assets/textures/lakeside_polish/creek_stone.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/lakeside_polish_20261007/creek_stone.txt",
+      "date": "2026-10-07",
+      "role": "actual lakeside material albedo",
+      "sha256": "c2217aacd091db043b1aedf53db51d795f3e2247403dbc865d25a8363671e88c"
+    },
+    {
+      "file": "art/references/lakeside_polish_20261007/sign_face.png",
+      "game_file": "game/assets/textures/lakeside_polish/sign_face.png",
+      "exists": true,
+      "tool": "codex built-in image_gen",
+      "prompt": "art/manifests/prompts/lakeside_polish_20261007/sign_face.txt",
+      "date": "2026-10-07",
+      "role": "actual lakeside material albedo",
+      "sha256": "656ea503a6ba7f33271b891699d14d1f2fdc5302feb38cb6dc146f7d3614ad32"
+    },
+    {
+      "id": "cat_neutral_orange_20261007",
+      "file": "art/poc/cat_neck_alignment_20261007/references/orange-side.png",
+      "provider": "imagegen",
+      "prompt": "art/manifests/prompts/cat_neutral_20261007/orange.txt",
+      "purpose": "side-profile neutral standing reference; head aligned with torso",
+      "reference_review": "evidence/cat_neck_alignment_20261007/reference-review.json",
+      "sha256": "26d8c49e72a54bddcbc353c234e38450ecb9de7be8ef688d098185eb9451ee05"
+    },
+    {
+      "id": "cat_neutral_calico_20261007",
+      "file": "art/poc/cat_neck_alignment_20261007/references/calico-side.png",
+      "provider": "imagegen",
+      "prompt": "art/manifests/prompts/cat_neutral_20261007/calico.txt",
+      "purpose": "side-profile neutral standing reference; head aligned with torso",
+      "reference_review": "evidence/cat_neck_alignment_20261007/reference-review.json",
+      "sha256": "efb7c1c421f38c78808af0d5b1d9136db5b757b2aa2a9b17efaf203d766bf156"
+    }
+  ]
+}

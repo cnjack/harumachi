@@ -1,0 +1,25 @@
+{
+ "id": "C02_radish",
+ "src": "raw/C02_radish_h3d/model.glb",
+ "provider": "hyper3d rodin gen-2.5 (v0.4)",
+ "tris_src": 15000,
+ "tris": 3000,
+ "size_m": [
+  0.538,
+  0.423,
+  0.507
+ ],
+ "godot_size_m_xyz": [
+  0.538,
+  0.507,
+  0.423
+ ],
+ "tex": 512,
+ "bytes": 320864,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.94,
+ "levelled": false,
+ "lean_deg": 1.15,
+ "base_frac": 0.198
+}

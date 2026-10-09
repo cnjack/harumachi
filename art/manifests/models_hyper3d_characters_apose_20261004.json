@@ -1,0 +1,81 @@
+{
+  "models": [
+    {
+      "id": "CH_ren",
+      "generation_id": "8fde314d-f354-4843-89b6-9f7dfb15c243",
+      "display_url": "https://hyper3d.ai/workspace/rodin/8fde314d-f354-4843-89b6-9f7dfb15c243",
+      "reference_images": [
+        "art/references/characters_apose_20261004/ren_front.png",
+        "art/references/characters_apose_20261004/ren_back.png"
+      ],
+      "raw": "art/models/raw/CH_ren_rodin_apose_20261004/model.glb",
+      "raw_sha256": "4d7f12e7169aa3a800734607c353e53bbc733a103965660dc50e23e45f31d353",
+      "provider": "Hyper3D Rodin",
+      "pose": "A, roughly 45 degrees below horizontal",
+      "adopted": true,
+      "request_record": "art/models/raw/CH_ren_rodin_apose_20261004/generation.json"
+    },
+    {
+      "id": "CH_haru",
+      "generation_id": "d49f1d1a-3bff-4a0f-b79e-7e52fb6be8b4",
+      "display_url": "https://hyper3d.ai/workspace/rodin/d49f1d1a-3bff-4a0f-b79e-7e52fb6be8b4",
+      "reference_images": [
+        "art/references/characters_apose_20261004/haru_front.png",
+        "art/references/characters_apose_20261004/haru_back.png"
+      ],
+      "raw": "art/models/raw/CH_haru_rodin_apose_20261004/model.glb",
+      "raw_sha256": "0db936df2071c0b663693b315b988c3a3f9e9c2e7a677798a429fddc3d30d124",
+      "provider": "Hyper3D Rodin",
+      "pose": "A, roughly 45 degrees below horizontal",
+      "adopted": true,
+      "request_record": "art/models/raw/CH_haru_rodin_apose_20261004/generation.json"
+    },
+    {
+      "id": "CH_tanaka",
+      "generation_id": "1772f045-fe8c-45c6-8f33-4fe89dfc5143",
+      "display_url": "https://hyper3d.ai/workspace/rodin/1772f045-fe8c-45c6-8f33-4fe89dfc5143",
+      "reference_images": [
+        "art/references/characters_apose_20261004/tanaka_front.png",
+        "art/references/characters_apose_20261004/tanaka_back.png"
+      ],
+      "raw": "art/models/raw/CH_tanaka_rodin_apose_20261004/model.glb",
+      "raw_sha256": "753fb0c1782262a2d46ad7ea71ac189b52230e0e35bf9ac2506aeeb6a903e4e3",
+      "provider": "Hyper3D Rodin",
+      "pose": "A, roughly 45 degrees below horizontal",
+      "adopted": true,
+      "request_record": "art/models/raw/CH_tanaka_rodin_apose_20261004/generation.json"
+    },
+    {
+      "id": "CH_aoi",
+      "generation_id": "76e516db-ac2e-4aef-9573-7bfd6517db34",
+      "display_url": "https://hyper3d.ai/workspace/rodin/76e516db-ac2e-4aef-9573-7bfd6517db34",
+      "reference_images": [
+        "art/references/characters_apose_20261004/aoi_front.png",
+        "art/references/characters_apose_20261004/aoi_back.png"
+      ],
+      "raw": "art/models/raw/CH_aoi_rodin_apose_20261004/model.glb",
+      "raw_sha256": "cef680bd364817217f78d0bb5598745e0088da85a2e481b888ceae2dbe0d14bd",
+      "provider": "Hyper3D Rodin",
+      "pose": "A, roughly 45 degrees below horizontal",
+      "adopted": true,
+      "request_record": "art/models/raw/CH_aoi_rodin_apose_20261004/generation.json"
+    },
+    {
+      "id": "CH_kazuko",
+      "generation_id": "02faef2e-028f-43e0-933d-47541dcc167b",
+      "display_url": "https://hyper3d.ai/workspace/rodin/02faef2e-028f-43e0-933d-47541dcc167b",
+      "reference_images": [
+        "art/references/characters_apose_20261004/kazuko_front.png",
+        "art/references/characters_apose_20261004/kazuko_back.png"
+      ],
+      "raw": "art/models/raw/CH_kazuko_rodin_apose_20261004/model.glb",
+      "raw_sha256": "d81869ba857cf5bbd9d56fee0d66e7ffe7ffaa4c944adcecf7d7cda4030fe5a6",
+      "provider": "Hyper3D Rodin",
+      "pose": "A, roughly 45 degrees below horizontal",
+      "adopted": true,
+      "request_record": "art/models/raw/CH_kazuko_rodin_apose_20261004/generation.json"
+    }
+  ],
+  "submitted_jobs": 5,
+  "extra_paid_retries": 0
+}

@@ -1,0 +1,230 @@
+{
+  "version": 1,
+  "note": "badge: sheet a = the first 16, sheet b = the rest, in grid order (art/references/v06/ui/badges_*.png). cond is evaluated by GameState.check_achievements().",
+  "items": [
+    {
+      "id": "move_in",
+      "name": "搬进新家",
+      "desc": "完成「搬家第一天」",
+      "cond": "q:Q00",
+      "badge": 0
+    },
+    {
+      "id": "first_market",
+      "name": "第一次集市",
+      "desc": "办成晴町的第一个周末集市",
+      "cond": "q:Q05",
+      "badge": 1
+    },
+    {
+      "id": "first_harvest",
+      "name": "第一次收获",
+      "desc": "收获第一份作物",
+      "cond": "stat:harvests>=1",
+      "badge": 2
+    },
+    {
+      "id": "harvest_100",
+      "name": "满满一推车",
+      "desc": "累计收获 100 份作物",
+      "cond": "stat:harvests>=100",
+      "badge": 3
+    },
+    {
+      "id": "all_crops",
+      "name": "十五种种子",
+      "desc": "15 种作物都种出来过",
+      "cond": "crops_grown>=15",
+      "badge": 4
+    },
+    {
+      "id": "level_5",
+      "name": "像样的农夫",
+      "desc": "种植等级达到 5",
+      "cond": "level>=5",
+      "badge": 5
+    },
+    {
+      "id": "level_10",
+      "name": "晴町的老把式",
+      "desc": "种植等级达到 10",
+      "cond": "level>=10",
+      "badge": 6
+    },
+    {
+      "id": "compost_10",
+      "name": "堆肥达人",
+      "desc": "从堆肥箱取出 10 袋肥料",
+      "cond": "stat:fertilizer_made>=10",
+      "badge": 7
+    },
+    {
+      "id": "contest_gold",
+      "name": "品评会金奖",
+      "desc": "在蔬菜品评会拿到金奖",
+      "cond": "item:ribbon_gold",
+      "badge": 8
+    },
+    {
+      "id": "first_dish",
+      "name": "第一道料理",
+      "desc": "第一次在厨房做出料理",
+      "cond": "stat:cooked>=1",
+      "badge": 9
+    },
+    {
+      "id": "all_dishes",
+      "name": "晴町的厨师",
+      "desc": "24 道配方全都做过",
+      "cond": "dishes_made>=24",
+      "badge": 10
+    },
+    {
+      "id": "baker",
+      "name": "烤箱学徒",
+      "desc": "在莲的烤箱烤出 10 份面包",
+      "cond": "stat:baked>=10",
+      "badge": 11
+    },
+    {
+      "id": "coins_1000",
+      "name": "小小积蓄",
+      "desc": "手上同时有 1000 生活币",
+      "cond": "coins>=1000",
+      "badge": 12
+    },
+    {
+      "id": "coins_5000",
+      "name": "晴町富翁",
+      "desc": "手上同时有 5000 生活币",
+      "cond": "coins>=5000",
+      "badge": 13
+    },
+    {
+      "id": "first_heart",
+      "name": "第一颗心",
+      "desc": "和一位邻居的熟悉度到 ♥1",
+      "cond": "hearts_max>=1",
+      "badge": 14
+    },
+    {
+      "id": "best_friend",
+      "name": "知心朋友",
+      "desc": "和一位邻居的熟悉度到 ♥5",
+      "cond": "hearts_max>=5",
+      "badge": 15
+    },
+    {
+      "id": "everyone",
+      "name": "大家的朋友",
+      "desc": "和五位邻居的熟悉度都到 ♥3",
+      "cond": "hearts_min>=3",
+      "badge": 16
+    },
+    {
+      "id": "gifts_20",
+      "name": "送礼达人",
+      "desc": "送出 20 份礼物",
+      "cond": "stat:gifts>=20",
+      "badge": 17
+    },
+    {
+      "id": "fest_tanabata",
+      "name": "七夕的愿望",
+      "desc": "在七夕的竹子上挂一张短册",
+      "cond": "fest:tanabata_wish",
+      "badge": 18
+    },
+    {
+      "id": "fest_bon",
+      "name": "盆舞",
+      "desc": "在夏祭跳一次盆舞",
+      "cond": "fest:bon_odori",
+      "badge": 19
+    },
+    {
+      "id": "fest_hanabi",
+      "name": "夏夜花火",
+      "desc": "和邻居一起看晴川花火大会",
+      "cond": "fest:hanabi",
+      "badge": 20
+    },
+    {
+      "id": "fest_toro",
+      "name": "灯笼流",
+      "desc": "在盂兰盆放一盏灯笼",
+      "cond": "fest:toro",
+      "badge": 21
+    },
+    {
+      "id": "fest_tsukimi",
+      "name": "月见",
+      "desc": "在月见的供台上摆团子",
+      "cond": "fest:tsukimi",
+      "badge": 22
+    },
+    {
+      "id": "fest_all",
+      "name": "节日全勤",
+      "desc": "六个节日都参加过",
+      "cond": "fests>=6",
+      "badge": 23
+    },
+    {
+      "id": "goldfish_3",
+      "name": "捞金鱼名人",
+      "desc": "捞金鱼拿到 3 星",
+      "cond": "mg:goldfish>=3",
+      "badge": 24
+    },
+    {
+      "id": "taiko_3",
+      "name": "太鼓达人",
+      "desc": "祭典太鼓拿到 3 星",
+      "cond": "mg:taiko>=3",
+      "badge": 25
+    },
+    {
+      "id": "mg_all_3",
+      "name": "小游戏全三星",
+      "desc": "4 个小游戏都拿到 3 星",
+      "cond": "mg_all>=3",
+      "badge": 26
+    },
+    {
+      "id": "memories_6",
+      "name": "翻箱倒柜",
+      "desc": "找到 6 件晴町旧物",
+      "cond": "memories>=6",
+      "badge": 27
+    },
+    {
+      "id": "memories_all",
+      "name": "旧物收藏家",
+      "desc": "找齐全部 13 件晴町旧物",
+      "cond": "memories>=13",
+      "badge": 28
+    },
+    {
+      "id": "zukan",
+      "name": "图鉴完成",
+      "desc": "作物和料理图鉴全部点亮",
+      "cond": "zukan_full",
+      "badge": 29
+    },
+    {
+      "id": "sunset",
+      "name": "桥边的日落",
+      "desc": "傍晚坐在河边长椅上看日落",
+      "cond": "flag:sunset_bench",
+      "badge": 30
+    },
+    {
+      "id": "early_bird",
+      "name": "早起的人",
+      "desc": "早上 6:30 之前出门",
+      "cond": "flag:early_bird",
+      "badge": 31
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+ "id": "H01",
+ "src": "raw/material_detail_20261003/H01.glb",
+ "provider": "Hyper3D Rodin modular house, engawa and independent lattice; Blender local aperture cuts and assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 299221,
+ "tex": 8192,
+ "bytes": 20458480,
+ "godot_size_m_xyz": [
+  5.7362,
+  6.8,
+  9.0664
+ ],
+ "mesh_nodes": [
+  "DoorFrame_0",
+  "DoorFrame_1",
+  "Rear_service_door",
+  "Rear_shoji_backing",
+  "Rear_wood_infill",
+  "Rodin_engawa",
+  "Rodin_main_house",
+  "Rodin_summer_pig",
+  "Shoji_backing",
+  "Summer_towel"
+ ]
+}

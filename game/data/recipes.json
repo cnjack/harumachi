@@ -1,0 +1,511 @@
+{
+  "salad": {
+    "name": "番茄沙拉",
+    "station": "kitchen",
+    "inputs": {
+      "tomato": 3,
+      "cucumber": 1
+    },
+    "output": {
+      "salad": 1
+    },
+    "minutes": 30,
+    "unlock": {
+      "default": true
+    }
+  },
+  "miso_soup": {
+    "name": "小松菜味噌汤",
+    "station": "kitchen",
+    "inputs": {
+      "komatsuna": 2,
+      "miso": 1
+    },
+    "output": {
+      "miso_soup": 1
+    },
+    "minutes": 20,
+    "unlock": {
+      "default": true
+    }
+  },
+  "edamame_onigiri": {
+    "name": "毛豆饭团",
+    "station": "kitchen",
+    "inputs": {
+      "edamame": 1,
+      "rice": 1
+    },
+    "output": {
+      "edamame_onigiri": 1
+    },
+    "minutes": 20,
+    "unlock": {
+      "default": true
+    }
+  },
+  "pickles": {
+    "name": "浅渍黄瓜",
+    "station": "kitchen",
+    "inputs": {
+      "cucumber": 2,
+      "salt": 1
+    },
+    "output": {
+      "pickles": 1
+    },
+    "minutes": 30,
+    "unlock": {
+      "default": true
+    }
+  },
+  "kinpira": {
+    "name": "金平胡萝卜",
+    "station": "kitchen",
+    "inputs": {
+      "carrot": 2,
+      "soy_sauce": 1
+    },
+    "output": {
+      "kinpira": 1
+    },
+    "minutes": 30,
+    "unlock": {
+      "level": 2
+    }
+  },
+  "radish_nimono": {
+    "name": "萝卜炖菜",
+    "station": "kitchen",
+    "inputs": {
+      "radish": 1,
+      "soy_sauce": 1
+    },
+    "output": {
+      "radish_nimono": 1
+    },
+    "minutes": 60,
+    "unlock": {
+      "level": 2
+    }
+  },
+  "korokke": {
+    "name": "土豆可乐饼",
+    "station": "kitchen",
+    "inputs": {
+      "potato": 3,
+      "flour": 1,
+      "egg": 1
+    },
+    "output": {
+      "korokke": 1
+    },
+    "minutes": 60,
+    "unlock": {
+      "level": 3
+    }
+  },
+  "nasu_dengaku": {
+    "name": "味噌烤茄子",
+    "station": "kitchen",
+    "inputs": {
+      "eggplant": 2,
+      "miso": 1
+    },
+    "output": {
+      "nasu_dengaku": 1
+    },
+    "minutes": 30,
+    "unlock": {
+      "level": 4
+    }
+  },
+  "corn_soup": {
+    "name": "玉米浓汤",
+    "station": "kitchen",
+    "inputs": {
+      "corn": 2,
+      "milk": 1
+    },
+    "output": {
+      "corn_soup": 1
+    },
+    "minutes": 45,
+    "unlock": {
+      "level": 4
+    }
+  },
+  "tempura": {
+    "name": "蔬菜天妇罗",
+    "station": "kitchen",
+    "inputs": {
+      "eggplant": 1,
+      "carrot": 1,
+      "onion": 1,
+      "flour": 1
+    },
+    "output": {
+      "tempura": 1
+    },
+    "minutes": 45,
+    "unlock": {
+      "level": 5
+    }
+  },
+  "curry": {
+    "name": "夏日蔬菜咖喱",
+    "station": "kitchen",
+    "inputs": {
+      "carrot": 1,
+      "potato": 2,
+      "onion": 1,
+      "curry_roux": 1,
+      "rice": 1
+    },
+    "output": {
+      "curry": 1
+    },
+    "minutes": 90,
+    "unlock": {
+      "heart": [
+        "mio",
+        3
+      ],
+      "level": 5
+    }
+  },
+  "strawberry_jam": {
+    "name": "草莓果酱",
+    "station": "kitchen",
+    "inputs": {
+      "strawberry": 4,
+      "sugar": 1
+    },
+    "output": {
+      "strawberry_jam": 1
+    },
+    "minutes": 60,
+    "unlock": {
+      "heart": [
+        "aoi",
+        2
+      ]
+    }
+  },
+  "pumpkin_nimono": {
+    "name": "南瓜煮物",
+    "station": "kitchen",
+    "inputs": {
+      "pumpkin": 1,
+      "soy_sauce": 1
+    },
+    "output": {
+      "pumpkin_nimono": 1
+    },
+    "minutes": 60,
+    "unlock": {
+      "level": 6
+    }
+  },
+  "watermelon_slice": {
+    "name": "西瓜切块",
+    "station": "kitchen",
+    "inputs": {
+      "watermelon": 1
+    },
+    "output": {
+      "watermelon_slice": 4
+    },
+    "minutes": 10,
+    "unlock": {
+      "level": 7
+    }
+  },
+  "dango": {
+    "name": "月见团子",
+    "station": "kitchen",
+    "inputs": {
+      "rice": 2,
+      "sugar": 1
+    },
+    "output": {
+      "dango": 1
+    },
+    "minutes": 30,
+    "unlock": {
+      "default": true
+    }
+  },
+  "focaccia": {
+    "name": "番茄佛卡夏",
+    "station": "oven",
+    "inputs": {
+      "tomato": 3,
+      "flour": 1
+    },
+    "output": {
+      "focaccia": 1
+    },
+    "minutes": 60,
+    "unlock": {
+      "card": 120
+    }
+  },
+  "sunflower_bread": {
+    "name": "葵花籽面包",
+    "station": "oven",
+    "inputs": {
+      "sunflower": 1,
+      "flour": 1
+    },
+    "output": {
+      "sunflower_bread": 1
+    },
+    "minutes": 60,
+    "unlock": {
+      "card": 150
+    }
+  },
+  "veg_sandwich": {
+    "name": "街坊三明治",
+    "station": "oven",
+    "inputs": {
+      "cucumber": 1,
+      "tomato": 2,
+      "flour": 1,
+      "butter": 1
+    },
+    "output": {
+      "veg_sandwich": 1
+    },
+    "minutes": 40,
+    "unlock": {
+      "card": 150
+    }
+  },
+  "carrot_cake": {
+    "name": "胡萝卜蛋糕",
+    "station": "oven",
+    "inputs": {
+      "carrot": 3,
+      "flour": 1,
+      "sugar": 1,
+      "egg": 1
+    },
+    "output": {
+      "carrot_cake": 1
+    },
+    "minutes": 90,
+    "unlock": {
+      "card": 200
+    }
+  },
+  "curry_pan": {
+    "name": "咖喱面包",
+    "station": "oven",
+    "inputs": {
+      "potato": 1,
+      "onion": 1,
+      "flour": 1,
+      "curry_roux": 1
+    },
+    "output": {
+      "curry_pan": 1
+    },
+    "minutes": 60,
+    "unlock": {
+      "card": 220
+    }
+  },
+  "corn_bread": {
+    "name": "玉米面包",
+    "station": "oven",
+    "inputs": {
+      "corn": 2,
+      "flour": 1,
+      "butter": 1
+    },
+    "output": {
+      "corn_bread": 1
+    },
+    "minutes": 60,
+    "unlock": {
+      "card": 250
+    }
+  },
+  "shortcake": {
+    "name": "草莓奶油蛋糕",
+    "station": "oven",
+    "inputs": {
+      "strawberry": 4,
+      "flour": 1,
+      "milk": 1,
+      "sugar": 1,
+      "egg": 1
+    },
+    "output": {
+      "shortcake": 1
+    },
+    "minutes": 90,
+    "unlock": {
+      "card": 300,
+      "heart": [
+        "ren",
+        3
+      ]
+    }
+  },
+  "pumpkin_bread": {
+    "name": "南瓜面包",
+    "station": "oven",
+    "inputs": {
+      "pumpkin": 1,
+      "flour": 1,
+      "butter": 1
+    },
+    "output": {
+      "pumpkin_bread": 1
+    },
+    "minutes": 90,
+    "unlock": {
+      "card": 350
+    }
+  },
+  "mill_flour": {
+    "name": "磨面粉",
+    "station": "mill",
+    "inputs": {
+      "wheat": 3
+    },
+    "output": {
+      "flour": 2
+    },
+    "minutes": 20,
+    "unlock": {
+      "default": true
+    }
+  },
+  "grilled_ayu": {
+    "name": "盐烤香鱼",
+    "station": "kitchen",
+    "inputs": {
+      "fish_ayu": 1,
+      "salt": 1
+    },
+    "output": {
+      "grilled_ayu": 1
+    },
+    "minutes": 20,
+    "unlock": {
+      "default": true
+    }
+  },
+  "crucian_soup": {
+    "name": "鲫鱼味噌汤",
+    "station": "kitchen",
+    "inputs": {
+      "fish_crucian": 1,
+      "miso": 1
+    },
+    "output": {
+      "crucian_soup": 1
+    },
+    "minutes": 25,
+    "unlock": {
+      "default": true
+    }
+  },
+  "trout_rice": {
+    "name": "虹鳟炊饭",
+    "station": "kitchen",
+    "inputs": {
+      "fish_trout": 1,
+      "rice": 1,
+      "soy_sauce": 1
+    },
+    "output": {
+      "trout_rice": 1
+    },
+    "minutes": 30,
+    "unlock": {
+      "default": true
+    }
+  },
+  "carp_kanroni": {
+    "name": "鲤鱼甘露煮",
+    "station": "kitchen",
+    "inputs": {
+      "fish_carp": 1,
+      "soy_sauce": 1,
+      "sugar": 1
+    },
+    "output": {
+      "carp_kanroni": 1
+    },
+    "minutes": 30,
+    "unlock": {
+      "default": true
+    }
+  },
+  "butter_bass": {
+    "name": "黄油煎湖鲈",
+    "station": "kitchen",
+    "inputs": {
+      "fish_bass": 1,
+      "butter": 1,
+      "salt": 1
+    },
+    "output": {
+      "butter_bass": 1
+    },
+    "minutes": 25,
+    "unlock": {
+      "default": true
+    }
+  },
+  "eel_rice": {
+    "name": "蒲烧鳗鱼饭",
+    "station": "kitchen",
+    "inputs": {
+      "fish_eel": 1,
+      "rice": 1,
+      "soy_sauce": 1
+    },
+    "output": {
+      "eel_rice": 1
+    },
+    "minutes": 35,
+    "unlock": {
+      "default": true
+    }
+  },
+  "first_home_onigiri": {
+    "name": "自家的饭团",
+    "station": "kitchen",
+    "inputs": {
+      "home_meal_parcel": 1
+    },
+    "output": {
+      "onigiri": 2
+    },
+    "minutes": 15,
+    "unlock": {
+      "story": true
+    }
+  },
+  "plain_onigiri": {
+    "name": "盐饭团",
+    "station": "kitchen",
+    "inputs": {
+      "rice": 2,
+      "salt": 1
+    },
+    "output": {
+      "onigiri": 2
+    },
+    "minutes": 15,
+    "unlock": {
+      "story": true
+    }
+  }
+}

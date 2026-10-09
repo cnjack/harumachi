@@ -1,0 +1,25 @@
+{
+ "id": "B08_strawberry_cake",
+ "src": "raw/B08_strawberry_cake_hyper3d/model.glb",
+ "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+ "tris_src": 500000,
+ "tris": 15999,
+ "size_m": [
+  0.224,
+  0.225,
+  0.151
+ ],
+ "godot_size_m_xyz": [
+  0.224,
+  0.151,
+  0.225
+ ],
+ "tex": 2048,
+ "bytes": 1048648,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.02,
+ "base_frac": 0.771
+}

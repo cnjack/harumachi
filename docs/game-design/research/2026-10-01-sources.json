@@ -1,0 +1,188 @@
+{
+  "research_date": "2026-10-01",
+  "timezone": "Asia/Shanghai",
+  "games_compared": 8,
+  "sources": [
+    {
+      "id": "S01",
+      "title": "Stardew — Bundles",
+      "url": "https://stardewvalleywiki.com/Bundles",
+      "checked_on": "2026-10-01",
+      "access": "opened_page",
+      "scope_and_limit": "Wiki；材料替代、单项与设施奖励"
+    },
+    {
+      "id": "S02",
+      "title": "Stardew — Friendship",
+      "url": "https://stardewvalleywiki.com/Friendship",
+      "checked_on": "2026-10-01",
+      "access": "opened_page",
+      "scope_and_limit": "Wiki；人物事件、礼物日志、关系规则"
+    },
+    {
+      "id": "S03",
+      "title": "Stardew — Quests",
+      "url": "https://stardewvalleywiki.com/Quests",
+      "checked_on": "2026-10-01",
+      "access": "opened_page",
+      "scope_and_limit": "Wiki；主线与日常委托、需求可达性"
+    },
+    {
+      "id": "S04",
+      "title": "Grand Bazaar 官方首页",
+      "url": "https://www.storyofseasons.com/grandbazaar/",
+      "checked_on": "2026-10-01",
+      "access": "opened_page",
+      "scope_and_limit": "官方；2025 重制版与集市复兴目标"
+    },
+    {
+      "id": "S05",
+      "title": "Grand Bazaar — Bazaar",
+      "url": "https://www.storyofseasons.com/grandbazaar/bazaar/",
+      "checked_on": "2026-10-01",
+      "access": "opened_page",
+      "scope_and_limit": "官方；周六经营、帮助邻居开摊、发展反馈"
+    },
+    {
+      "id": "S06",
+      "title": "PC Gamer — Grand Bazaar 体验",
+      "url": "https://www.pcgamer.com/games/sim/story-of-seasons-grand-bazaar-is-shaping-up-to-be-one-of-my-favourite-farming-sims-since-stardew-valley-and-frankly-it-could-teach-a-thing-or-two-to-future-games-as-well/",
+      "checked_on": "2026-10-01",
+      "access": "search_result_content",
+      "scope_and_limit": "2025 媒体体验；商品趋势和周间准备"
+    },
+    {
+      "id": "S07",
+      "title": "任天堂 — Animal Crossing: New Horizons",
+      "url": "https://www.nintendo.com/us/store/products/animal-crossing-new-horizons-switch/",
+      "checked_on": "2026-10-01",
+      "access": "opened_page",
+      "scope_and_limit": "官方；自由生活与居民互动"
+    },
+    {
+      "id": "S08",
+      "title": "Nookipedia — Environment rating",
+      "url": "https://nookipedia.com/wiki/Environment_rating",
+      "checked_on": "2026-10-01",
+      "access": "search_result_content",
+      "scope_and_limit": "Wiki 搜索索引摘录；Project K 与评价"
+    },
+    {
+      "id": "S09",
+      "title": "Japanese Rural Life Adventure — App Store",
+      "url": "https://apps.apple.com/ca/app/japanese-rural-life-adventure/id1634749545",
+      "checked_on": "2026-10-01",
+      "access": "opened_page",
+      "scope_and_limit": "开发者商店介绍；季节生活与社区复兴"
+    },
+    {
+      "id": "S10",
+      "title": "AppleArcades.net — 流程攻略",
+      "url": "https://www.applearcades.net/Japanese-Rural-Life-Adventure/list_Chapter%20Walkthrough.html",
+      "checked_on": "2026-10-01",
+      "access": "opened_page",
+      "scope_and_limit": "社区攻略索引；夏祭与后续活动。页面章节数量说法不一致，本报告不采用其章节总数"
+    },
+    {
+      "id": "S11",
+      "title": "Reddit — 夏祭准备求助",
+      "url": "https://www.reddit.com/r/Japanese_Rural_Life/comments/1e0m78y/",
+      "checked_on": "2026-10-01",
+      "access": "search_result_content",
+      "scope_and_limit": "2024 单个社区讨论；准备条件困惑，无代表性推断"
+    },
+    {
+      "id": "S12",
+      "title": "Wylde Flowers 官网",
+      "url": "https://wyldeflowersgame.com/",
+      "checked_on": "2026-10-01",
+      "access": "opened_page",
+      "scope_and_limit": "官方；固定主人公与人物叙事"
+    },
+    {
+      "id": "S13",
+      "title": "Wylde Flowers — Updates",
+      "url": "https://wyldeflowersgame.com/changes.html",
+      "checked_on": "2026-10-01",
+      "access": "opened_page",
+      "scope_and_limit": "开发者更新；节后内容、事件优先级、条件台词"
+    },
+    {
+      "id": "S14",
+      "title": "Thunder Lotus — Spiritfarer",
+      "url": "https://thunderlotusgames.com/games/spiritfarer/",
+      "checked_on": "2026-10-01",
+      "access": "search_result_content",
+      "scope_and_limit": "官方；经营、照料与人物故事"
+    },
+    {
+      "id": "S15",
+      "title": "Spiritfarer — Mood",
+      "url": "https://spiritfarer.fandom.com/wiki/Mood",
+      "checked_on": "2026-10-01",
+      "access": "search_result_content",
+      "scope_and_limit": "Wiki 搜索索引摘录；照料与心情。未绕过网站访问限制"
+    },
+    {
+      "id": "S16",
+      "title": "Focus — My Time at Sandrock",
+      "url": "https://www.focus-entmt.com/en/games/my-time-at-sandrock",
+      "checked_on": "2026-10-01",
+      "access": "opened_page",
+      "scope_and_limit": "发行商；工坊、人物背景与任务"
+    },
+    {
+      "id": "S17",
+      "title": "Sandrock — Commissions",
+      "url": "https://mytimeatsandrock.fandom.com/wiki/Commissions",
+      "checked_on": "2026-10-01",
+      "access": "search_result_content",
+      "scope_and_limit": "Wiki 搜索索引摘录；钱、声望、关系并行奖励"
+    },
+    {
+      "id": "S18",
+      "title": "Sandrock — Social interaction",
+      "url": "https://mytimeatsandrock.fandom.com/wiki/Social_interaction",
+      "checked_on": "2026-10-01",
+      "access": "search_result_content",
+      "scope_and_limit": "Wiki 搜索索引摘录；事件后回应与关系活动"
+    },
+    {
+      "id": "S19",
+      "title": "DAVE THE DIVER — Steam",
+      "url": "https://store.steampowered.com/app/1868140/DAVE_THE_DIVER/",
+      "checked_on": "2026-10-01",
+      "access": "opened_page",
+      "scope_and_limit": "开发者商店介绍；收集与餐厅经营循环"
+    },
+    {
+      "id": "S20",
+      "title": "PC Gamer — DAVE 经营技巧",
+      "url": "https://www.pcgamer.com/dave-the-diver-tips/",
+      "checked_on": "2026-10-01",
+      "access": "search_result_content",
+      "scope_and_limit": "攻略；菜单备货、按单补餐"
+    },
+    {
+      "id": "S21",
+      "title": "PC Gamer — DAVE VIP 玩法",
+      "url": "https://www.pcgamer.com/after-only-3-hours-this-fishing-and-restaurant-management-rpg-has-rocketed-to-the-top-of-my-goty-shortlist/",
+      "checked_on": "2026-10-01",
+      "access": "search_result_content",
+      "scope_and_limit": "媒体实际游玩描述；特定客人需求推动收集"
+    },
+    {
+      "id": "S22",
+      "title": "DAVE — In the Jungle 官方页",
+      "url": "https://store.steampowered.com/app/4394810/DAVE_THE_DIVER__In_the_Jungle_Content_Pack/",
+      "checked_on": "2026-10-01",
+      "access": "opened_page",
+      "scope_and_limit": "2026-06-18 发布；帮助村民、关系与餐厅来客"
+    }
+  ],
+  "excluded": [
+    "Unattributed reposted PDFs",
+    "Unread video contents",
+    "Spiritfarer interview full text unavailable"
+  ]
+}

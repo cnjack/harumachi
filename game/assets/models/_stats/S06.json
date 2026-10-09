@@ -1,0 +1,19 @@
+{
+ "id": "S06",
+ "src": "raw/material_detail_20261003/S06.glb",
+ "provider": "Hyper3D Rodin Gen-2.5 High image-to-3D; Blender UV-preserving optimization and local assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 183795,
+ "tex": 8192,
+ "bytes": 11965608,
+ "godot_size_m_xyz": [
+  12.9636,
+  5.7992,
+  13.9845
+ ],
+ "mesh_nodes": [
+  "Lettering_\u6674\u753a\u516c\u6c11\u9986",
+  "Rodin_S06_body"
+ ]
+}

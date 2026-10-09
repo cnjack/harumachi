@@ -1,0 +1,20 @@
+{
+ "id": "H12a_box",
+ "src": "raw/H12a/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 1343,
+ "tris": 1345,
+ "size_m": [
+  1.196,
+  0.622,
+  0.336
+ ],
+ "godot_size_m_xyz": [
+  1.196,
+  0.336,
+  0.622
+ ],
+ "tex": 512,
+ "bytes": 91864,
+ "yaw_fix": 0
+}

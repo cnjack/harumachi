@@ -1,0 +1,4 @@
+# Optional asset/Web preparation tools; the game itself runs in Godot.
+Pillow>=11,<13
+fonttools>=4.55,<5
+numpy>=2,<3

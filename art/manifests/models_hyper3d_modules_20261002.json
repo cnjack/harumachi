@@ -1,0 +1,133 @@
+{
+  "date": "2026-10-02",
+  "provider": "Hyper3D Rodin image-to-3D; Blender only selective aperture correction and optimization on the door",
+  "status": "comparison prototypes; full building and street replacement not complete",
+  "images_manifest": "art/manifests/images_codex.json",
+  "game_assets_changed": false,
+  "estimated_credits": 1.5,
+  "actual_billed_credits_not_exposed_by_mcp": true,
+  "models": {
+    "whole": {
+      "generation_id": "216eb45f-4e4e-4d8a-b4bb-5bdacc9b2bbd",
+      "references": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/architecture_hyper3d_modules_20261002/H01_whole_front.png",
+        "/Users/jack/workpath/research/3D model/anime/art/references/architecture_hyper3d_modules_20261002/H01_whole_back.png"
+      ],
+      "request": {
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Quad",
+        "quality_override": 50000,
+        "texture_delight": true,
+        "geometry_file_format": "glb",
+        "reference_upload_ids": [
+          "35325ea8-6ac2-4eb5-909c-2cde45e62b11",
+          "a89c612f-860e-4b66-a969-c01fc8045e36"
+        ]
+      },
+      "source": "art/models/raw/H01_hyper3d_modular_trial_20261002/whole/model.glb",
+      "display_url": "https://hyper3d.ai/workspace/rodin/216eb45f-4e4e-4d8a-b4bb-5bdacc9b2bbd",
+      "source_sha256": "ea1d2c127fb731d3f767e86d73894536bb36a7ec345fa81c799788706e21f3df",
+      "source_triangles": 97787
+    },
+    "engawa": {
+      "generation_id": "2ebbb664-4cb4-49a7-84c1-04baaf1b3ccd",
+      "references": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/architecture_hyper3d_modules_20261002/H01_engawa_front.png"
+      ],
+      "request": {
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Quad",
+        "quality_override": 50000,
+        "texture_delight": true,
+        "geometry_file_format": "glb",
+        "reference_upload_ids": [
+          "3bdd6aee-2613-478a-976b-c5690d75fb46"
+        ]
+      },
+      "source": "art/models/raw/H01_hyper3d_modular_trial_20261002/engawa/model.glb",
+      "display_url": "https://hyper3d.ai/workspace/rodin/2ebbb664-4cb4-49a7-84c1-04baaf1b3ccd",
+      "source_sha256": "24c0a7d56e577d6f8cd668d29d7cdcc20f53ff6c72403d88f11d038fb9caf399",
+      "source_triangles": 98164
+    },
+    "door": {
+      "generation_id": "c604da78-7669-4fd9-877c-a73e3f513944",
+      "references": [
+        "/Users/jack/workpath/research/3D model/anime/art/references/architecture_hyper3d_modules_20261002/H01_door_frame.png"
+      ],
+      "request": {
+        "tier": "Gen-2.5-High",
+        "mesh_mode": "Raw",
+        "quality_override": 1000000,
+        "texture_delight": true,
+        "geometry_file_format": "glb",
+        "reference_upload_ids": [
+          "c2a3088a-8dd3-4fa7-80a6-4152ea89e208"
+        ],
+        "prompt": "Two Japanese wooden sliding lattice doors in an outer frame. Every upper rectangular cell is an EMPTY OPEN HOLE, with no glass, no paper, no backing panel. Preserve real freestanding straight wooden bars, the frame depth, lower timber panels, middle meeting stile and sliding tracks. Do not fill the lattice with a painted panel. No wall or building. Match the image."
+      },
+      "source": "art/models/raw/H01_hyper3d_modular_trial_20261002/door/model.glb",
+      "display_url": "https://hyper3d.ai/workspace/rodin/c604da78-7669-4fd9-877c-a73e3f513944",
+      "source_sha256": "f6430c9feb4f2e62b54609b9a36fc88aa48c585729f45b50605b4065455af897",
+      "source_triangles": 1000000,
+      "corrected_source": "art/models/raw/H01_hyper3d_modular_trial_20261002/door-corrected/door_open.glb",
+      "optimized_source": "art/models/raw/H01_hyper3d_modular_trial_20261002/door-game/door_game.glb",
+      "optimized_metrics": {
+        "sha256": "90a88af9ee9dce7ba23a1e690c545134096518bc0de994cc80b466f053444250",
+        "triangles": 21096,
+        "density_px_m_at_preview_scale": 407.44,
+        "size_m": [
+          2.4462,
+          2.1,
+          0.1787
+        ],
+        "albedo_sizes": [
+          [
+            2048,
+            2048
+          ]
+        ],
+        "inherited_pbr_maps": 0,
+        "metallic_max": 0
+      },
+      "aperture_raw": {
+        "source": "art/models/raw/H01_hyper3d_modular_trial_20261002/door/model.glb",
+        "samples": 5893,
+        "mesh_hits": 5891,
+        "open_aperture_fraction": 0.00033938571186153954,
+        "thin_axis_blender": 1,
+        "thickness_m_at_2_1m_height": 0.17804740197697008,
+        "passed_real_apertures": false,
+        "method": "BVH rays through the upper lattice region; no image, alpha or material used"
+      },
+      "aperture_optimized": {
+        "source": "art/models/raw/H01_hyper3d_modular_trial_20261002/door-game/door_game.glb",
+        "samples": 5893,
+        "mesh_hits": 2521,
+        "open_aperture_fraction": 0.5722043101985406,
+        "thin_axis_blender": 1,
+        "thickness_m_at_2_1m_height": 0.17869517322495984,
+        "passed_real_apertures": true,
+        "method": "BVH rays through the upper lattice region; no image, alpha or material used"
+      },
+      "game_budget_source": "art/models/raw/H01_hyper3d_modular_trial_20261002/door-game/door_game.glb",
+      "game_budget_metrics": {
+        "sha256": "90a88af9ee9dce7ba23a1e690c545134096518bc0de994cc80b466f053444250",
+        "triangles": 21096,
+        "density_px_m_at_preview_scale": 407.44,
+        "size_m": [
+          2.4462,
+          2.1,
+          0.1787
+        ],
+        "albedo_sizes": [
+          [
+            2048,
+            2048
+          ]
+        ],
+        "inherited_pbr_maps": 0,
+        "metallic_max": 0
+      }
+    }
+  }
+}

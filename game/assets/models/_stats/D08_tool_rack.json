@@ -1,0 +1,25 @@
+{
+ "id": "D08_tool_rack",
+ "src": "raw/D08_tool_rack_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 987920,
+ "tris": 7432,
+ "size_m": [
+  1.049,
+  0.595,
+  1.596
+ ],
+ "godot_size_m_xyz": [
+  1.049,
+  1.596,
+  0.595
+ ],
+ "tex": 1024,
+ "bytes": 583544,
+ "yaw_fix": -148.0,
+ "level": "auto",
+ "lean_src_deg": 20.14,
+ "levelled": true,
+ "lean_deg": 0.0,
+ "base_frac": 0.476
+}

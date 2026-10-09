@@ -1,0 +1,57 @@
+{
+  "source": "art/tools/audio/scene_foley.py",
+  "provider": "local procedural synthesis",
+  "paid_generation": false,
+  "sample_rate": 44100,
+  "variants": {
+    "fx_dish_place_0.wav": {
+      "seconds": 0.28,
+      "peak_db": -10,
+      "variant": 0
+    },
+    "fx_dish_place_1.wav": {
+      "seconds": 0.28,
+      "peak_db": -10,
+      "variant": 1
+    },
+    "fx_dish_place_2.wav": {
+      "seconds": 0.28,
+      "peak_db": -10,
+      "variant": 2
+    },
+    "fx_dish_place_3.wav": {
+      "seconds": 0.28,
+      "peak_db": -10,
+      "variant": 3
+    },
+    "fx_cup_sip_0.wav": {
+      "seconds": 0.38,
+      "peak_db": -10,
+      "variant": 0
+    },
+    "fx_cup_sip_1.wav": {
+      "seconds": 0.38,
+      "peak_db": -10,
+      "variant": 1
+    },
+    "fx_cup_sip_2.wav": {
+      "seconds": 0.38,
+      "peak_db": -10,
+      "variant": 2
+    },
+    "fx_cup_sip_3.wav": {
+      "seconds": 0.38,
+      "peak_db": -10,
+      "variant": 3
+    }
+  },
+  "canonical_preview_files": [
+    "fx_dish_place.wav",
+    "fx_cup_sip.wav"
+  ],
+  "cue_binding": {
+    "dish_place": "tray settled / food changes to empty plate",
+    "cup_sip": "sip animation reaches 55 percent"
+  },
+  "runtime_recording": "evidence/scene_quality_delivery_20261008/final-runtime/spatial-tabletop.wav"
+}

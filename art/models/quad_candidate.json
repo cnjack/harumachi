@@ -1,0 +1,29 @@
+{
+ "out": "../../evidence/hyper3d_quality_20261001/quad-candidate",
+ "assets": {
+  "P_yagura": {
+   "src": "raw/P_yagura_h3d_quality_20261002_quad/model.glb",
+   "fit": "h",
+   "size": 4.225538492202759,
+   "tris": 28000,
+   "tex": 2048,
+   "weld": 0,
+   "provider": "hyper3d rodin Gen-2.5-High Quad, 2026-10-02",
+   "generation_id": "75f0d17e-4471-4340-bb34-38b47e4de2e7",
+   "fit_bounds_blender": {
+    "min": [
+     -1.899999976158142,
+     -2.4493520259857178,
+     -0.10053849220275879
+    ],
+    "max": [
+     1.899999976158142,
+     1.899999976158142,
+     4.125
+    ]
+   },
+   "note": "Explicit 1M-triangle original, two consistent views, actual draped skirt and pitched kawara roof; original footprint retained.",
+   "rebake": true
+  }
+ }
+}

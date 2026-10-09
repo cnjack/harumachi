@@ -1,0 +1,20 @@
+{
+ "id": "I05_wardrobe",
+ "src": "raw/I05_wardrobe/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 14974,
+ "tris": 5000,
+ "size_m": [
+  0.987,
+  0.639,
+  1.9
+ ],
+ "godot_size_m_xyz": [
+  0.987,
+  1.9,
+  0.639
+ ],
+ "tex": 1024,
+ "bytes": 225860,
+ "yaw_fix": 0
+}

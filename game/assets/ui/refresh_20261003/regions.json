@@ -1,0 +1,218 @@
+{
+  "home": {
+    "sheet": "navigation_atlas.png",
+    "rect": [
+      41,
+      81,
+      263,
+      236
+    ]
+  },
+  "store": {
+    "sheet": "navigation_atlas.png",
+    "rect": [
+      351,
+      91,
+      251,
+      225
+    ]
+  },
+  "bakery": {
+    "sheet": "navigation_atlas.png",
+    "rect": [
+      654,
+      108,
+      252,
+      217
+    ]
+  },
+  "florist": {
+    "sheet": "navigation_atlas.png",
+    "rect": [
+      959,
+      72,
+      252,
+      258
+    ]
+  },
+  "post": {
+    "sheet": "navigation_atlas.png",
+    "rect": [
+      81,
+      365,
+      213,
+      249
+    ]
+  },
+  "hall": {
+    "sheet": "navigation_atlas.png",
+    "rect": [
+      335,
+      380,
+      280,
+      231
+    ]
+  },
+  "farm": {
+    "sheet": "navigation_atlas.png",
+    "rect": [
+      649,
+      448,
+      273,
+      149
+    ]
+  },
+  "fish": {
+    "sheet": "navigation_atlas.png",
+    "rect": [
+      973,
+      363,
+      233,
+      250
+    ]
+  },
+  "tree": {
+    "sheet": "navigation_atlas.png",
+    "rect": [
+      42,
+      651,
+      262,
+      244
+    ]
+  },
+  "exit": {
+    "sheet": "navigation_atlas.png",
+    "rect": [
+      376,
+      653,
+      228,
+      241
+    ]
+  },
+  "quest": {
+    "sheet": "navigation_atlas.png",
+    "rect": [
+      660,
+      658,
+      221,
+      231
+    ]
+  },
+  "book": {
+    "sheet": "navigation_atlas.png",
+    "rect": [
+      944,
+      692,
+      272,
+      183
+    ]
+  },
+  "backpack": {
+    "sheet": "navigation_atlas.png",
+    "rect": [
+      46,
+      926,
+      257,
+      260
+    ]
+  },
+  "calendar": {
+    "sheet": "navigation_atlas.png",
+    "rect": [
+      361,
+      932,
+      224,
+      241
+    ]
+  },
+  "map": {
+    "sheet": "navigation_atlas.png",
+    "rect": [
+      649,
+      949,
+      265,
+      224
+    ]
+  },
+  "coin": {
+    "sheet": "navigation_atlas.png",
+    "rect": [
+      986,
+      957,
+      208,
+      211
+    ]
+  },
+  "w_sunny": {
+    "sheet": "weather_atlas.png",
+    "rect": [
+      62,
+      82,
+      349,
+      340
+    ]
+  },
+  "w_night": {
+    "sheet": "weather_atlas.png",
+    "rect": [
+      527,
+      113,
+      281,
+      281
+    ]
+  },
+  "w_cloudy": {
+    "sheet": "weather_atlas.png",
+    "rect": [
+      921,
+      99,
+      360,
+      305
+    ]
+  },
+  "w_rain": {
+    "sheet": "weather_atlas.png",
+    "rect": [
+      1390,
+      120,
+      323,
+      305
+    ]
+  },
+  "w_festival": {
+    "sheet": "weather_atlas.png",
+    "rect": [
+      118,
+      476,
+      232,
+      323
+    ]
+  },
+  "level_badge": {
+    "sheet": "weather_atlas.png",
+    "rect": [
+      502,
+      538,
+      332,
+      256
+    ]
+  },
+  "support_token": {
+    "sheet": "weather_atlas.png",
+    "rect": [
+      958,
+      501,
+      297,
+      297
+    ]
+  },
+  "compass": {
+    "sheet": "weather_atlas.png",
+    "rect": [
+      1405,
+      501,
+      289,
+      290
+    ]
+  }
+}

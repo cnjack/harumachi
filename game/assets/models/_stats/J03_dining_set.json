@@ -1,0 +1,20 @@
+{
+ "id": "J03_dining_set",
+ "src": "raw/J03_dining_set/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 15998,
+ "tris": 8000,
+ "size_m": [
+  1.5,
+  1.001,
+  0.893
+ ],
+ "godot_size_m_xyz": [
+  1.5,
+  0.893,
+  1.001
+ ],
+ "tex": 1024,
+ "bytes": 378752,
+ "yaw_fix": 0
+}

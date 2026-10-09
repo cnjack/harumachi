@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2f7fd1">
+  <meta name="description" content="《明年夏祭》是一款开发中的晴町生活游戏。回到晴町的这个夏天，把停了十五年的夏祭办回来。macOS 单机，中文，键鼠。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="明年夏祭 · Harumachi: Next Summer — 即将上线">
+  <meta property="og:description" content="回到晴町的这个夏天，把停了十五年的夏祭办回来。">
+  <meta property="og:url" content="https://harumachi.nightc.com/">
+  <meta property="og:image" content="https://harumachi.nightc.com/assets/hero.jpg">
+  <link rel="canonical" href="https://harumachi.nightc.com/">
+  <title>明年夏祭 · Harumachi: Next Summer — 即将上线</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 4v9M18 14h28M20 18h24l-3 30H23z' fill='%23d8453a' stroke='%233b2a20' stroke-width='3' stroke-linejoin='round'/%3E%3Cpath d='M25 20v26m14-26v26M24 50h16m-8 0v8' fill='none' stroke='%23fff3d7' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="ui.css">
+  <script src="main.js" defer></script>
+  <script src="library.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-nav">
+    <a class="site-brand" href="#top" aria-label="明年夏祭首页"><img class="ui-icon" src="assets/ui/icon_home.png" alt="">明年夏祭<span>Harumachi</span></a>
+    <nav class="page-tabs" role="tablist" aria-label="官网内容">
+      <button id="tab-home" role="tab" aria-selected="true" aria-controls="panel-home" data-page="home"><img class="ui-icon" src="assets/ui/icon_home.png" alt="">晴町</button>
+      <button id="tab-wallpapers" role="tab" aria-selected="false" aria-controls="panel-wallpapers" tabindex="-1" data-page="wallpapers"><img class="ui-icon" src="assets/ui/icon_map.png" alt="">壁纸</button>
+      <button id="tab-music" role="tab" aria-selected="false" aria-controls="panel-music" tabindex="-1" data-page="music"><img class="ui-icon" src="assets/ui/icon_w_festival.png" alt="">音乐</button>
+      <button id="tab-play" role="tab" aria-selected="false" aria-controls="panel-play" tabindex="-1" data-page="play"><img class="ui-icon" src="assets/ui/icon_backpack.png" alt="">试玩</button>
+    </nav>
+  </header>
+  <main id="main">
+    <div id="panel-home" role="tabpanel" aria-labelledby="tab-home">
+    <section class="hero" aria-labelledby="site-title">
+      <picture class="hero-picture">
+        <source srcset="assets/hero.webp" type="image/webp">
+        <img src="assets/hero.jpg" width="1916" height="821" alt="盛夏晴町的街道通向老榉树，空拖着行李站在阳光里" fetchpriority="high">
+      </picture>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="cloud-field" aria-hidden="true">
+        <span class="cloud cloud-one"></span><span class="cloud cloud-two"></span>
+        <span class="cloud cloud-three"></span><span class="cloud cloud-four"></span>
+      </div>
+      <canvas class="motes-canvas" id="motes-canvas" aria-hidden="true"></canvas>
+      <div class="lantern-garland" aria-hidden="true">
+        <span class="garland-line"></span>
+        <span class="hanging-lantern lantern-one"><i></i></span>
+        <span class="hanging-lantern lantern-two"><i></i></span>
+        <span class="hanging-lantern lantern-three"><i></i></span>
+      </div>
+      <div class="hero-content">
+        <p class="hero-kicker">晴町的夏天，从这里开始</p>
+        <h1 id="site-title" class="hero-title" aria-label="明年夏祭"><span aria-hidden="true">明</span><span aria-hidden="true">年</span><span aria-hidden="true">夏</span><span aria-hidden="true">祭</span></h1>
+        <p class="hero-english">Harumachi: Next Summer</p>
+        <p class="hero-logline">回到晴町的这个夏天，<br>把停了十五年的夏祭办回来。</p>
+        <p class="coming-badge"><span class="badge-dot"></span>开发中 · 即将上线</p>
+        <div class="hero-actions"><a class="ui-button primary" href="#play"><img class="ui-icon" src="assets/ui/icon_backpack.png" alt="">走进晴町</a><a class="ui-button" href="#music"><img class="ui-icon" src="assets/ui/icon_w_festival.png" alt="">听听夏天</a></div>
+      </div>
+      <a class="scroll-hint" href="#story"><span>走进晴町</span><span class="scroll-arrow" aria-hidden="true"></span></a>
+    </section>
+
+    <section class="story-section paper-section" id="story" aria-labelledby="story-title">
+      <div class="section-shell story-shell">
+        <div class="section-heading reveal">
+          <span class="section-number">01 / 晴町来信</span>
+          <h2 id="story-title">故事</h2>
+          <span class="heading-stroke" aria-hidden="true"></span>
+        </div>
+        <div class="vertical-seal" aria-hidden="true">夏祭</div>
+        <div class="story-copy">
+          <p class="story-paragraph">
+            <span class="story-line">奶奶走的那个春天，空辞掉城里的工作，</span>
+            <span class="story-line">搬回山谷里的小镇晴町。</span>
+            <span class="story-line">十岁那年夏天，他在这里捞金鱼，</span>
+            <span class="story-line">纸网一下就破了；有个女孩和他约好：</span>
+            <span class="story-line">明年夏祭，还要一起来。</span>
+            <span class="story-line">可是那之后，晴町再也没有办过夏祭。</span>
+          </p>
+          <p class="story-paragraph">
+            <span class="story-line">这个夏天，他在河边的市民农园种菜，</span>
+            <span class="story-line">给邻居做饭，周六傍晚到庭院的集市摆摊，</span>
+            <span class="story-line">一点点把大家的旧物和往事拼起来——</span>
+            <span class="story-line">直到庭院里再一次搭起盆舞台。</span>
+          </p>
+        </div>
+        <figure class="story-still reveal">
+          <span class="photo-tape" aria-hidden="true"></span>
+          <picture>
+            <source srcset="assets/scene_3.webp" type="image/webp">
+            <img src="assets/scene_3.jpg" width="1280" height="720" loading="lazy" alt="十岁那年的夏祭，澪捞到了金鱼，空手里的纸网破了">
+          </picture>
+          <figcaption>十岁那年的金鱼 <span>— 晴町的记忆</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="day-section" id="day" aria-labelledby="day-title">
+      <div class="section-shell">
+        <div class="section-heading section-heading-light reveal">
+          <span class="section-number">02 / 每一天都有事做</span>
+          <h2 id="day-title">在晴町的一天</h2>
+          <span class="heading-stroke" aria-hidden="true"></span>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <div class="feature-shot">
+              <picture>
+                <source srcset="assets/day_1.webp" type="image/webp">
+                <img src="assets/day_1.jpg" width="960" height="540" loading="lazy" alt="河边的市民农园，空站在菜畦前">
+              </picture>
+            </div>
+            <div class="feature-body">
+              <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M12 49c10 4 30 4 40 0M32 49V27m0 8c-11 0-17-6-17-17 11 0 17 5 17 17Zm0-6c1-11 7-16 18-16 0 10-6 16-18 16Z"/><path d="M14 55h36"/></svg>
+              <h3>种菜</h3>
+              <p>河边的市民农园，15 种作物。浇水、施肥，看它们一天天长大。</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-shot">
+              <picture>
+                <source srcset="assets/day_2.webp" type="image/webp">
+                <img src="assets/day_2.jpg" width="960" height="540" loading="lazy" alt="家里厨房的做饭界面，列着可做的料理和所需食材">
+              </picture>
+            </div>
+            <div class="feature-body">
+              <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M13 26h38l-4 22H17l-4-22Zm5 0c2-9 8-14 14-14s12 5 14 14M10 52h44M27 34c1 5 8 5 10 0"/><path d="M32 9v5"/></svg>
+              <h3>做饭</h3>
+              <p>家里的厨房和莲的面包店，24 个配方。料理可以送人，也可以拿去卖。</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-shot">
+              <picture>
+                <source srcset="assets/day_3.webp" type="image/webp">
+                <img src="assets/day_3.jpg" width="960" height="306" loading="lazy" alt="庭院里的集市摊位，摆满了蔬果">
+              </picture>
+            </div>
+            <div class="feature-body">
+              <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M10 26h44l-5-11H15l-5 11Zm4 0v27m36-27v27M12 53h40M20 26v9m12-9v9m12-9v9M23 53V39h18v14"/></svg>
+              <h3>摆摊</h3>
+              <p>每个周六傍晚，庭院里开集市。</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-shot">
+              <picture>
+                <source srcset="assets/day_4.webp" type="image/webp">
+                <img src="assets/day_4.jpg" width="960" height="540" loading="lazy" alt="夏祭的夜晚，灯笼下的人们抬头看花火">
+              </picture>
+            </div>
+            <div class="feature-body">
+              <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 7v10M18 18h28M20 21h24l-3 27H23l-3-27Zm6 1v24m12-24v24M22 51h20m-10 0v7"/><path d="M16 13l-4-4m36 4 4-4"/></svg>
+              <h3>过节</h3>
+              <p>七夕、品评会、夏祭、花火大会、灯笼流、月见。</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-shot">
+              <picture>
+                <source srcset="assets/day_5.webp" type="image/webp">
+                <img src="assets/day_5.jpg" width="960" height="540" loading="lazy" alt="捏饭团小游戏界面，正在给饭团包海苔">
+              </picture>
+            </div>
+            <div class="feature-body">
+              <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M11 29c1-7 6-11 13-11h16c7 0 12 4 13 11l3 17c1 6-4 8-8 5l-9-8H25l-9 8c-4 3-9 1-8-5l3-17Z"/><path d="M21 28v12m-6-6h12m15-5h1m5 7h1"/></svg>
+              <h3>小游戏</h3>
+              <p>捏饭团、捞金鱼、太鼓、拼地图、拆箱子。</p>
+            </div>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-shot">
+              <picture>
+                <source srcset="assets/day_6.webp" type="image/webp">
+                <img src="assets/day_6.jpg" width="795" height="480" loading="lazy" alt="晴町图鉴里的旧物收藏，十三件老东西的插画">
+              </picture>
+            </div>
+            <div class="feature-body">
+              <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M14 19h36v34H14V19Zm-4 0 4-8h36l4 8M23 27h18m-18 8h14m-14 8h18"/><path d="M43 40c2-6 8-4 7 0-1 3-7 7-7 7s-6-4-7-7c-1-4 5-6 7 0Z"/></svg>
+              <h3>旧物</h3>
+              <p>十三件晴町的旧东西，每一件后面都有一段往事。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="people-section paper-section" id="people" aria-labelledby="people-title">
+      <div class="section-shell">
+        <div class="section-heading reveal">
+          <span class="section-number">03 / 街角遇见的人</span>
+          <h2 id="people-title">晴町的人</h2>
+          <span class="heading-stroke" aria-hidden="true"></span>
+        </div>
+        <div class="cast-stage reveal">
+          <span class="cast-stamp" aria-hidden="true">一起<br>过夏天</span>
+          <picture>
+            <source srcset="assets/cast.webp" type="image/webp">
+            <img src="assets/cast.jpg" width="1774" height="887" loading="lazy" alt="空、澪、莲、小葵与和子阿姨站在晴町的夏日天空前">
+          </picture>
+        </div>
+        <ul class="people-list" aria-label="晴町的居民">
+          <li class="person reveal" tabindex="0">
+            <picture><source srcset="assets/face_sora.webp" type="image/webp"><img src="assets/face_sora.png" width="320" height="320" loading="lazy" alt="空的头像"></picture>
+            <div class="person-name"><strong>空</strong><span>sora</span></div>
+            <p class="person-note">主角，从城里搬回奶奶的房子。</p>
+          </li>
+          <li class="person reveal" tabindex="0">
+            <picture><source srcset="assets/face_mio.webp" type="image/webp"><img src="assets/face_mio.png" width="320" height="320" loading="lazy" alt="澪的头像"></picture>
+            <div class="person-name"><strong>澪</strong><span>mio</span></div>
+            <p class="person-note">町内会的联络人，那年夏祭一起捞金鱼的女孩。</p>
+          </li>
+          <li class="person reveal" tabindex="0">
+            <picture><source srcset="assets/face_ren.webp" type="image/webp"><img src="assets/face_ren.png" width="320" height="320" loading="lazy" alt="莲的头像"></picture>
+            <div class="person-name"><strong>莲</strong><span>ren</span></div>
+            <p class="person-note">面包店的第三代，菠萝包的配方五十年没变。</p>
+          </li>
+          <li class="person reveal" tabindex="0">
+            <picture><source srcset="assets/face_aoi.webp" type="image/webp"><img src="assets/face_aoi.png" width="320" height="320" loading="lazy" alt="小葵的头像"></picture>
+            <div class="person-name"><strong>小葵</strong><span>aoi</span></div>
+            <p class="person-note">来奶奶家过暑假，从没见过晴町的夏祭。</p>
+          </li>
+          <li class="person reveal" tabindex="0">
+            <picture><source srcset="assets/face_kazuko.webp" type="image/webp"><img src="assets/face_kazuko.png" width="320" height="320" loading="lazy" alt="和子阿姨的头像"></picture>
+            <div class="person-name"><strong>和子阿姨</strong><span>kazuko</span></div>
+            <p class="person-note">晴町商店的店主，嗓门大，爱塞东西给你。</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="film-section" aria-labelledby="film-title">
+      <div class="section-shell film-heading reveal">
+        <span class="section-number">04 / 夏日片段</span>
+        <h2 id="film-title">晴町的四个瞬间</h2>
+      </div>
+      <div class="film-window" aria-label="晴町风景画面">
+        <div class="film-track">
+          <div class="film-set">
+            <figure class="film-frame"><picture><source srcset="assets/scene_1.webp" type="image/webp"><img src="assets/scene_1.jpg" width="1280" height="720" loading="lazy" alt="巴士沿着晴川驶入山谷"></picture><figcaption>沿着晴川开进山谷</figcaption></figure>
+            <figure class="film-frame"><picture><source srcset="assets/scene_2.webp" type="image/webp"><img src="assets/scene_2.jpg" width="1280" height="720" loading="lazy" alt="阳光照在庭院中央的老榉树上"></picture><figcaption>庭院中央的老榉树</figcaption></figure>
+            <figure class="film-frame"><picture><source srcset="assets/scene_3.webp" type="image/webp"><img src="assets/scene_3.jpg" width="1280" height="720" loading="lazy" alt="十岁那年的夏祭，澪和空一起捞金鱼"></picture><figcaption>十岁那年的金鱼</figcaption></figure>
+            <figure class="film-frame"><picture><source srcset="assets/scene_4.webp" type="image/webp"><img src="assets/scene_4.jpg" width="1280" height="720" loading="lazy" alt="晴町的夏日午后，住下来的生活从屋檐下开始"></picture><figcaption>这个夏天，住下来</figcaption></figure>
+          </div>
+          <div class="film-set" aria-hidden="true">
+            <figure class="film-frame"><picture><source srcset="assets/scene_1.webp" type="image/webp"><img src="assets/scene_1.jpg" width="1280" height="720" loading="lazy" alt="巴士沿着晴川驶入山谷"></picture><figcaption>沿着晴川开进山谷</figcaption></figure>
+            <figure class="film-frame"><picture><source srcset="assets/scene_2.webp" type="image/webp"><img src="assets/scene_2.jpg" width="1280" height="720" loading="lazy" alt="阳光照在庭院中央的老榉树上"></picture><figcaption>庭院中央的老榉树</figcaption></figure>
+            <figure class="film-frame"><picture><source srcset="assets/scene_3.webp" type="image/webp"><img src="assets/scene_3.jpg" width="1280" height="720" loading="lazy" alt="十岁那年的夏祭，澪和空一起捞金鱼"></picture><figcaption>十岁那年的金鱼</figcaption></figure>
+            <figure class="film-frame"><picture><source srcset="assets/scene_4.webp" type="image/webp"><img src="assets/scene_4.jpg" width="1280" height="720" loading="lazy" alt="晴町的夏日午后，住下来的生活从屋檐下开始"></picture><figcaption>这个夏天，住下来</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="night-section" id="notify" aria-labelledby="night-title">
+      <picture class="night-picture"><source srcset="assets/night.webp" type="image/webp"><img src="assets/night.jpg" width="2172" height="724" loading="lazy" alt="夜晚的晴町夏祭，盆舞台周围挂满灯笼，天空绽放烟花"></picture>
+      <div class="night-shade" aria-hidden="true"></div>
+      <canvas class="fireworks-canvas" id="fireworks-canvas" aria-hidden="true"></canvas>
+      <div class="night-twinkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="section-shell night-content">
+        <p class="night-kicker reveal">灯笼亮起来的时候</p>
+        <h2 id="night-title" class="reveal">今年夏天，<br>庭院里见。</h2>
+        <div class="subscribe-card reveal">
+          <p class="subscribe-title">想收到上线消息？</p>
+          <form id="subscribe-form" novalidate>
+            <label for="email">邮箱地址</label>
+            <div class="form-row"><input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="你的邮箱地址" aria-describedby="form-note form-status" required><button type="submit">订阅上线通知 <span aria-hidden="true">↗</span></button></div>
+            <p id="form-note" class="form-note">邮件订阅即将开放，目前只保存在你的浏览器里。</p>
+            <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+          </form>
+          <div id="confetti" class="confetti" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <section id="panel-wallpapers" class="library-page wallpaper-page paper-section" role="tabpanel" aria-labelledby="tab-wallpapers" hidden>
+      <div class="section-shell">
+        <div class="library-heading">
+          <p class="library-eyebrow">晴町收藏 / WALLPAPERS</p>
+          <h1>把晴町带在身边。</h1>
+          <p class="library-intro">晴川的午后、庭院里的灯火，还有雨停之后的小镇。<br>选一张，留在每天都会看见的地方。</p>
+        </div>
+        <div class="wallpaper-toolbar">
+          <div class="device-switch" role="group" aria-label="壁纸设备">
+            <button data-device="desktop" aria-pressed="true">电脑横版 <span>DESKTOP</span></button>
+            <button data-device="mobile" aria-pressed="false">手机竖版 <span>MOBILE</span></button>
+          </div>
+          <p class="wallpaper-count" id="wallpaper-count"></p>
+        </div>
+        <p class="library-status" id="wallpaper-status" role="status"></p>
+        <div class="wallpaper-grid" id="wallpaper-grid"></div>
+        <p class="collection-note">无字版本，给桌面图标和锁屏时钟留一点天空。</p>
+      </div>
+    </section>
+
+    <section id="panel-music" class="library-page music-page paper-section" role="tabpanel" aria-labelledby="tab-music" hidden>
+      <div class="section-shell">
+        <div class="library-heading">
+          <p class="library-eyebrow">晴町留声 / SOUNDTRACK</p>
+          <h1>听见晴町的夏天。</h1>
+          <p class="library-intro">从清晨的农园，到最后一盏灯笼。<br>这里收着游戏里的音乐，想听哪一首，就从那一天开始。</p>
+        </div>
+        <div class="soundtrack-layout">
+          <aside class="record-player" aria-label="音乐播放器">
+            <div class="record-sleeve">
+              <img src="assets/night.webp" width="2172" height="724" alt="夏祭夜里的晴町庭院" loading="lazy">
+              <span class="record-sleeve-label">晴町<br><small>夏日留声</small></span>
+            </div>
+            <p class="player-caption" id="player-caption">游戏配乐</p>
+            <h2 id="now-playing-title">选一首晴町的音乐</h2>
+            <p class="player-context" id="now-playing-context">选择曲目开始播放。</p>
+            <audio id="soundtrack-player" controls preload="none" aria-label="游戏音乐播放控制" hidden></audio>
+            <div class="player-links" id="player-links" hidden>
+              <a id="current-mp3" download>下载 MP3 ↓</a>
+              <a id="current-ogg" download>原版 OGG ↓</a>
+            </div>
+            <p class="player-message" id="player-message" role="status" aria-live="polite"></p>
+            <p class="record-note">音乐来自游戏内的完整配乐。<br>切换页面时会暂停播放。</p>
+          </aside>
+          <div class="tracklist-wrap">
+            <div class="tracklist-heading"><span>游戏配乐</span><span id="track-summary"></span></div>
+            <p class="library-status" id="music-status" role="status"></p>
+            <ol class="tracklist" id="tracklist" aria-label="游戏配乐曲目"></ol>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="panel-play" class="library-page play-page paper-section" role="tabpanel" aria-labelledby="tab-play" hidden>
+      <div class="section-shell">
+        <div class="library-heading">
+          <p class="library-eyebrow">回到晴町 / PLAY</p>
+          <h1>晴町，等你回来。</h1>
+          <p class="library-intro">在浏览器里走进小镇，种菜、做饭，也和邻居打个招呼。<br>电脑键鼠试玩，打开后会下载游戏资源。</p>
+        </div>
+        <div class="play-preview"><img src="assets/hero.webp" width="1916" height="821" alt="夏日晴町的街道和远山" loading="lazy"></div>
+        <div class="play-details">
+          <a class="play-launch" href="play/"><img class="ui-icon" src="assets/ui/icon_backpack.png" alt="">打开试玩 ↗</a>
+          <div><p>WASD 移动 · E 互动 · M 地图 · Esc 暂停</p><p class="ui-save-note"><img class="ui-icon" src="assets/ui/icon_check.png" alt="">每天结束自动保存，也可以随时手动保存。</p><p>进度保存在当前浏览器中。清除浏览器数据也会清除存档。</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-title">明年夏祭 <span>Harumachi: Next Summer</span></div>
+    <p>开发中 · 即将上线 <span aria-hidden="true">/</span> macOS 单机 · 中文 · 键鼠 <span aria-hidden="true">/</span> PC 平台待定</p>
+    <p class="credits">© 2026 明年夏祭 开发组</p>
+    <a href="#top" class="back-top">回到夏日的开始 ↑</a>
+  </footer>
+</body>
+</html>

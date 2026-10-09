@@ -1,0 +1,25 @@
+{
+ "id": "W04_sunflower_pot",
+ "src": "raw/W04_sunflower_pot_pixal_modules_20261003/model.glb",
+ "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
+ "tris_src": 988316,
+ "tris": 13320,
+ "size_m": [
+  0.408,
+  0.331,
+  0.69
+ ],
+ "godot_size_m_xyz": [
+  0.408,
+  0.69,
+  0.331
+ ],
+ "tex": 2048,
+ "bytes": 1090480,
+ "yaw_fix": 180,
+ "level": true,
+ "lean_src_deg": 16.31,
+ "levelled": true,
+ "lean_deg": 0.65,
+ "base_frac": 0.168
+}

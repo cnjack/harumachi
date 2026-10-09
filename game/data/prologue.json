@@ -1,0 +1,55 @@
+{
+  "note": "Arrival keeps four present-day panels; three remembered fragments are presented by tree, old photo and Mio, and archived only after presentation.",
+  "voice": "sora",
+  "panels": [
+    {
+      "img": "P1_bus",
+      "text": "奶奶走的那个春天，我辞掉了城里的工作。巴士沿着晴川，一直开进山谷。",
+      "zoom": [
+        1.0,
+        1.07
+      ],
+      "pan": [
+        -0.025,
+        0.0
+      ]
+    },
+    {
+      "img": "P2_street",
+      "text": "下了车，晴町还是记忆里的样子。只是商店街的卷帘门，拉下了好几扇。",
+      "zoom": [
+        1.08,
+        1.0
+      ],
+      "pan": [
+        0.0,
+        -0.015
+      ]
+    },
+    {
+      "img": "P6_mailbox",
+      "text": "奶奶的房子还在。信箱里，好像有人给我留了一封信。",
+      "zoom": [
+        1.0,
+        1.09
+      ],
+      "pan": [
+        0.015,
+        0.015
+      ]
+    },
+    {
+      "img": "P7_stay",
+      "text": "这个夏天，我打算在这儿住下来。",
+      "zoom": [
+        1.06,
+        1.0
+      ],
+      "pan": [
+        0.0,
+        0.0
+      ],
+      "hold": 2.5
+    }
+  ]
+}

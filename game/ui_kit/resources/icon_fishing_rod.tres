@@ -1,0 +1,9 @@
+[gd_resource type="AtlasTexture" format=3]
+
+[ext_resource type="Texture2D" path="res://ui_kit/assets/utility_atlas.png" id="1_ek3sk"]
+
+[resource]
+resource_name = "UIKitIcon/fishing_rod"
+atlas = ExtResource("1_ek3sk")
+region = Rect2(505, 493, 351, 306)
+filter_clip = true

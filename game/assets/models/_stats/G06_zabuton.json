@@ -1,0 +1,20 @@
+{
+ "id": "G06_zabuton",
+ "src": "raw/G06_zabuton/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 16000,
+ "tris": 4000,
+ "size_m": [
+  0.619,
+  0.605,
+  0.462
+ ],
+ "godot_size_m_xyz": [
+  0.619,
+  0.462,
+  0.605
+ ],
+ "tex": 1024,
+ "bytes": 248364,
+ "yaw_fix": 0
+}

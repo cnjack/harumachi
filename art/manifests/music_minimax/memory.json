@@ -1,0 +1,8 @@
+{
+ "model": "MiniMax-Music3-MLX-Serve-8bit",
+ "prompt": "### Global Metadata\nA complete 60-second tender, nostalgic memory piece for looking at old photographs of a small town's summers long ago, like a music box in an attic. 66 BPM, E major. A music-box celesta melody, soft felt piano, a warm string quartet, a single glockenspiel. Pure instrumental ensemble piece.\n\n### Vocal Details\nNone. Instrumental only: the music box plays the melody, piano and strings accompany it.\n\n### Timed Arrangement\n0-12 seconds: music box alone. 12-36 seconds: piano and strings join, warm. 36-60 seconds: the melody once more, softly. Keep tempo, texture and loudness consistent from start to end; no big climax. The piece must play for the full 60 seconds and must not end early, ending cleanly on the tonic so it can loop.",
+ "lyrics": "[Intro]\n[Instrumental]\n\n[Interlude]\n[Piano Solo]\n\n[Outro]\n[Instrumental]",
+ "duration_seconds": 60,
+ "steps": 30,
+ "seed": 2026092812
+}

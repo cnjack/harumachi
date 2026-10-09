@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-06",
+  "character_id": "CH_sora",
+  "source": "Hyper3D Rodin new Business account in Edge",
+  "tasks": {
+    "pbr5": "2432b5ed-d3b2-420d-9d89-d2409e660bc3",
+    "pbr7": "7119f528-4d1e-46cb-9eb5-1906e231320b"
+  },
+  "poc": "art/poc/character_pbr_sweep_20261006/godot",
+  "evidence": "evidence/character_pbr_sweep_20261006/checkpoint.json",
+  "status": "waiting_for_manual_mac_unlock",
+  "adopted": false
+}

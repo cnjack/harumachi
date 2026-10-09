@@ -1,0 +1,18 @@
+{
+ "id": "P_signpost",
+ "src": "raw/landmarks_aged_20261001/P_signpost.glb",
+ "provider": "Blender UV/material refinement + imagegen aged textures, 2026-10-01",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 88,
+ "tex": 2048,
+ "bytes": 529144,
+ "godot_size_m_xyz": [
+  2.3,
+  2.46,
+  0.6313
+ ],
+ "mesh_nodes": [
+  "signpost"
+ ]
+}

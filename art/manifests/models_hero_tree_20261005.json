@@ -1,0 +1,15 @@
+{
+  "id": "T05_old_shade_tree",
+  "provider": "Blender reference-built organic mesh + imagegen anime textures",
+  "references": [
+    "game/assets/ui/prologue/P3_tree.jpg",
+    "art/references/v06/prologue/K4_courtyard.png"
+  ],
+  "source": "art/models/raw/hero_shade_tree_20261005/T05_old_shade_tree.blend",
+  "raw_glb": "art/models/raw/hero_shade_tree_20261005/T05_old_shade_tree.glb",
+  "export": "game/assets/models/T05_old_shade_tree.glb",
+  "tool": "art/tools/hero_shade_tree.py",
+  "image_manifest": "art/manifests/images_codex.json",
+  "paid_3d_generation": false,
+  "license": "项目自制；生成素材服务条款"
+}

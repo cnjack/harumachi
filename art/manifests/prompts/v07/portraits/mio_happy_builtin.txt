@@ -1,0 +1,13 @@
+Japanese TV anime style key frame, like a frame from a slice-of-life anime series (not a painting, not photorealistic, not 3D): clean confident fine line art, flat cel shading with crisp two-tone hard-edged shadows, simple anime character design, bright clean summer colours. Makoto Shinkai inspired luminous warm summer sunlight from the upper left with subdued cool lavender-blue cel shadows.
+
+Create exactly ONE new 1024x1024 square PNG dialogue portrait for a cozy Japanese small-town life game.
+The provided image is a CHARACTER IDENTITY AND DRAWING STYLE REFERENCE ONLY. Draw a brand-new clean illustration; do not simply extract or recolour the reference. Keep precisely the same character's face shape, hairstyle, hair colour, skin tones, yellow clip, clothing colours and design.
+
+Character: Mio, 24-year-old woman. Soft rounded oval face, small delicate anime nose, warm fair peach skin. Shoulder-length dark brown bob, gently curved airy ends, side-parted long wispy fringe sweeping toward the viewer's left, small yellow rectangular hair clip above the visible ear on the viewer's right. Cream-white knit cardigan with broad ribbed trim over a light-blue softly gathered collarless blouse with short button placket. Reference-matched fine dark contours, tidy grouped hair strands and restrained warm brown hair highlights.
+Expression: a bright joyful open-mouth smile with a small visible white upper tooth shape, eyes gently closed in upward arcs from smiling, cheeks lifted with soft peach blush, relaxed kind eyebrows. Same mature youthful woman as the reference.
+Framing: exactly ONE head-and-shoulders bust, facing the viewer at a slight three-quarter angle. Head occupies the upper half. Generous empty space around the entire head, all hair and shoulders within the left and right canvas edges, nothing cropped at the top or sides. Bust continues to and is cropped only by the bottom canvas edge. No hands or additional objects.
+
+BACKGROUND: completely transparent PNG with a real alpha channel. No backdrop, no floor, no cast shadow outside the character, no glow or halo, no frame or border, no text or watermark. Do not draw a checkerboard.
+Every part of the character including hair, face, teeth, light-blue blouse, and cream-white cardigan must be fully solid and opaque; transparency only outside the silhouette. Clean anti-aliased silhouette edges.
+Only if genuine transparency cannot be produced, use perfectly flat uniform pure chroma green #00FF00, with no gradient, no shadows, and no green spill or green lighting on the character.
+Generate one image only.

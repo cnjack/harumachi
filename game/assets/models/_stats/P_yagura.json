@@ -1,0 +1,37 @@
+{
+ "id": "P_yagura",
+ "src": "raw/P_yagura_h3d_quality_20261002_quad/model.glb",
+ "provider": "hyper3d rodin Gen-2.5-High Quad, 2026-10-02",
+ "tris_src": 100624,
+ "tris": 28000,
+ "size_m": [
+  3.8,
+  4.349,
+  4.226
+ ],
+ "godot_size_m_xyz": [
+  3.8,
+  4.226,
+  4.349
+ ],
+ "tex": 2048,
+ "bytes": 1319912,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.0,
+ "base_frac": 0.725,
+ "fit_bounds_blender": {
+  "min": [
+   -1.899999976158142,
+   -2.4493520259857178,
+   -0.10053849220275879
+  ],
+  "max": [
+   1.899999976158142,
+   1.899999976158142,
+   4.125
+  ]
+ }
+}

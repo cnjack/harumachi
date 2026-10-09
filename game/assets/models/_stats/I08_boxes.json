@@ -1,0 +1,20 @@
+{
+ "id": "I08_boxes",
+ "src": "raw/I08_boxes/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 15046,
+ "tris": 5000,
+ "size_m": [
+  1.0,
+  0.929,
+  1.157
+ ],
+ "godot_size_m_xyz": [
+  1.0,
+  1.157,
+  0.929
+ ],
+ "tex": 1024,
+ "bytes": 236020,
+ "yaw_fix": 0
+}

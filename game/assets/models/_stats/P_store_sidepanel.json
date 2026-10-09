@@ -1,0 +1,18 @@
+{
+ "id": "P_store_sidepanel",
+ "src": "raw/landmarks_aged_20261001/P_store_sidepanel.glb",
+ "provider": "Blender preserved geometry + imagegen aged timber, 2026-10-01",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 616,
+ "tex": 2048,
+ "bytes": 1008680,
+ "godot_size_m_xyz": [
+  4.8,
+  2.97,
+  0.1425
+ ],
+ "mesh_nodes": [
+  "P_store_sidepanel"
+ ]
+}

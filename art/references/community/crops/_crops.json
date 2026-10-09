@@ -1,0 +1,482 @@
+{
+ "H01": {
+  "sheet": "housing",
+  "box": [
+   0,
+   40,
+   475,
+   418
+  ],
+  "aspect_w_h": 1.257
+ },
+ "H02": {
+  "sheet": "housing",
+  "box": [
+   478,
+   40,
+   1025,
+   404
+  ],
+  "aspect_w_h": 1.499
+ },
+ "H03": {
+  "sheet": "housing",
+  "box": [
+   1012,
+   40,
+   1535,
+   416
+  ],
+  "aspect_w_h": 1.386
+ },
+ "H04": {
+  "sheet": "housing",
+  "box": [
+   4,
+   444,
+   522,
+   734
+  ],
+  "aspect_w_h": 1.752
+ },
+ "H05": {
+  "sheet": "housing",
+  "box": [
+   519,
+   440,
+   1082,
+   723
+  ],
+  "aspect_w_h": 2.0
+ },
+ "H06": {
+  "sheet": "housing",
+  "box": [
+   1089,
+   440,
+   1523,
+   728
+  ],
+  "aspect_w_h": 1.538
+ },
+ "H07": {
+  "sheet": "housing",
+  "box": [
+   12,
+   781,
+   230,
+   986
+  ],
+  "aspect_w_h": 1.093
+ },
+ "H08": {
+  "sheet": "housing",
+  "box": [
+   255,
+   766,
+   432,
+   987
+  ],
+  "aspect_w_h": 0.81
+ },
+ "H09": {
+  "sheet": "housing",
+  "box": [
+   458,
+   769,
+   775,
+   985
+  ],
+  "aspect_w_h": 1.457
+ },
+ "H10": {
+  "sheet": "housing",
+  "box": [
+   812,
+   768,
+   974,
+   980
+  ],
+  "aspect_w_h": 0.817
+ },
+ "H11": {
+  "sheet": "housing",
+  "box": [
+   998,
+   786,
+   1304,
+   985
+  ],
+  "aspect_w_h": 1.474
+ },
+ "H12": {
+  "sheet": "housing",
+  "box": [
+   1320,
+   761,
+   1512,
+   988
+  ],
+  "aspect_w_h": 0.856
+ },
+ "H12a": {
+  "sheet": "housing",
+  "box": [
+   1325,
+   761,
+   1510,
+   891
+  ],
+  "aspect_w_h": 1.504
+ },
+ "S01": {
+  "sheet": "shops-services",
+  "box": [
+   10,
+   5,
+   499,
+   345
+  ],
+  "aspect_w_h": 1.464
+ },
+ "S02": {
+  "sheet": "shops-services",
+  "box": [
+   534,
+   1,
+   1011,
+   345
+  ],
+  "aspect_w_h": 1.429
+ },
+ "S03": {
+  "sheet": "shops-services",
+  "box": [
+   1039,
+   1,
+   1527,
+   345
+  ],
+  "aspect_w_h": 1.461
+ },
+ "S04": {
+  "sheet": "shops-services",
+  "box": [
+   15,
+   363,
+   512,
+   662
+  ],
+  "aspect_w_h": 1.645
+ },
+ "S05": {
+  "sheet": "shops-services",
+  "box": [
+   533,
+   348,
+   1008,
+   662
+  ],
+  "aspect_w_h": 1.549
+ },
+ "S06": {
+  "sheet": "shops-services",
+  "box": [
+   1029,
+   352,
+   1529,
+   659
+  ],
+  "aspect_w_h": 1.615
+ },
+ "S07": {
+  "sheet": "shops-services",
+  "box": [
+   11,
+   662,
+   512,
+   1006
+  ],
+  "aspect_w_h": 1.446
+ },
+ "S08": {
+  "sheet": "shops-services",
+  "box": [
+   538,
+   662,
+   1009,
+   1007
+  ],
+  "aspect_w_h": 1.38
+ },
+ "S09": {
+  "sheet": "shops-services",
+  "box": [
+   1026,
+   670,
+   1524,
+   1004
+  ],
+  "aspect_w_h": 1.451
+ },
+ "P01": {
+  "sheet": "public-activities",
+  "box": [
+   8,
+   6,
+   450,
+   356
+  ],
+  "aspect_w_h": 1.249
+ },
+ "P02": {
+  "sheet": "public-activities",
+  "box": [
+   461,
+   19,
+   783,
+   352
+  ],
+  "aspect_w_h": 0.991
+ },
+ "P03": {
+  "sheet": "public-activities",
+  "box": [
+   780,
+   159,
+   1135,
+   329
+  ],
+  "aspect_w_h": 1.935
+ },
+ "P04": {
+  "sheet": "public-activities",
+  "box": [
+   1140,
+   33,
+   1527,
+   329
+  ],
+  "aspect_w_h": 1.266
+ },
+ "P05": {
+  "sheet": "public-activities",
+  "box": [
+   9,
+   364,
+   432,
+   651
+  ],
+  "aspect_w_h": 1.486
+ },
+ "P06": {
+  "sheet": "public-activities",
+  "box": [
+   400,
+   457,
+   770,
+   636
+  ],
+  "aspect_w_h": 1.908
+ },
+ "P07": {
+  "sheet": "public-activities",
+  "box": [
+   772,
+   397,
+   1150,
+   650
+  ],
+  "aspect_w_h": 1.445
+ },
+ "P08": {
+  "sheet": "public-activities",
+  "box": [
+   1152,
+   368,
+   1517,
+   662
+  ],
+  "aspect_w_h": 1.25
+ },
+ "P09": {
+  "sheet": "public-activities",
+  "box": [
+   9,
+   662,
+   420,
+   989
+  ],
+  "aspect_w_h": 1.275
+ },
+ "P10": {
+  "sheet": "public-activities",
+  "box": [
+   432,
+   662,
+   905,
+   987
+  ],
+  "aspect_w_h": 1.42
+ },
+ "P11": {
+  "sheet": "public-activities",
+  "box": [
+   917,
+   676,
+   1196,
+   997
+  ],
+  "aspect_w_h": 0.883
+ },
+ "P12": {
+  "sheet": "public-activities",
+  "box": [
+   1208,
+   718,
+   1515,
+   986
+  ],
+  "aspect_w_h": 1.12
+ },
+ "R01": {
+  "sheet": "roads-infrastructure",
+  "box": [
+   13,
+   33,
+   378,
+   295
+  ],
+  "aspect_w_h": 1.371
+ },
+ "R02": {
+  "sheet": "roads-infrastructure",
+  "box": [
+   415,
+   48,
+   720,
+   298
+  ],
+  "aspect_w_h": 1.207
+ },
+ "R03": {
+  "sheet": "roads-infrastructure",
+  "box": [
+   742,
+   47,
+   1101,
+   303
+  ],
+  "aspect_w_h": 1.379
+ },
+ "R04": {
+  "sheet": "roads-infrastructure",
+  "box": [
+   1121,
+   26,
+   1524,
+   307
+  ],
+  "aspect_w_h": 1.411
+ },
+ "R05": {
+  "sheet": "roads-infrastructure",
+  "box": [
+   6,
+   384,
+   413,
+   589
+  ],
+  "aspect_w_h": 1.905
+ },
+ "R06": {
+  "sheet": "roads-infrastructure",
+  "box": [
+   428,
+   375,
+   809,
+   626
+  ],
+  "aspect_w_h": 1.479
+ },
+ "R07": {
+  "sheet": "roads-infrastructure",
+  "box": [
+   812,
+   442,
+   1232,
+   613
+  ],
+  "aspect_w_h": 2.246
+ },
+ "R08": {
+  "sheet": "roads-infrastructure",
+  "box": [
+   1276,
+   329,
+   1499,
+   644
+  ],
+  "aspect_w_h": 0.722
+ },
+ "R08a": {
+  "sheet": "roads-infrastructure",
+  "box": [
+   1276,
+   329,
+   1395,
+   644
+  ],
+  "aspect_w_h": 0.408
+ },
+ "R07a": {
+  "sheet": "roads-infrastructure",
+  "box": [
+   812,
+   444,
+   1019,
+   593
+  ],
+  "aspect_w_h": 1.273
+ },
+ "R09": {
+  "sheet": "roads-infrastructure",
+  "box": [
+   34,
+   649,
+   261,
+   979
+  ],
+  "aspect_w_h": 0.702
+ },
+ "R10": {
+  "sheet": "roads-infrastructure",
+  "box": [
+   386,
+   697,
+   850,
+   960
+  ],
+  "aspect_w_h": 1.72
+ },
+ "R11": {
+  "sheet": "roads-infrastructure",
+  "box": [
+   893,
+   637,
+   1067,
+   985
+  ],
+  "aspect_w_h": 0.522
+ },
+ "R12": {
+  "sheet": "roads-infrastructure",
+  "box": [
+   1145,
+   767,
+   1501,
+   951
+  ],
+  "aspect_w_h": 1.86
+ }
+}

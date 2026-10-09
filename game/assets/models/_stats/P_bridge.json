@@ -1,0 +1,22 @@
+{
+ "id": "P_bridge",
+ "src": "raw/landmarks_aged_20261001/P_bridge.glb",
+ "provider": "Blender UV/material refinement + imagegen aged textures, 2026-10-01",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 2072,
+ "tex": 2048,
+ "bytes": 1109240,
+ "godot_size_m_xyz": [
+  2.5,
+  3.4816,
+  10.4
+ ],
+ "mesh_nodes": [
+  "abutments",
+  "beams",
+  "deck",
+  "planks",
+  "railings"
+ ]
+}

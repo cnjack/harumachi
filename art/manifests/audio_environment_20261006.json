@@ -1,0 +1,28 @@
+{
+  "generator": "art/tools/synth_environment_audio.py",
+  "seed": 606106,
+  "sample_rate": 44100,
+  "source": "procedural synthesis, no recordings",
+  "files": {
+    "river_close": {
+      "file": "game/assets/audio/amb/river_close.ogg",
+      "seconds": 24,
+      "loop": true,
+      "rms": 0.05407008182163099,
+      "sha256": "57ad8f27ca614565fa4f239404aa7b3bb39011e2a072617794089fb61739e61f"
+    },
+    "leaves_wind": {
+      "file": "game/assets/audio/amb/leaves_wind.ogg",
+      "seconds": 24,
+      "loop": true,
+      "rms": 0.023441210981789636,
+      "sha256": "c04be837ca16b8a5feebd22d86fdba2456ab395a9b63cae9e2b032fc359f2a56"
+    },
+    "wind_chime": {
+      "file": "game/assets/audio/sfx/wind_chime.wav",
+      "seconds": 2.1,
+      "loop": false,
+      "sha256": "3f72a950f6fbe2395b4dd08f5227efc744f1174e5bc93c356c8f9b1437eafdf8"
+    }
+  }
+}

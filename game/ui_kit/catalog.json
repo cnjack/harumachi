@@ -1,0 +1,595 @@
+{
+  "version": "1.0.0",
+  "name": "晴町和纸 UI",
+  "assets": {
+    "home": {
+      "sheet": "navigation_atlas.png",
+      "rect": [
+        41,
+        81,
+        263,
+        236
+      ],
+      "category": "icon"
+    },
+    "store": {
+      "sheet": "navigation_atlas.png",
+      "rect": [
+        351,
+        91,
+        251,
+        225
+      ],
+      "category": "icon"
+    },
+    "bakery": {
+      "sheet": "navigation_atlas.png",
+      "rect": [
+        654,
+        108,
+        252,
+        217
+      ],
+      "category": "icon"
+    },
+    "florist": {
+      "sheet": "navigation_atlas.png",
+      "rect": [
+        959,
+        72,
+        252,
+        258
+      ],
+      "category": "icon"
+    },
+    "post": {
+      "sheet": "navigation_atlas.png",
+      "rect": [
+        81,
+        365,
+        213,
+        249
+      ],
+      "category": "icon"
+    },
+    "hall": {
+      "sheet": "navigation_atlas.png",
+      "rect": [
+        335,
+        380,
+        280,
+        231
+      ],
+      "category": "icon"
+    },
+    "farm": {
+      "sheet": "navigation_atlas.png",
+      "rect": [
+        649,
+        448,
+        273,
+        149
+      ],
+      "category": "icon"
+    },
+    "fish": {
+      "sheet": "navigation_atlas.png",
+      "rect": [
+        973,
+        363,
+        233,
+        250
+      ],
+      "category": "icon"
+    },
+    "tree": {
+      "sheet": "navigation_atlas.png",
+      "rect": [
+        42,
+        651,
+        262,
+        244
+      ],
+      "category": "icon"
+    },
+    "exit": {
+      "sheet": "navigation_atlas.png",
+      "rect": [
+        376,
+        653,
+        228,
+        241
+      ],
+      "category": "icon"
+    },
+    "quest": {
+      "sheet": "navigation_atlas.png",
+      "rect": [
+        660,
+        658,
+        221,
+        231
+      ],
+      "category": "icon"
+    },
+    "book": {
+      "sheet": "navigation_atlas.png",
+      "rect": [
+        944,
+        692,
+        272,
+        183
+      ],
+      "category": "icon"
+    },
+    "backpack": {
+      "sheet": "navigation_atlas.png",
+      "rect": [
+        46,
+        926,
+        257,
+        260
+      ],
+      "category": "icon"
+    },
+    "calendar": {
+      "sheet": "navigation_atlas.png",
+      "rect": [
+        361,
+        932,
+        224,
+        241
+      ],
+      "category": "icon"
+    },
+    "map": {
+      "sheet": "navigation_atlas.png",
+      "rect": [
+        649,
+        949,
+        265,
+        224
+      ],
+      "category": "icon"
+    },
+    "coin": {
+      "sheet": "navigation_atlas.png",
+      "rect": [
+        986,
+        957,
+        208,
+        211
+      ],
+      "category": "icon"
+    },
+    "w_sunny": {
+      "sheet": "weather_atlas.png",
+      "rect": [
+        62,
+        82,
+        349,
+        340
+      ],
+      "category": "icon"
+    },
+    "w_night": {
+      "sheet": "weather_atlas.png",
+      "rect": [
+        527,
+        113,
+        281,
+        281
+      ],
+      "category": "icon"
+    },
+    "w_cloudy": {
+      "sheet": "weather_atlas.png",
+      "rect": [
+        921,
+        99,
+        360,
+        305
+      ],
+      "category": "icon"
+    },
+    "w_rain": {
+      "sheet": "weather_atlas.png",
+      "rect": [
+        1390,
+        120,
+        323,
+        305
+      ],
+      "category": "icon"
+    },
+    "w_festival": {
+      "sheet": "weather_atlas.png",
+      "rect": [
+        118,
+        476,
+        232,
+        323
+      ],
+      "category": "icon"
+    },
+    "level_badge": {
+      "sheet": "weather_atlas.png",
+      "rect": [
+        502,
+        538,
+        332,
+        256
+      ],
+      "category": "icon"
+    },
+    "support_token": {
+      "sheet": "weather_atlas.png",
+      "rect": [
+        958,
+        501,
+        297,
+        297
+      ],
+      "category": "icon"
+    },
+    "compass": {
+      "sheet": "weather_atlas.png",
+      "rect": [
+        1405,
+        501,
+        289,
+        290
+      ],
+      "category": "icon"
+    },
+    "primary_normal": {
+      "sheet": "buttons_atlas.png",
+      "rect": [
+        47,
+        127,
+        461,
+        153
+      ],
+      "category": "control"
+    },
+    "primary_hover": {
+      "sheet": "buttons_atlas.png",
+      "rect": [
+        584,
+        127,
+        465,
+        154
+      ],
+      "category": "control"
+    },
+    "primary_pressed": {
+      "sheet": "buttons_atlas.png",
+      "rect": [
+        1124,
+        126,
+        464,
+        154
+      ],
+      "category": "control"
+    },
+    "primary_disabled": {
+      "sheet": "buttons_atlas.png",
+      "rect": [
+        1664,
+        126,
+        462,
+        154
+      ],
+      "category": "control"
+    },
+    "secondary_normal": {
+      "sheet": "buttons_atlas.png",
+      "rect": [
+        48,
+        435,
+        460,
+        153
+      ],
+      "category": "control"
+    },
+    "secondary_hover": {
+      "sheet": "buttons_atlas.png",
+      "rect": [
+        584,
+        434,
+        465,
+        156
+      ],
+      "category": "control"
+    },
+    "secondary_pressed": {
+      "sheet": "buttons_atlas.png",
+      "rect": [
+        1124,
+        434,
+        464,
+        154
+      ],
+      "category": "control"
+    },
+    "secondary_disabled": {
+      "sheet": "buttons_atlas.png",
+      "rect": [
+        1664,
+        434,
+        462,
+        155
+      ],
+      "category": "control"
+    },
+    "slot_normal": {
+      "sheet": "controls_atlas.png",
+      "rect": [
+        87,
+        131,
+        304,
+        298
+      ],
+      "category": "control"
+    },
+    "slot_selected": {
+      "sheet": "controls_atlas.png",
+      "rect": [
+        518,
+        130,
+        310,
+        300
+      ],
+      "category": "control"
+    },
+    "slot_disabled": {
+      "sheet": "controls_atlas.png",
+      "rect": [
+        950,
+        131,
+        307,
+        298
+      ],
+      "category": "control"
+    },
+    "slot_empty": {
+      "sheet": "controls_atlas.png",
+      "rect": [
+        1385,
+        132,
+        304,
+        295
+      ],
+      "category": "control"
+    },
+    "progress_track": {
+      "sheet": "controls_atlas.png",
+      "rect": [
+        55,
+        623,
+        368,
+        63
+      ],
+      "category": "control"
+    },
+    "progress_fill": {
+      "sheet": "controls_atlas.png",
+      "rect": [
+        490,
+        623,
+        368,
+        63
+      ],
+      "category": "control"
+    },
+    "notice_info": {
+      "sheet": "controls_atlas.png",
+      "rect": [
+        925,
+        577,
+        363,
+        156
+      ],
+      "category": "control"
+    },
+    "notice_warning": {
+      "sheet": "controls_atlas.png",
+      "rect": [
+        1358,
+        578,
+        363,
+        155
+      ],
+      "category": "control"
+    },
+    "settings": {
+      "sheet": "utility_atlas.png",
+      "rect": [
+        80,
+        108,
+        335,
+        327
+      ],
+      "category": "icon"
+    },
+    "close": {
+      "sheet": "utility_atlas.png",
+      "rect": [
+        535,
+        123,
+        296,
+        298
+      ],
+      "category": "icon"
+    },
+    "back": {
+      "sheet": "utility_atlas.png",
+      "rect": [
+        965,
+        167,
+        284,
+        226
+      ],
+      "category": "icon"
+    },
+    "check": {
+      "sheet": "utility_atlas.png",
+      "rect": [
+        1386,
+        125,
+        294,
+        295
+      ],
+      "category": "icon"
+    },
+    "gift": {
+      "sheet": "utility_atlas.png",
+      "rect": [
+        83,
+        491,
+        315,
+        315
+      ],
+      "category": "icon"
+    },
+    "fishing_rod": {
+      "sheet": "utility_atlas.png",
+      "rect": [
+        505,
+        493,
+        351,
+        306
+      ],
+      "category": "icon"
+    },
+    "heart": {
+      "sheet": "utility_atlas.png",
+      "rect": [
+        978,
+        542,
+        290,
+        250
+      ],
+      "category": "icon"
+    },
+    "filter": {
+      "sheet": "utility_atlas.png",
+      "rect": [
+        1394,
+        535,
+        297,
+        245
+      ],
+      "category": "icon"
+    },
+    "modal_paper": {
+      "sheet": "modal_paper.png",
+      "rect": [
+        74,
+        90,
+        1106,
+        1072
+      ],
+      "category": "surface"
+    },
+    "hud_paper": {
+      "sheet": "hud_paper.png",
+      "rect": [
+        21,
+        106,
+        2129,
+        505
+      ],
+      "category": "surface"
+    },
+    "minimap_ring": {
+      "sheet": "minimap_ring.png",
+      "rect": null,
+      "category": "overlay"
+    },
+    "camera": {
+      "sheet": "controls/camera.svg",
+      "rect": [
+        0,
+        0,
+        64,
+        64
+      ],
+      "category": "icon"
+    }
+  },
+  "source_images": [
+    {
+      "file": "buttons_atlas.png",
+      "size": [
+        2172,
+        724
+      ],
+      "transparent_fraction": 0.6482301110059725,
+      "sha256": "fcc2c0b958d033424ca691b9a9929e7fd21bd2f692302ad73022575a31b08938"
+    },
+    {
+      "file": "controls_atlas.png",
+      "size": [
+        1774,
+        887
+      ],
+      "transparent_fraction": 0.6757479005908977,
+      "sha256": "199071757badd43209dfa6da4fa0bd8020265c11d9f54a3ed99f9f746af2c986"
+    },
+    {
+      "file": "hud_paper.png",
+      "size": [
+        2172,
+        724
+      ],
+      "transparent_fraction": 0.35770873396212977,
+      "sha256": "035c9593b3aa513445a16da1641786a94cc3ec3ec239d052462d09c5c6ee6f38"
+    },
+    {
+      "file": "minimap_ring.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "transparent_fraction": 0.8986318740159083,
+      "sha256": "9a9cbfa8e773b4a5bd57e09b2660da05a386926801a9ff29d265235021ccf095"
+    },
+    {
+      "file": "modal_paper.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "transparent_fraction": 0.21837043311482998,
+      "sha256": "21afadb7b1861cf34470c96e4b37162c2ba5628d6c7c69c9dfd9642e9ad27c13"
+    },
+    {
+      "file": "navigation_atlas.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "transparent_fraction": 0.5514843728140127,
+      "sha256": "5b157f64507c63d8190a6057ac85ea974535f77f430329f82545ffb26effd62d"
+    },
+    {
+      "file": "utility_atlas.png",
+      "size": [
+        1774,
+        887
+      ],
+      "transparent_fraction": 0.7122942057961105,
+      "sha256": "7d46c79a3f66ba2d9f1f4ca4304f17e934b623bbb991ee90f9fee4c78d5ab83b"
+    },
+    {
+      "file": "weather_atlas.png",
+      "size": [
+        1774,
+        887
+      ],
+      "transparent_fraction": 0.6881467114235563,
+      "sha256": "c466d7a9f688baaf7510b6832993b5465763475b8e51d5bb3249ad9c0b9ac2cf"
+    }
+  ]
+}

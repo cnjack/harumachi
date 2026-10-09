@@ -1,0 +1,20 @@
+{
+ "id": "CH_kazuko_static",
+ "src": "raw/CH_kazuko_pix/model.glb",
+ "provider": "pixal3d (v0.6)",
+ "tris_src": 955006,
+ "tris": 20524,
+ "size_m": [
+  0.778,
+  0.37,
+  1.554
+ ],
+ "godot_size_m_xyz": [
+  0.778,
+  1.554,
+  0.37
+ ],
+ "tex": 2048,
+ "bytes": 1760388,
+ "yaw_fix": 180
+}

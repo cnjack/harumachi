@@ -1,0 +1,31 @@
+{
+ "id": "I02_cake_showcase",
+ "src": "raw/I02_cake_showcase_clear_20261006/ready.glb",
+ "provider": "Blender measured cabinet rebuild, actual shelves and runtime thin glass; original Pixal3D source preserved",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 168,
+ "tex": 2048,
+ "bytes": 22080,
+ "godot_size_m_xyz": [
+  1.34,
+  1.149,
+  0.755
+ ],
+ "mesh_nodes": [
+  "BackRail",
+  "CabinetBase",
+  "GlassFront",
+  "GlassSide_-1",
+  "GlassSide_1",
+  "GlassTop",
+  "InsetFront",
+  "Post_-1_-1",
+  "Post_-1_1",
+  "Post_1_-1",
+  "Post_1_1",
+  "Shelf_0",
+  "Shelf_1",
+  "TopRail"
+ ]
+}

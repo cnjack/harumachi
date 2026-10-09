@@ -1,0 +1,8 @@
+{
+  "model": "MiniMax-Music3-MLX-Serve-8bit",
+  "prompt": "### Global Metadata\nA short, complete heartfelt ending theme of about 44 seconds that plays after the player's first weekend in a sunny Japanese town, when the community market has ended and everyone is smiling. Makoto Shinkai anime-film epilogue feeling: gratitude, gentle nostalgia, warm golden evening light. 64 BPM, D major. Solo grand piano with a warm string ensemble and a few celesta notes, simple lyrical melody resolving IV-V-I. Intimate, spacious, natural hall tail. Pure instrumental chamber piece for piano and strings only. Avoid EDM drops, trap hi-hats, distorted guitars, heavy sub bass, trailer braams and cinematic bombast. No drums.\n\n### Vocal Details\nNone. Instrumental only: the piano carries the melody, the strings swell gently beneath it.\n\n### Timed Arrangement\n0-10 seconds: solo piano introduces the melody. 10-28 seconds: strings enter and the melody rises to a warm, full but restrained peak. 28-38 seconds: the final phrase resolves IV-V-I onto a long sustained D major chord on piano and strings with a last celesta sparkle. 38-46 seconds: the chord rings out and decays naturally to complete silence; nothing new starts after the final chord. The piece is finished by about 46 seconds.",
+  "lyrics": "[Intro]\n[Piano Solo]\n\n[Interlude]\n[Instrumental]\n\n[Outro]\n[Piano Solo]",
+  "duration_seconds": 60,
+  "steps": 30,
+  "seed": 2026092724
+}

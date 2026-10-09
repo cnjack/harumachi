@@ -1,0 +1,20 @@
+{
+ "id": "D05_hokora",
+ "src": "raw/D05_hokora_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 925956,
+ "tris": 7628,
+ "size_m": [
+  0.933,
+  0.964,
+  1.193
+ ],
+ "godot_size_m_xyz": [
+  0.933,
+  1.193,
+  0.964
+ ],
+ "tex": 1024,
+ "bytes": 623868,
+ "yaw_fix": -155.5
+}

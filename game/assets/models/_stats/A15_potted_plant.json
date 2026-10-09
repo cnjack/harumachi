@@ -1,0 +1,20 @@
+{
+ "id": "A15_potted_plant",
+ "src": "../../output/japanese-street-shinkai-dry/models/A15_potted_plant/model.glb",
+ "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)",
+ "tris_src": 79954,
+ "tris": 4000,
+ "size_m": [
+  0.786,
+  0.802,
+  0.796
+ ],
+ "godot_size_m_xyz": [
+  0.786,
+  0.796,
+  0.802
+ ],
+ "tex": 1024,
+ "bytes": 563616,
+ "yaw_fix": 0
+}

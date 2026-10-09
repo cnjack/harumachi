@@ -1,0 +1,25 @@
+{
+ "id": "D06_well",
+ "src": "raw/D06_well_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 963461,
+ "tris": 7544,
+ "size_m": [
+  1.499,
+  1.362,
+  2.202
+ ],
+ "godot_size_m_xyz": [
+  1.499,
+  2.202,
+  1.362
+ ],
+ "tex": 1024,
+ "bytes": 629304,
+ "yaw_fix": 38.0,
+ "level": "auto",
+ "lean_src_deg": 16.76,
+ "levelled": true,
+ "lean_deg": 0.2,
+ "base_frac": 0.659
+}

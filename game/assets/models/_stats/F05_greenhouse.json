@@ -1,0 +1,37 @@
+{
+ "id": "F05_greenhouse",
+ "src": "raw/F05_greenhouse_h3d/model.glb",
+ "provider": "hyper3d rodin gen-2.5 (v0.4)",
+ "tris_src": 25000,
+ "tris": 5836,
+ "size_m": [
+  2.801,
+  4.705,
+  2.363
+ ],
+ "godot_size_m_xyz": [
+  2.801,
+  2.363,
+  4.705
+ ],
+ "tex": 1024,
+ "bytes": 551156,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.03,
+ "levelled": false,
+ "lean_deg": 0.05,
+ "base_frac": 0.974,
+ "fit_bounds_blender": {
+  "min": [
+   -1.40420663356781,
+   -2.3461344242095947,
+   -0.03733515366911888
+  ],
+  "max": [
+   1.397220492362976,
+   2.358822822570801,
+   2.3259217739105225
+  ]
+ }
+}

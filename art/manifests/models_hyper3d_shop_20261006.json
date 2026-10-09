@@ -1,0 +1,433 @@
+{
+  "provider": "Hyper3D Rodin CLI, authenticated existing account",
+  "date_started": "2026-10-06",
+  "accepted_date": "2026-10-07",
+  "note": "Imagegen reference images; each accepted job submitted once. Raw PBR outputs are preserved; exported anime diffuse models use matte game materials. Poll/download failures never trigger a paid resubmission. Account also had concurrent jobs, so wallet-wide delta is not attributed to this batch.",
+  "credit_cost_estimate": 5.0,
+  "cost_basis": "10 High Raw jobs at 0.5 credits each; not an isolated account debit audit",
+  "jobs": {
+    "B07_iced_donut": {
+      "name": "甜甜圈",
+      "generation_id": "1d5a3b73-8e66-4e97-9bda-de4ff8224eeb",
+      "display_url": "https://hyper3d.ai/workspace/rodin/1d5a3b73-8e66-4e97-9bda-de4ff8224eeb",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "requested_faces": 500000,
+      "reference": "art/references/shop_life_20261006/B07_iced_donut.png",
+      "reference_sha256": "91d05485332de02f01605095d0c9853f213a6c9a436c16ec63ba2fc066ba984f",
+      "raw": "art/models/raw/B07_iced_donut_hyper3d/model.glb",
+      "raw_sha256": "b9567b112057ce9e22cc3cf4c7b439033f8ab476e8d7d9859439b620591cded7",
+      "export": "game/assets/models/B07_iced_donut.glb",
+      "export_sha256": "a6b1d923b591751d9b9b5cc88f635d19737fe86f8ef4d4c25af76f4145279c6e",
+      "status": "accepted after native close-ups, level and prop audits",
+      "stats": {
+        "id": "B07_iced_donut",
+        "src": "raw/B07_iced_donut_hyper3d/model.glb",
+        "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+        "tris_src": 500000,
+        "tris": 8000,
+        "size_m": [
+          0.11,
+          0.11,
+          0.043
+        ],
+        "godot_size_m_xyz": [
+          0.11,
+          0.043,
+          0.11
+        ],
+        "tex": 2048,
+        "bytes": 438252,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.32,
+        "levelled": false,
+        "lean_deg": 0.17,
+        "base_frac": 0.378
+      },
+      "display_url_origin": "Canonical workspace link derived by the CLI helper; the result command omitted display_url."
+    },
+    "B08_strawberry_cake": {
+      "name": "草莓蛋糕",
+      "generation_id": "8d056706-2045-477e-a12b-5cecf2a1e661",
+      "display_url": "https://hyper3d.ai/workspace/rodin/8d056706-2045-477e-a12b-5cecf2a1e661",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "requested_faces": 500000,
+      "reference": "art/references/shop_life_20261006/B08_strawberry_cake.png",
+      "reference_sha256": "e654ed0119ef9316ab92ebd0c3af5cf961e664ff74f915f9f7a1a50ba834ad97",
+      "raw": "art/models/raw/B08_strawberry_cake_hyper3d/model.glb",
+      "raw_sha256": "b257c03276d0bfdf1b6a8a4c0faca17cbc77e2e7ae48989f55c6b5d60b32ff9e",
+      "export": "game/assets/models/B08_strawberry_cake.glb",
+      "export_sha256": "50bdb7a9fe74ffef4fcdf2dfcc832ab429f4946b0802050def3aa22d7939606c",
+      "status": "accepted after native close-ups, level and prop audits",
+      "stats": {
+        "id": "B08_strawberry_cake",
+        "src": "raw/B08_strawberry_cake_hyper3d/model.glb",
+        "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+        "tris_src": 500000,
+        "tris": 15999,
+        "size_m": [
+          0.224,
+          0.225,
+          0.151
+        ],
+        "godot_size_m_xyz": [
+          0.224,
+          0.151,
+          0.225
+        ],
+        "tex": 2048,
+        "bytes": 1048648,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.02,
+        "base_frac": 0.771
+      },
+      "display_url_origin": "Canonical workspace link derived by the CLI helper; the result command omitted display_url."
+    },
+    "B09_sushi_tray": {
+      "name": "寿司",
+      "generation_id": "c89c845b-c832-419f-858e-15237c6c9177",
+      "display_url": "https://hyper3d.ai/workspace/rodin/c89c845b-c832-419f-858e-15237c6c9177",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "requested_faces": 500000,
+      "reference": "art/references/shop_life_20261006/B09_sushi_tray.png",
+      "reference_sha256": "b8bf3f1152ce03c0765d3df6a40244d3b96afe2d567ba6aea04145f14b3eebb3",
+      "raw": "art/models/raw/B09_sushi_tray_hyper3d/model.glb",
+      "raw_sha256": "4b7610566bd2f7a672b887ebb3de927b64d238e636ee21ab9220de94f60a0752",
+      "export": "game/assets/models/B09_sushi_tray.glb",
+      "export_sha256": "a63c06c2ef944d18e56add893f4e1bb2e0a4c724702fe2a43cd7a357e77b328d",
+      "status": "accepted after native close-ups, level and prop audits",
+      "stats": {
+        "id": "B09_sushi_tray",
+        "src": "raw/B09_sushi_tray_hyper3d/model.glb",
+        "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+        "tris_src": 500000,
+        "tris": 14000,
+        "size_m": [
+          0.29,
+          0.178,
+          0.052
+        ],
+        "godot_size_m_xyz": [
+          0.29,
+          0.052,
+          0.178
+        ],
+        "tex": 2048,
+        "bytes": 862812,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.22,
+        "levelled": false,
+        "lean_deg": 0.13,
+        "base_frac": 0.711
+      },
+      "display_url_origin": "Canonical workspace link derived by the CLI helper; the result command omitted display_url."
+    },
+    "B10_bento_box": {
+      "name": "便当",
+      "generation_id": "0d82ecd8-d10c-4c9e-9193-acc2da356824",
+      "display_url": "https://hyper3d.ai/workspace/rodin/0d82ecd8-d10c-4c9e-9193-acc2da356824",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "requested_faces": 500000,
+      "reference": "art/references/shop_life_20261006/B10_bento_box.png",
+      "reference_sha256": "fd275ea46573046b51ec7c6d16fb031ffc652d24f7c92d681400dcb895a45345",
+      "raw": "art/models/raw/B10_bento_box_hyper3d/model.glb",
+      "raw_sha256": "c7f3d6fa775dcc7f17c27153bf176cef812249a1d6d2a6ab2a9250a650cb990f",
+      "export": "game/assets/models/B10_bento_box.glb",
+      "export_sha256": "3d1f97a5aebf0c6d5445f0cd70fe68429e255ec5f0de76cc238431ad3f2bdcb0",
+      "status": "accepted after native close-ups, level and prop audits",
+      "stats": {
+        "id": "B10_bento_box",
+        "src": "raw/B10_bento_box_hyper3d/model.glb",
+        "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+        "tris_src": 500000,
+        "tris": 13999,
+        "size_m": [
+          0.26,
+          0.131,
+          0.069
+        ],
+        "godot_size_m_xyz": [
+          0.26,
+          0.069,
+          0.131
+        ],
+        "tex": 2048,
+        "bytes": 1053092,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.61,
+        "levelled": false,
+        "lean_deg": 0.61,
+        "base_frac": 0.876
+      },
+      "display_url_origin": "Canonical workspace link derived by the CLI helper; the result command omitted display_url."
+    },
+    "B11_cream_bun": {
+      "name": "奶油面包",
+      "generation_id": "5e2d9640-f1b6-46ed-a626-880d9d5ed4ae",
+      "display_url": "https://hyper3d.ai/workspace/rodin/5e2d9640-f1b6-46ed-a626-880d9d5ed4ae",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "requested_faces": 500000,
+      "reference": "art/references/shop_life_20261006/B11_cream_bun.png",
+      "reference_sha256": "3cb042feee26b4425d47db872ce22835fb849b89341a47a9f1b9c77965102b17",
+      "raw": "art/models/raw/B11_cream_bun_hyper3d/model.glb",
+      "raw_sha256": "ed246c80d43ca2767391596031587d469a59a52ecd639efd33960bef9b03adc1",
+      "export": "game/assets/models/B11_cream_bun.glb",
+      "export_sha256": "0d8e17a3815c90e1ab1e031c2669c030ea1cc0e5849b41b799ca6d524571fb8f",
+      "status": "accepted after native close-ups, level and prop audits",
+      "stats": {
+        "id": "B11_cream_bun",
+        "src": "raw/B11_cream_bun_hyper3d/model.glb",
+        "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+        "tris_src": 500000,
+        "tris": 9000,
+        "size_m": [
+          0.15,
+          0.092,
+          0.065
+        ],
+        "godot_size_m_xyz": [
+          0.15,
+          0.065,
+          0.092
+        ],
+        "tex": 2048,
+        "bytes": 438588,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.636
+      },
+      "display_url_origin": "Canonical workspace link derived by the CLI helper; the result command omitted display_url."
+    },
+    "W14_grocery_stock": {
+      "name": "商品",
+      "generation_id": "43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "display_url": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "requested_faces": 500000,
+      "reference": "art/references/shop_life_20261006/W14_grocery_stock.png",
+      "reference_sha256": "013407afbe4a02b28751ef7f185b3d21bc3902da318baf92534d468c06a0173c",
+      "raw": "art/models/raw/W14_grocery_stock_hyper3d/model.glb",
+      "raw_sha256": "40dc2a835c367fe29b9fc4a7e27d00101d2d0b245b9558d5c91957214cab854b",
+      "export": "game/assets/models/W14_grocery_stock.glb",
+      "export_sha256": "adfac33234333a164c82b827c6af0760307320ee49e0e3217540b4222c88ec36",
+      "status": "accepted after native close-ups, level and prop audits",
+      "stats": {
+        "id": "W14_grocery_stock",
+        "src": "raw/W14_grocery_stock_hyper3d/model.glb",
+        "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+        "tris_src": 500000,
+        "tris": 16000,
+        "size_m": [
+          0.58,
+          0.263,
+          0.314
+        ],
+        "godot_size_m_xyz": [
+          0.58,
+          0.314,
+          0.263
+        ],
+        "tex": 2048,
+        "bytes": 895636,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.37,
+        "levelled": false,
+        "lean_deg": 0.48,
+        "base_frac": 0.609
+      },
+      "display_url_origin": "Canonical workspace link derived by the CLI helper; the result command omitted display_url."
+    },
+    "W15_produce_basket": {
+      "name": "农产品",
+      "generation_id": "0a549098-93b0-4de0-bbf6-0c56a5a2107d",
+      "display_url": "https://hyper3d.ai/workspace/rodin/0a549098-93b0-4de0-bbf6-0c56a5a2107d",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "requested_faces": 500000,
+      "reference": "art/references/shop_life_20261006/W15_produce_basket.png",
+      "reference_sha256": "37375c45b2657c5ed0b1e1b9fad180c4b026e60cc3f4c1fedcb6d6053037bdc6",
+      "raw": "art/models/raw/W15_produce_basket_hyper3d/model.glb",
+      "raw_sha256": "214335bf3fd4a5075364ae36760e15c629588625d7648aab33fd2d1b744bfc84",
+      "export": "game/assets/models/W15_produce_basket.glb",
+      "export_sha256": "57387290b61b0b5fbb10dd7723a3afe2c3c31c4b4036a063e41397c812caa653",
+      "status": "accepted after native close-ups, level and prop audits",
+      "stats": {
+        "id": "W15_produce_basket",
+        "src": "raw/W15_produce_basket_hyper3d/model.glb",
+        "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+        "tris_src": 500000,
+        "tris": 18000,
+        "size_m": [
+          0.65,
+          0.453,
+          0.219
+        ],
+        "godot_size_m_xyz": [
+          0.65,
+          0.219,
+          0.453
+        ],
+        "tex": 2048,
+        "bytes": 1277240,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.12,
+        "base_frac": 0.631
+      },
+      "display_url_origin": "Canonical workspace link derived by the CLI helper; the result command omitted display_url."
+    },
+    "W16_handtools_board": {
+      "name": "工具架",
+      "generation_id": "26ecd969-3d41-4191-80af-ed29457abe84",
+      "display_url": "https://hyper3d.ai/workspace/rodin/26ecd969-3d41-4191-80af-ed29457abe84",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "requested_faces": 500000,
+      "reference": "art/references/shop_life_20261006/W16_handtools_board.png",
+      "reference_sha256": "e8a9632bb735bc3e2c99b0170316a178eaef756978599be9d49febc8745e0415",
+      "raw": "art/models/raw/W16_handtools_board_hyper3d/model.glb",
+      "raw_sha256": "254e575e149cf2857ef8f387967dc6b850245aafb8cb4630258b53651da711da",
+      "export": "game/assets/models/W16_handtools_board.glb",
+      "export_sha256": "4e730329391c3c2c0ea1f0658a9d326c24cee6bd49d27edf5817918a560bcdd2",
+      "status": "accepted after native close-ups, level and prop audits",
+      "stats": {
+        "id": "W16_handtools_board",
+        "src": "raw/W16_handtools_board_hyper3d/model.glb",
+        "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+        "tris_src": 500000,
+        "tris": 18000,
+        "size_m": [
+          0.77,
+          0.421,
+          1.101
+        ],
+        "godot_size_m_xyz": [
+          0.77,
+          1.101,
+          0.421
+        ],
+        "tex": 2048,
+        "bytes": 1139104,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.912
+      },
+      "display_url_origin": "Canonical workspace link derived by the CLI helper; the result command omitted display_url."
+    },
+    "W17_display_shelf": {
+      "name": "货物架",
+      "generation_id": "a56aa1b6-7645-4882-bb87-c9a51ebbce9c",
+      "display_url": "https://hyper3d.ai/workspace/rodin/a56aa1b6-7645-4882-bb87-c9a51ebbce9c",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "requested_faces": 500000,
+      "reference": "art/references/shop_life_20261006/W17_display_shelf.png",
+      "reference_sha256": "8675d1cc9b021e5a63c4254a9d7817d58a1d4e00b655d10476788b03da89dc68",
+      "raw": "art/models/raw/W17_display_shelf_hyper3d/model.glb",
+      "raw_sha256": "f5063fa0532c998d621a5d678532ed1ff6304c2121e99132197eb7bd5b93b558",
+      "export": "game/assets/models/W17_display_shelf.glb",
+      "export_sha256": "2f0d98f34f40732309b6ab14333613623bdb1d2f89f79bb62a7528fa54d628bb",
+      "status": "accepted after native close-ups, level and prop audits",
+      "stats": {
+        "id": "W17_display_shelf",
+        "src": "raw/W17_display_shelf_hyper3d/model.glb",
+        "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+        "tris_src": 500000,
+        "tris": 18000,
+        "size_m": [
+          1.091,
+          0.501,
+          1.452
+        ],
+        "godot_size_m_xyz": [
+          1.091,
+          1.452,
+          0.501
+        ],
+        "tex": 2048,
+        "bytes": 997028,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.96,
+        "levelled": false,
+        "lean_deg": 1.23,
+        "base_frac": 0.835
+      },
+      "display_url_origin": "Canonical workspace link derived by the CLI helper; the result command omitted display_url."
+    },
+    "W18_retro_tv": {
+      "name": "电视",
+      "generation_id": "5879be81-a15d-4dfc-a0d6-c398a797851c",
+      "display_url": "https://hyper3d.ai/workspace/rodin/5879be81-a15d-4dfc-a0d6-c398a797851c",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "requested_faces": 500000,
+      "reference": "art/references/shop_life_20261006/W18_retro_tv.png",
+      "reference_sha256": "1c66bcf403cf572fc9a452a1f7952446c15820073ce009b7cae56db7db9cbbde",
+      "raw": "art/models/raw/W18_retro_tv_hyper3d/model.glb",
+      "raw_sha256": "99c3c0dca4043667bdb78199338d55c108711ffaabedef8e877c7d07ec14fefb",
+      "export": "game/assets/models/W18_retro_tv.glb",
+      "export_sha256": "ac074a6159af76d30bea11f7fa7f2f36adb6de9bff0f39b24b24b1a72127a1f3",
+      "status": "accepted after native close-ups, level and prop audits",
+      "stats": {
+        "id": "W18_retro_tv",
+        "src": "raw/W18_retro_tv_hyper3d/model.glb",
+        "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+        "tris_src": 500000,
+        "tris": 15000,
+        "size_m": [
+          0.52,
+          0.378,
+          0.383
+        ],
+        "godot_size_m_xyz": [
+          0.52,
+          0.383,
+          0.378
+        ],
+        "tex": 2048,
+        "bytes": 747304,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 8.99,
+        "levelled": true,
+        "lean_deg": 0.31,
+        "base_frac": 0.658
+      },
+      "display_url_origin": "Canonical workspace link derived by the CLI helper; the result command omitted display_url."
+    }
+  },
+  "reused_models": [
+    "existing B01-B06 breads",
+    "W12_cedar_tray",
+    "W13_cedar_worktable"
+  ],
+  "procedural_rebuild": {
+    "I02_cake_showcase": {
+      "source": "art/models/raw/I02_cake_showcase_clear_20261006/ready.glb",
+      "script": "art/tools/rebuild_cake_showcase.py",
+      "reason": "Original opaque panels obscured displayed cakes; rebuilt timber, supported shelves and thin glass, retaining measured outer dimensions.",
+      "native_glazing": "per-surface shop_glass overrides after HouseBuilder.toonify"
+    }
+  }
+}

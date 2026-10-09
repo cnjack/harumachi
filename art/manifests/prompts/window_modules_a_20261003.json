@@ -1,0 +1,25 @@
+{
+  "tool": "built-in imagegen",
+  "jobs": [
+    {
+      "key": "W04_sunflower_pot",
+      "prompt": "Japanese TV anime style small game prop reference for image-to-3D, clean confident line art, crisp cel shading, matte painted material, not photorealistic, not oil painting. ONE isolated object on plain light grey background, three-quarter view at modest camera elevation, full base visible, no cast shadow, no scenery, no lettering, no logo. Clearly readable solid volumes with fine original details and tidy level base. Warm summer palette. A single aged terracotta florist pot containing three sunflowers with golden petals, round brown centres, distinct green stems and heart-shaped leaves. About 0.70 metre tall. Flowers at different heights, slightly turned in different directions. Fine petal cuts and real pot thickness, airy silhouette."
+    },
+    {
+      "key": "W05_hydrangea_pot",
+      "prompt": "Japanese TV anime style small game prop reference for image-to-3D, clean confident line art, crisp cel shading, matte painted material, not photorealistic, not oil painting. ONE isolated object on plain light grey background, three-quarter view at modest camera elevation, full base visible, no cast shadow, no scenery, no lettering, no logo. Clearly readable solid volumes with fine original details and tidy level base. Warm summer palette. A single small cream ceramic pot of hydrangea: two pink flower clusters, one lavender cluster, one sky-blue cluster with clearly defined little four-petal flowers and large dark green leaves. About 0.45 metre tall. Slight enamel age marks, balanced full three-dimensional round arrangement."
+    },
+    {
+      "key": "W06_lily_vase",
+      "prompt": "Japanese TV anime style small game prop reference for image-to-3D, clean confident line art, crisp cel shading, matte painted material, not photorealistic, not oil painting. ONE isolated object on plain light grey background, three-quarter view at modest camera elevation, full base visible, no cast shadow, no scenery, no lettering, no logo. Clearly readable solid volumes with fine original details and tidy level base. Warm summer palette. One modest ivory ceramic vase containing four white lily flowers, one closed bud and long slender green leaves. About 0.65 metre tall. Different bloom orientations, warm pale yellow throats and tiny orange stamens, visible petals with actual depth. Calm clean elegant florist prop."
+    },
+    {
+      "key": "W07_pastry_tray",
+      "prompt": "Japanese TV anime style small game prop reference for image-to-3D, clean confident line art, crisp cel shading, matte painted material, not photorealistic, not oil painting. ONE isolated object on plain light grey background, three-quarter view at modest camera elevation, full base visible, no cast shadow, no scenery, no lettering, no logo. Clearly readable solid volumes with fine original details and tidy level base. Warm summer palette. One shallow rectangular warm wicker bread basket, about 0.40 metre wide, with a plain pale linen liner and five individual golden pastries: two scored round melon buns, two curved croissants and one red-bean bun. Each pastry has separate rounded three-dimensional volume, crisp baked seams, readable woven basket rim, fine cloth folds. Low height, no stacked bread wall, no stand."
+    },
+    {
+      "key": "W08_baguette_basket",
+      "prompt": "Japanese TV anime style small game prop reference for image-to-3D, clean confident line art, crisp cel shading, matte painted material, not photorealistic, not oil painting. ONE isolated object on plain light grey background, three-quarter view at modest camera elevation, full base visible, no cast shadow, no scenery, no lettering, no logo. Clearly readable solid volumes with fine original details and tidy level base. Warm summer palette. One narrow oval wicker basket with four short artisan baguettes leaning diagonally up against its rim, individually separated golden-brown bread with cut scoring and soft pale crumb ends. About 0.38 metre tall. Low visible basket base, no shelf, no lettering, no wrappers."
+    }
+  ]
+}

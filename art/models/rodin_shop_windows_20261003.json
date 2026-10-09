@@ -1,0 +1,84 @@
+{
+  "method": "front orthographic evidence and measured ray depths; panes inside preserved raised frame; Godot screenshot validation required",
+  "survey": "evidence/scene_hyper3d_replace_20261002/front-survey",
+  "windows": {
+    "S01": [
+      [
+        -2.1,
+        2.22,
+        0.72,
+        2.16,
+        2.782,
+        "store"
+      ]
+    ],
+    "S02": [
+      [
+        -1.44,
+        0.145,
+        0.87,
+        2.29,
+        3.327,
+        "bakery"
+      ],
+      [
+        0.61,
+        1.15,
+        1.08,
+        2.08,
+        2.944,
+        "bakery"
+      ]
+    ],
+    "S03": [
+      [
+        -2.23,
+        -1.49,
+        1.1,
+        1.94,
+        3.041,
+        "florist"
+      ],
+      [
+        0.03,
+        2.52,
+        0.24,
+        1.83,
+        3.74,
+        "florist"
+      ]
+    ],
+    "S05": [
+      [
+        -1.83,
+        0.39,
+        1.04,
+        2.58,
+        3.746,
+        "post"
+      ]
+    ],
+    "S08": [
+      [
+        -2.01,
+        0.39,
+        0.22,
+        2.18,
+        3.065,
+        "zakka"
+      ],
+      [
+        0.57,
+        2.69,
+        0.91,
+        2.17,
+        3.012,
+        "zakka"
+      ]
+    ]
+  },
+  "revision_20261003_real_models": {
+    "note": "Glazing moved in front of the old opaque lattice backing; measured cavities and real models replace interior mapping",
+    "opening_report": "game/assets/models/_stats/_window_apertures.json"
+  }
+}

@@ -1,0 +1,66 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3]
+
+[ext_resource type="Texture2D" path="res://ui_kit/assets/animations/title_cat/orange_lie_dangling.png" id="1"]
+
+[sub_resource type="AtlasTexture" id="Tail_0"]
+atlas = ExtResource("1")
+region = Rect2(50, 651, 66, 74)
+margin = Rect2(45, 0, 62, 86)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Tail_1"]
+atlas = ExtResource("1")
+region = Rect2(421, 651, 63, 73)
+margin = Rect2(45, 0, 65, 87)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Tail_2"]
+atlas = ExtResource("1")
+region = Rect2(781, 651, 47, 78)
+margin = Rect2(44, 0, 81, 82)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Tail_3"]
+atlas = ExtResource("1")
+region = Rect2(1151, 651, 58, 76)
+margin = Rect2(45, 0, 70, 84)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Tail_4"]
+atlas = ExtResource("1")
+region = Rect2(72, 961, 77, 64)
+margin = Rect2(43, 0, 51, 96)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Tail_5"]
+atlas = ExtResource("1")
+region = Rect2(428, 962, 74, 64)
+margin = Rect2(43, 0, 54, 96)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Tail_6"]
+atlas = ExtResource("1")
+region = Rect2(786, 961, 49, 73)
+margin = Rect2(44, 0, 79, 87)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Tail_7"]
+atlas = ExtResource("1")
+region = Rect2(1143, 962, 64, 67)
+margin = Rect2(45, 0, 64, 93)
+filter_clip = true
+
+[resource]
+resource_name = "UIKitAnimation/cat_dangling_tail"
+animations = [
+{"frames": [
+{"duration": 1.0, "texture": SubResource("Tail_0")},
+{"duration": 1.0, "texture": SubResource("Tail_1")},
+{"duration": 1.0, "texture": SubResource("Tail_2")},
+{"duration": 1.0, "texture": SubResource("Tail_3")},
+{"duration": 1.0, "texture": SubResource("Tail_4")},
+{"duration": 1.0, "texture": SubResource("Tail_5")},
+{"duration": 1.0, "texture": SubResource("Tail_6")},
+{"duration": 1.0, "texture": SubResource("Tail_7")}
+], "loop": true, "name": &"sway", "speed": 4}
+]

@@ -1,0 +1,18 @@
+{
+ "id": "A13_chalkboard",
+ "src": "raw/A13_texture_edit_20261001/model.glb",
+ "provider": "Existing mesh + built-in imagegen text and atlas edit, 2026-10-02",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 2500,
+ "tex": 2048,
+ "bytes": 314420,
+ "godot_size_m_xyz": [
+  0.6713,
+  0.9997,
+  0.5463
+ ],
+ "mesh_nodes": [
+  "A13_chalkboard"
+ ]
+}

@@ -1,0 +1,6 @@
+Achievement badge icon sheet for a cozy Japanese small-town life game UI, soft hand-painted anime style with clean outlines. Square image with a strict grid of 4 columns x 4 rows of equal cells; each cell holds ONE round badge centred with margin: a cream enamel disc with a thin warm-gold rim and a small ribbon tail at the bottom, and a single simple bold emblem in the middle in warm saturated colours, readable at 64 pixels. Solid flat warm ivory background (#F6F1E7) everywhere, no text, no letters, no numbers, no frames between cells, no watermark.
+Emblems, left to right, row by row:
+1) a ring of five tiny smiling faces; 2) a wrapped gift box with a ribbon; 3) a bamboo branch with colourful paper wish strips; 4) a wooden festival tower with lanterns;
+5) a bursting firework; 6) a floating paper lantern on water; 7) a full moon with a stack of white dango; 8) a round paper festival fan (uchiwa);
+9) a red goldfish; 10) a taiko drum with sticks; 11) three golden stars; 12) an old photograph with a white border;
+13) an open photo album; 14) an open illustrated book with a leaf bookmark; 15) a bench by a river at sunset; 16) a morning sun rising over a rooftop.

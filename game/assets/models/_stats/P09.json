@@ -1,0 +1,25 @@
+{
+ "id": "P09",
+ "src": "/Users/jack/workpath/research/3D model/anime/art/models/raw/P09_hyper3d_cli_20261007_reference/model.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High empty serving stall",
+ "tris_src": 10246,
+ "tris": 7998,
+ "size_m": [
+  2.6,
+  0.994,
+  1.833
+ ],
+ "godot_size_m_xyz": [
+  2.6,
+  1.833,
+  0.994
+ ],
+ "tex": 1024,
+ "bytes": 250108,
+ "yaw_fix": 90,
+ "level": "auto",
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.0,
+ "base_frac": 0.782
+}

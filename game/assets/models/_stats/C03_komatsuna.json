@@ -1,0 +1,20 @@
+{
+ "id": "C03_komatsuna",
+ "src": "raw/C03_komatsuna_h3d/model.glb",
+ "provider": "hyper3d rodin gen-2.5 (v0.4)",
+ "tris_src": 12000,
+ "tris": 2500,
+ "size_m": [
+  0.353,
+  0.337,
+  0.36
+ ],
+ "godot_size_m_xyz": [
+  0.353,
+  0.36,
+  0.337
+ ],
+ "tex": 512,
+ "bytes": 272984,
+ "yaw_fix": 0
+}

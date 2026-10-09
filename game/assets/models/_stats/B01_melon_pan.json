@@ -1,0 +1,26 @@
+{
+ "id": "B01_melon_pan",
+ "src": "raw/B01_melon_pan_atlas_audit_20261002/model.glb",
+ "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
+ "tris_src": 984222,
+ "tris": 2486,
+ "size_m": [
+  0.108,
+  0.112,
+  0.071
+ ],
+ "godot_size_m_xyz": [
+  0.108,
+  0.071,
+  0.112
+ ],
+ "tex": 1254,
+ "bytes": 2217376,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 9.91,
+ "levelled": true,
+ "lean_deg": 3.09,
+ "base_frac": 0.202,
+ "geometry_uv_unchanged": true
+}

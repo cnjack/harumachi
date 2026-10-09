@@ -1,0 +1,25 @@
+{
+ "id": "V05_river_reeds",
+ "src": "raw/V05_river_reeds_hyper3d/model.glb",
+ "provider": "Hyper3D Rodin Gen-2.5-High Raw; imagegen anime feathery river reed clump",
+ "tris_src": 500000,
+ "tris": 18000,
+ "size_m": [
+  0.867,
+  0.654,
+  1.305
+ ],
+ "godot_size_m_xyz": [
+  0.867,
+  1.305,
+  0.654
+ ],
+ "tex": 2048,
+ "bytes": 1472332,
+ "yaw_fix": 0,
+ "level": false,
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.35,
+ "base_frac": 0.096
+}

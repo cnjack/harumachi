@@ -1,0 +1,25 @@
+{
+ "id": "W11_ceramic_set",
+ "src": "raw/W11_ceramic_set_pixal_modules_20261003/model.glb",
+ "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
+ "tris_src": 982379,
+ "tris": 11525,
+ "size_m": [
+  0.374,
+  0.263,
+  0.159
+ ],
+ "godot_size_m_xyz": [
+  0.374,
+  0.159,
+  0.263
+ ],
+ "tex": 2048,
+ "bytes": 1006300,
+ "yaw_fix": 180,
+ "level": "auto",
+ "lean_src_deg": 23.7,
+ "levelled": true,
+ "lean_deg": 0.3,
+ "base_frac": 0.291
+}

@@ -1,0 +1,20 @@
+{
+ "id": "D07_kei_truck",
+ "src": "raw/D07_kei_truck_h3d/model.glb",
+ "provider": "hyper3d rodin gen-2.5 (v0.6 review)",
+ "tris_src": 29913,
+ "tris": 11999,
+ "size_m": [
+  2.009,
+  3.399,
+  1.863
+ ],
+ "godot_size_m_xyz": [
+  2.009,
+  1.863,
+  3.399
+ ],
+ "tex": 2048,
+ "bytes": 1262392,
+ "yaw_fix": 0
+}

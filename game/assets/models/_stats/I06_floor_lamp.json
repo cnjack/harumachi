@@ -1,0 +1,20 @@
+{
+ "id": "I06_floor_lamp",
+ "src": "raw/I06_floor_lamp/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 15000,
+ "tris": 5000,
+ "size_m": [
+  0.678,
+  0.761,
+  1.5
+ ],
+ "godot_size_m_xyz": [
+  0.678,
+  1.5,
+  0.761
+ ],
+ "tex": 1024,
+ "bytes": 247148,
+ "yaw_fix": 0
+}

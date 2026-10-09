@@ -1,0 +1,41 @@
+{
+ "id": "W13_cedar_worktable",
+ "src": "raw/W13_worktable_hyper3d/metre_worktable.glb",
+ "provider": "Hyper3D Agentic Business, task cb502e12-9abb-4812-9167-75a25a04bbad",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 288,
+ "tex": 512,
+ "bytes": 36228,
+ "godot_size_m_xyz": [
+  1.8,
+  0.78,
+  0.9225
+ ],
+ "mesh_nodes": [
+  "Front upper apron_export",
+  "Left front square leg_export",
+  "Left lower side stretcher_export",
+  "Left rear square leg_export",
+  "Left upper side apron_export",
+  "Long lower front stretcher_export",
+  "Rear upper apron_export",
+  "Right front square leg_export",
+  "Right lower side stretcher_export",
+  "Right rear square leg_export",
+  "Right upper side apron_export",
+  "Side stretcher peg.001_export",
+  "Side stretcher peg.002_export",
+  "Side stretcher peg.003_export",
+  "Side stretcher peg_export",
+  "Solid rectangular tabletop_export",
+  "Square apron peg.001_export",
+  "Square apron peg.002_export",
+  "Square apron peg.003_export",
+  "Square apron peg_export",
+  "Square stretcher peg.001_export",
+  "Square stretcher peg.002_export",
+  "Square stretcher peg.003_export",
+  "Square stretcher peg_export"
+ ]
+}

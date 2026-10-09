@@ -1,0 +1,18 @@
+{
+ "id": "M03_gable_house",
+ "src": "raw/material_detail_20261003/M03_gable_house.glb",
+ "provider": "Hyper3D Rodin Gen-2.5 High image-to-3D; Blender UV-preserving optimization and local assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 170000,
+ "tex": 8192,
+ "bytes": 12136584,
+ "godot_size_m_xyz": [
+  7.5439,
+  6.6002,
+  6.3013
+ ],
+ "mesh_nodes": [
+  "Rodin_M03_gable_house_body"
+ ]
+}

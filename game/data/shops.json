@@ -1,0 +1,182 @@
+{
+  "store": {
+    "name": "晴町商店",
+    "keeper": "和子阿姨",
+    "banner": "ban_store",
+    "open": 8,
+    "close": 19,
+    "closed_weekday": 2,
+    "line": "种子、调料、工具，晴町过日子的东西这里都有。周三休息哦。",
+    "stock": [
+      "sushi_box",
+      "bento",
+      "seed_komatsuna",
+      "seed_radish",
+      "seed_carrot",
+      "seed_sunflower",
+      "seed_tomato",
+      "seed_cucumber",
+      "seed_potato",
+      "seed_edamame",
+      "seed_onion",
+      "seed_wheat",
+      "seed_eggplant",
+      "seed_corn",
+      "seed_pumpkin",
+      "seed_watermelon",
+      "flour",
+      "sugar",
+      "salt",
+      "soy_sauce",
+      "miso",
+      "rice",
+      "milk",
+      "butter",
+      "egg",
+      "curry_roux",
+      "up_bag30",
+      "up_bag40",
+      "can_copper",
+      "can_gold",
+      "toro",
+      "sparklers",
+      "fishing_bait"
+    ],
+    "buys": [
+      "crop",
+      "dish",
+      "ingredient",
+      "seed",
+      "fish"
+    ],
+    "rate": 1.0
+  },
+  "bakery": {
+    "name": "莲的面包店",
+    "keeper": "莲",
+    "banner": "ban_bakery",
+    "open": 7,
+    "close": 18,
+    "closed_weekday": -1,
+    "line": "欢迎光临！想用我的烤箱？买张配方卡，材料带齐就行。小麦也可以拿来这边磨。",
+    "stock": [
+      "cream_bun",
+      "donut",
+      "shortcake",
+      "melon_pan",
+      "flour",
+      "butter",
+      "sugar",
+      "milk",
+      "egg",
+      "card_focaccia",
+      "card_sunflower_bread",
+      "card_veg_sandwich",
+      "card_carrot_cake",
+      "card_curry_pan",
+      "card_corn_bread",
+      "card_shortcake",
+      "card_pumpkin_bread"
+    ],
+    "buys": [
+      "oven"
+    ],
+    "rate": 1.2
+  },
+  "florist": {
+    "name": "千代花坊",
+    "keeper": "千代",
+    "banner": "",
+    "open": 9,
+    "close": 18,
+    "closed_weekday": -1,
+    "line": "今天的绣球开得正好，放在庭院里一下子就亮了。向日葵种子也有哦。",
+    "stock": [
+      "flower_pot",
+      "seed_sunflower",
+      "seed_komatsuna"
+    ],
+    "buys": [],
+    "rate": 1.0
+  },
+  "zakka": {
+    "name": "杂货铺 · 小町",
+    "keeper": "阿健",
+    "banner": "",
+    "open": 9,
+    "close": 19,
+    "closed_weekday": -1,
+    "line": "办活动？那得有彩旗和灯笼啊！夏天还有团扇和仙女棒。",
+    "stock": [
+      "washi",
+      "bunting",
+      "lantern",
+      "sparklers",
+      "toro",
+      "candy_apple"
+    ],
+    "buys": [],
+    "rate": 1.0
+  },
+  "shed": {
+    "name": "田中的种子铺",
+    "keeper": "田中爷爷",
+    "banner": "",
+    "open": 6,
+    "close": 17,
+    "closed_weekday": -1,
+    "line": "种子都是本地的，好养活。一次别买太多，种得完再来。",
+    "stock": [
+      "seed_komatsuna",
+      "seed_radish",
+      "seed_carrot",
+      "seed_potato",
+      "seed_onion",
+      "seed_wheat",
+      "seed_strawberry",
+      "up_yard",
+      "up_gh",
+      "fishing_bait"
+    ],
+    "buys": [],
+    "rate": 1.0
+  },
+  "yatai": {
+    "name": "夏祭摊位",
+    "keeper": "摊主",
+    "banner": "ban_natsumatsuri",
+    "open": 17,
+    "close": 22,
+    "closed_weekday": -1,
+    "line": "苹果糖、仙女棒，夏祭就要这些！",
+    "stock": [
+      "candy_apple",
+      "sparklers"
+    ],
+    "buys": [],
+    "rate": 1.0
+  },
+  "lakeside": {
+    "name": "湖畔补给处",
+    "keeper": "町内会",
+    "banner": "",
+    "open": 6,
+    "close": 24,
+    "closed_weekday": -1,
+    "line": "鱼饵放在木箱里。今天的鲜鱼可以交给町内会，收购价和商店一样。",
+    "stock": [
+      "fishing_bait",
+      "salt",
+      "rice",
+      "miso",
+      "soy_sauce",
+      "sugar",
+      "butter"
+    ],
+    "buys": [
+      "fish",
+      "dish"
+    ],
+    "rate": 1.0
+  }
+}

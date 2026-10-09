@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-03",
+  "provider": "private Pixal3D RTX 4080",
+  "hyper3d_new_credits": 0,
+  "jobs": [
+    {
+      "id": "W13_star_offer_box",
+      "job_id": "aa391ec5-9026-423b-a300-7732dcaa1a87",
+      "status": "completed, not selected",
+      "reference": "game/assets/ui/homage/star_box_empty.png",
+      "reference_sha256": "517e4c71178097abc2b15518c6154e5f2e472d314bea5c1043efd510eaf96d0a",
+      "raw_file": "art/models/raw/W13_star_offer_box_pixal_20261003/model.glb",
+      "raw_sha256": "53edf6a55b8bd7be191567e87fc809db71c9852f7fcb9631b174abe8bf10d8ab",
+      "bytes": 39545688,
+      "resolution": 1536,
+      "seed": 42,
+      "selected": false,
+      "reason": "User asked to remove the box entirely. No game model export or scene integration."
+    }
+  ]
+}

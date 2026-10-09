@@ -1,0 +1,32 @@
+[
+  {
+    "key": "bakery_poster",
+    "prompt": "Japanese TV anime style illustration for a cozy Japanese small-town life game: clean confident outlines, flat cel shading, crisp two-tone shadows, warm sunny colours with restrained lavender shadows, clear readable simplified shapes. NOT photorealistic, NOT oil painting, NO text, NO letters, NO watermark. A beautiful vertical illustrated bakery wall poster printed on warm ivory paper. In the lower two thirds, a charming arrangement of a soft golden cream bun, a croissant, a pink iced donut and a small strawberry shortcake, three wheat ears at the side, tiny blue decorative dots and a narrow vermilion bottom rule. The top third is completely blank ivory for a native title to be placed later. Straight front view, full poster rectangular, no frame, no scene, no shadow or folds.",
+    "imagegen_source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-49cae647-ab4b-4b1f-ac31-11c7beafa5ec.png",
+    "path": "game/assets/textures/shop_life/bakery_poster.png"
+  },
+  {
+    "key": "store_poster",
+    "prompt": "Japanese TV anime style illustration for a cozy Japanese small-town life game: clean confident outlines, flat cel shading, crisp two-tone shadows, warm sunny colours with restrained lavender shadows, clear readable simplified shapes. NOT photorealistic, NOT oil painting, NO text, NO letters, NO watermark. A beautiful vertical illustrated local fresh-produce wall poster on pale cream paper. A low woven basket of red tomatoes, orange carrots, green cucumbers, purple eggplant and pale onions, a tiny painted green farm and distant blue hills along the bottom. Muted sage-green decorative corner shapes. The top third is completely blank cream for a native title to be placed later. Straight front view, full rectangular poster, no frame, no scene or shadow.",
+    "imagegen_source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-e8f38890-a65a-4f66-adaa-55eb2ba2556d.png",
+    "path": "game/assets/textures/shop_life/store_poster.png"
+  },
+  {
+    "key": "tools_poster",
+    "prompt": "Japanese TV anime style illustration for a cozy Japanese small-town life game: clean confident outlines, flat cel shading, crisp two-tone shadows, warm sunny colours with restrained lavender shadows, clear readable simplified shapes. NOT photorealistic, NOT oil painting, NO text, NO letters, NO watermark. A simple elegant vertical Japanese gardening-and-seeds poster on ivory paper. In the bottom two thirds three carefully illustrated small gardening items: a sage watering can, wooden-handled hand trowel, red pruning shears, with two seed packets bearing little leaf pictograms and a single sprouting seedling. A narrow dark indigo bottom rule. The top third is entirely blank ivory for a native title. Straight front view, no frame or scene.",
+    "imagegen_source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-524e019a-30fe-42de-831c-7ef795fcfa56.png",
+    "path": "game/assets/textures/shop_life/tools_poster.png"
+  },
+  {
+    "key": "tv_town",
+    "prompt": "Japanese TV anime style illustration for a cozy Japanese small-town life game: clean confident outlines, flat cel shading, crisp two-tone shadows, warm sunny colours with restrained lavender shadows, clear readable simplified shapes. NOT photorealistic, NOT oil painting, NO text, NO letters, NO watermark. Landscape 4:3 local television programme background, a charming summer Japanese shopping street: timber bakery with blue noren, grocery storefront, a few red lanterns, golden light on pale stone street, flowering planters, blue sky and big white cumulus clouds. Composition should stay readable at small size with clear large shapes, no people, no text, no logo, no television frame.",
+    "imagegen_source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-8544c009-71ca-443a-8f96-2805b7579e00.png",
+    "path": "game/assets/textures/shop_life/tv_town.png"
+  },
+  {
+    "key": "tv_farm",
+    "prompt": "Japanese TV anime style illustration for a cozy Japanese small-town life game: clean confident outlines, flat cel shading, crisp two-tone shadows, warm sunny colours with restrained lavender shadows, clear readable simplified shapes. NOT photorealistic, NOT oil painting, NO text, NO letters, NO watermark. Landscape 4:3 local television agricultural programme illustration, a calm Japanese summer riverside allotment, neat green vegetable rows, a small wooden shed, a clear flowing turquoise river, rounded trees and distant blue mountains, brilliant blue sky with crisp white cumulus. Leave some simple blue sky at the top for native weather lettering. Clean broad shapes readable on a small screen. No people, no text, no symbols, no television frame.",
+    "imagegen_source": "/Users/jack/.codex/generated_images/01a1114d-f13d-73d0-92b2-4ef3c65e134b/exec-b4ae5a16-4288-404d-aac0-30826d0606b1.png",
+    "path": "game/assets/textures/shop_life/tv_farm.png"
+  }
+]

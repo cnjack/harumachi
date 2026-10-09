@@ -1,0 +1,25 @@
+{
+  "tool": "built-in imagegen",
+  "jobs": [
+    {
+      "key": "W09_rice_sacks",
+      "prompt": "Japanese TV anime style game asset reference for image-to-3D, clean confident line art, flat cel shading with crisp two-tone details, matte surfaces, not photorealistic, not oil painting. One isolated subject on plain light grey background, three-quarter view, all base visible with generous margin, no ground plane or cast shadow, no letters, no labels with writing, no logos. Two plump tied cream cotton rice sacks, one larger and one smaller, standing side by side. About 0.38 metre high, solid rounded bodies, taut cloth and fine stitched seams, twine tied at necks and small blank indigo fabric patch on one sack. Clearly separate bags, delicate restrained wear."
+    },
+    {
+      "key": "W10_bottle_crate",
+      "prompt": "Japanese TV anime style game asset reference for image-to-3D, clean confident line art, flat cel shading with crisp two-tone details, matte surfaces, not photorealistic, not oil painting. One isolated subject on plain light grey background, three-quarter view, all base visible with generous margin, no ground plane or cast shadow, no letters, no labels with writing, no logos. One small low cedar six-cell crate filled with six separately visible old-fashioned brown and green beverage bottles, rounded glass bodies painted matte without specular shine, cream labels left BLANK. About 0.32 metre tall. Bottle necks staggered modestly, clean wood joints, slight bottle-cap colour variations, no shelf."
+    },
+    {
+      "key": "W11_ceramic_set",
+      "prompt": "Japanese TV anime style game asset reference for image-to-3D, clean confident line art, flat cel shading with crisp two-tone details, matte surfaces, not photorealistic, not oil painting. One isolated subject on plain light grey background, three-quarter view, all base visible with generous margin, no ground plane or cast shadow, no letters, no labels with writing, no logos. A small Japanese blue-and-white ceramic tea set grouped on one simple dark cedar tray: one stout teapot with curved spout and handle, three small round cups and a stack of two shallow saucers. About 0.35 metre wide. Original simple indigo leaf and wave motifs, warm ivory porcelain with crisp cel shadows, actual depth and clearly separated pieces. No writing."
+    },
+    {
+      "key": "T03_round_ginkgo",
+      "prompt": "Japanese TV anime style game asset reference for image-to-3D, clean confident line art, flat cel shading with crisp two-tone details, matte surfaces, not photorealistic, not oil painting. One isolated subject on plain light grey background, three-quarter view, all base visible with generous margin, no ground plane or cast shadow, no letters, no labels with writing, no logos. One Japanese summer ginkgo tree about seven metres tall, single clean upright brown trunk with gently curved branching limbs, a broad round umbrella crown of bright yellow-green fan-shaped leaves. Crown split into five rounded three-dimensional leaf clusters at different depths with openings between some branches. Visible deep back side of crown, natural asymmetric silhouette, no flat cutout, no roots spreading along a floor, no grass. Beautiful summer anime town background tree."
+    },
+    {
+      "key": "T04_slender_cedar",
+      "prompt": "Japanese TV anime style game asset reference for image-to-3D, clean confident line art, flat cel shading with crisp two-tone details, matte surfaces, not photorealistic, not oil painting. One isolated subject on plain light grey background, three-quarter view, all base visible with generous margin, no ground plane or cast shadow, no letters, no labels with writing, no logos. One Japanese cedar conifer tree about nine metres tall with a slender upright reddish-brown trunk and a narrow layered conical crown of cool emerald green needles. Distinct three-dimensional ascending branch tiers and fluffy needle masses, slight natural irregularity, real crown thickness visible in three-quarter view. Full stump base visible, no ground plane, no grass, no forest row, no flat silhouette."
+    }
+  ]
+}

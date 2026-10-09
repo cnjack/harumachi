@@ -1,0 +1,9 @@
+[gd_resource type="AtlasTexture" format=3]
+
+[ext_resource type="Texture2D" path="res://ui_kit/assets/utility_atlas.png" id="1_cdbfe"]
+
+[resource]
+resource_name = "UIKitIcon/back"
+atlas = ExtResource("1_cdbfe")
+region = Rect2(965, 167, 284, 226)
+filter_clip = true

@@ -1,0 +1,76 @@
+{
+  "counts": {
+    "quests": 17,
+    "steps": 58,
+    "prologue": 4,
+    "fragments": 3,
+    "festivals": 6,
+    "daily_entries": 219,
+    "keepsakes": 13,
+    "script_dialogue_calls": 429,
+    "choice_calls": 45,
+    "life_events": 3
+  },
+  "sources": [
+    {
+      "file": "game/scripts/story/story.gd",
+      "sha256": "247ced0051f6240504252fb0fb7c5c74f09a2c18807ceb4d61879164b63c82c4"
+    },
+    {
+      "file": "game/scripts/story/story_farm.gd",
+      "sha256": "dc6d4dfcedc2ad1337d3f7f0b78f38ce7ec94bd0aad6a002a4e5d5d6fc743b77"
+    },
+    {
+      "file": "game/scripts/story/story_lore.gd",
+      "sha256": "a1fb23925fb23b54b1c85fff72c6249a76404d064d6f0a9bf38bd8b4b7e5a965"
+    },
+    {
+      "file": "game/scripts/story/story_fest.gd",
+      "sha256": "83fac14346aae0993180464aa1db15a512f79746105604f9e5cd29b85a8153e2"
+    },
+    {
+      "file": "game/scripts/story/story_bakery.gd",
+      "sha256": "01f4fca28d36942f5e5bbe61ff989dc2d0854afecba87d1f0f6c63dc4fa06fdc"
+    },
+    {
+      "file": "game/scripts/story/story_daily.gd",
+      "sha256": "45529cc308ca31f9487a21f363d45f3dc947063385a800f4110b36b7432aa7d1"
+    },
+    {
+      "file": "game/data/quests.json",
+      "sha256": "9ae273c0433801041efdb56d6c84ceec939022f239808b2a82a7e7ae633a684f"
+    },
+    {
+      "file": "game/data/prologue.json",
+      "sha256": "97cc0de1437782e5e0c56524b643610644738167518d24641c7c904e319d28c2"
+    },
+    {
+      "file": "game/data/story_fragments.json",
+      "sha256": "2c0f91d89b270d07260a482eb5c1a590bd8a86b40e644143aa6e82993cd5767e"
+    },
+    {
+      "file": "game/data/festivals.json",
+      "sha256": "8e59efaaf32094214d4dcec17bc44b13f6bc42ec35d924823a35aae5c2eef8f1"
+    },
+    {
+      "file": "game/data/dialogue.json",
+      "sha256": "e1686eb7f0e3c9e1d1646be36c0538c32eeb4b507a71f686944f6995d472242b"
+    },
+    {
+      "file": "game/data/collection.json",
+      "sha256": "5d19b9f0790d7801be8ff4ce54f44015f754cecda148b9a8bcf520e71241b7bf"
+    },
+    {
+      "file": "game/scripts/autoload/game_state.gd",
+      "sha256": "7bdf18bef43ec70753b11b11dd0523e5173b3cb425e66c3b564e2fe0b4102afc"
+    },
+    {
+      "file": "docs/game-design/LORE.md",
+      "sha256": "d1529c632be925912b8b1b9502fea0ad209eda72ae00254be9c7e266983df69d"
+    },
+    {
+      "file": "game/scripts/story/daily_life.gd",
+      "sha256": "32b215f68135c298124c13409cb4dfab76b594f2c7d2017020f78c10fb118a34"
+    }
+  ]
+}

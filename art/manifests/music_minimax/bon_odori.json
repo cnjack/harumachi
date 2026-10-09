@@ -1,0 +1,8 @@
+{
+ "model": "MiniMax-Music3-MLX-Serve-8bit",
+ "prompt": "### Global Metadata\nA complete 90-second traditional Japanese bon-odori dance piece for a circle of townspeople dancing around a lantern-lit yagura tower, steady and repetitive so dancers can follow it. 96 BPM, A minor pentatonic. A steady two-beat taiko ondo rhythm, shamisen riffs, a shinobue flute melody, chappa hand cymbals, soft koto in the background. Pure instrumental ensemble piece.\n\n### Vocal Details\nNone. Instrumental only: the flute plays the dance melody; the shamisen answers every phrase; the taiko never stops.\n\n### Timed Arrangement\n0-10 seconds: a single taiko sets the ondo two-beat rhythm. 10-40 seconds: shamisen riff and flute melody in call and response. 40-70 seconds: the same dance tune repeats with chappa cymbals and koto added. 70-90 seconds: the full dance tune once more, steady. Keep tempo, texture and loudness consistent from start to end; no big climax. The piece must play for the full 90 seconds and must not end early, ending cleanly on the tonic so it can loop.",
+ "lyrics": "[Intro]\n[Drum Solo]\n\n[Interlude]\n[Flute Solo]\n\n[Interlude]\n[Instrumental]\n\n[Outro]\n[Instrumental]",
+ "duration_seconds": 90,
+ "steps": 30,
+ "seed": 2026092804
+}

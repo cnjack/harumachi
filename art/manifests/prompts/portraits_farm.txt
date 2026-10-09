@@ -1,0 +1,5 @@
+Dialogue portrait sheet for a cozy Japanese neighborhood life game, Makoto Shinkai inspired luminous 2D anime style, clean fine line art and cel shading, soft warm light. Landscape image with a strict grid of 2 columns x 2 rows of equal cells, generous spacing, each cell containing ONE head-and-shoulders bust portrait facing the viewer at a slight three-quarter angle, centered, same head size in every cell. Solid flat warm ivory background (#F6F1E7) everywhere, no frames, no borders, no text, no labels.
+Columns, left to right:
+1) Tanaka, 74-year-old kind retired farmer grandpa, sun-tanned face, short white hair and small white moustache, white tenugui towel around his neck, indigo-blue samue work jacket over a white T-shirt.
+2) Aoi, cheerful 10-year-old girl, big bright brown eyes, short dark-brown bob hair with a yellow sunflower hair clip, white T-shirt with light-blue denim overall straps.
+Top row: calm neutral friendly expression. Bottom row: the same character with a bright happy smile (eyes slightly closed from smiling).

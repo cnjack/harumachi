@@ -1,0 +1,30 @@
+{
+  "models": [
+    {
+      "id": "CH_sora",
+      "generation_id": "027128d0-b34b-44b3-938a-bbf48f96ba58",
+      "source_url": "https://hyper3d.ai/workspace/rodin/027128d0-b34b-44b3-938a-bbf48f96ba58",
+      "raw": "art/models/raw/CH_sora_rodin_apose_20261005/model.glb",
+      "sha256": "bbddd7bc7b21069a11480b0eebd24f89d348a15aa48a9c531d2e72235aa1c98e",
+      "references": [
+        "art/references/character_leads_apose_20261005/sora_front.png",
+        "art/references/character_leads_apose_20261005/sora_back.png"
+      ],
+      "adopted": true
+    },
+    {
+      "id": "CH_mio",
+      "generation_id": "0d52126c-8342-42af-9b32-2d470fdbc48b",
+      "source_url": "https://hyper3d.ai/workspace/rodin/0d52126c-8342-42af-9b32-2d470fdbc48b",
+      "raw": "art/models/raw/CH_mio_rodin_apose_20261005/model.glb",
+      "sha256": "3998cb3ff7e38a9447459b1c5c3331bd6b3827f23948b0edc25c07d9d761941c",
+      "references": [
+        "art/references/character_leads_apose_20261005/mio_front.png",
+        "art/references/character_leads_apose_20261005/mio_back.png"
+      ],
+      "adopted": true
+    }
+  ],
+  "paid_jobs": 2,
+  "extra_paid_retries": 0
+}

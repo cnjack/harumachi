@@ -1,0 +1,8 @@
+{
+ "model": "MiniMax-Music3-MLX-Serve-8bit",
+ "prompt": "### Global Metadata\nA complete 80-second quiet, reflective Obon evening piece for paper lanterns floating down a river to remember loved ones, calm and warm rather than sad. 60 BPM, D minor. A breathy shakuhachi flute melody, a koto answering softly, a low sustained string drone, a soft rin singing bowl ringing now and then, gentle harp. Pure instrumental ensemble piece.\n\n### Vocal Details\nNone. Instrumental only: the shakuhachi plays long slow phrases, the koto answers; no percussion except the singing bowl.\n\n### Timed Arrangement\n0-16 seconds: string drone and one singing bowl. 16-44 seconds: shakuhachi melody, long breaths, koto answers. 44-66 seconds: harp and koto duet, warm. 66-80 seconds: the shakuhachi returns, fading into the drone. Keep tempo, texture and loudness consistent from start to end; no big climax. The piece must play for the full 80 seconds and must not end early, ending cleanly on the tonic so it can loop.",
+ "lyrics": "[Intro]\n[Instrumental]\n\n[Interlude]\n[Flute Solo]\n\n[Interlude]\n[Koto Solo]\n\n[Outro]\n[Flute Solo]",
+ "duration_seconds": 80,
+ "steps": 30,
+ "seed": 2026092806
+}

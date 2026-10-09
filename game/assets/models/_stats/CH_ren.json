@@ -1,0 +1,27 @@
+{
+ "id": "CH_ren",
+ "src": "character_wave_smile_20261005/exports/CH_ren.glb",
+ "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+ "preserve_rigged_character": true,
+ "tris": 94957,
+ "bytes": 11866852,
+ "bones": 54,
+ "animations": [
+  "idle",
+  "walk",
+  "run",
+  "wave",
+  "bow",
+  "look",
+  "stretch",
+  "tend",
+  "talk",
+  "cheer",
+  "dance",
+  "reference"
+ ],
+ "sha256": "484162fba1a969cee730e7ccd7e29c8d5641de890a3bc1d363823ec1d973960d",
+ "character_pipeline": "characters-apose-20261004",
+ "individual_review": "20261005",
+ "greeting_review": "20261005"
+}

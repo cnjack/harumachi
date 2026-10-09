@@ -1,0 +1,20 @@
+{
+ "id": "J08_fan",
+ "src": "raw/J08_fan/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 16000,
+ "tris": 5000,
+ "size_m": [
+  0.538,
+  0.63,
+  0.951
+ ],
+ "godot_size_m_xyz": [
+  0.538,
+  0.951,
+  0.63
+ ],
+ "tex": 1024,
+ "bytes": 474488,
+ "yaw_fix": 0
+}

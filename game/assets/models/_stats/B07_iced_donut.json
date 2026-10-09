@@ -1,0 +1,25 @@
+{
+ "id": "B07_iced_donut",
+ "src": "raw/B07_iced_donut_hyper3d/model.glb",
+ "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+ "tris_src": 500000,
+ "tris": 8000,
+ "size_m": [
+  0.11,
+  0.11,
+  0.043
+ ],
+ "godot_size_m_xyz": [
+  0.11,
+  0.043,
+  0.11
+ ],
+ "tex": 2048,
+ "bytes": 438252,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 0.32,
+ "levelled": false,
+ "lean_deg": 0.17,
+ "base_frac": 0.378
+}

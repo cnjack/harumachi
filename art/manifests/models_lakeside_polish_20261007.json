@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-07",
+  "asset_reuse": {
+    "creek_stones": "game/assets/models/D10_rocks.glb",
+    "source": "Pixal3D existing D10_rocks; no new paid model submission",
+    "bridge": "game/assets/models/P_bridge.glb; geometry unchanged"
+  },
+  "textures": [
+    "game/assets/textures/lakeside_polish/bridge_wood.png",
+    "game/assets/textures/lakeside_polish/path.png",
+    "game/assets/textures/lakeside_polish/creek_stone.png",
+    "game/assets/textures/lakeside_polish/sign_face.png"
+  ],
+  "geometry": "shared LakesideLayout and lakeside_shape.gdshaderinc; shore-adaptive terrain; actual stream-bed support; no walkable-route changes",
+  "evidence": "evidence/lakeside_polish_20261007/verification.json"
+}

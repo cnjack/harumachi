@@ -1,0 +1,20 @@
+{
+ "id": "H12a_plants",
+ "src": "raw/H12a/model.glb",
+ "provider": "hunyuan hy-3d-3.1",
+ "tris_src": 10660,
+ "tris": 3499,
+ "size_m": [
+  1.198,
+  0.62,
+  0.525
+ ],
+ "godot_size_m_xyz": [
+  1.198,
+  0.525,
+  0.62
+ ],
+ "tex": 1024,
+ "bytes": 415812,
+ "yaw_fix": 0
+}

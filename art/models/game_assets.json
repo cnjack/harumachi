@@ -1,0 +1,1974 @@
+{
+  "out": "../../game/assets/models",
+  "assets": {
+    "H01": {
+      "src": "raw/material_detail_20261003/H01.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 8192,
+      "provider": "Hyper3D Rodin modular house, engawa and independent lattice; Blender local aperture cuts and assembly",
+      "note": "Retained Hyper3D geometry and UVs; imagegen facade edits plus new metre-scale painted material detail; selectively baked 4K/8K; original raw sources retained"
+    },
+    "H02": {
+      "src": "raw/material_detail_20261003/H02.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 8192,
+      "provider": "Hyper3D Rodin Gen-2.5 High image-to-3D; Blender UV-preserving optimization and local assembly",
+      "note": "Retained Hyper3D geometry and UVs; imagegen facade edits plus new metre-scale painted material detail; selectively baked 4K/8K; original raw sources retained"
+    },
+    "H03": {
+      "src": "raw/material_detail_20261003/H03.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 8192,
+      "provider": "Hyper3D Rodin modular house, engawa and independent lattice; Blender local aperture cuts and assembly",
+      "note": "Retained Hyper3D geometry and UVs; imagegen facade edits plus new metre-scale painted material detail; selectively baked 4K/8K; original raw sources retained"
+    },
+    "S01": {
+      "src": "raw/window_cavities_20261003/S01.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 8192,
+      "provider": "Hyper3D Rodin Gen-2.5 High image-to-3D; Blender UV-preserving optimization and local assembly",
+      "note": "Retained Hyper3D exterior and painted material detail; actual window cavities for 3D display rooms"
+    },
+    "S02": {
+      "src": "raw/window_cavities_20261003/S02.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 8192,
+      "provider": "Hyper3D Rodin Gen-2.5 High image-to-3D; Blender UV-preserving optimization and local assembly",
+      "note": "Retained Hyper3D exterior and painted material detail; actual window cavities for 3D display rooms"
+    },
+    "S03": {
+      "src": "raw/window_cavities_20261003/S03.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 8192,
+      "provider": "Hyper3D Rodin Gen-2.5 High image-to-3D; Blender UV-preserving optimization and local assembly",
+      "note": "Retained Hyper3D exterior and painted material detail; actual window cavities for 3D display rooms"
+    },
+    "S05": {
+      "src": "raw/window_cavities_20261003/S05.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 8192,
+      "provider": "Hyper3D Rodin Gen-2.5 High image-to-3D; Blender UV-preserving optimization and local assembly",
+      "note": "Retained Hyper3D exterior and painted material detail; actual window cavities for 3D display rooms"
+    },
+    "S06": {
+      "src": "raw/material_detail_20261003/S06.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 8192,
+      "provider": "Hyper3D Rodin Gen-2.5 High image-to-3D; Blender UV-preserving optimization and local assembly",
+      "note": "Retained Hyper3D geometry and UVs; imagegen facade edits plus new metre-scale painted material detail; selectively baked 4K/8K; original raw sources retained"
+    },
+    "S08": {
+      "src": "raw/window_cavities_20261003/S08.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 8192,
+      "provider": "Hyper3D Rodin Gen-2.5 High image-to-3D; Blender UV-preserving optimization and local assembly",
+      "note": "Retained Hyper3D exterior and painted material detail; actual window cavities for 3D display rooms"
+    },
+    "P01": {
+      "src": "raw/P01/model.glb",
+      "fit": "h",
+      "size": 3.0,
+      "tris": 8000,
+      "tex": 1024
+    },
+    "P02": {
+      "src": "raw/P02/model.glb",
+      "fit": "h",
+      "size": 2.3,
+      "tris": 8000,
+      "tex": 1024
+    },
+    "P04": {
+      "src": "raw/P04/model.glb",
+      "fit": "h",
+      "size": 2.4,
+      "tris": 8000,
+      "tex": 1024
+    },
+    "P05": {
+      "src": "raw/P05_h3d/model.glb",
+      "fit": "h",
+      "size": 2.2,
+      "tris": 9000,
+      "tex": 1024,
+      "provider": "hyper3d rodin gen-2.5 (v0.4 regen)",
+      "prev_src": "raw/P05/model.glb"
+    },
+    "P07": {
+      "src": "raw/P07/model.glb",
+      "fit": "w",
+      "size": 2.4,
+      "tris": 8000,
+      "tex": 1024
+    },
+    "P08": {
+      "src": "raw/P08/model.glb",
+      "fit": "h",
+      "size": 1.9,
+      "tris": 8000,
+      "tex": 1024
+    },
+    "P09": {
+      "src": "raw/P09_hyper3d_cli_20261007_reference/model.glb",
+      "fit": "w",
+      "size": 2.6,
+      "tris": 8000,
+      "tex": 1024,
+      "yaw": 90,
+      "provider": "Hyper3D CLI Gen-2.5-High, empty serving stall reference"
+    },
+    "P10": {
+      "src": "raw/P10/model.glb",
+      "fit": "w",
+      "size": 4.2,
+      "tris": 8000,
+      "tex": 1024
+    },
+    "P11": {
+      "src": "raw/P11/model.glb",
+      "fit": "h",
+      "size": 2.0,
+      "tris": 8000,
+      "tex": 1024,
+      "yaw": -2.9,
+      "square_note": "v0.7.3: footprint measured 2.9 deg off-axis after levelling (art/tools/level_check.py); yaw 0.0 -> -2.9"
+    },
+    "R06": {
+      "src": "raw/R06/model.glb",
+      "fit": "h",
+      "size": 2.7,
+      "tris": 8000,
+      "tex": 1024
+    },
+    "R10": {
+      "src": "raw/R10/model.glb",
+      "fit": "w",
+      "size": 2.6,
+      "tris": 8000,
+      "tex": 1024
+    },
+    "H04": {
+      "src": "raw/H04/model.glb",
+      "fit": "w",
+      "size": 5.0,
+      "tris": 8000,
+      "tex": 1024
+    },
+    "H05": {
+      "src": "raw/H05/model.glb",
+      "fit": "w",
+      "size": 4.0,
+      "tris": 8000,
+      "tex": 1024
+    },
+    "H06": {
+      "src": "raw/H06/model.glb",
+      "fit": "h",
+      "size": 2.3,
+      "tris": 8000,
+      "tex": 1024
+    },
+    "P03": {
+      "src": "raw/P03/model.glb",
+      "fit": "h",
+      "size": 0.78,
+      "tris": 4000,
+      "tex": 1024
+    },
+    "P06": {
+      "src": "raw/P06_h3d/model.glb",
+      "fit": "w",
+      "size": 2.0,
+      "tris": 6000,
+      "tex": 1024,
+      "provider": "hyper3d rodin gen-2.5 (v0.4 regen)",
+      "prev_src": "raw/P06/model.glb"
+    },
+    "P12": {
+      "src": "raw/P12/model.glb",
+      "fit": "h",
+      "size": 1.1,
+      "tris": 4000,
+      "tex": 1024
+    },
+    "H07": {
+      "src": "raw/H07/model.glb",
+      "fit": "h",
+      "size": 1.4,
+      "tris": 4000,
+      "tex": 1024
+    },
+    "R07a": {
+      "src": "raw/R07a/model.glb",
+      "fit": "w",
+      "size": 2.0,
+      "tris": 4000,
+      "tex": 1024
+    },
+    "R08a": {
+      "src": "raw/R08a/model.glb",
+      "fit": "h",
+      "size": 4.2,
+      "tris": 4000,
+      "tex": 1024
+    },
+    "R09": {
+      "src": "raw/R09/model.glb",
+      "fit": "h",
+      "size": 2.6,
+      "tris": 4000,
+      "tex": 1024
+    },
+    "R11": {
+      "src": "raw/R11/model.glb",
+      "fit": "h",
+      "size": 3.2,
+      "tris": 4000,
+      "tex": 1024
+    },
+    "R12": {
+      "src": "raw/R12/model.glb",
+      "fit": "w",
+      "size": 1.8,
+      "tris": 4000,
+      "tex": 1024
+    },
+    "H12a": {
+      "src": "raw/H12a/model.glb",
+      "fit": "w",
+      "size": 1.2,
+      "tris": 4000,
+      "tex": 1024
+    },
+    "A07_lantern": {
+      "src": "raw/A07_lantern_atlas_audit_20261002/model.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "hunyuan hy-3d-3.1 (shinkai-dry set) + imagegen anime atlas (2026-10-02)",
+      "note": "atlas-only edit; geometry, UVs, nodes and animations verified identical; remove old restaurant lettering"
+    },
+    "A10_vending_machine": {
+      "src": "../../output/japanese-street-shinkai-dry/models/A10_vending_machine/model.glb",
+      "fit": "h",
+      "size": 1.83,
+      "tris": 4000,
+      "tex": 1024,
+      "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)"
+    },
+    "A11_bicycle": {
+      "src": "../../output/japanese-street-shinkai-dry/models/A11_bicycle/model.glb",
+      "fit": "w",
+      "size": 1.75,
+      "tris": 5000,
+      "tex": 1024,
+      "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)"
+    },
+    "A12_bench": {
+      "src": "../../output/japanese-street-shinkai-dry/models/A12_bench/model.glb",
+      "fit": "w",
+      "size": 1.8,
+      "tris": 2500,
+      "tex": 1024,
+      "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)"
+    },
+    "A13_chalkboard": {
+      "src": "raw/A13_texture_edit_20261001/model.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Existing mesh + built-in imagegen text and atlas edit, 2026-10-02",
+      "original_source": "../../output/japanese-street-shinkai-dry/models/A13_chalkboard/model.glb",
+      "note": "Both faces read 晴町案内; upper UV island lettering rotated 180 degrees after measuring the actual UV-to-world mapping. Mesh and UV unchanged."
+    },
+    "A14_hydrangea_pot": {
+      "src": "../../output/japanese-street-shinkai-dry/models/A14_hydrangea_pot/model.glb",
+      "fit": "h",
+      "size": 0.75,
+      "tris": 4000,
+      "tex": 1024,
+      "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)"
+    },
+    "A15_potted_plant": {
+      "src": "../../output/japanese-street-shinkai-dry/models/A15_potted_plant/model.glb",
+      "fit": "h",
+      "size": 0.8,
+      "tris": 4000,
+      "tex": 1024,
+      "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)"
+    },
+    "A16_planter_box": {
+      "src": "../../output/japanese-street-shinkai-dry/models/A16_planter_box/model.glb",
+      "fit": "w",
+      "size": 1.1,
+      "tris": 4000,
+      "tex": 1024,
+      "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)"
+    },
+    "M12b_shrub": {
+      "src": "raw/free_foliage_20261004/ready/M12b_shrub.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Quaternius Stylized Nature MegaKit Standard Bush_Common",
+      "license": "CC0-1.0",
+      "source_page": "https://quaternius.com/packs/stylizednaturemegakit.html",
+      "source_pack": "quaternius_standard",
+      "asset_library_id": "quaternius/Bush_Common",
+      "note": "Metre scale, root on ground, trunk/foliage split; original UVs and alpha preserved"
+    },
+    "M12d_flower_bush": {
+      "src": "raw/free_foliage_20261004/ready/M12d_flower_bush.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Quaternius Stylized Nature MegaKit Standard Bush_Common_Flowers",
+      "license": "CC0-1.0",
+      "source_page": "https://quaternius.com/packs/stylizednaturemegakit.html",
+      "source_pack": "quaternius_standard",
+      "asset_library_id": "quaternius/Bush_Common_Flowers",
+      "note": "Metre scale, root on ground, trunk/foliage split; original UVs and alpha preserved"
+    },
+    "M07_power_pole": {
+      "src": "raw/M07_power_pole_h3d_audit_20261002/model.glb",
+      "fit": "h",
+      "size": 9.0,
+      "tris": 9000,
+      "tex": 2048,
+      "weld": 0,
+      "rebake": true,
+      "level": true,
+      "provider": "hyper3d rodin Gen-2.5-High Quad (2026-10-02)",
+      "note": "clean anime reference; exact weld before reduction; uniform height fit"
+    },
+    "H12a_box": {
+      "src": "raw/H12a/model.glb",
+      "fit": "w",
+      "size": 1.2,
+      "tris": 1500,
+      "tex": 512,
+      "cut_above": 0.395,
+      "soil": [
+        0.9,
+        0.8,
+        0.375
+      ],
+      "keep_origin": true,
+      "min_island": 0.05,
+      "clear_inside": [
+        0.86,
+        0.74,
+        0.33
+      ]
+    },
+    "H12a_plants": {
+      "src": "raw/H12a/model.glb",
+      "fit": "w",
+      "size": 1.2,
+      "tris": 3500,
+      "tex": 1024,
+      "trim": 0.385,
+      "keep_origin": true
+    },
+    "CH_sora": {
+      "src": "character_wave_smile_20261005/exports/CH_sora.glb",
+      "fit": "h",
+      "size": 1.62,
+      "preserve_rigged_character": true,
+      "character_pipeline": "characters-apose-20261004",
+      "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+      "source_page": "https://hyper3d.ai/workspace/rodin/027128d0-b34b-44b3-938a-bbf48f96ba58",
+      "license": "项目角色；Hyper3D 账户生成素材",
+      "tex": 2048,
+      "note": "Use art/tools/characters/; preserve clips, fingers and validated sleeve physics. Do not rebind with old rig_char."
+    },
+    "CH_mio": {
+      "src": "character_wave_smile_20261005/exports/CH_mio.glb",
+      "fit": "h",
+      "size": 1.58,
+      "preserve_rigged_character": true,
+      "character_pipeline": "characters-apose-20261004",
+      "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+      "source_page": "https://hyper3d.ai/workspace/rodin/0d52126c-8342-42af-9b32-2d470fdbc48b",
+      "license": "项目角色；Hyper3D 账户生成素材",
+      "tex": 2048,
+      "note": "Use art/tools/characters/; preserve clips, fingers and validated sleeve physics. Do not rebind with old rig_char."
+    },
+    "CH_ren": {
+      "src": "character_wave_smile_20261005/exports/CH_ren.glb",
+      "fit": "h",
+      "size": 1.76,
+      "preserve_rigged_character": true,
+      "character_pipeline": "characters-apose-20261004",
+      "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+      "source_page": "https://hyper3d.ai/workspace/rodin/8fde314d-f354-4843-89b6-9f7dfb15c243",
+      "license": "项目角色；Hyper3D 账户生成素材",
+      "tex": 2048,
+      "note": "Use art/tools/characters/; preserve clips, fingers and validated sleeve physics. Do not rebind with old rig_char."
+    },
+    "CH_haru": {
+      "src": "character_wave_smile_20261005/exports/CH_haru.glb",
+      "fit": "h",
+      "size": 1.52,
+      "preserve_rigged_character": true,
+      "character_pipeline": "characters-apose-20261004",
+      "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+      "source_page": "https://hyper3d.ai/workspace/rodin/abb0fdaf-2fec-430a-b6d6-2e9daf32cc00",
+      "license": "项目角色；Hyper3D 账户生成素材",
+      "tex": 2048,
+      "note": "Use art/tools/characters/; preserve clips, fingers and validated sleeve physics. Do not rebind with old rig_char."
+    },
+    "M01_timber_machiya": {
+      "src": "raw/material_detail_20261003/M01_timber_machiya.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 8192,
+      "provider": "Hyper3D Rodin Gen-2.5 High image-to-3D; Blender UV-preserving optimization and local assembly",
+      "note": "Retained Hyper3D geometry and UVs; imagegen facade edits plus new metre-scale painted material detail; selectively baked 4K/8K; original raw sources retained"
+    },
+    "M03_gable_house": {
+      "src": "raw/material_detail_20261003/M03_gable_house.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 8192,
+      "provider": "Hyper3D Rodin Gen-2.5 High image-to-3D; Blender UV-preserving optimization and local assembly",
+      "note": "Retained Hyper3D geometry and UVs; imagegen facade edits plus new metre-scale painted material detail; selectively baked 4K/8K; original raw sources retained"
+    },
+    "M05_residential": {
+      "src": "raw/material_detail_20261003/M05_residential.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 8192,
+      "provider": "Hyper3D Rodin Gen-2.5 High image-to-3D; Blender UV-preserving optimization and local assembly",
+      "note": "Retained Hyper3D geometry and UVs; imagegen facade edits plus new metre-scale painted material detail; selectively baked 4K/8K; original raw sources retained"
+    },
+    "I01_bed": {
+      "src": "raw/I01_bed/model.glb",
+      "fit": "max",
+      "size": 2.05,
+      "tris": 5000,
+      "tex": 1024
+    },
+    "I02_desk": {
+      "src": "raw/I02_desk/model.glb",
+      "fit": "w",
+      "size": 1.2,
+      "tris": 5000,
+      "tex": 1024
+    },
+    "I03_bookshelf": {
+      "src": "raw/I03_bookshelf/model.glb",
+      "fit": "h",
+      "size": 1.8,
+      "tris": 5000,
+      "tex": 1024
+    },
+    "I04_chabudai": {
+      "src": "raw/I04_chabudai/model.glb",
+      "fit": "w",
+      "size": 0.9,
+      "tris": 5000,
+      "tex": 1024
+    },
+    "I05_wardrobe": {
+      "src": "raw/I05_wardrobe/model.glb",
+      "fit": "h",
+      "size": 1.9,
+      "tris": 5000,
+      "tex": 1024
+    },
+    "I06_floor_lamp": {
+      "src": "raw/I06_floor_lamp/model.glb",
+      "fit": "h",
+      "size": 1.5,
+      "tris": 5000,
+      "tex": 1024
+    },
+    "I07_monstera": {
+      "src": "raw/I07_monstera/model.glb",
+      "fit": "h",
+      "size": 1.2,
+      "tris": 5000,
+      "tex": 1024
+    },
+    "I08_boxes": {
+      "src": "raw/I08_boxes/model.glb",
+      "fit": "w",
+      "size": 1.0,
+      "tris": 5000,
+      "tex": 1024
+    },
+    "J01_kitchen_counter": {
+      "src": "raw/J01_kitchen_counter/model.glb",
+      "fit": "w",
+      "size": 2.2,
+      "tris": 9000,
+      "tex": 1024
+    },
+    "J02_fridge": {
+      "src": "raw/J02_fridge/model.glb",
+      "fit": "h",
+      "size": 1.55,
+      "tris": 6000,
+      "tex": 1024
+    },
+    "J03_dining_set": {
+      "src": "raw/J03_dining_set/model.glb",
+      "fit": "w",
+      "size": 1.5,
+      "tris": 8000,
+      "tex": 1024
+    },
+    "J04_rice_cabinet": {
+      "src": "raw/J04_rice_cabinet/model.glb",
+      "fit": "w",
+      "size": 1.2,
+      "tris": 7000,
+      "tex": 1024
+    },
+    "J05_dish_cabinet": {
+      "src": "raw/J05_dish_cabinet/model.glb",
+      "fit": "h",
+      "size": 1.7,
+      "tris": 7000,
+      "tex": 1024
+    },
+    "J06_tv_board": {
+      "src": "raw/J06_tv_board/model.glb",
+      "fit": "w",
+      "size": 1.5,
+      "tris": 7000,
+      "tex": 1024
+    },
+    "J07_kotatsu": {
+      "src": "raw/J07_kotatsu/model.glb",
+      "fit": "w",
+      "size": 1.45,
+      "tris": 6000,
+      "tex": 1024
+    },
+    "J08_fan": {
+      "src": "raw/J08_fan/model.glb",
+      "fit": "h",
+      "size": 0.95,
+      "tris": 5000,
+      "tex": 1024
+    },
+    "J09_tansu": {
+      "src": "raw/J09_tansu/model.glb",
+      "fit": "w",
+      "size": 1.0,
+      "tris": 5000,
+      "tex": 1024
+    },
+    "G01_getabako": {
+      "src": "raw/G01_getabako/model.glb",
+      "fit": "w",
+      "size": 0.9,
+      "tris": 6000,
+      "tex": 1024
+    },
+    "G02_goldfish_tank": {
+      "src": "raw/G02_goldfish_tank/model.glb",
+      "fit": "w",
+      "size": 1.5,
+      "tris": 7000,
+      "tex": 1024
+    },
+    "G03_laundry_stand": {
+      "src": "raw/G03_laundry_stand/model.glb",
+      "fit": "h",
+      "size": 1.3,
+      "tris": 5000,
+      "tex": 1024
+    },
+    "G05_goldfish_bowl": {
+      "src": "raw/G05_goldfish_bowl/model.glb",
+      "fit": "h",
+      "size": 0.42,
+      "tris": 5000,
+      "tex": 1024
+    },
+    "G06_zabuton": {
+      "src": "raw/G06_zabuton/model.glb",
+      "fit": "w",
+      "size": 0.62,
+      "tris": 4000,
+      "tex": 1024
+    },
+    "G07_hall_cabinet": {
+      "src": "raw/G07_hall_cabinet/model.glb",
+      "fit": "h",
+      "size": 1.15,
+      "tris": 6000,
+      "tex": 1024
+    },
+    "G08_cat": {
+      "src": "raw/G08_cat/model.glb",
+      "fit": "w",
+      "size": 0.62,
+      "tris": 5000,
+      "tex": 1024
+    },
+    "G09_taiko": {
+      "src": "raw/G09_taiko/model.glb",
+      "fit": "h",
+      "size": 1.15,
+      "tris": 7000,
+      "tex": 1024
+    },
+    "T01_courtyard_tree": {
+      "src": "raw/free_foliage_20261004/ready/T01_courtyard_tree.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Quaternius Stylized Nature MegaKit Standard CommonTree_1",
+      "license": "CC0-1.0",
+      "source_page": "https://quaternius.com/packs/stylizednaturemegakit.html",
+      "source_pack": "quaternius_standard",
+      "asset_library_id": "quaternius/CommonTree_1",
+      "note": "Metre scale, root on ground, trunk/foliage split; original UVs and alpha preserved"
+    },
+    "CH_tanaka": {
+      "src": "character_wave_smile_20261005/exports/CH_tanaka.glb",
+      "fit": "h",
+      "size": 1.6,
+      "preserve_rigged_character": true,
+      "character_pipeline": "characters-apose-20261004",
+      "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+      "source_page": "https://hyper3d.ai/workspace/rodin/1772f045-fe8c-45c6-8f33-4fe89dfc5143",
+      "license": "项目角色；Hyper3D 账户生成素材",
+      "tex": 2048,
+      "note": "Use art/tools/characters/; preserve clips, fingers and validated sleeve physics. Do not rebind with old rig_char."
+    },
+    "CH_aoi": {
+      "src": "character_wave_smile_20261005/exports/CH_aoi.glb",
+      "fit": "h",
+      "size": 1.3,
+      "preserve_rigged_character": true,
+      "character_pipeline": "characters-apose-20261004",
+      "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+      "source_page": "https://hyper3d.ai/workspace/rodin/76e516db-ac2e-4aef-9573-7bfd6517db34",
+      "license": "项目角色；Hyper3D 账户生成素材",
+      "tex": 2048,
+      "note": "Use art/tools/characters/; preserve clips, fingers and validated sleeve physics. Do not rebind with old rig_char."
+    },
+    "F01_tool_shed": {
+      "src": "raw/F01_tool_shed_h3d_audit_20261002/model.glb",
+      "fit": "h",
+      "size": 2.4219734063372016,
+      "tris": 12000,
+      "tex": 2048,
+      "rebake": true,
+      "weld": 0,
+      "level": true,
+      "fit_bounds_blender": {
+        "min": [
+          -1.1006627082824707,
+          -1.189043402671814,
+          -0.010378538630902767
+        ],
+        "max": [
+          1.0964168310165405,
+          1.2170642614364624,
+          2.411594867706299
+        ]
+      },
+      "provider": "hyper3d rodin Gen-2.5-High Quad (2026-10-02)",
+      "note": "paired anime references; intact roof panels; exact-weld colour bake and old footprint"
+    },
+    "F02_hand_pump": {
+      "src": "raw/F02_hand_pump_h3d/model.glb",
+      "fit": "h",
+      "size": 1.3,
+      "tris": 5000,
+      "tex": 1024,
+      "weld": 0,
+      "provider": "hyper3d rodin gen-2.5 (v0.4)",
+      "rebake": true,
+      "fit_bounds_blender": {
+        "min": [
+          -0.42203906178474426,
+          -0.828399121761322,
+          -0.0028837069403380156
+        ],
+        "max": [
+          0.42282336950302124,
+          0.828177273273468,
+          1.3012802600860596
+        ]
+      },
+      "note": "2026-10-02 exact weld on untextured decimation copy; UV/colour rebake"
+    },
+    "F03_compost_bin": {
+      "src": "raw/F03_compost_bin_h3d/model.glb",
+      "fit": "h",
+      "size": 1.15,
+      "tris": 4000,
+      "tex": 1024,
+      "weld": 0,
+      "provider": "hyper3d rodin gen-2.5 (v0.4)",
+      "rebake": true,
+      "fit_bounds_blender": {
+        "min": [
+          -0.4246756136417389,
+          -0.6429759860038757,
+          0.0
+        ],
+        "max": [
+          0.42627522349357605,
+          0.6456547379493713,
+          1.1519781351089478
+        ]
+      },
+      "note": "2026-10-02 exact weld on untextured decimation copy; UV/colour rebake"
+    },
+    "F04_scarecrow": {
+      "src": "raw/F04_scarecrow_h3d/model.glb",
+      "fit": "h",
+      "size": 1.9,
+      "tris": 5000,
+      "tex": 1024,
+      "weld": 0,
+      "provider": "hyper3d rodin gen-2.5 (v0.4)",
+      "rebake": true,
+      "fit_bounds_blender": {
+        "min": [
+          -0.7286838293075562,
+          -0.3012792468070984,
+          -0.002792231971397996
+        ],
+        "max": [
+          0.7410507798194885,
+          0.30370330810546875,
+          1.899999976158142
+        ]
+      },
+      "note": "2026-10-02 exact weld on untextured decimation copy; UV/colour rebake"
+    },
+    "F05_greenhouse": {
+      "src": "raw/F05_greenhouse_h3d/model.glb",
+      "fit": "h",
+      "size": 2.3,
+      "tris": 6000,
+      "tex": 1024,
+      "weld": 0,
+      "provider": "hyper3d rodin gen-2.5 (v0.4)",
+      "rebake": true,
+      "fit_bounds_blender": {
+        "min": [
+          -1.40420663356781,
+          -2.3461344242095947,
+          -0.03733515366911888
+        ],
+        "max": [
+          1.397220492362976,
+          2.358822822570801,
+          2.3259217739105225
+        ]
+      },
+      "note": "2026-10-02 exact weld on untextured decimation copy; UV/colour rebake"
+    },
+    "F06_veggie_stand": {
+      "src": "raw/F06_veggie_stand_h3d/model.glb",
+      "fit": "h",
+      "size": 1.9,
+      "tris": 6000,
+      "tex": 1024,
+      "weld": 0,
+      "provider": "hyper3d rodin gen-2.5 (v0.4)",
+      "rebake": true,
+      "fit_bounds_blender": {
+        "min": [
+          -0.6485791206359863,
+          -0.5142632126808167,
+          -2.731911536102416e-06
+        ],
+        "max": [
+          0.6447005271911621,
+          0.517848551273346,
+          1.9000000953674316
+        ]
+      },
+      "note": "2026-10-02 exact weld on untextured decimation copy; UV/colour rebake"
+    },
+    "F07_footbridge": {
+      "src": "raw/F07_footbridge_h3d/model.glb",
+      "fit": "max",
+      "size": 5.5,
+      "tris": 7000,
+      "tex": 1024,
+      "weld": 0,
+      "provider": "hyper3d rodin gen-2.5 (v0.4)",
+      "rebake": true,
+      "fit_bounds_blender": {
+        "min": [
+          -0.9004206657409668,
+          -2.749685287475586,
+          -0.0077332621440291405
+        ],
+        "max": [
+          0.8796563148498535,
+          2.75063157081604,
+          1.8058291673660278
+        ]
+      },
+      "note": "2026-10-02 exact weld on untextured decimation copy; UV/colour rebake"
+    },
+    "F08_soil_plot": {
+      "src": "raw/F08_soil_plot_h3d/model.glb",
+      "fit": "w",
+      "size": 1.3,
+      "tris": 2500,
+      "tex": 1024,
+      "weld": 0,
+      "provider": "hyper3d rodin gen-2.5 (v0.4)",
+      "rebake": true,
+      "fit_bounds_blender": {
+        "min": [
+          -0.6422178149223328,
+          -0.653113842010498,
+          -0.0002480241237208247
+        ],
+        "max": [
+          0.6420773863792419,
+          0.643526017665863,
+          0.4609662592411041
+        ]
+      },
+      "note": "2026-10-02 exact weld on untextured decimation copy; UV/colour rebake"
+    },
+    "C01_seedling": {
+      "src": "raw/C01_seedling_h3d/model.glb",
+      "fit": "h",
+      "size": 0.18,
+      "tris": 1500,
+      "tex": 512,
+      "weld": 0,
+      "provider": "hyper3d rodin gen-2.5 (v0.4)"
+    },
+    "C02_radish": {
+      "src": "raw/C02_radish_h3d/model.glb",
+      "fit": "h",
+      "size": 0.5,
+      "tris": 3000,
+      "tex": 512,
+      "weld": 0,
+      "provider": "hyper3d rodin gen-2.5 (v0.4)"
+    },
+    "C03_komatsuna": {
+      "src": "raw/C03_komatsuna_h3d/model.glb",
+      "fit": "h",
+      "size": 0.35,
+      "tris": 2500,
+      "tex": 512,
+      "weld": 0,
+      "provider": "hyper3d rodin gen-2.5 (v0.4)"
+    },
+    "C04_tomato": {
+      "src": "raw/C04_tomato_h3d/model.glb",
+      "fit": "h",
+      "size": 1.0,
+      "tris": 4000,
+      "tex": 512,
+      "weld": 0,
+      "provider": "hyper3d rodin gen-2.5 (v0.4)"
+    },
+    "C05_cucumber": {
+      "src": "raw/C05_cucumber_h3d/model.glb",
+      "fit": "h",
+      "size": 1.2,
+      "tris": 4500,
+      "tex": 512,
+      "weld": 0,
+      "provider": "hyper3d rodin gen-2.5 (v0.4)"
+    },
+    "C06_edamame": {
+      "src": "raw/C06_edamame_h3d/model.glb",
+      "fit": "h",
+      "size": 0.6,
+      "tris": 3500,
+      "tex": 512,
+      "weld": 0,
+      "provider": "hyper3d rodin gen-2.5 (v0.4)"
+    },
+    "C07_sunflower": {
+      "src": "raw/C07_sunflower_h3d/model.glb",
+      "fit": "h",
+      "size": 1.8,
+      "tris": 3000,
+      "tex": 512,
+      "weld": 0,
+      "provider": "hyper3d rodin gen-2.5 (v0.4)",
+      "trim": 0.035
+    },
+    "C08_strawberry": {
+      "src": "raw/C08_strawberry_h3d/model.glb",
+      "fit": "h",
+      "size": 0.3,
+      "tris": 3000,
+      "tex": 512,
+      "weld": 0,
+      "provider": "hyper3d rodin gen-2.5 (v0.4)"
+    },
+    "A20_cat_sleep": {
+      "src": "raw/scene_polish_20261004/assembled/A20_cat_sleep.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 4096,
+      "provider": "Hyper3D Rodin Gen-2.5-High Raw 1000000 faces, imagegen reference; UV-preserving game assembly",
+      "note": "Tree trunk and foliage separate; original maximum-detail outputs retained. Bus glazing cut for independent transparent panes."
+    },
+    "A21_sparrow": {
+      "src": "raw/A21_sparrow_h3d_audit_20261002/model.glb",
+      "fit": "h",
+      "size": 0.11,
+      "tris": 4500,
+      "tex": 1024,
+      "weld": 0,
+      "rebake": true,
+      "level": true,
+      "provider": "hyper3d rodin Gen-2.5-High Quad (2026-10-02)",
+      "note": "clean anime reference; exact weld before reduction; uniform height fit"
+    },
+    "A22_cat_sit": {
+      "src": "raw/scene_polish_20261004/assembled/A22_cat_sit.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 4096,
+      "provider": "Hyper3D Rodin Gen-2.5-High Raw 1000000 faces, imagegen reference; UV-preserving game assembly",
+      "note": "Tree trunk and foliage separate; original maximum-detail outputs retained. Bus glazing cut for independent transparent panes."
+    },
+    "C09_carrot": {
+      "src": "raw/C09_carrot_pix/model.glb",
+      "fit": "h",
+      "size": 0.35,
+      "tris": 14000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true
+    },
+    "C10_potato": {
+      "src": "raw/C10_potato_pix/model.glb",
+      "fit": "h",
+      "size": 0.5,
+      "tris": 7000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true,
+      "yaw": 44.4,
+      "square_note": "v0.7.3: footprint measured -44.4 deg off-axis after levelling (art/tools/level_check.py); yaw 0.0 -> 44.4"
+    },
+    "C11_eggplant": {
+      "src": "raw/C11_eggplant_pix/model.glb",
+      "fit": "h",
+      "size": 0.8,
+      "tris": 7000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true
+    },
+    "C12_corn": {
+      "src": "raw/C12_corn_pix/model.glb",
+      "fit": "h",
+      "size": 1.8,
+      "tris": 7000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true
+    },
+    "C13_pumpkin": {
+      "src": "raw/C13_pumpkin_pix/model.glb",
+      "fit": "max",
+      "size": 0.8,
+      "tris": 7000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true
+    },
+    "C14_watermelon": {
+      "src": "raw/C14_watermelon_pix/model.glb",
+      "fit": "max",
+      "size": 0.9,
+      "tris": 7000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true,
+      "yaw": 34.1,
+      "square_note": "v0.7.3: footprint measured -34.1 deg off-axis after levelling (art/tools/level_check.py); yaw 0.0 -> 34.1"
+    },
+    "C15_wheat": {
+      "src": "raw/C15_wheat_pix/model.glb",
+      "fit": "h",
+      "size": 0.9,
+      "tris": 14000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true,
+      "yaw": 39.7,
+      "square_note": "v0.7.3: footprint measured -39.7 deg off-axis after levelling (art/tools/level_check.py); yaw 0.0 -> 39.7"
+    },
+    "C16_onion": {
+      "src": "raw/C16_onion_pix/model.glb",
+      "fit": "h",
+      "size": 0.45,
+      "tris": 7000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true,
+      "yaw": 27.5,
+      "square_note": "v0.7.3: footprint measured -27.5 deg off-axis after levelling (art/tools/level_check.py); yaw 0.0 -> 27.5"
+    },
+    "G10_store_shelf": {
+      "src": "raw/G10_store_shelf_pix/model.glb",
+      "fit": "h",
+      "size": 1.5,
+      "tris": 30000,
+      "tex": 2048,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true,
+      "note": "v0.6 review: 8k decimation broke the slats; re-exported at 30k",
+      "yaw": -150.0,
+      "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 60.0 deg off-axis; turned square, front to +Z"
+    },
+    "G11_bread_cart": {
+      "src": "raw/G11_bread_cart_pix/model.glb",
+      "fit": "h",
+      "size": 1.5,
+      "tris": 30000,
+      "tex": 2048,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true,
+      "note": "v0.6 review: 8k decimation broke the slats; re-exported at 30k",
+      "yaw": -155.0,
+      "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 65.0 deg off-axis; turned square, front to +Z"
+    },
+    "E01_yatai": {
+      "src": "raw/E01_yatai_pix/model.glb",
+      "fit": "h",
+      "size": 2.4,
+      "tris": 8000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true,
+      "yaw": -154.0,
+      "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 64.0 deg off-axis; turned square, front to +Z"
+    },
+    "E02_tanabata_bamboo": {
+      "src": "raw/E02_tanabata_bamboo_pix/model.glb",
+      "fit": "h",
+      "size": 2.6,
+      "tris": 8000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true
+    },
+    "D03_veg_crates": {
+      "src": "raw/D03_veg_crates_pix/model.glb",
+      "fit": "h",
+      "size": 0.85,
+      "tris": 30000,
+      "tex": 2048,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true,
+      "note": "v0.6 review: 8k decimation broke the slats; re-exported at 30k",
+      "yaw": -144.6,
+      "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 60.0 deg off-axis; turned square, front to +Z",
+      "square_note": "v0.7.3: footprint measured -5.4 deg off-axis after levelling (art/tools/level_check.py); yaw -150.0 -> -144.6"
+    },
+    "D01_wheelbarrow": {
+      "src": "raw/D01_wheelbarrow_pix/model.glb",
+      "fit": "max",
+      "size": 1.4,
+      "tris": 8000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true,
+      "yaw": 135.5,
+      "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 44.5 deg off-axis; turned square, front to +Z"
+    },
+    "D02_rain_barrel": {
+      "src": "raw/D02_rain_barrel_pix/model.glb",
+      "fit": "h",
+      "size": 0.95,
+      "tris": 8000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true
+    },
+    "D12_flower_planter": {
+      "src": "raw/D12_flower_planter_pix/model.glb",
+      "fit": "max",
+      "size": 1.2,
+      "tris": 8000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true,
+      "yaw": -141.0,
+      "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 51.0 deg off-axis; turned square, front to +Z"
+    },
+    "D11_reeds": {
+      "src": "raw/D11_reeds_pix/model.glb",
+      "fit": "h",
+      "size": 1.4,
+      "tris": 8000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true
+    },
+    "D10_rocks": {
+      "src": "raw/D10_rocks_pix/model.glb",
+      "fit": "h",
+      "size": 0.7,
+      "tris": 8000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true
+    },
+    "D04_stone_lantern": {
+      "src": "raw/D04_stone_lantern_pix/model.glb",
+      "fit": "h",
+      "size": 1.3,
+      "tris": 8000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true,
+      "yaw": -148.4,
+      "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 60.5 deg off-axis; turned square, front to +Z",
+      "square_note": "v0.7.3: footprint measured -2.1 deg off-axis after levelling (art/tools/level_check.py); yaw -150.5 -> -148.4"
+    },
+    "D05_hokora": {
+      "src": "raw/D05_hokora_pix/model.glb",
+      "fit": "h",
+      "size": 1.2,
+      "tris": 8000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true,
+      "yaw": -155.5,
+      "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 65.5 deg off-axis; turned square, front to +Z"
+    },
+    "D08_tool_rack": {
+      "src": "raw/D08_tool_rack_pix/model.glb",
+      "fit": "h",
+      "size": 1.6,
+      "tris": 8000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true,
+      "yaw": -148.0,
+      "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 58.0 deg off-axis; turned square, front to +Z"
+    },
+    "D09_log_pile": {
+      "src": "raw/D09_log_pile_pix/model.glb",
+      "fit": "h",
+      "size": 1.0,
+      "tris": 30000,
+      "tex": 2048,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true,
+      "note": "v0.6 review: 8k decimation broke the slats; re-exported at 30k",
+      "yaw": -157.0,
+      "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 67.0 deg off-axis; turned square, front to +Z"
+    },
+    "D06_well": {
+      "src": "raw/D06_well_pix/model.glb",
+      "fit": "h",
+      "size": 2.2,
+      "tris": 8000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.5)",
+      "rebake": true,
+      "yaw": 38.0,
+      "yaw_note": "v0.6 review (round 2): the roof frame was 52 deg off-axis (first review wrongly treated the well as round); turned square, the open side with the bucket to +Z"
+    },
+    "D07_kei_truck": {
+      "src": "raw/D07_kei_truck_h3d/model.glb",
+      "fit": "max",
+      "size": 3.4,
+      "tris": 12000,
+      "tex": 2048,
+      "provider": "hyper3d rodin gen-2.5 (v0.6 review)",
+      "prev_src": "raw/D07_kei_truck_pix/model.glb"
+    },
+    "I01_deck_oven": {
+      "src": "raw/I01_deck_oven_pix/model.glb",
+      "fit": "h",
+      "size": 1.75,
+      "tris": 9000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.6)",
+      "rebake": true
+    },
+    "I02_cake_showcase": {
+      "src": "raw/I02_cake_showcase_clear_20261006/ready.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "tex": 2048,
+      "level": false,
+      "provider": "Blender measured cabinet rebuild, actual shelves and runtime thin glass; original Pixal3D source preserved"
+    },
+    "I04_shop_counter": {
+      "src": "raw/I04_shop_counter_pix2/model.glb",
+      "fit": "h",
+      "size": 1.25,
+      "tris": 20000,
+      "tex": 2048,
+      "provider": "pixal3d (v0.6 review, seed 7)",
+      "rebake": true,
+      "yaw": -150.0,
+      "yaw_note": "v0.6 review: new codex reference without loose items; Pixal3D output 60 deg off-axis, turned square, customer side to +Z",
+      "min_island": 0.02
+    },
+    "I05_bread_shelf": {
+      "src": "raw/I05_bread_shelf_pix/model.glb",
+      "fit": "h",
+      "size": 1.6,
+      "tris": 30000,
+      "tex": 2048,
+      "provider": "pixal3d (v0.6)",
+      "rebake": true,
+      "note": "v0.6 review: 8k decimation broke the slats; re-exported at 30k",
+      "yaw": 31.0,
+      "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 59.0 deg off-axis; turned square, front to +Z"
+    },
+    "I06_store_gondola": {
+      "src": "raw/I06_store_gondola_pix/model.glb",
+      "fit": "h",
+      "size": 1.5,
+      "tris": 6000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.6)",
+      "rebake": true
+    },
+    "I08_stone_mill": {
+      "src": "raw/I08_stone_mill_pix/model.glb",
+      "fit": "h",
+      "size": 0.85,
+      "tris": 7000,
+      "tex": 1024,
+      "provider": "pixal3d (v0.6)",
+      "rebake": true,
+      "yaw": -141.0,
+      "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 51.0 deg off-axis; turned square, front to +Z"
+    },
+    "B01_melon_pan": {
+      "src": "raw/B01_melon_pan_atlas_audit_20261002/model.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
+      "note": "atlas-only edit; geometry, UVs, nodes and animations verified identical; clean flat anime colour"
+    },
+    "B02_croissant": {
+      "src": "raw/B02_croissant_atlas_audit_20261002/model.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
+      "note": "atlas-only edit; geometry, UVs, nodes and animations verified identical; clean flat anime colour"
+    },
+    "B03_baguette": {
+      "src": "raw/B03_baguette_atlas_audit_20261002/model.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
+      "note": "atlas-only edit; geometry, UVs, nodes and animations verified identical; clean flat anime colour"
+    },
+    "B04_shokupan": {
+      "src": "raw/B04_shokupan_atlas_audit_20261002/model.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
+      "note": "atlas-only edit; geometry, UVs, nodes and animations verified identical; clean flat anime colour"
+    },
+    "B05_anpan": {
+      "src": "raw/B05_anpan_atlas_audit_20261002/model.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
+      "note": "atlas-only edit; geometry, UVs, nodes and animations verified identical; clean flat anime colour"
+    },
+    "B06_curry_pan": {
+      "src": "raw/B06_curry_pan_atlas_audit_20261002/model.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
+      "note": "atlas-only edit; geometry, UVs, nodes and animations verified identical; clean flat anime colour"
+    },
+    "CH_kazuko_static": {
+      "src": "raw/CH_kazuko_pix/model.glb",
+      "fit": "h",
+      "size": 1.56,
+      "tris": 24000,
+      "tex": 2048,
+      "provider": "pixal3d (v0.6)",
+      "rebake": true,
+      "yaw": 180
+    },
+    "P_chest": {
+      "src": "raw/P_chest_pix/model.glb",
+      "fit": "max",
+      "size": 0.9,
+      "tris": 12000,
+      "tex": 2048,
+      "provider": "pixal3d (v0.6 review, seed 7)",
+      "rebake": true,
+      "yaw": -153.5,
+      "min_island": 0.02,
+      "yaw_note": "v0.6 review: replaces the plain procedural box; Pixal3D output 63.5 deg off-axis, turned square, lock plate to +Z"
+    },
+    "P_gondola": {
+      "src": "raw/landmarks_aged_20261001/P_gondola.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "tex": 2048,
+      "level": false,
+      "provider": "Blender preserved geometry + imagegen aged timber, 2026-10-01",
+      "note": "Existing UV layout and physical geometry retained; honey-new cedar replaced with weathered timber."
+    },
+    "P_shop_wall_frame": {
+      "src": "raw/landmarks_aged_20261001/P_shop_wall_frame.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "tex": 2048,
+      "level": false,
+      "provider": "Blender preserved geometry + imagegen aged timber, 2026-10-01",
+      "note": "Existing UV layout and physical geometry retained; honey-new cedar replaced with weathered timber."
+    },
+    "P_store_sidepanel": {
+      "src": "raw/landmarks_aged_20261001/P_store_sidepanel.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "tex": 2048,
+      "level": false,
+      "provider": "Blender preserved geometry + imagegen aged timber, 2026-10-01",
+      "note": "Existing UV layout and physical geometry retained; honey-new cedar replaced with weathered timber."
+    },
+    "J01_machiya": {
+      "src": "raw/J01_machiya_hyper3d/model.glb",
+      "fit": "h",
+      "size": 6.6,
+      "tris": 40000,
+      "tex": 2048,
+      "provider": "Hyper3D Rodin Gen-2.5-Medium via CLI, 2026-10-01",
+      "level": "auto",
+      "yaw": 0,
+      "note": "Architectural sample, not a replacement in Layout. Check facade yaw and actual in-engine view."
+    },
+    "P_farm_gate": {
+      "src": "raw/P_farm_gate_h3d_quality_20261001_v2/model.glb",
+      "fit": "h",
+      "size": 3.452024459838867,
+      "tris": 24000,
+      "tex": 2048,
+      "weld": 0,
+      "provider": "hyper3d rodin Gen-2.5-High Raw, 2026-10-02",
+      "generation_id": "a47dcd66-c85d-4302-b3ae-63bef2ea7094",
+      "fit_bounds_blender": {
+        "min": [
+          -2.450000047683716,
+          -0.5077978372573853,
+          0.0
+        ],
+        "max": [
+          2.450000047683716,
+          0.5077978372573853,
+          3.452024459838867
+        ]
+      },
+      "note": "Explicit 1M-triangle original, two reference views, de-lighted textures; retained original physical bounding box.; 2026-10-02 exact weld on untextured decimation copy; UV/colour rebake",
+      "rebake": true
+    },
+    "P_signpost": {
+      "src": "raw/landmarks_aged_20261001/P_signpost.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "tex": 2048,
+      "level": false,
+      "provider": "Blender UV/material refinement + imagegen aged textures, 2026-10-01",
+      "note": "Original physical geometry and node hierarchy retained, including bridge deck. No recenter/scale/decimation."
+    },
+    "P_bridge": {
+      "src": "raw/landmarks_aged_20261001/P_bridge.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "tex": 2048,
+      "level": false,
+      "provider": "Blender UV/material refinement + imagegen aged textures, 2026-10-01",
+      "note": "Original physical geometry and node hierarchy retained, including bridge deck. No recenter/scale/decimation."
+    },
+    "P_yagura": {
+      "src": "raw/P_yagura_h3d_quality_20261002_quad/model.glb",
+      "fit": "h",
+      "size": 4.225538492202759,
+      "tris": 28000,
+      "tex": 2048,
+      "weld": 0,
+      "provider": "hyper3d rodin Gen-2.5-High Quad, 2026-10-02",
+      "generation_id": "75f0d17e-4471-4340-bb34-38b47e4de2e7",
+      "fit_bounds_blender": {
+        "min": [
+          -1.899999976158142,
+          -2.4493520259857178,
+          -0.10053849220275879
+        ],
+        "max": [
+          1.899999976158142,
+          1.899999976158142,
+          4.125
+        ]
+      },
+      "note": "Selected after in-game A/B against High Raw 1M: cleaner intact cloth and roof; 50k Quad original, colour-rebaked 28k-triangle game mesh, original physical bounds.",
+      "rebake": true
+    },
+    "P_deck_oven": {
+      "src": "raw/P_deck_oven_h3d_quality_20261001/fitted.glb",
+      "fit": "h",
+      "size": 2.0799999237060547,
+      "tris": 18000,
+      "tex": 2048,
+      "weld": 0,
+      "provider": "hyper3d rodin Gen-2.5-High, 2026-10-02",
+      "generation_id": "b6b8327d-a750-4a04-8d8f-cf4ec4299016",
+      "fit_bounds_blender": {
+        "min": [
+          -0.7300000190734863,
+          -0.5099999904632568,
+          0.0
+        ],
+        "max": [
+          0.7300000190734863,
+          0.4449999928474426,
+          2.0799999237060547
+        ]
+      },
+      "note": "Replace the 520-triangle untextured procedural oven; preserve physical footprint.; 2026-10-02 exact weld on untextured decimation copy; UV/colour rebake",
+      "rebake": true
+    },
+    "T02_summer_tree": {
+      "src": "raw/free_foliage_20261004/ready/T02_summer_tree.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Quaternius Stylized Nature MegaKit Standard CommonTree_3",
+      "license": "CC0-1.0",
+      "source_page": "https://quaternius.com/packs/stylizednaturemegakit.html",
+      "source_pack": "quaternius_standard",
+      "asset_library_id": "quaternius/CommonTree_3",
+      "note": "Metre scale, root on ground, trunk/foliage split; original UVs and alpha preserved"
+    },
+    "W01_flower_buckets": {
+      "src": "raw/W01_flower_buckets_pixal_windows_20261003/model.glb",
+      "fit": "h",
+      "size": 1.3,
+      "tris": 28000,
+      "tex": 2048,
+      "rebake": true,
+      "level": "auto",
+      "yaw": 157.81281775971294,
+      "provider": "Pixal3D private RTX 4080 image-to-3D 1024; job 2904b664-5906-480d-850c-03265423c8e5",
+      "note": "three actual flower pots on a cedar stand; raw original retained",
+      "yaw_note": "Feet measured by level_util.squareness; rigid correction, no axis stretching"
+    },
+    "W02_grocer_shelf": {
+      "src": "raw/W02_grocer_shelf_pixal_windows_20261003/model.glb",
+      "fit": "h",
+      "size": 1.55,
+      "tris": 22000,
+      "tex": 2048,
+      "rebake": true,
+      "level": "auto",
+      "yaw": 204.31779445353433,
+      "provider": "Pixal3D private RTX 4080 image-to-3D 1024; job 361afd57-814a-4301-8709-1727bbab1126",
+      "note": "volumetric grocery sacks bottles and boxes, original raw output retained",
+      "yaw_note": "Feet measured by level_util.squareness; rigid correction, no axis stretching"
+    },
+    "W03_cucumber_crate": {
+      "src": "raw/W03_cucumber_crate_pixal_windows_20261003/model.glb",
+      "fit": "w",
+      "size": 0.65,
+      "tris": 18000,
+      "tex": 2048,
+      "rebake": true,
+      "level": "auto",
+      "yaw": 205.67,
+      "provider": "Pixal3D private RTX 4080 image-to-3D 1024; job 989d3412-379e-436c-a064-3f6dd7bf3abf",
+      "note": "whole elongated cucumbers, not sliced ovals",
+      "yaw_note": "measured rectangular crate base square_deg -25.67, corrected rigidly"
+    },
+    "W04_sunflower_pot": {
+      "src": "raw/W04_sunflower_pot_pixal_modules_20261003/model.glb",
+      "fit": "h",
+      "size": 0.7,
+      "tris": 14000,
+      "tex": 2048,
+      "rebake": true,
+      "level": true,
+      "yaw": 180,
+      "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
+      "level_base_fraction": 0.28,
+      "level_note": "standing plane measured only from isolated pot base, excluding canopy convex-hull faces"
+    },
+    "W05_hydrangea_pot": {
+      "src": "raw/W05_hydrangea_pot_pixal_modules_20261003/model.glb",
+      "fit": "h",
+      "size": 0.46,
+      "tris": 14000,
+      "tex": 2048,
+      "rebake": true,
+      "level": true,
+      "yaw": 180,
+      "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
+      "level_base_fraction": 0.28,
+      "level_note": "standing plane measured only from isolated pot base, excluding canopy convex-hull faces"
+    },
+    "W06_lily_vase": {
+      "src": "raw/W06_lily_vase_pixal_modules_20261003/model.glb",
+      "fit": "h",
+      "size": 0.66,
+      "tris": 14000,
+      "tex": 2048,
+      "rebake": true,
+      "level": true,
+      "yaw": 180,
+      "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
+      "level_base_fraction": 0.28,
+      "level_note": "standing plane measured only from isolated pot base, excluding canopy convex-hull faces"
+    },
+    "W07_pastry_tray": {
+      "src": "raw/W07_pastry_tray_pixal_retry_20261003/model.glb",
+      "fit": "w",
+      "size": 0.4,
+      "tris": 14000,
+      "tex": 2048,
+      "rebake": true,
+      "level": true,
+      "yaw": 180,
+      "provider": "Pixal3D private RTX 4080 image-to-3D, seed77 second reference, job 7cee3dab-1297-4661-8cdc-66bcda6e0df2",
+      "level_note": "Tray standing plane is a low-area polygon; explicitly level after four-view inspection"
+    },
+    "W08_baguette_basket": {
+      "src": "raw/W08_baguette_basket_pixal_modules_20261003/model.glb",
+      "fit": "h",
+      "size": 0.35,
+      "tris": 14000,
+      "tex": 2048,
+      "rebake": true,
+      "level": "auto",
+      "yaw": 199.16545651719088,
+      "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
+      "yaw_note": "Rigid yaw measured from rectangular support footprint"
+    },
+    "W09_rice_sacks": {
+      "src": "raw/W09_rice_sacks_pixal_modules_20261003/model.glb",
+      "fit": "h",
+      "size": 0.38,
+      "tris": 10000,
+      "tex": 2048,
+      "rebake": true,
+      "level": "auto",
+      "yaw": 180,
+      "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained"
+    },
+    "W10_bottle_crate": {
+      "src": "raw/W10_bottle_crate_pixal_modules_20261003/model.glb",
+      "fit": "h",
+      "size": 0.32,
+      "tris": 12000,
+      "tex": 2048,
+      "rebake": true,
+      "level": "auto",
+      "yaw": 207.0320850520513,
+      "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
+      "yaw_note": "Rigid yaw measured from rectangular support footprint"
+    },
+    "W11_ceramic_set": {
+      "src": "raw/W11_ceramic_set_pixal_modules_20261003/model.glb",
+      "fit": "w",
+      "size": 0.38,
+      "tris": 12000,
+      "tex": 2048,
+      "rebake": true,
+      "level": "auto",
+      "yaw": 180,
+      "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained"
+    },
+    "T03_round_ginkgo": {
+      "src": "raw/free_foliage_20261004/ready/T03_round_ginkgo.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Quaternius Stylized Nature MegaKit Standard CommonTree_5",
+      "license": "CC0-1.0",
+      "source_page": "https://quaternius.com/packs/stylizednaturemegakit.html",
+      "source_pack": "quaternius_standard",
+      "asset_library_id": "quaternius/CommonTree_5",
+      "note": "Metre scale, root on ground, trunk/foliage split; original UVs and alpha preserved"
+    },
+    "T04_slender_cedar": {
+      "src": "raw/free_foliage_20261004/ready/T04_slender_cedar.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Quaternius Stylized Nature MegaKit Standard Pine_3",
+      "license": "CC0-1.0",
+      "source_page": "https://quaternius.com/packs/stylizednaturemegakit.html",
+      "source_pack": "quaternius_standard",
+      "asset_library_id": "quaternius/Pine_3",
+      "note": "Metre scale, root on ground, trunk/foliage split; original UVs and alpha preserved"
+    },
+    "W13_cedar_worktable": {
+      "src": "raw/W13_worktable_hyper3d/metre_worktable.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 512,
+      "provider": "Hyper3D Agentic Business, task cb502e12-9abb-4812-9167-75a25a04bbad",
+      "note": "Original raw retained; uniform 1.5 scale to 0.78 metre height; flat cedar colours and 24 structural parts"
+    },
+    "W12_cedar_tray": {
+      "src": "raw/W12_cedar_tray_pixal_modules_20261003/model.glb",
+      "fit": "w",
+      "size": 0.44,
+      "tris": 12000,
+      "tex": 2048,
+      "rebake": true,
+      "level": true,
+      "yaw": 203.08558123314754,
+      "provider": "Pixal3D private RTX 4080 empty tray reference, independent assembly component",
+      "yaw_note": "Rigid correction from measured tray footprint"
+    },
+    "B01_bus": {
+      "src": "raw/scene_polish_20261004/assembled/B01_bus.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 4096,
+      "provider": "Hyper3D Rodin Gen-2.5-High Raw 1000000 faces, imagegen reference; UV-preserving game assembly",
+      "note": "Tree trunk and foliage separate; original maximum-detail outputs retained. Bus glazing cut for independent transparent panes."
+    },
+    "V01_fern": {
+      "src": "raw/free_foliage_20261004/ready/V01_fern.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Quaternius Stylized Nature MegaKit Standard Plant_1",
+      "license": "CC0-1.0",
+      "source_page": "https://quaternius.com/packs/stylizednaturemegakit.html",
+      "source_pack": "quaternius_standard",
+      "asset_library_id": "quaternius/Plant_1",
+      "note": "Metre scale, root on ground, trunk/foliage split; original UVs and alpha preserved"
+    },
+    "V02_wildflowers": {
+      "src": "raw/free_foliage_20261004/ready/V02_wildflowers.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Quaternius Stylized Nature MegaKit Standard Flower_3_Group",
+      "license": "CC0-1.0",
+      "source_page": "https://quaternius.com/packs/stylizednaturemegakit.html",
+      "source_pack": "quaternius_standard",
+      "asset_library_id": "quaternius/Flower_3_Group",
+      "note": "Metre scale, root on ground, trunk/foliage split; original UVs and alpha preserved"
+    },
+    "V03_grass_clump": {
+      "src": "raw/free_foliage_20261004/ready/V03_grass_clump.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Quaternius Stylized Nature MegaKit Standard Grass_Wispy_Short",
+      "license": "CC0-1.0",
+      "source_page": "https://quaternius.com/packs/stylizednaturemegakit.html",
+      "source_pack": "quaternius_standard",
+      "asset_library_id": "quaternius/Grass_Wispy_Short",
+      "note": "Metre scale, root on ground, trunk/foliage split; original UVs and alpha preserved"
+    },
+    "T05_old_shade_tree": {
+      "src": "raw/hero_shade_tree_20261005/T05_old_shade_tree.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Reference-driven Blender organic skeleton; imagegen anime bark and transparent leaf sprigs",
+      "license": "项目自制；生成素材服务条款",
+      "reference_images": [
+        "game/assets/ui/prologue/P3_tree.jpg",
+        "art/references/v06/prologue/K4_courtyard.png"
+      ],
+      "note": "A unique courtyard hero tree, not a shared roadside tree; broad low limbs, roots, layered alpha foliage"
+    },
+    "CH_kazuko": {
+      "src": "character_wave_smile_20261005/exports/CH_kazuko.glb",
+      "fit": "h",
+      "size": 1.56,
+      "preserve_rigged_character": true,
+      "character_pipeline": "characters-apose-20261004",
+      "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+      "source_page": "https://hyper3d.ai/workspace/rodin/02faef2e-028f-43e0-933d-47541dcc167b",
+      "license": "项目角色；Hyper3D 账户生成素材",
+      "tex": 2048,
+      "note": "Use art/tools/characters/; preserve clips, fingers and validated sleeve physics. Do not rebind with old rig_char."
+    },
+    "E01_furin": {
+      "src": "raw/E01_furin_hyper3d/ready.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Hyper3D Rodin Gen-2.5-High Raw; imagegen ceramic goldfish furin; UV-preserving paper hinge split",
+      "source_page": null,
+      "license": "项目原创参考图；授权 Hyper3D 账户生成"
+    },
+    "V04_daisy_meadow": {
+      "src": "raw/V04_daisy_meadow_hyper3d/model.glb",
+      "fit": "h",
+      "size": 0.35,
+      "tris": 14000,
+      "tex": 2048,
+      "yaw": 0,
+      "weld": 0,
+      "level": false,
+      "provider": "Hyper3D Rodin Gen-2.5-High Raw; imagegen anime daisy, clover and meadow tuft",
+      "source_page": null,
+      "license": "项目原创参考图；授权 Hyper3D 账户生成"
+    },
+    "V05_river_reeds": {
+      "src": "raw/V05_river_reeds_hyper3d/model.glb",
+      "fit": "h",
+      "size": 1.3,
+      "tris": 18000,
+      "tex": 2048,
+      "yaw": 0,
+      "weld": 0,
+      "level": false,
+      "provider": "Hyper3D Rodin Gen-2.5-High Raw; imagegen anime feathery river reed clump",
+      "source_page": null,
+      "license": "项目原创参考图；授权 Hyper3D 账户生成"
+    },
+    "B02_onigiri": {
+      "src": "raw/B02_onigiri_hyper3d_cli_20261006/model.glb",
+      "fit": "w",
+      "size": 0.105,
+      "tris": 8000,
+      "tex": 1024,
+      "level": true,
+      "yaw": 0,
+      "provider": "Hyper3D CLI Gen-2.5-High, Quad 4000 faces, one owned generation",
+      "note": "Standalone solid anime rice ball; no plate or character. Actual plate support checked in MEAL_PLATE."
+    },
+    "B07_iced_donut": {
+      "src": "raw/B07_iced_donut_hyper3d/model.glb",
+      "fit": "w",
+      "size": 0.11,
+      "tris": 8000,
+      "tex": 2048,
+      "yaw": 0,
+      "weld": 0,
+      "level": "auto",
+      "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+      "license": "项目生成素材；Hyper3D账户来源条款",
+      "source_page": "https://hyper3d.ai/workspace/rodin/1d5a3b73-8e66-4e97-9bda-de4ff8224eeb"
+    },
+    "B08_strawberry_cake": {
+      "src": "raw/B08_strawberry_cake_hyper3d/model.glb",
+      "fit": "w",
+      "size": 0.22,
+      "tris": 16000,
+      "tex": 2048,
+      "yaw": 0,
+      "weld": 0,
+      "level": "auto",
+      "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+      "license": "项目生成素材；Hyper3D账户来源条款",
+      "source_page": "https://hyper3d.ai/workspace/rodin/8d056706-2045-477e-a12b-5cecf2a1e661"
+    },
+    "B09_sushi_tray": {
+      "src": "raw/B09_sushi_tray_hyper3d/model.glb",
+      "fit": "w",
+      "size": 0.29,
+      "tris": 14000,
+      "tex": 2048,
+      "yaw": 0,
+      "weld": 0,
+      "level": "auto",
+      "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+      "license": "项目生成素材；Hyper3D账户来源条款",
+      "source_page": "https://hyper3d.ai/workspace/rodin/c89c845b-c832-419f-858e-15237c6c9177"
+    },
+    "B10_bento_box": {
+      "src": "raw/B10_bento_box_hyper3d/model.glb",
+      "fit": "w",
+      "size": 0.26,
+      "tris": 14000,
+      "tex": 2048,
+      "yaw": 0,
+      "weld": 0,
+      "level": "auto",
+      "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+      "license": "项目生成素材；Hyper3D账户来源条款",
+      "source_page": "https://hyper3d.ai/workspace/rodin/0d82ecd8-d10c-4c9e-9193-acc2da356824"
+    },
+    "B11_cream_bun": {
+      "src": "raw/B11_cream_bun_hyper3d/model.glb",
+      "fit": "w",
+      "size": 0.15,
+      "tris": 9000,
+      "tex": 2048,
+      "yaw": 0,
+      "weld": 0,
+      "level": "auto",
+      "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+      "license": "项目生成素材；Hyper3D账户来源条款",
+      "source_page": "https://hyper3d.ai/workspace/rodin/5e2d9640-f1b6-46ed-a626-880d9d5ed4ae"
+    },
+    "W14_grocery_stock": {
+      "src": "raw/W14_grocery_stock_hyper3d/model.glb",
+      "fit": "w",
+      "size": 0.58,
+      "tris": 16000,
+      "tex": 2048,
+      "yaw": 0,
+      "weld": 0,
+      "level": "auto",
+      "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+      "license": "项目生成素材；Hyper3D账户来源条款",
+      "source_page": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5"
+    },
+    "W15_produce_basket": {
+      "src": "raw/W15_produce_basket_hyper3d/model.glb",
+      "fit": "w",
+      "size": 0.65,
+      "tris": 18000,
+      "tex": 2048,
+      "yaw": 0,
+      "weld": 0,
+      "level": "auto",
+      "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+      "license": "项目生成素材；Hyper3D账户来源条款",
+      "source_page": "https://hyper3d.ai/workspace/rodin/0a549098-93b0-4de0-bbf6-0c56a5a2107d"
+    },
+    "W16_handtools_board": {
+      "src": "raw/W16_handtools_board_hyper3d/model.glb",
+      "fit": "h",
+      "size": 1.1,
+      "tris": 18000,
+      "tex": 2048,
+      "yaw": 0,
+      "weld": 0,
+      "level": "auto",
+      "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+      "license": "项目生成素材；Hyper3D账户来源条款",
+      "source_page": "https://hyper3d.ai/workspace/rodin/26ecd969-3d41-4191-80af-ed29457abe84"
+    },
+    "W17_display_shelf": {
+      "src": "raw/W17_display_shelf_hyper3d/model.glb",
+      "fit": "h",
+      "size": 1.45,
+      "tris": 18000,
+      "tex": 2048,
+      "yaw": 0,
+      "weld": 0,
+      "level": "auto",
+      "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+      "license": "项目生成素材；Hyper3D账户来源条款",
+      "source_page": "https://hyper3d.ai/workspace/rodin/a56aa1b6-7645-4882-bb87-c9a51ebbce9c"
+    },
+    "W18_retro_tv": {
+      "src": "raw/W18_retro_tv_hyper3d/model.glb",
+      "fit": "w",
+      "size": 0.52,
+      "tris": 15000,
+      "tex": 2048,
+      "yaw": 0,
+      "weld": 0,
+      "level": "auto",
+      "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
+      "license": "项目生成素材；Hyper3D账户来源条款",
+      "source_page": "https://hyper3d.ai/workspace/rodin/5879be81-a15d-4dfc-a0d6-c398a797851c"
+    },
+    "B07_veg_sandwich": {
+      "src": "raw/B07_veg_sandwich_hyper3d_cli_20261006_reference/model.glb",
+      "fit": "w",
+      "size": 0.12,
+      "tris": 8000,
+      "tex": 1024,
+      "level": true,
+      "yaw": 0,
+      "provider": "Hyper3D CLI Gen-2.5-High, image reference, Quad 4000",
+      "note": "Solid anime serving; no plate, hand, or character."
+    },
+    "B08_focaccia": {
+      "src": "raw/B08_focaccia_hyper3d_cli_20261006_reference/model.glb",
+      "fit": "w",
+      "size": 0.12,
+      "tris": 8000,
+      "tex": 1024,
+      "level": true,
+      "yaw": 0,
+      "provider": "Hyper3D CLI Gen-2.5-High, image reference, Quad 4000",
+      "note": "Solid anime serving; no plate, hand, or character."
+    }
+  },
+  "procedural_overrides": {
+    "I03_drink_fridge": "v0.6 review: Pixal3D (raw/I03_drink_fridge_pix) turned glass and steel into a grey blob; now built by art/tools/proc_models.py I03_drink_fridge with a codex texture",
+    "I07_ice_freezer": "v0.6 review: Pixal3D (raw/I07_ice_freezer_pix) turned glass and steel into a grey blob; now built by art/tools/proc_models.py I07_ice_freezer with a codex texture",
+    "P_gondola": "2026-10-01 wooden joinery model from japanese_joinery.py; same footprint and stocked shelf heights as original",
+    "P_signpost": "2026-10-01 material and UV upgrade of original procedural GLB; texture_landmarks.py; physical parts retained",
+    "P_bridge": "2026-10-01 material and UV upgrade of original procedural GLB; texture_landmarks.py; physical parts retained"
+  }
+}

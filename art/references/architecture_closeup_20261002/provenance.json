@@ -1,0 +1,10 @@
+{
+  "tool": "built-in imagegen",
+  "recovered_after_interruption": true,
+  "files": {
+    "cedar": "exec-f1871762-16cd-47a4-baad-f20f0a081363.png",
+    "plaster": "exec-b62e550f-219a-48fb-86f5-ba90768d9ee5.png",
+    "kawara": "exec-0e960a0d-2cac-4398-be87-0cc8c50f220e.png"
+  },
+  "prompts": "art/manifests/prompts/architecture_closeup_20261002_materials.json"
+}

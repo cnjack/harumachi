@@ -1,0 +1,68 @@
+{
+  "P09": {
+    "provider": "Hyper3D CLI",
+    "asset": "P09",
+    "prompt": "Match this single empty wooden serving stall exactly: one broad empty level countertop, four counter legs, four slender canopy posts, a blue and cream striped flat canvas awning. Keep all openings and the entire counter top empty. Simple Japanese anime game prop, straight clean timber beams, matte flat colors, no photographic texture. Only this stall. No additional objects, chairs, stools, bins, produce, cash register, wall, shelves, signs, text, ground platform or people.",
+    "tier": "Gen-2.5-High",
+    "mesh_mode": "Quad",
+    "quality": 4000,
+    "geometry_format": "glb",
+    "texture_delight": true,
+    "submission_count": 1,
+    "submitted_at": 1791311183.035022,
+    "status": "downloaded",
+    "reference_image": "art/models/raw/P09_hyper3d_cli_20261007_reference/reference.png",
+    "reference_sha256": "6d50f2e9baf8de0e490eda9d4bc985d8b704ebd5d8240ecf33bac52584cdfe40",
+    "reference_origin": "Blender authored empty-stall geometry, rendered only for generation input",
+    "response": {
+      "generation_id": "84d2c0f9-0c06-47e2-bd6c-522981ad1a73",
+      "status": "queued"
+    },
+    "generation_id": "84d2c0f9-0c06-47e2-bd6c-522981ad1a73",
+    "selected_file": "base_basic_pbr.glb",
+    "sha256": "c69e7b33067f9328d4477c180fe3e5b2bff73ba6b2b0d42e3a2aa70339e011cf",
+    "task_url": "https://hyper3d.ai/workspace/rodin/84d2c0f9-0c06-47e2-bd6c-522981ad1a73",
+    "acceptance": {
+      "status": "visual_pass",
+      "shape": "empty counter and four posts, neutral and native inspected",
+      "orientation": "yaw 90 before metre-scale export",
+      "native_scope": "four fixture-backed E/choice demonstrations; not ordinary play or fun proof",
+      "native_final": "evidence/tasting_use_20261007/native-clean/native-demo.json",
+      "native_engine_errors": 0
+    },
+    "game_sha256": "f11f27e4b58363d97bfb65e7f55e9844514e98969ec9bcb3af4489680477bc14",
+    "previous_config": {
+      "src": "raw/P09/model.glb",
+      "fit": "w",
+      "size": 2.6,
+      "tris": 8000,
+      "tex": 1024
+    },
+    "rejected_prior_attempt": {
+      "provider": "Hyper3D CLI",
+      "asset": "P09",
+      "prompt": "One standalone small empty Japanese summer-festival wooden serving stall for a TV anime slice-of-life game. Clean flat cel colors, matte cedar wood, simple straight beams, hard-edge shadows, no photorealistic wood grain. A single continuous flat EMPTY serving countertop 2.6 meters wide and 0.75 meters deep, 0.8 meter high, supported by four straight wooden legs. The entire top of this board is unobstructed and usable for plates and food. Four slender posts hold one simple blue-and-cream striped canvas awning at 2.1 meters high. Broad open front and back; no walls or panels above the countertop. The counter board is 6cm thick. No produce, crates, baskets, dishes, food, shelves, cash register, signs, letters, text, characters, animals, background or ground platform. Exactly this single empty serving stall, centered, level feet, about 4000 quad polygons, textured GLB.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 4000,
+      "geometry_format": "glb",
+      "texture_delight": true,
+      "submitted_at": 1791310723.294687,
+      "submission_count": 1,
+      "status": "downloaded",
+      "exit_code": 0,
+      "response": {
+        "generation_id": "7481010e-5f23-4f5e-8d11-5234bb45f6e2",
+        "status": "queued"
+      },
+      "generation_id": "7481010e-5f23-4f5e-8d11-5234bb45f6e2",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "c62c181a04d821affa6af44179e1a5c33d0ec6dd35f273e21a5af2c6152896fd",
+      "task_url": "https://hyper3d.ai/workspace/rodin/7481010e-5f23-4f5e-8d11-5234bb45f6e2",
+      "acceptance": {
+        "status": "rejected",
+        "reason": "adds stools, platform, cashier and counter clutter; violates empty serving stall geometry"
+      }
+    }
+  }
+}

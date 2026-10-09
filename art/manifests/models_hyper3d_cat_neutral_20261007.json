@@ -1,0 +1,172 @@
+{
+  "models": [
+    {
+      "id": "AN_cat_orange_neutral_hyper3d",
+      "provider": "Hyper3D Rodin",
+      "generation_id": "75f02cdb-6261-4dac-bd71-44c984b9beea",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 500000,
+      "expected_credits": 0.5,
+      "reference": "/Users/jack/workpath/research/3D model/anime/art/poc/cat_neck_alignment_20261007/references/orange-side.png",
+      "reference_sha256": "26d8c49e72a54bddcbc353c234e38450ecb9de7be8ef688d098185eb9451ee05",
+      "raw_glb": "art/models/raw/cat_neutral_20261007/orange_hyper3d/model.glb",
+      "candidate_glb": "art/poc/cat_neck_alignment_20261007/outputs/hyper3d/orange.glb",
+      "accepted": true,
+      "status": "installed_in_game",
+      "scope": "Current game actor: nine authored clips, diagonal-couplet Walk, centred gaze and world paw contacts",
+      "display_url": "https://hyper3d.ai/workspace/rodin/75f02cdb-6261-4dac-bd71-44c984b9beea",
+      "raw_sha256": "185bc47a081519ca7ff771cd3fce5e257184e6ae0e0cdb658d942ae50c967280",
+      "candidate_sha256": "4c3b2406d7dda140d519722ebd455ba82d8aa0825d36841e047cdc56f32f9605",
+      "authoring": "art/poc/cat_natural_walk_20261007/outputs/orange.blend",
+      "validation": {
+        "skin": "evidence/cat_natural_walk_20261007/skin-all.json",
+        "gait_regression": "evidence/cat_natural_walk_20261007/walk-after.json",
+        "engine": "evidence/cat_natural_walk_20261007/game-assets.json",
+        "contacts": "evidence/cat_natural_walk_20261007/contact-phases.json",
+        "source": "evidence/cat_natural_walk_20261007/source-verified.json",
+        "full_tests": "evidence/cat_natural_walk_20261007/full-tests.json",
+        "world": "evidence/cat_natural_walk_20261007/world/runtime.json",
+        "release": "evidence/cat_natural_walk_20261007/release/verification.json",
+        "current_delivery": "evidence/godot48_docs_20261007/delivery.json",
+        "current_delivery_engine": "4.8.dev7.official.c971f93e7",
+        "animation_review_engine": "4.7.2.stable.official.ed1daf0bf"
+      },
+      "accepted_scope": "Nine authored clips, centered runtime gaze, world stance contacts and game roaming/resting behaviours",
+      "rigged": true,
+      "visual_review": "Native complete-clip and real street animations verified; supersedes the unrigged candidate stage.",
+      "neutral_pose_verified": true,
+      "bound_asset": "game/assets/models/AN_cat_orange_walk.glb",
+      "bound_sha256": "e407b1bb557c14ee80ea5fde3e9be1762ea588811b5f99dd92d497d0ec9f59a5",
+      "clips": [
+        "Idle",
+        "Walk",
+        "Run",
+        "Sneak",
+        "Sit",
+        "SitDown",
+        "StandUp",
+        "Jump",
+        "Stretch"
+      ],
+      "rig_joints": 59,
+      "maximum_influences": 8,
+      "current": true,
+      "animation_history": [
+        {
+          "revision": "equal_four_beat_before_natural_walk",
+          "bound_sha256": "848ccaceee498003a6f0f41c5363a666a53d75475766dcc522460f686a0e5d75",
+          "authoring": "art/poc/cat_full_rig_20261007/outputs/orange.blend",
+          "validation": {
+            "skin": "evidence/cat_full_rig_20261007/skin-all.json",
+            "engine": "evidence/cat_full_rig_20261007/game-assets.json",
+            "world": "evidence/cat_full_rig_20261007/world/verification.json",
+            "full_tests": "evidence/cat_full_rig_20261007/full-tests.json",
+            "backup": "evidence/cat_full_rig_20261007/source-contract.json",
+            "current_source": "evidence/cat_full_rig_20261007/continuation/verification.json",
+            "release": "evidence/cat_full_rig_20261007/release/verification.json"
+          }
+        }
+      ],
+      "walk_gait": {
+        "phases": [
+          0,
+          0.42,
+          0.5,
+          0.92
+        ],
+        "duty": 0.7,
+        "native_speed": 0.12,
+        "period": 0.8333333333333334,
+        "keyframe_hz": 60,
+        "swing_target_m": 0.012,
+        "maximum_paw_pitch_degrees": 8
+      }
+    },
+    {
+      "id": "AN_cat_calico_neutral_hyper3d",
+      "provider": "Hyper3D Rodin",
+      "generation_id": "4e128bf8-dd36-48b9-acea-1ff5e3faf451",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 500000,
+      "expected_credits": 0.5,
+      "reference": "/Users/jack/workpath/research/3D model/anime/art/poc/cat_neck_alignment_20261007/references/calico-side.png",
+      "reference_sha256": "efb7c1c421f38c78808af0d5b1d9136db5b757b2aa2a9b17efaf203d766bf156",
+      "raw_glb": "art/models/raw/cat_neutral_20261007/calico_hyper3d/model.glb",
+      "candidate_glb": "art/poc/cat_neck_alignment_20261007/outputs/hyper3d/calico.glb",
+      "accepted": true,
+      "status": "installed_in_game",
+      "scope": "Current game actor: nine authored clips, diagonal-couplet Walk, centred gaze and world paw contacts",
+      "display_url": "https://hyper3d.ai/workspace/rodin/4e128bf8-dd36-48b9-acea-1ff5e3faf451",
+      "raw_sha256": "a29da6eb8ad43e2bc140c8ae5fb762f33ac91e572840c7a2fb95ce883c6fdf69",
+      "candidate_sha256": "0795bca821119d56250bb44fb51608b59df8fc960839367d2e62f5d24d186e3e",
+      "authoring": "art/poc/cat_natural_walk_20261007/outputs/calico.blend",
+      "validation": {
+        "skin": "evidence/cat_natural_walk_20261007/skin-all.json",
+        "gait_regression": "evidence/cat_natural_walk_20261007/walk-after.json",
+        "engine": "evidence/cat_natural_walk_20261007/game-assets.json",
+        "contacts": "evidence/cat_natural_walk_20261007/contact-phases.json",
+        "source": "evidence/cat_natural_walk_20261007/source-verified.json",
+        "full_tests": "evidence/cat_natural_walk_20261007/full-tests.json",
+        "world": "evidence/cat_natural_walk_20261007/world/runtime.json",
+        "release": "evidence/cat_natural_walk_20261007/release/verification.json",
+        "current_delivery": "evidence/godot48_docs_20261007/delivery.json",
+        "current_delivery_engine": "4.8.dev7.official.c971f93e7",
+        "animation_review_engine": "4.7.2.stable.official.ed1daf0bf"
+      },
+      "accepted_scope": "Nine authored clips, centered runtime gaze, world stance contacts and game roaming/resting behaviours",
+      "rigged": true,
+      "visual_review": "Native complete-clip and real street animations verified; supersedes the unrigged candidate stage.",
+      "neutral_pose_verified": true,
+      "bound_asset": "game/assets/models/AN_cat_calico_walk.glb",
+      "bound_sha256": "0957f701a216fea07ebb774c03c8198839857d30668faaff0fc87fca8304ecd9",
+      "clips": [
+        "Idle",
+        "Walk",
+        "Run",
+        "Sneak",
+        "Sit",
+        "SitDown",
+        "StandUp",
+        "Jump",
+        "Stretch"
+      ],
+      "rig_joints": 59,
+      "maximum_influences": 8,
+      "current": true,
+      "animation_history": [
+        {
+          "revision": "equal_four_beat_before_natural_walk",
+          "bound_sha256": "5c1961478c3ab7bfeb7690df0a9a6341849b6f4792e08f87bca8f6acf90bc855",
+          "authoring": "art/poc/cat_full_rig_20261007/outputs/calico.blend",
+          "validation": {
+            "skin": "evidence/cat_full_rig_20261007/skin-all.json",
+            "engine": "evidence/cat_full_rig_20261007/game-assets.json",
+            "world": "evidence/cat_full_rig_20261007/world/verification.json",
+            "full_tests": "evidence/cat_full_rig_20261007/full-tests.json",
+            "backup": "evidence/cat_full_rig_20261007/source-contract.json",
+            "current_source": "evidence/cat_full_rig_20261007/continuation/verification.json",
+            "release": "evidence/cat_full_rig_20261007/release/verification.json"
+          }
+        }
+      ],
+      "walk_gait": {
+        "phases": [
+          0,
+          0.42,
+          0.5,
+          0.92
+        ],
+        "duty": 0.7,
+        "native_speed": 0.12,
+        "period": 0.8333333333333334,
+        "keyframe_hz": 60,
+        "swing_target_m": 0.012,
+        "maximum_paw_pitch_degrees": 8
+      }
+    }
+  ],
+  "expected_credits_total": 1,
+  "cost_basis": "Two Gen-2.5 High base generations at the published 0.5 credits each; not an isolated wallet-debit audit."
+}

@@ -1,0 +1,46 @@
+{
+  "characters": [
+    {
+      "character": "sora",
+      "id": "CH_sora",
+      "name": "空",
+      "height_m": 1.62,
+      "raw_directory": "art/models/raw/CH_sora_rodin_apose_20261005",
+      "references": [
+        "art/references/character_leads_apose_20261005/sora_front.png",
+        "art/references/character_leads_apose_20261005/sora_back.png"
+      ],
+      "prompt": "art/manifests/prompts/character_leads_apose_20261005/sora.txt",
+      "arm_angle_below_horizontal": 45,
+      "original_motion_source": "art/models/archive/characters_before_apose_20261004/CH_sora.glb",
+      "accepted_baseline": "art/models/archive/characters_before_leads_apose_20261005/CH_sora.glb",
+      "accepted_baseline_sha256": "16416de8664392c3797462f3753acd4c0a9f123fedf58c10f271c97741457725",
+      "status": "installed and verified",
+      "generation_id": "027128d0-b34b-44b3-938a-bbf48f96ba58",
+      "source_url": "https://hyper3d.ai/workspace/rodin/027128d0-b34b-44b3-938a-bbf48f96ba58"
+    },
+    {
+      "character": "mio",
+      "id": "CH_mio",
+      "name": "澪",
+      "height_m": 1.58,
+      "raw_directory": "art/models/raw/CH_mio_rodin_apose_20261005",
+      "references": [
+        "art/references/character_leads_apose_20261005/mio_front.png",
+        "art/references/character_leads_apose_20261005/mio_back.png"
+      ],
+      "prompt": "art/manifests/prompts/character_leads_apose_20261005/mio.txt",
+      "arm_angle_below_horizontal": 45,
+      "original_motion_source": "art/models/archive/characters_before_apose_20261004/CH_mio.glb",
+      "accepted_baseline": "art/models/archive/characters_before_leads_apose_20261005/CH_mio.glb",
+      "accepted_baseline_sha256": "0d1a260b5a1e8b7fff92ebb535f6ec0ea4a405f3df379057f6c12c160f535bb2",
+      "status": "installed and verified",
+      "generation_id": "0d52126c-8342-42af-9b32-2d470fdbc48b",
+      "source_url": "https://hyper3d.ai/workspace/rodin/0d52126c-8342-42af-9b32-2d470fdbc48b"
+    }
+  ],
+  "provider": "Hyper3D Rodin",
+  "new_paid_jobs": 2,
+  "formal_replacement_authorized": true,
+  "status": "installed and verified"
+}

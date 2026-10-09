@@ -1,0 +1,20 @@
+{
+ "id": "C12_corn",
+ "src": "raw/C12_corn_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 885058,
+ "tris": 5733,
+ "size_m": [
+  0.754,
+  0.85,
+  1.717
+ ],
+ "godot_size_m_xyz": [
+  0.754,
+  1.717,
+  0.85
+ ],
+ "tex": 1024,
+ "bytes": 712272,
+ "yaw_fix": 0
+}

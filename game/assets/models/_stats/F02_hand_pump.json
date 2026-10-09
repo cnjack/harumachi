@@ -1,0 +1,37 @@
+{
+ "id": "F02_hand_pump",
+ "src": "raw/F02_hand_pump_h3d/model.glb",
+ "provider": "hyper3d rodin gen-2.5 (v0.4)",
+ "tris_src": 20000,
+ "tris": 4997,
+ "size_m": [
+  0.845,
+  1.657,
+  1.304
+ ],
+ "godot_size_m_xyz": [
+  0.845,
+  1.304,
+  1.657
+ ],
+ "tex": 1024,
+ "bytes": 346532,
+ "yaw_fix": 0,
+ "level": "auto",
+ "lean_src_deg": 3.34,
+ "levelled": true,
+ "lean_deg": 0.03,
+ "base_frac": 0.737,
+ "fit_bounds_blender": {
+  "min": [
+   -0.42203906178474426,
+   -0.828399121761322,
+   -0.0028837069403380156
+  ],
+  "max": [
+   0.42282336950302124,
+   0.828177273273468,
+   1.3012802600860596
+  ]
+ }
+}

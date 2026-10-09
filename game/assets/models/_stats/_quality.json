@@ -1,0 +1,49 @@
+{
+  "models": {
+    "P_farm_gate": {
+      "bounds_max_error_m": 2.384185791015625e-07,
+      "texture_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "source_mtime": 1790877633.5888968,
+      "triangles": 23986,
+      "roof_relief_std_m": [
+        0.03547671462367689,
+        0.02657949135721907
+      ]
+    },
+    "P_yagura": {
+      "bounds_max_error_m": 4.76837158203125e-07,
+      "texture_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "source_mtime": 1790878609.0657222,
+      "triangles": 28000,
+      "roof_ridge_width_m": 0.1609179366221698
+    },
+    "P_deck_oven": {
+      "bounds_max_error_m": 5.960464477539063e-08,
+      "texture_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "source_mtime": 1790877646.6879299,
+      "triangles": 17999
+    }
+  },
+  "checks": {
+    "gate_roof_relief": true,
+    "yagura_pitched_roof": true,
+    "oven_textured": true,
+    "physical_bounds": true
+  },
+  "failed": []
+}

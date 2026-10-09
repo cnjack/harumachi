@@ -1,0 +1,26 @@
+{
+ "id": "CH_mio",
+ "src": "character_wave_smile_20261005/exports/CH_mio.glb",
+ "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+ "preserve_rigged_character": true,
+ "tris": 96748,
+ "bytes": 10179364,
+ "bones": 66,
+ "animations": [
+  "idle",
+  "walk",
+  "run",
+  "wave",
+  "bow",
+  "look",
+  "stretch",
+  "tend",
+  "talk",
+  "cheer",
+  "dance",
+  "reference"
+ ],
+ "sha256": "4d518415d7244aad44fd80858aec1120f4559138ba86fa06839c9b7e658b35af",
+ "character_pipeline": "characters-apose-20261004",
+ "greeting_review": "20261005"
+}

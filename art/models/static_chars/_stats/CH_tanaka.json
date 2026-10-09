@@ -1,0 +1,37 @@
+{
+ "id": "CH_tanaka",
+ "src": "raw/CH_tanaka_h3d/model.glb",
+ "provider": "hyper3d rodin gen-2.5 (v0.4)",
+ "tris_src": 40000,
+ "tris": 14000,
+ "size_m": [
+  0.816,
+  0.418,
+  1.602
+ ],
+ "godot_size_m_xyz": [
+  0.816,
+  1.602,
+  0.418
+ ],
+ "tex": 2048,
+ "bytes": 956472,
+ "yaw_fix": 0,
+ "level": false,
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.0,
+ "base_frac": 0.437,
+ "fit_bounds_blender": {
+  "min": [
+   -0.4073318839073181,
+   -0.2082454413175583,
+   -0.002057405421510339
+  ],
+  "max": [
+   0.40912312269210815,
+   0.20993317663669586,
+   1.6002734899520874
+  ]
+ }
+}

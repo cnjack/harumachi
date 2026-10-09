@@ -1,0 +1,20 @@
+{
+ "id": "C11_eggplant",
+ "src": "raw/C11_eggplant_pix/model.glb",
+ "provider": "pixal3d (v0.5)",
+ "tris_src": 941217,
+ "tris": 6182,
+ "size_m": [
+  0.614,
+  0.439,
+  0.798
+ ],
+ "godot_size_m_xyz": [
+  0.614,
+  0.798,
+  0.439
+ ],
+ "tex": 1024,
+ "bytes": 674872,
+ "yaw_fix": 0
+}

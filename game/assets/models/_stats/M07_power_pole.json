@@ -1,0 +1,25 @@
+{
+ "id": "M07_power_pole",
+ "src": "raw/M07_power_pole_h3d_audit_20261002/model.glb",
+ "provider": "hyper3d rodin Gen-2.5-High Quad (2026-10-02)",
+ "tris_src": 35070,
+ "tris": 9000,
+ "size_m": [
+  2.351,
+  1.242,
+  9.0
+ ],
+ "godot_size_m_xyz": [
+  2.351,
+  9.0,
+  1.242
+ ],
+ "tex": 2048,
+ "bytes": 506652,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.0,
+ "base_frac": 0.092
+}

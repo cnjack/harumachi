@@ -1,0 +1,18 @@
+{
+ "id": "P_shop_wall_frame",
+ "src": "raw/landmarks_aged_20261001/P_shop_wall_frame.glb",
+ "provider": "Blender preserved geometry + imagegen aged timber, 2026-10-01",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 440,
+ "tex": 2048,
+ "bytes": 556648,
+ "godot_size_m_xyz": [
+  1.8,
+  2.8,
+  0.1455
+ ],
+ "mesh_nodes": [
+  "P_shop_wall_frame"
+ ]
+}

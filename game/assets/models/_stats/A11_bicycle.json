@@ -1,0 +1,20 @@
+{
+ "id": "A11_bicycle",
+ "src": "../../output/japanese-street-shinkai-dry/models/A11_bicycle/model.glb",
+ "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)",
+ "tris_src": 149974,
+ "tris": 5000,
+ "size_m": [
+  1.746,
+  0.747,
+  1.039
+ ],
+ "godot_size_m_xyz": [
+  1.746,
+  1.039,
+  0.747
+ ],
+ "tex": 1024,
+ "bytes": 606312,
+ "yaw_fix": 0
+}

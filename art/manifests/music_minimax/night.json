@@ -1,0 +1,8 @@
+{
+ "model": "MiniMax-Music3-MLX-Serve-8bit",
+ "prompt": "### Global Metadata\nA complete 90-second quiet summer-night piece for walking through a small sleeping Japanese town under street lamps, peaceful and a little lonely. 64 BPM, A-flat major. Soft felt piano, vibraphone, a warm fretless bass, brushed cymbal swells, a distant soft string pad. Pure instrumental ensemble piece.\n\n### Vocal Details\nNone. Instrumental only: piano and vibraphone play a slow melody together.\n\n### Timed Arrangement\n0-18 seconds: sparse piano chords and vibraphone. 18-50 seconds: a slow piano melody, fretless bass enters. 50-74 seconds: vibraphone takes the melody over string pad. 74-90 seconds: piano alone, quiet. Keep tempo, texture and loudness consistent from start to end; no big climax. The piece must play for the full 90 seconds and must not end early, ending cleanly on the tonic so it can loop.",
+ "lyrics": "[Intro]\n[Piano Solo]\n\n[Interlude]\n[Instrumental]\n\n[Interlude]\n[Instrumental]\n\n[Outro]\n[Piano Solo]",
+ "duration_seconds": 90,
+ "steps": 30,
+ "seed": 2026093009
+}
