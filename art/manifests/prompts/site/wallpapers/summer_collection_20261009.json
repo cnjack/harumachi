@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-09",
+  "tool": "built-in image_gen",
+  "images": [
+    {
+      "id": "summer-river",
+      "title": "晴川长夏",
+      "prompt": "Use case: illustration-story. Asset type: official desktop wallpaper and repository cover for Harumachi: Next Summer, a Japanese small-town life game. A wide 16:9 Japanese TV anime key frame: clear confident line art, flat colors, crisp two-tone cel shadows, luminous summer blue sky with huge cumulus clouds, warm golden sunlight, lavender shadows. A quiet river curves past a small Japanese town, tile roofs, one wooden footbridge, vegetable gardens, distant green hills. View from grassy riverbank, a few flowers in foreground, the town at the right, abundant open sky upper half, beautiful restrained composition suitable for wallpaper and product cover. No people close to camera, no text, no logos, no watermarks, no photo textures, no painting, no photorealism, no 3D render. A coherent slice-of-life anime background, not exaggerated fantasy. High quality full landscape image.",
+      "device": "desktop",
+      "file": "art/references/site/wallpapers/summer_20261009/summer-river.png"
+    },
+    {
+      "id": "morning-garden",
+      "title": "菜园醒来的时候",
+      "prompt": "Use case: illustration-story. Asset type: official wallpaper for Harumachi: Next Summer, Japanese small-town life game. Japanese TV anime key frame, clean confident line art, flat cel colors with crisp two-tone shadows, luminous blue sky, warm golden sunlight, cool lavender shadows. Simple drawn shapes, careful beautiful composition, not photorealistic, not a painting, not a 3D render. No text, no logos, no watermark. Wide 16:9 landscape. Early summer morning in grandmother's small vegetable garden beside a modest Japanese wooden house. Neat tomatoes and cucumber trellises, a watering can on the path, a single white towel hanging, sunlit leaves and a few sparkling drops, broad blue sky and distant tile roofs. Low quiet viewpoint, garden in lower third, spacious airy framing, no people. Warm everyday life, not fantasy.",
+      "device": "desktop",
+      "file": "art/references/site/wallpapers/summer_20261009/morning-garden.png"
+    },
+    {
+      "id": "windchime-afternoon",
+      "title": "风铃经过的午后",
+      "prompt": "Use case: illustration-story. Asset type: official wallpaper for Harumachi: Next Summer, Japanese small-town life game. Japanese TV anime key frame, clean confident line art, flat cel colors with crisp two-tone shadows, luminous blue sky, warm golden sunlight, cool lavender shadows. Simple drawn shapes, careful beautiful composition, not photorealistic, not a painting, not a 3D render. No text, no logos, no watermark. Tall portrait 9:16 wallpaper, purposefully composed vertically. A single clear glass wind chime with a blank cream paper slip hanging beneath the eaves of an old Japanese house, foreground upper-right. Beyond the veranda, rich blue summer sky and a sunlit small town street with distant green hills, simple foliage. Top half spacious blue sky for phone clock, warm timber lower frame. Clean anime glass edges, no writing anywhere.",
+      "device": "mobile",
+      "file": "art/references/site/wallpapers/summer_20261009/windchime-afternoon.png"
+    },
+    {
+      "id": "bakery-lane",
+      "title": "面包店的早班",
+      "prompt": "Use case: illustration-story. Asset type: official wallpaper for Harumachi: Next Summer, Japanese small-town life game. Japanese TV anime key frame, clean confident line art, flat cel colors with crisp two-tone shadows, luminous blue sky, warm golden sunlight, cool lavender shadows. Simple drawn shapes, careful beautiful composition, not photorealistic, not a painting, not a 3D render. No text, no logos, no watermark. Wide 16:9 landscape. A small Japanese neighborhood bakery on a corner in warm morning light, understated cream walls, wood door, striped pale awning, bread displayed behind a window, a wooden crate, single bicycle parked correctly. A narrow lane recedes beside it into blue summer sky and tile roofs. No readable signage and no letters. Eye-level lived-in modest architecture, delightful clean anime background.",
+      "device": "desktop",
+      "file": "art/references/site/wallpapers/summer_20261009/bakery-lane.png"
+    },
+    {
+      "id": "lakeside-clouds",
+      "title": "湖面上的云",
+      "prompt": "Use case: illustration-story. Asset type: official wallpaper for Harumachi: Next Summer. Japanese TV anime key frame with clean confident line art, flat cel colors, crisp two-tone shadows, simple anime background shapes, warm sunlight and cool lavender shadows. Not photorealistic, not a painting, not 3D. No text, no logos, no watermark. Wide 16:9 summer landscape. A quiet lake on the edge of a small Japanese town, enormous white cumulus reflected in deep turquoise blue water, modest wooden fishing jetty lower-right, reed grass, distant wooded hills. A single empty folding stool and fishing bucket beside the jetty, natural clear depth, vast open sky. Calm composition with diagonal shoreline, restrained small everyday details.",
+      "device": "desktop",
+      "file": "art/references/site/wallpapers/summer_20261009/lakeside-clouds.png"
+    },
+    {
+      "id": "veranda-tea",
+      "title": "一杯麦茶的时间",
+      "prompt": "Use case: illustration-story. Asset type: official wallpaper for Harumachi: Next Summer. Japanese TV anime key frame with clean confident line art, flat cel colors, crisp two-tone shadows, simple anime background shapes, warm sunlight and cool lavender shadows. Not photorealistic, not a painting, not 3D. No text, no logos, no watermark. Tall 9:16 phone wallpaper. View from an old Japanese house veranda at summer midday, a wooden low table with ONE glass of amber barley tea and a tiny ceramic saucer sitting correctly, empty round woven cushion below, garden greenery framed by eaves and timber. Upper half luminous blue sky and softly drawn clouds beyond garden, blank space for clock. Sharp clean cel shadows, tranquil lived-in ordinary afternoon.",
+      "device": "mobile",
+      "file": "art/references/site/wallpapers/summer_20261009/veranda-tea.png"
+    },
+    {
+      "id": "lantern-workshop",
+      "title": "把灯笼挂起来",
+      "prompt": "Use case: illustration-story. Asset type: official wallpaper for Harumachi: Next Summer. Japanese TV anime key frame, clean precise line art, simple drawn shapes, flat cel colors with crisp hard-edged two-tone shadows. Beautiful luminous atmosphere but not photorealistic, not a painting, not 3D rendering. No text, no logos, no watermark. Wide 16:9 landscape. Modest Japanese town open-air community workbench under huge green zelkova tree late afternoon. Finished warm-red paper lanterns on a simple wooden table, roll of twine, folded blank paper, one row of lanterns suspended neatly across plaza. Town roofs and small shops in background, golden sunshine and lavender-blue shade, no people. A clear quiet visual story of neighbors preparing a small summer festival, table objects do not overlap incorrectly.",
+      "device": "desktop",
+      "file": "art/references/site/wallpapers/summer_20261009/lantern-workshop.png"
+    },
+    {
+      "id": "golden-crossing",
+      "title": "日落前的归途",
+      "prompt": "Use case: illustration-story. Asset type: official wallpaper for Harumachi: Next Summer. Japanese TV anime key frame, clean precise line art, simple drawn shapes, flat cel colors with crisp hard-edged two-tone shadows. Beautiful luminous atmosphere but not photorealistic, not a painting, not 3D rendering. No text, no logos, no watermark. Tall 9:16 phone wallpaper. A narrow pedestrian bridge crossing a gentle river in a small Japanese town in golden evening light. Diagonal rail guides eye toward distant tile roofs and green hills. Peach-gold sky occupying upper half, pastel lavender clouds, warm orange reflections and a simple bicycle leaning safely against bridge rail lower corner, no people. Pure calm anime summer atmosphere.",
+      "device": "mobile",
+      "file": "art/references/site/wallpapers/summer_20261009/golden-crossing.png"
+    },
+    {
+      "id": "fireworks-river",
+      "title": "今年的花火",
+      "prompt": "Use case: illustration-story. Asset type: official wallpaper for Harumachi: Next Summer. Japanese TV anime key frame, clean precise line art, simple drawn shapes, flat cel colors, hard-edged two-tone shadows, glowing light accents, cinematic but restrained anime background. Not photorealistic, not a painting, not 3D. No text, no logos, no watermark. Wide 16:9 landscape. A small Japanese town summer festival beside river at blue hour, warm red paper lanterns strung across the bank, modest food stalls seen as simple distant shapes, one elegant golden firework and one soft coral firework reflected in the river. Deep indigo and blue-lavender sky in upper half, town lit warmly, no crowds near viewer. A quiet emotionally warm view across water, graceful composition and clearly anime drawn light.",
+      "device": "desktop",
+      "file": "art/references/site/wallpapers/summer_20261009/fireworks-river.png"
+    },
+    {
+      "id": "night-cat",
+      "title": "晚安，晴町",
+      "prompt": "Use case: illustration-story. Asset type: official wallpaper for Harumachi: Next Summer. Japanese TV anime key frame, clean precise line art, simple drawn shapes, flat cel colors, hard-edged two-tone shadows, glowing light accents, cinematic but restrained anime background. Not photorealistic, not a painting, not 3D. No text, no logos, no watermark. Tall 9:16 phone wallpaper. A small orange and white domestic cat sits naturally on a low stone garden wall in the lower third outside a Japanese wooden house at dusk. One glowing window and hanging red paper lantern, hydrangea leaves, quiet lane leading toward distant roofs. Upper half is open deep blue and lavender twilight sky with a few subtle stars. Cat anatomy correct, calm expression, simple clean cel shading. Cozy ordinary summer night.",
+      "device": "mobile",
+      "file": "art/references/site/wallpapers/summer_20261009/night-cat.png"
+    }
+  ]
+}

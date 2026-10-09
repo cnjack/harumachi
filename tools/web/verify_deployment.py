@@ -46,6 +46,8 @@ body_checks = []
 for name in ("index.html", "library.js", "style.css", "ui.css", "play.css", "main.js", "play/index.html", "play/index.js", "assets/library.json", "release.json"):
     data = curl(BASE + name)
     body_checks.append({"path": name, "sha256": hashlib.sha256(data).hexdigest(), "matches": data == (SITE / name).read_bytes()})
+    compressed_data = curl("--compressed", BASE + name)
+    body_checks.append({"path": name, "encoding": "browser-compressed", "sha256": hashlib.sha256(compressed_data).hexdigest(), "matches": compressed_data == (SITE / name).read_bytes()})
 wasm_checks = []
 for name in ("play/index.wasm", "play/index.side.wasm", "play/libgdsqlite.web.template_release.wasm32.nothreads.wasm"):
     _, wasm = headers(name, "--header", "Accept-Encoding: gzip")

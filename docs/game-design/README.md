@@ -1,10 +1,10 @@
-仓库入口为[项目README](../../README.md)，游戏和官网共同维护于[cnjack/harumachi](https://github.com/cnjack/harumachi)。
+# 明年夏祭 · 设计与开发文档
 
-# 明年夏祭 · 游戏设计
+[项目介绍](../../README.md) · [官方网站](https://harumachi.nightc.com/) · [GitHub](https://github.com/cnjack/harumachi)
 
 「明年夏祭」（Harumachi: Next Summer）是中文键鼠的日式小镇生活游戏。空回到奶奶住过的晴町，种菜、做饭、摆摊，与居民一起把停办十五年的夏祭办回来。画风按[ART_STYLE.md](ART_STYLE.md)采用动漫线条、平涂、硬边阴影和通透光色。
 
-当前代码、引擎、交付与未完成验收集中在[CURRENT_STATUS.md](CURRENT_STATUS.md)。开发与最新桌面交付已迁移到Godot4.8-dev7；精确版本由`tools/godot-version.json`指定。线上Web已部署4.8-dev7的当前夏季内容，发布20261007-203612；具体浏览器与下载验收边界见CURRENT_STATUS。
+当前代码、引擎、交付与未完成验收集中在[CURRENT_STATUS.md](CURRENT_STATUS.md)。开发与最新桌面交付已迁移到Godot4.8-dev7；精确版本由`tools/godot-version.json`指定。线上Web游戏内容基线为4.8-dev7、20261007-203612；官网最新发布20261009-141000，新增夏日壁纸收藏。具体浏览器与下载验收边界见CURRENT_STATUS。
 
 ## 现在可以玩到哪里
 
@@ -66,3 +66,5 @@ HARUMACHI_SAVE_DIR=/tmp/harumachi-check ./tools/godot --headless --path game res
 刷新前的完整入口文档保存在[历史README](history/README_BEFORE_REFRESH_20261007.md)。
 
 场景材质、牌面字体、室内用途和空间音效的当前修订见[场景质感记录](SCENE_QUALITY_20261008.md)。
+
+当前桌面应用图标为B“晴空风铃”，最新包验收见`evidence/app_icon_windchime_20261009/delivery.json`；[图标替换记录](APP_ICON_WINDCHIME_20261009.md)。

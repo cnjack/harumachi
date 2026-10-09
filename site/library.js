@@ -32,7 +32,7 @@
     });
     grid.replaceChildren();
     grid.classList.toggle("portrait-grid", device === "mobile");
-    const items = library.wallpapers.filter((item) => item.device === device);
+    const items = library.wallpapers.filter((item) => item.device === device).sort((a, b) => (b.collection_date || "").localeCompare(a.collection_date || ""));
     document.getElementById("wallpaper-count").textContent = `${items.length} 张 · ${device === "mobile" ? "手机竖版" : "电脑横版"}`;
     items.forEach((item, index) => {
       const card = element("article", "wallpaper-card");
@@ -57,12 +57,14 @@
       image.src = item.preview;
       image.width = item.width;
       image.height = item.height;
+      image.style.aspectRatio = `${item.width} / ${item.height}`;
       image.alt = `${item.title}，${device === "mobile" ? "手机竖版" : "电脑横版"}壁纸`;
       image.loading = "lazy";
       picture.append(image);
-      const number = element("span", "wallpaper-number", `0${index + 1}`);
+      const number = element("span", "wallpaper-number", String(index + 1).padStart(2, "0"));
       picture.append(number);
       const body = element("div", "wallpaper-card-body");
+      if (item.collection) body.append(element("p", "wallpaper-collection", item.collection));
       body.append(element("h2", "", item.title));
       body.append(element("p", "wallpaper-meta", `${item.width} × ${item.height} · JPG · ${(item.bytes / 1024 / 1024).toFixed(1)} MB`));
       const download = element("a", "wallpaper-download", "下载壁纸 ↓");

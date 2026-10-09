@@ -1,59 +1,68 @@
-# 明年夏祭 · Harumachi: Next Summer
+<p align="center"><img src="site/assets/wallpapers/summer-river.webp" alt="晴川与山谷中的晴町，明年夏祭官方概念插画" width="100%"></p>
 
-中文、键盘鼠标的日式小镇生活游戏。空回到奶奶住过的晴町，种菜、做饭、摆摊，与居民一起把停办十五年的夏祭办回来。
+<h1 align="center">明年夏祭</h1>
+<p align="center"><strong>Harumachi: Next Summer</strong><br>一款关于归乡、日常与重逢的日式小镇生活游戏。</p>
+<p align="center"><a href="https://harumachi.nightc.com/">官方网站</a> · <a href="https://harumachi.nightc.com/play/">网页试玩</a> · <a href="https://harumachi.nightc.com/#wallpapers">官方壁纸</a> · <a href="https://harumachi.nightc.com/#music">游戏原声</a></p>
+<p align="center">开发中 · 中文 · macOS / 浏览器试玩 · 单人 · 键盘与鼠标<br><a href="LICENSE">MIT License</a></p>
 
-游戏和官网在本仓库共同维护：[官网](https://harumachi.nightc.com/) · [网页试玩](https://harumachi.nightc.com/play/) · [当前开发状态](docs/game-design/CURRENT_STATUS.md)。
+## 回到晴町，过一个有约定的夏天
 
-## 开始开发
+空回到奶奶曾经生活的小镇。清晨照看菜园，午后做一道家常菜，傍晚去邻居的店里坐坐。随着旧物和往事逐渐浮现，他与居民开始筹备停办十五年的夏祭，也重新拾起十岁那年留下的约定。
 
-需要 Git LFS 和固定版本 **Godot 4.8-dev7**（`4.8.dev7.official.c971f93e7`）。这是开发快照，项目与导出模板使用相同版本。
+《明年夏祭》将生活经营与每日剧情结合起来。故事从安顿新家和第一顿饭开始，让玩家在一次次实际参与中认识晴町，与这里的人建立关系。
+
+| 生活在晴町 | 与大家一起过夏天 |
+| --- | --- |
+| 种植、收获与料理，把菜园里的成果带上餐桌 | 合作试吃、集市开摊与灯笼试挂，逐步筹备夏祭 |
+| 钓鱼、探索和旧物收藏，在小镇里发现往事 | 从日常对话到共餐、合影与花火，留下新的回忆 |
+
+<p><img src="site/assets/day_1.webp" alt="游戏实机：晴町的市民农园" width="49%"> <img src="site/assets/day_3.webp" alt="游戏实机画面" width="49%"></p>
+<p><em>上方为游戏实机画面；页首及官方壁纸为概念插画。</em></p>
+
+## 开发进度
+
+当前开发重心是夏季篇：归乡入场、生活活动、社区合作与夏祭收尾。桌面版与网页试玩分别验收和发布，官方网站提供壁纸与原声收藏。春、秋、冬的完整章节属于后续规划。
+
+夏季篇的目标体验时长约四小时，仍在扩展与普通游玩验收中，尚未达到完整内容目标。最新版本、验证结果与已知限制以 [CURRENT_STATUS](docs/game-design/CURRENT_STATUS.md) 为准。
+
+## 运行与开发
+
+需要 **Git LFS** 与 **Godot 4.8-dev7**，精确版本为 `4.8.dev7.official.c971f93e7`。引擎和导出模板必须一致。
 
 ```bash
 git lfs install
 git clone https://github.com/cnjack/harumachi.git
 cd harumachi
 git lfs pull
-```
 
-从[官方版本档案](https://godotengine.org/download/archive/4.8-dev7/)安装引擎，然后指定本机二进制路径：
-
-```bash
-export HARUMACHI_GODOT_BIN="/Applications/Godot.app/Contents/MacOS/Godot"
-./tools/godot --version
+export HARUMACHI_GODOT_BIN="/path/to/Godot"
 ./tools/godot --headless --path game --import
 ./tools/godot --path game
 ```
 
-引擎入口会校验精确版本。也可在忽略的`tools/godot.local.json`中配置`{"binary":"本机引擎路径"}`，不用修改共享版本锁。首次导入缓存较大，不提交`.godot/`。
-
-## 工程布局
+可从 [Godot 官方版本档案](https://godotengine.org/download/archive/4.8-dev7/) 获取引擎。macOS 二进制通常位于应用包的 `Contents/MacOS/Godot`。本机路径也可配置在忽略的 `tools/godot.local.json` 中；版本锁不随个人安装位置改变。
 
 | 目录 | 内容 |
 | --- | --- |
-| `game/` | Godot工程、脚本、数据、着色器、运行素材与SQLite扩展 |
-| `site/` | 官网源码、壁纸/音乐目录、统一UI样式；Web游戏从工程另行构建 |
-| `docs/game-design/` | 玩法、画风、世界、验收和历史设计记录 |
-| `art/tools/`、`art/manifests/` | 素材制作工具、提示词与来源记录 |
-| `art/references/`、`art/library/` | 参考素材、角色authoring与素材室 |
-| `tools/` | 固定引擎入口、模板安装、Web构建及项目检查 |
+| `game/` | Godot 工程、玩法代码、数据、着色器与运行资源 |
+| `site/` | 官方网站、壁纸与原声目录 |
+| `docs/game-design/` | 设计规格、当前状态与验收记录 |
+| `art/` | 素材工具、来源记录、参考图与可编辑素材 |
+| `tools/` | 引擎入口、项目校验与 Web 构建工具 |
 
-二进制素材通过Git LFS管理。克隆后必须拉取LFS对象，指针文件不能代替模型、图片和音频。大体量原始生成结果、试验副本、音频备选、录像、测试存档和本机证据保留在本地归档，不加入源码仓库；游戏运行所需素材完整保存在`game/`。需要原始模型的重导出步骤，按[素材流程](docs/game-design/PIPELINE.md)准备相应本地原稿。
+运行资源通过 Git LFS 管理。缓存、导出包、个人存档、大型原始生成包和本机验收证据不进入版本库。素材制作与重导出流程见 [PIPELINE](docs/game-design/PIPELINE.md)。
 
-## 验证与交付
+## 项目维护
 
 ```bash
 python3 tools/check_project.py
-HARUMACHI_SAVE_DIR=/tmp/harumachi-check ./tools/godot --headless --path game res://scenes/tests.tscn -- --out=/tmp/harumachi-tests.json
+python3 -m http.server 8765 -d site
 ```
 
-Godot全量测试须加超时，并独占运行；脚本错误会使测试挂起。模型或镜头修改还须实际截图检查。当前桌面验收基线为1359项全量与200项完整夏季演示，结果不等于自然四小时或75分乐趣已达标。完整操作规则见[AGENTS.md](AGENTS.md)。
+每项任务完成后，执行相关自动检查和实际运行验收；通过后提交并推送 `main`，再确认远端 CI。涉及模型、镜头或界面的修改需要画面验证，游戏逻辑修改需要相应 Godot 测试。完整规则见 [AGENTS.md](AGENTS.md) 与 [维护指南](docs/REPOSITORY.md)。
 
-桌面导出、解压并跑完`--autoplay`退出0后，才能替换本机`builds/HareMachi.zip`。`builds/`只保留最新桌面ZIP及最多一个Web目录，整个目录不进入Git。
+官网发布流程见 [site/README.md](site/README.md)，网页游戏构建见 [WEB](docs/game-design/WEB.md)。发现问题可通过 [Issues](https://github.com/cnjack/harumachi/issues) 提供复现步骤、版本与截图。
 
-官网可用`python3 -m http.server 8765 -d site`预览。可运行的Web游戏需从已验收工程制作独立Compatibility副本，再导出到`site/play/`；该生成目录不提交。构建和服务器发布见[Web文档](docs/game-design/WEB.md)与[官网说明](site/README.md)。
+## 许可
 
-## 协作
-
-以`main`维护可验证的项目状态。新修改使用短分支，通过Pull Request说明问题、改动和验证；二进制通过LFS提交。默认CI只检查源码、数据与仓库边界，不自动下载大量LFS对象或部署服务器。凭据放环境变量和本机配置，不能提交。
-
-第三方插件、字体、CC0素材及生成素材来源见[素材许可说明](ASSET_LICENSES.md)。
+本项目的原创代码、文档及有权授权的原创素材采用 [MIT 协议](LICENSE)，版权归 Harumachi contributors。第三方组件、字体与外部素材保留各自的原始许可和使用条件，具体见 [素材与第三方许可](ASSET_LICENSES.md)。

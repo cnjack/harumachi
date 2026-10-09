@@ -2615,6 +2615,96 @@
       "variant": "F",
       "purpose": "application icon candidate; 归家信笺",
       "sha256": "c9442591c6ba49b6e6bf084b7da27ae0edfaa41c8ddb1c8022bece19851d4cfe"
+    },
+    {
+      "file": "art/references/site/wallpapers/summer_20261009/summer-river.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/site/wallpapers/summer_collection_20261009.json",
+      "prompt_id": "summer-river",
+      "date": "2026-10-09",
+      "sha256": "fc9cab8d1601f0454719c008dc87f966b15006cb479658fcf714ce34aeb7bae9"
+    },
+    {
+      "file": "art/references/site/wallpapers/summer_20261009/morning-garden.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/site/wallpapers/summer_collection_20261009.json",
+      "prompt_id": "morning-garden",
+      "date": "2026-10-09",
+      "sha256": "d827288bdcbe20227f928cde18cfa55f1537bdc3e99d319ee3aec084273f6f22"
+    },
+    {
+      "file": "art/references/site/wallpapers/summer_20261009/windchime-afternoon.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/site/wallpapers/summer_collection_20261009.json",
+      "prompt_id": "windchime-afternoon",
+      "date": "2026-10-09",
+      "sha256": "e998a02a4f2f216a59af28d0e75e823ed96c9a1996596896015919d7a034f5aa"
+    },
+    {
+      "file": "art/references/site/wallpapers/summer_20261009/bakery-lane.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/site/wallpapers/summer_collection_20261009.json",
+      "prompt_id": "bakery-lane",
+      "date": "2026-10-09",
+      "sha256": "3a606f84ef77ebb72adc75bf18335d0e32d1888b090f571a830b65db1b7eea12"
+    },
+    {
+      "file": "art/references/site/wallpapers/summer_20261009/lakeside-clouds.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/site/wallpapers/summer_collection_20261009.json",
+      "prompt_id": "lakeside-clouds",
+      "date": "2026-10-09",
+      "sha256": "0185bf5d0527379c6211cd71e736405511dc53e76c9814a2993de674e5aae280"
+    },
+    {
+      "file": "art/references/site/wallpapers/summer_20261009/veranda-tea.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/site/wallpapers/summer_collection_20261009.json",
+      "prompt_id": "veranda-tea",
+      "date": "2026-10-09",
+      "sha256": "8278d7974c07789f0df71658dff539099c21db6bb6a3dba8289c16228212577d"
+    },
+    {
+      "file": "art/references/site/wallpapers/summer_20261009/lantern-workshop.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/site/wallpapers/summer_collection_20261009.json",
+      "prompt_id": "lantern-workshop",
+      "date": "2026-10-09",
+      "sha256": "be0d2e01f8dd4403d899ecdc9c6d6014282644e6859ad6ed755a4a4357ae7e1a"
+    },
+    {
+      "file": "art/references/site/wallpapers/summer_20261009/golden-crossing.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/site/wallpapers/summer_collection_20261009.json",
+      "prompt_id": "golden-crossing",
+      "date": "2026-10-09",
+      "sha256": "e53b69244a0f1b7367e1d892e2fe409de15acab7dfb816cd6fb0094aac27c6d0"
+    },
+    {
+      "file": "art/references/site/wallpapers/summer_20261009/fireworks-river.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/site/wallpapers/summer_collection_20261009.json",
+      "prompt_id": "fireworks-river",
+      "date": "2026-10-09",
+      "sha256": "a284ed5474e7c47e83ab08f424990070da65b96435d00e6336434f9a239b286b"
+    },
+    {
+      "file": "art/references/site/wallpapers/summer_20261009/night-cat.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/site/wallpapers/summer_collection_20261009.json",
+      "prompt_id": "night-cat",
+      "date": "2026-10-09",
+      "sha256": "97024f0a2041bfe7ccedbec54d88eb906784b3e4ce1479651ac53fc8ea407e90"
     }
   ]
 }

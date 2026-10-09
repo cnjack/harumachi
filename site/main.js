@@ -202,47 +202,4 @@
   document.addEventListener("visibilitychange", syncAnimation);
   reducedMotion.addEventListener("change", () => { updateParallax(); syncAnimation(); });
 
-  const form = document.getElementById("subscribe-form");
-  const emailInput = document.getElementById("email");
-  const status = document.getElementById("form-status");
-  const confetti = document.getElementById("confetti");
-  const storageKey = "harumachi-coming-soon-email";
-  try {
-    const savedEmail = localStorage.getItem(storageKey);
-    if (savedEmail) emailInput.value = savedEmail;
-  } catch (_) { /* File URLs can disable storage in some browsers. */ }
-
-  function popPetals() {
-    if (reducedMotion.matches) return;
-    const colors = ["#d8453a", "#f3a44b", "#9fd8f2", "#e6aeab"];
-    for (let i = 0; i < 13; i += 1) {
-      const petal = document.createElement("span");
-      const angle = (Math.PI * 2 * i) / 13;
-      const distance = 70 + Math.random() * 100;
-      petal.style.setProperty("--dx", `${Math.cos(angle) * distance}px`);
-      petal.style.setProperty("--dy", `${Math.sin(angle) * distance - 25}px`);
-      petal.style.setProperty("--rotate", `${Math.random() * 150}deg`);
-      petal.style.setProperty("--petal-color", colors[i % colors.length]);
-      confetti.appendChild(petal);
-      setTimeout(() => petal.remove(), 1500);
-    }
-  }
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const email = emailInput.value.trim();
-    emailInput.value = email;
-    if (!emailInput.checkValidity()) {
-      status.textContent = "请填写有效的邮箱地址。";
-      emailInput.focus();
-      return;
-    }
-    try {
-      localStorage.setItem(storageKey, email);
-      status.textContent = "记下了！邮箱只保存在这个浏览器里。";
-      popPetals();
-    } catch (_) {
-      status.textContent = "浏览器未允许本地保存，请检查隐私设置后再试。";
-    }
-  });
 })();

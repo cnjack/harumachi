@@ -332,6 +332,18 @@ html.js .story-line.is-visible { opacity: 1; transform: translateY(0); filter: b
 .portrait-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 980px; margin-inline: auto; gap: 48px; }
 .portrait-grid .wallpaper-picture img { aspect-ratio: 9 / 19.5; }
 .collection-note { margin: 60px 0 0; text-align: center; color: #89715d; font-size: .88rem; }
+.collection-cover { position: relative; margin: 0 0 42px; overflow: hidden; background: #68b6d9; }
+.collection-cover img { display: block; width: 100%; height: clamp(260px, 36vw, 430px); object-fit: cover; object-position: center 55%; }
+.collection-cover figcaption { position: absolute; inset: auto 0 0; padding: 45px 35px 25px; color: #fffdf2; background: linear-gradient(transparent, rgba(18, 45, 57, .82)); }
+.collection-cover figcaption span { font-size: .72rem; letter-spacing: .2em; }
+.collection-cover figcaption strong { display: block; margin-top: 5px; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 500; }
+.collection-cover figcaption p { margin: 5px 0 0; font-size: .9rem; }
+.wallpaper-collection { margin: 0 0 8px; color: var(--ui-sage); font-size: .76rem; letter-spacing: .14em; }
+.follow-copy { margin: 0 0 15px; line-height: 1.8; font-size: .93rem; }
+.follow-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-links a { text-underline-offset: 4px; }
+@media (max-width: 700px) { .collection-cover figcaption { padding: 40px 20px 20px; } }
 .soundtrack-layout { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.6fr); align-items: start; gap: clamp(40px, 6vw, 95px); }
 .record-player { position: sticky; top: 100px; }
 .record-sleeve { position: relative; aspect-ratio: 1; padding: 10px; background: #ece0c9; box-shadow: 7px 9px 0 #dfceb5; }

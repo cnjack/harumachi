@@ -10,8 +10,8 @@
 - 设计文档：`docs/game-design/`，入口 [README.md](docs/game-design/README.md)，当前事实集中在 [CURRENT_STATUS.md](docs/game-design/CURRENT_STATUS.md)
 - 素材源文件和工具：`art/`
 - 录像、截图、测试结果：`evidence/`
-- 导出包：`builds/HareMachi.zip`，当前Godot4.8-dev7；最新验收见`evidence/scene_quality_delivery_20261008/delivery.json`
-- 官网（Coming Soon）：`site/`，说明在 `site/README.md`
+- 导出包：`builds/HareMachi.zip`，当前Godot4.8-dev7；最新验收见`evidence/app_icon_windchime_20261009/delivery.json`
+- 官方网站与网页试玩：`site/`，说明在 `site/README.md`
 
 ## builds 只保留最新交付（2026-10-05）
 
@@ -27,7 +27,10 @@
 
 - 统一仓库：`https://github.com/cnjack/harumachi.git`，本工作区作为游戏与官网共用仓库。说明见[README.md](README.md)与[docs/REPOSITORY.md](docs/REPOSITORY.md)。
 - Git LFS跟踪模型、贴图、音频、字体、二进制资源与扩展；先拉取LFS再打开工程。`.godot/`、`builds/`、`site/play/`、`evidence/`、试验与原始大包保持本地，不提交。忽略不等于删除。
-- 不提交凭据、个人存档、临时包；不改写既有远端历史。新修改用短分支和PR，提交前跑`python3 tools/check_project.py`及本轮相关Godot验收。
+- 每项任务完成且相关测试、实际运行验收通过后，提交本轮已验收修改并推送到`origin/main`，随后确认远端提交和GitHub CI。此项是用户的持续授权，不需要再次询问是否推送；如有明确“先不要做/不要推送”指令，则以当轮指令为准。
+- 提交前跑`python3 tools/check_project.py`及本轮相关Godot或网站验收；未通过时先修复，不能把待验工作标成完成。只暂存本轮文件，保留其他任务的未完成修改。
+- 推送前核对仓库、账户及远端进度；远端有新提交时先正常整合并重新验证，不使用force push。不提交凭据、个人存档或临时包。协作者的外部贡献仍可使用PR。
+- 官网复用旧发布目录时，变更脚本的预压缩`.gz`必须重新生成并与源码核对；清单排除开发README。线上验收同时校验普通响应和浏览器压缩响应，避免浏览器运行旧代码。
 - 引擎版本仍由tools/godot-version.json锁定；本机位置放忽略的tools/godot.local.json或HARUMACHI_GODOT_BIN，不能要求其他开发者使用/Users/jack路径。
 
 ## 最重要的一条：画风

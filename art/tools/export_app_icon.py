@@ -4,7 +4,6 @@ Python export_app_icon.py <selected-square-PNG> [--evidence <directory>]
 from pathlib import Path
 import json
 import subprocess
-import sys
 import argparse
 from PIL import Image
 
