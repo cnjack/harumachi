@@ -1,5 +1,9 @@
 # 制作计划与验收状态（2026-10-11）
 
+## 2026-10-11 Windows 本地构建
+
+按用户要求在 Windows 机器本地构建游戏，不发布网站。三件事：`install_godot_templates.py` 支持 `--platform windows`（tpz 内是裸 exe 条目）并按平台解析模板目录；`export_presets.cfg` 新增 Windows Desktop 预设（s3tc/bptc 单格式，win64 包 1.29 GB，sqlite DLL 自动随包）并生成 `icon.ico`；测试脚本两处 `/tmp` 硬编码改为 `TEMP`（Windows 上原 10 项存档槽检查必失败）。`_stats` 清单的 `source_mtime` 在本机按 GLB 时间戳校准（sha256 全部一致，测量值未动，不入库），使 PROPS/DISPLAY 的"新鲜度"检查通过。全量 1399 项 Windows 0 失败，`--autoplay` 完整验收退出 0、隔离存档生成 `harumachi.db`；包放本机 `~/harumachi-local/`，`builds/` 仍只留 macOS 包与 web。证据见 evidence/windows_build_20261011/verification.json。
+
 ## 2026-10-09 电视曲面、雪花与货架陈列
 
 确认最新版本仍是平面电视、没有雪花和重复整组货物后，按真实玻璃生成曲面图片层，加入整数噪声、短暂换台干扰、扫描线与滚动暗带。原W14拆成五件包装商品，复用米袋、瓶筐、陶器与蔬菜筐；烘焙架摆更多品种，改变两架分层、数量、间隔与朝向。七条旧反例均失败，实际雪花图检查能拒绝旧画面和退化黑屏；相关测试、原生录像和全量最终结果见[修复记录](SHOP_DISPLAY_FIX_20261009.md)与evidence/shop_fix_20261009/verification.json。本轮源工程修改不改写其他任务的图标或包交付。

@@ -4,6 +4,10 @@
 
 社区中心改为共用桌、阅读角、茶水和集中活动收纳；商店按类别成组陈列并集中冷藏奶蛋；精品面包房加入两组座位、咖啡后吧和四类独立甜点。阅读、喝茶、坐下休息、购买饮品与桌边享用均已接入。1421项独占全量、解压包200项完整夏季演示退出0，32个原生场景视角与两张商店UI截图已验，默认存档未变。新旧三处同条件渲染帧比较通过，店主的朝向、伸手操作和收银后工作面已校正。见[格局、陈列与生活使用](INHABITED_PLACES_REDESIGN_20261010.md)、[可复用经验](IMAGEGEN_SCENE_WORKFLOW.md)和`evidence/inhabited_places_20261010/delivery.json`。Web仍为20261007-203612。
 
+## Windows 本地构建与测试可移植（2026-10-11）
+
+Windows 机器现在可以完整开发、测试并本地构建游戏。`install_godot_templates.py` 新增 `--platform windows`（4.8-dev7 官方 tpz 内 Windows 模板是裸 exe 条目，与 mac/web 的 zip 不同）并把模板目录按平台解析；`export_presets.cfg` 新增 Windows Desktop 预设（仅 s3tc/bptc 纹理压缩），`icon.ico` 由 `icon.png` 生成。测试脚本里 `save_slot_checks` 与 `scene_polish_checks` 硬编码的 `/tmp` 改为 `TEMP` 环境变量——此前 Windows 上这两组共 10 项因无法在 `C:\` 根建目录而必失败，修复后 8/8 与 21/21 通过。模型清单 `_stats` 的"新鲜度"按生成机器的文件时间戳判断，新 clone 必然过期：本机把 `source_mtime` 校准为本地 GLB 时间戳（覆盖 239 处 sha256 全部一致，测量值一字未动；这是本机一次性操作，改动不入库），PROPS 46/46、DISPLAY 19/19 通过。全量 1399 项在 Windows 4.8.dev7 上 0 失败。win64 导出包（exe + pck + 自动携带的 sqlite DLL，zip 1.29 GB）解压后 `--autoplay` 完整验收退出码 0，隔离存档目录生成 `harumachi.db`。桌面交付目标仍为 macOS；win64 包放在本机 `~/harumachi-local/`，不进 `builds/`。证据 `evidence/windows_build_20261011/`。
+
 ## 补齐 Windows 的 SQLite 库（2026-10-10）
 
 Windows 下打开工程报 `Could not find type "SQLite"`：`game/addons/godot-sqlite/bin/` 此前只有 macOS 与 Web 库，GDExtension 在 Windows 加载失败。已从同一官方 v4.9 包补入 `libgdsqlite.windows.template_{debug,release}.x86_64.dll`（SHA-256 与 release 对照，包内 4 份旧库与仓库逐字节一致）。Windows + 4.8.dev7 实测：`--import` 干净，`--only=daily-save` 8/8 通过，`tools/check_project.py` 全过。证据 `evidence/windows_sqlite_20261010/verification.json`。桌面交付目标仍为 macOS，此改动只是让 Windows 也能开发与测试。
