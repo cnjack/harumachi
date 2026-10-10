@@ -54,7 +54,9 @@ func run() -> void:
 	check("save manager supports exactly six visible positions",slots and int(SaveDB.get_script().get_script_constant_map().get("MAX_SLOTS",0))==6)
 	var directory: String=SaveDB.directory
 	if slots:
-		SaveDB.set_directory("/tmp/harumachi-polish-slots-"+str(Time.get_ticks_usec()))
+		var temp_root: String=OS.get_environment("TEMP").replace("\\","/")
+		if temp_root.is_empty():temp_root="/tmp"
+		SaveDB.set_directory(temp_root.path_join("harumachi-polish-slots-"+str(Time.get_ticks_usec())))
 		var success:=true
 		for slot in range(1,7):
 			GameState.new_game();GameState.coins=100+slot*11;GameState.day=slot

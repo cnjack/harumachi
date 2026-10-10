@@ -80,6 +80,8 @@ $GODOT --headless --path game --check-only --script res://scripts/tests/prop_aud
 $BLENDER -b --factory-startup -P art/tools/rig_char.py -- art/models/static_chars/CH_x.glb game/assets/models/CH_x.glb   # 重新绑定角色
 HARUMACHI_BUILD_STAGE="$(mktemp -d /tmp/harumachi-release.XXXXXX)"
 $GODOT --headless --path game --export-release "macOS" "$HARUMACHI_BUILD_STAGE/HareMachi.zip"  # 验收后替换 builds/HareMachi.zip
+$GODOT --headless --path game --export-release "Windows Desktop" "$HARUMACHI_BUILD_STAGE/HareMachi-win64.zip"  # Windows 本地构建；模板用 tools/install_godot_templates.py --platform windows，包放仓库外，不进 builds/
+
 ```
 
 常用截图视角：店门口 `close_store` / `close_bakery` / `close_florist` / `close_zakka` / `close_post`，橱窗 `win_store` / `win_florist` / `win_night`，7 个邻居排成一排做手势 `npc_wave` / `npc_wave_close` / `npc_bow` / `npc_cheer`，对话头像 `say_<人>_<neutral|happy>`。

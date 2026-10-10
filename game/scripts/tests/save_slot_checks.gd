@@ -9,7 +9,9 @@ func run() -> void:
 		return
 	var state: Dictionary=GameState.to_dict().duplicate(true)
 	var original: String=SaveDB.directory
-	var folder: String="/tmp/harumachi-slots-regression-"+str(Time.get_ticks_usec())
+	var temp_root: String=OS.get_environment("TEMP").replace("\\","/")
+	if temp_root.is_empty():temp_root="/tmp"
+	var folder: String=temp_root.path_join("harumachi-slots-regression-"+str(Time.get_ticks_usec()))
 	SaveDB.set_directory(folder);GameState.new_game();GameState.coins=400
 	GameState.call("save_to_slot",4)
 	var rows: Array=SaveDB.call("list_slots")

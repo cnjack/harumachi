@@ -1,4 +1,8 @@
-# 项目现状（2026-10-10）
+# 项目现状（2026-10-11）
+
+## Windows 本地构建与测试可移植（2026-10-11）
+
+Windows 机器现在可以完整开发、测试并本地构建游戏。`install_godot_templates.py` 新增 `--platform windows`（4.8-dev7 官方 tpz 内 Windows 模板是裸 exe 条目，与 mac/web 的 zip 不同）并把模板目录按平台解析；`export_presets.cfg` 新增 Windows Desktop 预设（仅 s3tc/bptc 纹理压缩），`icon.ico` 由 `icon.png` 生成。测试脚本里 `save_slot_checks` 与 `scene_polish_checks` 硬编码的 `/tmp` 改为 `TEMP` 环境变量——此前 Windows 上这两组共 10 项因无法在 `C:\` 根建目录而必失败，修复后 8/8 与 21/21 通过。模型清单 `_stats` 的"新鲜度"按生成机器的文件时间戳判断，新 clone 必然过期：本机把 `source_mtime` 校准为本地 GLB 时间戳（覆盖 239 处 sha256 全部一致，测量值一字未动；这是本机一次性操作，改动不入库），PROPS 46/46、DISPLAY 19/19 通过。全量 1399 项在 Windows 4.8.dev7 上 0 失败。win64 导出包（exe + pck + 自动携带的 sqlite DLL，zip 1.29 GB）解压后 `--autoplay` 完整验收退出码 0，隔离存档目录生成 `harumachi.db`。桌面交付目标仍为 macOS；win64 包放在本机 `~/harumachi-local/`，不进 `builds/`。证据 `evidence/windows_build_20261011/`。
 
 ## 补齐 Windows 的 SQLite 库（2026-10-10）
 

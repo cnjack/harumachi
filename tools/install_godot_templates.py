@@ -4,16 +4,18 @@ import argparse
 import binascii
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import struct
 import subprocess
+import sys
 import zlib
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCK = json.loads((ROOT / "tools/godot-version.json").read_text())
 parser = argparse.ArgumentParser()
-parser.add_argument("--platform", choices=["macos", "web", "all"], default="all")
+parser.add_argument("--platform", choices=["macos", "web", "windows", "all"], default="all")
 parser.add_argument("--evidence", type=Path, required=True)
 args = parser.parse_args()
 args.evidence.mkdir(parents=True, exist_ok=True)
@@ -45,6 +47,8 @@ if args.platform in ("macos", "all"):
     names.add("templates/macos.zip")
 if args.platform in ("web", "all"):
     names.update({"templates/web_dlink_nothreads_release.zip", "templates/web_dlink_nothreads_debug.zip"})
+if args.platform == "windows":
+    names.add("templates/windows_release_x86_64.exe")
 cursor = 0
 records = []
 while cursor < len(central):
@@ -57,7 +61,13 @@ while cursor < len(central):
     cursor += 46 + entry[10] + entry[11] + entry[12]
 if {r[0] for r in records} != names:
     raise RuntimeError("Required templates missing: " + str(names - {r[0] for r in records}))
-target = Path.home() / "Library/Application Support/Godot/export_templates" / LOCK["template_version"]
+if sys.platform == "darwin":
+    templates_root = Path.home() / "Library/Application Support/Godot/export_templates"
+elif os.name == "nt":
+    templates_root = Path(os.environ["APPDATA"]) / "Godot/export_templates"
+else:
+    templates_root = Path.home() / ".local/share/Godot/export_templates"
+target = templates_root / LOCK["template_version"]
 target.mkdir(parents=True, exist_ok=True)
 installed = []
 for name, method, crc, compressed_size, unpacked_size, local_offset in records:

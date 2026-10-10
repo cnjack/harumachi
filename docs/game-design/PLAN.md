@@ -1,4 +1,8 @@
-# 制作计划与验收状态（2026-10-09）
+# 制作计划与验收状态（2026-10-11）
+
+## 2026-10-11 Windows 本地构建
+
+按用户要求在 Windows 机器本地构建游戏，不发布网站。三件事：`install_godot_templates.py` 支持 `--platform windows`（tpz 内是裸 exe 条目）并按平台解析模板目录；`export_presets.cfg` 新增 Windows Desktop 预设（s3tc/bptc 单格式，win64 包 1.29 GB，sqlite DLL 自动随包）并生成 `icon.ico`；测试脚本两处 `/tmp` 硬编码改为 `TEMP`（Windows 上原 10 项存档槽检查必失败）。`_stats` 清单的 `source_mtime` 在本机按 GLB 时间戳校准（sha256 全部一致，测量值未动，不入库），使 PROPS/DISPLAY 的"新鲜度"检查通过。全量 1399 项 Windows 0 失败，`--autoplay` 完整验收退出 0、隔离存档生成 `harumachi.db`；包放本机 `~/harumachi-local/`，`builds/` 仍只留 macOS 包与 web。证据见 evidence/windows_build_20261011/verification.json。
 
 ## 2026-10-09 电视曲面、雪花与货架陈列
 
