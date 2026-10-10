@@ -47,7 +47,7 @@ func run() -> void:
     if cutting:
      var bounds: AABB=cutting.transform*cutting.get_aabb()
      var footprint:=Rect2(Vector2(bounds.position.x,bounds.position.z),Vector2(bounds.size.x,bounds.size.z))
-     clear_workspace=not footprint.intersects(Rect2(Vector2(-1.56,-.76),Vector2(.72,.72)))
+     clear_workspace=not footprint.intersects(Rect2(Vector2(-3.16,-1.86),Vector2(.72,.72)))
   main.world.update_time(21.0*60.0,"sunny",true)
   for view: MeshInstance3D in room.find_children("SummerView","MeshInstance3D",true,false):
    windows+=1;night_ok=night_ok and is_zero_approx(float((view.material_override as ShaderMaterial).get_shader_parameter("daylight")))
@@ -70,13 +70,20 @@ func run() -> void:
   check(id+" keeps real awning supports and the generated fabric finish",supports_present and woven)
  check("every window view darkens with the actual world night state",windows>=6 and night_ok,str(windows))
  var paths_clear:=true
- var destinations: Dictionary={"store":[Vector3(-2.337,0,1.8),Vector3(4.606,0,-2.467),Vector3(3.713,0,1.267)],"bakery":[Vector3(2.681,0,1.667),Vector3(3.506,0,-2.133),Vector3(-3.3,0,-2.333)],"workroom":[Vector3(1.8,0,.4),Vector3(-4.35,0,-2.5),Vector3(-1.2,0,.8)]}
+ var blocked_routes: Array[String]=[]
+ var destinations: Dictionary={}
+ for kind: String in ["store","bakery","workroom"]:
+  destinations[kind]=[]
+  for item: Array in InteriorBuilder.spec_for(kind).points:
+   if str(item[0]).ends_with("exit"):continue
+   destinations[kind].append(Vector3(float(item[1]),0,float(item[3])))
  for kind: String in destinations:
   var room: InteriorBuilder=town.interiors[kind]
   for destination: Vector3 in destinations[kind]:
    var route: PackedVector3Array=NPC.MOTION_ROUTE.query(main.player,InteriorBuilder.door_point(kind),room.origin+destination)
    paths_clear=paths_clear and not route.is_empty()
- check("all three entrances retain real routes to the existing work and shopping points",paths_clear)
+   if route.is_empty():blocked_routes.append(kind+str(destination))
+ check("all three entrances retain real routes to the existing work and shopping points",paths_clear,str(blocked_routes))
  var plants:=0;var grounded:=true
  for id: String in ["S06","S02","S01"]:
   var art: Node=town.get_node_or_null(id+"/PublicStreetArt")

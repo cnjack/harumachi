@@ -1,0 +1,25 @@
+{
+ "id": "B15_fruit_tart",
+ "src": "raw/inhabited_places_20261010/B15_fruit_tart_clean.glb",
+ "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+ "tris_src": 971094,
+ "tris": 11848,
+ "size_m": [
+  0.117,
+  0.119,
+  0.056
+ ],
+ "godot_size_m_xyz": [
+  0.117,
+  0.056,
+  0.119
+ ],
+ "tex": 1024,
+ "bytes": 702020,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 35.26,
+ "levelled": true,
+ "lean_deg": 0.45,
+ "base_frac": 0.628
+}

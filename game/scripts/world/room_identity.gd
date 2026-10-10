@@ -15,7 +15,7 @@ static func build(room: InteriorBuilder) -> void:
 		"bakery":
 			ClearSignage.paper_tag(root,"FreshBread","每日少量烘焙",Vector3(-5.40,2.25,-.15),Vector2(1.46,.28),PI*.5,.12)
 			ClearSignage.paper_tag(root,"OvenArea","揉面 · 发酵 · 烘烤",Vector3(2.85,2.48,-3.87),Vector2(2.02,.25),0,.115)
-			ClearSignage.paper_tag(root,"CakeCategory","甜点与蛋糕",Vector3(.48,.34,.393),Vector2(.94,.17),0,.075)
+			ClearSignage.paper_tag(root,"CakeCategory","甜点与蛋糕",Vector3(.20,.34,.692),Vector2(.94,.17),0,.075)
 		"workroom":
 			_workshop(room,root)
 
@@ -41,14 +41,14 @@ static func _workshop(room: InteriorBuilder,root: Node3D) -> void:
 	plan.add_child(ClearSignage.label("庭院",Vector3(-.12,-.06,.024),0,.066))
 	plan.add_child(ClearSignage.label("灯",Vector3(.34,-.19,.024),0,.07,Color(.67,.33,.22)))
 	plan.add_child(ClearSignage.label("晴町 · 旧夏祭会场图",Vector3(0,.365,.025),0,.09))
-	ClearSignage.paper_tag(root,"PaperStorage","试样和纸",Vector3(4.90,.69,1.865),Vector2(.86,.13),0,.079)
-	for x: float in [4.43,5.37]:
-		for z: float in [1.24,1.76]:_box(root,"SpareTableLeg_%d_%d"%[int(x*100),int(z*100)],Vector3(.07,.70,.07),Vector3(x,.35,z),wood)
+	ClearSignage.paper_tag(root,"PaperStorage","试样和纸",Vector3(4.75,.69,-3.305),Vector2(.86,.13),0,.079)
+	for x: float in [4.28,5.22]:
+		for z: float in [-3.93,-3.41]:_box(root,"SpareTableLeg_%d_%d"%[int(x*100),int(z*100)],Vector3(.07,.70,.07),Vector3(x,.35,z),wood)
 	# Materials stay against the walls; x=1.8 is the existing full-height trial aisle.
 	for index: int in 4:
-		var sheet:=_box(root,"SparePaper_%d"%index,Vector3(.44,.012,.32),Vector3(4.82,.792+index*.013,1.45),paper)
+		var sheet:=_box(root,"SparePaper_%d"%index,Vector3(.44,.012,.32),Vector3(4.82,.792+index*.013,-3.67),paper)
 		sheet.rotation.y=deg_to_rad(float(index-1)*3.0)
-	ClearSignage.paper_tag(root,"RoomPurpose","夏祭共同工作间",Vector3(3.90,2.15,-4.39),Vector2(2.02,.28),0,.135)
+	ClearSignage.paper_tag(root,"RoomPurpose","社区活动中心 · 一起过日子",Vector3(3.90,2.15,-4.39),Vector2(2.02,.28),0,.135)
 	var chest: Node3D=room.wb.spawn("P_chest",Vector3(4.70,0,-3.67),0,1,root,.82)
 	chest.name="CommunityMaterialChest";HouseBuilder.toonify(chest)
 	var bounds: AABB=WorldBuilder.local_aabb(chest)

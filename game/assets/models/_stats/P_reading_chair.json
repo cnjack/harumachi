@@ -1,0 +1,27 @@
+{
+ "id": "P_reading_chair",
+ "src": "raw/inhabited_places_20261010/P_reading_chair.glb",
+ "provider": "Blender precise joinery from imagegen inhabited room references",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 440,
+ "tex": 1024,
+ "bytes": 106308,
+ "godot_size_m_xyz": [
+  0.605,
+  0.89,
+  0.51
+ ],
+ "mesh_nodes": [
+  "ReadingChairArm",
+  "ReadingChairArm.001",
+  "ReadingChairBack",
+  "ReadingChairLeg",
+  "ReadingChairLeg.001",
+  "ReadingChairLeg.002",
+  "ReadingChairLeg.003",
+  "ReadingChairPost",
+  "ReadingChairPost.001",
+  "ReadingChairSeat"
+ ]
+}

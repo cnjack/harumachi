@@ -1,0 +1,22 @@
+[
+  {
+    "name": "shop_chocolate_cake",
+    "prompt": "Use case: ui-asset. Single inventory icon for a Japanese anime town game: one triangular dark chocolate layer cake slice with a curled chocolate shard and tiny raspberry. Clear compact silhouette, three-quarter view, centered with generous transparent margins. Warm restrained palette, clean dark brown fine outlines, flat local colors and crisp two-tone cel shading. No photorealism, text, lettering, watermark, background, table, extra objects or border. BACKGROUND: fully transparent PNG with alpha channel."
+  },
+  {
+    "name": "shop_basque_cheesecake",
+    "prompt": "Use case: ui-asset. Single inventory icon for a Japanese anime town game: one low thick wedge of ivory Basque cheesecake, dark caramel top, no sponge layers. Clear compact silhouette, three-quarter view, centered with generous transparent margins. Warm restrained palette, clean dark brown fine outlines, flat local colors and crisp two-tone cel shading. No photorealism, text, lettering, watermark, background, table, extra objects or border. BACKGROUND: fully transparent PNG with alpha channel."
+  },
+  {
+    "name": "shop_fruit_tart",
+    "prompt": "Use case: ui-asset. Single inventory icon for a Japanese anime town game: one small round fluted golden fruit tart with strawberry, kiwi, blueberry and peach. Clear compact silhouette, three-quarter view, centered with generous transparent margins. Warm restrained palette, clean dark brown fine outlines, flat local colors and crisp two-tone cel shading. No photorealism, text, lettering, watermark, background, table, extra objects or border. BACKGROUND: fully transparent PNG with alpha channel."
+  },
+  {
+    "name": "shop_coffee",
+    "prompt": "Use case: ui-asset. Single inventory icon for a Japanese anime town game: one warm cream ceramic cup and small saucer filled with dark black coffee, tiny wisp of steam. Clear compact silhouette, three-quarter view, centered with generous transparent margins. Warm restrained palette, clean dark brown fine outlines, flat local colors and crisp two-tone cel shading. No photorealism, text, lettering, watermark, background, table, extra objects or border. BACKGROUND: fully transparent PNG with alpha channel."
+  },
+  {
+    "name": "shop_cafe_latte",
+    "prompt": "Use case: ui-asset. Single inventory icon for a Japanese anime town game: one sage green ceramic cup and small saucer with pale latte and simple cream leaf foam art. Clear compact silhouette, three-quarter view, centered with generous transparent margins. Warm restrained palette, clean dark brown fine outlines, flat local colors and crisp two-tone cel shading. No photorealism, text, lettering, watermark, background, table, extra objects or border. BACKGROUND: fully transparent PNG with alpha channel."
+  }
+]

@@ -4,7 +4,7 @@ const SHADER: Shader=preload("res://shaders/painted_finish.gdshader")
 const GRAIN: Texture2D=preload("res://assets/textures/architecture/cedar-grain.jpg")
 
 static func apply(root: Node3D,id: String) -> void:
-	if id not in ["W13_cedar_worktable","I02_cake_showcase","P_long_table","P_offer_stand","J03_dining_set","J07_kotatsu"]:return
+	if id not in ["W13_cedar_worktable","I02_cake_showcase","P_long_table","P_offer_stand","J03_dining_set","J07_kotatsu","P_community_table","P_cafe_table","P_reading_chair","P_low_bookcase","P_coffee_station","W17_display_shelf","I05_bread_shelf","I04_shop_counter"]:return
 	for mesh: MeshInstance3D in root.find_children("*","MeshInstance3D",true,false):
 		for index: int in mesh.mesh.get_surface_count():
 			var original: StandardMaterial3D=mesh.get_active_material(index) as StandardMaterial3D

@@ -1,0 +1,25 @@
+{
+ "id": "B12_strawberry_slice",
+ "src": "raw/inhabited_places_20261010/B12_strawberry_slice.glb",
+ "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+ "tris_src": 995756,
+ "tris": 11949,
+ "size_m": [
+  0.114,
+  0.077,
+  0.109
+ ],
+ "godot_size_m_xyz": [
+  0.114,
+  0.109,
+  0.077
+ ],
+ "tex": 1024,
+ "bytes": 583780,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 23.7,
+ "levelled": true,
+ "lean_deg": 0.49,
+ "base_frac": 0.541
+}

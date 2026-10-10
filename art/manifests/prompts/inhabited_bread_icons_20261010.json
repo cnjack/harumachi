@@ -1,0 +1,18 @@
+[
+  {
+    "name": "shop_croissant",
+    "prompt": "Use case: ui-asset. Single inventory icon for a Japanese anime town game: one golden flaky crescent croissant. Clear compact silhouette, three-quarter view, centered with generous transparent margins. Warm restrained palette, clean dark brown fine outlines, flat local colors and crisp two-tone cel shading. No photorealism, text, lettering, watermark, background, table, extra objects or border. BACKGROUND: fully transparent PNG with alpha channel."
+  },
+  {
+    "name": "shop_baguette",
+    "prompt": "Use case: ui-asset. Single inventory icon for a Japanese anime town game: one slim long golden baguette with four diagonal scores. Clear compact silhouette, three-quarter view, centered with generous transparent margins. Warm restrained palette, clean dark brown fine outlines, flat local colors and crisp two-tone cel shading. No photorealism, text, lettering, watermark, background, table, extra objects or border. BACKGROUND: fully transparent PNG with alpha channel."
+  },
+  {
+    "name": "shop_shokupan",
+    "prompt": "Use case: ui-asset. Single inventory icon for a Japanese anime town game: one small square loaf of Japanese milk bread with a rounded golden split top. Clear compact silhouette, three-quarter view, centered with generous transparent margins. Warm restrained palette, clean dark brown fine outlines, flat local colors and crisp two-tone cel shading. No photorealism, text, lettering, watermark, background, table, extra objects or border. BACKGROUND: fully transparent PNG with alpha channel."
+  },
+  {
+    "name": "shop_anpan",
+    "prompt": "Use case: ui-asset. Single inventory icon for a Japanese anime town game: one round golden red bean bun with a small black sesame patch. Clear compact silhouette, three-quarter view, centered with generous transparent margins. Warm restrained palette, clean dark brown fine outlines, flat local colors and crisp two-tone cel shading. No photorealism, text, lettering, watermark, background, table, extra objects or border. BACKGROUND: fully transparent PNG with alpha channel."
+  }
+]

@@ -1,0 +1,25 @@
+{
+ "id": "B14_basque_slice",
+ "src": "raw/inhabited_places_20261010/B14_basque_slice.glb",
+ "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+ "tris_src": 945942,
+ "tris": 11987,
+ "size_m": [
+  0.129,
+  0.114,
+  0.077
+ ],
+ "godot_size_m_xyz": [
+  0.129,
+  0.077,
+  0.114
+ ],
+ "tex": 1024,
+ "bytes": 503960,
+ "yaw_fix": 180,
+ "level": true,
+ "lean_src_deg": 33.96,
+ "levelled": true,
+ "lean_deg": 0.5,
+ "base_frac": 0.395
+}

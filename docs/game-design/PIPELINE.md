@@ -217,7 +217,7 @@ Godot 这边是 `Audio` 自动加载（`game/scripts/autoload/audio.gd`）：
 
 - **材质视频样板（2026-10-06）**：`art/poc/material_review_20261006/godot/` 是独立 Godot 4.7.2 Forward+ 工程，六种地表各有 A/B；四张 imagegen 图用于实际材质，已有 Hyper3D 住宅用于实景。运行 `python3 art/poc/material_review_20261006/record.py --tag review` 原生录制 40 秒 1080p/30fps 并编码 MP4；视频、8 张截图、日志和检查在 `evidence/material_review_20261006_v1/`。窗口 override 与录制分辨率保持一致，避免 Movie Maker 输出 720p 而截图仍为 1080p。隔离工程不加载游戏 autoload，不修改默认存档。详见该 POC 的 README。
 
-- 自动测试：`res://scenes/tests.tscn`，当前清单1399项，含规则、SQLite、UI、模型摆放、路线、生活、完整夏季和镜头检查。独立HARUMACHI_SAVE_DIR、超时与SCRIPT ERROR检查必须同时使用；全量不与其他Godot实例并发。专项入口与数量见AGENTS，最终数以JSON报告为准。
+- 自动测试：`res://scenes/tests.tscn`，当前清单1420项，含规则、SQLite、UI、模型摆放、路线、生活、完整夏季和镜头检查。独立HARUMACHI_SAVE_DIR、超时与SCRIPT ERROR检查必须同时使用；全量不与其他Godot实例并发。专项入口与数量见AGENTS，最终数以JSON报告为准。
 - 卡顿检查要让时钟实际推进，记录逐帧耗时，不能只看平均FPS。工具`evidence/desktop_stutter_20261007/perf_probe.gd`的`--fixed`模式在真实起床卧室和商店街记录480帧，截图回读放在计时之后；使用固定引擎、置顶原生窗口和独立存档。运动清晰度检查在固定镜头距离下核对人物与镜头的渲染插值位置，镜头避障另跑`--only=camera-body`。桌面缓存用晚会专项检查移动、旋转后的实际食物支撑；方法与结果见[卡顿修复](DESKTOP_STUTTER_20261008.md)。
 - 自动演示：普通标题入口`--autoplay`沿实际碰撞路径、Story交互、摆放控制器、料理面板、灯笼输入、日历赴约和拍照完成新夏季至Q15，检查控制与保存恢复。当前基线200项、9张关键截图。自动对白与阶段暂停明确记录，不作为自然四小时；`--showcase`是节日展示夹具。打印的AP mark/frame用于录像剪辑。
 - 录制时游戏窗口不能被别的窗口完全挡住：macOS 会停止给被挡住的窗口画帧，演示就停在原地。用 `-t --position <x>,<y>` 置顶并放到屏幕角落。
@@ -477,4 +477,10 @@ codex 可以直接画透明背景。14 张头像一张一张重画（`art/manife
 
 ## 20. 复用imagegen实景改绘流程
 
-完整方法见[经验总结](IMAGEGEN_SCENE_WORKFLOW.md)。三处公共场景使用六张实景改绘和四项实际素材；真实窗洞要同时检查旧墙框与日照方向，地板缝使用屏幕导数过滤。新增桌面陈设接入`support_surface`和实际表面测量，保持专项与全场普查一致；截图工具离开室内后复位光照和镜头。新增`--only=public-art`15项，包含实际几何光线路径、桌面支持、夜色和通路；旧场景失败14项。1399项全量及解压包200项通过，当前交付见[三处场景](THREE_PLACES_IMAGEGEN_20261010.md)。
+完整方法见[经验总结](IMAGEGEN_SCENE_WORKFLOW.md)。三处公共场景使用六张实景改绘和四项实际素材；真实窗洞要同时检查旧墙框与日照方向，地板缝使用屏幕导数过滤。新增桌面陈设接入`support_surface`和实际表面测量，保持专项与全场普查一致；截图工具离开室内后复位光照和镜头。新增`--only=public-art`15项，包含实际几何光线路径、桌面支持、夜色和通路；旧场景失败14项。1399项全量及解压包200项通过，当轮交付见[三处场景](THREE_PLACES_IMAGEGEN_20261010.md)。
+
+## 公共空间格局与可选生活（2026-10-11）
+
+先做正常场所用途对照与分区图，再让imagegen重排主家具，布局确定后验证走线。四类甜点由单物参考转Pixal3D；直线柜体、玻璃冷柜、咖啡设备和座椅用精确建模。去掉水果塔的生成阴影碎片后再量真实糕底；巴斯克切面朝向与尺寸仍需原生近景。透明图标直接进入ui_kit，牌面中文与价格由游戏绘制。
+
+`PublicRoomLife`组织家具与使用点，`PublicLife`处理阅读、坐下与同份消费，`PublicSeatPose`适配现有Mixamo及自制骨架命名；起身检查真实碰撞，保存安全站位。饮品独立标记，不能误入餐盘食物系统。新增`--only=inhabited`21项，旧场景首批10项全失败，饮品和糕底错误候选另外验证会失败。全量1420项、解压包200项、32场景视角、2商店UI与新旧帧比较通过。记录见[格局与制作](INHABITED_PLACES_REDESIGN_20261010.md)，方法见[imagegen经验](IMAGEGEN_SCENE_WORKFLOW.md)。

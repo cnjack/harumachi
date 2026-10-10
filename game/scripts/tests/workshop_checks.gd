@@ -23,7 +23,7 @@ func run() -> void:
 	t.check("WORKROOM_SPACE", "the community doorway enters an actual third interior", main.in_room and main.room_kind == "workroom" and InteriorBuilder.at(main.player.global_position) == "workroom")
 	var interior: InteriorBuilder = main.world.interiors.workroom
 	var imported: bool = interior.pieces.size() == 1 and str(interior.pieces[0].get_meta("model_id", "")) == "W13_cedar_worktable"
-	var surface: float = WorldBuilder.rendered_support_height(interior.pieces[0], interior.origin + Vector3(-1.2, 0, -.4)) if imported else NAN
+	var surface: float = WorldBuilder.rendered_support_height(interior.pieces[0], interior.pieces[0].global_position) if imported else NAN
 	t.check("WORKROOM_MODEL", "the actual Hyper3D table supports the work at its measured 0.78 metre top", imported and is_finite(surface) and absf(surface - .78) < .015, str(surface))
 	await t.use("workroom_archive", [0])
 	t.check("WORKROOM_ARCHIVE", "a relevant page lets the notebook question continue without compulsory full reading", G.at_step("Q11", "show_haru") and WorkshopProject.state().archive_seen.size() == 1)

@@ -27,6 +27,7 @@ var projects: StoryProjects
 var workshop: StoryWorkshop
 var space: StorySpace
 var gathering: StoryGathering
+var public_life: PublicLife
 var food_use: StoryFoodUse
 var neighbours: StoryNeighbourMeals
 var morning: ResidentMorning
@@ -44,6 +45,7 @@ func _ready() -> void:
 	workshop = StoryWorkshop.new(self)
 	space = StorySpace.new(self)
 	gathering = StoryGathering.new(self)
+	public_life=PublicLife.new(self)
 	food_use=StoryFoodUse.new(self)
 	neighbours=StoryNeighbourMeals.new(self)
 	Dialogue.load_db()
@@ -56,6 +58,7 @@ func npc_name(id: String) -> String:
 # ================================================================== prompts
 func prompt_for(id: String) -> String:
 	var G := GameState
+	if public_life.handles(id):return public_life.prompt(id)
 	if id=="resident_morning":return morning.prompt() if is_instance_valid(morning) else ""
 	if id=="shared_meal_table":return "在小桌吃带来的饭菜 · 歇一会儿" if neighbours.table_available() else ""
 	var daily_prompt: Variant = daily.prompt(id)
@@ -304,6 +307,8 @@ func interact(it: Interactable) -> void:
 		personal_handled = await CONVERSATION.personal_event(self, it.id)
 	if personal_handled:
 		pass
+	elif public_life.handles(it.id):
+		await public_life.handle(it)
 	elif it.id=="resident_morning":
 		await morning.handle()
 	elif it.id=="shared_meal_table":

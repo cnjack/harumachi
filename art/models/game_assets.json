@@ -1273,28 +1273,29 @@
       "provider": "Blender measured cabinet rebuild, actual shelves and runtime thin glass; original Pixal3D source preserved"
     },
     "I04_shop_counter": {
-      "src": "raw/I04_shop_counter_pix2/model.glb",
-      "fit": "h",
-      "size": 1.25,
-      "tris": 20000,
-      "tex": 2048,
-      "provider": "pixal3d (v0.6 review, seed 7)",
-      "rebake": true,
-      "yaw": -150.0,
-      "yaw_note": "v0.6 review: new codex reference without loose items; Pixal3D output 60 deg off-axis, turned square, customer side to +Z",
-      "min_island": 0.02
+      "src": "raw/inhabited_places_20261010/I04_shop_counter.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/bakery_cafe_layout.png",
+        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
     },
     "I05_bread_shelf": {
-      "src": "raw/I05_bread_shelf_pix/model.glb",
-      "fit": "h",
-      "size": 1.6,
-      "tris": 30000,
-      "tex": 2048,
-      "provider": "pixal3d (v0.6)",
-      "rebake": true,
-      "note": "v0.6 review: 8k decimation broke the slats; re-exported at 30k",
-      "yaw": 31.0,
-      "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 59.0 deg off-axis; turned square, front to +Z"
+      "src": "raw/inhabited_places_20261010/I05_bread_shelf.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/bakery_cafe_layout.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
     },
     "I06_store_gondola": {
       "src": "raw/I06_store_gondola_pix/model.glb",
@@ -1953,17 +1954,17 @@
       "source_page": "https://hyper3d.ai/workspace/rodin/26ecd969-3d41-4191-80af-ed29457abe84"
     },
     "W17_display_shelf": {
-      "src": "raw/W17_display_shelf_hyper3d/model.glb",
-      "fit": "h",
-      "size": 1.45,
-      "tris": 18000,
-      "tex": 2048,
-      "yaw": 0,
-      "weld": 0,
-      "level": "auto",
-      "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
-      "license": "项目生成素材；Hyper3D账户来源条款",
-      "source_page": "https://hyper3d.ai/workspace/rodin/a56aa1b6-7645-4882-bb87-c9a51ebbce9c"
+      "src": "raw/inhabited_places_20261010/W17_display_shelf.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/bakery_cafe_layout.png",
+        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
     },
     "W18_retro_tv": {
       "src": "raw/W18_retro_tv_hyper3d/model.glb",
@@ -2061,6 +2062,199 @@
       "source_page": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
       "license": "项目生成素材；原Hyper3D账户来源条款",
       "note": "Derived from the original exported grocery bundle, no new generation; diffuse and UV retained."
+    },
+    "P_community_table": {
+      "src": "raw/inhabited_places_20261010/P_community_table.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/community_living_layout.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
+    },
+    "P_cafe_table": {
+      "src": "raw/inhabited_places_20261010/P_cafe_table.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/bakery_cafe_layout.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
+    },
+    "P_reading_chair": {
+      "src": "raw/inhabited_places_20261010/P_reading_chair.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/community_living_layout.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
+    },
+    "P_low_bookcase": {
+      "src": "raw/inhabited_places_20261010/P_low_bookcase.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/community_living_layout.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
+    },
+    "P_coffee_station": {
+      "src": "raw/inhabited_places_20261010/P_coffee_station.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/bakery_cafe_layout.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
+    },
+    "I03_drink_fridge": {
+      "src": "raw/inhabited_places_20261010/I03_drink_fridge.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
+    },
+    "B12_strawberry_slice": {
+      "src": "raw/inhabited_places_20261010/B12_strawberry_slice.glb",
+      "fit": "h",
+      "size": 0.11,
+      "yaw": 0,
+      "level": true,
+      "tris": 12000,
+      "tex": 1024,
+      "rebake": true,
+      "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/B12_strawberry_slice_reference.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
+    },
+    "B13_chocolate_slice": {
+      "src": "raw/inhabited_places_20261010/B13_chocolate_slice.glb",
+      "fit": "h",
+      "size": 0.1,
+      "yaw": 0,
+      "level": true,
+      "tris": 12000,
+      "tex": 1024,
+      "rebake": true,
+      "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/B13_chocolate_slice_reference.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
+    },
+    "B14_basque_slice": {
+      "src": "raw/inhabited_places_20261010/B14_basque_slice.glb",
+      "fit": "h",
+      "size": 0.08,
+      "yaw": 180,
+      "level": true,
+      "tris": 12000,
+      "tex": 1024,
+      "rebake": true,
+      "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/B14_basque_slice_reference.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
+    },
+    "B15_fruit_tart": {
+      "src": "raw/inhabited_places_20261010/B15_fruit_tart_clean.glb",
+      "fit": "w",
+      "size": 0.12,
+      "yaw": 0,
+      "level": true,
+      "tris": 12000,
+      "tex": 1024,
+      "rebake": true,
+      "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/B15_fruit_tart_reference.png"
+      ],
+      "license": "项目自制；生成素材服务条款",
+      "level_base_fraction": 0.35
+    },
+    "W24_sugar_pack": {
+      "src": "raw/inhabited_places_20261010/W24_sugar_pack.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
+    },
+    "W25_salt_box": {
+      "src": "raw/inhabited_places_20261010/W25_salt_box.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
+    },
+    "W26_miso_tub": {
+      "src": "raw/inhabited_places_20261010/W26_miso_tub.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
+    },
+    "W27_curry_box": {
+      "src": "raw/inhabited_places_20261010/W27_curry_box.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
+    },
+    "W28_seed_packets": {
+      "src": "raw/inhabited_places_20261010/W28_seed_packets.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "reference_images": [
+        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+      ],
+      "license": "项目自制；生成素材服务条款"
     }
   },
   "procedural_overrides": {

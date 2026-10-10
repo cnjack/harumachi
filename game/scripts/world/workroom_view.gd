@@ -35,7 +35,7 @@ func sync_state() -> void:
 	if not p.get("site_preview", false) and (int(p.joints) < 3 or p.stored):
 		specimen = RepresentativeLantern.new()
 		add_child(specimen)
-		specimen.position = Vector3(-1.2, 1.01, -.4)
+		specimen.position = Vector3(-2.8, 1.01, -1.5)
 		specimen.build(int(p.joints), str(p.pattern), str(p.purpose), float(p.angle))
 	if int(p.joints) < 3: return
 	if not p.get("site_preview", false) and not p.stored:

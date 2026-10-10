@@ -1,0 +1,21 @@
+{
+ "id": "W28_seed_packets",
+ "src": "raw/inhabited_places_20261010/W28_seed_packets.glb",
+ "provider": "Blender precise joinery from imagegen inhabited room references",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 192,
+ "tex": 1024,
+ "bytes": 16860,
+ "godot_size_m_xyz": [
+  0.085,
+  0.115,
+  0.012
+ ],
+ "mesh_nodes": [
+  "Band",
+  "Label",
+  "LabelMark",
+  "Package"
+ ]
+}

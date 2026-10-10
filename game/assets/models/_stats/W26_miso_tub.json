@@ -1,0 +1,20 @@
+{
+ "id": "W26_miso_tub",
+ "src": "raw/inhabited_places_20261010/W26_miso_tub.glb",
+ "provider": "Blender precise joinery from imagegen inhabited room references",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 228,
+ "tex": 1024,
+ "bytes": 16244,
+ "godot_size_m_xyz": [
+  0.138,
+  0.127,
+  0.138
+ ],
+ "mesh_nodes": [
+  "FrontLabel",
+  "Lid",
+  "MisoTub"
+ ]
+}

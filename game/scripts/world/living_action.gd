@@ -26,7 +26,7 @@ static func matte(color: Color) -> StandardMaterial3D:
 	return material
 
 
-static func cup() -> Node3D:
+static func cup(item_id: String="") -> Node3D:
 	var root := Node3D.new()
 	root.name = "HandCup"
 	var ceramic := MeshInstance3D.new()
@@ -46,8 +46,11 @@ static func cup() -> Node3D:
 	surface.radial_segments = 16
 	tea.mesh = surface
 	tea.position.y = .052
-	tea.material_override = matte(Color(.52, .28, .10))
+	tea.material_override = matte(Color(.73,.54,.33) if item_id=="cafe_latte" else (Color(.19,.10,.05) if item_id=="coffee" else Color(.52,.28,.10)))
 	root.add_child(tea)
+	if item_id in ["coffee","cafe_latte"]:
+		var handle:=MeshInstance3D.new();handle.name="CupHandle";var ring:=TorusMesh.new();ring.inner_radius=.017;ring.outer_radius=.029;ring.rings=12;ring.ring_segments=8
+		handle.mesh=ring;handle.rotation.x=PI*.5;handle.position=Vector3(.058,0,0);handle.material_override=ceramic.material_override;root.add_child(handle)
 	return root
 
 
@@ -65,10 +68,10 @@ func setup(who: Node3D, kind: String, item_id: String = "onigiri") -> void:
 		pose = LivingPose.new()
 		pose.sip = kind == "sip"
 		skeleton.add_child(pose)
-		skeleton.move_child(pose, 0)
+		if not (actor is Player and (actor as Player).seated):skeleton.move_child(pose, 0)
 		pose.modification_processed.connect(_position_prop)
 	if kind == "sip":
-		prop = cup()
+		prop = cup(item_id)
 	else:
 		var world: WorldBuilder = get_parent().get("world") as WorldBuilder
 		prop = MealModels.spawn(world,self,item_id,.105)
@@ -152,7 +155,8 @@ func _process(delta: float) -> void:
 		var mouth: Vector3 = actor.global_position + Vector3.UP * 1.52
 		if head >= 0:
 			mouth = (skeleton.global_transform * skeleton.get_bone_global_pose(head)).origin - Vector3.UP * .05
-		pose.goal_world = destination if mode == "give" and destination.is_finite() else mouth + actor.model_root.global_basis.z.normalized() * .16
+		if actor.has_meta("seated_mouth"):mouth=actor.get_meta("seated_mouth")
+		pose.goal_world = destination if mode == "give" and destination.is_finite() else mouth + (actor.model_root.global_basis.z.normalized() if actor is Player else (actor.model.global_basis.z.normalized() if actor is NPC else actor.global_basis.z.normalized())) * .16
 	if is_instance_valid(prop):
 		prop.visible = phase > .05 and phase < .97
 	if not is_instance_valid(pose):

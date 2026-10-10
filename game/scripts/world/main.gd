@@ -700,7 +700,7 @@ func to_market_positions(for_walk: bool) -> void:
 
 
 func before_save() -> void:
-	GameState.player_pos = player.global_position
+	GameState.player_pos = story.public_life.save_position()
 	GameState.player_yaw = player._face_yaw
 	GameState.player_in_room = in_room
 
@@ -788,6 +788,7 @@ func enter_interior(k: String) -> void:
 
 
 func exit_interior() -> void:
+	story.public_life.stand(true)
 	if _transition:
 		return
 	if shop_life:shop_life.on_exit()
@@ -843,6 +844,7 @@ func enter_room() -> void:
 
 
 func exit_room() -> void:
+	story.public_life.stand(true)
 	if _transition:
 		return
 	_transition = true
@@ -983,6 +985,8 @@ func _fall_rescue() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if player.seated and event.is_action_pressed("ui_cancel") and not story.busy:
+		story.public_life.stand();get_viewport().set_input_as_handled();return
 	if not loading_ready:
 		return
 	if event.is_action_pressed("build") and not in_room:

@@ -1,7 +1,7 @@
 class_name MealModels
 extends RefCounted
 ## Table portions use solid meshes. The asset is spawned through the world's common registry.
-const MODELS := {"onigiri": "B02_onigiri", "dish_edamame_onigiri": "B02_onigiri", "melon_pan": "B01_melon_pan", "bread_sandwich": "B07_veg_sandwich", "bread_focaccia": "B08_focaccia", "bread_curry_pan": "B06_curry_pan", "donut": "B07_iced_donut", "cream_bun": "B11_cream_bun", "shortcake": "B08_strawberry_cake", "sushi_box": "B09_sushi_tray", "bento": "B10_bento_box"}
+const MODELS := {"croissant":"B02_croissant","baguette":"B03_baguette","shokupan":"B04_shokupan","anpan":"B05_anpan","onigiri": "B02_onigiri", "dish_edamame_onigiri": "B02_onigiri", "melon_pan": "B01_melon_pan", "bread_sandwich": "B07_veg_sandwich", "bread_focaccia": "B08_focaccia", "bread_curry_pan": "B06_curry_pan", "donut": "B07_iced_donut", "cream_bun": "B11_cream_bun", "shortcake": "B12_strawberry_slice", "chocolate_cake":"B13_chocolate_slice", "basque_cheesecake":"B14_basque_slice", "fruit_tart":"B15_fruit_tart", "sushi_box": "B09_sushi_tray", "bento": "B10_bento_box"}
 static func model_id(item_id: String) -> String:
 	var icon: String = str(GameState.item(item_id).get("icon",item_id))
 	return str(MODELS.get(item_id,MODELS.get(icon,"")))

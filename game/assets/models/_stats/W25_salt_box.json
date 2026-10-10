@@ -1,0 +1,21 @@
+{
+ "id": "W25_salt_box",
+ "src": "raw/inhabited_places_20261010/W25_salt_box.glb",
+ "provider": "Blender precise joinery from imagegen inhabited room references",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 192,
+ "tex": 1024,
+ "bytes": 16844,
+ "godot_size_m_xyz": [
+  0.13,
+  0.18,
+  0.079
+ ],
+ "mesh_nodes": [
+  "Band",
+  "Label",
+  "LabelMark",
+  "Package"
+ ]
+}

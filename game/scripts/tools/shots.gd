@@ -2,6 +2,15 @@ extends Node
 ## Evidence camera: `-- --shots=<dir> [--views=a,b]` renders predefined views to PNG and quits.
 
 const VIEWS := {
+ "inhabited_cafe_sip": {"interior":"bakery","at":Vector3(.2,.05,3.4),"time":10.5,"seat_id":"public_cafe_1","sip":"coffee","show_actor":true,"inside_camera":Vector3(-1.8,1.55,3.9),"inside_focus":Vector3(.2,.95,2.55)},
+
+ "inhabited_community": {"interior":"workroom","at":Vector3(0,.05,2.6),"face":180.0,"pitch":46.0,"dist":9.4,"time":10.5},
+ "inhabited_reading": {"interior":"workroom","at":Vector3(3.5,.05,1.35),"time":10.5,"seat_id":"public_reading_0","show_actor":true,"inside_camera":Vector3(1.5,1.9,4.3),"inside_focus":Vector3(4.35,.85,2.1)},
+ "inhabited_cafe": {"interior":"bakery","at":Vector3(.2,.05,3.4),"time":10.5,"seat_id":"public_cafe_1","show_actor":true,"inside_camera":Vector3(2.1,1.9,3.9),"inside_focus":Vector3(-1.3,.85,2.0)},
+ "inhabited_coffee": {"interior":"bakery","at":Vector3(2.2,.05,1.8),"time":10.5,"inside_camera":Vector3(3.4,1.7,-1.1),"inside_focus":Vector3(4.8,1.0,-3.2)},
+ "inhabited_bakery": {"interior":"bakery","at":Vector3(1.5,.05,2.9),"time":10.5,"pitch":48.0,"dist":9.2},
+ "inhabited_store": {"interior":"store","at":Vector3(0,.05,2.6),"time":10.5,"pitch":48.0,"dist":9.2},
+
  "community_scene_night": {"player":Vector3(-23.2,.1,-8.4),"time":21.0,"camera_at":Vector3(-28,3.5,-12),"camera_focus":Vector3(-23.2,2.1,-.1)},
  "bakery_scene_night": {"player":Vector3(-24,.1,-10),"time":20.0,"camera_at":Vector3(-29,3.2,-11),"camera_focus":Vector3(-24,2,-19.3)},
  "store_scene_night": {"player":Vector3(-36,.1,-10),"time":20.0,"camera_at":Vector3(-41,3.2,-10.5),"camera_focus":Vector3(-36,2,-19.3)},
@@ -18,9 +27,9 @@ const VIEWS := {
  "public_workroom_night": {"interior":"workroom","at":Vector3(0,.05,2.6),"face":180.0,"pitch":46.0,"dist":9.4,"time":21.0},
  "public_bakery_night": {"interior":"bakery","at":Vector3(0,.05,2),"face":180.0,"pitch":46.0,"dist":8.6,"time":21.0},
  "public_store_night": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":21.0},
- "public_workroom_detail": {"interior":"workroom","at":Vector3(0,.05,2.6),"time":10.5,"inside_camera":Vector3(-3.1,1.8,1.0),"inside_focus":Vector3(-2.3,.9,-.35)},
+ "public_workroom_detail": {"interior":"workroom","at":Vector3(0,.05,2.6),"time":10.5,"inside_camera":Vector3(-4.1,1.8,.1),"inside_focus":Vector3(-2.8,.9,-1.5)},
  "public_bakery_window": {"interior":"bakery","at":Vector3(0,.05,2),"time":10.5,"inside_camera":Vector3(3.1,1.65,-.7),"inside_focus":Vector3(5.5,1.80,-1.8)},
- "public_store_wrapping": {"interior":"store","at":Vector3(.6,.05,1.9),"time":10.5,"inside_camera":Vector3(-3.0,1.5,3.1),"inside_focus":Vector3(-5.05,.95,3.1)},
+ "public_store_wrapping": {"interior":"store","at":Vector3(.6,.05,1.9),"time":10.5,"inside_camera":Vector3(-3.0,1.5,3.2),"inside_focus":Vector3(-4.35,.95,2.3)},
 
 	"plaza_moss_close": {"player":Vector3(-1,.1,2),"time":10.5,"camera_at":Vector3(2.5,1.05,4.7),"camera_focus":Vector3(3.7,.55,5.8)},
 	"plaza_overview": {"player":Vector3(-1,.1,2),"time":10.5,"camera_at":Vector3(-10,6,-10),"camera_focus":Vector3(4,4.2,7)},
@@ -29,7 +38,7 @@ const VIEWS := {
 	"shop_cooperation_note": {"interior":"bakery","at":Vector3(-1.1,.05,1.8),"face":180.0,"time":10.0,"inside_camera":Vector3(-1.1,1.35,2.55),"inside_focus":Vector3(-1.55,1.15,1.35)},
 	"direction_sign": {"player":Vector3(20.2,.1,-5.8),"time":10.5,"camera_at":Vector3(20.5,1.9,-5.8),"camera_focus":Vector3(22.6,1.9,-6.2)},
 	"direction_sign_back": {"player":Vector3(24.4,.1,-6.2),"time":10.5,"camera_at":Vector3(24.7,1.9,-6.6),"camera_focus":Vector3(22.6,1.9,-6.2)},
-	"shop_groceries": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":10.0,"inside_camera":Vector3(-.96,1.18,.7),"inside_focus":Vector3(-.96,.78,-.8)},
+	"shop_groceries": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":10.0,"inside_camera":Vector3(-1.35,1.18,.85),"inside_focus":Vector3(-1.35,.78,-.4)},
 	"shop_tools": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":10.0,"inside_camera":Vector3(-3.1,1.3,-.9),"inside_focus":Vector3(-4.7,.6,-1.35)},
 	"shop_food": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":10.0,"inside_camera":Vector3(1.85,1.05,4.3),"inside_focus":Vector3(1.85,.63,3.0)},
 	"shop_tv": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":10.0,"inside_camera":Vector3(3.9,1.95,-.78),"inside_focus":Vector3(5.05,1.92,-.8)},
@@ -37,7 +46,7 @@ const VIEWS := {
 	"shop_tv_static": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":10.0,"tv_signal":12.08,"inside_camera":Vector3(3.9,1.95,-.78),"inside_focus":Vector3(5.05,1.92,-.8)},
 	"shop_tv_rain": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":10.0,"weather":"rain","inside_camera":Vector3(3.9,1.95,-.78),"inside_focus":Vector3(5.05,1.92,-.8)},
 	"shop_pastries": {"interior":"bakery","at":Vector3(.0,.05,2.0),"face":180.0,"pitch":46.0,"dist":8.6,"time":9.0,"inside_camera":Vector3(-2.7,1.20,1.15),"inside_focus":Vector3(-2.7,.76,-.3)},
-	"shop_cakes": {"interior":"bakery","at":Vector3(.0,.05,2.0),"face":180.0,"pitch":46.0,"dist":8.6,"time":9.0,"inside_camera":Vector3(.48,1.45,2.15),"inside_focus":Vector3(.48,.99,.53)},
+	"shop_cakes": {"interior":"bakery","at":Vector3(.0,.05,2.0),"face":180.0,"pitch":46.0,"dist":8.6,"time":9.0,"inside_camera":Vector3(.20,1.32,1.65),"inside_focus":Vector3(.20,.79,.30)},
 	"shop_poster": {"interior":"bakery","at":Vector3(.0,.05,2.0),"face":180.0,"pitch":46.0,"dist":8.6,"time":9.0,"inside_camera":Vector3(4.1,2.08,.8),"inside_focus":Vector3(5.46,2.05,.8)},
 	"shop_store_poster": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":10.0,"inside_camera":Vector3(2.2,2.20,-2.45),"inside_focus":Vector3(2.2,2.20,-3.86)},
 	"shop_tools_poster": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":10.0,"inside_camera":Vector3(-4.0,2.15,-2.35),"inside_focus":Vector3(-5.34,2.15,-2.35)},
@@ -399,10 +408,16 @@ func _run() -> void:
 				var sp := InteriorBuilder.spec_for("bakery")
 				main.npcs.ren.place(sp.origin + sp.keeper, sp.keeper_yaw)
 			if v.has("inside_camera"):
-				main.player.visible=false;main.rig.process_mode=Node.PROCESS_MODE_DISABLED
+				main.player.visible=bool(v.get("show_actor",false));main.rig.process_mode=Node.PROCESS_MODE_DISABLED
 				main.rig.cam.global_position=InteriorBuilder.spec_for(str(v.interior)).origin+v.inside_camera
 				main.rig.cam.look_at(InteriorBuilder.spec_for(str(v.interior)).origin+v.inside_focus)
 				main.shop_life._caption_left=0.0
+			if v.has("seat_id"):
+				for candidate in get_tree().get_nodes_in_group("interactables"):
+					if candidate.id==v.seat_id:main.story.public_life.sit(candidate);break
+			var sip_action: LivingAction
+			if v.has("sip"):
+				sip_action=LivingAction.new();main.add_child(sip_action);sip_action.setup(main.player,"sip",v.sip);sip_action.duration=1000;sip_action.clock=500
 			for i in 40:
 				await get_tree().process_frame
 			if v.has("tv_signal"):
@@ -411,6 +426,8 @@ func _run() -> void:
 				await RenderingServer.frame_post_draw
 			get_viewport().get_texture().get_image().save_png("%s/%s.png" % [dir, n])
 			print("SHOT ", n)
+			if sip_action!=null:sip_action.queue_free()
+			main.story.public_life.stand()
 			main.in_room = false
 			main.room_kind = ""
 			GameState.player_in_room = false
@@ -436,6 +453,12 @@ func _run() -> void:
 			main.rig.pitch = v.pitch
 			main.rig.dist = v.dist
 			main.rig.snap()
+			if v.has("seat_id"):
+				for candidate in get_tree().get_nodes_in_group("interactables"):
+					if candidate.id==v.seat_id:main.story.public_life.sit(candidate);break
+			var sip_action: LivingAction
+			if v.has("sip"):
+				sip_action=LivingAction.new();main.add_child(sip_action);sip_action.setup(main.player,"sip",v.sip);sip_action.duration=1000;sip_action.clock=500
 			for i in 40:
 				await get_tree().process_frame
 			var im := get_viewport().get_texture().get_image()

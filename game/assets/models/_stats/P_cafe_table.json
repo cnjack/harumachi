@@ -1,0 +1,32 @@
+{
+ "id": "P_cafe_table",
+ "src": "raw/inhabited_places_20261010/P_cafe_table.glb",
+ "provider": "Blender precise joinery from imagegen inhabited room references",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 868,
+ "tex": 1024,
+ "bytes": 135436,
+ "godot_size_m_xyz": [
+  1.895,
+  0.89,
+  0.72
+ ],
+ "mesh_nodes": [
+  "ChairLeftBack",
+  "ChairLeftLeg",
+  "ChairLeftLeg.001",
+  "ChairLeftLeg.002",
+  "ChairLeftLeg.003",
+  "ChairLeftSeat",
+  "ChairRightBack",
+  "ChairRightLeg",
+  "ChairRightLeg.001",
+  "ChairRightLeg.002",
+  "ChairRightLeg.003",
+  "ChairRightSeat",
+  "Foot",
+  "Pedestal",
+  "RoundTop"
+ ]
+}

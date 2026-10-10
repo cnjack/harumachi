@@ -2925,6 +2925,166 @@
       "references": [],
       "sha256": "df90d52da16326c2f6bbd768c0c311c4b9ec5a9d71795ee4803726ee79bb0804",
       "usage": "production scene material"
+    },
+    {
+      "file": "art/references/inhabited_places_20261010/B12_strawberry_slice_reference.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "mode": "generate",
+      "prompt": "art/manifests/prompts/bakery_desserts_20261010.json",
+      "sha256": "09accb29622fd01fbbd436214de43dbaced6904a31771bb1b2b6060521218a6f",
+      "date": "2026-10-10",
+      "purpose": "Separate patisserie reference for image-to-3D"
+    },
+    {
+      "file": "art/references/inhabited_places_20261010/B13_chocolate_slice_reference.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "mode": "generate",
+      "prompt": "art/manifests/prompts/bakery_desserts_20261010.json",
+      "sha256": "027535cb975f2f37efb23de8af25dbca673bccd53db698ab6ea10a2ff736df6d",
+      "date": "2026-10-10",
+      "purpose": "Separate patisserie reference for image-to-3D"
+    },
+    {
+      "file": "art/references/inhabited_places_20261010/B14_basque_slice_reference.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "mode": "generate",
+      "prompt": "art/manifests/prompts/bakery_desserts_20261010.json",
+      "sha256": "69cb0fe9b249e2f1cdf24e4671d49379258c73eb898c72b7c0305569a3d11d1a",
+      "date": "2026-10-10",
+      "purpose": "Separate patisserie reference for image-to-3D"
+    },
+    {
+      "file": "art/references/inhabited_places_20261010/B15_fruit_tart_reference.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "mode": "generate",
+      "prompt": "art/manifests/prompts/bakery_desserts_20261010.json",
+      "sha256": "7abe9efe50ae861719ef06e79b8a9c70514364db64255289237d02e5897942ee",
+      "date": "2026-10-10",
+      "purpose": "Separate patisserie reference for image-to-3D"
+    },
+    {
+      "file": "art/references/inhabited_places_20261010/bakery_cafe_layout.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "mode": "edit",
+      "prompt": "art/manifests/prompts/inhabited_layouts_20261010.json",
+      "sha256": "bf0c41678ba9fd1b645cf460c98d90dff396e96148f99071268e4f232976e032",
+      "date": "2026-10-10",
+      "purpose": "Function-first interior layout paintover; furniture may move"
+    },
+    {
+      "file": "art/references/inhabited_places_20261010/community_living_layout.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "mode": "edit",
+      "prompt": "art/manifests/prompts/inhabited_layouts_20261010.json",
+      "sha256": "0b1bf5c1fc1e17800478dc78742112c84f056d526e8611047f82bef53bb43530",
+      "date": "2026-10-10",
+      "purpose": "Function-first interior layout paintover; furniture may move"
+    },
+    {
+      "file": "art/references/inhabited_places_20261010/grocer_grouped_layout.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "mode": "edit",
+      "prompt": "art/manifests/prompts/inhabited_layouts_20261010.json",
+      "sha256": "fbc105391a282d21808e970a200180ef90a339f5734d4f28f85dad6c399d4901",
+      "date": "2026-10-10",
+      "purpose": "Function-first interior layout paintover; furniture may move"
+    },
+    {
+      "file": "game/ui_kit/assets/shop_food/shop_chocolate_cake.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "mode": "generate",
+      "prompt": "art/manifests/prompts/inhabited_icons_20261010.json",
+      "date": "2026-10-10",
+      "transparent_background": true,
+      "sha256": "b172ad1e6efd96024151455c5f7d2cf32ef6fab00c570a473a420c73861e8baa"
+    },
+    {
+      "file": "game/ui_kit/assets/shop_food/shop_basque_cheesecake.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "mode": "generate",
+      "prompt": "art/manifests/prompts/inhabited_icons_20261010.json",
+      "date": "2026-10-10",
+      "transparent_background": true,
+      "sha256": "93be8dd17cc138746df306fdfed2c97c93c81a7098502c5f047a22374d0b863f"
+    },
+    {
+      "file": "game/ui_kit/assets/shop_food/shop_fruit_tart.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "mode": "generate",
+      "prompt": "art/manifests/prompts/inhabited_icons_20261010.json",
+      "date": "2026-10-10",
+      "transparent_background": true,
+      "sha256": "ade46410d4ce32e4af0c0a6fb4294ff36a4a6702585a25006615328e82f5dd6a"
+    },
+    {
+      "file": "game/ui_kit/assets/shop_food/shop_coffee.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "mode": "generate",
+      "prompt": "art/manifests/prompts/inhabited_icons_20261010.json",
+      "date": "2026-10-10",
+      "transparent_background": true,
+      "sha256": "10da95562200069eeb75437fb5fb7d77210d05437d81bcc4d2d43674b95cc3e9"
+    },
+    {
+      "file": "game/ui_kit/assets/shop_food/shop_cafe_latte.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "mode": "generate",
+      "prompt": "art/manifests/prompts/inhabited_icons_20261010.json",
+      "date": "2026-10-10",
+      "transparent_background": true,
+      "sha256": "8b718b004f87ffd33035a029cda1323900b27dce3da41b4b22121f51e13e360f"
+    },
+    {
+      "file": "game/ui_kit/assets/shop_food/shop_croissant.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "mode": "generate",
+      "prompt": "art/manifests/prompts/inhabited_bread_icons_20261010.json",
+      "date": "2026-10-10",
+      "transparent_background": true,
+      "sha256": "cccb3b2fe47f95a9e0c95678ca92af893dfbdd265933bddc8d236b18e349e590"
+    },
+    {
+      "file": "game/ui_kit/assets/shop_food/shop_baguette.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "mode": "generate",
+      "prompt": "art/manifests/prompts/inhabited_bread_icons_20261010.json",
+      "date": "2026-10-10",
+      "transparent_background": true,
+      "sha256": "b56b1ae2c15722d95eda1e89cbe6bc7b84c937f261c3cce3cb0219186174de25"
+    },
+    {
+      "file": "game/ui_kit/assets/shop_food/shop_shokupan.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "mode": "generate",
+      "prompt": "art/manifests/prompts/inhabited_bread_icons_20261010.json",
+      "date": "2026-10-10",
+      "transparent_background": true,
+      "sha256": "93bd6b952f77bc705823dd22f867bccf2f687cb6e149fcd8d7c5d75bb585e056"
+    },
+    {
+      "file": "game/ui_kit/assets/shop_food/shop_anpan.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "mode": "generate",
+      "prompt": "art/manifests/prompts/inhabited_bread_icons_20261010.json",
+      "date": "2026-10-10",
+      "transparent_background": true,
+      "sha256": "315a3be60e59d65af0c050b7eb931ee5d2cba8683a707bf2bc7f9e958b77f695"
     }
   ]
 }

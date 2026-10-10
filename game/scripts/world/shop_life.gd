@@ -93,7 +93,7 @@ func perform_work(kind: String,force: bool=false) -> bool:
 	var spec: Dictionary=InteriorBuilder.spec_for(kind)
 	var counter: Vector3=spec.origin+spec.keeper
 	if not force and main.player.global_position.distance_to(counter)<2.4:return false
-	var work_at: Vector3=spec.origin+(Vector3(3.5,0,-1.7) if kind=="bakery" else Vector3(-4.812,0,.55))
+	var work_at: Vector3=spec.origin+spec.work_at
 	var route: Array[Vector3]=NPC.MOTION_ROUTE.query(npc,npc.global_position,work_at)
 	if route.is_empty():return false
 	_working=true;_forced_work=force;_actor=npc

@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-10",
+  "tool": "built-in image_gen.imagegen",
+  "requests": [
+    {
+      "name": "B12_strawberry_slice",
+      "prompt": "Use case: stylized-concept. Asset type: single-object image-to-3D reference for a Japanese TV anime bakery game. One dessert only, isolated on a plain clean white background, three-quarter front view slightly above eye level, entire object visible with wide margins. Flat stable bottom and clear believable proportions. Clean confident anime linework, restrained hand-drawn material detail, flat local colours and crisp two-tone shading. Neutral diffuse lighting, a very small soft contact shadow. No plate, utensils, hands, label, text, watermark, dramatic perspective, photographic gloss, waxy reflections, painting or scenery. A single neat individual wedge slice of strawberry cream sponge cake, about 13 cm wide, 15 cm deep and 11 cm tall. Three pale golden sponge layers separated by white cream and visible thin strawberry layers. White whipped cream on top with two bright red strawberry halves and one small green leaf, clean triangular silhouette, cut face clearly visible toward front-left. Appetizing refined small patisserie portion, softly textured sponge but not crumbling.",
+      "output": "art/references/inhabited_places_20261010/B12_strawberry_slice_reference.png"
+    },
+    {
+      "name": "B13_chocolate_slice",
+      "prompt": "Use case: stylized-concept. Asset type: single-object image-to-3D reference for a Japanese TV anime bakery game. One dessert only, isolated on a plain clean white background, three-quarter front view slightly above eye level, entire object visible with wide margins. Flat stable bottom and clear believable proportions. Clean confident anime linework, restrained hand-drawn material detail, flat local colours and crisp two-tone shading. Neutral diffuse lighting, a very small soft contact shadow. No plate, utensils, hands, label, text, watermark, dramatic perspective, photographic gloss, waxy reflections, painting or scenery. A single elegant individual wedge slice of dark chocolate layer cake, about 12 cm wide, 14 cm deep and 10 cm tall. Three dark cocoa sponge layers separated by lighter chocolate cream; thin matte ganache cap, one curled dark chocolate shard and a tiny red raspberry on top. Deep warm cocoa brown, clear cream-layer contrast, crisp triangular cut face toward front-left. Refined artisan patisserie portion, not a whole round cake, not a cupcake.",
+      "output": "art/references/inhabited_places_20261010/B13_chocolate_slice_reference.png"
+    },
+    {
+      "name": "B14_basque_slice",
+      "prompt": "Use case: stylized-concept. Asset type: single-object image-to-3D reference for a Japanese TV anime bakery game. One dessert only, isolated on a plain clean white background, three-quarter front view slightly above eye level, entire object visible with wide margins. Flat stable bottom and clear believable proportions. Clean confident anime linework, restrained hand-drawn material detail, flat local colours and crisp two-tone shading. Neutral diffuse lighting, a very small soft contact shadow. No plate, utensils, hands, label, text, watermark, dramatic perspective, photographic gloss, waxy reflections, painting or scenery. A single thick individual wedge slice of Basque baked cheesecake, about 12 cm wide, 14 cm deep and 8 cm tall. Creamy ivory custard body with a very thin dark caramel-brown irregular baked top and slightly browned rounded back edge. The cut faces are smooth and dense with a few tiny drawn pores; no sponge layers, no chocolate layers. No garnish other than one tiny cream dot at the back. Distinct soft low wedge silhouette, an artisan Japanese bakery patisserie portion.",
+      "output": "art/references/inhabited_places_20261010/B14_basque_slice_reference.png"
+    },
+    {
+      "name": "B15_fruit_tart",
+      "prompt": "Use case: stylized-concept. Asset type: single-object image-to-3D reference for a Japanese TV anime bakery game. One dessert only, isolated on a plain clean white background, three-quarter front view slightly above eye level, entire object visible with wide margins. Flat stable bottom and clear believable proportions. Clean confident anime linework, restrained hand-drawn material detail, flat local colours and crisp two-tone shading. Neutral diffuse lighting, a very small soft contact shadow. No plate, utensils, hands, label, text, watermark, dramatic perspective, photographic gloss, waxy reflections, painting or scenery. A single small individual round seasonal fruit tart, about 12 cm diameter and 5 cm tall. Crisp fluted golden shortcrust shell, pale vanilla custard, an orderly small group of red strawberry halves, green kiwi half slices, a few deep blue blueberries and one pale peach slice on top. Clearly visible golden fluted pastry rim, low circular silhouette with fruit rising gently in the middle. Fresh colourful artisan patisserie portion; fruit has flat anime colours and two-tone shading, no wet glossy coating.",
+      "output": "art/references/inhabited_places_20261010/B15_fruit_tart_reference.png"
+    }
+  ]
+}

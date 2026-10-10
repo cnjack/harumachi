@@ -9,7 +9,7 @@ var goal_world := Vector3.ZERO
 static func bone(sk: Skeleton3D, name: String) -> int:
 	var index: int = sk.find_bone(name)
 	if index >= 0: return index
-	var imported: String = {"upper.R": "RightArm", "fore.R": "RightForeArm", "hand.R": "RightHand", "head": "Head"}.get(name, name)
+	var imported: String = {"upper.R": "RightArm", "fore.R": "RightForeArm", "hand.R": "RightHand", "head": "Head", "hips":"Hips", "thigh.L":"LeftUpLeg", "thigh.R":"RightUpLeg", "shin.L":"LeftLeg", "shin.R":"RightLeg", "foot.L":"LeftFoot", "foot.R":"RightFoot", "toe.L":"LeftToeBase", "toe.R":"RightToeBase"}.get(name, name)
 	index = sk.find_bone("mixamorig:" + imported)
 	return index if index >= 0 else sk.find_bone("mixamorig_" + imported)
 

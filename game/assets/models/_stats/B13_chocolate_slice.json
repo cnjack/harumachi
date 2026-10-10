@@ -1,0 +1,25 @@
+{
+ "id": "B13_chocolate_slice",
+ "src": "raw/inhabited_places_20261010/B13_chocolate_slice.glb",
+ "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+ "tris_src": 963256,
+ "tris": 11953,
+ "size_m": [
+  0.115,
+  0.085,
+  0.099
+ ],
+ "godot_size_m_xyz": [
+  0.115,
+  0.099,
+  0.085
+ ],
+ "tex": 1024,
+ "bytes": 462828,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 33.6,
+ "levelled": true,
+ "lean_deg": 0.12,
+ "base_frac": 0.476
+}

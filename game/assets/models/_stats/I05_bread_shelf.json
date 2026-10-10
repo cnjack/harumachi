@@ -1,25 +1,33 @@
 {
  "id": "I05_bread_shelf",
- "src": "raw/I05_bread_shelf_pix/model.glb",
- "provider": "pixal3d (v0.6)",
- "tris_src": 973138,
- "tris": 26803,
- "size_m": [
-  1.073,
-  0.623,
-  1.6
- ],
+ "src": "raw/inhabited_places_20261010/I05_bread_shelf.glb",
+ "provider": "Blender precise joinery from imagegen inhabited room references",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 576,
+ "tex": 1024,
+ "bytes": 119968,
  "godot_size_m_xyz": [
-  1.073,
-  1.6,
-  0.623
+  1.07,
+  1.51,
+  0.62
  ],
- "tex": 2048,
- "bytes": 1967488,
- "yaw_fix": 31.0,
- "level": "auto",
- "lean_src_deg": 9.3,
- "levelled": true,
- "lean_deg": 0.23,
- "base_frac": 0.758
+ "mesh_nodes": [
+  "LinenLiner_0",
+  "LinenLiner_1",
+  "LinenLiner_2",
+  "LinenLiner_3",
+  "ShelfBack",
+  "ShelfFoot",
+  "ShelfUpright",
+  "ShelfUpright.001",
+  "TrayBoard_0",
+  "TrayBoard_1",
+  "TrayBoard_2",
+  "TrayBoard_3",
+  "TrayLip_0",
+  "TrayLip_1",
+  "TrayLip_2",
+  "TrayLip_3"
+ ]
 }

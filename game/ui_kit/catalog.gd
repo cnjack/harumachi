@@ -3,6 +3,15 @@ extends RefCounted
 ## Generated metadata from source PNG alpha; regenerate with prepare_ui_kit.py.
 const VERSION := "1.0.0"
 const ENTRIES := {
+	"shop_anpan": ["shop_food/shop_anpan.png",Rect2i(0,0,1374,1145),"icon"],
+	"shop_shokupan": ["shop_food/shop_shokupan.png",Rect2i(0,0,1254,1254),"icon"],
+	"shop_baguette": ["shop_food/shop_baguette.png",Rect2i(0,0,1536,1024),"icon"],
+	"shop_croissant": ["shop_food/shop_croissant.png",Rect2i(0,0,1374,1145),"icon"],
+	"shop_cafe_latte": ["shop_food/shop_cafe_latte.png",Rect2i(0,0,1254,1254),"icon"],
+	"shop_coffee": ["shop_food/shop_coffee.png",Rect2i(0,0,1254,1254),"icon"],
+	"shop_chocolate_cake": ["shop_food/shop_chocolate_cake.png",Rect2i(0,0,1254,1254),"icon"],
+	"shop_fruit_tart": ["shop_food/shop_fruit_tart.png",Rect2i(0,0,1374,1145),"icon"],
+	"shop_basque_cheesecake": ["shop_food/shop_basque_cheesecake.png",Rect2i(0,0,1254,1254),"icon"],
 	"shop_donut": ["shop_food/shop_donut.png",Rect2i(0,0,512,512),"icon"],
 	"shop_cream_bun": ["shop_food/shop_cream_bun.png",Rect2i(0,0,512,512),"icon"],
 	"shop_sushi": ["shop_food/shop_sushi.png",Rect2i(0,0,512,512),"icon"],

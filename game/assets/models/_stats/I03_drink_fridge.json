@@ -1,20 +1,35 @@
 {
  "id": "I03_drink_fridge",
- "src": "raw/I03_drink_fridge_pix/model.glb",
- "provider": "pixal3d (v0.6)",
- "tris_src": 933965,
- "tris": 7778,
- "size_m": [
-  0.824,
-  0.765,
-  1.899
- ],
- "godot_size_m_xyz": [
-  0.824,
-  1.899,
-  0.765
- ],
+ "src": "raw/inhabited_places_20261010/I03_drink_fridge.glb",
+ "provider": "Blender precise joinery from imagegen inhabited room references",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 728,
  "tex": 1024,
- "bytes": 559528,
- "yaw_fix": 0
+ "bytes": 132744,
+ "godot_size_m_xyz": [
+  1.4,
+  1.92,
+  0.83
+ ],
+ "mesh_nodes": [
+  "ColdShelf",
+  "ColdShelf.001",
+  "ColdShelf.002",
+  "ColdShelf.003",
+  "DoorFrame",
+  "DoorFrame.001",
+  "DoorFrame.002",
+  "DoorPull",
+  "DoorPull.001",
+  "DoorRail",
+  "DoorRail.001",
+  "FridgeBase",
+  "FridgeRear",
+  "FridgeSide",
+  "FridgeSide.001",
+  "FridgeTop",
+  "GlassDoor",
+  "GlassDoor.001"
+ ]
 }

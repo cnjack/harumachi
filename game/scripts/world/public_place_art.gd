@@ -3,8 +3,8 @@ extends RefCounted
 ## Imagegen references are translated into real openings, supported objects and quiet materials.
 const TEX := "res://assets/textures/three_places/"
 const WINDOWS := {
- "workroom": [[-1.0,.7,1.7],[1.0,.0,1.7],[1.0,2.65,1.45]],
- "bakery": [[1.0,-1.8,1.35],[1.0,2.65,1.15]],
+ "workroom": [[-1.0,.7,1.7],[1.0,.0,1.7],[1.0,2.65,1.45,.85]],
+ "bakery": [[-1.0,2.65,1.6,.85],[1.0,-1.8,1.35],[1.0,2.65,1.15]],
  "store": [[1.0,1.8,1.25]],
 }
 
@@ -50,30 +50,33 @@ static func side_walls(room: InteriorBuilder,material: Material) -> void:
   var cursor: float=-half_d
   for index in openings.size():
    var opening: Array=openings[index];var start: float=opening[1]-opening[2]*.5;var finish: float=opening[1]+opening[2]*.5
-   if start>cursor:room._wall(Vector3(.16,InteriorBuilder.WALL_H,start-cursor),Vector3(side*(half_w+.08),InteriorBuilder.WALL_H*.5,(start+cursor)*.5),material)
-   room._wall(Vector3(.16,1.25,finish-start),Vector3(side*(half_w+.08),.625,(start+finish)*.5),material)
-   room._wall(Vector3(.16,.35,finish-start),Vector3(side*(half_w+.08),2.625,(start+finish)*.5),material)
-   _window(room,side,float(opening[1]),float(opening[2]),index)
+   if start>cursor:room._wall(Vector3(.16,room.ceiling_height,start-cursor),Vector3(side*(half_w+.08),room.ceiling_height*.5,(start+cursor)*.5),material)
+   var sill: float=float(opening[3]) if opening.size()>3 else 1.25
+   var head: float=2.45
+   room._wall(Vector3(.16,sill,finish-start),Vector3(side*(half_w+.08),sill*.5,(start+finish)*.5),material)
+   room._wall(Vector3(.16,room.ceiling_height-head,finish-start),Vector3(side*(half_w+.08),(head+room.ceiling_height)*.5,(start+finish)*.5),material)
+   _window(room,side,float(opening[1]),float(opening[2]),index,sill,head)
    cursor=finish
-  if cursor<half_d:room._wall(Vector3(.16,InteriorBuilder.WALL_H,half_d-cursor),Vector3(side*(half_w+.08),InteriorBuilder.WALL_H*.5,(cursor+half_d)*.5),material)
+  if cursor<half_d:room._wall(Vector3(.16,room.ceiling_height,half_d-cursor),Vector3(side*(half_w+.08),room.ceiling_height*.5,(cursor+half_d)*.5),material)
 
-static func _window(room: InteriorBuilder,side: float,z: float,width: float,index: int) -> void:
+static func _window(room: InteriorBuilder,side: float,z: float,width: float,index: int,sill: float,head: float) -> void:
  var root:=Node3D.new();root.name="PublicWindow_%s_%d"%["West" if side<0 else "East",index];room.add_child(root)
- root.position=Vector3(side*(float(room.spec.size.x)*.5+.02),1.85,z);root.rotation.y=-side*PI*.5
- root.set_meta("window_aperture",Vector2(width,1.2))
+ var height: float=head-sill
+ root.position=Vector3(side*(float(room.spec.size.x)*.5+.02),(head+sill)*.5,z);root.rotation.y=-side*PI*.5
+ root.set_meta("window_aperture",Vector2(width,height))
  var timber:=wood(Color(.53,.37,.22))
- for x: float in [-width*.5,width*.5]:box(root,"Jamb_%d"%int(x*100),Vector3(.065,1.28,.18),Vector3(x,0,0),timber)
- for y: float in [-.60,.60]:box(root,"Rail_%d"%int(y*100),Vector3(width+.13,.07,.18),Vector3(0,y,0),timber)
- box(root,"Sill",Vector3(width+.20,.075,.28),Vector3(0,-.64,.06),wood())
- for bar in 3:box(root,"Mullion_%d"%bar,Vector3(.027,1.15,.07),Vector3(-width*.5+width*float(bar+1)/4.0,0,.035),timber)
+ for x: float in [-width*.5,width*.5]:box(root,"Jamb_%d"%int(x*100),Vector3(.065,height+.08,.18),Vector3(x,0,0),timber)
+ for y: float in [-height*.5,height*.5]:box(root,"Rail_%d"%int(y*100),Vector3(width+.13,.07,.18),Vector3(0,y,0),timber)
+ box(root,"Sill",Vector3(width+.20,.075,.28),Vector3(0,-height*.5-.04,.06),wood())
+ for bar in 3:box(root,"Mullion_%d"%bar,Vector3(.027,height-.05,.07),Vector3(-width*.5+width*float(bar+1)/4.0,0,.035),timber)
  box(root,"Crossbar",Vector3(width,.027,.07),Vector3(0,-.08,.035),timber)
- var quad:=QuadMesh.new();quad.size=Vector2(width,1.2)
+ var quad:=QuadMesh.new();quad.size=Vector2(width,height)
  var view:=MeshInstance3D.new();view.name="SummerView";view.mesh=quad;view.position.z=-.16;view.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
  var image:=ShaderMaterial.new();image.shader=load("res://shaders/public_window_view.gdshader");image.set_shader_parameter("view_tex",load(TEX+"summer_window_view.png"));image.set_shader_parameter("daylight",1.0);view.material_override=image;root.add_child(view)
  var glass:=MeshInstance3D.new();glass.name="Glass";glass.mesh=quad;glass.position.z=.018;glass.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
  var clear:=matte(Color(.72,.85,.91,.07));clear.transparency=BaseMaterial3D.TRANSPARENCY_ALPHA;clear.cull_mode=BaseMaterial3D.CULL_DISABLED;glass.material_override=clear;root.add_child(glass)
  # Curtain stays at the top so the real opening and its cast lattice shadows remain visible.
- box(root,"LinenValance",Vector3(width*.98,.14,.035),Vector3(0,.48,.075),canvas(Color(.88,.89,.79)))
+ box(root,"LinenValance",Vector3(width*.98,.14,.035),Vector3(0,height*.5-.12,.075),canvas(Color(.88,.89,.79)))
 
 static func set_evening(room: InteriorBuilder,_evening: bool) -> void:
  for view: MeshInstance3D in room.find_children("SummerView","MeshInstance3D",true,false):
@@ -138,64 +141,59 @@ static func build(room: InteriorBuilder) -> void:
  if room.kind=="workroom":_workroom(room,root)
  elif room.kind=="bakery":_bakery(room,root)
  else:_store(room,root)
+ PublicRoomLife.build(room,root)
 
 static func _workroom(room: InteriorBuilder,root: Node3D) -> void:
- var archive:=bench(root,"ArchiveWorkbench",Vector3(-3.45,0,-4.02),2.15,.70)
- folded_cloth(root,"IndigoArchiveCloth",Vector3(-3.95,.78,-4.02),Color(.23,.34,.43),archive)
- folded_cloth(root,"RustArchiveCloth",Vector3(-3.42,.78,-4.02),Color(.65,.37,.26),archive)
- prop(room,root,"W11_ceramic_set",Vector3(-2.77,.78,-4.02),.20,archive)
+ var archive:=bench(root,"ArchiveWorkbench",Vector3(-4.0,0,-4.02),1.9,.70)
+ folded_cloth(root,"IndigoArchiveCloth",Vector3(-4.45,.78,-4.02),Color(.23,.34,.43),archive)
+ folded_cloth(root,"RustArchiveCloth",Vector3(-3.92,.78,-4.02),Color(.65,.37,.26),archive)
+ prop(room,root,"W11_ceramic_set",Vector3(-3.32,.78,-4.02),.20,archive)
  for index in 3:
-  var storage:=box(root,"ArchiveDrawer_%d"%index,Vector3(.58,.26,.56),Vector3(-4.12+index*.66,.3525,-4.02),matte(Color(.64,.51,.35)))
+  var storage:=box(root,"ArchiveDrawer_%d"%index,Vector3(.55,.26,.56),Vector3(-4.64+index*.62,.3525,-4.02),matte(Color(.64,.51,.35)))
   supported(storage,root.get_node("ArchiveWorkbenchLowerBoard"))
   ClearSignage.paper_tag(storage,"Label",["试样","布料","修补"][index],Vector3(0,0,.288),Vector2(.30,.11),0,.06)
- var side:=bench(root,"PaperBench",Vector3(-5.63,0,1.52),.60,2.65)
- for index in 3:
-  var roll:=cylinder(root,"WashiRoll_%d"%index,Vector3(-5.65,.78+(.36+index*.04)*.5, .64+index*.27),.065,.36+index*.04,matte(Color(.91,.86,.70)))
-  supported(roll,side)
- prop(room,root,"A15_potted_plant",Vector3(-5.62,.78,2.47),.46,side)
  sketch(root,"CraftJointStudy",Vector3(4.5,1.93,-4.38),Vector2(.78,.70),0)
- sketch(root,"FestivalClothStudy",Vector3(5.55,1.88,1.35),Vector2(.66,.63),2,-PI*.5)
+ sketch(root,"FestivalClothStudy",Vector3(5.87,2.65,1.35),Vector2(.66,.63),2,-PI*.5)
  # Keep the centre of the actual table empty for RepresentativeLantern and player work.
  var table: Node3D=room.pieces[0]
- var top: float=WorldBuilder.surface_height(table,Vector2(room.origin.x,room.origin.z)+Vector2(-1.78,-.4),2.0)
+ var top: float=WorldBuilder.surface_height(table,Vector2(room.origin.x,room.origin.z)+Vector2(-3.38,-1.5),2.0)
  if is_finite(top):
-  var cutting:=box(root,"CuttingMat",Vector3(.33,.008,.30),Vector3(-1.78,top+.004,-.25),canvas(Color(.27,.40,.34)));supported(cutting,table)
-  for index in 4:box(root,"BambooOffcut_%d"%index,Vector3(.016,.008,.20),Vector3(-1.88+index*.048,top+.012,-.25),wood(Color(.77,.67,.42)))
+  var cutting:=box(root,"CuttingMat",Vector3(.33,.008,.30),Vector3(-3.38,top+.004,-1.35),canvas(Color(.27,.40,.34)));supported(cutting,table)
+  for index in 4:box(root,"BambooOffcut_%d"%index,Vector3(.016,.008,.20),Vector3(-3.48+index*.048,top+.012,-1.35),wood(Color(.77,.67,.42)))
  var supply:=room.get_node("RoomIdentity/CommunityMaterialChest") as Node3D
  var chest_top: float=WorldBuilder.surface_height(supply,Vector2(room.origin.x,room.origin.z)+Vector2(4.7,-3.67),2.0)
  if is_finite(chest_top):folded_cloth(root,"RetainedFabric",Vector3(4.7,chest_top,-3.67),Color(.36,.43,.48),supply)
 
 static func _bakery(room: InteriorBuilder,root: Node3D) -> void:
- var prep:=bench(root,"PrepShelf",Vector3(-1.52,0,-3.28),.60,.55,.84)
- prop(room,root,"W19_flour_bag",Vector3(-1.52,.84,-3.28),.45,prep)
- var shelf:=bench(root,"FlourStorage",Vector3(-2.18,0,-3.65),.60,.60,.36)
- prop(room,root,"W19_flour_bag",Vector3(-2.18,.36,-3.65),.46,shelf)
+ var prep:=bench(root,"PrepShelf",Vector3(-2.05,0,-3.65),.90,.60,.84)
+ prop(room,root,"W19_flour_bag",Vector3(-2.05,.84,-3.65),.45,prep)
+ prop(room,root,"W19_flour_bag",Vector3(-2.05,.2225,-3.65),.32,root.get_node("PrepShelfLowerBoard"))
  sketch(root,"BreadCraftSketch",Vector3(-5.39,2.0,1.25),Vector2(.64,.61),2,PI*.5)
  # Cloth is draped over the existing preparation surface; all added pieces have real support.
  var prep_top: float=.89
- var support: Node3D=box(root,"KneadingBoard",Vector3(.48,.018,.46),Vector3(.10,prep_top+.009,-2.93),wood(Color(.79,.62,.40)))
- folded_cloth(root,"BakingTowel",Vector3(.10,prep_top+.018,-2.93),Color(.92,.81,.70),support)
+ var support: Node3D=box(root,"KneadingBoard",Vector3(.48,.018,.46),Vector3(1.85,prep_top+.009,-3.2),wood(Color(.79,.62,.40)))
+ folded_cloth(root,"BakingTowel",Vector3(1.85,prep_top+.018,-3.2),Color(.92,.81,.70),support)
  var ledge:=bench(root,"HerbLedge",Vector3(5.16,0,2.95),.54,.62,.84)
  prop(room,root,"A15_potted_plant",Vector3(5.16,.84,2.95),.42,ledge)
  var counter: Node3D=room.pieces[3]
- var counter_top: float=WorldBuilder.surface_height(counter,Vector2(room.origin.x,room.origin.z)+Vector2(3.40,.53),2.0)
+ var counter_top: float=WorldBuilder.surface_height(counter,Vector2(room.origin.x,room.origin.z)+Vector2(2.80,.10),2.0)
  if is_finite(counter_top):
-  var serving:=tray(root,"CounterServingTray",Vector3(3.40,counter_top,.53),Vector2(.40,.29),counter)
-  prop(room,root,"B02_croissant",Vector3(3.40,counter_top+.025,.53),.11,serving)
+  var serving:=tray(root,"CounterServingTray",Vector3(2.80,counter_top,.10),Vector2(.40,.29),counter)
+  prop(room,root,"B02_croissant",Vector3(2.80,counter_top+.025,.10),.11,serving)
 
 static func _store(room: InteriorBuilder,root: Node3D) -> void:
- var wrap:=bench(root,"WrappingBench",Vector3(-5.08,0,3.12),.58,.68,.83)
- var sheet:=box(root,"BrownWrappingPaper",Vector3(.43,.009,.49),Vector3(-5.08,.8345,3.12),canvas(Color(.69,.51,.31)));supported(sheet,wrap)
+ var wrap:=bench(root,"WrappingBench",Vector3(-4.35,0,2.3),.58,.68,.83)
+ var sheet:=box(root,"BrownWrappingPaper",Vector3(.43,.009,.49),Vector3(-4.35,.8345,2.3),canvas(Color(.69,.51,.31)));supported(sheet,wrap)
  var counter: Node3D=room.pieces[0]
- var counter_top: float=WorldBuilder.surface_height(counter,Vector2(room.origin.x,room.origin.z)+Vector2(-3.62,2.4),2.0)
+ var counter_top: float=WorldBuilder.surface_height(counter,Vector2(room.origin.x,room.origin.z)+Vector2(-4.10,.10),2.0)
  if is_finite(counter_top):
-  var paper:=box(root,"CounterWrappingPaper",Vector3(.39,.01,.32),Vector3(-3.62,counter_top+.005,2.4),canvas(Color(.76,.60,.39)));supported(paper,counter)
+  var paper:=box(root,"CounterWrappingPaper",Vector3(.39,.01,.32),Vector3(-4.10,counter_top+.005,.10),canvas(Color(.76,.60,.39)));supported(paper,counter)
  var plant_stand:=bench(root,"PantryPlantStand",Vector3(-4.86,0,-3.60),.47,.48,.70)
  prop(room,root,"A15_potted_plant",Vector3(-4.86,.70,-3.60),.48,plant_stand)
  folded_cloth(root,"StoredApron",Vector3(-4.86,.20+.0225,-3.60),Color(.31,.41,.38),plant_stand.get_parent().get_node("PantryPlantStandLowerBoard"))
  var boxes:=bench(root,"BasketStation",Vector3(5.12,0,3.11),.48,.61,.48)
  prop(room,root,"W21_tea_tin",Vector3(5.12,.48,3.11),.24,boxes)
- ClearSignage.paper_tag(root,"WrappingHint","纸袋与包纸",Vector3(-5.39,1.35,3.12),Vector2(.78,.16),PI*.5,.08)
+ ClearSignage.paper_tag(root,"WrappingHint","纸袋与包纸",Vector3(-5.39,1.35,2.3),Vector2(.78,.16),PI*.5,.08)
 
 static func rod(parent: Node3D,label: String,from: Vector3,to: Vector3,radius: float,material: Material) -> MeshInstance3D:
  var mesh:=cylinder(parent,label,(from+to)*.5,radius,from.distance_to(to),material)

@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-10",
+  "tool": "built-in image_gen.imagegen",
+  "requests": [
+    {
+      "name": "community_living_layout",
+      "shot": "workroom_overview",
+      "plan": "community",
+      "prompt": "Use case: precise-object-edit. Asset type: new spatial-design paintover for an actual playable Japanese TV anime village interior. Input image 1 is the existing GAME SCREENSHOT to redesign. Input image 2 is a SUPPORTING FUNCTIONAL ZONING MAP: interpret the labelled zones into real furniture and activity groups; do not draw the map into the room. Keep the room's footprint, entrance side/location, cutaway camera, metre scale and existing character identities. You MAY move major furniture, add appropriate fixtures and add windows. Prioritize a believable place people use, coherent furniture groups, clear visual focus and reasons to linger. Clean confident anime linework, flat local colours, crisp two-tone shadows, warm summer daylight and cool lavender shade. Not photorealistic, not an oil painting, no UI, no watermark, no invented readable text. No ceilings covering the view. Redesign this 12 by 9 metre community centre as a modest Japanese neighborhood living room and shared activity hall. At front-left a real communal table with four to six comfortable simple timber chairs, a small tea tray, opened local newsletter and a partly completed shared craft. Front-right by the windows a quiet reading nook with two low armchairs, a small round table, low bookcase, books and a soft standing lamp. At the rear-left group the craft worktable, archive storage, labelled material baskets and washi/bamboo supplies. A compact tea and washing counter at the back includes a hot-water pot, cups, sink and towel. Keep the existing lantern trial frame in the rear-right activity bay as one activity among several, with a modest 3.2 metre hall height so it fits below the ceiling. Near the entrance place a coherent notice/old-photo display and umbrella/coat storage, and show neatly stacked spare folding chairs and cleaning cupboard along a wall. A few personal traces, one pulled-back chair, folded cloth and seasonal flowers show regular use. Retain usable central flexible space, but avoid the enormous purposeless empty foreground. The room should invite a player to sit, read, drink tea, discover local memories and take part in community life.",
+      "references": [
+        {
+          "path": "evidence/inhabited_places_20261010/current-shots/workroom_overview.png",
+          "role": "edit target"
+        },
+        {
+          "path": "art/references/inhabited_places_20261010/community_zoning.png",
+          "role": "functional zoning guide"
+        }
+      ],
+      "output": "art/references/inhabited_places_20261010/community_living_layout.png"
+    },
+    {
+      "name": "bakery_cafe_layout",
+      "shot": "bakery_in",
+      "plan": "bakery",
+      "prompt": "Use case: precise-object-edit. Asset type: new spatial-design paintover for an actual playable Japanese TV anime village interior. Input image 1 is the existing GAME SCREENSHOT to redesign. Input image 2 is a SUPPORTING FUNCTIONAL ZONING MAP: interpret the labelled zones into real furniture and activity groups; do not draw the map into the room. Keep the room's footprint, entrance side/location, cutaway camera, metre scale and existing character identities. You MAY move major furniture, add appropriate fixtures and add windows. Prioritize a believable place people use, coherent furniture groups, clear visual focus and reasons to linger. Clean confident anime linework, flat local colours, crisp two-tone shadows, warm summer daylight and cool lavender shade. Not photorealistic, not an oil painting, no UI, no watermark, no invented readable text. No ceilings covering the view. Redesign this 11 by 8 metre bakery into an intimate refined neighborhood bakery-cafe with cream plaster, pale sage tile, warm walnut/oak, linen and restrained brass accents. Left-side bread shelves and a modest centre-left daily-bake display use tidy wicker or timber trays: grouped croissants, proper long baguettes, shokupan loaves, soft buns and pastries, with several pieces of each and natural small gaps. Join a clear refrigerated cake showcase to the checkout and pickup counter as one coherent service line across the middle-right. The case holds visually distinct strawberry cream slices, dark chocolate layer slices, caramel-topped Basque cheesecake wedges and small colourful seasonal fruit tarts on matching paper/ceramic plates. Rear-right a complete coffee bar has a compact two-group espresso machine, grinder with beans, milk pitcher, cups, saucers, a small sink and neatly stored coffee supplies. Keep baking preparation and oven together behind the service area, with an honest work surface and ingredients. Front-left add a new side window and two small charming two-person cafe tables with chairs, enough space to pull chairs back, and a small seasonal flower vase. Remove the indoor bread cart and freestanding sign from the customer seating area; use a real counter-mounted menu instead. Keep the entrance and natural browse/order/pickup loop open. Same chef and player, reposition player near the entrance if necessary. Welcoming artisan bakery, not a factory, sparse furniture showroom or chain supermarket.",
+      "references": [
+        {
+          "path": "evidence/inhabited_places_20261010/current-shots/bakery_in.png",
+          "role": "edit target"
+        },
+        {
+          "path": "art/references/inhabited_places_20261010/bakery_zoning.png",
+          "role": "functional zoning guide"
+        }
+      ],
+      "output": "art/references/inhabited_places_20261010/bakery_cafe_layout.png"
+    },
+    {
+      "name": "grocer_grouped_layout",
+      "shot": "store_in",
+      "plan": "store",
+      "prompt": "Use case: precise-object-edit. Asset type: new spatial-design paintover for an actual playable Japanese TV anime village interior. Input image 1 is the existing GAME SCREENSHOT to redesign. Input image 2 is a SUPPORTING FUNCTIONAL ZONING MAP: interpret the labelled zones into real furniture and activity groups; do not draw the map into the room. Keep the room's footprint, entrance side/location, cutaway camera, metre scale and existing character identities. You MAY move major furniture, add appropriate fixtures and add windows. Prioritize a believable place people use, coherent furniture groups, clear visual focus and reasons to linger. Clean confident anime linework, flat local colours, crisp two-tone shadows, warm summer daylight and cool lavender shade. Not photorealistic, not an oil painting, no UI, no watermark, no invented readable text. No ceilings covering the view. Redesign this 11 by 8 metre family general store as a believable well-loved neighborhood grocer. Move checkout and wrapping into a coherent left-side service area with sight of the entrance. Align the two central wooden gondolas into an intentional tidy shop arrangement, rather than randomly staggering them. One is rice, flour and seasonings; the other is tea, shelf-stable drinks and snacks. Fill shelf space in clear repeated SKU groups with fronts facing shoppers and a second row of stock behind, varied sensible heights and several units per group; no random mixture of single milk cartons, teapots, eggs and soy bottles on the same row. Heavy rice/flour lower, small jars and tea at hand/eye height, ceramics and gardening goods grouped on a dedicated wall. Refrigerated milk and eggs belong together in a genuine glazed cold cabinet at rear-right, with the existing freezer nearby. Keep fresh vegetables and prepared food as attractive low entry-side groups with wooden crates, baskets and visible native price strips. Back-wall pantry stock, folded paper bags, a stool, calendar and a quietly running CRT suggest the shopkeeper's daily work. Keep warm worn timber and sage/ivory identity, not shiny modern supermarket fittings. Density should feel stocked and browseable without clutter, with coherent category blocks rather than one object of every type.",
+      "references": [
+        {
+          "path": "evidence/inhabited_places_20261010/current-shots/store_in.png",
+          "role": "edit target"
+        },
+        {
+          "path": "art/references/inhabited_places_20261010/store_zoning.png",
+          "role": "functional zoning guide"
+        }
+      ],
+      "output": "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+    }
+  ]
+}

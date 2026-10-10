@@ -15,6 +15,8 @@ var model: Node3D
 var model_root := Node3D.new()
 var story: Node          # provides prompt_for(id) -> String
 var target: Interactable
+var seated := false
+var seat_target: Interactable
 var frozen := false
 var auto_move := Vector3.ZERO   # autoplay: world-space direction, overrides keyboard input
 var auto_run := false
@@ -99,6 +101,9 @@ func face_towards(p: Vector3) -> void:
 
 func _physics_process(delta: float) -> void:
 	if rig!=null and is_instance_valid(rig.cam):ears.rotation.y=rig.cam.global_rotation.y
+	if seated:
+		velocity=Vector3.ZERO;_speed_now=0.0;_physics_position=global_position
+		_animate(delta);_update_target();return
 	if not global_position.is_equal_approx(_physics_position):
 		_skip_snap_next = true
 		reset_physics_interpolation()
@@ -158,6 +163,9 @@ func _animate(delta: float) -> void:
 
 
 func _update_target() -> void:
+	if seated:
+		if target!=seat_target:target=seat_target;target_changed.emit(target)
+		return
 	var best: Interactable = null
 	var best_score := INF
 	if not frozen and not GameState.input_locked():

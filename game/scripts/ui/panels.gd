@@ -40,7 +40,7 @@ static func kind(iid: String) -> String:
 		return "crop"
 	if it.get("fish",false):
 		return "fish"
-	if it.has("dish") or iid in ["onigiri", "melon_pan", "candy_apple"]:
+	if it.has("dish") or bool(it.get("drink",false)) or iid in ["onigiri", "melon_pan", "candy_apple"]:
 		return "dish"
 	return "material"
 

@@ -1,0 +1,945 @@
+{
+  "date": "2026-10-10",
+  "provider": "Built-in imagegen layouts and dessert references; Pixal3D dessert scans; Blender precise furniture and packaging",
+  "new_hyper3d_generations": 0,
+  "new_hyper3d_credits": 0,
+  "assets": {
+    "I04_shop_counter": {
+      "game": "game/assets/models/I04_shop_counter.glb",
+      "sha256": "0be99ecc76a3894cd440372d99ef8854c91dfb26b210d2a690d3e7c2140ad921",
+      "raw": "art/models/raw/inhabited_places_20261010/I04_shop_counter.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/bakery_cafe_layout.png",
+        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/I04_shop_counter.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 1024,
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/bakery_cafe_layout.png",
+          "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "I04_shop_counter",
+        "src": "raw/inhabited_places_20261010/I04_shop_counter.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 572,
+        "tex": 1024,
+        "bytes": 118328,
+        "godot_size_m_xyz": [
+          2.11,
+          1.22,
+          1.1975
+        ],
+        "mesh_nodes": [
+          "CounterBody",
+          "CounterTop",
+          "Display",
+          "FootRail",
+          "FrontPanel",
+          "FrontPanel.001",
+          "FrontPanel.002",
+          "Register",
+          "RegisterBase",
+          "RegisterKey",
+          "RegisterKey.001",
+          "RegisterKey.002",
+          "RegisterKey.003"
+        ]
+      }
+    },
+    "I05_bread_shelf": {
+      "game": "game/assets/models/I05_bread_shelf.glb",
+      "sha256": "cc2eb99eb1e28e6e98798581e08cdb0fd9ad49f8fdf0a9210ed4e7d6f4ead8d9",
+      "raw": "art/models/raw/inhabited_places_20261010/I05_bread_shelf.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/bakery_cafe_layout.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/I05_bread_shelf.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 1024,
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/bakery_cafe_layout.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "I05_bread_shelf",
+        "src": "raw/inhabited_places_20261010/I05_bread_shelf.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 576,
+        "tex": 1024,
+        "bytes": 119968,
+        "godot_size_m_xyz": [
+          1.07,
+          1.51,
+          0.62
+        ],
+        "mesh_nodes": [
+          "LinenLiner_0",
+          "LinenLiner_1",
+          "LinenLiner_2",
+          "LinenLiner_3",
+          "ShelfBack",
+          "ShelfFoot",
+          "ShelfUpright",
+          "ShelfUpright.001",
+          "TrayBoard_0",
+          "TrayBoard_1",
+          "TrayBoard_2",
+          "TrayBoard_3",
+          "TrayLip_0",
+          "TrayLip_1",
+          "TrayLip_2",
+          "TrayLip_3"
+        ]
+      }
+    },
+    "W17_display_shelf": {
+      "game": "game/assets/models/W17_display_shelf.glb",
+      "sha256": "f596a7a84b303d564d502126adddb53a1303dfda8584ee0c4e87c64128246a42",
+      "raw": "art/models/raw/inhabited_places_20261010/W17_display_shelf.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/bakery_cafe_layout.png",
+        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/W17_display_shelf.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 1024,
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/bakery_cafe_layout.png",
+          "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "W17_display_shelf",
+        "src": "raw/inhabited_places_20261010/W17_display_shelf.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 476,
+        "tex": 1024,
+        "bytes": 110692,
+        "godot_size_m_xyz": [
+          1.09,
+          1.25,
+          0.5
+        ],
+        "mesh_nodes": [
+          "LinenLiner_0",
+          "LinenLiner_1",
+          "LinenLiner_2",
+          "ShelfBack",
+          "ShelfFoot",
+          "ShelfUpright",
+          "ShelfUpright.001",
+          "TrayBoard_0",
+          "TrayBoard_1",
+          "TrayBoard_2",
+          "TrayLip_0",
+          "TrayLip_1",
+          "TrayLip_2"
+        ]
+      }
+    },
+    "P_community_table": {
+      "game": "game/assets/models/P_community_table.glb",
+      "sha256": "6de60883fc611afd633d9ff82b4d56ab5bc1cc7400fdf1b820b534cd7048dc41",
+      "raw": "art/models/raw/inhabited_places_20261010/P_community_table.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/community_living_layout.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/P_community_table.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 1024,
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/community_living_layout.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "P_community_table",
+        "src": "raw/inhabited_places_20261010/P_community_table.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 1804,
+        "tex": 1024,
+        "bytes": 226384,
+        "godot_size_m_xyz": [
+          2.05,
+          0.89,
+          2.235
+        ],
+        "mesh_nodes": [
+          "ChairBackBack",
+          "ChairBackBack.001",
+          "ChairBackBack.002",
+          "ChairBackLeg",
+          "ChairBackLeg.001",
+          "ChairBackLeg.002",
+          "ChairBackLeg.003",
+          "ChairBackLeg.004",
+          "ChairBackLeg.005",
+          "ChairBackLeg.006",
+          "ChairBackLeg.007",
+          "ChairBackLeg.008",
+          "ChairBackLeg.009",
+          "ChairBackLeg.010",
+          "ChairBackLeg.011",
+          "ChairBackSeat",
+          "ChairBackSeat.001",
+          "ChairBackSeat.002",
+          "ChairFrontBack",
+          "ChairFrontBack.001",
+          "ChairFrontBack.002",
+          "ChairFrontLeg",
+          "ChairFrontLeg.001",
+          "ChairFrontLeg.002",
+          "ChairFrontLeg.003",
+          "ChairFrontLeg.004",
+          "ChairFrontLeg.005",
+          "ChairFrontLeg.006",
+          "ChairFrontLeg.007",
+          "ChairFrontLeg.008",
+          "ChairFrontLeg.009",
+          "ChairFrontLeg.010",
+          "ChairFrontLeg.011",
+          "ChairFrontSeat",
+          "ChairFrontSeat.001",
+          "ChairFrontSeat.002",
+          "SharedLeg",
+          "SharedLeg.001",
+          "SharedLeg.002",
+          "SharedLeg.003",
+          "SharedTop"
+        ]
+      }
+    },
+    "P_cafe_table": {
+      "game": "game/assets/models/P_cafe_table.glb",
+      "sha256": "acf6ced3dfc97806c2e9cc05ea3927f9fa960d8199609520cffac633fd0d571a",
+      "raw": "art/models/raw/inhabited_places_20261010/P_cafe_table.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/bakery_cafe_layout.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/P_cafe_table.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 1024,
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/bakery_cafe_layout.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "P_cafe_table",
+        "src": "raw/inhabited_places_20261010/P_cafe_table.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 868,
+        "tex": 1024,
+        "bytes": 135436,
+        "godot_size_m_xyz": [
+          1.895,
+          0.89,
+          0.72
+        ],
+        "mesh_nodes": [
+          "ChairLeftBack",
+          "ChairLeftLeg",
+          "ChairLeftLeg.001",
+          "ChairLeftLeg.002",
+          "ChairLeftLeg.003",
+          "ChairLeftSeat",
+          "ChairRightBack",
+          "ChairRightLeg",
+          "ChairRightLeg.001",
+          "ChairRightLeg.002",
+          "ChairRightLeg.003",
+          "ChairRightSeat",
+          "Foot",
+          "Pedestal",
+          "RoundTop"
+        ]
+      }
+    },
+    "P_reading_chair": {
+      "game": "game/assets/models/P_reading_chair.glb",
+      "sha256": "b3ef52fff75115490b43bab9c2e9984b02a71949bd0d3acf64695a46d43e2836",
+      "raw": "art/models/raw/inhabited_places_20261010/P_reading_chair.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/community_living_layout.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/P_reading_chair.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 1024,
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/community_living_layout.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "P_reading_chair",
+        "src": "raw/inhabited_places_20261010/P_reading_chair.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 440,
+        "tex": 1024,
+        "bytes": 106308,
+        "godot_size_m_xyz": [
+          0.605,
+          0.89,
+          0.51
+        ],
+        "mesh_nodes": [
+          "ReadingChairArm",
+          "ReadingChairArm.001",
+          "ReadingChairBack",
+          "ReadingChairLeg",
+          "ReadingChairLeg.001",
+          "ReadingChairLeg.002",
+          "ReadingChairLeg.003",
+          "ReadingChairPost",
+          "ReadingChairPost.001",
+          "ReadingChairSeat"
+        ]
+      }
+    },
+    "P_low_bookcase": {
+      "game": "game/assets/models/P_low_bookcase.glb",
+      "sha256": "4f3c1f58698caaaef92bedffb8b50f8e57019831473ee57642541c1c77043334",
+      "raw": "art/models/raw/inhabited_places_20261010/P_low_bookcase.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/community_living_layout.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/P_low_bookcase.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 1024,
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/community_living_layout.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "P_low_bookcase",
+        "src": "raw/inhabited_places_20261010/P_low_bookcase.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 1848,
+        "tex": 1024,
+        "bytes": 229556,
+        "godot_size_m_xyz": [
+          1.35,
+          1.09,
+          0.34
+        ],
+        "mesh_nodes": [
+          "Book_0_0",
+          "Book_0_1",
+          "Book_0_10",
+          "Book_0_11",
+          "Book_0_12",
+          "Book_0_13",
+          "Book_0_14",
+          "Book_0_15",
+          "Book_0_2",
+          "Book_0_3",
+          "Book_0_4",
+          "Book_0_5",
+          "Book_0_6",
+          "Book_0_7",
+          "Book_0_8",
+          "Book_0_9",
+          "Book_1_0",
+          "Book_1_1",
+          "Book_1_10",
+          "Book_1_11",
+          "Book_1_12",
+          "Book_1_13",
+          "Book_1_14",
+          "Book_1_15",
+          "Book_1_2",
+          "Book_1_3",
+          "Book_1_4",
+          "Book_1_5",
+          "Book_1_6",
+          "Book_1_7",
+          "Book_1_8",
+          "Book_1_9",
+          "ShelfBack",
+          "ShelfFoot",
+          "ShelfUpright",
+          "ShelfUpright.001",
+          "TrayBoard_0",
+          "TrayBoard_1",
+          "TrayBoard_2",
+          "TrayLip_0",
+          "TrayLip_1",
+          "TrayLip_2"
+        ]
+      }
+    },
+    "P_coffee_station": {
+      "game": "game/assets/models/P_coffee_station.glb",
+      "sha256": "1bd9524e2f2644620b5e9cdb6b92282d6bcb464e3076d290b4f4e9500574dd8b",
+      "raw": "art/models/raw/inhabited_places_20261010/P_coffee_station.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/bakery_cafe_layout.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/P_coffee_station.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 1024,
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/bakery_cafe_layout.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "P_coffee_station",
+        "src": "raw/inhabited_places_20261010/P_coffee_station.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 2288,
+        "tex": 1024,
+        "bytes": 222216,
+        "godot_size_m_xyz": [
+          1.0,
+          1.326,
+          0.685
+        ],
+        "mesh_nodes": [
+          "BeanHopper",
+          "Cabinet",
+          "ControlFace",
+          "Dial",
+          "Dial.001",
+          "Door",
+          "Door.001",
+          "DoorHandle",
+          "DoorHandle.001",
+          "DripTray",
+          "GrinderBase",
+          "GrinderBody",
+          "GroupHead",
+          "GroupHead.001",
+          "HopperCap",
+          "MachineBody",
+          "MachineSide",
+          "Pitcher",
+          "Portafilter",
+          "Portafilter.001",
+          "SteamWand",
+          "WarmCup0",
+          "WarmCup0Coffee",
+          "WarmCup0Handle",
+          "WarmCup1",
+          "WarmCup1Coffee",
+          "WarmCup1Handle",
+          "WarmCup2",
+          "WarmCup2Coffee",
+          "WarmCup2Handle",
+          "Worktop"
+        ]
+      }
+    },
+    "I03_drink_fridge": {
+      "game": "game/assets/models/I03_drink_fridge.glb",
+      "sha256": "216bfe17d77509f21b9ae51012ffc3c61c50b991d515a03cf27d0e30a8944935",
+      "raw": "art/models/raw/inhabited_places_20261010/I03_drink_fridge.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/I03_drink_fridge.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 1024,
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "I03_drink_fridge",
+        "src": "raw/inhabited_places_20261010/I03_drink_fridge.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 728,
+        "tex": 1024,
+        "bytes": 132744,
+        "godot_size_m_xyz": [
+          1.4,
+          1.92,
+          0.83
+        ],
+        "mesh_nodes": [
+          "ColdShelf",
+          "ColdShelf.001",
+          "ColdShelf.002",
+          "ColdShelf.003",
+          "DoorFrame",
+          "DoorFrame.001",
+          "DoorFrame.002",
+          "DoorPull",
+          "DoorPull.001",
+          "DoorRail",
+          "DoorRail.001",
+          "FridgeBase",
+          "FridgeRear",
+          "FridgeSide",
+          "FridgeSide.001",
+          "FridgeTop",
+          "GlassDoor",
+          "GlassDoor.001"
+        ]
+      }
+    },
+    "B12_strawberry_slice": {
+      "game": "game/assets/models/B12_strawberry_slice.glb",
+      "sha256": "f949d8b864b2d6294c31aa30dd215408d857ced73c93fd45230e2a9bc07909f3",
+      "raw": "art/models/raw/inhabited_places_20261010/B12_strawberry_slice.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/B12_strawberry_slice_reference.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/B12_strawberry_slice.glb",
+        "fit": "h",
+        "size": 0.11,
+        "yaw": 0,
+        "level": true,
+        "tris": 12000,
+        "tex": 1024,
+        "rebake": true,
+        "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/B12_strawberry_slice_reference.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "B12_strawberry_slice",
+        "src": "raw/inhabited_places_20261010/B12_strawberry_slice.glb",
+        "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+        "tris_src": 995756,
+        "tris": 11949,
+        "size_m": [
+          0.114,
+          0.077,
+          0.109
+        ],
+        "godot_size_m_xyz": [
+          0.114,
+          0.109,
+          0.077
+        ],
+        "tex": 1024,
+        "bytes": 583780,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 23.7,
+        "levelled": true,
+        "lean_deg": 0.49,
+        "base_frac": 0.541
+      },
+      "job_id": "45b941f7-6283-4333-9e1b-671444db8941"
+    },
+    "B13_chocolate_slice": {
+      "game": "game/assets/models/B13_chocolate_slice.glb",
+      "sha256": "7abad501babdb21ba455be639cef626970f4402d9b61d103c54978dd358ced1c",
+      "raw": "art/models/raw/inhabited_places_20261010/B13_chocolate_slice.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/B13_chocolate_slice_reference.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/B13_chocolate_slice.glb",
+        "fit": "h",
+        "size": 0.1,
+        "yaw": 0,
+        "level": true,
+        "tris": 12000,
+        "tex": 1024,
+        "rebake": true,
+        "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/B13_chocolate_slice_reference.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "B13_chocolate_slice",
+        "src": "raw/inhabited_places_20261010/B13_chocolate_slice.glb",
+        "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+        "tris_src": 963256,
+        "tris": 11953,
+        "size_m": [
+          0.115,
+          0.085,
+          0.099
+        ],
+        "godot_size_m_xyz": [
+          0.115,
+          0.099,
+          0.085
+        ],
+        "tex": 1024,
+        "bytes": 462828,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 33.6,
+        "levelled": true,
+        "lean_deg": 0.12,
+        "base_frac": 0.476
+      },
+      "job_id": "2d5a102e-c6a8-4305-b5f1-a8114aa7f931"
+    },
+    "B14_basque_slice": {
+      "game": "game/assets/models/B14_basque_slice.glb",
+      "sha256": "943f22e3b9bbb51a8360f9fe070d7a147ce250a407cf9934d8e5d99e72bf9a9c",
+      "raw": "art/models/raw/inhabited_places_20261010/B14_basque_slice.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/B14_basque_slice_reference.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/B14_basque_slice.glb",
+        "fit": "h",
+        "size": 0.08,
+        "yaw": 180,
+        "level": true,
+        "tris": 12000,
+        "tex": 1024,
+        "rebake": true,
+        "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/B14_basque_slice_reference.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "B14_basque_slice",
+        "src": "raw/inhabited_places_20261010/B14_basque_slice.glb",
+        "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+        "tris_src": 945942,
+        "tris": 11987,
+        "size_m": [
+          0.129,
+          0.114,
+          0.077
+        ],
+        "godot_size_m_xyz": [
+          0.129,
+          0.077,
+          0.114
+        ],
+        "tex": 1024,
+        "bytes": 503960,
+        "yaw_fix": 180,
+        "level": true,
+        "lean_src_deg": 33.96,
+        "levelled": true,
+        "lean_deg": 0.5,
+        "base_frac": 0.395
+      },
+      "job_id": "0fd9acbe-9136-4341-a7b1-e2f7bd062145"
+    },
+    "B15_fruit_tart": {
+      "game": "game/assets/models/B15_fruit_tart.glb",
+      "sha256": "b7997114bee9460caa09a23ebd9e52d27a6e4997309a795a7bdd42537cd78ddb",
+      "raw": "art/models/raw/inhabited_places_20261010/B15_fruit_tart_clean.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/B15_fruit_tart_reference.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/B15_fruit_tart_clean.glb",
+        "fit": "w",
+        "size": 0.12,
+        "yaw": 0,
+        "level": true,
+        "tris": 12000,
+        "tex": 1024,
+        "rebake": true,
+        "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/B15_fruit_tart_reference.png"
+        ],
+        "license": "项目自制；生成素材服务条款",
+        "level_base_fraction": 0.35
+      },
+      "stats": {
+        "id": "B15_fruit_tart",
+        "src": "raw/inhabited_places_20261010/B15_fruit_tart_clean.glb",
+        "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+        "tris_src": 971094,
+        "tris": 11848,
+        "size_m": [
+          0.117,
+          0.119,
+          0.056
+        ],
+        "godot_size_m_xyz": [
+          0.117,
+          0.056,
+          0.119
+        ],
+        "tex": 1024,
+        "bytes": 702020,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 35.26,
+        "levelled": true,
+        "lean_deg": 0.45,
+        "base_frac": 0.628
+      },
+      "job_id": "33b60953-5b39-466f-a22b-d9bbe9f98475"
+    },
+    "W24_sugar_pack": {
+      "game": "game/assets/models/W24_sugar_pack.glb",
+      "sha256": "af67f1b8fd6f03f0381dfdb1a8e6af3348a83e3d9c236fee270c997f6b03b626",
+      "raw": "art/models/raw/inhabited_places_20261010/W24_sugar_pack.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/W24_sugar_pack.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 1024,
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "W24_sugar_pack",
+        "src": "raw/inhabited_places_20261010/W24_sugar_pack.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 192,
+        "tex": 1024,
+        "bytes": 16844,
+        "godot_size_m_xyz": [
+          0.16,
+          0.23,
+          0.079
+        ],
+        "mesh_nodes": [
+          "Band",
+          "Label",
+          "LabelMark",
+          "Package"
+        ]
+      }
+    },
+    "W25_salt_box": {
+      "game": "game/assets/models/W25_salt_box.glb",
+      "sha256": "ebb48dc41297bddd1014a2f76253057c80ec299ecee9f5b01ab087a8ed00d7b8",
+      "raw": "art/models/raw/inhabited_places_20261010/W25_salt_box.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/W25_salt_box.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 1024,
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "W25_salt_box",
+        "src": "raw/inhabited_places_20261010/W25_salt_box.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 192,
+        "tex": 1024,
+        "bytes": 16844,
+        "godot_size_m_xyz": [
+          0.13,
+          0.18,
+          0.079
+        ],
+        "mesh_nodes": [
+          "Band",
+          "Label",
+          "LabelMark",
+          "Package"
+        ]
+      }
+    },
+    "W26_miso_tub": {
+      "game": "game/assets/models/W26_miso_tub.glb",
+      "sha256": "d443d41f2186e081a95138871f780d671b4b31f95abe16a63235702e1a8089a4",
+      "raw": "art/models/raw/inhabited_places_20261010/W26_miso_tub.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/W26_miso_tub.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 1024,
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "W26_miso_tub",
+        "src": "raw/inhabited_places_20261010/W26_miso_tub.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 228,
+        "tex": 1024,
+        "bytes": 16244,
+        "godot_size_m_xyz": [
+          0.138,
+          0.127,
+          0.138
+        ],
+        "mesh_nodes": [
+          "FrontLabel",
+          "Lid",
+          "MisoTub"
+        ]
+      }
+    },
+    "W27_curry_box": {
+      "game": "game/assets/models/W27_curry_box.glb",
+      "sha256": "8942aad3f9b971ea5d62f1fd29000653aae57f084e0347c6024d07b92eaddde1",
+      "raw": "art/models/raw/inhabited_places_20261010/W27_curry_box.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/W27_curry_box.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 1024,
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "W27_curry_box",
+        "src": "raw/inhabited_places_20261010/W27_curry_box.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 192,
+        "tex": 1024,
+        "bytes": 16844,
+        "godot_size_m_xyz": [
+          0.16,
+          0.22,
+          0.084
+        ],
+        "mesh_nodes": [
+          "Band",
+          "Label",
+          "LabelMark",
+          "Package"
+        ]
+      }
+    },
+    "W28_seed_packets": {
+      "game": "game/assets/models/W28_seed_packets.glb",
+      "sha256": "167cbfb772f7ac12bb2343f798215fe446ce3481912f23f866b3eb2cfc48097d",
+      "raw": "art/models/raw/inhabited_places_20261010/W28_seed_packets.glb",
+      "references": [
+        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+      ],
+      "export_config": {
+        "src": "raw/inhabited_places_20261010/W28_seed_packets.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 1024,
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "reference_images": [
+          "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+        ],
+        "license": "项目自制；生成素材服务条款"
+      },
+      "stats": {
+        "id": "W28_seed_packets",
+        "src": "raw/inhabited_places_20261010/W28_seed_packets.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 192,
+        "tex": 1024,
+        "bytes": 16860,
+        "godot_size_m_xyz": [
+          0.085,
+          0.115,
+          0.012
+        ],
+        "mesh_nodes": [
+          "Band",
+          "Label",
+          "LabelMark",
+          "Package"
+        ]
+      }
+    }
+  }
+}

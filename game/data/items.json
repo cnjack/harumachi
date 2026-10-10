@@ -48,10 +48,10 @@
     "desc": "澪整理的准备事项。"
   },
   "melon_pan": {
-    "name": "试做菠萝包",
+    "name": "菠萝包",
     "key": false,
     "icon": "melon_pan",
-    "desc": "莲塞给你的试吃面包，还是温的。",
+    "desc": "表皮酥脆，里面松软的菠萝包。",
     "price": 40,
     "sell": 20
   },
@@ -595,7 +595,8 @@
     "dish": "oven",
     "liked_by": [
       "ren"
-    ]
+    ],
+    "price": 190
   },
   "corn_bread": {
     "name": "玉米面包",
@@ -620,7 +621,7 @@
       "mio"
     ],
     "price": 340,
-    "model": "B08_strawberry_cake"
+    "model": "B12_strawberry_slice"
   },
   "pumpkin_bread": {
     "name": "南瓜面包",
@@ -1146,5 +1147,93 @@
     "liked_by": [
       "ren"
     ]
+  },
+  "chocolate_cake": {
+    "name": "巧克力蛋糕",
+    "key": false,
+    "icon": "shop_chocolate_cake",
+    "desc": "可可蛋糕夹着巧克力奶油，一人份。",
+    "price": 300,
+    "sell": 150,
+    "dish": "oven",
+    "model": "B13_chocolate_slice"
+  },
+  "basque_cheesecake": {
+    "name": "巴斯克芝士蛋糕",
+    "key": false,
+    "icon": "shop_basque_cheesecake",
+    "desc": "焦香的薄顶，里面是柔软的芝士。",
+    "price": 280,
+    "sell": 140,
+    "dish": "oven",
+    "model": "B14_basque_slice"
+  },
+  "fruit_tart": {
+    "name": "季节水果塔",
+    "key": false,
+    "icon": "shop_fruit_tart",
+    "desc": "酥脆塔壳里装着卡仕达和当季水果。",
+    "price": 260,
+    "sell": 130,
+    "dish": "oven",
+    "model": "B15_fruit_tart"
+  },
+  "coffee": {
+    "name": "现磨咖啡",
+    "key": false,
+    "icon": "shop_coffee",
+    "desc": "莲店里的深焙咖啡，可以带走或坐下来喝。",
+    "price": 120,
+    "sell": 60,
+    "drink": true
+  },
+  "cafe_latte": {
+    "name": "拿铁",
+    "key": false,
+    "icon": "shop_cafe_latte",
+    "desc": "意式浓缩加热牛奶，窗边慢慢喝。",
+    "price": 160,
+    "sell": 80,
+    "drink": true
+  },
+  "croissant": {
+    "name": "可颂",
+    "key": false,
+    "icon": "shop_croissant",
+    "desc": "莲店里当日烘焙的可颂，可以带走，也可以坐下来吃。",
+    "price": 60,
+    "sell": 25,
+    "dish": "oven",
+    "model": "B02_croissant"
+  },
+  "baguette": {
+    "name": "法棍",
+    "key": false,
+    "icon": "shop_baguette",
+    "desc": "莲店里当日烘焙的法棍，可以带走，也可以坐下来吃。",
+    "price": 85,
+    "sell": 35,
+    "dish": "oven",
+    "model": "B03_baguette"
+  },
+  "shokupan": {
+    "name": "吐司",
+    "key": false,
+    "icon": "shop_shokupan",
+    "desc": "莲店里当日烘焙的吐司，可以带走，也可以坐下来吃。",
+    "price": 90,
+    "sell": 40,
+    "dish": "oven",
+    "model": "B04_shokupan"
+  },
+  "anpan": {
+    "name": "红豆包",
+    "key": false,
+    "icon": "shop_anpan",
+    "desc": "莲店里当日烘焙的红豆包，可以带走，也可以坐下来吃。",
+    "price": 45,
+    "sell": 20,
+    "dish": "oven",
+    "model": "B05_anpan"
   }
 }

@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
   "title": "晴町素材室",
-  "updated": "2026-10-10",
+  "updated": "2026-10-11",
   "engine": "Godot 4.8-dev7",
-  "count": 601,
+  "count": 615,
   "categories": [
     "全部",
     "树木",
@@ -304,7 +304,8 @@
         "game/scripts/world/house_builder.gd",
         "game/scripts/world/layout.gd",
         "game/scripts/world/world_builder.gd",
-        "game/scripts/world/public_place_art.gd"
+        "game/scripts/world/public_place_art.gd",
+        "game/scripts/world/public_room_life.gd"
       ],
       "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)",
       "raw_path": "art/models/../../output/japanese-street-shinkai-dry/models/A15_potted_plant/model.glb",
@@ -628,8 +629,7 @@
       "alpha": false,
       "preview": "art/library/previews/game_B01_melon_pan.png",
       "uses": [
-        "game/scripts/world/meal_models.gd",
-        "game/scripts/world/interior_builder.gd"
+        "game/scripts/world/meal_models.gd"
       ],
       "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
       "raw_path": "art/models/raw/B01_melon_pan_atlas_audit_20261002/model.glb",
@@ -677,8 +677,8 @@
       "alpha": false,
       "preview": "art/library/previews/game_B02_croissant.png",
       "uses": [
-        "game/scripts/world/interior_builder.gd",
-        "game/scripts/world/public_place_art.gd"
+        "game/scripts/world/public_place_art.gd",
+        "game/scripts/world/meal_models.gd"
       ],
       "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
       "raw_path": "art/models/raw/B02_croissant_atlas_audit_20261002/model.glb",
@@ -768,7 +768,7 @@
       "alpha": false,
       "preview": "art/library/previews/game_B03_baguette.png",
       "uses": [
-        "game/scripts/world/interior_builder.gd"
+        "game/scripts/world/meal_models.gd"
       ],
       "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
       "raw_path": "art/models/raw/B03_baguette_atlas_audit_20261002/model.glb",
@@ -817,7 +817,7 @@
       "preview": "art/library/previews/game_B04_shokupan.png",
       "uses": [
         "game/scripts/world/shop_displays.gd",
-        "game/scripts/world/interior_builder.gd"
+        "game/scripts/world/meal_models.gd"
       ],
       "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
       "raw_path": "art/models/raw/B04_shokupan_atlas_audit_20261002/model.glb",
@@ -865,7 +865,7 @@
       "alpha": false,
       "preview": "art/library/previews/game_B05_anpan.png",
       "uses": [
-        "game/scripts/world/interior_builder.gd"
+        "game/scripts/world/meal_models.gd"
       ],
       "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
       "raw_path": "art/models/raw/B05_anpan_atlas_audit_20261002/model.glb",
@@ -913,8 +913,7 @@
       "alpha": false,
       "preview": "art/library/previews/game_B06_curry_pan.png",
       "uses": [
-        "game/scripts/world/meal_models.gd",
-        "game/scripts/world/interior_builder.gd"
+        "game/scripts/world/meal_models.gd"
       ],
       "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
       "raw_path": "art/models/raw/B06_curry_pan_atlas_audit_20261002/model.glb",
@@ -1103,10 +1102,7 @@
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_B08_strawberry_cake.png",
-      "uses": [
-        "game/scripts/world/meal_models.gd",
-        "game/scripts/world/shop_content.gd"
-      ],
+      "uses": [],
       "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
       "raw_path": "art/models/raw/B08_strawberry_cake_hyper3d/model.glb",
       "metrics": {
@@ -1279,6 +1275,198 @@
         "base_frac": 0.636
       },
       "recipe": "world.spawn(\"B11_cream_bun\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/B12_strawberry_slice",
+      "name": "B12_strawberry_slice",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/B12_strawberry_slice.glb",
+      "format": "GLB",
+      "triangles": 11949,
+      "bytes": 583780,
+      "license": "项目自制；生成素材服务条款",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_B12_strawberry_slice.png",
+      "uses": [
+        "game/scripts/world/meal_models.gd",
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+      "raw_path": "art/models/raw/inhabited_places_20261010/B12_strawberry_slice.glb",
+      "metrics": {
+        "id": "B12_strawberry_slice",
+        "src": "raw/inhabited_places_20261010/B12_strawberry_slice.glb",
+        "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+        "tris_src": 995756,
+        "tris": 11949,
+        "size_m": [
+          0.114,
+          0.077,
+          0.109
+        ],
+        "godot_size_m_xyz": [
+          0.114,
+          0.109,
+          0.077
+        ],
+        "tex": 1024,
+        "bytes": 583780,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 23.7,
+        "levelled": true,
+        "lean_deg": 0.49,
+        "base_frac": 0.541
+      },
+      "recipe": "world.spawn(\"B12_strawberry_slice\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/B13_chocolate_slice",
+      "name": "B13_chocolate_slice",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/B13_chocolate_slice.glb",
+      "format": "GLB",
+      "triangles": 11953,
+      "bytes": 462828,
+      "license": "项目自制；生成素材服务条款",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_B13_chocolate_slice.png",
+      "uses": [
+        "game/scripts/world/meal_models.gd",
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+      "raw_path": "art/models/raw/inhabited_places_20261010/B13_chocolate_slice.glb",
+      "metrics": {
+        "id": "B13_chocolate_slice",
+        "src": "raw/inhabited_places_20261010/B13_chocolate_slice.glb",
+        "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+        "tris_src": 963256,
+        "tris": 11953,
+        "size_m": [
+          0.115,
+          0.085,
+          0.099
+        ],
+        "godot_size_m_xyz": [
+          0.115,
+          0.099,
+          0.085
+        ],
+        "tex": 1024,
+        "bytes": 462828,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 33.6,
+        "levelled": true,
+        "lean_deg": 0.12,
+        "base_frac": 0.476
+      },
+      "recipe": "world.spawn(\"B13_chocolate_slice\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/B14_basque_slice",
+      "name": "B14_basque_slice",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/B14_basque_slice.glb",
+      "format": "GLB",
+      "triangles": 11987,
+      "bytes": 503960,
+      "license": "项目自制；生成素材服务条款",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_B14_basque_slice.png",
+      "uses": [
+        "game/scripts/world/meal_models.gd",
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+      "raw_path": "art/models/raw/inhabited_places_20261010/B14_basque_slice.glb",
+      "metrics": {
+        "id": "B14_basque_slice",
+        "src": "raw/inhabited_places_20261010/B14_basque_slice.glb",
+        "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+        "tris_src": 945942,
+        "tris": 11987,
+        "size_m": [
+          0.129,
+          0.114,
+          0.077
+        ],
+        "godot_size_m_xyz": [
+          0.129,
+          0.077,
+          0.114
+        ],
+        "tex": 1024,
+        "bytes": 503960,
+        "yaw_fix": 180,
+        "level": true,
+        "lean_src_deg": 33.96,
+        "levelled": true,
+        "lean_deg": 0.5,
+        "base_frac": 0.395
+      },
+      "recipe": "world.spawn(\"B14_basque_slice\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/B15_fruit_tart",
+      "name": "B15_fruit_tart",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/B15_fruit_tart.glb",
+      "format": "GLB",
+      "triangles": 11848,
+      "bytes": 702020,
+      "license": "项目自制；生成素材服务条款",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_B15_fruit_tart.png",
+      "uses": [
+        "game/scripts/world/meal_models.gd",
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+      "raw_path": "art/models/raw/inhabited_places_20261010/B15_fruit_tart_clean.glb",
+      "metrics": {
+        "id": "B15_fruit_tart",
+        "src": "raw/inhabited_places_20261010/B15_fruit_tart_clean.glb",
+        "provider": "Pixal3D image-to-3D from built-in imagegen reference",
+        "tris_src": 971094,
+        "tris": 11848,
+        "size_m": [
+          0.117,
+          0.119,
+          0.056
+        ],
+        "godot_size_m_xyz": [
+          0.117,
+          0.056,
+          0.119
+        ],
+        "tex": 1024,
+        "bytes": 702020,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 35.26,
+        "levelled": true,
+        "lean_deg": 0.45,
+        "base_frac": 0.628
+      },
+      "recipe": "world.spawn(\"B15_fruit_tart\", Vector3(0, 0, 0), 0, 0)"
     },
     {
       "id": "game/C01_seedling",
@@ -4141,7 +4329,6 @@
       "preview": "art/library/previews/game_G11_bread_cart.png",
       "uses": [
         "game/scripts/world/daily_life_view.gd",
-        "game/scripts/world/interior_builder.gd",
         "game/scripts/world/layout.gd"
       ],
       "provider": "pixal3d (v0.5)",
@@ -4803,38 +4990,54 @@
       "collection": "游戏资产",
       "path": "game/assets/models/I03_drink_fridge.glb",
       "format": "GLB",
-      "triangles": 146,
-      "bytes": 665788,
-      "license": "项目素材，来源条款待核对",
+      "triangles": 728,
+      "bytes": 132744,
+      "license": "项目自制；生成素材服务条款",
       "source": "",
       "status": "已接入",
       "animations": [],
-      "alpha": false,
+      "alpha": true,
       "preview": "art/library/previews/game_I03_drink_fridge.png",
       "uses": [
-        "game/scripts/world/interior_builder.gd"
+        "game/scripts/world/interior_builder.gd",
+        "game/scripts/world/shop_content.gd"
       ],
-      "provider": "项目制作",
-      "raw_path": "",
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "raw_path": "art/models/raw/inhabited_places_20261010/I03_drink_fridge.glb",
       "metrics": {
         "id": "I03_drink_fridge",
-        "src": "raw/I03_drink_fridge_pix/model.glb",
-        "provider": "pixal3d (v0.6)",
-        "tris_src": 933965,
-        "tris": 7778,
-        "size_m": [
-          0.824,
-          0.765,
-          1.899
-        ],
-        "godot_size_m_xyz": [
-          0.824,
-          1.899,
-          0.765
-        ],
+        "src": "raw/inhabited_places_20261010/I03_drink_fridge.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 728,
         "tex": 1024,
-        "bytes": 559528,
-        "yaw_fix": 0
+        "bytes": 132744,
+        "godot_size_m_xyz": [
+          1.4,
+          1.92,
+          0.83
+        ],
+        "mesh_nodes": [
+          "ColdShelf",
+          "ColdShelf.001",
+          "ColdShelf.002",
+          "ColdShelf.003",
+          "DoorFrame",
+          "DoorFrame.001",
+          "DoorFrame.002",
+          "DoorPull",
+          "DoorPull.001",
+          "DoorRail",
+          "DoorRail.001",
+          "FridgeBase",
+          "FridgeRear",
+          "FridgeSide",
+          "FridgeSide.001",
+          "FridgeTop",
+          "GlassDoor",
+          "GlassDoor.001"
+        ]
       },
       "recipe": "world.spawn(\"I03_drink_fridge\", Vector3(0, 0, 0), 0, 0)"
     },
@@ -4885,9 +5088,9 @@
       "collection": "游戏资产",
       "path": "game/assets/models/I04_shop_counter.glb",
       "format": "GLB",
-      "triangles": 19585,
-      "bytes": 1177136,
-      "license": "项目素材，来源条款待核对",
+      "triangles": 572,
+      "bytes": 118328,
+      "license": "项目自制；生成素材服务条款",
       "source": "",
       "status": "已接入",
       "animations": [],
@@ -4895,36 +5098,41 @@
       "preview": "art/library/previews/game_I04_shop_counter.png",
       "uses": [
         "game/scripts/world/daily_life_view.gd",
+        "game/scripts/world/surface_finish.gd",
         "game/scripts/world/project_tasting.gd",
-        "game/scripts/world/interior_builder.gd",
-        "game/scripts/world/shop_content.gd"
+        "game/scripts/world/interior_builder.gd"
       ],
-      "provider": "pixal3d (v0.6 review, seed 7)",
-      "raw_path": "art/models/raw/I04_shop_counter_pix2/model.glb",
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "raw_path": "art/models/raw/inhabited_places_20261010/I04_shop_counter.glb",
       "metrics": {
         "id": "I04_shop_counter",
-        "src": "raw/I04_shop_counter_pix2/model.glb",
-        "provider": "pixal3d (v0.6 review, seed 7)",
-        "tris_src": 962583,
-        "tris": 19585,
-        "size_m": [
-          2.11,
-          1.147,
-          1.249
-        ],
+        "src": "raw/inhabited_places_20261010/I04_shop_counter.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 572,
+        "tex": 1024,
+        "bytes": 118328,
         "godot_size_m_xyz": [
           2.11,
-          1.249,
-          1.147
+          1.22,
+          1.1975
         ],
-        "tex": 2048,
-        "bytes": 1177136,
-        "yaw_fix": -150.0,
-        "level": "auto",
-        "lean_src_deg": 10.94,
-        "levelled": true,
-        "lean_deg": 0.07,
-        "base_frac": 0.785
+        "mesh_nodes": [
+          "CounterBody",
+          "CounterTop",
+          "Display",
+          "FootRail",
+          "FrontPanel",
+          "FrontPanel.001",
+          "FrontPanel.002",
+          "Register",
+          "RegisterBase",
+          "RegisterKey",
+          "RegisterKey.001",
+          "RegisterKey.002",
+          "RegisterKey.003"
+        ]
       },
       "recipe": "world.spawn(\"I04_shop_counter\", Vector3(0, 0, 0), 0, 0)"
     },
@@ -4935,43 +5143,53 @@
       "collection": "游戏资产",
       "path": "game/assets/models/I05_bread_shelf.glb",
       "format": "GLB",
-      "triangles": 26803,
-      "bytes": 1967488,
-      "license": "项目素材，来源条款待核对",
+      "triangles": 576,
+      "bytes": 119968,
+      "license": "项目自制；生成素材服务条款",
       "source": "",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_I05_bread_shelf.png",
       "uses": [
-        "game/scripts/world/interior_builder.gd"
+        "game/scripts/world/surface_finish.gd",
+        "game/scripts/world/interior_builder.gd",
+        "game/scripts/world/shop_content.gd"
       ],
-      "provider": "pixal3d (v0.6)",
-      "raw_path": "art/models/raw/I05_bread_shelf_pix/model.glb",
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "raw_path": "art/models/raw/inhabited_places_20261010/I05_bread_shelf.glb",
       "metrics": {
         "id": "I05_bread_shelf",
-        "src": "raw/I05_bread_shelf_pix/model.glb",
-        "provider": "pixal3d (v0.6)",
-        "tris_src": 973138,
-        "tris": 26803,
-        "size_m": [
-          1.073,
-          0.623,
-          1.6
-        ],
+        "src": "raw/inhabited_places_20261010/I05_bread_shelf.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 576,
+        "tex": 1024,
+        "bytes": 119968,
         "godot_size_m_xyz": [
-          1.073,
-          1.6,
-          0.623
+          1.07,
+          1.51,
+          0.62
         ],
-        "tex": 2048,
-        "bytes": 1967488,
-        "yaw_fix": 31.0,
-        "level": "auto",
-        "lean_src_deg": 9.3,
-        "levelled": true,
-        "lean_deg": 0.23,
-        "base_frac": 0.758
+        "mesh_nodes": [
+          "LinenLiner_0",
+          "LinenLiner_1",
+          "LinenLiner_2",
+          "LinenLiner_3",
+          "ShelfBack",
+          "ShelfFoot",
+          "ShelfUpright",
+          "ShelfUpright.001",
+          "TrayBoard_0",
+          "TrayBoard_1",
+          "TrayBoard_2",
+          "TrayBoard_3",
+          "TrayLip_0",
+          "TrayLip_1",
+          "TrayLip_2",
+          "TrayLip_3"
+        ]
       },
       "recipe": "world.spawn(\"I05_bread_shelf\", Vector3(0, 0, 0), 0, 0)"
     },
@@ -6499,6 +6717,61 @@
       "recipe": "world.spawn(\"P_bridge\", Vector3(0, 0, 0), 0, 0)"
     },
     {
+      "id": "game/P_cafe_table",
+      "name": "P_cafe_table",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/P_cafe_table.glb",
+      "format": "GLB",
+      "triangles": 868,
+      "bytes": 135436,
+      "license": "项目自制；生成素材服务条款",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_P_cafe_table.png",
+      "uses": [
+        "game/scripts/world/public_room_life.gd",
+        "game/scripts/world/surface_finish.gd"
+      ],
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "raw_path": "art/models/raw/inhabited_places_20261010/P_cafe_table.glb",
+      "metrics": {
+        "id": "P_cafe_table",
+        "src": "raw/inhabited_places_20261010/P_cafe_table.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 868,
+        "tex": 1024,
+        "bytes": 135436,
+        "godot_size_m_xyz": [
+          1.895,
+          0.89,
+          0.72
+        ],
+        "mesh_nodes": [
+          "ChairLeftBack",
+          "ChairLeftLeg",
+          "ChairLeftLeg.001",
+          "ChairLeftLeg.002",
+          "ChairLeftLeg.003",
+          "ChairLeftSeat",
+          "ChairRightBack",
+          "ChairRightLeg",
+          "ChairRightLeg.001",
+          "ChairRightLeg.002",
+          "ChairRightLeg.003",
+          "ChairRightSeat",
+          "Foot",
+          "Pedestal",
+          "RoundTop"
+        ]
+      },
+      "recipe": "world.spawn(\"P_cafe_table\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
       "id": "game/P_chest",
       "name": "P_chest",
       "category": "道具",
@@ -6610,6 +6883,158 @@
       "provider": "项目制作",
       "raw_path": "",
       "recipe": "world.spawn(\"P_chochin_white\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/P_coffee_station",
+      "name": "P_coffee_station",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/P_coffee_station.glb",
+      "format": "GLB",
+      "triangles": 2288,
+      "bytes": 222216,
+      "license": "项目自制；生成素材服务条款",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_P_coffee_station.png",
+      "uses": [
+        "game/scripts/world/public_room_life.gd",
+        "game/scripts/world/surface_finish.gd"
+      ],
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "raw_path": "art/models/raw/inhabited_places_20261010/P_coffee_station.glb",
+      "metrics": {
+        "id": "P_coffee_station",
+        "src": "raw/inhabited_places_20261010/P_coffee_station.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 2288,
+        "tex": 1024,
+        "bytes": 222216,
+        "godot_size_m_xyz": [
+          1.0,
+          1.326,
+          0.685
+        ],
+        "mesh_nodes": [
+          "BeanHopper",
+          "Cabinet",
+          "ControlFace",
+          "Dial",
+          "Dial.001",
+          "Door",
+          "Door.001",
+          "DoorHandle",
+          "DoorHandle.001",
+          "DripTray",
+          "GrinderBase",
+          "GrinderBody",
+          "GroupHead",
+          "GroupHead.001",
+          "HopperCap",
+          "MachineBody",
+          "MachineSide",
+          "Pitcher",
+          "Portafilter",
+          "Portafilter.001",
+          "SteamWand",
+          "WarmCup0",
+          "WarmCup0Coffee",
+          "WarmCup0Handle",
+          "WarmCup1",
+          "WarmCup1Coffee",
+          "WarmCup1Handle",
+          "WarmCup2",
+          "WarmCup2Coffee",
+          "WarmCup2Handle",
+          "Worktop"
+        ]
+      },
+      "recipe": "world.spawn(\"P_coffee_station\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/P_community_table",
+      "name": "P_community_table",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/P_community_table.glb",
+      "format": "GLB",
+      "triangles": 1804,
+      "bytes": 226384,
+      "license": "项目自制；生成素材服务条款",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_P_community_table.png",
+      "uses": [
+        "game/scripts/world/public_room_life.gd",
+        "game/scripts/world/surface_finish.gd"
+      ],
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "raw_path": "art/models/raw/inhabited_places_20261010/P_community_table.glb",
+      "metrics": {
+        "id": "P_community_table",
+        "src": "raw/inhabited_places_20261010/P_community_table.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 1804,
+        "tex": 1024,
+        "bytes": 226384,
+        "godot_size_m_xyz": [
+          2.05,
+          0.89,
+          2.235
+        ],
+        "mesh_nodes": [
+          "ChairBackBack",
+          "ChairBackBack.001",
+          "ChairBackBack.002",
+          "ChairBackLeg",
+          "ChairBackLeg.001",
+          "ChairBackLeg.002",
+          "ChairBackLeg.003",
+          "ChairBackLeg.004",
+          "ChairBackLeg.005",
+          "ChairBackLeg.006",
+          "ChairBackLeg.007",
+          "ChairBackLeg.008",
+          "ChairBackLeg.009",
+          "ChairBackLeg.010",
+          "ChairBackLeg.011",
+          "ChairBackSeat",
+          "ChairBackSeat.001",
+          "ChairBackSeat.002",
+          "ChairFrontBack",
+          "ChairFrontBack.001",
+          "ChairFrontBack.002",
+          "ChairFrontLeg",
+          "ChairFrontLeg.001",
+          "ChairFrontLeg.002",
+          "ChairFrontLeg.003",
+          "ChairFrontLeg.004",
+          "ChairFrontLeg.005",
+          "ChairFrontLeg.006",
+          "ChairFrontLeg.007",
+          "ChairFrontLeg.008",
+          "ChairFrontLeg.009",
+          "ChairFrontLeg.010",
+          "ChairFrontLeg.011",
+          "ChairFrontSeat",
+          "ChairFrontSeat.001",
+          "ChairFrontSeat.002",
+          "SharedLeg",
+          "SharedLeg.001",
+          "SharedLeg.002",
+          "SharedLeg.003",
+          "SharedTop"
+        ]
+      },
+      "recipe": "world.spawn(\"P_community_table\", Vector3(0, 0, 0), 0, 0)"
     },
     {
       "id": "game/P_deck_oven",
@@ -6794,6 +7219,88 @@
       "recipe": "world.spawn(\"P_long_table\", Vector3(0, 0, 0), 0, 0)"
     },
     {
+      "id": "game/P_low_bookcase",
+      "name": "P_low_bookcase",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/P_low_bookcase.glb",
+      "format": "GLB",
+      "triangles": 1848,
+      "bytes": 229556,
+      "license": "项目自制；生成素材服务条款",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_P_low_bookcase.png",
+      "uses": [
+        "game/scripts/world/public_room_life.gd",
+        "game/scripts/world/surface_finish.gd"
+      ],
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "raw_path": "art/models/raw/inhabited_places_20261010/P_low_bookcase.glb",
+      "metrics": {
+        "id": "P_low_bookcase",
+        "src": "raw/inhabited_places_20261010/P_low_bookcase.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 1848,
+        "tex": 1024,
+        "bytes": 229556,
+        "godot_size_m_xyz": [
+          1.35,
+          1.09,
+          0.34
+        ],
+        "mesh_nodes": [
+          "Book_0_0",
+          "Book_0_1",
+          "Book_0_10",
+          "Book_0_11",
+          "Book_0_12",
+          "Book_0_13",
+          "Book_0_14",
+          "Book_0_15",
+          "Book_0_2",
+          "Book_0_3",
+          "Book_0_4",
+          "Book_0_5",
+          "Book_0_6",
+          "Book_0_7",
+          "Book_0_8",
+          "Book_0_9",
+          "Book_1_0",
+          "Book_1_1",
+          "Book_1_10",
+          "Book_1_11",
+          "Book_1_12",
+          "Book_1_13",
+          "Book_1_14",
+          "Book_1_15",
+          "Book_1_2",
+          "Book_1_3",
+          "Book_1_4",
+          "Book_1_5",
+          "Book_1_6",
+          "Book_1_7",
+          "Book_1_8",
+          "Book_1_9",
+          "ShelfBack",
+          "ShelfFoot",
+          "ShelfUpright",
+          "ShelfUpright.001",
+          "TrayBoard_0",
+          "TrayBoard_1",
+          "TrayBoard_2",
+          "TrayLip_0",
+          "TrayLip_1",
+          "TrayLip_2"
+        ]
+      },
+      "recipe": "world.spawn(\"P_low_bookcase\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
       "id": "game/P_offer_stand",
       "name": "P_offer_stand",
       "category": "道具",
@@ -6814,6 +7321,56 @@
       "provider": "项目制作",
       "raw_path": "",
       "recipe": "world.spawn(\"P_offer_stand\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/P_reading_chair",
+      "name": "P_reading_chair",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/P_reading_chair.glb",
+      "format": "GLB",
+      "triangles": 440,
+      "bytes": 106308,
+      "license": "项目自制；生成素材服务条款",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_P_reading_chair.png",
+      "uses": [
+        "game/scripts/world/public_room_life.gd",
+        "game/scripts/world/surface_finish.gd"
+      ],
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "raw_path": "art/models/raw/inhabited_places_20261010/P_reading_chair.glb",
+      "metrics": {
+        "id": "P_reading_chair",
+        "src": "raw/inhabited_places_20261010/P_reading_chair.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 440,
+        "tex": 1024,
+        "bytes": 106308,
+        "godot_size_m_xyz": [
+          0.605,
+          0.89,
+          0.51
+        ],
+        "mesh_nodes": [
+          "ReadingChairArm",
+          "ReadingChairArm.001",
+          "ReadingChairBack",
+          "ReadingChairLeg",
+          "ReadingChairLeg.001",
+          "ReadingChairLeg.002",
+          "ReadingChairLeg.003",
+          "ReadingChairPost",
+          "ReadingChairPost.001",
+          "ReadingChairSeat"
+        ]
+      },
+      "recipe": "world.spawn(\"P_reading_chair\", Vector3(0, 0, 0), 0, 0)"
     },
     {
       "id": "game/P_shop_wall_frame",
@@ -8533,7 +9090,8 @@
         "game/scripts/world/neighbour_meal_view.gd",
         "game/scripts/world/shop_displays.gd",
         "game/scripts/world/daily_life_view.gd",
-        "game/scripts/world/public_place_art.gd"
+        "game/scripts/world/public_place_art.gd",
+        "game/scripts/world/public_room_life.gd"
       ],
       "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
       "raw_path": "art/models/raw/W11_ceramic_set_pixal_modules_20261003/model.glb",
@@ -8827,43 +9385,49 @@
       "collection": "游戏资产",
       "path": "game/assets/models/W17_display_shelf.glb",
       "format": "GLB",
-      "triangles": 18000,
-      "bytes": 997028,
-      "license": "项目生成素材；Hyper3D账户来源条款",
-      "source": "https://hyper3d.ai/workspace/rodin/a56aa1b6-7645-4882-bb87-c9a51ebbce9c",
+      "triangles": 476,
+      "bytes": 110692,
+      "license": "项目自制；生成素材服务条款",
+      "source": "",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_W17_display_shelf.png",
       "uses": [
+        "game/scripts/world/surface_finish.gd",
         "game/scripts/world/shop_content.gd"
       ],
-      "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
-      "raw_path": "art/models/raw/W17_display_shelf_hyper3d/model.glb",
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "raw_path": "art/models/raw/inhabited_places_20261010/W17_display_shelf.glb",
       "metrics": {
         "id": "W17_display_shelf",
-        "src": "raw/W17_display_shelf_hyper3d/model.glb",
-        "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
-        "tris_src": 500000,
-        "tris": 18000,
-        "size_m": [
-          1.091,
-          0.501,
-          1.452
-        ],
+        "src": "raw/inhabited_places_20261010/W17_display_shelf.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 476,
+        "tex": 1024,
+        "bytes": 110692,
         "godot_size_m_xyz": [
-          1.091,
-          1.452,
-          0.501
+          1.09,
+          1.25,
+          0.5
         ],
-        "tex": 2048,
-        "bytes": 997028,
-        "yaw_fix": 0,
-        "level": "auto",
-        "lean_src_deg": 0.96,
-        "levelled": false,
-        "lean_deg": 1.23,
-        "base_frac": 0.835
+        "mesh_nodes": [
+          "LinenLiner_0",
+          "LinenLiner_1",
+          "LinenLiner_2",
+          "ShelfBack",
+          "ShelfFoot",
+          "ShelfUpright",
+          "ShelfUpright.001",
+          "TrayBoard_0",
+          "TrayBoard_1",
+          "TrayBoard_2",
+          "TrayLip_0",
+          "TrayLip_1",
+          "TrayLip_2"
+        ]
       },
       "recipe": "world.spawn(\"W17_display_shelf\", Vector3(0, 0, 0), 0, 0)"
     },
@@ -8913,6 +9477,457 @@
         "base_frac": 0.658
       },
       "recipe": "world.spawn(\"W18_retro_tv\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/W19_flour_bag",
+      "name": "W19_flour_bag",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/W19_flour_bag.glb",
+      "format": "GLB",
+      "triangles": 4896,
+      "bytes": 406156,
+      "license": "项目生成素材；原Hyper3D账户来源条款",
+      "source": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_W19_flour_bag.png",
+      "uses": [
+        "game/scripts/world/shop_content.gd",
+        "game/scripts/world/public_place_art.gd"
+      ],
+      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+      "raw_path": "art/models/raw/shop_refresh_20261009/W19_flour_bag.glb",
+      "metrics": {
+        "id": "W19_flour_bag",
+        "src": "raw/shop_refresh_20261009/W19_flour_bag.glb",
+        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+        "tris_src": 4896,
+        "tris": 4896,
+        "size_m": [
+          0.191,
+          0.152,
+          0.269
+        ],
+        "godot_size_m_xyz": [
+          0.191,
+          0.269,
+          0.152
+        ],
+        "tex": 2048,
+        "bytes": 406156,
+        "yaw_fix": -34.63,
+        "level": "auto",
+        "lean_src_deg": 0.05,
+        "levelled": false,
+        "lean_deg": 0.24,
+        "base_frac": 0.796
+      },
+      "recipe": "world.spawn(\"W19_flour_bag\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/W20_milk_carton",
+      "name": "W20_milk_carton",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/W20_milk_carton.glb",
+      "format": "GLB",
+      "triangles": 1646,
+      "bytes": 256388,
+      "license": "项目生成素材；原Hyper3D账户来源条款",
+      "source": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_W20_milk_carton.png",
+      "uses": [
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+      "raw_path": "art/models/raw/shop_refresh_20261009/W20_milk_carton.glb",
+      "metrics": {
+        "id": "W20_milk_carton",
+        "src": "raw/shop_refresh_20261009/W20_milk_carton.glb",
+        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+        "tris_src": 1646,
+        "tris": 1646,
+        "size_m": [
+          0.099,
+          0.089,
+          0.309
+        ],
+        "godot_size_m_xyz": [
+          0.099,
+          0.309,
+          0.089
+        ],
+        "tex": 2048,
+        "bytes": 256388,
+        "yaw_fix": -36.35,
+        "level": "auto",
+        "lean_src_deg": 0.72,
+        "levelled": false,
+        "lean_deg": 0.68,
+        "base_frac": 0.627
+      },
+      "recipe": "world.spawn(\"W20_milk_carton\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/W21_tea_tin",
+      "name": "W21_tea_tin",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/W21_tea_tin.glb",
+      "format": "GLB",
+      "triangles": 1347,
+      "bytes": 248056,
+      "license": "项目生成素材；原Hyper3D账户来源条款",
+      "source": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_W21_tea_tin.png",
+      "uses": [
+        "game/scripts/world/shop_content.gd",
+        "game/scripts/world/public_place_art.gd"
+      ],
+      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+      "raw_path": "art/models/raw/shop_refresh_20261009/W21_tea_tin.glb",
+      "metrics": {
+        "id": "W21_tea_tin",
+        "src": "raw/shop_refresh_20261009/W21_tea_tin.glb",
+        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+        "tris_src": 1347,
+        "tris": 1347,
+        "size_m": [
+          0.114,
+          0.129,
+          0.134
+        ],
+        "godot_size_m_xyz": [
+          0.114,
+          0.134,
+          0.129
+        ],
+        "tex": 2048,
+        "bytes": 248056,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.11,
+        "levelled": false,
+        "lean_deg": 0.11,
+        "base_frac": 0.773
+      },
+      "recipe": "world.spawn(\"W21_tea_tin\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/W22_soy_bottle",
+      "name": "W22_soy_bottle",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/W22_soy_bottle.glb",
+      "format": "GLB",
+      "triangles": 1318,
+      "bytes": 246800,
+      "license": "项目生成素材；原Hyper3D账户来源条款",
+      "source": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_W22_soy_bottle.png",
+      "uses": [
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+      "raw_path": "art/models/raw/shop_refresh_20261009/W22_soy_bottle.glb",
+      "metrics": {
+        "id": "W22_soy_bottle",
+        "src": "raw/shop_refresh_20261009/W22_soy_bottle.glb",
+        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+        "tris_src": 1318,
+        "tris": 1318,
+        "size_m": [
+          0.084,
+          0.086,
+          0.262
+        ],
+        "godot_size_m_xyz": [
+          0.084,
+          0.262,
+          0.086
+        ],
+        "tex": 2048,
+        "bytes": 246800,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.32,
+        "levelled": false,
+        "lean_deg": 0.32,
+        "base_frac": 0.491
+      },
+      "recipe": "world.spawn(\"W22_soy_bottle\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/W23_egg_carton",
+      "name": "W23_egg_carton",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/W23_egg_carton.glb",
+      "format": "GLB",
+      "triangles": 6686,
+      "bytes": 474404,
+      "license": "项目生成素材；原Hyper3D账户来源条款",
+      "source": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_W23_egg_carton.png",
+      "uses": [
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+      "raw_path": "art/models/raw/shop_refresh_20261009/W23_egg_carton.glb",
+      "metrics": {
+        "id": "W23_egg_carton",
+        "src": "raw/shop_refresh_20261009/W23_egg_carton.glb",
+        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
+        "tris_src": 6686,
+        "tris": 6686,
+        "size_m": [
+          0.198,
+          0.238,
+          0.14
+        ],
+        "godot_size_m_xyz": [
+          0.198,
+          0.14,
+          0.238
+        ],
+        "tex": 2048,
+        "bytes": 474404,
+        "yaw_fix": 0,
+        "level": "auto",
+        "lean_src_deg": 0.92,
+        "levelled": false,
+        "lean_deg": 0.92,
+        "base_frac": 0.299
+      },
+      "recipe": "world.spawn(\"W23_egg_carton\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/W24_sugar_pack",
+      "name": "W24_sugar_pack",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/W24_sugar_pack.glb",
+      "format": "GLB",
+      "triangles": 192,
+      "bytes": 16844,
+      "license": "项目自制；生成素材服务条款",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_W24_sugar_pack.png",
+      "uses": [
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "raw_path": "art/models/raw/inhabited_places_20261010/W24_sugar_pack.glb",
+      "metrics": {
+        "id": "W24_sugar_pack",
+        "src": "raw/inhabited_places_20261010/W24_sugar_pack.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 192,
+        "tex": 1024,
+        "bytes": 16844,
+        "godot_size_m_xyz": [
+          0.16,
+          0.23,
+          0.079
+        ],
+        "mesh_nodes": [
+          "Band",
+          "Label",
+          "LabelMark",
+          "Package"
+        ]
+      },
+      "recipe": "world.spawn(\"W24_sugar_pack\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/W25_salt_box",
+      "name": "W25_salt_box",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/W25_salt_box.glb",
+      "format": "GLB",
+      "triangles": 192,
+      "bytes": 16844,
+      "license": "项目自制；生成素材服务条款",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_W25_salt_box.png",
+      "uses": [
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "raw_path": "art/models/raw/inhabited_places_20261010/W25_salt_box.glb",
+      "metrics": {
+        "id": "W25_salt_box",
+        "src": "raw/inhabited_places_20261010/W25_salt_box.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 192,
+        "tex": 1024,
+        "bytes": 16844,
+        "godot_size_m_xyz": [
+          0.13,
+          0.18,
+          0.079
+        ],
+        "mesh_nodes": [
+          "Band",
+          "Label",
+          "LabelMark",
+          "Package"
+        ]
+      },
+      "recipe": "world.spawn(\"W25_salt_box\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/W26_miso_tub",
+      "name": "W26_miso_tub",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/W26_miso_tub.glb",
+      "format": "GLB",
+      "triangles": 228,
+      "bytes": 16244,
+      "license": "项目自制；生成素材服务条款",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_W26_miso_tub.png",
+      "uses": [
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "raw_path": "art/models/raw/inhabited_places_20261010/W26_miso_tub.glb",
+      "metrics": {
+        "id": "W26_miso_tub",
+        "src": "raw/inhabited_places_20261010/W26_miso_tub.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 228,
+        "tex": 1024,
+        "bytes": 16244,
+        "godot_size_m_xyz": [
+          0.138,
+          0.127,
+          0.138
+        ],
+        "mesh_nodes": [
+          "FrontLabel",
+          "Lid",
+          "MisoTub"
+        ]
+      },
+      "recipe": "world.spawn(\"W26_miso_tub\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/W27_curry_box",
+      "name": "W27_curry_box",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/W27_curry_box.glb",
+      "format": "GLB",
+      "triangles": 192,
+      "bytes": 16844,
+      "license": "项目自制；生成素材服务条款",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_W27_curry_box.png",
+      "uses": [
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "raw_path": "art/models/raw/inhabited_places_20261010/W27_curry_box.glb",
+      "metrics": {
+        "id": "W27_curry_box",
+        "src": "raw/inhabited_places_20261010/W27_curry_box.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 192,
+        "tex": 1024,
+        "bytes": 16844,
+        "godot_size_m_xyz": [
+          0.16,
+          0.22,
+          0.084
+        ],
+        "mesh_nodes": [
+          "Band",
+          "Label",
+          "LabelMark",
+          "Package"
+        ]
+      },
+      "recipe": "world.spawn(\"W27_curry_box\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/W28_seed_packets",
+      "name": "W28_seed_packets",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/W28_seed_packets.glb",
+      "format": "GLB",
+      "triangles": 192,
+      "bytes": 16860,
+      "license": "项目自制；生成素材服务条款",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_W28_seed_packets.png",
+      "uses": [
+        "game/scripts/world/shop_content.gd"
+      ],
+      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "raw_path": "art/models/raw/inhabited_places_20261010/W28_seed_packets.glb",
+      "metrics": {
+        "id": "W28_seed_packets",
+        "src": "raw/inhabited_places_20261010/W28_seed_packets.glb",
+        "provider": "Blender precise joinery from imagegen inhabited room references",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 192,
+        "tex": 1024,
+        "bytes": 16860,
+        "godot_size_m_xyz": [
+          0.085,
+          0.115,
+          0.012
+        ],
+        "mesh_nodes": [
+          "Band",
+          "Label",
+          "LabelMark",
+          "Package"
+        ]
+      },
+      "recipe": "world.spawn(\"W28_seed_packets\", Vector3(0, 0, 0), 0, 0)"
     },
     {
       "id": "quaternius/Bush_Common",
@@ -16726,243 +17741,6 @@
       ],
       "provider": "Hyper3D Rodin",
       "recipe": "绑定导出：art/tools/characters/，完成后以 CH_kazuko 接入游戏。"
-    },
-    {
-      "id": "game/W19_flour_bag",
-      "name": "W19_flour_bag",
-      "category": "道具",
-      "collection": "游戏资产",
-      "path": "game/assets/models/W19_flour_bag.glb",
-      "format": "GLB",
-      "triangles": 4896,
-      "bytes": 406156,
-      "license": "项目生成素材；原Hyper3D账户来源条款",
-      "source": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
-      "status": "已接入",
-      "animations": [],
-      "alpha": false,
-      "preview": "art/library/previews/game_W19_flour_bag.png",
-      "uses": [
-        "game/scripts/world/shop_content.gd",
-        "game/scripts/world/public_place_art.gd"
-      ],
-      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
-      "raw_path": "art/models/raw/shop_refresh_20261009/W19_flour_bag.glb",
-      "metrics": {
-        "id": "W19_flour_bag",
-        "src": "raw/shop_refresh_20261009/W19_flour_bag.glb",
-        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
-        "tris_src": 4896,
-        "tris": 4896,
-        "size_m": [
-          0.191,
-          0.152,
-          0.269
-        ],
-        "godot_size_m_xyz": [
-          0.191,
-          0.269,
-          0.152
-        ],
-        "tex": 2048,
-        "bytes": 406156,
-        "yaw_fix": -34.63,
-        "level": "auto",
-        "lean_src_deg": 0.05,
-        "levelled": false,
-        "lean_deg": 0.24,
-        "base_frac": 0.796
-      },
-      "recipe": "world.spawn(\"W19_flour_bag\", Vector3(0, 0, 0), 0, 0)"
-    },
-    {
-      "id": "game/W20_milk_carton",
-      "name": "W20_milk_carton",
-      "category": "道具",
-      "collection": "游戏资产",
-      "path": "game/assets/models/W20_milk_carton.glb",
-      "format": "GLB",
-      "triangles": 1646,
-      "bytes": 256388,
-      "license": "项目生成素材；原Hyper3D账户来源条款",
-      "source": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
-      "status": "已接入",
-      "animations": [],
-      "alpha": false,
-      "preview": "art/library/previews/game_W20_milk_carton.png",
-      "uses": [
-        "game/scripts/world/shop_content.gd"
-      ],
-      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
-      "raw_path": "art/models/raw/shop_refresh_20261009/W20_milk_carton.glb",
-      "metrics": {
-        "id": "W20_milk_carton",
-        "src": "raw/shop_refresh_20261009/W20_milk_carton.glb",
-        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
-        "tris_src": 1646,
-        "tris": 1646,
-        "size_m": [
-          0.099,
-          0.089,
-          0.309
-        ],
-        "godot_size_m_xyz": [
-          0.099,
-          0.309,
-          0.089
-        ],
-        "tex": 2048,
-        "bytes": 256388,
-        "yaw_fix": -36.35,
-        "level": "auto",
-        "lean_src_deg": 0.72,
-        "levelled": false,
-        "lean_deg": 0.68,
-        "base_frac": 0.627
-      },
-      "recipe": "world.spawn(\"W20_milk_carton\", Vector3(0, 0, 0), 0, 0)"
-    },
-    {
-      "id": "game/W21_tea_tin",
-      "name": "W21_tea_tin",
-      "category": "道具",
-      "collection": "游戏资产",
-      "path": "game/assets/models/W21_tea_tin.glb",
-      "format": "GLB",
-      "triangles": 1347,
-      "bytes": 248056,
-      "license": "项目生成素材；原Hyper3D账户来源条款",
-      "source": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
-      "status": "已接入",
-      "animations": [],
-      "alpha": false,
-      "preview": "art/library/previews/game_W21_tea_tin.png",
-      "uses": [
-        "game/scripts/world/shop_content.gd",
-        "game/scripts/world/public_place_art.gd"
-      ],
-      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
-      "raw_path": "art/models/raw/shop_refresh_20261009/W21_tea_tin.glb",
-      "metrics": {
-        "id": "W21_tea_tin",
-        "src": "raw/shop_refresh_20261009/W21_tea_tin.glb",
-        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
-        "tris_src": 1347,
-        "tris": 1347,
-        "size_m": [
-          0.114,
-          0.129,
-          0.134
-        ],
-        "godot_size_m_xyz": [
-          0.114,
-          0.134,
-          0.129
-        ],
-        "tex": 2048,
-        "bytes": 248056,
-        "yaw_fix": 0,
-        "level": "auto",
-        "lean_src_deg": 0.11,
-        "levelled": false,
-        "lean_deg": 0.11,
-        "base_frac": 0.773
-      },
-      "recipe": "world.spawn(\"W21_tea_tin\", Vector3(0, 0, 0), 0, 0)"
-    },
-    {
-      "id": "game/W22_soy_bottle",
-      "name": "W22_soy_bottle",
-      "category": "道具",
-      "collection": "游戏资产",
-      "path": "game/assets/models/W22_soy_bottle.glb",
-      "format": "GLB",
-      "triangles": 1318,
-      "bytes": 246800,
-      "license": "项目生成素材；原Hyper3D账户来源条款",
-      "source": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
-      "status": "已接入",
-      "animations": [],
-      "alpha": false,
-      "preview": "art/library/previews/game_W22_soy_bottle.png",
-      "uses": [
-        "game/scripts/world/shop_content.gd"
-      ],
-      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
-      "raw_path": "art/models/raw/shop_refresh_20261009/W22_soy_bottle.glb",
-      "metrics": {
-        "id": "W22_soy_bottle",
-        "src": "raw/shop_refresh_20261009/W22_soy_bottle.glb",
-        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
-        "tris_src": 1318,
-        "tris": 1318,
-        "size_m": [
-          0.084,
-          0.086,
-          0.262
-        ],
-        "godot_size_m_xyz": [
-          0.084,
-          0.262,
-          0.086
-        ],
-        "tex": 2048,
-        "bytes": 246800,
-        "yaw_fix": 0,
-        "level": "auto",
-        "lean_src_deg": 0.32,
-        "levelled": false,
-        "lean_deg": 0.32,
-        "base_frac": 0.491
-      },
-      "recipe": "world.spawn(\"W22_soy_bottle\", Vector3(0, 0, 0), 0, 0)"
-    },
-    {
-      "id": "game/W23_egg_carton",
-      "name": "W23_egg_carton",
-      "category": "道具",
-      "collection": "游戏资产",
-      "path": "game/assets/models/W23_egg_carton.glb",
-      "format": "GLB",
-      "triangles": 6686,
-      "bytes": 474404,
-      "license": "项目生成素材；原Hyper3D账户来源条款",
-      "source": "https://hyper3d.ai/workspace/rodin/43958828-a2f4-4554-ba0d-7d9501de1ac5",
-      "status": "已接入",
-      "animations": [],
-      "alpha": false,
-      "preview": "art/library/previews/game_W23_egg_carton.png",
-      "uses": [
-        "game/scripts/world/shop_content.gd"
-      ],
-      "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
-      "raw_path": "art/models/raw/shop_refresh_20261009/W23_egg_carton.glb",
-      "metrics": {
-        "id": "W23_egg_carton",
-        "src": "raw/shop_refresh_20261009/W23_egg_carton.glb",
-        "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
-        "tris_src": 6686,
-        "tris": 6686,
-        "size_m": [
-          0.198,
-          0.238,
-          0.14
-        ],
-        "godot_size_m_xyz": [
-          0.198,
-          0.14,
-          0.238
-        ],
-        "tex": 2048,
-        "bytes": 474404,
-        "yaw_fix": 0,
-        "level": "auto",
-        "lean_src_deg": 0.92,
-        "levelled": false,
-        "lean_deg": 0.92,
-        "base_frac": 0.299
-      },
-      "recipe": "world.spawn(\"W23_egg_carton\", Vector3(0, 0, 0), 0, 0)"
     }
   ]
 }
