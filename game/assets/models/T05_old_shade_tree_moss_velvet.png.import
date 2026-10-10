@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buygvsf0ielan"
-path="res://.godot/imported/T04_slender_cedar_Bark_NormalTree.png-7ec27abe8d7d786d63a4eeb63b2b6d3c.ctex"
+uid="uid://c84iehwpbwqd"
+path="res://.godot/imported/T05_old_shade_tree_moss_velvet.png-2975b225355760f55132ba5011e92c71.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "545d3e3a76ffe6eb82fcc012df81df2d"
+"md5": "739ef55682f025208da296420431b38f"
 }
 
 [deps]
 
-source_file="res://assets/models/T04_slender_cedar_Bark_NormalTree.png"
-dest_files=["res://.godot/imported/T04_slender_cedar_Bark_NormalTree.png-7ec27abe8d7d786d63a4eeb63b2b6d3c.ctex"]
+source_file="res://assets/models/T05_old_shade_tree_moss_velvet.png"
+dest_files=["res://.godot/imported/T05_old_shade_tree_moss_velvet.png-2975b225355760f55132ba5011e92c71.ctex"]
 
 [params]
 

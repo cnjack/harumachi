@@ -11,9 +11,19 @@ uniform int part_role=2; // 0 trunk, 1 foliage, 2 crops and small plants
 uniform float animation_time=-1.0;
 uniform float alpha_scissor=.42;
 uniform bool has_texture=true;
+uniform bool aged_bark=false;
+uniform bool meadow_foliage=false;
+varying vec3 tree_position;
+varying vec3 tree_normal;
 global uniform float wind_strength;
 global uniform vec2 wind_direction;
+float bark_hash(vec3 p){return fract(sin(dot(p,vec3(127.1,311.7,74.7)))*43758.5453);}
+float bark_noise(vec3 p){
+ vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+ return mix(mix(mix(bark_hash(i),bark_hash(i+vec3(1,0,0)),f.x),mix(bark_hash(i+vec3(0,1,0)),bark_hash(i+vec3(1,1,0)),f.x),f.y),mix(mix(bark_hash(i+vec3(0,0,1)),bark_hash(i+vec3(1,0,1)),f.x),mix(bark_hash(i+vec3(0,1,1)),bark_hash(i+vec3(1,1,1)),f.x),f.y),f.z);
+}
 void vertex() {
+ tree_position=VERTEX;tree_normal=NORMAL;
  float t=animation_time>=0.0?animation_time:TIME;
  float h=clamp((VERTEX.y-anchored_height)/max(height-anchored_height,.05),0.0,1.0);float weight=h*h*h;
  vec3 world=NODE_POSITION_WORLD;float phase=world.x*.37+world.z*.23;
@@ -31,6 +41,22 @@ void vertex() {
 }
 void fragment() {
  vec4 colour=(has_texture?texture(albedo_tex,UV):vec4(1))*albedo_color;
+ if(meadow_foliage){
+  float value=clamp(dot(colour.rgb,vec3(.30,.59,.11))*2.1,0.,1.);
+  colour.rgb=mix(vec3(.048,.12,.025),vec3(.15,.29,.052),value);
+ }
+ if(aged_bark){
+  float patches=bark_noise(tree_position*1.15+vec3(5,2,9));
+  float basal=1.-smoothstep(.55,2.5,tree_position.y);
+  float damp_side=smoothstep(-.3,.7,tree_normal.z)*(1.-smoothstep(1.5,4.0,tree_position.y));
+  float painted_moss=smoothstep(.008,.055,colour.g-colour.r);
+  float moss=max(painted_moss,smoothstep(.44,.68,patches)*(basal*.85+damp_side*.26));
+  vec3 bark=colour.rgb*vec3(.43,.42,.40);
+  float wood_value=dot(colour.rgb,vec3(.299,.587,.114));
+  bark=mix(bark,vec3(.065,.085,.025)*clamp(wood_value/.35,.5,1.15),painted_moss);
+  vec3 green=mix(vec3(.032,.065,.022),vec3(.083,.145,.040),floor(patches*3.)/2.);
+  colour.rgb=mix(bark,green,clamp(moss,0.,.96)*.035);
+ }
  ALBEDO=colour.rgb;ALPHA=colour.a;ALPHA_SCISSOR_THRESHOLD=alpha_scissor;
  if(!FRONT_FACING)NORMAL=-NORMAL;
  if(part_role==1)NORMAL=normalize(mix(NORMAL,(VIEW_MATRIX*vec4(0,1,0,0)).xyz,.45));

@@ -14,6 +14,7 @@ static var _clumps := {}
 
 ## per style: blade height range (m), blades per clump, clump radius, lean, draw distance, palette tweak
 const STYLES := {
+	"backdrop": {"h": Vector2(.14,.34), "n": 7, "r": .25, "lean": .08, "range": 110.0, "dry": .14, "bright": .96},
 	"plaza": {"h": Vector2(0.08, 0.22), "n": 9, "r": 0.15, "lean": 0.04, "range": 38.0, "dry": 0.08, "bright": 1.0},
 	"lawn": {"h": Vector2(0.12, 0.24), "n": 15, "r": 0.24, "lean": 0.06, "range": 38.0, "dry": 0.04, "bright": 1.0},
 	"meadow": {"h": Vector2(0.18, 0.42), "n": 17, "r": 0.3, "lean": 0.09, "range": 42.0, "dry": 0.09, "bright": 1.0},

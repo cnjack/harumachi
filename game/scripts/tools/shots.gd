@@ -2,6 +2,10 @@ extends Node
 ## Evidence camera: `-- --shots=<dir> [--views=a,b]` renders predefined views to PNG and quits.
 
 const VIEWS := {
+	"plaza_moss_close": {"player":Vector3(-1,.1,2),"time":10.5,"camera_at":Vector3(2.5,1.05,4.7),"camera_focus":Vector3(3.7,.55,5.8)},
+	"plaza_overview": {"player":Vector3(-1,.1,2),"time":10.5,"camera_at":Vector3(-10,6,-10),"camera_focus":Vector3(4,4.2,7)},
+	"plaza_east_edge": {"player":Vector3(-1,.1,2),"time":10.5,"camera_at":Vector3(15,5,8),"camera_focus":Vector3(48,4,31)},
+	"plaza_dapple": {"player":Vector3(-1,.1,2),"time":12.0,"camera_at":Vector3(-4,3,1),"camera_focus":Vector3(4,.1,7)},
 	"shop_cooperation_note": {"interior":"bakery","at":Vector3(-1.1,.05,1.8),"face":180.0,"time":10.0,"inside_camera":Vector3(-1.1,1.35,2.55),"inside_focus":Vector3(-1.55,1.15,1.35)},
 	"direction_sign": {"player":Vector3(20.2,.1,-5.8),"time":10.5,"camera_at":Vector3(20.5,1.9,-5.8),"camera_focus":Vector3(22.6,1.9,-6.2)},
 	"direction_sign_back": {"player":Vector3(24.4,.1,-6.2),"time":10.5,"camera_at":Vector3(24.7,1.9,-6.6),"camera_focus":Vector3(22.6,1.9,-6.2)},

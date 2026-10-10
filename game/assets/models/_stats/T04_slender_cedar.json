@@ -1,19 +1,19 @@
 {
- "id": "T04_slender_cedar",
- "src": "raw/free_foliage_20261004/ready/T04_slender_cedar.glb",
- "provider": "Quaternius Stylized Nature MegaKit Standard Pine_3",
- "preserve_parts": true,
- "origin_preserved": true,
- "tris": 4964,
- "tex": 2048,
- "bytes": 4321592,
- "godot_size_m_xyz": [
-  4.8854,
-  10.0,
-  5.4054
- ],
- "mesh_nodes": [
-  "Foliage_1",
-  "Trunk_1"
- ]
+  "id": "T04_slender_cedar",
+  "src": "raw/T04_cedar_depth_20261010/T04_slender_cedar.glb",
+  "provider": "Quaternius CC0 Pine_3 wood; Blender sprig geometry with built-in imagegen alpha cedar atlas",
+  "preserve_parts": true,
+  "origin_preserved": true,
+  "tris": 8346,
+  "tex": 2048,
+  "bytes": 6839868,
+  "godot_size_m_xyz": [
+    4.7278,
+    10.1016,
+    4.6557
+  ],
+  "mesh_nodes": [
+    "Foliage_CedarSprays",
+    "Trunk_Cedar"
+  ]
 }

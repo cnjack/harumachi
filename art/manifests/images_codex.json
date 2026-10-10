@@ -2783,6 +2783,26 @@
       "date": "2026-10-09",
       "sha256": "f240e07c5339a764bc0eeb81fd3ab832a72297cf8f4ea59499a55976fd848202",
       "usage": "complete tree 3D reference; replaces rejected bare-trunk candidate"
+    },
+    {
+      "file": "art/references/canopy_depth_20261010/cedar_sprigs.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/canopy_depth_20261010.json",
+      "prompt_key": "cedar_sprigs",
+      "date": "2026-10-10",
+      "sha256": "ce34c7eb05deebcf19d9240ba6799ca0a789284d081de7499474691987ede697",
+      "usage": "T04 independent transparent cedar needle sprays"
+    },
+    {
+      "file": "art/references/canopy_depth_20261010/moss_velvet.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/canopy_depth_20261010.json",
+      "prompt_key": "moss_velvet",
+      "date": "2026-10-10",
+      "sha256": "bd0804e4de394b755c40f70fb643cd455933b52a2d737139bba767794e61edf6",
+      "usage": "T05 short moss pile triplanar color, rendered over 8 physical surface shells"
     }
   ]
 }

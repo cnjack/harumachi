@@ -1685,18 +1685,21 @@
       "note": "Metre scale, root on ground, trunk/foliage split; original UVs and alpha preserved"
     },
     "T04_slender_cedar": {
-      "src": "raw/free_foliage_20261004/ready/T04_slender_cedar.glb",
+      "src": "raw/T04_cedar_depth_20261010/T04_slender_cedar.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 2048,
       "image_format": "AUTO",
-      "provider": "Quaternius Stylized Nature MegaKit Standard Pine_3",
-      "license": "CC0-1.0",
+      "provider": "Quaternius CC0 Pine_3 wood; Blender sprig geometry with built-in imagegen alpha cedar atlas",
+      "license": "CC0-1.0 wood; project sprig geometry; generated texture under service terms",
       "source_page": "https://quaternius.com/packs/stylizednaturemegakit.html",
       "source_pack": "quaternius_standard",
       "asset_library_id": "quaternius/Pine_3",
-      "note": "Metre scale, root on ground, trunk/foliage split; original UVs and alpha preserved"
+      "note": "1922 separate needle sprays; lower boughs retained, root on ground, original wood and story identity preserved.",
+      "reference_images": [
+        "art/references/canopy_depth_20261010/cedar_sprigs.png"
+      ]
     },
     "W13_cedar_worktable": {
       "src": "raw/W13_worktable_hyper3d/metre_worktable.glb",
@@ -1771,19 +1774,20 @@
       "note": "Metre scale, root on ground, trunk/foliage split; original UVs and alpha preserved"
     },
     "T05_old_shade_tree": {
-      "src": "raw/T05_plaza_full_hyper3d_20261010/prepared/T05_old_shade_tree.glb",
+      "src": "raw/T05_canopy_depth_20261010/T05_old_shade_tree.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 2048,
       "image_format": "AUTO",
-      "provider": "Hyper3D CLI Gen-2.5-High; Blender UV-preserving cleanup and independent imagegen alpha foliage",
+      "provider": "Owned Hyper3D Gen-2.5-High wood; layered alpha crown and eight runtime moss shells",
       "license": "项目自制；生成素材服务条款",
       "reference_images": [
         "art/references/plaza_paintover_20261009/plaza_full_tree_reference.png",
-        "art/references/plaza_paintover_20261009/plaza_leaf_sprigs_atlas.png"
+        "art/references/plaza_paintover_20261009/plaza_leaf_sprigs_atlas.png",
+        "art/references/canopy_depth_20261010/moss_velvet.png"
       ],
-      "note": "Owned generated boughs; compact fused roots, healed knot, independently layered crown. Preserve zelkova story and save identity."
+      "note": "1900 alpha cards across uneven crown shelves; 8 moss shells 1-22 mm above bark. WorldBuilder applies moss_pile.gdshader (triplanar texture and sparse pile) and aged bark tint. Generic GLB viewers do not reproduce this runtime moss material. Preserve zelkova save/story identity."
     },
     "CH_kazuko": {
       "src": "character_wave_smile_20261005/exports/CH_kazuko.glb",

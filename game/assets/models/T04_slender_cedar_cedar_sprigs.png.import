@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buygvsf0ielan"
-path="res://.godot/imported/T04_slender_cedar_Bark_NormalTree.png-7ec27abe8d7d786d63a4eeb63b2b6d3c.ctex"
+uid="uid://bqwhanbwd4ryk"
+path="res://.godot/imported/T04_slender_cedar_cedar_sprigs.png-ea83b30a1610cc210dfca84ee438d52d.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "545d3e3a76ffe6eb82fcc012df81df2d"
+"md5": "35e5d812fa7340a22b85639327845326"
 }
 
 [deps]
 
-source_file="res://assets/models/T04_slender_cedar_Bark_NormalTree.png"
-dest_files=["res://.godot/imported/T04_slender_cedar_Bark_NormalTree.png-7ec27abe8d7d786d63a4eeb63b2b6d3c.ctex"]
+source_file="res://assets/models/T04_slender_cedar_cedar_sprigs.png"
+dest_files=["res://.godot/imported/T04_slender_cedar_cedar_sprigs.png-ea83b30a1610cc210dfca84ee438d52d.ctex"]
 
 [params]
 

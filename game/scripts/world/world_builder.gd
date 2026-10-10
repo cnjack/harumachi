@@ -147,11 +147,20 @@ static var _sway_cache := {}
 
 ## Swap the imported matte materials for the wind shader (shared per material + mesh height).
 static func make_sway(root: Node3D, amp: float, speed: float) -> void:
+	var trunk_height: float=0.0
+	for trunk_mesh: MeshInstance3D in find_meshes(root):
+		if trunk_mesh.name.begins_with("Trunk") and trunk_mesh.mesh!=null: trunk_height=maxf(trunk_height,trunk_mesh.mesh.get_aabb().end.y)
 	for mi in find_meshes(root):
 		var mesh: Mesh = mi.mesh
 		if mesh == null:
 			continue
 		var h := maxf(mesh.get_aabb().end.y, 0.05)
+		var moss_pile: bool=mi.name.begins_with("Moss_")
+		if moss_pile and trunk_height>0.0:
+			h=trunk_height
+			mi.visibility_range_end=18.0
+			mi.visibility_range_end_margin=3.0
+			mi.visibility_range_fade_mode=GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
 		var wind_id: String=str(root.get_meta("wind_model_id",root.get_meta("model_id","")))
 		var anchored_height: float=h*.32 if wind_id in ["A14_hydrangea_pot","A15_potted_plant","W04_sunflower_pot","W05_hydrangea_pot","W06_lily_vase"] else 0.0
 		for si in mesh.get_surface_count():
@@ -160,13 +169,13 @@ static func make_sway(root: Node3D, amp: float, speed: float) -> void:
 				src = mesh.surface_get_material(si)
 			if not (src is StandardMaterial3D):
 				continue
-			var role: int=1 if mi.name.begins_with("Foliage") else (0 if mi.name.begins_with("Trunk") else 2)
-			var key := "%d_%.3f_%.3f_%d" % [src.get_instance_id(), h, amp,role]
+			var role: int=1 if mi.name.begins_with("Foliage") else (0 if mi.name.begins_with("Trunk") or moss_pile else 2)
+			var key := "%d_%.3f_%.3f_%d_%s" % [src.get_instance_id(), h, amp,role,str(mi.name) if moss_pile else ""]
 			var sm: ShaderMaterial = _sway_cache.get(key)
 			if sm == null:
 				var sd := src as StandardMaterial3D
 				sm = ShaderMaterial.new()
-				sm.shader = load("res://shaders/foliage_sway.gdshader")
+				sm.shader = load("res://shaders/moss_pile.gdshader" if moss_pile else "res://shaders/foliage_sway.gdshader")
 				sm.set_shader_parameter("albedo_tex", sd.albedo_texture)
 				sm.set_shader_parameter("has_texture",sd.albedo_texture!=null)
 				sm.set_shader_parameter("albedo_color", sd.albedo_color)
@@ -179,6 +188,11 @@ static func make_sway(root: Node3D, amp: float, speed: float) -> void:
 				sm.set_shader_parameter("amp", amp)
 				sm.set_shader_parameter("speed", speed)
 				sm.set_shader_parameter("part_role",role)
+				sm.set_shader_parameter("aged_bark",wind_id=="T05_old_shade_tree" and role==0 and not moss_pile)
+				if moss_pile:
+					var layer: int=str(mi.name).get_slice("_",2).to_int()
+					sm.set_shader_parameter("shell_height",.001+layer*.003)
+					sm.set_shader_parameter("shell_layer",float(layer)/7.0)
 				_sway_cache[key] = sm
 			mi.set_surface_override_material(si, sm)
 
@@ -425,16 +439,18 @@ func _build_ground() -> void:
 		d.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		add_child(d)
 	# far ground that runs under the backdrop
-	var far := StandardMaterial3D.new()
-	far.albedo_color = Color(0.56, 0.62, 0.42)
-	far.roughness = 1.0
+	var far := ShaderMaterial.new()
+	far.shader = load("res://shaders/distant_meadow.gdshader")
 	# stops short of the house lot (Layout.ROOM_ORIGIN, z = 400), which has its own garden ground,
 	# and leaves a hole where the lane down to the allotment cuts into the slope (_build_town_exit)
 	var c: Rect2 = EXIT_CUT
-	_plane([-400.0, -400.0, 400.0, c.position.y], far, -0.03)
-	_plane([-400.0, c.end.y, 400.0, 360.0], far, -0.03)
-	_plane([-400.0, c.position.y, c.position.x, c.end.y], far, -0.03)
-	_plane([c.end.x, c.position.y, 400.0, c.end.y], far, -0.03)
+	var far_index:=0
+	for far_rect: Array in [[-400.0,-400.0,400.0,c.position.y],[-400.0,c.end.y,400.0,360.0],[-400.0,c.position.y,c.position.x,c.end.y],[c.end.x,c.position.y,400.0,c.end.y]]:
+		var far_tile: MeshInstance3D=_plane(far_rect,far,-.03)
+		far_tile.name="FarMeadow_%d"%far_index
+		far_tile.set_meta("far_meadow",true)
+		far_index+=1
+	FoliageBackdrop.build_ground(self,far)
 	# floor collider around the same hole; the lane mesh brings its own collider for the hole
 	var body := StaticBody3D.new()
 	body.collision_layer = L_GROUND
@@ -923,6 +939,7 @@ func _build_backdrop() -> void:
 			if tree:
 				tree.set_meta("near_background_tree", true)
 				rest_on_terrain(tree,-.03)
+	FoliageBackdrop.build(self)
 
 
 # ------------------------------------------------------------------ v0.5 town dressing

@@ -1,2366 +1,2366 @@
 {
- "A07_lantern": {
-  "base_frac": 0.075,
-  "normal": [
-   -0.0883,
-   -0.0025,
-   -0.9961
-  ],
-  "rect_fill": 0.8,
-  "square_deg": 11.76,
-  "tilt": 5.07,
-  "verts": 2478
- },
- "A10_vending_machine": {
-  "base_frac": 0.833,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.979,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 4950
- },
- "A11_bicycle": {
-  "base_frac": 0.104,
-  "normal": [
-   -0.0079,
-   -0.001,
-   -1.0
-  ],
-  "rect_fill": 0.639,
-  "square_deg": 0.64,
-  "tilt": 0.46,
-  "verts": 10613
- },
- "A12_bench": {
-  "base_frac": 0.72,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 2160
- },
- "A13_chalkboard": {
-  "base_frac": 0.737,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.994,
-  "square_deg": 0.02,
-  "tilt": 0.0,
-  "verts": 1964
- },
- "A14_hydrangea_pot": {
-  "base_frac": 0.124,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.816,
-  "square_deg": -1.3,
-  "tilt": 0.0,
-  "verts": 9270
- },
- "A15_potted_plant": {
-  "base_frac": 0.095,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.871,
-  "square_deg": 0.6,
-  "tilt": 0.0,
-  "verts": 10074
- },
- "A16_planter_box": {
-  "base_frac": 0.527,
-  "normal": [
-   0.0021,
-   0.0037,
-   -1.0
-  ],
-  "rect_fill": 0.818,
-  "square_deg": -2.15,
-  "tilt": 0.24,
-  "verts": 10110
- },
- "A20_cat_sleep": {
-  "base_frac": 0.571,
-  "normal": [
-   0.0005,
-   -0.0022,
-   -1.0
-  ],
-  "rect_fill": 0.798,
-  "square_deg": -33.69,
-  "tilt": 0.13,
-  "verts": 70227
- },
- "A21_sparrow": {
-  "base_frac": 0.282,
-  "normal": [
-   -0.0093,
-   -0.01,
-   -0.9999
-  ],
-  "rect_fill": 0.743,
-  "square_deg": 4.76,
-  "tilt": 0.78,
-  "verts": 4344
- },
- "A22_cat_sit": {
-  "base_frac": 0.388,
-  "normal": [
-   -0.007,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.824,
-  "square_deg": 26.68,
-  "tilt": 0.4,
-  "verts": 68512
- },
- "AN_cat_calico_walk": {
-  "base_frac": 0.283,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.798,
-  "square_deg": -2.66,
-  "tilt": 0.0,
-  "verts": 205777
- },
- "AN_cat_orange_walk": {
-  "base_frac": 0.43,
-  "normal": [
-   0.0011,
-   -0.0053,
-   -1.0
-  ],
-  "rect_fill": 0.795,
-  "square_deg": -1.94,
-  "tilt": 0.31,
-  "verts": 196838
- },
- "B01_bus": {
-  "base_frac": 0.527,
-  "normal": [
-   -0.0039,
-   -0.0001,
-   -1.0
-  ],
-  "rect_fill": 0.92,
-  "square_deg": 0.05,
-  "tilt": 0.22,
-  "verts": 233875
- },
- "B01_melon_pan": {
-  "base_frac": 0.265,
-  "normal": [
-   0.0539,
-   -0.001,
-   -0.9985
-  ],
-  "rect_fill": 0.825,
-  "square_deg": 43.19,
-  "tilt": 3.09,
-  "verts": 2504
- },
- "B02_croissant": {
-  "base_frac": 0.126,
-  "normal": [
-   0.3125,
-   0.1616,
-   -0.9361
-  ],
-  "rect_fill": 0.752,
-  "square_deg": -28.38,
-  "tilt": 20.6,
-  "verts": 2029
- },
- "B02_onigiri": {
-  "base_frac": 0.185,
-  "normal": [
-   -0.0003,
-   0.0058,
-   -1.0
-  ],
-  "rect_fill": 0.905,
-  "square_deg": 0.0,
-  "tilt": 0.34,
-  "verts": 4015
- },
- "B03_baguette": {
-  "base_frac": 0.109,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.868,
-  "square_deg": 0.05,
-  "tilt": 0.0,
-  "verts": 1896
- },
- "B04_shokupan": {
-  "base_frac": 0.614,
-  "normal": [
-   -0.0022,
-   -0.002,
-   -1.0
-  ],
-  "rect_fill": 0.943,
-  "square_deg": 0.38,
-  "tilt": 0.17,
-  "verts": 1624
- },
- "B05_anpan": {
-  "base_frac": 0.03,
-  "normal": [
-   0.2257,
-   -0.1466,
-   -0.9631
-  ],
-  "rect_fill": 0.787,
-  "square_deg": -27.83,
-  "tilt": 15.61,
-  "verts": 1634
- },
- "B06_curry_pan": {
-  "base_frac": 0.29,
-  "normal": [
-   0.0112,
-   -0.0292,
-   -0.9995
-  ],
-  "rect_fill": 0.8,
-  "square_deg": 31.77,
-  "tilt": 1.79,
-  "verts": 2188
- },
- "B07_iced_donut": {
-  "base_frac": 0.378,
-  "normal": [
-   -0.0019,
-   0.0023,
-   -1.0
-  ],
-  "rect_fill": 0.799,
-  "square_deg": 0.94,
-  "tilt": 0.17,
-  "verts": 7941
- },
- "B07_veg_sandwich": {
-  "base_frac": 0.677,
-  "normal": [
-   0.001,
-   0.0003,
-   -1.0
-  ],
-  "rect_fill": 0.941,
-  "square_deg": 0.1,
-  "tilt": 0.06,
-  "verts": 6236
- },
- "B08_focaccia": {
-  "base_frac": 0.839,
-  "normal": [
-   0.0031,
-   0.0001,
-   -1.0
-  ],
-  "rect_fill": 0.963,
-  "square_deg": 0.28,
-  "tilt": 0.18,
-  "verts": 4323
- },
- "B08_strawberry_cake": {
-  "base_frac": 0.776,
-  "normal": [
-   0.0001,
-   -0.0003,
-   -1.0
-  ],
-  "rect_fill": 0.792,
-  "square_deg": 30.0,
-  "tilt": 0.02,
-  "verts": 23263
- },
- "B09_sushi_tray": {
-  "base_frac": 0.711,
-  "normal": [
-   -0.0017,
-   0.0014,
-   -1.0
-  ],
-  "rect_fill": 0.8,
-  "square_deg": 4.32,
-  "tilt": 0.13,
-  "verts": 18820
- },
- "B10_bento_box": {
-  "base_frac": 0.881,
-  "normal": [
-   0.0068,
-   0.0082,
-   -0.9999
-  ],
-  "rect_fill": 0.977,
-  "square_deg": 0.07,
-  "tilt": 0.61,
-  "verts": 23180
- },
- "B11_cream_bun": {
-  "base_frac": 0.636,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.849,
-  "square_deg": 0.15,
-  "tilt": 0.0,
-  "verts": 8568
- },
- "C01_seedling": {
-  "base_frac": 0.388,
-  "normal": [
-   -0.0,
-   0.0049,
-   -1.0
-  ],
-  "rect_fill": 0.79,
-  "square_deg": -36.36,
-  "tilt": 0.28,
-  "verts": 3633
- },
- "C02_radish": {
-  "base_frac": 0.245,
-  "normal": [
-   0.0606,
-   0.0076,
-   -0.9981
-  ],
-  "rect_fill": 0.798,
-  "square_deg": 37.2,
-  "tilt": 3.5,
-  "verts": 6668
- },
- "C03_komatsuna": {
-  "base_frac": 0.082,
-  "normal": [
-   0.0354,
-   0.028,
-   -0.999
-  ],
-  "rect_fill": 0.757,
-  "square_deg": 18.92,
-  "tilt": 2.58,
-  "verts": 5355
- },
- "C04_tomato": {
-  "base_frac": 0.011,
-  "normal": [
-   0.4675,
-   0.0051,
-   -0.884
-  ],
-  "rect_fill": 0.784,
-  "square_deg": -25.95,
-  "tilt": 27.87,
-  "verts": 11119
- },
- "C05_cucumber": {
-  "base_frac": 0.835,
-  "normal": [
-   -0.0025,
-   -0.0025,
-   -1.0
-  ],
-  "rect_fill": 0.944,
-  "square_deg": -0.43,
-  "tilt": 0.2,
-  "verts": 11416
- },
- "C06_edamame": {
-  "base_frac": 0.076,
-  "normal": [
-   -0.2015,
-   -0.4586,
-   -0.8655
-  ],
-  "rect_fill": 0.726,
-  "square_deg": 14.63,
-  "tilt": 30.06,
-  "verts": 8678
- },
- "C07_sunflower": {
-  "base_frac": 0.01,
-  "normal": [
-   0.4356,
-   0.0651,
-   -0.8978
-  ],
-  "rect_fill": 0.836,
-  "square_deg": -0.07,
-  "tilt": 26.14,
-  "verts": 5971
- },
- "C08_strawberry": {
-  "base_frac": 0.399,
-  "normal": [
-   0.0093,
-   -0.0177,
-   -0.9998
-  ],
-  "rect_fill": 0.822,
-  "square_deg": 29.23,
-  "tilt": 1.14,
-  "verts": 7476
- },
- "C09_carrot": {
-  "base_frac": 0.642,
-  "normal": [
-   -0.002,
-   -0.0005,
-   -1.0
-  ],
-  "rect_fill": 0.763,
-  "square_deg": -10.37,
-  "tilt": 0.12,
-  "verts": 25332
- },
- "C10_potato": {
-  "base_frac": 0.347,
-  "normal": [
-   0.0033,
-   0.0049,
-   -1.0
-  ],
-  "rect_fill": 0.856,
-  "square_deg": -0.69,
-  "tilt": 0.34,
-  "verts": 12046
- },
- "C11_eggplant": {
-  "base_frac": 0.008,
-  "normal": [
-   0.367,
-   0.5006,
-   -0.784
-  ],
-  "rect_fill": 0.747,
-  "square_deg": 25.44,
-  "tilt": 38.37,
-  "verts": 10972
- },
- "C12_corn": {
-  "base_frac": 0.001,
-  "normal": [
-   -0.4042,
-   -0.1294,
-   -0.9055
-  ],
-  "rect_fill": 0.722,
-  "square_deg": 9.76,
-  "tilt": 25.11,
-  "verts": 11245
- },
- "C13_pumpkin": {
-  "base_frac": 0.656,
-  "normal": [
-   -0.0006,
-   0.0094,
-   -1.0
-  ],
-  "rect_fill": 0.808,
-  "square_deg": -12.98,
-  "tilt": 0.54,
-  "verts": 10707
- },
- "C14_watermelon": {
-  "base_frac": 0.298,
-  "normal": [
-   0.0119,
-   -0.005,
-   -0.9999
-  ],
-  "rect_fill": 0.841,
-  "square_deg": -0.49,
-  "tilt": 0.74,
-  "verts": 12907
- },
- "C15_wheat": {
-  "base_frac": 0.704,
-  "normal": [
-   -0.0131,
-   -0.0045,
-   -0.9999
-  ],
-  "rect_fill": 0.877,
-  "square_deg": -1.13,
-  "tilt": 0.8,
-  "verts": 23031
- },
- "C16_onion": {
-  "base_frac": 0.484,
-  "normal": [
-   -0.0033,
-   0.0106,
-   -0.9999
-  ],
-  "rect_fill": 0.935,
-  "square_deg": 0.54,
-  "tilt": 0.64,
-  "verts": 10408
- },
- "CH_aoi": {
-  "base_frac": 0.254,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.711,
-  "square_deg": 0.13,
-  "tilt": 0.0,
-  "verts": 55856
- },
- "CH_haru": {
-  "base_frac": 0.321,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.721,
-  "square_deg": -4.34,
-  "tilt": 0.0,
-  "verts": 51067
- },
- "CH_kazuko": {
-  "base_frac": 0.427,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.68,
-  "square_deg": -2.22,
-  "tilt": 0.0,
-  "verts": 57199
- },
- "CH_mio": {
-  "base_frac": 0.148,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.735,
-  "square_deg": -6.01,
-  "tilt": 0.0,
-  "verts": 57133
- },
- "CH_ren": {
-  "base_frac": 0.373,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.735,
-  "square_deg": -0.04,
-  "tilt": 0.0,
-  "verts": 54115
- },
- "CH_sora": {
-  "base_frac": 0.429,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.77,
-  "square_deg": 0.03,
-  "tilt": 0.0,
-  "verts": 54172
- },
- "CH_tanaka": {
-  "base_frac": 0.317,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.712,
-  "square_deg": 2.15,
-  "tilt": 0.0,
-  "verts": 50581
- },
- "D01_wheelbarrow": {
-  "base_frac": 0.159,
-  "normal": [
-   0.0014,
-   -0.0246,
-   -0.9997
-  ],
-  "rect_fill": 0.856,
-  "square_deg": 1.9,
-  "tilt": 1.41,
-  "verts": 10386
- },
- "D02_rain_barrel": {
-  "base_frac": 0.308,
-  "normal": [
-   0.0047,
-   0.0037,
-   -1.0
-  ],
-  "rect_fill": 0.778,
-  "square_deg": 29.7,
-  "tilt": 0.34,
-  "verts": 9646
- },
- "D03_veg_crates": {
-  "base_frac": 0.81,
-  "normal": [
-   0.0002,
-   -0.0026,
-   -1.0
-  ],
-  "rect_fill": 0.994,
-  "square_deg": 0.23,
-  "tilt": 0.15,
-  "verts": 46039
- },
- "D04_stone_lantern": {
-  "base_frac": 0.81,
-  "normal": [
-   0.0015,
-   -0.0011,
-   -1.0
-  ],
-  "rect_fill": 0.98,
-  "square_deg": -0.98,
-  "tilt": 0.11,
-  "verts": 9520
- },
- "D05_hokora": {
-  "base_frac": 0.672,
-  "normal": [
-   -0.0055,
-   0.0093,
-   -0.9999
-  ],
-  "rect_fill": 0.774,
-  "square_deg": -0.94,
-  "tilt": 0.62,
-  "verts": 12006
- },
- "D06_well": {
-  "base_frac": 0.75,
-  "normal": [
-   -0.0031,
-   -0.0015,
-   -1.0
-  ],
-  "rect_fill": 0.797,
-  "square_deg": 32.88,
-  "tilt": 0.2,
-  "verts": 11798
- },
- "D07_kei_truck": {
-  "base_frac": 0.547,
-  "normal": [
-   -0.0029,
-   -0.002,
-   -1.0
-  ],
-  "rect_fill": 0.983,
-  "square_deg": -0.0,
-  "tilt": 0.2,
-  "verts": 16518
- },
- "D08_tool_rack": {
-  "base_frac": 0.515,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.984,
-  "square_deg": 0.94,
-  "tilt": 0.0,
-  "verts": 11858
- },
- "D09_log_pile": {
-  "base_frac": 0.227,
-  "normal": [
-   0.0032,
-   0.0088,
-   -1.0
-  ],
-  "rect_fill": 0.752,
-  "square_deg": -18.67,
-  "tilt": 0.54,
-  "verts": 35724
- },
- "D10_rocks": {
-  "base_frac": 0.815,
-  "normal": [
-   0.0042,
-   0.0072,
-   -1.0
-  ],
-  "rect_fill": 0.829,
-  "square_deg": -43.12,
-  "tilt": 0.47,
-  "verts": 10408
- },
- "D11_reeds": {
-  "base_frac": 0.053,
-  "normal": [
-   0.0006,
-   0.0187,
-   -0.9998
-  ],
-  "rect_fill": 0.776,
-  "square_deg": 4.62,
-  "tilt": 1.07,
-  "verts": 13733
- },
- "D12_flower_planter": {
-  "base_frac": 0.707,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.862,
-  "square_deg": -0.33,
-  "tilt": 0.0,
-  "verts": 11804
- },
- "E01_furin": {
-  "base_frac": 0.008,
-  "normal": [
-   0.0,
-   -0.2425,
-   -0.9701
-  ],
-  "rect_fill": 0.799,
-  "square_deg": 0.0,
-  "tilt": 14.04,
-  "verts": 20585
- },
- "E01_yatai": {
-  "base_frac": 0.352,
-  "normal": [
-   -0.0,
-   -0.0002,
-   -1.0
-  ],
-  "rect_fill": 0.92,
-  "square_deg": -1.55,
-  "tilt": 0.01,
-  "verts": 11723
- },
- "E02_tanabata_bamboo": {
-  "base_frac": 0.075,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.795,
-  "square_deg": -20.94,
-  "tilt": 0.0,
-  "verts": 13211
- },
- "F01_tool_shed": {
-  "base_frac": 0.594,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.96,
-  "square_deg": 0.61,
-  "tilt": 0.0,
-  "verts": 12173
- },
- "F02_hand_pump": {
-  "base_frac": 0.737,
-  "normal": [
-   -0.0005,
-   -0.0003,
-   -1.0
-  ],
-  "rect_fill": 0.807,
-  "square_deg": 0.68,
-  "tilt": 0.03,
-  "verts": 5860
- },
- "F03_compost_bin": {
-  "base_frac": 0.96,
-  "normal": [
-   0.0006,
-   -0.0013,
-   -1.0
-  ],
-  "rect_fill": 0.899,
-  "square_deg": 0.89,
-  "tilt": 0.08,
-  "verts": 5306
- },
- "F04_scarecrow": {
-  "base_frac": 0.012,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.642,
-  "square_deg": -13.76,
-  "tilt": 0.0,
-  "verts": 7485
- },
- "F05_greenhouse": {
-  "base_frac": 0.974,
-  "normal": [
-   0.0009,
-   0.0001,
-   -1.0
-  ],
-  "rect_fill": 0.997,
-  "square_deg": 0.04,
-  "tilt": 0.05,
-  "verts": 8882
- },
- "F06_veggie_stand": {
-  "base_frac": 0.432,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.934,
-  "square_deg": 0.23,
-  "tilt": 0.0,
-  "verts": 8275
- },
- "F07_footbridge": {
-  "base_frac": 0.878,
-  "normal": [
-   0.0068,
-   0.0038,
-   -1.0
-  ],
-  "rect_fill": 0.993,
-  "square_deg": 0.04,
-  "tilt": 0.45,
-  "verts": 9046
- },
- "F08_soil_plot": {
-  "base_frac": 1.0,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 2565
- },
- "G01_getabako": {
-  "base_frac": 0.838,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.956,
-  "square_deg": -0.01,
-  "tilt": 0.0,
-  "verts": 8114
- },
- "G02_goldfish_tank": {
-  "base_frac": 0.811,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 5628
- },
- "G03_laundry_stand": {
-  "base_frac": 0.929,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.998,
-  "square_deg": 0.02,
-  "tilt": 0.0,
-  "verts": 5555
- },
- "G05_goldfish_bowl": {
-  "base_frac": 0.214,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.79,
-  "square_deg": -1.68,
-  "tilt": 0.0,
-  "verts": 3774
- },
- "G06_zabuton": {
-  "base_frac": 1.0,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.998,
-  "square_deg": 0.04,
-  "tilt": 0.0,
-  "verts": 3223
- },
- "G07_hall_cabinet": {
-  "base_frac": 0.89,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.991,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 8760
- },
- "G08_cat": {
-  "base_frac": 0.583,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.789,
-  "square_deg": -29.18,
-  "tilt": 0.0,
-  "verts": 4154
- },
- "G09_taiko": {
-  "base_frac": 0.656,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.995,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 7348
- },
- "G10_store_shelf": {
-  "base_frac": 0.903,
-  "normal": [
-   -0.0016,
-   -0.0046,
-   -1.0
-  ],
-  "rect_fill": 0.989,
-  "square_deg": -0.58,
-  "tilt": 0.28,
-  "verts": 43992
- },
- "G11_bread_cart": {
-  "base_frac": 0.461,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.913,
-  "square_deg": -0.02,
-  "tilt": 0.0,
-  "verts": 42389
- },
- "H01": {
-  "base_frac": 0.706,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.927,
-  "square_deg": -0.03,
-  "tilt": 0.0,
-  "verts": 224115
- },
- "H02": {
-  "base_frac": 0.85,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.856,
-  "square_deg": -0.02,
-  "tilt": 0.0,
-  "verts": 287480
- },
- "H03": {
-  "base_frac": 0.679,
-  "normal": [
-   0.0,
-   0.0091,
-   -1.0
-  ],
-  "rect_fill": 0.949,
-  "square_deg": -0.12,
-  "tilt": 0.52,
-  "verts": 98028
- },
- "H04": {
-  "base_frac": 1.0,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 1.0,
-  "square_deg": -0.0,
-  "tilt": 0.0,
-  "verts": 7598
- },
- "H05": {
-  "base_frac": 0.982,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.999,
-  "square_deg": -0.01,
-  "tilt": 0.0,
-  "verts": 7916
- },
- "H06": {
-  "base_frac": 0.999,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.927,
-  "square_deg": 0.04,
-  "tilt": 0.0,
-  "verts": 8857
- },
- "H07": {
-  "base_frac": 0.868,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.99,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 4264
- },
- "H12a": {
-  "base_frac": 0.727,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.99,
-  "square_deg": 0.09,
-  "tilt": 0.0,
-  "verts": 8120
- },
- "H12a_box": {
-  "base_frac": 0.711,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.992,
-  "square_deg": -0.08,
-  "tilt": 0.0,
-  "verts": 955
- },
- "H12a_plants": {
-  "base_frac": 0.731,
-  "normal": [
-   -0.0013,
-   -0.0016,
-   -1.0
-  ],
-  "rect_fill": 0.716,
-  "square_deg": 7.18,
-  "tilt": 0.12,
-  "verts": 7439
- },
- "I01_bed": {
-  "base_frac": 0.836,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.954,
-  "square_deg": 0.04,
-  "tilt": 0.0,
-  "verts": 4065
- },
- "I02_cake_showcase": {
-  "base_frac": 0.985,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.999,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 336
- },
- "I02_desk": {
-  "base_frac": 0.951,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.842,
-  "square_deg": -0.01,
-  "tilt": 0.0,
-  "verts": 6270
- },
- "I03_bookshelf": {
-  "base_frac": 0.933,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.986,
-  "square_deg": 0.01,
-  "tilt": 0.0,
-  "verts": 6833
- },
- "I03_drink_fridge": {
-  "base_frac": 0.939,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.967,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 292
- },
- "I04_chabudai": {
-  "base_frac": 0.589,
-  "normal": [
-   -0.0069,
-   0.0037,
-   -1.0
-  ],
-  "rect_fill": 0.781,
-  "square_deg": -20.03,
-  "tilt": 0.45,
-  "verts": 4051
- },
- "I04_shop_counter": {
-  "base_frac": 0.802,
-  "normal": [
-   -0.0012,
-   -0.0001,
-   -1.0
-  ],
-  "rect_fill": 0.965,
-  "square_deg": -0.28,
-  "tilt": 0.07,
-  "verts": 21283
- },
- "I05_bread_shelf": {
-  "base_frac": 0.807,
-  "normal": [
-   0.0006,
-   -0.004,
-   -1.0
-  ],
-  "rect_fill": 0.991,
-  "square_deg": 1.21,
-  "tilt": 0.23,
-  "verts": 41312
- },
- "I05_wardrobe": {
-  "base_frac": 0.943,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.982,
-  "square_deg": 0.01,
-  "tilt": 0.0,
-  "verts": 3728
- },
- "I06_floor_lamp": {
-  "base_frac": 0.804,
-  "normal": [
-   -0.0147,
-   0.0007,
-   -0.9999
-  ],
-  "rect_fill": 0.676,
-  "square_deg": -32.98,
-  "tilt": 0.85,
-  "verts": 4082
- },
- "I07_ice_freezer": {
-  "base_frac": 0.651,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.998,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 532
- },
- "I07_monstera": {
-  "base_frac": 0.209,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.721,
-  "square_deg": 33.16,
-  "tilt": 0.0,
-  "verts": 6488
- },
- "I08_boxes": {
-  "base_frac": 0.767,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.919,
-  "square_deg": 0.24,
-  "tilt": 0.0,
-  "verts": 3983
- },
- "I08_stone_mill": {
-  "base_frac": 0.602,
-  "normal": [
-   -0.0007,
-   -0.0005,
-   -1.0
-  ],
-  "rect_fill": 0.794,
-  "square_deg": 4.53,
-  "tilt": 0.05,
-  "verts": 7739
- },
- "J01_kitchen_counter": {
-  "base_frac": 0.906,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.987,
-  "square_deg": -0.03,
-  "tilt": 0.0,
-  "verts": 9013
- },
- "J01_machiya": {
-  "base_frac": 0.714,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.964,
-  "square_deg": -0.02,
-  "tilt": 0.0,
-  "verts": 39958
- },
- "J02_fridge": {
-  "base_frac": 0.753,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.961,
-  "square_deg": 0.07,
-  "tilt": 0.0,
-  "verts": 4556
- },
- "J03_dining_set": {
-  "base_frac": 0.817,
-  "normal": [
-   -0.0005,
-   0.0077,
-   -1.0
-  ],
-  "rect_fill": 0.896,
-  "square_deg": 0.02,
-  "tilt": 0.44,
-  "verts": 7090
- },
- "J04_rice_cabinet": {
-  "base_frac": 0.894,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.964,
-  "square_deg": -0.25,
-  "tilt": 0.0,
-  "verts": 6931
- },
- "J05_dish_cabinet": {
-  "base_frac": 0.824,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.987,
-  "square_deg": -0.02,
-  "tilt": 0.0,
-  "verts": 9254
- },
- "J06_tv_board": {
-  "base_frac": 0.805,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.984,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 7234
- },
- "J07_kotatsu": {
-  "base_frac": 0.999,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.981,
-  "square_deg": -0.12,
-  "tilt": 0.0,
-  "verts": 4180
- },
- "J08_fan": {
-  "base_frac": 0.434,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.792,
-  "square_deg": 40.42,
-  "tilt": 0.0,
-  "verts": 9821
- },
- "J09_tansu": {
-  "base_frac": 0.772,
-  "normal": [
-   -0.0002,
-   -0.0001,
-   -1.0
-  ],
-  "rect_fill": 0.993,
-  "square_deg": -0.05,
-  "tilt": 0.01,
-  "verts": 4764
- },
- "M01_timber_machiya": {
-  "base_frac": 0.684,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.97,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 101025
- },
- "M03_gable_house": {
-  "base_frac": 0.765,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.933,
-  "square_deg": -0.01,
-  "tilt": 0.0,
-  "verts": 115770
- },
- "M05_residential": {
-  "base_frac": 0.77,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.965,
-  "square_deg": -0.02,
-  "tilt": 0.0,
-  "verts": 91577
- },
- "M07_power_pole": {
-  "base_frac": 0.092,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.811,
-  "square_deg": -30.9,
-  "tilt": 0.0,
-  "verts": 8084
- },
- "M12b_shrub": {
-  "base_frac": 0.099,
-  "normal": [
-   -0.0755,
-   -0.0455,
-   -0.9961
-  ],
-  "rect_fill": 0.802,
-  "square_deg": 27.99,
-  "tilt": 5.05,
-  "verts": 1800
- },
- "M12d_flower_bush": {
-  "base_frac": 0.098,
-  "normal": [
-   -0.0755,
-   -0.0455,
-   -0.9961
-  ],
-  "rect_fill": 0.791,
-  "square_deg": 25.78,
-  "tilt": 5.05,
-  "verts": 2745
- },
- "P01": {
-  "base_frac": 0.735,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.986,
-  "square_deg": 0.08,
-  "tilt": 0.0,
-  "verts": 13889
- },
- "P02": {
-  "base_frac": 0.896,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.979,
-  "square_deg": 0.03,
-  "tilt": 0.0,
-  "verts": 10537
- },
- "P03": {
-  "base_frac": 0.642,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 3921
- },
- "P04": {
-  "base_frac": 0.981,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.999,
-  "square_deg": -0.01,
-  "tilt": 0.0,
-  "verts": 13751
- },
- "P05": {
-  "base_frac": 0.781,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.907,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 3248
- },
- "P06": {
-  "base_frac": 0.723,
-  "normal": [
-   -0.0049,
-   -0.0048,
-   -1.0
-  ],
-  "rect_fill": 0.974,
-  "square_deg": -0.56,
-  "tilt": 0.39,
-  "verts": 8216
- },
- "P07": {
-  "base_frac": 0.883,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.996,
-  "square_deg": -0.05,
-  "tilt": 0.0,
-  "verts": 15403
- },
- "P08": {
-  "base_frac": 0.715,
-  "normal": [
-   -0.0015,
-   0.0002,
-   -1.0
-  ],
-  "rect_fill": 0.885,
-  "square_deg": -0.55,
-  "tilt": 0.09,
-  "verts": 10387
- },
- "P09": {
-  "base_frac": 0.782,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 5137
- },
- "P10": {
-  "base_frac": 0.789,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 6906
- },
- "P11": {
-  "base_frac": 0.433,
-  "normal": [
-   0.0057,
-   -0.0051,
-   -1.0
-  ],
-  "rect_fill": 0.853,
-  "square_deg": -0.01,
-  "tilt": 0.44,
-  "verts": 9780
- },
- "P12": {
-  "base_frac": 0.988,
-  "normal": [
-   -0.0029,
-   0.0011,
-   -1.0
-  ],
-  "rect_fill": 0.962,
-  "square_deg": 0.0,
-  "tilt": 0.18,
-  "verts": 8797
- },
- "P_bridge": {
-  "base_frac": 0.314,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.999,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 4134
- },
- "P_chest": {
-  "base_frac": 0.83,
-  "normal": [
-   0.0042,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.987,
-  "square_deg": -0.64,
-  "tilt": 0.24,
-  "verts": 11936
- },
- "P_chochin_bon": {
-  "base_frac": 0.019,
-  "normal": [
-   0.1739,
-   0.4057,
-   -0.8973
-  ],
-  "rect_fill": 0.792,
-  "square_deg": 45.0,
-  "tilt": 26.19,
-  "verts": 4564
- },
- "P_chochin_red": {
-  "base_frac": 0.018,
-  "normal": [
-   0.2034,
-   -0.4521,
-   -0.8685
-  ],
-  "rect_fill": 0.792,
-  "square_deg": -8.94,
-  "tilt": 29.72,
-  "verts": 4564
- },
- "P_chochin_white": {
-  "base_frac": 0.018,
-  "normal": [
-   0.2034,
-   -0.4521,
-   -0.8685
-  ],
-  "rect_fill": 0.792,
-  "square_deg": -8.94,
-  "tilt": 29.72,
-  "verts": 4564
- },
- "P_deck_oven": {
-  "base_frac": 0.884,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.979,
-  "square_deg": 0.02,
-  "tilt": 0.0,
-  "verts": 15905
- },
- "P_farm_gate": {
-  "base_frac": 0.097,
-  "normal": [
-   0.0002,
-   0.0623,
-   -0.9981
-  ],
-  "rect_fill": 0.934,
-  "square_deg": -0.76,
-  "tilt": 3.57,
-  "verts": 26262
- },
- "P_gondola": {
-  "base_frac": 0.923,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 5280
- },
- "P_long_table": {
-  "base_frac": 0.653,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 192
- },
- "P_offer_stand": {
-  "base_frac": 0.694,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 1848
- },
- "P_shop_wall_frame": {
-  "base_frac": 0.73,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.99,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 960
- },
- "P_signpost": {
-  "base_frac": 0.018,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.581,
-  "square_deg": 15.09,
-  "tilt": 0.0,
-  "verts": 162
- },
- "P_store_sidepanel": {
-  "base_frac": 0.846,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 1398
- },
- "P_toro": {
-  "base_frac": 0.944,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 844
- },
- "P_yagura": {
-  "base_frac": 0.725,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.946,
-  "square_deg": -0.01,
-  "tilt": 0.0,
-  "verts": 21261
- },
- "R06": {
-  "base_frac": 0.901,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.941,
-  "square_deg": -0.01,
-  "tilt": 0.0,
-  "verts": 8918
- },
- "R07a": {
-  "base_frac": 0.807,
-  "normal": [
-   -0.0046,
-   -0.0002,
-   -1.0
-  ],
-  "rect_fill": 0.737,
-  "square_deg": -1.99,
-  "tilt": 0.26,
-  "verts": 3593
- },
- "R08a": {
-  "base_frac": 0.939,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.994,
-  "square_deg": 0.15,
-  "tilt": 0.0,
-  "verts": 6638
- },
- "R09": {
-  "base_frac": 0.434,
-  "normal": [
-   -0.0049,
-   -0.0055,
-   -1.0
-  ],
-  "rect_fill": 0.813,
-  "square_deg": 0.21,
-  "tilt": 0.42,
-  "verts": 8620
- },
- "R10": {
-  "base_frac": 1.0,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.999,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 9247
- },
- "R11": {
-  "base_frac": 0.813,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.902,
-  "square_deg": -0.01,
-  "tilt": 0.0,
-  "verts": 6528
- },
- "R12": {
-  "base_frac": 0.996,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.995,
-  "square_deg": 0.03,
-  "tilt": 0.0,
-  "verts": 7934
- },
- "S01": {
-  "base_frac": 0.698,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.986,
-  "square_deg": 0.02,
-  "tilt": 0.0,
-  "verts": 172995
- },
- "S02": {
-  "base_frac": 0.835,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.956,
-  "square_deg": -1.46,
-  "tilt": 0.0,
-  "verts": 110142
- },
- "S03": {
-  "base_frac": 0.76,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.97,
-  "square_deg": 0.23,
-  "tilt": 0.0,
-  "verts": 140742
- },
- "S05": {
-  "base_frac": 0.797,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.955,
-  "square_deg": -0.6,
-  "tilt": 0.0,
-  "verts": 106735
- },
- "S06": {
-  "base_frac": 0.888,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.919,
-  "square_deg": 0.14,
-  "tilt": 0.0,
-  "verts": 123689
- },
- "S08": {
-  "base_frac": 0.721,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.989,
-  "square_deg": -0.01,
-  "tilt": 0.0,
-  "verts": 118966
- },
- "T01_courtyard_tree": {
-  "base_frac": 0.092,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.847,
-  "square_deg": 0.24,
-  "tilt": 0.0,
-  "verts": 10929
- },
- "T02_summer_tree": {
-  "base_frac": 0.104,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.822,
-  "square_deg": 3.23,
-  "tilt": 0.0,
-  "verts": 6388
- },
- "T03_round_ginkgo": {
-  "base_frac": 0.123,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.788,
-  "square_deg": -34.64,
-  "tilt": 0.0,
-  "verts": 5485
- },
- "T04_slender_cedar": {
-  "base_frac": 0.015,
-  "normal": [
-   0.368,
-   0.5111,
-   -0.7768
-  ],
-  "rect_fill": 0.779,
-  "square_deg": -5.21,
-  "tilt": 39.03,
-  "verts": 8099
- },
- "T05_old_shade_tree": {
-  "base_frac": 0.074,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.802,
-  "square_deg": -3.29,
-  "tilt": 0.0,
-  "verts": 125516
- },
- "V01_fern": {
-  "base_frac": 0.009,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.797,
-  "square_deg": 15.3,
-  "tilt": 0.0,
-  "verts": 126
- },
- "V02_wildflowers": {
-  "base_frac": 0.043,
-  "normal": [
-   -0.0219,
-   0.0758,
-   -0.9969
-  ],
-  "rect_fill": 0.702,
-  "square_deg": -3.84,
-  "tilt": 4.53,
-  "verts": 595
- },
- "V03_grass_clump": {
-  "base_frac": 0.03,
-  "normal": [
-   0.016,
-   -0.1436,
-   -0.9895
-  ],
-  "rect_fill": 0.667,
-  "square_deg": 37.19,
-  "tilt": 8.31,
-  "verts": 577
- },
- "V04_daisy_meadow": {
-  "base_frac": 0.526,
-  "normal": [
-   0.0062,
-   -0.0056,
-   -1.0
-  ],
-  "rect_fill": 0.783,
-  "square_deg": 2.17,
-  "tilt": 0.48,
-  "verts": 26168
- },
- "V05_river_reeds": {
-  "base_frac": 0.085,
-  "normal": [
-   -0.1171,
-   -0.065,
-   -0.991
-  ],
-  "rect_fill": 0.793,
-  "square_deg": 38.74,
-  "tilt": 7.7,
-  "verts": 32122
- },
- "W01_flower_buckets": {
-  "base_frac": 0.342,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.919,
-  "square_deg": 0.04,
-  "tilt": 0.0,
-  "verts": 38102
- },
- "W02_grocer_shelf": {
-  "base_frac": 0.689,
-  "normal": [
-   -0.0018,
-   -0.0061,
-   -1.0
-  ],
-  "rect_fill": 0.982,
-  "square_deg": 0.06,
-  "tilt": 0.36,
-  "verts": 24472
- },
- "W03_cucumber_crate": {
-  "base_frac": 0.763,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.965,
-  "square_deg": 1.18,
-  "tilt": 0.0,
-  "verts": 15576
- },
- "W04_sunflower_pot": {
-  "base_frac": 0.168,
-  "normal": [
-   0.0005,
-   0.0114,
-   -0.9999
-  ],
-  "rect_fill": 0.798,
-  "square_deg": -18.96,
-  "tilt": 0.65,
-  "verts": 16882
- },
- "W05_hydrangea_pot": {
-  "base_frac": 0.1,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.819,
-  "square_deg": -4.71,
-  "tilt": 0.0,
-  "verts": 19454
- },
- "W06_lily_vase": {
-  "base_frac": 0.058,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.782,
-  "square_deg": -37.62,
-  "tilt": 0.0,
-  "verts": 17850
- },
- "W07_pastry_tray": {
-  "base_frac": 0.167,
-  "normal": [
-   -0.0052,
-   -0.0067,
-   -1.0
-  ],
-  "rect_fill": 0.838,
-  "square_deg": -20.57,
-  "tilt": 0.49,
-  "verts": 10988
- },
- "W08_baguette_basket": {
-  "base_frac": 0.42,
-  "normal": [
-   -0.0082,
-   0.0075,
-   -0.9999
-  ],
-  "rect_fill": 0.833,
-  "square_deg": 1.16,
-  "tilt": 0.64,
-  "verts": 18141
- },
- "W09_rice_sacks": {
-  "base_frac": 0.164,
-  "normal": [
-   0.0033,
-   0.1753,
-   -0.9845
-  ],
-  "rect_fill": 0.773,
-  "square_deg": -2.18,
-  "tilt": 10.1,
-  "verts": 9213
- },
- "W10_bottle_crate": {
-  "base_frac": 0.875,
-  "normal": [
-   -0.0022,
-   0.0027,
-   -1.0
-  ],
-  "rect_fill": 0.988,
-  "square_deg": -0.21,
-  "tilt": 0.2,
-  "verts": 15257
- },
- "W11_ceramic_set": {
-  "base_frac": 0.291,
-  "normal": [
-   -0.0008,
-   0.0051,
-   -1.0
-  ],
-  "rect_fill": 0.815,
-  "square_deg": -8.32,
-  "tilt": 0.3,
-  "verts": 11522
- },
- "W12_cedar_tray": {
-  "base_frac": 0.364,
-  "normal": [
-   -0.0063,
-   0.05,
-   -0.9987
-  ],
-  "rect_fill": 0.963,
-  "square_deg": -0.03,
-  "tilt": 2.89,
-  "verts": 10146
- },
- "W13_cedar_worktable": {
-  "base_frac": 0.854,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
-  "tilt": 0.0,
-  "verts": 576
- },
- "W14_grocery_stock": {
-  "base_frac": 0.72,
-  "normal": [
-   -0.0076,
-   0.0006,
-   -1.0
-  ],
-  "rect_fill": 0.792,
-  "square_deg": -0.61,
-  "tilt": 0.43,
-  "verts": 19219
- },
- "W15_produce_basket": {
-  "base_frac": 0.669,
-  "normal": [
-   0.0,
-   -0.0031,
-   -1.0
-  ],
-  "rect_fill": 0.949,
-  "square_deg": -0.63,
-  "tilt": 0.18,
-  "verts": 27643
- },
- "W16_handtools_board": {
-  "base_frac": 0.879,
-  "normal": [
-   0.0,
-   0.0,
-   -1.0
-  ],
-  "rect_fill": 0.994,
-  "square_deg": 0.12,
-  "tilt": 0.0,
-  "verts": 24408
- },
- "W17_display_shelf": {
-  "base_frac": 0.844,
-  "normal": [
-   -0.0014,
-   0.0214,
-   -0.9998
-  ],
-  "rect_fill": 0.985,
-  "square_deg": -0.01,
-  "tilt": 1.23,
-  "verts": 23125
- },
- "W18_retro_tv": {
-  "base_frac": 0.657,
-  "normal": [
-   0.0,
-   -0.0055,
-   -1.0
-  ],
-  "rect_fill": 0.974,
-  "square_deg": 0.25,
-  "tilt": 0.31,
-  "verts": 16310
- },
- "W19_flour_bag": {
-  "base_frac": 0.796,
-  "normal": [
-   0.0018,
-   -0.0037,
-   -1.0
-  ],
-  "rect_fill": 0.914,
-  "square_deg": 0.0,
-  "tilt": 0.24,
-  "verts": 6006
- },
- "W20_milk_carton": {
-  "base_frac": 0.627,
-  "normal": [
-   -0.0106,
-   -0.0053,
-   -0.9999
-  ],
-  "rect_fill": 0.892,
-  "square_deg": 0.0,
-  "tilt": 0.68,
-  "verts": 1935
- },
- "W21_tea_tin": {
-  "base_frac": 0.773,
-  "normal": [
-   -0.002,
-   0.0004,
-   -1.0
-  ],
-  "rect_fill": 0.771,
-  "square_deg": -13.48,
-  "tilt": 0.11,
-  "verts": 1731
- },
- "W22_soy_bottle": {
-  "base_frac": 0.491,
-  "normal": [
-   -0.0041,
-   0.0039,
-   -1.0
-  ],
-  "rect_fill": 0.798,
-  "square_deg": -1.39,
-  "tilt": 0.32,
-  "verts": 1697
- },
- "W23_egg_carton": {
-  "base_frac": 0.299,
-  "normal": [
-   0.0054,
-   0.0151,
-   -0.9999
-  ],
-  "rect_fill": 0.92,
-  "square_deg": -22.74,
-  "tilt": 0.92,
-  "verts": 7803
- }
+  "A07_lantern": {
+    "base_frac": 0.075,
+    "normal": [
+      -0.0883,
+      -0.0025,
+      -0.9961
+    ],
+    "rect_fill": 0.8,
+    "square_deg": 11.76,
+    "tilt": 5.07,
+    "verts": 2478
+  },
+  "A10_vending_machine": {
+    "base_frac": 0.833,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.979,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 4950
+  },
+  "A11_bicycle": {
+    "base_frac": 0.104,
+    "normal": [
+      -0.0079,
+      -0.001,
+      -1.0
+    ],
+    "rect_fill": 0.639,
+    "square_deg": 0.64,
+    "tilt": 0.46,
+    "verts": 10613
+  },
+  "A12_bench": {
+    "base_frac": 0.72,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 1.0,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 2160
+  },
+  "A13_chalkboard": {
+    "base_frac": 0.737,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.994,
+    "square_deg": 0.02,
+    "tilt": 0.0,
+    "verts": 1964
+  },
+  "A14_hydrangea_pot": {
+    "base_frac": 0.124,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.816,
+    "square_deg": -1.3,
+    "tilt": 0.0,
+    "verts": 9270
+  },
+  "A15_potted_plant": {
+    "base_frac": 0.095,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.871,
+    "square_deg": 0.6,
+    "tilt": 0.0,
+    "verts": 10074
+  },
+  "A16_planter_box": {
+    "base_frac": 0.527,
+    "normal": [
+      0.0021,
+      0.0037,
+      -1.0
+    ],
+    "rect_fill": 0.818,
+    "square_deg": -2.15,
+    "tilt": 0.24,
+    "verts": 10110
+  },
+  "A20_cat_sleep": {
+    "base_frac": 0.571,
+    "normal": [
+      0.0005,
+      -0.0022,
+      -1.0
+    ],
+    "rect_fill": 0.798,
+    "square_deg": -33.69,
+    "tilt": 0.13,
+    "verts": 70227
+  },
+  "A21_sparrow": {
+    "base_frac": 0.282,
+    "normal": [
+      -0.0093,
+      -0.01,
+      -0.9999
+    ],
+    "rect_fill": 0.743,
+    "square_deg": 4.76,
+    "tilt": 0.78,
+    "verts": 4344
+  },
+  "A22_cat_sit": {
+    "base_frac": 0.388,
+    "normal": [
+      -0.007,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.824,
+    "square_deg": 26.68,
+    "tilt": 0.4,
+    "verts": 68512
+  },
+  "AN_cat_calico_walk": {
+    "base_frac": 0.283,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.798,
+    "square_deg": -2.66,
+    "tilt": 0.0,
+    "verts": 205777
+  },
+  "AN_cat_orange_walk": {
+    "base_frac": 0.43,
+    "normal": [
+      0.0011,
+      -0.0053,
+      -1.0
+    ],
+    "rect_fill": 0.795,
+    "square_deg": -1.94,
+    "tilt": 0.31,
+    "verts": 196838
+  },
+  "B01_bus": {
+    "base_frac": 0.527,
+    "normal": [
+      -0.0039,
+      -0.0001,
+      -1.0
+    ],
+    "rect_fill": 0.92,
+    "square_deg": 0.05,
+    "tilt": 0.22,
+    "verts": 233875
+  },
+  "B01_melon_pan": {
+    "base_frac": 0.265,
+    "normal": [
+      0.0539,
+      -0.001,
+      -0.9985
+    ],
+    "rect_fill": 0.825,
+    "square_deg": 43.19,
+    "tilt": 3.09,
+    "verts": 2504
+  },
+  "B02_croissant": {
+    "base_frac": 0.126,
+    "normal": [
+      0.3125,
+      0.1616,
+      -0.9361
+    ],
+    "rect_fill": 0.752,
+    "square_deg": -28.38,
+    "tilt": 20.6,
+    "verts": 2029
+  },
+  "B02_onigiri": {
+    "base_frac": 0.185,
+    "normal": [
+      -0.0003,
+      0.0058,
+      -1.0
+    ],
+    "rect_fill": 0.905,
+    "square_deg": 0.0,
+    "tilt": 0.34,
+    "verts": 4015
+  },
+  "B03_baguette": {
+    "base_frac": 0.109,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.868,
+    "square_deg": 0.05,
+    "tilt": 0.0,
+    "verts": 1896
+  },
+  "B04_shokupan": {
+    "base_frac": 0.614,
+    "normal": [
+      -0.0022,
+      -0.002,
+      -1.0
+    ],
+    "rect_fill": 0.943,
+    "square_deg": 0.38,
+    "tilt": 0.17,
+    "verts": 1624
+  },
+  "B05_anpan": {
+    "base_frac": 0.03,
+    "normal": [
+      0.2257,
+      -0.1466,
+      -0.9631
+    ],
+    "rect_fill": 0.787,
+    "square_deg": -27.83,
+    "tilt": 15.61,
+    "verts": 1634
+  },
+  "B06_curry_pan": {
+    "base_frac": 0.29,
+    "normal": [
+      0.0112,
+      -0.0292,
+      -0.9995
+    ],
+    "rect_fill": 0.8,
+    "square_deg": 31.77,
+    "tilt": 1.79,
+    "verts": 2188
+  },
+  "B07_iced_donut": {
+    "base_frac": 0.378,
+    "normal": [
+      -0.0019,
+      0.0023,
+      -1.0
+    ],
+    "rect_fill": 0.799,
+    "square_deg": 0.94,
+    "tilt": 0.17,
+    "verts": 7941
+  },
+  "B07_veg_sandwich": {
+    "base_frac": 0.677,
+    "normal": [
+      0.001,
+      0.0003,
+      -1.0
+    ],
+    "rect_fill": 0.941,
+    "square_deg": 0.1,
+    "tilt": 0.06,
+    "verts": 6236
+  },
+  "B08_focaccia": {
+    "base_frac": 0.839,
+    "normal": [
+      0.0031,
+      0.0001,
+      -1.0
+    ],
+    "rect_fill": 0.963,
+    "square_deg": 0.28,
+    "tilt": 0.18,
+    "verts": 4323
+  },
+  "B08_strawberry_cake": {
+    "base_frac": 0.776,
+    "normal": [
+      0.0001,
+      -0.0003,
+      -1.0
+    ],
+    "rect_fill": 0.792,
+    "square_deg": 30.0,
+    "tilt": 0.02,
+    "verts": 23263
+  },
+  "B09_sushi_tray": {
+    "base_frac": 0.711,
+    "normal": [
+      -0.0017,
+      0.0014,
+      -1.0
+    ],
+    "rect_fill": 0.8,
+    "square_deg": 4.32,
+    "tilt": 0.13,
+    "verts": 18820
+  },
+  "B10_bento_box": {
+    "base_frac": 0.881,
+    "normal": [
+      0.0068,
+      0.0082,
+      -0.9999
+    ],
+    "rect_fill": 0.977,
+    "square_deg": 0.07,
+    "tilt": 0.61,
+    "verts": 23180
+  },
+  "B11_cream_bun": {
+    "base_frac": 0.636,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.849,
+    "square_deg": 0.15,
+    "tilt": 0.0,
+    "verts": 8568
+  },
+  "C01_seedling": {
+    "base_frac": 0.388,
+    "normal": [
+      -0.0,
+      0.0049,
+      -1.0
+    ],
+    "rect_fill": 0.79,
+    "square_deg": -36.36,
+    "tilt": 0.28,
+    "verts": 3633
+  },
+  "C02_radish": {
+    "base_frac": 0.245,
+    "normal": [
+      0.0606,
+      0.0076,
+      -0.9981
+    ],
+    "rect_fill": 0.798,
+    "square_deg": 37.2,
+    "tilt": 3.5,
+    "verts": 6668
+  },
+  "C03_komatsuna": {
+    "base_frac": 0.082,
+    "normal": [
+      0.0354,
+      0.028,
+      -0.999
+    ],
+    "rect_fill": 0.757,
+    "square_deg": 18.92,
+    "tilt": 2.58,
+    "verts": 5355
+  },
+  "C04_tomato": {
+    "base_frac": 0.011,
+    "normal": [
+      0.4675,
+      0.0051,
+      -0.884
+    ],
+    "rect_fill": 0.784,
+    "square_deg": -25.95,
+    "tilt": 27.87,
+    "verts": 11119
+  },
+  "C05_cucumber": {
+    "base_frac": 0.835,
+    "normal": [
+      -0.0025,
+      -0.0025,
+      -1.0
+    ],
+    "rect_fill": 0.944,
+    "square_deg": -0.43,
+    "tilt": 0.2,
+    "verts": 11416
+  },
+  "C06_edamame": {
+    "base_frac": 0.076,
+    "normal": [
+      -0.2015,
+      -0.4586,
+      -0.8655
+    ],
+    "rect_fill": 0.726,
+    "square_deg": 14.63,
+    "tilt": 30.06,
+    "verts": 8678
+  },
+  "C07_sunflower": {
+    "base_frac": 0.01,
+    "normal": [
+      0.4356,
+      0.0651,
+      -0.8978
+    ],
+    "rect_fill": 0.836,
+    "square_deg": -0.07,
+    "tilt": 26.14,
+    "verts": 5971
+  },
+  "C08_strawberry": {
+    "base_frac": 0.399,
+    "normal": [
+      0.0093,
+      -0.0177,
+      -0.9998
+    ],
+    "rect_fill": 0.822,
+    "square_deg": 29.23,
+    "tilt": 1.14,
+    "verts": 7476
+  },
+  "C09_carrot": {
+    "base_frac": 0.642,
+    "normal": [
+      -0.002,
+      -0.0005,
+      -1.0
+    ],
+    "rect_fill": 0.763,
+    "square_deg": -10.37,
+    "tilt": 0.12,
+    "verts": 25332
+  },
+  "C10_potato": {
+    "base_frac": 0.347,
+    "normal": [
+      0.0033,
+      0.0049,
+      -1.0
+    ],
+    "rect_fill": 0.856,
+    "square_deg": -0.69,
+    "tilt": 0.34,
+    "verts": 12046
+  },
+  "C11_eggplant": {
+    "base_frac": 0.008,
+    "normal": [
+      0.367,
+      0.5006,
+      -0.784
+    ],
+    "rect_fill": 0.747,
+    "square_deg": 25.44,
+    "tilt": 38.37,
+    "verts": 10972
+  },
+  "C12_corn": {
+    "base_frac": 0.001,
+    "normal": [
+      -0.4042,
+      -0.1294,
+      -0.9055
+    ],
+    "rect_fill": 0.722,
+    "square_deg": 9.76,
+    "tilt": 25.11,
+    "verts": 11245
+  },
+  "C13_pumpkin": {
+    "base_frac": 0.656,
+    "normal": [
+      -0.0006,
+      0.0094,
+      -1.0
+    ],
+    "rect_fill": 0.808,
+    "square_deg": -12.98,
+    "tilt": 0.54,
+    "verts": 10707
+  },
+  "C14_watermelon": {
+    "base_frac": 0.298,
+    "normal": [
+      0.0119,
+      -0.005,
+      -0.9999
+    ],
+    "rect_fill": 0.841,
+    "square_deg": -0.49,
+    "tilt": 0.74,
+    "verts": 12907
+  },
+  "C15_wheat": {
+    "base_frac": 0.704,
+    "normal": [
+      -0.0131,
+      -0.0045,
+      -0.9999
+    ],
+    "rect_fill": 0.877,
+    "square_deg": -1.13,
+    "tilt": 0.8,
+    "verts": 23031
+  },
+  "C16_onion": {
+    "base_frac": 0.484,
+    "normal": [
+      -0.0033,
+      0.0106,
+      -0.9999
+    ],
+    "rect_fill": 0.935,
+    "square_deg": 0.54,
+    "tilt": 0.64,
+    "verts": 10408
+  },
+  "CH_aoi": {
+    "base_frac": 0.254,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.711,
+    "square_deg": 0.13,
+    "tilt": 0.0,
+    "verts": 55856
+  },
+  "CH_haru": {
+    "base_frac": 0.321,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.721,
+    "square_deg": -4.34,
+    "tilt": 0.0,
+    "verts": 51067
+  },
+  "CH_kazuko": {
+    "base_frac": 0.427,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.68,
+    "square_deg": -2.22,
+    "tilt": 0.0,
+    "verts": 57199
+  },
+  "CH_mio": {
+    "base_frac": 0.148,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.735,
+    "square_deg": -6.01,
+    "tilt": 0.0,
+    "verts": 57133
+  },
+  "CH_ren": {
+    "base_frac": 0.373,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.735,
+    "square_deg": -0.04,
+    "tilt": 0.0,
+    "verts": 54115
+  },
+  "CH_sora": {
+    "base_frac": 0.429,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.77,
+    "square_deg": 0.03,
+    "tilt": 0.0,
+    "verts": 54172
+  },
+  "CH_tanaka": {
+    "base_frac": 0.317,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.712,
+    "square_deg": 2.15,
+    "tilt": 0.0,
+    "verts": 50581
+  },
+  "D01_wheelbarrow": {
+    "base_frac": 0.159,
+    "normal": [
+      0.0014,
+      -0.0246,
+      -0.9997
+    ],
+    "rect_fill": 0.856,
+    "square_deg": 1.9,
+    "tilt": 1.41,
+    "verts": 10386
+  },
+  "D02_rain_barrel": {
+    "base_frac": 0.308,
+    "normal": [
+      0.0047,
+      0.0037,
+      -1.0
+    ],
+    "rect_fill": 0.778,
+    "square_deg": 29.7,
+    "tilt": 0.34,
+    "verts": 9646
+  },
+  "D03_veg_crates": {
+    "base_frac": 0.81,
+    "normal": [
+      0.0002,
+      -0.0026,
+      -1.0
+    ],
+    "rect_fill": 0.994,
+    "square_deg": 0.23,
+    "tilt": 0.15,
+    "verts": 46039
+  },
+  "D04_stone_lantern": {
+    "base_frac": 0.81,
+    "normal": [
+      0.0015,
+      -0.0011,
+      -1.0
+    ],
+    "rect_fill": 0.98,
+    "square_deg": -0.98,
+    "tilt": 0.11,
+    "verts": 9520
+  },
+  "D05_hokora": {
+    "base_frac": 0.672,
+    "normal": [
+      -0.0055,
+      0.0093,
+      -0.9999
+    ],
+    "rect_fill": 0.774,
+    "square_deg": -0.94,
+    "tilt": 0.62,
+    "verts": 12006
+  },
+  "D06_well": {
+    "base_frac": 0.75,
+    "normal": [
+      -0.0031,
+      -0.0015,
+      -1.0
+    ],
+    "rect_fill": 0.797,
+    "square_deg": 32.88,
+    "tilt": 0.2,
+    "verts": 11798
+  },
+  "D07_kei_truck": {
+    "base_frac": 0.547,
+    "normal": [
+      -0.0029,
+      -0.002,
+      -1.0
+    ],
+    "rect_fill": 0.983,
+    "square_deg": -0.0,
+    "tilt": 0.2,
+    "verts": 16518
+  },
+  "D08_tool_rack": {
+    "base_frac": 0.515,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.984,
+    "square_deg": 0.94,
+    "tilt": 0.0,
+    "verts": 11858
+  },
+  "D09_log_pile": {
+    "base_frac": 0.227,
+    "normal": [
+      0.0032,
+      0.0088,
+      -1.0
+    ],
+    "rect_fill": 0.752,
+    "square_deg": -18.67,
+    "tilt": 0.54,
+    "verts": 35724
+  },
+  "D10_rocks": {
+    "base_frac": 0.815,
+    "normal": [
+      0.0042,
+      0.0072,
+      -1.0
+    ],
+    "rect_fill": 0.829,
+    "square_deg": -43.12,
+    "tilt": 0.47,
+    "verts": 10408
+  },
+  "D11_reeds": {
+    "base_frac": 0.053,
+    "normal": [
+      0.0006,
+      0.0187,
+      -0.9998
+    ],
+    "rect_fill": 0.776,
+    "square_deg": 4.62,
+    "tilt": 1.07,
+    "verts": 13733
+  },
+  "D12_flower_planter": {
+    "base_frac": 0.707,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.862,
+    "square_deg": -0.33,
+    "tilt": 0.0,
+    "verts": 11804
+  },
+  "E01_furin": {
+    "base_frac": 0.008,
+    "normal": [
+      0.0,
+      -0.2425,
+      -0.9701
+    ],
+    "rect_fill": 0.799,
+    "square_deg": 0.0,
+    "tilt": 14.04,
+    "verts": 20585
+  },
+  "E01_yatai": {
+    "base_frac": 0.352,
+    "normal": [
+      -0.0,
+      -0.0002,
+      -1.0
+    ],
+    "rect_fill": 0.92,
+    "square_deg": -1.55,
+    "tilt": 0.01,
+    "verts": 11723
+  },
+  "E02_tanabata_bamboo": {
+    "base_frac": 0.075,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.795,
+    "square_deg": -20.94,
+    "tilt": 0.0,
+    "verts": 13211
+  },
+  "F01_tool_shed": {
+    "base_frac": 0.594,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.96,
+    "square_deg": 0.61,
+    "tilt": 0.0,
+    "verts": 12173
+  },
+  "F02_hand_pump": {
+    "base_frac": 0.737,
+    "normal": [
+      -0.0005,
+      -0.0003,
+      -1.0
+    ],
+    "rect_fill": 0.807,
+    "square_deg": 0.68,
+    "tilt": 0.03,
+    "verts": 5860
+  },
+  "F03_compost_bin": {
+    "base_frac": 0.96,
+    "normal": [
+      0.0006,
+      -0.0013,
+      -1.0
+    ],
+    "rect_fill": 0.899,
+    "square_deg": 0.89,
+    "tilt": 0.08,
+    "verts": 5306
+  },
+  "F04_scarecrow": {
+    "base_frac": 0.012,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.642,
+    "square_deg": -13.76,
+    "tilt": 0.0,
+    "verts": 7485
+  },
+  "F05_greenhouse": {
+    "base_frac": 0.974,
+    "normal": [
+      0.0009,
+      0.0001,
+      -1.0
+    ],
+    "rect_fill": 0.997,
+    "square_deg": 0.04,
+    "tilt": 0.05,
+    "verts": 8882
+  },
+  "F06_veggie_stand": {
+    "base_frac": 0.432,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.934,
+    "square_deg": 0.23,
+    "tilt": 0.0,
+    "verts": 8275
+  },
+  "F07_footbridge": {
+    "base_frac": 0.878,
+    "normal": [
+      0.0068,
+      0.0038,
+      -1.0
+    ],
+    "rect_fill": 0.993,
+    "square_deg": 0.04,
+    "tilt": 0.45,
+    "verts": 9046
+  },
+  "F08_soil_plot": {
+    "base_frac": 1.0,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 1.0,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 2565
+  },
+  "G01_getabako": {
+    "base_frac": 0.838,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.956,
+    "square_deg": -0.01,
+    "tilt": 0.0,
+    "verts": 8114
+  },
+  "G02_goldfish_tank": {
+    "base_frac": 0.811,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 1.0,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 5628
+  },
+  "G03_laundry_stand": {
+    "base_frac": 0.929,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.998,
+    "square_deg": 0.02,
+    "tilt": 0.0,
+    "verts": 5555
+  },
+  "G05_goldfish_bowl": {
+    "base_frac": 0.214,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.79,
+    "square_deg": -1.68,
+    "tilt": 0.0,
+    "verts": 3774
+  },
+  "G06_zabuton": {
+    "base_frac": 1.0,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.998,
+    "square_deg": 0.04,
+    "tilt": 0.0,
+    "verts": 3223
+  },
+  "G07_hall_cabinet": {
+    "base_frac": 0.89,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.991,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 8760
+  },
+  "G08_cat": {
+    "base_frac": 0.583,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.789,
+    "square_deg": -29.18,
+    "tilt": 0.0,
+    "verts": 4154
+  },
+  "G09_taiko": {
+    "base_frac": 0.656,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.995,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 7348
+  },
+  "G10_store_shelf": {
+    "base_frac": 0.903,
+    "normal": [
+      -0.0016,
+      -0.0046,
+      -1.0
+    ],
+    "rect_fill": 0.989,
+    "square_deg": -0.58,
+    "tilt": 0.28,
+    "verts": 43992
+  },
+  "G11_bread_cart": {
+    "base_frac": 0.461,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.913,
+    "square_deg": -0.02,
+    "tilt": 0.0,
+    "verts": 42389
+  },
+  "H01": {
+    "base_frac": 0.706,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.927,
+    "square_deg": -0.03,
+    "tilt": 0.0,
+    "verts": 224115
+  },
+  "H02": {
+    "base_frac": 0.85,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.856,
+    "square_deg": -0.02,
+    "tilt": 0.0,
+    "verts": 287480
+  },
+  "H03": {
+    "base_frac": 0.679,
+    "normal": [
+      0.0,
+      0.0091,
+      -1.0
+    ],
+    "rect_fill": 0.949,
+    "square_deg": -0.12,
+    "tilt": 0.52,
+    "verts": 98028
+  },
+  "H04": {
+    "base_frac": 1.0,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 1.0,
+    "square_deg": -0.0,
+    "tilt": 0.0,
+    "verts": 7598
+  },
+  "H05": {
+    "base_frac": 0.982,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.999,
+    "square_deg": -0.01,
+    "tilt": 0.0,
+    "verts": 7916
+  },
+  "H06": {
+    "base_frac": 0.999,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.927,
+    "square_deg": 0.04,
+    "tilt": 0.0,
+    "verts": 8857
+  },
+  "H07": {
+    "base_frac": 0.868,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.99,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 4264
+  },
+  "H12a": {
+    "base_frac": 0.727,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.99,
+    "square_deg": 0.09,
+    "tilt": 0.0,
+    "verts": 8120
+  },
+  "H12a_box": {
+    "base_frac": 0.711,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.992,
+    "square_deg": -0.08,
+    "tilt": 0.0,
+    "verts": 955
+  },
+  "H12a_plants": {
+    "base_frac": 0.731,
+    "normal": [
+      -0.0013,
+      -0.0016,
+      -1.0
+    ],
+    "rect_fill": 0.716,
+    "square_deg": 7.18,
+    "tilt": 0.12,
+    "verts": 7439
+  },
+  "I01_bed": {
+    "base_frac": 0.836,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.954,
+    "square_deg": 0.04,
+    "tilt": 0.0,
+    "verts": 4065
+  },
+  "I02_cake_showcase": {
+    "base_frac": 0.985,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.999,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 336
+  },
+  "I02_desk": {
+    "base_frac": 0.951,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.842,
+    "square_deg": -0.01,
+    "tilt": 0.0,
+    "verts": 6270
+  },
+  "I03_bookshelf": {
+    "base_frac": 0.933,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.986,
+    "square_deg": 0.01,
+    "tilt": 0.0,
+    "verts": 6833
+  },
+  "I03_drink_fridge": {
+    "base_frac": 0.939,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.967,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 292
+  },
+  "I04_chabudai": {
+    "base_frac": 0.589,
+    "normal": [
+      -0.0069,
+      0.0037,
+      -1.0
+    ],
+    "rect_fill": 0.781,
+    "square_deg": -20.03,
+    "tilt": 0.45,
+    "verts": 4051
+  },
+  "I04_shop_counter": {
+    "base_frac": 0.802,
+    "normal": [
+      -0.0012,
+      -0.0001,
+      -1.0
+    ],
+    "rect_fill": 0.965,
+    "square_deg": -0.28,
+    "tilt": 0.07,
+    "verts": 21283
+  },
+  "I05_bread_shelf": {
+    "base_frac": 0.807,
+    "normal": [
+      0.0006,
+      -0.004,
+      -1.0
+    ],
+    "rect_fill": 0.991,
+    "square_deg": 1.21,
+    "tilt": 0.23,
+    "verts": 41312
+  },
+  "I05_wardrobe": {
+    "base_frac": 0.943,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.982,
+    "square_deg": 0.01,
+    "tilt": 0.0,
+    "verts": 3728
+  },
+  "I06_floor_lamp": {
+    "base_frac": 0.804,
+    "normal": [
+      -0.0147,
+      0.0007,
+      -0.9999
+    ],
+    "rect_fill": 0.676,
+    "square_deg": -32.98,
+    "tilt": 0.85,
+    "verts": 4082
+  },
+  "I07_ice_freezer": {
+    "base_frac": 0.651,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.998,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 532
+  },
+  "I07_monstera": {
+    "base_frac": 0.209,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.721,
+    "square_deg": 33.16,
+    "tilt": 0.0,
+    "verts": 6488
+  },
+  "I08_boxes": {
+    "base_frac": 0.767,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.919,
+    "square_deg": 0.24,
+    "tilt": 0.0,
+    "verts": 3983
+  },
+  "I08_stone_mill": {
+    "base_frac": 0.602,
+    "normal": [
+      -0.0007,
+      -0.0005,
+      -1.0
+    ],
+    "rect_fill": 0.794,
+    "square_deg": 4.53,
+    "tilt": 0.05,
+    "verts": 7739
+  },
+  "J01_kitchen_counter": {
+    "base_frac": 0.906,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.987,
+    "square_deg": -0.03,
+    "tilt": 0.0,
+    "verts": 9013
+  },
+  "J01_machiya": {
+    "base_frac": 0.714,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.964,
+    "square_deg": -0.02,
+    "tilt": 0.0,
+    "verts": 39958
+  },
+  "J02_fridge": {
+    "base_frac": 0.753,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.961,
+    "square_deg": 0.07,
+    "tilt": 0.0,
+    "verts": 4556
+  },
+  "J03_dining_set": {
+    "base_frac": 0.817,
+    "normal": [
+      -0.0005,
+      0.0077,
+      -1.0
+    ],
+    "rect_fill": 0.896,
+    "square_deg": 0.02,
+    "tilt": 0.44,
+    "verts": 7090
+  },
+  "J04_rice_cabinet": {
+    "base_frac": 0.894,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.964,
+    "square_deg": -0.25,
+    "tilt": 0.0,
+    "verts": 6931
+  },
+  "J05_dish_cabinet": {
+    "base_frac": 0.824,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.987,
+    "square_deg": -0.02,
+    "tilt": 0.0,
+    "verts": 9254
+  },
+  "J06_tv_board": {
+    "base_frac": 0.805,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.984,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 7234
+  },
+  "J07_kotatsu": {
+    "base_frac": 0.999,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.981,
+    "square_deg": -0.12,
+    "tilt": 0.0,
+    "verts": 4180
+  },
+  "J08_fan": {
+    "base_frac": 0.434,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.792,
+    "square_deg": 40.42,
+    "tilt": 0.0,
+    "verts": 9821
+  },
+  "J09_tansu": {
+    "base_frac": 0.772,
+    "normal": [
+      -0.0002,
+      -0.0001,
+      -1.0
+    ],
+    "rect_fill": 0.993,
+    "square_deg": -0.05,
+    "tilt": 0.01,
+    "verts": 4764
+  },
+  "M01_timber_machiya": {
+    "base_frac": 0.684,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.97,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 101025
+  },
+  "M03_gable_house": {
+    "base_frac": 0.765,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.933,
+    "square_deg": -0.01,
+    "tilt": 0.0,
+    "verts": 115770
+  },
+  "M05_residential": {
+    "base_frac": 0.77,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.965,
+    "square_deg": -0.02,
+    "tilt": 0.0,
+    "verts": 91577
+  },
+  "M07_power_pole": {
+    "base_frac": 0.092,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.811,
+    "square_deg": -30.9,
+    "tilt": 0.0,
+    "verts": 8084
+  },
+  "M12b_shrub": {
+    "base_frac": 0.099,
+    "normal": [
+      -0.0755,
+      -0.0455,
+      -0.9961
+    ],
+    "rect_fill": 0.802,
+    "square_deg": 27.99,
+    "tilt": 5.05,
+    "verts": 1800
+  },
+  "M12d_flower_bush": {
+    "base_frac": 0.098,
+    "normal": [
+      -0.0755,
+      -0.0455,
+      -0.9961
+    ],
+    "rect_fill": 0.791,
+    "square_deg": 25.78,
+    "tilt": 5.05,
+    "verts": 2745
+  },
+  "P01": {
+    "base_frac": 0.735,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.986,
+    "square_deg": 0.08,
+    "tilt": 0.0,
+    "verts": 13889
+  },
+  "P02": {
+    "base_frac": 0.896,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.979,
+    "square_deg": 0.03,
+    "tilt": 0.0,
+    "verts": 10537
+  },
+  "P03": {
+    "base_frac": 0.642,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 1.0,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 3921
+  },
+  "P04": {
+    "base_frac": 0.981,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.999,
+    "square_deg": -0.01,
+    "tilt": 0.0,
+    "verts": 13751
+  },
+  "P05": {
+    "base_frac": 0.781,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.907,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 3248
+  },
+  "P06": {
+    "base_frac": 0.723,
+    "normal": [
+      -0.0049,
+      -0.0048,
+      -1.0
+    ],
+    "rect_fill": 0.974,
+    "square_deg": -0.56,
+    "tilt": 0.39,
+    "verts": 8216
+  },
+  "P07": {
+    "base_frac": 0.883,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.996,
+    "square_deg": -0.05,
+    "tilt": 0.0,
+    "verts": 15403
+  },
+  "P08": {
+    "base_frac": 0.715,
+    "normal": [
+      -0.0015,
+      0.0002,
+      -1.0
+    ],
+    "rect_fill": 0.885,
+    "square_deg": -0.55,
+    "tilt": 0.09,
+    "verts": 10387
+  },
+  "P09": {
+    "base_frac": 0.782,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 1.0,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 5137
+  },
+  "P10": {
+    "base_frac": 0.789,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 1.0,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 6906
+  },
+  "P11": {
+    "base_frac": 0.433,
+    "normal": [
+      0.0057,
+      -0.0051,
+      -1.0
+    ],
+    "rect_fill": 0.853,
+    "square_deg": -0.01,
+    "tilt": 0.44,
+    "verts": 9780
+  },
+  "P12": {
+    "base_frac": 0.988,
+    "normal": [
+      -0.0029,
+      0.0011,
+      -1.0
+    ],
+    "rect_fill": 0.962,
+    "square_deg": 0.0,
+    "tilt": 0.18,
+    "verts": 8797
+  },
+  "P_bridge": {
+    "base_frac": 0.314,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.999,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 4134
+  },
+  "P_chest": {
+    "base_frac": 0.83,
+    "normal": [
+      0.0042,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.987,
+    "square_deg": -0.64,
+    "tilt": 0.24,
+    "verts": 11936
+  },
+  "P_chochin_bon": {
+    "base_frac": 0.019,
+    "normal": [
+      0.1739,
+      0.4057,
+      -0.8973
+    ],
+    "rect_fill": 0.792,
+    "square_deg": 45.0,
+    "tilt": 26.19,
+    "verts": 4564
+  },
+  "P_chochin_red": {
+    "base_frac": 0.018,
+    "normal": [
+      0.2034,
+      -0.4521,
+      -0.8685
+    ],
+    "rect_fill": 0.792,
+    "square_deg": -8.94,
+    "tilt": 29.72,
+    "verts": 4564
+  },
+  "P_chochin_white": {
+    "base_frac": 0.018,
+    "normal": [
+      0.2034,
+      -0.4521,
+      -0.8685
+    ],
+    "rect_fill": 0.792,
+    "square_deg": -8.94,
+    "tilt": 29.72,
+    "verts": 4564
+  },
+  "P_deck_oven": {
+    "base_frac": 0.884,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.979,
+    "square_deg": 0.02,
+    "tilt": 0.0,
+    "verts": 15905
+  },
+  "P_farm_gate": {
+    "base_frac": 0.097,
+    "normal": [
+      0.0002,
+      0.0623,
+      -0.9981
+    ],
+    "rect_fill": 0.934,
+    "square_deg": -0.76,
+    "tilt": 3.57,
+    "verts": 26262
+  },
+  "P_gondola": {
+    "base_frac": 0.923,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 1.0,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 5280
+  },
+  "P_long_table": {
+    "base_frac": 0.653,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 1.0,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 192
+  },
+  "P_offer_stand": {
+    "base_frac": 0.694,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 1.0,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 1848
+  },
+  "P_shop_wall_frame": {
+    "base_frac": 0.73,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.99,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 960
+  },
+  "P_signpost": {
+    "base_frac": 0.018,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.581,
+    "square_deg": 15.09,
+    "tilt": 0.0,
+    "verts": 162
+  },
+  "P_store_sidepanel": {
+    "base_frac": 0.846,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 1.0,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 1398
+  },
+  "P_toro": {
+    "base_frac": 0.944,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 1.0,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 844
+  },
+  "P_yagura": {
+    "base_frac": 0.725,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.946,
+    "square_deg": -0.01,
+    "tilt": 0.0,
+    "verts": 21261
+  },
+  "R06": {
+    "base_frac": 0.901,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.941,
+    "square_deg": -0.01,
+    "tilt": 0.0,
+    "verts": 8918
+  },
+  "R07a": {
+    "base_frac": 0.807,
+    "normal": [
+      -0.0046,
+      -0.0002,
+      -1.0
+    ],
+    "rect_fill": 0.737,
+    "square_deg": -1.99,
+    "tilt": 0.26,
+    "verts": 3593
+  },
+  "R08a": {
+    "base_frac": 0.939,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.994,
+    "square_deg": 0.15,
+    "tilt": 0.0,
+    "verts": 6638
+  },
+  "R09": {
+    "base_frac": 0.434,
+    "normal": [
+      -0.0049,
+      -0.0055,
+      -1.0
+    ],
+    "rect_fill": 0.813,
+    "square_deg": 0.21,
+    "tilt": 0.42,
+    "verts": 8620
+  },
+  "R10": {
+    "base_frac": 1.0,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.999,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 9247
+  },
+  "R11": {
+    "base_frac": 0.813,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.902,
+    "square_deg": -0.01,
+    "tilt": 0.0,
+    "verts": 6528
+  },
+  "R12": {
+    "base_frac": 0.996,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.995,
+    "square_deg": 0.03,
+    "tilt": 0.0,
+    "verts": 7934
+  },
+  "S01": {
+    "base_frac": 0.698,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.986,
+    "square_deg": 0.02,
+    "tilt": 0.0,
+    "verts": 172995
+  },
+  "S02": {
+    "base_frac": 0.835,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.956,
+    "square_deg": -1.46,
+    "tilt": 0.0,
+    "verts": 110142
+  },
+  "S03": {
+    "base_frac": 0.76,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.97,
+    "square_deg": 0.23,
+    "tilt": 0.0,
+    "verts": 140742
+  },
+  "S05": {
+    "base_frac": 0.797,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.955,
+    "square_deg": -0.6,
+    "tilt": 0.0,
+    "verts": 106735
+  },
+  "S06": {
+    "base_frac": 0.888,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.919,
+    "square_deg": 0.14,
+    "tilt": 0.0,
+    "verts": 123689
+  },
+  "S08": {
+    "base_frac": 0.721,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.989,
+    "square_deg": -0.01,
+    "tilt": 0.0,
+    "verts": 118966
+  },
+  "T01_courtyard_tree": {
+    "base_frac": 0.092,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.847,
+    "square_deg": 0.24,
+    "tilt": 0.0,
+    "verts": 10929
+  },
+  "T02_summer_tree": {
+    "base_frac": 0.104,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.822,
+    "square_deg": 3.23,
+    "tilt": 0.0,
+    "verts": 6388
+  },
+  "T03_round_ginkgo": {
+    "base_frac": 0.123,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.788,
+    "square_deg": -34.64,
+    "tilt": 0.0,
+    "verts": 5485
+  },
+  "T04_slender_cedar": {
+    "base_frac": 0.074,
+    "normal": [
+      -0.4004,
+      0.4143,
+      -0.8173
+    ],
+    "rect_fill": 0.796,
+    "square_deg": -13.37,
+    "tilt": 35.18,
+    "verts": 14994
+  },
+  "T05_old_shade_tree": {
+    "base_frac": 0.084,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.771,
+    "square_deg": 12.17,
+    "tilt": 0.0,
+    "verts": 276065
+  },
+  "V01_fern": {
+    "base_frac": 0.009,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.797,
+    "square_deg": 15.3,
+    "tilt": 0.0,
+    "verts": 126
+  },
+  "V02_wildflowers": {
+    "base_frac": 0.043,
+    "normal": [
+      -0.0219,
+      0.0758,
+      -0.9969
+    ],
+    "rect_fill": 0.702,
+    "square_deg": -3.84,
+    "tilt": 4.53,
+    "verts": 595
+  },
+  "V03_grass_clump": {
+    "base_frac": 0.03,
+    "normal": [
+      0.016,
+      -0.1436,
+      -0.9895
+    ],
+    "rect_fill": 0.667,
+    "square_deg": 37.19,
+    "tilt": 8.31,
+    "verts": 577
+  },
+  "V04_daisy_meadow": {
+    "base_frac": 0.526,
+    "normal": [
+      0.0062,
+      -0.0056,
+      -1.0
+    ],
+    "rect_fill": 0.783,
+    "square_deg": 2.17,
+    "tilt": 0.48,
+    "verts": 26168
+  },
+  "V05_river_reeds": {
+    "base_frac": 0.085,
+    "normal": [
+      -0.1171,
+      -0.065,
+      -0.991
+    ],
+    "rect_fill": 0.793,
+    "square_deg": 38.74,
+    "tilt": 7.7,
+    "verts": 32122
+  },
+  "W01_flower_buckets": {
+    "base_frac": 0.342,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.919,
+    "square_deg": 0.04,
+    "tilt": 0.0,
+    "verts": 38102
+  },
+  "W02_grocer_shelf": {
+    "base_frac": 0.689,
+    "normal": [
+      -0.0018,
+      -0.0061,
+      -1.0
+    ],
+    "rect_fill": 0.982,
+    "square_deg": 0.06,
+    "tilt": 0.36,
+    "verts": 24472
+  },
+  "W03_cucumber_crate": {
+    "base_frac": 0.763,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.965,
+    "square_deg": 1.18,
+    "tilt": 0.0,
+    "verts": 15576
+  },
+  "W04_sunflower_pot": {
+    "base_frac": 0.168,
+    "normal": [
+      0.0005,
+      0.0114,
+      -0.9999
+    ],
+    "rect_fill": 0.798,
+    "square_deg": -18.96,
+    "tilt": 0.65,
+    "verts": 16882
+  },
+  "W05_hydrangea_pot": {
+    "base_frac": 0.1,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.819,
+    "square_deg": -4.71,
+    "tilt": 0.0,
+    "verts": 19454
+  },
+  "W06_lily_vase": {
+    "base_frac": 0.058,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.782,
+    "square_deg": -37.62,
+    "tilt": 0.0,
+    "verts": 17850
+  },
+  "W07_pastry_tray": {
+    "base_frac": 0.167,
+    "normal": [
+      -0.0052,
+      -0.0067,
+      -1.0
+    ],
+    "rect_fill": 0.838,
+    "square_deg": -20.57,
+    "tilt": 0.49,
+    "verts": 10988
+  },
+  "W08_baguette_basket": {
+    "base_frac": 0.42,
+    "normal": [
+      -0.0082,
+      0.0075,
+      -0.9999
+    ],
+    "rect_fill": 0.833,
+    "square_deg": 1.16,
+    "tilt": 0.64,
+    "verts": 18141
+  },
+  "W09_rice_sacks": {
+    "base_frac": 0.164,
+    "normal": [
+      0.0033,
+      0.1753,
+      -0.9845
+    ],
+    "rect_fill": 0.773,
+    "square_deg": -2.18,
+    "tilt": 10.1,
+    "verts": 9213
+  },
+  "W10_bottle_crate": {
+    "base_frac": 0.875,
+    "normal": [
+      -0.0022,
+      0.0027,
+      -1.0
+    ],
+    "rect_fill": 0.988,
+    "square_deg": -0.21,
+    "tilt": 0.2,
+    "verts": 15257
+  },
+  "W11_ceramic_set": {
+    "base_frac": 0.291,
+    "normal": [
+      -0.0008,
+      0.0051,
+      -1.0
+    ],
+    "rect_fill": 0.815,
+    "square_deg": -8.32,
+    "tilt": 0.3,
+    "verts": 11522
+  },
+  "W12_cedar_tray": {
+    "base_frac": 0.364,
+    "normal": [
+      -0.0063,
+      0.05,
+      -0.9987
+    ],
+    "rect_fill": 0.963,
+    "square_deg": -0.03,
+    "tilt": 2.89,
+    "verts": 10146
+  },
+  "W13_cedar_worktable": {
+    "base_frac": 0.854,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 1.0,
+    "square_deg": 0.0,
+    "tilt": 0.0,
+    "verts": 576
+  },
+  "W14_grocery_stock": {
+    "base_frac": 0.72,
+    "normal": [
+      -0.0076,
+      0.0006,
+      -1.0
+    ],
+    "rect_fill": 0.792,
+    "square_deg": -0.61,
+    "tilt": 0.43,
+    "verts": 19219
+  },
+  "W15_produce_basket": {
+    "base_frac": 0.669,
+    "normal": [
+      0.0,
+      -0.0031,
+      -1.0
+    ],
+    "rect_fill": 0.949,
+    "square_deg": -0.63,
+    "tilt": 0.18,
+    "verts": 27643
+  },
+  "W16_handtools_board": {
+    "base_frac": 0.879,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.994,
+    "square_deg": 0.12,
+    "tilt": 0.0,
+    "verts": 24408
+  },
+  "W17_display_shelf": {
+    "base_frac": 0.844,
+    "normal": [
+      -0.0014,
+      0.0214,
+      -0.9998
+    ],
+    "rect_fill": 0.985,
+    "square_deg": -0.01,
+    "tilt": 1.23,
+    "verts": 23125
+  },
+  "W18_retro_tv": {
+    "base_frac": 0.657,
+    "normal": [
+      0.0,
+      -0.0055,
+      -1.0
+    ],
+    "rect_fill": 0.974,
+    "square_deg": 0.25,
+    "tilt": 0.31,
+    "verts": 16310
+  },
+  "W19_flour_bag": {
+    "base_frac": 0.796,
+    "normal": [
+      0.0018,
+      -0.0037,
+      -1.0
+    ],
+    "rect_fill": 0.914,
+    "square_deg": 0.0,
+    "tilt": 0.24,
+    "verts": 6006
+  },
+  "W20_milk_carton": {
+    "base_frac": 0.627,
+    "normal": [
+      -0.0106,
+      -0.0053,
+      -0.9999
+    ],
+    "rect_fill": 0.892,
+    "square_deg": 0.0,
+    "tilt": 0.68,
+    "verts": 1935
+  },
+  "W21_tea_tin": {
+    "base_frac": 0.773,
+    "normal": [
+      -0.002,
+      0.0004,
+      -1.0
+    ],
+    "rect_fill": 0.771,
+    "square_deg": -13.48,
+    "tilt": 0.11,
+    "verts": 1731
+  },
+  "W22_soy_bottle": {
+    "base_frac": 0.491,
+    "normal": [
+      -0.0041,
+      0.0039,
+      -1.0
+    ],
+    "rect_fill": 0.798,
+    "square_deg": -1.39,
+    "tilt": 0.32,
+    "verts": 1697
+  },
+  "W23_egg_carton": {
+    "base_frac": 0.299,
+    "normal": [
+      0.0054,
+      0.0151,
+      -0.9999
+    ],
+    "rect_fill": 0.92,
+    "square_deg": -22.74,
+    "tilt": 0.92,
+    "verts": 7803
+  }
 }

@@ -8865,83 +8865,27 @@
     },
     "T04_slender_cedar": {
       "id": "T04_slender_cedar",
-      "sha256": "ae4144d7eb2f08ec8fa530ce4eef4d23cf557896343325a4240935feba23653e",
-      "source_mtime": 1791128946.4502814,
-      "triangles": 4964,
+      "sha256": "3866763e5553d0907ea2da5acc964de93b59461506470486c976b3763561c9a3",
+      "source_mtime": 1791604719.4131744,
+      "triangles": 8346,
       "bounds_godot": {
         "min": [
-          -2.44270658493042,
+          -2.401693820953369,
           0.0,
-          -2.702716588973999
+          -2.405442476272583
         ],
         "max": [
-          2.44270658493042,
-          10.0,
-          2.702716588973999
+          2.3261265754699707,
+          10.101588249206543,
+          2.2502410411834717
         ]
       },
       "size_m": [
-        4.88541316986084,
-        10.0,
-        5.405433177947998
+        4.72782039642334,
+        10.101588249206543,
+        4.655683517456055
       ],
-      "surface_area_m2": 78.926,
-      "albedo_image_sizes": [
-        [
-          2048,
-          2048
-        ]
-      ],
-      "topology": {
-        "components": 47,
-        "largest_component_area_fraction": 0.108,
-        "boundary_edge_fraction": 0.0625
-      },
-      "uv_density_px_m": {
-        "p10": 550.32,
-        "median": 676.03
-      },
-      "material_density_px_m": {
-        "Leaves_Pine": {
-          "p10": 540.03,
-          "median": 634.01
-        },
-        "Bark_NormalTree": {
-          "p10": 1262.22,
-          "median": 2922.2
-        }
-      },
-      "node_density_px_m": {
-        "Foliage_1": 634.01,
-        "Trunk_1": 2922.2
-      },
-      "untextured_area_fraction": 0.0,
-      "inherited_pbr_maps": 0,
-      "metallic_max": 0
-    },
-    "T05_old_shade_tree": {
-      "id": "T05_old_shade_tree",
-      "sha256": "76f4b70d222196455bc14cd463bc1f6732491baa00dd77680e69819647f12c37",
-      "source_mtime": 1791567880.69751,
-      "triangles": 178400,
-      "bounds_godot": {
-        "min": [
-          -6.551371097564697,
-          0.0002383595274295658,
-          -5.520970821380615
-        ],
-        "max": [
-          6.464275360107422,
-          9.150501251220703,
-          5.52219820022583
-        ]
-      },
-      "size_m": [
-        13.01564645767212,
-        9.150262891693274,
-        11.043169021606445
-      ],
-      "surface_area_m2": 2382.872,
+      "surface_area_m2": 873.4,
       "albedo_image_sizes": [
         [
           1254,
@@ -8953,18 +8897,90 @@
         ]
       ],
       "topology": {
-        "components": 4219,
-        "largest_component_area_fraction": 0.0435,
-        "boundary_edge_fraction": 0.0609
+        "components": 1948,
+        "largest_component_area_fraction": 0.0098,
+        "boundary_edge_fraction": 0.4785
       },
       "uv_density_px_m": {
-        "p10": 634.69,
-        "median": 728.62
+        "p10": 729.71,
+        "median": 812.5
       },
       "material_density_px_m": {
-        "PaintedOldTreeSprigs": {
-          "p10": 642.28,
-          "median": 736.45
+        "CedarNeedleSprigs": {
+          "p10": 729.16,
+          "median": 810.35
+        },
+        "Bark_NormalTree": {
+          "p10": 1262.22,
+          "median": 2922.2
+        }
+      },
+      "node_density_px_m": {
+        "Foliage_CedarSprays": 810.35,
+        "Trunk_Cedar": 2922.2
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "T05_old_shade_tree": {
+      "id": "T05_old_shade_tree",
+      "sha256": "48428b34ccbacece339aed4555ab7d6c3c2808f79a149e48bc73c812d1c26735",
+      "source_mtime": 1791606880.4182236,
+      "triangles": 484008,
+      "bounds_godot": {
+        "min": [
+          -6.383810997009277,
+          -0.01418038085103035,
+          -5.384733200073242
+        ],
+        "max": [
+          6.057037830352783,
+          9.063386917114258,
+          5.041614055633545
+        ]
+      },
+      "size_m": [
+        12.44084882736206,
+        9.077567297965288,
+        10.426347255706787
+      ],
+      "surface_area_m2": 939.026,
+      "albedo_image_sizes": [
+        [
+          1254,
+          1254
+        ],
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 1967,
+        "largest_component_area_fraction": 0.1104,
+        "boundary_edge_fraction": 0.0237
+      },
+      "uv_density_px_m": {
+        "p10": 144.11,
+        "median": 947.04
+      },
+      "material_density_px_m": {
+        "OldTreeLeafLayer_0": {
+          "p10": 871.39,
+          "median": 1005.42
+        },
+        "OldTreeLeafLayer_1": {
+          "p10": 873.77,
+          "median": 990.32
+        },
+        "OldTreeLeafLayer_2": {
+          "p10": 881.54,
+          "median": 1025.03
+        },
+        "VelvetMossSurface": {
+          "p10": 398.57,
+          "median": 906.81
         },
         "model": {
           "p10": 112.61,
@@ -8972,7 +8988,15 @@
         }
       },
       "node_density_px_m": {
-        "Foliage_PlazaOldTree": 736.45,
+        "Foliage_PlazaOldTree": 999.28,
+        "Moss_Shell_00": 907.44,
+        "Moss_Shell_01": 907.0,
+        "Moss_Shell_02": 906.94,
+        "Moss_Shell_03": 907.01,
+        "Moss_Shell_04": 906.76,
+        "Moss_Shell_05": 907.02,
+        "Moss_Shell_06": 906.55,
+        "Moss_Shell_07": 906.01,
         "Trunk_Hyper3D": 134.4
       },
       "untextured_area_fraction": 0.0,

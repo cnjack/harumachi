@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-10",
+  "tool": "built-in image_gen.imagegen",
+  "requests": [
+    {
+      "name": "cedar_sprigs",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: native-alpha 2 by 2 square foliage texture atlas for a Japanese cedar tree in a Japanese TV anime village game. Four equal square cells, one isolated natural cedar needle spray in each cell. Each spray is a small irregular branching twig with many short fine tapered needles grouped into soft feathered fans, rather than solid triangular fronds. Four distinct flowing silhouettes with deliberately open gaps and visible thin brown central twigs; fresh tips, mature green and muted deep blue-green underside variation. Top-left and top-right are fuller branch-end sprays; bottom-left and bottom-right are airy smaller side sprays. Clean confident anime linework, restrained flat local colours and two-tone cel shading, subtle warm green tips. Not photorealistic, not painterly, not a flat Christmas-tree icon. Neutral diffuse lighting with no strong baked highlights or cast shadows. BACKGROUND: fully transparent PNG with native alpha everywhere outside the needles and twigs. Each cell has a 12 percent transparent margin. No cross-cell overlap, no grid, no labels, no border, no text, no scenery, no cones, no full trees.",
+      "output": "art/references/canopy_depth_20261010/cedar_sprigs.png",
+      "source": "/Users/jack/.codex/generated_images/01a121af-2444-7e90-abff-a4700d3579ce/exec-0aca0de2-bde2-4175-9c33-09904594aaad.png"
+    },
+    {
+      "name": "moss_velvet",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: seamless square albedo texture for soft velvet moss on an ancient tree in a Japanese TV anime game. A perfectly flat orthographic close view of dense, very short soft moss pile, like a miniature plush green velvet carpet, with tiny delicate feathery shoots and fine micro-leaves merging into soft continuous cushions. Quiet deep forest green, muted olive-green, gently lighter fresh tips; subtle broad variation in density. Japanese anime background material: precise restrained hand-drawn detail, flat local colour and mild two-tone micro-shading. No photographic gloss, no wet reflection, no stones, no bark, no flowers, no long grass blades, no large clover leaves, no separate balls or beads, no dramatic light or cast shadows. The image is ONLY the edge-to-edge moss surface, with no empty margins and no scene. Seamless tiling on all four edges, no grid, no borders, no labels, no text or watermark. Opaque albedo texture; do not depict a floating patch or a ground slab.",
+      "output": "art/references/canopy_depth_20261010/moss_velvet.png",
+      "source": "/Users/jack/.codex/generated_images/01a121af-2444-7e90-abff-a4700d3579ce/exec-c7455cb3-fd02-4fab-87c6-8072064552ad.png"
+    }
+  ]
+}

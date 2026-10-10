@@ -1,19 +1,27 @@
 {
- "id": "T05_old_shade_tree",
- "src": "raw/T05_plaza_full_hyper3d_20261010/prepared/T05_old_shade_tree.glb",
- "provider": "Hyper3D CLI Gen-2.5-High; Blender UV-preserving cleanup and independent imagegen alpha foliage",
- "preserve_parts": true,
- "origin_preserved": true,
- "tris": 178400,
- "tex": 2048,
- "bytes": 13157668,
- "godot_size_m_xyz": [
-  13.0156,
-  9.1503,
-  11.0432
- ],
- "mesh_nodes": [
-  "Foliage_PlazaOldTree",
-  "Trunk_Hyper3D"
- ]
+  "id": "T05_old_shade_tree",
+  "src": "raw/T05_canopy_depth_20261010/T05_old_shade_tree.glb",
+  "provider": "Owned Hyper3D Gen-2.5-High wood; layered alpha crown and eight runtime moss shells",
+  "preserve_parts": true,
+  "origin_preserved": true,
+  "tris": 484008,
+  "tex": 2048,
+  "bytes": 22963616,
+  "godot_size_m_xyz": [
+    12.4408,
+    9.0776,
+    10.4263
+  ],
+  "mesh_nodes": [
+    "Foliage_PlazaOldTree",
+    "Moss_Shell_00",
+    "Moss_Shell_01",
+    "Moss_Shell_02",
+    "Moss_Shell_03",
+    "Moss_Shell_04",
+    "Moss_Shell_05",
+    "Moss_Shell_06",
+    "Moss_Shell_07",
+    "Trunk_Hyper3D"
+  ]
 }

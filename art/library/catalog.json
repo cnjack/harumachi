@@ -7733,9 +7733,9 @@
       "collection": "游戏资产",
       "path": "game/assets/models/T04_slender_cedar.glb",
       "format": "GLB",
-      "triangles": 4964,
-      "bytes": 4321592,
-      "license": "CC0-1.0",
+      "triangles": 8346,
+      "bytes": 6839868,
+      "license": "CC0-1.0 wood; project sprig geometry; generated texture under service terms",
       "source": "https://quaternius.com/packs/stylizednaturemegakit.html",
       "status": "已接入",
       "animations": [],
@@ -7744,29 +7744,30 @@
       "uses": [
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "Quaternius Stylized Nature MegaKit Standard Pine_3",
-      "raw_path": "art/models/raw/free_foliage_20261004/ready/T04_slender_cedar.glb",
+      "provider": "Quaternius CC0 Pine_3 wood; Blender sprig geometry with built-in imagegen alpha cedar atlas",
+      "raw_path": "art/models/raw/T04_cedar_depth_20261010/T04_slender_cedar.glb",
       "library_source": "quaternius/Pine_3",
       "metrics": {
         "id": "T04_slender_cedar",
-        "src": "raw/free_foliage_20261004/ready/T04_slender_cedar.glb",
-        "provider": "Quaternius Stylized Nature MegaKit Standard Pine_3",
+        "src": "raw/T04_cedar_depth_20261010/T04_slender_cedar.glb",
+        "provider": "Quaternius CC0 Pine_3 wood; Blender sprig geometry with built-in imagegen alpha cedar atlas",
         "preserve_parts": true,
         "origin_preserved": true,
-        "tris": 4964,
+        "tris": 8346,
         "tex": 2048,
-        "bytes": 4321592,
+        "bytes": 6839868,
         "godot_size_m_xyz": [
-          4.8854,
-          10.0,
-          5.4054
+          4.7278,
+          10.1016,
+          4.6557
         ],
         "mesh_nodes": [
-          "Foliage_1",
-          "Trunk_1"
+          "Foliage_CedarSprays",
+          "Trunk_Cedar"
         ]
       },
-      "recipe": "world.spawn(\"T04_slender_cedar\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"T04_slender_cedar\", Vector3(0, 0, 0), 0, 0)",
+      "preview_note": "Godot native scene capture with production wind and moss materials."
     },
     {
       "id": "game/T05_old_shade_tree",
@@ -7775,8 +7776,8 @@
       "collection": "游戏资产",
       "path": "game/assets/models/T05_old_shade_tree.glb",
       "format": "GLB",
-      "triangles": 178400,
-      "bytes": 13157668,
+      "triangles": 484008,
+      "bytes": 22963616,
       "license": "项目自制；生成素材服务条款",
       "source": "",
       "status": "已接入",
@@ -7787,28 +7788,37 @@
         "game/scripts/world/layout.gd",
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "Hyper3D CLI Gen-2.5-High; Blender UV-preserving cleanup and independent imagegen alpha foliage",
-      "raw_path": "art/models/raw/T05_plaza_full_hyper3d_20261010/prepared/T05_old_shade_tree.glb",
+      "provider": "Owned Hyper3D Gen-2.5-High wood; layered alpha crown and eight runtime moss shells",
+      "raw_path": "art/models/raw/T05_canopy_depth_20261010/T05_old_shade_tree.glb",
       "metrics": {
         "id": "T05_old_shade_tree",
-        "src": "raw/T05_plaza_full_hyper3d_20261010/prepared/T05_old_shade_tree.glb",
-        "provider": "Hyper3D CLI Gen-2.5-High; Blender UV-preserving cleanup and independent imagegen alpha foliage",
+        "src": "raw/T05_canopy_depth_20261010/T05_old_shade_tree.glb",
+        "provider": "Owned Hyper3D Gen-2.5-High wood; layered alpha crown and eight runtime moss shells",
         "preserve_parts": true,
         "origin_preserved": true,
-        "tris": 178400,
+        "tris": 484008,
         "tex": 2048,
-        "bytes": 13157668,
+        "bytes": 22963616,
         "godot_size_m_xyz": [
-          13.0156,
-          9.1503,
-          11.0432
+          12.4408,
+          9.0776,
+          10.4263
         ],
         "mesh_nodes": [
           "Foliage_PlazaOldTree",
+          "Moss_Shell_00",
+          "Moss_Shell_01",
+          "Moss_Shell_02",
+          "Moss_Shell_03",
+          "Moss_Shell_04",
+          "Moss_Shell_05",
+          "Moss_Shell_06",
+          "Moss_Shell_07",
           "Trunk_Hyper3D"
         ]
       },
-      "recipe": "world.spawn(\"T05_old_shade_tree\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"T05_old_shade_tree\", Vector3(0, 0, 0), 0, 0)",
+      "preview_note": "Godot native scene capture with production wind and moss materials."
     },
     {
       "id": "game/V01_fern",

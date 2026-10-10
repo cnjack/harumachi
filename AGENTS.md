@@ -10,7 +10,7 @@
 - 设计文档：`docs/game-design/`，入口 [README.md](docs/game-design/README.md)，当前事实集中在 [CURRENT_STATUS.md](docs/game-design/CURRENT_STATUS.md)
 - 素材源文件和工具：`art/`
 - 录像、截图、测试结果：`evidence/`
-- 导出包：`builds/HareMachi.zip`，当前Godot4.8-dev7；最新验收见`evidence/plaza_delivery_20261010/delivery.json`
+- 导出包：`builds/HareMachi.zip`，当前Godot4.8-dev7；最新验收见`evidence/canopy_depth_delivery_20261010/delivery.json`
 - 官方网站与网页试玩：`site/`，说明在 `site/README.md`
 
 ## builds 只保留最新交付（2026-10-05）
@@ -45,8 +45,9 @@ PY=/Users/jack/.copilot/session-state/ca10e179-b441-4d77-b938-250cea2ee4c6/files
 BLENDER=/Applications/Blender.app/Contents/MacOS/Blender
 
 $GODOT --headless --path game --import                               # 加了素材或 class_name 之后必须先跑
-$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前1376项；单独运行，套timeout）
+$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前1384项；单独运行，套timeout）
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=plaza-quality # 8项棚架、材质、水面、鱼尺度、踢脚线与草坪净空
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=foliage-depth # 8项透光、冠层、绒毛苔藓、杉树与背景草地
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=hero-tree     # 9项尺寸、树皮闭合、实际碰撞、净空与交互
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=scene-quality # 27项牌面、真实路向、材质、房间用途、净空与空间声音
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=motion-clarity # 6项斜跑/横跑帧间稳定、过滤、跑速与镜头复位
@@ -86,7 +87,7 @@ $GODOT --headless --path game --export-release "macOS" "$HARUMACHI_BUILD_STAGE/H
 
 ## 必须知道的坑
 
-- **引擎固定4.8-dev7**：精确版本`4.8.dev7.official.c971f93e7`，配置在`tools/godot-version.json`；优先运行`./tools/godot`，它会校验版本。不要依赖可能被自动更新的`/Applications/Godot.app`。`project.godot` features为"4.8"，导出模板为`4.8.dev7`。这是用户要求的开发快照迁移，当前1376项独占全量和解压包200项夏季演示已通过；验收记录不能与历史4.7.2混用。
+- **引擎固定4.8-dev7**：精确版本`4.8.dev7.official.c971f93e7`，配置在`tools/godot-version.json`；优先运行`./tools/godot`，它会校验版本。不要依赖可能被自动更新的`/Applications/Godot.app`。`project.godot` features为"4.8"，导出模板为`4.8.dev7`。这是用户要求的开发快照迁移，当前1384项独占全量和解压包200项夏季演示已通过；验收记录不能与历史4.7.2混用。
 - **卡顿要查真实时钟和渲染帧**：未使用的晚会桌面不能随每个游戏分钟重扫三角面；桌面测量按实例、变换与来源缓存。只有玩家和跟随镜头启用物理插值，普通移动不能误清插值快照；传送与镜头snap须复位。见`docs/game-design/DESKTOP_STUTTER_20261008.md`。
 - **警告当错误**：推断成 Variant 的变量要写明类型（`var p: Vector3 = ...`）；同一个函数里变量不能重名（嵌套循环里也不行）；字典字面量不能有重复键；不要写叫 `_set` 的方法。
 - **窗口被挡住就停帧**：macOS 不给完全被遮住的窗口画帧，自动演示、录像、截图都会停住。带窗口运行时一律加 `-t --position <x>,<y>`（置顶、放屏幕角落）。

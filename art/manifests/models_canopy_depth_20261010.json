@@ -1,0 +1,131 @@
+{
+  "date": "2026-10-10",
+  "scope": "Layered permeable hero crown, aged bark with short raised moss pile, cedar sprigs and meadow backdrop",
+  "new_paid_3d_generations": 0,
+  "retained_hyper3d_generation": "e958a9cb-fd96-430b-9881-5c05490505fb",
+  "models": {
+    "T04_slender_cedar": {
+      "config": {
+        "src": "raw/T04_cedar_depth_20261010/T04_slender_cedar.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "image_format": "AUTO",
+        "provider": "Quaternius CC0 Pine_3 wood; Blender sprig geometry with built-in imagegen alpha cedar atlas",
+        "license": "CC0-1.0 wood; project sprig geometry; generated texture under service terms",
+        "source_page": "https://quaternius.com/packs/stylizednaturemegakit.html",
+        "source_pack": "quaternius_standard",
+        "asset_library_id": "quaternius/Pine_3",
+        "note": "1922 separate needle sprays; lower boughs retained, root on ground, original wood and story identity preserved.",
+        "reference_images": [
+          "art/references/canopy_depth_20261010/cedar_sprigs.png"
+        ]
+      },
+      "metrics": {
+        "id": "T04_slender_cedar",
+        "src": "raw/T04_cedar_depth_20261010/T04_slender_cedar.glb",
+        "provider": "Quaternius CC0 Pine_3 wood; Blender sprig geometry with built-in imagegen alpha cedar atlas",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 8346,
+        "tex": 2048,
+        "bytes": 6839868,
+        "godot_size_m_xyz": [
+          4.7278,
+          10.1016,
+          4.6557
+        ],
+        "mesh_nodes": [
+          "Foliage_CedarSprays",
+          "Trunk_Cedar"
+        ]
+      },
+      "sha256": "3866763e5553d0907ea2da5acc964de93b59461506470486c976b3763561c9a3"
+    },
+    "T05_old_shade_tree": {
+      "config": {
+        "src": "raw/T05_canopy_depth_20261010/T05_old_shade_tree.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "image_format": "AUTO",
+        "provider": "Owned Hyper3D Gen-2.5-High wood; layered alpha crown and eight runtime moss shells",
+        "license": "项目自制；生成素材服务条款",
+        "reference_images": [
+          "art/references/plaza_paintover_20261009/plaza_full_tree_reference.png",
+          "art/references/plaza_paintover_20261009/plaza_leaf_sprigs_atlas.png",
+          "art/references/canopy_depth_20261010/moss_velvet.png"
+        ],
+        "note": "1900 alpha cards across uneven crown shelves; 8 moss shells 1-22 mm above bark. WorldBuilder applies moss_pile.gdshader (triplanar texture and sparse pile) and aged bark tint. Generic GLB viewers do not reproduce this runtime moss material. Preserve zelkova save/story identity."
+      },
+      "metrics": {
+        "id": "T05_old_shade_tree",
+        "src": "raw/T05_canopy_depth_20261010/T05_old_shade_tree.glb",
+        "provider": "Owned Hyper3D Gen-2.5-High wood; layered alpha crown and eight runtime moss shells",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 484008,
+        "tex": 2048,
+        "bytes": 22963616,
+        "godot_size_m_xyz": [
+          12.4408,
+          9.0776,
+          10.4263
+        ],
+        "mesh_nodes": [
+          "Foliage_PlazaOldTree",
+          "Moss_Shell_00",
+          "Moss_Shell_01",
+          "Moss_Shell_02",
+          "Moss_Shell_03",
+          "Moss_Shell_04",
+          "Moss_Shell_05",
+          "Moss_Shell_06",
+          "Moss_Shell_07",
+          "Trunk_Hyper3D"
+        ]
+      },
+      "sha256": "48428b34ccbacece339aed4555ab7d6c3c2808f79a149e48bc73c812d1c26735"
+    }
+  },
+  "images": "art/manifests/prompts/canopy_depth_20261010.json",
+  "runtime_materials": [
+    "game/shaders/foliage_sway.gdshader",
+    "game/shaders/moss_pile.gdshader",
+    "game/shaders/distant_meadow.gdshader"
+  ],
+  "runtime_note": "Moss GLB shells require WorldBuilder.make_sway and moss_pile shader. A generic viewer shows shell surfaces without the game alpha pile.",
+  "hero": {
+    "sprigs": 1900,
+    "crown_shelves": 9,
+    "moss_shells": 8,
+    "moss_pile_height_m": [
+      0.001,
+      0.022
+    ],
+    "sunlight_transmission_before": 0.0023,
+    "sunlight_transmission_after": 0.4059,
+    "outer_crown_height_range_before_m": 0.525,
+    "outer_crown_height_range_after_m": 1.9831
+  },
+  "cedar": {
+    "sprigs": 1922,
+    "max_leaf_triangle_edge_before_m": 1.6107,
+    "max_leaf_triangle_edge_after_m": 1.2048
+  },
+  "meadow": {
+    "quadrants": 4,
+    "clumps": 6589,
+    "ground_grid_m": 4,
+    "collision_checked": true
+  },
+  "verification": {
+    "regression": "evidence/canopy_depth_20261010/final-targeted-tests.json",
+    "old_negative": "evidence/canopy_depth_20261010/old-final-shell-tests.json",
+    "optical": "game/assets/models/_stats/_foliage_depth.json",
+    "performance": "evidence/canopy_depth_20261010/render-perf",
+    "delivery": "evidence/canopy_depth_delivery_20261010/delivery.json"
+  }
+}
