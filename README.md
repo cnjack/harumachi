@@ -61,7 +61,7 @@ python3 -m http.server 8765 -d site
 
 每项任务完成后，执行相关自动检查和实际运行验收；通过后提交并推送 `main`，再确认远端 CI。涉及模型、镜头或界面的修改需要画面验证，游戏逻辑修改需要相应 Godot 测试。完整规则见 [AGENTS.md](AGENTS.md) 与 [维护指南](docs/REPOSITORY.md)。
 
-社区中心改为共用桌、阅读角、茶水和集中活动收纳；商店按类别成组陈列并集中冷藏奶蛋；精品面包房加入两组座位、咖啡后吧和四类独立甜点。阅读、喝茶、坐下休息、购买饮品与桌边享用均已接入。1420项独占全量、解压包200项完整夏季演示退出0，32个原生场景视角与两张商店UI截图已验，默认存档未变。见[日常格局重做](docs/game-design/INHABITED_PLACES_REDESIGN_20261010.md)与[实景改绘经验](docs/game-design/IMAGEGEN_SCENE_WORKFLOW.md)。此前树冠与绒毛苔藓继续保留。
+社区中心改为共用桌、阅读角、茶水和集中活动收纳；商店按类别成组陈列并集中冷藏奶蛋；精品面包房加入两组座位、咖啡后吧和四类独立甜点。阅读、喝茶、坐下休息、购买饮品与桌边享用均已接入。1421项独占全量、解压包200项完整夏季演示退出0，32个原生场景视角与两张商店UI截图已验，默认存档未变。见[日常格局重做](docs/game-design/INHABITED_PLACES_REDESIGN_20261010.md)与[实景改绘经验](docs/game-design/IMAGEGEN_SCENE_WORKFLOW.md)。此前树冠与绒毛苔藓继续保留。
 
 官网发布流程见 [site/README.md](site/README.md)，网页游戏构建见 [WEB](docs/game-design/WEB.md)。发现问题可通过 [Issues](https://github.com/cnjack/harumachi/issues) 提供复现步骤、版本与截图。
 

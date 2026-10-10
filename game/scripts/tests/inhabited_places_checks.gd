@@ -60,4 +60,22 @@ func run() -> void:
 	var alpha_icons:=true
 	for id: String in ["shop_chocolate_cake","shop_basque_cheesecake","shop_fruit_tart","shop_coffee","shop_cafe_latte"]:alpha_icons=alpha_icons and UITheme.icon_texture(id)!=null
 	check("new foods and drinks have native UI kit icons",alpha_icons)
+	GameState.minute=600;GameState.day=1
+	var work_facing:=true;var work_details: Array[String]=[]
+	for kind: String in ["bakery","store"]:
+		if main.in_room:await main.exit_interior()
+		await main.enter_interior(kind);await t.frames(3)
+		var keeper: NPC=main.npcs["ren" if kind=="bakery" else "kazuko"]
+		var station: Node3D=rooms[kind].get_node("PublicPlaceArt/EspressoStation" if kind=="bakery" else "G10_store_shelf")
+		var spec: Dictionary=InteriorBuilder.spec_for(kind)
+		var work_at: Vector3=spec.origin+spec.work_at
+		var last_dot: float=-2.0
+		main.shop_life.perform_work(kind,true)
+		while main.shop_life._working:
+			await t.frames(1)
+			if keeper._moving or keeper.global_position.distance_to(work_at)>.06 or not bool(keeper.get_meta("shop_work_active",false)):continue
+			var toward: Vector3=station.global_position-keeper.global_position;toward.y=0
+			last_dot=keeper.model.global_basis.z.normalized().dot(toward.normalized())
+		work_facing=work_facing and last_dot>.95;work_details.append(kind+" %.3f"%last_dot)
+	check("keepers face the actual coffee and stocking surfaces while working",work_facing,str(work_details))
 	await main.exit_interior();GameState.from_dict(snapshot)

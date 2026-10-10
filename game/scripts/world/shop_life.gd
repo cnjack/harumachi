@@ -19,6 +19,7 @@ var _caption: Label3D
 var _caption_left := 0.0
 var _greeting_actor: NPC
 var _last_voice := ""
+var _work_pose: LivingPose
 
 func setup(scene: Node) -> void:
 	main=scene
@@ -56,7 +57,7 @@ func opened(kind: String) -> bool:
 	return GameState.hour()>=float(shop.open) and GameState.hour()<float(shop.close) and GameState.weekday()!=int(shop.get("closed_weekday",-1))
 
 func on_enter(kind: String) -> void:
-	_generation+=1;_work_wait=8.0
+	cancel_work();_work_wait=8.0
 	if kind in ["store","bakery"]:greet(kind,true)
 
 func on_exit() -> void:
@@ -83,8 +84,20 @@ func controls_keeper(id: String) -> bool:
 
 func cancel_work() -> void:
 	_generation+=1
+	_release_work_pose()
 	if _working and is_instance_valid(_actor) and _actor._safe_walk:_actor.cancel_safe_walk()
 	_working=false;_forced_work=false;_work_wait=12.0
+
+func _release_work_pose() -> void:
+	if is_instance_valid(_work_pose):_work_pose.amount=0.0;_work_pose.queue_free()
+	_work_pose=null
+	if is_instance_valid(_actor) and _actor.has_meta("shop_work_active"):_actor.remove_meta("shop_work_active")
+
+func _reach_station(npc: NPC,target: Vector3) -> void:
+	var skeletons: Array[Node]=npc.find_children("*","Skeleton3D",true,false)
+	if skeletons.is_empty():return
+	_work_pose=LivingPose.new();_work_pose.phase=.5;_work_pose.amount=1.0;_work_pose.goal_world=target
+	(skeletons[0] as Skeleton3D).add_child(_work_pose);npc.set_meta("shop_work_active",true)
 
 func perform_work(kind: String,force: bool=false) -> bool:
 	if _working or main.story.busy or main.ui.modal!="" or not opened(kind) or not main.in_room or main.room_kind!=kind:return false
@@ -99,18 +112,25 @@ func perform_work(kind: String,force: bool=false) -> bool:
 	_working=true;_forced_work=force;_actor=npc
 	var generation: int=_generation
 	var beginning: Vector3=npc.global_position
-	npc._end_idle="tend";npc._end_yaw=deg_to_rad(0.0 if kind=="bakery" else 90.0)
+	var station: Node3D=main.world.interiors[kind].get_node(spec.work_station)
+	var toward_station: Vector3=station.global_position-work_at
+	npc._end_idle="idle";npc._end_yaw=atan2(toward_station.x,toward_station.z)
 	var arrived: bool=await npc.walk_safe(route)
-	if generation!=_generation or not arrived:_working=false;return false
+	if generation!=_generation:return false
+	if not arrived:_working=false;return false
 	work_distance+=npc.global_position.distance_to(beginning)
-	npc.set_pose("tend")
-	await get_tree().create_timer(.15 if main.ui.instant else 2.0).timeout
-	if generation!=_generation or main.story.busy:_working=false;return false
+	npc.set_pose("idle")
+	_reach_station(npc,station.to_global(spec.work_hand))
+	await get_tree().create_timer(.35 if main.ui.instant else 2.0).timeout
+	if generation!=_generation:return false
+	if main.story.busy:_release_work_pose();_working=false;return false
+	_release_work_pose()
 	content.replenish(kind,elapsed)
 	var returning: Array[Vector3]=NPC.MOTION_ROUTE.query(npc,npc.global_position,counter)
 	if returning.is_empty():_working=false;return false
 	npc._end_idle="idle";npc._end_yaw=deg_to_rad(float(spec.keeper_yaw))
 	var returned: bool=await npc.walk_safe(returning)
+	if generation!=_generation:return false
 	_working=false;_forced_work=false;_work_wait=22.0
 	if generation==_generation and returned:
 		completed_trips+=1;content.update(elapsed);return true

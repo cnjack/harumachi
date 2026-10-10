@@ -14,7 +14,7 @@ const SPECS := {
 		"name": "晴町商店", "origin": Vector3(50, 0, 400), "size": Vector2(11.0, 8.0), "floor": "wood", "wall": "plaster",
 		"back_wall": "plaster", "exit": Vector3(-36.0, 0.1, -13.2), "exit_yaw": 0.0, "door_x": 0.0,
 		"furniture": [
-			["I04_shop_counter", -4.30, -.60, 90.0, 1.0, true],
+			["I04_shop_counter", -4.05, -.60, 90.0, 1.0, true],
 			["P_gondola", -1.35, -.4, 0.0, 1.0, true],
 			["P_gondola", 1.35, -.4, 0.0, 1.0, true],
 			["I03_drink_fridge", 4.606, -3.267, 0.0, 1.0, true],
@@ -24,9 +24,9 @@ const SPECS := {
 		],
 		"lamps": [Vector3(-2.062, 2.55, 0.0), Vector3(2.475, 2.55, 0.0)],
 		# [id, x, y, z, radius]
-		"points": [["store_counter", -3.10, 1.0, -.60, 1.6], ["store_exit", 0.0, 0.9, 3.933, 1.5],
+		"points": [["store_counter", -2.90, 1.0, -.60, 1.6], ["store_exit", 0.0, 0.9, 3.933, 1.5],
 			["store_fridge", 4.606, 1.0, -2.467, 1.3], ["store_freezer", 3.713, 0.8, 1.267, 1.3]],
-		"keeper": Vector3(-5.12, 0.0, -.60), "keeper_yaw": 90.0, "work_at": Vector3(-5.12,0,-2.20),
+		"keeper": Vector3(-5.0, 0.0, -.60), "keeper_yaw": 90.0, "work_at": Vector3(-3.506,0,-2.55), "work_station":"G10_store_shelf", "work_hand":Vector3(-.25,1.05,.28),
 	},
 	"bakery": {
 		"name": "莲的面包店", "origin": Vector3(80, 0, 400), "size": Vector2(11.0, 8.0), "floor": "kitchen", "wall": "plaster",
@@ -42,7 +42,7 @@ const SPECS := {
 		"lamps": [Vector3(-2.2, 2.55, 0.267), Vector3(2.2, 2.55, -0.8)],
 		"points": [["bakery_counter", 2.10, 1.0, 1.25, 1.5], ["bakery_exit", 2.2, 0.9, 3.933, 1.5],
 			["bakery_oven", 3.506, 1.0, -2.133, 1.4], ["bakery_mill", -3.3, 0.8, -2.333, 1.4], ["cake_showcase", .20, 1.0, 1.25, 1.3]],
-		"keeper": Vector3(2.10, 0.0, -1.15), "keeper_yaw": 0.0, "work_at": Vector3(4.8,0,-2.20),
+		"keeper": Vector3(2.10, 0.0, -1.15), "keeper_yaw": 0.0, "work_at": Vector3(4.8,0,-2.50), "work_station":"PublicPlaceArt/EspressoStation", "work_hand":Vector3(-.29,1.075,.28),
 	},
 	"workroom": {
 		"name": "社区活动中心", "ceiling_height": 3.2, "origin": Vector3(110, 0, 400), "size": Vector2(12, 9), "floor": "wood", "wall": "plaster", "back_wall": "plaster",
