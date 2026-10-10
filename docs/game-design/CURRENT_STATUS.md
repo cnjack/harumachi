@@ -4,6 +4,10 @@
 
 社区中心改为共用桌、阅读角、茶水和集中活动收纳；商店按类别成组陈列并集中冷藏奶蛋；精品面包房加入两组座位、咖啡后吧和四类独立甜点。阅读、喝茶、坐下休息、购买饮品与桌边享用均已接入。1420项独占全量、解压包200项完整夏季演示退出0，32个原生场景视角与两张商店UI截图已验，默认存档未变。新旧三处同条件渲染帧比较通过。见[格局、陈列与生活使用](INHABITED_PLACES_REDESIGN_20261010.md)、[可复用经验](IMAGEGEN_SCENE_WORKFLOW.md)和`evidence/inhabited_places_20261010/delivery.json`。Web仍为20261007-203612。
 
+## 补齐 Windows 的 SQLite 库（2026-10-10）
+
+Windows 下打开工程报 `Could not find type "SQLite"`：`game/addons/godot-sqlite/bin/` 此前只有 macOS 与 Web 库，GDExtension 在 Windows 加载失败。已从同一官方 v4.9 包补入 `libgdsqlite.windows.template_{debug,release}.x86_64.dll`（SHA-256 与 release 对照，包内 4 份旧库与仓库逐字节一致）。Windows + 4.8.dev7 实测：`--import` 干净，`--only=daily-save` 8/8 通过，`tools/check_project.py` 全过。证据 `evidence/windows_sqlite_20261010/verification.json`。桌面交付目标仍为 macOS，此改动只是让 Windows 也能开发与测试。
+
 ## 前次社区中心、面包房与商店景观交付（2026-10-10）
 
 三处门前与室内按六张imagegen实景改绘提升：真实窗洞与格栅日照、分房间的宽木板、沿墙陈设、23件有测量支撑的小物、公告盒与布篷支架。1399项独占全量、解压应用200项完整夏季演示通过，退出0；25个原生视角、默认存档和照片摘要已核对。新旧三间房同条件均约60 FPS。见[三处场景交付](THREE_PLACES_IMAGEGEN_20261010.md)、[可复用经验](IMAGEGEN_SCENE_WORKFLOW.md)和`evidence/three_places_imagegen_20261010/delivery.json`。Web仍为20261007-203612。
