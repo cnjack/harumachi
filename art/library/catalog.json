@@ -303,7 +303,8 @@
         "game/scripts/world/residential_life.gd",
         "game/scripts/world/house_builder.gd",
         "game/scripts/world/layout.gd",
-        "game/scripts/world/world_builder.gd"
+        "game/scripts/world/world_builder.gd",
+        "game/scripts/world/public_place_art.gd"
       ],
       "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)",
       "raw_path": "art/models/../../output/japanese-street-shinkai-dry/models/A15_potted_plant/model.glb",
@@ -676,7 +677,8 @@
       "alpha": false,
       "preview": "art/library/previews/game_B02_croissant.png",
       "uses": [
-        "game/scripts/world/interior_builder.gd"
+        "game/scripts/world/interior_builder.gd",
+        "game/scripts/world/public_place_art.gd"
       ],
       "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
       "raw_path": "art/models/raw/B02_croissant_atlas_audit_20261002/model.glb",
@@ -8244,7 +8246,8 @@
       "preview": "art/library/previews/game_W05_hydrangea_pot.png",
       "uses": [
         "game/scripts/world/shop_displays.gd",
-        "game/scripts/world/world_builder.gd"
+        "game/scripts/world/world_builder.gd",
+        "game/scripts/world/public_place_art.gd"
       ],
       "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
       "raw_path": "art/models/raw/W05_hydrangea_pot_pixal_modules_20261003/model.glb",
@@ -8529,7 +8532,8 @@
       "uses": [
         "game/scripts/world/neighbour_meal_view.gd",
         "game/scripts/world/shop_displays.gd",
-        "game/scripts/world/daily_life_view.gd"
+        "game/scripts/world/daily_life_view.gd",
+        "game/scripts/world/public_place_art.gd"
       ],
       "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
       "raw_path": "art/models/raw/W11_ceramic_set_pixal_modules_20261003/model.glb",
@@ -16739,7 +16743,8 @@
       "alpha": false,
       "preview": "art/library/previews/game_W19_flour_bag.png",
       "uses": [
-        "game/scripts/world/shop_content.gd"
+        "game/scripts/world/shop_content.gd",
+        "game/scripts/world/public_place_art.gd"
       ],
       "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
       "raw_path": "art/models/raw/shop_refresh_20261009/W19_flour_bag.glb",
@@ -16833,7 +16838,8 @@
       "alpha": false,
       "preview": "art/library/previews/game_W21_tea_tin.png",
       "uses": [
-        "game/scripts/world/shop_content.gd"
+        "game/scripts/world/shop_content.gd",
+        "game/scripts/world/public_place_art.gd"
       ],
       "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
       "raw_path": "art/models/raw/shop_refresh_20261009/W21_tea_tin.glb",

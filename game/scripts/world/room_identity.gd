@@ -11,7 +11,7 @@ static func build(room: InteriorBuilder) -> void:
 		"store":
 			ClearSignage.paper_tag(root,"ToolsCategory","种子与园艺",Vector3(-5.40,2.20,-.65),Vector2(1.16,.24),PI*.5,.12)
 			ClearSignage.paper_tag(root,"PantryCategory","米粮 · 调料",Vector3(-3.50,2.45,-3.88),Vector2(1.32,.26),0,.12)
-			ClearSignage.paper_tag(root,"DailyCategory","晴町的日用",Vector3(5.40,2.28,2.65),Vector2(1.24,.25),-PI*.5,.12)
+			ClearSignage.paper_tag(root,"DailyCategory","晴町的日用",Vector3(5.40,2.28,3.28),Vector2(1.24,.25),-PI*.5,.12)
 		"bakery":
 			ClearSignage.paper_tag(root,"FreshBread","每日少量烘焙",Vector3(-5.40,2.25,-.15),Vector2(1.46,.28),PI*.5,.12)
 			ClearSignage.paper_tag(root,"OvenArea","揉面 · 发酵 · 烘烤",Vector3(2.85,2.48,-3.87),Vector2(2.02,.25),0,.115)

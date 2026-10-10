@@ -2,6 +2,26 @@ extends Node
 ## Evidence camera: `-- --shots=<dir> [--views=a,b]` renders predefined views to PNG and quits.
 
 const VIEWS := {
+ "community_scene_night": {"player":Vector3(-23.2,.1,-8.4),"time":21.0,"camera_at":Vector3(-28,3.5,-12),"camera_focus":Vector3(-23.2,2.1,-.1)},
+ "bakery_scene_night": {"player":Vector3(-24,.1,-10),"time":20.0,"camera_at":Vector3(-29,3.2,-11),"camera_focus":Vector3(-24,2,-19.3)},
+ "store_scene_night": {"player":Vector3(-36,.1,-10),"time":20.0,"camera_at":Vector3(-41,3.2,-10.5),"camera_focus":Vector3(-36,2,-19.3)},
+ "public_bakery_detail": {"player":Vector3(-24,.1,-13),"time":10.5,"camera_at":Vector3(-27,1.6,-14.8),"camera_focus":Vector3(-24,1.2,-16.4)},
+ "public_store_detail": {"player":Vector3(-36,.1,-13),"time":10.5,"camera_at":Vector3(-39,1.55,-14),"camera_focus":Vector3(-36,1.4,-16.5)},
+ "public_bakery_back": {"player":Vector3(-24,.1,-25),"time":10.5,"camera_at":Vector3(-28,2.4,-27),"camera_focus":Vector3(-24,2,-21)},
+ "public_store_back": {"player":Vector3(-36,.1,-24),"time":10.5,"camera_at":Vector3(-40,2.4,-26),"camera_focus":Vector3(-36,2,-20)},
+ "public_community_back": {"player":Vector3(-30,.1,10),"time":10.5,"camera_at":Vector3(-32,3.5,12),"camera_focus":Vector3(-23.2,2,0)},
+
+ "community_front": {"player":Vector3(-23.2,.1,-8.4),"time":10.5,"camera_at":Vector3(-28,3.5,-12),"camera_focus":Vector3(-23.2,2.1,-.1)},
+ "community_detail": {"player":Vector3(-23.2,.1,-8.0),"time":10.5,"camera_at":Vector3(-24.7,1.7,-8.5),"camera_focus":Vector3(-23.2,1.5,-3.2)},
+ "bakery_scene_front": {"player":Vector3(-24,.1,-10),"time":10.5,"camera_at":Vector3(-29,3.2,-11),"camera_focus":Vector3(-24,2,-19.3)},
+ "store_scene_front": {"player":Vector3(-36,.1,-10),"time":10.5,"camera_at":Vector3(-41,3.2,-10.5),"camera_focus":Vector3(-36,2,-19.3)},
+ "public_workroom_night": {"interior":"workroom","at":Vector3(0,.05,2.6),"face":180.0,"pitch":46.0,"dist":9.4,"time":21.0},
+ "public_bakery_night": {"interior":"bakery","at":Vector3(0,.05,2),"face":180.0,"pitch":46.0,"dist":8.6,"time":21.0},
+ "public_store_night": {"interior":"store","at":Vector3(.6,.05,1.9),"face":180.0,"pitch":46.0,"dist":8.6,"time":21.0},
+ "public_workroom_detail": {"interior":"workroom","at":Vector3(0,.05,2.6),"time":10.5,"inside_camera":Vector3(-3.1,1.8,1.0),"inside_focus":Vector3(-2.3,.9,-.35)},
+ "public_bakery_window": {"interior":"bakery","at":Vector3(0,.05,2),"time":10.5,"inside_camera":Vector3(3.1,1.65,-.7),"inside_focus":Vector3(5.5,1.80,-1.8)},
+ "public_store_wrapping": {"interior":"store","at":Vector3(.6,.05,1.9),"time":10.5,"inside_camera":Vector3(-3.0,1.5,3.1),"inside_focus":Vector3(-5.05,.95,3.1)},
+
 	"plaza_moss_close": {"player":Vector3(-1,.1,2),"time":10.5,"camera_at":Vector3(2.5,1.05,4.7),"camera_focus":Vector3(3.7,.55,5.8)},
 	"plaza_overview": {"player":Vector3(-1,.1,2),"time":10.5,"camera_at":Vector3(-10,6,-10),"camera_focus":Vector3(4,4.2,7)},
 	"plaza_east_edge": {"player":Vector3(-1,.1,2),"time":10.5,"camera_at":Vector3(15,5,8),"camera_focus":Vector3(48,4,31)},
@@ -393,6 +413,10 @@ func _run() -> void:
 			print("SHOT ", n)
 			main.in_room = false
 			main.room_kind = ""
+			GameState.player_in_room = false
+			main.world.set_indoor_look(false)
+			main.rig.fixed = false
+			main.rig.collide = true
 			continue
 		if v.has("say"):
 			# the dialogue box over the street, to check a portrait in the real UI

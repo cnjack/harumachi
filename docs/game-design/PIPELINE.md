@@ -217,7 +217,7 @@ Godot 这边是 `Audio` 自动加载（`game/scripts/autoload/audio.gd`）：
 
 - **材质视频样板（2026-10-06）**：`art/poc/material_review_20261006/godot/` 是独立 Godot 4.7.2 Forward+ 工程，六种地表各有 A/B；四张 imagegen 图用于实际材质，已有 Hyper3D 住宅用于实景。运行 `python3 art/poc/material_review_20261006/record.py --tag review` 原生录制 40 秒 1080p/30fps 并编码 MP4；视频、8 张截图、日志和检查在 `evidence/material_review_20261006_v1/`。窗口 override 与录制分辨率保持一致，避免 Movie Maker 输出 720p 而截图仍为 1080p。隔离工程不加载游戏 autoload，不修改默认存档。详见该 POC 的 README。
 
-- 自动测试：`res://scenes/tests.tscn`，当前清单1384项，含规则、SQLite、UI、模型摆放、路线、生活、完整夏季和镜头检查。独立HARUMACHI_SAVE_DIR、超时与SCRIPT ERROR检查必须同时使用；全量不与其他Godot实例并发。专项入口与数量见AGENTS，最终数以JSON报告为准。
+- 自动测试：`res://scenes/tests.tscn`，当前清单1399项，含规则、SQLite、UI、模型摆放、路线、生活、完整夏季和镜头检查。独立HARUMACHI_SAVE_DIR、超时与SCRIPT ERROR检查必须同时使用；全量不与其他Godot实例并发。专项入口与数量见AGENTS，最终数以JSON报告为准。
 - 卡顿检查要让时钟实际推进，记录逐帧耗时，不能只看平均FPS。工具`evidence/desktop_stutter_20261007/perf_probe.gd`的`--fixed`模式在真实起床卧室和商店街记录480帧，截图回读放在计时之后；使用固定引擎、置顶原生窗口和独立存档。运动清晰度检查在固定镜头距离下核对人物与镜头的渲染插值位置，镜头避障另跑`--only=camera-body`。桌面缓存用晚会专项检查移动、旋转后的实际食物支撑；方法与结果见[卡顿修复](DESKTOP_STUTTER_20261008.md)。
 - 自动演示：普通标题入口`--autoplay`沿实际碰撞路径、Story交互、摆放控制器、料理面板、灯笼输入、日历赴约和拍照完成新夏季至Q15，检查控制与保存恢复。当前基线200项、9张关键截图。自动对白与阶段暂停明确记录，不作为自然四小时；`--showcase`是节日展示夹具。打印的AP mark/frame用于录像剪辑。
 - 录制时游戏窗口不能被别的窗口完全挡住：macOS 会停止给被挡住的窗口画帧，演示就停在原地。用 `-t --position <x>,<y>` 置顶并放到屏幕角落。
@@ -474,3 +474,7 @@ codex 可以直接画透明背景。14 张头像一张一张重画（`art/manife
 `foliage_structure_audit.py`批量测量四种近树，按11:30太阳方向对实际叶片和alpha取441条光线，记录摘要、冠层顶部高差、杉树单叶片边长。用旧模型跑新测试证明其会失败，再用原生截图验收疏密和光斑；光线路径比例不能当成画面照度。
 
 老树的八层苔藓壳体依赖`moss_pile.gdshader`，贴图使用三向采样，绒毛随树皮低频风动，18米外淡出。素材库预览须从原生游戏取图；普通GLB查看器不具备该材质。地形改动须同时检查实际可见三角面和物理地面高度。新增`--only=foliage-depth`8项，当前全量1384项。桌面解压包200项通过，完整记录见[树冠与苔藓](CANOPY_DEPTH_20261010.md)。
+
+## 20. 复用imagegen实景改绘流程
+
+完整方法见[经验总结](IMAGEGEN_SCENE_WORKFLOW.md)。三处公共场景使用六张实景改绘和四项实际素材；真实窗洞要同时检查旧墙框与日照方向，地板缝使用屏幕导数过滤。新增桌面陈设接入`support_surface`和实际表面测量，保持专项与全场普查一致；截图工具离开室内后复位光照和镜头。新增`--only=public-art`15项，包含实际几何光线路径、桌面支持、夜色和通路；旧场景失败14项。1399项全量及解压包200项通过，当前交付见[三处场景](THREE_PLACES_IMAGEGEN_20261010.md)。

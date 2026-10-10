@@ -109,7 +109,8 @@ func build(world: WorldBuilder, k: String) -> void:
 	var pm := PlaneMesh.new()
 	pm.size = Vector2(w, d)
 	fl.mesh = pm
-	fl.material_override = fm
+	fl.name = "PublicPlankFloor"
+	fl.material_override = PublicPlaceArt.floor_material(self)
 	fl.position.y = 0.002
 	add_child(fl)
 	# the ground collider reaches as far as the painted street outside the door (_outside), so nothing is a hole;
@@ -129,9 +130,12 @@ func build(world: WorldBuilder, k: String) -> void:
 			shop_mat.set_shader_parameter("tint",{"store":Color(.96,.98,.91),"bakery":Color(1.0,.96,.86),"workroom":Color(.93,.97,1.0)}[k])
 			shop_mat.set_shader_parameter("wain_tint",{"store":Color(.69,.62,.48),"bakery":Color(.79,.65,.48),"workroom":Color(.63,.64,.55)}[k])
 	fm.set_shader_parameter("tint",{"store":Color(.89,.87,.79),"bakery":Color(1.0,.94,.80),"workroom":Color(.81,.86,.81)}[k])
-	_wall(Vector3(w, WALL_H, 0.16), Vector3(0, WALL_H / 2.0, -d / 2.0 - 0.08), bm)
-	_wall(Vector3(0.16, WALL_H, d), Vector3(-w / 2.0 - 0.08, WALL_H / 2.0, 0), wm)
-	_wall(Vector3(0.16, WALL_H, d), Vector3(w / 2.0 + 0.08, WALL_H / 2.0, 0), wm)
+	if k=="bakery":
+		_wall(Vector3(w,1.15,.16),Vector3(0,.575,-d/2.0-.08),bm)
+		_wall(Vector3(w,WALL_H-1.15,.16),Vector3(0,1.15+(WALL_H-1.15)*.5,-d/2.0-.08),wm)
+	else:
+		_wall(Vector3(w, WALL_H, 0.16), Vector3(0, WALL_H / 2.0, -d / 2.0 - 0.08), bm)
+	PublicPlaceArt.side_walls(self,wm)
 	var dx: float = spec.door_x
 	var left := (dx - 0.8) - (-w / 2.0)
 	var right := (w / 2.0) - (dx + 0.8)
@@ -192,6 +196,7 @@ func build(world: WorldBuilder, k: String) -> void:
 		add_child(it)
 		it.position = Vector3(pt[1], pt[2], pt[3])
 	RoomIdentity.build(self)
+	PublicPlaceArt.build(self)
 
 
 func _wall(size: Vector3, pos: Vector3, m: Material) -> void:
@@ -297,6 +302,7 @@ func _lamp(p: Vector3) -> void:
 
 ## Daylight comes in through the open front; lamps carry the room after dark.
 func set_evening(evening: bool) -> void:
+	PublicPlaceArt.set_evening(self,evening)
 	for l in lamps:
 		l.light_energy = 2.2 if evening else 1.0
 

@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-10",
+  "tool": "built-in image_gen.imagegen",
+  "scope": [
+    "community centre porch and workroom",
+    "bakery exterior and interior",
+    "general store exterior and interior"
+  ],
+  "images": [
+    {
+      "file": "game/assets/textures/three_places/linen_weave.png",
+      "sha256": "1c9fc572b40e4119be7035dd076f5768c7b100a2fb056789cfec92364d930ffd",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "game/assets/textures/three_places/quiet_pine_grain.png",
+      "sha256": "bd2898b9ec0f09597fabde51a555f5393d29ecc43d81a53b73bbb130d3b600c9",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "game/assets/textures/three_places/summer_window_view.png",
+      "sha256": "ad291023e2fa5145d1c3a9d0e768c582610b86d2d242a877aa18f62043229ec2",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "file": "game/assets/textures/three_places/community_craft_sketches.png",
+      "sha256": "df90d52da16326c2f6bbd768c0c311c4b9ec5a9d71795ee4803726ee79bb0804",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "file": "art/references/three_places_20261010/community_interior_paintover.png",
+      "sha256": "8991f884cf77a3cae6a49aa033c2fdf90c707bc25d26d42d1b999c023db32533",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "art/references/three_places_20261010/bakery_interior_paintover.png",
+      "sha256": "ce02ab91a051dad42cc5db5292cc9733fa0de32cfa66604d01d782abcb370cd6",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "art/references/three_places_20261010/store_interior_paintover.png",
+      "sha256": "c11908220d0b535956c7a78e0fa7a58121f234fb13edbb92d69a0be22d2bdcea",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "art/references/three_places_20261010/store_exterior_paintover.png",
+      "sha256": "b812f233a73525d1c10464e4ee7ec1d55a01199627e74c59d5b436e8bc503802",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "art/references/three_places_20261010/community_exterior_paintover.png",
+      "sha256": "367c462c5f084f2922a35f2055270b445515ff4878ecd5a1efc9440daaaae8fc",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "art/references/three_places_20261010/bakery_exterior_paintover.png",
+      "sha256": "bfc09bc1e10c0bec9d4160a1af96e661edd1cf2c270a497ca774e8ef330d7ebe",
+      "width": 1672,
+      "height": 941
+    }
+  ],
+  "implementation": "game/scripts/world/public_place_art.gd",
+  "new_paid_3d_generations": 0,
+  "existing_model_geometry_changed": false,
+  "window_openings": {
+    "workroom": 3,
+    "bakery": 2,
+    "store": 1
+  },
+  "supported_details": 23,
+  "sunlight": {
+    "public_day_rotation_degrees": [
+      -33,
+      110,
+      0
+    ],
+    "house_day_rotation_unchanged": true,
+    "window_view_follows_actual_world_night": true
+  },
+  "workflow": "docs/game-design/IMAGEGEN_SCENE_WORKFLOW.md",
+  "evidence": "evidence/three_places_imagegen_20261010",
+  "regression_checks": 15,
+  "verification_status": "verified",
+  "full_checks": 1399,
+  "autoplay_checks": 200,
+  "native_views": 25,
+  "delivery_sha256": "8cc278001bd0b5c0ab9df203b13f1bbb7a1a7baeaf86d5d619fc2a2c59a75d36"
+}

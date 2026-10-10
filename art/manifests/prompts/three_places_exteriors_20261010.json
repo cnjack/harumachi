@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-10",
+  "tool": "built-in image_gen.imagegen",
+  "requests": [
+    {
+      "name": "community_exterior_paintover",
+      "ref": "community_front",
+      "prompt": "Use case: precise-object-edit. Asset type: implementable art-direction paintover of a real Japanese anime village game screenshot. Image 1 is the edit target. Keep the exact camera, building shape and dimensions, doors, pavement, surrounding buildings, actual display openings, residents and their positions. Keep the sunny Japanese TV anime style, clean linework, flat cel colours and crisp light/shade, luminous blue summer sky and lavender shadows. Improve detailed construction, quiet material variation and signs of daily use, without photorealism, heavy painting, bloom, UI or captions. Keep all entrances, stairs and accessible ramps physically open. Do not invent a new storefront or cover transparent display glass. Enhance the community centre porch: richer aged cedar with visible straight joinery and pegs, clean pale plaster, blue-grey ceramic roof tiles, gently worn stone stair edges. Keep the existing engraved main sign and two warm paper lanterns. Make the existing right-hand notice board read as a real timber-framed glazed community board with a small sloped rain hood, a few cream paper notices and simple lantern/festival illustrations. Add a coherent low grouping of two modest ceramic planters and leafy summer plants at the porch side, clear of steps and ramp. An indigo cloth accent and a discreet wooden umbrella holder may sit beside the wall, with believable contact shadows. Calm maintained public building, not abandoned, not overdecorated.",
+      "reference": "evidence/three_places_imagegen_20261010/before-shots/community_front.png",
+      "role": "edit target",
+      "output": "art/references/three_places_20261010/community_exterior_paintover.png",
+      "reference_saved": "art/references/three_places_20261010/before_community_front.png"
+    },
+    {
+      "name": "bakery_exterior_paintover",
+      "ref": "bakery_scene_front",
+      "prompt": "Use case: precise-object-edit. Asset type: implementable art-direction paintover of a real Japanese anime village game screenshot. Image 1 is the edit target. Keep the exact camera, building shape and dimensions, doors, pavement, surrounding buildings, actual display openings, residents and their positions. Keep the sunny Japanese TV anime style, clean linework, flat cel colours and crisp light/shade, luminous blue summer sky and lavender shadows. Improve detailed construction, quiet material variation and signs of daily use, without photorealism, heavy painting, bloom, UI or captions. Keep all entrances, stairs and accessible ramps physically open. Do not invent a new storefront or cover transparent display glass. Enhance the bakery exterior: warm ivory plaster with restrained broad variation, terracotta plinth tiles with real joints, straight cedar frames and a softly folded butter-yellow canvas awning with a thin cream hem and visible slender support arms. Keep the blue transparent display opening and bread shelves visible through glass. Give the bread-shaped hanging sign a clean drawn wheat/bread emblem, no extra words. Improve the upper flower box with irregular trailing leaves and a few white flowers, plus two small terracotta herb pots at the side of the entrance clear of the step and vendor route. Existing bread cart remains in position. Emphasize handmade welcoming neighborhood bakery material character.",
+      "reference": "evidence/three_places_imagegen_20261010/before-shots/bakery_scene_front.png",
+      "role": "edit target",
+      "output": "art/references/three_places_20261010/bakery_exterior_paintover.png",
+      "reference_saved": "art/references/three_places_20261010/before_bakery_scene_front.png"
+    },
+    {
+      "name": "store_exterior_paintover",
+      "ref": "store_scene_front",
+      "prompt": "Use case: precise-object-edit. Asset type: implementable art-direction paintover of a real Japanese anime village game screenshot. Image 1 is the edit target. Keep the exact camera, building shape and dimensions, doors, pavement, surrounding buildings, actual display openings, residents and their positions. Keep the sunny Japanese TV anime style, clean linework, flat cel colours and crisp light/shade, luminous blue summer sky and lavender shadows. Improve detailed construction, quiet material variation and signs of daily use, without photorealism, heavy painting, bloom, UI or captions. Keep all entrances, stairs and accessible ramps physically open. Do not invent a new storefront or cover transparent display glass. Enhance the general-store exterior: quiet worn sage-green painted timber boards with real vertical seams and small localized repairs, crisp rain gutter and awning support joinery. Retain the existing green-and-cream striped canvas canopy but give it a real soft sag, distinct fabric hem, subtle wear and straight support arms. Preserve the shop name and window display. Make the front vegetable stand feel assembled from sturdy reused crates with slat gaps, a few honest paper price cards and varied vegetables; existing crates stay in their footprints. Add only a small leafy pot at a free wall corner and a modest brown-paper/basket accent near the existing side display. Maintain clear customer and shopkeeper passage. Humble summer shopping street, not a modern boutique.",
+      "reference": "evidence/three_places_imagegen_20261010/before-shots/store_scene_front.png",
+      "role": "edit target",
+      "output": "art/references/three_places_20261010/store_exterior_paintover.png",
+      "reference_saved": "art/references/three_places_20261010/before_store_scene_front.png"
+    }
+  ]
+}

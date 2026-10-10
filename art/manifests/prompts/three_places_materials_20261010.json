@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-10",
+  "tool": "built-in image_gen.imagegen",
+  "requests": [
+    {
+      "name": "quiet_pine_grain",
+      "prompt": "Use case: stylized-concept. Asset type: production raster material for a Japanese TV anime village game. Clean confident drawn detail, restrained flat local colours and crisp two-tone shading; not photorealistic, not oil painting, no text, no watermark. A square seamless albedo-only texture of pale warm honey-pine wood grain. This is one continuous timber surface, WITHOUT plank seams, boards, frames or perspective. Grain flows vertically from top to bottom, broad soft growth rings, a few tiny restrained knots, low contrast and large quiet areas, only a little hand-drawn fine grain. Neutral diffuse flat lighting, no baked shadows, no highlights, no glossy reflections. Edge-to-edge opaque texture, seamless on all four edges. Used on metre-scale floorboards, shelf boards and furniture; avoid dense zebra stripes and noisy photographic pores.",
+      "transparent_background": false,
+      "output": "game/assets/textures/three_places/quiet_pine_grain.png"
+    },
+    {
+      "name": "linen_weave",
+      "prompt": "Use case: stylized-concept. Asset type: production raster material for a Japanese TV anime village game. Clean confident drawn detail, restrained flat local colours and crisp two-tone shading; not photorealistic, not oil painting, no text, no watermark. A square seamless albedo-only texture of unbleached warm ivory linen/canvas. Fine short warp and weft drawn gently in two tones, quiet slight thread variation, low contrast at a distance, warm off-white base. Flat orthographic material sample; no folds, no seams, no stains, no objects, no cast shadow, no gradient, no photograph, no glossy threads. Opaque edge-to-edge material, tile seamlessly on all four sides. Used on awnings, folded craft fabric, bread basket liners and kitchen towels.",
+      "transparent_background": false,
+      "output": "game/assets/textures/three_places/linen_weave.png"
+    },
+    {
+      "name": "summer_window_view",
+      "prompt": "Use case: stylized-concept. Asset type: production raster material for a Japanese TV anime village game. Clean confident drawn detail, restrained flat local colours and crisp two-tone shading; not photorealistic, not oil painting, no text, no watermark. A wide landscape anime background seen outside a small Japanese neighborhood side window on a clear summer morning. The image contains ONLY the outdoor view, no window frame, no interior, no people. Bright luminous blue sky and two soft cumulus clouds in upper half, low distant blue-green wooded hill, a few small Japanese tiled-roof homes beyond a white garden wall in the middle distance, fresh leaves at the left and right edges, a calm herb garden and summer shrubs below. Simple confident anime shapes, flat local colours, clean cel shadows, restrained fine detail. Keep the central sky and distance open so wooden window mullions can cross it in the game. No dramatic perspective, no lens effect, no text.",
+      "transparent_background": false,
+      "output": "game/assets/textures/three_places/summer_window_view.png"
+    },
+    {
+      "name": "community_craft_sketches",
+      "prompt": "Use case: stylized-concept. Asset type: production raster material for a Japanese TV anime village game. Clean confident drawn detail, restrained flat local colours and crisp two-tone shading; not photorealistic, not oil painting, no text, no watermark. One opaque square 2 by 2 equal-cell atlas of four simple hand-drawn community workshop sketches on matching pale cream washi paper. Top-left: an exploded diagram of a small rectangular bamboo-framed paper lantern with four corner joints and folded washi. Top-right: a clean diagram of a low wooden platform and a few triangular festival pennants. Bottom-left: a tidy still life sketch of bamboo strips, scissors and rolled washi with small muted indigo and rust swatches. Bottom-right: a simple neighborhood courtyard plan with a big leafy tree, benches, a raised garden bed and tiny roof outlines. Thin clean umber pencil-like linework, sparse flat muted colours, natural handmade character. All four cells have ample plain paper margin and do not overlap. No words, no letters, no numerals, no symbols that look like text, no grid divider lines. Not a photograph or mockup, no pins or frames; these will be added in real 3D.",
+      "transparent_background": false,
+      "output": "game/assets/textures/three_places/community_craft_sketches.png"
+    }
+  ]
+}

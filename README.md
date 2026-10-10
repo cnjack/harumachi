@@ -61,7 +61,7 @@ python3 -m http.server 8765 -d site
 
 每项任务完成后，执行相关自动检查和实际运行验收；通过后提交并推送 `main`，再确认远端 CI。涉及模型、镜头或界面的修改需要画面验证，游戏逻辑修改需要相应 Godot 测试。完整规则见 [AGENTS.md](AGENTS.md) 与 [维护指南](docs/REPOSITORY.md)。
 
-广场老树已补高低冠层、透光间隙、深色树皮和贴根短绒苔藓；杉树针叶与墙外草坡同步更新。1384项独占全量、解压应用200项完整演示、17个原生视角通过，最新桌面包已替换。见[树冠与苔藓交付](docs/game-design/CANOPY_DEPTH_20261010.md)；此前设施制作见[广场升级](docs/game-design/PLAZA_DELIVERY_20261010.md)。
+社区中心、面包房和商店的门前与室内已按imagegen实景改绘提升：真实窗洞与格栅光、宽木板、材料与陈列细节、公告盒和布篷支架。1399项独占全量、解压包200项完整演示、25个原生视角通过。见[三处场景](docs/game-design/THREE_PLACES_IMAGEGEN_20261010.md)与[实景改绘经验](docs/game-design/IMAGEGEN_SCENE_WORKFLOW.md)；此前树冠与苔藓继续保留。
 
 官网发布流程见 [site/README.md](site/README.md)，网页游戏构建见 [WEB](docs/game-design/WEB.md)。发现问题可通过 [Issues](https://github.com/cnjack/harumachi/issues) 提供复现步骤、版本与截图。
 

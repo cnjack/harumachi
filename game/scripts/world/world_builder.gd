@@ -320,6 +320,7 @@ func _build_detail_signs() -> void:
 	if clock_model:
 		clock_face=VillageClock.new();clock_face.build(clock_model)
 	TransitStop.build(self)
+	PublicPlaceArt.street(self)
 	set_meta("clear_sign_count",ClearSignage.upgrade_existing(self))
 
 func _spawn_building(spec: Array) -> void:
@@ -1454,12 +1455,14 @@ func _build_house() -> void:
 
 # ------------------------------------------------------------------ phase look
 var indoor := false
+var public_interior_kind := ""
 
 ## Indoors the sun comes low through the garden-side glass doors (the house has an invisible,
 ## shadow-only roof), shadows turn a soft lavender, and a thin volumetric haze shows the light
 ## shafts. Outdoors everything returns to the town look.
-func set_indoor_look(on: bool) -> void:
+func set_indoor_look(on: bool,public_kind: String="") -> void:
 	indoor = on
+	public_interior_kind = public_kind if on else ""
 	env.fog_enabled = not on
 	env.volumetric_fog_enabled = on and not OS.has_feature("web")
 	env.volumetric_fog_density = 0.0065
@@ -1551,7 +1554,8 @@ func _apply_look(minute: float, weather: String, force: bool = false) -> void:
 	for k in interiors:
 		(interiors[k] as InteriorBuilder).set_evening(evening)
 	if indoor:
-		var i_rot := Vector3(-16, 228, 0) if evening else HouseBuilder.SUN_DAY_ROT
+		var day_rot: Vector3=Vector3(-33,110,0) if public_interior_kind!="" else HouseBuilder.SUN_DAY_ROT
+		var i_rot := Vector3(-16, 228, 0) if evening else day_rot
 		sun.rotation_degrees = i_rot
 		var night_in := clampf(L.night, 0.0, 1.0)
 		sun.light_color = (Color(1.0, 0.64, 0.42) if evening else Color(1.0, 0.92, 0.78)).lerp(Color(0.55, 0.62, 0.95), night_in)

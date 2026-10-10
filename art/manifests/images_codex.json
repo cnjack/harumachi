@@ -2803,6 +2803,128 @@
       "date": "2026-10-10",
       "sha256": "bd0804e4de394b755c40f70fb643cd455933b52a2d737139bba767794e61edf6",
       "usage": "T05 short moss pile triplanar color, rendered over 8 physical surface shells"
+    },
+    {
+      "file": "art/references/three_places_20261010/community_interior_paintover.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "date": "2026-10-10",
+      "prompt": "art/manifests/prompts/three_places_20261010.json",
+      "prompt_key": "community_interior_paintover",
+      "references": [
+        "art/references/three_places_20261010/before_workroom_overview.png"
+      ],
+      "sha256": "8991f884cf77a3cae6a49aa033c2fdf90c707bc25d26d42d1b999c023db32533",
+      "usage": "scene paintover reference"
+    },
+    {
+      "file": "art/references/three_places_20261010/bakery_interior_paintover.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "date": "2026-10-10",
+      "prompt": "art/manifests/prompts/three_places_20261010.json",
+      "prompt_key": "bakery_interior_paintover",
+      "references": [
+        "art/references/three_places_20261010/before_bakery_in.png"
+      ],
+      "sha256": "ce02ab91a051dad42cc5db5292cc9733fa0de32cfa66604d01d782abcb370cd6",
+      "usage": "scene paintover reference"
+    },
+    {
+      "file": "art/references/three_places_20261010/store_interior_paintover.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "date": "2026-10-10",
+      "prompt": "art/manifests/prompts/three_places_20261010.json",
+      "prompt_key": "store_interior_paintover",
+      "references": [
+        "art/references/three_places_20261010/before_store_in.png"
+      ],
+      "sha256": "c11908220d0b535956c7a78e0fa7a58121f234fb13edbb92d69a0be22d2bdcea",
+      "usage": "scene paintover reference"
+    },
+    {
+      "file": "art/references/three_places_20261010/community_exterior_paintover.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "date": "2026-10-10",
+      "prompt": "art/manifests/prompts/three_places_exteriors_20261010.json",
+      "prompt_key": "community_exterior_paintover",
+      "references": [
+        "art/references/three_places_20261010/before_community_front.png"
+      ],
+      "sha256": "367c462c5f084f2922a35f2055270b445515ff4878ecd5a1efc9440daaaae8fc",
+      "usage": "scene paintover reference"
+    },
+    {
+      "file": "art/references/three_places_20261010/bakery_exterior_paintover.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "date": "2026-10-10",
+      "prompt": "art/manifests/prompts/three_places_exteriors_20261010.json",
+      "prompt_key": "bakery_exterior_paintover",
+      "references": [
+        "art/references/three_places_20261010/before_bakery_scene_front.png"
+      ],
+      "sha256": "bfc09bc1e10c0bec9d4160a1af96e661edd1cf2c270a497ca774e8ef330d7ebe",
+      "usage": "scene paintover reference"
+    },
+    {
+      "file": "art/references/three_places_20261010/store_exterior_paintover.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "date": "2026-10-10",
+      "prompt": "art/manifests/prompts/three_places_exteriors_20261010.json",
+      "prompt_key": "store_exterior_paintover",
+      "references": [
+        "art/references/three_places_20261010/before_store_scene_front.png"
+      ],
+      "sha256": "b812f233a73525d1c10464e4ee7ec1d55a01199627e74c59d5b436e8bc503802",
+      "usage": "scene paintover reference"
+    },
+    {
+      "file": "game/assets/textures/three_places/quiet_pine_grain.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "date": "2026-10-10",
+      "prompt": "art/manifests/prompts/three_places_materials_20261010.json",
+      "prompt_key": "quiet_pine_grain",
+      "references": [],
+      "sha256": "bd2898b9ec0f09597fabde51a555f5393d29ecc43d81a53b73bbb130d3b600c9",
+      "usage": "production scene material"
+    },
+    {
+      "file": "game/assets/textures/three_places/linen_weave.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "date": "2026-10-10",
+      "prompt": "art/manifests/prompts/three_places_materials_20261010.json",
+      "prompt_key": "linen_weave",
+      "references": [],
+      "sha256": "1c9fc572b40e4119be7035dd076f5768c7b100a2fb056789cfec92364d930ffd",
+      "usage": "production scene material"
+    },
+    {
+      "file": "game/assets/textures/three_places/summer_window_view.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "date": "2026-10-10",
+      "prompt": "art/manifests/prompts/three_places_materials_20261010.json",
+      "prompt_key": "summer_window_view",
+      "references": [],
+      "sha256": "ad291023e2fa5145d1c3a9d0e768c582610b86d2d242a877aa18f62043229ec2",
+      "usage": "production scene material"
+    },
+    {
+      "file": "game/assets/textures/three_places/community_craft_sketches.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "date": "2026-10-10",
+      "prompt": "art/manifests/prompts/three_places_materials_20261010.json",
+      "prompt_key": "community_craft_sketches",
+      "references": [],
+      "sha256": "df90d52da16326c2f6bbd768c0c311c4b9ec5a9d71795ee4803726ee79bb0804",
+      "usage": "production scene material"
     }
   ]
 }

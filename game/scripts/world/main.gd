@@ -763,7 +763,7 @@ func enter_interior(k: String) -> void:
 	player.global_position = InteriorBuilder.door_point(k)
 	player.velocity = Vector3.ZERO
 	player.set_facing(PI)
-	world.set_indoor_look(true)
+	world.set_indoor_look(true,k)
 	rig.fixed = true
 	rig.collide = false
 	rig.yaw = 0.0

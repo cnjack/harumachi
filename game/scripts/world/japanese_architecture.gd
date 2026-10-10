@@ -27,6 +27,7 @@ static func shop_frames(room: InteriorBuilder) -> void:
 			HouseBuilder.toonify(frame)
 	for side: float in [-1.0, 1.0]:
 		for z: float in [-2.7, -0.9, 0.9, 2.7]:
+			if PublicPlaceArt.overlaps_window(room.kind,side,z,.9):continue
 			var frame := room.wb.spawn("P_shop_wall_frame", Vector3(side * (half_w - 0.035), 0.0, z), -side * 90.0, 0, room)
 			if frame:
 				HouseBuilder.toonify(frame)
