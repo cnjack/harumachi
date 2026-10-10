@@ -8,7 +8,7 @@
 
 ## 存档
 
-`game/scripts/autoload/save_db.gd` 使用 Godot-SQLite v4.9（MIT，SQLite 为公共领域）。macOS 和单线程 Web 编译库放在 `game/addons/godot-sqlite/`，下载包的 SHA-256 已与官方 release 对照。
+`game/scripts/autoload/save_db.gd` 使用 Godot-SQLite v4.9（MIT，SQLite 为公共领域）。macOS、Windows x86_64 和单线程 Web 编译库放在 `game/addons/godot-sqlite/`，下载包的 SHA-256 已与官方 release 对照（Windows 库于 2026-10-10 从同一 v4.9 包补齐，见 `evidence/windows_sqlite_20261010/`）。
 
 数据库为 `user://harumachi.db`，备份为 `user://harumachi.backup.db`。表结构：
 
