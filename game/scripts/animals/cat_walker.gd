@@ -88,6 +88,9 @@ func reset_behaviour(seed_value: int, saved: Dictionary = {}) -> void:
 	rng.seed = seed_value
 	waiting_for_spawn=false;show();collision_layer=WorldBuilder.L_ACTORS
 	if str(saved.get("seed", "")) == str(seed_value) and saved.has("position"):
+		# Habitat changes and a newly blocked saved spot still continue the
+		# animal's persisted decision stream when selecting a safe replacement.
+		rng.state = str(saved.get("rng_state", str(rng.state))).to_int()
 		var at: Array = saved.position
 		var position_saved := Vector3(float(at[0]), float(at[1]), float(at[2]))
 		if habitat.has_point(Vector2(position_saved.x, position_saved.z)) and _clear(position_saved):
@@ -99,7 +102,6 @@ func reset_behaviour(seed_value: int, saved: Dictionary = {}) -> void:
 			rest_pose = str(saved.get("rest_pose", "Idle"))
 			pose_left = maxf(0.0, float(saved.get("pose_left", 0)))
 			blocked_seconds = maxf(0.0, float(saved.get("blocked_seconds", 0)))
-			rng.state = str(saved.get("rng_state", str(rng.state))).to_int()
 			last_position = global_position
 			return
 	var first: int=rng.randi_range(0,route.size()-1)

@@ -65,6 +65,26 @@ func _input(event: InputEvent) -> void:
 		_yaw-=event.relative.x*.0035;_pitch=clampf(_pitch-event.relative.y*.0035,-1.45,1.45)
 		camera.rotation=Vector3(_pitch,_yaw,0)
 
+func _camera_bounds() -> Rect2:
+	# The fixed room camera starts outside its walls. Preserve that framing
+	# and allow nearby photos without jumping to the town's staging bounds.
+	if main.in_room:
+		if InteriorBuilder.SPECS.has(main.room_kind):
+			var spec: Dictionary = InteriorBuilder.SPECS[main.room_kind]
+			var origin: Vector3 = spec.origin
+			var size: Vector2 = spec.size
+			return Rect2(Vector2(origin.x, origin.z) - size * .5, size).grow(7.0)
+		var bounds := Rect2()
+		for index: int in HouseBuilder.ROOMS.size():
+			var rect: Array = HouseBuilder.ROOMS[index].rect
+			var piece := Rect2(Vector2(float(rect[0]), float(rect[1])), Vector2(float(rect[2]) - float(rect[0]), float(rect[3]) - float(rect[1])))
+			bounds = piece if index == 0 else bounds.merge(piece)
+		bounds.position += Vector2(HouseBuilder.ORIGIN.x, HouseBuilder.ORIGIN.z)
+		return bounds.grow(7.0)
+	if main.world.region == "town": return Rect2(-58, -35, 106, 125)
+	return Rect2(FarmBuilder.ORIGIN.x - 35, -40, 185, 110)
+
+
 func _process(delta: float) -> void:
 	if not active or _saving:return
 	var input:=Input.get_vector("move_left","move_right","move_forward","move_back")
@@ -72,10 +92,9 @@ func _process(delta: float) -> void:
 	var speed:=7.0 if Input.is_action_pressed("sprint") else 2.6
 	var move: Vector3=camera.basis*Vector3(input.x,0,input.y)+Vector3.UP*rise
 	var next: Vector3=camera.global_position+move*speed*delta
-	if main.world.region=="town":
-		next.x=clampf(next.x,-58,48);next.z=clampf(next.z,-35,90)
-	elif not main.in_room:
-		next.x=clampf(next.x,FarmBuilder.ORIGIN.x-35,FarmBuilder.ORIGIN.x+150);next.z=clampf(next.z,-40,70)
+	var bounds: Rect2 = _camera_bounds()
+	next.x = clampf(next.x, bounds.position.x, bounds.end.x)
+	next.z = clampf(next.z, bounds.position.y, bounds.end.y)
 	next.y=clampf(next.y,.55,24);camera.global_position=next
 
 func save_picture() -> void:

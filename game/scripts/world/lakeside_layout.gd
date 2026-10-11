@@ -9,7 +9,9 @@ const LAKE_CENTER := Vector2(101.0, 18.0)
 const LAKE_RADII := Vector2(32.0, 23.0)
 const WATER_Y := -0.28
 const PATHS := [
-	[Vector2(19, .3), Vector2(31, -1), Vector2(42, -9), Vector2(58, -12), Vector2(75, -15), Vector2(95, -13), Vector2(115, -11), Vector2(135, 0), Vector2(138, 19), Vector2(131, 40), Vector2(113, 51), Vector2(94, 48), Vector2(74, 43), Vector2(62, 35), Vector2(48, 32), Vector2(28, 26), Vector2(10, 25.4)],
+	# Keep the whole player capsule, including early waypoint turns, outside
+	# the unchanged water barrier on the east bend.
+	[Vector2(19, .3), Vector2(31, -1), Vector2(42, -9), Vector2(58, -12), Vector2(75, -15), Vector2(95, -13), Vector2(115, -11), Vector2(135, 0), Vector2(139.5, 19), Vector2(131, 40), Vector2(113, 51), Vector2(94, 48), Vector2(74, 43), Vector2(62, 35), Vector2(48, 32), Vector2(28, 26), Vector2(10, 25.4)],
 	[Vector2(42, -9), Vector2(42, 5), Vector2(47, 15), Vector2(48, 19.5)],
 	[Vector2(94, 48), Vector2(94, 45)],
 ]

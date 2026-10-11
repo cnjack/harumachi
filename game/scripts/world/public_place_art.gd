@@ -80,7 +80,15 @@ static func _window(room: InteriorBuilder,side: float,z: float,width: float,inde
 
 static func set_evening(room: InteriorBuilder,_evening: bool) -> void:
  for view: MeshInstance3D in room.find_children("SummerView","MeshInstance3D",true,false):
-  (view.material_override as ShaderMaterial).set_shader_parameter("daylight",1.0-clampf(float(room.wb.look.get("night",0.0)),0.0,1.0))
+  window_weather(view.material_override as ShaderMaterial,float(room.wb.look.get("night",0.0)),GameState.weather)
+
+static func window_weather(material: ShaderMaterial,night: float,weather: String) -> void:
+ var rain: bool=weather=="rain"
+ var cloudy: bool=weather=="cloudy"
+ var tint: Vector3=Vector3(.72,.78,.88) if rain else (Vector3(.88,.91,.96) if cloudy else Vector3.ONE)
+ material.set_shader_parameter("daylight",1.0-clampf(night,0.0,1.0))
+ material.set_shader_parameter("weather_tint",tint)
+ material.set_shader_parameter("cloud_amount",1.0 if rain else (.45 if cloudy else 0.0))
 
 static func floor_material(room: InteriorBuilder) -> ShaderMaterial:
  var material:=ShaderMaterial.new();material.shader=load("res://shaders/public_planks.gdshader")

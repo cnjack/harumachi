@@ -81,6 +81,7 @@ var building_life: Array[Dictionary] = []
 var sky_mat: ShaderMaterial
 var card_mats: Array[ShaderMaterial] = []
 var std_cards: Array = []   # [StandardMaterial3D, base colour]: unshaded painted views (the house garden)
+var home_window_mats: Array[ShaderMaterial] = []
 var look := {}          # the last applied time-of-day look (tests read it)
 var stats := {"models": 0, "missing": []}
 
@@ -436,7 +437,9 @@ func _build_ground() -> void:
 		pm.size = Vector2(2.6, 0.14)
 		d.mesh = pm
 		d.material_override = paint
-		d.position = Vector3(x, 0.02, Layout.STREET_Z)
+		# The asphalt patch is the sixth ground layer (.010m). Keep paint just
+		# above that visible surface, so a white floating strip cannot cut shoes.
+		d.position = Vector3(x, 0.0104, Layout.STREET_Z)
 		d.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		add_child(d)
 	# far ground that runs under the backdrop
@@ -521,6 +524,22 @@ func _trunk_collider(tree: Node3D, r: float) -> void:
 		cs.position.z=.55
 	body.add_child(cs)
 	if tree.get_meta("model_id","")=="T05_old_shade_tree":
+		# The avatar keeps the original standing/root clearance. The orbit camera
+		# also needs the real upper bark, above the two-metre walking cylinder.
+		# Leaves and moss deliberately do not shorten the player's camera arm.
+		for bark: MeshInstance3D in find_meshes(tree):
+			if not str(bark.name).begins_with("Trunk") or bark.mesh == null: continue
+			var camera_body := StaticBody3D.new()
+			camera_body.name = "BarkCameraCollision"
+			camera_body.collision_layer = L_CAMERA
+			camera_body.collision_mask = 0
+			camera_body.set_meta("model_part", "old_tree_camera_bark")
+			var camera_shape := CollisionShape3D.new()
+			var bark_triangles: ConcavePolygonShape3D = bark.mesh.create_trimesh_shape()
+			bark_triangles.backface_collision = true
+			camera_shape.shape = bark_triangles
+			camera_body.add_child(camera_shape)
+			bark.add_child(camera_body)
 		var root_shape:=CollisionShape3D.new()
 		root_shape.name="RootClearance"
 		var root_cylinder:=CylinderShape3D.new()
@@ -1433,6 +1452,7 @@ func set_region(r: String) -> void:
 		(c as Node3D).visible = r != "farm"
 	if farm:
 		farm.visible = r == "farm"
+	_sync_indoor_visibility()
 	sync_festivals()
 
 
@@ -1463,6 +1483,7 @@ var public_interior_kind := ""
 func set_indoor_look(on: bool,public_kind: String="") -> void:
 	indoor = on
 	public_interior_kind = public_kind if on else ""
+	_sync_indoor_visibility()
 	env.fog_enabled = not on
 	env.volumetric_fog_enabled = on and not OS.has_feature("web")
 	env.volumetric_fog_density = 0.0065
@@ -1476,6 +1497,15 @@ func set_indoor_look(on: bool,public_kind: String="") -> void:
 	env.glow_bloom = 0.08 if on else 0.04
 	sun.directional_shadow_max_distance = 40.0 if on else 90.0
 	apply_phase(GameState.phase, false)
+
+
+func _sync_indoor_visibility() -> void:
+	# Separate cutaway rooms share a distant staging strip. Any interior
+	# photo/orbit must render only its own room, without altering collisions.
+	if is_instance_valid(house): house.visible = not indoor or public_interior_kind.is_empty()
+	for kind: String in interiors:
+		var room: InteriorBuilder = interiors[kind]
+		room.visible = public_interior_kind == kind if indoor else region != "farm"
 
 
 ## Keyframes of the outdoor look, by hour:
@@ -1550,7 +1580,7 @@ func _apply_look(minute: float, weather: String, force: bool = false) -> void:
 		moon.visible = L.night > 0.35
 	var evening := minute >= 16.5 * 60.0 or minute < 6.3 * 60.0 or market
 	if house:
-		house.set_evening(evening, false)
+		house.set_evening(evening, false, weather)
 	for k in interiors:
 		(interiors[k] as InteriorBuilder).set_evening(evening)
 	if indoor:
@@ -1559,7 +1589,8 @@ func _apply_look(minute: float, weather: String, force: bool = false) -> void:
 		sun.rotation_degrees = i_rot
 		var night_in := clampf(L.night, 0.0, 1.0)
 		sun.light_color = (Color(1.0, 0.64, 0.42) if evening else Color(1.0, 0.92, 0.78)).lerp(Color(0.55, 0.62, 0.95), night_in)
-		sun.light_energy = (1.4 if evening else 1.62) * lerpf(1.0, 0.05, night_in) * lerpf(1.0, W[0], 0.6)
+		var direct_window_light: float = 0.0 if weather == "rain" else (.30 if weather == "cloudy" else 1.0)
+		sun.light_energy = (1.4 if evening else 1.62) * lerpf(1.0, 0.05, night_in) * direct_window_light
 		env.ambient_light_energy = (0.42 if evening else 0.58) * lerpf(1.0, 0.6, night_in)
 		env.adjustment_saturation = (1.14 if evening else 1.1) + W[2] * 0.5
 		for l in lamp_lights:
@@ -1593,6 +1624,11 @@ func _apply_look(minute: float, weather: String, force: bool = false) -> void:
 			m.set_shader_parameter("haze", hz)
 		for pair in std_cards:
 			(pair[0] as StandardMaterial3D).albedo_color = (pair[1] as Color) * ct
+		for material: ShaderMaterial in home_window_mats:
+			# Preserve the original house-window day/dusk/night colour and UV crop.
+			# Weather alters the view through the same shader as the public windows.
+			PublicPlaceArt.window_weather(material,0.0,weather)
+			material.set_shader_parameter("view_tint",Vector3(ct.r,ct.g,ct.b)*1.04)
 		if farm and farm.water_mat:
 			farm.water_mat.set_shader_parameter("dusk_w",clampf(L.dusk,0,1))
 			farm.water_mat.set_shader_parameter("night_w",clampf(L.night,0,1))
@@ -1605,7 +1641,7 @@ func _apply_look(minute: float, weather: String, force: bool = false) -> void:
 ## 2.5 s blend from `from_minute` (used when the market opens and time jumps to the evening).
 func apply_phase(phase: String, animate: bool, from_minute: float = -1.0) -> void:
 	if house:
-		house.set_evening(phase == "market" or GameState.minute >= 16.5 * 60.0, animate)
+		house.set_evening(phase == "market" or GameState.minute >= 16.5 * 60.0, animate, GameState.weather)
 	if not animate or from_minute < 0.0 or indoor:
 		_apply_look(GameState.minute, GameState.weather, true)
 		return

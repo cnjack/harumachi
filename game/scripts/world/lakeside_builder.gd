@@ -103,35 +103,110 @@ func _water() -> void:
 	water.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(water)
 
-func _ribbon(points: PackedVector2Array, width: float, material: Material) -> void:
+func _ribbon(points: PackedVector2Array, width: float, material: Material, walkable: bool = false) -> void:
+	if points.size() < 2: return
+	# Each centre has one shared cross-section. Independent segment normals
+	# left thin triangular holes on every outer bend of the old ribbon.
+	var centres := PackedVector2Array()
+	for segment: int in points.size() - 1:
+		var distance: float = points[segment].distance_to(points[segment + 1])
+		var count: int = maxi(1, ceili(distance / .20))
+		for subdivision: int in count:
+			var centre: Vector2 = points[segment].lerp(points[segment + 1], float(subdivision) / float(count))
+			if centres.is_empty() or centres[-1].distance_to(centre) > .0001: centres.append(centre)
+	centres.append(points[-1])
+	var closed: bool = centres[0].distance_to(centres[-1]) < .0001
+	var left: Array[Vector3] = []
+	var right: Array[Vector3] = []
+	for section: int in centres.size():
+		var at: Vector2 = centres[section]
+		var previous: Vector2 = centres[section - 1] if section > 0 else (centres[-2] if closed else at)
+		var next: Vector2 = centres[section + 1] if section < centres.size() - 1 else (centres[1] if closed else at)
+		var incoming: Vector2 = (at - previous).normalized()
+		var outgoing: Vector2 = (next - at).normalized()
+		if incoming.is_zero_approx(): incoming = outgoing
+		if outgoing.is_zero_approx(): outgoing = incoming
+		var before_normal := Vector2(-incoming.y, incoming.x)
+		var after_normal := Vector2(-outgoing.y, outgoing.x)
+		var miter: Vector2 = (before_normal + after_normal).normalized()
+		if miter.is_zero_approx(): miter = after_normal
+		var half_width: float = width * (.93 + .055 * sin(at.x * .47 + at.y * .21) + .035 * cos(at.y * .79 - at.x * .13)) * .5
+		var reach: float = minf(half_width / maxf(.001, miter.dot(after_normal)), half_width * 1.8)
+		var side: Vector2 = miter * reach
+		var left_point: Vector2 = at - side
+		var right_point: Vector2 = at + side
+		left.append(Vector3(left_point.x, _drawn_terrain_height(left_point) + .024, left_point.y))
+		right.append(Vector3(right_point.x, _drawn_terrain_height(right_point) + .024, right_point.y))
+	# A wide strip with only two edge heights cuts through a curved bank and
+	# exposes a second thin sand line. Follow the actual terrain triangles at
+	# close cross-section intervals; do not deform or replace that terrain.
+	var cross_span: float = 0.0
+	for span_index: int in centres.size():
+		cross_span = maxf(cross_span, Vector2(right[span_index].x - left[span_index].x, right[span_index].z - left[span_index].z).length())
+	var divisions: int = maxi(1, ceili(cross_span / .20))
+	var sections: Array[PackedVector3Array] = []
+	for row_index: int in centres.size():
+		var row := PackedVector3Array()
+		for column: int in divisions + 1:
+			var point: Vector3 = left[row_index].lerp(right[row_index], float(column) / float(divisions))
+			point.y = _drawn_terrain_height(Vector2(point.x, point.z)) + .024
+			row.append(point)
+		sections.append(row)
 	var st := SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
 	var length := 0.0
-	for i in points.size()-1:
-		var a := points[i]
-		var b := points[i+1]
-		var middle: Vector2=(a+b)*.5
-		var irregular_width: float=width*(.93+.055*sin(middle.x*.47+middle.y*.21)+.035*cos(middle.y*.79-middle.x*.13))
-		var normal := Vector2(-(b-a).y,(b-a).x).normalized()*irregular_width*.5
-		var count := maxi(1,ceili(a.distance_to(b)/1.0))
-		for j in count:
-			var start := a.lerp(b,float(j)/float(count))
-			var end := a.lerp(b,float(j+1)/float(count))
-			var corners := [start-normal,start+normal,end+normal,end-normal]
-			var uv := [Vector2(0,length),Vector2(1,length),Vector2(1,length+1),Vector2(0,length+1)]
-			for k: int in [0,2,1,0,3,2]:
-				var p: Vector2 = corners[k]
+	for i: int in centres.size() - 1:
+		var next_length: float = length + centres[i].distance_to(centres[i + 1])
+		for strip: int in divisions:
+			var corners: Array[Vector3] = [sections[i][strip], sections[i][strip + 1], sections[i + 1][strip + 1], sections[i + 1][strip]]
+			var u0: float = float(strip) / float(divisions)
+			var u1: float = float(strip + 1) / float(divisions)
+			var uv: Array[Vector2] = [Vector2(u0, length), Vector2(u1, length), Vector2(u1, next_length), Vector2(u0, next_length)]
+			for corner: int in [0, 2, 1, 0, 3, 2]:
 				st.set_normal(Vector3.UP)
-				st.set_uv(uv[k])
-				st.add_vertex(Vector3(p.x,LakesideLayout.height_at(p)+.024,p.y))
-			length+=start.distance_to(end)
+				st.set_uv(uv[corner])
+				st.add_vertex(corners[corner])
+		length = next_length
 	var mesh := MeshInstance3D.new()
 	mesh.name = "Shore_or_path_%d" % _serial
 	_serial+=1
 	mesh.mesh = st.commit()
 	mesh.material_override = material
 	mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	mesh.set_meta("walkable_ribbon", walkable)
 	add_child(mesh)
+	if not walkable:
+		return
+	# The painted road follows its own corner heights. On a curved bank that
+	# surface can sit above the terrain's differently tessellated triangles.
+	# Build the matching floor once so feet and floor snapping use what is drawn.
+	var body := StaticBody3D.new()
+	body.name = "Path_surface_collision"
+	body.collision_layer = WorldBuilder.L_GROUND
+	body.collision_mask = 0
+	body.set_meta("model_part", "lakeside_path")
+	body.set_meta("walkable_ribbon", true)
+	var collision := CollisionShape3D.new()
+	collision.name = "Rendered_surface"
+	collision.shape = mesh.mesh.create_trimesh_shape()
+	body.add_child(collision)
+	mesh.add_child(body)
+
+
+func _drawn_terrain_height(point: Vector2) -> float:
+	# Exact barycentric height of _terrain_cell's existing adaptive triangles.
+	# This is evaluated once while building, with no per-frame triangle scan.
+	var coarse := Vector2(-66.0, -69.0) + ((point - Vector2(-66.0, -69.0)) / 1.5).floor() * 1.5
+	var step: float = .5 if absf(LakesideLayout.water_distance(coarse + Vector2(.75, .75))) < 5.0 else 1.5
+	var base: Vector2 = coarse + ((point - coarse) / step).floor() * step
+	var uv: Vector2 = (point - base) / step
+	var h00: float = LakesideLayout.height_at(base)
+	var h11: float = LakesideLayout.height_at(base + Vector2.ONE * step)
+	if uv.x <= uv.y:
+		var h01: float = LakesideLayout.height_at(base + Vector2(0, step))
+		return h00 * (1.0 - uv.y) + h01 * (uv.y - uv.x) + h11 * uv.x
+	var h10: float = LakesideLayout.height_at(base + Vector2(step, 0))
+	return h00 * (1.0 - uv.x) + h11 * uv.y + h10 * (uv.x - uv.y)
 
 func _paths_and_shores() -> void:
 	var material := ShaderMaterial.new()
@@ -139,7 +214,7 @@ func _paths_and_shores() -> void:
 	material.set_shader_parameter("albedo_tex",load("res://assets/textures/lakeside_polish/path.png"))
 	material.set_shader_parameter("wear_strength",.30)
 	for route: PackedVector2Array in LakesideLayout.walk_paths():
-		_ribbon(route,2.6,material)
+		_ribbon(route,2.6,material,true)
 	var shore := LakesideLayout.lake_outline(120,.7)
 	shore.append(shore[0])
 	_ribbon(shore,1.7,material)

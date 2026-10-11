@@ -6,6 +6,8 @@ var out := "/tmp/harumachi-lake-demo"
 var failures: Array[String] = []
 var catches: Array[Dictionary] = []
 var started := 0
+const QA_CAPTURE = preload("res://scripts/tools/activity_visual_capture.gd")
+var _qa_capture_ms: int = 0
 
 func _ready() -> void:
 	main=get_parent();started=Time.get_ticks_msec()
@@ -20,15 +22,32 @@ func _frames(n:int) -> void:
 func _key(code:Key,pressed:bool)->void:
 	var event:=InputEventKey.new();event.keycode=code;event.physical_keycode=code;event.pressed=pressed
 	Input.parse_input_event(event)
+	# The reel controller injects from process_frame, before panel processing.
+	# Deliver it against the state just sampled, not after a possible landing.
+	Input.flush_buffered_events()
 
 func _tap(code:Key)->void:
 	_key(code,true);await _frames(1);_key(code,false);await _frames(1)
 
 func _shot(name:String)->void:
+	if QA_CAPTURE.enabled():
+		var focus: Vector3 = Vector3.INF
+		if main.ui.modal == "fishing" and is_instance_valid(main.ui.fishing_panel.scene_view):
+			focus = (main.player.global_position + Vector3.UP * .95).lerp(main.ui.fishing_panel.scene_view.hook + Vector3.UP * .4, .25)
+		var result: Dictionary = await QA_CAPTURE.capture(main, out, name, focus, "lake_demo")
+		_qa_capture_ms += int(result.hold_ms)
+		for message: String in result.failures: failures.append(message)
+		print("LAKE_DEMO SHOT ", name)
+		return
 	await _frames(6)
 	await RenderingServer.frame_post_draw
 	get_viewport().get_texture().get_image().save_png(out.path_join(name+".png"))
 	print("LAKE_DEMO SHOT ",name)
+
+func _qa_now_msec() -> int:
+	# Native safety bounds exclude only optional still-image capture. Fishing's
+	# real state machine and held E input resume unchanged after each diagnostic.
+	return Time.get_ticks_msec() - _qa_capture_ms
 
 func _point(id:String)->Interactable:
 	for node:Node in get_tree().get_nodes_in_group("interactables"):
@@ -52,16 +71,16 @@ func _cast_once(index:int)->bool:
 	var panel:FishingPanel=main.ui.fishing_panel
 	await _tap(KEY_E)
 	if index==0:await _shot("03_cast")
-	var deadline:=Time.get_ticks_msec()+16000
-	while panel.session.state not in [FishingSession.State.BITE,FishingSession.State.MISSED] and Time.get_ticks_msec()<deadline:await _frames(1)
+	var deadline:=_qa_now_msec()+16000
+	while panel.session.state not in [FishingSession.State.BITE,FishingSession.State.MISSED] and _qa_now_msec()<deadline:await _frames(1)
 	if panel.session.state!=FishingSession.State.BITE:
 		failures.append("no bite in native input run");return false
 	if index==0:await _shot("04_bite")
 	await _tap(KEY_E)
 	var held:=false
 	var photographed:=false
-	deadline=Time.get_ticks_msec()+35000
-	while panel.session.state==FishingSession.State.REEL and Time.get_ticks_msec()<deadline:
+	deadline=_qa_now_msec()+35000
+	while panel.session.state==FishingSession.State.REEL and _qa_now_msec()<deadline:
 		var next:=held
 		next=panel.session.suggested_hold()
 		if next!=held:_key(KEY_E,next);held=next
@@ -104,6 +123,8 @@ func _run()->void:
 	await _shot("02_fishing_ready")
 	if not await _cast_once(0):_finish();return
 	if not await _cast_once(1):_finish();return
+	if int(GameState.fishing.casts)!=2 or int(GameState.fishing.landed)!=2 or catches.size()!=2:
+		failures.append("native fishing input must produce exactly two casts and two recorded catches");_finish();return
 	await _tap(KEY_ESCAPE);await _frames(10)
 	# Buyer and kitchen locations are explicit fixtures; their real UI callbacks
 	# and inventory rules are used, with no invented catch or money reward.
@@ -144,6 +165,9 @@ func _finish()->void:
 	if is_instance_valid(main.ui.fishing_panel):main.ui.fishing_panel.finish()
 	main.player.auto_move=Vector3.ZERO
 	var report:Dictionary={"passed":failures.is_empty(),"failures":failures,"catches":catches,"fishing":GameState.fishing,"coins":GameState.coins,"seconds":float(Time.get_ticks_msec()-started)/1000.0,"area_ratio":LakesideLayout.expansion_ratio()}
+	if QA_CAPTURE.enabled():
+		report.diagnostic_hold_seconds = float(_qa_capture_ms) / 1000.0
+		report.diagnostic_scope = "Optional paused still images; original keyboard, fishing, collision-walk and inventory checks remain native. No duration claim."
 	var file:=FileAccess.open(out.path_join("demo.json"),FileAccess.WRITE);file.store_string(JSON.stringify(report,"  "));file.close()
 	print("LAKE_DEMO DONE ",JSON.stringify(report))
 	get_tree().quit(0 if failures.is_empty() else 1)

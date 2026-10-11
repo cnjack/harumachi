@@ -1,9 +1,13 @@
-extends "res://scripts/tools/daily_life_demo.gd"
+extends "res://scripts/tools/activity_visual_demo.gd"
 ## Fixture day/standing; actual E choices and rendered tray movement. No duration claim.
 var was_sliding := false
 var slide_start := 0
 var frame_deltas: Array[float] = []
 var slide_metrics: Array = []
+
+func _qa_focus(_label: String) -> Vector3:
+	return Vector3(14.4, 1.0, 16.8)
+
 func _process(delta: float) -> void:
 	if not is_instance_valid(main) or not is_instance_valid(main.story.morning):return
 	var sliding: bool=main.story.morning.active

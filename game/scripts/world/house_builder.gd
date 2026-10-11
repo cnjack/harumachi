@@ -115,6 +115,7 @@ var lamps: Array[OmniLight3D] = []
 var fills: Array[OmniLight3D] = []
 var dust: GPUParticles3D
 var beams: Node3D
+var garden_backdrop: MeshInstance3D
 var current_room := ""
 var _mats := {}
 
@@ -137,6 +138,28 @@ func build(world: WorldBuilder) -> void:
 	_build_sunbeams()
 	update_cutaway("genkan", false)
 	sync_state()
+	_sync_garden_backdrop()
+	# Also follow camera changes while a diagnostic action has paused processing.
+	# Photo renders share this world while the owning viewport uses PhotoCamera.
+	if not RenderingServer.frame_pre_draw.is_connected(_sync_garden_backdrop):
+		RenderingServer.frame_pre_draw.connect(_sync_garden_backdrop)
+
+
+func _process(_delta: float) -> void:
+	_sync_garden_backdrop()
+
+
+func _exit_tree() -> void:
+	if RenderingServer.frame_pre_draw.is_connected(_sync_garden_backdrop):
+		RenderingServer.frame_pre_draw.disconnect(_sync_garden_backdrop)
+
+
+func _sync_garden_backdrop() -> void:
+	if not is_instance_valid(garden_backdrop) or not is_instance_valid(wb): return
+	var rig: CameraRig = wb.get_parent().get_node_or_null("CameraRig") as CameraRig
+	# This painting is composed for the normal home diorama lens. Free photos
+	# and independent cameras see the existing physical garden instead.
+	garden_backdrop.visible = is_instance_valid(rig) and rig.fixed and wb.indoor and wb.public_interior_kind.is_empty() and get_viewport().get_camera_3d() == rig.cam
 
 
 static func room_at(local: Vector3) -> Dictionary:
@@ -398,6 +421,7 @@ func _build_lot() -> void:
 	card.position = Vector3(0, GROUND_Y - 0.35, -9.35) + up * (qm.size.y / 2.0)
 	card.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(card)
+	garden_backdrop = card
 	_build_fence()
 	# engawa boundary with a gap at the stepping stone, which leads down into the little yard
 	_collider(Vector3(2.55, 1.4, 0.2), Vector3(-0.325, 0.7, -4.72), WorldBuilder.L_PLACED)
@@ -625,25 +649,28 @@ func _window(parent: Node3D, ew: bool, fixed: float, o0: float, o1: float, sill:
 		# a painted view just behind the glass; it faces into the room, so from outside the
 		# back face is culled and the card is invisible
 		var card := MeshInstance3D.new()
+		card.name = "HomeWindowView"
 		var qm := QuadMesh.new()
 		var cw := ln + 0.3
 		var ch := h + 0.3
 		qm.size = Vector2(cw, ch)
 		card.mesh = qm
-		var m := StandardMaterial3D.new()
-		m.albedo_texture = _tex("card_window")
-		m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-		m.albedo_color = Color(1.04, 1.04, 1.04)
+		var m := ShaderMaterial.new()
+		m.shader = load("res://shaders/public_window_view.gdshader")
+		m.set_shader_parameter("view_tex", _tex("card_window"))
+		m.set_shader_parameter("day_gain", 1.0)
+		m.set_shader_parameter("front_only", true)
+		m.set_shader_parameter("view_tint", Vector3(1.04, 1.04, 1.04))
 		var ta := 1536.0 / 1024.0
 		var ca := cw / ch
 		if ca < ta:
-			m.uv1_scale = Vector3(ca / ta, 1.0, 1.0)
-			m.uv1_offset = Vector3((1.0 - ca / ta) * 0.62, 0.0, 0.0)
+			m.set_shader_parameter("uv_scale", Vector2(ca / ta, 1.0))
+			m.set_shader_parameter("uv_offset", Vector2((1.0 - ca / ta) * 0.62, 0.0))
 		else:
-			m.uv1_scale = Vector3(1.0, ta / ca, 1.0)
-			m.uv1_offset = Vector3(0.0, (1.0 - ta / ca) * 0.4, 0.0)
+			m.set_shader_parameter("uv_scale", Vector2(1.0, ta / ca))
+			m.set_shader_parameter("uv_offset", Vector2(0.0, (1.0 - ta / ca) * 0.4))
 		card.material_override = m
-		wb.std_cards.append([m, m.albedo_color])
+		wb.home_window_mats.append(m)
 		card.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		var out := WALL_T / 2.0 + 0.12
 		if ew:
@@ -860,6 +887,20 @@ func _build_lights() -> void:
 	dm.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	dm.vertex_color_use_as_albedo = true
 	dm.albedo_color = Color(1.0, 0.95, 0.8, 0.8)
+	# A close diagnostic camera can resolve a mote's full quad. Give it a soft
+	# round silhouette so drifting dust never appears as an opaque white square.
+	var mote_fade := Gradient.new()
+	mote_fade.set_color(0, Color(1, 1, 1, 1))
+	mote_fade.add_point(.35, Color(1, 1, 1, .55))
+	mote_fade.set_color(mote_fade.get_point_count() - 1, Color(1, 1, 1, 0))
+	var mote_texture := GradientTexture2D.new()
+	mote_texture.width = 32
+	mote_texture.height = 32
+	mote_texture.fill = GradientTexture2D.FILL_RADIAL
+	mote_texture.fill_from = Vector2(.5, .5)
+	mote_texture.fill_to = Vector2(.5, 0)
+	mote_texture.gradient = mote_fade
+	dm.albedo_texture = mote_texture
 	qm.material = dm
 	dust.draw_pass_1 = qm
 	add_child(dust)
@@ -904,6 +945,7 @@ func _build_sunbeams() -> void:
 		m.set_shader_parameter("posts", float(spec[6]))
 		m.set_shader_parameter("post_w", float(spec[7]))
 		m.set_shader_parameter("strength", float(spec[8]))
+		m.set_meta("daylight_strength", float(spec[8]))
 		var layers := 5
 		for i in layers:
 			var hs: float = lerp(lit_top, sill, float(i) / float(layers))
@@ -1004,8 +1046,24 @@ func _build_future_note() -> void:
 
 
 var _evening_state := -1
+var _direct_light_state := ""
 
-func set_evening(on: bool, animate: bool) -> void:
+func set_evening(on: bool, animate: bool, weather: String = "sunny") -> void:
+	# The lamp state can stay the same while the weather changes. Refresh the
+	# rendered shafts before its early return; rain has no direct window sunlight.
+	var daylight_state: String = "%s:%s" % [str(on), weather]
+	if _direct_light_state != daylight_state:
+		_direct_light_state = daylight_state
+		var direct_strength: float = 0.0 if on or weather == "rain" else (.18 if weather == "cloudy" else 1.0)
+		if beams:
+			beams.visible = direct_strength > 0.0
+			for sheet: MeshInstance3D in beams.get_children():
+				var material: ShaderMaterial = sheet.material_override as ShaderMaterial
+				material.set_shader_parameter("strength", float(material.get_meta("daylight_strength", 0.0)) * direct_strength)
+		if dust:
+			dust.visible = direct_strength > 0.0
+			dust.emitting = direct_strength > 0.0
+			dust.amount_ratio = direct_strength
 	if _evening_state == int(on) and not animate:
 		return
 	_evening_state = int(on)
@@ -1027,7 +1085,3 @@ func set_evening(on: bool, animate: bool) -> void:
 			f.light_energy = fill
 		if shade:
 			shade.emission_energy_multiplier = 2.2 if on else 0.0
-	if dust:
-		dust.emitting = not on
-	if beams:
-		beams.visible = not on

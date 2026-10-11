@@ -227,11 +227,15 @@ func legal(at: Vector3) -> bool:
 	for xx: float in [box.position.x,box.get_center().x,box.end.x]:
 		for zz: float in [box.position.z,box.get_center().z,box.end.z]:
 			var height: float=height_at(at+Vector3(xx,0,zz))
-			if not is_finite(height) or absf(height-base_y)>.008:return false
+			if not is_finite(height) or absf(height-base_y)>.008:
+				_support_debug("surface",at,{"sample":at+Vector3(xx,0,zz),"height":height,"base":base_y,"tray_box":box})
+				return false
 	var occupied:=AABB(Vector3(at.x+box.position.x,base_y+.006,at.z+box.position.z),Vector3(box.size.x,box.size.y,box.size.z))
 	# P08's joined plants are real obstructions even though they share its model ID.
 	for bounds: AABB in static_boxes:
-		if occupied.intersects(bounds):return false
+		if occupied.intersects(bounds):
+			_support_debug("joined",at,{"occupied":occupied,"triangle_bounds":bounds})
+			return false
 	if meshes_dirty:
 		nearby_meshes.clear()
 		for mesh: MeshInstance3D in WorldBuilder.find_meshes(s.main):
@@ -240,9 +244,16 @@ func legal(at: Vector3) -> bool:
 	for mesh: MeshInstance3D in nearby_meshes:
 		if not is_instance_valid(mesh):continue
 		if mesh.mesh==null or not mesh.is_visible_in_tree() or model.is_ancestor_of(mesh) or tray.is_ancestor_of(mesh):continue
-		if occupied.intersects(mesh.global_transform*mesh.get_aabb()):return false
+		if occupied.intersects(mesh.global_transform*mesh.get_aabb()):
+			_support_debug("nearby",at,{"occupied":occupied,"node":str(mesh.get_path()),"bounds":mesh.global_transform*mesh.get_aabb()})
+			return false
 	# Keep the existing evening food location on this bench available.
 	return not occupied.grow(.09).has_point(Vector3(15.8,base_y+.03,14.6))
+
+
+func _support_debug(reason: String,at: Vector3,detail: Dictionary) -> void:
+	if "--qa-support-debug" in OS.get_cmdline_user_args():
+		print("MORNING_SUPPORT_DEBUG ",reason," at=",at," ",detail)
 
 func sync_tray() -> void:
 	var tray: Node3D=_tray()

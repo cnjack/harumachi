@@ -318,7 +318,12 @@ func _arg(name: String, def: String) -> String:
 func _run() -> void:
 	var dir := _arg("shots", "user://shots")
 	DirAccess.make_dir_recursive_absolute(dir)
-	var names := _arg("views", ",".join(VIEWS.keys())).split(",")
+	var catalog: Dictionary = VIEWS.duplicate(true)
+	if _arg("qa-environments", "") == "1":
+		catalog = _environment_matrix()
+		main.weather_fx.rig = main.rig.cam
+	var names := _arg("views", ",".join(catalog.keys())).split(",")
+	var manifest: Array[Dictionary] = []
 	# --clean=1 hides the HUD (quest board, coins, weather badge, hint bar, toasts)
 	# for marketing/site screenshots that should show only the game world.
 	var wallpaper:=OS.get_cmdline_user_args().has("--wallpaper")
@@ -326,9 +331,22 @@ func _run() -> void:
 	for i in 30:
 		await get_tree().process_frame
 	for n in names:
-		if not VIEWS.has(n):
+		if not catalog.has(n):
+			push_error("Unknown screenshot view: " + n)
+			get_tree().quit(2)
+			return
+		var v: Dictionary = catalog[n].duplicate(true)
+		if v.get("group", "") in ["environments", "activities"] and v.get("weather", "sunny") == "rain":
+			v["settle_seconds"] = maxf(float(v.get("settle_seconds", 0.0)), .8)
+		manifest.append({"name": n, "file": n + ".png", "configuration": v})
+		main.story.public_life.stand()
+		main.player.process_mode = Node.PROCESS_MODE_INHERIT
+		for actor_id in main.npcs:
+			main.npcs[actor_id].process_mode = Node.PROCESS_MODE_INHERIT
+			if main.npcs[actor_id].fest_key == "shots":
+				main.npcs[actor_id].fest_key = ""
+		if v.is_empty():
 			continue
-		var v: Dictionary = VIEWS[n]
 		if v.get("place_fixture",false):
 			GameState.placements=[{"uid":990,"item":"bunting","x":5.5,"z":11.2,"rot":0},{"uid":991,"item":"lantern","x":9.5,"z":12.4,"rot":0}]
 			main.placement.rebuild()
@@ -357,6 +375,13 @@ func _run() -> void:
 			GameState.day = int(v.day)
 			main.world.sync_festivals()
 			main._last_fest = ""
+		elif v.has("scene"):
+			GameState.day = 3
+			main.world.sync_festivals()
+			main._last_fest = ""
+		if v.has("scene") and not v.has("phase"):
+			GameState.phase = "prep"
+			main.world.apply_phase("prep", false)
 		GameState.minute = float(v.get("time", 10.0)) * 60.0
 		GameState.weather = str(v.get("weather", "sunny"))
 		main.world.update_time(GameState.minute, GameState.weather, true)
@@ -394,10 +419,13 @@ func _run() -> void:
 		if v.has("phase") and GameState.phase != v.phase:
 			GameState.phase = v.phase
 			main.world.apply_phase(v.phase, false)
+		if v.get("group", "") == "activities" and v.get("phase", "") == "market":
+			main.to_market_positions(false)
 		if v.has("interior"):
 			main.world.set_region("town")
 			main.in_room = false
 			await main.enter_interior(str(v.interior))
+			main._sync_weather()
 			main.player.global_position = InteriorBuilder.spec_for(str(v.interior)).origin + v.get("at", Vector3(0, 0.05, 1.8))
 			main.player.set_facing(deg_to_rad(v.get("face", 180.0)))
 			main.rig.pitch = v.get("pitch", 46.0)
@@ -411,6 +439,7 @@ func _run() -> void:
 				main.player.visible=bool(v.get("show_actor",false));main.rig.process_mode=Node.PROCESS_MODE_DISABLED
 				main.rig.cam.global_position=InteriorBuilder.spec_for(str(v.interior)).origin+v.inside_camera
 				main.rig.cam.look_at(InteriorBuilder.spec_for(str(v.interior)).origin+v.inside_focus)
+				_reset_review_camera()
 				main.shop_life._caption_left=0.0
 			if v.has("seat_id"):
 				for candidate in get_tree().get_nodes_in_group("interactables"):
@@ -449,10 +478,16 @@ func _run() -> void:
 			continue
 		if v.has("house"):
 			main._put_in_room(HouseBuilder.ORIGIN + v.house + Vector3(0, 0.05, 0))
+			main._sync_weather()
 			main.player.set_facing(deg_to_rad(v.face))
 			main.rig.pitch = v.pitch
 			main.rig.dist = v.dist
 			main.rig.snap()
+			if v.has("house_camera"):
+				main.rig.process_mode = Node.PROCESS_MODE_DISABLED
+				main.rig.cam.global_position = HouseBuilder.ORIGIN + v.house_camera
+				main.rig.cam.look_at(HouseBuilder.ORIGIN + v.house_focus)
+				_reset_review_camera()
 			if v.has("seat_id"):
 				for candidate in get_tree().get_nodes_in_group("interactables"):
 					if candidate.id==v.seat_id:main.story.public_life.sit(candidate);break
@@ -464,6 +499,9 @@ func _run() -> void:
 			var im := get_viewport().get_texture().get_image()
 			im.save_png("%s/%s.png" % [dir, n])
 			print("SHOT ", n)
+			if sip_action != null:
+				sip_action.queue_free()
+			main.story.public_life.stand()
 			continue
 		if main.in_room:
 			main.in_room = false
@@ -478,7 +516,7 @@ func _run() -> void:
 		main.rig.pitch = float(v.get("pitch", 20.0))
 		main.rig.dist = float(v.get("dist", 8.0))
 		main.rig.snap()
-		main.weather_fx.set_weather(GameState.weather, false)
+		main._sync_weather()
 		main.update_npcs(true)
 		main.sync_festival_state()
 		main.world.farm.fx.fireworks_on = v.get("fireworks", false)
@@ -517,6 +555,7 @@ func _run() -> void:
 			var camera_origin: Vector3 = FarmBuilder.ORIGIN if v.get("farm", false) else Vector3.ZERO
 			main.rig.cam.global_position = camera_origin + v.camera_at
 			main.rig.cam.look_at(camera_origin + v.camera_focus)
+			_reset_review_camera()
 			if v.get("sun_view",false):
 				main.rig.cam.look_at(main.rig.cam.global_position+main.world.sun.global_basis.z*100.0)
 		if v.has("settle_seconds"):
@@ -530,7 +569,49 @@ func _run() -> void:
 		var img := get_viewport().get_texture().get_image()
 		img.save_png("%s/%s.png" % [dir, n])
 		print("SHOT ", n)
+	var manifest_file := FileAccess.open(dir.path_join("manifest.json"), FileAccess.WRITE)
+	manifest_file.store_string(JSON.stringify({"engine": Engine.get_version_info().string, "shots": manifest}, "\t"))
 	get_tree().quit()
+
+
+func _reset_review_camera() -> void:
+	# These cameras bypass the follow rig. Drop its old interpolation/fade state
+	# so a previous close camera cannot make the next diagnostic actor translucent.
+	main.rig.cam.reset_physics_interpolation()
+	for mesh: MeshInstance3D in WorldBuilder.find_meshes(main.player.model):
+		mesh.transparency = 0.0
+
+
+func _environment_matrix() -> Dictionary:
+	var source: Dictionary = load("res://scripts/tools/environment_visual_qa.gd").get_views()
+	if _arg("qa-activities", "") == "1":
+		var activities: Dictionary = load("res://scripts/tools/environment_visual_qa.gd").get_activity_views()
+		var activity_matrix: Dictionary = {}
+		for activity_name in activities:
+			for weather: String in ["sunny", "cloudy", "rain"]:
+				var activity: Dictionary = activities[activity_name].duplicate(true)
+				activity["weather"] = weather
+				activity_matrix[str(activity_name) + "__" + weather] = activity
+		return activity_matrix
+	var conditions := {
+		"morning": {"time": 7.0, "weather": "sunny"},
+		"noon": {"time": 12.0, "weather": "sunny"},
+		"sunset": {"time": 17.6, "weather": "sunny"},
+		"night": {"time": 21.0, "weather": "sunny"},
+		"rain": {"time": 12.0, "weather": "rain"},
+		"cloudy": {"time": 12.0, "weather": "cloudy"},
+	}
+	var matrix: Dictionary = {}
+	for base_name in source:
+		var original: Dictionary = source[base_name]
+		for condition in str(original.get("qa_conditions", _arg("qa-conditions", "morning,noon,sunset,night,rain,cloudy"))).split(","):
+			if not conditions.has(condition):
+				push_error("Unknown QA condition: " + condition)
+				continue
+			var view: Dictionary = original.duplicate(true)
+			view.merge(conditions[condition], true)
+			matrix[str(base_name) + "__" + condition] = view
+	return matrix
 
 
 ## A lived-in allotment for screenshots: every stage and crop somewhere.

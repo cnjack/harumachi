@@ -17,6 +17,9 @@ var _sign_animating := false
 var _eating := false
 var _scene_camera: Camera3D
 var _scene_previous: Camera3D
+var _cart_surface_cache: Dictionary = {}
+var _paper_support_y: float = 0.0
+var _inside_paper_support_y: float = 0.0
 
 
 func setup(story: Story) -> void:
@@ -30,12 +33,12 @@ func setup(story: Story) -> void:
 	s.world.house.add_child(meal_root)
 	var dining: Node3D = s.world.house.get_node("J03_dining_set")
 	var at: Vector3 = HouseBuilder.ORIGIN + Vector3(-2.3, 0, 3.0)
-	meal_root.global_position = Vector3(at.x, support_height(dining, at), at.z)
+	meal_root.global_position = Vector3(at.x, support_height(dining, at, .95), at.z)
 	var meal_tray: Node3D = s.world.spawn("W12_cedar_tray", Vector3(-.16,0,0), 0, 0, meal_root, 1.0)
 	WorldBuilder.rest_on(meal_tray, meal_root.global_position.y)
 	meal_tray.set_meta("support_surface", dining.get_path())
 	var meal_cups: Node3D = s.world.spawn("W11_ceramic_set", Vector3(.28, .014, -.05), 0, 0, meal_root, .85)
-	meal_cups.set_meta("support_surface", dining.get_path())
+	rest_carried(meal_cups, dining, .95)
 	meal_food = Node3D.new()
 	meal_food.name = "PreparedRice"
 	meal_root.add_child(meal_food)
@@ -59,20 +62,23 @@ func setup(story: Story) -> void:
 	s.world.add_child(tea_root)
 	var bench: Node3D = s.world.get_node("P08")
 	var tea_at := Vector3(15.8, 0, 15.15)
-	tea_root.position = Vector3(tea_at.x, support_height(bench, tea_at), tea_at.z)
-	var tea_tray: Node3D = s.world.spawn("W12_cedar_tray", Vector3.ZERO, 0, 0, tea_root, .50)
-	tea_tray.set_meta("support_surface", bench.get_path())
+	tea_root.position = Vector3(tea_at.x, support_height(bench, tea_at, 1.4), tea_at.z)
+	# The full ceramic set must fit the tray's basin; the former half-size tray
+	# left cups overhanging its sides. Both levels rest on their actual meshes.
+	var tea_tray: Node3D = s.world.spawn("W12_cedar_tray", Vector3.ZERO, 0, 0, tea_root, 1.0)
+	rest_carried(tea_tray, bench, 1.4)
 	var tea_cups: Node3D = s.world.spawn("W11_ceramic_set", Vector3(0, .015, 0), 0, 0, tea_root, .90)
-	tea_cups.set_meta("support_surface", tea_tray.get_path())
+	rest_carried(tea_cups, tea_tray, (tea_tray.global_transform * WorldBuilder.local_aabb(tea_tray)).end.y + .01)
 	tea_label = _label("麦茶 · 春", .0017)
 	tea_label.position = Vector3(0, .23, 0)
 	tea_root.add_child(tea_label)
 	paper_root = Node3D.new()
 	paper_root.name = "LifeBakeryPaper"
 	s.world.add_child(paper_root)
-	var cart: Node3D = s.world.get_node("G11_bread_cart")
-	var paper_at := Vector3(-21.25, 0, -15.10)
-	paper_root.position = Vector3(paper_at.x, support_height(cart, paper_at) + .13, paper_at.z)
+	var paper_site: Dictionary = _cart_site(true)
+	_paper_support_y = paper_site.point.y
+	paper_root.global_position = paper_site.point + paper_site.normal * .13
+	paper_root.global_basis = Basis(Quaternion(Vector3.UP, paper_site.normal)) * s.world.get_node("G11_bread_cart").global_basis.orthonormalized()
 	paper = _card("小份试吃", .38, .26, true)
 	paper_label = paper.get_node("Text") as Label3D
 	paper_root.add_child(paper)
@@ -81,13 +87,15 @@ func setup(story: Story) -> void:
 	paper_inside_label = paper_inside.get_node("Text") as Label3D
 	s.world.interiors.bakery.add_child(paper_inside)
 	var counter: Node3D = s.world.interiors.bakery.get_node("I04_shop_counter")
-	var inside_at: Vector3 = s.world.interiors.bakery.origin + Vector3(2.681, 0, 1.667)
-	paper_inside.global_position = Vector3(inside_at.x, support_height(counter, inside_at) + .13, inside_at.z)
+	var inside_at: Vector3 = counter.global_position + counter.global_basis * Vector3(-.32, 0, 0)
+	_inside_paper_support_y = support_height(counter, inside_at, 1.35)
+	paper_inside.global_position = Vector3(inside_at.x, _inside_paper_support_y + .13, inside_at.z)
 	GameState.state_changed.connect(sync_state)
 	sync_state()
 
 
 func _process(delta: float) -> void:
+	if _sign_animating: _rest_signs()
 	_tick += delta
 	if _tick > .5 and is_instance_valid(s):
 		_tick = 0.0
@@ -119,6 +127,14 @@ func sync_state() -> void:
 	var note := "小份试吃\n慢慢尝" if card.get("helped_sign", false) else ("小份试吃\n切小一点" if card.get("tasted", false) else "小份试吃")
 	paper_label.text = note
 	paper_inside_label.text = note
+	_rest_signs()
+
+
+func _rest_signs() -> void:
+	# A leaning folded card keeps its lowest edge on the counter while it is
+	# straightened. Only two tiny card AABBs are read, never the imported mesh.
+	if is_instance_valid(paper): WorldBuilder.rest_on(paper, _paper_support_y + .001)
+	if is_instance_valid(paper_inside): WorldBuilder.rest_on(paper_inside, _inside_paper_support_y + .001)
 
 
 func straighten() -> void:
@@ -139,6 +155,7 @@ func play_action(kind: String, item_id: String = "onigiri") -> String:
 	if kind == "eat":
 		action.surface_at = _food_surface()
 		if s.main.in_room and s.main.room_kind == "house": action.surface_normal = _meal_normal()
+		elif not s.main.in_room: action.surface_normal = _cart_site(false).normal
 		_eating = true
 		meal_food.hide()
 	action.setup(s.player, kind, item_id)
@@ -177,26 +194,71 @@ func play_action(kind: String, item_id: String = "onigiri") -> String:
 
 
 func _meal_normal() -> Vector3:
-	var tray: Node3D = meal_root.get_node("W12_cedar_tray")
 	var at: Vector3 = meal_root.global_position + Vector3(-.16,0,0)
+	if not meal_root.is_visible_in_tree(): return carrier_normal(s.world.house.get_node("J03_dining_set"), at, .95)
+	var tray: Node3D = meal_root.get_node("W12_cedar_tray")
 	var ceiling: float = (tray.global_transform*WorldBuilder.local_aabb(tray)).end.y+.01
-	var dx: float = (WorldBuilder.surface_height(tray,Vector2(at.x+.04,at.z),ceiling)-WorldBuilder.surface_height(tray,Vector2(at.x-.04,at.z),ceiling))/.08
-	var dz: float = (WorldBuilder.surface_height(tray,Vector2(at.x,at.z+.04),ceiling)-WorldBuilder.surface_height(tray,Vector2(at.x,at.z-.04),ceiling))/.08
-	return Vector3(-dx,1,-dz).normalized()
+	return carrier_normal(tray, at, ceiling)
 
 func _food_surface() -> Vector3:
 	if s.main.in_room and s.main.room_kind == "house":
-		var tray: Node3D = meal_root.get_node("W12_cedar_tray")
 		var at: Vector3 = meal_root.global_position + Vector3(-.16,0,0)
+		# A player may bring a meal home before claiming the arrival parcel. Its
+		# invisible tray is not a support: use the visible dining table instead.
+		if not meal_root.is_visible_in_tree():
+			return Vector3(at.x, support_height(s.world.house.get_node("J03_dining_set"), at, .95), at.z)
+		var tray: Node3D = meal_root.get_node("W12_cedar_tray")
 		var box: AABB = tray.global_transform * WorldBuilder.local_aabb(tray)
 		return Vector3(at.x, WorldBuilder.surface_height(tray, Vector2(at.x,at.z),box.end.y+.01), at.z)
 	if s.main.in_room and s.main.room_kind == "bakery":
 		var counter: Node3D = s.world.interiors.bakery.get_node("I04_shop_counter")
-		var at: Vector3 = s.world.interiors.bakery.origin + Vector3(2.681, 0, 1.667)
-		return Vector3(at.x, support_height(counter, at), at.z)
+		var at: Vector3 = counter.global_position + counter.global_basis * Vector3(.32, 0, 0)
+		return Vector3(at.x, support_height(counter, at, 1.35), at.z)
+	return _cart_site(false).point
+
+
+func _cart_site(sign: bool) -> Dictionary:
 	var cart: Node3D = s.world.get_node("G11_bread_cart")
-	var at_cart := Vector3(-21.25, 0, -15.10)
-	return Vector3(at_cart.x, support_height(cart, at_cart), at_cart.z)
+	var counter: MeshInstance3D = cart.get_node_or_null("LifeBakeryServingCounter") as MeshInstance3D
+	if counter == null:
+		# G11 is a closed sloping display case, not an open tabletop. Its small
+		# bracketed serving extension is visible, solid and in the original cart's
+		# style; a plate must never sit on the canopy or a hidden interior face.
+		counter = PublicPlaceArt.box(cart, "LifeBakeryServingCounter", Vector3(.96, .035, .28), Vector3(0, .7225, .46), PublicPlaceArt.wood(Color(.61, .43, .26)), true)
+		for side: float in [-1.0, 1.0]:
+			var bracket: MeshInstance3D = PublicPlaceArt.box(cart, "LifeBakeryBracket_%d" % int(side), Vector3(.035, .28, .035), Vector3(side * .32, .60, .40), PublicPlaceArt.wood(Color(.43, .29, .18)))
+			bracket.rotation.x = PI * .25
+	var key: String = "paper" if sign else "food"
+	var signature: String = str(cart.get_instance_id()) + str(cart.global_transform)
+	var saved: Dictionary = _cart_surface_cache.get(key, {})
+	if str(saved.get("signature", "")) == signature: return saved
+	# Separate paper and plate footprints on the actual flat serving board.
+	var local: Vector3 = Vector3(-.24, 0, .40) if sign else Vector3(.20, 0, .47)
+	var point: Vector3 = cart.global_transform * local
+	point.y = support_height(counter, point)
+	var normal: Vector3 = carrier_normal(counter, point, point.y + .01)
+	var site: Dictionary = {"point": point, "normal": normal, "signature": signature}
+	_cart_surface_cache[key] = site
+	return site
+
+
+static func carrier_normal(model: Node3D, at: Vector3, ceiling: float) -> Vector3:
+	var left: float = WorldBuilder.surface_height(model, Vector2(at.x - .04, at.z), ceiling)
+	var right: float = WorldBuilder.surface_height(model, Vector2(at.x + .04, at.z), ceiling)
+	var front: float = WorldBuilder.surface_height(model, Vector2(at.x, at.z - .04), ceiling)
+	var back: float = WorldBuilder.surface_height(model, Vector2(at.x, at.z + .04), ceiling)
+	if not is_finite(left) or not is_finite(right) or not is_finite(front) or not is_finite(back): return Vector3.UP
+	return Vector3(-(right-left)/.08, 1, -(back-front)/.08).normalized()
+
+
+static func rest_carried(prop: Node3D, support: Node3D, ceiling: float) -> void:
+	var height: float = support_height(support, prop.global_position, ceiling)
+	if not is_finite(height):
+		push_error("Living prop has no rendered carrier at " + str(prop.global_position))
+		return
+	WorldBuilder.rest_on(prop, height + .001)
+	prop.set_meta("support_surface", support.get_path())
+	prop.set_meta("support_ceiling", ceiling)
 
 
 func begin_scene(id: String) -> void:
@@ -251,5 +313,5 @@ func _card(text: String, width: float, height: float, standing: bool = false) ->
 	return root
 
 
-static func support_height(model: Node3D, at: Vector3) -> float:
-	return WorldBuilder.rendered_support_height(model, at)
+static func support_height(model: Node3D, at: Vector3, ceiling: float = INF) -> float:
+	return WorldBuilder.rendered_support_height(model, at, ceiling, true)

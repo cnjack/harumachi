@@ -1,5 +1,13 @@
-extends "res://scripts/tools/daily_life_demo.gd"
+extends "res://scripts/tools/activity_visual_demo.gd"
 ## Native keyboard assembly, cancellation and scene reuse; dates and prior chapter are fixtures.
+
+func _qa_focus(label: String) -> Vector3:
+	if label == "06_same_work_at_festival": return WorkroomView.festival_position()
+	if label.begins_with("observe_") or label in ["04_low_hang_actual_feedback", "05_retained_hanging_lantern"]:
+		var work: WorkroomView = main.world.interiors.workroom.get_node("WorkroomProject")
+		if is_instance_valid(work.trial_lantern): return work.trial_lantern.global_position
+	return Vector3.INF
+
 func _ready() -> void:
 	main = get_parent()
 	for arg in OS.get_cmdline_user_args():

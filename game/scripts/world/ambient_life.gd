@@ -26,6 +26,9 @@ var flyers: Array = []
 var cats: Array = []
 const CAT_WALKER=preload("res://scripts/animals/cat_walker.gd")
 var roaming_cats: Array[CharacterBody3D] = []
+var home_cat_motion: AnimalMotion
+const GOLDFISH_LIFE = preload("res://scripts/animals/goldfish_life.gd")
+const INSECT_ART = preload("res://scripts/animals/insect_art.gd")
 var _flap_cool := 0.0
 var world_seed := -1
 
@@ -83,8 +86,9 @@ func setup(world: WorldBuilder, p: Node3D) -> void:
 				var bodies:=owner_wall.find_children("*","StaticBody3D",true,false)
 				if not bodies.is_empty():target.body=bodies[0] as CollisionObject3D
 			add_child(target)
-			cats.append({"node": n, "mode": c[3], "yaw": deg_to_rad(c[2]), "t": rng.randf() * 5.0, "head":0.0, "anim":AnimalMotion.new(n,2 if str(c[3])=="sleep" else 1)})
-	# New standing cats roam the open middle of the residential lane.
+			cats.append({"node": n, "mode": c[3], "yaw": deg_to_rad(c[2]), "t": rng.randf() * 5.0, "head":0.0, "anim":AnimalMotion.new(n,2 if str(c[3])=="sleep" else 1),
+				"region": "farm" if n.global_position.x > 200 else "town", "interact": target, "wall_body": target.body})
+	# One cat keeps to the lane shoulder by home; the other lives down South Town.
 	for index: int in range(2):
 		var model_id: String="AN_cat_orange_walk" if index==0 else "AN_cat_calico_walk"
 		if not ResourceLoader.exists("res://assets/models/%s.glb"%model_id):continue
@@ -103,12 +107,25 @@ func setup(world: WorldBuilder, p: Node3D) -> void:
 		collider.shape=shape
 		collider.position.y=.12
 		walker.add_child(collider)
-		var visual: Node3D=wb.spawn(model_id,Vector3(0,.009,0),0,0,walker)
+		# The southern stone lane is rendered 12 mm above its broad ground collider.
+		# Keep the soles on that visible surface without lifting the physics body.
+		var visual: Node3D=wb.spawn(model_id,Vector3(0,.021 if index==0 else .009,0),0,0,walker)
 		HouseBuilder.toonify(visual)
-		var lane_z: float=55.0 if index==0 else 69.0
-		walker.setup(visual,PackedVector3Array([Vector3(19.2,0,lane_z-.6),Vector3(20.4,0,lane_z-.6),Vector3(20.4,0,lane_z+.6),Vector3(19.2,0,lane_z+.6)]),.12)
+		var route: PackedVector3Array = PackedVector3Array([Vector3(20.65,0,14.3),Vector3(21.35,0,14.3),Vector3(21.35,0,17.3),Vector3(20.65,0,17.3)]) if index==0 else PackedVector3Array([Vector3(19.2,0,68.4),Vector3(20.4,0,68.4),Vector3(20.4,0,69.6),Vector3(19.2,0,69.6)])
+		walker.setup(visual,route,.12)
 		walker.attention.set("nearby_target", player)
 		roaming_cats.append(walker)
+	# G08 includes its cushion. A separate upper-body mask keeps that support still.
+	for candidate: Node in wb.house.find_children("*","Node3D",true,false):
+		if candidate.get_meta("model_id","") == "G08_cat":
+			home_cat_motion=AnimalMotion.new(candidate as Node3D,3)
+			break
+	var bowl: Node3D = wb.house.goldfish
+	if bowl != null and bowl.get_node_or_null("GoldfishLife") == null:
+		var fish_life: Node3D = GOLDFISH_LIFE.new() as Node3D
+		fish_life.name = "GoldfishLife"
+		bowl.add_child(fish_life)
+		fish_life.setup(bowl)
 	_sync_animal_seed()
 
 func _entity_rng(kind: String, index: int) -> RandomNumberGenerator:
@@ -223,30 +240,11 @@ func _landing(node: Node3D, at: Vector3) -> Vector3:
 
 func pet_cat(index: int) -> void:
 	if index<0 or index>=cats.size():return
+	if GameState.weather == "rain": return
 	Audio.sfx("cat_meow",-4.0,1.03 if index==0 else .96)
 	GameState.flags["ambient_cat_pets"]=int(GameState.flags.get("ambient_cat_pets",0))+1
 	var cat: Dictionary=cats[index];cat.head=.22
 	(cat.anim as AnimalMotion).phase=0.0
-
-
-func _mat(c: Color) -> StandardMaterial3D:
-	var m := StandardMaterial3D.new()
-	m.albedo_color = c
-	m.cull_mode = BaseMaterial3D.CULL_DISABLED
-	m.roughness = 0.8
-	return m
-
-
-func _wing(size: Vector2, mat: Material, offset: Vector3) -> MeshInstance3D:
-	var mi := MeshInstance3D.new()
-	var q := QuadMesh.new()
-	q.size = size
-	q.center_offset = offset
-	q.orientation = PlaneMesh.FACE_Y
-	mi.mesh = q
-	mi.material_override = mat
-	mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	return mi
 
 
 func _butterfly(region: String, home: Vector3, rng: RandomNumberGenerator) -> Dictionary:
@@ -255,11 +253,11 @@ func _butterfly(region: String, home: Vector3, rng: RandomNumberGenerator) -> Di
 	root.hide()
 	add_child(root)
 	var col: Color = [Color(0.98, 0.97, 0.9), Color(1.0, 0.88, 0.35), Color(0.98, 0.97, 0.9), Color(0.6, 0.75, 1.0)][rng.randi() % 4]
-	var m := _mat(col)
-	var l := _wing(Vector2(0.07, 0.06), m, Vector3(-0.035, 0, 0))
-	var r := _wing(Vector2(0.07, 0.06), m, Vector3(0.035, 0, 0))
+	var l: MeshInstance3D = INSECT_ART.butterfly_wing(-1.0,col)
+	var r: MeshInstance3D = INSECT_ART.butterfly_wing(1.0,col)
 	root.add_child(l)
 	root.add_child(r)
+	INSECT_ART.butterfly_body(root)
 	root.position = home
 	return {"kind": "butterfly", "region": region, "node": root, "l": l, "r": r, "home": home, "target": home,
 		"t": rng.randf() * 10.0, "speed": rng.randf_range(0.6, 0.9), "rate": rng.randf_range(9.0, 12.0), "rng": _entity_rng("flyer", flyers.size())}
@@ -270,21 +268,12 @@ func _dragonfly(region: String, home: Vector3, rng: RandomNumberGenerator) -> Di
 	root.name = "Dragonfly_%d" % flyers.size(); root.set_meta("audit_category", "animal")
 	root.hide()
 	add_child(root)
-	var body := MeshInstance3D.new()
-	var cm := CylinderMesh.new()
-	cm.top_radius = 0.006
-	cm.bottom_radius = 0.01
-	cm.height = 0.1
-	body.mesh = cm
-	body.rotation.x = PI / 2.0
-	body.material_override = _mat(Color(0.85, 0.22, 0.12) if rng.randf() < 0.6 else Color(0.2, 0.45, 0.7))
-	root.add_child(body)
-	var wm := _mat(Color(0.9, 0.95, 1.0, 0.45))
-	wm.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	var body_color: Color = Color(0.85, 0.22, 0.12) if rng.randf() < 0.6 else Color(0.2, 0.45, 0.7)
+	INSECT_ART.dragonfly_body(root,body_color)
 	var wings := []
 	for z in [0.012, -0.004]:
 		for side in [-1.0, 1.0]:
-			var w := _wing(Vector2(0.07, 0.016), wm, Vector3(0.035 * side, 0, 0))
+			var w: MeshInstance3D = INSECT_ART.dragonfly_wing(side)
 			w.position.z = z
 			root.add_child(w)
 			wings.append(w)
@@ -299,6 +288,7 @@ func _active_region() -> String:
 
 func _process(delta: float) -> void:
 	_sync_animal_seed()
+	if home_cat_motion != null: home_cat_motion.update(delta)
 	var G := GameState
 	var reg := _active_region()
 	var h := G.hour()
@@ -338,6 +328,12 @@ func _process(delta: float) -> void:
 			_update_flyer(fl, delta)
 	for c in cats:
 		var n: Node3D = c.node
+		var present: bool = str(c.region) == reg and G.weather != "rain"
+		n.visible = present
+		var target: Interactable = c.interact
+		target.visible = present
+		target.radius = 1.9 if present else 0.0
+		target.body = c.wall_body if present else null
 		c.t += delta
 		var d: Vector3 = pp - n.global_position
 		var want:=0.0
@@ -404,7 +400,9 @@ func _update_flock(f: Dictionary, delta: float, pp: Vector3) -> void:
 				b.vel.y -= 1.2 * delta
 				_move_air(n, n.position + b.vel * delta)
 				n.rotation.y = atan2(b.vel.x, b.vel.z)
-				n.rotation.x = -0.3
+				var horizontal_speed: float = Vector2(b.vel.x, b.vel.z).length()
+				var flight_tilt: float = clampf(1.22 - atan2(b.vel.y, horizontal_speed), .3, 1.4)
+				n.rotation.x = lerpf(n.rotation.x, flight_tilt, 1.0 - exp(-8.0 * delta))
 				n.rotation.z = sin(f.timer * 3.0) * 0.04
 			if f.timer > 2.5:
 				f.state = "gone"

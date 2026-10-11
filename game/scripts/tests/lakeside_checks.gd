@@ -101,14 +101,54 @@ func run() -> void:
 	var east_edge:Dictionary=space.intersect_ray(PhysicsRayQueryParameters3D.create(FarmBuilder.ORIGIN+Vector3(140,1,18),FarmBuilder.ORIGIN+Vector3(125,1,18),WorldBuilder.L_BLOCK))
 	check("lake shore also has player collision",not east_edge.is_empty())
 	var route_blocked:Array=[]
-	for route:PackedVector2Array in LakesideLayout.walk_paths():
-		for i in route.size()-1:
-			var a:Vector2=route[i];var b:Vector2=route[i+1]
-			var from:=FarmBuilder.ORIGIN+Vector3(a.x,LakesideLayout.height_at(a)+.85,a.y)
-			var to:=FarmBuilder.ORIGIN+Vector3(b.x,LakesideLayout.height_at(b)+.85,b.y)
-			var obstacle:Dictionary=space.intersect_ray(PhysicsRayQueryParameters3D.create(from,to,WorldBuilder.L_SOLID|WorldBuilder.L_BLOCK))
-			if not obstacle.is_empty():route_blocked.append([a,b,str(obstacle.collider.get_path())])
-	check("the full lakeside walking loop has clear route segments",route_blocked.is_empty(),str(route_blocked))
+	var avatar_capsule: CapsuleShape3D = null
+	var capsule_offset := Vector3.ZERO
+	for player_shape: Node in main.player.get_children():
+		if player_shape is CollisionShape3D and player_shape.shape is CapsuleShape3D:
+			avatar_capsule = player_shape.shape as CapsuleShape3D
+			capsule_offset = player_shape.position
+			break
+	var scanned_segments: int = 0
+	if avatar_capsule == null:
+		route_blocked.append("missing real player capsule")
+	else:
+		# The old centre ray passed a road only25cm from a20cm shore box:
+		# the real30cm-radius avatar could not walk it. Preserve the capsule's
+		# actual height and add the demo's36cm early-turn arrival tolerance.
+		var walking_capsule: CapsuleShape3D = avatar_capsule.duplicate() as CapsuleShape3D
+		walking_capsule.radius += .36
+		var all_routes: Array[PackedVector2Array] = LakesideLayout.walk_paths().duplicate()
+		var demo_route := PackedVector2Array([Vector2(24, .3)])
+		for demo_index: int in range(6, 67, 3): demo_route.append(all_routes[0][demo_index])
+		all_routes.append(demo_route)
+		for route_index: int in all_routes.size():
+			var route: PackedVector2Array = all_routes[route_index]
+			for segment_index: int in route.size() - 1:
+				var a: Vector2 = route[segment_index]
+				var b: Vector2 = route[segment_index + 1]
+				var from_ray := PhysicsRayQueryParameters3D.create(FarmBuilder.ORIGIN + Vector3(a.x, 10, a.y), FarmBuilder.ORIGIN + Vector3(a.x, -6, a.y), WorldBuilder.L_GROUND)
+				var to_ray := PhysicsRayQueryParameters3D.create(FarmBuilder.ORIGIN + Vector3(b.x, 10, b.y), FarmBuilder.ORIGIN + Vector3(b.x, -6, b.y), WorldBuilder.L_GROUND)
+				var from_floor: Dictionary = space.intersect_ray(from_ray)
+				var to_floor: Dictionary = space.intersect_ray(to_ray)
+				scanned_segments += 1
+				if from_floor.is_empty() or to_floor.is_empty():
+					route_blocked.append([route_index, segment_index, "missing physical support", a, b])
+					continue
+				var query := PhysicsShapeQueryParameters3D.new()
+				query.shape = walking_capsule
+				query.margin = .001
+				# Ground is measured above, not treated as a lateral wall. Moving
+				# neighbours are checked in CROWD; these are static route keep-outs.
+				query.collision_mask = main.player.collision_mask & ~(WorldBuilder.L_GROUND | WorldBuilder.L_ACTORS)
+				query.exclude = [main.player.get_rid()]
+				query.transform = Transform3D(Basis.IDENTITY, (from_floor.position as Vector3) + capsule_offset + Vector3.UP * .003)
+				query.motion = (to_floor.position as Vector3) - (from_floor.position as Vector3)
+				var overlaps: Array[Dictionary] = space.intersect_shape(query, 4)
+				var fraction: PackedFloat32Array = space.cast_motion(query)
+				if not overlaps.is_empty() or fraction.size() != 2 or fraction[0] < .9999:
+					var blocker: String = str(overlaps[0].collider.get_path()) if not overlaps.is_empty() else "capsule sweep collision"
+					route_blocked.append([route_index, segment_index, a, b, blocker, fraction])
+	check("the full lakeside walking loop has clear route segments",route_blocked.is_empty(),"capsule swept %d dense/demo segments: %s" % [scanned_segments, str(route_blocked)])
 	main.player.global_position=FarmBuilder.ORIGIN+Vector3(94,.15,46.8);main.player.velocity=Vector3.ZERO
 	main.player.auto_move=Vector3(0,0,-1);main.player.auto_run=true
 	for i in 250:

@@ -24,14 +24,34 @@ func _init(model: Node3D, animal_kind: int) -> void:
 	if kind==0:
 		for side in [-1.0,1.0]:
 			var pivot:=Node3D.new();pivot.name="WingPivot_%d"%wings.size();pivot.position=Vector3(side*.029,.067,0);model.add_child(pivot)
-			var feather_material:=StandardMaterial3D.new();feather_material.albedo_color=Color(.33,.25,.19);feather_material.roughness=1
+			var feather_material:=StandardMaterial3D.new();feather_material.albedo_color=Color.WHITE;feather_material.vertex_color_use_as_albedo=true;feather_material.roughness=1
+			feather_material.diffuse_mode=BaseMaterial3D.DIFFUSE_TOON;feather_material.specular_mode=BaseMaterial3D.SPECULAR_DISABLED
 			feather_material.cull_mode=BaseMaterial3D.CULL_DISABLED
 			var builder:=SurfaceTool.new();builder.begin(Mesh.PRIMITIVE_TRIANGLES)
-			for feather in 4:
-				var z:=float(feather)*.018-.025
-				var reach:=.115+float(3-feather)*.016
-				var points: Array[Vector3]=[Vector3.ZERO,Vector3(side*reach,0,z-.015),Vector3(side*(reach+.016),.006,z),Vector3(side*reach,0,z+.013)]
-				for vertex: int in [0,1,2,0,2,3]:builder.add_vertex(points[vertex])
+			# A curved leading edge and short overlapping feathers form one wing.
+			# Tessellating its chord avoids the old four giant triangular blades.
+			for span: int in range(8):
+				for chord: int in range(3):
+					var points: Array[Vector3] = []
+					for pair: Vector2 in [Vector2(span,chord),Vector2(span+1,chord),Vector2(span+1,chord+1),Vector2(span,chord+1)]:
+						var across: float = pair.x / 8.0
+						var fraction: float = pair.y / 3.0
+						var front: float = .026*(1.0-across)-.028*across*across
+						var width: float = .035+.025*sin(across*PI)
+						points.append(Vector3(side*.115*across, sin(across*PI)*.004, front-width*fraction))
+					builder.set_color(Color(.37,.26,.17) if chord==0 else Color(.48,.35,.23))
+					for vertex: int in [0,1,2,0,2,3]:builder.add_vertex(points[vertex])
+			for feather: int in range(5):
+				var start_x: float = .032+float(feather)*.016
+				var start_z: float = -.011-float(feather)*.008
+				for section: int in range(6):
+					var outline: Array[Vector3] = []
+					for feather_pair: Vector2 in [Vector2(section,-1),Vector2(section+1,-1),Vector2(section+1,1),Vector2(section,1)]:
+						var feather_fraction: float = feather_pair.x / 6.0
+						var half_width: float = sin(feather_fraction*PI)*.007
+						outline.append(Vector3(side*(start_x+feather_fraction*.010+feather_pair.y*half_width),-.001,start_z-feather_fraction*.034))
+					builder.set_color(Color(.63,.47,.31) if feather%2==0 else Color(.45,.31,.20))
+					for vertex: int in [0,1,2,0,2,3]:builder.add_vertex(outline[vertex])
 			builder.generate_normals();var wing:=MeshInstance3D.new();wing.name="Feathers";wing.mesh=builder.commit();wing.material_override=feather_material;pivot.add_child(wing)
 			pivot.visible=false;wings.append(pivot)
 

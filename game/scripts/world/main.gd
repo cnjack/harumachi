@@ -161,6 +161,9 @@ func _ready() -> void:
 	_restore()
 	_start_audio()
 	for a in OS.get_cmdline_user_args():
+		if a == "--qa-characters": add_child(load("res://scripts/tools/character_visual_qa.gd").new())
+		if a.begins_with("--qa-animals="): add_child(load("res://scripts/tools/animal_visual_audit.gd").new())
+		if a.begins_with("--qa-festival="): add_child(load("res://scripts/tools/festival_visual_qa.gd").new())
 		if a=="--resident-morning-demo":add_child(load("res://scripts/tools/resident_morning_demo.gd").new())
 		if a=="--bakery-reach-probe":add_child(load("res://scripts/tools/bakery_reach_probe.gd").new())
 		if a=="--meal-routes-demo":add_child(load("res://scripts/tools/meal_route_demo.gd").new())
@@ -342,12 +345,13 @@ func bon_odori_scene() -> void:
 		var a := TAU * i / 7.0
 		var n: NPC = npcs[ids[i]]
 		n.fest_key = "natsumatsuri:dance"
+		n.set_home(false)
 		n.place(c + Vector3(cos(a), 0, sin(a)) * 3.6, rad_to_deg(a + PI / 2.0))
 		n.set_pose("dance")
 	player.global_position = c + Vector3(cos(TAU * 6.0 / 7.0), 0, sin(TAU * 6.0 / 7.0)) * 3.6 + Vector3(0, 0.1, 0)
 	player.set_facing(TAU * 6.0 / 7.0 + PI / 2.0)
 	if player.anim and player.anim.valid():
-		player.anim.set_idle("dance")
+		player.anim.set_idle("dance", true)
 	rig.yaw = 200.0
 	rig.pitch = 30.0
 	rig.dist = 10.0
@@ -422,6 +426,10 @@ func update_npcs(force: bool) -> void:
 	var fest_on: bool = fid != "" and G.hour() >= float(f.get("start", 0)) - 0.5 and G.hour() < float(f.get("end", 0))
 	for id in npcs:
 		var n: NPC = npcs[id]
+		# Everyone in the active ring stays on stage, including residents whose
+		# regular evening schedule or festival stall list sends them home.
+		if dancing and n.fest_key == "natsumatsuri:dance":
+			continue
 		# Main owns indoor keeper placement. Festival and outdoor schedules must wait until exit.
 		var keeper_id: String = {"bakery": "ren", "store": "kazuko"}.get(room_kind, "")
 		if in_room and id == keeper_id:
@@ -528,7 +536,7 @@ func sleep_now(_late: bool = false) -> bool:
 	_put_in_room(HouseBuilder.ORIGIN + Vector3(-4.6, 0.05, -0.6))
 	Audio.set_indoor(true)
 	var written: bool = GameState.advance_day()
-	weather_fx.set_weather(GameState.weather, in_room)
+	_sync_weather()
 	Audio.play_music(music_for_now(), 2.0)
 	return written
 
@@ -543,8 +551,10 @@ func go_farm() -> void:
 	await ui.fade_out(0.45)
 	world.set_region("farm")
 	GameState.player_region = "farm"
+	_sync_location_props()
 	player.global_position = FarmBuilder.ORIGIN + FarmBuilder.ENTRY
 	player.velocity = Vector3.ZERO
+	_sync_weather()
 	sync_festival_state()
 	player.set_facing(deg_to_rad(90.0))
 	rig.yaw = -90.0
@@ -567,9 +577,11 @@ func leave_farm() -> void:
 	await ui.fade_out(0.45)
 	world.set_region("town")
 	GameState.player_region = "town"
+	_sync_location_props()
 	# just inside the lantern gate at the east end, walking back up into the street
 	player.global_position = WorldBuilder.EXIT_GATE + Vector3(-2.4, 0.1, 0.0)
 	player.velocity = Vector3.ZERO
+	_sync_weather()
 	sync_festival_state()
 	player.set_facing(deg_to_rad(-90.0))
 	rig.yaw = 90.0
@@ -642,7 +654,29 @@ func _restore() -> void:
 		if not G.flags.has("arrival_home"):
 			G.toast.emit("欢迎来到晴町。先去支巷里的新家看看信箱吧")
 	if life != null: life._sync_animal_seed(true)
+	_sync_location_props()
+	_sync_weather()
 	rig.snap()
+
+
+func _sync_weather() -> void:
+	if not is_instance_valid(weather_fx) or not is_instance_valid(player): return
+	var roofed: bool = in_room
+	var exposed := Rect2()
+	if in_room and room_kind == "house":
+		var room: Dictionary = HouseBuilder.room_at(player.global_position - HouseBuilder.ORIGIN)
+		if bool(room.get("outdoor", false)):
+			var bounds: Array = room.rect
+			roofed = false
+			exposed = Rect2(Vector2(HouseBuilder.ORIGIN.x + float(bounds[0]), HouseBuilder.ORIGIN.z + float(bounds[1])), Vector2(float(bounds[2]) - float(bounds[0]), float(bounds[3]) - float(bounds[1])))
+	weather_fx.set_weather(GameState.weather, roofed, exposed)
+
+
+func _sync_location_props() -> void:
+	# Entering/leaving a region or room need not emit a minute/state change.
+	# Restore this real table, tea and collisions before the next interaction.
+	if is_instance_valid(story) and is_instance_valid(story.neighbours) and is_instance_valid(story.neighbours.view):
+		story.neighbours.view.sync_state()
 
 
 func _sync_props() -> void:
@@ -713,7 +747,9 @@ func _put_in_room(at: Vector3 = HouseBuilder.spawn_point()) -> void:
 		GameState.player_in_room = true
 		player.global_position = at
 		player.velocity = Vector3.ZERO
-		world.set_indoor_look(true)
+		world.set_indoor_look(true, saved_kind)
+		_sync_location_props()
+		_sync_weather()
 		rig.fixed = true
 		rig.collide = false
 		rig.yaw = 0.0
@@ -733,6 +769,8 @@ func _put_in_room(at: Vector3 = HouseBuilder.spawn_point()) -> void:
 	player.velocity = Vector3.ZERO
 	player.set_facing(PI)
 	world.set_indoor_look(true)
+	_sync_location_props()
+	_sync_weather()
 	world.house.update_cutaway(str(HouseBuilder.room_at(at - HouseBuilder.ORIGIN).get("id", "genkan")), false)
 	rig.fixed = true
 	rig.collide = false
@@ -764,6 +802,8 @@ func enter_interior(k: String) -> void:
 	player.velocity = Vector3.ZERO
 	player.set_facing(PI)
 	world.set_indoor_look(true,k)
+	_sync_location_props()
+	_sync_weather()
 	rig.fixed = true
 	rig.collide = false
 	rig.yaw = 0.0
@@ -804,9 +844,11 @@ func exit_interior() -> void:
 	room_kind = ""
 	GameState.player_in_room = false
 	world.set_indoor_look(false)
+	_sync_location_props()
 	rig.collide = true
 	player.global_position = sp.exit
 	player.velocity = Vector3.ZERO
+	_sync_weather()
 	player.set_facing(0.0)
 	rig.fixed = false
 	rig.yaw = 0.0
@@ -857,10 +899,12 @@ func exit_room() -> void:
 	room_kind = ""
 	GameState.player_in_room = false
 	world.set_indoor_look(false)
+	_sync_location_props()
 	rig.collide = true
 	ui.refresh_hud()
 	player.global_position = Layout.HOME_EXIT
 	player.velocity = Vector3.ZERO
+	_sync_weather()
 	player.set_facing(-PI / 2.0)
 	rig.fixed = false
 	rig.yaw = 90.0
@@ -917,7 +961,7 @@ func _process(delta: float) -> void:
 		_amb_check = 1.0
 		if not in_room and not _transition:
 			Audio.play_amb(outdoor_amb(), 3.0)
-		weather_fx.set_weather(GameState.weather, in_room)
+		_sync_weather()
 		_music_tick()
 		if not story.busy:
 			story.lore.checks()
@@ -946,7 +990,9 @@ func _physics_process(delta: float) -> void:
 		var l := player.global_position - HouseBuilder.ORIGIN
 		var previous_house_room: String = world.house.current_room
 		world.house.track_player(player.global_position)
-		if previous_house_room != world.house.current_room: ui.refresh_hud()
+		if previous_house_room != world.house.current_room:
+			ui.refresh_hud()
+			_sync_weather()
 		if l.z > HouseBuilder.EXIT_Z and l.x > HouseBuilder.DOOR_X[0] - 0.3 and l.x < HouseBuilder.DOOR_X[1] + 0.3:
 			exit_room()
 	# v0.6: walking out through a shop's door goes back to the street, like the house's front door
@@ -981,6 +1027,7 @@ func _fall_rescue() -> void:
 	print("RESCUE fell at %s -> %s" % [p, to])
 	player.global_position = to + Vector3(0, 0.1, 0)
 	player.velocity = Vector3.ZERO
+	_sync_weather()
 	_safe_t = 0.0
 
 

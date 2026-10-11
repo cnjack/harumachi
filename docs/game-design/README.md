@@ -1,6 +1,8 @@
 # 明年夏祭 · 设计与开发文档
 
-社区中心改为共用桌、阅读角、茶水和集中活动收纳；商店按类别成组陈列并集中冷藏奶蛋；精品面包房加入两组座位、咖啡后吧和四类独立甜点。阅读、喝茶、坐下休息、购买饮品与桌边享用均已接入。1421项独占全量、解压包200项完整夏季演示退出0，32个原生场景视角与两张商店UI截图已验，默认存档未变。见[公共空间格局](INHABITED_PLACES_REDESIGN_20261010.md)和[imagegen经验](IMAGEGEN_SCENE_WORKFLOW.md)。Web继续使用原已验快照。
+三组 agent 完成全场景、多机位、天气、时间、活动和人物动物检查，最终 3021 张原生截图已逐图复核。修复七人鞋尖穿地、坐姿脚底、小葵掌心、和子围裙在走跑与舞蹈中被黑裤顶穿、湖岸路面支撑、曲线缺面和东岸隐形阻挡、西南远景空洞、上部树干相机穿入、盆踊被问候抢动作、钓鱼持竿骨骼兼容、阴雨室内光照、近镜头硬雨条及露天小院雨效缺失，试吃台和三组餐具支撑、出屋后邻里餐桌恢复，公共室内串景、室内拍照跳位和花园远景画片在自由镜头露边，以及猫的可见活动、家中金鱼和鸟虫形态。1498项独占全量与解压包200项完整夏季演示退出0，默认存档与照片未变；截图、完整测试和导出来自逐文件核对的冻结工程。见[全面视觉检查](VISUAL_AUDIT_20261011.md)和`evidence/comprehensive_visual_qa_20261011/delivery.json`。Web仍为原已验快照。
+
+此前，社区中心改为共用桌、阅读角、茶水和集中活动收纳；商店按类别成组陈列并集中冷藏奶蛋；精品面包房加入两组座位、咖啡后吧和四类独立甜点。阅读、喝茶、坐下休息、购买饮品与桌边享用均已接入。1421项独占全量、解压包200项完整夏季演示退出0，32个原生场景视角与两张商店UI截图已验，默认存档未变。见[公共空间格局](INHABITED_PLACES_REDESIGN_20261010.md)和[imagegen经验](IMAGEGEN_SCENE_WORKFLOW.md)。Web继续使用原已验快照。
 
 新增[电视曲面、雪花与货架陈列修复](SHOP_DISPLAY_FIX_20261009.md)：按真实玻璃贴合节目画面，加入动态雪花与換台干扰；独立商品分层摆放、烘焙品种和疏密变化。源工程修复，当前包仍以CURRENT_STATUS交付记录为准。
 
@@ -21,9 +23,9 @@
 ## 工程与交付
 
 - 游戏：`game/`；素材、原稿与工具：`art/`；测试、截图与录像：`evidence/`。
-- 最新已验收桌面包：`builds/HareMachi.zip`，Apple Silicon/Intel通用；2026-10-08已包含起床后室内卡顿修复，解压包完整夏季验收通过后原子替换。
+- 最新已验收桌面包：`builds/HareMachi.zip`，Apple Silicon/Intel通用；2026-10-11全场景与动作检查后导出，解压包200项完整夏季验收通过后原子替换。
 - `builds/`最多保留桌面ZIP和一个Web目录，不再保留日期包、备份包、解压应用或冻结工程。
-- 当前1359项独占全量0失败，解压包200项完整夏季演示通过，结果见`evidence/scene_quality_delivery_20261008/delivery.json`。4.8迁移阶段的1329项记录保留在`evidence/godot48_docs_20261007/delivery.json`；迁移前4.7.2的1329项基线见`evidence/first_meal_route_20261007/delivery.json`。
+- 2026-10-08历史验收为1359项独占全量0失败，解压包200项完整夏季演示通过，结果见`evidence/scene_quality_delivery_20261008/delivery.json`。4.8迁移阶段的1329项记录保留在`evidence/godot48_docs_20261007/delivery.json`；迁移前4.7.2的1329项基线见`evidence/first_meal_route_20261007/delivery.json`。
 - 游戏包含15种作物、32条配方、6种鱼、6项节日；`game/assets/models/`有192个GLB文件，配音登记417条。数量来自当前文件/数据，不代表自然时长。
 
 ## 文档入口
@@ -71,4 +73,4 @@ HARUMACHI_SAVE_DIR=/tmp/harumachi-check ./tools/godot --headless --path game res
 
 场景材质、牌面字体、室内用途和空间音效的当前修订见[场景质感记录](SCENE_QUALITY_20261008.md)。
 
-当前桌面应用图标为B“晴空风铃”，最新包验收见`evidence/app_icon_windchime_20261009/delivery.json`；[图标替换记录](APP_ICON_WINDCHIME_20261009.md)。
+当前桌面应用图标为B“晴空风铃”，图标当轮验收见`evidence/app_icon_windchime_20261009/delivery.json`；[图标替换记录](APP_ICON_WINDCHIME_20261009.md)。

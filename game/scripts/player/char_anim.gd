@@ -6,6 +6,9 @@ extends RefCounted
 ## Callers keep their procedural bob when the model has no AnimationPlayer (valid() == false).
 
 const BLEND := 0.22
+const HAND_TONE = preload("res://scripts/characters/character_hand_tone.gd")
+const FOOT_SUPPORT = preload("res://scripts/characters/character_foot_support.gd")
+const APRON_SUPPORT = preload("res://scripts/characters/character_apron_support.gd")
 
 ## Emitted at each heel strike of the walk / run clips (clip phases 0 and 0.5), for footsteps.
 signal stepped
@@ -25,6 +28,7 @@ func _init(model: Node) -> void:
 	if model == null:
 		return
 	_filter_materials(model)
+	HAND_TONE.apply(model)
 	ap = model.find_child("AnimationPlayer", true, false) as AnimationPlayer
 	if ap == null or not ap.has_animation("walk") or not ap.has_animation("idle"):
 		ap = null
@@ -41,6 +45,8 @@ func _init(model: Node) -> void:
 		if ap.has_animation(n):
 			ap.get_animation(n).loop_mode = Animation.LOOP_NONE
 	clothing = CharacterClothing.attach(model)
+	FOOT_SUPPORT.attach(model as Node3D, ap)
+	APRON_SUPPORT.attach(model as Node3D, ap)
 	_go("idle", 1.0)
 	# desynchronise characters that share the same clips
 	ap.seek(randf() * ap.get_animation("idle").length, true)
@@ -87,8 +93,11 @@ func busy() -> bool:
 	return _oneshot != ""
 
 
-func set_idle(clip: String) -> void:
+func set_idle(clip: String, interrupt: bool = false) -> void:
 	idle_clip = clip if has(clip) else "idle"
+	if interrupt and ap != null:
+		_oneshot = ""
+		_go(idle_clip, 1.0)
 
 
 func update(speed: float) -> void:

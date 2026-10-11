@@ -122,6 +122,9 @@ func run(story: Story, who: String, presentation: String) -> Dictionary:
 		camera=Camera3D.new();add_child(camera);camera.fov=48;camera.make_current()
 	s.ui.dlg.hide();stage="walk"
 	var reached: bool=await reach_surface()
+	# Physics-frame continuations can resume before the process monitor notices
+	# a vanished/hidden actor. Record cancellation before cleanup disables it.
+	if not present(): aborted=true
 	if not reached or aborted or not surface_valid() or not patch_clear(support,surface):
 		cleanup();return {"error":"这次先停在这里，小份还在。等桌边空下来再尝。"}
 	actor.face(s.player.global_position);s.player.face_towards(actor.global_position)
@@ -195,7 +198,9 @@ func reach_surface() -> bool:
 				await s.get_tree().physics_frame
 				seconds+=s.get_physics_process_delta_time()
 				if is_instance_valid(actor):npc_trace.append(actor.global_position)
-			if not is_instance_valid(actor):return false
+			if not is_instance_valid(actor):
+				aborted=true
+				return false
 			if actor._moving:actor.cancel_safe_walk()
 			if aborted:return false
 			if not actor.walk_succeeded:continue

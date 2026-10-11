@@ -230,7 +230,7 @@ func face(p: Vector3) -> void:
 func set_pose(clip: String) -> void:
 	_end_idle = clip
 	if not _moving and anim.valid():
-		anim.set_idle(clip)
+		anim.set_idle(clip, clip == "dance")
 
 
 func set_home(on: bool) -> void:
@@ -422,13 +422,17 @@ func face_yaw(t: float) -> void:
 func _idle_life(delta: float) -> void:
 	if _moving or talking or home or anim.busy():
 		return
+	# The dance is a group performance; a first daily greeting must wait until
+	# the resident leaves the ring instead of replacing the dance with a wave.
+	if fest_key.ends_with(":dance"):
+		return
 	if player and _greeted_day != GameState.day and global_position.distance_to(player.global_position) < 4.5:
 		_greeted_day = GameState.day
 		face(player.global_position)
 		anim.play_once("bow" if npc_id in ["haru", "tanaka", "kazuko"] else ("cheer" if npc_id == "aoi" else "wave"))
 		_idle_t = randf_range(6.0, 10.0)
 		return
-	if anim.idle_clip != "idle" or fest_key.ends_with(":dance"):
+	if anim.idle_clip != "idle":
 		return
 	_idle_t -= delta
 	if _idle_t <= 0.0:

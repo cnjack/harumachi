@@ -29,6 +29,14 @@ void vertex() {
 	}
 	// Only the torso expands. Paw and wall contact vertices remain in place.
 	float chest=smoothstep(h*.16,h*.36,local_position.y)*(1.0-smoothstep(h*.62,h*.80,local_position.y));
+	if(animal_kind==3){
+		// The sleeping house cat is baked together with a blue cushion. Its
+		// lower 40% stays fixed; only the chest/back above it quietly breathe.
+		chest=smoothstep(h*.40,h*.58,local_position.y)*(1.0-smoothstep(h*.82,h*.98,local_position.y));
+		float ear=smoothstep(h*.82,h*.93,local_position.y)*(1.0-smoothstep(-.08,.02,local_position.x));
+		float twitch=pow(max(0.0,sin(phase*.41)),24.0)*sin(phase*14.0);
+		VERTEX.x+=twitch*ear*h*.009;
+	}
 	float breath=sin(phase*(1.5+float(animal_kind)*.2));
 	VERTEX.y+=chest*h*.012*breath;
 	VERTEX.x+=local_position.x*chest*.008*breath;
