@@ -1,0 +1,9 @@
+Use case: stylized-concept
+Asset type: seamless tileable albedo texture for a maintained Japanese small-town courtyard wall in a clean anime game.
+Primary request: make a flat square warm ivory-white lime plaster surface, very fine hand-painted plaster grain and restrained soft trowel variation. It is an old but well-maintained surface, calm, bright and clean.
+Style/medium: delicate hand-painted animation background material; simple restrained painterly colour, no photorealistic photograph texture, no gritty noise.
+Composition/framing: perfectly orthographic front view of only the surface, full bleed, flat square texture. Opposite edges must tile seamlessly. Homogeneous density and colour, no border and no central subject.
+Lighting/mood: pure neutral unlit albedo, absolutely no directional light, cast shadow, vignette or baked shading.
+Colour palette: pale warm ivory-white with very subtle warm grey mineral flecks, narrow low-contrast range.
+Constraints: the game shader adds local damp patches, moss, splash and dust near the actual wall base; DO NOT bake these into this texture. No horizontal colour band, damp stripe, moss, green staining, black mould, large cracks, chips, exposed bricks, stones or wall cap. No text, letters, frame, watermark or perspective.
+Background: fully opaque.

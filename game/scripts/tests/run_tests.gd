@@ -30,7 +30,23 @@ func _ready() -> void:
 	main.ui.instant = true
 	main.ui.auto_work_priority = true # this suite follows its declared work route; the topic-choice suite overrides it
 	await frames(10)
-	if OS.get_cmdline_user_args().has("--only=character-visual"):
+	if OS.get_cmdline_user_args().has("--only=material-detail"):
+		await load("res://scripts/tests/material_refinement_checks.gd").new(self).run()
+		await load("res://scripts/tests/material_water_checks.gd").new(self).run()
+		await load("res://scripts/tests/stall_oven_material_checks.gd").new(self).run()
+		await load("res://scripts/tests/stall_rain_shelter_checks.gd").new(self).run()
+		await load("res://scripts/tests/shader_matrix_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=material-refinement"):
+		await load("res://scripts/tests/material_refinement_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=material-water"):
+		await load("res://scripts/tests/material_water_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=stall-oven-material"):
+		await load("res://scripts/tests/stall_oven_material_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=stall-rain-shelter"):
+		await load("res://scripts/tests/stall_rain_shelter_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=shader-matrices"):
+		await load("res://scripts/tests/shader_matrix_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=character-visual"):
 		await load("res://scripts/tests/character_visual_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=apron-clearance"):
 		await load("res://scripts/tests/character_visual_checks.gd").new(self).run_apron_only()
@@ -158,6 +174,11 @@ func _ready() -> void:
 	elif OS.get_cmdline_user_args().has("--only=daily-save"):
 		await load("res://scripts/tests/daily_save_checks.gd").new(self).run()
 	else:
+		await load("res://scripts/tests/shader_matrix_checks.gd").new(self).run()
+		await load("res://scripts/tests/material_refinement_checks.gd").new(self).run()
+		await load("res://scripts/tests/material_water_checks.gd").new(self).run()
+		await load("res://scripts/tests/stall_oven_material_checks.gd").new(self).run()
+		await load("res://scripts/tests/stall_rain_shelter_checks.gd").new(self).run()
 		await run_all()
 		await load("res://scripts/tests/lakeside_checks.gd").new(self).run()
 		await load("res://scripts/tests/homage_checks.gd").new(self).run()

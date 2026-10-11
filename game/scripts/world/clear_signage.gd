@@ -51,6 +51,42 @@ static func arrow(parent: Node3D,name_value: String,at: Vector3,left: bool,colou
 		for point: Vector3 in [front_a,back_a,back_b,front_a,back_b,front_b]:
 			surface.set_normal(normal);surface.set_uv(Vector2(point.x+.62,point.y+.11));surface.add_vertex(point)
 	var node:=MeshInstance3D.new();node.name="ArrowBoard";node.mesh=surface.commit();root.add_child(node)
-	var finish:=ShaderMaterial.new();finish.shader=SurfaceFinish.SHADER;finish.set_shader_parameter("wood_tex",SurfaceFinish.GRAIN)
-	finish.set_shader_parameter("part_transform",Transform3D.IDENTITY);finish.set_shader_parameter("base_color",colour);finish.set_shader_parameter("grain_strength",.6)
-	node.material_override=finish;return root
+	node.material_override=SurfaceFinish.timber(node.mesh.get_aabb(),colour,0,true,.30)
+	pins(root,Vector2(1.16,.22),.017)
+	return root
+
+static func fit(ink: Label3D,extent: Vector2,margin: float=.035) -> void:
+	# Physical glyph dimensions, including actual line spacing, must fit the supporting board.
+	var font: Font=ink.font
+	if font==null:return
+	var width:=0.0
+	var lines: PackedStringArray=ink.text.split("\n")
+	for line: String in lines:width=maxf(width,font.get_string_size(line,HORIZONTAL_ALIGNMENT_LEFT,-1,ink.font_size).x)
+	var height: float=font.get_height(ink.font_size)*lines.size()+maxi(0,lines.size()-1)*ink.line_spacing
+	var available: Vector2=(extent-Vector2.ONE*margin*2.).max(Vector2(.01,.01))
+	ink.pixel_size=minf(ink.pixel_size,minf(available.x/maxf(width,1.),available.y/maxf(height,1.)))
+	ink.set_meta("support_extent",extent)
+	ink.set_meta("physical_ink_size",Vector2(width,height)*ink.pixel_size)
+
+static func pins(parent: Node3D,extent: Vector2,depth: float=.013) -> void:
+	for side: int in 2:
+		for index: int in 2:
+			var pin:=MeshInstance3D.new();pin.name="Fixing_%d_%d"%[side,index]
+			var head:=CylinderMesh.new();head.top_radius=.007;head.bottom_radius=.007;head.height=.003;head.radial_segments=8
+			pin.mesh=head;pin.material_override=JapaneseArchitecture._flat(Color(.30,.32,.29))
+			pin.rotation.x=PI*.5;pin.position=Vector3((-.5 if index==0 else .5)*(extent.x-.10),0,(-depth if side==0 else depth))
+			parent.add_child(pin)
+
+static func signpost_text(root: Node3D,captions: Array[String]) -> void:
+	# P_signpost's measured arrow boards: 5--95 cm rectangular area, 20 cm pointed tip.
+	for index: int in mini(3,captions.size()):
+		var yaw: float=[0.,PI,deg_to_rad(25.)][index]
+		var normal:=Vector3(sin(yaw),0,cos(yaw))
+		var axis:=Vector3(cos(yaw),0,-sin(yaw))
+		var centre: Vector3=axis*.50+Vector3(0,2.-index*.4,0)
+		for side: float in [1.,-1.]:
+			# Source boards extrude toward local -Z; front is the original face at z=0.
+			var ink:=label(captions[index],centre+normal*(.007 if side>0 else -.057),yaw+(PI if side<0 else 0.),.115,Color(.24,.19,.12))
+			ink.name="SupportedDirection_%d_%d"%[index,int(side)]
+			fit(ink,Vector2(.83,.28),.025);root.add_child(ink)
+		root.set_meta("supported_direction_count",mini(3,captions.size()))

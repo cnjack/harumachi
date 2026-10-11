@@ -2772,6 +2772,18 @@
       "usage": "game asset reference/texture"
     },
     {
+      "file": "art/references/app_icon/options_20261009/B-sky-windchime-fullbleed.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/app_icon/windchime-fullbleed_20261009.txt",
+      "references": [
+        "game/icon.png (prior transparent windchime icon)"
+      ],
+      "date": "2026-10-09",
+      "sha256": "17ac73b83c0658a904da45103bed4e7ce566f1065d9c2472fcac71a24aab480c",
+      "usage": "full-bleed opaque application icon for native macOS icon catalog"
+    },
+    {
       "file": "art/references/plaza_paintover_20261009/plaza_full_tree_reference.png",
       "exists": true,
       "tool": "built-in image_gen.imagegen",
@@ -3085,6 +3097,90 @@
       "date": "2026-10-10",
       "transparent_background": true,
       "sha256": "315a3be60e59d65af0c050b7eb931ee5d2cba8683a707bf2bc7f9e958b77f695"
+    },
+    {
+      "file": "game/assets/textures/material_refine_20261011/canvas_blue_ivory.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/material_refine_stall_oven_20261011.json",
+      "sha256": "50dd75e7485d023eb94e3b8a38e3acadbc13cfabbbae58e972df159bb0220387",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "bitmap_postprocessing": false,
+      "task": "material_refine_20261011",
+      "manifest": "art/manifests/models_material_refine_20261011.json"
+    },
+    {
+      "file": "game/assets/textures/material_refine_20261011/cedar_weathered.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/material_refine_stall_oven_20261011.json",
+      "sha256": "e2377ff3939b76c2de84abd70112795d4f97f113f94920fc53657ca50da19cfb",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "bitmap_postprocessing": false,
+      "task": "material_refine_20261011",
+      "manifest": "art/manifests/models_material_refine_20261011.json"
+    },
+    {
+      "file": "game/assets/textures/material_refine_20261011/enamel_metal.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/material_refine_stall_oven_20261011.json",
+      "sha256": "487d32518b4404db94ce7765e5e45f32c491c4d16cd1456c34620cdecc6fcac2",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "bitmap_postprocessing": false,
+      "task": "material_refine_20261011",
+      "manifest": "art/manifests/models_material_refine_20261011.json"
+    },
+    {
+      "file": "game/assets/textures/material_refine_20261011/street_stone.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/material_refine_20261011/street_stone.txt",
+      "sha256": "d7de53f37c52b4d8f39458d13f43a1e1a33c9d33d6961a0413043182ec2adfb9",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "bitmap_postprocessing": false,
+      "task": "material_refine_20261011",
+      "manifest": "art/manifests/images_material_refine_environment_20261011.json"
+    },
+    {
+      "file": "game/assets/textures/material_refine_20261011/plaster_aged.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/material_refine_20261011/plaster_aged.txt",
+      "sha256": "2d00057b162848fdcbb383021bcdb0b03144b4d2081c253cec2c8639c4e0be15",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "bitmap_postprocessing": false,
+      "task": "material_refine_20261011",
+      "manifest": "art/manifests/images_material_refine_environment_20261011.json"
+    },
+    {
+      "file": "game/assets/textures/material_refine_20261011/creek_stone.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/material_refine_creek_stone_20261011.txt",
+      "sha256": "bb1376d0105933b2d31bbe27bc41278ac465723b88466af5c415d0c09b7a5e02",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "bitmap_postprocessing": false,
+      "task": "material_refine_20261011",
+      "manifest": "art/manifests/images_material_refine_creek_stone_20261011.json"
     }
   ]
 }

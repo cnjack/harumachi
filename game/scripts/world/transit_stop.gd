@@ -55,26 +55,29 @@ static func _replace_small_signs(world: WorldBuilder) -> void:
 	if directions:
 		for mesh: MeshInstance3D in WorldBuilder.find_meshes(directions):
 			var old: StandardMaterial3D=mesh.get_active_material(0) as StandardMaterial3D
-			var finish:=ShaderMaterial.new();finish.shader=load("res://shaders/direction_support.gdshader")
+			var finish:=ShaderMaterial.new();finish.shader=load("res://shaders/sign_support_refined.gdshader")
 			finish.set_shader_parameter("albedo_tex",old.albedo_texture)
-			finish.set_shader_parameter("part_transform",directions.global_transform.affine_inverse()*mesh.global_transform);mesh.material_override=finish
+			finish.set_shader_parameter("wood_tex",SurfaceFinish.refined_grain())
+			finish.set_shader_parameter("part_transform",Projection(directions.global_transform.affine_inverse()*mesh.global_transform));mesh.material_override=finish
 		for index in 3:
 			# The post faces west: local -X points north to the main street;
 			# local +X points south into the residential lane.
 			var arrow:=ClearSignage.arrow(directions,"ClearDirection_%d"%index,Vector3(.10,2.15-.34*index,-.016),index!=1,[Color(.60,.48,.28),Color(.34,.48,.37),Color(.62,.36,.23)][index])
 			var caption: String=["商店街","住宅支巷","农园 · 沿主街向东"][index]
 			var em: float=.125 if index<2 else .075
-			arrow.add_child(ClearSignage.label(caption,Vector3(0,0,.017),0,em,Color(.99,.98,.88)))
+			var front: Label3D=ClearSignage.label(caption,Vector3(0,0,.019),0,em,Color(.99,.98,.88))
+			ClearSignage.fit(front,Vector2(1.02,.20),.015);arrow.add_child(front)
 			# Back lettering is placed beside the measured upright, not behind it.
 			var back_caption: String=caption if index<2 else "农园\n沿主街向东"
-			arrow.add_child(ClearSignage.label(back_caption,Vector3(.235,0,-.017),PI,em if index<2 else .068,Color(.99,.98,.88)))
+			var back_ink: Label3D=ClearSignage.label(back_caption,Vector3(.235,0,-.019),PI,em if index<2 else .068,Color(.99,.98,.88))
+			ClearSignage.fit(back_ink,Vector2(.68,.20),.015);arrow.add_child(back_ink)
 	var chalk:=world.get_node_or_null("A13_chalkboard") as Node3D
 	if chalk:
 		for mesh: MeshInstance3D in WorldBuilder.find_meshes(chalk):
 			var old: StandardMaterial3D=mesh.get_active_material(0) as StandardMaterial3D
 			var finish:=ShaderMaterial.new();finish.shader=load("res://shaders/chalk_face.gdshader")
 			finish.set_shader_parameter("albedo_tex",old.albedo_texture)
-			finish.set_shader_parameter("part_transform",chalk.global_transform.affine_inverse()*mesh.global_transform)
+			finish.set_shader_parameter("part_transform",Projection(chalk.global_transform.affine_inverse()*mesh.global_transform))
 			mesh.material_override=finish
 		var menu:=Node3D.new();menu.name="ClearCafeMenu";chalk.add_child(menu)
 		menu.position=Vector3(0,.568,.124);menu.rotation.x=-.215
@@ -87,5 +90,9 @@ static func _replace_small_signs(world: WorldBuilder) -> void:
 			menu.add_child(ClearSignage.label(str(int(item.get("price",0))),Vector3(.205,.09-row*.125,.005),0,.057,Color(.96,.94,.82)))
 	var board:=world.get_node_or_null("P02") as Node3D
 	if board:
+		SurfaceFinish.notice_frame(board)
 		var notice:=ClearSignage.plate(board,"ClearNoticeHeader",Vector2(1.95,.24),Vector3(0,1.94,.24),0,Color(.35,.24,.16))
+		var header_board:=notice.get_node("Board") as MeshInstance3D
+		header_board.material_override=SurfaceFinish.timber(header_board.mesh.get_aabb(),Color(.35,.27,.18),0,true)
+		ClearSignage.pins(notice,Vector2(1.95,.24))
 		notice.add_child(ClearSignage.label("晴町  お知らせ",Vector3(0,0,.025),0,.18,Color(.98,.95,.84)))

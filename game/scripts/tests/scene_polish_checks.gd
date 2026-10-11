@@ -35,7 +35,9 @@ func run() -> void:
 	check("courtyard tree uses generated coherent foliage geometry",tree!=null and tree.has_meta("tree_geometry_version"))
 	check("trunk and foliage have independent wind weights",tree!=null and tree.find_children("Foliage*","MeshInstance3D",true,false).size()>0 and tree.find_children("Trunk*","MeshInstance3D",true,false).size()>0)
 	var river:=FileAccess.get_file_as_string("res://shaders/water.gdshader")
-	var lake:=FileAccess.get_file_as_string("res://shaders/lakeside_water.gdshader")
+	var lake: String=main.world.farm.water_mat.shader.code
+	if lake.contains('#include "res://shaders/lakeside_water_surface.gdshaderinc"'):
+		lake+="\n"+FileAccess.get_file_as_string("res://shaders/lakeside_water_surface.gdshaderinc")
 	var motion: String=FileAccess.get_file_as_string("res://shaders/water_motion.gdshaderinc") if FileAccess.file_exists("res://shaders/water_motion.gdshaderinc") else ""
 	check("river uses two phase advected flow",river.contains("flow_sample") and motion.contains("phase_b"))
 	check("lake has analytic wave normals and bend flow",motion.contains("gerstner") and lake.contains("flow_direction"))

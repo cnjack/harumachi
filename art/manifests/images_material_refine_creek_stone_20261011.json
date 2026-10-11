@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-11T12:24:06.361026+00:00",
+  "tool": "built-in image_gen.imagegen",
+  "mode": "edit",
+  "use_case": "style-transfer",
+  "status": "raw_imagegen_output_copied_to_project_awaiting_native_material_review",
+  "input": {
+    "file": "game/assets/textures/lakeside_polish/creek_stone.png",
+    "sha256": "c2217aacd091db043b1aedf53db51d795f3e2247403dbc865d25a8363671e88c",
+    "role": "edit target, existing creek stone albedo"
+  },
+  "output": {
+    "file": "game/assets/textures/material_refine_20261011/creek_stone.png",
+    "sha256": "bb1376d0105933b2d31bbe27bc41278ac465723b88466af5c415d0c09b7a5e02",
+    "size_px": [
+      1254,
+      1254
+    ],
+    "generated_source": "/Users/jack/.codex/generated_images/01a126d4-7d5b-7500-809d-6dfd9ba47b21/exec-d09e557c-cb91-4004-b591-f8f50075f1f5.png",
+    "generated_source_sha256": "bb1376d0105933b2d31bbe27bc41278ac465723b88466af5c415d0c09b7a5e02",
+    "pixel_processing": "none; exact byte copy of built-in imagegen PNG"
+  },
+  "prompt": {
+    "file": "art/manifests/prompts/material_refine_creek_stone_20261011.txt",
+    "sha256": "05aa9418d75173ea17a75a627bbbae39a2e929babc781881c2cd82ce5008144f",
+    "text": "Use case: style-transfer\nAsset type: seamless diffuse/albedo texture for real river-stone meshes in a Japanese anime slice-of-life game.\nInput image 1: edit target, the current creek-stone material. Change only this material painting; retain a full-frame square, edge-to-edge stone surface with no separate objects or background.\nPrimary request: refine it into a clean hand-painted Japanese TV anime stone surface. Use restrained warm pale gray and cool lavender-gray mineral areas with clearer two-to-three-tone painted transitions, a few delicate stone grain marks and small soft mineral flecks. Broader quiet areas should remain, so real small river stones read clearly at gameplay scale. A little subtle beige-gray variation, no green moss layer.\nComposition: flat orthographic material swatch, seamless tile in both axes, consistent detail scale across all four edges. It is one continuous stone surface, NOT a field of many separate pebbles, not cobblestones, not a stone wall, no stones outlined as separate islands.\nStyle: anime background material, crisp restrained painted shapes and soft fine stone character, clean maintained summer community, not photorealistic, not a painting with thick brush strokes, not a 3D render. Keep the surface matte and color-led.\nConstraints: diffuse color only under completely neutral uniform illumination. Do NOT paint wet patches, waterlines, moisture gradients, shadows, directional light, highlights, specular reflections, rim light, ambient occlusion, depth or a vignette: the game shaders supply those. No borders, no labels, no text, no watermark, no transparency. Full opaque square texture, ideally 1024x1024.\n"
+  },
+  "manual_review": {
+    "passed": true,
+    "observed": [
+      "Clean hand-painted cool gray/lavender and pale warm-gray mineral areas, clearer restrained tonal layers.",
+      "Continuous stone material swatch, no separate objects, text, border, or watermark.",
+      "No painted waterline, moss band, directional shadow or wet specular highlight; wetting remains shader-controlled."
+    ],
+    "limitation": "Texture appearance confirmed in generated original; final stone scale, tiling and underwater visibility still require Root native screenshots."
+  },
+  "image_validation": {
+    "mode": "RGB",
+    "opaque": true,
+    "size_px": [
+      1254,
+      1254
+    ],
+    "byte_identical_to_raw_generation": true,
+    "reference_comparison": {
+      "mean_abs_rgb_channel_delta_0_255": 6.561446115651606,
+      "fraction_pixels_changed_over_two_levels": 0.9264611616034432,
+      "max_channel_delta_0_255": 71.0
+    },
+    "note": "Measurements are read-only; no resizing, recoloring, alpha removal or pixel editing was performed."
+  }
+}

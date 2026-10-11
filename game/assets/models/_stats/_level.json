@@ -1641,7 +1641,7 @@
   "rect_fill": 1.0,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 5137
+  "verts": 13027
  },
  "P10": {
   "base_frac": 0.789,
@@ -1776,16 +1776,16 @@
   "verts": 3936
  },
  "P_deck_oven": {
-  "base_frac": 0.884,
+  "base_frac": 0.876,
   "normal": [
    0.0,
    0.0,
    -1.0
   ],
-  "rect_fill": 0.979,
-  "square_deg": 0.02,
+  "rect_fill": 0.988,
+  "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 15905
+  "verts": 28122
  },
  "P_farm_gate": {
   "base_frac": 0.097,

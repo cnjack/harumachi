@@ -1,0 +1,10 @@
+Use case: precise-object-edit
+Asset type: seamless square albedo texture for the existing dry stone-paved Japanese small-town street in a clean anime game.
+Input image: the provided stone.png is the EDIT TARGET, not just a mood reference.
+Primary request: refine only the interior material appearance of the existing paving slabs with gentle hand-painted animation-quality surface variation and slightly cleaner maintained stone faces.
+Invariants: preserve the exact stone count, every existing mortar joint path, grout width, all slab contours, slab arrangement, overall proportions, orthographic view and image framing. Do not add a second stone grid, do not shift or rotate any slab, do not rearrange the paving. The existing opposite-edge layout must remain seamless when tiled. Preserve the existing dry pale warm grey/sandstone palette.
+Changes: more deliberate soft painted mineral colour within each slab, slight restrained worn edge variation and a very few fine existing crack accents. Preserve narrow dark mortar definition without increasing its contrast. Keep the overall surface clean and maintained, with subtle variation only.
+Style/medium: clean hand-painted anime background albedo, quiet colour areas, no photographic detail, no gritty high-frequency noise or heavy grunge.
+Lighting: flat neutral unlit albedo; no baked sunlight, cast shadows, highlights, wetness, reflections or vignette. Actual local footsteps, replacement patches, dust and wear are handled by the game shader.
+Constraints: full-bleed square tile, no border, no bevel perspective, no raised 3D render. No leaves, grass, moss, litter, flowers, characters, props, arrows, text, watermark or new objects.
+Background: fully opaque.

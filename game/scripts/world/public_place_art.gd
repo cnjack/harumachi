@@ -220,7 +220,7 @@ static func street(world: WorldBuilder) -> void:
     var finish:=ShaderMaterial.new();finish.shader=load("res://shaders/public_facade_finish.gdshader")
     finish.set_shader_parameter("albedo_tex",original.albedo_texture);finish.set_shader_parameter("albedo_color",original.albedo_color)
     finish.set_shader_parameter("grain_tex",load(TEX+"quiet_pine_grain.png"));finish.set_shader_parameter("weave_tex",load(TEX+"linen_weave.png"))
-    finish.set_shader_parameter("part_transform",building.global_transform.affine_inverse()*mesh.global_transform)
+    finish.set_shader_parameter("part_transform",Projection(building.global_transform.affine_inverse()*mesh.global_transform))
     finish.set_shader_parameter("building_kind",kind);mesh.set_surface_override_material(surface,finish)
   if id=="S06":_community_porch(world,root)
   else:_shop_porch(world,root,id)

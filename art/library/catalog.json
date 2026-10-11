@@ -300,12 +300,12 @@
       "preview": "art/library/previews/game_A15_potted_plant.png",
       "uses": [
         "game/scripts/world/farm_builder.gd",
+        "game/scripts/world/public_room_life.gd",
+        "game/scripts/world/public_place_art.gd",
         "game/scripts/world/residential_life.gd",
         "game/scripts/world/house_builder.gd",
         "game/scripts/world/layout.gd",
-        "game/scripts/world/world_builder.gd",
-        "game/scripts/world/public_place_art.gd",
-        "game/scripts/world/public_room_life.gd"
+        "game/scripts/world/world_builder.gd"
       ],
       "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)",
       "raw_path": "art/models/../../output/japanese-street-shinkai-dry/models/A15_potted_plant/model.glb",
@@ -629,7 +629,8 @@
       "alpha": false,
       "preview": "art/library/previews/game_B01_melon_pan.png",
       "uses": [
-        "game/scripts/world/meal_models.gd"
+        "game/scripts/world/meal_models.gd",
+        "game/scripts/world/shop_content.gd"
       ],
       "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
       "raw_path": "art/models/raw/B01_melon_pan_atlas_audit_20261002/model.glb",
@@ -678,7 +679,8 @@
       "preview": "art/library/previews/game_B02_croissant.png",
       "uses": [
         "game/scripts/world/public_place_art.gd",
-        "game/scripts/world/meal_models.gd"
+        "game/scripts/world/meal_models.gd",
+        "game/scripts/world/shop_content.gd"
       ],
       "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
       "raw_path": "art/models/raw/B02_croissant_atlas_audit_20261002/model.glb",
@@ -768,7 +770,8 @@
       "alpha": false,
       "preview": "art/library/previews/game_B03_baguette.png",
       "uses": [
-        "game/scripts/world/meal_models.gd"
+        "game/scripts/world/meal_models.gd",
+        "game/scripts/world/shop_content.gd"
       ],
       "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
       "raw_path": "art/models/raw/B03_baguette_atlas_audit_20261002/model.glb",
@@ -817,7 +820,8 @@
       "preview": "art/library/previews/game_B04_shokupan.png",
       "uses": [
         "game/scripts/world/shop_displays.gd",
-        "game/scripts/world/meal_models.gd"
+        "game/scripts/world/meal_models.gd",
+        "game/scripts/world/shop_content.gd"
       ],
       "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
       "raw_path": "art/models/raw/B04_shokupan_atlas_audit_20261002/model.glb",
@@ -865,7 +869,8 @@
       "alpha": false,
       "preview": "art/library/previews/game_B05_anpan.png",
       "uses": [
-        "game/scripts/world/meal_models.gd"
+        "game/scripts/world/meal_models.gd",
+        "game/scripts/world/shop_content.gd"
       ],
       "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
       "raw_path": "art/models/raw/B05_anpan_atlas_audit_20261002/model.glb",
@@ -913,7 +918,8 @@
       "alpha": false,
       "preview": "art/library/previews/game_B06_curry_pan.png",
       "uses": [
-        "game/scripts/world/meal_models.gd"
+        "game/scripts/world/meal_models.gd",
+        "game/scripts/world/shop_content.gd"
       ],
       "provider": "pixal3d (v0.6) + imagegen anime atlas (2026-10-02)",
       "raw_path": "art/models/raw/B06_curry_pan_atlas_audit_20261002/model.glb",
@@ -4860,6 +4866,7 @@
       "alpha": false,
       "preview": "art/library/previews/game_I02_cake_showcase.png",
       "uses": [
+        "game/scripts/world/surface_finish.gd",
         "game/scripts/world/interior_builder.gd",
         "game/scripts/world/shop_content.gd"
       ],
@@ -5595,6 +5602,7 @@
       "preview": "art/library/previews/game_J03_dining_set.png",
       "uses": [
         "game/scripts/world/daily_life_view.gd",
+        "game/scripts/world/surface_finish.gd",
         "game/scripts/world/house_builder.gd"
       ],
       "provider": "项目制作",
@@ -5681,6 +5689,7 @@
       "preview": "art/library/previews/game_J05_dish_cabinet.png",
       "uses": [
         "game/scripts/world/shop_displays.gd",
+        "game/scripts/world/room_identity.gd",
         "game/scripts/world/house_builder.gd"
       ],
       "provider": "项目制作",
@@ -5765,6 +5774,7 @@
       "alpha": false,
       "preview": "art/library/previews/game_J07_kotatsu.png",
       "uses": [
+        "game/scripts/world/surface_finish.gd",
         "game/scripts/world/house_builder.gd"
       ],
       "provider": "项目制作",
@@ -6062,6 +6072,7 @@
       "preview": "art/library/previews/game_M12b_shrub.png",
       "uses": [
         "game/scripts/world/farm_builder.gd",
+        "game/scripts/world/foliage_backdrop.gd",
         "game/scripts/world/residential_life.gd",
         "game/scripts/world/plot_view.gd",
         "game/scripts/world/house_builder.gd",
@@ -6488,8 +6499,8 @@
       "collection": "游戏资产",
       "path": "game/assets/models/P09.glb",
       "format": "GLB",
-      "triangles": 7998,
-      "bytes": 250108,
+      "triangles": 15972,
+      "bytes": 6467760,
       "license": "项目素材，来源条款待核对",
       "source": "",
       "status": "已接入",
@@ -6503,32 +6514,41 @@
         "game/scripts/world/layout.gd",
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "Hyper3D CLI Gen-2.5-High, empty serving stall reference",
-      "raw_path": "art/models/raw/P09_hyper3d_cli_20261007_reference/model.glb",
+      "provider": "Blender local refinement of the accepted Hyper3D serving stall; built-in imagegen canvas and cedar, 2026-10-11",
+      "raw_path": "art/models/raw/material_refine_stall_oven_20261011/P09.glb",
       "metrics": {
         "id": "P09",
-        "src": "/Users/jack/workpath/research/3D model/anime/art/models/raw/P09_hyper3d_cli_20261007_reference/model.glb",
-        "provider": "Hyper3D CLI Gen-2.5-High empty serving stall",
-        "tris_src": 10246,
-        "tris": 7998,
-        "size_m": [
-          2.6,
-          0.994,
-          1.833
-        ],
+        "src": "raw/material_refine_stall_oven_20261011/P09.glb",
+        "provider": "Blender local refinement of the accepted Hyper3D serving stall; built-in imagegen canvas and cedar, 2026-10-11",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 15972,
+        "tex": 1254,
+        "bytes": 6467760,
         "godot_size_m_xyz": [
           2.6,
-          1.833,
-          0.994
+          1.8342,
+          0.9935
         ],
-        "tex": 1024,
-        "bytes": 250108,
-        "yaw_fix": 90,
-        "level": "auto",
-        "lean_src_deg": 0.0,
-        "levelled": false,
-        "lean_deg": 0.0,
-        "base_frac": 0.782
+        "mesh_nodes": [
+          "P09_BlueIvory_Canvas_Geometry",
+          "P09_Cedar_Maintained_Geometry",
+          "P09_FoldedIvoryHem_Geometry",
+          "P09_JoineryIron_Geometry",
+          "P09_LinenTie_Geometry"
+        ],
+        "export_texture_limit": 2048,
+        "source_texture_sizes_px": {
+          "canvas_blue_ivory": [
+            1254,
+            1254
+          ],
+          "cedar_weathered": [
+            1254,
+            1254
+          ]
+        },
+        "sha256": "640b45803712b82b5d57c893a6f6d135888ad866ea1c2891ae5e518a69dad100"
       },
       "recipe": "world.spawn(\"P09\", Vector3(0, 0, 0), 0, 0)"
     },
@@ -6787,6 +6807,7 @@
       "alpha": false,
       "preview": "art/library/previews/game_P_chest.png",
       "uses": [
+        "game/scripts/world/room_identity.gd",
         "game/scripts/world/house_builder.gd"
       ],
       "provider": "pixal3d (v0.6 review, seed 7)",
@@ -7043,8 +7064,8 @@
       "collection": "游戏资产",
       "path": "game/assets/models/P_deck_oven.glb",
       "format": "GLB",
-      "triangles": 17999,
-      "bytes": 987712,
+      "triangles": 17122,
+      "bytes": 2867060,
       "license": "项目素材，来源条款待核对",
       "source": "",
       "status": "已接入",
@@ -7054,44 +7075,42 @@
       "uses": [
         "game/scripts/world/interior_builder.gd"
       ],
-      "provider": "hyper3d rodin Gen-2.5-High, 2026-10-02",
-      "raw_path": "art/models/raw/P_deck_oven_h3d_quality_20261001/fitted.glb",
+      "provider": "Blender local closed-cabinet rebuild retaining accepted Hyper3D base/feet and complete flue; built-in imagegen enamel, 2026-10-11",
+      "raw_path": "art/models/raw/material_refine_stall_oven_20261011/P_deck_oven.glb",
       "metrics": {
         "id": "P_deck_oven",
-        "src": "raw/P_deck_oven_h3d_quality_20261001/fitted.glb",
-        "provider": "hyper3d rodin Gen-2.5-High, 2026-10-02",
-        "tris_src": 1000000,
-        "tris": 17999,
-        "size_m": [
-          1.46,
-          0.955,
-          2.08
-        ],
+        "src": "raw/material_refine_stall_oven_20261011/P_deck_oven.glb",
+        "provider": "Blender local closed-cabinet rebuild retaining accepted Hyper3D base/feet and complete flue; built-in imagegen enamel, 2026-10-11",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 17122,
+        "tex": 1254,
+        "bytes": 2867060,
         "godot_size_m_xyz": [
           1.46,
           2.08,
-          0.955
+          0.9548
         ],
-        "tex": 2048,
-        "bytes": 987712,
-        "yaw_fix": 0,
-        "level": "auto",
-        "lean_src_deg": 0.0,
-        "levelled": false,
-        "lean_deg": 0.0,
-        "base_frac": 0.884,
-        "fit_bounds_blender": {
-          "min": [
-            -0.7300000190734863,
-            -0.5099999904632568,
-            0.0
-          ],
-          "max": [
-            0.7300000190734863,
-            0.4449999928474426,
-            2.0799999237060547
+        "mesh_nodes": [
+          "Oven_ControlPanel_Geometry",
+          "Oven_Deck0_Glass",
+          "Oven_Deck1_Glass",
+          "Oven_DialMarkings_Geometry",
+          "Oven_HeatSeal_Geometry",
+          "Oven_HeatingElement_Geometry",
+          "Oven_HeatproofHandle_Geometry",
+          "Oven_MaintainedEnamel_Geometry",
+          "Oven_StoneDeck_Geometry",
+          "Oven_WarmCavity_Geometry"
+        ],
+        "export_texture_limit": 2048,
+        "source_texture_sizes_px": {
+          "enamel_metal": [
+            1254,
+            1254
           ]
-        }
+        },
+        "sha256": "d78d5fe1807e1648d55ec5986e4ac9c8b371d9ab01d5168005fd0a29fbf4e575"
       },
       "recipe": "world.spawn(\"P_deck_oven\", Vector3(0, 0, 0), 0, 0)"
     },
@@ -7212,6 +7231,7 @@
       "alpha": false,
       "preview": "art/library/previews/game_P_long_table.png",
       "uses": [
+        "game/scripts/world/surface_finish.gd",
         "game/scripts/world/world_builder.gd"
       ],
       "provider": "项目制作",
@@ -7316,6 +7336,7 @@
       "alpha": false,
       "preview": "art/library/previews/game_P_offer_stand.png",
       "uses": [
+        "game/scripts/world/surface_finish.gd",
         "game/scripts/world/world_builder.gd"
       ],
       "provider": "项目制作",
@@ -7890,6 +7911,7 @@
       "preview": "art/library/previews/game_S01.png",
       "uses": [
         "game/scripts/world/shop_displays.gd",
+        "game/scripts/world/public_place_art.gd",
         "game/scripts/world/building_life.gd",
         "game/scripts/world/shop_windows.gd",
         "game/scripts/world/layout.gd",
@@ -7951,6 +7973,7 @@
       "preview": "art/library/previews/game_S02.png",
       "uses": [
         "game/scripts/world/shop_displays.gd",
+        "game/scripts/world/public_place_art.gd",
         "game/scripts/world/building_life.gd",
         "game/scripts/world/shop_windows.gd",
         "game/scripts/world/layout.gd",
@@ -8083,6 +8106,7 @@
       "alpha": false,
       "preview": "art/library/previews/game_S06.png",
       "uses": [
+        "game/scripts/world/public_place_art.gd",
         "game/scripts/world/layout.gd",
         "game/scripts/world/world_builder.gd"
       ],
@@ -8520,6 +8544,7 @@
       "preview": "art/library/previews/game_V04_daisy_meadow.png",
       "uses": [
         "game/scripts/world/meadow_details.gd",
+        "game/scripts/world/plaza_art_direction.gd",
         "game/scripts/world/world_builder.gd"
       ],
       "provider": "Hyper3D Rodin Gen-2.5-High Raw; imagegen anime daisy, clover and meadow tuft",
@@ -8803,8 +8828,8 @@
       "preview": "art/library/previews/game_W05_hydrangea_pot.png",
       "uses": [
         "game/scripts/world/shop_displays.gd",
-        "game/scripts/world/world_builder.gd",
-        "game/scripts/world/public_place_art.gd"
+        "game/scripts/world/public_place_art.gd",
+        "game/scripts/world/world_builder.gd"
       ],
       "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
       "raw_path": "art/models/raw/W05_hydrangea_pot_pixal_modules_20261003/model.glb",
@@ -8993,7 +9018,8 @@
       "alpha": false,
       "preview": "art/library/previews/game_W09_rice_sacks.png",
       "uses": [
-        "game/scripts/world/shop_displays.gd"
+        "game/scripts/world/shop_displays.gd",
+        "game/scripts/world/shop_content.gd"
       ],
       "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
       "raw_path": "art/models/raw/W09_rice_sacks_pixal_modules_20261003/model.glb",
@@ -9040,7 +9066,8 @@
       "alpha": false,
       "preview": "art/library/previews/game_W10_bottle_crate.png",
       "uses": [
-        "game/scripts/world/shop_displays.gd"
+        "game/scripts/world/shop_displays.gd",
+        "game/scripts/world/shop_content.gd"
       ],
       "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
       "raw_path": "art/models/raw/W10_bottle_crate_pixal_modules_20261003/model.glb",
@@ -9089,9 +9116,10 @@
       "uses": [
         "game/scripts/world/neighbour_meal_view.gd",
         "game/scripts/world/shop_displays.gd",
+        "game/scripts/world/public_room_life.gd",
         "game/scripts/world/daily_life_view.gd",
         "game/scripts/world/public_place_art.gd",
-        "game/scripts/world/public_room_life.gd"
+        "game/scripts/world/shop_content.gd"
       ],
       "provider": "Pixal3D private RTX 4080, independent modular reference, raw original retained",
       "raw_path": "art/models/raw/W11_ceramic_set_pixal_modules_20261003/model.glb",
@@ -9189,6 +9217,7 @@
       "preview": "art/library/previews/game_W13_cedar_worktable.png",
       "uses": [
         "game/scripts/world/neighbour_meal_view.gd",
+        "game/scripts/world/surface_finish.gd",
         "game/scripts/world/interior_builder.gd",
         "game/scripts/world/shop_content.gd"
       ],
@@ -9252,9 +9281,7 @@
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_W14_grocery_stock.png",
-      "uses": [
-        "game/scripts/world/shop_content.gd"
-      ],
+      "uses": [],
       "provider": "Hyper3D Rodin Gen-2.5 High Raw; imagegen anime shop asset",
       "raw_path": "art/models/raw/W14_grocery_stock_hyper3d/model.glb",
       "metrics": {
@@ -9494,8 +9521,8 @@
       "alpha": false,
       "preview": "art/library/previews/game_W19_flour_bag.png",
       "uses": [
-        "game/scripts/world/shop_content.gd",
-        "game/scripts/world/public_place_art.gd"
+        "game/scripts/world/public_place_art.gd",
+        "game/scripts/world/shop_content.gd"
       ],
       "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
       "raw_path": "art/models/raw/shop_refresh_20261009/W19_flour_bag.glb",
@@ -9589,8 +9616,8 @@
       "alpha": false,
       "preview": "art/library/previews/game_W21_tea_tin.png",
       "uses": [
-        "game/scripts/world/shop_content.gd",
-        "game/scripts/world/public_place_art.gd"
+        "game/scripts/world/public_place_art.gd",
+        "game/scripts/world/shop_content.gd"
       ],
       "provider": "Existing imagegen / Hyper3D W14 groceries; UV-preserving connected-part separation, 2026-10-09",
       "raw_path": "art/models/raw/shop_refresh_20261009/W21_tea_tin.glb",

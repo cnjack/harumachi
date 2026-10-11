@@ -211,14 +211,14 @@ func _field() -> void:
 		var pb := BoxMesh.new()
 		pb.size = Vector3(0.08, 1.5, 0.08)
 		post.mesh = pb
-		post.material_override = LakesideMaterials.wood(sign.global_position,true,true)
+		post.material_override = SurfaceFinish.timber(pb.get_aabb(),Color(.48,.37,.25),1)
 		post.position = Vector3(x, 0.75, 0)
 		sign.add_child(post)
 	var board := MeshInstance3D.new()
 	var bb := BoxMesh.new()
 	bb.size = Vector3(1.12, 0.55, 0.05)
 	board.mesh = bb
-	board.material_override = LakesideMaterials.sign_face()
+	board.material_override = SurfaceFinish.timber(bb.get_aabb(),Color(.79,.64,.43),0,true,.12)
 	board.position = Vector3(0, 1.2, 0)
 	sign.add_child(board)
 	for pin_index: int in range(4):
@@ -232,15 +232,8 @@ func _field() -> void:
 		pin.position=Vector3(-.48 if pin_index%2==0 else .48,1.2+(-.20 if pin_index<2 else .20),.028)
 		sign.add_child(pin)
 	for side in [-1.0, 1.0]:
-		var lbl := Label3D.new()
-		lbl.text = "晴町 市民农园"
-		lbl.font_size = 40
-		lbl.pixel_size = 0.0034
-		lbl.modulate = Color(0.32, 0.22, 0.14)
-		lbl.outline_size = 0
-		lbl.double_sided = false
-		lbl.position = Vector3(0, 1.2, 0.03 * side)
-		lbl.rotation.y = 0.0 if side > 0.0 else PI
+		var lbl: Label3D=ClearSignage.label("晴町 市民农园",Vector3(0,1.2,.031*side),0. if side>0 else PI,.136,Color(.32,.22,.14))
+		ClearSignage.fit(lbl,Vector2(1.12,.55),.075)
 		sign.add_child(lbl)
 
 
@@ -462,13 +455,8 @@ var gate_lights: Array[OmniLight3D] = []
 
 func _label(text: String, pos: Vector3, yaw: float, size: int = 40, parent: Node3D = null, both: bool = true) -> void:
 	for side in ([0.0, PI] if both else [0.0]):
-		var l := Label3D.new()
-		l.text = text
-		l.font_size = size
-		l.pixel_size = 0.0036
-		l.modulate = Color(0.3, 0.2, 0.12)
-		l.outline_size = 0
-		l.double_sided = false
+		var l: Label3D=ClearSignage.label(text,Vector3.ZERO,0.,float(size)*.0036,Color(.3,.2,.12))
+		if text=="晴町 市民农园":ClearSignage.fit(l,Vector2(1.6,.50),.045)
 		if text == "晴町 市民农园":
 			l.name = "GateTitle_farm_%d" % int(side * 100.0)
 		var offset := 0.065 if text == "晴町 市民农园" else 0.035
@@ -482,6 +470,7 @@ func _landmarks() -> void:
 	var gate := wb.spawn("P_farm_gate", GATE_POS, 90.0, 0, self, 1.0)
 	if gate:
 		WorldBuilder.add_gate_colliders(gate)
+		SurfaceFinish.decorate_timber(gate)
 	_label("晴町 市民农园", GATE_POS + Vector3(0, WorldBuilder.GATE_TITLE_Y, 0), PI / 2.0, 34)
 	for z in [-1.5, 1.5]:
 		var l := OmniLight3D.new()
@@ -507,9 +496,8 @@ func _landmarks() -> void:
 	if sp:
 		LakesideMaterials.decorate_bridge(sp)
 		# board 0 points +X (into the farm), board 1 -X (back to town), board 2 toward the river
-		_label("菜地 · 温室 →", Vector3(-22.6 + 0.6, 2.0, 1.9), 0.0, 26)
-		_label("← 回晴町", Vector3(-22.6 - 0.6, 1.6, 1.9), 0.0, 30)
-		_label("河边 · 木桥 ↘", Vector3(-22.6 + 0.54, 1.2, 1.9 + 0.25), deg_to_rad(-25.0), 24)
+		SurfaceFinish.decorate_timber(sp)
+		ClearSignage.signpost_text(sp,["菜地 · 温室","回晴町","河边 · 木桥"])
 
 
 func _fest_root(fid: String) -> Node3D:

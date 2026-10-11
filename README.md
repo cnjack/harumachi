@@ -1,5 +1,7 @@
 <p align="center"><img src="site/assets/wallpapers/summer-river.webp" alt="晴川与山谷中的晴町，明年夏祭官方概念插画" width="100%"></p>
 
+墙脚潮痕与苔纤维、石路磨耗、木牌、水面深浅和碎光、河石、连续摊位帆布及烤箱精修已写入源码，40项专项和1538项独占全量通过。新macOS包已导出并通过ZIP、解压、签名及双架构检查。最后一处旋转椅背纹向修复后的原生复拍、解压包200项演示仍待Mac解锁；当前正式桌面包和Web保持原已验收版本。见[本轮实现与待验范围](docs/game-design/MATERIAL_DETAIL_20261011.md)及`evidence/material_refinement_delivery_20261011/progress.json`。本次按用户要求先提交当前全部可入库修改。
+
 <h1 align="center">明年夏祭</h1>
 <p align="center"><strong>Harumachi: Next Summer</strong><br>一款关于归乡、日常与重逢的日式小镇生活游戏。</p>
 <p align="center"><a href="https://harumachi.nightc.com/">官方网站</a> · <a href="https://harumachi.nightc.com/play/">网页试玩</a> · <a href="https://harumachi.nightc.com/#wallpapers">官方壁纸</a> · <a href="https://harumachi.nightc.com/#music">游戏原声</a></p>

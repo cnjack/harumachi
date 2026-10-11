@@ -1,10 +1,14 @@
 # 模型、工程与交付流程
 
+## 材质和矩阵检查（2026-10-11）
+
+材质专项入口为`--only=material-detail`，共40项；实际矩阵及旋转椅背检查为`--only=shader-matrices`，共3项。当前源码完整测试1538项已独占通过，最终原生窗口和解压包演示待验；源码提交与正式包替换分别记录。
+
+实际选中的water shader及include共用深度和光源逻辑。mat4显式上传Projection，木纹轴与采样使用同一坐标空间；用真实GPU开关对照核对参数，连续坐标导数过滤雨圈。程序精修还要测封口、排气管、炉腔与51处实际部件接触。六张imagegen原图均为1254²，2048仅为导出上限。详见[MATERIAL_DETAIL](MATERIAL_DETAIL_20261011.md)。
+
 ## 实测电视玻璃与商品拆分（2026-10-09）
 
 prepare_shop_refresh.py使用原W14和W18正式网格：保留包装底色/UV拆出五件商品，按玻璃底色与正面三角面生成2303顶点的曲面数据。拆分模型经game_export、level_check、model_audit及实拍检查；原稿与原模型保留，没有新付费任务。雪花除检查uniform，还用audit_shop_noise.py检查实拍玻璃区域的黑白比例与亮度变化，防止shader参数有值但实际黑屏。来源、复现和31项商店回归见[制作记录](SHOP_DISPLAY_FIX_20261009.md)。
-
-当前事实见[CURRENT_STATUS](CURRENT_STATUS.md)，精确引擎入口为`./tools/godot`。早期失败与日期补充保存在[历史流程记录](history/PIPELINE_HISTORY_20261007.md)，旧数字和旧包不代表最新状态。
 
 当前事实见[CURRENT_STATUS](CURRENT_STATUS.md)，精确引擎入口为`./tools/godot`。早期失败与日期补充保存在[历史流程记录](history/PIPELINE_HISTORY_20261007.md)，旧数字和旧包不代表最新状态。
 
@@ -217,7 +221,7 @@ Godot 这边是 `Audio` 自动加载（`game/scripts/autoload/audio.gd`）：
 
 - **材质视频样板（2026-10-06）**：`art/poc/material_review_20261006/godot/` 是独立 Godot 4.7.2 Forward+ 工程，六种地表各有 A/B；四张 imagegen 图用于实际材质，已有 Hyper3D 住宅用于实景。运行 `python3 art/poc/material_review_20261006/record.py --tag review` 原生录制 40 秒 1080p/30fps 并编码 MP4；视频、8 张截图、日志和检查在 `evidence/material_review_20261006_v1/`。窗口 override 与录制分辨率保持一致，避免 Movie Maker 输出 720p 而截图仍为 1080p。隔离工程不加载游戏 autoload，不修改默认存档。详见该 POC 的 README。
 
-- 自动测试：`res://scenes/tests.tscn`，当前清单1498项，含规则、SQLite、UI、模型摆放、路线、生活、完整夏季和镜头检查。独立HARUMACHI_SAVE_DIR、超时与SCRIPT ERROR检查必须同时使用；全量不与其他Godot实例并发。专项入口与数量见AGENTS，最终数以JSON报告为准。
+- 自动测试：`res://scenes/tests.tscn`，当前清单1538项，含规则、SQLite、UI、模型摆放、路线、生活、完整夏季和镜头检查。独立HARUMACHI_SAVE_DIR、超时与SCRIPT ERROR检查必须同时使用；全量不与其他Godot实例并发。专项入口与数量见AGENTS，最终数以JSON报告为准。
 - 卡顿检查要让时钟实际推进，记录逐帧耗时，不能只看平均FPS。工具`evidence/desktop_stutter_20261007/perf_probe.gd`的`--fixed`模式在真实起床卧室和商店街记录480帧，截图回读放在计时之后；使用固定引擎、置顶原生窗口和独立存档。运动清晰度检查在固定镜头距离下核对人物与镜头的渲染插值位置，镜头避障另跑`--only=camera-body`。桌面缓存用晚会专项检查移动、旋转后的实际食物支撑；方法与结果见[卡顿修复](DESKTOP_STUTTER_20261008.md)。
 - 自动演示：普通标题入口`--autoplay`沿实际碰撞路径、Story交互、摆放控制器、料理面板、灯笼输入、日历赴约和拍照完成新夏季至Q15，检查控制与保存恢复。当前基线200项、9张关键截图。自动对白与阶段暂停明确记录，不作为自然四小时；`--showcase`是节日展示夹具。打印的AP mark/frame用于录像剪辑。
 - 录制时游戏窗口不能被别的窗口完全挡住：macOS 会停止给被挡住的窗口画帧，演示就停在原地。用 `-t --position <x>,<y>` 置顶并放到屏幕角落。
@@ -459,7 +463,7 @@ codex 可以直接画透明背景。14 张头像一张一张重画（`art/manife
 
 - 场景质感专项：`--only=scene-quality`共27项；旧版同范围25项失败，新版通过。牌面先测真实表面和倾角，背面文字要避开木柱；墙切低时的牌签应依附家具。木纹按分件长轴取样，玻璃单独保留。声音范围、左右声道和演出落点用实际引擎录音核对，不能只检查播放方法存在。全量1359和解压包200项记录见[场景质感](SCENE_QUALITY_20261008.md)。
 
-- 应用图标格式转换：`art/tools/export_app_icon.py <选定方形PNG> --evidence <本轮证据目录>`。只做等比尺寸与ICNS封装，保留alpha；覆盖工程PNG与ICNS后import、临时导出、核对Info.plist实际图标文件并跑解压包完整autoplay，再替换唯一最新ZIP。新增记录写本轮目录，不能覆盖旧日期的格式证据。
+- 应用图标：新系统用满幅不透明方形插画与Icon Composer `.icon` 原生目录，避免图片自带圆角/透明留白后再被系统套底板。导出设置为 `application/liquid_glass_icon="res://harumachi.icon"`；`art/tools/export_app_icon.py <选定方形PNG> --evidence <本轮证据目录>` 只做尺寸与备用ICNS封装。import后在临时工程导出，确认Assets.car、Info.plist的CFBundleIconName和备用ICNS，再在Finder实际查看解压应用，不能只核对字节。用 `art/tools/audit_app_icon.py --source game/icon.png --native game/harumachi.icon --bundle <解压应用> --out <证据JSON>` 检查，完整autoplay退出0后替换唯一最新ZIP。沙箱内actool的系统服务错误可能让Godot跳过原生图标，须解决后重导出；新增记录写本轮目录。
 
 ## 18. 用实景改绘提升已有场景（2026-10-09）
 

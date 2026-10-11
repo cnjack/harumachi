@@ -1,37 +1,35 @@
 {
  "id": "P_deck_oven",
- "src": "raw/P_deck_oven_h3d_quality_20261001/fitted.glb",
- "provider": "hyper3d rodin Gen-2.5-High, 2026-10-02",
- "tris_src": 1000000,
- "tris": 17999,
- "size_m": [
-  1.46,
-  0.955,
-  2.08
- ],
+ "src": "raw/material_refine_stall_oven_20261011/P_deck_oven.glb",
+ "provider": "Blender local closed-cabinet rebuild retaining accepted Hyper3D base/feet and complete flue; built-in imagegen enamel, 2026-10-11",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 17122,
+ "tex": 1254,
+ "bytes": 2867060,
  "godot_size_m_xyz": [
   1.46,
   2.08,
-  0.955
+  0.9548
  ],
- "tex": 2048,
- "bytes": 987712,
- "yaw_fix": 0,
- "level": "auto",
- "lean_src_deg": 0.0,
- "levelled": false,
- "lean_deg": 0.0,
- "base_frac": 0.884,
- "fit_bounds_blender": {
-  "min": [
-   -0.7300000190734863,
-   -0.5099999904632568,
-   0.0
-  ],
-  "max": [
-   0.7300000190734863,
-   0.4449999928474426,
-   2.0799999237060547
+ "mesh_nodes": [
+  "Oven_ControlPanel_Geometry",
+  "Oven_Deck0_Glass",
+  "Oven_Deck1_Glass",
+  "Oven_DialMarkings_Geometry",
+  "Oven_HeatSeal_Geometry",
+  "Oven_HeatingElement_Geometry",
+  "Oven_HeatproofHandle_Geometry",
+  "Oven_MaintainedEnamel_Geometry",
+  "Oven_StoneDeck_Geometry",
+  "Oven_WarmCavity_Geometry"
+ ],
+ "export_texture_limit": 2048,
+ "source_texture_sizes_px": {
+  "enamel_metal": [
+   1254,
+   1254
   ]
- }
+ },
+ "sha256": "d78d5fe1807e1648d55ec5986e4ac9c8b371d9ab01d5168005fd0a29fbf4e575"
 }

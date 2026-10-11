@@ -34,7 +34,13 @@ func run() -> void:
         for mesh: MeshInstance3D in WorldBuilder.find_meshes(bridge):
             for surface: int in mesh.mesh.get_surface_count():
                 var material: ShaderMaterial=mesh.get_active_material(surface) as ShaderMaterial
-                if material!=null and material.get_shader_parameter("wear_strength")!=null and material.get_shader_parameter("painted_tex")!=null:bridge_texture=true
+                if material==null:continue
+                var legacy_wear: Variant=material.get_shader_parameter("wear_strength")
+                if legacy_wear!=null and material.get_shader_parameter("painted_tex") is Texture2D:bridge_texture=true
+                var detail: Variant=material.get_shader_parameter("timber_detail")
+                var strength: Variant=material.get_shader_parameter("grain_strength")
+                var parts: Variant=material.get_shader_parameter("component_count")
+                if detail==true and material.get_shader_parameter("wood_tex") is Texture2D and strength!=null and float(strength)>=.4 and parts!=null and int(parts)>=2:bridge_texture=true
     runner.call("check","LAKESIDE_POLISH","bridge timber has painted wear and board variation",bridge_texture)
     var sign: Node = world.farm.get_node_or_null("FarmNameSign")
     runner.call("check","LAKESIDE_POLISH","allotment sign has a decorated aged face",sign!=null and sign.has_meta("decorated_sign"))

@@ -28,15 +28,15 @@
       "roof_ridge_width_m": 0.1609179366221698
     },
     "P_deck_oven": {
-      "bounds_max_error_m": 5.960464477539063e-08,
+      "bounds_max_error_m": 0.00019997358322143555,
       "texture_sizes": [
         [
-          2048,
-          2048
+          1254,
+          1254
         ]
       ],
-      "source_mtime": 1790877646.6879299,
-      "triangles": 17999
+      "source_mtime": 1791727268.5415144,
+      "triangles": 17122
     }
   },
   "checks": {

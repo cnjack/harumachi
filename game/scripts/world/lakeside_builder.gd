@@ -95,13 +95,32 @@ func _water() -> void:
 	water.mesh = st.commit()
 	water_mat = ShaderMaterial.new()
 	water_mat.shader = load("res://shaders/lakeside_water.gdshader")
-	water_mat.set_shader_parameter("shallow_opacity",.62)
+	water_mat.set_shader_parameter("shallow_opacity",.34)
+	water_mat.set_shader_parameter("rain_ring_radius",.145)
+	water_mat.set_shader_parameter("rain_ring_width",.008)
+	water_mat.set_shader_parameter("rain_ring_strength",.11)
 	for sky_time in ["day","dusk","night"]:
 		water_mat.set_shader_parameter("sky_"+sky_time,load("res://assets/textures/"+("sky_equirect.jpg" if sky_time=="day" else "sky_"+sky_time+".jpg")))
 	water.material_override = water_mat
 	water.position.y = LakesideLayout.WATER_Y
 	water.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(water)
+	_bind_water_lamps.call_deferred()
+
+func _bind_water_lamps() -> void:
+	# FarmBuilder creates its real lamps after this landscape. Bind them once;
+	# a night reflection must never invent an extra light over the empty lake.
+	await get_tree().physics_frame
+	var positions := PackedVector3Array()
+	if wb.farm:
+		for lamp: OmniLight3D in wb.farm.lamp_lights:
+			var local_lamp: Vector3=to_local(lamp.global_position)
+			if absf(LakesideLayout.water_distance(Vector2(local_lamp.x,local_lamp.z)))>8.0:continue
+			positions.append(lamp.global_position)
+			if positions.size()==4:break
+	water_mat.set_shader_parameter("reflection_lamp_count",positions.size())
+	positions.resize(4)
+	water_mat.set_shader_parameter("reflection_lamps",positions)
 
 func _ribbon(points: PackedVector2Array, width: float, material: Material, walkable: bool = false) -> void:
 	if points.size() < 2: return
@@ -313,8 +332,9 @@ func _rest_places() -> void:
 		var bench:=wb.spawn("A12_bench",Vector3(p.x,LakesideLayout.height_at(p),p.y),rad_to_deg(atan2(toward.x,toward.y)),1,self)
 		if bench:WorldBuilder.rest_on_terrain(bench,LakesideLayout.height_at(p),0.0)
 	var direction: Node3D=wb.spawn("P_signpost",Vector3(24,0,2.8),0,2,self,.85)
-	if direction:LakesideMaterials.decorate_bridge(direction)
-	_label("镜波湖  →\n沿河步道 · 钓鱼",Vector3(24,2.55,2.8),0)
+	if direction:
+		LakesideMaterials.decorate_bridge(direction)
+		ClearSignage.signpost_text(direction,["镜波湖","沿河步道","钓鱼 · 木桥"])
 	_label("晴町  ←",Vector3(72,2.2,-15.3),0)
 	for id: String in LakesideLayout.SPOTS:
 		var p: Vector2=LakesideLayout.SPOTS[id].stand
@@ -334,40 +354,56 @@ func _creek_stones() -> void:
 	var rng: RandomNumberGenerator=RandomNumberGenerator.new()
 	rng.seed=1007
 	var count: int=0
+	var group: int=0
 	for station: float in [-23.0,-17.0,-11.0,-6.5,7.5,12.5,18.5,24.0,35.0,42.0,59.0,67.0]:
 		for bank: float in [-1.0,1.0]:
-			var x: float=station+rng.randf_range(-.65,.65)
-			var inward: float=rng.randf_range(.20,.70)
-			var z: float=LakesideLayout.river_z(x)+bank*(LakesideLayout.river_half(x)-inward)
-			var point: Vector2=Vector2(x,z)
-			var clear: bool=true
-			for spot_id: String in LakesideLayout.SPOTS:
-				if point.distance_to(LakesideLayout.SPOTS[spot_id]["float"])<1.35:clear=false
-			if not clear:continue
-			if count>0 and rng.randf()<.16:continue
-			var bottom: float=LakesideLayout.height_at(point)
-			var rock: Node3D=wb.spawn("D10_rocks",Vector3(x,bottom,z),rng.randf_range(0,360),0,self,rng.randf_range(.52,.90))
-			if rock:
-				rock.scale.y*=rng.randf_range(.42,.62)
-				rock.name="CreekStone_%02d"%count
-				rock.set_meta("creek_stone",true)
-				rock.set_meta("bed_point",point)
-				LakesideMaterials.stone(rock,count)
-				WorldBuilder.rest_on_terrain(rock,bottom,0.0)
-				count+=1
-	var lake_edge: PackedVector2Array=LakesideLayout.lake_outline(64,-.45)
+			var x: float=station+rng.randf_range(-.32,.32)
+			var edge:=Vector2(x,LakesideLayout.river_z(x)+bank*LakesideLayout.river_half(x))
+			count=_stone_group(edge,group,count,rng)
+			group+=1
+	var lake_edge: PackedVector2Array=LakesideLayout.lake_outline(64,0.0)
 	for shore_index: int in [2,7,12,18,24,30,37,43,50,57]:
-		var shore_point: Vector2=lake_edge[shore_index]
-		var lake_rock: Node3D=wb.spawn("D10_rocks",Vector3(shore_point.x,LakesideLayout.height_at(shore_point),shore_point.y),rng.randf_range(0,360),0,self,rng.randf_range(.58,.94))
-		if lake_rock:
-			lake_rock.scale.y*=rng.randf_range(.42,.62)
-			lake_rock.name="CreekStone_%02d"%count
-			lake_rock.set_meta("creek_stone",true)
-			lake_rock.set_meta("bed_point",shore_point)
-			LakesideMaterials.stone(lake_rock,count)
-			count+=1
+		count=_stone_group(lake_edge[shore_index],group,count,rng)
+		group+=1
 	set_meta("creek_stone_count",count)
 	_seat_creek_stones.call_deferred()
+
+func _stone_group(edge: Vector2,group: int,count: int,rng: RandomNumberGenerator) -> int:
+	# Follow the real bank normal, so the meander and the lake get the same three levels.
+	var outward:=Vector2(LakesideLayout.water_distance(edge+Vector2(.08,0))-LakesideLayout.water_distance(edge-Vector2(.08,0)),LakesideLayout.water_distance(edge+Vector2(0,.08))-LakesideLayout.water_distance(edge-Vector2(0,.08))).normalized()
+	var along:=Vector2(-outward.y,outward.x)
+	var result: int=count
+	result=_add_creek_stone(edge-outward*rng.randf_range(.12,.25),rng.randf_range(.74,1.05),rng.randf_range(.65,.83),group,"half_wet",result,rng)
+	result=_add_creek_stone(edge-outward*rng.randf_range(.82,1.18)+along*rng.randf_range(.42,.62),rng.randf_range(.30,.49),rng.randf_range(.40,.52),group,"submerged",result,rng)
+	if group%2==0:
+		result=_add_creek_stone(edge+outward*rng.randf_range(.84,1.02)-along*rng.randf_range(.43,.60),rng.randf_range(.42,.66),rng.randf_range(.58,.76),group,"bank",result,rng)
+	return result
+
+func _add_creek_stone(point: Vector2,size: float,flat: float,group: int,role: String,index: int,rng: RandomNumberGenerator) -> int:
+	# D10's measured horizontal extent is <.60m at unit scale, including yaw.
+	# Conservatively reserve that whole footprint before spawning, not just its pivot.
+	var radius: float=.62*size+.025
+	if LakesideLayout.path_distance(point)<1.70+radius:return index
+	for spot_id: String in LakesideLayout.SPOTS:
+		var spot: Dictionary=LakesideLayout.SPOTS[spot_id]
+		if point.distance_to(spot.stand)<1.0+radius or point.distance_to(spot["float"])<1.35+radius:return index
+		var cast: Vector2=spot["float"]-spot.stand
+		var fraction: float=clampf((point-spot.stand).dot(cast)/cast.length_squared(),0.0,1.0)
+		if point.distance_to(spot.stand+cast*fraction)<.44+radius:return index
+	if absf(point.x)<1.85+radius and absf(point.y-LakesideLayout.river_z(point.x))<LakesideLayout.river_half(point.x)+1.2:return index
+	if absf(point.x-94.0)<1.9+radius and point.y>35.0-radius and point.y<48.0+radius:return index
+	var bottom: float=_drawn_terrain_height(point)
+	var rock: Node3D=wb.spawn("D10_rocks",Vector3(point.x,bottom,point.y),rng.randf_range(0,360),0,self,size)
+	if rock==null:return index
+	rock.scale.y*=flat
+	rock.name="CreekStone_%02d"%index
+	rock.set_meta("creek_stone",true)
+	rock.set_meta("creek_stone_group",group)
+	rock.set_meta("creek_stone_role",role)
+	rock.set_meta("bed_point",point)
+	LakesideMaterials.stone(rock,index)
+	WorldBuilder.rest_on(rock,global_position.y+bottom,0.0)
+	return index+1
 
 func _seat_creek_stones() -> void:
 	await get_tree().physics_frame

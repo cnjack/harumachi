@@ -1,25 +1,34 @@
 {
  "id": "P09",
- "src": "/Users/jack/workpath/research/3D model/anime/art/models/raw/P09_hyper3d_cli_20261007_reference/model.glb",
- "provider": "Hyper3D CLI Gen-2.5-High empty serving stall",
- "tris_src": 10246,
- "tris": 7998,
- "size_m": [
-  2.6,
-  0.994,
-  1.833
- ],
+ "src": "raw/material_refine_stall_oven_20261011/P09.glb",
+ "provider": "Blender local refinement of the accepted Hyper3D serving stall; built-in imagegen canvas and cedar, 2026-10-11",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 15972,
+ "tex": 1254,
+ "bytes": 6467760,
  "godot_size_m_xyz": [
   2.6,
-  1.833,
-  0.994
+  1.8342,
+  0.9935
  ],
- "tex": 1024,
- "bytes": 250108,
- "yaw_fix": 90,
- "level": "auto",
- "lean_src_deg": 0.0,
- "levelled": false,
- "lean_deg": 0.0,
- "base_frac": 0.782
+ "mesh_nodes": [
+  "P09_BlueIvory_Canvas_Geometry",
+  "P09_Cedar_Maintained_Geometry",
+  "P09_FoldedIvoryHem_Geometry",
+  "P09_JoineryIron_Geometry",
+  "P09_LinenTie_Geometry"
+ ],
+ "export_texture_limit": 2048,
+ "source_texture_sizes_px": {
+  "canvas_blue_ivory": [
+   1254,
+   1254
+  ],
+  "cedar_weathered": [
+   1254,
+   1254
+  ]
+ },
+ "sha256": "640b45803712b82b5d57c893a6f6d135888ad866ea1c2891ae5e518a69dad100"
 }

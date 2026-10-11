@@ -74,7 +74,8 @@ static func courtyard_coping(wall: MeshInstance3D, length: float, height: float)
 	wall.add_child(roof)
 	_tile_ends(wall,length,height)
 	_stone_footing(wall,length,height)
-	var pilaster_mat := _flat(Color(0.89, 0.86, 0.77))
+	var pilaster_mat: ShaderMaterial=MaterialRefinement.wall_material(wall.global_position.y-height*.5,wall.global_position.y+height*.5,float(wall.get_index())*2.71)
+	MaterialRefinement.wall_contacts(pilaster_mat,wall,height)
 	var count := ceili(length / 3.6)
 	for i in count + 1:
 		var post := MeshInstance3D.new()
@@ -88,7 +89,8 @@ static func courtyard_coping(wall: MeshInstance3D, length: float, height: float)
 
 
 static func _stone_footing(wall: MeshInstance3D,length: float,height: float) -> void:
-	var stone:=_flat(Color(.68,.69,.65));stone.vertex_color_use_as_albedo=true
+	var stone: ShaderMaterial=MaterialRefinement.wall_material(wall.global_position.y-height*.5,wall.global_position.y+height*.5,float(wall.get_index())*2.71,true)
+	MaterialRefinement.wall_contacts(stone,wall,height)
 	var mesh:=BoxMesh.new();mesh.size=Vector3(.64,.22,.245)
 	var count:=maxi(1,ceili((length+.16)/.65))
 	var batch:=MultiMesh.new();batch.transform_format=MultiMesh.TRANSFORM_3D;batch.use_colors=true

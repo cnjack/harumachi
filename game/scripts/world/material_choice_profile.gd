@@ -40,10 +40,11 @@ static func apply(world: WorldBuilder) -> Dictionary:
                 material.shader = WATER
                 material.set_shader_parameter("deep_color",Color(.035,.21,.34))
                 material.set_shader_parameter("shallow_color",Color(.43,.79,.70))
+                material.set_shader_parameter("middle_color",Color(.075,.46,.55))
                 material.set_shader_parameter("foam_color",Color(.87,.97,.95))
-                material.set_shader_parameter("flow_highlight",.24)
-                material.set_shader_parameter("foam_amount",.35)
-                material.set_shader_parameter("shallow_opacity",.62)
+                material.set_shader_parameter("flow_highlight",.18)
+                material.set_shader_parameter("foam_amount",.22)
+                material.set_shader_parameter("shallow_opacity",.34)
             elif kind == "grass_blades":
                 material.shader = GRASS
                 material.set_shader_parameter("height_scale",.70)

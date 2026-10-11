@@ -13,6 +13,12 @@ uniform bool structured_texture = false;
 uniform float macro_strength = 0.10;
 uniform float surface_wear = 0.0;
 uniform sampler2D wear_tex : source_color,filter_linear_mipmap_anisotropic,repeat_enable;
+uniform bool street_detail=false;
+uniform sampler2D street_paint : source_color, filter_linear_mipmap_anisotropic, repeat_enable;
+uniform int entrance_count=0;
+uniform vec4 entrances[8]; // actual interaction positions, ellipse x/z radii
+uniform int wall_edge_count=0;
+uniform vec4 wall_edges[17]; // actual wall centreline endpoints
 uniform float wet = 0.0; // only used by the planter soil, never by streets
 // v0.5 meadows: two more grass paintings mixed in by large-scale noise, plus bare dirt patches
 uniform bool use_variety = false;
@@ -89,6 +95,35 @@ void fragment() {
 		vec3 grain=texture(wear_tex,wpos.xz/3.7).rgb;
 		c=mix(c,grain,surface_wear*scuff);
 		c*=1.0+(noise(wpos.xz*.18+9.)-.5)*surface_wear*.45;
+	}
+	if(street_detail){
+		// Preserve the original paver joints; all additional variation stays inside their colour range.
+		vec3 pigment=texture(street_paint,uv).rgb;
+		float light=dot(pigment,vec3(.2126,.7152,.0722));
+		c*=.96+.08*light;
+		vec2 slab=floor(wpos.xz/vec2(.72,.48));
+		float replace=step(.977,hash(slab+7.));
+		c=mix(c,c*vec3(1.025,1.035,1.04),replace*.7);
+		float traffic=0.;
+		for(int entry=0;entry<8;entry++){
+			if(entry>=entrance_count)break;
+			vec2 dist=(wpos.xz-entrances[entry].xy)/entrances[entry].zw;
+			traffic=max(traffic,1.-smoothstep(.2,1.,length(dist)));
+		}
+		float centre=max(1.-smoothstep(.6,1.65,abs(wpos.z+11.)),(1.-smoothstep(.5,1.25,abs(wpos.x-19.7)))*step(-5.5,wpos.z));
+		c=mix(c,c*1.055,max(traffic,centre*.32)); // matte foot polishing, no rain gloss
+		float edge=100.;
+		for(int wall=0;wall<17;wall++){
+			if(wall>=wall_edge_count)break;
+			vec2 a=wall_edges[wall].xy,b=wall_edges[wall].zw,ab=b-a;
+			edge=min(edge,length(wpos.xz-(a+ab*clamp(dot(wpos.xz-a,ab)/max(dot(ab,ab),.001),0.,1.))));
+		}
+		float dust=(1.-smoothstep(.13,.37,edge))*smoothstep(.28,.73,noise(wpos.xz*1.7));
+		c=mix(c,vec3(.66,.61,.49),dust*.14*(1.-traffic));
+		// Very few shallow hairline cracks, broken across the slab rather than a town-wide grid.
+		vec2 local=fract(wpos.xz/vec2(.72,.48));
+		float crack=(1.-smoothstep(.001,.004,abs(local.x-(.26+.13*sin(local.y*8.)))))*step(.991,hash(slab+31.))*step(.15,local.y)*step(local.y,.85);
+		c*=1.-crack*.15;
 	}
 	c = mix(c, c * 0.55, wet);
 	ALBEDO = c * tint.rgb;

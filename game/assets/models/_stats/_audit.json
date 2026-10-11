@@ -7170,52 +7170,57 @@
     },
     "P09": {
       "id": "P09",
-      "sha256": "f11f27e4b58363d97bfb65e7f55e9844514e98969ec9bcb3af4489680477bc14",
-      "source_mtime": 1791311422.2974684,
-      "triangles": 7998,
+      "sha256": "640b45803712b82b5d57c893a6f6d135888ad866ea1c2891ae5e518a69dad100",
+      "source_mtime": 1791727268.444963,
+      "triangles": 15972,
       "bounds_godot": {
         "min": [
-          -1.2999999523162842,
+          -1.300000786781311,
           0.0,
           -0.49677181243896484
         ],
         "max": [
-          1.2999999523162842,
-          1.8330349922180176,
+          1.300000786781311,
+          1.8342349529266357,
           0.49677181243896484
         ]
       },
       "size_m": [
-        2.5999999046325684,
-        1.8330349922180176,
+        2.600001573562622,
+        1.8342349529266357,
         0.9935436248779297
       ],
-      "surface_area_m2": 12.421,
+      "surface_area_m2": 13.58,
       "albedo_image_sizes": [
         [
-          1024,
-          1024
+          1254,
+          1254
         ]
       ],
       "topology": {
-        "components": 9,
-        "largest_component_area_fraction": 0.6391,
+        "components": 152,
+        "largest_component_area_fraction": 0.5756,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 193.87,
-        "median": 230.56
+        "p10": 777.68,
+        "median": 1350.42
       },
       "material_density_px_m": {
-        "M_P09": {
-          "p10": 193.87,
-          "median": 230.56
+        "P09_BlueIvory_Canvas": {
+          "p10": 776.01,
+          "median": 779.32
+        },
+        "P09_Cedar_Maintained": {
+          "p10": 1318.25,
+          "median": 1356.41
         }
       },
       "node_density_px_m": {
-        "P09": 230.56
+        "P09_BlueIvory_Canvas_Geometry": 779.32,
+        "P09_Cedar_Maintained_Geometry": 1356.41
       },
-      "untextured_area_fraction": 0.0,
+      "untextured_area_fraction": 0.0139,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -7880,9 +7885,9 @@
     },
     "P_deck_oven": {
       "id": "P_deck_oven",
-      "sha256": "24e51575d2f66d4a51d0a8c8474c9472f800e43b72bd3cd2cd3e3eb568bfadb7",
-      "source_mtime": 1790877646.6879299,
-      "triangles": 17999,
+      "sha256": "d78d5fe1807e1648d55ec5986e4ac9c8b371d9ab01d5168005fd0a29fbf4e575",
+      "source_mtime": 1791727268.5415144,
+      "triangles": 17122,
       "bounds_godot": {
         "min": [
           -0.7300000190734863,
@@ -7890,42 +7895,42 @@
           -0.445000022649765
         ],
         "max": [
-          0.7299999594688416,
+          0.7300000190734863,
           2.0799999237060547,
-          0.5099999904632568
+          0.5098000168800354
         ]
       },
       "size_m": [
-        1.4599999785423279,
+        1.4600000381469727,
         2.0799999237060547,
-        0.9550000131130219
+        0.9548000395298004
       ],
-      "surface_area_m2": 16.4,
+      "surface_area_m2": 22.949,
       "albedo_image_sizes": [
         [
-          2048,
-          2048
+          1254,
+          1254
         ]
       ],
       "topology": {
-        "components": 1,
-        "largest_component_area_fraction": 1.0,
-        "boundary_edge_fraction": 0.0001
+        "components": 137,
+        "largest_component_area_fraction": 0.9334,
+        "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 334.37,
-        "median": 337.59
+        "p10": 1253.96,
+        "median": 1254.0
       },
       "material_density_px_m": {
-        "M_P_deck_oven": {
-          "p10": 334.37,
-          "median": 337.59
+        "Oven_MaintainedEnamel": {
+          "p10": 1253.96,
+          "median": 1254.0
         }
       },
       "node_density_px_m": {
-        "P_deck_oven": 337.59
+        "Oven_MaintainedEnamel_Geometry": 1254.0
       },
-      "untextured_area_fraction": 0.0,
+      "untextured_area_fraction": 0.157,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },

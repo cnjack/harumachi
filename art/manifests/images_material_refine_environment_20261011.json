@@ -1,0 +1,47 @@
+{
+  "status": "imagegen_assets_ready_for_native_material_review",
+  "created_at": "2026-10-11T20:24:47.342437+08:00",
+  "source_commit": "9560d424eab6b745c9f691a70f0d943137541664",
+  "generator": "built-in image_gen (no CLI/API fallback)",
+  "assets": [
+    {
+      "file": "game/assets/textures/material_refine_20261011/street_stone.png",
+      "sha256": "d7de53f37c52b4d8f39458d13f43a1e1a33c9d33d6961a0413043182ec2adfb9",
+      "width": 1254,
+      "height": 1254,
+      "source_original": "/Users/jack/.codex/generated_images/01a126d4-b794-7032-bfb8-deae6e55d211/exec-bc8b72cc-16d7-48aa-81e8-4e8122667dc5.png",
+      "original_bytes_preserved": true,
+      "tool": "built-in image_gen.imagegen",
+      "mode": "edit",
+      "prompt": "art/manifests/prompts/material_refine_20261011/street_stone.txt",
+      "prompt_sha256": "9d00e6b17d83a5117f4a59a828fe46f4f66cd1e50afcb4a0bcdca4b72a9115ca",
+      "edit_target": "game/assets/textures/town_detail/stone.png",
+      "reviewed": true,
+      "visual_review": "原铺石所有主要接缝/石板比例/平面布置保持；低对比手绘材质、不带物体或新网格",
+      "pixel_postprocess": false
+    },
+    {
+      "file": "game/assets/textures/material_refine_20261011/plaster_aged.png",
+      "sha256": "2d00057b162848fdcbb383021bcdb0b03144b4d2081c253cec2c8639c4e0be15",
+      "width": 1254,
+      "height": 1254,
+      "source_original": "/Users/jack/.codex/generated_images/01a126d4-b794-7032-bfb8-deae6e55d211/exec-258fbfbd-82b5-4b4a-93ea-c95c1c744c81.png",
+      "original_bytes_preserved": true,
+      "tool": "built-in image_gen.imagegen",
+      "mode": "generate",
+      "prompt": "art/manifests/prompts/material_refine_20261011/plaster_aged.txt",
+      "prompt_sha256": "ce0318566a178c24beb70922bb3fcb01022ac603f79150562b883c0dac2c026e",
+      "edit_target": null,
+      "reviewed": true,
+      "visual_review": "淡暖白低对比细灰泥，无潮湿色带/污绿/阴影/文字，无明显方向亮度梯度",
+      "pixel_postprocess": false
+    }
+  ],
+  "constraints": [
+    "Original source stone.png was only read and sent as edit target; it was not overwritten",
+    "Generated PNGs copied byte-for-byte, with no image conversion, painting, retouch, resize or tile repair",
+    "No game/source/shared-file/Godot changes in this texture delivery",
+    "No 2K resolution claim: both tool outputs are 1254 square",
+    "Texture review does not replace native noon/sunset material review or mathematical edge-seam proof"
+  ]
+}

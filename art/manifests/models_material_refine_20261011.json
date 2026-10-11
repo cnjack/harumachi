@@ -1,0 +1,284 @@
+{
+  "created": "2026-10-11T10:36:34.985524+00:00",
+  "source_commit": "9560d424eab6b745c9f691a70f0d943137541664",
+  "status": "source_committed_by_user_request_full_tests_passed_final_native_pending",
+  "new_paid_3d_generation_submissions": 0,
+  "generator": "built-in image_gen for three new albedos; Blender for geometry/UV only",
+  "bitmap_postprocessing": false,
+  "imagegen_prompt_file": "art/manifests/prompts/material_refine_stall_oven_20261011.json",
+  "imagegen_prompt_file_sha256": "b4dac996dd6258c9503d7ad734951032ee75aa875fad70e387bcfecbf00b903f",
+  "textures": {
+    "canvas_blue_ivory.png": {
+      "source": "/Users/jack/.codex/generated_images/01a126d4-9da7-7943-a674-11c621594330/exec-ae4f58dc-7929-4c7c-a7ba-b5c371482e63.png",
+      "path": "game/assets/textures/material_refine_20261011/canvas_blue_ivory.png",
+      "sha256": "50dd75e7485d023eb94e3b8a38e3acadbc13cfabbbae58e972df159bb0220387",
+      "width": 1254,
+      "height": 1254,
+      "tool": "built-in image_gen",
+      "bitmap_postprocessing": false
+    },
+    "cedar_weathered.png": {
+      "source": "/Users/jack/.codex/generated_images/01a126d4-9da7-7943-a674-11c621594330/exec-1745e90d-e91c-4383-a307-ba976822f7af.png",
+      "path": "game/assets/textures/material_refine_20261011/cedar_weathered.png",
+      "sha256": "e2377ff3939b76c2de84abd70112795d4f97f113f94920fc53657ca50da19cfb",
+      "width": 1254,
+      "height": 1254,
+      "tool": "built-in image_gen",
+      "bitmap_postprocessing": false
+    },
+    "enamel_metal.png": {
+      "source": "/Users/jack/.codex/generated_images/01a126d4-9da7-7943-a674-11c621594330/exec-605821d3-c9a8-4e58-88ba-9889e58ca01e.png",
+      "path": "game/assets/textures/material_refine_20261011/enamel_metal.png",
+      "sha256": "487d32518b4404db94ce7765e5e45f32c491c4d16cd1456c34620cdecc6fcac2",
+      "width": 1254,
+      "height": 1254,
+      "tool": "built-in image_gen",
+      "bitmap_postprocessing": false
+    }
+  },
+  "models": {
+    "P09": {
+      "status": "geometry_contacts_and_full_tests_passed_final_native_pending",
+      "method": "Blender local geometry and UV refinement of the existing accepted model; no new paid 3D generation",
+      "input": {
+        "path": "art/models/raw/material_refine_stall_oven_20261011/P09_input.glb",
+        "sha256": "f11f27e4b58363d97bfb65e7f55e9844514e98969ec9bcb3af4489680477bc14"
+      },
+      "editable_source": "art/models/raw/material_refine_stall_oven_20261011/P09.blend",
+      "raw": {
+        "path": "art/models/raw/material_refine_stall_oven_20261011/P09.glb",
+        "sha256": "57adc9fd1dbd229e0822d2c80f808a1d7c3b2cbb597dc2fbe0ecf7cd5d65b304"
+      },
+      "game": {
+        "path": "game/assets/models/P09.glb",
+        "sha256": "640b45803712b82b5d57c893a6f6d135888ad866ea1c2891ae5e518a69dad100"
+      },
+      "bounds_blender": {
+        "min": [
+          -1.300000786781311,
+          -0.49677181243896484,
+          0.0
+        ],
+        "max": [
+          1.300000786781311,
+          0.49677181243896484,
+          1.8342349529266357
+        ]
+      },
+      "godot_size_m_xyz": [
+        2.600001573562622,
+        1.8342349529266357,
+        0.9935436248779297
+      ],
+      "triangle_count": 15972,
+      "material_roles": [
+        "P09_BlueIvory_Canvas",
+        "P09_Cedar_Maintained",
+        "P09_FoldedIvoryHem",
+        "P09_JoineryIron",
+        "P09_LinenTie"
+      ],
+      "mesh_nodes": [
+        "P09_Cedar_Maintained_Geometry",
+        "P09_BlueIvory_Canvas_Geometry",
+        "P09_FoldedIvoryHem_Geometry",
+        "P09_LinenTie_Geometry",
+        "P09_JoineryIron_Geometry"
+      ],
+      "support_plane": {
+        "base_frac": 0.782,
+        "normal": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "rect_fill": 1.0,
+        "square_deg": 0.0,
+        "tilt": 0.0,
+        "verts": 13027
+      },
+      "preserved": "Original complete counter, posts and legs belowlocal1.776m; top cut rings truly capped. All21 measured countertop heights exactly match original input.",
+      "refined": "One common-edge closed3mm tensioned canvas with connected folded valances,4.2cm camber, stitching/lashings; two shaped visible timber bearings physically connect fabric underside to original eave rails. Both cloth and timber bodies boundary/nonmanifold0.",
+      "actual_texture_sizes_px": {
+        "canvas_blue_ivory": [
+          1254,
+          1254
+        ],
+        "cedar_weathered": [
+          1254,
+          1254
+        ]
+      },
+      "export_texture_limit_px": 2048,
+      "game_stats_sha256": "521dafc7c9e0feb90634eccf7c2c8adf95d76c452eedae9a5bf82d3146367c48",
+      "topology_inventory": {
+        "components": 152,
+        "largest_component_area_fraction": 0.5755831332378156,
+        "surface_area_m2": 13.580063413701277,
+        "boundary_edge_fraction": 0.0,
+        "boundary_edges": 0,
+        "boundary_length_m": 0,
+        "nonmanifold_edges": 0
+      },
+      "editable_source_sha256": "92ac6c37fcc1fef92f6e4059752c3d34aa0c890300de351b09c84ab6d57c38b9"
+    },
+    "P_deck_oven": {
+      "status": "geometry_contacts_and_full_tests_passed_final_native_pending",
+      "method": "Blender local rebuild of the defective middle casing plus precise front hardware; original accepted Hyper3D base/feet/flue retained; no new paid3D generation.",
+      "input": {
+        "path": "art/models/raw/material_refine_stall_oven_20261011/P_deck_oven_input.glb",
+        "sha256": "24e51575d2f66d4a51d0a8c8474c9472f800e43b72bd3cd2cd3e3eb568bfadb7"
+      },
+      "editable_source": "art/models/raw/material_refine_stall_oven_20261011/P_deck_oven.blend",
+      "raw": {
+        "path": "art/models/raw/material_refine_stall_oven_20261011/P_deck_oven.glb",
+        "sha256": "776f8b2c6b95f169748562f991acddf1450f64b959c1f4ead90f4521bef0a342"
+      },
+      "game": {
+        "path": "game/assets/models/P_deck_oven.glb",
+        "sha256": "d78d5fe1807e1648d55ec5986e4ac9c8b371d9ab01d5168005fd0a29fbf4e575"
+      },
+      "bounds_blender": {
+        "min": [
+          -0.7300000190734863,
+          -0.5098000168800354,
+          0.0
+        ],
+        "max": [
+          0.7300000190734863,
+          0.445000022649765,
+          2.0799999237060547
+        ]
+      },
+      "godot_size_m_xyz": [
+        1.4600000381469727,
+        2.0799999237060547,
+        0.9548000395298004
+      ],
+      "triangle_count": 17122,
+      "material_roles": [
+        "Oven_ControlPanel",
+        "Oven_DialMarkings",
+        "Oven_HeatGlass",
+        "Oven_HeatSeal",
+        "Oven_HeatingElement",
+        "Oven_HeatproofHandle",
+        "Oven_MaintainedEnamel",
+        "Oven_StoneDeck",
+        "Oven_WarmCavity"
+      ],
+      "mesh_nodes": [
+        "Oven_Deck0_Glass",
+        "Oven_HeatingElement_Geometry",
+        "Oven_ControlPanel_Geometry",
+        "Oven_HeatproofHandle_Geometry",
+        "Oven_DialMarkings_Geometry",
+        "Oven_Deck1_Glass",
+        "Oven_MaintainedEnamel_Geometry",
+        "Oven_WarmCavity_Geometry",
+        "Oven_StoneDeck_Geometry",
+        "Oven_HeatSeal_Geometry"
+      ],
+      "support_plane": {
+        "base_frac": 0.876,
+        "normal": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "rect_fill": 0.988,
+        "square_deg": 0.0,
+        "tilt": 0.0,
+        "verts": 28122
+      },
+      "preserved": "Original base/feet belowlocal0.5855m and complete upper flue above1.8995m. Physical origin/overall bounds/door, handle, dial and interaction positions retained. Old middle rear/side casing is NOT retained.",
+      "refined": "The self-intersecting scanned middle shell is rebuilt as a regular closed insulated cabinet with two actual baking chambers, control compartments, rear ventilation plenum and through-cut hood/side vents. Fitted door rings/seals and original base/flue form a manifold structural core; glass, controls, level bars and hardware remain individually closed and physically fitted. No invisible connector geometry.",
+      "actual_texture_sizes_px": {
+        "enamel_metal": [
+          1254,
+          1254
+        ]
+      },
+      "export_texture_limit_px": 2048,
+      "game_stats_sha256": "6526935d1994c5dcf9c2b8fb68ac7d1d7cb3e1ea48074ce510c68cc0f665d9bf",
+      "topology_inventory": {
+        "components": 137,
+        "largest_component_area_fraction": 0.9333508678321943,
+        "surface_area_m2": 22.949126101808734,
+        "boundary_edge_fraction": 0.0,
+        "boundary_edges": 0,
+        "boundary_length_m": 0,
+        "nonmanifold_edges": 128
+      },
+      "editable_source_sha256": "c871881cf2e5cb57fe5d75e76e1485abd5f54c0e3bb8dc72c5b4a7aa5a6678b0"
+    }
+  },
+  "verification": {
+    "independent_triangle_audit": {
+      "path": "evidence/material_detail_review_20261011/stall-oven/independent-triangle-audit.json",
+      "sha256": "696988577ae92a5e6c246c23c558be26d518d15113b7dbcd4296a7293688da8d",
+      "old_failed": [
+        "continuous_canopy",
+        "cloth_thickness",
+        "straight_doors",
+        "level_handles",
+        "aligned_knobs",
+        "material_separation"
+      ],
+      "new_passed": true
+    },
+    "level": {
+      "path": "evidence/material_refinement_delivery_20261011/topology-diagnosis/level-final-two.json",
+      "sha256": "5da737abdef38d8cc1c1c909230598497cdb3dbcdb2aecff44280557637d1dcf"
+    },
+    "native": "Closed models reviewed in the prior90 native images; final change affects only rotated timber grain-axis binding and its regression. Final frozen-source recapture and exported-app200 remain pending Mac unlock; official package not replaced. See evidence/material_refinement_delivery_20261011/progress.json.",
+    "source_albedo_review": {
+      "path": "evidence/material_detail_review_20261011/stall-oven/texture-review.json",
+      "sha256": "2c455d817dc39b45cfd006d6647de7bc1d2983205b703bf9672f288daabf40c0",
+      "passed": true
+    },
+    "shared_stats": {
+      "path": "evidence/material_refinement_delivery_20261011/topology-diagnosis/final-statistics-and-negative-contract.json",
+      "sha256": "b6dbf6651183cbf42b881150f36a744b659ee8341cad015afca4ea622188be5d"
+    },
+    "closed_structure_guard": {
+      "path": "art/tools/audit_refined_stall_oven.py",
+      "sha256": "453a97cfd14ecbfd1fd714da82a597f4543a338f62aaf08a9b3cd155601514d4",
+      "before": {
+        "path": "evidence/material_refinement_delivery_20261011/topology-diagnosis/closed-structure-actual-contacts-before.json",
+        "sha256": "e19ba0aa5103816d2ce9d5c91ce19993261b8479759e402872b2e061a3b0b1b8"
+      },
+      "after": {
+        "path": "evidence/material_refinement_delivery_20261011/topology-diagnosis/closed-structure-actual-contacts.json",
+        "sha256": "df6a9beab88a8d4d447df68f961809eb2dad3d60afc96cabdb4a4e0db4438fe0"
+      },
+      "old_exit_code": 1,
+      "new_exit_code": 0,
+      "before_cloth_timber_gap_m": 0.0185221116989851,
+      "new_cloth_timber_gap_m": 0,
+      "contacts_checked": 51
+    },
+    "actual_inventory": {
+      "path": "evidence/material_refinement_delivery_20261011/topology-diagnosis/per-node-topology.json",
+      "sha256": "219a3cac2c024ba7e3cdc41af7d1d87cab036623c915d60fe38be7e8decbc96d"
+    },
+    "neutral_six_view_review": {
+      "path": "evidence/material_refinement_delivery_20261011/topology-diagnosis/final-neutral-review.json",
+      "sha256": "fdfe84a22cb57c021ea0886ff821c311853aa10d51b71eb7fbbf08af48f0b3dd"
+    },
+    "archived_bad_topology": {
+      "path": "evidence/material_refinement_delivery_20261011/topology-before/source-preservation.json",
+      "sha256": "5c7c1fccc28064c86d89cb198c73c2ad199afe799eeb6cfa6aacdd1306b5875d"
+    },
+    "source_checks": {
+      "material_checks": 40,
+      "old_failed": 38,
+      "new_failed": 0,
+      "full_checks": 1538,
+      "full_failed": 0,
+      "engine": "4.8.dev7.official.c971f93e7",
+      "source_snapshot": "evidence/material_refinement_delivery_20261011/full-tests-source.json"
+    }
+  },
+  "topology_repair_updated": "2026-10-11T14:05:00.267970+00:00"
+}

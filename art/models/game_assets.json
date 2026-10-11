@@ -137,13 +137,16 @@
       "tex": 1024
     },
     "P09": {
-      "src": "raw/P09_hyper3d_cli_20261007_reference/model.glb",
+      "src": "raw/material_refine_stall_oven_20261011/P09.glb",
       "fit": "w",
       "size": 2.6,
       "tris": 8000,
-      "tex": 1024,
+      "tex": 2048,
       "yaw": 90,
-      "provider": "Hyper3D CLI Gen-2.5-High, empty serving stall reference"
+      "provider": "Blender local refinement of the accepted Hyper3D serving stall; built-in imagegen canvas and cedar, 2026-10-11",
+      "preserve_parts": true,
+      "image_format": "AUTO",
+      "note": "Original complete counter/frame retained below local1.776m with capped posts; one common-edge closed3mm canvas with folded valance, stitches and lashings; visible shaped roof-bearing battens contact both fabric and original eave rails; origin/footprint unchanged."
     },
     "P10": {
       "src": "raw/plaza_paintover_20261009/P10.glb",
@@ -1498,13 +1501,13 @@
       "rebake": true
     },
     "P_deck_oven": {
-      "src": "raw/P_deck_oven_h3d_quality_20261001/fitted.glb",
+      "src": "raw/material_refine_stall_oven_20261011/P_deck_oven.glb",
       "fit": "h",
       "size": 2.0799999237060547,
       "tris": 18000,
       "tex": 2048,
       "weld": 0,
-      "provider": "hyper3d rodin Gen-2.5-High, 2026-10-02",
+      "provider": "Blender local closed-cabinet rebuild retaining accepted Hyper3D base/feet and complete flue; built-in imagegen enamel, 2026-10-11",
       "generation_id": "b6b8327d-a750-4a04-8d8f-cf4ec4299016",
       "fit_bounds_blender": {
         "min": [
@@ -1518,8 +1521,10 @@
           2.0799999237060547
         ]
       },
-      "note": "Replace the 520-triangle untextured procedural oven; preserve physical footprint.; 2026-10-02 exact weld on untextured decimation copy; UV/colour rebake",
-      "rebake": true
+      "note": "Original base/feet below0.5855m and complete upper flue above1.8995m retained. Self-intersecting scanned middle shell replaced by regular closed insulated cabinet with two real chambers, control bays, rear plenum and through ventilation. Straight framed doors, fitted seals/glass, level bars and four marked knobs preserve dimensions/interaction. No new paid3D generation.",
+      "rebake": false,
+      "preserve_parts": true,
+      "image_format": "AUTO"
     },
     "T02_summer_tree": {
       "src": "raw/free_foliage_20261004/ready/T02_summer_tree.glb",

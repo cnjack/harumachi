@@ -165,8 +165,12 @@ func material_checks() -> void:
 		for part: MeshInstance3D in WorldBuilder.find_meshes(bridge):
 			for index: int in part.mesh.get_surface_count():
 				var override: Material=part.get_surface_override_material(index)
-				if override is ShaderMaterial and (override as ShaderMaterial).shader==LakesideMaterials.WOOD_SHADER:
-					aged=true
-					if part.material_override!=null:dual=true
+				if override is ShaderMaterial:
+					var finish: ShaderMaterial=override as ShaderMaterial
+					var old_wood: bool=finish.shader==LakesideMaterials.WOOD_SHADER
+					var refined_wood: bool=finish.shader==SurfaceFinish.SHADER and finish.get_shader_parameter("timber_detail")==true and finish.get_shader_parameter("wood_tex") is Texture2D
+					if old_wood or refined_wood:
+						aged=true
+						if part.material_override!=null:dual=true
 	t.check("TASTING_MATERIAL","the real aged bridge preserves surface shading without a second whole-mesh override",aged and not dual)
 	root.queue_free()

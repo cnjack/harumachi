@@ -282,6 +282,7 @@ static func ground_material(kind: String) -> ShaderMaterial:
 			m.set_shader_parameter("tile", 2.8)
 			m.set_shader_parameter("tint", Color(1, 1, 1))
 			m.set_shader_parameter("feather", 0.35)
+	MaterialRefinement.configure_street(m,kind)
 	return m
 
 
@@ -322,6 +323,7 @@ func _build_detail_signs() -> void:
 		clock_face=VillageClock.new();clock_face.build(clock_model)
 	TransitStop.build(self)
 	PublicPlaceArt.street(self)
+	StreetMaintenance.build(self)
 	set_meta("clear_sign_count",ClearSignage.upgrade_existing(self))
 
 func _spawn_building(spec: Array) -> void:
@@ -481,6 +483,7 @@ func _build_walls() -> void:
 		wall_mat.set_shader_parameter("plaster", true)
 		var wall := add_wall(a, b, h, wall_mat, self)
 		wall.name = "BoundaryWall_%d" % i
+		MaterialRefinement.configure_wall(wall,h,i)
 		JapaneseArchitecture.courtyard_coping(wall, a.distance_to(b), h)
 
 
@@ -844,40 +847,27 @@ func _build_build_sign() -> void:
 	root.name = "BuildSign"
 	root.position = Layout.BUILD_SIGN_POS
 	add_child(root)
-	var wood := StandardMaterial3D.new()
-	wood.albedo_color = Color(0.55, 0.38, 0.24)
-	wood.roughness = 0.9
 	# posts stand just outside the board's edges so they never cover the lettering
 	for x in [-0.6, 0.6]:
 		var post := MeshInstance3D.new()
 		var pb := BoxMesh.new()
 		pb.size = Vector3(0.08, 1.4, 0.08)
 		post.mesh = pb
-		post.material_override = wood
+		post.material_override = SurfaceFinish.timber(pb.get_aabb(),Color(.55,.41,.27),1)
 		post.position = Vector3(x, 0.65, 0)
 		root.add_child(post)
 	var board := MeshInstance3D.new()
 	var bb := BoxMesh.new()
 	bb.size = Vector3(1.1, 0.62, 0.05)
 	board.mesh = bb
-	var bm := StandardMaterial3D.new()
-	bm.albedo_color = Color(0.97, 0.93, 0.82)
-	board.material_override = bm
+	board.material_override = SurfaceFinish.timber(bb.get_aabb(),Color(.91,.85,.70),0,true,.72)
 	board.position = Vector3(0, 1.05, 0)
 	root.add_child(board)
+	ClearSignage.pins(board,Vector2(1.1,.62),.029)
 	for side in [-1.0, 1.0]:
-		var lbl := Label3D.new()
-		lbl.text = "集市布置区\n桌椅 · 装饰"
-		lbl.font_size = 44
-		lbl.pixel_size = 0.0036
-		lbl.line_spacing = 6
-		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		lbl.modulate = Color(0.36, 0.22, 0.12)
-		lbl.outline_size = 0
-		lbl.double_sided = false
-		lbl.position = Vector3(0, 1.05, 0.03 * side)
-		lbl.rotation.y = 0.0 if side > 0.0 else PI
+		var lbl: Label3D=ClearSignage.label("集市布置区\n桌椅 · 装饰",Vector3(0,1.05,.032*side),0. if side>0 else PI,.1584,Color(.36,.22,.12))
+		lbl.line_spacing=6
+		ClearSignage.fit(lbl,Vector2(1.1,.62),.06)
 		root.add_child(lbl)
 	var body := StaticBody3D.new()
 	body.collision_layer = L_SOLID
@@ -1126,9 +1116,10 @@ func _build_town_v05() -> void:
 	_build_nature_accents()
 	_build_town_exit()
 	# signpost at the east end: the way down to the allotment
-	_sign_label("河边农园 →", Vector3(40.6, 2.0, -7.2), 0.0, 28)
-	_sign_label("← 公交站", Vector3(39.4, 1.6, -7.2), 0.0, 28)
-	_sign_label("住宅支巷 ↗", Vector3(40.54, 1.2, -7.45), deg_to_rad(-25.0), 24)
+	var direction: Node3D=get_node_or_null("P_signpost") as Node3D
+	if direction:
+		SurfaceFinish.decorate_timber(direction)
+		ClearSignage.signpost_text(direction,["河边农园","公交站","住宅支巷"])
 	var down := Label3D.new()
 	down.text = "河边农园 →"
 	down.font_size = 64
@@ -1633,6 +1624,10 @@ func _apply_look(minute: float, weather: String, force: bool = false) -> void:
 			farm.water_mat.set_shader_parameter("dusk_w",clampf(L.dusk,0,1))
 			farm.water_mat.set_shader_parameter("night_w",clampf(L.night,0,1))
 			farm.water_mat.set_shader_parameter("sun_direction",sun.global_basis.z.normalized())
+			farm.water_mat.set_shader_parameter("sunlight_amount",clampf(L.sun,0.0,1.0))
+			farm.water_mat.set_shader_parameter("lamp_amount",clampf(L.lamp/2.0,0.0,1.0))
+			farm.water_mat.set_shader_parameter("moonlight_amount",0.0 if weather=="rain" else (.45 if weather=="cloudy" else 1.0))
+			if moon:farm.water_mat.set_shader_parameter("moon_position",moon.global_position)
 			farm.water_mat.set_shader_parameter("tint", Color(1, 1, 1).lerp(Color(1.0, 0.82, 0.7), clampf(L.dusk, 0.0, 1.0) * 0.6).lerp(Color(0.28, 0.34, 0.5), clampf(L.night, 0.0, 1.0)))
 		set_wind(weather)
 
