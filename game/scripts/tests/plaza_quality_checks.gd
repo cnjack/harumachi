@@ -63,3 +63,24 @@ func run() -> void:
 		if material!=null and float(material.get_shader_parameter("feather"))>.5: transitions+=1
 	check("plaza lawn borders retain their transition after material selection",transitions==2,str(transitions))
 	check("flower clusters and fringe leave actual activity clearances",int(world.get_meta("plaza_flower_clumps",0))>=12 and int(world.get_meta("plaza_fringe_clumps",0))>10)
+	check_grass_pow_inputs(world)
+
+## MSAA shades thin blades outside their triangles, so a varying can extrapolate below zero.
+## pow() of a negative is NaN on NVIDIA and glow spreads it into white blotches (Windows, 2026-10-11).
+func check_grass_pow_inputs(world: WorldBuilder) -> void:
+	var shaders: Dictionary={"res://shaders/grass_blade.gdshader":true}
+	for node: Node in world.find_children("*","MultiMeshInstance3D",true,false):
+		if not node.has_meta("grass_style"): continue
+		var material:=(node as MultiMeshInstance3D).material_override as ShaderMaterial
+		if material!=null and material.shader!=null: shaders[material.shader.resource_path]=true
+	var varying:=RegEx.create_from_string("varying\\s+(?:flat\\s+|smooth\\s+)?\\w+\\s+(\\w+)")
+	var power:=RegEx.create_from_string("pow\\(\\s*([^,]+),")
+	var unsafe: Array[String]=[]
+	for path: String in shaders:
+		var source:=FileAccess.get_file_as_string(path)
+		var names: Dictionary={}
+		for found: RegExMatch in varying.search_all(source): names[found.get_string(1)]=true
+		for found: RegExMatch in power.search_all(source):
+			var base:=found.get_string(1).strip_edges()
+			if names.has(base) or base.contains("sin(") or base.contains("cos("): unsafe.append(path.get_file()+": pow("+base+")")
+	check("blade grass never raises an unclamped varying or wave to a power",shaders.size()>=2 and unsafe.is_empty(),"%d shaders %s"%[shaders.size(),str(unsafe)])

@@ -21,7 +21,8 @@ void vertex() {
     blade_height = UV.y;
     blade_random = COLOR.r;
     vec3 p = (MODEL_MATRIX*vec4(VERTEX,1.0)).xyz;
-    float band = pow(sin(dot(p.xz,normalize(wind_direction))*2.2-clock_value*1.8)*.5+.5,2.0);
+    float wave = clamp(sin(dot(p.xz,normalize(wind_direction))*2.2-clock_value*1.8)*.5+.5,0.0,1.0);
+    float band = wave*wave;
     float flutter = sin(clock_value*4.0+COLOR.g*6.283+p.x*1.8);
     float bend = (.12+band*.34+flutter*.06)*wind_strength*wind_scale*UV.y*UV.y;
     vec3 disp = vec3(normalize(wind_direction).x,0,normalize(wind_direction).y)*bend*.20;
@@ -37,11 +38,15 @@ void vertex() {
     NORMAL = vec3(0,1,0);
 }
 void fragment() {
+    // MSAA shades thin blades at pixel centres outside the triangle, so varyings extrapolate past
+    // their vertex range. pow() of a negative height is NaN on NVIDIA, and glow spreads it into
+    // white blotches; keep every varying inside the range the blade actually spans.
+    float height = clamp(blade_height,0.0,1.0);
     float patch = sin(world_pos.x*1.3+world_pos.z*.4)*cos(world_pos.z*1.1-world_pos.x*.4)*.5+.5;
     vec3 tip = mix(deep_col,fresh_col,smoothstep(.18,.85,patch));
-    vec3 color = mix(root_col,tip,pow(blade_height,.58));
-    color *= .94+blade_random*.12;
-    color += vec3(.035,.045,.012)*wind_band*blade_height;
+    vec3 color = mix(root_col,tip,pow(height,.58));
+    color *= .94+clamp(blade_random,0.0,1.0)*.12;
+    color += vec3(.035,.045,.012)*clamp(wind_band,0.0,1.0)*height;
     ALBEDO = color*brightness;
     ROUGHNESS = 1.0;
     SPECULAR = 0.0;

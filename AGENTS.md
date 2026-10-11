@@ -45,12 +45,12 @@ PY=/Users/jack/.copilot/session-state/ca10e179-b441-4d77-b938-250cea2ee4c6/files
 BLENDER=/Applications/Blender.app/Contents/MacOS/Blender
 
 $GODOT --headless --path game --import                               # 加了素材或 class_name 之后必须先跑
-$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前1538项；单独运行，套timeout）
+$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前1539项；单独运行，套timeout）
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=character-visual # 20项实际鞋底、七人17相位、座椅、掌心、舞蹈、持竿与围裙65样本
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=animal-visual # 22项猫动作、栖息地、呼吸、鱼缸与鸟虫
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=environment-visual # 35项天气窗光、湖路远景、餐具支撑、房间显示与拍照恢复
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=material-detail # 40项墙路木牌、水石、连续帆布、炉件、实际遮雨与矩阵
-$GODOT --headless --path game res://scenes/tests.tscn -- --only=plaza-quality # 8项棚架、材质、水面、鱼尺度、踢脚线与草坪净空
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=plaza-quality # 9项棚架、材质、水面、鱼尺度、踢脚线、草坪净空与草叶pow输入
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=inhabited # 22项用途分区、冷藏、甜点底面、座椅骨架、喝咖啡与安全保存
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=public-art # 15项公共室内窗光、支撑、布篷、夜景与通路
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=foliage-depth # 8项透光、冠层、绒毛苔藓、杉树与背景草地

@@ -65,16 +65,21 @@ void vertex() {
 
 void fragment() {
 	vec3 tip = lawn_tip(v_wp.xz);
-	float t = pow(v_h, 0.7);
+	// MSAA shades thin blades at pixel centres outside the triangle, so varyings extrapolate past
+	// their vertex range. pow() of a negative height is NaN on NVIDIA, and glow spreads it into
+	// white blotches; keep every varying inside the range the blade actually spans.
+	float h = clamp(v_h, 0.0, 1.0);
+	float rnd = clamp(v_rand, 0.0, 1.0);
+	float t = pow(h, 0.7);
 	vec3 c = mix(root_col, tip, t);
-	c *= 0.9 + v_rand * 0.2;
-	float dry = step(1.0 - dry_amount, fract(v_rand * 7.13)) * smoothstep(0.45, 1.0, v_h);
+	c *= 0.9 + rnd * 0.2;
+	float dry = step(1.0 - dry_amount, fract(rnd * 7.13)) * smoothstep(0.45, 1.0, h);
 	c = mix(c, dry_col, dry * 0.7);
 	// one side of each blade a touch darker: a crisp, painted fold
 	c *= mix(0.9, 1.04, step(0.5, v_side));
 	// the passing wind catches the tips (the silver sheen of a meadow)
-	c += vec3(0.09, 0.10, 0.05) * v_wave;
+	c += vec3(0.09, 0.10, 0.05) * clamp(v_wave, 0.0, 1.0);
 	ALBEDO = c * brightness;
 	ROUGHNESS = 1.0;
-	BACKLIGHT = vec3(0.28, 0.34, 0.12) * v_h;
+	BACKLIGHT = vec3(0.28, 0.34, 0.12) * h;
 }

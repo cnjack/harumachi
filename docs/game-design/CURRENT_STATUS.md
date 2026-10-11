@@ -1,5 +1,9 @@
 # 项目现状（2026-10-11）
 
+## Windows 草地白斑（2026-10-11）
+
+Windows NVIDIA下广场墙根和草坪边缘的白斑已修：MSAA使草叶插值越界，`pow()`遇到负底数返回NaN，再被辉光放大。两种草叶着色器先clamp再计算`pow`，各平台辉光保持开启。`--only=plaza-quality`现为9项，全量1539项。Windows上的7项PROPS/DISPLAY新鲜度失败与基线相同，属于本机GLB时间戳问题。详见PLAN同日条目与`evidence/windows_grass_glow_20261011/verification.json`。
+
 ## 材质细化源码与待验范围（2026-10-11）
 
 墙脚潮痕与苔纤维、石路磨耗、木牌、水面深浅和碎光、河石、连续摊位帆布及烤箱精修已写入源码，40项专项和1538项独占全量通过。新macOS包已导出并通过ZIP、解压、签名及双架构检查。最后一处旋转椅背纹向修复后的原生复拍、解压包200项演示仍待Mac解锁；当前正式桌面包和Web保持原已验收版本。见[本轮实现与待验范围](MATERIAL_DETAIL_20261011.md)及`evidence/material_refinement_delivery_20261011/progress.json`。本次按用户要求先提交当前全部可入库修改。
