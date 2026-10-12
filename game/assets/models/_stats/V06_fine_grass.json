@@ -1,0 +1,18 @@
+{
+ "id": "V06_fine_grass",
+ "src": "raw/reviewed_library_20261012/V06_fine_grass.glb",
+ "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 24,
+ "tex": 1024,
+ "bytes": 601492,
+ "godot_size_m_xyz": [
+  0.3552,
+  0.38,
+  0.4166
+ ],
+ "mesh_nodes": [
+  "Basic_Grass_11.001"
+ ]
+}

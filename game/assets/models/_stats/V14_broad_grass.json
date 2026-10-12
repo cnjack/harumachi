@@ -1,0 +1,18 @@
+{
+ "id": "V14_broad_grass",
+ "src": "raw/reviewed_library_20261012/V14_broad_grass.glb",
+ "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 320,
+ "tex": 1024,
+ "bytes": 713940,
+ "godot_size_m_xyz": [
+  0.4299,
+  0.42,
+  0.375
+ ],
+ "mesh_nodes": [
+  "Detailed_Tall_Grass_01.001"
+ ]
+}

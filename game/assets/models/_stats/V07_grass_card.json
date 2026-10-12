@@ -1,0 +1,18 @@
+{
+ "id": "V07_grass_card",
+ "src": "raw/reviewed_library_20261012/V07_grass_card.glb",
+ "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 8,
+ "tex": 1024,
+ "bytes": 697716,
+ "godot_size_m_xyz": [
+  0.2802,
+  0.48,
+  0.1117
+ ],
+ "mesh_nodes": [
+  "Basic_Grass_Card_03.001"
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "id": "P_library_bucket",
+ "src": "raw/reviewed_library_20261012/P_library_bucket.glb",
+ "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 1224,
+ "tex": 1024,
+ "bytes": 83880,
+ "godot_size_m_xyz": [
+  0.3056,
+  0.32,
+  0.3298
+ ],
+ "mesh_nodes": [
+  "Hang.002",
+  "Painting Bucket.002"
+ ]
+}

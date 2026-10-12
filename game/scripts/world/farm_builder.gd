@@ -383,29 +383,10 @@ func _neighbour_plots() -> void:
 
 
 func _backdrop() -> void:
-	# Sparse distant ridges leave the new lake's sky open; the old tall forest
-	# paintings read as a vertical wall when approached from the expanded map.
-	for spec in [[Vector3(60,0,-350),0.0],[Vector3(60,0,390),180.0],[Vector3(470,0,15),-90.0],[Vector3(-400,0,15),90.0]]:
-		wb._card("bg_far_ridge",spec[0],900.0,float(spec[1]),.55,-10.0,self)
 	var trees := ["bg_tree_a", "bg_tree_b", "bg_tree_c"]
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 23
-	# The old 206-475 px cards stood 3-4 m from the walkable boundary and read as a blurry wall.
-	# Full-resolution alpha sprites are a far layer; actual trees provide parallax in front.
-	for seg in [[Vector3(-56, 0, -59), Vector3(164, 0, -59), 0.0], [Vector3(-56, 0, -59), Vector3(-56, 0, 85), 90.0],
-			[Vector3(164, 0, -59), Vector3(164, 0, 85), -90.0], [Vector3(-56, 0, 85), Vector3(164, 0, 85), 180.0]]:
-		var a: Vector3 = seg[0]
-		var b: Vector3 = seg[1]
-		var n := int(a.distance_to(b) / 10.0)
-		for i in n:
-			var t := (i + rng.randf_range(0.1, 0.9)) / float(n)
-			var tex: String = trees[rng.randi() % 3]
-			var w := rng.randf_range(12.0, 17.0)
-			var yaw: float = seg[2] + rng.randf_range(-12.0, 12.0)
-			var p := a.lerp(b, t)
-			if p.x < -30.0 and absf(p.z - LANE_Z) < LANE_BANK + 1.0:
-				continue      # keep the climb back to town in view
-			wb._card(tex, p, w, yaw, 0.12, -0.3, self)
+	# Real tree belts now cover the full camera horizon.
 	for pos: Vector3 in [Vector3(-47, 0, -12), Vector3(-47, 0, 10), Vector3(-47, 0, 27), Vector3(154, 0, -12),
 		Vector3(154, 0, 8), Vector3(154, 0, 27), Vector3(-23, 0, -33), Vector3(-4, 0, -33), Vector3(17, 0, -33),
 		Vector3(-22, 0, 48), Vector3(-2, 0, 48), Vector3(20, 0, 48)]:
@@ -416,6 +397,7 @@ func _backdrop() -> void:
 			for mesh: MeshInstance3D in WorldBuilder.find_meshes(tree):
 				mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	_lane_up(trees)
+	LandscapeCoverage.build(wb,self,true)
 
 
 ## v0.6: the path climbs west out of the allotment between grass banks and disappears into the trees at the

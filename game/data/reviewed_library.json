@@ -1,0 +1,89 @@
+{
+  "assets": [
+    {
+      "id": "V06_fine_grass",
+      "base_triangles": 24,
+      "height_m": 0.38
+    },
+    {
+      "id": "V07_grass_card",
+      "base_triangles": 8,
+      "height_m": 0.48
+    },
+    {
+      "id": "V08_blade_rosette",
+      "base_triangles": 234,
+      "height_m": 0.4
+    },
+    {
+      "id": "V09_fern_cluster",
+      "base_triangles": 416,
+      "height_m": 0.58
+    },
+    {
+      "id": "V10_leaf_shrub",
+      "base_triangles": 282,
+      "height_m": 0.65
+    },
+    {
+      "id": "V11_fallen_leaf",
+      "base_triangles": 16,
+      "height_m": 0.025
+    },
+    {
+      "id": "V12_tulip",
+      "base_triangles": 156,
+      "height_m": 0.52
+    },
+    {
+      "id": "V13_pampas",
+      "base_triangles": 114,
+      "height_m": 0.9
+    },
+    {
+      "id": "V14_broad_grass",
+      "base_triangles": 320,
+      "height_m": 0.42
+    },
+    {
+      "id": "V15_wheat_stem",
+      "base_triangles": 104,
+      "height_m": 0.75
+    },
+    {
+      "id": "P_library_carton",
+      "base_triangles": 1060,
+      "height_m": 0.36
+    },
+    {
+      "id": "P_library_bucket",
+      "base_triangles": 1224,
+      "height_m": 0.32
+    },
+    {
+      "id": "P_library_stool",
+      "base_triangles": 5344,
+      "height_m": 0.58
+    },
+    {
+      "id": "V16_path_pebble",
+      "base_triangles": 64,
+      "height_m": 0.16
+    },
+    {
+      "id": "V17_path_pebble",
+      "base_triangles": 48,
+      "height_m": 0.19
+    },
+    {
+      "id": "V18_path_pebble",
+      "base_triangles": 54,
+      "height_m": 0.22
+    },
+    {
+      "id": "V19_distant_cliff",
+      "base_triangles": 8317,
+      "height_m": 10
+    }
+  ]
+}

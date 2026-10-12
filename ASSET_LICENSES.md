@@ -10,3 +10,10 @@
 - MiniMax Music 3：相关许可和音乐制作记录见`docs/game-design/PIPELINE.md`与`art/manifests/music_minimax/`。
 
 大型原包与试验素材留在本地归档，来源记录可能指向忽略的`art/models/raw/`。维护或重新生成时保留原许可、作者和来源，第三方内容不改变原许可。
+
+## 2026-10-12 本地素材库衍生单体
+
+- `V06_*`至`V19_*`来自项目维护者提供的CGC Painterly Grass 1.0及随附演示中的网格/遮罩；本项目重新整理比例、透明通道和卡通材质。
+- `P_library_carton`、`P_library_bucket`、`P_library_stool`来自维护者提供的`YNA. BU S2.blend`，重新整理独立网格与材质。
+- 维护者于2026-10-12明确确认拥有游戏商用及公开衍生源文件授权。保留第三方权利；这些衍生素材不因本仓库的MIT协议而自动获得额外再许可。来源、对象名和原始文件摘要见`art/manifests/models_reviewed_library.json`。
+- Komikaze仅作基础卡通材质的效果参考，新增Godot着色器为独立实现，没有包含其节点库。Coloso课程文件、贴图和节点组未复制到游戏或仓库。

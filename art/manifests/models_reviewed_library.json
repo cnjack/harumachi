@@ -1,0 +1,240 @@
+{
+  "date": "2026-10-12",
+  "source_license": "User confirmed game commercial use and public derivative source redistribution authorization on 2026-10-12",
+  "assets": [
+    {
+      "id": "V06_fine_grass",
+      "source": "CGC_Painterly_Grass_1.0.blend",
+      "objects": [
+        "Basic_Grass_11"
+      ],
+      "source_sha256": "9d86f760b3ec2834d0726bb39ffe58607702a8789df46d1a7b6804e7fe5f920e",
+      "height_m": 0.38,
+      "base_triangles": 24,
+      "file": "art/models/raw/reviewed_library_20261012/V06_fine_grass.glb",
+      "sha256": "ebc58da63c20a7cbcf3d702bca52c22dd637a98d8201476fae2cd9adaf11b770",
+      "adaptation": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    {
+      "id": "V07_grass_card",
+      "source": "CGC_Painterly_Grass_1.0.blend",
+      "objects": [
+        "Basic_Grass_Card_03"
+      ],
+      "source_sha256": "9d86f760b3ec2834d0726bb39ffe58607702a8789df46d1a7b6804e7fe5f920e",
+      "height_m": 0.48,
+      "base_triangles": 8,
+      "file": "art/models/raw/reviewed_library_20261012/V07_grass_card.glb",
+      "sha256": "d0bc1881896b80f8a77dc8878578af9baff227d62df3323d37ad0302643da35e",
+      "adaptation": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    {
+      "id": "V08_blade_rosette",
+      "source": "CGC_Painterly_Grass_1.0.blend",
+      "objects": [
+        "Detailed_Blades_13"
+      ],
+      "source_sha256": "9d86f760b3ec2834d0726bb39ffe58607702a8789df46d1a7b6804e7fe5f920e",
+      "height_m": 0.4,
+      "base_triangles": 234,
+      "file": "art/models/raw/reviewed_library_20261012/V08_blade_rosette.glb",
+      "sha256": "ce9f84468a29ea1551571573ca82a6de5557e1aabb6263b6c66412ea74ac6254",
+      "adaptation": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    {
+      "id": "V09_fern_cluster",
+      "source": "CGC_Painterly_Grass_1.0.blend",
+      "objects": [
+        "Detailed_Fern_01"
+      ],
+      "source_sha256": "9d86f760b3ec2834d0726bb39ffe58607702a8789df46d1a7b6804e7fe5f920e",
+      "height_m": 0.58,
+      "base_triangles": 416,
+      "file": "art/models/raw/reviewed_library_20261012/V09_fern_cluster.glb",
+      "sha256": "c948247f66b2353f4c512a477f9f8df8fe8225d6fbe7e040e6edf1d52f7c9b79",
+      "adaptation": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    {
+      "id": "V10_leaf_shrub",
+      "source": "CGC_Painterly_Grass_1.0.blend",
+      "objects": [
+        "Detailed_Varied_06"
+      ],
+      "source_sha256": "9d86f760b3ec2834d0726bb39ffe58607702a8789df46d1a7b6804e7fe5f920e",
+      "height_m": 0.65,
+      "base_triangles": 282,
+      "file": "art/models/raw/reviewed_library_20261012/V10_leaf_shrub.glb",
+      "sha256": "b24f9928afbde26e0339ef9e865e52f8e55eb399ab8e28351dfd29056b58eba8",
+      "adaptation": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    {
+      "id": "V11_fallen_leaf",
+      "source": "CGC_Painterly_Grass_1.0.blend",
+      "objects": [
+        "Basic_Leaf_Flat_01"
+      ],
+      "source_sha256": "9d86f760b3ec2834d0726bb39ffe58607702a8789df46d1a7b6804e7fe5f920e",
+      "height_m": 0.025,
+      "base_triangles": 16,
+      "file": "art/models/raw/reviewed_library_20261012/V11_fallen_leaf.glb",
+      "sha256": "f07732d4a100a4a372ff1919f9601387cbbfe53bcae49ee7672b57450ece3991",
+      "adaptation": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    {
+      "id": "V12_tulip",
+      "source": "CGC_Painterly_Grass_1.0.blend",
+      "objects": [
+        "Basic_Tulip_01"
+      ],
+      "source_sha256": "9d86f760b3ec2834d0726bb39ffe58607702a8789df46d1a7b6804e7fe5f920e",
+      "height_m": 0.52,
+      "base_triangles": 156,
+      "file": "art/models/raw/reviewed_library_20261012/V12_tulip.glb",
+      "sha256": "3e24b49b833c619eb1dbaeae6d93e97760fa1b531567abff4536e81aea98f21f",
+      "adaptation": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    {
+      "id": "V13_pampas",
+      "source": "CGC_Painterly_Grass_1.0.blend",
+      "objects": [
+        "Detailed_Pampas_01"
+      ],
+      "source_sha256": "9d86f760b3ec2834d0726bb39ffe58607702a8789df46d1a7b6804e7fe5f920e",
+      "height_m": 0.9,
+      "base_triangles": 114,
+      "file": "art/models/raw/reviewed_library_20261012/V13_pampas.glb",
+      "sha256": "e61c5219bff65fcdd9fdb63ae92311f5c291502e0693f1651a3cd2f75a9ab95b",
+      "adaptation": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    {
+      "id": "V14_broad_grass",
+      "source": "CGC_Painterly_Grass_1.0.blend",
+      "objects": [
+        "Detailed_Tall_Grass_01"
+      ],
+      "source_sha256": "9d86f760b3ec2834d0726bb39ffe58607702a8789df46d1a7b6804e7fe5f920e",
+      "height_m": 0.42,
+      "base_triangles": 320,
+      "file": "art/models/raw/reviewed_library_20261012/V14_broad_grass.glb",
+      "sha256": "dd91c3b03d91c7102fd07327eb6c22588e64399a94607e0afb67abde99b8cc9a",
+      "adaptation": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    {
+      "id": "V15_wheat_stem",
+      "source": "CGC_Painterly_Grass_1.0.blend",
+      "objects": [
+        "Detailed_Wheat_A_01"
+      ],
+      "source_sha256": "9d86f760b3ec2834d0726bb39ffe58607702a8789df46d1a7b6804e7fe5f920e",
+      "height_m": 0.75,
+      "base_triangles": 104,
+      "file": "art/models/raw/reviewed_library_20261012/V15_wheat_stem.glb",
+      "sha256": "4e6a55ef59283bd69cc8f11044b1776c75809fee405644c27194ae9c81cf2c03",
+      "adaptation": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    {
+      "id": "P_library_carton",
+      "source": "YNA. BU S2.blend",
+      "objects": [
+        "Cardboardbox",
+        "Cardboard Box"
+      ],
+      "source_sha256": "5ca2c1fecec065a5dcad7e7ab6cbd1ce5a0aeebfba44fd2976e41da41c65c44c",
+      "height_m": 0.36,
+      "base_triangles": 1060,
+      "file": "art/models/raw/reviewed_library_20261012/P_library_carton.glb",
+      "sha256": "8f6181264f389870fb30ceab0cb4f5e9e52e57ba3a8e025506e646ae856cc029",
+      "adaptation": "original mesh, shared metre scale and new flat matte materials"
+    },
+    {
+      "id": "P_library_bucket",
+      "source": "YNA. BU S2.blend",
+      "objects": [
+        "Painting Bucket",
+        "Hang"
+      ],
+      "source_sha256": "5ca2c1fecec065a5dcad7e7ab6cbd1ce5a0aeebfba44fd2976e41da41c65c44c",
+      "height_m": 0.32,
+      "base_triangles": 1224,
+      "file": "art/models/raw/reviewed_library_20261012/P_library_bucket.glb",
+      "sha256": "6b0a653719a5c70218f8f4bd42821a974c4a9e51765b95c2e547333b7bc23f65",
+      "adaptation": "original mesh, shared metre scale and new flat matte materials"
+    },
+    {
+      "id": "P_library_stool",
+      "source": "YNA. BU S2.blend",
+      "objects": [
+        "Top",
+        "Support.003",
+        "Support.002",
+        "Support.001",
+        "Support",
+        "Plywood Stool",
+        "Legs",
+        "Bolt.004",
+        "Bolt.003",
+        "Bolt.002",
+        "Bolt.001",
+        "Bolt"
+      ],
+      "source_sha256": "5ca2c1fecec065a5dcad7e7ab6cbd1ce5a0aeebfba44fd2976e41da41c65c44c",
+      "height_m": 0.58,
+      "base_triangles": 5344,
+      "file": "art/models/raw/reviewed_library_20261012/P_library_stool.glb",
+      "sha256": "681219e5309c143bba6ddb4967337bee2d3811f2fbe59e4c44d2a06322fe028a",
+      "adaptation": "original mesh, shared metre scale and new flat matte materials"
+    },
+    {
+      "id": "V16_path_pebble",
+      "source": "CGC_Painterly_Grass_1.0Demo/DemoB_ScenesD_3.3/Adventure_Fields_Demo.blend",
+      "objects": [
+        "Pebble"
+      ],
+      "source_sha256": "c15e3c2691094c8984faaee3d987d01b752a4e5d33cb6539c5e09839f43f77a4",
+      "height_m": 0.16,
+      "base_triangles": 64,
+      "file": "art/models/raw/reviewed_library_20261012/V16_path_pebble.glb",
+      "sha256": "1ab9970cb50007f4e85db8bfad6b8c20eb32b48cc1a5207bc43332c2bed4fbde",
+      "adaptation": "original mesh, shared metre scale and new flat matte materials"
+    },
+    {
+      "id": "V17_path_pebble",
+      "source": "CGC_Painterly_Grass_1.0Demo/DemoB_ScenesD_3.3/Adventure_Fields_Demo.blend",
+      "objects": [
+        "Pebble.001"
+      ],
+      "source_sha256": "c15e3c2691094c8984faaee3d987d01b752a4e5d33cb6539c5e09839f43f77a4",
+      "height_m": 0.19,
+      "base_triangles": 48,
+      "file": "art/models/raw/reviewed_library_20261012/V17_path_pebble.glb",
+      "sha256": "f6bd884a7300f5c8c4c886608eaee71ae24f38f774c14fbf733a96449db840bf",
+      "adaptation": "original mesh, shared metre scale and new flat matte materials"
+    },
+    {
+      "id": "V18_path_pebble",
+      "source": "CGC_Painterly_Grass_1.0Demo/DemoB_ScenesD_3.3/Adventure_Fields_Demo.blend",
+      "objects": [
+        "Pebble.002"
+      ],
+      "source_sha256": "c15e3c2691094c8984faaee3d987d01b752a4e5d33cb6539c5e09839f43f77a4",
+      "height_m": 0.22,
+      "base_triangles": 54,
+      "file": "art/models/raw/reviewed_library_20261012/V18_path_pebble.glb",
+      "sha256": "89ccdbf4a0eb1303bbe699e60d755dc18c0ee3ba34fae12906811471173bfa50",
+      "adaptation": "original mesh, shared metre scale and new flat matte materials"
+    },
+    {
+      "id": "V19_distant_cliff",
+      "source": "CGC_Painterly_Grass_1.0Demo/山谷场景演示/Cliff_Assets/Basic_Cliff_Asset_3.3.blend",
+      "objects": [
+        "Cliff_A_v02_Ultra_Low_Poly"
+      ],
+      "source_sha256": "03687ffd410ef0cf75367f2e4b54e4433d71c008de68385906749bdbdac483e3",
+      "height_m": 10,
+      "base_triangles": 8317,
+      "file": "art/models/raw/reviewed_library_20261012/V19_distant_cliff.glb",
+      "sha256": "1cc7b19210fbecd543b9eebd0fe031d1d4c46cfc6689bada67861858359a90c5",
+      "adaptation": "original mesh, shared metre scale and new flat matte materials"
+    }
+  ]
+}

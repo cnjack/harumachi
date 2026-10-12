@@ -13,6 +13,7 @@ uniform float alpha_scissor=.42;
 uniform bool has_texture=true;
 uniform bool aged_bark=false;
 uniform bool meadow_foliage=false;
+uniform int stem_palette=0; // 1 flower / 2 grain: green stems below the coloured head
 varying vec3 tree_position;
 varying vec3 tree_normal;
 global uniform float wind_strength;
@@ -41,6 +42,10 @@ void vertex() {
 }
 void fragment() {
  vec4 colour=(has_texture?texture(albedo_tex,UV):vec4(1))*albedo_color;
+ if(stem_palette>0){
+  float head=step(stem_palette==1?.67:.64,tree_position.y/max(height,.05));
+  colour.rgb=mix(vec3(.075,.24,.035),colour.rgb,head);
+ }
  if(meadow_foliage){
   float value=clamp(dot(colour.rgb,vec3(.30,.59,.11))*2.1,0.,1.);
   colour.rgb=mix(vec3(.048,.12,.025),vec3(.15,.29,.052),value);

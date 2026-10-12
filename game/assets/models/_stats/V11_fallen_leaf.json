@@ -1,0 +1,18 @@
+{
+ "id": "V11_fallen_leaf",
+ "src": "raw/reviewed_library_20261012/V11_fallen_leaf.glb",
+ "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 16,
+ "tex": 1024,
+ "bytes": 600448,
+ "godot_size_m_xyz": [
+  0.3931,
+  0.025,
+  0.5577
+ ],
+ "mesh_nodes": [
+  "Basic_Leaf_Flat_01.001"
+ ]
+}

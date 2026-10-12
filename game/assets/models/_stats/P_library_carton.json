@@ -1,0 +1,18 @@
+{
+ "id": "P_library_carton",
+ "src": "raw/reviewed_library_20261012/P_library_carton.glb",
+ "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 1060,
+ "tex": 1024,
+ "bytes": 106184,
+ "godot_size_m_xyz": [
+  0.6002,
+  0.36,
+  0.458
+ ],
+ "mesh_nodes": [
+  "Cardboard Box.002"
+ ]
+}

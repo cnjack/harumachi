@@ -85,7 +85,7 @@ func _terrain_cell(st: SurfaceTool,x: float,z: float,step: float) -> void:
 func _water() -> void:
 	var st := SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	var points := [Vector3(-66,0,-69),Vector3(-66,0,120),Vector3(183,0,120),Vector3(183,0,-69)]
+	var points := [Vector3(-330,0,-69),Vector3(-330,0,120),Vector3(183,0,120),Vector3(183,0,-69)]
 	for i: int in [0,2,1,0,3,2]:
 		st.set_normal(Vector3.UP)
 		st.set_uv(Vector2(points[i].x,points[i].z))
@@ -429,4 +429,4 @@ func _meadow() -> void:
 	add_child(grass)
 	var height_fn := func(p:Vector2)->float:return LakesideLayout.height_at(p)
 	var keep_fn := func(p:Vector2)->bool:return LakesideLayout.water_distance(p)>2.0 and LakesideLayout.path_distance(p)>1.45 and not (absf(p.x-94.0)<2.0 and p.y>35.0 and p.y<49.0)
-	grass.lawn([[28,-34,142,62]],[],"meadow",1.5,1003,0.0,height_fn,keep_fn)
+	grass.lawn([[28,-34,142,62]],[[79.7,53.7,81.9,55.35]],"meadow",1.5,1003,0.0,height_fn,keep_fn)

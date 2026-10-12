@@ -14,7 +14,7 @@ const WALL_TOP := 2.2     # building faces up to this height are tested against 
 const BIG_AREA := 6.0     # footprints this large are buildings: their walls are tested, not their hull
 const CELL := 0.12
 ## Plants, animals and hanging things: overlapping or floating is how they are meant to look.
-const LOOSE := ["C0", "C1", "T01", "T02", "T03", "T04", "T05", "V0", "M12b", "M12d", "D11", "A20", "A21", "A22", "G08", "P_chochin", "E01_furin", "A07", "F08"]
+const LOOSE := ["C0", "C1", "T01", "T02", "T03", "T04", "T05", "V0", "V10_", "V11_", "V12_", "V13_", "V14_", "V15_", "V19_", "M12b", "M12d", "D11", "A20", "A21", "A22", "G08", "P_chochin", "E01_furin", "A07", "F08"]
 
 static var _tris := {}     # model id -> PackedVector3Array (root-local triangles, unscaled)
 static var _hull := {}     # "id@scale@band" -> PackedVector2Array (local XZ)

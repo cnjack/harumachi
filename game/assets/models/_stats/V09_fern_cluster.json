@@ -1,0 +1,18 @@
+{
+ "id": "V09_fern_cluster",
+ "src": "raw/reviewed_library_20261012/V09_fern_cluster.glb",
+ "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 416,
+ "tex": 1024,
+ "bytes": 617644,
+ "godot_size_m_xyz": [
+  1.0569,
+  0.58,
+  0.8724
+ ],
+ "mesh_nodes": [
+  "Detailed_Fern_01.001"
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "id": "V10_leaf_shrub",
+ "src": "raw/reviewed_library_20261012/V10_leaf_shrub.glb",
+ "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 282,
+ "tex": 1024,
+ "bytes": 627876,
+ "godot_size_m_xyz": [
+  1.3348,
+  0.65,
+  1.3761
+ ],
+ "mesh_nodes": [
+  "Detailed_Varied_06.001"
+ ]
+}

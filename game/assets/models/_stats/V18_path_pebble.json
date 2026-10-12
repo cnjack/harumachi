@@ -1,0 +1,18 @@
+{
+ "id": "V18_path_pebble",
+ "src": "raw/reviewed_library_20261012/V18_path_pebble.glb",
+ "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 54,
+ "tex": 1024,
+ "bytes": 4632,
+ "godot_size_m_xyz": [
+  0.2973,
+  0.22,
+  0.2353
+ ],
+ "mesh_nodes": [
+  "Pebble.009"
+ ]
+}

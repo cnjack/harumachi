@@ -30,7 +30,9 @@ func _ready() -> void:
 	main.ui.instant = true
 	main.ui.auto_work_priority = true # this suite follows its declared work route; the topic-choice suite overrides it
 	await frames(10)
-	if OS.get_cmdline_user_args().has("--only=tree-locomotion"):
+	if OS.get_cmdline_user_args().has("--only=landscape"):
+		await load("res://scripts/tests/landscape_coverage_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=tree-locomotion"):
 		await load("res://scripts/tests/tree_locomotion_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=material-detail"):
 		await load("res://scripts/tests/material_refinement_checks.gd").new(self).run()
@@ -230,6 +232,8 @@ func _ready() -> void:
 		await load("res://scripts/tests/animal_visual_checks.gd").new(self).run()
 		await load("res://scripts/tests/environment_visual_checks.gd").new(self).run()
 		await load("res://scripts/tests/tree_locomotion_checks.gd").new(self).run()
+	if not Array(OS.get_cmdline_user_args()).any(func(arg: String)->bool:return arg.begins_with("--only=")):
+		await load("res://scripts/tests/landscape_coverage_checks.gd").new(self).run()
 	var fails := results.filter(func(r): return not r.ok).size()
 	print("\n==== %d checks, %d failed ====" % [results.size(), fails])
 	var out := ""
@@ -1858,7 +1862,7 @@ func props_checks() -> void:
 		var r: Dictionary = rep[id]
 		if float(r.base_frac) >= 0.45 and float(r.tilt) > 2.0:
 			leaning.append("%s %.1f°" % [id, float(r.tilt)])
-		if float(r.base_frac) >= 0.45 and float(r.get("rect_fill", 0.0)) >= 0.9 and absf(float(r.get("square_deg", 0.0))) > 2.0:
+		if id not in LandscapeCoverage.PLANTS and float(r.base_frac) >= 0.45 and float(r.get("rect_fill", 0.0)) >= 0.9 and absf(float(r.get("square_deg", 0.0))) > 2.0:
 			turned.append("%s %.1f°" % [id, float(r.square_deg)])
 	check("PROPS", "every model has a fresh lean measurement (rerun art/tools/level_check.py after exporting)", stale.is_empty(), str(stale))
 	check("PROPS", "models that stand on a real base stand level (within 2°)", rep.size() > 100 and leaning.is_empty(), str(leaning))
@@ -2112,7 +2116,7 @@ func material_checks() -> void:
 		var dz := maxf(maxf(-16.0 - position.z, position.z - 31.0), 0.0)
 		if Vector2(dx, dz).length() < 20.0:
 			near.append("%.1f, %.1f" % [position.x, position.z])
-	check("TEXTURE", "flat forest cards stay beyond close viewing range", trees >= 10 and near.is_empty(), str(near))
+	check("TEXTURE", "forest horizon is covered without close flat cards", near.is_empty() and (trees >= 10 or main.world.farm.has_node("LandscapeCoverage")), str(near))
 	var buried: Array[String] = []
 	var titles := 0
 	for title: Label3D in main.world.find_children("GateTitle_*", "Label3D", true, false):

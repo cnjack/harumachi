@@ -38,7 +38,7 @@ func _ready() -> void:
 	arm.margin = 0.1
 	cam.fov = 50.0
 	cam.near = 0.1
-	cam.far = 1200.0
+	cam.far = LandscapeCoverage.FAR
 	cam.current = true
 
 

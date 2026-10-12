@@ -2260,6 +2260,176 @@
         "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
       ],
       "license": "项目自制；生成素材服务条款"
+    },
+    "V06_fine_grass": {
+      "src": "raw/reviewed_library_20261012/V06_fine_grass.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    "V07_grass_card": {
+      "src": "raw/reviewed_library_20261012/V07_grass_card.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    "V08_blade_rosette": {
+      "src": "raw/reviewed_library_20261012/V08_blade_rosette.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    "V09_fern_cluster": {
+      "src": "raw/reviewed_library_20261012/V09_fern_cluster.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    "V10_leaf_shrub": {
+      "src": "raw/reviewed_library_20261012/V10_leaf_shrub.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    "V11_fallen_leaf": {
+      "src": "raw/reviewed_library_20261012/V11_fallen_leaf.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    "V12_tulip": {
+      "src": "raw/reviewed_library_20261012/V12_tulip.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    "V13_pampas": {
+      "src": "raw/reviewed_library_20261012/V13_pampas.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    "V14_broad_grass": {
+      "src": "raw/reviewed_library_20261012/V14_broad_grass.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    "V15_wheat_stem": {
+      "src": "raw/reviewed_library_20261012/V15_wheat_stem.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh and UV; independent matte colours; alpha from supplied monochrome masks"
+    },
+    "P_library_carton": {
+      "src": "raw/reviewed_library_20261012/P_library_carton.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh, shared metre scale and new flat matte materials"
+    },
+    "P_library_bucket": {
+      "src": "raw/reviewed_library_20261012/P_library_bucket.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh, shared metre scale and new flat matte materials"
+    },
+    "P_library_stool": {
+      "src": "raw/reviewed_library_20261012/P_library_stool.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh, shared metre scale and new flat matte materials"
+    },
+    "V16_path_pebble": {
+      "src": "raw/reviewed_library_20261012/V16_path_pebble.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh, shared metre scale and new flat matte materials"
+    },
+    "V17_path_pebble": {
+      "src": "raw/reviewed_library_20261012/V17_path_pebble.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh, shared metre scale and new flat matte materials"
+    },
+    "V18_path_pebble": {
+      "src": "raw/reviewed_library_20261012/V18_path_pebble.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh, shared metre scale and new flat matte materials"
+    },
+    "V19_distant_cliff": {
+      "src": "raw/reviewed_library_20261012/V19_distant_cliff.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "note": "original mesh, shared metre scale and new flat matte materials"
     }
   },
   "procedural_overrides": {

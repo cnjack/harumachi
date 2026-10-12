@@ -1,0 +1,18 @@
+{
+ "id": "V08_blade_rosette",
+ "src": "raw/reviewed_library_20261012/V08_blade_rosette.glb",
+ "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 234,
+ "tex": 1024,
+ "bytes": 755380,
+ "godot_size_m_xyz": [
+  0.5653,
+  0.4,
+  0.7425
+ ],
+ "mesh_nodes": [
+  "Detailed_Blades_13.001"
+ ]
+}

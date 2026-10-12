@@ -33,7 +33,7 @@ func _ready() -> void:
 	placed_root.name = "Placed"
 	add_child(placed_root)
 	cam.fov = 48.0
-	cam.far = 800.0
+	cam.far = LandscapeCoverage.FAR
 	add_child(cam)
 	ghost_mat.shader = load("res://shaders/ghost.gdshader")
 	foot_mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED

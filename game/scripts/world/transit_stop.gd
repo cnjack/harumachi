@@ -21,14 +21,14 @@ static func build(world: WorldBuilder) -> void:
 		pole.add_child(ClearSignage.label("BUS\n07\n晴町\n青海線",Vector3(0,0,.025),0,.14,Color(1,.97,.86)))
 	# The incoming road passes through the opened west boundary, continuing into the hills.
 	var asphalt:=WorldBuilder.ground_material("gravel");asphalt.set_shader_parameter("tint",Color(.39,.44,.48));asphalt.set_shader_parameter("tile",4.0)
-	var road: MeshInstance3D=world.call("_plane",[-112.0,-14.4,-51.9,-7.6],asphalt,.01)
+	var road: MeshInstance3D=world.call("_plane",[-330.0,-14.4,-51.9,-7.6],asphalt,.01)
 	road.name="IncomingRoad";road.set_meta("external_road",true)
 	var sand:=WorldBuilder.ground_material("sand")
 	for edge in [-15.7,-7.6]:
-		var shoulder: MeshInstance3D=world.call("_plane",[-112.0,edge,-52.0,edge+1.3],sand,.004)
+		var shoulder: MeshInstance3D=world.call("_plane",[-330.0,edge,-52.0,edge+1.3],sand,.004)
 		shoulder.name="RoadShoulder_%d"%int(edge*10)
 	var stripe:=JapaneseArchitecture._flat(Color(.95,.92,.75))
-	for index in 10:
+	for index in 46:
 		var mark:=MeshInstance3D.new();mark.name="IncomingRoadMark_%d"%index;var mesh:=PlaneMesh.new();mesh.size=Vector2(2.4,.12);mark.mesh=mesh;mark.material_override=stripe;mark.position=Vector3(-55.0-index*6,.019,-11);world.add_child(mark)
 	for index in 5:
 		var tree:=world.spawn("T03_round_ginkgo",Vector3(-62-index*9,0,-18.5),index*65,0,world,.8)

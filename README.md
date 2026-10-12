@@ -1,6 +1,6 @@
 <p align="center"><img src="site/assets/wallpapers/summer-river.webp" alt="晴川与山谷中的晴町，明年夏祭官方概念插画" width="100%"></p>
 
-榕树下走跑卡顿、低枝缺叶、作家澪步态和居民自动路线、小葵站姿与玩具日程已修复。116张最终原生截图、18项新回归、1557项独占全量及解压应用200项完整夏季演示通过，默认104个存档及照片摘要未变。桌面包已更新，Web保持原版本。见[榕树与人物修复](docs/game-design/TREE_LOCOMOTION_20261012.md)和`evidence/tree_locomotion_20261012/delivery.json`。
+接入17个推荐草木、小物与岩石单体，补齐小镇、农园及室内周围的地形和真实树群。普通、摆放与拍照镜头统一为210米远裁剪，190米完成远景雾化。161张最终原生巡检与12张同机位对比、40项原生专项、1597项独占全量和解压包200项完整夏季演示通过；默认存档与照片摘要未变。桌面包已更新，Web保持原版本。见[素材与景观接入](docs/game-design/LANDSCAPE_LIBRARY_20261012.md)。
 
 <h1 align="center">明年夏祭</h1>
 <p align="center"><strong>Harumachi: Next Summer</strong><br>一款关于归乡、日常与重逢的日式小镇生活游戏。</p>

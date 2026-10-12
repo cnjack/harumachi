@@ -197,6 +197,7 @@ func build(world: WorldBuilder, k: String) -> void:
 		it.position = Vector3(pt[1], pt[2], pt[3])
 	RoomIdentity.build(self)
 	PublicPlaceArt.build(self)
+	LandscapeCoverage.build_garden(wb,self,HouseBuilder.GROUND_Y-.08,true)
 
 
 func _wall(size: Vector3, pos: Vector3, m: Material) -> void:

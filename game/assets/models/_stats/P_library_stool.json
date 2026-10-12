@@ -1,0 +1,28 @@
+{
+ "id": "P_library_stool",
+ "src": "raw/reviewed_library_20261012/P_library_stool.glb",
+ "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 5344,
+ "tex": 1024,
+ "bytes": 346496,
+ "godot_size_m_xyz": [
+  0.3903,
+  0.58,
+  0.3903
+ ],
+ "mesh_nodes": [
+  "Bolt.010",
+  "Bolt.011",
+  "Bolt.012",
+  "Bolt.013",
+  "Bolt.014",
+  "Legs.002",
+  "Support.008",
+  "Support.009",
+  "Support.010",
+  "Support.011",
+  "Top.002"
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "id": "V19_distant_cliff",
+ "src": "raw/reviewed_library_20261012/V19_distant_cliff.glb",
+ "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 8317,
+ "tex": 1024,
+ "bytes": 463020,
+ "godot_size_m_xyz": [
+  7.0499,
+  10.0,
+  5.9675
+ ],
+ "mesh_nodes": [
+  "Cliff_A_v02_Ultra_Low_Poly.001"
+ ]
+}

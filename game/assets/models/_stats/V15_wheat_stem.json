@@ -1,0 +1,18 @@
+{
+ "id": "V15_wheat_stem",
+ "src": "raw/reviewed_library_20261012/V15_wheat_stem.glb",
+ "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 104,
+ "tex": 1024,
+ "bytes": 745620,
+ "godot_size_m_xyz": [
+  0.4089,
+  0.75,
+  0.2096
+ ],
+ "mesh_nodes": [
+  "Detailed_Wheat_A_01.001"
+ ]
+}

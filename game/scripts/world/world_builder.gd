@@ -122,6 +122,13 @@ func spawn(id: String, pos: Vector3, yaw_deg: float, collide: int = 1, parent: N
 		HouseBuilder.toonify(n)
 	if id.begins_with("T0"):
 		n.set_meta("tree_geometry_version",2)
+	if id in LandscapeCoverage.PLANTS:
+		make_sway(n,.035,1.1)
+		var palette: int=1 if id=="V12_tulip" else (2 if id in ["V13_pampas","V15_wheat_stem"] else 0)
+		for plant_mesh: MeshInstance3D in find_meshes(n):
+			for surface in plant_mesh.mesh.get_surface_count():
+				var plant_material:=plant_mesh.get_active_material(surface) as ShaderMaterial
+				if plant_material:plant_material.set_shader_parameter("stem_palette",palette)
 	if SWAY.has(id):
 		make_sway(n, SWAY[id][0], SWAY[id][1])
 	if collide > 0:
@@ -326,6 +333,7 @@ func _build_detail_signs() -> void:
 	TransitStop.build(self)
 	PublicPlaceArt.street(self)
 	StreetMaintenance.build(self)
+	ReviewedLibrary.build(self)
 	set_meta("clear_sign_count",ClearSignage.upgrade_existing(self))
 
 func _spawn_building(spec: Array) -> void:
@@ -375,7 +383,7 @@ func _build_environment() -> void:
 	env.glow_hdr_threshold = 1.1
 	env.fog_enabled = true
 	env.fog_light_color = Color(0.74, 0.84, 0.95)
-	env.fog_density = 0.0035
+	LandscapeCoverage.configure_haze(env)
 	env.fog_sky_affect = 0.0
 	env.fog_aerial_perspective = 0.35
 	env.adjustment_enabled = true
@@ -916,19 +924,7 @@ func _card(tex_name: String, center: Vector3, width: float, face_yaw_deg: float,
 
 
 func _build_backdrop() -> void:
-	# north: ridge, near hills, hillside houses, pagoda, roofline
-	_card("bg_far_ridge", Vector3(0, 0, -330), 900.0, 0, 0.35, -8.0)
-	_card("bg_near_hills", Vector3(-20, 0, -240), 700.0, 0, 0.25, -6.0)
-	_card("bg_hill_houses", Vector3(95, 0, -170), 90.0, -20, 0.2, -4.0)
-	_card("bg_pagoda_card", Vector3(-55, 0, -150), 48.0, 15, 0.12, -2.0)
-	_card("bg_roofline", Vector3(0, 0, -62), 170.0, 0, 0.1, -1.0)
-	# south / east / west hills so every camera angle has a horizon
-	_card("bg_near_hills", Vector3(0, 0, 230), 700.0, 180, 0.28, -6.0)
-	_card("bg_near_hills", Vector3(240, 0, 0), 700.0, -90, 0.28, -6.0)
-	_card("bg_near_hills", Vector3(-240, 0, 0), 700.0, 90, 0.28, -6.0)
-	_card("bg_roofline", Vector3(0, 0, 128), 170.0, 180, 0.1, -1.0)
-	_card("bg_roofline", Vector3(96, 0, 32), 180.0, -90, 0.1, -1.0)
-	_card("bg_roofline", Vector3(-85, 0, 0), 150.0, 90, 0.1, -1.0)
+	# Horizon uses real terrain and trees through the shared distance haze.
 	# Actual model trees beside the boundary walls; distant hills remain painted scenery.
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 11
@@ -954,6 +950,7 @@ func _build_backdrop() -> void:
 				tree.set_meta("near_background_tree", true)
 				rest_on_terrain(tree,-.03)
 	FoliageBackdrop.build(self)
+	LandscapeCoverage.build(self,self,false)
 
 
 # ------------------------------------------------------------------ v0.5 town dressing
@@ -1495,12 +1492,19 @@ func set_indoor_look(on: bool,public_kind: String="") -> void:
 
 
 func _sync_indoor_visibility() -> void:
+	var outer_landscape: Node3D=get_node_or_null("LandscapeCoverage")
+	if outer_landscape:outer_landscape.visible=not indoor and region!="farm"
 	# Separate cutaway rooms share a distant staging strip. Any interior
 	# photo/orbit must render only its own room, without altering collisions.
-	if is_instance_valid(house): house.visible = not indoor or public_interior_kind.is_empty()
+	if is_instance_valid(house):
+		house.visible = not indoor or public_interior_kind.is_empty()
+		var garden: Node3D=house.get_node_or_null("GardenTreeCoverage")
+		if garden:garden.visible=indoor and public_interior_kind.is_empty()
 	for kind: String in interiors:
 		var room: InteriorBuilder = interiors[kind]
 		room.visible = public_interior_kind == kind if indoor else region != "farm"
+		var context: Node3D=room.get_node_or_null("GardenTreeCoverage")
+		if context:context.visible=indoor and public_interior_kind==kind
 
 
 ## Keyframes of the outdoor look, by hour:
@@ -1595,7 +1599,7 @@ func _apply_look(minute: float, weather: String, force: bool = false) -> void:
 		sun.light_color = L.col
 		sun.light_energy = L.sun
 		env.fog_light_color = L.fog
-		env.fog_density = L.fog_d
+		LandscapeCoverage.configure_haze(env,L.fog_d)
 		env.ambient_light_energy = L.amb
 		env.adjustment_saturation = L.sat
 		for l in lamp_lights:

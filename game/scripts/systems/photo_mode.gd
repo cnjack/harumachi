@@ -8,6 +8,7 @@ var capture_size:=Vector2i(3840,2160)
 var camera: Camera3D
 var tools: Control
 var _old_pause:=false
+var _old_distance_fog:=false
 var _old_marker:=false
 var _old_actor:=false
 var _drag:=false
@@ -18,11 +19,12 @@ var _tags: Array[Dictionary]=[]
 
 func setup(world_main: Node) -> void:
 	main=world_main;layer=40
-	camera=Camera3D.new();camera.name="PhotoCamera";camera.far=1200;main.add_child(camera)
+	camera=Camera3D.new();camera.name="PhotoCamera";camera.far=LandscapeCoverage.FAR;main.add_child(camera)
 
 func toggle() -> void:
 	if active:finish();return
 	if GameState.input_locked() or main.in_room and main._transition:return
+	_old_distance_fog=main.world.env.fog_enabled;main.world.env.fog_enabled=true
 	active=true;_old_pause=GameState.clock_paused;GameState.clock_paused=true;GameState.lock_input("photo")
 	_old_marker=main.marker.visible;_old_actor=main.player.model_root.visible
 	main.ui.ambient_layer.visible=false;main.marker.visible=false
@@ -125,6 +127,7 @@ func save_picture() -> void:
 func finish() -> void:
 	if not active:return
 	active=false;_drag=false;main.rig.cam.make_current()
+	main.world.env.fog_enabled=_old_distance_fog
 	main.player.model_root.visible=_old_actor;main.marker.visible=_old_marker
 	for tag: Dictionary in _tags:
 		if is_instance_valid(tag.tag):tag.tag.visible=tag.visible

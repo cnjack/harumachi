@@ -1,0 +1,18 @@
+{
+ "id": "V12_tulip",
+ "src": "raw/reviewed_library_20261012/V12_tulip.glb",
+ "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 156,
+ "tex": 1024,
+ "bytes": 668180,
+ "godot_size_m_xyz": [
+  0.2636,
+  0.52,
+  0.3227
+ ],
+ "mesh_nodes": [
+  "Basic_Tulip_01.001"
+ ]
+}

@@ -368,14 +368,11 @@ func _build_lot() -> void:
 	g.position = Vector3(0, GROUND_Y, -2)
 	g.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(g)
-	var far := StandardMaterial3D.new()
-	far.albedo_color = Color(0.36, 0.44, 0.3)
-	far.roughness = 1.0
 	var f2 := MeshInstance3D.new()
 	var pm2 := PlaneMesh.new()
-	pm2.size = Vector2(400, 400)
+	pm2.size = Vector2(560, 560)
 	f2.mesh = pm2
-	f2.material_override = far
+	f2.material_override = gm
 	f2.position = Vector3(0, GROUND_Y - 0.03, 0)
 	add_child(f2)
 	# foundation under the whole footprint (seen along the cut-away south edge)
@@ -422,6 +419,7 @@ func _build_lot() -> void:
 	card.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(card)
 	garden_backdrop = card
+	LandscapeCoverage.build_garden(wb,self)
 	_build_fence()
 	# engawa boundary with a gap at the stepping stone, which leads down into the little yard
 	_collider(Vector3(2.55, 1.4, 0.2), Vector3(-0.325, 0.7, -4.72), WorldBuilder.L_PLACED)

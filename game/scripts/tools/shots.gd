@@ -319,6 +319,8 @@ func _run() -> void:
 	var dir := _arg("shots", "user://shots")
 	DirAccess.make_dir_recursive_absolute(dir)
 	var catalog: Dictionary = VIEWS.duplicate(true)
+	if _arg("qa-landscape", "") == "1":
+		catalog=LandscapeCoverage.capture_views()
 	if _arg("qa-environments", "") == "1":
 		catalog = _environment_matrix()
 		main.weather_fx.rig = main.rig.cam
@@ -351,6 +353,7 @@ func _run() -> void:
 			GameState.placements=[{"uid":990,"item":"bunting","x":5.5,"z":11.2,"rot":0},{"uid":991,"item":"lantern","x":9.5,"z":12.4,"rot":0}]
 			main.placement.rebuild()
 		main.rig.cam.transform = Transform3D.IDENTITY
+		main.rig.cam.fov=float(v.get("fov",50.0))
 		main.rig.process_mode = Node.PROCESS_MODE_INHERIT
 		main.player.visible = true
 		GameState.clock_paused = true
@@ -487,6 +490,8 @@ func _run() -> void:
 				main.rig.process_mode = Node.PROCESS_MODE_DISABLED
 				main.rig.cam.global_position = HouseBuilder.ORIGIN + v.house_camera
 				main.rig.cam.look_at(HouseBuilder.ORIGIN + v.house_focus)
+				if v.get("house_photo",false):
+					main.photo.toggle();main.photo.tools.visible=false
 				_reset_review_camera()
 			if v.has("seat_id"):
 				for candidate in get_tree().get_nodes_in_group("interactables"):
@@ -498,6 +503,7 @@ func _run() -> void:
 				await get_tree().process_frame
 			var im := get_viewport().get_texture().get_image()
 			im.save_png("%s/%s.png" % [dir, n])
+			if main.photo.active:main.photo.finish()
 			print("SHOT ", n)
 			if sip_action != null:
 				sip_action.queue_free()
