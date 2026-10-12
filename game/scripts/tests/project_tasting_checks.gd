@@ -84,13 +84,14 @@ func run() -> void:
 func movement_checks() -> void:
 	var batch: Dictionary=fresh()
 	var actor: NPC=main.npcs.mio
-	actor.home=false;actor.visible=true;actor.place(Vector3(3.6,0,13.5),0)
-	main.player.global_position=Vector3(4.6,.05,12.5)
+	actor.home=false;actor.visible=true;actor.place(Vector3(-6.4,0,-6.6),0)
+	main.player.global_position=Vector3(-5.35,.05,-6.6)
 	main.story.busy=true;main.player.frozen=true;main.ui.dialogue_begin()
 	var instant: bool=main.ui.instant;main.ui.instant=false
 	var view:=ProjectTasting.new();main.add_child(view)
+	await t.frames(3) # Publish the actual notice-board/approach transforms to physics.
 	var shown: Dictionary=await view.run(main.story,"mio","paper")
-	t.check("TASTING_WALK","a frozen dialogue really walks both characters by collision to distinct stops",not shown.has("error") and view.player_trace.size()>5 and view.npc_trace.size()>5 and main.player.global_position.distance_to(Vector3(4.6,.05,12.5))>.5 and actor.global_position.distance_to(main.player.global_position)>.65,str(shown))
+	t.check("TASTING_WALK","a frozen notice-board dialogue really walks both characters by collision through the courtyard to distinct stops",not shown.has("error") and view.player_trace.size()>5 and view.npc_trace.size()>5 and main.player.global_position.distance_to(Vector3(-5.35,.05,-6.6))>10. and actor.global_position.distance_to(main.player.global_position)>.65,str(shown))
 	t.check("TASTING_WALK","completed presentation restores the dialogue freeze, movement and camera without yet consuming",main.player.frozen and main.player.auto_move==Vector3.ZERO and get_camera()==main.rig.cam and GameState.count(str(batch.iid))==3 and not GameState._ui_locks.has("project_tasting"))
 	view.queue_free();await t.frames(2)
 	# Cancel after real movement begins; neither teleport back nor consume a sample.

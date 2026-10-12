@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-12",
+  "kind": "derived_existing_assets_no_paid_generation",
+  "source_tree": "game/assets/models/T05_old_shade_tree.glb",
+  "source_tree_sha256": "48428b34ccbacece339aed4555ab7d6c3c2808f79a149e48bc73c812d1c26735",
+  "camera_only": {
+    "resource": "game/assets/collision/T05_bark_camera.tres",
+    "sha256": "c9ea0884a7f4a16b464495018aeb175ca2a27f9f6514adc7e19d90c741938d5b",
+    "metrics": {
+      "target": 16000,
+      "triangles": 16000,
+      "visual_samples": 32000,
+      "visual_to_proxy_p99_m": 0.02793290210887788,
+      "visual_to_proxy_max_m": 0.06884557753801346,
+      "proxy_to_visual_max_m": 0.03418225795030594
+    },
+    "backface_collision": true,
+    "visible_glb_changed": false,
+    "actor_cylinders_changed": false
+  },
+  "lower_foliage": {
+    "anchors": "game/data/old_tree_lower_boughs.json",
+    "anchors_sha256": "3c26f62d8589dc582117861ef5c58f67867f3721894dd7f055e8a254588d2007",
+    "anchor_count": 175,
+    "runtime_sprigs": 516,
+    "triangles": 1032,
+    "min_y_m": 2.309,
+    "max_y_m": 5.697,
+    "atlas": "game/assets/textures/tree_detail/old_tree_sprigs.png",
+    "atlas_source": "art/references/plaza_paintover_20261009/plaza_leaf_sprigs_atlas.png",
+    "atlas_sha256": "388976eb0539160a5ff60fb7e74f7840194ba5addfac9f600c0b11605a87a83c",
+    "source_atlas_unchanged": true,
+    "colliders_added": 0
+  },
+  "character_glbs_changed": false,
+  "tools": [
+    "art/tools/export_tree_detail_source.gd",
+    "art/tools/build_tree_camera_proxy.py",
+    "art/tools/save_tree_camera_proxy.gd",
+    "art/tools/locate_lower_tree_sprigs.py"
+  ],
+  "verification": "evidence/tree_locomotion_20261012/delivery.json"
+}

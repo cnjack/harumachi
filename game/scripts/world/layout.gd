@@ -180,6 +180,8 @@ const NOGO_CIRCLES := [[Vector2(4.0, 7.0), 2.4, "树下留出一圈空地，别�
 const SPAWN := Vector3(-41.0, 0.1, -9.5)
 const SPAWN_YAW := 90.0
 const HOME_EXIT := Vector3(20.6, 0.1, 5.9)
+const AOI_SANDBOX := Vector3(-5.15, 0, 4.4)
+const AOI_SWING := Vector3(-8.85, 0, 1.35)
 
 ## NPC stations and walking routes.
 const NPC := {
@@ -253,8 +255,11 @@ const SCHEDULE := {
 	],
 	"aoi": [
 		[7.5, "town", Vector3(12.2, 0, 18.2), -140.0, "idle"],
+		# Keep the morning with grandma, then face the actual toys from clear ground.
+		[10.0, "town", AOI_SANDBOX, -90.0, "idle", [Vector3(9.2,0,13.5),Vector3(-2.9,0,8.0)]],
+		[11.75, "town", AOI_SWING, -80.5, "idle", [Vector3(-5.15,0,1.35)]],
 		[12.5, "farm", Vector3(4.6, 0, 12.3), 0.0, "idle"],
-		[16.5, "town", Vector3(-5.9, 0, 6.3), 200.0, "idle"],
+		[16.5, "town", AOI_SANDBOX, -90.0, "idle"],
 		[19.0, "home"],
 	],
 	"kazuko": [
@@ -266,6 +271,9 @@ const SCHEDULE := {
 ## Familiar workplaces stay primary; a few dry-day errands vary by the week.
 static func daily_schedule(id: String, weekday: int, weather: String) -> Array:
 	var routine: Array = SCHEDULE.get(id, [])
+	if id == "aoi" and weather == "rain":
+		# Morning conversation still exists; wet sand and an empty swing are not a playground.
+		return [routine[0], [10.0,"home"]]
 	if weather == "rain": return routine
 	if id == "mio" and weekday in [5,6]:
 		return [routine[0], [12.0,"town",Vector3(-1.4,0,21.4),180.0,"idle",[Vector3(-3,0,-6),Vector3(-3,0,12)]],

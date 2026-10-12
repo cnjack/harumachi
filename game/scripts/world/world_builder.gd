@@ -116,6 +116,8 @@ func spawn(id: String, pos: Vector3, yaw_deg: float, collide: int = 1, parent: N
 	for mi in find_meshes(n):
 		mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 	SurfaceFinish.apply(n,id)
+	if id == "T05_old_shade_tree":
+		preload("res://scripts/world/old_tree_lower_foliage.gd").attach(n)
 	if id in ["P_farm_gate", "P_signpost", "P_bridge", "P_yagura", "H01", "H02", "H03", "S06", "S01", "S02", "S03", "S05", "S08", "M01_timber_machiya", "M03_gable_house", "M05_residential"]:
 		HouseBuilder.toonify(n)
 	if id.begins_with("T0"):
@@ -538,8 +540,10 @@ func _trunk_collider(tree: Node3D, r: float) -> void:
 			camera_body.collision_mask = 0
 			camera_body.set_meta("model_part", "old_tree_camera_bark")
 			var camera_shape := CollisionShape3D.new()
-			var bark_triangles: ConcavePolygonShape3D = bark.mesh.create_trimesh_shape()
-			bark_triangles.backface_collision = true
+			# Sweeping a camera sphere through the 170k-face visual bark stalls
+			# physics near the tree. This measured camera-only proxy retains the
+			# bough silhouette; the original avatar/root cylinders stay separate.
+			var bark_triangles: ConcavePolygonShape3D = preload("res://assets/collision/T05_bark_camera.tres")
 			camera_shape.shape = bark_triangles
 			camera_body.add_child(camera_shape)
 			bark.add_child(camera_body)

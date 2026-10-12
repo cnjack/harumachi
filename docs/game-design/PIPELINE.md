@@ -1,8 +1,12 @@
 # 模型、工程与交付流程
 
+## 镜头碰撞预算与人物接触（2026-10-12）
+
+新增`--only=tree-locomotion`18项，旧实现14项失败，最终全量1557项独占通过，解压包200项完整演示通过。修改镜头树皮碰撞时不能直接对高面数可见树皮逐帧球扫，也不能仅关闭碰撞；以实际Godot坐标导出、离线减面、双向表面误差和实际物理射线共同验收。工具为`art/tools/export_tree_detail_source.gd`、`build_tree_camera_proxy.py`、`save_tree_camera_proxy.gd`，低枝锚点用`locate_lower_tree_sprigs.py`，输入/输出均用显式参数及临时目录。人物接触继续复用启动探针，完整鞋蒙皮只在QA使用；`--measure-motion-soles`可检查走跑相位与真实位移。116张原生截图、冻结源码与包的逐文件关系见[TREE_LOCOMOTION](TREE_LOCOMOTION_20261012.md)。
+
 ## 材质和矩阵检查（2026-10-11）
 
-材质专项入口为`--only=material-detail`，共40项；实际矩阵及旋转椅背检查为`--only=shader-matrices`，共3项。本轮交付包冻结34284d9的1538项完整测试已独占通过，最终90张原生窗口复拍与解压包200项演示已通过，桌面包已替换。
+材质专项入口为`--only=material-detail`，共40项；实际矩阵及旋转椅背检查为`--only=shader-matrices`，共3项。材质细化轮交付包冻结34284d9的1538项完整测试已独占通过，最终90张原生窗口复拍与解压包200项演示已通过，桌面包已替换。
 
 实际选中的water shader及include共用深度和光源逻辑。mat4显式上传Projection，木纹轴与采样使用同一坐标空间；用真实GPU开关对照核对参数，连续坐标导数过滤雨圈。程序精修还要测封口、排气管、炉腔与51处实际部件接触。六张imagegen原图均为1254²，2048仅为导出上限。详见[MATERIAL_DETAIL](MATERIAL_DETAIL_20261011.md)。
 
@@ -221,7 +225,7 @@ Godot 这边是 `Audio` 自动加载（`game/scripts/autoload/audio.gd`）：
 
 - **材质视频样板（2026-10-06）**：`art/poc/material_review_20261006/godot/` 是独立 Godot 4.7.2 Forward+ 工程，六种地表各有 A/B；四张 imagegen 图用于实际材质，已有 Hyper3D 住宅用于实景。运行 `python3 art/poc/material_review_20261006/record.py --tag review` 原生录制 40 秒 1080p/30fps 并编码 MP4；视频、8 张截图、日志和检查在 `evidence/material_review_20261006_v1/`。窗口 override 与录制分辨率保持一致，避免 Movie Maker 输出 720p 而截图仍为 1080p。隔离工程不加载游戏 autoload，不修改默认存档。详见该 POC 的 README。
 
-- 自动测试：`res://scenes/tests.tscn`，当前清单1539项，含规则、SQLite、UI、模型摆放、路线、生活、完整夏季和镜头检查。独立HARUMACHI_SAVE_DIR、超时与SCRIPT ERROR检查必须同时使用；全量不与其他Godot实例并发。专项入口与数量见AGENTS，最终数以JSON报告为准。
+- 自动测试：`res://scenes/tests.tscn`，当前清单1557项，含规则、SQLite、UI、模型摆放、路线、生活、完整夏季和镜头检查。独立HARUMACHI_SAVE_DIR、超时与SCRIPT ERROR检查必须同时使用；全量不与其他Godot实例并发。专项入口与数量见AGENTS，最终数以JSON报告为准。
 - 卡顿检查要让时钟实际推进，记录逐帧耗时，不能只看平均FPS。工具`evidence/desktop_stutter_20261007/perf_probe.gd`的`--fixed`模式在真实起床卧室和商店街记录480帧，截图回读放在计时之后；使用固定引擎、置顶原生窗口和独立存档。运动清晰度检查在固定镜头距离下核对人物与镜头的渲染插值位置，镜头避障另跑`--only=camera-body`。桌面缓存用晚会专项检查移动、旋转后的实际食物支撑；方法与结果见[卡顿修复](DESKTOP_STUTTER_20261008.md)。
 - 自动演示：普通标题入口`--autoplay`沿实际碰撞路径、Story交互、摆放控制器、料理面板、灯笼输入、日历赴约和拍照完成新夏季至Q15，检查控制与保存恢复。当前基线200项、9张关键截图。自动对白与阶段暂停明确记录，不作为自然四小时；`--showcase`是节日展示夹具。打印的AP mark/frame用于录像剪辑。
 - 录制时游戏窗口不能被别的窗口完全挡住：macOS 会停止给被挡住的窗口画帧，演示就停在原地。用 `-t --position <x>,<y>` 置顶并放到屏幕角落。

@@ -9,6 +9,7 @@ const BLEND := 0.22
 const HAND_TONE = preload("res://scripts/characters/character_hand_tone.gd")
 const FOOT_SUPPORT = preload("res://scripts/characters/character_foot_support.gd")
 const APRON_SUPPORT = preload("res://scripts/characters/character_apron_support.gd")
+const NATURAL_POSE = preload("res://scripts/characters/natural_locomotion_pose.gd")
 
 ## Emitted at each heel strike of the walk / run clips (clip phases 0 and 0.5), for footsteps.
 signal stepped
@@ -44,6 +45,8 @@ func _init(model: Node) -> void:
 	for n in ["wave", "bow", "look", "stretch", "cheer"]:
 		if ap.has_animation(n):
 			ap.get_animation(n).loop_mode = Animation.LOOP_NONE
+	var natural: SkeletonModifier3D=NATURAL_POSE.attach(model as Node3D,ap)
+	if natural!=null and str(natural.get("profile"))=="mio":walk_speed*=.85
 	clothing = CharacterClothing.attach(model)
 	FOOT_SUPPORT.attach(model as Node3D, ap)
 	APRON_SUPPORT.attach(model as Node3D, ap)

@@ -1,0 +1,46 @@
+{
+  "source_sha256": "48428b34ccbacece339aed4555ab7d6c3c2808f79a149e48bc73c812d1c26735",
+  "coordinate_space": "actual Godot bark local vertices and winding",
+  "metrics": {
+    "target": 16000,
+    "triangles": 16000,
+    "visual_samples": 32000,
+    "visual_to_proxy_p99_m": 0.02793290210887788,
+    "visual_to_proxy_max_m": 0.06884557753801346,
+    "proxy_to_visual_max_m": 0.03418225795030594
+  },
+  "trials": [
+    {
+      "target": 3000,
+      "triangles": 3000,
+      "visual_samples": 32000,
+      "visual_to_proxy_p99_m": 0.13244581922888754,
+      "visual_to_proxy_max_m": 0.24465122818946838,
+      "proxy_to_visual_max_m": 0.10054440796375275
+    },
+    {
+      "target": 6000,
+      "triangles": 6000,
+      "visual_samples": 32000,
+      "visual_to_proxy_p99_m": 0.06871757566928863,
+      "visual_to_proxy_max_m": 0.13434992730617523,
+      "proxy_to_visual_max_m": 0.06478723883628845
+    },
+    {
+      "target": 10000,
+      "triangles": 10000,
+      "visual_samples": 32000,
+      "visual_to_proxy_p99_m": 0.04328553531318901,
+      "visual_to_proxy_max_m": 0.09898100048303604,
+      "proxy_to_visual_max_m": 0.04793998599052429
+    },
+    {
+      "target": 16000,
+      "triangles": 16000,
+      "visual_samples": 32000,
+      "visual_to_proxy_p99_m": 0.02793290210887788,
+      "visual_to_proxy_max_m": 0.06884557753801346,
+      "proxy_to_visual_max_m": 0.03418225795030594
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 <p align="center"><img src="site/assets/wallpapers/summer-river.webp" alt="晴川与山谷中的晴町，明年夏祭官方概念插画" width="100%"></p>
 
-墙脚潮痕和苔纤维、石路磨耗、木牌、水面深浅与碎光、河石、连续摊位帆布及烤箱精修已交付。90张最终场景截图与旋转椅背GPU对照已复核；40项专项、交付冻结源码1538项独占全量及解压应用200项夏季演示通过，退出码0，默认104个存档及照片文件摘要未变。当前显示环境下12组新旧短样本均约60帧。整合协作者草地修复后，当前源码1539项全量也已通过。正式桌面包已原子替换，临时冻结和解压目录已清理；Web保持原版本。见[本轮验收](docs/game-design/MATERIAL_DETAIL_20261011.md)及`evidence/material_refinement_delivery_20261011/delivery.json`。
+榕树下走跑卡顿、低枝缺叶、作家澪步态和居民自动路线、小葵站姿与玩具日程已修复。116张最终原生截图、18项新回归、1557项独占全量及解压应用200项完整夏季演示通过，默认104个存档及照片摘要未变。桌面包已更新，Web保持原版本。见[榕树与人物修复](docs/game-design/TREE_LOCOMOTION_20261012.md)和`evidence/tree_locomotion_20261012/delivery.json`。
 
 <h1 align="center">明年夏祭</h1>
 <p align="center"><strong>Harumachi: Next Summer</strong><br>一款关于归乡、日常与重逢的日式小镇生活游戏。</p>

@@ -429,7 +429,10 @@ func upper_bark_camera_check() -> void:
 				var shape: CollisionShape3D = shapes[0] as CollisionShape3D
 				actual_bark = actual_bark and shape.shape is ConcavePolygonShape3D
 				if shape.shape is ConcavePolygonShape3D:
-					actual_bark = actual_bark and (shape.shape as ConcavePolygonShape3D).get_faces() == mesh.mesh.get_faces() and (shape.shape as ConcavePolygonShape3D).backface_collision
+					var camera_shape: ConcavePolygonShape3D=shape.shape as ConcavePolygonShape3D
+					actual_bark = actual_bark and camera_shape.get_faces().size()/3<=20000 and camera_shape.backface_collision
+					actual_bark = actual_bark and str(camera_shape.get_meta("visual_bark_sha256",""))==FileAccess.get_sha256("res://assets/models/T05_old_shade_tree.glb")
+					actual_bark = actual_bark and float(camera_shape.get_meta("visual_to_proxy_p99_m",INF))<=.035 and float(camera_shape.get_meta("visual_to_proxy_max_m",INF))<=.12
 		for node: StaticBody3D in hero.find_children("*", "StaticBody3D", true, false):
 			if node.collision_layer & WorldBuilder.L_SOLID: solid_bodies += 1
 		var trunk_body: StaticBody3D = hero.get_node_or_null("TrunkCollision") as StaticBody3D

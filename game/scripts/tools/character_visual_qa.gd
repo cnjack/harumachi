@@ -33,6 +33,7 @@ var perf_skip_frames := 0
 var perf_last_usec := 0
 var perf_frames: Array[float] = []
 var perf_excluded := 0
+var measure_motion_soles := false
 
 func _ready() -> void:
 	_run.call_deferred()
@@ -47,6 +48,7 @@ func _run() -> void:
 			phases.clear()
 			for value: String in argument.substr(9).split(","): phases.append(float(value))
 		if argument == "--pilot": pilot = true
+		if argument == "--measure-motion-soles": measure_motion_soles = true
 	if output.is_empty():
 		push_error("character_visual_qa requires --out=<directory>")
 		get_tree().quit(2)
@@ -197,7 +199,7 @@ func snapshot(row: Dictionary, view: String) -> void:
 			skeleton.add_child(probe)
 			probe.call("prepare", model)
 		skeleton.move_child(probe, skeleton.get_child_count() - 1)
-		probe.set("measure_feet", row.action in ["sit", "seated_sip", "stand_after_seat", "indoor_idle"] or str(row.action).begins_with("idle") or row.kind == "native_context_locomotion")
+		probe.set("measure_feet", row.action in ["sit", "seated_sip", "stand_after_seat", "indoor_idle"] or str(row.action).begins_with("idle") or row.kind == "native_context_locomotion" or (measure_motion_soles and (str(row.action).begins_with("walk") or str(row.action).begins_with("run"))))
 		probe.set("support_rect_enabled", false)
 		if row.get("scene", "") == "context_town_curb":
 			for curb: MeshInstance3D in floor_meshes:
@@ -378,7 +380,7 @@ func capture_motion() -> void:
 					main.player.global_position = Vector3(-41, .1, -9.5)
 					var npc: NPC = actor as NPC
 					npc.hold = false
-					npc.speed = 1.5
+					# Keep the actual resident's gait/speed profile in motion evidence.
 					npc.set_yaw(atan2(direction.x, direction.z))
 					npc.set_process(true)
 					npc.walk([start + direction * 5])

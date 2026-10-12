@@ -19,6 +19,9 @@ var _walk_probe: CapsuleShape3D
 var _route_retry := 0.0
 var _blocked_seconds := 0.0
 var _frame_delta := 0.0
+var _move_speed := 0.0
+var _move_heading := Vector3.ZERO
+var _passing_sides: Dictionary = {}
 var walk_succeeded := true
 const MOTION_ROUTE = preload("res://scripts/npc/motion_route.gd")
 var _yaw := 0.0
@@ -57,6 +60,8 @@ static var roam_enabled := true   # the headless tests switch the loops off so p
 
 func setup(id: String, info: Dictionary) -> void:
 	npc_id = id
+	if id == "mio": speed = 1.25
+	elif id == "aoi": speed = 1.15
 	display_name = info.name
 	set_meta("audit_model", info.model)
 	name = "NPC_" + id
@@ -166,6 +171,7 @@ func _avoid(dir: Vector3, delta: float, to_goal: float) -> Vector3:
 	var push := Vector3.ZERO
 	var block := false
 	var others: Array[Node3D] = []
+	var nearby: Dictionary = {}
 	if player:
 		others.append(player)
 	for n in everyone:
@@ -181,8 +187,11 @@ func _avoid(dir: Vector3, delta: float, to_goal: float) -> Vector3:
 		if ahead < 0.1:
 			continue
 		var side := Vector3(-dir.z, 0, dir.x)
-		if side.dot(to) > 0.0:
-			side = -side
+		var identity: int=o.get_instance_id()
+		nearby[identity]=true
+		if not _passing_sides.has(identity):
+			_passing_sides[identity]=-1.0 if side.dot(to)>0.0 else 1.0
+		side*=float(_passing_sides[identity])
 		push += side * (1.7 - dist) * 1.6 * ahead
 		if dist < 0.8 and ahead > 0.6 and o == player:
 			block = true
@@ -192,12 +201,16 @@ func _avoid(dir: Vector3, delta: float, to_goal: float) -> Vector3:
 			return Vector3.ZERO
 	else:
 		_yield_t = maxf(0.0, _yield_t - delta)
+	for identity: int in _passing_sides.keys():
+		if not nearby.has(identity):_passing_sides.erase(identity)
 	# ease off near the goal so a neighbour waiting next to the stop cannot make us circle it
 	return (dir + push * clampf(to_goal / 1.2, 0.0, 1.0)).normalized()
 
 
 func place(p: Vector3, yaw_deg: float) -> void:
 	_placement_generation += 1
+	var contact: Node=model.find_child("NaturalLocomotionPose",true,false)
+	if contact!=null:contact.call("reset_contact")
 	if _departure_tween != null and _departure_tween.is_valid(): _departure_tween.kill()
 	for mesh: MeshInstance3D in WorldBuilder.find_meshes(model): mesh.transparency = 0.0
 	if _moving: walk_finished.emit(false)
@@ -207,6 +220,7 @@ func place(p: Vector3, yaw_deg: float) -> void:
 		_path.clear()
 	_path.clear()
 	_moving = false
+	_move_speed=0.0;_move_heading=Vector3.ZERO;_passing_sides.clear()
 	global_position = p
 	set_meta("motion_reason", "authored_placement")
 	set_yaw(deg_to_rad(yaw_deg))
@@ -239,6 +253,8 @@ func set_home(on: bool) -> void:
 	talk.radius = 0.0 if on else 2.3
 	body.collision_layer = 0 if on else WorldBuilder.L_ACTORS
 	if on:
+		var contact: Node=model.find_child("NaturalLocomotionPose",true,false)
+		if contact!=null:contact.call("reset_contact")
 		if _moving: walk_finished.emit(false)
 		_path.clear()
 		_moving = false
@@ -265,7 +281,12 @@ func apply_fest(e: Array, key: String) -> void:
 	var p: Array = e[1]
 	set_home(false)
 	place(Vector3(float(p[0]), float(p[1]), float(p[2])) + off, float(e[2]))
-	set_pose(str(e[3]))
+	var festival_pose: String=str(e[3])
+	if festival_pose in GESTURES:
+		# A finite cheer/look/bow is a reaction, not a frozen standing loop.
+		set_pose("idle")
+		if anim.valid():anim.play_once(festival_pose)
+	else:set_pose(festival_pose)
 
 
 ## Apply the schedule entry for the current hour. Nearby and on the same side of town the NPC
@@ -334,6 +355,7 @@ func walk(points: Array, scheduled: bool=false) -> bool:
 	_scheduled_walk=scheduled
 	walk_succeeded = false
 	_blocked_seconds = 0.0
+	_move_speed=0.0;_move_heading=Vector3.ZERO;_passing_sides.clear()
 	set_meta("motion_reason", "ordinary_walk")
 	_path.clear()
 	for p in points:
@@ -402,6 +424,7 @@ func _safe_position(at: Vector3) -> bool:
 					_path.pop_front()
 					for index_detour: int in range(detour.size()-1, -1, -1): _path.push_front(detour[index_detour])
 			set_meta("motion_reason", "waiting_or_detouring")
+			_move_speed=0.0;_move_heading=Vector3.ZERO
 			if anim.valid(): anim.update(0.0)
 			return false
 	_blocked_seconds = 0.0
@@ -459,13 +482,19 @@ func _process(delta: float) -> void:
 		var goal: Vector3 = _path[0]
 		var d := goal - global_position
 		d.y = 0
-		var step := speed * delta
+		# Blend only intermediate ordinary corners; safe trials retain exact points.
+		if not _safe_walk and _path.size()>1 and d.length()<.18 and MOTION_ROUTE.clear_segment(self,global_position,_path[1]):
+			_path.pop_front();goal=_path[0];d=goal-global_position;d.y=0
+		var wanted_speed: float=minf(speed,sqrt(9.0*d.length())) if _path.size()==1 else speed
+		_move_speed=move_toward(_move_speed,wanted_speed,4.5*delta)
+		var step := _move_speed * delta
 		if d.length() <= maxf(step, 0.12 if _roam_leg else 0.0):
 			if not _safe_position(Vector3(goal.x, global_position.y, goal.z)): return
 			global_position = Vector3(goal.x, global_position.y, goal.z)
 			_path.pop_front()
 			if _path.is_empty():
 				_moving = false
+				_move_speed=0.0;_move_heading=Vector3.ZERO
 				walk_succeeded = true
 				if _end_yaw != INF:
 					face_yaw(_end_yaw)
@@ -476,18 +505,22 @@ func _process(delta: float) -> void:
 					_roam_arrived()
 				arrived.emit()
 				walk_finished.emit(true)
+			else:stepping=true
 		else:
-			var dir := _avoid(d.normalized(), delta, d.length())
+			var dir: Vector3 = d.normalized() if _safe_walk else _avoid(d.normalized(), delta, d.length())
 			if dir != Vector3.ZERO:
+				if not _safe_walk and _move_heading.length_squared()>.1:dir=_move_heading.lerp(dir,1.0-exp(-9.0*delta)).normalized()
 				if not _safe_position(global_position + dir * step): return
 				global_position += dir * step
+				_move_heading=dir
 				set_yaw(lerp_angle(_yaw, atan2(dir.x, dir.z), 1.0 - exp(-10.0 * delta)))
 				stepping = true
 	else:
 		stepping = _moving and not paused
+		if paused or not _moving:_move_speed=0.0;_move_heading=Vector3.ZERO
 	_roam_tick(delta)
 	if anim.valid():
-		anim.update(speed if stepping else 0.0)
+		anim.update(_move_speed if stepping else 0.0)
 		_idle_life(delta)
 		return
 	if _moving:
