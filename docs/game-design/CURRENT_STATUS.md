@@ -1,12 +1,14 @@
-# 项目现状（2026-10-11）
+# 项目现状（2026-10-12）
 
 ## Windows 草地白斑（2026-10-11）
 
 Windows NVIDIA下广场墙根和草坪边缘的白斑已修：MSAA使草叶插值越界，`pow()`遇到负底数返回NaN，再被辉光放大。两种草叶着色器先clamp再计算`pow`，各平台辉光保持开启。`--only=plaza-quality`现为9项，全量1539项。Windows上的7项PROPS/DISPLAY新鲜度失败与基线相同，属于本机GLB时间戳问题。详见PLAN同日条目与`evidence/windows_grass_glow_20261011/verification.json`。
 
-## 材质细化源码与待验范围（2026-10-11）
+## 材质细化交付（2026-10-12）
 
-墙脚潮痕与苔纤维、石路磨耗、木牌、水面深浅和碎光、河石、连续摊位帆布及烤箱精修已写入源码，40项专项和1538项独占全量通过。新macOS包已导出并通过ZIP、解压、签名及双架构检查。最后一处旋转椅背纹向修复后的原生复拍、解压包200项演示仍待Mac解锁；当前正式桌面包和Web保持原已验收版本。见[本轮实现与待验范围](MATERIAL_DETAIL_20261011.md)及`evidence/material_refinement_delivery_20261011/progress.json`。本次按用户要求先提交当前全部可入库修改。
+本次桌面包冻结源码为`34284d9`。随后协作者的`95154d9`修复Windows草地MSAA下的NaN白斑，该版本已在独立副本通过1539项全量并正常整合；其草地shader变更未混入这份1538项冻结包。
+
+墙脚潮痕和苔纤维、石路磨耗、木牌、水面深浅与碎光、河石、连续摊位帆布及烤箱精修已交付。90张最终场景截图与旋转椅背GPU对照已复核；40项专项、交付冻结源码1538项独占全量及解压应用200项夏季演示通过，退出码0，默认104个存档及照片文件摘要未变。当前显示环境下12组新旧短样本均约60帧。正式桌面包已原子替换，临时冻结和解压目录已清理；Web保持原版本。见[本轮验收](MATERIAL_DETAIL_20261011.md)及`evidence/material_refinement_delivery_20261011/delivery.json`。
 
 ## 全场景与动作视觉检查（2026-10-11）
 
@@ -91,7 +93,7 @@ Windows 下打开工程报 `Could not find type "SQLite"`：`game/addons/godot-s
 
 历史全量数、失败和旧包摘要保留在日期记录；文档更新与迁移过程见[GODOT_48_MIGRATION_20261007.md](GODOT_48_MIGRATION_20261007.md)。
 
-最新桌面SHA-256：`165559a72408fd300645e1b4be498e5bf9e7b4232600c3d5bdce5f6c9160165e`，字节数1792269495。精确编译引擎`4.8.dev7.official.c971f93e7`，双架构`x86_64 arm64`。UI独立包在art/ui-kit/Harumachi-UI-Kit-v1.zip；4.8导入和图库三页已验，模板CRC与Web.prepare像素保留证据在迁移目录。
+最新桌面SHA-256：`11af59401754dd429ead4453f3d2f1076a2f1c0d2f5802c69775d497979707cf`，字节数1809432729。精确编译引擎`4.8.dev7.official.c971f93e7`，双架构`x86_64 arm64`。UI独立包在art/ui-kit/Harumachi-UI-Kit-v1.zip；4.8导入和图库三页已验，模板CRC与Web.prepare像素保留证据在迁移目录。
 
 ## Web发布（2026-10-07部署，2026-10-08继续核验）
 

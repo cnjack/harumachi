@@ -1,7 +1,7 @@
 {
   "created": "2026-10-11T10:36:34.985524+00:00",
   "source_commit": "9560d424eab6b745c9f691a70f0d943137541664",
-  "status": "source_committed_by_user_request_full_tests_passed_final_native_pending",
+  "status": "verified_native_full_and_exported_app_delivered",
   "new_paid_3d_generation_submissions": 0,
   "generator": "built-in image_gen for three new albedos; Blender for geometry/UV only",
   "bitmap_postprocessing": false,
@@ -38,7 +38,7 @@
   },
   "models": {
     "P09": {
-      "status": "geometry_contacts_and_full_tests_passed_final_native_pending",
+      "status": "verified_native_full_and_exported_app_delivered",
       "method": "Blender local geometry and UV refinement of the existing accepted model; no new paid 3D generation",
       "input": {
         "path": "art/models/raw/material_refine_stall_oven_20261011/P09_input.glb",
@@ -123,7 +123,7 @@
       "editable_source_sha256": "92ac6c37fcc1fef92f6e4059752c3d34aa0c890300de351b09c84ab6d57c38b9"
     },
     "P_deck_oven": {
-      "status": "geometry_contacts_and_full_tests_passed_final_native_pending",
+      "status": "verified_native_full_and_exported_app_delivered",
       "method": "Blender local rebuild of the defective middle casing plus precise front hardware; original accepted Hyper3D base/feet/flue retained; no new paid3D generation.",
       "input": {
         "path": "art/models/raw/material_refine_stall_oven_20261011/P_deck_oven_input.glb",
@@ -231,7 +231,16 @@
       "path": "evidence/material_refinement_delivery_20261011/topology-diagnosis/level-final-two.json",
       "sha256": "5da737abdef38d8cc1c1c909230598497cdb3dbcdb2aecff44280557637d1dcf"
     },
-    "native": "Closed models reviewed in the prior90 native images; final change affects only rotated timber grain-axis binding and its regression. Final frozen-source recapture and exported-app200 remain pending Mac unlock; official package not replaced. See evidence/material_refinement_delivery_20261011/progress.json.",
+    "native": {
+      "passed": true,
+      "native_images": 90,
+      "overall_views": 88,
+      "detail_only_views": 2,
+      "full_checks": 1538,
+      "exported_autoplay_checks": 200,
+      "desktop_package_sha256": "11af59401754dd429ead4453f3d2f1076a2f1c0d2f5802c69775d497979707cf",
+      "evidence": "evidence/material_refinement_delivery_20261011/delivery.json"
+    },
     "source_albedo_review": {
       "path": "evidence/material_detail_review_20261011/stall-oven/texture-review.json",
       "sha256": "2c455d817dc39b45cfd006d6647de7bc1d2983205b703bf9672f288daabf40c0",
