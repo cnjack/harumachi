@@ -3181,6 +3181,854 @@
       "bitmap_postprocessing": false,
       "task": "material_refine_20261011",
       "manifest": "art/manifests/images_material_refine_creek_stone_20261011.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/foliage_atlas.png",
+      "exists": true,
+      "tool": "codex image_gen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/foliage_atlas.txt",
+      "transparent_background": true,
+      "sha256": "20b58d0c1925839c276181a1f73b0cb5bee3e822b6bc8e149ba6c5739be2b202"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/D01_wheelbarrow.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/D01_wheelbarrow.txt",
+      "sha256": "330db7646f49cfd23627dad07cbfc96079f58e1dd8a1b170c8dc2969f1f86333",
+      "size_px": [
+        1536,
+        1024
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/D02_rain_barrel.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/D02_rain_barrel.txt",
+      "sha256": "27739f08185293931013328a66997fd07ed2bc7a25d73754c52192ec85c701cf",
+      "size_px": [
+        1214,
+        1295
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/D03_veg_crates.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/D03_veg_crates.txt",
+      "sha256": "6911b27194a49ca078e7482c6c95d219ddd06ba7beb8af0cfa73c27a16358ecb",
+      "size_px": [
+        1214,
+        1295
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/D04_stone_lantern.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/D04_stone_lantern.txt",
+      "sha256": "1de2f5545d9cc9e896ce11488135e6e28421eaf7545386037fc514f82003a0bd",
+      "size_px": [
+        1145,
+        1374
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/D05_hokora.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/D05_hokora.txt",
+      "sha256": "04e2ec0411ecd55b0d97d31514569d4d8190a58e3395a39e456aedcdf948b0c9",
+      "size_px": [
+        1214,
+        1295
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/D08_tool_rack.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/D08_tool_rack.txt",
+      "sha256": "eb0645f0f88c37b02dfc010ddc05cb029ea8d525de9fda0146b02bc0c627f8df",
+      "size_px": [
+        1214,
+        1295
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/D09_log_pile.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/D09_log_pile.txt",
+      "sha256": "5aad904bf607431f12a5c53a68991a978b4235e52835d44d6059d104c8344770",
+      "size_px": [
+        1536,
+        1024
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/D12_flower_planter.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/D12_flower_planter.txt",
+      "sha256": "4dc82c7dc5d0dc7ff505097c9ce2340d1da38fe332648e7ef3d3f6d206b86af6",
+      "size_px": [
+        1536,
+        1024
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/A14_hydrangea_pot.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/A14_hydrangea_pot.txt",
+      "sha256": "26c10e687500fc9408c87c0a41a9a7b59ae8c9044c8a875a776309763c08db5a",
+      "size_px": [
+        1214,
+        1295
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/A15_potted_plant.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/A15_potted_plant.txt",
+      "sha256": "6ad0688ac50bc709d100c979fa56bd0b2bb447dce087769a194ddca8c0aed1e6",
+      "size_px": [
+        1214,
+        1295
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/A16_planter_box.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/A16_planter_box.txt",
+      "sha256": "33fe0e2902f4d0fd8c7504150ba3bcd6e56f655438bc22b935a079fcc3dcf0c3",
+      "size_px": [
+        1536,
+        1024
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/C09_carrot.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/C09_carrot.txt",
+      "sha256": "cf4057cf038cfd7466851d4fc1c5a0c1b644e8516398c4fd05585ae9b3fcf913",
+      "size_px": [
+        1214,
+        1295
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/C10_potato.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/C10_potato.txt",
+      "sha256": "9ff9e050655a0a97c1d44be32a5f02846fcf1deb5b5e29c2ff484272be63584a",
+      "size_px": [
+        1223,
+        1286
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/C11_eggplant.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/C11_eggplant.txt",
+      "sha256": "c690578c52937b25ee82b5400dedd0770c9afa26c351b0161cd4dba821639364",
+      "size_px": [
+        1214,
+        1295
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/C12_corn.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/C12_corn.txt",
+      "sha256": "12af9f3b14f935d407e369fa87091886d63fbb7b5b84760af840bd73aeb671ac",
+      "size_px": [
+        1024,
+        1536
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/C13_pumpkin.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/C13_pumpkin.txt",
+      "sha256": "f788c2962327dc60f390d6c4bbf506a4cc573a40e018310f610e29a7bc509561",
+      "size_px": [
+        1312,
+        1199
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/C14_watermelon.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/C14_watermelon.txt",
+      "sha256": "a6eac1438b88c4c7fe7a5f0ae0f48c468e3bc245ab5bcd9eacca151b35a93f8a",
+      "size_px": [
+        1312,
+        1199
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/C15_wheat.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/C15_wheat.txt",
+      "sha256": "86292b1fda214f2e5119423101b9d55e2c5d6a0d75f0247c9014be937599ccc6",
+      "size_px": [
+        1145,
+        1374
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/C16_onion.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/C16_onion.txt",
+      "sha256": "27174baa466f71df207ab3f394a78af42f14bf6b40a622ec89e5aced140c6561",
+      "size_px": [
+        1024,
+        1536
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/F04_scarecrow.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/F04_scarecrow.txt",
+      "sha256": "6b79c3c5b8be1f9f0acd4bb44707e6ae498275c03ffca6667b4ce2a41aeefcb5",
+      "size_px": [
+        1145,
+        1374
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/F06_veggie_stand.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/F06_veggie_stand.txt",
+      "sha256": "35a2b85c6d763f59c03cd02c3c5bc2df97bf36165fd3c185f45fa9f1ecf68bdb",
+      "size_px": [
+        1312,
+        1199
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/P07.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/P07.txt",
+      "sha256": "549efbd3ad0b2f7a7bc687bf8923415ca9c0474000f4aaa12484ccfecdb77eee",
+      "size_px": [
+        1312,
+        1199
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/P08.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/P08.txt",
+      "sha256": "0ae82eb5c9d4c4f3418748d6570de9eb22d743ac9ca7011e1a2e28e81fb04aad",
+      "size_px": [
+        1312,
+        1199
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/H06.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/H06.txt",
+      "sha256": "9084306461a937e134c9c9d2c0e64e4207399c5d95519d19b595b188a2821e70",
+      "size_px": [
+        1312,
+        1199
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/T06_camphor.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/T06_camphor.txt",
+      "sha256": "2f4db71983d25320044e009293ddbac03ba437932a3f0d907109de80451bfa63",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/T07_summer_maple.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/T07_summer_maple.txt",
+      "sha256": "e66a99bfcab4c7d06914fb9e93229ba7763f5680f9870306a95dbd2403d44ab0",
+      "size_px": [
+        1223,
+        1286
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/T08_green_cherry.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/T08_green_cherry.txt",
+      "sha256": "12310a45a892c18978599fbba21dab57a5a6509b3087a45795e86fb5267e15f8",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/T09_bamboo_grove.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/T09_bamboo_grove.txt",
+      "sha256": "f7c732bd6643fa42f1a9222a1dac5cff3e1eecdec8575751ddc395b6b0541a35",
+      "size_px": [
+        1145,
+        1374
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/T10_weeping_willow.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/T10_weeping_willow.txt",
+      "sha256": "159f56ad9bf1298ca83fca632eab927b0996f1503b3a3a195ec904235cd1839e",
+      "size_px": [
+        1214,
+        1295
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/T11_young_zelkova.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/T11_young_zelkova.txt",
+      "sha256": "bb341e52fe34c5f1556ecb5d4e2cee1bf577131b75a1d82488594a4c2ec35b13",
+      "size_px": [
+        1024,
+        1536
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/V20_morning_glory.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/V20_morning_glory.txt",
+      "sha256": "c67bf5f101a128e20fada267fa92cbb633c7fb3a6c8b6acee446e1ab7c5e0c03",
+      "size_px": [
+        1145,
+        1374
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/V21_white_hydrangea.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/V21_white_hydrangea.txt",
+      "sha256": "64209c9661b4216b72b61189e424d4abe16e286a6332dac4c709a9503da9868e",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/V22_shiso_planter.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/V22_shiso_planter.txt",
+      "sha256": "6ceb9199b61134fe91c27c48624f72cd74737c444d3a4b2e5d41e14033ff76c8",
+      "size_px": [
+        1312,
+        1199
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/V23_cosmos_pot.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/V23_cosmos_pot.txt",
+      "sha256": "7787332ed5ddd69ca424a27b9e3da831230468d93824700d01625ff850c831f5",
+      "size_px": [
+        1145,
+        1374
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/V24_fern_pot.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/V24_fern_pot.txt",
+      "sha256": "665252637fae268fea5dd5ebdfa1b78ad4527555c3a8a4eba1721b5757d536a4",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/V25_dwarf_lemon.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/V25_dwarf_lemon.txt",
+      "sha256": "be98472ce571c72745b7621f86d34ceb8dc245909e7ad4111cfb8a6b3ba0ce73",
+      "size_px": [
+        1145,
+        1374
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N01_enamel_kettle.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N01_enamel_kettle.txt",
+      "sha256": "23fb58b06d34542df3db57ed57a9cee4d8f837342b22929c7cf5723b8e3a6d09",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N02_kyusu.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N02_kyusu.txt",
+      "sha256": "67c80127f412dac23a0859e23ff4dbb1dd161f4e8d83c9643d3f9ce57855e9eb",
+      "size_px": [
+        1374,
+        1145
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N03_tea_pair.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N03_tea_pair.txt",
+      "sha256": "5f1426f768ffbfaf04acdbd4fea8bc2c83f6f6ac0b7b965691b19bd517c538da",
+      "size_px": [
+        1374,
+        1145
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N04_fruit_bowl.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N04_fruit_bowl.txt",
+      "sha256": "bd44daf08e26368157b6776d4020b49d88c3455d69201a9422d43e3e2c0e2099",
+      "size_px": [
+        1536,
+        1024
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N05_sewing_basket.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N05_sewing_basket.txt",
+      "sha256": "70a14fdd3b1544086cec9ce8def5c9bb9f74489ec45deb4c44b1923fc52db4b1",
+      "size_px": [
+        1312,
+        1199
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N06_house_slippers.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N06_house_slippers.txt",
+      "sha256": "39a4f3d40a0b242811f44f174566344675c1c4f70a385325d48562ce10355435",
+      "size_px": [
+        1374,
+        1145
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N07_watering_can.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N07_watering_can.txt",
+      "sha256": "4064feb70cd09c77cf038050f7a09f4229d54b312eb93eb4964a79b7a201e8b4",
+      "size_px": [
+        1374,
+        1145
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N08_broom_dustpan.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N08_broom_dustpan.txt",
+      "sha256": "66fd153b3fc38f50934dd23122284124f88cefd3dd935ed6e8d011ff1a564f69",
+      "size_px": [
+        1214,
+        1295
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N09_shopping_basket.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N09_shopping_basket.txt",
+      "sha256": "2c5f73804099ae832011fd1955e0fb0ad9bea8d043a63a5852bb254f7f631927",
+      "size_px": [
+        1374,
+        1145
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N10_apple_crate.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N10_apple_crate.txt",
+      "sha256": "de86d60ace4c96d8b01216a8264dd8aac0b55d2ad82ec1cfde34dc1ad6fc4609",
+      "size_px": [
+        1374,
+        1145
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N11_daikon_crate.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N11_daikon_crate.txt",
+      "sha256": "dc4eb9cf656495655a5ae059f91a8f8951f0d418c35d35a3acb77c914100de92",
+      "size_px": [
+        1312,
+        1199
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N12_carrot_crate.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N12_carrot_crate.txt",
+      "sha256": "0d0cea857164e0e8ee61042cf18fc96d67bbb4080447f033d5d7ecf0cdffab8f",
+      "size_px": [
+        1312,
+        1199
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N13_empty_crate.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N13_empty_crate.txt",
+      "sha256": "31dc96d960bd9eaf12d0f3bb2403655b6e4a93c880475fa006f9d125a39e5ffb",
+      "size_px": [
+        1536,
+        1024
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N14_paper_parcels.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N14_paper_parcels.txt",
+      "sha256": "364777c46ec5c4cd771641f031bfba6dd888b210188ddaed18fbf6e6544fccc8",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N15_umbrella_stand.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N15_umbrella_stand.txt",
+      "sha256": "52eb5712b565aa69b79d89b5b9de921ae37e61eed0b29889c5980386e63c5e56",
+      "size_px": [
+        1145,
+        1374
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N16_wooden_crate_seat.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N16_wooden_crate_seat.txt",
+      "sha256": "0a4960d22bef557808b6626dfca4d04f4b89b4c4894e0477605eedc35155dc9b",
+      "size_px": [
+        1312,
+        1199
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N17_seedling_tray.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N17_seedling_tray.txt",
+      "sha256": "d566a83a1cdb2eb5304b5749eb810989e190b989e7bb06583fd02f7993825c16",
+      "size_px": [
+        1312,
+        1199
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N18_harvest_basket.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N18_harvest_basket.txt",
+      "sha256": "721c8885150eaebcfb53d06f896b6a98464d29d44375f9d7926a3cdcd0b007f2",
+      "size_px": [
+        1312,
+        1199
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N19_burlap_sacks.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N19_burlap_sacks.txt",
+      "sha256": "62560dbf52cfc120d6a8e17867ffcccf1612627b172364dc8a13e045b9615c0a",
+      "size_px": [
+        1312,
+        1199
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N20_coiled_hose.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N20_coiled_hose.txt",
+      "sha256": "8394a72f3db8b746f7544f0ae9455479863505c95355699e557abd0b48a91df7",
+      "size_px": [
+        1312,
+        1199
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N21_tool_basket.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N21_tool_basket.txt",
+      "sha256": "2d05b98929eac294047d67687f9bbbf7542d1f68668f87a0791430d34a7870ec",
+      "size_px": [
+        1374,
+        1145
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N22_festival_masks.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N22_festival_masks.txt",
+      "sha256": "1b1c6f047e9244b9dfceb3b9f9e030a84f319195f1676ec9fd09d88c4a2e962d",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N23_goldfish_scoops.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N23_goldfish_scoops.txt",
+      "sha256": "c439da9a9e5ede8121140973c67ed578e74e8c7cac5f9cd866a663493d324224",
+      "size_px": [
+        1536,
+        1024
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/model_diversity_20261013/N24_bamboo_lantern.png",
+      "exists": true,
+      "tool": "built-in image_gen.imagegen",
+      "prompt": "art/manifests/prompts/model_diversity_20261013/N24_bamboo_lantern.txt",
+      "sha256": "40cbf9c2e9e7eb19ad9e9c5e1238f3b0b086486a922d5eaa4f537365d05b394e",
+      "size_px": [
+        1145,
+        1374
+      ],
+      "bitmap_postprocessing": false,
+      "task": "model_diversity_20261013",
+      "manifest": "art/manifests/model_diversity_20261013.json"
     }
   ]
 }

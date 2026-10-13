@@ -1,20 +1,25 @@
 {
  "id": "P08",
- "src": "raw/P08/model.glb",
- "provider": "hunyuan hy-3d-3.1",
- "tris_src": 20000,
- "tris": 8000,
+ "src": "raw/diversity_20261013/ready/P08.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 1234,
+ "tris": 1234,
  "size_m": [
   2.807,
   1.405,
-  1.899
+  1.9
  ],
  "godot_size_m_xyz": [
   2.807,
-  1.899,
+  1.9,
   1.405
  ],
  "tex": 1024,
- "bytes": 530636,
- "yaw_fix": 0
+ "bytes": 129928,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.0,
+ "base_frac": 0.991
 }

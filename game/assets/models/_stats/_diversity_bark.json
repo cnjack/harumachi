@@ -1,0 +1,41 @@
+{
+  "models": {
+    "T07_summer_maple": {
+      "source_sha256": "cc5bedb160cadd2442cbaee11f346735745e800a308da4b3087b3907d937e6f4",
+      "source_mtime": 1791897673.6296208,
+      "primary_triangles": 8280,
+      "components": 1,
+      "boundary_edge_fraction": 0.0,
+      "largest_component_area_fraction": 1.0000000000000009,
+      "passed": true
+    },
+    "T08_green_cherry": {
+      "source_sha256": "b703f7389aa359f7c86a0ec4288b50f80b6c3290b8191e3e573f82167d4fa108",
+      "source_mtime": 1791897673.7246354,
+      "primary_triangles": 9200,
+      "components": 1,
+      "boundary_edge_fraction": 0.0,
+      "largest_component_area_fraction": 0.9999999999999976,
+      "passed": true
+    },
+    "T10_weeping_willow": {
+      "source_sha256": "fdd788748d24dd7f56db438737dfcc6d5f9da7a12fba0a72965009af7e10d14c",
+      "source_mtime": 1791897673.8257418,
+      "primary_triangles": 9200,
+      "components": 1,
+      "boundary_edge_fraction": 0.0,
+      "largest_component_area_fraction": 0.9999999999999987,
+      "passed": true
+    },
+    "T11_young_zelkova": {
+      "source_sha256": "8cfe321c2208f33723e08ea23986b8fbcee66765c8fad919a49aecde1150c654",
+      "source_mtime": 1791897673.9183536,
+      "primary_triangles": 8280,
+      "components": 1,
+      "boundary_edge_fraction": 0.0,
+      "largest_component_area_fraction": 0.9999999999999988,
+      "passed": true
+    }
+  },
+  "passed": true
+}

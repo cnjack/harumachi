@@ -9,14 +9,22 @@ spec=json.loads((ROOT/'art/models/game_assets.json').read_text())['assets']
 integration=json.loads((OUT/'integration.json').read_text())['assets']
 roster_path=ROOT/'art/manifests/character_roster_20261004.json'
 roster={r['id']:r for r in json.loads(roster_path.read_text())['characters']} if roster_path.exists() else {}
+diversity_path=ROOT/'art/manifests/model_diversity_20261013.json'
+diversity={r['id']:r for r in json.loads(diversity_path.read_text())['assets']} if diversity_path.exists() else {}
+diversity_verified_path=ROOT/'art/manifests/models_hyper3d_diversity_20261013.json'
+diversity_verified=json.loads(diversity_verified_path.read_text())['assets'] if diversity_verified_path.exists() else {}
 
 def category(name):
+ if name in diversity:
+  if name.startswith('T'):return '树木'
+  if name.startswith(('A','C','V')):return '植物'
+  return '建筑' if name=='H06' else '道具'
  value=name.lower()
  if any(k in value for k in ['grass','lawn']):return '草地'
- if name.startswith('T0') or any(k in value for k in ['tree','pine','palm','birch']):return '树木'
+ if re.match(r'^T\d',name) or any(k in value for k in ['tree','pine','palm','birch']):return '树木'
  if name.startswith(('CH_','PC_')):return '人物'
  if any(k in value for k in ['cat','bird','sparrow','animal','fish']):return '动物'
- if any(k in value for k in ['plant','flower','bush','fern','mushroom','petal','daisy','reed','clover']) or name.startswith(('C0','C1','M12','V0')):return '植物'
+ if any(k in value for k in ['plant','flower','bush','fern','mushroom','petal','daisy','reed','clover']) or name.startswith(('C0','C1','M12','V0','V2')):return '植物'
  if name.startswith(('H0','S0','M0')):return '建筑'
  if any(k in value for k in ['rock','stone','pebble','terrain','path','sand']):return '地景'
  return '道具'
@@ -41,6 +49,14 @@ for path in sorted((ROOT/'game/assets/models').glob('*.glb')):
  for code in list((ROOT/'game/scripts/world').glob('*.gd'))+list((ROOT/'game/scripts/player').glob('*.gd')):
   if '"'+path.stem+'"' in code.read_text():item['uses'].append(str(code.relative_to(ROOT)))
  item['recipe']='world.spawn("'+path.stem+'", Vector3(0, 0, 0), 0, 0)'
+ if path.stem in diversity:
+  reviewed=diversity[path.stem]
+  actual_uses=diversity_verified.get(path.stem,{}).get('runtime_uses',[])
+  contexts=sorted({use['context'] for use in actual_uses}) if actual_uses else reviewed['contexts']
+  item.update(name=reviewed['label'],reuse_contexts=contexts,runtime_uses=actual_uses,
+              reference=reviewed['reference'],revision='20261013',
+              provenance='art/manifests/models_hyper3d_diversity_20261013.json',
+              triangle_budget=reviewed['triangle_budget'])
  if path.stem in roster:
   person=roster[path.stem]
   if hashlib.sha256(path.read_bytes()).hexdigest()!=person['sha256']:

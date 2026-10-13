@@ -1,25 +1,25 @@
 {
  "id": "D09_log_pile",
- "src": "raw/D09_log_pile_pix/model.glb",
- "provider": "pixal3d (v0.5)",
- "tris_src": 978741,
- "tris": 28986,
+ "src": "raw/diversity_20261013/ready/D09_log_pile.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 40126,
+ "tris": 8999,
  "size_m": [
-  1.278,
-  1.038,
-  0.998
+  1.0,
+  0.584,
+  0.519
  ],
  "godot_size_m_xyz": [
-  1.278,
-  0.998,
-  1.038
+  1.0,
+  0.519,
+  0.584
  ],
- "tex": 2048,
- "bytes": 1889016,
- "yaw_fix": -157.0,
- "level": "auto",
- "lean_src_deg": 25.56,
- "levelled": true,
- "lean_deg": 0.54,
- "base_frac": 0.162
+ "tex": 1024,
+ "bytes": 358948,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.44,
+ "levelled": false,
+ "lean_deg": 0.45,
+ "base_frac": 0.935
 }

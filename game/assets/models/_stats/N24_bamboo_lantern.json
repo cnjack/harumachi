@@ -1,0 +1,25 @@
+{
+ "id": "N24_bamboo_lantern",
+ "src": "raw/diversity_20261013/ready/N24_bamboo_lantern.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 37600,
+ "tris": 5850,
+ "size_m": [
+  0.2,
+  0.199,
+  0.4
+ ],
+ "godot_size_m_xyz": [
+  0.2,
+  0.4,
+  0.199
+ ],
+ "tex": 1024,
+ "bytes": 268776,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.0,
+ "base_frac": 0.568
+}

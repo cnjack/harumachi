@@ -271,12 +271,13 @@ def process(aid, s):
                         for link in list(n.inputs[socket_name].links):
                             mat.node_tree.links.remove(link)
                 n.inputs['Metallic'].default_value = 0.0
-                n.inputs['Roughness'].default_value = 0.92
+                n.inputs['Roughness'].default_value = s.get('roughness', 0.92)
                 for nm in ("Specular IOR Level", "Specular"):
                     if nm in n.inputs:
-                        n.inputs[nm].default_value = 0.25
+                        n.inputs[nm].default_value = s.get('specular', 0.25)
                         break
-        mat.name = f"M_{aid}"
+        if not s.get("preserve_material_names"):
+            mat.name = f"M_{aid}"
     # optional soil plane (empty planter variant)
     if s.get("soil"):
         sx, sy, sz = s["soil"]  # fractions of bbox width/depth; z as fraction of the uncut height

@@ -1,25 +1,25 @@
 {
  "id": "D04_stone_lantern",
- "src": "raw/D04_stone_lantern_pix/model.glb",
- "provider": "pixal3d (v0.5)",
- "tris_src": 943114,
- "tris": 7850,
+ "src": "raw/diversity_20261013/ready/D04_stone_lantern.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 35460,
+ "tris": 10800,
  "size_m": [
-  0.479,
-  0.446,
-  1.297
+  0.642,
+  0.641,
+  1.3
  ],
  "godot_size_m_xyz": [
-  0.479,
-  1.297,
-  0.446
+  0.642,
+  1.3,
+  0.641
  ],
  "tex": 1024,
- "bytes": 549968,
- "yaw_fix": -148.4,
- "level": "auto",
- "lean_src_deg": 12.21,
- "levelled": true,
- "lean_deg": 0.11,
- "base_frac": 0.81
+ "bytes": 327436,
+ "yaw_fix": 14.95,
+ "level": true,
+ "lean_src_deg": 0.1,
+ "levelled": false,
+ "lean_deg": 0.22,
+ "base_frac": 0.467
 }

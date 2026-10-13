@@ -1,25 +1,25 @@
 {
  "id": "D01_wheelbarrow",
- "src": "raw/D01_wheelbarrow_pix/model.glb",
- "provider": "pixal3d (v0.5)",
- "tris_src": 932045,
- "tris": 7050,
+ "src": "raw/diversity_20261013/ready/D01_wheelbarrow.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 36753,
+ "tris": 8999,
  "size_m": [
-  1.407,
-  0.616,
-  0.702
+  1.401,
+  0.79,
+  0.65
  ],
  "godot_size_m_xyz": [
-  1.407,
-  0.702,
-  0.616
+  1.401,
+  0.65,
+  0.79
  ],
  "tex": 1024,
- "bytes": 591324,
- "yaw_fix": 135.5,
- "level": "auto",
- "lean_src_deg": 12.77,
+ "bytes": 289404,
+ "yaw_fix": 90,
+ "level": true,
+ "lean_src_deg": 1.08,
  "levelled": true,
- "lean_deg": 1.41,
- "base_frac": 0.159
+ "lean_deg": 0.0,
+ "base_frac": 0.221
 }

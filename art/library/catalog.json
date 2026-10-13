@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
   "title": "晴町素材室",
-  "updated": "2026-10-11",
+  "updated": "2026-10-13",
   "engine": "Godot 4.8-dev7",
-  "count": 615,
+  "count": 668,
   "categories": [
     "全部",
     "树木",
@@ -172,7 +172,7 @@
         "game/scripts/world/layout.gd",
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "Blender reference-built joinery from accepted imagegen plaza paintover",
+      "provider": "Blender joinery from accepted imagegen plaza paintover",
       "raw_path": "art/models/raw/plaza_paintover_20261009/A12_bench.glb",
       "metrics": {
         "id": "A12_bench",
@@ -240,15 +240,15 @@
     },
     {
       "id": "game/A14_hydrangea_pot",
-      "name": "A14_hydrangea_pot",
-      "category": "道具",
+      "name": "蓝绣球盆栽",
+      "category": "植物",
       "collection": "游戏资产",
       "path": "game/assets/models/A14_hydrangea_pot.glb",
       "format": "GLB",
-      "triangles": 4000,
-      "bytes": 552276,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 7200,
+      "bytes": 340640,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/3075802c-1047-4bc7-ad9e-3e80f6488685",
       "status": "已接入",
       "animations": [],
       "alpha": false,
@@ -256,44 +256,59 @@
       "uses": [
         "game/scripts/world/shop_displays.gd",
         "game/scripts/world/residential_life.gd",
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/layout.gd",
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)",
-      "raw_path": "art/models/../../output/japanese-street-shinkai-dry/models/A14_hydrangea_pot/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/A14_hydrangea_pot.glb",
       "metrics": {
         "id": "A14_hydrangea_pot",
-        "src": "../../output/japanese-street-shinkai-dry/models/A14_hydrangea_pot/model.glb",
-        "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)",
-        "tris_src": 80000,
-        "tris": 4000,
+        "src": "raw/diversity_20261013/ready/A14_hydrangea_pot.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 41548,
+        "tris": 7200,
         "size_m": [
-          0.718,
-          0.743,
-          0.753
+          0.723,
+          0.605,
+          0.75
         ],
         "godot_size_m_xyz": [
-          0.718,
-          0.753,
-          0.743
+          0.723,
+          0.75,
+          0.605
         ],
         "tex": 1024,
-        "bytes": 552340,
-        "yaw_fix": 0
+        "bytes": 340640,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.056
       },
-      "recipe": "world.spawn(\"A14_hydrangea_pot\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"A14_hydrangea_pot\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "town",
+        "home"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/A14_hydrangea_pot.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 8000
     },
     {
       "id": "game/A15_potted_plant",
-      "name": "A15_potted_plant",
+      "name": "常绿陶盆",
       "category": "植物",
       "collection": "游戏资产",
       "path": "game/assets/models/A15_potted_plant.glb",
       "format": "GLB",
-      "triangles": 3959,
-      "bytes": 563556,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 7199,
+      "bytes": 480616,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/594253b2-b689-4543-bdc7-4ddef391047c",
       "status": "已接入",
       "animations": [],
       "alpha": false,
@@ -303,76 +318,105 @@
         "game/scripts/world/public_room_life.gd",
         "game/scripts/world/public_place_art.gd",
         "game/scripts/world/residential_life.gd",
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/house_builder.gd",
         "game/scripts/world/layout.gd",
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)",
-      "raw_path": "art/models/../../output/japanese-street-shinkai-dry/models/A15_potted_plant/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/A15_potted_plant.glb",
       "metrics": {
         "id": "A15_potted_plant",
-        "src": "../../output/japanese-street-shinkai-dry/models/A15_potted_plant/model.glb",
-        "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)",
-        "tris_src": 79954,
-        "tris": 4000,
+        "src": "raw/diversity_20261013/ready/A15_potted_plant.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 91492,
+        "tris": 7199,
         "size_m": [
-          0.786,
-          0.802,
-          0.796
+          0.605,
+          0.605,
+          0.799
         ],
         "godot_size_m_xyz": [
-          0.786,
-          0.796,
-          0.802
+          0.605,
+          0.799,
+          0.605
         ],
         "tex": 1024,
-        "bytes": 563616,
-        "yaw_fix": 0
+        "bytes": 480616,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.124
       },
-      "recipe": "world.spawn(\"A15_potted_plant\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"A15_potted_plant\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "town",
+        "home"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/A15_potted_plant.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 8000
     },
     {
       "id": "game/A16_planter_box",
-      "name": "A16_planter_box",
+      "name": "街边花箱",
       "category": "植物",
       "collection": "游戏资产",
       "path": "game/assets/models/A16_planter_box.glb",
       "format": "GLB",
-      "triangles": 3999,
-      "bytes": 554868,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 8097,
+      "bytes": 482736,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/38f0094f-3932-40f3-bb1f-80d83a8ad2c1",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_A16_planter_box.png",
       "uses": [
         "game/scripts/world/farm_builder.gd",
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/layout.gd"
       ],
-      "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)",
-      "raw_path": "art/models/../../output/japanese-street-shinkai-dry/models/A16_planter_box/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/A16_planter_box.glb",
       "metrics": {
         "id": "A16_planter_box",
-        "src": "../../output/japanese-street-shinkai-dry/models/A16_planter_box/model.glb",
-        "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)",
-        "tris_src": 79962,
-        "tris": 4000,
+        "src": "raw/diversity_20261013/ready/A16_planter_box.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 40743,
+        "tris": 8098,
         "size_m": [
-          1.09,
-          0.524,
-          0.767
+          1.102,
+          0.466,
+          0.492
         ],
         "godot_size_m_xyz": [
-          1.09,
-          0.767,
-          0.524
+          1.102,
+          0.492,
+          0.466
         ],
         "tex": 1024,
-        "bytes": 554932,
-        "yaw_fix": 0
+        "bytes": 482736,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.41,
+        "levelled": false,
+        "lean_deg": 0.41,
+        "base_frac": 0.756
       },
-      "recipe": "world.spawn(\"A16_planter_box\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"A16_planter_box\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "town"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/A16_planter_box.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 9000
     },
     {
       "id": "game/A20_cat_sleep",
@@ -1829,369 +1873,451 @@
     },
     {
       "id": "game/C09_carrot",
-      "name": "C09_carrot",
+      "name": "胡萝卜植株",
       "category": "植物",
       "collection": "游戏资产",
       "path": "game/assets/models/C09_carrot.glb",
       "format": "GLB",
-      "triangles": 11902,
-      "bytes": 1062428,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 5398,
+      "bytes": 593436,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/cc64ef92-6860-4df0-9901-7d5628372b3d",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_C09_carrot.png",
       "uses": [
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "pixal3d (v0.5)",
-      "raw_path": "art/models/raw/C09_carrot_pix/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/C09_carrot.glb",
       "metrics": {
         "id": "C09_carrot",
-        "src": "raw/C09_carrot_pix/model.glb",
-        "provider": "pixal3d (v0.5)",
-        "tris_src": 972825,
-        "tris": 11902,
+        "src": "raw/diversity_20261013/ready/C09_carrot.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 117348,
+        "tris": 5400,
         "size_m": [
-          0.294,
-          0.243,
-          0.344
+          0.322,
+          0.322,
+          0.345
         ],
         "godot_size_m_xyz": [
-          0.294,
-          0.344,
-          0.243
+          0.322,
+          0.345,
+          0.322
         ],
         "tex": 1024,
-        "bytes": 1062428,
+        "bytes": 593436,
         "yaw_fix": 0,
-        "level": "auto",
-        "lean_src_deg": 15.42,
-        "levelled": true,
-        "lean_deg": 0.12,
-        "base_frac": 0.472
+        "level": false,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 1.92,
+        "base_frac": 0.029
       },
-      "recipe": "world.spawn(\"C09_carrot\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"C09_carrot\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "crop"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/C09_carrot.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 6000
     },
     {
       "id": "game/C10_potato",
-      "name": "C10_potato",
+      "name": "土豆植株",
       "category": "植物",
       "collection": "游戏资产",
       "path": "game/assets/models/C10_potato.glb",
       "format": "GLB",
-      "triangles": 6223,
-      "bytes": 623108,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 5399,
+      "bytes": 414012,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/789425a0-6b83-4db4-a16d-89c2a0e22c75",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_C10_potato.png",
       "uses": [
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "pixal3d (v0.5)",
-      "raw_path": "art/models/raw/C10_potato_pix/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/C10_potato.glb",
       "metrics": {
         "id": "C10_potato",
-        "src": "raw/C10_potato_pix/model.glb",
-        "provider": "pixal3d (v0.5)",
-        "tris_src": 950874,
-        "tris": 6223,
+        "src": "raw/diversity_20261013/ready/C10_potato.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 119568,
+        "tris": 5399,
         "size_m": [
-          0.455,
-          0.407,
-          0.488
+          0.53,
+          0.53,
+          0.5
         ],
         "godot_size_m_xyz": [
-          0.455,
-          0.488,
-          0.407
+          0.53,
+          0.5,
+          0.53
         ],
         "tex": 1024,
-        "bytes": 623108,
-        "yaw_fix": 44.4,
-        "level": "auto",
-        "lean_src_deg": 7.35,
-        "levelled": true,
-        "lean_deg": 0.34,
-        "base_frac": 0.347
+        "bytes": 414012,
+        "yaw_fix": 0,
+        "level": false,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 21.4,
+        "base_frac": 0.088
       },
-      "recipe": "world.spawn(\"C10_potato\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"C10_potato\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "crop"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/C10_potato.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 6000
     },
     {
       "id": "game/C11_eggplant",
-      "name": "C11_eggplant",
+      "name": "茄子植株",
       "category": "植物",
       "collection": "游戏资产",
       "path": "game/assets/models/C11_eggplant.glb",
       "format": "GLB",
-      "triangles": 6182,
-      "bytes": 674872,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 5850,
+      "bytes": 321552,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/63a548d2-9d31-47e2-b221-e15bc9c739af",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_C11_eggplant.png",
       "uses": [
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "pixal3d (v0.5)",
-      "raw_path": "art/models/raw/C11_eggplant_pix/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/C11_eggplant.glb",
       "metrics": {
         "id": "C11_eggplant",
-        "src": "raw/C11_eggplant_pix/model.glb",
-        "provider": "pixal3d (v0.5)",
-        "tris_src": 941217,
-        "tris": 6182,
+        "src": "raw/diversity_20261013/ready/C11_eggplant.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 60000,
+        "tris": 5850,
         "size_m": [
-          0.614,
-          0.439,
-          0.798
+          0.544,
+          0.76,
+          0.801
         ],
         "godot_size_m_xyz": [
-          0.614,
-          0.798,
-          0.439
+          0.544,
+          0.801,
+          0.76
         ],
         "tex": 1024,
-        "bytes": 674872,
-        "yaw_fix": 0
+        "bytes": 321552,
+        "yaw_fix": 0,
+        "level": false,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 30.55,
+        "base_frac": 0.288
       },
-      "recipe": "world.spawn(\"C11_eggplant\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"C11_eggplant\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "crop"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/C11_eggplant.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 6500
     },
     {
       "id": "game/C12_corn",
-      "name": "C12_corn",
+      "name": "玉米植株",
       "category": "植物",
       "collection": "游戏资产",
       "path": "game/assets/models/C12_corn.glb",
       "format": "GLB",
-      "triangles": 5733,
-      "bytes": 712272,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 5850,
+      "bytes": 368536,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/e3541641-956e-4d5f-820d-fdd3bf6552ee",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_C12_corn.png",
       "uses": [
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "pixal3d (v0.5)",
-      "raw_path": "art/models/raw/C12_corn_pix/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/C12_corn.glb",
       "metrics": {
         "id": "C12_corn",
-        "src": "raw/C12_corn_pix/model.glb",
-        "provider": "pixal3d (v0.5)",
-        "tris_src": 885058,
-        "tris": 5733,
+        "src": "raw/diversity_20261013/ready/C12_corn.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 59998,
+        "tris": 5850,
         "size_m": [
-          0.754,
-          0.85,
-          1.717
+          1.047,
+          1.119,
+          1.799
         ],
         "godot_size_m_xyz": [
-          0.754,
-          1.717,
-          0.85
+          1.047,
+          1.799,
+          1.119
         ],
         "tex": 1024,
-        "bytes": 712272,
-        "yaw_fix": 0
+        "bytes": 368536,
+        "yaw_fix": 0,
+        "level": false,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 27.19,
+        "base_frac": 0.01
       },
-      "recipe": "world.spawn(\"C12_corn\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"C12_corn\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "crop"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/C12_corn.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 6500
     },
     {
       "id": "game/C13_pumpkin",
-      "name": "C13_pumpkin",
+      "name": "南瓜藤",
       "category": "植物",
       "collection": "游戏资产",
       "path": "game/assets/models/C13_pumpkin.glb",
       "format": "GLB",
-      "triangles": 5610,
-      "bytes": 617708,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 6299,
+      "bytes": 350036,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/793a1020-c5e5-4eaf-b973-0acbf35fa0d1",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_C13_pumpkin.png",
       "uses": [
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "pixal3d (v0.5)",
-      "raw_path": "art/models/raw/C13_pumpkin_pix/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/C13_pumpkin.glb",
       "metrics": {
         "id": "C13_pumpkin",
-        "src": "raw/C13_pumpkin_pix/model.glb",
-        "provider": "pixal3d (v0.5)",
-        "tris_src": 924198,
-        "tris": 5610,
+        "src": "raw/diversity_20261013/ready/C13_pumpkin.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 59991,
+        "tris": 6299,
         "size_m": [
-          0.764,
-          0.77,
-          0.363
+          0.803,
+          0.499,
+          0.423
         ],
         "godot_size_m_xyz": [
-          0.764,
-          0.363,
-          0.77
+          0.803,
+          0.423,
+          0.499
         ],
         "tex": 1024,
-        "bytes": 617708,
+        "bytes": 350036,
         "yaw_fix": 0,
-        "level": "auto",
-        "lean_src_deg": 12.25,
-        "levelled": true,
-        "lean_deg": 0.54,
-        "base_frac": 0.496
+        "level": false,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.29,
+        "base_frac": 0.124
       },
-      "recipe": "world.spawn(\"C13_pumpkin\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"C13_pumpkin\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "crop"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/C13_pumpkin.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 7000
     },
     {
       "id": "game/C14_watermelon",
-      "name": "C14_watermelon",
+      "name": "西瓜藤",
       "category": "植物",
       "collection": "游戏资产",
       "path": "game/assets/models/C14_watermelon.glb",
       "format": "GLB",
-      "triangles": 6102,
-      "bytes": 692144,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 6299,
+      "bytes": 410576,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/09f265f5-9571-4947-a10f-3dea85bd93b8",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_C14_watermelon.png",
       "uses": [
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "pixal3d (v0.5)",
-      "raw_path": "art/models/raw/C14_watermelon_pix/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/C14_watermelon.glb",
       "metrics": {
         "id": "C14_watermelon",
-        "src": "raw/C14_watermelon_pix/model.glb",
-        "provider": "pixal3d (v0.5)",
-        "tris_src": 978973,
-        "tris": 6102,
+        "src": "raw/diversity_20261013/ready/C14_watermelon.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 59989,
+        "tris": 6299,
         "size_m": [
-          0.841,
-          0.752,
-          0.403
+          0.899,
+          0.697,
+          0.339
         ],
         "godot_size_m_xyz": [
-          0.841,
-          0.403,
-          0.752
+          0.899,
+          0.339,
+          0.697
         ],
         "tex": 1024,
-        "bytes": 692144,
-        "yaw_fix": 34.1,
-        "level": "auto",
-        "lean_src_deg": 9.51,
-        "levelled": true,
-        "lean_deg": 0.74,
-        "base_frac": 0.298
+        "bytes": 410576,
+        "yaw_fix": 0,
+        "level": false,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 1.44,
+        "base_frac": 0.138
       },
-      "recipe": "world.spawn(\"C14_watermelon\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"C14_watermelon\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "crop"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/C14_watermelon.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 7000
     },
     {
       "id": "game/C15_wheat",
-      "name": "C15_wheat",
+      "name": "麦穗丛",
       "category": "植物",
       "collection": "游戏资产",
       "path": "game/assets/models/C15_wheat.glb",
       "format": "GLB",
-      "triangles": 10300,
-      "bytes": 1003600,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 5848,
+      "bytes": 439752,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/ad424b41-728f-4ad1-b162-75342c67a12a",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_C15_wheat.png",
       "uses": [
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "pixal3d (v0.5)",
-      "raw_path": "art/models/raw/C15_wheat_pix/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/C15_wheat.glb",
       "metrics": {
         "id": "C15_wheat",
-        "src": "raw/C15_wheat_pix/model.glb",
-        "provider": "pixal3d (v0.5)",
-        "tris_src": 938205,
-        "tris": 10300,
+        "src": "raw/diversity_20261013/ready/C15_wheat.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 120000,
+        "tris": 5850,
         "size_m": [
-          0.676,
-          0.758,
-          0.869
+          0.535,
+          0.535,
+          0.867
         ],
         "godot_size_m_xyz": [
-          0.676,
-          0.869,
-          0.758
+          0.535,
+          0.867,
+          0.535
         ],
         "tex": 1024,
-        "bytes": 1003600,
-        "yaw_fix": 39.7,
-        "level": "auto",
-        "lean_src_deg": 12.28,
-        "levelled": true,
-        "lean_deg": 0.8,
-        "base_frac": 0.704
+        "bytes": 439752,
+        "yaw_fix": 0,
+        "level": false,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 9.59,
+        "base_frac": 0.016
       },
-      "recipe": "world.spawn(\"C15_wheat\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"C15_wheat\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "crop"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/C15_wheat.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 6500
     },
     {
       "id": "game/C16_onion",
-      "name": "C16_onion",
+      "name": "洋葱植株",
       "category": "植物",
       "collection": "游戏资产",
       "path": "game/assets/models/C16_onion.glb",
       "format": "GLB",
-      "triangles": 6656,
-      "bytes": 602352,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 4499,
+      "bytes": 204220,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/b13c53f3-4425-4e09-a317-f8d0f9191089",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_C16_onion.png",
       "uses": [
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "pixal3d (v0.5)",
-      "raw_path": "art/models/raw/C16_onion_pix/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/C16_onion.glb",
       "metrics": {
         "id": "C16_onion",
-        "src": "raw/C16_onion_pix/model.glb",
-        "provider": "pixal3d (v0.5)",
-        "tris_src": 969547,
-        "tris": 6656,
+        "src": "raw/diversity_20261013/ready/C16_onion.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 86440,
+        "tris": 4499,
         "size_m": [
-          0.609,
-          0.174,
-          0.438
+          0.27,
+          0.27,
+          0.45
         ],
         "godot_size_m_xyz": [
-          0.609,
-          0.438,
-          0.174
+          0.27,
+          0.45,
+          0.27
         ],
         "tex": 1024,
-        "bytes": 602352,
-        "yaw_fix": 27.5,
-        "level": "auto",
-        "lean_src_deg": 24.82,
-        "levelled": true,
-        "lean_deg": 0.64,
-        "base_frac": 0.484
+        "bytes": 204220,
+        "yaw_fix": 0,
+        "level": false,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 39.27,
+        "base_frac": 0.004
       },
-      "recipe": "world.spawn(\"C16_onion\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"C16_onion\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "crop"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/C16_onion.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 5000
     },
     {
       "id": "game/CH_aoi",
@@ -2766,110 +2892,129 @@
     },
     {
       "id": "game/D01_wheelbarrow",
-      "name": "D01_wheelbarrow",
+      "name": "独轮车",
       "category": "道具",
       "collection": "游戏资产",
       "path": "game/assets/models/D01_wheelbarrow.glb",
       "format": "GLB",
-      "triangles": 7050,
-      "bytes": 591324,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 8999,
+      "bytes": 289404,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/404498d8-cf5c-4c43-8f38-2ddc2bc164e6",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_D01_wheelbarrow.png",
       "uses": [
-        "game/scripts/world/farm_builder.gd"
+        "game/scripts/world/farm_builder.gd",
+        "game/scripts/world/model_diversity.gd"
       ],
-      "provider": "pixal3d (v0.5)",
-      "raw_path": "art/models/raw/D01_wheelbarrow_pix/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/D01_wheelbarrow.glb",
       "metrics": {
         "id": "D01_wheelbarrow",
-        "src": "raw/D01_wheelbarrow_pix/model.glb",
-        "provider": "pixal3d (v0.5)",
-        "tris_src": 932045,
-        "tris": 7050,
+        "src": "raw/diversity_20261013/ready/D01_wheelbarrow.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 36753,
+        "tris": 8999,
         "size_m": [
-          1.407,
-          0.616,
-          0.702
+          1.401,
+          0.79,
+          0.65
         ],
         "godot_size_m_xyz": [
-          1.407,
-          0.702,
-          0.616
+          1.401,
+          0.65,
+          0.79
         ],
         "tex": 1024,
-        "bytes": 591324,
-        "yaw_fix": 135.5,
-        "level": "auto",
-        "lean_src_deg": 12.77,
+        "bytes": 289404,
+        "yaw_fix": 90,
+        "level": true,
+        "lean_src_deg": 1.08,
         "levelled": true,
-        "lean_deg": 1.41,
-        "base_frac": 0.159
+        "lean_deg": 0.0,
+        "base_frac": 0.221
       },
-      "recipe": "world.spawn(\"D01_wheelbarrow\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"D01_wheelbarrow\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/D01_wheelbarrow.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 10000
     },
     {
       "id": "game/D02_rain_barrel",
-      "name": "D02_rain_barrel",
+      "name": "雨水桶",
       "category": "道具",
       "collection": "游戏资产",
       "path": "game/assets/models/D02_rain_barrel.glb",
       "format": "GLB",
-      "triangles": 6595,
-      "bytes": 555456,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 7200,
+      "bytes": 258636,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/cd11b3c7-1def-4e4c-a725-d7c2b456854e",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_D02_rain_barrel.png",
       "uses": [
         "game/scripts/world/farm_builder.gd",
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/layout.gd"
       ],
-      "provider": "pixal3d (v0.5)",
-      "raw_path": "art/models/raw/D02_rain_barrel_pix/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/D02_rain_barrel.glb",
       "metrics": {
         "id": "D02_rain_barrel",
-        "src": "raw/D02_rain_barrel_pix/model.glb",
-        "provider": "pixal3d (v0.5)",
-        "tris_src": 943414,
-        "tris": 6595,
+        "src": "raw/diversity_20261013/ready/D02_rain_barrel.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 35940,
+        "tris": 7200,
         "size_m": [
-          0.595,
-          0.713,
-          0.947
+          0.72,
+          0.865,
+          0.95
         ],
         "godot_size_m_xyz": [
-          0.595,
-          0.947,
-          0.713
+          0.72,
+          0.95,
+          0.865
         ],
         "tex": 1024,
-        "bytes": 555456,
+        "bytes": 258636,
         "yaw_fix": 0,
-        "level": "auto",
-        "lean_src_deg": 16.76,
-        "levelled": true,
-        "lean_deg": 0.34,
-        "base_frac": 0.21
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.505
       },
-      "recipe": "world.spawn(\"D02_rain_barrel\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"D02_rain_barrel\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm",
+        "home"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/D02_rain_barrel.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 8000
     },
     {
       "id": "game/D03_veg_crates",
-      "name": "D03_veg_crates",
+      "name": "三层蔬菜筐",
       "category": "道具",
       "collection": "游戏资产",
       "path": "game/assets/models/D03_veg_crates.glb",
       "format": "GLB",
-      "triangles": 27824,
-      "bytes": 2251668,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 14400,
+      "bytes": 588940,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/2b58614b-47c3-4ed0-b15a-b629cc653b7b",
       "status": "已接入",
       "animations": [],
       "alpha": false,
@@ -2878,127 +3023,162 @@
         "game/scripts/world/farm_builder.gd",
         "game/scripts/world/interior_builder.gd",
         "game/scripts/world/shop_content.gd",
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/layout.gd"
       ],
-      "provider": "pixal3d (v0.5)",
-      "raw_path": "art/models/raw/D03_veg_crates_pix/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/D03_veg_crates.glb",
       "metrics": {
         "id": "D03_veg_crates",
-        "src": "raw/D03_veg_crates_pix/model.glb",
-        "provider": "pixal3d (v0.5)",
-        "tris_src": 983367,
-        "tris": 27824,
+        "src": "raw/diversity_20261013/ready/D03_veg_crates.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 19944,
+        "tris": 14400,
         "size_m": [
-          0.569,
-          0.48,
-          0.834
+          0.693,
+          0.612,
+          0.85
         ],
         "godot_size_m_xyz": [
-          0.569,
-          0.834,
-          0.48
+          0.693,
+          0.85,
+          0.612
         ],
-        "tex": 2048,
-        "bytes": 2251668,
-        "yaw_fix": -144.6,
-        "level": "auto",
-        "lean_src_deg": 30.05,
-        "levelled": true,
-        "lean_deg": 0.15,
-        "base_frac": 0.81
+        "tex": 1024,
+        "bytes": 588940,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.983
       },
-      "recipe": "world.spawn(\"D03_veg_crates\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"D03_veg_crates\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm",
+        "store"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/D03_veg_crates.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 16000
     },
     {
       "id": "game/D04_stone_lantern",
-      "name": "D04_stone_lantern",
-      "category": "地景",
+      "name": "石灯",
+      "category": "道具",
       "collection": "游戏资产",
       "path": "game/assets/models/D04_stone_lantern.glb",
       "format": "GLB",
-      "triangles": 7850,
-      "bytes": 549968,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 10800,
+      "bytes": 327436,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/80142666-ceb7-4b98-8629-4109517ea5fd",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_D04_stone_lantern.png",
       "uses": [
         "game/scripts/world/farm_builder.gd",
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/layout.gd"
       ],
-      "provider": "pixal3d (v0.5)",
-      "raw_path": "art/models/raw/D04_stone_lantern_pix/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/D04_stone_lantern.glb",
       "metrics": {
         "id": "D04_stone_lantern",
-        "src": "raw/D04_stone_lantern_pix/model.glb",
-        "provider": "pixal3d (v0.5)",
-        "tris_src": 943114,
-        "tris": 7850,
+        "src": "raw/diversity_20261013/ready/D04_stone_lantern.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 35460,
+        "tris": 10800,
         "size_m": [
-          0.479,
-          0.446,
-          1.297
+          0.642,
+          0.641,
+          1.3
         ],
         "godot_size_m_xyz": [
-          0.479,
-          1.297,
-          0.446
+          0.642,
+          1.3,
+          0.641
         ],
         "tex": 1024,
-        "bytes": 549968,
-        "yaw_fix": -148.4,
-        "level": "auto",
-        "lean_src_deg": 12.21,
-        "levelled": true,
-        "lean_deg": 0.11,
-        "base_frac": 0.81
+        "bytes": 327436,
+        "yaw_fix": 14.95,
+        "level": true,
+        "lean_src_deg": 0.1,
+        "levelled": false,
+        "lean_deg": 0.22,
+        "base_frac": 0.467
       },
-      "recipe": "world.spawn(\"D04_stone_lantern\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"D04_stone_lantern\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm",
+        "town"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/D04_stone_lantern.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 12000
     },
     {
       "id": "game/D05_hokora",
-      "name": "D05_hokora",
+      "name": "小祠堂",
       "category": "道具",
       "collection": "游戏资产",
       "path": "game/assets/models/D05_hokora.glb",
       "format": "GLB",
-      "triangles": 7628,
-      "bytes": 623868,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 14400,
+      "bytes": 480572,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/c91d2901-0d73-42d0-aeb9-7402e2ae17f9",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_D05_hokora.png",
       "uses": [
         "game/scripts/world/farm_builder.gd",
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/layout.gd"
       ],
-      "provider": "pixal3d (v0.5)",
-      "raw_path": "art/models/raw/D05_hokora_pix/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/D05_hokora.glb",
       "metrics": {
         "id": "D05_hokora",
-        "src": "raw/D05_hokora_pix/model.glb",
-        "provider": "pixal3d (v0.5)",
-        "tris_src": 925956,
-        "tris": 7628,
+        "src": "raw/diversity_20261013/ready/D05_hokora.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 41208,
+        "tris": 14400,
         "size_m": [
-          0.933,
-          0.964,
-          1.193
+          0.931,
+          0.816,
+          1.2
         ],
         "godot_size_m_xyz": [
-          0.933,
-          1.193,
-          0.964
+          0.931,
+          1.2,
+          0.816
         ],
         "tex": 1024,
-        "bytes": 623868,
-        "yaw_fix": -155.5
+        "bytes": 480572,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.63
       },
-      "recipe": "world.spawn(\"D05_hokora\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"D05_hokora\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm",
+        "town"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/D05_hokora.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 16000
     },
     {
       "id": "game/D06_well",
@@ -3092,97 +3272,115 @@
     },
     {
       "id": "game/D08_tool_rack",
-      "name": "D08_tool_rack",
+      "name": "园艺工具架",
       "category": "道具",
       "collection": "游戏资产",
       "path": "game/assets/models/D08_tool_rack.glb",
       "format": "GLB",
-      "triangles": 7432,
-      "bytes": 583544,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 10800,
+      "bytes": 368592,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/1c92fe46-95c9-42c0-af23-26d23fdb1447",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_D08_tool_rack.png",
       "uses": [
-        "game/scripts/world/farm_builder.gd"
+        "game/scripts/world/farm_builder.gd",
+        "game/scripts/world/model_diversity.gd"
       ],
-      "provider": "pixal3d (v0.5)",
-      "raw_path": "art/models/raw/D08_tool_rack_pix/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/D08_tool_rack.glb",
       "metrics": {
         "id": "D08_tool_rack",
-        "src": "raw/D08_tool_rack_pix/model.glb",
-        "provider": "pixal3d (v0.5)",
-        "tris_src": 987920,
-        "tris": 7432,
+        "src": "raw/diversity_20261013/ready/D08_tool_rack.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 37838,
+        "tris": 10800,
         "size_m": [
-          1.049,
-          0.595,
-          1.596
+          1.456,
+          0.792,
+          1.6
         ],
         "godot_size_m_xyz": [
-          1.049,
-          1.596,
-          0.595
+          1.456,
+          1.6,
+          0.792
         ],
         "tex": 1024,
-        "bytes": 583544,
-        "yaw_fix": -148.0,
-        "level": "auto",
-        "lean_src_deg": 20.14,
-        "levelled": true,
+        "bytes": 368592,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
         "lean_deg": 0.0,
-        "base_frac": 0.476
+        "base_frac": 0.976
       },
-      "recipe": "world.spawn(\"D08_tool_rack\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"D08_tool_rack\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/D08_tool_rack.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 12000
     },
     {
       "id": "game/D09_log_pile",
-      "name": "D09_log_pile",
+      "name": "柴垛",
       "category": "道具",
       "collection": "游戏资产",
       "path": "game/assets/models/D09_log_pile.glb",
       "format": "GLB",
-      "triangles": 28986,
-      "bytes": 1889016,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 8999,
+      "bytes": 358948,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/fc29ba9c-33db-408f-bbe3-61604e7cef3e",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_D09_log_pile.png",
       "uses": [
-        "game/scripts/world/farm_builder.gd"
+        "game/scripts/world/farm_builder.gd",
+        "game/scripts/world/model_diversity.gd"
       ],
-      "provider": "pixal3d (v0.5)",
-      "raw_path": "art/models/raw/D09_log_pile_pix/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/D09_log_pile.glb",
       "metrics": {
         "id": "D09_log_pile",
-        "src": "raw/D09_log_pile_pix/model.glb",
-        "provider": "pixal3d (v0.5)",
-        "tris_src": 978741,
-        "tris": 28986,
+        "src": "raw/diversity_20261013/ready/D09_log_pile.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 40126,
+        "tris": 8999,
         "size_m": [
-          1.278,
-          1.038,
-          0.998
+          1.0,
+          0.584,
+          0.519
         ],
         "godot_size_m_xyz": [
-          1.278,
-          0.998,
-          1.038
+          1.0,
+          0.519,
+          0.584
         ],
-        "tex": 2048,
-        "bytes": 1889016,
-        "yaw_fix": -157.0,
-        "level": "auto",
-        "lean_src_deg": 25.56,
-        "levelled": true,
-        "lean_deg": 0.54,
-        "base_frac": 0.162
+        "tex": 1024,
+        "bytes": 358948,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.44,
+        "levelled": false,
+        "lean_deg": 0.45,
+        "base_frac": 0.935
       },
-      "recipe": "world.spawn(\"D09_log_pile\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"D09_log_pile\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/D09_log_pile.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 10000
     },
     {
       "id": "game/D10_rocks",
@@ -3279,51 +3477,61 @@
     },
     {
       "id": "game/D12_flower_planter",
-      "name": "D12_flower_planter",
-      "category": "植物",
+      "name": "混植花箱",
+      "category": "道具",
       "collection": "游戏资产",
       "path": "game/assets/models/D12_flower_planter.glb",
       "format": "GLB",
-      "triangles": 7228,
-      "bytes": 652460,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 8999,
+      "bytes": 472804,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/e56933a0-c496-4fbd-8f0b-fefdc1816e03",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_D12_flower_planter.png",
       "uses": [
         "game/scripts/world/farm_builder.gd",
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/layout.gd"
       ],
-      "provider": "pixal3d (v0.5)",
-      "raw_path": "art/models/raw/D12_flower_planter_pix/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/D12_flower_planter.glb",
       "metrics": {
         "id": "D12_flower_planter",
-        "src": "raw/D12_flower_planter_pix/model.glb",
-        "provider": "pixal3d (v0.5)",
-        "tris_src": 943778,
-        "tris": 7228,
+        "src": "raw/diversity_20261013/ready/D12_flower_planter.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 45215,
+        "tris": 9000,
         "size_m": [
-          1.139,
-          0.614,
-          0.568
+          1.199,
+          0.673,
+          0.792
         ],
         "godot_size_m_xyz": [
-          1.139,
-          0.568,
-          0.614
+          1.199,
+          0.792,
+          0.673
         ],
         "tex": 1024,
-        "bytes": 652460,
-        "yaw_fix": -141.0,
-        "level": "auto",
-        "lean_src_deg": 12.71,
-        "levelled": true,
+        "bytes": 472804,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
         "lean_deg": 0.0,
-        "base_frac": 0.606
+        "base_frac": 0.872
       },
-      "recipe": "world.spawn(\"D12_flower_planter\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"D12_flower_planter\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm",
+        "town"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/D12_flower_planter.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 10000
     },
     {
       "id": "game/E01_furin",
@@ -3634,63 +3842,60 @@
     },
     {
       "id": "game/F04_scarecrow",
-      "name": "F04_scarecrow",
+      "name": "稻草人",
       "category": "道具",
       "collection": "游戏资产",
       "path": "game/assets/models/F04_scarecrow.glb",
       "format": "GLB",
-      "triangles": 4984,
-      "bytes": 487376,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 9000,
+      "bytes": 389124,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/2040bb4e-a996-481d-9d12-396c03bca0e9",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_F04_scarecrow.png",
       "uses": [
         "game/scripts/world/farm_builder.gd",
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "hyper3d rodin gen-2.5 (v0.4)",
-      "raw_path": "art/models/raw/F04_scarecrow_h3d/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/F04_scarecrow.glb",
       "metrics": {
         "id": "F04_scarecrow",
-        "src": "raw/F04_scarecrow_h3d/model.glb",
-        "provider": "hyper3d rodin gen-2.5 (v0.4)",
-        "tris_src": 20000,
-        "tris": 4984,
+        "src": "raw/diversity_20261013/ready/F04_scarecrow.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 38712,
+        "tris": 9000,
         "size_m": [
-          1.47,
-          0.605,
-          1.903
+          1.557,
+          0.762,
+          1.9
         ],
         "godot_size_m_xyz": [
-          1.47,
-          1.903,
-          0.605
+          1.557,
+          1.9,
+          0.762
         ],
         "tex": 1024,
-        "bytes": 487376,
+        "bytes": 389124,
         "yaw_fix": 0,
-        "level": "auto",
+        "level": true,
         "lean_src_deg": 0.0,
         "levelled": false,
         "lean_deg": 0.0,
-        "base_frac": 0.012,
-        "fit_bounds_blender": {
-          "min": [
-            -0.7286838293075562,
-            -0.3012792468070984,
-            -0.002792231971397996
-          ],
-          "max": [
-            0.7410507798194885,
-            0.30370330810546875,
-            1.899999976158142
-          ]
-        }
+        "base_frac": 0.001
       },
-      "recipe": "world.spawn(\"F04_scarecrow\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"F04_scarecrow\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/F04_scarecrow.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 10000
     },
     {
       "id": "game/F05_greenhouse",
@@ -3753,62 +3958,59 @@
     },
     {
       "id": "game/F06_veggie_stand",
-      "name": "F06_veggie_stand",
+      "name": "菜摊",
       "category": "道具",
       "collection": "游戏资产",
       "path": "game/assets/models/F06_veggie_stand.glb",
       "format": "GLB",
-      "triangles": 5949,
-      "bytes": 493720,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 13499,
+      "bytes": 547536,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/4e349a99-1a22-45f9-aca5-c807b8985953",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_F06_veggie_stand.png",
       "uses": [
-        "game/scripts/world/farm_builder.gd"
+        "game/scripts/world/farm_builder.gd",
+        "game/scripts/world/model_diversity.gd"
       ],
-      "provider": "hyper3d rodin gen-2.5 (v0.4)",
-      "raw_path": "art/models/raw/F06_veggie_stand_h3d/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/F06_veggie_stand.glb",
       "metrics": {
         "id": "F06_veggie_stand",
-        "src": "raw/F06_veggie_stand_h3d/model.glb",
-        "provider": "hyper3d rodin gen-2.5 (v0.4)",
-        "tris_src": 25000,
-        "tris": 5949,
+        "src": "raw/diversity_20261013/ready/F06_veggie_stand.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 40851,
+        "tris": 13500,
         "size_m": [
-          1.293,
-          1.032,
-          1.9
+          1.368,
+          1.576,
+          1.899
         ],
         "godot_size_m_xyz": [
-          1.293,
-          1.9,
-          1.032
+          1.368,
+          1.899,
+          1.576
         ],
         "tex": 1024,
-        "bytes": 493720,
+        "bytes": 547536,
         "yaw_fix": 0,
-        "level": "auto",
-        "lean_src_deg": 0.0,
-        "levelled": false,
-        "lean_deg": 0.0,
-        "base_frac": 0.432,
-        "fit_bounds_blender": {
-          "min": [
-            -0.6485791206359863,
-            -0.5142632126808167,
-            -2.731911536102416e-06
-          ],
-          "max": [
-            0.6447005271911621,
-            0.517848551273346,
-            1.9000000953674316
-          ]
-        }
+        "level": true,
+        "lean_src_deg": 6.96,
+        "levelled": true,
+        "lean_deg": 0.25,
+        "base_frac": 0.414
       },
-      "recipe": "world.spawn(\"F06_veggie_stand\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"F06_veggie_stand\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/F06_veggie_stand.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 15000
     },
     {
       "id": "game/F07_footbridge",
@@ -3987,7 +4189,7 @@
       "uses": [
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "Blender reference-built joinery from accepted imagegen plaza paintover",
+      "provider": "Blender joinery from accepted imagegen plaza paintover",
       "raw_path": "art/models/raw/plaza_paintover_20261009/G02_goldfish_tank.glb",
       "metrics": {
         "id": "G02_goldfish_tank",
@@ -4200,6 +4402,7 @@
       "alpha": false,
       "preview": "art/library/previews/game_G08_cat.png",
       "uses": [
+        "game/scripts/world/ambient_life.gd",
         "game/scripts/world/house_builder.gd"
       ],
       "provider": "项目制作",
@@ -4244,7 +4447,7 @@
       "uses": [
         "game/scripts/world/world_builder.gd"
       ],
-      "provider": "Blender reference-built joinery from accepted imagegen plaza paintover",
+      "provider": "Blender joinery from accepted imagegen plaza paintover",
       "raw_path": "art/models/raw/plaza_paintover_20261009/G09_taiko.glb",
       "metrics": {
         "id": "G09_taiko",
@@ -4601,45 +4804,59 @@
     },
     {
       "id": "game/H06",
-      "name": "H06",
+      "name": "庭院工具房",
       "category": "建筑",
       "collection": "游戏资产",
       "path": "game/assets/models/H06.glb",
       "format": "GLB",
-      "triangles": 8000,
-      "bytes": 479192,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 16199,
+      "bytes": 536712,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/e018d948-a988-4baf-b85c-c1fd696e4381",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_H06.png",
       "uses": [
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/layout.gd"
       ],
-      "provider": "项目制作",
-      "raw_path": "art/models/raw/H06/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/H06.glb",
       "metrics": {
         "id": "H06",
-        "src": "raw/H06/model.glb",
-        "provider": "hunyuan hy-3d-3.1",
-        "tris_src": 19982,
-        "tris": 8000,
+        "src": "raw/diversity_20261013/ready/H06.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 38545,
+        "tris": 16199,
         "size_m": [
-          3.612,
-          3.403,
-          2.3
+          2.224,
+          2.465,
+          2.301
         ],
         "godot_size_m_xyz": [
-          3.612,
-          2.3,
-          3.403
+          2.224,
+          2.301,
+          2.465
         ],
         "tex": 1024,
-        "bytes": 479192,
-        "yaw_fix": 0
+        "bytes": 536712,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.546
       },
-      "recipe": "world.spawn(\"H06\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"H06\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "town"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/H06.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 18000
     },
     {
       "id": "game/H07",
@@ -5107,7 +5324,8 @@
         "game/scripts/world/daily_life_view.gd",
         "game/scripts/world/surface_finish.gd",
         "game/scripts/world/project_tasting.gd",
-        "game/scripts/world/interior_builder.gd"
+        "game/scripts/world/interior_builder.gd",
+        "game/scripts/world/model_diversity.gd"
       ],
       "provider": "Blender precise joinery from imagegen inhabited room references",
       "raw_path": "art/models/raw/inhabited_places_20261010/I04_shop_counter.glb",
@@ -5472,6 +5690,7 @@
       "alpha": false,
       "preview": "art/library/previews/game_J01_kitchen_counter.png",
       "uses": [
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/house_builder.gd"
       ],
       "provider": "项目制作",
@@ -5775,6 +5994,7 @@
       "preview": "art/library/previews/game_J07_kotatsu.png",
       "uses": [
         "game/scripts/world/surface_finish.gd",
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/house_builder.gd"
       ],
       "provider": "项目制作",
@@ -6148,6 +6368,1652 @@
       "recipe": "world.spawn(\"M12d_flower_bush\", Vector3(0, 0, 0), 0, 0)"
     },
     {
+      "id": "game/N01_enamel_kettle",
+      "name": "搪瓷水壶",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N01_enamel_kettle.glb",
+      "format": "GLB",
+      "triangles": 4050,
+      "bytes": 139680,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/54eab5ac-0e63-46f2-87ec-c8fd43933717",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N01_enamel_kettle.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N01_enamel_kettle.glb",
+      "metrics": {
+        "id": "N01_enamel_kettle",
+        "src": "raw/diversity_20261013/ready/N01_enamel_kettle.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 33876,
+        "tris": 4050,
+        "size_m": [
+          0.206,
+          0.253,
+          0.24
+        ],
+        "godot_size_m_xyz": [
+          0.206,
+          0.24,
+          0.253
+        ],
+        "tex": 1024,
+        "bytes": 139680,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.79
+      },
+      "recipe": "world.spawn(\"N01_enamel_kettle\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "home"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            -6.1,
+            0.0,
+            2.9
+          ],
+          "yaw_degrees": 90.0,
+          "support_model": "J01_kitchen_counter",
+          "height_rule": "rendered support mesh",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N01_enamel_kettle.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 4500
+    },
+    {
+      "id": "game/N02_kyusu",
+      "name": "侧柄茶壶",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N02_kyusu.glb",
+      "format": "GLB",
+      "triangles": 4050,
+      "bytes": 141484,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/8f206128-55b8-40c8-8a78-43efb74cda7a",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N02_kyusu.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N02_kyusu.glb",
+      "metrics": {
+        "id": "N02_kyusu",
+        "src": "raw/diversity_20261013/ready/N02_kyusu.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 33144,
+        "tris": 4050,
+        "size_m": [
+          0.245,
+          0.236,
+          0.16
+        ],
+        "godot_size_m_xyz": [
+          0.245,
+          0.16,
+          0.236
+        ],
+        "tex": 1024,
+        "bytes": 141484,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.21
+      },
+      "recipe": "world.spawn(\"N02_kyusu\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "home"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            2.65,
+            0.0,
+            -1.45
+          ],
+          "yaw_degrees": -30.0,
+          "support_model": "J07_kotatsu",
+          "height_rule": "rendered support mesh",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N02_kyusu.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 4500
+    },
+    {
+      "id": "game/N03_tea_pair",
+      "name": "茶杯对",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N03_tea_pair.glb",
+      "format": "GLB",
+      "triangles": 3600,
+      "bytes": 122384,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/8cba5c19-4426-44e2-9841-e310f4365861",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N03_tea_pair.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N03_tea_pair.glb",
+      "metrics": {
+        "id": "N03_tea_pair",
+        "src": "raw/diversity_20261013/ready/N03_tea_pair.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 32662,
+        "tris": 3600,
+        "size_m": [
+          0.196,
+          0.094,
+          0.09
+        ],
+        "godot_size_m_xyz": [
+          0.196,
+          0.09,
+          0.094
+        ],
+        "tex": 1024,
+        "bytes": 122384,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.15,
+        "base_frac": 0.174
+      },
+      "recipe": "world.spawn(\"N03_tea_pair\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "home"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            2.3,
+            0.0,
+            -1.5
+          ],
+          "yaw_degrees": 5.0,
+          "support_model": "J07_kotatsu",
+          "height_rule": "rendered support mesh",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N03_tea_pair.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 4000
+    },
+    {
+      "id": "game/N04_fruit_bowl",
+      "name": "陶果盘",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N04_fruit_bowl.glb",
+      "format": "GLB",
+      "triangles": 4950,
+      "bytes": 154352,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/08996e91-9215-4038-967e-a437898f37fe",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N04_fruit_bowl.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N04_fruit_bowl.glb",
+      "metrics": {
+        "id": "N04_fruit_bowl",
+        "src": "raw/diversity_20261013/ready/N04_fruit_bowl.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 33134,
+        "tris": 4950,
+        "size_m": [
+          0.299,
+          0.298,
+          0.18
+        ],
+        "godot_size_m_xyz": [
+          0.299,
+          0.18,
+          0.298
+        ],
+        "tex": 1024,
+        "bytes": 154352,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.36,
+        "levelled": false,
+        "lean_deg": 0.51,
+        "base_frac": 0.179
+      },
+      "recipe": "world.spawn(\"N04_fruit_bowl\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "home"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            2.5,
+            0.0,
+            -1.0
+          ],
+          "yaw_degrees": 10.0,
+          "support_model": "J07_kotatsu",
+          "height_rule": "rendered support mesh",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N04_fruit_bowl.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 5500
+    },
+    {
+      "id": "game/N05_sewing_basket",
+      "name": "针线篮",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N05_sewing_basket.glb",
+      "format": "GLB",
+      "triangles": 5849,
+      "bytes": 372968,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/da04e0b1-1d3d-4186-8546-36888d69d6ac",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N05_sewing_basket.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N05_sewing_basket.glb",
+      "metrics": {
+        "id": "N05_sewing_basket",
+        "src": "raw/diversity_20261013/ready/N05_sewing_basket.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 7700,
+        "tris": 5849,
+        "size_m": [
+          0.24,
+          0.212,
+          0.25
+        ],
+        "godot_size_m_xyz": [
+          0.24,
+          0.25,
+          0.212
+        ],
+        "tex": 1024,
+        "bytes": 372968,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.53
+      },
+      "recipe": "world.spawn(\"N05_sewing_basket\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "home"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            -4.2,
+            0.0,
+            -1.45
+          ],
+          "yaw_degrees": 25.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N05_sewing_basket.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 6500
+    },
+    {
+      "id": "game/N06_house_slippers",
+      "name": "家居拖鞋",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N06_house_slippers.glb",
+      "format": "GLB",
+      "triangles": 4050,
+      "bytes": 144128,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/75fdc683-a056-45d9-9712-959d7611f094",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N06_house_slippers.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N06_house_slippers.glb",
+      "metrics": {
+        "id": "N06_house_slippers",
+        "src": "raw/diversity_20261013/ready/N06_house_slippers.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 35825,
+        "tris": 4050,
+        "size_m": [
+          0.206,
+          0.256,
+          0.065
+        ],
+        "godot_size_m_xyz": [
+          0.206,
+          0.065,
+          0.256
+        ],
+        "tex": 1024,
+        "bytes": 144128,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.3,
+        "levelled": false,
+        "lean_deg": 0.22,
+        "base_frac": 0.69
+      },
+      "recipe": "world.spawn(\"N06_house_slippers\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "home"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            3.95,
+            -0.12,
+            3.45
+          ],
+          "yaw_degrees": -10.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N06_house_slippers.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 4500
+    },
+    {
+      "id": "game/N07_watering_can",
+      "name": "搪瓷浇水壶",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N07_watering_can.glb",
+      "format": "GLB",
+      "triangles": 5850,
+      "bytes": 198576,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/c8cef021-86be-487f-ae40-3b32f4173851",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N07_watering_can.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N07_watering_can.glb",
+      "metrics": {
+        "id": "N07_watering_can",
+        "src": "raw/diversity_20261013/ready/N07_watering_can.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 34026,
+        "tris": 5850,
+        "size_m": [
+          0.294,
+          0.604,
+          0.36
+        ],
+        "godot_size_m_xyz": [
+          0.294,
+          0.36,
+          0.604
+        ],
+        "tex": 1024,
+        "bytes": 198576,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.54
+      },
+      "recipe": "world.spawn(\"N07_watering_can\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            -17.45,
+            0.0,
+            -6.15
+          ],
+          "yaw_degrees": -30.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N07_watering_can.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 6500
+    },
+    {
+      "id": "game/N08_broom_dustpan",
+      "name": "扫帚与簸箕",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N08_broom_dustpan.glb",
+      "format": "GLB",
+      "triangles": 4949,
+      "bytes": 226428,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/d277f03b-1260-4b5b-bfc4-048914a21167",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N08_broom_dustpan.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N08_broom_dustpan.glb",
+      "metrics": {
+        "id": "N08_broom_dustpan",
+        "src": "raw/diversity_20261013/ready/N08_broom_dustpan.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 39318,
+        "tris": 4949,
+        "size_m": [
+          0.61,
+          0.371,
+          0.8
+        ],
+        "godot_size_m_xyz": [
+          0.61,
+          0.8,
+          0.371
+        ],
+        "tex": 1024,
+        "bytes": 226428,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.34,
+        "levelled": false,
+        "lean_deg": 0.31,
+        "base_frac": 0.411
+      },
+      "recipe": "world.spawn(\"N08_broom_dustpan\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "home"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            3.85,
+            0.0,
+            1.65
+          ],
+          "yaw_degrees": 5.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N08_broom_dustpan.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 5500
+    },
+    {
+      "id": "game/N09_shopping_basket",
+      "name": "买菜竹篮",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N09_shopping_basket.glb",
+      "format": "GLB",
+      "triangles": 4260,
+      "bytes": 259836,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/0abc2e84-120a-4e41-920b-f173d4a640bb",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N09_shopping_basket.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N09_shopping_basket.glb",
+      "metrics": {
+        "id": "N09_shopping_basket",
+        "src": "raw/diversity_20261013/ready/N09_shopping_basket.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 4260,
+        "tris": 4260,
+        "size_m": [
+          0.488,
+          0.418,
+          0.34
+        ],
+        "godot_size_m_xyz": [
+          0.488,
+          0.34,
+          0.418
+        ],
+        "tex": 1024,
+        "bytes": 259836,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.673
+      },
+      "recipe": "world.spawn(\"N09_shopping_basket\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "store"
+      ],
+      "runtime_uses": [
+        {
+          "context": "store",
+          "placement_input_m": [
+            -2.8,
+            0.0,
+            2.75
+          ],
+          "yaw_degrees": 15.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N09_shopping_basket.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 7000
+    },
+    {
+      "id": "game/N10_apple_crate",
+      "name": "苹果筐",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N10_apple_crate.glb",
+      "format": "GLB",
+      "triangles": 6300,
+      "bytes": 231616,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/667276c9-e46a-4d5f-a470-d2dfbe8134ef",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N10_apple_crate.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N10_apple_crate.glb",
+      "metrics": {
+        "id": "N10_apple_crate",
+        "src": "raw/diversity_20261013/ready/N10_apple_crate.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 39896,
+        "tris": 6300,
+        "size_m": [
+          0.738,
+          0.558,
+          0.28
+        ],
+        "godot_size_m_xyz": [
+          0.738,
+          0.28,
+          0.558
+        ],
+        "tex": 1024,
+        "bytes": 231616,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.13,
+        "levelled": false,
+        "lean_deg": 0.14,
+        "base_frac": 0.874
+      },
+      "recipe": "world.spawn(\"N10_apple_crate\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "store"
+      ],
+      "runtime_uses": [
+        {
+          "context": "store",
+          "placement_input_m": [
+            4.8,
+            0.0,
+            2.4
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N10_apple_crate.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 7000
+    },
+    {
+      "id": "game/N11_daikon_crate",
+      "name": "萝卜筐",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N11_daikon_crate.glb",
+      "format": "GLB",
+      "triangles": 6750,
+      "bytes": 249172,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/071ea6f7-20e3-4e58-b570-f624813bbd5f",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N11_daikon_crate.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N11_daikon_crate.glb",
+      "metrics": {
+        "id": "N11_daikon_crate",
+        "src": "raw/diversity_20261013/ready/N11_daikon_crate.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 11984,
+        "tris": 6750,
+        "size_m": [
+          0.581,
+          0.534,
+          0.3
+        ],
+        "godot_size_m_xyz": [
+          0.581,
+          0.3,
+          0.534
+        ],
+        "tex": 1024,
+        "bytes": 249172,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 1.0
+      },
+      "recipe": "world.spawn(\"N11_daikon_crate\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "store"
+      ],
+      "runtime_uses": [
+        {
+          "context": "store",
+          "placement_input_m": [
+            4.8,
+            0.0,
+            3.3
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N11_daikon_crate.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 7500
+    },
+    {
+      "id": "game/N12_carrot_crate",
+      "name": "胡萝卜筐",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N12_carrot_crate.glb",
+      "format": "GLB",
+      "triangles": 5850,
+      "bytes": 269376,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/8edb188a-e2c6-4aec-86c3-22d99158ee2f",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N12_carrot_crate.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N12_carrot_crate.glb",
+      "metrics": {
+        "id": "N12_carrot_crate",
+        "src": "raw/diversity_20261013/ready/N12_carrot_crate.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 40993,
+        "tris": 5850,
+        "size_m": [
+          0.685,
+          0.486,
+          0.24
+        ],
+        "godot_size_m_xyz": [
+          0.685,
+          0.24,
+          0.486
+        ],
+        "tex": 1024,
+        "bytes": 269376,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.14,
+        "base_frac": 0.91
+      },
+      "recipe": "world.spawn(\"N12_carrot_crate\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            7.4,
+            0.0,
+            4.25
+          ],
+          "yaw_degrees": -10.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N12_carrot_crate.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 6500
+    },
+    {
+      "id": "game/N13_empty_crate",
+      "name": "空木筐",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N13_empty_crate.glb",
+      "format": "GLB",
+      "triangles": 5400,
+      "bytes": 212872,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/213d08e2-b9d6-47d5-8a31-3f190ed4ff66",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N13_empty_crate.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N13_empty_crate.glb",
+      "metrics": {
+        "id": "N13_empty_crate",
+        "src": "raw/diversity_20261013/ready/N13_empty_crate.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 35714,
+        "tris": 5400,
+        "size_m": [
+          0.455,
+          0.651,
+          0.3
+        ],
+        "godot_size_m_xyz": [
+          0.455,
+          0.3,
+          0.651
+        ],
+        "tex": 1024,
+        "bytes": 212872,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.954
+      },
+      "recipe": "world.spawn(\"N13_empty_crate\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            6.25,
+            0.0,
+            4.15
+          ],
+          "yaw_degrees": 10.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N13_empty_crate.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 6000
+    },
+    {
+      "id": "game/N14_paper_parcels",
+      "name": "纸包组",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N14_paper_parcels.glb",
+      "format": "GLB",
+      "triangles": 4499,
+      "bytes": 228236,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/aca9fd23-1b0c-47d5-b1ab-ea273200392b",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N14_paper_parcels.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N14_paper_parcels.glb",
+      "metrics": {
+        "id": "N14_paper_parcels",
+        "src": "raw/diversity_20261013/ready/N14_paper_parcels.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 38461,
+        "tris": 4499,
+        "size_m": [
+          0.241,
+          0.216,
+          0.25
+        ],
+        "godot_size_m_xyz": [
+          0.241,
+          0.25,
+          0.216
+        ],
+        "tex": 1024,
+        "bytes": 228236,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.64,
+        "levelled": false,
+        "lean_deg": 0.58,
+        "base_frac": 0.554
+      },
+      "recipe": "world.spawn(\"N14_paper_parcels\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "store"
+      ],
+      "runtime_uses": [
+        {
+          "context": "store",
+          "placement_input_m": [
+            -4.02,
+            0.0,
+            0.05
+          ],
+          "yaw_degrees": 10.0,
+          "support_model": "I04_shop_counter",
+          "height_rule": "rendered support mesh",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N14_paper_parcels.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 5000
+    },
+    {
+      "id": "game/N15_umbrella_stand",
+      "name": "伞架",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N15_umbrella_stand.glb",
+      "format": "GLB",
+      "triangles": 5400,
+      "bytes": 233900,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/62e5b448-d44c-4176-8181-116485a0a6e4",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N15_umbrella_stand.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N15_umbrella_stand.glb",
+      "metrics": {
+        "id": "N15_umbrella_stand",
+        "src": "raw/diversity_20261013/ready/N15_umbrella_stand.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 37388,
+        "tris": 5400,
+        "size_m": [
+          0.29,
+          0.2,
+          0.72
+        ],
+        "godot_size_m_xyz": [
+          0.29,
+          0.72,
+          0.2
+        ],
+        "tex": 1024,
+        "bytes": 233900,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.536
+      },
+      "recipe": "world.spawn(\"N15_umbrella_stand\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "home"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            6.0,
+            0.0,
+            1.7
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N15_umbrella_stand.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 6000
+    },
+    {
+      "id": "game/N16_wooden_crate_seat",
+      "name": "木箱坐凳",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N16_wooden_crate_seat.glb",
+      "format": "GLB",
+      "triangles": 5400,
+      "bytes": 191360,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/2ddf3e6c-5409-4a2d-b65e-7e95e32aa947",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N16_wooden_crate_seat.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N16_wooden_crate_seat.glb",
+      "metrics": {
+        "id": "N16_wooden_crate_seat",
+        "src": "raw/diversity_20261013/ready/N16_wooden_crate_seat.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 35926,
+        "tris": 5400,
+        "size_m": [
+          0.55,
+          0.511,
+          0.38
+        ],
+        "godot_size_m_xyz": [
+          0.55,
+          0.38,
+          0.511
+        ],
+        "tex": 1024,
+        "bytes": 191360,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.39,
+        "levelled": false,
+        "lean_deg": 0.39,
+        "base_frac": 0.959
+      },
+      "recipe": "world.spawn(\"N16_wooden_crate_seat\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "festival",
+        "town"
+      ],
+      "runtime_uses": [
+        {
+          "context": "town",
+          "placement_input_m": [
+            13.6,
+            0.0,
+            14.0
+          ],
+          "yaw_degrees": -10.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        },
+        {
+          "context": "festival",
+          "placement_input_m": [
+            -6.4,
+            0,
+            17.8
+          ],
+          "yaw_degrees": 0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "purpose": "dry support for paper goldfish scoops",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N16_wooden_crate_seat.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 6000
+    },
+    {
+      "id": "game/N17_seedling_tray",
+      "name": "育苗盘",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N17_seedling_tray.glb",
+      "format": "GLB",
+      "triangles": 5850,
+      "bytes": 222400,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/7a4f9c37-5fe4-45a9-a1cc-64f2523f951e",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N17_seedling_tray.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N17_seedling_tray.glb",
+      "metrics": {
+        "id": "N17_seedling_tray",
+        "src": "raw/diversity_20261013/ready/N17_seedling_tray.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 41258,
+        "tris": 5850,
+        "size_m": [
+          0.307,
+          0.217,
+          0.12
+        ],
+        "godot_size_m_xyz": [
+          0.307,
+          0.12,
+          0.217
+        ],
+        "tex": 1024,
+        "bytes": 222400,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.35,
+        "levelled": false,
+        "lean_deg": 0.46,
+        "base_frac": 0.59
+      },
+      "recipe": "world.spawn(\"N17_seedling_tray\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "town"
+      ],
+      "runtime_uses": [
+        {
+          "context": "town",
+          "placement_input_m": [
+            16.075,
+            0.0,
+            16.075
+          ],
+          "yaw_degrees": 90.0,
+          "support_model": "P08",
+          "height_rule": "rendered support mesh",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N17_seedling_tray.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 6500
+    },
+    {
+      "id": "game/N18_harvest_basket",
+      "name": "收获藤篮",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N18_harvest_basket.glb",
+      "format": "GLB",
+      "triangles": 7199,
+      "bytes": 392184,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/c4f4a70f-ccf4-42bf-b314-f96f73730739",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N18_harvest_basket.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N18_harvest_basket.glb",
+      "metrics": {
+        "id": "N18_harvest_basket",
+        "src": "raw/diversity_20261013/ready/N18_harvest_basket.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 11508,
+        "tris": 7199,
+        "size_m": [
+          0.43,
+          0.429,
+          0.34
+        ],
+        "godot_size_m_xyz": [
+          0.43,
+          0.34,
+          0.429
+        ],
+        "tex": 1024,
+        "bytes": 392184,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.673
+      },
+      "recipe": "world.spawn(\"N18_harvest_basket\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            8.45,
+            0.0,
+            4.5
+          ],
+          "yaw_degrees": 10.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N18_harvest_basket.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 8000
+    },
+    {
+      "id": "game/N19_burlap_sacks",
+      "name": "麻袋组",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N19_burlap_sacks.glb",
+      "format": "GLB",
+      "triangles": 5849,
+      "bytes": 218120,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/127364d6-32c5-4c3e-ad09-a396580efb6d",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N19_burlap_sacks.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N19_burlap_sacks.glb",
+      "metrics": {
+        "id": "N19_burlap_sacks",
+        "src": "raw/diversity_20261013/ready/N19_burlap_sacks.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 36899,
+        "tris": 5849,
+        "size_m": [
+          0.309,
+          0.715,
+          0.48
+        ],
+        "godot_size_m_xyz": [
+          0.309,
+          0.48,
+          0.715
+        ],
+        "tex": 1024,
+        "bytes": 218120,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.707
+      },
+      "recipe": "world.spawn(\"N19_burlap_sacks\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            -15.5,
+            0.0,
+            -5.0
+          ],
+          "yaw_degrees": 10.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N19_burlap_sacks.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 6500
+    },
+    {
+      "id": "game/N20_coiled_hose",
+      "name": "盘绕水管",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N20_coiled_hose.glb",
+      "format": "GLB",
+      "triangles": 5849,
+      "bytes": 236720,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/0e89654b-5573-4dbb-9466-414f5a8da605",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N20_coiled_hose.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N20_coiled_hose.glb",
+      "metrics": {
+        "id": "N20_coiled_hose",
+        "src": "raw/diversity_20261013/ready/N20_coiled_hose.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 35891,
+        "tris": 5849,
+        "size_m": [
+          0.519,
+          0.55,
+          0.426
+        ],
+        "godot_size_m_xyz": [
+          0.519,
+          0.426,
+          0.55
+        ],
+        "tex": 1024,
+        "bytes": 236720,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.24,
+        "levelled": false,
+        "lean_deg": 0.24,
+        "base_frac": 0.843
+      },
+      "recipe": "world.spawn(\"N20_coiled_hose\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            -7.1,
+            0.0,
+            -4.6
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N20_coiled_hose.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 6500
+    },
+    {
+      "id": "game/N21_tool_basket",
+      "name": "手工具篮",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N21_tool_basket.glb",
+      "format": "GLB",
+      "triangles": 6300,
+      "bytes": 247148,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/1efb17ff-a49b-44f2-98bf-25b174fa813d",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N21_tool_basket.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N21_tool_basket.glb",
+      "metrics": {
+        "id": "N21_tool_basket",
+        "src": "raw/diversity_20261013/ready/N21_tool_basket.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 36974,
+        "tris": 6300,
+        "size_m": [
+          0.387,
+          0.272,
+          0.28
+        ],
+        "godot_size_m_xyz": [
+          0.387,
+          0.28,
+          0.272
+        ],
+        "tex": 1024,
+        "bytes": 247148,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.941
+      },
+      "recipe": "world.spawn(\"N21_tool_basket\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            -11.15,
+            0.0,
+            -9.7
+          ],
+          "yaw_degrees": -10.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N21_tool_basket.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 7000
+    },
+    {
+      "id": "game/N22_festival_masks",
+      "name": "夏祭面具架",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N22_festival_masks.glb",
+      "format": "GLB",
+      "triangles": 9000,
+      "bytes": 329344,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/0610c98b-4f84-4816-8351-66a7d68b4f4e",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N22_festival_masks.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N22_festival_masks.glb",
+      "metrics": {
+        "id": "N22_festival_masks",
+        "src": "raw/diversity_20261013/ready/N22_festival_masks.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 37053,
+        "tris": 9000,
+        "size_m": [
+          0.742,
+          0.465,
+          1.05
+        ],
+        "godot_size_m_xyz": [
+          0.742,
+          1.05,
+          0.465
+        ],
+        "tex": 1024,
+        "bytes": 329344,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.35,
+        "levelled": false,
+        "lean_deg": 0.36,
+        "base_frac": 0.9
+      },
+      "recipe": "world.spawn(\"N22_festival_masks\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "festival"
+      ],
+      "runtime_uses": [
+        {
+          "context": "festival",
+          "placement_input_m": [
+            7.6,
+            0.0,
+            18.6
+          ],
+          "yaw_degrees": 180.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N22_festival_masks.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 10000
+    },
+    {
+      "id": "game/N23_goldfish_scoops",
+      "name": "捞鱼纸网托",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N23_goldfish_scoops.glb",
+      "format": "GLB",
+      "triangles": 4050,
+      "bytes": 173244,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/51c49c2a-070b-4956-8fb0-f78cd4babd3a",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N23_goldfish_scoops.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N23_goldfish_scoops.glb",
+      "metrics": {
+        "id": "N23_goldfish_scoops",
+        "src": "raw/diversity_20261013/ready/N23_goldfish_scoops.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 33970,
+        "tris": 4050,
+        "size_m": [
+          0.503,
+          0.406,
+          0.05
+        ],
+        "godot_size_m_xyz": [
+          0.503,
+          0.05,
+          0.406
+        ],
+        "tex": 1024,
+        "bytes": 173244,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.957
+      },
+      "recipe": "world.spawn(\"N23_goldfish_scoops\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "festival"
+      ],
+      "runtime_uses": [
+        {
+          "context": "festival",
+          "placement_input_m": [
+            -6.4,
+            0.0,
+            17.8
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "N16_wooden_crate_seat",
+          "height_rule": "rendered support mesh",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N23_goldfish_scoops.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 4500
+    },
+    {
+      "id": "game/N24_bamboo_lantern",
+      "name": "竹灯",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/N24_bamboo_lantern.glb",
+      "format": "GLB",
+      "triangles": 5850,
+      "bytes": 268776,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/55084236-9d03-4bd9-a183-98fc4709aeca",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_N24_bamboo_lantern.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/N24_bamboo_lantern.glb",
+      "metrics": {
+        "id": "N24_bamboo_lantern",
+        "src": "raw/diversity_20261013/ready/N24_bamboo_lantern.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 37600,
+        "tris": 5850,
+        "size_m": [
+          0.2,
+          0.199,
+          0.4
+        ],
+        "godot_size_m_xyz": [
+          0.2,
+          0.4,
+          0.199
+        ],
+        "tex": 1024,
+        "bytes": 268776,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.568
+      },
+      "recipe": "world.spawn(\"N24_bamboo_lantern\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "festival"
+      ],
+      "runtime_uses": [
+        {
+          "context": "festival",
+          "placement_input_m": [
+            5.0,
+            0.0,
+            19.8
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/N24_bamboo_lantern.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 6500
+    },
+    {
       "id": "game/P01",
       "name": "P01",
       "category": "道具",
@@ -6166,7 +8032,7 @@
         "game/scripts/world/layout.gd",
         "game/scripts/world/plaza_art_direction.gd"
       ],
-      "provider": "Blender reference-built joinery from accepted imagegen plaza paintover",
+      "provider": "Blender joinery from accepted imagegen plaza paintover",
       "raw_path": "art/models/raw/plaza_paintover_20261009/P01.glb",
       "metrics": {
         "id": "P01",
@@ -6336,7 +8202,7 @@
       "uses": [
         "game/scripts/world/layout.gd"
       ],
-      "provider": "Blender reference-built joinery from accepted imagegen plaza paintover",
+      "provider": "Blender joinery from accepted imagegen plaza paintover",
       "raw_path": "art/models/raw/plaza_paintover_20261009/P05.glb",
       "metrics": {
         "id": "P05",
@@ -6408,57 +8274,71 @@
     },
     {
       "id": "game/P07",
-      "name": "P07",
+      "name": "社区菜床",
       "category": "道具",
       "collection": "游戏资产",
       "path": "game/assets/models/P07.glb",
       "format": "GLB",
-      "triangles": 8000,
-      "bytes": 744624,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 14400,
+      "bytes": 619364,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/7a223acd-8f43-4a78-8dfb-25b61bb36d30",
       "status": "已接入",
       "animations": [],
       "alpha": false,
       "preview": "art/library/previews/game_P07.png",
       "uses": [
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/layout.gd"
       ],
-      "provider": "项目制作",
-      "raw_path": "art/models/raw/P07/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/P07.glb",
       "metrics": {
         "id": "P07",
-        "src": "raw/P07/model.glb",
-        "provider": "hunyuan hy-3d-3.1",
-        "tris_src": 19998,
-        "tris": 8000,
+        "src": "raw/diversity_20261013/ready/P07.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 45861,
+        "tris": 14400,
         "size_m": [
-          2.397,
-          2.162,
-          1.313
+          2.4,
+          2.459,
+          1.95
         ],
         "godot_size_m_xyz": [
-          2.397,
-          1.313,
-          2.162
+          2.4,
+          1.95,
+          2.459
         ],
         "tex": 1024,
-        "bytes": 744624,
-        "yaw_fix": 0
+        "bytes": 619364,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.939
       },
-      "recipe": "world.spawn(\"P07\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"P07\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "town"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/P07.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 16000
     },
     {
       "id": "game/P08",
-      "name": "P08",
+      "name": "育苗工作台",
       "category": "道具",
       "collection": "游戏资产",
       "path": "game/assets/models/P08.glb",
       "format": "GLB",
-      "triangles": 8000,
-      "bytes": 530636,
-      "license": "项目素材，来源条款待核对",
-      "source": "",
+      "triangles": 1234,
+      "bytes": 129928,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/fdbc37b0-17c7-49e5-928e-45c98706a67c",
       "status": "已接入",
       "animations": [],
       "alpha": false,
@@ -6466,31 +8346,45 @@
       "uses": [
         "game/scripts/world/daily_life_view.gd",
         "game/scripts/world/gathering_view.gd",
+        "game/scripts/world/model_diversity.gd",
         "game/scripts/world/layout.gd"
       ],
-      "provider": "项目制作",
-      "raw_path": "art/models/raw/P08/model.glb",
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/P08.glb",
       "metrics": {
         "id": "P08",
-        "src": "raw/P08/model.glb",
-        "provider": "hunyuan hy-3d-3.1",
-        "tris_src": 20000,
-        "tris": 8000,
+        "src": "raw/diversity_20261013/ready/P08.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 1234,
+        "tris": 1234,
         "size_m": [
           2.807,
           1.405,
-          1.899
+          1.9
         ],
         "godot_size_m_xyz": [
           2.807,
-          1.899,
+          1.9,
           1.405
         ],
         "tex": 1024,
-        "bytes": 530636,
-        "yaw_fix": 0
+        "bytes": 129928,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.991
       },
-      "recipe": "world.spawn(\"P08\", Vector3(0, 0, 0), 0, 0)"
+      "recipe": "world.spawn(\"P08\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "town"
+      ],
+      "runtime_uses": [],
+      "reference": "art/references/model_diversity_20261013/P08.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 14000
     },
     {
       "id": "game/P09",
@@ -6570,7 +8464,7 @@
       "uses": [
         "game/scripts/world/layout.gd"
       ],
-      "provider": "Blender reference-built joinery from accepted imagegen plaza paintover",
+      "provider": "Blender joinery from accepted imagegen plaza paintover",
       "raw_path": "art/models/raw/plaza_paintover_20261009/P10.glb",
       "metrics": {
         "id": "P10",
@@ -6664,6 +8558,7 @@
       "alpha": false,
       "preview": "art/library/previews/game_P12.png",
       "uses": [
+        "game/scripts/world/material_refinement.gd",
         "game/scripts/world/layout.gd"
       ],
       "provider": "项目制作",
@@ -7070,7 +8965,7 @@
       "source": "",
       "status": "已接入",
       "animations": [],
-      "alpha": false,
+      "alpha": true,
       "preview": "art/library/previews/game_P_deck_oven.png",
       "uses": [
         "game/scripts/world/interior_builder.gd"
@@ -7214,6 +9109,137 @@
         ]
       },
       "recipe": "world.spawn(\"P_gondola\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/P_library_bucket",
+      "name": "P_library_bucket",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/P_library_bucket.glb",
+      "format": "GLB",
+      "triangles": 1224,
+      "bytes": 83880,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_P_library_bucket.png",
+      "uses": [
+        "game/scripts/world/reviewed_library.gd"
+      ],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/P_library_bucket.glb",
+      "metrics": {
+        "id": "P_library_bucket",
+        "src": "raw/reviewed_library_20261012/P_library_bucket.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 1224,
+        "tex": 1024,
+        "bytes": 83880,
+        "godot_size_m_xyz": [
+          0.3056,
+          0.32,
+          0.3298
+        ],
+        "mesh_nodes": [
+          "Hang.002",
+          "Painting Bucket.002"
+        ]
+      },
+      "recipe": "world.spawn(\"P_library_bucket\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/P_library_carton",
+      "name": "P_library_carton",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/P_library_carton.glb",
+      "format": "GLB",
+      "triangles": 1060,
+      "bytes": 106184,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_P_library_carton.png",
+      "uses": [
+        "game/scripts/world/reviewed_library.gd"
+      ],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/P_library_carton.glb",
+      "metrics": {
+        "id": "P_library_carton",
+        "src": "raw/reviewed_library_20261012/P_library_carton.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 1060,
+        "tex": 1024,
+        "bytes": 106184,
+        "godot_size_m_xyz": [
+          0.6002,
+          0.36,
+          0.458
+        ],
+        "mesh_nodes": [
+          "Cardboard Box.002"
+        ]
+      },
+      "recipe": "world.spawn(\"P_library_carton\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/P_library_stool",
+      "name": "P_library_stool",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/P_library_stool.glb",
+      "format": "GLB",
+      "triangles": 5344,
+      "bytes": 346496,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_P_library_stool.png",
+      "uses": [
+        "game/scripts/world/reviewed_library.gd"
+      ],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/P_library_stool.glb",
+      "metrics": {
+        "id": "P_library_stool",
+        "src": "raw/reviewed_library_20261012/P_library_stool.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 5344,
+        "tex": 1024,
+        "bytes": 346496,
+        "godot_size_m_xyz": [
+          0.3903,
+          0.58,
+          0.3903
+        ],
+        "mesh_nodes": [
+          "Bolt.010",
+          "Bolt.011",
+          "Bolt.012",
+          "Bolt.013",
+          "Bolt.014",
+          "Legs.002",
+          "Support.008",
+          "Support.009",
+          "Support.010",
+          "Support.011",
+          "Top.002"
+        ]
+      },
+      "recipe": "world.spawn(\"P_library_stool\", Vector3(0, 0, 0), 0, 0)"
     },
     {
       "id": "game/P_long_table",
@@ -8349,8 +10375,7 @@
           "Trunk_Cedar"
         ]
       },
-      "recipe": "world.spawn(\"T04_slender_cedar\", Vector3(0, 0, 0), 0, 0)",
-      "preview_note": "Godot native scene capture with production wind and moss materials."
+      "recipe": "world.spawn(\"T04_slender_cedar\", Vector3(0, 0, 0), 0, 0)"
     },
     {
       "id": "game/T05_old_shade_tree",
@@ -8400,8 +10425,401 @@
           "Trunk_Hyper3D"
         ]
       },
-      "recipe": "world.spawn(\"T05_old_shade_tree\", Vector3(0, 0, 0), 0, 0)",
-      "preview_note": "Godot native scene capture with production wind and moss materials."
+      "recipe": "world.spawn(\"T05_old_shade_tree\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/T06_camphor",
+      "name": "樟树",
+      "category": "树木",
+      "collection": "游戏资产",
+      "path": "game/assets/models/T06_camphor.glb",
+      "format": "GLB",
+      "triangles": 17999,
+      "bytes": 1213612,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/616ce2e1-503e-4590-b586-ca67a9220f31",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_T06_camphor.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd",
+        "game/scripts/world/world_builder.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/T06_camphor.glb",
+      "metrics": {
+        "id": "T06_camphor",
+        "src": "raw/diversity_20261013/ready/T06_camphor.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 59998,
+        "tris": 18000,
+        "size_m": [
+          7.033,
+          5.072,
+          6.466
+        ],
+        "godot_size_m_xyz": [
+          7.033,
+          6.466,
+          5.072
+        ],
+        "tex": 1024,
+        "bytes": 1213612,
+        "yaw_fix": 0,
+        "level": false,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 2.54,
+        "base_frac": 0.189
+      },
+      "recipe": "world.spawn(\"T06_camphor\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            20.0,
+            0.0,
+            -17.0
+          ],
+          "yaw_degrees": 24.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/T06_camphor.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 20000
+    },
+    {
+      "id": "game/T07_summer_maple",
+      "name": "青枫",
+      "category": "树木",
+      "collection": "游戏资产",
+      "path": "game/assets/models/T07_summer_maple.glb",
+      "format": "GLB",
+      "triangles": 10072,
+      "bytes": 1582396,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/b19e19ae-3f59-437b-b338-3320248835bd",
+      "status": "已接入",
+      "animations": [],
+      "alpha": true,
+      "preview": "art/library/previews/game_T07_summer_maple.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd",
+        "game/scripts/world/world_builder.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/T07_summer_maple.glb",
+      "metrics": {
+        "id": "T07_summer_maple",
+        "src": "raw/diversity_20261013/ready/T07_summer_maple.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 10072,
+        "tex": 1024,
+        "bytes": 1582396,
+        "godot_size_m_xyz": [
+          3.6333,
+          4.0,
+          3.5904
+        ],
+        "mesh_nodes": [
+          "Foliage_T07_summer_maple",
+          "Trunk_Secondary_T07_summer_maple",
+          "Trunk_T07_summer_maple"
+        ]
+      },
+      "recipe": "world.spawn(\"T07_summer_maple\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "town"
+      ],
+      "runtime_uses": [
+        {
+          "context": "town",
+          "placement_input_m": [
+            29.5,
+            0.0,
+            11.5
+          ],
+          "yaw_degrees": 15.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/T07_summer_maple.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 18000
+    },
+    {
+      "id": "game/T08_green_cherry",
+      "name": "夏日樱树",
+      "category": "树木",
+      "collection": "游戏资产",
+      "path": "game/assets/models/T08_green_cherry.glb",
+      "format": "GLB",
+      "triangles": 10992,
+      "bytes": 1618524,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/f14834df-2a82-4b3e-a738-5d443ba27338",
+      "status": "已接入",
+      "animations": [],
+      "alpha": true,
+      "preview": "art/library/previews/game_T08_green_cherry.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd",
+        "game/scripts/world/world_builder.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/T08_green_cherry.glb",
+      "metrics": {
+        "id": "T08_green_cherry",
+        "src": "raw/diversity_20261013/ready/T08_green_cherry.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 10992,
+        "tex": 1024,
+        "bytes": 1618524,
+        "godot_size_m_xyz": [
+          5.0244,
+          5.5,
+          5.8629
+        ],
+        "mesh_nodes": [
+          "Foliage_T08_green_cherry",
+          "Trunk_Secondary_T08_green_cherry",
+          "Trunk_T08_green_cherry"
+        ]
+      },
+      "recipe": "world.spawn(\"T08_green_cherry\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "town"
+      ],
+      "runtime_uses": [
+        {
+          "context": "town",
+          "placement_input_m": [
+            -44.0,
+            0.0,
+            3.0
+          ],
+          "yaw_degrees": -25.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/T08_green_cherry.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 20000
+    },
+    {
+      "id": "game/T09_bamboo_grove",
+      "name": "竹丛",
+      "category": "树木",
+      "collection": "游戏资产",
+      "path": "game/assets/models/T09_bamboo_grove.glb",
+      "format": "GLB",
+      "triangles": 14400,
+      "bytes": 666740,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/acf8180d-ad24-453e-a58f-2e86b38894fa",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_T09_bamboo_grove.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd",
+        "game/scripts/world/world_builder.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/T09_bamboo_grove.glb",
+      "metrics": {
+        "id": "T09_bamboo_grove",
+        "src": "raw/diversity_20261013/ready/T09_bamboo_grove.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 120000,
+        "tris": 14400,
+        "size_m": [
+          2.61,
+          2.61,
+          4.799
+        ],
+        "godot_size_m_xyz": [
+          2.61,
+          4.799,
+          2.61
+        ],
+        "tex": 1024,
+        "bytes": 666740,
+        "yaw_fix": 0,
+        "level": false,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.036
+      },
+      "recipe": "world.spawn(\"T09_bamboo_grove\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            18.0,
+            0.0,
+            24.0
+          ],
+          "yaw_degrees": 20.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/T09_bamboo_grove.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 16000
+    },
+    {
+      "id": "game/T10_weeping_willow",
+      "name": "垂柳",
+      "category": "树木",
+      "collection": "游戏资产",
+      "path": "game/assets/models/T10_weeping_willow.glb",
+      "format": "GLB",
+      "triangles": 12360,
+      "bytes": 1737176,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/0fccd065-8984-4fe4-b8bf-a2ec0fa96135",
+      "status": "已接入",
+      "animations": [],
+      "alpha": true,
+      "preview": "art/library/previews/game_T10_weeping_willow.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd",
+        "game/scripts/world/world_builder.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/T10_weeping_willow.glb",
+      "metrics": {
+        "id": "T10_weeping_willow",
+        "src": "raw/diversity_20261013/ready/T10_weeping_willow.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 12360,
+        "tex": 1024,
+        "bytes": 1737176,
+        "godot_size_m_xyz": [
+          6.0315,
+          6.0,
+          5.9046
+        ],
+        "mesh_nodes": [
+          "Foliage_T10_weeping_willow",
+          "Trunk_Secondary_T10_weeping_willow",
+          "Trunk_T10_weeping_willow"
+        ]
+      },
+      "recipe": "world.spawn(\"T10_weeping_willow\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            -19.0,
+            0.0,
+            24.0
+          ],
+          "yaw_degrees": -40.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/T10_weeping_willow.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 20000
+    },
+    {
+      "id": "game/T11_young_zelkova",
+      "name": "幼榉树",
+      "category": "树木",
+      "collection": "游戏资产",
+      "path": "game/assets/models/T11_young_zelkova.glb",
+      "format": "GLB",
+      "triangles": 10072,
+      "bytes": 1606868,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/73eb83bb-f07a-40ad-ac01-6e432ffeffe2",
+      "status": "已接入",
+      "animations": [],
+      "alpha": true,
+      "preview": "art/library/previews/game_T11_young_zelkova.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd",
+        "game/scripts/world/world_builder.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/T11_young_zelkova.glb",
+      "metrics": {
+        "id": "T11_young_zelkova",
+        "src": "raw/diversity_20261013/ready/T11_young_zelkova.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 10072,
+        "tex": 1024,
+        "bytes": 1606868,
+        "godot_size_m_xyz": [
+          2.6104,
+          4.5,
+          2.8361
+        ],
+        "mesh_nodes": [
+          "Foliage_T11_young_zelkova",
+          "Trunk_Secondary_T11_young_zelkova",
+          "Trunk_T11_young_zelkova"
+        ]
+      },
+      "recipe": "world.spawn(\"T11_young_zelkova\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "town"
+      ],
+      "runtime_uses": [
+        {
+          "context": "town",
+          "placement_input_m": [
+            36.0,
+            0.0,
+            12.0
+          ],
+          "yaw_degrees": 60.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/T11_young_zelkova.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 18000
     },
     {
       "id": "game/V01_fern",
@@ -8623,6 +11041,971 @@
         "base_frac": 0.096
       },
       "recipe": "world.spawn(\"V05_river_reeds\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/V06_fine_grass",
+      "name": "V06_fine_grass",
+      "category": "草地",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V06_fine_grass.glb",
+      "format": "GLB",
+      "triangles": 24,
+      "bytes": 601492,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": true,
+      "preview": "art/library/previews/game_V06_fine_grass.png",
+      "uses": [
+        "game/scripts/world/landscape_coverage.gd"
+      ],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/V06_fine_grass.glb",
+      "metrics": {
+        "id": "V06_fine_grass",
+        "src": "raw/reviewed_library_20261012/V06_fine_grass.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 24,
+        "tex": 1024,
+        "bytes": 601492,
+        "godot_size_m_xyz": [
+          0.3552,
+          0.38,
+          0.4166
+        ],
+        "mesh_nodes": [
+          "Basic_Grass_11.001"
+        ]
+      },
+      "recipe": "world.spawn(\"V06_fine_grass\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/V07_grass_card",
+      "name": "V07_grass_card",
+      "category": "草地",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V07_grass_card.glb",
+      "format": "GLB",
+      "triangles": 8,
+      "bytes": 697716,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": true,
+      "preview": "art/library/previews/game_V07_grass_card.png",
+      "uses": [
+        "game/scripts/world/landscape_coverage.gd"
+      ],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/V07_grass_card.glb",
+      "metrics": {
+        "id": "V07_grass_card",
+        "src": "raw/reviewed_library_20261012/V07_grass_card.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 8,
+        "tex": 1024,
+        "bytes": 697716,
+        "godot_size_m_xyz": [
+          0.2802,
+          0.48,
+          0.1117
+        ],
+        "mesh_nodes": [
+          "Basic_Grass_Card_03.001"
+        ]
+      },
+      "recipe": "world.spawn(\"V07_grass_card\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/V08_blade_rosette",
+      "name": "V08_blade_rosette",
+      "category": "植物",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V08_blade_rosette.glb",
+      "format": "GLB",
+      "triangles": 234,
+      "bytes": 755380,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": true,
+      "preview": "art/library/previews/game_V08_blade_rosette.png",
+      "uses": [
+        "game/scripts/world/landscape_coverage.gd"
+      ],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/V08_blade_rosette.glb",
+      "metrics": {
+        "id": "V08_blade_rosette",
+        "src": "raw/reviewed_library_20261012/V08_blade_rosette.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 234,
+        "tex": 1024,
+        "bytes": 755380,
+        "godot_size_m_xyz": [
+          0.5653,
+          0.4,
+          0.7425
+        ],
+        "mesh_nodes": [
+          "Detailed_Blades_13.001"
+        ]
+      },
+      "recipe": "world.spawn(\"V08_blade_rosette\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/V09_fern_cluster",
+      "name": "V09_fern_cluster",
+      "category": "植物",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V09_fern_cluster.glb",
+      "format": "GLB",
+      "triangles": 416,
+      "bytes": 617644,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": true,
+      "preview": "art/library/previews/game_V09_fern_cluster.png",
+      "uses": [
+        "game/scripts/world/landscape_coverage.gd"
+      ],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/V09_fern_cluster.glb",
+      "metrics": {
+        "id": "V09_fern_cluster",
+        "src": "raw/reviewed_library_20261012/V09_fern_cluster.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 416,
+        "tex": 1024,
+        "bytes": 617644,
+        "godot_size_m_xyz": [
+          1.0569,
+          0.58,
+          0.8724
+        ],
+        "mesh_nodes": [
+          "Detailed_Fern_01.001"
+        ]
+      },
+      "recipe": "world.spawn(\"V09_fern_cluster\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/V10_leaf_shrub",
+      "name": "V10_leaf_shrub",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V10_leaf_shrub.glb",
+      "format": "GLB",
+      "triangles": 282,
+      "bytes": 627876,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": true,
+      "preview": "art/library/previews/game_V10_leaf_shrub.png",
+      "uses": [
+        "game/scripts/world/landscape_coverage.gd"
+      ],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/V10_leaf_shrub.glb",
+      "metrics": {
+        "id": "V10_leaf_shrub",
+        "src": "raw/reviewed_library_20261012/V10_leaf_shrub.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 282,
+        "tex": 1024,
+        "bytes": 627876,
+        "godot_size_m_xyz": [
+          1.3348,
+          0.65,
+          1.3761
+        ],
+        "mesh_nodes": [
+          "Detailed_Varied_06.001"
+        ]
+      },
+      "recipe": "world.spawn(\"V10_leaf_shrub\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/V11_fallen_leaf",
+      "name": "V11_fallen_leaf",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V11_fallen_leaf.glb",
+      "format": "GLB",
+      "triangles": 16,
+      "bytes": 600448,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": true,
+      "preview": "art/library/previews/game_V11_fallen_leaf.png",
+      "uses": [
+        "game/scripts/world/landscape_coverage.gd"
+      ],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/V11_fallen_leaf.glb",
+      "metrics": {
+        "id": "V11_fallen_leaf",
+        "src": "raw/reviewed_library_20261012/V11_fallen_leaf.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 16,
+        "tex": 1024,
+        "bytes": 600448,
+        "godot_size_m_xyz": [
+          0.3931,
+          0.025,
+          0.5577
+        ],
+        "mesh_nodes": [
+          "Basic_Leaf_Flat_01.001"
+        ]
+      },
+      "recipe": "world.spawn(\"V11_fallen_leaf\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/V12_tulip",
+      "name": "V12_tulip",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V12_tulip.glb",
+      "format": "GLB",
+      "triangles": 156,
+      "bytes": 668180,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": true,
+      "preview": "art/library/previews/game_V12_tulip.png",
+      "uses": [
+        "game/scripts/world/landscape_coverage.gd",
+        "game/scripts/world/world_builder.gd"
+      ],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/V12_tulip.glb",
+      "metrics": {
+        "id": "V12_tulip",
+        "src": "raw/reviewed_library_20261012/V12_tulip.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 156,
+        "tex": 1024,
+        "bytes": 668180,
+        "godot_size_m_xyz": [
+          0.2636,
+          0.52,
+          0.3227
+        ],
+        "mesh_nodes": [
+          "Basic_Tulip_01.001"
+        ]
+      },
+      "recipe": "world.spawn(\"V12_tulip\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/V13_pampas",
+      "name": "V13_pampas",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V13_pampas.glb",
+      "format": "GLB",
+      "triangles": 114,
+      "bytes": 745984,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": true,
+      "preview": "art/library/previews/game_V13_pampas.png",
+      "uses": [
+        "game/scripts/world/landscape_coverage.gd",
+        "game/scripts/world/world_builder.gd"
+      ],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/V13_pampas.glb",
+      "metrics": {
+        "id": "V13_pampas",
+        "src": "raw/reviewed_library_20261012/V13_pampas.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 114,
+        "tex": 1024,
+        "bytes": 745984,
+        "godot_size_m_xyz": [
+          0.6344,
+          0.9,
+          0.3135
+        ],
+        "mesh_nodes": [
+          "Detailed_Pampas_01.001"
+        ]
+      },
+      "recipe": "world.spawn(\"V13_pampas\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/V14_broad_grass",
+      "name": "V14_broad_grass",
+      "category": "草地",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V14_broad_grass.glb",
+      "format": "GLB",
+      "triangles": 320,
+      "bytes": 713940,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": true,
+      "preview": "art/library/previews/game_V14_broad_grass.png",
+      "uses": [
+        "game/scripts/world/landscape_coverage.gd"
+      ],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/V14_broad_grass.glb",
+      "metrics": {
+        "id": "V14_broad_grass",
+        "src": "raw/reviewed_library_20261012/V14_broad_grass.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 320,
+        "tex": 1024,
+        "bytes": 713940,
+        "godot_size_m_xyz": [
+          0.4299,
+          0.42,
+          0.375
+        ],
+        "mesh_nodes": [
+          "Detailed_Tall_Grass_01.001"
+        ]
+      },
+      "recipe": "world.spawn(\"V14_broad_grass\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/V15_wheat_stem",
+      "name": "V15_wheat_stem",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V15_wheat_stem.glb",
+      "format": "GLB",
+      "triangles": 104,
+      "bytes": 745620,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": true,
+      "preview": "art/library/previews/game_V15_wheat_stem.png",
+      "uses": [
+        "game/scripts/world/landscape_coverage.gd",
+        "game/scripts/world/world_builder.gd"
+      ],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/V15_wheat_stem.glb",
+      "metrics": {
+        "id": "V15_wheat_stem",
+        "src": "raw/reviewed_library_20261012/V15_wheat_stem.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 104,
+        "tex": 1024,
+        "bytes": 745620,
+        "godot_size_m_xyz": [
+          0.4089,
+          0.75,
+          0.2096
+        ],
+        "mesh_nodes": [
+          "Detailed_Wheat_A_01.001"
+        ]
+      },
+      "recipe": "world.spawn(\"V15_wheat_stem\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/V16_path_pebble",
+      "name": "V16_path_pebble",
+      "category": "地景",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V16_path_pebble.glb",
+      "format": "GLB",
+      "triangles": 64,
+      "bytes": 5076,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_V16_path_pebble.png",
+      "uses": [],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/V16_path_pebble.glb",
+      "metrics": {
+        "id": "V16_path_pebble",
+        "src": "raw/reviewed_library_20261012/V16_path_pebble.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 64,
+        "tex": 1024,
+        "bytes": 5076,
+        "godot_size_m_xyz": [
+          0.3509,
+          0.16,
+          0.3726
+        ],
+        "mesh_nodes": [
+          "Pebble.007"
+        ]
+      },
+      "recipe": "world.spawn(\"V16_path_pebble\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/V17_path_pebble",
+      "name": "V17_path_pebble",
+      "category": "地景",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V17_path_pebble.glb",
+      "format": "GLB",
+      "triangles": 48,
+      "bytes": 4208,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_V17_path_pebble.png",
+      "uses": [],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/V17_path_pebble.glb",
+      "metrics": {
+        "id": "V17_path_pebble",
+        "src": "raw/reviewed_library_20261012/V17_path_pebble.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 48,
+        "tex": 1024,
+        "bytes": 4208,
+        "godot_size_m_xyz": [
+          0.1827,
+          0.19,
+          0.183
+        ],
+        "mesh_nodes": [
+          "Pebble.008"
+        ]
+      },
+      "recipe": "world.spawn(\"V17_path_pebble\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/V18_path_pebble",
+      "name": "V18_path_pebble",
+      "category": "地景",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V18_path_pebble.glb",
+      "format": "GLB",
+      "triangles": 54,
+      "bytes": 4632,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_V18_path_pebble.png",
+      "uses": [],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/V18_path_pebble.glb",
+      "metrics": {
+        "id": "V18_path_pebble",
+        "src": "raw/reviewed_library_20261012/V18_path_pebble.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 54,
+        "tex": 1024,
+        "bytes": 4632,
+        "godot_size_m_xyz": [
+          0.2973,
+          0.22,
+          0.2353
+        ],
+        "mesh_nodes": [
+          "Pebble.009"
+        ]
+      },
+      "recipe": "world.spawn(\"V18_path_pebble\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/V19_distant_cliff",
+      "name": "V19_distant_cliff",
+      "category": "道具",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V19_distant_cliff.glb",
+      "format": "GLB",
+      "triangles": 8317,
+      "bytes": 463020,
+      "license": "项目素材，来源条款待核对",
+      "source": "",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_V19_distant_cliff.png",
+      "uses": [
+        "game/scripts/world/landscape_coverage.gd"
+      ],
+      "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+      "raw_path": "art/models/raw/reviewed_library_20261012/V19_distant_cliff.glb",
+      "metrics": {
+        "id": "V19_distant_cliff",
+        "src": "raw/reviewed_library_20261012/V19_distant_cliff.glb",
+        "provider": "User-supplied CGC / YNA Blender mesh; see models_reviewed_library.json",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 8317,
+        "tex": 1024,
+        "bytes": 463020,
+        "godot_size_m_xyz": [
+          7.0499,
+          10.0,
+          5.9675
+        ],
+        "mesh_nodes": [
+          "Cliff_A_v02_Ultra_Low_Poly.001"
+        ]
+      },
+      "recipe": "world.spawn(\"V19_distant_cliff\", Vector3(0, 0, 0), 0, 0)"
+    },
+    {
+      "id": "game/V20_morning_glory",
+      "name": "朝颜竹架盆",
+      "category": "植物",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V20_morning_glory.glb",
+      "format": "GLB",
+      "triangles": 8100,
+      "bytes": 413600,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/08f3fb73-461d-425d-9c0b-5b3e58359ded",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_V20_morning_glory.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/V20_morning_glory.glb",
+      "metrics": {
+        "id": "V20_morning_glory",
+        "src": "raw/diversity_20261013/ready/V20_morning_glory.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 59998,
+        "tris": 8100,
+        "size_m": [
+          0.382,
+          0.351,
+          0.85
+        ],
+        "godot_size_m_xyz": [
+          0.382,
+          0.85,
+          0.351
+        ],
+        "tex": 1024,
+        "bytes": 413600,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.306
+      },
+      "recipe": "world.spawn(\"V20_morning_glory\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "town"
+      ],
+      "runtime_uses": [
+        {
+          "context": "town",
+          "placement_input_m": [
+            -15.3,
+            0.0,
+            -14.8
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/V20_morning_glory.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 9000
+    },
+    {
+      "id": "game/V21_white_hydrangea",
+      "name": "白绣球盆",
+      "category": "植物",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V21_white_hydrangea.glb",
+      "format": "GLB",
+      "triangles": 7200,
+      "bytes": 604908,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/4a6cbb2a-976b-4820-be39-1cd9b8123022",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_V21_white_hydrangea.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/V21_white_hydrangea.glb",
+      "metrics": {
+        "id": "V21_white_hydrangea",
+        "src": "raw/diversity_20261013/ready/V21_white_hydrangea.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 60000,
+        "tris": 7200,
+        "size_m": [
+          0.626,
+          0.607,
+          0.649
+        ],
+        "godot_size_m_xyz": [
+          0.626,
+          0.649,
+          0.607
+        ],
+        "tex": 1024,
+        "bytes": 604908,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.56,
+        "base_frac": 0.177
+      },
+      "recipe": "world.spawn(\"V21_white_hydrangea\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "town"
+      ],
+      "runtime_uses": [
+        {
+          "context": "town",
+          "placement_input_m": [
+            21.8,
+            0.0,
+            6.7
+          ],
+          "yaw_degrees": -90.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/V21_white_hydrangea.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 8000
+    },
+    {
+      "id": "game/V22_shiso_planter",
+      "name": "紫苏种植箱",
+      "category": "植物",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V22_shiso_planter.glb",
+      "format": "GLB",
+      "triangles": 5850,
+      "bytes": 404284,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/46fec8eb-8743-402a-8424-51ba86e459bb",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_V22_shiso_planter.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/V22_shiso_planter.glb",
+      "metrics": {
+        "id": "V22_shiso_planter",
+        "src": "raw/diversity_20261013/ready/V22_shiso_planter.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 60000,
+        "tris": 5850,
+        "size_m": [
+          0.615,
+          0.274,
+          0.449
+        ],
+        "godot_size_m_xyz": [
+          0.615,
+          0.449,
+          0.274
+        ],
+        "tex": 1024,
+        "bytes": 404284,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 1.85,
+        "levelled": true,
+        "lean_deg": 0.01,
+        "base_frac": 0.835
+      },
+      "recipe": "world.spawn(\"V22_shiso_planter\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "farm"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            -16.3,
+            0.0,
+            -6.0
+          ],
+          "yaw_degrees": 15.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/V22_shiso_planter.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 6500
+    },
+    {
+      "id": "game/V23_cosmos_pot",
+      "name": "波斯菊陶盆",
+      "category": "植物",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V23_cosmos_pot.glb",
+      "format": "GLB",
+      "triangles": 6299,
+      "bytes": 517012,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/7bfd0c2c-5912-4cf7-947d-26b8eafb129f",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_V23_cosmos_pot.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/V23_cosmos_pot.glb",
+      "metrics": {
+        "id": "V23_cosmos_pot",
+        "src": "raw/diversity_20261013/ready/V23_cosmos_pot.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 116165,
+        "tris": 6299,
+        "size_m": [
+          0.536,
+          0.536,
+          0.719
+        ],
+        "godot_size_m_xyz": [
+          0.536,
+          0.719,
+          0.536
+        ],
+        "tex": 1024,
+        "bytes": 517012,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.54,
+        "base_frac": 0.112
+      },
+      "recipe": "world.spawn(\"V23_cosmos_pot\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "town"
+      ],
+      "runtime_uses": [
+        {
+          "context": "town",
+          "placement_input_m": [
+            -8.65,
+            0.0,
+            -14.8
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/V23_cosmos_pot.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 7000
+    },
+    {
+      "id": "game/V24_fern_pot",
+      "name": "蕨类陶盆",
+      "category": "植物",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V24_fern_pot.glb",
+      "format": "GLB",
+      "triangles": 6300,
+      "bytes": 511328,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/9f640500-46e3-4bf1-a7a3-3b7759aa3abf",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_V24_fern_pot.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/V24_fern_pot.glb",
+      "metrics": {
+        "id": "V24_fern_pot",
+        "src": "raw/diversity_20261013/ready/V24_fern_pot.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 99887,
+        "tris": 6300,
+        "size_m": [
+          0.547,
+          0.547,
+          0.499
+        ],
+        "godot_size_m_xyz": [
+          0.547,
+          0.499,
+          0.547
+        ],
+        "tex": 1024,
+        "bytes": 511328,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.057
+      },
+      "recipe": "world.spawn(\"V24_fern_pot\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "home"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            6.1,
+            0.0,
+            -3.95
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/V24_fern_pot.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 7000
+    },
+    {
+      "id": "game/V25_dwarf_lemon",
+      "name": "矮柠檬盆栽",
+      "category": "植物",
+      "collection": "游戏资产",
+      "path": "game/assets/models/V25_dwarf_lemon.glb",
+      "format": "GLB",
+      "triangles": 8100,
+      "bytes": 436740,
+      "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+      "source": "https://hyper3d.ai/workspace/rodin/12c33d68-8dfa-4e0f-8af4-643f85640a5e",
+      "status": "已接入",
+      "animations": [],
+      "alpha": false,
+      "preview": "art/library/previews/game_V25_dwarf_lemon.png",
+      "uses": [
+        "game/scripts/world/model_diversity.gd"
+      ],
+      "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+      "raw_path": "art/models/raw/diversity_20261013/ready/V25_dwarf_lemon.glb",
+      "metrics": {
+        "id": "V25_dwarf_lemon",
+        "src": "raw/diversity_20261013/ready/V25_dwarf_lemon.glb",
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "tris_src": 115320,
+        "tris": 8100,
+        "size_m": [
+          0.751,
+          0.751,
+          1.1
+        ],
+        "godot_size_m_xyz": [
+          0.751,
+          1.1,
+          0.751
+        ],
+        "tex": 1024,
+        "bytes": 436740,
+        "yaw_fix": 0,
+        "level": true,
+        "lean_src_deg": 0.0,
+        "levelled": false,
+        "lean_deg": 0.0,
+        "base_frac": 0.148
+      },
+      "recipe": "world.spawn(\"V25_dwarf_lemon\", Vector3(0, 0, 0), 0, 0)",
+      "reuse_contexts": [
+        "home"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            6.0,
+            -0.45,
+            -8.0
+          ],
+          "yaw_degrees": -20.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ],
+      "reference": "art/references/model_diversity_20261013/V25_dwarf_lemon.png",
+      "revision": "20261013",
+      "provenance": "art/manifests/models_hyper3d_diversity_20261013.json",
+      "triangle_budget": 9000
     },
     {
       "id": "game/W01_flower_buckets",

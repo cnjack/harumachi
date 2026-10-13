@@ -1,0 +1,25 @@
+{
+ "id": "N09_shopping_basket",
+ "src": "raw/diversity_20261013/ready/N09_shopping_basket.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 4260,
+ "tris": 4260,
+ "size_m": [
+  0.488,
+  0.418,
+  0.34
+ ],
+ "godot_size_m_xyz": [
+  0.488,
+  0.34,
+  0.418
+ ],
+ "tex": 1024,
+ "bytes": 259836,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.0,
+ "base_frac": 0.673
+}

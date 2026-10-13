@@ -1,0 +1,25 @@
+{
+ "id": "N17_seedling_tray",
+ "src": "raw/diversity_20261013/ready/N17_seedling_tray.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 41258,
+ "tris": 5850,
+ "size_m": [
+  0.307,
+  0.217,
+  0.12
+ ],
+ "godot_size_m_xyz": [
+  0.307,
+  0.12,
+  0.217
+ ],
+ "tex": 1024,
+ "bytes": 222400,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.35,
+ "levelled": false,
+ "lean_deg": 0.46,
+ "base_frac": 0.59
+}

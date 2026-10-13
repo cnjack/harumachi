@@ -1,0 +1,25 @@
+{
+ "id": "N14_paper_parcels",
+ "src": "raw/diversity_20261013/ready/N14_paper_parcels.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 38461,
+ "tris": 4499,
+ "size_m": [
+  0.241,
+  0.216,
+  0.25
+ ],
+ "godot_size_m_xyz": [
+  0.241,
+  0.25,
+  0.216
+ ],
+ "tex": 1024,
+ "bytes": 228236,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.64,
+ "levelled": false,
+ "lean_deg": 0.58,
+ "base_frac": 0.554
+}

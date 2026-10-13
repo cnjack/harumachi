@@ -1,20 +1,25 @@
 {
  "id": "D05_hokora",
- "src": "raw/D05_hokora_pix/model.glb",
- "provider": "pixal3d (v0.5)",
- "tris_src": 925956,
- "tris": 7628,
+ "src": "raw/diversity_20261013/ready/D05_hokora.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 41208,
+ "tris": 14400,
  "size_m": [
-  0.933,
-  0.964,
-  1.193
+  0.931,
+  0.816,
+  1.2
  ],
  "godot_size_m_xyz": [
-  0.933,
-  1.193,
-  0.964
+  0.931,
+  1.2,
+  0.816
  ],
  "tex": 1024,
- "bytes": 623868,
- "yaw_fix": -155.5
+ "bytes": 480572,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.0,
+ "base_frac": 0.63
 }

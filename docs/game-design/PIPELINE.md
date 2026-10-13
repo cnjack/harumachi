@@ -1,8 +1,12 @@
 # 模型、工程与交付流程
 
+## 60点模型批次（2026-10-13）
+
+当前全量1800项，`--only=model-diversity`203项。固定60件范围后，每件A/B候选，付费工具以同一账户、150点余额下限和唯一槽位防重提；最终余额证明实际支出60点。逐件来源评审后才register/export，保留原始A/B；原稿、整理稿和游戏成品均以摘要绑定评审。四面及灰模不能替代真实场景检查，使用`tools/visual_qa.py model-diversity`拍四天气，另查作物阶段与树根。新小物用完整底足逐点验证支撑和邻物侵入，工作台同时保持旧E射线与两处居民托盘位置。源树先焊接UV分裂顶点再减面，并独立审计主干闭合；叶卡开放边另算。最终通过全量、配对性能和解压包200项演示后替换唯一ZIP。见[范围、标准与逐件来源](MODEL_DIVERSITY_20261013.md)。
+
 ## 素材单体接入与远景验收（2026-10-12）
 
-新增`--only=landscape`40项，覆盖镜头视距、地形/树根、透明图集、单体隔离和室内拍照恢复；当前全量1597项。`art/tools/import_reviewed_assets.py --source <素材目录>`提取17个已选单体，GLB必须限定当前场景，灰度遮罩必须创建真正RGBA图像。按统一game_export、level_check、model_audit流程更新实际资源与清单。截图用`--qa-landscape=1`，原生旋转镜头用`res://scenes/tools/landscape_probe.tscn`。完整结果见[LANDSCAPE_LIBRARY](LANDSCAPE_LIBRARY_20261012.md)。
+新增`--only=landscape`40项，覆盖镜头视距、地形/树根、透明图集、单体隔离和室内拍照恢复；该轮全量1597项。`art/tools/import_reviewed_assets.py --source <素材目录>`提取17个已选单体，GLB必须限定当前场景，灰度遮罩必须创建真正RGBA图像。按统一game_export、level_check、model_audit流程更新实际资源与清单。截图用`--qa-landscape=1`，原生旋转镜头用`res://scenes/tools/landscape_probe.tscn`。完整结果见[LANDSCAPE_LIBRARY](LANDSCAPE_LIBRARY_20261012.md)。
 
 ## 镜头碰撞预算与人物接触（2026-10-12）
 

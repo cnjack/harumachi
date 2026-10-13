@@ -170,6 +170,10 @@ func lawn(rects: Array, avoid: Array = [], style: String = "lawn", density: floa
 				mm.set_instance_custom_data(i, Color(e[3], 0, 0, 0))
 			var mi := MultiMeshInstance3D.new()
 			mi.multimesh = mm
+			var submitted_points := PackedVector3Array()
+			for entry: Array in list:
+				submitted_points.append(entry[0])
+			mi.set_meta("submitted_grass_positions", submitted_points)
 			mi.material_override = blade_material(style)
 			mi.set_meta("grass_style",style)
 			mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
@@ -246,6 +250,10 @@ func scatter(rects: Array, density: float, avoid: Array = [], mix: Array = MIX_L
 			mm.set_instance_custom_data(i, Color(float(e[3]), e[4], e[5], 0))
 		var mi := MultiMeshInstance3D.new()
 		mi.multimesh = mm
+		var submitted_points := PackedVector3Array()
+		for entry: Array in list:
+			submitted_points.append(entry[0])
+		mi.set_meta("submitted_grass_positions", submitted_points)
 		mi.material_override = material()
 		mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		mi.visibility_range_end = 58.0

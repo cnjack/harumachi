@@ -1,0 +1,25 @@
+{
+ "id": "N06_house_slippers",
+ "src": "raw/diversity_20261013/ready/N06_house_slippers.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 35825,
+ "tris": 4050,
+ "size_m": [
+  0.206,
+  0.256,
+  0.065
+ ],
+ "godot_size_m_xyz": [
+  0.206,
+  0.065,
+  0.256
+ ],
+ "tex": 1024,
+ "bytes": 144128,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.3,
+ "levelled": false,
+ "lean_deg": 0.22,
+ "base_frac": 0.69
+}

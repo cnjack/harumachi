@@ -1,0 +1,4382 @@
+{
+  "phase": "accepted",
+  "source_provider": "existing Hyper3D CLI account",
+  "budget": {
+    "initial_total": 210,
+    "target_total": 150,
+    "max_spend": 60,
+    "verified_wallet": {
+      "balance": 25,
+      "subscription_balance": 185,
+      "frozen": 0
+    },
+    "expected_per_generation": 0.5,
+    "max_submission_slots": 120,
+    "pricing_source": "https://docs.hyper3d.ai/en/api-specification/rodin-gen2-5#pricing",
+    "final_total": 150,
+    "actual_spend": 60,
+    "frozen": 0,
+    "accepted_generations": 120,
+    "selected": 60,
+    "unselected": 60,
+    "provider_failed": 0,
+    "refunded": 0,
+    "generation_prohibited": true
+  },
+  "assets": {
+    "D01_wheelbarrow": {
+      "label": "独轮车",
+      "kind": "replace",
+      "triangle_budget": 10000,
+      "size_m": 1.4,
+      "fit": "max",
+      "generation_id": "404498d8-cf5c-4c43-8f38-2ddc2bc164e6",
+      "source_sha256": "358493bfedb907641c185a0a8f72372659d4fbfd291534b19dcba6cab3beff64",
+      "prepared_sha256": "2cedc3059bee154fc0979a99bb674757462e9f96c60f8ceb29a12bdd9c803543",
+      "candidate": "a",
+      "reference": "art/references/model_diversity_20261013/D01_wheelbarrow.png",
+      "reference_sha256": "330db7646f49cfd23627dad07cbfc96079f58e1dd8a1b170c8dc2969f1f86333",
+      "task_url": "https://hyper3d.ai/workspace/rodin/404498d8-cf5c-4c43-8f38-2ddc2bc164e6",
+      "local_geometry_changes": [
+        {
+          "kind": "local_rear_handle_shortening",
+          "pivot_y": 0.24843217492103586,
+          "ratio": 0.33077184283005046,
+          "vertices": 2003,
+          "target_whole_length_to_height": 2.1538461538461537,
+          "retained": "tray, wheel, support feet and UV mapping"
+        }
+      ],
+      "previous_export": {
+        "src": "raw/D01_wheelbarrow_pix/model.glb",
+        "fit": "max",
+        "size": 1.4,
+        "tris": 8000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": 135.5,
+        "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 44.5 deg off-axis; turned square, front to +Z"
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/D01_wheelbarrow.glb",
+        "fit": "max",
+        "size": 1.4,
+        "tris": 9000,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 90,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/404498d8-cf5c-4c43-8f38-2ddc2bc164e6"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/D01_wheelbarrow.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "A保留更清晰的空车斗和单轮结构，B未改善长柄；局部缩短后保留车斗、支脚与轮胎",
+        "四面和灰模无额外地台；1.4米整体长度，实景围栏遮挡已换机位复核"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "bcfbf3127b206a22560ed6c2a67403e8dc5c793287d4eb83afd53318cef848b1",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/D01_wheelbarrow.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D01_wheelbarrow_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D01_wheelbarrow_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D01_wheelbarrow_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D01_wheelbarrow_rain.png"
+      ]
+    },
+    "D02_rain_barrel": {
+      "label": "雨水桶",
+      "kind": "replace",
+      "triangle_budget": 8000,
+      "size_m": 0.95,
+      "fit": "h",
+      "generation_id": "cd11b3c7-1def-4e4c-a725-d7c2b456854e",
+      "source_sha256": "3ec47953bf508d4ff8293f2a0d1812b52b746976207fa8ff723a47e2dbed3aa8",
+      "prepared_sha256": "db04b20efb0a5ad86c3fe7326506d905cd8548423d08c1c7f7b54c2cc582645e",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/D02_rain_barrel.png",
+      "reference_sha256": "27739f08185293931013328a66997fd07ed2bc7a25d73754c52192ec85c701cf",
+      "task_url": "https://hyper3d.ai/workspace/rodin/cd11b3c7-1def-4e4c-a725-d7c2b456854e",
+      "local_geometry_changes": [],
+      "previous_export": {
+        "src": "raw/D02_rain_barrel_pix/model.glb",
+        "fit": "h",
+        "size": 0.95,
+        "tris": 8000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/D02_rain_barrel.glb",
+        "fit": "h",
+        "size": 0.95,
+        "tris": 7200,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/cd11b3c7-1def-4e4c-a725-d7c2b456854e"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/D02_rain_barrel.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B有真实突出且中空的水龙头，桶箍与支脚完整，避免A贴图式出水口",
+        "实景四种光照保持奶油蓝配色，桶底支撑通过"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "a1a981cc44f90ef2015a31084bf0fa71a0aa697b0bd7f95ece016d4a3d941eaf",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/D02_rain_barrel.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D02_rain_barrel_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D02_rain_barrel_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D02_rain_barrel_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D02_rain_barrel_rain.png"
+      ]
+    },
+    "D03_veg_crates": {
+      "label": "三层蔬菜筐",
+      "kind": "replace",
+      "triangle_budget": 16000,
+      "size_m": 0.85,
+      "fit": "h",
+      "generation_id": "2b58614b-47c3-4ed0-b15a-b629cc653b7b",
+      "source_sha256": "63659ed51ae46d42e8a9119e0aade6fab905521514a7cfa40f214d48db610328",
+      "prepared_sha256": "912800af5a19d02ff6bf6309eeaa6c36a19b6ad67a21ed8fecc419ae7e38b35d",
+      "candidate": "a",
+      "reference": "art/references/model_diversity_20261013/D03_veg_crates.png",
+      "reference_sha256": "6911b27194a49ca078e7482c6c95d219ddd06ba7beb8af0cfa73c27a16358ecb",
+      "task_url": "https://hyper3d.ai/workspace/rodin/2b58614b-47c3-4ed0-b15a-b629cc653b7b",
+      "local_geometry_changes": [
+        {
+          "kind": "straight_container_joinery",
+          "retained": "Hyper3D tomato/cucumber/carrot geometry and original UVs",
+          "added": "three precise cedar frames with actual hand holes, separate slats, bottoms and bevels",
+          "removed_timber_faces": 21572,
+          "removed": "outer strips whose slat edges visibly waved in both provider candidates"
+        }
+      ],
+      "previous_export": {
+        "src": "raw/D03_veg_crates_pix/model.glb",
+        "fit": "h",
+        "size": 0.85,
+        "tris": 30000,
+        "tex": 2048,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "note": "v0.6 review: 8k decimation broke the slats; re-exported at 30k",
+        "yaw": -144.6,
+        "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 60.0 deg off-axis; turned square, front to +Z",
+        "square_note": "v0.7.3: footprint measured -5.4 deg off-axis after levelling (art/tools/level_check.py); yaw -150.0 -> -144.6"
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/D03_veg_crates.glb",
+        "fit": "h",
+        "size": 0.85,
+        "tris": 14400,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/2b58614b-47c3-4ed0-b15a-b629cc653b7b"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/D03_veg_crates.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "A蔬菜实体与UV较清楚；两个候选木框均扭曲，改建直板框而保留Hyper3D蔬菜实体",
+        "灰模可见真实板条与手孔；材料索引恢复后红绿橙色正确，实景开口已复拍"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "92a0d305d70b63f15de3825535825e153983c4eedf380fa7309b820f53b6b8c1",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/D03_veg_crates.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D03_veg_crates_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D03_veg_crates_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D03_veg_crates_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D03_veg_crates_rain.png"
+      ]
+    },
+    "D04_stone_lantern": {
+      "label": "石灯",
+      "kind": "replace",
+      "triangle_budget": 12000,
+      "size_m": 1.3,
+      "fit": "h",
+      "generation_id": "80142666-ceb7-4b98-8629-4109517ea5fd",
+      "source_sha256": "0d7727238711383f3a18cd32e8388754870ad5afc0812b4c5a77885c4cbad87c",
+      "prepared_sha256": "79d0b7fb44b10349638bdf0164308ccb58c6b1802aa7fcc90f24ca03a8387ac6",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/D04_stone_lantern.png",
+      "reference_sha256": "1de2f5545d9cc9e896ce11488135e6e28421eaf7545386037fc514f82003a0bd",
+      "task_url": "https://hyper3d.ai/workspace/rodin/80142666-ceb7-4b98-8629-4109517ea5fd",
+      "local_geometry_changes": [],
+      "previous_export": {
+        "src": "raw/D04_stone_lantern_pix/model.glb",
+        "fit": "h",
+        "size": 1.3,
+        "tris": 8000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": -148.4,
+        "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 60.5 deg off-axis; turned square, front to +Z",
+        "square_note": "v0.7.3: footprint measured -2.1 deg off-axis after levelling (art/tools/level_check.py); yaw -150.5 -> -148.4"
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/D04_stone_lantern.glb",
+        "fit": "h",
+        "size": 1.3,
+        "tris": 10800,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 14.95,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/80142666-ceb7-4b98-8629-4109517ea5fd"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/D04_stone_lantern.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B四面灯室开口是真实几何，浅石色比A饱和蓝更合适",
+        "原底座偏转14.9度被PROPS捕获；实际导出校正后46项通过，未放宽标准"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "ca2ea39f937a1e69ce7e4b329ea3708e9b1f2fb90259a601a18352092176386f",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/D04_stone_lantern.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D04_stone_lantern_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D04_stone_lantern_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D04_stone_lantern_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D04_stone_lantern_rain.png"
+      ]
+    },
+    "D05_hokora": {
+      "label": "小祠堂",
+      "kind": "replace",
+      "triangle_budget": 16000,
+      "size_m": 1.2,
+      "fit": "h",
+      "generation_id": "c91d2901-0d73-42d0-aeb9-7402e2ae17f9",
+      "source_sha256": "8d75d12de75303aeb17a62513216a524d14c1d9aed3383931b4a056e6d4abd74",
+      "prepared_sha256": "fb2e03e7b2129a7fde8441bc340cb876a12a4a1d2446e4842f6e0afe21aaab54",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/D05_hokora.png",
+      "reference_sha256": "04e2ec0411ecd55b0d97d31514569d4d8190a58e3395a39e456aedcdf948b0c9",
+      "task_url": "https://hyper3d.ai/workspace/rodin/c91d2901-0d73-42d0-aeb9-7402e2ae17f9",
+      "local_geometry_changes": [],
+      "previous_export": {
+        "src": "raw/D05_hokora_pix/model.glb",
+        "fit": "h",
+        "size": 1.2,
+        "tris": 8000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": -155.5,
+        "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 65.5 deg off-axis; turned square, front to +Z"
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/D05_hokora.glb",
+        "fit": "h",
+        "size": 1.2,
+        "tris": 14400,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/c91d2901-0d73-42d0-aeb9-7402e2ae17f9"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/D05_hokora.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B后壁闭合且前廊独立，修复A把前廊复制到背面的缺陷",
+        "前侧后灰模均完整，台基与屋顶分层，四天气实景支撑通过"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "eed840b7f3b46a76c894b6bae3db5af00e4ad438961637d89b412b8b8bf77906",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/D05_hokora.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D05_hokora_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D05_hokora_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D05_hokora_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D05_hokora_rain.png"
+      ]
+    },
+    "D08_tool_rack": {
+      "label": "园艺工具架",
+      "kind": "replace",
+      "triangle_budget": 12000,
+      "size_m": 1.6,
+      "fit": "h",
+      "generation_id": "1c92fe46-95c9-42c0-af23-26d23fdb1447",
+      "source_sha256": "c7620358547caaef1d640b9c320830453f95dc8c43f114c2d7d82d0217ec127c",
+      "prepared_sha256": "1fbb4ec13ef5a3960e3707a1b3524f1256f3b17afb42c7d2826ee78c3ea10fea",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/D08_tool_rack.png",
+      "reference_sha256": "eb0645f0f88c37b02dfc010ddc05cb029ea8d525de9fda0146b02bc0c627f8df",
+      "task_url": "https://hyper3d.ai/workspace/rodin/1c92fe46-95c9-42c0-af23-26d23fdb1447",
+      "local_geometry_changes": [],
+      "previous_export": {
+        "src": "raw/D08_tool_rack_pix/model.glb",
+        "fit": "h",
+        "size": 1.6,
+        "tris": 8000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": -148.0,
+        "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 58.0 deg off-axis; turned square, front to +Z"
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/D08_tool_rack.glb",
+        "fit": "h",
+        "size": 1.6,
+        "tris": 10800,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/1c92fe46-95c9-42c0-af23-26d23fdb1447"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/D08_tool_rack.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B木架直立，工具、草帽和架间空隙为真实结构",
+        "灰模背面完整；实景木色与周围工具房一致，脚底与通路检查通过"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "30967a890b4702e72a391c355b22b845ab9c4f6ead5f92e3f7fdbe6255b29a3a",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/D08_tool_rack.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D08_tool_rack_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D08_tool_rack_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D08_tool_rack_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D08_tool_rack_rain.png"
+      ]
+    },
+    "N13_empty_crate": {
+      "label": "空木筐",
+      "kind": "add",
+      "triangle_budget": 6000,
+      "size_m": 0.3,
+      "fit": "h",
+      "generation_id": "213d08e2-b9d6-47d5-8a31-3f190ed4ff66",
+      "source_sha256": "847ba226203583208d11af500c1587ed3cd816b1c05979ab2351dc23be7763fe",
+      "prepared_sha256": "79dd45b20aebdbd7e0af439e311a8097488215129baa18c7e4b26e872c356fc3",
+      "candidate": "a",
+      "reference": "art/references/model_diversity_20261013/N13_empty_crate.png",
+      "reference_sha256": "31dc96d960bd9eaf12d0f3bb2403655b6e4a93c880475fa006f9d125a39e5ffb",
+      "task_url": "https://hyper3d.ai/workspace/rodin/213d08e2-b9d6-47d5-8a31-3f190ed4ff66",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N13_empty_crate.glb",
+        "fit": "h",
+        "size": 0.3,
+        "tris": 5400,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/213d08e2-b9d6-47d5-8a31-3f190ed4ff66"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N13_empty_crate.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "四面手孔、底板和侧面透空结构完整，材质清理后UV未变",
+        "窄板缝仍为真实开口；可复用为仓储与收获空筐"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "834884bda48d54b40ebdfc69ad8f2633072706e302643d6c59cdd1ffd6b2d273",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N13_empty_crate.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N13_empty_crate_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N13_empty_crate_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N13_empty_crate_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N13_empty_crate_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            6.25,
+            0.0,
+            4.15
+          ],
+          "yaw_degrees": 10.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N15_umbrella_stand": {
+      "label": "伞架",
+      "kind": "add",
+      "triangle_budget": 6000,
+      "size_m": 0.72,
+      "fit": "h",
+      "generation_id": "62e5b448-d44c-4176-8181-116485a0a6e4",
+      "source_sha256": "b73f32e07c87cda40d4f63d019be41487adfe94e980edf59884b326f63fa32ca",
+      "prepared_sha256": "ae0fe3d41ba2e577ba0b9ef24804a7cf52b460286236ada6d3a4f636168508df",
+      "candidate": "a",
+      "reference": "art/references/model_diversity_20261013/N15_umbrella_stand.png",
+      "reference_sha256": "52eb5712b565aa69b79d89b5b9de921ae37e61eed0b29889c5980386e63c5e56",
+      "task_url": "https://hyper3d.ai/workspace/rodin/62e5b448-d44c-4176-8181-116485a0a6e4",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N15_umbrella_stand.glb",
+        "fit": "h",
+        "size": 0.72,
+        "tris": 5400,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/62e5b448-d44c-4176-8181-116485a0a6e4"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N15_umbrella_stand.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "陶筒开口、筒底、两把伞和钩柄完整，四侧都可用",
+        "蓝白装饰没有照片纹理；轻微浮雕保留，第二候选平涂方案尚待比较"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "8890dc80ddd7c307dcdbbb99fb9da2139692a79a660f692348a0edaea57c2bb8",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N15_umbrella_stand.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N15_umbrella_stand_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N15_umbrella_stand_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N15_umbrella_stand_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N15_umbrella_stand_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            6.0,
+            0.0,
+            1.7
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N16_wooden_crate_seat": {
+      "label": "木箱坐凳",
+      "kind": "add",
+      "triangle_budget": 6000,
+      "size_m": 0.38,
+      "fit": "h",
+      "generation_id": "2ddf3e6c-5409-4a2d-b65e-7e95e32aa947",
+      "source_sha256": "35fffd22212afb8eea5e35241917c76e19c427d6c65e60222a5c375c801ef4f3",
+      "prepared_sha256": "4d1b31368f500ca8b39889f96af1c26cb59813075f48d0efddd9e1711b898481",
+      "candidate": "a",
+      "reference": "art/references/model_diversity_20261013/N16_wooden_crate_seat.png",
+      "reference_sha256": "0a4960d22bef557808b6626dfca4d04f4b89b4c4894e0477605eedc35155dc9b",
+      "task_url": "https://hyper3d.ai/workspace/rodin/2ddf3e6c-5409-4a2d-b65e-7e95e32aa947",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N16_wooden_crate_seat.glb",
+        "fit": "h",
+        "size": 0.38,
+        "tris": 5400,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/2ddf3e6c-5409-4a2d-b65e-7e95e32aa947"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N16_wooden_crate_seat.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "四根腿与横撑连接正确，灰模保持开放承重结构",
+        "坐面平整、轮廓清楚；用作园艺工作区小凳，不作为精细家具主视觉"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "82f2c5d1ab08276b82659b0b2e8ee940155c35fc3fea201aa21485852c2eecc4",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N16_wooden_crate_seat.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N16_wooden_crate_seat_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N16_wooden_crate_seat_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N16_wooden_crate_seat_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N16_wooden_crate_seat_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "town",
+          "placement_input_m": [
+            13.6,
+            0.0,
+            14.0
+          ],
+          "yaw_degrees": -10.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        },
+        {
+          "context": "festival",
+          "placement_input_m": [
+            -6.4,
+            0,
+            17.8
+          ],
+          "yaw_degrees": 0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "purpose": "dry support for paper goldfish scoops",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "D09_log_pile": {
+      "label": "柴垛",
+      "kind": "replace",
+      "triangle_budget": 10000,
+      "size_m": 1.0,
+      "fit": "max",
+      "generation_id": "fc29ba9c-33db-408f-bbe3-61604e7cef3e",
+      "source_sha256": "7e8daf66d96e25e6df5f795f607985b74031b81b97cb85765f0041d1b15373ef",
+      "prepared_sha256": "588322a30ac9e97d54cd28117144e5f56f1fe2ef58959c6927aa618193afd51f",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/D09_log_pile.png",
+      "reference_sha256": "5aad904bf607431f12a5c53a68991a978b4235e52835d44d6059d104c8344770",
+      "task_url": "https://hyper3d.ai/workspace/rodin/fc29ba9c-33db-408f-bbe3-61604e7cef3e",
+      "local_geometry_changes": [],
+      "previous_export": {
+        "src": "raw/D09_log_pile_pix/model.glb",
+        "fit": "h",
+        "size": 1.0,
+        "tris": 30000,
+        "tex": 2048,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "note": "v0.6 review: 8k decimation broke the slats; re-exported at 30k",
+        "yaw": -157.0,
+        "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 67.0 deg off-axis; turned square, front to +Z"
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/D09_log_pile.glb",
+        "fit": "max",
+        "size": 1.0,
+        "tris": 9000,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/fc29ba9c-33db-408f-bbe3-61604e7cef3e"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/D09_log_pile.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B木块端面更清楚、切口有真实厚度，支架侧面与后侧完整；A/B都保留原始证据",
+        "B上侧支架有可见通风缝，整体实体深度足够；按一米最大尺寸均匀导出，不拉伸轴向"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "8f6832ebc509ed882449490775aeb28cdaa5553a318af84d64c86b9acb418f8a",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/D09_log_pile.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D09_log_pile_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D09_log_pile_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D09_log_pile_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D09_log_pile_rain.png"
+      ]
+    },
+    "D12_flower_planter": {
+      "label": "混植花箱",
+      "kind": "replace",
+      "triangle_budget": 10000,
+      "size_m": 1.2,
+      "fit": "w",
+      "generation_id": "e56933a0-c496-4fbd-8f0b-fefdc1816e03",
+      "source_sha256": "3c038f0df34dd751b0e024547ab332ab3de37a7cf5c31dfa7d3260930e0bf862",
+      "prepared_sha256": "14cfd5d01cd7a33a9f6d010c2aa1433294835c57c45f691f52734eee7e81284d",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/D12_flower_planter.png",
+      "reference_sha256": "4dc82c7dc5d0dc7ff505097c9ce2340d1da38fe332648e7ef3d3f6d206b86af6",
+      "task_url": "https://hyper3d.ai/workspace/rodin/e56933a0-c496-4fbd-8f0b-fefdc1816e03",
+      "local_geometry_changes": [],
+      "previous_export": {
+        "src": "raw/D12_flower_planter_pix/model.glb",
+        "fit": "max",
+        "size": 1.2,
+        "tris": 8000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": -141.0,
+        "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 51.0 deg off-axis; turned square, front to +Z"
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/D12_flower_planter.glb",
+        "fit": "w",
+        "size": 1.2,
+        "tris": 9000,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/e56933a0-c496-4fbd-8f0b-fefdc1816e03"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/D12_flower_planter.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B后侧花叶比A更均匀，橙白紫花与直板木框完整，四面无贴片式背板",
+        "整箱按宽1.2米均匀导出，花、茎、叶为实体且土面可见"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "cfbb651194232f63b5da259d8d1bbe62a55f6e4b4498363e414fee1c30402a11",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/D12_flower_planter.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D12_flower_planter_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D12_flower_planter_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D12_flower_planter_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_D12_flower_planter_rain.png"
+      ]
+    },
+    "A15_potted_plant": {
+      "label": "常绿陶盆",
+      "kind": "replace",
+      "triangle_budget": 8000,
+      "size_m": 0.8,
+      "fit": "h",
+      "generation_id": "594253b2-b689-4543-bdc7-4ddef391047c",
+      "source_sha256": "4ff9e6c0af0ac78b9d2e8927d9cea4798a5bde07ae44fb7e6bd1d2179cd8283a",
+      "prepared_sha256": "23298d1716cec96bf39cdcfa2a4090724d70916ffa4086659f6dc28bb6dd34ae",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/A15_potted_plant.png",
+      "reference_sha256": "6ad0688ac50bc709d100c979fa56bd0b2bb447dce087769a194ddca8c0aed1e6",
+      "task_url": "https://hyper3d.ai/workspace/rodin/594253b2-b689-4543-bdc7-4ddef391047c",
+      "local_geometry_changes": [
+        {
+          "kind": "radial_reconstruction_of_planar_upper_plant",
+          "original_upper_depth_to_width": 0.5324210432402998,
+          "added_rotation_degrees": 90,
+          "retained": "original complete model, pot/root, leaf and flower/fruit geometry, original UVs",
+          "added": "one orthogonal copy of the upper branch system; wheat retains each full rooted stalk",
+          "cutoff_fraction": 0.34,
+          "root_pivot_blender": [
+            -0.04694899916648865,
+            0.006929442286491394,
+            0.0
+          ],
+          "note": "Repairs actual side-volume failure without stretching leaf thickness or changing the original source"
+        }
+      ],
+      "previous_export": {
+        "src": "../../output/japanese-street-shinkai-dry/models/A15_potted_plant/model.glb",
+        "fit": "h",
+        "size": 0.8,
+        "tris": 4000,
+        "tex": 1024,
+        "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)"
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/A15_potted_plant.glb",
+        "fit": "h",
+        "size": 0.8,
+        "tris": 7200,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/594253b2-b689-4543-bdc7-4ddef391047c"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/A15_potted_plant.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B陶盆与叶形保持干净平涂，原上部仍偏扁；保留原UV和叶形增加一组正交枝叶",
+        "准备后四面均有完整叶丛体积，陶盆没有复制或拉伸；盆底仍为同一原始支撑"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "a17dc29b0505b37eda35a33cd756657da959336df479f39429ae2a3ef0360efc",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/A15_potted_plant.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_A15_potted_plant_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_A15_potted_plant_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_A15_potted_plant_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_A15_potted_plant_rain.png"
+      ]
+    },
+    "C10_potato": {
+      "label": "土豆植株",
+      "kind": "replace",
+      "triangle_budget": 6000,
+      "size_m": 0.5,
+      "fit": "h",
+      "generation_id": "789425a0-6b83-4db4-a16d-89c2a0e22c75",
+      "source_sha256": "4a27053d6234d62cd5e3ba8e1d4cef2fcbaeb37f4cd739b853fc7fd22c0fad31",
+      "prepared_sha256": "e87b049d5cfea5afa185c688210541a4aafa3989d1d1384f7279d7618e819009",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/C10_potato.png",
+      "reference_sha256": "9ff9e050655a0a97c1d44be32a5f02846fcf1deb5b5e29c2ff484272be63584a",
+      "task_url": "https://hyper3d.ai/workspace/rodin/789425a0-6b83-4db4-a16d-89c2a0e22c75",
+      "local_geometry_changes": [
+        {
+          "kind": "radial_reconstruction_of_planar_upper_plant",
+          "original_upper_depth_to_width": 0.5354726996618616,
+          "added_rotation_degrees": 90,
+          "retained": "original complete model, pot/root, leaf and flower/fruit geometry, original UVs",
+          "added": "one orthogonal copy of the upper branch system; wheat retains each full rooted stalk",
+          "cutoff_fraction": 0.08,
+          "root_pivot_blender": [
+            0.12595224380493164,
+            -0.191852867603302,
+            0.0
+          ],
+          "note": "Repairs actual side-volume failure without stretching leaf thickness or changing the original source"
+        }
+      ],
+      "previous_export": {
+        "src": "raw/C10_potato_pix/model.glb",
+        "fit": "h",
+        "size": 0.5,
+        "tris": 7000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": 44.4,
+        "square_note": "v0.7.3: footprint measured -44.4 deg off-axis after levelling (art/tools/level_check.py); yaw 0.0 -> 44.4"
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/C10_potato.glb",
+        "fit": "h",
+        "size": 0.5,
+        "tris": 5400,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": false,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/789425a0-6b83-4db4-a16d-89c2a0e22c75"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/C10_potato.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B白花和叶形比A更简洁；原侧面仍过薄，按根部轴向补一组正交上部枝叶",
+        "修整后四面都有自然心形叶和分枝，没有额外地台、外露土豆或被拉厚的叶片"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "90af18b6dacbc71d40b35c10f48a8bba8e6630d18a0971b5e846f45449086646",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/C10_potato.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C10_potato_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C10_potato_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C10_potato_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C10_potato_rain.png"
+      ]
+    },
+    "A14_hydrangea_pot": {
+      "label": "蓝绣球盆栽",
+      "kind": "replace",
+      "triangle_budget": 8000,
+      "size_m": 0.75,
+      "fit": "h",
+      "generation_id": "3075802c-1047-4bc7-ad9e-3e80f6488685",
+      "source_sha256": "01965e2128cb1c2e327d82784460d4013ae248243de9f2d06244565dfac1e9df",
+      "prepared_sha256": "28754a9200171fbf2b860773e9bfad1a5de97ed2cac6a0c1d0776800c55e7b35",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/A14_hydrangea_pot.png",
+      "reference_sha256": "26c10e687500fc9408c87c0a41a9a7b59ae8c9044c8a875a776309763c08db5a",
+      "task_url": "https://hyper3d.ai/workspace/rodin/3075802c-1047-4bc7-ad9e-3e80f6488685",
+      "local_geometry_changes": [
+        {
+          "kind": "radial_depth_already_sufficient",
+          "upper_depth_to_width": 0.8441750701865015
+        }
+      ],
+      "previous_export": {
+        "src": "../../output/japanese-street-shinkai-dry/models/A14_hydrangea_pot/model.glb",
+        "fit": "h",
+        "size": 0.75,
+        "tris": 4000,
+        "tex": 1024,
+        "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)"
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/A14_hydrangea_pot.glb",
+        "fit": "h",
+        "size": 0.75,
+        "tris": 7200,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/3075802c-1047-4bc7-ad9e-3e80f6488685"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/A14_hydrangea_pot.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B花序有抬起的实体小花、三个花头处于不同深度，盆和茎叶四侧完整",
+        "侧面冠层仍比正面窄，整体深度已满足盆栽用途；作为普通街边花盆，最终仍验减面和实景"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "cbc9ee158a4b347c7e75df0b3e417d73c62a90b5c802f029b032b0a46ed680e7",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/A14_hydrangea_pot.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_A14_hydrangea_pot_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_A14_hydrangea_pot_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_A14_hydrangea_pot_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_A14_hydrangea_pot_rain.png"
+      ]
+    },
+    "A16_planter_box": {
+      "label": "街边花箱",
+      "kind": "replace",
+      "triangle_budget": 9000,
+      "size_m": 1.1,
+      "fit": "w",
+      "generation_id": "38f0094f-3932-40f3-bb1f-80d83a8ad2c1",
+      "source_sha256": "6f44ff3216a0eb157767c9f2470afa5a09fbf3d81f363c3bdf7ca89f71768f5a",
+      "prepared_sha256": "c00c82b3b3f38b0e40a69a7148973800f7f47046a9710c8783548f92e4ab0e49",
+      "candidate": "a",
+      "reference": "art/references/model_diversity_20261013/A16_planter_box.png",
+      "reference_sha256": "33fe0e2902f4d0fd8c7504150ba3bcd6e56f655438bc22b935a079fcc3dcf0c3",
+      "task_url": "https://hyper3d.ai/workspace/rodin/38f0094f-3932-40f3-bb1f-80d83a8ad2c1",
+      "local_geometry_changes": [],
+      "previous_export": {
+        "src": "../../output/japanese-street-shinkai-dry/models/A16_planter_box/model.glb",
+        "fit": "w",
+        "size": 1.1,
+        "tris": 4000,
+        "tex": 1024,
+        "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)"
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/A16_planter_box.glb",
+        "fit": "w",
+        "size": 1.1,
+        "tris": 8100,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/38f0094f-3932-40f3-bb1f-80d83a8ad2c1"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/A16_planter_box.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "选A：A的木板直且板条间隙真实，粉白花为完整喇叭口；B木框和花朵更融化",
+        "长木箱在四侧都有板条、底板和角柱，绿叶分布在土面深度内"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "89dc62fbfa3bd23769885cac111728a420d341849683e1d1ba6bb047a1fe914d",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/A16_planter_box.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_A16_planter_box_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_A16_planter_box_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_A16_planter_box_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_A16_planter_box_rain.png"
+      ]
+    },
+    "C09_carrot": {
+      "label": "胡萝卜植株",
+      "kind": "replace",
+      "triangle_budget": 6000,
+      "size_m": 0.35,
+      "fit": "h",
+      "generation_id": "cc64ef92-6860-4df0-9901-7d5628372b3d",
+      "source_sha256": "f60a3e92548ed2f3fb6d47aa2da18e0fefb61ad1e620d58b2f66bfcb5194d71a",
+      "prepared_sha256": "1d8d109b0a491a7e157bf3c6336681c7727aabb16badb1e57b7b3f2883760707",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/C09_carrot.png",
+      "reference_sha256": "cf4057cf038cfd7466851d4fc1c5a0c1b644e8516398c4fd05585ae9b3fcf913",
+      "task_url": "https://hyper3d.ai/workspace/rodin/cc64ef92-6860-4df0-9901-7d5628372b3d",
+      "local_geometry_changes": [
+        {
+          "kind": "radial_reconstruction_of_planar_upper_plant",
+          "original_upper_depth_to_width": 0.42699545756076823,
+          "added_rotation_degrees": 90,
+          "retained": "original complete model, pot/root, leaf and flower/fruit geometry, original UVs",
+          "added": "one orthogonal copy of the upper branch system; wheat retains each full rooted stalk",
+          "cutoff_fraction": 0.2,
+          "root_pivot_blender": [
+            -0.008627891540527344,
+            0.024857014417648315,
+            0.0
+          ],
+          "note": "Repairs actual side-volume failure without stretching leaf thickness or changing the original source"
+        }
+      ],
+      "previous_export": {
+        "src": "raw/C09_carrot_pix/model.glb",
+        "fit": "h",
+        "size": 0.35,
+        "tris": 14000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/C09_carrot.glb",
+        "fit": "h",
+        "size": 0.35,
+        "tris": 5400,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": false,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/cc64ef92-6860-4df0-9901-7d5628372b3d"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/C09_carrot.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B细裂叶和橙色肩部清楚，原叶丛仍偏薄；按根部中心补一组正交上部叶茎",
+        "修整后四面都有完整叶丛，橙色根肩没有复制，保留原UV"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "6ee4ae9f5624ecbd41d0fb3040fedbed0a5f28f3121999bab1b2d2fd31ce84ef",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/C09_carrot.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C09_carrot_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C09_carrot_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C09_carrot_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C09_carrot_rain.png"
+      ]
+    },
+    "C12_corn": {
+      "label": "玉米植株",
+      "kind": "replace",
+      "triangle_budget": 6500,
+      "size_m": 1.8,
+      "fit": "h",
+      "generation_id": "e3541641-956e-4d5f-820d-fdd3bf6552ee",
+      "source_sha256": "1088812b9b77ea74ca45ffbd897d7a83e683ac152ea683e3e49aea2d77b66681",
+      "prepared_sha256": "5c915c2bff65e11ed3de364cea6fdcff8757661017ccde0c962299f1de1b7ab4",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/C12_corn.png",
+      "reference_sha256": "12af9f3b14f935d407e369fa87091886d63fbb7b5b84760af840bd73aeb671ac",
+      "task_url": "https://hyper3d.ai/workspace/rodin/e3541641-956e-4d5f-820d-fdd3bf6552ee",
+      "local_geometry_changes": [],
+      "previous_export": {
+        "src": "raw/C12_corn_pix/model.glb",
+        "fit": "h",
+        "size": 1.8,
+        "tris": 7000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/C12_corn.glb",
+        "fit": "h",
+        "size": 1.8,
+        "tris": 5850,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": false,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/e3541641-956e-4d5f-820d-fdd3bf6552ee"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/C12_corn.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B两根玉米穗有实体厚度，长叶弯曲并伸出主杆，背侧和侧面完成",
+        "保持玉米双列叶的生长习性，两穗、穗须与直立根杆均保留"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "e6582fd72ab51fca2b8b1d9ed45e5cc3877d3a15994480474f578f604cfd935a",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/C12_corn.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C12_corn_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C12_corn_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C12_corn_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C12_corn_rain.png"
+      ]
+    },
+    "C15_wheat": {
+      "label": "麦穗丛",
+      "kind": "replace",
+      "triangle_budget": 6500,
+      "size_m": 0.9,
+      "fit": "h",
+      "generation_id": "ad424b41-728f-4ad1-b162-75342c67a12a",
+      "source_sha256": "ac67c3f09d568a124fa7104105d6d67ef4a493337a8eaeff03b5bb203f133fda",
+      "prepared_sha256": "c672586f69469c40d979a63e68686bea6cb7e89dbbe12a9e5e083f050c4b97cf",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/C15_wheat.png",
+      "reference_sha256": "86292b1fda214f2e5119423101b9d55e2c5d6a0d75f0247c9014be937599ccc6",
+      "task_url": "https://hyper3d.ai/workspace/rodin/ad424b41-728f-4ad1-b162-75342c67a12a",
+      "local_geometry_changes": [
+        {
+          "kind": "radial_reconstruction_of_planar_upper_plant",
+          "original_upper_depth_to_width": 0.4217730727690771,
+          "added_rotation_degrees": 90,
+          "retained": "original complete model, pot/root, leaf and flower/fruit geometry, original UVs",
+          "added": "one orthogonal copy of the upper branch system; wheat retains each full rooted stalk",
+          "cutoff_fraction": 0,
+          "root_pivot_blender": [
+            -0.02974414825439453,
+            0.040950022637844086,
+            0.0
+          ],
+          "note": "Repairs actual side-volume failure without stretching leaf thickness or changing the original source"
+        }
+      ],
+      "previous_export": {
+        "src": "raw/C15_wheat_pix/model.glb",
+        "fit": "h",
+        "size": 0.9,
+        "tris": 14000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": 39.7,
+        "square_note": "v0.7.3: footprint measured -39.7 deg off-axis after levelling (art/tools/level_check.py); yaw 0.0 -> 39.7"
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/C15_wheat.glb",
+        "fit": "h",
+        "size": 0.9,
+        "tris": 5850,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": false,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/ad424b41-728f-4ad1-b162-75342c67a12a"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/C15_wheat.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B麦粒与穗梗实体清楚，正交补充完整扎根的麦秆，形成有深度的小麦丛",
+        "四面麦穗轮廓均可辨，底部各根麦杆保持同一土面，没有地台"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "aff27b51f630cdfa8e449d1bb6f9242f4f80689ff7b4e8c8d9ebfd0d62498c3a",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/C15_wheat.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C15_wheat_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C15_wheat_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C15_wheat_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C15_wheat_rain.png"
+      ]
+    },
+    "C16_onion": {
+      "label": "洋葱植株",
+      "kind": "replace",
+      "triangle_budget": 5000,
+      "size_m": 0.45,
+      "fit": "h",
+      "generation_id": "b13c53f3-4425-4e09-a317-f8d0f9191089",
+      "source_sha256": "dc00e91f82c07407879f6c3f0e119a5535b05ca4b4c108758e56c8703a46c573",
+      "prepared_sha256": "339a0e7dd71113c01ae3bde58d46cd92174b36a3ff35ce17b3f686d4f42aa614",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/C16_onion.png",
+      "reference_sha256": "27174baa466f71df207ab3f394a78af42f14bf6b40a622ec89e5aced140c6561",
+      "task_url": "https://hyper3d.ai/workspace/rodin/b13c53f3-4425-4e09-a317-f8d0f9191089",
+      "local_geometry_changes": [
+        {
+          "kind": "radial_reconstruction_of_planar_upper_plant",
+          "original_upper_depth_to_width": 0.1308116306177631,
+          "added_rotation_degrees": 90,
+          "retained": "original complete model, pot/root, leaf and flower/fruit geometry, original UVs",
+          "added": "one orthogonal copy of the upper branch system; wheat retains each full rooted stalk",
+          "cutoff_fraction": 0.4,
+          "root_pivot_blender": [
+            -0.06838065385818481,
+            -0.00632534921169281,
+            0.0
+          ],
+          "note": "Repairs actual side-volume failure without stretching leaf thickness or changing the original source"
+        }
+      ],
+      "previous_export": {
+        "src": "raw/C16_onion_pix/model.glb",
+        "fit": "h",
+        "size": 0.45,
+        "tris": 7000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": 27.5,
+        "square_note": "v0.7.3: footprint measured -27.5 deg off-axis after levelling (art/tools/level_check.py); yaw 0.0 -> 27.5"
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/C16_onion.glb",
+        "fit": "h",
+        "size": 0.45,
+        "tris": 4500,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": false,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/b13c53f3-4425-4e09-a317-f8d0f9191089"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/C16_onion.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B球茎和短根为实体，深绿叶片配色克制；补充正交叶组后四侧可见叶丛",
+        "球茎和根未复制，生长时将按实际土面半埋球茎，实景土线验收仍待完成"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "9151969ea3fd2195dd9d6addec6bbe79ac876c8b256c97547ca1867010cf3d60",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/C16_onion.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C16_onion_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C16_onion_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C16_onion_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C16_onion_rain.png"
+      ]
+    },
+    "F04_scarecrow": {
+      "label": "稻草人",
+      "kind": "replace",
+      "triangle_budget": 10000,
+      "size_m": 1.9,
+      "fit": "h",
+      "generation_id": "2040bb4e-a996-481d-9d12-396c03bca0e9",
+      "source_sha256": "8c582da08412913a1d8af908a8f3520063e356e3ce2a8bf51bace482249d7dd8",
+      "prepared_sha256": "605a984d7e87ce2ee6438c3b3e76d5eb04e93bd8128c37c0c303cd7d176569a3",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/F04_scarecrow.png",
+      "reference_sha256": "6b79c3c5b8be1f9f0acd4bb44707e6ae498275c03ffca6667b4ce2a41aeefcb5",
+      "task_url": "https://hyper3d.ai/workspace/rodin/2040bb4e-a996-481d-9d12-396c03bca0e9",
+      "local_geometry_changes": [],
+      "previous_export": {
+        "src": "raw/F04_scarecrow_h3d/model.glb",
+        "fit": "h",
+        "size": 1.9,
+        "tris": 5000,
+        "tex": 1024,
+        "weld": 0,
+        "provider": "hyper3d rodin gen-2.5 (v0.4)",
+        "rebake": true,
+        "fit_bounds_blender": {
+          "min": [
+            -0.7286838293075562,
+            -0.3012792468070984,
+            -0.002792231971397996
+          ],
+          "max": [
+            0.7410507798194885,
+            0.30370330810546875,
+            1.899999976158142
+          ]
+        },
+        "note": "2026-10-02 exact weld on untextured decimation copy; UV/colour rebake"
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/F04_scarecrow.glb",
+        "fit": "h",
+        "size": 1.9,
+        "tris": 9000,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/2040bb4e-a996-481d-9d12-396c03bca0e9"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/F04_scarecrow.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B帽沿略抬高，正常观察高度能看见微笑；蓝衣、草手与杆件完整",
+        "背面衣服和系绳完成，四侧没有重复的脸或额外支架"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "6ad8b9328d5a015f4feec4941086e916c98a52e9f047219078dd651e90a0718a",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/F04_scarecrow.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_F04_scarecrow_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_F04_scarecrow_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_F04_scarecrow_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_F04_scarecrow_rain.png"
+      ]
+    },
+    "F06_veggie_stand": {
+      "label": "菜摊",
+      "kind": "replace",
+      "triangle_budget": 15000,
+      "size_m": 1.9,
+      "fit": "h",
+      "generation_id": "4e349a99-1a22-45f9-aca5-c807b8985953",
+      "source_sha256": "24d8c030e093d56d31dfface395eea6ad36b385e34b1fa267abd972f705d374e",
+      "prepared_sha256": "e8a46ed9f8418844a8076a43bd501b69ae3a64ba60cc7e01c227de95424acd70",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/F06_veggie_stand.png",
+      "reference_sha256": "35a2b85c6d763f59c03cd02c3c5bc2df97bf36165fd3c185f45fa9f1ecf68bdb",
+      "task_url": "https://hyper3d.ai/workspace/rodin/4e349a99-1a22-45f9-aca5-c807b8985953",
+      "local_geometry_changes": [],
+      "previous_export": {
+        "src": "raw/F06_veggie_stand_h3d/model.glb",
+        "fit": "h",
+        "size": 1.9,
+        "tris": 6000,
+        "tex": 1024,
+        "weld": 0,
+        "provider": "hyper3d rodin gen-2.5 (v0.4)",
+        "rebake": true,
+        "fit_bounds_blender": {
+          "min": [
+            -0.6485791206359863,
+            -0.5142632126808167,
+            -2.731911536102416e-06
+          ],
+          "max": [
+            0.6447005271911621,
+            0.517848551273346,
+            1.9000000953674316
+          ]
+        },
+        "note": "2026-10-02 exact weld on untextured decimation copy; UV/colour rebake"
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/F06_veggie_stand.glb",
+        "fit": "h",
+        "size": 1.9,
+        "tris": 13500,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/4e349a99-1a22-45f9-aca5-c807b8985953"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/F06_veggie_stand.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B三层蔬菜是实际几何，顶棚与立柱完整，红褐木屋面和浅木框区分明确",
+        "前后板条开口真实，作为农园小菜摊的构造和尺度合适，仍须实景支撑检查"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "e3372724b555c185cc0c74edeb2613a815eac8b89a879ca5393ff56338b0ebe7",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/F06_veggie_stand.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_F06_veggie_stand_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_F06_veggie_stand_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_F06_veggie_stand_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_F06_veggie_stand_rain.png"
+      ]
+    },
+    "P07": {
+      "label": "社区菜床",
+      "kind": "replace",
+      "triangle_budget": 16000,
+      "size_m": 2.4,
+      "fit": "w",
+      "generation_id": "7a223acd-8f43-4a78-8dfb-25b61bb36d30",
+      "source_sha256": "1598061eacd914a48d1386cbc49ac0ed1c3f7e8c2fb04c9eb9797e4ab95bfae6",
+      "prepared_sha256": "3b40f6d0cd46cc098937d115fd1f25ff928fd7b8094c76c4c623da1e87d90e53",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/P07.png",
+      "reference_sha256": "549efbd3ad0b2f7a7bc687bf8923415ca9c0474000f4aaa12484ccfecdb77eee",
+      "task_url": "https://hyper3d.ai/workspace/rodin/7a223acd-8f43-4a78-8dfb-25b61bb36d30",
+      "local_geometry_changes": [],
+      "previous_export": {
+        "src": "raw/P07/model.glb",
+        "fit": "w",
+        "size": 2.4,
+        "tris": 8000,
+        "tex": 1024
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/P07.glb",
+        "fit": "w",
+        "size": 2.4,
+        "tris": 14400,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/7a223acd-8f43-4a78-8dfb-25b61bb36d30"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/P07.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B双阶花床、前层绿叶菜和后层番茄架完整，土面宽度充足",
+        "侧面两级深度清楚，柱脚、箱板、果实与支杆为实体，仍须按实际摆放检查"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "120642548133650899b9ff6d029954bc4df420967d54089491babd9c18aa06f0",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/P07.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_P07_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_P07_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_P07_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_P07_rain.png"
+      ]
+    },
+    "T06_camphor": {
+      "label": "樟树",
+      "kind": "add",
+      "triangle_budget": 20000,
+      "size_m": 6.5,
+      "fit": "h",
+      "generation_id": "616ce2e1-503e-4590-b586-ca67a9220f31",
+      "source_sha256": "ff91f4b478cba01a97b746b29259056cb971cdb9ba6090de76378feb67e5bf62",
+      "prepared_sha256": "4b5914874bb51820cff7b444f15390d4ed71240913b056152451e45d60bbe651",
+      "candidate": "a",
+      "reference": "art/references/model_diversity_20261013/T06_camphor.png",
+      "reference_sha256": "2f4db71983d25320044e009293ddbac03ba437932a3f0d907109de80451bfa63",
+      "task_url": "https://hyper3d.ai/workspace/rodin/616ce2e1-503e-4590-b586-ca67a9220f31",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/T06_camphor.glb",
+        "fit": "h",
+        "size": 6.5,
+        "tris": 18000,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": false,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/616ce2e1-503e-4590-b586-ca67a9220f31"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/T06_camphor.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "选A：完整夏绿冠层比B饱满，粗干、低根和分层侧枝清楚，四面都是真实树体",
+        "用于农园北侧近中景单体，保持原始生成枝叶结构；最终减面与根部仍验"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "d3697d82a129c8d70f3470788adf5912efa07fdcf3887ffc840d0f314def8e01",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/T06_camphor.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_T06_camphor_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_T06_camphor_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_T06_camphor_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_T06_camphor_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            20.0,
+            0.0,
+            -17.0
+          ],
+          "yaw_degrees": 24.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "T07_summer_maple": {
+      "label": "青枫",
+      "kind": "add",
+      "triangle_budget": 18000,
+      "size_m": 4.0,
+      "fit": "h",
+      "generation_id": "b19e19ae-3f59-437b-b338-3320248835bd",
+      "source_sha256": "5e7262fc7519e24f04b62ea82b456c0d35fbf39f7469e6f8b9ba5af8860fb19a",
+      "prepared_sha256": "3c9090b4072597878398dab97bcf0cca227f25b5919a925ed7f8d87dd074f588",
+      "candidate": "a",
+      "reference": "art/references/model_diversity_20261013/T07_summer_maple.png",
+      "reference_sha256": "e66a99bfcab4c7d06914fb9e93229ba7763f5680f9870306a95dbd2403d44ab0",
+      "task_url": "https://hyper3d.ai/workspace/rodin/b19e19ae-3f59-437b-b338-3320248835bd",
+      "local_geometry_changes": [
+        {
+          "kind": "completed_omitted_summer_canopy",
+          "retained": "Hyper3D generated trunk and primary branch geometry",
+          "added": "secondary boughs and species-specific full-depth crown of curved alpha sprigs",
+          "atlas": "art/references/model_diversity_20261013/foliage_atlas.png",
+          "atlas_sha256": "20b58d0c1925839c276181a1f73b0cb5bee3e822b6bc8e149ba6c5739be2b202",
+          "atlas_cell": 1,
+          "foliage_cards": 336,
+          "final_height_m": 4.0,
+          "material_cleanup": "warm matte bark replaces green-painted bare branches",
+          "bark_seam_vertices_before": 85422,
+          "bark_vertices_after_weld": 29976,
+          "bark_holes_capped": 0,
+          "disconnected_source_fragments_removed": 1,
+          "disconnected_source_area_fraction": 0.0003287788301165083,
+          "preserve_parts": true,
+          "note": "Leaf sprigs use alpha cutouts; the tree has a complete three-dimensional branch/crown volume"
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/T07_summer_maple.glb",
+        "fit": "h",
+        "size": 4.0,
+        "tris": 16200,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": false,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/b19e19ae-3f59-437b-b338-3320248835bd",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "image_format": "AUTO"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/T07_summer_maple.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "A/B均缺夏季叶冠；保留A的曲干与主枝，补深度枝和专用掌叶簇",
+        "降低过密原型后保留叶群间空隙，四面冠层有体积，使用透明叶簇而非整棵树画片",
+        "原生树根近景发现树皮裂洞，改为减面前焊接物理重合顶点；整理后四面与灰模树皮连续、原树形和叶冠保留。",
+        "保留主树干与相连原枝，删除面积占0.03%至7.63%的分离枝片；由已有完整补充枝系承接叶冠。四面与灰模轮廓复核无破洞或悬空枝片。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "cc5bedb160cadd2442cbaee11f346735745e800a308da4b3087b3907d937e6f4",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/T07_summer_maple.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_T07_summer_maple_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_T07_summer_maple_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_T07_summer_maple_night.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_T07_summer_maple_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "town",
+          "placement_input_m": [
+            29.5,
+            0.0,
+            11.5
+          ],
+          "yaw_degrees": 15.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "T08_green_cherry": {
+      "label": "夏日樱树",
+      "kind": "add",
+      "triangle_budget": 20000,
+      "size_m": 5.5,
+      "fit": "h",
+      "generation_id": "f14834df-2a82-4b3e-a738-5d443ba27338",
+      "source_sha256": "9a03e1b52a30b06e6bf4be5364563f4606b6abd801ff72bbcaacb22300958823",
+      "prepared_sha256": "8dd416657c2a259bacb44821eb22fe9d90bc24aa52db8ba22ce3ec33b93efa28",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/T08_green_cherry.png",
+      "reference_sha256": "12310a45a892c18978599fbba21dab57a5a6509b3087a45795e86fb5267e15f8",
+      "task_url": "https://hyper3d.ai/workspace/rodin/f14834df-2a82-4b3e-a738-5d443ba27338",
+      "local_geometry_changes": [
+        {
+          "kind": "completed_omitted_summer_canopy",
+          "retained": "Hyper3D generated trunk and primary branch geometry",
+          "added": "secondary boughs and species-specific full-depth crown of curved alpha sprigs",
+          "atlas": "art/references/model_diversity_20261013/foliage_atlas.png",
+          "atlas_sha256": "20b58d0c1925839c276181a1f73b0cb5bee3e822b6bc8e149ba6c5739be2b202",
+          "atlas_cell": 0,
+          "foliage_cards": 336,
+          "final_height_m": 5.5,
+          "material_cleanup": "warm matte bark replaces green-painted bare branches",
+          "bark_seam_vertices_before": 104504,
+          "bark_vertices_after_weld": 26906,
+          "bark_holes_capped": 0,
+          "disconnected_source_fragments_removed": 8,
+          "disconnected_source_area_fraction": 0.07630823231993433,
+          "preserve_parts": true,
+          "note": "Leaf sprigs use alpha cutouts; the tree has a complete three-dimensional branch/crown volume"
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/T08_green_cherry.glb",
+        "fit": "h",
+        "size": 5.5,
+        "tris": 18000,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": false,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/f14834df-2a82-4b3e-a738-5d443ba27338",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "image_format": "AUTO"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/T08_green_cherry.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "A/B均只有枝干；选B主干分叉，补椭圆叶冠层和深度侧枝",
+        "保留生成干形，树冠分层、四向可见，独立树干与叶簇材质便于复用",
+        "原生树根近景发现树皮裂洞，改为减面前焊接物理重合顶点；整理后四面与灰模树皮连续、原树形和叶冠保留。",
+        "保留主树干与相连原枝，删除面积占0.03%至7.63%的分离枝片；由已有完整补充枝系承接叶冠。四面与灰模轮廓复核无破洞或悬空枝片。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "b703f7389aa359f7c86a0ec4288b50f80b6c3290b8191e3e573f82167d4fa108",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/T08_green_cherry.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_T08_green_cherry_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_T08_green_cherry_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_T08_green_cherry_night.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_T08_green_cherry_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "town",
+          "placement_input_m": [
+            -44.0,
+            0.0,
+            3.0
+          ],
+          "yaw_degrees": -25.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "T09_bamboo_grove": {
+      "label": "竹丛",
+      "kind": "add",
+      "triangle_budget": 16000,
+      "size_m": 4.8,
+      "fit": "h",
+      "generation_id": "acf8180d-ad24-453e-a58f-2e86b38894fa",
+      "source_sha256": "ccc769d40c2ee0fc61e06c8cf404fa647889378d1d7703fe34daa908b81d96b4",
+      "prepared_sha256": "ba49d171075b6835c1b6340c65d1a638bd1f14c2131979103eabd4ca16c0de56",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/T09_bamboo_grove.png",
+      "reference_sha256": "f7c732bd6643fa42f1a9222a1dac5cff3e1eecdec8575751ddc395b6b0541a35",
+      "task_url": "https://hyper3d.ai/workspace/rodin/acf8180d-ad24-453e-a58f-2e86b38894fa",
+      "local_geometry_changes": [
+        {
+          "kind": "radial_reconstruction_of_planar_upper_plant",
+          "original_upper_depth_to_width": 0.5067931018120416,
+          "added_rotation_degrees": 90,
+          "retained": "original complete model, pot/root, leaf and flower/fruit geometry, original UVs",
+          "added": "one orthogonal copy of the upper branch system; wheat retains each full rooted stalk",
+          "cutoff_fraction": 0,
+          "root_pivot_blender": [
+            -0.006316870450973511,
+            -0.008493013679981232,
+            0.0
+          ],
+          "note": "Repairs actual side-volume failure without stretching leaf thickness or changing the original source"
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/T09_bamboo_grove.glb",
+        "fit": "h",
+        "size": 4.8,
+        "tris": 14400,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": false,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/acf8180d-ad24-453e-a58f-2e86b38894fa"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/T09_bamboo_grove.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B竹节、长叶和杆件完整，原排列偏薄，补一组正交完整竹杆形成八杆竹丛",
+        "各方向都有独立杆叶与间隙，使用同一原始UV；实际土面根端仍需检查"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "8d236d1eff18a83147f3ac2e9dc86f11bd5ea3d5a7d20017474add70aa845299",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/T09_bamboo_grove.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_T09_bamboo_grove_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_T09_bamboo_grove_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_T09_bamboo_grove_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_T09_bamboo_grove_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            18.0,
+            0.0,
+            24.0
+          ],
+          "yaw_degrees": 20.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "T10_weeping_willow": {
+      "label": "垂柳",
+      "kind": "add",
+      "triangle_budget": 20000,
+      "size_m": 6.0,
+      "fit": "h",
+      "generation_id": "0fccd065-8984-4fe4-b8bf-a2ec0fa96135",
+      "source_sha256": "a7aae4c2d6f95126247bf0c36123fef06735c90902217e1c2aab3040e51d539b",
+      "prepared_sha256": "f6ecf725de275a28537fca08dc1a4b5d89ca42577b52413163eff235917a60f4",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/T10_weeping_willow.png",
+      "reference_sha256": "159f56ad9bf1298ca83fca632eab927b0996f1503b3a3a195ec904235cd1839e",
+      "task_url": "https://hyper3d.ai/workspace/rodin/0fccd065-8984-4fe4-b8bf-a2ec0fa96135",
+      "local_geometry_changes": [
+        {
+          "kind": "completed_omitted_summer_canopy",
+          "retained": "Hyper3D generated trunk and primary branch geometry",
+          "added": "secondary boughs and species-specific full-depth crown of curved alpha sprigs",
+          "atlas": "art/references/model_diversity_20261013/foliage_atlas.png",
+          "atlas_sha256": "20b58d0c1925839c276181a1f73b0cb5bee3e822b6bc8e149ba6c5739be2b202",
+          "atlas_cell": 2,
+          "foliage_cards": 650,
+          "final_height_m": 6.0,
+          "material_cleanup": "warm matte bark replaces green-painted bare branches",
+          "bark_seam_vertices_before": 113093,
+          "bark_vertices_after_weld": 26517,
+          "bark_holes_capped": 0,
+          "disconnected_source_fragments_removed": 34,
+          "disconnected_source_area_fraction": 0.06875456915943862,
+          "preserve_parts": true,
+          "note": "Leaf sprigs use alpha cutouts; the tree has a complete three-dimensional branch/crown volume"
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/T10_weeping_willow.glb",
+        "fit": "h",
+        "size": 6.0,
+        "tris": 18000,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": false,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/0fccd065-8984-4fe4-b8bf-a2ec0fa96135",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "image_format": "AUTO"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/T10_weeping_willow.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B枝干保留，生成器缺失的柳帘用独立细长垂叶簇补齐",
+        "四周都有垂叶帘、中央干形与空隙，冠形与青枫和樟树明确不同",
+        "原生树根近景发现树皮裂洞，改为减面前焊接物理重合顶点；整理后四面与灰模树皮连续、原树形和叶冠保留。",
+        "保留主树干与相连原枝，删除面积占0.03%至7.63%的分离枝片；由已有完整补充枝系承接叶冠。四面与灰模轮廓复核无破洞或悬空枝片。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "fdd788748d24dd7f56db438737dfcc6d5f9da7a12fba0a72965009af7e10d14c",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/T10_weeping_willow.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_T10_weeping_willow_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_T10_weeping_willow_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_T10_weeping_willow_night.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_T10_weeping_willow_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            -19.0,
+            0.0,
+            24.0
+          ],
+          "yaw_degrees": -40.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "T11_young_zelkova": {
+      "label": "幼榉树",
+      "kind": "add",
+      "triangle_budget": 18000,
+      "size_m": 4.5,
+      "fit": "h",
+      "generation_id": "73eb83bb-f07a-40ad-ac01-6e432ffeffe2",
+      "source_sha256": "8991bea8bdca6b27d034f145c2375e1f701ab9b27f1e1601b2d1689c33f91101",
+      "prepared_sha256": "1fa3724745f4932ed36c3a89d549a9a117f0bcb123acb6568a84b92c46008e64",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/T11_young_zelkova.png",
+      "reference_sha256": "bb341e52fe34c5f1556ecb5d4e2cee1bf577131b75a1d82488594a4c2ec35b13",
+      "task_url": "https://hyper3d.ai/workspace/rodin/73eb83bb-f07a-40ad-ac01-6e432ffeffe2",
+      "local_geometry_changes": [
+        {
+          "kind": "completed_omitted_summer_canopy",
+          "retained": "Hyper3D generated trunk and primary branch geometry",
+          "added": "secondary boughs and species-specific full-depth crown of curved alpha sprigs",
+          "atlas": "art/references/model_diversity_20261013/foliage_atlas.png",
+          "atlas_sha256": "20b58d0c1925839c276181a1f73b0cb5bee3e822b6bc8e149ba6c5739be2b202",
+          "atlas_cell": 3,
+          "foliage_cards": 336,
+          "final_height_m": 4.5,
+          "material_cleanup": "warm matte bark replaces green-painted bare branches",
+          "bark_seam_vertices_before": 83095,
+          "bark_vertices_after_weld": 28925,
+          "bark_holes_capped": 0,
+          "disconnected_source_fragments_removed": 8,
+          "disconnected_source_area_fraction": 0.01600017403873427,
+          "preserve_parts": true,
+          "note": "Leaf sprigs use alpha cutouts; the tree has a complete three-dimensional branch/crown volume"
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/T11_young_zelkova.glb",
+        "fit": "h",
+        "size": 4.5,
+        "tris": 16200,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": false,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/73eb83bb-f07a-40ad-ac01-6e432ffeffe2",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "image_format": "AUTO"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/T11_young_zelkova.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B细干和高分枝保留，补小锯齿椭圆叶的窄冠幼树",
+        "四面分层叶冠完整，根部和树干独立，作为近景小树而非远处高面数散布",
+        "原生树根近景发现树皮裂洞，改为减面前焊接物理重合顶点；整理后四面与灰模树皮连续、原树形和叶冠保留。",
+        "保留主树干与相连原枝，删除面积占0.03%至7.63%的分离枝片；由已有完整补充枝系承接叶冠。四面与灰模轮廓复核无破洞或悬空枝片。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "8cfe321c2208f33723e08ea23986b8fbcee66765c8fad919a49aecde1150c654",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/T11_young_zelkova.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_T11_young_zelkova_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_T11_young_zelkova_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_T11_young_zelkova_night.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_T11_young_zelkova_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "town",
+          "placement_input_m": [
+            36.0,
+            0.0,
+            12.0
+          ],
+          "yaw_degrees": 60.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "V20_morning_glory": {
+      "label": "朝颜竹架盆",
+      "kind": "add",
+      "triangle_budget": 9000,
+      "size_m": 0.85,
+      "fit": "h",
+      "generation_id": "08f3fb73-461d-425d-9c0b-5b3e58359ded",
+      "source_sha256": "4ca0eea85cc5c83bbb583cf5dcd87fd350de34d88e528b37d2e3b1432d774056",
+      "prepared_sha256": "5af9ed8f5ebd322b514a2378180e8da5507f12e7534c8ebd281c93f468c76ece",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/V20_morning_glory.png",
+      "reference_sha256": "c67bf5f101a128e20fada267fa92cbb633c7fb3a6c8b6acee446e1ab7c5e0c03",
+      "task_url": "https://hyper3d.ai/workspace/rodin/08f3fb73-461d-425d-9c0b-5b3e58359ded",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/V20_morning_glory.glb",
+        "fit": "h",
+        "size": 0.85,
+        "tris": 8100,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/08f3fb73-461d-425d-9c0b-5b3e58359ded"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/V20_morning_glory.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B陶盆、竹架、攀缘茎与蓝色喇叭花完整，背侧也有花叶",
+        "三角支架提供实际深度，花口和架间开口可见，作为花店门侧单体"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "97ff44505156acb969d2836ef0f5c990a020a2930d7284dcd3e310265fa80631",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/V20_morning_glory.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V20_morning_glory_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V20_morning_glory_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V20_morning_glory_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V20_morning_glory_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "town",
+          "placement_input_m": [
+            -15.3,
+            0.0,
+            -14.8
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "V21_white_hydrangea": {
+      "label": "白绣球盆",
+      "kind": "add",
+      "triangle_budget": 8000,
+      "size_m": 0.65,
+      "fit": "h",
+      "generation_id": "4a6cbb2a-976b-4820-be39-1cd9b8123022",
+      "source_sha256": "e1af40d25ab1faae9d0e6cada4e8aa5a39ee5bb62571f6aef908cb59c5924d13",
+      "prepared_sha256": "8f149c914ef4f107cecf5fc9eaf141ca94492deb310f2939b61c66bf5b14bc81",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/V21_white_hydrangea.png",
+      "reference_sha256": "64209c9661b4216b72b61189e424d4abe16e286a6332dac4c709a9503da9868e",
+      "task_url": "https://hyper3d.ai/workspace/rodin/4a6cbb2a-976b-4820-be39-1cd9b8123022",
+      "local_geometry_changes": [
+        {
+          "kind": "radial_depth_already_sufficient",
+          "upper_depth_to_width": 0.9621366297539362
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/V21_white_hydrangea.glb",
+        "fit": "h",
+        "size": 0.65,
+        "tris": 7200,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/4a6cbb2a-976b-4820-be39-1cd9b8123022"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/V21_white_hydrangea.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B圆陶盆与双白花簇完整，花瓣起伏为实体，叶与茎分层",
+        "花头在不同深度，四侧有完成的盆体和叶背，普通住家门侧用途明确"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "fdbb579a555033a6f404f8ca218b9a2f10e184f6d6b2754861ec74f275fc1daa",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/V21_white_hydrangea.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V21_white_hydrangea_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V21_white_hydrangea_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V21_white_hydrangea_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V21_white_hydrangea_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "town",
+          "placement_input_m": [
+            21.8,
+            0.0,
+            6.7
+          ],
+          "yaw_degrees": -90.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "V22_shiso_planter": {
+      "label": "紫苏种植箱",
+      "kind": "add",
+      "triangle_budget": 6500,
+      "size_m": 0.45,
+      "fit": "h",
+      "generation_id": "46fec8eb-8743-402a-8424-51ba86e459bb",
+      "source_sha256": "29c495b0e5797c277059ebcda010aaff81458c98bcbc034102f8fea36d5f05e8",
+      "prepared_sha256": "e672dd777334ff8a67c67cf171f530f827ad4ccb661640624d7a1f83b802e7ab",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/V22_shiso_planter.png",
+      "reference_sha256": "6ceb9199b61134fe91c27c48624f72cd74737c444d3a4b2e5d41e14033ff76c8",
+      "task_url": "https://hyper3d.ai/workspace/rodin/46fec8eb-8743-402a-8424-51ba86e459bb",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/V22_shiso_planter.glb",
+        "fit": "h",
+        "size": 0.45,
+        "tris": 5850,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/46fec8eb-8743-402a-8424-51ba86e459bb"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/V22_shiso_planter.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B紫绿锯齿叶与直木花箱清楚，六株茎在土面内，侧面箱深完整",
+        "细长花箱的单排植物习性保留，作为农园香草小箱可反复使用"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "f44148ccba7917cff0d1ac839493921766b722893ee32de74c8be7790413e2b6",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/V22_shiso_planter.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V22_shiso_planter_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V22_shiso_planter_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V22_shiso_planter_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V22_shiso_planter_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            -16.3,
+            0.0,
+            -6.0
+          ],
+          "yaw_degrees": 15.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "V23_cosmos_pot": {
+      "label": "波斯菊陶盆",
+      "kind": "add",
+      "triangle_budget": 7000,
+      "size_m": 0.72,
+      "fit": "h",
+      "generation_id": "7bfd0c2c-5912-4cf7-947d-26b8eafb129f",
+      "source_sha256": "b95dbb5678d6fd80038e6d3c9e4d81b5c627c83b4563d831f890d9f907ef6d41",
+      "prepared_sha256": "971db79acf8ab1e9ab532bfa6379696d665e9dfa6d20e86e86a4012269d1ae7b",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/V23_cosmos_pot.png",
+      "reference_sha256": "7787332ed5ddd69ca424a27b9e3da831230468d93824700d01625ff850c831f5",
+      "task_url": "https://hyper3d.ai/workspace/rodin/7bfd0c2c-5912-4cf7-947d-26b8eafb129f",
+      "local_geometry_changes": [
+        {
+          "kind": "radial_reconstruction_of_planar_upper_plant",
+          "original_upper_depth_to_width": 0.43126874902748424,
+          "added_rotation_degrees": 90,
+          "retained": "original complete model, pot/root, leaf and flower/fruit geometry, original UVs",
+          "added": "one orthogonal copy of the upper branch system; wheat retains each full rooted stalk",
+          "cutoff_fraction": 0.28,
+          "root_pivot_blender": [
+            -0.010714054107666016,
+            0.0007547438144683838,
+            0.0
+          ],
+          "note": "Repairs actual side-volume failure without stretching leaf thickness or changing the original source"
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/V23_cosmos_pot.glb",
+        "fit": "h",
+        "size": 0.72,
+        "tris": 6300,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/7bfd0c2c-5912-4cf7-947d-26b8eafb129f"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/V23_cosmos_pot.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B粉白花更柔和，补正交上部枝花后每面都有独立花、细叶与茎",
+        "单个白盆不复制，花叶保留原始几何与UV，土面仍可见"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "c0abe6955ad53843699d39109d9e0e2a9c4b95c8120fd27b21032f712d765670",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/V23_cosmos_pot.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V23_cosmos_pot_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V23_cosmos_pot_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V23_cosmos_pot_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V23_cosmos_pot_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "town",
+          "placement_input_m": [
+            -8.65,
+            0.0,
+            -14.8
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "V24_fern_pot": {
+      "label": "蕨类陶盆",
+      "kind": "add",
+      "triangle_budget": 7000,
+      "size_m": 0.5,
+      "fit": "h",
+      "generation_id": "9f640500-46e3-4bf1-a7a3-3b7759aa3abf",
+      "source_sha256": "ff4bc3d40a367ffdb8f76ce799e0137084f273a1c1a6f98525e40f9b0801d9d1",
+      "prepared_sha256": "5cf8e649029e4cbd5667753183a386bce612095ba4401e5da16979d1fbd91af9",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/V24_fern_pot.png",
+      "reference_sha256": "665252637fae268fea5dd5ebdfa1b78ad4527555c3a8a4eba1721b5757d536a4",
+      "task_url": "https://hyper3d.ai/workspace/rodin/9f640500-46e3-4bf1-a7a3-3b7759aa3abf",
+      "local_geometry_changes": [
+        {
+          "kind": "radial_reconstruction_of_planar_upper_plant",
+          "original_upper_depth_to_width": 0.34346901959864895,
+          "added_rotation_degrees": 90,
+          "retained": "original complete model, pot/root, leaf and flower/fruit geometry, original UVs",
+          "added": "one orthogonal copy of the upper branch system; wheat retains each full rooted stalk",
+          "cutoff_fraction": 0.36,
+          "root_pivot_blender": [
+            -0.01994219422340393,
+            0.003735572099685669,
+            0.0
+          ],
+          "note": "Repairs actual side-volume failure without stretching leaf thickness or changing the original source"
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/V24_fern_pot.glb",
+        "fit": "h",
+        "size": 0.5,
+        "tris": 6300,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/9f640500-46e3-4bf1-a7a3-3b7759aa3abf"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/V24_fern_pot.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B羽状叶片完整，补正交弯叶后形成有深度的蕨丛",
+        "黄陶盆与羽片间隙均真实，室内缘侧用途合适"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "8250846e284b19a52c73f887e3de72db8ac8ce859bf6ab11f461fb3f2420cda8",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/V24_fern_pot.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V24_fern_pot_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V24_fern_pot_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V24_fern_pot_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V24_fern_pot_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            6.1,
+            0.0,
+            -3.95
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "V25_dwarf_lemon": {
+      "label": "矮柠檬盆栽",
+      "kind": "add",
+      "triangle_budget": 9000,
+      "size_m": 1.1,
+      "fit": "h",
+      "generation_id": "12c33d68-8dfa-4e0f-8af4-643f85640a5e",
+      "source_sha256": "35a346799bcbe9b60e2f40472b70ab09b109e8e70484df4f199846a7183d6a2e",
+      "prepared_sha256": "3da0eee55ba6369443e6957d2f0a467cd45353ff7689ac74721088925785a6b3",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/V25_dwarf_lemon.png",
+      "reference_sha256": "be98472ce571c72745b7621f86d34ceb8dc245909e7ad4111cfb8a6b3ba0ce73",
+      "task_url": "https://hyper3d.ai/workspace/rodin/12c33d68-8dfa-4e0f-8af4-643f85640a5e",
+      "local_geometry_changes": [
+        {
+          "kind": "radial_reconstruction_of_planar_upper_plant",
+          "original_upper_depth_to_width": 0.30331924131995225,
+          "added_rotation_degrees": 90,
+          "retained": "original complete model, pot/root, leaf and flower/fruit geometry, original UVs",
+          "added": "one orthogonal copy of the upper branch system; wheat retains each full rooted stalk",
+          "cutoff_fraction": 0.29,
+          "root_pivot_blender": [
+            0.017425835132598877,
+            -0.003918975591659546,
+            0.0
+          ],
+          "note": "Repairs actual side-volume failure without stretching leaf thickness or changing the original source"
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/V25_dwarf_lemon.glb",
+        "fit": "h",
+        "size": 1.1,
+        "tris": 8100,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/12c33d68-8dfa-4e0f-8af4-643f85640a5e"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/V25_dwarf_lemon.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B深绿叶、黄果与枝干完整，补正交枝叶后形成圆形小冠",
+        "陶盆和主干保留一份，果实是实体，四向可观察"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "e45e665de51f2608d9e0cff75fcb742c8e1e6ebc8e581018b5961993c3a8256a",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/V25_dwarf_lemon.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V25_dwarf_lemon_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V25_dwarf_lemon_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V25_dwarf_lemon_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_V25_dwarf_lemon_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            6.0,
+            -0.45,
+            -8.0
+          ],
+          "yaw_degrees": -20.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "P08": {
+      "label": "育苗工作台",
+      "kind": "replace",
+      "triangle_budget": 14000,
+      "size_m": 1.9,
+      "fit": "h",
+      "generation_id": "fdbc37b0-17c7-49e5-928e-45c98706a67c",
+      "source_sha256": "ea21f2ba68f7a6f3fa39af463f4f336807b35d02bad813c1d0b2224208628be5",
+      "prepared_sha256": "45b114af06a975d6a3cc7e3dd2ba32657c0d9de4a0c654d673be1e29f6e50072",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/P08.png",
+      "reference_sha256": "0ae82eb5c9d4c4f3418748d6570de9eb22d743ac9ca7011e1a2e28e81fb04aad",
+      "task_url": "https://hyper3d.ai/workspace/rodin/fdbc37b0-17c7-49e5-928e-45c98706a67c",
+      "local_geometry_changes": [
+        {
+          "kind": "potting_bench_gameplay_envelope",
+          "retained": "generated complete terracotta pot and metal trowel blade with their original UVs; colour-separated timber scraps discarded",
+          "retained_faces": {
+            "Terracotta_pot": 571,
+            "Trowel_blade": 367
+          },
+          "rebuilt": "straight timber top, shelf, four legs and open back rail; real hanging grip/cord; lower eight-cell seed tray with solid base and rims",
+          "footprint_m": [
+            2.8068,
+            1.4048
+          ],
+          "height_m": 1.9,
+          "worktop_m": 1.03,
+          "reason": "restore the original measured footprint, E approaches and 0.9–1.1m working height; no test tolerance changes"
+        }
+      ],
+      "previous_export": {
+        "src": "raw/P08/model.glb",
+        "fit": "h",
+        "size": 1.9,
+        "tris": 8000,
+        "tex": 1024
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/P08.glb",
+        "fit": "h",
+        "size": 1.9,
+        "tris": 12600,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/fdbc37b0-17c7-49e5-928e-45c98706a67c"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/P08.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "原始B木架改变尺寸后挡住麦茶射线；重建为原实测2.8068×1.4048米、总高1.9米和1.03米真实工作面，保持原E接近方向",
+        "逐面与灰模确认四腿、下架、开放后框完整；保留完整陶盆和铲头UV，去掉分离木屑；下层育苗盘有实体底面、盘沿与八格土",
+        "四面结构复验通过，真实居民两处托盘及新增育苗盘位置接下来复测"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "96d58e4cc65f10f35088100cc75758c48bf9840302fea52ac2a9f40afec0bf21",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/P08.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-workbench-final/model-diversity/diversity_P08_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-workbench-final/model-diversity/diversity_P08_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-workbench-final/model-diversity/diversity_P08_night.png",
+        "evidence/hyper3d_diversity_20261013/native-workbench-final/model-diversity/diversity_P08_rain.png"
+      ]
+    },
+    "H06": {
+      "label": "庭院工具房",
+      "kind": "replace",
+      "triangle_budget": 18000,
+      "size_m": 2.3,
+      "fit": "h",
+      "generation_id": "e018d948-a988-4baf-b85c-c1fd696e4381",
+      "source_sha256": "8097d2700598768c1c523df9e92829edb6a021845b91e270aaa1719ff6d51693",
+      "prepared_sha256": "6ffb6037e72ec6175355f5c24c3d874cda1b0ecf8ab3b8fff94e2b5b2455346a",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/H06.png",
+      "reference_sha256": "9084306461a937e134c9c9d2c0e64e4207399c5d95519d19b595b188a2821e70",
+      "task_url": "https://hyper3d.ai/workspace/rodin/e018d948-a988-4baf-b85c-c1fd696e4381",
+      "local_geometry_changes": [],
+      "previous_export": {
+        "src": "raw/H06/model.glb",
+        "fit": "h",
+        "size": 2.3,
+        "tris": 8000,
+        "tex": 1024
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/H06.glb",
+        "fit": "h",
+        "size": 2.3,
+        "tris": 16200,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/e018d948-a988-4baf-b85c-c1fd696e4381"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/H06.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B闭合四壁、门、门把、通风格栅和蓝色坡屋顶完成，四侧无空背",
+        "浅门与暖木面符合画风，作为庭院工具房保留既有位置和用途，待实景净空验收"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "1cab315666d867e887806a9c7b14779190a02a3f7e99f51a90ccd80db8b3f890",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/H06.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_H06_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_H06_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_H06_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_H06_rain.png"
+      ]
+    },
+    "C11_eggplant": {
+      "label": "茄子植株",
+      "kind": "replace",
+      "triangle_budget": 6500,
+      "size_m": 0.8,
+      "fit": "h",
+      "generation_id": "63a548d2-9d31-47e2-b221-e15bc9c739af",
+      "source_sha256": "ee14564a8e987c2ba9832c098433d979bb02843b6208feb1d6b6bc79818e2093",
+      "prepared_sha256": "014ee171b4bc4de696c21751f91227d2d6fa348af63a9d5212a55f0bc14ea2ac",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/C11_eggplant.png",
+      "reference_sha256": "c690578c52937b25ee82b5400dedd0770c9afa26c351b0161cd4dba821639364",
+      "task_url": "https://hyper3d.ai/workspace/rodin/63a548d2-9d31-47e2-b221-e15bc9c739af",
+      "local_geometry_changes": [
+        {
+          "kind": "radial_depth_already_sufficient",
+          "upper_depth_to_width": 1.468314541115177
+        }
+      ],
+      "previous_export": {
+        "src": "raw/C11_eggplant_pix/model.glb",
+        "fit": "h",
+        "size": 0.8,
+        "tris": 7000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/C11_eggplant.glb",
+        "fit": "h",
+        "size": 0.8,
+        "tris": 5850,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": false,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/63a548d2-9d31-47e2-b221-e15bc9c739af"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/C11_eggplant.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 4
+      },
+      "observations": [
+        "茎、紫色果实、叶片和连接枝完整；侧面展开，正面较窄，已有实测侧向体积，不进行多余复制。",
+        "四面和灰模均有实体果实；成熟农田的根部支撑和减面效果待实景验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "8218016ef79eeaf3082b8dd289b491902400bef5f1fc79e37132bfe119cd6256",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/C11_eggplant.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C11_eggplant_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C11_eggplant_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C11_eggplant_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C11_eggplant_rain.png"
+      ]
+    },
+    "C13_pumpkin": {
+      "label": "南瓜藤",
+      "kind": "replace",
+      "triangle_budget": 7000,
+      "size_m": 0.8,
+      "fit": "max",
+      "generation_id": "793a1020-c5e5-4eaf-b973-0acbf35fa0d1",
+      "source_sha256": "28ad46519d1c360e5b572dea16dd09566cef0cac3e6a4bd8f9e2e157037cfecc",
+      "prepared_sha256": "da1bddac8953eba589470c22cdcc734f0f944400a1c1f34b590d136000dfa1b5",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/C13_pumpkin.png",
+      "reference_sha256": "f788c2962327dc60f390d6c4bbf506a4cc573a40e018310f610e29a7bc509561",
+      "task_url": "https://hyper3d.ai/workspace/rodin/793a1020-c5e5-4eaf-b973-0acbf35fa0d1",
+      "local_geometry_changes": [
+        {
+          "kind": "creeping_vine_growth_orientation",
+          "rotation_x_degrees": 90,
+          "retained": "complete generated fruit, leaf and connected vine geometry with original UVs",
+          "purpose": "puts the vine on a horizontal ground footprint instead of suspending fruit in an upright bush",
+          "fruit_support_rotation_y_degrees": -0.33898663095896675,
+          "support_gap_raw": 3.984035323867374e-13,
+          "leaf_vertices_reposed_to_common_fruit_floor": 9604,
+          "fruit_body_probe_counts": [
+            6167,
+            6601
+          ],
+          "reviewed_fruit_support_regions": {
+            "left": "orange fruit vertices selected through original albedo UV",
+            "right_raw_blender": [
+              [
+                0.2,
+                0.25,
+                -0.28
+              ],
+              [
+                0.8,
+                0.72,
+                0.2
+              ]
+            ]
+          },
+          "contact_method": "common support extrema of the two reviewed fruit-body windows; low vine leaves lie on that floor",
+          "acceptance": "fruit/soil contact still requires game geometry and native review"
+        }
+      ],
+      "previous_export": {
+        "src": "raw/C13_pumpkin_pix/model.glb",
+        "fit": "max",
+        "size": 0.8,
+        "tris": 7000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/C13_pumpkin.glb",
+        "fit": "max",
+        "size": 0.8,
+        "tris": 6300,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": false,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/793a1020-c5e5-4eaf-b973-0acbf35fa0d1"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/C13_pumpkin.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 4
+      },
+      "observations": [
+        "保留生成果体、花叶和UV，将悬挂灌木改为横向藤蔓；两个果体的实测底点共面。",
+        "地面预览中橙色瓜体接地，低叶沿土面铺展；多角度瓜棱和花瓣仍有结构。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "3f5636a13a5cee8814159f2719cf921e9ce7c432212f29088addfb3a865d5aad",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/C13_pumpkin.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C13_pumpkin_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C13_pumpkin_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C13_pumpkin_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C13_pumpkin_rain.png"
+      ]
+    },
+    "C14_watermelon": {
+      "label": "西瓜藤",
+      "kind": "replace",
+      "triangle_budget": 7000,
+      "size_m": 0.9,
+      "fit": "max",
+      "generation_id": "09f265f5-9571-4947-a10f-3dea85bd93b8",
+      "source_sha256": "f5732a9d7e0b72b6914042ec9a4af58b23d8d2003f9090c8ec8a9ef8325bb4e9",
+      "prepared_sha256": "bf1a0f938e391b6807976dde1282c04dcfcb967871979e11373f78bcbe83838c",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/C14_watermelon.png",
+      "reference_sha256": "a6eac1438b88c4c7fe7a5f0ae0f48c468e3bc245ab5bcd9eacca151b35a93f8a",
+      "task_url": "https://hyper3d.ai/workspace/rodin/09f265f5-9571-4947-a10f-3dea85bd93b8",
+      "local_geometry_changes": [
+        {
+          "kind": "creeping_vine_growth_orientation",
+          "rotation_x_degrees": 90,
+          "retained": "complete generated fruit, leaf and connected vine geometry with original UVs",
+          "purpose": "puts the vine on a horizontal ground footprint instead of suspending fruit in an upright bush",
+          "fruit_support_rotation_y_degrees": 7.484543404018045,
+          "support_gap_raw": 8.842926391139372e-14,
+          "leaf_vertices_reposed_to_common_fruit_floor": 4129,
+          "fruit_body_probe_counts": [
+            17213,
+            11263
+          ],
+          "reviewed_fruit_support_regions": {
+            "left_raw_blender": [
+              [
+                -0.75,
+                -0.04,
+                -0.34
+              ],
+              [
+                -0.05,
+                0.72,
+                0.28
+              ]
+            ],
+            "right_raw_blender": [
+              [
+                0.2,
+                -0.04,
+                -0.23
+              ],
+              [
+                0.75,
+                0.56,
+                0.38
+              ]
+            ]
+          },
+          "contact_method": "common support extrema of the two reviewed fruit-body windows; low vine leaves lie on that floor",
+          "acceptance": "fruit/soil contact still requires game geometry and native review"
+        }
+      ],
+      "previous_export": {
+        "src": "raw/C14_watermelon_pix/model.glb",
+        "fit": "max",
+        "size": 0.9,
+        "tris": 7000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": 34.1,
+        "square_note": "v0.7.3: footprint measured -34.1 deg off-axis after levelling (art/tools/level_check.py); yaw 0.0 -> 34.1"
+      },
+      "export": {
+        "src": "raw/diversity_20261013/ready/C14_watermelon.glb",
+        "fit": "max",
+        "size": 0.9,
+        "tris": 6300,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": false,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/09f265f5-9571-4947-a10f-3dea85bd93b8"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/C14_watermelon.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 4
+      },
+      "observations": [
+        "两枚条纹果体保留球体深度，横向藤蔓和黄花连接；两个实测果体底点调整到同一土面。",
+        "四面/灰模中两枚瓜体均保持体积，叶片沿地展开；实际农田支撑待下一步验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "130cf1763583f3256683e898f50735c71301984dba4e7343fd0a4daaf064b5f4",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/C14_watermelon.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C14_watermelon_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C14_watermelon_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C14_watermelon_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_C14_watermelon_rain.png"
+      ]
+    },
+    "N01_enamel_kettle": {
+      "label": "搪瓷水壶",
+      "kind": "add",
+      "triangle_budget": 4500,
+      "size_m": 0.24,
+      "fit": "h",
+      "generation_id": "54eab5ac-0e63-46f2-87ec-c8fd43933717",
+      "source_sha256": "742975724ab59406436de1d4512991b093aee77535de51698d8db408e388a823",
+      "prepared_sha256": "fb7f5ccb6f87de22cdb9755bb37ba10a43b15c35ddd12df37cbf23679a0ae561",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N01_enamel_kettle.png",
+      "reference_sha256": "23fb58b06d34542df3db57ed57a9cee4d8f837342b22929c7cf5723b8e3a6d09",
+      "task_url": "https://hyper3d.ai/workspace/rodin/54eab5ac-0e63-46f2-87ec-c8fd43933717",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N01_enamel_kettle.glb",
+        "fit": "h",
+        "size": 0.24,
+        "tris": 4050,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/54eab5ac-0e63-46f2-87ec-c8fd43933717"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N01_enamel_kettle.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "搪瓷壶的独立提梁、壶嘴开口和盖钮完整，奶油白与藏蓝配色比原版统一。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "c5f15ed369277a845f5b3788e1df1c47005c747f93f145d00df1c1e04a7d1529",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N01_enamel_kettle.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_N01_enamel_kettle_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_N01_enamel_kettle_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_N01_enamel_kettle_night.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_N01_enamel_kettle_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            -6.1,
+            0.0,
+            2.9
+          ],
+          "yaw_degrees": 90.0,
+          "support_model": "J01_kitchen_counter",
+          "height_rule": "rendered support mesh",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N02_kyusu": {
+      "label": "侧柄茶壶",
+      "kind": "add",
+      "triangle_budget": 4500,
+      "size_m": 0.16,
+      "fit": "h",
+      "generation_id": "8f206128-55b8-40c8-8a78-43efb74cda7a",
+      "source_sha256": "1756f938e3e88d0bc64c4696cad6e92adb4b24b923e88f487f751ead2a9bce61",
+      "prepared_sha256": "01361a1c6d28601b2e2f0c0d7be900d840bf3ff54a4c4f1503ce794c33e32698",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N02_kyusu.png",
+      "reference_sha256": "67c80127f412dac23a0859e23ff4dbb1dd161f4e8d83c9643d3f9ce57855e9eb",
+      "task_url": "https://hyper3d.ai/workspace/rodin/8f206128-55b8-40c8-8a78-43efb74cda7a",
+      "local_geometry_changes": [
+        {
+          "kind": "local_kyusu_handle_shortening",
+          "pivot_y": -0.038566195964813255,
+          "length_ratio": 0.55,
+          "changed_vertices": 4611,
+          "retained": "body, lid and spout; original UVs"
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N02_kyusu.glb",
+        "fit": "h",
+        "size": 0.16,
+        "tris": 4050,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/8f206128-55b8-40c8-8a78-43efb74cda7a"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N02_kyusu.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "侧柄过长部分已局部缩短，保留圆壶身、盖口、出水嘴和实心柄壁；四面灰模可读。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "76acee2f32a7e5c474fcccae2b282971db2c4ad26364d2333160ee540ea98b80",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N02_kyusu.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_N02_kyusu_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_N02_kyusu_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_N02_kyusu_night.png",
+        "evidence/hyper3d_diversity_20261013/native-final-topups/model-diversity/diversity_N02_kyusu_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            2.65,
+            0.0,
+            -1.45
+          ],
+          "yaw_degrees": -30.0,
+          "support_model": "J07_kotatsu",
+          "height_rule": "rendered support mesh",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N03_tea_pair": {
+      "label": "茶杯对",
+      "kind": "add",
+      "triangle_budget": 4000,
+      "size_m": 0.09,
+      "fit": "h",
+      "generation_id": "8cba5c19-4426-44e2-9841-e310f4365861",
+      "source_sha256": "109fe9bb31d27f2a330a43a1e04aac8330f450a68a9c975a21bbb3f43fba4652",
+      "prepared_sha256": "c25bed2fe73d80b3f459210e4ed7579a03ef62e542eaf2541de80dad8676e70c",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N03_tea_pair.png",
+      "reference_sha256": "5f1426f768ffbfaf04acdbd4fea8bc2c83f6f6ac0b7b965691b19bd517c538da",
+      "task_url": "https://hyper3d.ai/workspace/rodin/8cba5c19-4426-44e2-9841-e310f4365861",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N03_tea_pair.glb",
+        "fit": "h",
+        "size": 0.09,
+        "tris": 3600,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/8cba5c19-4426-44e2-9841-e310f4365861"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N03_tea_pair.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "两杯有不同杯口及圈足，杯内深度真实，蓝白花纹克制，能独立用于家中茶桌。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "ba5d342033cab3721222af7aaf72db442cdb14462d0ecdbd437c4e1d1296832a",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N03_tea_pair.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N03_tea_pair_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N03_tea_pair_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N03_tea_pair_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N03_tea_pair_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            2.3,
+            0.0,
+            -1.5
+          ],
+          "yaw_degrees": 5.0,
+          "support_model": "J07_kotatsu",
+          "height_rule": "rendered support mesh",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N04_fruit_bowl": {
+      "label": "陶果盘",
+      "kind": "add",
+      "triangle_budget": 5500,
+      "size_m": 0.18,
+      "fit": "h",
+      "generation_id": "08996e91-9215-4038-967e-a437898f37fe",
+      "source_sha256": "038cf2bcbd6dabd4a9b70223c6ffdc870116a53c6810b27a703afebca0c69434",
+      "prepared_sha256": "1d792f32aeef6ca0be66c7f14930eb77d2987a7f7e163ff0cf496aab01aaac8b",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N04_fruit_bowl.png",
+      "reference_sha256": "bd44daf08e26368157b6776d4020b49d88c3455d69201a9422d43e3e2c0e2099",
+      "task_url": "https://hyper3d.ai/workspace/rodin/08996e91-9215-4038-967e-a437898f37fe",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N04_fruit_bowl.glb",
+        "fit": "h",
+        "size": 0.18,
+        "tris": 4950,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/08996e91-9215-4038-967e-a437898f37fe"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N04_fruit_bowl.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "B版碗缘连续无旧凹陷，梨与两枚橙子有实体体积，灰模中碗内壁仍清楚。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "3ca51053e0a832d9693bfd6200e4415913d7ee2c02202ba559b259caee50ed87",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N04_fruit_bowl.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-final-details/model-diversity/diversity_N04_fruit_bowl_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-final-details/model-diversity/diversity_N04_fruit_bowl_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-final-details/model-diversity/diversity_N04_fruit_bowl_night.png",
+        "evidence/hyper3d_diversity_20261013/native-final-details/model-diversity/diversity_N04_fruit_bowl_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            2.5,
+            0.0,
+            -1.0
+          ],
+          "yaw_degrees": 10.0,
+          "support_model": "J07_kotatsu",
+          "height_rule": "rendered support mesh",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N05_sewing_basket": {
+      "label": "针线篮",
+      "kind": "add",
+      "triangle_budget": 6500,
+      "size_m": 0.25,
+      "fit": "h",
+      "generation_id": "da04e0b1-1d3d-4186-8546-36888d69d6ac",
+      "source_sha256": "e436bc69778f87597bd7e92804463f7fa2e91148ec3d0a62f9963ba595297e51",
+      "prepared_sha256": "2c34f9ed808fdd2aff04d71a7a2f16b10a07cf8e13071161ad3d4b6c17f5289f",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N05_sewing_basket.png",
+      "reference_sha256": "70a14fdd3b1544086cec9ce8def5c9bb9f74489ec45deb4c44b1923fc52db4b1",
+      "task_url": "https://hyper3d.ai/workspace/rodin/da04e0b1-1d3d-4186-8546-36888d69d6ac",
+      "local_geometry_changes": [
+        {
+          "kind": "regular_physical_woven_basket",
+          "removed_faces": 28305,
+          "retained": "provider cloth and thread spools with original UVs",
+          "rebuilt": "24 upright strips, six separate elliptical bands, solid bottom and anchored handle/lid",
+          "method": "matte 3D bamboo strips with real gaps; no painted or randomly torn holes"
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N05_sewing_basket.glb",
+        "fit": "h",
+        "size": 0.25,
+        "tris": 5850,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/da04e0b1-1d3d-4186-8546-36888d69d6ac"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N05_sewing_basket.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "保留布料和线轴，重建六圈篮带、24条竖带、底板及有孔的掀盖；无原有随机破洞。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。",
+        "颜色分区复查修正布料阴影，保留完整奶油白布和线轴；坏竹片未保留。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "0888de59902c427bd0427da4064aaac2b9b77162ec211fae190e2a2891c33b5d",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N05_sewing_basket.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N05_sewing_basket_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N05_sewing_basket_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N05_sewing_basket_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N05_sewing_basket_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            -4.2,
+            0.0,
+            -1.45
+          ],
+          "yaw_degrees": 25.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N06_house_slippers": {
+      "label": "家居拖鞋",
+      "kind": "add",
+      "triangle_budget": 4500,
+      "size_m": 0.065,
+      "fit": "h",
+      "generation_id": "75fdc683-a056-45d9-9712-959d7611f094",
+      "source_sha256": "80e0e6e3ca983c104b0b25c37d58ea520baa91e6e6d2734ec6e785e3d89032dd",
+      "prepared_sha256": "ce356091792582237a6a4ae786d2ebfba6be9e08bac6e75484ccbdcf4561fb0b",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N06_house_slippers.png",
+      "reference_sha256": "39a4f3d40a0b242811f44f174566344675c1c4f70a385325d48562ce10355435",
+      "task_url": "https://hyper3d.ai/workspace/rodin/75fdc683-a056-45d9-9712-959d7611f094",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N06_house_slippers.glb",
+        "fit": "h",
+        "size": 0.065,
+        "tris": 4050,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/75fdc683-a056-45d9-9712-959d7611f094"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N06_house_slippers.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "两只独立拖鞋，脚口和内衬有深度，鞋头与鞋底轮廓平顺，四面可用。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "8cf65736a3cea565afb51932c019b9681f62abd258686cb62ff5cb5245f08c9d",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N06_house_slippers.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N06_house_slippers_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N06_house_slippers_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N06_house_slippers_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N06_house_slippers_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            3.95,
+            -0.12,
+            3.45
+          ],
+          "yaw_degrees": -10.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N07_watering_can": {
+      "label": "搪瓷浇水壶",
+      "kind": "add",
+      "triangle_budget": 6500,
+      "size_m": 0.36,
+      "fit": "h",
+      "generation_id": "c8cef021-86be-487f-ae40-3b32f4173851",
+      "source_sha256": "b0bf6d38dcbcc6817b42ec986dbd1f069c06de798e5c15f9055f55f99f2aa5c9",
+      "prepared_sha256": "7367c3cd8b5a52f831f2e3ea235c7c611f0378e8e43e17f9843199c9a5c3902f",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N07_watering_can.png",
+      "reference_sha256": "4064feb70cd09c77cf038050f7a09f4229d54b312eb93eb4964a79b7a201e8b4",
+      "task_url": "https://hyper3d.ai/workspace/rodin/c8cef021-86be-487f-ae40-3b32f4173851",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N07_watering_can.glb",
+        "fit": "h",
+        "size": 0.36,
+        "tris": 5850,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/c8cef021-86be-487f-ae40-3b32f4173851"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N07_watering_can.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "开放提柄、长嘴和喷头结构完整；薄荷绿平涂，无写实锈迹。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "f155edd55bf608d7420da0d0b17ad5613745abe5b492da094f94dbf89ad0647e",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N07_watering_can.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N07_watering_can_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N07_watering_can_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N07_watering_can_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N07_watering_can_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            -17.45,
+            0.0,
+            -6.15
+          ],
+          "yaw_degrees": -30.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N08_broom_dustpan": {
+      "label": "扫帚与簸箕",
+      "kind": "add",
+      "triangle_budget": 5500,
+      "size_m": 0.8,
+      "fit": "h",
+      "generation_id": "d277f03b-1260-4b5b-bfc4-048914a21167",
+      "source_sha256": "de0a138102ceff519ede46412d0e386b52584192f504d97d30bec615a45fb063",
+      "prepared_sha256": "496c7debb3a06ce25918ffd94539b966aad9771929f3987e8691bedd3c16b5ae",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N08_broom_dustpan.png",
+      "reference_sha256": "66fd153b3fc38f50934dd23122284124f88cefd3dd935ed6e8d011ff1a564f69",
+      "task_url": "https://hyper3d.ai/workspace/rodin/d277f03b-1260-4b5b-bfc4-048914a21167",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N08_broom_dustpan.glb",
+        "fit": "h",
+        "size": 0.8,
+        "tris": 4950,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/d277f03b-1260-4b5b-bfc4-048914a21167"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N08_broom_dustpan.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "扫帚扎束、簸箕凹腔、柄孔和底边完整，背面也有实体厚度。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "b2804a9f28020e61295a54e066827626c66795917b4075541ce54ed5dc138539",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N08_broom_dustpan.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N08_broom_dustpan_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N08_broom_dustpan_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N08_broom_dustpan_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N08_broom_dustpan_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "home",
+          "placement_input_m": [
+            3.85,
+            0.0,
+            1.65
+          ],
+          "yaw_degrees": 5.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N09_shopping_basket": {
+      "label": "买菜竹篮",
+      "kind": "add",
+      "triangle_budget": 7000,
+      "size_m": 0.34,
+      "fit": "h",
+      "generation_id": "0abc2e84-120a-4e41-920b-f173d4a640bb",
+      "source_sha256": "5d9ccc04837d2549014204a496c3abd5d46d134ee884c277b754d897d38f9866",
+      "prepared_sha256": "ac8a2a35018367cbac492da913cc5e4d3ab174c0e2bc986a5d8e69a8c471496f",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N09_shopping_basket.png",
+      "reference_sha256": "2c5f73804099ae832011fd1955e0fb0ad9bea8d043a63a5852bb254f7f631927",
+      "task_url": "https://hyper3d.ai/workspace/rodin/0abc2e84-120a-4e41-920b-f173d4a640bb",
+      "local_geometry_changes": [
+        {
+          "kind": "regular_physical_woven_basket",
+          "removed_faces": 37974,
+          "retained": "measured oval silhouette and intended dimensions only; defective source shell rejected",
+          "rebuilt": "24 upright strips, six separate elliptical bands, solid bottom and anchored handle/lid",
+          "method": "matte 3D bamboo strips with real gaps; no painted or randomly torn holes"
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N09_shopping_basket.glb",
+        "fit": "h",
+        "size": 0.34,
+        "tris": 6300,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/0abc2e84-120a-4e41-920b-f173d4a640bb"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N09_shopping_basket.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "A/B坏篮壁均拒收，按实测椭圆外形重建有底的规则竹篮，双提手两端固定到篮沿真实位置。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "6295eef26043299dc9e97b32e871de49730f9d53f311e7bab6148482f660a785",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N09_shopping_basket.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N09_shopping_basket_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N09_shopping_basket_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N09_shopping_basket_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N09_shopping_basket_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "store",
+          "placement_input_m": [
+            -2.8,
+            0.0,
+            2.75
+          ],
+          "yaw_degrees": 15.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N10_apple_crate": {
+      "label": "苹果筐",
+      "kind": "add",
+      "triangle_budget": 7000,
+      "size_m": 0.28,
+      "fit": "h",
+      "generation_id": "667276c9-e46a-4d5f-a470-d2dfbe8134ef",
+      "source_sha256": "ff896d37dfab456418588be8b32fd58b81c324f4f2e37c11261410826b1e95e4",
+      "prepared_sha256": "7a36badfec1eb069fa2ba5dbdc96bdf3cdc62393c6d13cbc11a5361ae2eb6be0",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N10_apple_crate.png",
+      "reference_sha256": "de86d60ace4c96d8b01216a8264dd8aac0b55d2ad82ec1cfde34dc1ad6fc4609",
+      "task_url": "https://hyper3d.ai/workspace/rodin/667276c9-e46a-4d5f-a470-d2dfbe8134ef",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N10_apple_crate.glb",
+        "fit": "h",
+        "size": 0.28,
+        "tris": 6300,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/667276c9-e46a-4d5f-a470-d2dfbe8134ef"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N10_apple_crate.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "苹果位于木框内，长边板缝和两侧真实手孔完整；灰模中苹果仍圆润。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "0ce45350f778d8c74ce9839fe508ef30bdbdf21a4b50027696c0b1de9745d3e8",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N10_apple_crate.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N10_apple_crate_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N10_apple_crate_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N10_apple_crate_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N10_apple_crate_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "store",
+          "placement_input_m": [
+            4.8,
+            0.0,
+            2.4
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N11_daikon_crate": {
+      "label": "萝卜筐",
+      "kind": "add",
+      "triangle_budget": 7500,
+      "size_m": 0.3,
+      "fit": "h",
+      "generation_id": "071ea6f7-20e3-4e58-b570-f624813bbd5f",
+      "source_sha256": "33bf0b8c5e3c8491386e94211c60acf226d976ff43c977b3911a18706734fa66",
+      "prepared_sha256": "ba981ff0803794eb65a155a011bab43c8a15ac166a3a3814e0bdf5ae2b0ca799",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N11_daikon_crate.png",
+      "reference_sha256": "dc4eb9cf656495655a5ae059f91a8f8951f0d418c35d35a3acb77c914100de92",
+      "task_url": "https://hyper3d.ai/workspace/rodin/071ea6f7-20e3-4e58-b570-f624813bbd5f",
+      "local_geometry_changes": [
+        {
+          "kind": "straight_daikon_crate",
+          "removed_timber_faces": 23610,
+          "produce_uniform_scale": 0.8688009256684014,
+          "retained": "white radish bodies and green leaves with original UVs",
+          "rebuilt": "closed bottom, straight slats and true side hand holes with produce inside wall inset"
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N11_daikon_crate.glb",
+        "fit": "h",
+        "size": 0.3,
+        "tris": 6750,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/071ea6f7-20e3-4e58-b570-f624813bbd5f"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N11_daikon_crate.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "保留白萝卜和菜叶，均匀调整到框内；重建直木板、底板、角柱和侧面手孔，去除穿板边界。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "4df5427f948e1cdc93b7acbc3c717b28a3e2d7e3867163a5b998a3cba3467386",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N11_daikon_crate.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N11_daikon_crate_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N11_daikon_crate_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N11_daikon_crate_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N11_daikon_crate_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "store",
+          "placement_input_m": [
+            4.8,
+            0.0,
+            3.3
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N12_carrot_crate": {
+      "label": "胡萝卜筐",
+      "kind": "add",
+      "triangle_budget": 6500,
+      "size_m": 0.24,
+      "fit": "h",
+      "generation_id": "8edb188a-e2c6-4aec-86c3-22d99158ee2f",
+      "source_sha256": "0e058c43c9095163011feb2f381367efc8c552e83b250b8bf27d06cca0396ef1",
+      "prepared_sha256": "1324a576169b67adbe4a9f4a538e82803369548533a5cc5fab0b33da3e297c53",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N12_carrot_crate.png",
+      "reference_sha256": "0d0cea857164e0e8ee61042cf18fc96d67bbb4080447f033d5d7ecf0cdffab8f",
+      "task_url": "https://hyper3d.ai/workspace/rodin/8edb188a-e2c6-4aec-86c3-22d99158ee2f",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N12_carrot_crate.glb",
+        "fit": "h",
+        "size": 0.24,
+        "tris": 5850,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/8edb188a-e2c6-4aec-86c3-22d99158ee2f"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N12_carrot_crate.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "箱内胡萝卜有独立锥形和短叶，木板有实体开口、底板和手孔，四面没有穿出的果体。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "ec2a1643f3215dfc64e7ab01bc228f7814545d0c9d36eccfce16d4a69cf2de54",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N12_carrot_crate.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N12_carrot_crate_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N12_carrot_crate_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N12_carrot_crate_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N12_carrot_crate_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            7.4,
+            0.0,
+            4.25
+          ],
+          "yaw_degrees": -10.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N14_paper_parcels": {
+      "label": "纸包组",
+      "kind": "add",
+      "triangle_budget": 5000,
+      "size_m": 0.25,
+      "fit": "h",
+      "generation_id": "aca9fd23-1b0c-47d5-b1ab-ea273200392b",
+      "source_sha256": "110abb0df88fa8c6b8f26b80aa4f594a459a337d2fe76a5a8fcc3a1feb063018",
+      "prepared_sha256": "d2bd3c9fbe08bc9f9946cd4ee321a196c61563c896a41e51b1dbb118c979140d",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N14_paper_parcels.png",
+      "reference_sha256": "364777c46ec5c4cd771641f031bfba6dd888b210188ddaed18fbf6e6544fccc8",
+      "task_url": "https://hyper3d.ai/workspace/rodin/aca9fd23-1b0c-47d5-b1ab-ea273200392b",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N14_paper_parcels.glb",
+        "fit": "h",
+        "size": 0.25,
+        "tris": 4500,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/aca9fd23-1b0c-47d5-b1ab-ea273200392b"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N14_paper_parcels.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "三层纸包具有不同长宽和折角，B版背面蓝绳连续，红蓝绳结均为实体。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "638bad6bd16e984593ebfb0a97863559e6b006b4aedbaacc883b865196908edb",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N14_paper_parcels.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N14_paper_parcels_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N14_paper_parcels_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N14_paper_parcels_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N14_paper_parcels_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "store",
+          "placement_input_m": [
+            -4.02,
+            0.0,
+            0.05
+          ],
+          "yaw_degrees": 10.0,
+          "support_model": "I04_shop_counter",
+          "height_rule": "rendered support mesh",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N17_seedling_tray": {
+      "label": "育苗盘",
+      "kind": "add",
+      "triangle_budget": 6500,
+      "size_m": 0.12,
+      "fit": "h",
+      "generation_id": "7a4f9c37-5fe4-45a9-a1cc-64f2523f951e",
+      "source_sha256": "91b6c6cd6886e2c8e6f44f62d69b48b817608deb5380c22301f23951a7a8585c",
+      "prepared_sha256": "2050666c29e5d253dd42075f0478dd37c658c75d59cc0ba86d27e8cf5918a8dc",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N17_seedling_tray.png",
+      "reference_sha256": "d566a83a1cdb2eb5304b5749eb810989e190b989e7bb06583fd02f7993825c16",
+      "task_url": "https://hyper3d.ai/workspace/rodin/7a4f9c37-5fe4-45a9-a1cc-64f2523f951e",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N17_seedling_tray.glb",
+        "fit": "h",
+        "size": 0.12,
+        "tris": 5850,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/7a4f9c37-5fe4-45a9-a1cc-64f2523f951e"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N17_seedling_tray.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "六格育苗盘各有土壤与幼苗，分格及外壁厚度真实，蓝盘底部六个足位完整。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "304ac9553d75d9dce0e1776695cca29aeb4c2a158f5776f69c92caa55160480a",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N17_seedling_tray.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-workbench-final/model-diversity/diversity_N17_seedling_tray_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-workbench-final/model-diversity/diversity_N17_seedling_tray_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-workbench-final/model-diversity/diversity_N17_seedling_tray_night.png",
+        "evidence/hyper3d_diversity_20261013/native-workbench-final/model-diversity/diversity_N17_seedling_tray_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "town",
+          "placement_input_m": [
+            16.075,
+            0.0,
+            16.075
+          ],
+          "yaw_degrees": 90.0,
+          "support_model": "P08",
+          "height_rule": "rendered support mesh",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N19_burlap_sacks": {
+      "label": "麻袋组",
+      "kind": "add",
+      "triangle_budget": 6500,
+      "size_m": 0.48,
+      "fit": "h",
+      "generation_id": "127364d6-32c5-4c3e-ad09-a396580efb6d",
+      "source_sha256": "307514ca8f5384faaac14153b7c7c0f007cc33788f6cb1d57b603b291b95da03",
+      "prepared_sha256": "0104edbbd4af144c7d3a5a1e37d1c18c01dd8d0b99704def5e10aec57aed2751",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N19_burlap_sacks.png",
+      "reference_sha256": "62560dbf52cfc120d6a8e17867ffcccf1612627b172364dc8a13e045b9615c0a",
+      "task_url": "https://hyper3d.ai/workspace/rodin/127364d6-32c5-4c3e-ad09-a396580efb6d",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N19_burlap_sacks.glb",
+        "fit": "h",
+        "size": 0.48,
+        "tris": 5850,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/127364d6-32c5-4c3e-ad09-a396580efb6d"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N19_burlap_sacks.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "开袋谷物和扎口袋有不同轮廓，背面缝线与侧面褶皱完整，保留动画平涂。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "ea6c9c73ff6fc06f4c1dc79729ec103a777b09404e7aa088235b173c3beed692",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N19_burlap_sacks.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N19_burlap_sacks_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N19_burlap_sacks_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N19_burlap_sacks_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N19_burlap_sacks_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            -15.5,
+            0.0,
+            -5.0
+          ],
+          "yaw_degrees": 10.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N20_coiled_hose": {
+      "label": "盘绕水管",
+      "kind": "add",
+      "triangle_budget": 6500,
+      "size_m": 0.55,
+      "fit": "max",
+      "generation_id": "0e89654b-5573-4dbb-9466-414f5a8da605",
+      "source_sha256": "3c98acf64cb71ddf83c16063c1c87a397f463a6cba8b78c026c06488df26925c",
+      "prepared_sha256": "ceaf0980b7e3ca4f2805f9e203c6807a7c87cbb0e855836a311202fc52239d4f",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N20_coiled_hose.png",
+      "reference_sha256": "8394a72f3db8b746f7544f0ae9455479863505c95355699e557abd0b48a91df7",
+      "task_url": "https://hyper3d.ai/workspace/rodin/0e89654b-5573-4dbb-9466-414f5a8da605",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N20_coiled_hose.glb",
+        "fit": "max",
+        "size": 0.55,
+        "tris": 5850,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/0e89654b-5573-4dbb-9466-414f5a8da605"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N20_coiled_hose.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "水管圈具有真实圆截面及空心中心，喷头与管端连接；尺寸已按最大边0.55米修正，避免按圈高过度缩小。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "c231a9400a47b9e747eb4ede8b7226152db5b8f078f69d1f50a6a0cb94af740f",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N20_coiled_hose.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N20_coiled_hose_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N20_coiled_hose_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N20_coiled_hose_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N20_coiled_hose_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            -7.1,
+            0.0,
+            -4.6
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N21_tool_basket": {
+      "label": "手工具篮",
+      "kind": "add",
+      "triangle_budget": 7000,
+      "size_m": 0.28,
+      "fit": "h",
+      "generation_id": "1efb17ff-a49b-44f2-98bf-25b174fa813d",
+      "source_sha256": "1d4e5a5c7931c4c8f78d83fcc763449432410cb7e55077557ca9f20fce570d06",
+      "prepared_sha256": "bdd4822fabad3df81efd131146ed3fddd904b1dda82ca53ad3a48a0ed63a3d22",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N21_tool_basket.png",
+      "reference_sha256": "2d05b98929eac294047d67687f9bbbf7542d1f68668f87a0791430d34a7870ec",
+      "task_url": "https://hyper3d.ai/workspace/rodin/1efb17ff-a49b-44f2-98bf-25b174fa813d",
+      "local_geometry_changes": [
+        {
+          "kind": "glove_back_review_no_geometry_change",
+          "retained": "whole generated wooden carrier, tools, white glove back and green fingertips with UVs",
+          "observation": "896-pixel back view confirms a complete glove; no debris removal or duplicate backing"
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N21_tool_basket.glb",
+        "fit": "h",
+        "size": 0.28,
+        "tris": 6300,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/1efb17ff-a49b-44f2-98bf-25b174fa813d"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N21_tool_basket.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "896像素背面确认绿色点为手套指尖，白色掌背完整；不删除手套。提梁、隔格、三齿叉和铲均有实体。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "2bf7b5cf477b8f545b7a7d07840c8bd7b7f5103071dbfdf95e9a2baaef2dc19b",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N21_tool_basket.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N21_tool_basket_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N21_tool_basket_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N21_tool_basket_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N21_tool_basket_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            -11.15,
+            0.0,
+            -9.7
+          ],
+          "yaw_degrees": -10.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N22_festival_masks": {
+      "label": "夏祭面具架",
+      "kind": "add",
+      "triangle_budget": 10000,
+      "size_m": 1.05,
+      "fit": "h",
+      "generation_id": "0610c98b-4f84-4816-8351-66a7d68b4f4e",
+      "source_sha256": "45cfdae36538eb6cbe3d4b76389e4f3903ea0211cbb2bdcf70e1aac9ccec4042",
+      "prepared_sha256": "a2e0b6c2faf13a97c778d26826724c56b5487f08cae85ca752fe269df98290ae",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N22_festival_masks.png",
+      "reference_sha256": "1b1c6f047e9244b9dfceb3b9f9e030a84f319195f1676ec9fd09d88c4a2e962d",
+      "task_url": "https://hyper3d.ai/workspace/rodin/0610c98b-4f84-4816-8351-66a7d68b4f4e",
+      "local_geometry_changes": [],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N22_festival_masks.glb",
+        "fit": "h",
+        "size": 1.05,
+        "tris": 9000,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/0610c98b-4f84-4816-8351-66a7d68b4f4e"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N22_festival_masks.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "三张面具表情和轮廓不同，背面为凹壳，挂件与架脚存在真实连接及三角支撑。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "388eb6933d1f989ef8777fbac27837cda24ec9055ddd3e747325d51b29ffef54",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N22_festival_masks.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N22_festival_masks_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N22_festival_masks_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N22_festival_masks_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N22_festival_masks_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "festival",
+          "placement_input_m": [
+            7.6,
+            0.0,
+            18.6
+          ],
+          "yaw_degrees": 180.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N23_goldfish_scoops": {
+      "label": "捞鱼纸网托",
+      "kind": "add",
+      "triangle_budget": 4500,
+      "size_m": 0.05,
+      "fit": "h",
+      "generation_id": "51c49c2a-070b-4956-8fb0-f78cd4babd3a",
+      "source_sha256": "db1afc971af4abf615a4704bef8f0a6b4104848423c5a18488cd4a2d15b67894",
+      "prepared_sha256": "fd3dd35fef7dedb5250859d45df2e206019ef9b8fbf3e9803c31a1590797ebca",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N23_goldfish_scoops.png",
+      "reference_sha256": "c439da9a9e5ede8121140973c67ed578e74e8c7cac5f9cd866a663493d324224",
+      "task_url": "https://hyper3d.ai/workspace/rodin/51c49c2a-070b-4956-8fb0-f78cd4babd3a",
+      "local_geometry_changes": [
+        {
+          "kind": "omitted_paper_net_tray_restored",
+          "retained": "all three generated coloured paper scoops and UVs",
+          "added": "pale blue elliptical tray with actual solid bottom and continuous raised rim"
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N23_goldfish_scoops.glb",
+        "fit": "h",
+        "size": 0.05,
+        "tris": 4050,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/51c49c2a-070b-4956-8fb0-f78cd4babd3a"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N23_goldfish_scoops.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "保留三枚不同色纸网，补建淡蓝椭圆托盘，底板和连续凸沿为实际几何，四面完整。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "53f305dfcb50b75d20986878814f7a9705e658708913790835ca3f2455a9c8ff",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N23_goldfish_scoops.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N23_goldfish_scoops_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N23_goldfish_scoops_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N23_goldfish_scoops_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N23_goldfish_scoops_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "festival",
+          "placement_input_m": [
+            -6.4,
+            0.0,
+            17.8
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "N16_wooden_crate_seat",
+          "height_rule": "rendered support mesh",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N24_bamboo_lantern": {
+      "label": "竹灯",
+      "kind": "add",
+      "triangle_budget": 6500,
+      "size_m": 0.4,
+      "fit": "h",
+      "generation_id": "55084236-9d03-4bd9-a183-98fc4709aeca",
+      "source_sha256": "6f2e9f8ed4710a746ca45b9f98afab7c32870223c7892544930f09db085ed5ce",
+      "prepared_sha256": "9d162e27c0414d2448b405cd7e19e945db030bb3894edf6adf182f976a56b81b",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N24_bamboo_lantern.png",
+      "reference_sha256": "40cbf9c2e9e7eb19ad9e9c5e1238f3b0b086486a922d5eaa4f537365d05b394e",
+      "task_url": "https://hyper3d.ai/workspace/rodin/55084236-9d03-4bd9-a183-98fc4709aeca",
+      "local_geometry_changes": [
+        {
+          "kind": "separate_lantern_paper",
+          "paper_faces": 17311,
+          "retained": "generated bamboo cage, handle, paper cylinder and UVs",
+          "changed": "warm emission on paper only; bamboo remains matte and unlit"
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N24_bamboo_lantern.glb",
+        "fit": "h",
+        "size": 0.4,
+        "tris": 5850,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/55084236-9d03-4bd9-a183-98fc4709aeca"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N24_bamboo_lantern.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "竹笼、提手、纸筒和脚位完整，纸罩单独使用暖色发光材质，竹框保持哑光。",
+        "已看整理后四面、斜角和灰模；减面成品、实际支撑及四种环境仍需后续验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "d59e46795b406ef241168d50957cd6ae0297abfaf43be67cacf0628ef1acccd8",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N24_bamboo_lantern.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N24_bamboo_lantern_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N24_bamboo_lantern_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N24_bamboo_lantern_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N24_bamboo_lantern_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "festival",
+          "placement_input_m": [
+            5.0,
+            0.0,
+            19.8
+          ],
+          "yaw_degrees": 0.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    },
+    "N18_harvest_basket": {
+      "label": "收获藤篮",
+      "kind": "add",
+      "triangle_budget": 8000,
+      "size_m": 0.34,
+      "fit": "h",
+      "generation_id": "c4f4a70f-ccf4-42bf-b314-f96f73730739",
+      "source_sha256": "9f2a6e94c014b81915002770bbfabfbf3c12e2c7ce99dffa8b0eeb484720e54b",
+      "prepared_sha256": "1e49bb7b0c9a21a28e74a64f470265ee42bf096e61d47602fef1d35b6de815f7",
+      "candidate": "b",
+      "reference": "art/references/model_diversity_20261013/N18_harvest_basket.png",
+      "reference_sha256": "721c8885150eaebcfb53d06f896b6a98464d29d44375f9d7926a3cdcd0b007f2",
+      "task_url": "https://hyper3d.ai/workspace/rodin/c4f4a70f-ccf4-42bf-b314-f96f73730739",
+      "local_geometry_changes": [
+        {
+          "kind": "regular_physical_woven_basket",
+          "removed_faces": 28849,
+          "retained": "provider harvested fruit and vegetables with original UVs",
+          "rebuilt": "24 upright strips, six separate elliptical bands, solid bottom and anchored handle/lid",
+          "method": "matte 3D bamboo strips with real gaps; no painted or randomly torn holes"
+        }
+      ],
+      "previous_export": null,
+      "export": {
+        "src": "raw/diversity_20261013/ready/N18_harvest_basket.glb",
+        "fit": "h",
+        "size": 0.34,
+        "tris": 7200,
+        "tex": 1024,
+        "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+        "weld": 0.0002,
+        "preserve_material_names": true,
+        "roughness": 1.0,
+        "specular": 0.0,
+        "level": true,
+        "yaw": 0,
+        "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
+        "source_page": "https://hyper3d.ai/workspace/rodin/c4f4a70f-ccf4-42bf-b314-f96f73730739"
+      },
+      "source_review": "evidence/hyper3d_diversity_20261013/selected-reviews/N18_harvest_basket.json",
+      "scores": {
+        "辨识": 5,
+        "画风": 4,
+        "结构": 4,
+        "四面完成度": 4,
+        "用途匹配": 5
+      },
+      "observations": [
+        "A/B篮壁均有不规则破洞，保留番茄、黄色果体和紫色茄子原始UV，重建规则竹编篮壁、实际底板和连接提手。",
+        "完整四面及灰模复查通过；颜色分区已修正，紫色茄子无误切碎片，待减面成品和农田实景验收。"
+      ],
+      "acceptance": "accepted; four conditions manually reviewed;203 scoped/1800 exclusive full checks and exported-package200 autoplay passed",
+      "game_sha256": "eaffd2d043beba2309aeb7d78807fdce007d11fd40be082a6b85df86566df0b9",
+      "game_review": "evidence/hyper3d_diversity_20261013/game-selected-reviews/N18_harvest_basket.json",
+      "native_views": [
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N18_harvest_basket_noon.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N18_harvest_basket_sunset.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N18_harvest_basket_night.png",
+        "evidence/hyper3d_diversity_20261013/native-corrected/model-diversity/diversity_N18_harvest_basket_rain.png"
+      ],
+      "runtime_uses": [
+        {
+          "context": "farm",
+          "placement_input_m": [
+            8.45,
+            0.0,
+            4.5
+          ],
+          "yaw_degrees": 10.0,
+          "support_model": "",
+          "height_rule": "actual terrain",
+          "source": "game/scripts/world/model_diversity.gd"
+        }
+      ]
+    }
+  },
+  "verification": {
+    "full_checks": 1800,
+    "scoped_checks": 203,
+    "package_autoplay_checks": 200,
+    "delivery": "evidence/hyper3d_diversity_20261013/delivery.json"
+  }
+}

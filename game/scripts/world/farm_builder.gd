@@ -555,6 +555,7 @@ func _grass() -> void:
 		[Vector2(6.3, -5.3), 0.6], [Vector2(-6.6, 26.2), 1.2],
 		[5.4, 4.4, 12.2, 11.6],        # mown patch behind the riverside bench: the fireworks camera sits here
 	]
+	avoid.append_array(ModelDiversity.ground_exclusions("farm"))
 	var near := [[-30.0,-15.5,27.5,16.8]]
 	var far := [[-30.0,17.2,27.5,30.5]]
 	var height_fn: Callable = func(p:Vector2)->float:return LakesideLayout.height_at(p)

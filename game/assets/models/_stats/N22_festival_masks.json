@@ -1,0 +1,25 @@
+{
+ "id": "N22_festival_masks",
+ "src": "raw/diversity_20261013/ready/N22_festival_masks.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 37053,
+ "tris": 9000,
+ "size_m": [
+  0.742,
+  0.465,
+  1.05
+ ],
+ "godot_size_m_xyz": [
+  0.742,
+  1.05,
+  0.465
+ ],
+ "tex": 1024,
+ "bytes": 329344,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.35,
+ "levelled": false,
+ "lean_deg": 0.36,
+ "base_frac": 0.9
+}

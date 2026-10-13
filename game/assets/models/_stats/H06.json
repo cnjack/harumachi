@@ -1,20 +1,25 @@
 {
  "id": "H06",
- "src": "raw/H06/model.glb",
- "provider": "hunyuan hy-3d-3.1",
- "tris_src": 19982,
- "tris": 8000,
+ "src": "raw/diversity_20261013/ready/H06.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 38545,
+ "tris": 16199,
  "size_m": [
-  3.612,
-  3.403,
-  2.3
+  2.224,
+  2.465,
+  2.301
  ],
  "godot_size_m_xyz": [
-  3.612,
-  2.3,
-  3.403
+  2.224,
+  2.301,
+  2.465
  ],
  "tex": 1024,
- "bytes": 479192,
- "yaw_fix": 0
+ "bytes": 536712,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.0,
+ "base_frac": 0.546
 }

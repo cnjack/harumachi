@@ -1,0 +1,25 @@
+{
+ "id": "N10_apple_crate",
+ "src": "raw/diversity_20261013/ready/N10_apple_crate.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 39896,
+ "tris": 6300,
+ "size_m": [
+  0.738,
+  0.558,
+  0.28
+ ],
+ "godot_size_m_xyz": [
+  0.738,
+  0.28,
+  0.558
+ ],
+ "tex": 1024,
+ "bytes": 231616,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.13,
+ "levelled": false,
+ "lean_deg": 0.14,
+ "base_frac": 0.874
+}

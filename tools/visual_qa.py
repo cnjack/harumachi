@@ -156,7 +156,7 @@ document.querySelectorAll('.shot').forEach(x=>x.hidden=!q.every(word=>x.dataset.
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("job", choices=["environments", "characters", "animals", "activities", "rain-probe", "gallery"])
+    parser.add_argument("job", choices=["environments", "model-diversity", "characters", "animals", "activities", "rain-probe", "gallery"])
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
     parser.add_argument("--project", type=Path, default=ROOT / "game")
     parser.add_argument("--limit", type=int, default=2400)
@@ -188,6 +188,9 @@ def main():
     elif args.job == "environments":
         command += ["res://scenes/main.tscn", "--", "--shots=" + str(output),
                     "--qa-environments=1", "--clean=1"]
+    elif args.job == "model-diversity":
+        command += ["res://scenes/main.tscn", "--", "--shots=" + str(output),
+                    "--qa-model-diversity=1", "--clean=1"]
     elif args.job == "characters":
         command += ["res://scenes/main.tscn", "--", "--qa-characters", "--out=" + str(output)]
     else:
@@ -212,9 +215,12 @@ def main():
                     process.wait()
                 code = 124
     contents = log_path.read_text(errors="replace")
+    after = save_hashes()
+    write(logs / (stamp + "-save-hashes.json"), {"before": before, "after": after,
+          "changed": [key for key in sorted(before.keys() | after.keys()) if before.get(key) != after.get(key)]})
     record = {"job": args.job, "command": command, "exit_code": code,
               "seconds": round(time.monotonic() - started, 3), "log": str(log_path),
-              "script_errors": "SCRIPT ERROR" in contents, "default_save_unchanged": before == save_hashes(),
+              "script_errors": "SCRIPT ERROR" in contents, "default_save_unchanged": before == after,
               "pngs": len(list(output.rglob("*.png")))}
     record["shader_errors"] = any(s in contents for s in ["SHADER ERROR", "Shader compilation failed", "Failed to compile shader"])
     record["render_errors"] = any(s in contents for s in ["instance_set_transform", "!v.is_finite()", "!p_transform.is_finite()"] )

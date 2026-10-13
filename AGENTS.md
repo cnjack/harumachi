@@ -45,7 +45,7 @@ PY=/Users/jack/.copilot/session-state/ca10e179-b441-4d77-b938-250cea2ee4c6/files
 BLENDER=/Applications/Blender.app/Contents/MacOS/Blender
 
 $GODOT --headless --path game --import                               # 加了素材或 class_name 之后必须先跑
-$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前1597项；单独运行，套timeout）
+$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前1800项；单独运行，套timeout）
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=landscape # 40项视距、连续地形、树根、透明遮罩、单体隔离与拍照恢复
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=tree-locomotion # 18项树皮镜头预算/误差、低叶、平滑胶囊路线、澪脚道与小葵日程/姿态/节日恢复
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=character-visual # 20项实际鞋底、七人17相位、座椅、掌心、舞蹈、持竿与围裙65样本
@@ -97,7 +97,7 @@ $GODOT --headless --path game --export-release "Windows Desktop" "$HARUMACHI_BUI
 
 ## 必须知道的坑
 
-- **引擎固定4.8-dev7**：精确版本`4.8.dev7.official.c971f93e7`，配置在`tools/godot-version.json`；优先运行`./tools/godot`，它会校验版本。不要依赖可能被自动更新的`/Applications/Godot.app`。`project.godot` features为"4.8"，导出模板为`4.8.dev7`。这是用户要求的开发快照迁移，当前源码1597项独占全量、素材/景观最终原生复拍及解压包200项演示均已通过；验收记录不能与历史4.7.2混用。
+- **引擎固定4.8-dev7**：精确版本`4.8.dev7.official.c971f93e7`，配置在`tools/godot-version.json`；优先运行`./tools/godot`，它会校验版本。不要依赖可能被自动更新的`/Applications/Godot.app`。`project.godot` features为"4.8"，导出模板为`4.8.dev7`。这是用户要求的开发快照迁移，当前源码1800项独占全量、60件模型四天气最终原生复拍及解压包200项演示均已通过；验收记录不能与历史4.7.2混用。
 - **卡顿要查真实时钟和渲染帧**：未使用的晚会桌面不能随每个游戏分钟重扫三角面；桌面测量按实例、变换与来源缓存。只有玩家和跟随镜头启用物理插值，普通移动不能误清插值快照；传送与镜头snap须复位。见`docs/game-design/DESKTOP_STUTTER_20261008.md`。大榕树镜头球扫使用实测1.6万面独立代理，不能重新生成17万面可见树皮碰撞，见`docs/game-design/TREE_LOCOMOTION_20261012.md`。
 - **警告当错误**：推断成 Variant 的变量要写明类型（`var p: Vector3 = ...`）；同一个函数里变量不能重名（嵌套循环里也不行）；字典字面量不能有重复键；不要写叫 `_set` 的方法。
 - **窗口被挡住就停帧**：macOS 不给完全被遮住的窗口画帧，自动演示、录像、截图都会停住。带窗口运行时一律加 `-t --position <x>,<y>`（置顶、放屏幕角落）。

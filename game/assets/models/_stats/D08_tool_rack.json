@@ -1,25 +1,25 @@
 {
  "id": "D08_tool_rack",
- "src": "raw/D08_tool_rack_pix/model.glb",
- "provider": "pixal3d (v0.5)",
- "tris_src": 987920,
- "tris": 7432,
+ "src": "raw/diversity_20261013/ready/D08_tool_rack.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 37838,
+ "tris": 10800,
  "size_m": [
-  1.049,
-  0.595,
-  1.596
+  1.456,
+  0.792,
+  1.6
  ],
  "godot_size_m_xyz": [
-  1.049,
-  1.596,
-  0.595
+  1.456,
+  1.6,
+  0.792
  ],
  "tex": 1024,
- "bytes": 583544,
- "yaw_fix": -148.0,
- "level": "auto",
- "lean_src_deg": 20.14,
- "levelled": true,
+ "bytes": 368592,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.0,
+ "levelled": false,
  "lean_deg": 0.0,
- "base_frac": 0.476
+ "base_frac": 0.976
 }

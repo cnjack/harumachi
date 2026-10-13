@@ -1,0 +1,25 @@
+{
+ "id": "V20_morning_glory",
+ "src": "raw/diversity_20261013/ready/V20_morning_glory.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 59998,
+ "tris": 8100,
+ "size_m": [
+  0.382,
+  0.351,
+  0.85
+ ],
+ "godot_size_m_xyz": [
+  0.382,
+  0.85,
+  0.351
+ ],
+ "tex": 1024,
+ "bytes": 413600,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.0,
+ "base_frac": 0.306
+}

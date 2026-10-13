@@ -1,0 +1,605 @@
+{
+  "revision": "20261013",
+  "assets": {
+    "D01_wheelbarrow": {
+      "label": "独轮车",
+      "kind": "replace",
+      "triangle_budget": 10000,
+      "size_m": 1.4,
+      "fit": "max",
+      "generation_id": "404498d8-cf5c-4c43-8f38-2ddc2bc164e6",
+      "source_sha256": "358493bfedb907641c185a0a8f72372659d4fbfd291534b19dcba6cab3beff64",
+      "prepared_sha256": "2cedc3059bee154fc0979a99bb674757462e9f96c60f8ceb29a12bdd9c803543"
+    },
+    "D02_rain_barrel": {
+      "label": "雨水桶",
+      "kind": "replace",
+      "triangle_budget": 8000,
+      "size_m": 0.95,
+      "fit": "h",
+      "generation_id": "cd11b3c7-1def-4e4c-a725-d7c2b456854e",
+      "source_sha256": "3ec47953bf508d4ff8293f2a0d1812b52b746976207fa8ff723a47e2dbed3aa8",
+      "prepared_sha256": "db04b20efb0a5ad86c3fe7326506d905cd8548423d08c1c7f7b54c2cc582645e"
+    },
+    "D03_veg_crates": {
+      "label": "三层蔬菜筐",
+      "kind": "replace",
+      "triangle_budget": 16000,
+      "size_m": 0.85,
+      "fit": "h",
+      "generation_id": "2b58614b-47c3-4ed0-b15a-b629cc653b7b",
+      "source_sha256": "63659ed51ae46d42e8a9119e0aade6fab905521514a7cfa40f214d48db610328",
+      "prepared_sha256": "912800af5a19d02ff6bf6309eeaa6c36a19b6ad67a21ed8fecc419ae7e38b35d"
+    },
+    "D04_stone_lantern": {
+      "label": "石灯",
+      "kind": "replace",
+      "triangle_budget": 12000,
+      "size_m": 1.3,
+      "fit": "h",
+      "generation_id": "80142666-ceb7-4b98-8629-4109517ea5fd",
+      "source_sha256": "0d7727238711383f3a18cd32e8388754870ad5afc0812b4c5a77885c4cbad87c",
+      "prepared_sha256": "79d0b7fb44b10349638bdf0164308ccb58c6b1802aa7fcc90f24ca03a8387ac6"
+    },
+    "D05_hokora": {
+      "label": "小祠堂",
+      "kind": "replace",
+      "triangle_budget": 16000,
+      "size_m": 1.2,
+      "fit": "h",
+      "generation_id": "c91d2901-0d73-42d0-aeb9-7402e2ae17f9",
+      "source_sha256": "8d75d12de75303aeb17a62513216a524d14c1d9aed3383931b4a056e6d4abd74",
+      "prepared_sha256": "fb2e03e7b2129a7fde8441bc340cb876a12a4a1d2446e4842f6e0afe21aaab54"
+    },
+    "D08_tool_rack": {
+      "label": "园艺工具架",
+      "kind": "replace",
+      "triangle_budget": 12000,
+      "size_m": 1.6,
+      "fit": "h",
+      "generation_id": "1c92fe46-95c9-42c0-af23-26d23fdb1447",
+      "source_sha256": "c7620358547caaef1d640b9c320830453f95dc8c43f114c2d7d82d0217ec127c",
+      "prepared_sha256": "1fbb4ec13ef5a3960e3707a1b3524f1256f3b17afb42c7d2826ee78c3ea10fea"
+    },
+    "N13_empty_crate": {
+      "label": "空木筐",
+      "kind": "add",
+      "triangle_budget": 6000,
+      "size_m": 0.3,
+      "fit": "h",
+      "generation_id": "213d08e2-b9d6-47d5-8a31-3f190ed4ff66",
+      "source_sha256": "847ba226203583208d11af500c1587ed3cd816b1c05979ab2351dc23be7763fe",
+      "prepared_sha256": "79dd45b20aebdbd7e0af439e311a8097488215129baa18c7e4b26e872c356fc3"
+    },
+    "N15_umbrella_stand": {
+      "label": "伞架",
+      "kind": "add",
+      "triangle_budget": 6000,
+      "size_m": 0.72,
+      "fit": "h",
+      "generation_id": "62e5b448-d44c-4176-8181-116485a0a6e4",
+      "source_sha256": "b73f32e07c87cda40d4f63d019be41487adfe94e980edf59884b326f63fa32ca",
+      "prepared_sha256": "ae0fe3d41ba2e577ba0b9ef24804a7cf52b460286236ada6d3a4f636168508df"
+    },
+    "N16_wooden_crate_seat": {
+      "label": "木箱坐凳",
+      "kind": "add",
+      "triangle_budget": 6000,
+      "size_m": 0.38,
+      "fit": "h",
+      "generation_id": "2ddf3e6c-5409-4a2d-b65e-7e95e32aa947",
+      "source_sha256": "35fffd22212afb8eea5e35241917c76e19c427d6c65e60222a5c375c801ef4f3",
+      "prepared_sha256": "4d1b31368f500ca8b39889f96af1c26cb59813075f48d0efddd9e1711b898481"
+    },
+    "D09_log_pile": {
+      "label": "柴垛",
+      "kind": "replace",
+      "triangle_budget": 10000,
+      "size_m": 1.0,
+      "fit": "max",
+      "generation_id": "fc29ba9c-33db-408f-bbe3-61604e7cef3e",
+      "source_sha256": "7e8daf66d96e25e6df5f795f607985b74031b81b97cb85765f0041d1b15373ef",
+      "prepared_sha256": "588322a30ac9e97d54cd28117144e5f56f1fe2ef58959c6927aa618193afd51f"
+    },
+    "D12_flower_planter": {
+      "label": "混植花箱",
+      "kind": "replace",
+      "triangle_budget": 10000,
+      "size_m": 1.2,
+      "fit": "w",
+      "generation_id": "e56933a0-c496-4fbd-8f0b-fefdc1816e03",
+      "source_sha256": "3c038f0df34dd751b0e024547ab332ab3de37a7cf5c31dfa7d3260930e0bf862",
+      "prepared_sha256": "14cfd5d01cd7a33a9f6d010c2aa1433294835c57c45f691f52734eee7e81284d"
+    },
+    "A15_potted_plant": {
+      "label": "常绿陶盆",
+      "kind": "replace",
+      "triangle_budget": 8000,
+      "size_m": 0.8,
+      "fit": "h",
+      "generation_id": "594253b2-b689-4543-bdc7-4ddef391047c",
+      "source_sha256": "4ff9e6c0af0ac78b9d2e8927d9cea4798a5bde07ae44fb7e6bd1d2179cd8283a",
+      "prepared_sha256": "23298d1716cec96bf39cdcfa2a4090724d70916ffa4086659f6dc28bb6dd34ae"
+    },
+    "C10_potato": {
+      "label": "土豆植株",
+      "kind": "replace",
+      "triangle_budget": 6000,
+      "size_m": 0.5,
+      "fit": "h",
+      "generation_id": "789425a0-6b83-4db4-a16d-89c2a0e22c75",
+      "source_sha256": "4a27053d6234d62cd5e3ba8e1d4cef2fcbaeb37f4cd739b853fc7fd22c0fad31",
+      "prepared_sha256": "e87b049d5cfea5afa185c688210541a4aafa3989d1d1384f7279d7618e819009"
+    },
+    "A14_hydrangea_pot": {
+      "label": "蓝绣球盆栽",
+      "kind": "replace",
+      "triangle_budget": 8000,
+      "size_m": 0.75,
+      "fit": "h",
+      "generation_id": "3075802c-1047-4bc7-ad9e-3e80f6488685",
+      "source_sha256": "01965e2128cb1c2e327d82784460d4013ae248243de9f2d06244565dfac1e9df",
+      "prepared_sha256": "28754a9200171fbf2b860773e9bfad1a5de97ed2cac6a0c1d0776800c55e7b35"
+    },
+    "A16_planter_box": {
+      "label": "街边花箱",
+      "kind": "replace",
+      "triangle_budget": 9000,
+      "size_m": 1.1,
+      "fit": "w",
+      "generation_id": "38f0094f-3932-40f3-bb1f-80d83a8ad2c1",
+      "source_sha256": "6f44ff3216a0eb157767c9f2470afa5a09fbf3d81f363c3bdf7ca89f71768f5a",
+      "prepared_sha256": "c00c82b3b3f38b0e40a69a7148973800f7f47046a9710c8783548f92e4ab0e49"
+    },
+    "C09_carrot": {
+      "label": "胡萝卜植株",
+      "kind": "replace",
+      "triangle_budget": 6000,
+      "size_m": 0.35,
+      "fit": "h",
+      "generation_id": "cc64ef92-6860-4df0-9901-7d5628372b3d",
+      "source_sha256": "f60a3e92548ed2f3fb6d47aa2da18e0fefb61ad1e620d58b2f66bfcb5194d71a",
+      "prepared_sha256": "1d8d109b0a491a7e157bf3c6336681c7727aabb16badb1e57b7b3f2883760707"
+    },
+    "C12_corn": {
+      "label": "玉米植株",
+      "kind": "replace",
+      "triangle_budget": 6500,
+      "size_m": 1.8,
+      "fit": "h",
+      "generation_id": "e3541641-956e-4d5f-820d-fdd3bf6552ee",
+      "source_sha256": "1088812b9b77ea74ca45ffbd897d7a83e683ac152ea683e3e49aea2d77b66681",
+      "prepared_sha256": "5c915c2bff65e11ed3de364cea6fdcff8757661017ccde0c962299f1de1b7ab4"
+    },
+    "C15_wheat": {
+      "label": "麦穗丛",
+      "kind": "replace",
+      "triangle_budget": 6500,
+      "size_m": 0.9,
+      "fit": "h",
+      "generation_id": "ad424b41-728f-4ad1-b162-75342c67a12a",
+      "source_sha256": "ac67c3f09d568a124fa7104105d6d67ef4a493337a8eaeff03b5bb203f133fda",
+      "prepared_sha256": "c672586f69469c40d979a63e68686bea6cb7e89dbbe12a9e5e083f050c4b97cf"
+    },
+    "C16_onion": {
+      "label": "洋葱植株",
+      "kind": "replace",
+      "triangle_budget": 5000,
+      "size_m": 0.45,
+      "fit": "h",
+      "generation_id": "b13c53f3-4425-4e09-a317-f8d0f9191089",
+      "source_sha256": "dc00e91f82c07407879f6c3f0e119a5535b05ca4b4c108758e56c8703a46c573",
+      "prepared_sha256": "339a0e7dd71113c01ae3bde58d46cd92174b36a3ff35ce17b3f686d4f42aa614"
+    },
+    "F04_scarecrow": {
+      "label": "稻草人",
+      "kind": "replace",
+      "triangle_budget": 10000,
+      "size_m": 1.9,
+      "fit": "h",
+      "generation_id": "2040bb4e-a996-481d-9d12-396c03bca0e9",
+      "source_sha256": "8c582da08412913a1d8af908a8f3520063e356e3ce2a8bf51bace482249d7dd8",
+      "prepared_sha256": "605a984d7e87ce2ee6438c3b3e76d5eb04e93bd8128c37c0c303cd7d176569a3"
+    },
+    "F06_veggie_stand": {
+      "label": "菜摊",
+      "kind": "replace",
+      "triangle_budget": 15000,
+      "size_m": 1.9,
+      "fit": "h",
+      "generation_id": "4e349a99-1a22-45f9-aca5-c807b8985953",
+      "source_sha256": "24d8c030e093d56d31dfface395eea6ad36b385e34b1fa267abd972f705d374e",
+      "prepared_sha256": "e8a46ed9f8418844a8076a43bd501b69ae3a64ba60cc7e01c227de95424acd70"
+    },
+    "P07": {
+      "label": "社区菜床",
+      "kind": "replace",
+      "triangle_budget": 16000,
+      "size_m": 2.4,
+      "fit": "w",
+      "generation_id": "7a223acd-8f43-4a78-8dfb-25b61bb36d30",
+      "source_sha256": "1598061eacd914a48d1386cbc49ac0ed1c3f7e8c2fb04c9eb9797e4ab95bfae6",
+      "prepared_sha256": "3b40f6d0cd46cc098937d115fd1f25ff928fd7b8094c76c4c623da1e87d90e53"
+    },
+    "T06_camphor": {
+      "label": "樟树",
+      "kind": "add",
+      "triangle_budget": 20000,
+      "size_m": 6.5,
+      "fit": "h",
+      "generation_id": "616ce2e1-503e-4590-b586-ca67a9220f31",
+      "source_sha256": "ff91f4b478cba01a97b746b29259056cb971cdb9ba6090de76378feb67e5bf62",
+      "prepared_sha256": "4b5914874bb51820cff7b444f15390d4ed71240913b056152451e45d60bbe651"
+    },
+    "T07_summer_maple": {
+      "label": "青枫",
+      "kind": "add",
+      "triangle_budget": 18000,
+      "size_m": 4.0,
+      "fit": "h",
+      "generation_id": "b19e19ae-3f59-437b-b338-3320248835bd",
+      "source_sha256": "5e7262fc7519e24f04b62ea82b456c0d35fbf39f7469e6f8b9ba5af8860fb19a",
+      "prepared_sha256": "3c9090b4072597878398dab97bcf0cca227f25b5919a925ed7f8d87dd074f588"
+    },
+    "T08_green_cherry": {
+      "label": "夏日樱树",
+      "kind": "add",
+      "triangle_budget": 20000,
+      "size_m": 5.5,
+      "fit": "h",
+      "generation_id": "f14834df-2a82-4b3e-a738-5d443ba27338",
+      "source_sha256": "9a03e1b52a30b06e6bf4be5364563f4606b6abd801ff72bbcaacb22300958823",
+      "prepared_sha256": "8dd416657c2a259bacb44821eb22fe9d90bc24aa52db8ba22ce3ec33b93efa28"
+    },
+    "T09_bamboo_grove": {
+      "label": "竹丛",
+      "kind": "add",
+      "triangle_budget": 16000,
+      "size_m": 4.8,
+      "fit": "h",
+      "generation_id": "acf8180d-ad24-453e-a58f-2e86b38894fa",
+      "source_sha256": "ccc769d40c2ee0fc61e06c8cf404fa647889378d1d7703fe34daa908b81d96b4",
+      "prepared_sha256": "ba49d171075b6835c1b6340c65d1a638bd1f14c2131979103eabd4ca16c0de56"
+    },
+    "T10_weeping_willow": {
+      "label": "垂柳",
+      "kind": "add",
+      "triangle_budget": 20000,
+      "size_m": 6.0,
+      "fit": "h",
+      "generation_id": "0fccd065-8984-4fe4-b8bf-a2ec0fa96135",
+      "source_sha256": "a7aae4c2d6f95126247bf0c36123fef06735c90902217e1c2aab3040e51d539b",
+      "prepared_sha256": "f6ecf725de275a28537fca08dc1a4b5d89ca42577b52413163eff235917a60f4"
+    },
+    "T11_young_zelkova": {
+      "label": "幼榉树",
+      "kind": "add",
+      "triangle_budget": 18000,
+      "size_m": 4.5,
+      "fit": "h",
+      "generation_id": "73eb83bb-f07a-40ad-ac01-6e432ffeffe2",
+      "source_sha256": "8991bea8bdca6b27d034f145c2375e1f701ab9b27f1e1601b2d1689c33f91101",
+      "prepared_sha256": "1fa3724745f4932ed36c3a89d549a9a117f0bcb123acb6568a84b92c46008e64"
+    },
+    "V20_morning_glory": {
+      "label": "朝颜竹架盆",
+      "kind": "add",
+      "triangle_budget": 9000,
+      "size_m": 0.85,
+      "fit": "h",
+      "generation_id": "08f3fb73-461d-425d-9c0b-5b3e58359ded",
+      "source_sha256": "4ca0eea85cc5c83bbb583cf5dcd87fd350de34d88e528b37d2e3b1432d774056",
+      "prepared_sha256": "5af9ed8f5ebd322b514a2378180e8da5507f12e7534c8ebd281c93f468c76ece"
+    },
+    "V21_white_hydrangea": {
+      "label": "白绣球盆",
+      "kind": "add",
+      "triangle_budget": 8000,
+      "size_m": 0.65,
+      "fit": "h",
+      "generation_id": "4a6cbb2a-976b-4820-be39-1cd9b8123022",
+      "source_sha256": "e1af40d25ab1faae9d0e6cada4e8aa5a39ee5bb62571f6aef908cb59c5924d13",
+      "prepared_sha256": "8f149c914ef4f107cecf5fc9eaf141ca94492deb310f2939b61c66bf5b14bc81"
+    },
+    "V22_shiso_planter": {
+      "label": "紫苏种植箱",
+      "kind": "add",
+      "triangle_budget": 6500,
+      "size_m": 0.45,
+      "fit": "h",
+      "generation_id": "46fec8eb-8743-402a-8424-51ba86e459bb",
+      "source_sha256": "29c495b0e5797c277059ebcda010aaff81458c98bcbc034102f8fea36d5f05e8",
+      "prepared_sha256": "e672dd777334ff8a67c67cf171f530f827ad4ccb661640624d7a1f83b802e7ab"
+    },
+    "V23_cosmos_pot": {
+      "label": "波斯菊陶盆",
+      "kind": "add",
+      "triangle_budget": 7000,
+      "size_m": 0.72,
+      "fit": "h",
+      "generation_id": "7bfd0c2c-5912-4cf7-947d-26b8eafb129f",
+      "source_sha256": "b95dbb5678d6fd80038e6d3c9e4d81b5c627c83b4563d831f890d9f907ef6d41",
+      "prepared_sha256": "971db79acf8ab1e9ab532bfa6379696d665e9dfa6d20e86e86a4012269d1ae7b"
+    },
+    "V24_fern_pot": {
+      "label": "蕨类陶盆",
+      "kind": "add",
+      "triangle_budget": 7000,
+      "size_m": 0.5,
+      "fit": "h",
+      "generation_id": "9f640500-46e3-4bf1-a7a3-3b7759aa3abf",
+      "source_sha256": "ff4bc3d40a367ffdb8f76ce799e0137084f273a1c1a6f98525e40f9b0801d9d1",
+      "prepared_sha256": "5cf8e649029e4cbd5667753183a386bce612095ba4401e5da16979d1fbd91af9"
+    },
+    "V25_dwarf_lemon": {
+      "label": "矮柠檬盆栽",
+      "kind": "add",
+      "triangle_budget": 9000,
+      "size_m": 1.1,
+      "fit": "h",
+      "generation_id": "12c33d68-8dfa-4e0f-8af4-643f85640a5e",
+      "source_sha256": "35a346799bcbe9b60e2f40472b70ab09b109e8e70484df4f199846a7183d6a2e",
+      "prepared_sha256": "3da0eee55ba6369443e6957d2f0a467cd45353ff7689ac74721088925785a6b3"
+    },
+    "P08": {
+      "label": "育苗工作台",
+      "kind": "replace",
+      "triangle_budget": 14000,
+      "size_m": 1.9,
+      "fit": "h",
+      "generation_id": "fdbc37b0-17c7-49e5-928e-45c98706a67c",
+      "source_sha256": "ea21f2ba68f7a6f3fa39af463f4f336807b35d02bad813c1d0b2224208628be5",
+      "prepared_sha256": "45b114af06a975d6a3cc7e3dd2ba32657c0d9de4a0c654d673be1e29f6e50072"
+    },
+    "H06": {
+      "label": "庭院工具房",
+      "kind": "replace",
+      "triangle_budget": 18000,
+      "size_m": 2.3,
+      "fit": "h",
+      "generation_id": "e018d948-a988-4baf-b85c-c1fd696e4381",
+      "source_sha256": "8097d2700598768c1c523df9e92829edb6a021845b91e270aaa1719ff6d51693",
+      "prepared_sha256": "6ffb6037e72ec6175355f5c24c3d874cda1b0ecf8ab3b8fff94e2b5b2455346a"
+    },
+    "C11_eggplant": {
+      "label": "茄子植株",
+      "kind": "replace",
+      "triangle_budget": 6500,
+      "size_m": 0.8,
+      "fit": "h",
+      "generation_id": "63a548d2-9d31-47e2-b221-e15bc9c739af",
+      "source_sha256": "ee14564a8e987c2ba9832c098433d979bb02843b6208feb1d6b6bc79818e2093",
+      "prepared_sha256": "014ee171b4bc4de696c21751f91227d2d6fa348af63a9d5212a55f0bc14ea2ac"
+    },
+    "C13_pumpkin": {
+      "label": "南瓜藤",
+      "kind": "replace",
+      "triangle_budget": 7000,
+      "size_m": 0.8,
+      "fit": "max",
+      "generation_id": "793a1020-c5e5-4eaf-b973-0acbf35fa0d1",
+      "source_sha256": "28ad46519d1c360e5b572dea16dd09566cef0cac3e6a4bd8f9e2e157037cfecc",
+      "prepared_sha256": "da1bddac8953eba589470c22cdcc734f0f944400a1c1f34b590d136000dfa1b5"
+    },
+    "C14_watermelon": {
+      "label": "西瓜藤",
+      "kind": "replace",
+      "triangle_budget": 7000,
+      "size_m": 0.9,
+      "fit": "max",
+      "generation_id": "09f265f5-9571-4947-a10f-3dea85bd93b8",
+      "source_sha256": "f5732a9d7e0b72b6914042ec9a4af58b23d8d2003f9090c8ec8a9ef8325bb4e9",
+      "prepared_sha256": "bf1a0f938e391b6807976dde1282c04dcfcb967871979e11373f78bcbe83838c"
+    },
+    "N01_enamel_kettle": {
+      "label": "搪瓷水壶",
+      "kind": "add",
+      "triangle_budget": 4500,
+      "size_m": 0.24,
+      "fit": "h",
+      "generation_id": "54eab5ac-0e63-46f2-87ec-c8fd43933717",
+      "source_sha256": "742975724ab59406436de1d4512991b093aee77535de51698d8db408e388a823",
+      "prepared_sha256": "fb7f5ccb6f87de22cdb9755bb37ba10a43b15c35ddd12df37cbf23679a0ae561"
+    },
+    "N02_kyusu": {
+      "label": "侧柄茶壶",
+      "kind": "add",
+      "triangle_budget": 4500,
+      "size_m": 0.16,
+      "fit": "h",
+      "generation_id": "8f206128-55b8-40c8-8a78-43efb74cda7a",
+      "source_sha256": "1756f938e3e88d0bc64c4696cad6e92adb4b24b923e88f487f751ead2a9bce61",
+      "prepared_sha256": "01361a1c6d28601b2e2f0c0d7be900d840bf3ff54a4c4f1503ce794c33e32698"
+    },
+    "N03_tea_pair": {
+      "label": "茶杯对",
+      "kind": "add",
+      "triangle_budget": 4000,
+      "size_m": 0.09,
+      "fit": "h",
+      "generation_id": "8cba5c19-4426-44e2-9841-e310f4365861",
+      "source_sha256": "109fe9bb31d27f2a330a43a1e04aac8330f450a68a9c975a21bbb3f43fba4652",
+      "prepared_sha256": "c25bed2fe73d80b3f459210e4ed7579a03ef62e542eaf2541de80dad8676e70c"
+    },
+    "N04_fruit_bowl": {
+      "label": "陶果盘",
+      "kind": "add",
+      "triangle_budget": 5500,
+      "size_m": 0.18,
+      "fit": "h",
+      "generation_id": "08996e91-9215-4038-967e-a437898f37fe",
+      "source_sha256": "038cf2bcbd6dabd4a9b70223c6ffdc870116a53c6810b27a703afebca0c69434",
+      "prepared_sha256": "1d792f32aeef6ca0be66c7f14930eb77d2987a7f7e163ff0cf496aab01aaac8b"
+    },
+    "N05_sewing_basket": {
+      "label": "针线篮",
+      "kind": "add",
+      "triangle_budget": 6500,
+      "size_m": 0.25,
+      "fit": "h",
+      "generation_id": "da04e0b1-1d3d-4186-8546-36888d69d6ac",
+      "source_sha256": "e436bc69778f87597bd7e92804463f7fa2e91148ec3d0a62f9963ba595297e51",
+      "prepared_sha256": "2c34f9ed808fdd2aff04d71a7a2f16b10a07cf8e13071161ad3d4b6c17f5289f"
+    },
+    "N06_house_slippers": {
+      "label": "家居拖鞋",
+      "kind": "add",
+      "triangle_budget": 4500,
+      "size_m": 0.065,
+      "fit": "h",
+      "generation_id": "75fdc683-a056-45d9-9712-959d7611f094",
+      "source_sha256": "80e0e6e3ca983c104b0b25c37d58ea520baa91e6e6d2734ec6e785e3d89032dd",
+      "prepared_sha256": "ce356091792582237a6a4ae786d2ebfba6be9e08bac6e75484ccbdcf4561fb0b"
+    },
+    "N07_watering_can": {
+      "label": "搪瓷浇水壶",
+      "kind": "add",
+      "triangle_budget": 6500,
+      "size_m": 0.36,
+      "fit": "h",
+      "generation_id": "c8cef021-86be-487f-ae40-3b32f4173851",
+      "source_sha256": "b0bf6d38dcbcc6817b42ec986dbd1f069c06de798e5c15f9055f55f99f2aa5c9",
+      "prepared_sha256": "7367c3cd8b5a52f831f2e3ea235c7c611f0378e8e43e17f9843199c9a5c3902f"
+    },
+    "N08_broom_dustpan": {
+      "label": "扫帚与簸箕",
+      "kind": "add",
+      "triangle_budget": 5500,
+      "size_m": 0.8,
+      "fit": "h",
+      "generation_id": "d277f03b-1260-4b5b-bfc4-048914a21167",
+      "source_sha256": "de0a138102ceff519ede46412d0e386b52584192f504d97d30bec615a45fb063",
+      "prepared_sha256": "496c7debb3a06ce25918ffd94539b966aad9771929f3987e8691bedd3c16b5ae"
+    },
+    "N09_shopping_basket": {
+      "label": "买菜竹篮",
+      "kind": "add",
+      "triangle_budget": 7000,
+      "size_m": 0.34,
+      "fit": "h",
+      "generation_id": "0abc2e84-120a-4e41-920b-f173d4a640bb",
+      "source_sha256": "5d9ccc04837d2549014204a496c3abd5d46d134ee884c277b754d897d38f9866",
+      "prepared_sha256": "ac8a2a35018367cbac492da913cc5e4d3ab174c0e2bc986a5d8e69a8c471496f"
+    },
+    "N10_apple_crate": {
+      "label": "苹果筐",
+      "kind": "add",
+      "triangle_budget": 7000,
+      "size_m": 0.28,
+      "fit": "h",
+      "generation_id": "667276c9-e46a-4d5f-a470-d2dfbe8134ef",
+      "source_sha256": "ff896d37dfab456418588be8b32fd58b81c324f4f2e37c11261410826b1e95e4",
+      "prepared_sha256": "7a36badfec1eb069fa2ba5dbdc96bdf3cdc62393c6d13cbc11a5361ae2eb6be0"
+    },
+    "N11_daikon_crate": {
+      "label": "萝卜筐",
+      "kind": "add",
+      "triangle_budget": 7500,
+      "size_m": 0.3,
+      "fit": "h",
+      "generation_id": "071ea6f7-20e3-4e58-b570-f624813bbd5f",
+      "source_sha256": "33bf0b8c5e3c8491386e94211c60acf226d976ff43c977b3911a18706734fa66",
+      "prepared_sha256": "ba981ff0803794eb65a155a011bab43c8a15ac166a3a3814e0bdf5ae2b0ca799"
+    },
+    "N12_carrot_crate": {
+      "label": "胡萝卜筐",
+      "kind": "add",
+      "triangle_budget": 6500,
+      "size_m": 0.24,
+      "fit": "h",
+      "generation_id": "8edb188a-e2c6-4aec-86c3-22d99158ee2f",
+      "source_sha256": "0e058c43c9095163011feb2f381367efc8c552e83b250b8bf27d06cca0396ef1",
+      "prepared_sha256": "1324a576169b67adbe4a9f4a538e82803369548533a5cc5fab0b33da3e297c53"
+    },
+    "N14_paper_parcels": {
+      "label": "纸包组",
+      "kind": "add",
+      "triangle_budget": 5000,
+      "size_m": 0.25,
+      "fit": "h",
+      "generation_id": "aca9fd23-1b0c-47d5-b1ab-ea273200392b",
+      "source_sha256": "110abb0df88fa8c6b8f26b80aa4f594a459a337d2fe76a5a8fcc3a1feb063018",
+      "prepared_sha256": "d2bd3c9fbe08bc9f9946cd4ee321a196c61563c896a41e51b1dbb118c979140d"
+    },
+    "N17_seedling_tray": {
+      "label": "育苗盘",
+      "kind": "add",
+      "triangle_budget": 6500,
+      "size_m": 0.12,
+      "fit": "h",
+      "generation_id": "7a4f9c37-5fe4-45a9-a1cc-64f2523f951e",
+      "source_sha256": "91b6c6cd6886e2c8e6f44f62d69b48b817608deb5380c22301f23951a7a8585c",
+      "prepared_sha256": "2050666c29e5d253dd42075f0478dd37c658c75d59cc0ba86d27e8cf5918a8dc"
+    },
+    "N19_burlap_sacks": {
+      "label": "麻袋组",
+      "kind": "add",
+      "triangle_budget": 6500,
+      "size_m": 0.48,
+      "fit": "h",
+      "generation_id": "127364d6-32c5-4c3e-ad09-a396580efb6d",
+      "source_sha256": "307514ca8f5384faaac14153b7c7c0f007cc33788f6cb1d57b603b291b95da03",
+      "prepared_sha256": "0104edbbd4af144c7d3a5a1e37d1c18c01dd8d0b99704def5e10aec57aed2751"
+    },
+    "N20_coiled_hose": {
+      "label": "盘绕水管",
+      "kind": "add",
+      "triangle_budget": 6500,
+      "size_m": 0.55,
+      "fit": "max",
+      "generation_id": "0e89654b-5573-4dbb-9466-414f5a8da605",
+      "source_sha256": "3c98acf64cb71ddf83c16063c1c87a397f463a6cba8b78c026c06488df26925c",
+      "prepared_sha256": "ceaf0980b7e3ca4f2805f9e203c6807a7c87cbb0e855836a311202fc52239d4f"
+    },
+    "N21_tool_basket": {
+      "label": "手工具篮",
+      "kind": "add",
+      "triangle_budget": 7000,
+      "size_m": 0.28,
+      "fit": "h",
+      "generation_id": "1efb17ff-a49b-44f2-98bf-25b174fa813d",
+      "source_sha256": "1d4e5a5c7931c4c8f78d83fcc763449432410cb7e55077557ca9f20fce570d06",
+      "prepared_sha256": "bdd4822fabad3df81efd131146ed3fddd904b1dda82ca53ad3a48a0ed63a3d22"
+    },
+    "N22_festival_masks": {
+      "label": "夏祭面具架",
+      "kind": "add",
+      "triangle_budget": 10000,
+      "size_m": 1.05,
+      "fit": "h",
+      "generation_id": "0610c98b-4f84-4816-8351-66a7d68b4f4e",
+      "source_sha256": "45cfdae36538eb6cbe3d4b76389e4f3903ea0211cbb2bdcf70e1aac9ccec4042",
+      "prepared_sha256": "a2e0b6c2faf13a97c778d26826724c56b5487f08cae85ca752fe269df98290ae"
+    },
+    "N23_goldfish_scoops": {
+      "label": "捞鱼纸网托",
+      "kind": "add",
+      "triangle_budget": 4500,
+      "size_m": 0.05,
+      "fit": "h",
+      "generation_id": "51c49c2a-070b-4956-8fb0-f78cd4babd3a",
+      "source_sha256": "db1afc971af4abf615a4704bef8f0a6b4104848423c5a18488cd4a2d15b67894",
+      "prepared_sha256": "fd3dd35fef7dedb5250859d45df2e206019ef9b8fbf3e9803c31a1590797ebca"
+    },
+    "N24_bamboo_lantern": {
+      "label": "竹灯",
+      "kind": "add",
+      "triangle_budget": 6500,
+      "size_m": 0.4,
+      "fit": "h",
+      "generation_id": "55084236-9d03-4bd9-a183-98fc4709aeca",
+      "source_sha256": "6f2e9f8ed4710a746ca45b9f98afab7c32870223c7892544930f09db085ed5ce",
+      "prepared_sha256": "9d162e27c0414d2448b405cd7e19e945db030bb3894edf6adf182f976a56b81b"
+    },
+    "N18_harvest_basket": {
+      "label": "收获藤篮",
+      "kind": "add",
+      "triangle_budget": 8000,
+      "size_m": 0.34,
+      "fit": "h",
+      "generation_id": "c4f4a70f-ccf4-42bf-b314-f96f73730739",
+      "source_sha256": "9f2a6e94c014b81915002770bbfabfbf3c12e2c7ce99dffa8b0eeb484720e54b",
+      "prepared_sha256": "1e49bb7b0c9a21a28e74a64f470265ee42bf096e61d47602fef1d35b6de815f7"
+    }
+  }
+}

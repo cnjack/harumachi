@@ -321,6 +321,9 @@ func _run() -> void:
 	var catalog: Dictionary = VIEWS.duplicate(true)
 	if _arg("qa-landscape", "") == "1":
 		catalog=LandscapeCoverage.capture_views()
+	if _arg("qa-model-diversity", "") == "1":
+		ModelDiversity.seed_review_crops()
+		catalog = ModelDiversity.capture_views(main.world)
 	if _arg("qa-environments", "") == "1":
 		catalog = _environment_matrix()
 		main.weather_fx.rig = main.rig.cam
@@ -487,6 +490,7 @@ func _run() -> void:
 			main.rig.dist = v.dist
 			main.rig.snap()
 			if v.has("house_camera"):
+				main.player.visible = bool(v.get("show_actor", false))
 				main.rig.process_mode = Node.PROCESS_MODE_DISABLED
 				main.rig.cam.global_position = HouseBuilder.ORIGIN + v.house_camera
 				main.rig.cam.look_at(HouseBuilder.ORIGIN + v.house_focus)

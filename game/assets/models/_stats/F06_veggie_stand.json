@@ -1,37 +1,25 @@
 {
  "id": "F06_veggie_stand",
- "src": "raw/F06_veggie_stand_h3d/model.glb",
- "provider": "hyper3d rodin gen-2.5 (v0.4)",
- "tris_src": 25000,
- "tris": 5949,
+ "src": "raw/diversity_20261013/ready/F06_veggie_stand.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 40851,
+ "tris": 13500,
  "size_m": [
-  1.293,
-  1.032,
-  1.9
+  1.368,
+  1.576,
+  1.899
  ],
  "godot_size_m_xyz": [
-  1.293,
-  1.9,
-  1.032
+  1.368,
+  1.899,
+  1.576
  ],
  "tex": 1024,
- "bytes": 493720,
+ "bytes": 547536,
  "yaw_fix": 0,
- "level": "auto",
- "lean_src_deg": 0.0,
- "levelled": false,
- "lean_deg": 0.0,
- "base_frac": 0.432,
- "fit_bounds_blender": {
-  "min": [
-   -0.6485791206359863,
-   -0.5142632126808167,
-   -2.731911536102416e-06
-  ],
-  "max": [
-   0.6447005271911621,
-   0.517848551273346,
-   1.9000000953674316
-  ]
- }
+ "level": true,
+ "lean_src_deg": 6.96,
+ "levelled": true,
+ "lean_deg": 0.25,
+ "base_frac": 0.414
 }

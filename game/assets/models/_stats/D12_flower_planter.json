@@ -1,25 +1,25 @@
 {
  "id": "D12_flower_planter",
- "src": "raw/D12_flower_planter_pix/model.glb",
- "provider": "pixal3d (v0.5)",
- "tris_src": 943778,
- "tris": 7228,
+ "src": "raw/diversity_20261013/ready/D12_flower_planter.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 45215,
+ "tris": 9000,
  "size_m": [
-  1.139,
-  0.614,
-  0.568
+  1.199,
+  0.673,
+  0.792
  ],
  "godot_size_m_xyz": [
-  1.139,
-  0.568,
-  0.614
+  1.199,
+  0.792,
+  0.673
  ],
  "tex": 1024,
- "bytes": 652460,
- "yaw_fix": -141.0,
- "level": "auto",
- "lean_src_deg": 12.71,
- "levelled": true,
+ "bytes": 472804,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.0,
+ "levelled": false,
  "lean_deg": 0.0,
- "base_frac": 0.606
+ "base_frac": 0.872
 }

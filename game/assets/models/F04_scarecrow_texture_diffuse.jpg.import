@@ -8,7 +8,7 @@ metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "7a1a7194a9106d7343fa7efb3df58cc1"
+"md5": "0a3caf8360c19bf60b69230943d0813c"
 }
 
 [deps]
@@ -20,6 +20,7 @@ dest_files=["res://.godot/imported/F04_scarecrow_texture_diffuse.jpg-82cf95434c0
 
 compress/mode=0
 compress/high_quality=false
+compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
@@ -28,6 +29,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
+mipmaps/preserve_alpha_test_coverage=false
+mipmaps/alpha_test_threshold=0.5
 roughness/mode=0
 roughness/src_normal=""
 process/channel_remap/red=0

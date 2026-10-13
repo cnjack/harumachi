@@ -17,7 +17,7 @@ static func build(world: WorldBuilder) -> void:
 	var farm:=Node3D.new();farm.name="ReviewedLibrary";world.farm.add_child(farm)
 	# Containers belong to the working shed/potting area, never to a shop door.
 	for entry: Array in [["P_library_carton",Vector3(14.0,0,3.5),24,0],
-		["P_library_bucket",Vector3(16.45,0,13.85),-15,0],["P_library_stool",Vector3(15.1,0,13.7),12,1]]:
+		["P_library_bucket",Vector3(16.5,0,13.3),-15,0],["P_library_stool",Vector3(15.1,0,13.7),12,1]]:
 		_place(world,town,entry,false)
 	for entry: Array in [["P_library_carton",Vector3(-12.2,0,-5.0),-18,0],
 		["P_library_bucket",Vector3(-8.1,0,-4.0),20,0],["P_library_stool",Vector3(-9.0,0,-4.3),-12,1]]:

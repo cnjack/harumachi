@@ -1,0 +1,20 @@
+{
+ "id": "T08_green_cherry",
+ "src": "raw/diversity_20261013/ready/T08_green_cherry.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 10992,
+ "tex": 1024,
+ "bytes": 1618524,
+ "godot_size_m_xyz": [
+  5.0244,
+  5.5,
+  5.8629
+ ],
+ "mesh_nodes": [
+  "Foliage_T08_green_cherry",
+  "Trunk_Secondary_T08_green_cherry",
+  "Trunk_T08_green_cherry"
+ ]
+}

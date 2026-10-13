@@ -1,0 +1,1707 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-13",
+  "status": "accepted:60 final assets,1800 full checks,200 exported autoplay",
+  "credit_budget": {
+    "initial_total": 210,
+    "target_total": 150,
+    "max_spend": 60,
+    "verified_wallet": {
+      "balance": 25,
+      "subscription_balance": 185,
+      "frozen": 0
+    },
+    "expected_per_generation": 0.5,
+    "max_submission_slots": 120,
+    "pricing_source": "https://docs.hyper3d.ai/en/api-specification/rodin-gen2-5#pricing",
+    "final_total": 150,
+    "actual_spend": 60,
+    "frozen": 0
+  },
+  "primary_deliverables": 60,
+  "replacements": 24,
+  "additions": 36,
+  "assets": [
+    {
+      "id": "D01_wheelbarrow",
+      "label": "独轮车",
+      "action": "replace",
+      "contexts": [
+        "farm"
+      ],
+      "subject": "One complete single-wheel garden wheelbarrow. Muted sage-green enamel open shallow tray, pale cedar handles, dark charcoal rubber wheel, two metal support legs. Empty tray; visible gap below the tray and around the wheel. Straight practical frame, all three ground contacts level.",
+      "fit": "max",
+      "size_m": 1.4,
+      "triangle_budget": 10000,
+      "previous_export": {
+        "src": "raw/D01_wheelbarrow_pix/model.glb",
+        "fit": "max",
+        "size": 1.4,
+        "tris": 8000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": 135.5,
+        "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 44.5 deg off-axis; turned square, front to +Z"
+      },
+      "existing_game_path": "game/assets/models/D01_wheelbarrow.glb",
+      "reference": "art/references/model_diversity_20261013/D01_wheelbarrow.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One complete single-wheel garden wheelbarrow. Muted sage-green enamel open shallow tray, pale cedar handles, dark charcoal rubber wheel, two metal support legs. Empty tray; visible gap below the tray and around the wheel. Straight practical frame, all three ground contacts level. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One complete single-wheel garden wheelbarrow. Muted sage-green enamel open shallow tray, pale cedar handles, dark charcoal rubber wheel, two metal support legs. Empty tray; visible gap below the tray and around the wheel. Straight practical frame, all three ground contacts level. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "D02_rain_barrel",
+      "label": "雨水桶",
+      "action": "replace",
+      "contexts": [
+        "farm",
+        "home"
+      ],
+      "subject": "One lidded cedar rain barrel on two small stone supports, three blue-grey iron hoops and a small separate projecting brass tap near the bottom. Cream clean wood, discrete stave joints, no dark dirty grain. Tap is an actual open-ended tube, barrel lid flat.",
+      "fit": "h",
+      "size_m": 0.95,
+      "triangle_budget": 8000,
+      "previous_export": {
+        "src": "raw/D02_rain_barrel_pix/model.glb",
+        "fit": "h",
+        "size": 0.95,
+        "tris": 8000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true
+      },
+      "existing_game_path": "game/assets/models/D02_rain_barrel.glb",
+      "reference": "art/references/model_diversity_20261013/D02_rain_barrel.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One lidded cedar rain barrel on two small stone supports, three blue-grey iron hoops and a small separate projecting brass tap near the bottom. Cream clean wood, discrete stave joints, no dark dirty grain. Tap is an actual open-ended tube, barrel lid flat. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One lidded cedar rain barrel on two small stone supports, three blue-grey iron hoops and a small separate projecting brass tap near the bottom. Cream clean wood, discrete stave joints, no dark dirty grain. Tap is an actual open-ended tube, barrel lid flat. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "D03_veg_crates",
+      "label": "三层蔬菜筐",
+      "action": "replace",
+      "contexts": [
+        "farm",
+        "store"
+      ],
+      "subject": "Three stable open cedar produce crates stacked with narrow gaps. Bottom holds orange carrots, middle green cucumbers, top a few red tomatoes. Real individual thick slats, visible rectangular hand holes and distinct vegetable shapes. Crates align vertically; no ground slab.",
+      "fit": "h",
+      "size_m": 0.85,
+      "triangle_budget": 16000,
+      "previous_export": {
+        "src": "raw/D03_veg_crates_pix/model.glb",
+        "fit": "h",
+        "size": 0.85,
+        "tris": 30000,
+        "tex": 2048,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "note": "v0.6 review: 8k decimation broke the slats; re-exported at 30k",
+        "yaw": -144.6,
+        "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 60.0 deg off-axis; turned square, front to +Z",
+        "square_note": "v0.7.3: footprint measured -5.4 deg off-axis after levelling (art/tools/level_check.py); yaw -150.0 -> -144.6"
+      },
+      "existing_game_path": "game/assets/models/D03_veg_crates.glb",
+      "reference": "art/references/model_diversity_20261013/D03_veg_crates.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: Three stable open cedar produce crates stacked with narrow gaps. Bottom holds orange carrots, middle green cucumbers, top a few red tomatoes. Real individual thick slats, visible rectangular hand holes and distinct vegetable shapes. Crates align vertically; no ground slab. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. Three stable open cedar produce crates stacked with narrow gaps. Bottom holds orange carrots, middle green cucumbers, top a few red tomatoes. Real individual thick slats, visible rectangular hand holes and distinct vegetable shapes. Crates align vertically; no ground slab. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "D04_stone_lantern",
+      "label": "石灯",
+      "action": "replace",
+      "contexts": [
+        "farm",
+        "town"
+      ],
+      "subject": "One small Japanese square stone lantern, smooth pale blue-grey stone, broad gently curved hip roof, four actual open window apertures, hollow lantern chamber, square column and a stable stepped foot. Sparse moss only near the foot. No glowing painted window squares.",
+      "fit": "h",
+      "size_m": 1.3,
+      "triangle_budget": 12000,
+      "previous_export": {
+        "src": "raw/D04_stone_lantern_pix/model.glb",
+        "fit": "h",
+        "size": 1.3,
+        "tris": 8000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": -148.4,
+        "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 60.5 deg off-axis; turned square, front to +Z",
+        "square_note": "v0.7.3: footprint measured -2.1 deg off-axis after levelling (art/tools/level_check.py); yaw -150.5 -> -148.4"
+      },
+      "existing_game_path": "game/assets/models/D04_stone_lantern.glb",
+      "reference": "art/references/model_diversity_20261013/D04_stone_lantern.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One small Japanese square stone lantern, smooth pale blue-grey stone, broad gently curved hip roof, four actual open window apertures, hollow lantern chamber, square column and a stable stepped foot. Sparse moss only near the foot. No glowing painted window squares. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One small Japanese square stone lantern, smooth pale blue-grey stone, broad gently curved hip roof, four actual open window apertures, hollow lantern chamber, square column and a stable stepped foot. Sparse moss only near the foot. No glowing painted window squares. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "D05_hokora",
+      "label": "小祠堂",
+      "action": "replace",
+      "contexts": [
+        "farm",
+        "town"
+      ],
+      "subject": "One small Japanese roadside hokora shrine on a low stone pedestal. Matte indigo tiled gable roof, crisp symmetrical cedar pillars, open deep front alcove with small closed inner shrine doors, clear beam joinery and roof thickness. Clean cream wood and muted vermilion accents. No offerings or text.",
+      "fit": "h",
+      "size_m": 1.2,
+      "triangle_budget": 16000,
+      "previous_export": {
+        "src": "raw/D05_hokora_pix/model.glb",
+        "fit": "h",
+        "size": 1.2,
+        "tris": 8000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": -155.5,
+        "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 65.5 deg off-axis; turned square, front to +Z"
+      },
+      "existing_game_path": "game/assets/models/D05_hokora.glb",
+      "reference": "art/references/model_diversity_20261013/D05_hokora.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One small Japanese roadside hokora shrine on a low stone pedestal. Matte indigo tiled gable roof, crisp symmetrical cedar pillars, open deep front alcove with small closed inner shrine doors, clear beam joinery and roof thickness. Clean cream wood and muted vermilion accents. No offerings or text. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One small Japanese roadside hokora shrine on a low stone pedestal. Matte indigo tiled gable roof, crisp symmetrical cedar pillars, open deep front alcove with small closed inner shrine doors, clear beam joinery and roof thickness. Clean cream wood and muted vermilion accents. No offerings or text. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "D08_tool_rack",
+      "label": "园艺工具架",
+      "action": "replace",
+      "contexts": [
+        "farm"
+      ],
+      "subject": "One simple freestanding cedar A-frame garden-tool rack, holds exactly one spade, one rake and one straw hat. Straight frame, independent tool silhouettes, clear open gaps, broad wooden feet coplanar. Smooth dark iron tools, no glossy metal or random bundles.",
+      "fit": "h",
+      "size_m": 1.6,
+      "triangle_budget": 12000,
+      "previous_export": {
+        "src": "raw/D08_tool_rack_pix/model.glb",
+        "fit": "h",
+        "size": 1.6,
+        "tris": 8000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": -148.0,
+        "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 58.0 deg off-axis; turned square, front to +Z"
+      },
+      "existing_game_path": "game/assets/models/D08_tool_rack.glb",
+      "reference": "art/references/model_diversity_20261013/D08_tool_rack.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One simple freestanding cedar A-frame garden-tool rack, holds exactly one spade, one rake and one straw hat. Straight frame, independent tool silhouettes, clear open gaps, broad wooden feet coplanar. Smooth dark iron tools, no glossy metal or random bundles. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One simple freestanding cedar A-frame garden-tool rack, holds exactly one spade, one rake and one straw hat. Straight frame, independent tool silhouettes, clear open gaps, broad wooden feet coplanar. Smooth dark iron tools, no glossy metal or random bundles. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "D09_log_pile",
+      "label": "柴垛",
+      "action": "replace",
+      "contexts": [
+        "farm"
+      ],
+      "subject": "One tidy stack of short cedar firewood logs held between two low wooden end supports, broad stable base. Separate split log shapes with visible flat cut ends in warm cream and cinnamon. Small sparse ring lines, no photographic bark or axe or ground slab.",
+      "fit": "max",
+      "size_m": 1.0,
+      "triangle_budget": 10000,
+      "previous_export": {
+        "src": "raw/D09_log_pile_pix/model.glb",
+        "fit": "h",
+        "size": 1.0,
+        "tris": 30000,
+        "tex": 2048,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "note": "v0.6 review: 8k decimation broke the slats; re-exported at 30k",
+        "yaw": -157.0,
+        "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 67.0 deg off-axis; turned square, front to +Z"
+      },
+      "existing_game_path": "game/assets/models/D09_log_pile.glb",
+      "reference": "art/references/model_diversity_20261013/D09_log_pile.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One tidy stack of short cedar firewood logs held between two low wooden end supports, broad stable base. Separate split log shapes with visible flat cut ends in warm cream and cinnamon. Small sparse ring lines, no photographic bark or axe or ground slab. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One tidy stack of short cedar firewood logs held between two low wooden end supports, broad stable base. Separate split log shapes with visible flat cut ends in warm cream and cinnamon. Small sparse ring lines, no photographic bark or axe or ground slab. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "D12_flower_planter",
+      "label": "混植花箱",
+      "action": "replace",
+      "contexts": [
+        "farm",
+        "town"
+      ],
+      "subject": "One rectangular cedar flower planter, with separate rounded green leaves and small marigold orange, white daisy and pale purple flowers. Moderate density with readable stems and air gaps, no triangular shards. Straight wooden box and four flush small feet. No ground slab.",
+      "fit": "w",
+      "size_m": 1.2,
+      "triangle_budget": 10000,
+      "previous_export": {
+        "src": "raw/D12_flower_planter_pix/model.glb",
+        "fit": "max",
+        "size": 1.2,
+        "tris": 8000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": -141.0,
+        "yaw_note": "v0.6 review: Pixal3D rebuilds in the reference camera frame, 51.0 deg off-axis; turned square, front to +Z"
+      },
+      "existing_game_path": "game/assets/models/D12_flower_planter.glb",
+      "reference": "art/references/model_diversity_20261013/D12_flower_planter.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One rectangular cedar flower planter, with separate rounded green leaves and small marigold orange, white daisy and pale purple flowers. Moderate density with readable stems and air gaps, no triangular shards. Straight wooden box and four flush small feet. No ground slab. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One rectangular cedar flower planter, with separate rounded green leaves and small marigold orange, white daisy and pale purple flowers. Moderate density with readable stems and air gaps, no triangular shards. Straight wooden box and four flush small feet. No ground slab. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "A14_hydrangea_pot",
+      "label": "蓝绣球盆栽",
+      "action": "replace",
+      "contexts": [
+        "town",
+        "home"
+      ],
+      "subject": "One terracotta pot containing a blue and lavender hydrangea bush. Three rounded clusters made of readable four-petal florets, broad clean heart-shaped leaves, visible branching stems. Compact graceful silhouette, actual pot rim, no triangular flat-color shards.",
+      "fit": "h",
+      "size_m": 0.75,
+      "triangle_budget": 8000,
+      "previous_export": {
+        "src": "../../output/japanese-street-shinkai-dry/models/A14_hydrangea_pot/model.glb",
+        "fit": "h",
+        "size": 0.75,
+        "tris": 4000,
+        "tex": 1024,
+        "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)"
+      },
+      "existing_game_path": "game/assets/models/A14_hydrangea_pot.glb",
+      "reference": "art/references/model_diversity_20261013/A14_hydrangea_pot.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One terracotta pot containing a blue and lavender hydrangea bush. Three rounded clusters made of readable four-petal florets, broad clean heart-shaped leaves, visible branching stems. Compact graceful silhouette, actual pot rim, no triangular flat-color shards. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One terracotta pot containing a blue and lavender hydrangea bush. Three rounded clusters made of readable four-petal florets, broad clean heart-shaped leaves, visible branching stems. Compact graceful silhouette, actual pot rim, no triangular flat-color shards. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "A15_potted_plant",
+      "label": "常绿陶盆",
+      "action": "replace",
+      "contexts": [
+        "town",
+        "home"
+      ],
+      "subject": "One pale cream ceramic pot with a compact evergreen shrub. Oval rounded leaves in separated sprays, subtle asymmetrical branching, actual circular rim and visible soil, stable pot base. Summer leaf green with a few warm new shoots, no flowers and no triangular shards.",
+      "fit": "h",
+      "size_m": 0.8,
+      "triangle_budget": 8000,
+      "previous_export": {
+        "src": "../../output/japanese-street-shinkai-dry/models/A15_potted_plant/model.glb",
+        "fit": "h",
+        "size": 0.8,
+        "tris": 4000,
+        "tex": 1024,
+        "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)"
+      },
+      "existing_game_path": "game/assets/models/A15_potted_plant.glb",
+      "reference": "art/references/model_diversity_20261013/A15_potted_plant.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One pale cream ceramic pot with a compact evergreen shrub. Oval rounded leaves in separated sprays, subtle asymmetrical branching, actual circular rim and visible soil, stable pot base. Summer leaf green with a few warm new shoots, no flowers and no triangular shards. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One pale cream ceramic pot with a compact evergreen shrub. Oval rounded leaves in separated sprays, subtle asymmetrical branching, actual circular rim and visible soil, stable pot base. Summer leaf green with a few warm new shoots, no flowers and no triangular shards. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "A16_planter_box",
+      "label": "街边花箱",
+      "action": "replace",
+      "contexts": [
+        "town"
+      ],
+      "subject": "One long low cedar planter box with pink and white petunia flowers. Clean rectangular box, thick corner joints, small separate trumpet-shaped flowers and rounded green leaves with visible gaps. Flat level bottom, matte flat anime colours, no ground slab.",
+      "fit": "w",
+      "size_m": 1.1,
+      "triangle_budget": 9000,
+      "previous_export": {
+        "src": "../../output/japanese-street-shinkai-dry/models/A16_planter_box/model.glb",
+        "fit": "w",
+        "size": 1.1,
+        "tris": 4000,
+        "tex": 1024,
+        "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)"
+      },
+      "existing_game_path": "game/assets/models/A16_planter_box.glb",
+      "reference": "art/references/model_diversity_20261013/A16_planter_box.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One long low cedar planter box with pink and white petunia flowers. Clean rectangular box, thick corner joints, small separate trumpet-shaped flowers and rounded green leaves with visible gaps. Flat level bottom, matte flat anime colours, no ground slab. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One long low cedar planter box with pink and white petunia flowers. Clean rectangular box, thick corner joints, small separate trumpet-shaped flowers and rounded green leaves with visible gaps. Flat level bottom, matte flat anime colours, no ground slab. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "C09_carrot",
+      "label": "胡萝卜植株",
+      "action": "replace",
+      "contexts": [
+        "crop"
+      ],
+      "subject": "One growing carrot plant, fine feathery green leaves in a small upright rosette and a small orange carrot shoulder at the soil line. No pot, no soil block or ground disk, no harvested loose carrots. Readable branched leaf geometry, clean green tones.",
+      "fit": "h",
+      "size_m": 0.35,
+      "triangle_budget": 6000,
+      "previous_export": {
+        "src": "raw/C09_carrot_pix/model.glb",
+        "fit": "h",
+        "size": 0.35,
+        "tris": 14000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true
+      },
+      "existing_game_path": "game/assets/models/C09_carrot.glb",
+      "reference": "art/references/model_diversity_20261013/C09_carrot.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One growing carrot plant, fine feathery green leaves in a small upright rosette and a small orange carrot shoulder at the soil line. No pot, no soil block or ground disk, no harvested loose carrots. Readable branched leaf geometry, clean green tones. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One growing carrot plant, fine feathery green leaves in a small upright rosette and a small orange carrot shoulder at the soil line. No pot, no soil block or ground disk, no harvested loose carrots. Readable branched leaf geometry, clean green tones. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "C10_potato",
+      "label": "土豆植株",
+      "action": "replace",
+      "contexts": [
+        "crop"
+      ],
+      "subject": "One mature potato plant with three short branching green stems, rounded oval leaves and two tiny white five-petal blossoms. No exposed potato tubers, no pot, no soil or ground disk. Bush stays compact, distinct clean leaf shapes and open gaps.",
+      "fit": "h",
+      "size_m": 0.5,
+      "triangle_budget": 6000,
+      "previous_export": {
+        "src": "raw/C10_potato_pix/model.glb",
+        "fit": "h",
+        "size": 0.5,
+        "tris": 7000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": 44.4,
+        "square_note": "v0.7.3: footprint measured -44.4 deg off-axis after levelling (art/tools/level_check.py); yaw 0.0 -> 44.4"
+      },
+      "existing_game_path": "game/assets/models/C10_potato.glb",
+      "reference": "art/references/model_diversity_20261013/C10_potato.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One mature potato plant with three short branching green stems, rounded oval leaves and two tiny white five-petal blossoms. No exposed potato tubers, no pot, no soil or ground disk. Bush stays compact, distinct clean leaf shapes and open gaps. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One mature potato plant with three short branching green stems, rounded oval leaves and two tiny white five-petal blossoms. No exposed potato tubers, no pot, no soil or ground disk. Bush stays compact, distinct clean leaf shapes and open gaps. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "C11_eggplant",
+      "label": "茄子植株",
+      "action": "replace",
+      "contexts": [
+        "crop"
+      ],
+      "subject": "One compact mature Japanese eggplant plant with branching stems, broad rounded green leaves and three slender curved purple fruits hanging below the foliage. Green fruit calyx clearly modeled. No pot or soil or ground slab; visible stem base.",
+      "fit": "h",
+      "size_m": 0.8,
+      "triangle_budget": 6500,
+      "previous_export": {
+        "src": "raw/C11_eggplant_pix/model.glb",
+        "fit": "h",
+        "size": 0.8,
+        "tris": 7000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true
+      },
+      "existing_game_path": "game/assets/models/C11_eggplant.glb",
+      "reference": "art/references/model_diversity_20261013/C11_eggplant.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One compact mature Japanese eggplant plant with branching stems, broad rounded green leaves and three slender curved purple fruits hanging below the foliage. Green fruit calyx clearly modeled. No pot or soil or ground slab; visible stem base. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One compact mature Japanese eggplant plant with branching stems, broad rounded green leaves and three slender curved purple fruits hanging below the foliage. Green fruit calyx clearly modeled. No pot or soil or ground slab; visible stem base. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "C12_corn",
+      "label": "玉米植株",
+      "action": "replace",
+      "contexts": [
+        "crop"
+      ],
+      "subject": "One mature corn stalk with long graceful green leaves branching at alternating heights, two cobs inside partly opened green husks and a small golden tassel. Clear slender straight main stalk, no pot, no soil or ground slab. Simplified clean anatomy.",
+      "fit": "h",
+      "size_m": 1.8,
+      "triangle_budget": 6500,
+      "previous_export": {
+        "src": "raw/C12_corn_pix/model.glb",
+        "fit": "h",
+        "size": 1.8,
+        "tris": 7000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true
+      },
+      "existing_game_path": "game/assets/models/C12_corn.glb",
+      "reference": "art/references/model_diversity_20261013/C12_corn.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One mature corn stalk with long graceful green leaves branching at alternating heights, two cobs inside partly opened green husks and a small golden tassel. Clear slender straight main stalk, no pot, no soil or ground slab. Simplified clean anatomy. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One mature corn stalk with long graceful green leaves branching at alternating heights, two cobs inside partly opened green husks and a small golden tassel. Clear slender straight main stalk, no pot, no soil or ground slab. Simplified clean anatomy. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "C13_pumpkin",
+      "label": "南瓜藤",
+      "action": "replace",
+      "contexts": [
+        "crop"
+      ],
+      "subject": "One low compact pumpkin vine cluster with broad lobed leaves, one ribbed orange pumpkin, one small green pumpkin and two yellow blossoms. Distinct short curling tendrils, readable leaf gaps. No pot, no soil disk, no ground slab.",
+      "fit": "max",
+      "size_m": 0.8,
+      "triangle_budget": 7000,
+      "previous_export": {
+        "src": "raw/C13_pumpkin_pix/model.glb",
+        "fit": "max",
+        "size": 0.8,
+        "tris": 7000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true
+      },
+      "existing_game_path": "game/assets/models/C13_pumpkin.glb",
+      "reference": "art/references/model_diversity_20261013/C13_pumpkin.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One low compact pumpkin vine cluster with broad lobed leaves, one ribbed orange pumpkin, one small green pumpkin and two yellow blossoms. Distinct short curling tendrils, readable leaf gaps. No pot, no soil disk, no ground slab. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One low compact pumpkin vine cluster with broad lobed leaves, one ribbed orange pumpkin, one small green pumpkin and two yellow blossoms. Distinct short curling tendrils, readable leaf gaps. No pot, no soil disk, no ground slab. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "C14_watermelon",
+      "label": "西瓜藤",
+      "action": "replace",
+      "contexts": [
+        "crop"
+      ],
+      "subject": "One low compact watermelon vine with two oval striped green watermelons, small deeply lobed leaves, visible branching vines and one yellow blossom. Smooth fruit surfaces with simple clean dark-green painted stripes. No pot, no ground disk or slab.",
+      "fit": "max",
+      "size_m": 0.9,
+      "triangle_budget": 7000,
+      "previous_export": {
+        "src": "raw/C14_watermelon_pix/model.glb",
+        "fit": "max",
+        "size": 0.9,
+        "tris": 7000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": 34.1,
+        "square_note": "v0.7.3: footprint measured -34.1 deg off-axis after levelling (art/tools/level_check.py); yaw 0.0 -> 34.1"
+      },
+      "existing_game_path": "game/assets/models/C14_watermelon.glb",
+      "reference": "art/references/model_diversity_20261013/C14_watermelon.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One low compact watermelon vine with two oval striped green watermelons, small deeply lobed leaves, visible branching vines and one yellow blossom. Smooth fruit surfaces with simple clean dark-green painted stripes. No pot, no ground disk or slab. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One low compact watermelon vine with two oval striped green watermelons, small deeply lobed leaves, visible branching vines and one yellow blossom. Smooth fruit surfaces with simple clean dark-green painted stripes. No pot, no ground disk or slab. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "C15_wheat",
+      "label": "麦穗丛",
+      "action": "replace",
+      "contexts": [
+        "crop"
+      ],
+      "subject": "One small upright clump of six wheat stems, each ends in a distinct golden ear with a few short awns, slender pale green leaves. Natural separated stalks and small height differences, no pot or soil or tied ribbon or ground slab.",
+      "fit": "h",
+      "size_m": 0.9,
+      "triangle_budget": 6500,
+      "previous_export": {
+        "src": "raw/C15_wheat_pix/model.glb",
+        "fit": "h",
+        "size": 0.9,
+        "tris": 14000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": 39.7,
+        "square_note": "v0.7.3: footprint measured -39.7 deg off-axis after levelling (art/tools/level_check.py); yaw 0.0 -> 39.7"
+      },
+      "existing_game_path": "game/assets/models/C15_wheat.glb",
+      "reference": "art/references/model_diversity_20261013/C15_wheat.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One small upright clump of six wheat stems, each ends in a distinct golden ear with a few short awns, slender pale green leaves. Natural separated stalks and small height differences, no pot or soil or tied ribbon or ground slab. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One small upright clump of six wheat stems, each ends in a distinct golden ear with a few short awns, slender pale green leaves. Natural separated stalks and small height differences, no pot or soil or tied ribbon or ground slab. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "C16_onion",
+      "label": "洋葱植株",
+      "action": "replace",
+      "contexts": [
+        "crop"
+      ],
+      "subject": "One growing onion plant, a pale round onion bulb with its lower half intended below the soil line, four long upright tubular blue-green leaves with gently curved tips. Smooth clean surfaces, no pot or soil or loose extra onions.",
+      "fit": "h",
+      "size_m": 0.45,
+      "triangle_budget": 5000,
+      "previous_export": {
+        "src": "raw/C16_onion_pix/model.glb",
+        "fit": "h",
+        "size": 0.45,
+        "tris": 7000,
+        "tex": 1024,
+        "provider": "pixal3d (v0.5)",
+        "rebake": true,
+        "yaw": 27.5,
+        "square_note": "v0.7.3: footprint measured -27.5 deg off-axis after levelling (art/tools/level_check.py); yaw 0.0 -> 27.5"
+      },
+      "existing_game_path": "game/assets/models/C16_onion.glb",
+      "reference": "art/references/model_diversity_20261013/C16_onion.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One growing onion plant, a pale round onion bulb with its lower half intended below the soil line, four long upright tubular blue-green leaves with gently curved tips. Smooth clean surfaces, no pot or soil or loose extra onions. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One growing onion plant, a pale round onion bulb with its lower half intended below the soil line, four long upright tubular blue-green leaves with gently curved tips. Smooth clean surfaces, no pot or soil or loose extra onions. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "F04_scarecrow",
+      "label": "稻草人",
+      "action": "replace",
+      "contexts": [
+        "farm"
+      ],
+      "subject": "One friendly Japanese garden scarecrow on a single straight wooden stake, broad straw conical hat, simple round cloth face with two dots and a small smile, faded indigo shirt with broad clean sleeves, straw hands. Clear consistent anime contours, no gritty burlap texture or ground disk.",
+      "fit": "h",
+      "size_m": 1.9,
+      "triangle_budget": 10000,
+      "previous_export": {
+        "src": "raw/F04_scarecrow_h3d/model.glb",
+        "fit": "h",
+        "size": 1.9,
+        "tris": 5000,
+        "tex": 1024,
+        "weld": 0,
+        "provider": "hyper3d rodin gen-2.5 (v0.4)",
+        "rebake": true,
+        "fit_bounds_blender": {
+          "min": [
+            -0.7286838293075562,
+            -0.3012792468070984,
+            -0.002792231971397996
+          ],
+          "max": [
+            0.7410507798194885,
+            0.30370330810546875,
+            1.899999976158142
+          ]
+        },
+        "note": "2026-10-02 exact weld on untextured decimation copy; UV/colour rebake"
+      },
+      "existing_game_path": "game/assets/models/F04_scarecrow.glb",
+      "reference": "art/references/model_diversity_20261013/F04_scarecrow.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One friendly Japanese garden scarecrow on a single straight wooden stake, broad straw conical hat, simple round cloth face with two dots and a small smile, faded indigo shirt with broad clean sleeves, straw hands. Clear consistent anime contours, no gritty burlap texture or ground disk. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One friendly Japanese garden scarecrow on a single straight wooden stake, broad straw conical hat, simple round cloth face with two dots and a small smile, faded indigo shirt with broad clean sleeves, straw hands. Clear consistent anime contours, no gritty burlap texture or ground disk. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "F06_veggie_stand",
+      "label": "菜摊",
+      "action": "replace",
+      "contexts": [
+        "farm"
+      ],
+      "subject": "One small wooden roadside vegetable stand, sloped cedar roof, two straight vertical sides, three open shelves. Each shelf holds one shallow crate: tomatoes, cucumbers, eggplants. Clear real openings, slats and shelf depth. No text, no flags, no extra furniture or ground slab.",
+      "fit": "h",
+      "size_m": 1.9,
+      "triangle_budget": 15000,
+      "previous_export": {
+        "src": "raw/F06_veggie_stand_h3d/model.glb",
+        "fit": "h",
+        "size": 1.9,
+        "tris": 6000,
+        "tex": 1024,
+        "weld": 0,
+        "provider": "hyper3d rodin gen-2.5 (v0.4)",
+        "rebake": true,
+        "fit_bounds_blender": {
+          "min": [
+            -0.6485791206359863,
+            -0.5142632126808167,
+            -2.731911536102416e-06
+          ],
+          "max": [
+            0.6447005271911621,
+            0.517848551273346,
+            1.9000000953674316
+          ]
+        },
+        "note": "2026-10-02 exact weld on untextured decimation copy; UV/colour rebake"
+      },
+      "existing_game_path": "game/assets/models/F06_veggie_stand.glb",
+      "reference": "art/references/model_diversity_20261013/F06_veggie_stand.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One small wooden roadside vegetable stand, sloped cedar roof, two straight vertical sides, three open shelves. Each shelf holds one shallow crate: tomatoes, cucumbers, eggplants. Clear real openings, slats and shelf depth. No text, no flags, no extra furniture or ground slab. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One small wooden roadside vegetable stand, sloped cedar roof, two straight vertical sides, three open shelves. Each shelf holds one shallow crate: tomatoes, cucumbers, eggplants. Clear real openings, slats and shelf depth. No text, no flags, no extra furniture or ground slab. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "P07",
+      "label": "社区菜床",
+      "action": "replace",
+      "contexts": [
+        "town"
+      ],
+      "subject": "One compact pair of low rectangular cedar raised vegetable beds, back bed slightly taller. Soil surface level and inset, one tomato plant with three red tomatoes and short upright bamboo stakes in back, compact leafy vegetables in front. Clean warm wood, flat colours, moderate plant density, no unrelated garden props.",
+      "fit": "w",
+      "size_m": 2.4,
+      "triangle_budget": 16000,
+      "previous_export": {
+        "src": "raw/P07/model.glb",
+        "fit": "w",
+        "size": 2.4,
+        "tris": 8000,
+        "tex": 1024
+      },
+      "existing_game_path": "game/assets/models/P07.glb",
+      "reference": "art/references/model_diversity_20261013/P07.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One compact pair of low rectangular cedar raised vegetable beds, back bed slightly taller. Soil surface level and inset, one tomato plant with three red tomatoes and short upright bamboo stakes in back, compact leafy vegetables in front. Clean warm wood, flat colours, moderate plant density, no unrelated garden props. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One compact pair of low rectangular cedar raised vegetable beds, back bed slightly taller. Soil surface level and inset, one tomato plant with three red tomatoes and short upright bamboo stakes in back, compact leafy vegetables in front. Clean warm wood, flat colours, moderate plant density, no unrelated garden props. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "P08",
+      "label": "育苗工作台",
+      "action": "replace",
+      "contexts": [
+        "town"
+      ],
+      "subject": "One freestanding straight cedar potting workbench with an open lower shelf and a narrow upright tool rail. Broad level unobstructed main worktop, one small terracotta pot at the back, one hanging hand trowel, one seed tray on lower shelf. Clear actual openings and independent legs, no stool or ground platform.",
+      "fit": "h",
+      "size_m": 1.9,
+      "triangle_budget": 14000,
+      "previous_export": {
+        "src": "raw/P08/model.glb",
+        "fit": "h",
+        "size": 1.9,
+        "tris": 8000,
+        "tex": 1024
+      },
+      "existing_game_path": "game/assets/models/P08.glb",
+      "reference": "art/references/model_diversity_20261013/P08.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One freestanding straight cedar potting workbench with an open lower shelf and a narrow upright tool rail. Broad level unobstructed main worktop, one small terracotta pot at the back, one hanging hand trowel, one seed tray on lower shelf. Clear actual openings and independent legs, no stool or ground platform. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One freestanding straight cedar potting workbench with an open lower shelf and a narrow upright tool rail. Broad level unobstructed main worktop, one small terracotta pot at the back, one hanging hand trowel, one seed tray on lower shelf. Clear actual openings and independent legs, no stool or ground platform. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "H06",
+      "label": "庭院工具房",
+      "action": "replace",
+      "contexts": [
+        "town"
+      ],
+      "subject": "One small Japanese cedar garden tool shed with a shallow indigo-grey pitched roof, one straight closed cream front door, one small side louver window. Subtle panel joints, actual eaves depth and roof ridge, slim rain gutter. Clean anime painted surfaces, no surrounding props or pavement slab.",
+      "fit": "h",
+      "size_m": 2.3,
+      "triangle_budget": 18000,
+      "previous_export": {
+        "src": "raw/H06/model.glb",
+        "fit": "h",
+        "size": 2.3,
+        "tris": 8000,
+        "tex": 1024
+      },
+      "existing_game_path": "game/assets/models/H06.glb",
+      "reference": "art/references/model_diversity_20261013/H06.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One small Japanese cedar garden tool shed with a shallow indigo-grey pitched roof, one straight closed cream front door, one small side louver window. Subtle panel joints, actual eaves depth and roof ridge, slim rain gutter. Clean anime painted surfaces, no surrounding props or pavement slab. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One small Japanese cedar garden tool shed with a shallow indigo-grey pitched roof, one straight closed cream front door, one small side louver window. Subtle panel joints, actual eaves depth and roof ridge, slim rain gutter. Clean anime painted surfaces, no surrounding props or pavement slab. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "T06_camphor",
+      "label": "樟树",
+      "action": "add",
+      "contexts": [
+        "trees"
+      ],
+      "subject": "One mature summer camphor tree, wide asymmetrical umbrella crown with distinct overlapping rounded foliage clusters, clear visible sturdy branching warm-grey trunk, separate tapered roots. Clean anime grouped small oval leaves, foliage gaps. No ground disk, scene, fruit or pot.",
+      "fit": "h",
+      "size_m": 6.5,
+      "triangle_budget": 20000,
+      "reference": "art/references/model_diversity_20261013/T06_camphor.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One mature summer camphor tree, wide asymmetrical umbrella crown with distinct overlapping rounded foliage clusters, clear visible sturdy branching warm-grey trunk, separate tapered roots. Clean anime grouped small oval leaves, foliage gaps. No ground disk, scene, fruit or pot. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One mature summer camphor tree, wide asymmetrical umbrella crown with distinct overlapping rounded foliage clusters, clear visible sturdy branching warm-grey trunk, separate tapered roots. Clean anime grouped small oval leaves, foliage gaps. No ground disk, scene, fruit or pot. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "T07_summer_maple",
+      "label": "青枫",
+      "action": "add",
+      "contexts": [
+        "trees"
+      ],
+      "subject": "One airy Japanese green maple tree, several graceful spreading branches, light translucent-looking summer green lobed leaf clusters with open gaps and a slightly flattened layered crown. Slender forked trunk, clean anime shapes, no ground disk or pot.",
+      "fit": "h",
+      "size_m": 4.0,
+      "triangle_budget": 18000,
+      "reference": "art/references/model_diversity_20261013/T07_summer_maple.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One airy Japanese green maple tree, several graceful spreading branches, light translucent-looking summer green lobed leaf clusters with open gaps and a slightly flattened layered crown. Slender forked trunk, clean anime shapes, no ground disk or pot. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One airy Japanese green maple tree, several graceful spreading branches, light translucent-looking summer green lobed leaf clusters with open gaps and a slightly flattened layered crown. Slender forked trunk, clean anime shapes, no ground disk or pot. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "T08_green_cherry",
+      "label": "夏日樱树",
+      "action": "add",
+      "contexts": [
+        "trees"
+      ],
+      "subject": "One summer cherry tree in green foliage with no flowers, gently angled branched brown-grey trunk, broad irregular rounded crown, distinct separated leaf sprays and visible sky gaps. Clean anime tree, no pink flowers, ground disk or pot.",
+      "fit": "h",
+      "size_m": 5.5,
+      "triangle_budget": 20000,
+      "reference": "art/references/model_diversity_20261013/T08_green_cherry.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One summer cherry tree in green foliage with no flowers, gently angled branched brown-grey trunk, broad irregular rounded crown, distinct separated leaf sprays and visible sky gaps. Clean anime tree, no pink flowers, ground disk or pot. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One summer cherry tree in green foliage with no flowers, gently angled branched brown-grey trunk, broad irregular rounded crown, distinct separated leaf sprays and visible sky gaps. Clean anime tree, no pink flowers, ground disk or pot. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "T09_bamboo_grove",
+      "label": "竹丛",
+      "action": "add",
+      "contexts": [
+        "trees"
+      ],
+      "subject": "One small bamboo clump of five slender segmented green bamboo culms at different heights, separate long narrow leaf sprays, ample open air gaps, graceful upright silhouette. Clean anime flat colours, no pot, ground or fences.",
+      "fit": "h",
+      "size_m": 4.8,
+      "triangle_budget": 16000,
+      "reference": "art/references/model_diversity_20261013/T09_bamboo_grove.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One small bamboo clump of five slender segmented green bamboo culms at different heights, separate long narrow leaf sprays, ample open air gaps, graceful upright silhouette. Clean anime flat colours, no pot, ground or fences. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One small bamboo clump of five slender segmented green bamboo culms at different heights, separate long narrow leaf sprays, ample open air gaps, graceful upright silhouette. Clean anime flat colours, no pot, ground or fences. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "T10_weeping_willow",
+      "label": "垂柳",
+      "action": "add",
+      "contexts": [
+        "trees"
+      ],
+      "subject": "One weeping willow tree with visibly hanging thin branch sprays and long narrow summer-green leaves, broad airy cascading crown, grey-brown forked trunk. Each hanging spray separated by gaps, no solid blob crown, no ground disk or pot.",
+      "fit": "h",
+      "size_m": 6.0,
+      "triangle_budget": 20000,
+      "reference": "art/references/model_diversity_20261013/T10_weeping_willow.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One weeping willow tree with visibly hanging thin branch sprays and long narrow summer-green leaves, broad airy cascading crown, grey-brown forked trunk. Each hanging spray separated by gaps, no solid blob crown, no ground disk or pot. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One weeping willow tree with visibly hanging thin branch sprays and long narrow summer-green leaves, broad airy cascading crown, grey-brown forked trunk. Each hanging spray separated by gaps, no solid blob crown, no ground disk or pot. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "T11_young_zelkova",
+      "label": "幼榉树",
+      "action": "add",
+      "contexts": [
+        "trees"
+      ],
+      "subject": "One young Japanese zelkova tree, upright slender trunk with elegant vase-shaped V branches, small oval summer green leaves in separated airy clusters, narrow crown. Clean anime shapes, no ground disk or pot.",
+      "fit": "h",
+      "size_m": 4.5,
+      "triangle_budget": 18000,
+      "reference": "art/references/model_diversity_20261013/T11_young_zelkova.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One young Japanese zelkova tree, upright slender trunk with elegant vase-shaped V branches, small oval summer green leaves in separated airy clusters, narrow crown. Clean anime shapes, no ground disk or pot. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One young Japanese zelkova tree, upright slender trunk with elegant vase-shaped V branches, small oval summer green leaves in separated airy clusters, narrow crown. Clean anime shapes, no ground disk or pot. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "V20_morning_glory",
+      "label": "朝颜竹架盆",
+      "action": "add",
+      "contexts": [
+        "planters"
+      ],
+      "subject": "One round terracotta pot with a compact morning-glory vine climbing a small triangular bamboo trellis. Five blue trumpet flowers with pale centers, rounded heart leaves and visible twisting stems. Actual pot rim and clean gaps.",
+      "fit": "h",
+      "size_m": 0.85,
+      "triangle_budget": 9000,
+      "reference": "art/references/model_diversity_20261013/V20_morning_glory.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One round terracotta pot with a compact morning-glory vine climbing a small triangular bamboo trellis. Five blue trumpet flowers with pale centers, rounded heart leaves and visible twisting stems. Actual pot rim and clean gaps. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One round terracotta pot with a compact morning-glory vine climbing a small triangular bamboo trellis. Five blue trumpet flowers with pale centers, rounded heart leaves and visible twisting stems. Actual pot rim and clean gaps. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "V21_white_hydrangea",
+      "label": "白绣球盆",
+      "action": "add",
+      "contexts": [
+        "planters"
+      ],
+      "subject": "One low broad pale blue ceramic pot with two rounded white hydrangea flower clusters, individually readable four-petal florets and broad green leaves, visible stems and dark soil. Clean airy compact anime shape.",
+      "fit": "h",
+      "size_m": 0.65,
+      "triangle_budget": 8000,
+      "reference": "art/references/model_diversity_20261013/V21_white_hydrangea.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One low broad pale blue ceramic pot with two rounded white hydrangea flower clusters, individually readable four-petal florets and broad green leaves, visible stems and dark soil. Clean airy compact anime shape. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One low broad pale blue ceramic pot with two rounded white hydrangea flower clusters, individually readable four-petal florets and broad green leaves, visible stems and dark soil. Clean airy compact anime shape. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "V22_shiso_planter",
+      "label": "紫苏种植箱",
+      "action": "add",
+      "contexts": [
+        "planters"
+      ],
+      "subject": "One small rectangular cedar kitchen herb planter with four purple-green shiso stems, crisp serrated but rounded broad leaves and distinct individual branching. Open leaf gaps, real box rim and soil visible. No text or extra tools.",
+      "fit": "h",
+      "size_m": 0.45,
+      "triangle_budget": 6500,
+      "reference": "art/references/model_diversity_20261013/V22_shiso_planter.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One small rectangular cedar kitchen herb planter with four purple-green shiso stems, crisp serrated but rounded broad leaves and distinct individual branching. Open leaf gaps, real box rim and soil visible. No text or extra tools. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One small rectangular cedar kitchen herb planter with four purple-green shiso stems, crisp serrated but rounded broad leaves and distinct individual branching. Open leaf gaps, real box rim and soil visible. No text or extra tools. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "V23_cosmos_pot",
+      "label": "波斯菊陶盆",
+      "action": "add",
+      "contexts": [
+        "planters"
+      ],
+      "subject": "One pale cream ceramic pot with five pink and white cosmos flowers on slender separated stems at varied heights, delicate feathery green foliage, eight rounded petals per flower. Clean readable anime silhouette, actual pot rim.",
+      "fit": "h",
+      "size_m": 0.72,
+      "triangle_budget": 7000,
+      "reference": "art/references/model_diversity_20261013/V23_cosmos_pot.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One pale cream ceramic pot with five pink and white cosmos flowers on slender separated stems at varied heights, delicate feathery green foliage, eight rounded petals per flower. Clean readable anime silhouette, actual pot rim. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One pale cream ceramic pot with five pink and white cosmos flowers on slender separated stems at varied heights, delicate feathery green foliage, eight rounded petals per flower. Clean readable anime silhouette, actual pot rim. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "V24_fern_pot",
+      "label": "蕨类陶盆",
+      "action": "add",
+      "contexts": [
+        "planters"
+      ],
+      "subject": "One low ochre ceramic pot with a graceful green fern, five separate arching fronds with neatly paired rounded leaflets, visible stems and open spaces. Clean anime flat leaf tones and actual thick pot rim.",
+      "fit": "h",
+      "size_m": 0.5,
+      "triangle_budget": 7000,
+      "reference": "art/references/model_diversity_20261013/V24_fern_pot.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One low ochre ceramic pot with a graceful green fern, five separate arching fronds with neatly paired rounded leaflets, visible stems and open spaces. Clean anime flat leaf tones and actual thick pot rim. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One low ochre ceramic pot with a graceful green fern, five separate arching fronds with neatly paired rounded leaflets, visible stems and open spaces. Clean anime flat leaf tones and actual thick pot rim. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "V25_dwarf_lemon",
+      "label": "矮柠檬盆栽",
+      "action": "add",
+      "contexts": [
+        "planters"
+      ],
+      "subject": "One terracotta pot with a small dwarf lemon tree, distinct slim branched trunk, dark green oval leaves in sparse sprays and three bright yellow lemons. Clear air gaps, actual pot rim and visible soil. Clean anime matte colours.",
+      "fit": "h",
+      "size_m": 1.1,
+      "triangle_budget": 9000,
+      "reference": "art/references/model_diversity_20261013/V25_dwarf_lemon.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One terracotta pot with a small dwarf lemon tree, distinct slim branched trunk, dark green oval leaves in sparse sprays and three bright yellow lemons. Clear air gaps, actual pot rim and visible soil. Clean anime matte colours. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One terracotta pot with a small dwarf lemon tree, distinct slim branched trunk, dark green oval leaves in sparse sprays and three bright yellow lemons. Clear air gaps, actual pot rim and visible soil. Clean anime matte colours. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 60000
+    },
+    {
+      "id": "N01_enamel_kettle",
+      "label": "搪瓷水壶",
+      "action": "add",
+      "contexts": [
+        "home"
+      ],
+      "subject": "One cream enamel stovetop kettle with blue rim, curved dark handle, separate curved spout with visible mouth and removable fitted lid. Clean smooth matte anime surfaces. No stove or background objects.",
+      "fit": "h",
+      "size_m": 0.24,
+      "triangle_budget": 4500,
+      "reference": "art/references/model_diversity_20261013/N01_enamel_kettle.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One cream enamel stovetop kettle with blue rim, curved dark handle, separate curved spout with visible mouth and removable fitted lid. Clean smooth matte anime surfaces. No stove or background objects. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One cream enamel stovetop kettle with blue rim, curved dark handle, separate curved spout with visible mouth and removable fitted lid. Clean smooth matte anime surfaces. No stove or background objects. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N02_kyusu",
+      "label": "侧柄茶壶",
+      "action": "add",
+      "contexts": [
+        "home"
+      ],
+      "subject": "One small Japanese brown clay kyusu teapot, cylindrical side handle, short curved spout and round lid. Subtle cream glaze accent only, clean matte anime pottery, clear separate handle and spout openings. No tea cups or tray.",
+      "fit": "h",
+      "size_m": 0.16,
+      "triangle_budget": 4500,
+      "reference": "art/references/model_diversity_20261013/N02_kyusu.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One small Japanese brown clay kyusu teapot, cylindrical side handle, short curved spout and round lid. Subtle cream glaze accent only, clean matte anime pottery, clear separate handle and spout openings. No tea cups or tray. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One small Japanese brown clay kyusu teapot, cylindrical side handle, short curved spout and round lid. Subtle cream glaze accent only, clean matte anime pottery, clear separate handle and spout openings. No tea cups or tray. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N03_tea_pair",
+      "label": "茶杯对",
+      "action": "add",
+      "contexts": [
+        "home"
+      ],
+      "subject": "Exactly two small Japanese handleless ceramic tea cups side by side, one pale indigo and one cream with one blue stripe. Real open circular rims, hollow interiors and stable feet. No tray or teapot or liquid.",
+      "fit": "h",
+      "size_m": 0.09,
+      "triangle_budget": 4000,
+      "reference": "art/references/model_diversity_20261013/N03_tea_pair.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: Exactly two small Japanese handleless ceramic tea cups side by side, one pale indigo and one cream with one blue stripe. Real open circular rims, hollow interiors and stable feet. No tray or teapot or liquid. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. Exactly two small Japanese handleless ceramic tea cups side by side, one pale indigo and one cream with one blue stripe. Real open circular rims, hollow interiors and stable feet. No tray or teapot or liquid. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N04_fruit_bowl",
+      "label": "陶果盘",
+      "action": "add",
+      "contexts": [
+        "home"
+      ],
+      "subject": "One broad low cream ceramic fruit bowl holding two small oranges and one pale yellow pear, separate clear fruit shapes. Real rim and bowl depth, smooth clean anime surfaces. No table or fabric.",
+      "fit": "h",
+      "size_m": 0.18,
+      "triangle_budget": 5500,
+      "reference": "art/references/model_diversity_20261013/N04_fruit_bowl.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One broad low cream ceramic fruit bowl holding two small oranges and one pale yellow pear, separate clear fruit shapes. Real rim and bowl depth, smooth clean anime surfaces. No table or fabric. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One broad low cream ceramic fruit bowl holding two small oranges and one pale yellow pear, separate clear fruit shapes. Real rim and bowl depth, smooth clean anime surfaces. No table or fabric. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N05_sewing_basket",
+      "label": "针线篮",
+      "action": "add",
+      "contexts": [
+        "home"
+      ],
+      "subject": "One small oval woven bamboo sewing basket with lid propped open, two neat spools of indigo and red thread and a folded cream cloth inside. Sparse simplified weave, clear real rim and handle, clean anime colours, no needles protruding.",
+      "fit": "h",
+      "size_m": 0.25,
+      "triangle_budget": 6500,
+      "reference": "art/references/model_diversity_20261013/N05_sewing_basket.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One small oval woven bamboo sewing basket with lid propped open, two neat spools of indigo and red thread and a folded cream cloth inside. Sparse simplified weave, clear real rim and handle, clean anime colours, no needles protruding. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One small oval woven bamboo sewing basket with lid propped open, two neat spools of indigo and red thread and a folded cream cloth inside. Sparse simplified weave, clear real rim and handle, clean anime colours, no needles protruding. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N06_house_slippers",
+      "label": "家居拖鞋",
+      "action": "add",
+      "contexts": [
+        "home"
+      ],
+      "subject": "Exactly one pair of simple muted blue Japanese house slippers placed neatly parallel, each with visible hollow foot opening, rounded fabric upper and cream flat sole. Clean anime shapes, no feet, no floor mat.",
+      "fit": "h",
+      "size_m": 0.065,
+      "triangle_budget": 4500,
+      "reference": "art/references/model_diversity_20261013/N06_house_slippers.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: Exactly one pair of simple muted blue Japanese house slippers placed neatly parallel, each with visible hollow foot opening, rounded fabric upper and cream flat sole. Clean anime shapes, no feet, no floor mat. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. Exactly one pair of simple muted blue Japanese house slippers placed neatly parallel, each with visible hollow foot opening, rounded fabric upper and cream flat sole. Clean anime shapes, no feet, no floor mat. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N07_watering_can",
+      "label": "搪瓷浇水壶",
+      "action": "add",
+      "contexts": [
+        "farm",
+        "home"
+      ],
+      "subject": "One pale sage-green enamel watering can with rounded body, actual open top rim, arched handle and a long upward spout ending in a small perforated rose. Clean matte anime colours, no glossy metal or water stream.",
+      "fit": "h",
+      "size_m": 0.36,
+      "triangle_budget": 6500,
+      "reference": "art/references/model_diversity_20261013/N07_watering_can.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One pale sage-green enamel watering can with rounded body, actual open top rim, arched handle and a long upward spout ending in a small perforated rose. Clean matte anime colours, no glossy metal or water stream. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One pale sage-green enamel watering can with rounded body, actual open top rim, arched handle and a long upward spout ending in a small perforated rose. Clean matte anime colours, no glossy metal or water stream. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N08_broom_dustpan",
+      "label": "扫帚与簸箕",
+      "action": "add",
+      "contexts": [
+        "home",
+        "town"
+      ],
+      "subject": "One short cedar-handled straw broom resting upright beside one pale blue dustpan, distinct separate silhouettes, simple straw bundles and real dustpan mouth. Both grounded on the same plane, clean anime surfaces.",
+      "fit": "h",
+      "size_m": 0.8,
+      "triangle_budget": 5500,
+      "reference": "art/references/model_diversity_20261013/N08_broom_dustpan.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One short cedar-handled straw broom resting upright beside one pale blue dustpan, distinct separate silhouettes, simple straw bundles and real dustpan mouth. Both grounded on the same plane, clean anime surfaces. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One short cedar-handled straw broom resting upright beside one pale blue dustpan, distinct separate silhouettes, simple straw bundles and real dustpan mouth. Both grounded on the same plane, clean anime surfaces. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N09_shopping_basket",
+      "label": "买菜竹篮",
+      "action": "add",
+      "contexts": [
+        "store",
+        "home"
+      ],
+      "subject": "One empty oval Japanese woven bamboo shopping basket with two curved handles folded upward, actual open hollow interior and thick woven rim. Simplified precise weave, clean warm ochre anime tones, no produce or ground slab.",
+      "fit": "h",
+      "size_m": 0.34,
+      "triangle_budget": 7000,
+      "reference": "art/references/model_diversity_20261013/N09_shopping_basket.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One empty oval Japanese woven bamboo shopping basket with two curved handles folded upward, actual open hollow interior and thick woven rim. Simplified precise weave, clean warm ochre anime tones, no produce or ground slab. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One empty oval Japanese woven bamboo shopping basket with two curved handles folded upward, actual open hollow interior and thick woven rim. Simplified precise weave, clean warm ochre anime tones, no produce or ground slab. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N10_apple_crate",
+      "label": "苹果筐",
+      "action": "add",
+      "contexts": [
+        "store"
+      ],
+      "subject": "One shallow open cedar produce crate holding six clean red and pale green apples, individual rounded fruit, short stems. Real thick slats, clear side hand holes and flat stable base. No stacked crates or text.",
+      "fit": "h",
+      "size_m": 0.28,
+      "triangle_budget": 7000,
+      "reference": "art/references/model_diversity_20261013/N10_apple_crate.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One shallow open cedar produce crate holding six clean red and pale green apples, individual rounded fruit, short stems. Real thick slats, clear side hand holes and flat stable base. No stacked crates or text. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One shallow open cedar produce crate holding six clean red and pale green apples, individual rounded fruit, short stems. Real thick slats, clear side hand holes and flat stable base. No stacked crates or text. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N11_daikon_crate",
+      "label": "萝卜筐",
+      "action": "add",
+      "contexts": [
+        "store",
+        "farm"
+      ],
+      "subject": "One shallow open cedar crate holding four Japanese white daikon radishes with green leafy tops, individually recognizable tapered roots. Clear real slats and side hand holes, flat stable base, clean anime surfaces.",
+      "fit": "h",
+      "size_m": 0.3,
+      "triangle_budget": 7500,
+      "reference": "art/references/model_diversity_20261013/N11_daikon_crate.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One shallow open cedar crate holding four Japanese white daikon radishes with green leafy tops, individually recognizable tapered roots. Clear real slats and side hand holes, flat stable base, clean anime surfaces. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One shallow open cedar crate holding four Japanese white daikon radishes with green leafy tops, individually recognizable tapered roots. Clear real slats and side hand holes, flat stable base, clean anime surfaces. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N12_carrot_crate",
+      "label": "胡萝卜筐",
+      "action": "add",
+      "contexts": [
+        "store",
+        "farm"
+      ],
+      "subject": "One shallow open cedar crate holding eight orange carrots with short green tops, distinct tapered roots and small shape differences. Real thick slats, side hand holes and flat stable base. Clean anime surfaces.",
+      "fit": "h",
+      "size_m": 0.24,
+      "triangle_budget": 6500,
+      "reference": "art/references/model_diversity_20261013/N12_carrot_crate.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One shallow open cedar crate holding eight orange carrots with short green tops, distinct tapered roots and small shape differences. Real thick slats, side hand holes and flat stable base. Clean anime surfaces. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One shallow open cedar crate holding eight orange carrots with short green tops, distinct tapered roots and small shape differences. Real thick slats, side hand holes and flat stable base. Clean anime surfaces. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N13_empty_crate",
+      "label": "空木筐",
+      "action": "add",
+      "contexts": [
+        "store",
+        "farm"
+      ],
+      "subject": "One single empty rectangular cedar harvest crate, open hollow interior, thick evenly spaced slats, real oblong hand holes on both short sides, sturdy square corners and flat base. Clean anime warm wood, no labels or contents.",
+      "fit": "h",
+      "size_m": 0.3,
+      "triangle_budget": 6000,
+      "reference": "art/references/model_diversity_20261013/N13_empty_crate.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One single empty rectangular cedar harvest crate, open hollow interior, thick evenly spaced slats, real oblong hand holes on both short sides, sturdy square corners and flat base. Clean anime warm wood, no labels or contents. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One single empty rectangular cedar harvest crate, open hollow interior, thick evenly spaced slats, real oblong hand holes on both short sides, sturdy square corners and flat base. Clean anime warm wood, no labels or contents. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N14_paper_parcels",
+      "label": "纸包组",
+      "action": "add",
+      "contexts": [
+        "store"
+      ],
+      "subject": "Three small neatly wrapped cream kraft-paper parcels with simple red or indigo twine, two rectangular and one square, stable short stack, crisp folded corners. Clean anime matte surfaces, no writing or logos.",
+      "fit": "h",
+      "size_m": 0.25,
+      "triangle_budget": 5000,
+      "reference": "art/references/model_diversity_20261013/N14_paper_parcels.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: Three small neatly wrapped cream kraft-paper parcels with simple red or indigo twine, two rectangular and one square, stable short stack, crisp folded corners. Clean anime matte surfaces, no writing or logos. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. Three small neatly wrapped cream kraft-paper parcels with simple red or indigo twine, two rectangular and one square, stable short stack, crisp folded corners. Clean anime matte surfaces, no writing or logos. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N15_umbrella_stand",
+      "label": "伞架",
+      "action": "add",
+      "contexts": [
+        "town",
+        "home"
+      ],
+      "subject": "One pale blue cylindrical ceramic umbrella stand holding two closed Japanese umbrellas, indigo and muted yellow, curved wooden handles. Actual open container rim, distinct straight umbrella shafts, clean anime surfaces.",
+      "fit": "h",
+      "size_m": 0.72,
+      "triangle_budget": 6000,
+      "reference": "art/references/model_diversity_20261013/N15_umbrella_stand.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One pale blue cylindrical ceramic umbrella stand holding two closed Japanese umbrellas, indigo and muted yellow, curved wooden handles. Actual open container rim, distinct straight umbrella shafts, clean anime surfaces. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One pale blue cylindrical ceramic umbrella stand holding two closed Japanese umbrellas, indigo and muted yellow, curved wooden handles. Actual open container rim, distinct straight umbrella shafts, clean anime surfaces. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N16_wooden_crate_seat",
+      "label": "木箱坐凳",
+      "action": "add",
+      "contexts": [
+        "town"
+      ],
+      "subject": "One small low cedar box stool with a thick flat unobstructed seat, four sturdy short legs and two simple lower crossbars, actual gaps below seat. Clean anime warm wood, no cushion or ground platform.",
+      "fit": "h",
+      "size_m": 0.38,
+      "triangle_budget": 6000,
+      "reference": "art/references/model_diversity_20261013/N16_wooden_crate_seat.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One small low cedar box stool with a thick flat unobstructed seat, four sturdy short legs and two simple lower crossbars, actual gaps below seat. Clean anime warm wood, no cushion or ground platform. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One small low cedar box stool with a thick flat unobstructed seat, four sturdy short legs and two simple lower crossbars, actual gaps below seat. Clean anime warm wood, no cushion or ground platform. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N17_seedling_tray",
+      "label": "育苗盘",
+      "action": "add",
+      "contexts": [
+        "farm"
+      ],
+      "subject": "One shallow dark indigo seedling tray with six distinct square cells, each contains one small bright green two-leaf seedling. Actual grid depth and inset soil, clean smooth matte anime surfaces. No labels or extra tools.",
+      "fit": "h",
+      "size_m": 0.12,
+      "triangle_budget": 6500,
+      "reference": "art/references/model_diversity_20261013/N17_seedling_tray.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One shallow dark indigo seedling tray with six distinct square cells, each contains one small bright green two-leaf seedling. Actual grid depth and inset soil, clean smooth matte anime surfaces. No labels or extra tools. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One shallow dark indigo seedling tray with six distinct square cells, each contains one small bright green two-leaf seedling. Actual grid depth and inset soil, clean smooth matte anime surfaces. No labels or extra tools. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N18_harvest_basket",
+      "label": "收获藤篮",
+      "action": "add",
+      "contexts": [
+        "farm"
+      ],
+      "subject": "One round low woven bamboo harvest basket with one arched handle, holding two small yellow squash, three red tomatoes and one purple eggplant. Distinct produce shapes, actual open rim, sparse clean weave and anime colours.",
+      "fit": "h",
+      "size_m": 0.34,
+      "triangle_budget": 8000,
+      "reference": "art/references/model_diversity_20261013/N18_harvest_basket.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One round low woven bamboo harvest basket with one arched handle, holding two small yellow squash, three red tomatoes and one purple eggplant. Distinct produce shapes, actual open rim, sparse clean weave and anime colours. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One round low woven bamboo harvest basket with one arched handle, holding two small yellow squash, three red tomatoes and one purple eggplant. Distinct produce shapes, actual open rim, sparse clean weave and anime colours. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N19_burlap_sacks",
+      "label": "麻袋组",
+      "action": "add",
+      "contexts": [
+        "farm"
+      ],
+      "subject": "Exactly two upright cream canvas grain sacks, one tied closed with indigo twine, one open showing a small flat mound of golden grain. Clear folded cloth shapes, simple seam lines, flat stable bottoms. No photo weave or labels.",
+      "fit": "h",
+      "size_m": 0.48,
+      "triangle_budget": 6500,
+      "reference": "art/references/model_diversity_20261013/N19_burlap_sacks.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: Exactly two upright cream canvas grain sacks, one tied closed with indigo twine, one open showing a small flat mound of golden grain. Clear folded cloth shapes, simple seam lines, flat stable bottoms. No photo weave or labels. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. Exactly two upright cream canvas grain sacks, one tied closed with indigo twine, one open showing a small flat mound of golden grain. Clear folded cloth shapes, simple seam lines, flat stable bottoms. No photo weave or labels. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N20_coiled_hose",
+      "label": "盘绕水管",
+      "action": "add",
+      "contexts": [
+        "farm"
+      ],
+      "subject": "One neat coil of muted blue rubber garden hose resting flat, five clearly separate loops, one short end with a cream spray nozzle, visible hose tube thickness. Clean matte anime surfaces, no reel or ground slab.",
+      "fit": "max",
+      "size_m": 0.55,
+      "triangle_budget": 6500,
+      "reference": "art/references/model_diversity_20261013/N20_coiled_hose.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One neat coil of muted blue rubber garden hose resting flat, five clearly separate loops, one short end with a cream spray nozzle, visible hose tube thickness. Clean matte anime surfaces, no reel or ground slab. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One neat coil of muted blue rubber garden hose resting flat, five clearly separate loops, one short end with a cream spray nozzle, visible hose tube thickness. Clean matte anime surfaces, no reel or ground slab. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000,
+      "size_revision": "Source inspection: former0.12m height target shrank the whole bundle because of an upright nozzle; use uniform0.55m maximum extent, no nonuniform scaling"
+    },
+    {
+      "id": "N21_tool_basket",
+      "label": "手工具篮",
+      "action": "add",
+      "contexts": [
+        "farm"
+      ],
+      "subject": "One low rectangular cedar garden-tool caddy with central arched handle, contains one small hand trowel, one small fork and folded cream gloves. Real open compartments and separate silhouettes, clean anime warm wood.",
+      "fit": "h",
+      "size_m": 0.28,
+      "triangle_budget": 7000,
+      "reference": "art/references/model_diversity_20261013/N21_tool_basket.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One low rectangular cedar garden-tool caddy with central arched handle, contains one small hand trowel, one small fork and folded cream gloves. Real open compartments and separate silhouettes, clean anime warm wood. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One low rectangular cedar garden-tool caddy with central arched handle, contains one small hand trowel, one small fork and folded cream gloves. Real open compartments and separate silhouettes, clean anime warm wood. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N22_festival_masks",
+      "label": "夏祭面具架",
+      "action": "add",
+      "contexts": [
+        "festival"
+      ],
+      "subject": "One small cedar freestanding summer-festival mask display, three slim horizontal rails holding exactly three simple festival masks: white fox with red accents, smiling blue cat, small orange fox. No copyrighted characters, no writing, stable A feet and clear gaps.",
+      "fit": "h",
+      "size_m": 1.05,
+      "triangle_budget": 10000,
+      "reference": "art/references/model_diversity_20261013/N22_festival_masks.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One small cedar freestanding summer-festival mask display, three slim horizontal rails holding exactly three simple festival masks: white fox with red accents, smiling blue cat, small orange fox. No copyrighted characters, no writing, stable A feet and clear gaps. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One small cedar freestanding summer-festival mask display, three slim horizontal rails holding exactly three simple festival masks: white fox with red accents, smiling blue cat, small orange fox. No copyrighted characters, no writing, stable A feet and clear gaps. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N23_goldfish_scoops",
+      "label": "捞鱼纸网托",
+      "action": "add",
+      "contexts": [
+        "festival"
+      ],
+      "subject": "One low oval pale blue enamel tray holding three Japanese goldfish scoops with small round paper heads and slender red, cream and indigo handles, neatly arranged with separate silhouettes. No fish or water, clean anime shapes.",
+      "fit": "h",
+      "size_m": 0.05,
+      "triangle_budget": 4500,
+      "reference": "art/references/model_diversity_20261013/N23_goldfish_scoops.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One low oval pale blue enamel tray holding three Japanese goldfish scoops with small round paper heads and slender red, cream and indigo handles, neatly arranged with separate silhouettes. No fish or water, clean anime shapes. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One low oval pale blue enamel tray holding three Japanese goldfish scoops with small round paper heads and slender red, cream and indigo handles, neatly arranged with separate silhouettes. No fish or water, clean anime shapes. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    },
+    {
+      "id": "N24_bamboo_lantern",
+      "label": "竹灯",
+      "action": "add",
+      "contexts": [
+        "festival",
+        "town"
+      ],
+      "subject": "One small cylindrical Japanese bamboo standing lantern, thin spaced vertical bamboo ribs around a matte cream washi paper inner cylinder, low round wooden base and small handle on top. Clean anime shapes, no writing, no flame or electrical cord.",
+      "fit": "h",
+      "size_m": 0.4,
+      "triangle_budget": 6500,
+      "reference": "art/references/model_diversity_20261013/N24_bamboo_lantern.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: one isolated image-to-3D reference for Harumachi. Japanese TV anime slice-of-life game prop. Clean confident fine contours, simple but carefully constructed solid shapes, flat matte colours with two crisp cel shadow bands, pale lavender shadows and warm highlights. No photographic texture, gritty weathering, metallic reflections, random noise, oil painting or faceted triangular low-poly leaves. The same clean anime art direction throughout. Subject: One small cylindrical Japanese bamboo standing lantern, thin spaced vertical bamboo ribs around a matte cream washi paper inner cylinder, low round wooden base and small handle on top. Clean anime shapes, no writing, no flame or electrical cord. Composition: complete object centered, three-quarter front view from slightly above, generous margin; plain ivory background, even neutral illumination with minimal contact shadow. No people, scene, other objects, diorama, labels, watermark or text. Every structural gap must remain visibly open. All surfaces are drawn with restrained clean flat colour.",
+      "model_style": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. ",
+      "model_prompt": "Japanese TV anime game asset. Clean matte flat colours, crisp two-tone shadows, pale lavender shade. No photo texture, noise, dirty weathering, glossy metal, oil painting or triangular leaf shards. One small cylindrical Japanese bamboo standing lantern, thin spaced vertical bamboo ribs around a matte cream washi paper inner cylinder, low round wooden base and small handle on top. Clean anime shapes, no writing, no flame or electrical cord. Reconstruct only this complete object. Actual open holes, separated parts, level base. No background, ground platform or extra objects.",
+      "candidates": [
+        "a",
+        "b"
+      ],
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000
+    }
+  ]
+}

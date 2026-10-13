@@ -1,20 +1,25 @@
 {
  "id": "C12_corn",
- "src": "raw/C12_corn_pix/model.glb",
- "provider": "pixal3d (v0.5)",
- "tris_src": 885058,
- "tris": 5733,
+ "src": "raw/diversity_20261013/ready/C12_corn.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 59998,
+ "tris": 5850,
  "size_m": [
-  0.754,
-  0.85,
-  1.717
+  1.047,
+  1.119,
+  1.799
  ],
  "godot_size_m_xyz": [
-  0.754,
-  1.717,
-  0.85
+  1.047,
+  1.799,
+  1.119
  ],
  "tex": 1024,
- "bytes": 712272,
- "yaw_fix": 0
+ "bytes": 368536,
+ "yaw_fix": 0,
+ "level": false,
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 27.19,
+ "base_frac": 0.01
 }

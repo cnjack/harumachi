@@ -1,25 +1,25 @@
 {
  "id": "C15_wheat",
- "src": "raw/C15_wheat_pix/model.glb",
- "provider": "pixal3d (v0.5)",
- "tris_src": 938205,
- "tris": 10300,
+ "src": "raw/diversity_20261013/ready/C15_wheat.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 120000,
+ "tris": 5850,
  "size_m": [
-  0.676,
-  0.758,
-  0.869
+  0.535,
+  0.535,
+  0.867
  ],
  "godot_size_m_xyz": [
-  0.676,
-  0.869,
-  0.758
+  0.535,
+  0.867,
+  0.535
  ],
  "tex": 1024,
- "bytes": 1003600,
- "yaw_fix": 39.7,
- "level": "auto",
- "lean_src_deg": 12.28,
- "levelled": true,
- "lean_deg": 0.8,
- "base_frac": 0.704
+ "bytes": 439752,
+ "yaw_fix": 0,
+ "level": false,
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 9.59,
+ "base_frac": 0.016
 }

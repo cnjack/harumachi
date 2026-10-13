@@ -1,25 +1,25 @@
 {
  "id": "C16_onion",
- "src": "raw/C16_onion_pix/model.glb",
- "provider": "pixal3d (v0.5)",
- "tris_src": 969547,
- "tris": 6656,
+ "src": "raw/diversity_20261013/ready/C16_onion.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 86440,
+ "tris": 4499,
  "size_m": [
-  0.609,
-  0.174,
-  0.438
+  0.27,
+  0.27,
+  0.45
  ],
  "godot_size_m_xyz": [
-  0.609,
-  0.438,
-  0.174
+  0.27,
+  0.45,
+  0.27
  ],
  "tex": 1024,
- "bytes": 602352,
- "yaw_fix": 27.5,
- "level": "auto",
- "lean_src_deg": 24.82,
- "levelled": true,
- "lean_deg": 0.64,
- "base_frac": 0.484
+ "bytes": 204220,
+ "yaw_fix": 0,
+ "level": false,
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 39.27,
+ "base_frac": 0.004
 }

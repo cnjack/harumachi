@@ -116,6 +116,7 @@ func spawn(id: String, pos: Vector3, yaw_deg: float, collide: int = 1, parent: N
 	for mi in find_meshes(n):
 		mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 	SurfaceFinish.apply(n,id)
+	ModelDiversity.apply(n,id)
 	if id == "T05_old_shade_tree":
 		preload("res://scripts/world/old_tree_lower_foliage.gd").attach(n)
 	if id in ["P_farm_gate", "P_signpost", "P_bridge", "P_yagura", "H01", "H02", "H03", "S06", "S01", "S02", "S03", "S05", "S08", "M01_timber_machiya", "M03_gable_house", "M05_residential"]:
@@ -142,6 +143,9 @@ const SWAY := {
 	"T01_courtyard_tree": [0.022, 0.9], "M12b_shrub": [0.05, 1.3], "M12d_flower_bush": [0.05, 1.15],
 	"T02_summer_tree": [0.012, 0.65],
 	"T03_round_ginkgo": [0.012, 0.60], "T04_slender_cedar": [0.009, 0.75],
+	"T06_camphor": [.007, .70], "T07_summer_maple": [.010, .85],
+	"T08_green_cherry": [.009, .75], "T09_bamboo_grove": [.012, .90],
+	"T10_weeping_willow": [.010, .65], "T11_young_zelkova": [.009, .80],
 	"A15_potted_plant": [0.035, 1.4], "A14_hydrangea_pot": [0.03, 1.2],
 	"C01_seedling": [0.08, 1.9], "C02_radish": [0.07, 1.6], "C03_komatsuna": [0.06, 1.7], "C04_tomato": [0.05, 1.3],
 	"C05_cucumber": [0.03, 1.2], "C06_edamame": [0.06, 1.5], "C07_sunflower": [0.045, 1.0], "C08_strawberry": [0.06, 1.8],
@@ -318,8 +322,12 @@ func build_steps() -> Array[Callable]:
 	for t in Layout.PLANTS:
 		steps.append(_spawn_plant.bind(t))
 	steps.append(_build_residential)
-	steps.append_array([_build_planter, _build_mg_stations, _build_stall_extras, _build_board_poster, _build_lamps, _build_build_sign, _build_backdrop, _build_house, _build_farm, _build_town_v05, _build_festivals, _build_detail_signs, set_region.bind("town")])
+	steps.append_array([_build_planter, _build_mg_stations, _build_stall_extras, _build_board_poster, _build_lamps, _build_build_sign, _build_backdrop, _build_house, _build_farm, _build_town_v05, _build_festivals, _build_detail_signs, _build_model_diversity, set_region.bind("town")])
 	return steps
+
+
+func _build_model_diversity() -> void:
+	ModelDiversity.build(self)
 
 
 func _build_residential() -> void:
@@ -1140,8 +1148,10 @@ func _build_town_v05() -> void:
 	var fl := 0
 	for lw in Layout.LAWNS:
 		var plaza_lawn: bool=float(lw[0][0])<17.2
-		n += g.lawn([lw[0]], lw[1], "plaza" if plaza_lawn else "lawn", 12.0 if plaza_lawn else 6.0, 3 + n)
-		fl += g.scatter([lw[0]], 0.1, lw[1], GrassField.MIX_FLOWERS, Vector2(0.2, 0.34), 5 + fl)
+		var lawn_avoid: Array = (lw[1] as Array).duplicate()
+		lawn_avoid.append_array(ModelDiversity.ground_exclusions("town"))
+		n += g.lawn([lw[0]], lawn_avoid, "plaza" if plaza_lawn else "lawn", 12.0 if plaza_lawn else 6.0, 3 + n)
+		fl += g.scatter([lw[0]], 0.1, lawn_avoid, GrassField.MIX_FLOWERS, Vector2(0.2, 0.34), 5 + fl)
 	# meadow blades on the flat crest of the exit-lane bank (EXIT_CUT), same style as the farm side's
 	# FarmBuilder._lane_up, so the two ends of the lane match instead of the town side reading as a bare
 	# painted hill. Only the crest is safe: the lane() bank mesh only holds height 0 near x<=45.6 and at

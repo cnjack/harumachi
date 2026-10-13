@@ -1,0 +1,20 @@
+{
+ "id": "T11_young_zelkova",
+ "src": "raw/diversity_20261013/ready/T11_young_zelkova.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 10072,
+ "tex": 1024,
+ "bytes": 1606868,
+ "godot_size_m_xyz": [
+  2.6104,
+  4.5,
+  2.8361
+ ],
+ "mesh_nodes": [
+  "Foliage_T11_young_zelkova",
+  "Trunk_Secondary_T11_young_zelkova",
+  "Trunk_T11_young_zelkova"
+ ]
+}

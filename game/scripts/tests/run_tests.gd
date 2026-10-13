@@ -30,7 +30,11 @@ func _ready() -> void:
 	main.ui.instant = true
 	main.ui.auto_work_priority = true # this suite follows its declared work route; the topic-choice suite overrides it
 	await frames(10)
-	if OS.get_cmdline_user_args().has("--only=landscape"):
+	if OS.get_cmdline_user_args().has("--only=model-diversity-placement"):
+		load("res://scripts/tests/model_diversity_checks.gd").new(self).ground_clearance()
+	elif OS.get_cmdline_user_args().has("--only=model-diversity"):
+		await load("res://scripts/tests/model_diversity_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=landscape"):
 		await load("res://scripts/tests/landscape_coverage_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=tree-locomotion"):
 		await load("res://scripts/tests/tree_locomotion_checks.gd").new(self).run()
@@ -234,6 +238,7 @@ func _ready() -> void:
 		await load("res://scripts/tests/tree_locomotion_checks.gd").new(self).run()
 	if not Array(OS.get_cmdline_user_args()).any(func(arg: String)->bool:return arg.begins_with("--only=")):
 		await load("res://scripts/tests/landscape_coverage_checks.gd").new(self).run()
+		await load("res://scripts/tests/model_diversity_checks.gd").new(self).run()
 	var fails := results.filter(func(r): return not r.ok).size()
 	print("\n==== %d checks, %d failed ====" % [results.size(), fails])
 	var out := ""
@@ -374,6 +379,18 @@ func use(id: String, choices: Array = [], distance: float = 1.2) -> bool:
 	await frames(3)
 	main.ui.auto_choices = choices.duplicate()
 	if main.player.target != it:
+		if id == "life_tea":
+			var query := PhysicsRayQueryParameters3D.create(main.player.global_position + Vector3.UP * 1.1,
+				it.global_position, WorldBuilder.L_SOLID | WorldBuilder.L_PLACED)
+			query.exclude = [main.player.get_rid()]
+			var blocked: Dictionary = main.player.get_world_3d().direct_space_state.intersect_ray(query)
+			print("TEA_TARGET_DIAGNOSTIC ", JSON.stringify({"player": main.player.global_position,
+				"point": it.global_position, "visible": it.is_visible_in_tree(), "prompt": main.story.prompt_for(id),
+				"frozen": main.player.frozen, "locked": G.input_locked(), "day": G.day, "minute": G.minute,
+				"introduced_day": DailyLife.state().introduced_day, "hit": str(blocked.get("collider").get_path()) if blocked.has("collider") else "",
+				"hit_position": blocked.get("position", Vector3.INF), "tea_visible": main.story.daily.view.tea_root.visible,
+				"tea_blocked": main.story.daily.view.tea_root.get_meta("morning_blocked", false),
+				"original_legal": main.story.morning.legal(main.story.morning.original_tray)}))
 		check("infra", "player can target " + id, false, "target=%s" % (main.player.target.id if main.player.target else "none"))
 		return false
 	await main.story.interact(it)

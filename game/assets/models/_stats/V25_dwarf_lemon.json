@@ -1,0 +1,25 @@
+{
+ "id": "V25_dwarf_lemon",
+ "src": "raw/diversity_20261013/ready/V25_dwarf_lemon.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 115320,
+ "tris": 8100,
+ "size_m": [
+  0.751,
+  0.751,
+  1.1
+ ],
+ "godot_size_m_xyz": [
+  0.751,
+  1.1,
+  0.751
+ ],
+ "tex": 1024,
+ "bytes": 436740,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.0,
+ "base_frac": 0.148
+}

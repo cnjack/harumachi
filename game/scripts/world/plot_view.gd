@@ -113,6 +113,14 @@ func refresh(force: bool = false) -> void:
 	rng.seed = hash(pid + cid)
 	for s in slots:
 		var at := Vector3(s.x * inner * spread.x, 0, s.y * inner * spread.y)
+		if bed != null and ModelDiversity.contains(model):
+			# The old estimate used the top of the wooden frame. Probe the
+			# actual ridged soil at this plant, once when its stage rebuilds.
+			var world_at: Vector3 = crops.global_transform * at
+			var soil_y: float = WorldBuilder.surface_height(bed, Vector2(world_at.x, world_at.z),
+				global_position.y + 1.0)
+			if is_finite(soil_y):
+				at.y = soil_y - crops.global_position.y
 		var yaw := rng.randf_range(-40.0, 40.0)
 		match st:
 			"seeded":
@@ -120,9 +128,13 @@ func refresh(force: bool = false) -> void:
 			"sprout":
 				wb.spawn("C01_seedling", at, yaw * 3.0, 0, crops, rng.randf_range(0.8, 1.05))
 			"growing":
-				wb.spawn(model, at, yaw, 0, crops, rng.randf_range(0.5, 0.6) * inner)
+				var growing_scale: float = rng.randf_range(0.5, 0.6) * inner
+				wb.spawn(model, at + Vector3.DOWN * ModelDiversity.soil_sink_m(model) * growing_scale,
+					yaw, 0, crops, growing_scale)
 			"ripe":
-				wb.spawn(model, at, yaw, 0, crops, rng.randf_range(0.92, 1.05) * inner)
+				var ripe_scale: float = rng.randf_range(0.92, 1.05) * inner
+				wb.spawn(model, at + Vector3.DOWN * ModelDiversity.soil_sink_m(model) * ripe_scale,
+					yaw, 0, crops, ripe_scale)
 	if st == "ripe":
 		var h := WorldBuilder.local_aabb(crops).end.y if crops.get_child_count() > 0 else 0.4
 		glow.position.y = top + h + 0.25

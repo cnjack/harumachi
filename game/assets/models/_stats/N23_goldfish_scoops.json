@@ -1,0 +1,25 @@
+{
+ "id": "N23_goldfish_scoops",
+ "src": "raw/diversity_20261013/ready/N23_goldfish_scoops.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "tris_src": 33970,
+ "tris": 4050,
+ "size_m": [
+  0.503,
+  0.406,
+  0.05
+ ],
+ "godot_size_m_xyz": [
+  0.503,
+  0.05,
+  0.406
+ ],
+ "tex": 1024,
+ "bytes": 173244,
+ "yaw_fix": 0,
+ "level": true,
+ "lean_src_deg": 0.0,
+ "levelled": false,
+ "lean_deg": 0.0,
+ "base_frac": 0.957
+}

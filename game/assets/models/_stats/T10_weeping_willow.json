@@ -1,0 +1,20 @@
+{
+ "id": "T10_weeping_willow",
+ "src": "raw/diversity_20261013/ready/T10_weeping_willow.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; reviewed anime reference and Blender local cleanup, 2026-10-13",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 12360,
+ "tex": 1024,
+ "bytes": 1737176,
+ "godot_size_m_xyz": [
+  6.0315,
+  6.0,
+  5.9046
+ ],
+ "mesh_nodes": [
+  "Foliage_T10_weeping_willow",
+  "Trunk_Secondary_T10_weeping_willow",
+  "Trunk_T10_weeping_willow"
+ ]
+}
