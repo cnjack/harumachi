@@ -38,6 +38,7 @@
 | --- | --- |
 | [CURRENT_STATUS](CURRENT_STATUS.md) | 当前事实、交付与待验范围 |
 | [PLAN](PLAN.md) | 已实现工作、下一步与验收门槛 |
+| [场景与居民故事提案](LAYOUT_STORY_REDESIGN_20261014.md) | 道具出现阶段、可进入室内、图片线索与连续目标；待实施 |
 | [GAMEPLAY](GAMEPLAY.md) | 当前流程、操作与规则 |
 | [WORLD](WORLD.md) | 地图、空间、支撑与摆放 |
 | [PIPELINE](PIPELINE.md) | 模型、绑定、导入、测试和导出 |
