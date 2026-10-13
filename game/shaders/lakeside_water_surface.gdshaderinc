@@ -5,6 +5,8 @@ uniform vec4 middle_color : source_color=vec4(.075,.46,.55,1);
 uniform vec4 shallow_color : source_color=vec4(.38,.77,.69,1);
 uniform vec4 foam_color : source_color=vec4(.87,.97,.95,1);
 uniform float flow_highlight=.18;
+uniform float ripple_contrast=.072;
+uniform float sun_path_width=24.0;
 uniform float foam_amount=.22;
 uniform float shallow_opacity=.34;
 uniform float sunlight_amount=1.0;
@@ -12,7 +14,8 @@ uniform float lamp_amount=0.0;
 uniform float moonlight_amount=1.0;
 uniform vec3 moon_position=vec3(95,118,420);
 // Positions of actual nearby farm lamps, filled after the farm finishes building.
-uniform vec3 reflection_lamps[4];
+uniform vec3 reflection_lamps[8];
+uniform float reflection_lamp_weights[8];
 uniform int reflection_lamp_count=0;
 uniform sampler2D scene_depth : hint_depth_texture,repeat_disable,filter_nearest;
 uniform vec4 tint : source_color=vec4(1);
@@ -57,25 +60,32 @@ void fragment(){
  float fresnel=pow(1.0-max(dot(sight,normal),0.0),3.0);
  vec3 col=mix(shallow_color.rgb,middle_color.rgb,smoothstep(.10,.85,depth));
  col=mix(col,deep_color.rgb,smoothstep(.75,2.35,depth));
- col=mix(col,sky,.04+fresnel*.13);
+ col=mix(col,sky,.09+fresnel*.23);
+ // Quiet, broken bands make small waves readable away from the exact
+ // reflection angle. They move with the same analytic normals as the light.
+ float wave_band=slopes.x*.55+slopes.y*.85;
+ float band_aa=max(fwidth(wave_band),.004);
+ float crest=smoothstep(.024-band_aa,.055+band_aa,wave_band);
+ float broken_crest=crest*smoothstep(.28,.61,flowing);
+ col=mix(col,vec3(.58,.79,.80),broken_crest*ripple_contrast*(1.0-night_w*.65));
  float streak=smoothstep(.70,.88,flowing)*river_weight;
  col=mix(col,vec3(.66,.88,.86),streak*flow_highlight*(1.0-night_w*.75));
  // Sparse moving dashes exist only inside the reflected sun/moon/light path.
  float fragments=water_sparkle_mask(p,velocity,t);
- float sun_path=pow(max(dot(reflected,normalize(sun_direction)),0.0),84.0);
+ float sun_path=pow(max(dot(reflected,normalize(sun_direction)),0.0),sun_path_width);
  float sun_glints=sun_path*fragments*sunlight_amount*(1.0-night_w)*(1.0-rain_amount);
  vec3 sun_color=mix(vec3(1.0,.98,.84),vec3(1.0,.76,.43),dusk_w);
  col=mix(col,sun_color,clamp(sun_glints*.72,0.0,.72));
  float moon_path=pow(max(dot(reflected,normalize(moon_position-world_position)),0.0),96.0);
  float moon_glints=moon_path*fragments*night_w*moonlight_amount*(1.0-rain_amount*.85);
  vec3 lamp_glints=vec3(0.0);
- for(int light_index=0;light_index<4;light_index++){
+ for(int light_index=0;light_index<8;light_index++){
   if(light_index<reflection_lamp_count){
    vec3 to_lamp=reflection_lamps[light_index]-world_position;
    float distance_to_lamp=length(to_lamp);
    float path=pow(max(dot(reflected,normalize(to_lamp)),0.0),80.0);
    float falloff=1.0-smoothstep(2.0,9.0,distance_to_lamp);
-   lamp_glints+=vec3(1.0,.69,.32)*path*falloff*(.035+fragments*.965)*lamp_amount;
+   lamp_glints+=vec3(1.0,.69,.32)*path*falloff*(.035+fragments*.965)*lamp_amount*reflection_lamp_weights[light_index];
   }
  }
  vec3 night_palette=mix(vec3(.14,.30,.38),vec3(.045,.11,.25),depth_weight);
@@ -88,7 +98,7 @@ void fragment(){
  vec3 surface_tint=mix(tint.rgb,vec3(.53,.64,.84),night_w*.60);
  ALBEDO=col*surface_tint;
  // A low blue floor preserves night depth bands; only narrow light paths glow.
- EMISSION=col*mix(surface_tint*.045,vec3(.16),night_w)+sun_color*sun_glints*.42+
+ EMISSION=col*mix(surface_tint*.075,vec3(.16),night_w)+sun_color*sun_glints*.42+
           vec3(.48,.69,.98)*moon_glints*.36+lamp_glints*.70;
  ROUGHNESS=1.0;
  ALPHA=clamp(mix(shallow_opacity,.98,smoothstep(.12,2.2,depth))+rain_amount*.035,0.0,1.0);

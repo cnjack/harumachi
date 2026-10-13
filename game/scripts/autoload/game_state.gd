@@ -135,7 +135,7 @@ var collection: Dictionary = {}
 var zukan: Dictionary = {"crops": {}, "dishes": {}}
 
 var settings: Dictionary = {"text_scale": 1.0, "mouse_sens": 1.0, "fullscreen": false, "invert_y": false,
-		"vol_master": 1.0, "vol_music": 0.75, "vol_sfx": 0.8, "vol_voice": 0.9}
+		"vol_master": 1.0, "vol_music": 0.75, "vol_sfx": 0.8, "vol_voice": 0.0}
 var _ui_locks := {}
 var last_error := ""
 var calendar_pending_save := -1

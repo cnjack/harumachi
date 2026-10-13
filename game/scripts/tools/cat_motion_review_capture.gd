@@ -5,6 +5,9 @@ func _initialize() -> void:
 	_run.call_deferred()
 
 func _run() -> void:
+	assert(not OS.get_environment("HARUMACHI_SAVE_DIR").is_empty(), "Cat capture requires an isolated HARUMACHI_SAVE_DIR")
+	# Keep 900 native frames at least 15 real seconds on 120Hz displays too.
+	Engine.max_fps = 60
 	var output: String = OS.get_cmdline_user_args()[0]
 	DirAccess.make_dir_recursive_absolute(output)
 	var state: Node = root.get_node("GameState")
@@ -27,7 +30,13 @@ func _run() -> void:
 	camera.size = .70
 	main.add_child(camera)
 	camera.current = true
+	var started: int = Time.get_ticks_msec()
 	var samples: Array[Dictionary] = []
+	var start_attention: Array[float] = []
+	var start_travel: Array[float] = []
+	for cat: CharacterBody3D in cats:
+		start_attention.append(float(cat.attention.get("attention_time")))
+		start_travel.append(cat.travelled)
 	for frame: int in range(900):
 		var index: int = 0 if frame < 450 else 1
 		var cat: CharacterBody3D = cats[index] as CharacterBody3D
@@ -57,11 +66,13 @@ func _run() -> void:
 		var info: Dictionary = cat.telemetry()
 		info["cat"] = "orange" if index == 0 else "calico"
 		info["native_walk_speed"] = cat.native_walk_speed
-		info["attention_running"] = cat.attention != null and float(cat.attention.get("attention_time")) > 20
-		info["passed"] = bool(info.attention_running) and cat.travelled > .5 and absf(cat.global_position.y) < .04 and absf(cat.native_walk_speed - .12) < .0001
+		info["attention_delta_seconds"] = float(cat.attention.get("attention_time")) - start_attention[index]
+		info["travel_delta_m"] = cat.travelled - start_travel[index]
+		info["attention_running"] = cat.attention != null and float(info.attention_delta_seconds) > 10.0
+		info["passed"] = bool(info.attention_running) and float(info.travel_delta_m) > .5 and absf(cat.global_position.y) < .04 and cat.speed >= .32 and cat.speed <= .45 and cat.maximum_step < .025 and int(info.foot_locked_samples) > 0 and float(info.foot_lock_error) < .002
 		outcomes.append(info)
 		passed = passed and bool(info.passed)
-	FileAccess.open(output.path_join("runtime.json"), FileAccess.WRITE).store_string(JSON.stringify({"passed": passed, "walkers": outcomes, "samples": samples}, "\t"))
+	FileAccess.open(output.path_join("runtime.json"), FileAccess.WRITE).store_string(JSON.stringify({"passed": passed, "target_fps": 60, "elapsed_seconds": float(Time.get_ticks_msec() - started) / 1000.0, "walkers": outcomes, "samples": samples}, "\t"))
 	print("CAT_LIVELY_WORLD ", outcomes)
 	main.queue_free()
 	await process_frame

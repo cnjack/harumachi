@@ -1,6 +1,6 @@
 extends Node
 ## Native main-scene animal review. Caller must supply HARUMACHI_SAVE_DIR.
-## -- --qa-animals=<out> [--qa-animals-mode=live|poses|habitat|flying]
+## -- --qa-animals=<out> [--qa-animals-mode=live|poses|habitat|home|interactions|cat-smoke]
 ## --qa-animals-follow=legacy reproduces the old untracked camera for comparison.
 ## --qa-animals-settle-frames=12 stresses both policies without changing animal time.
 ## Live samples retain the game's actual decisions. Poses are explicitly labelled
@@ -27,6 +27,8 @@ var _frame_offset: Vector3
 var _frame_focus_offset: Vector3
 var _frame_bounds: Dictionary = {}
 var _frame_samples: Array[Dictionary] = []
+var no_images: bool = false
+var paw_samples: Array[Dictionary] = []
 
 func _ready() -> void:
 	root = get_tree().root
@@ -39,6 +41,9 @@ func _run() -> void:
 		if argument.begins_with("--qa-animals-mode="): mode = argument.trim_prefix("--qa-animals-mode=")
 		if argument.begins_with("--qa-animals-follow="): follow_policy = argument.trim_prefix("--qa-animals-follow=")
 		if argument.begins_with("--qa-animals-settle-frames="): settle_frames = clampi(int(argument.trim_prefix("--qa-animals-settle-frames=")), 2, 12)
+	no_images = arguments.has("--qa-animals-no-images=1")
+	assert(not OS.get_environment("HARUMACHI_SAVE_DIR").is_empty(), "Animal QA requires an isolated HARUMACHI_SAVE_DIR")
+	assert(DisplayServer.get_name() != "headless" or no_images, "Headless audit requires --qa-animals-no-images=1; it cannot prove rendered appearance")
 	assert(not output.is_empty(), "Provide --qa-animals=<evidence output directory>")
 	assert(follow_policy in ["tracked", "legacy"], "Use --qa-animals-follow=tracked|legacy")
 	DirAccess.make_dir_recursive_absolute(output)
@@ -66,27 +71,40 @@ func _run() -> void:
 	main.add_child(camera)
 	camera.current = true
 	main.weather_fx.rig = camera
-	RenderingServer.frame_pre_draw.connect(_capture_pre_draw)
-	if mode in ["all", "live"]: await _live()
-	if mode in ["all", "poses"]: await _poses()
+	if not no_images: RenderingServer.frame_pre_draw.connect(_capture_pre_draw)
+	_inventory()
+	if mode in ["all", "live", "cat-smoke"]: await _live()
+	if mode in ["all", "poses", "cat-smoke"]: await _poses()
 	if mode in ["all", "habitat"]: await _habitat()
 	if mode == "flying": await _flying()
 	if mode == "home": await _home()
 	if mode == "discovery": await _discovery()
-	if mode == "weather": await _weather()
+	if mode in ["weather", "cat-smoke"]: await _weather()
 	if mode == "fish": await _fish()
+	if mode in ["all", "interactions", "cat-smoke"]: await _interactions()
+	if mode == "cat-smoke": await _home()
 	var passed: bool = true
 	for check: Dictionary in checks: passed = passed and bool(check.passed)
 	var manifest: Dictionary = {"engine": Engine.get_version_info().string, "mode": mode,
 		"camera_follow_policy": follow_policy, "flying_settle_frames": settle_frames,
-		"passed": passed, "checks": checks, "screenshots": records,
-		"inventory": {"roaming_cats": life.roaming_cats.size(), "resting_cats": life.cats.size(),
-			"home_cats": 1,
+		"passed": passed, "checks": checks, "screenshots": [] if no_images else records,
+		"capture_records": records, "rendered": not no_images, "paw_samples": paw_samples,
+		"inventory": {"physical_cats": life.roaming_cats.size(), "roaming_cats": life.roaming_cats.size(), "resting_cat_entities": 0,
+			"home_cats": 0,
 			"sparrow_flocks": life.flocks.size(), "flyers": life.flyers.size(),
 			"other_live_mammals_or_poultry": [], "display_fish": ["G02_goldfish_tank", "G05_goldfish_bowl"]}}
 	FileAccess.open(output.path_join("%s.json" % mode), FileAccess.WRITE).store_string(JSON.stringify(manifest, "\t"))
-	print("ANIMAL_VISUAL_AUDIT ", mode, " passed=", passed, " screenshots=", records.size())
-	get_tree().quit(0 if passed else 1)
+	print("ANIMAL_VISUAL_AUDIT ", mode, " passed=", passed, " image_count=", 0 if no_images else records.size(), " capture_records=", records.size(), " checks=", checks.size())
+	# Detach this runner before freeing its scene, so renderer references and
+	# skeleton modifiers can finish cleanup without cancelling this coroutine.
+	var tree: SceneTree = get_tree()
+	if RenderingServer.frame_pre_draw.is_connected(_capture_pre_draw): RenderingServer.frame_pre_draw.disconnect(_capture_pre_draw)
+	_frame_target = null
+	main.remove_child(self)
+	tree.root.add_child(self)
+	main.queue_free()
+	await _frames(5)
+	tree.quit(0 if passed else 1)
 
 func _frames(count: int) -> void:
 	for frame: int in range(count): await get_tree().process_frame
@@ -101,6 +119,12 @@ func _look(node: Node3D, direction: String, size: float = .90, focus: Vector3 = 
 	camera.current = true
 
 func _shot(id: String, details: Dictionary, target: Node3D = null, focus: Vector3 = Vector3.ZERO) -> void:
+	if no_images:
+		await _frames(settle_frames)
+		var diagnostic: Dictionary = details.duplicate(true)
+		diagnostic.merge({"id": id, "file": "", "rendered": false, "weather": GameState.weather, "hour": GameState.hour(), "camera": _vec(camera.global_position)})
+		records.append(diagnostic)
+		return
 	_frame_target = target
 	_frame_bounds = {}
 	_frame_samples.clear()
@@ -123,6 +147,7 @@ func _shot(id: String, details: Dictionary, target: Node3D = null, focus: Vector
 		record["framing"]["settle_samples"] = _frame_samples.duplicate(true)
 	_frame_target = null
 	record["file"] = file
+	record["rendered"] = true
 	record["weather"] = GameState.weather
 	record["hour"] = GameState.hour()
 	record["camera"] = _vec(camera.global_position)
@@ -179,6 +204,7 @@ func _project_target(target: Node3D) -> Dictionary:
 			var arrays: Array = mesh.mesh.surface_get_arrays(surface)
 			if arrays.is_empty() or arrays[Mesh.ARRAY_VERTEX] == null: continue
 			var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+			var skinned: Dictionary = _skin_surface(mesh, surface)
 			var material: Material = mesh.get_active_material(surface)
 			var deformation: Dictionary = {}
 			if material is ShaderMaterial:
@@ -188,9 +214,10 @@ func _project_target(target: Node3D) -> Dictionary:
 				else:
 					deformation = {"height": shader_material.get_shader_parameter("body_height"),
 						"phase": shader_material.get_shader_parameter("phase"), "peck": shader_material.get_shader_parameter("peck")}
-			for vertex: Vector3 in vertices:
+			for index: int in vertices.size():
+				var vertex: Vector3 = vertices[index]
 				var local_vertex: Vector3 = _bird_vertex(vertex, deformation) if not deformation.is_empty() else vertex
-				var point: Vector3 = mesh.global_transform * local_vertex
+				var point: Vector3 = (skinned.points as PackedVector3Array)[index] if bool(skinned.skinned) else mesh.global_transform * local_vertex
 				var depth: float = -camera.to_local(point).z
 				vertex_count += 1
 				if not point.is_finite() or depth <= camera.near or depth >= camera.far:
@@ -214,7 +241,7 @@ func _project_target(target: Node3D) -> Dictionary:
 		"bounds_viewport_units": [low.x, low.y, high.x, high.y] if nonempty else [],
 		"viewport_units": [size.x, size.y], "minimum_margin_viewport_units": margin if nonempty else null,
 		"required_margin_viewport_units": 4.0, "camera_size": camera.size,
-		"geometry_method": "surface vertices; known sparrow peck/breath shader reproduced; animated wing-node transforms; alpha masks conservatively included",
+		"geometry_method": "full current skinned cat vertices and post-modifier bone poses; known sparrow peck/breath shader reproduced; animated wing-node transforms; alpha masks conservatively included",
 		"scope": "target geometry framing; foreground occlusion still requires visual review"}
 
 func _bird_vertex(vertex: Vector3, deformation: Dictionary) -> Vector3:
@@ -280,6 +307,9 @@ func _live() -> void:
 			{"travelled_m": cat.travelled - start_travel, "attention_delta": cat.attention.attention_time - start_attention,
 				"head_yaw_range_degrees": yaws.max() - yaws.min(), "clips_observed": clips,
 				"asset_sha256": FileAccess.get_sha256("res://assets/models/AN_cat_%s_walk.glb" % who), "samples": samples})
+		_check("%s moves continuously with synchronized planted paws" % who,
+			cat.speed >= .32 and cat.speed <= .45 and cat.maximum_step < .025 and int(cat.foot_plant.get("locked_samples")) > 0 and float(cat.foot_plant.get("maximum_lock_error")) < .002,
+			{"speed_mps": cat.speed, "maximum_physics_step_m": cat.maximum_step, "locked_paw_samples": int(cat.foot_plant.get("locked_samples")), "maximum_paw_lock_error_m": float(cat.foot_plant.get("maximum_lock_error"))})
 	# Test visibility/processing transitions explicitly instead of diagnosing rain/night as a frozen Walk.
 	for condition: Dictionary in [{"weather": "cloudy", "hour": 10.5, "active": true},
 		{"weather": "rain", "hour": 10.5, "active": false}, {"weather": "sunny", "hour": 21.0, "active": false},
@@ -289,7 +319,8 @@ func _live() -> void:
 		await _frames(4)
 		var correct: bool = true
 		for cat: CharacterBody3D in life.roaming_cats:
-			correct = correct and cat.is_physics_processing() == bool(condition.active) and cat.player.active == bool(condition.active)
+			correct = correct and cat.visible and cat.is_physics_processing() == bool(condition.active) and cat.player.active
+			if not bool(condition.active): correct = correct and cat.player.current_animation == "Idle"
 		_check("weather/time activation %s %.1f" % [condition.weather, condition.hour], correct, condition)
 
 func _poses() -> void:
@@ -323,12 +354,30 @@ func _poses() -> void:
 			var duration: float = cat.player.get_animation(clip).length
 			for phase: float in [.25, .65]:
 				cat.player.seek(duration * phase, true)
+				cat.player.advance(0.0)
 				await _frames(2)
+				var paws: Dictionary = _paw_report(cat)
+				paws.merge({"cat": who, "clip": clip, "phase": phase, "controlled": true})
+				paw_samples.append(paws)
+				_check("%s %s %.2f has four finite skinned paws above the floor" % [who, clip, phase], int(paws.paws) == 4 and bool(paws.finite) and float(paws.minimum_gap_m) > -.015, paws)
 				for direction: String in DIRECTIONS:
 					_look(cat, direction)
 					await _shot("%s_%s_%02d_%s" % [who, clip.to_lower(), int(phase * 100), direction],
 						{"subject": who, "review": "controlled_actual_asset_clip", "clip": clip, "phase": phase,
-							"view": direction, "world_position": _vec(cat.global_position)})
+							"view": direction, "world_position": _vec(cat.global_position)}, cat, Vector3(0, .17, 0))
+	for index: int in life.roaming_cats.size():
+		var cat: CharacterBody3D = life.roaming_cats[index]
+		for clip: String in ["Walk", "Run"]:
+			cat.player.play(clip, 0)
+			for phase_index: int in 17:
+				var phase: float = float(phase_index) / 16.0
+				cat.player.seek(cat.player.get_animation(clip).length * phase, true)
+				cat.player.advance(0.0)
+				await _frames(1)
+				var paws: Dictionary = _paw_report(cat)
+				paws.merge({"cat_index": index, "clip": clip, "phase": phase, "controlled": true})
+				paw_samples.append(paws)
+				_check("cat %d %s gait phase %02d keeps finite soles above ground" % [index, clip, phase_index], int(paws.paws) == 4 and bool(paws.finite) and float(paws.minimum_gap_m) > -.015 and float(paws.minimum_gap_m) < .025, paws)
 	# Controlled asset seeks must not leak into the following real habitat review.
 	for index: int in range(life.roaming_cats.size()):
 		var cat: CharacterBody3D = life.roaming_cats[index]
@@ -351,19 +400,25 @@ func _habitat() -> void:
 	GameState.minute = 630
 	main.world.set_indoor_look(false)
 	life.set_process(true)
-	for index: int in range(life.cats.size()):
-		var entry: Dictionary = life.cats[index]
-		var cat: Node3D = entry.node
-		main.world.set_region("farm" if index == 2 else "town")
+	main.world.set_region("town")
+	for index: int in range(life.roaming_cats.size()):
+		var cat: CharacterBody3D = life.roaming_cats[index]
 		main.player.global_position = cat.global_position + Vector3(3, 0, 3)
 		for direction: String in DIRECTIONS:
-			_look(cat, direction, .75, Vector3(0, .12, 0))
-			await _shot("resting_cat_%d_%s" % [index, direction],
-				{"subject": "resting_cat_%d" % index, "review": "actual_static_mesh_with_shader_motion", "mode": entry.mode, "view": direction})
-		var first_phase: float = entry.anim.phase
-		await get_tree().create_timer(.75).timeout
-		_check("resting cat %d shader clock advances" % index, entry.anim.phase > first_phase + .5,
-			{"phase_delta": entry.anim.phase - first_phase, "mode": entry.mode})
+			_look(cat, direction, .90, Vector3(0, .17, 0))
+			await _shot("ground_cat_%d_%s" % [index, direction],
+				{"subject": "ground_cat_%d" % index, "review": "actual_rigged_ground_cat", "view": direction}, cat, Vector3(0, .17, 0))
+		var paws: Dictionary = _paw_report(cat)
+		paws["animation"] = cat.player.current_animation
+		_check("ground cat %d has actual paw support or its authored jump" % index, int(paws.paws) == 4 and bool(paws.finite) and float(paws.minimum_gap_m) > -.015 and float(paws.minimum_gap_m) < (.25 if cat.player.current_animation == "Jump" else .025), paws)
+	for location: Dictionary in [{"name": "courtyard_wall", "at": Vector3(12.6, .7, -5.42), "region": "town"},
+		{"name": "lane_wall", "at": Vector3(22.2, 1.2, 10.6), "region": "town"},
+		{"name": "farm_bench", "at": FarmBuilder.ORIGIN + Vector3(-16.4, .46, -1.74), "region": "farm"}]:
+		main.world.set_region(str(location.region))
+		camera.size = 2.2
+		camera.global_position = location.at + Vector3(1.8, 1.2, 2.0)
+		camera.look_at(location.at)
+		await _shot("former_cat_" + str(location.name), {"review": "former_static_cat_location_now_empty", "subject": location.name})
 	await _weather()
 	await _flying()
 	await _fish()
@@ -454,60 +509,56 @@ func _fish() -> void:
 
 func _weather() -> void:
 	life.set_process(true)
+	main.world.set_region("town")
+	main.world.set_indoor_look(false)
 	for condition: Dictionary in [{"weather": "rain", "hour": 10.5}, {"weather": "sunny", "hour": 21.0}]:
 		GameState.weather = condition.weather
 		GameState.minute = float(condition.hour) * 60.0
-		for index: int in range(life.cats.size()):
-			var entry: Dictionary = life.cats[index]
-			main.world.set_region("farm" if index == 2 else "town")
-			main.world.set_indoor_look(false)
-			main.world.update_time(GameState.minute, GameState.weather, true)
-			await _frames(4)
-			_look(entry.node, "front", .80, Vector3(0, .12, 0))
-			if GameState.weather == "rain":
+		life._process(0.0)
+		var places: Array[Vector3] = []
+		for cat: CharacterBody3D in life.roaming_cats: places.append(cat.global_position)
+		main.world.update_time(GameState.minute, GameState.weather, true)
+		await _frames(4)
+		for index: int in life.roaming_cats.size():
+			var cat: CharacterBody3D = life.roaming_cats[index]
+			_look(cat, "front", .90, Vector3(0, .17, 0))
+			if GameState.weather == "rain" and not no_images:
 				main.weather_fx.rain.global_position = camera.global_position + Vector3(0, 9, 0)
 				main.weather_fx.rain.restart()
 				await _frames(4)
-			await _shot("resting_cat_%d_%s_%02d" % [index, condition.weather, int(condition.hour)],
-				{"subject": "resting_cat_%d" % index, "review": "actual_weather_behavior", "visible": entry.node.is_visible_in_tree(), "mode": entry.mode})
+			await _shot("ground_cat_%d_%s_%02d" % [index, condition.weather, int(condition.hour)],
+				{"subject": "ground_cat_%d" % index, "review": "visible_rest_without_relocation", "visible": cat.is_visible_in_tree(), "animation": cat.player.current_animation}, cat, Vector3(0, .17, 0))
+			_check("cat %d remains visible and in place during %s %.1f" % [index, condition.weather, condition.hour], cat.visible and cat.player.active and cat.player.current_animation == "Idle" and not cat.is_physics_processing() and cat.global_position.distance_to(places[index]) < .0001)
 
 func _home() -> void:
 	main.world.set_region("town")
 	main.world.house.show()
 	main.world.set_indoor_look(true)
 	main.world.house.update_cutaway("engawa", false)
-	var cat: Node3D
+	life._process(0.0)
+	var extra: Array[Node] = []
 	for node: Node in main.world.house.find_children("*", "Node3D", true, false):
-		if node.get_meta("model_id", "") == "G08_cat": cat = node as Node3D; break
-	_check("home cat is present", cat != null)
-	if cat == null: return
-	main.player.global_position = cat.global_position + Vector3(.9, .05, .8)
-	# Retain an actor-visible control: the baseline close camera cut the nearby
-	# player's trousers at its camera plane. Move back without changing ortho size.
-	main.player.visible = true
-	_look(cat, "front", .80, Vector3(0, .13, 0))
-	camera.global_position += camera.global_basis.z * .6
-	await _shot("home_cat_player_camera_clearance",
-		{"subject": "home_cat_with_player", "review": "camera_clearance_control", "back_offset_m": .6, "near": camera.near})
+		if node.get_meta("model_id", "") == "G08_cat": extra.append(node)
+	var ghost: Node = main.find_child("P_house_cat", true, false)
+	_check("home has no third cat and no abandoned pet interaction", extra.is_empty() and ghost == null)
 	main.player.visible = false
-	var phases: Array[float] = []
-	for sample: int in range(2):
-		for direction: String in DIRECTIONS:
-			_look(cat, direction, .80, Vector3(0, .13, 0))
-			await _shot("home_cat_%d_%s" % [sample, direction],
-				{"subject": "home_cat", "review": "actual_home_cat", "view": direction, "sample": sample})
-		for mesh: MeshInstance3D in WorldBuilder.find_meshes(cat):
-			var material: ShaderMaterial = mesh.get_active_material(0) as ShaderMaterial
-			if material != null and material.shader == load("res://shaders/animal_motion.gdshader"):
-				phases.append(float(material.get_shader_parameter("phase")))
-		await get_tree().create_timer(.9).timeout
-	var bounds: AABB = cat.global_transform * WorldBuilder.local_aabb(cat)
-	var support: float = WorldBuilder.surface_height(main.world.house,
-		Vector2(cat.global_position.x, cat.global_position.z), bounds.position.y + .025, true)
-	_check("home cat rests on the rendered engawa floor", is_finite(support) and absf(bounds.position.y - support) < .015,
-		{"minimum_y": bounds.position.y, "support_y": support})
-	_check("home cat has an advancing motion shader", phases.size() >= 2 and phases[-1] > phases[0] + .5,
-		{"shader_phases": phases, "model": "G08_cat"})
+	for direction: String in ["front", "left"]:
+		camera.size = 3.2
+		camera.global_position = HouseBuilder.ORIGIN + Vector3(3.3, 2.0, -.4) if direction == "front" else HouseBuilder.ORIGIN + Vector3(.3, 1.6, -2.1)
+		camera.look_at(HouseBuilder.ORIGIN + Vector3(3.3, .2, -3.95))
+		await _shot("home_engawa_" + direction, {"subject": "empty_engawa", "review": "no_extra_static_cat_or_ghost_prompt", "view": direction})
+	GameState.flags.goldfish_home = true
+	main.world.house.sync_state()
+	var bowl: Node3D = main.world.house.goldfish
+	var fish: Node3D = bowl.get_node_or_null("GoldfishLife/CaughtGoldfish") as Node3D
+	var controller: Node3D = bowl.get_node_or_null("GoldfishLife") as Node3D
+	var first: Vector3 = fish.position if fish != null else Vector3.INF
+	await get_tree().create_timer(.7).timeout
+	_check("removing the extra cat preserves the caught home goldfish and its swimming", controller != null and fish != null and fish.is_visible_in_tree() and first.distance_to(fish.position) > .005)
+	_look(bowl, "front", .90, Vector3(0, .15, 0))
+	camera.global_position += Vector3(0, .8, 0)
+	camera.look_at(bowl.global_transform * Vector3(0, .15, 0))
+	await _shot("home_bowl_after_cat_cleanup", {"subject": "home_goldfish", "review": "fish_remains_after_removing_extra_cat"})
 	main.player.visible = true
 	await _discovery()
 
@@ -538,3 +589,108 @@ func _discovery() -> void:
 		await _shot("cat_discovery_%d" % sample,
 			{"subject": "orange_cat_discovery", "review": "actual_public_lane", "world_position": _vec(cat.global_position)})
 		await get_tree().create_timer(.7).timeout
+
+func _inventory() -> void:
+	var physical: Array[Node3D] = []
+	_collect_cat_models(main, physical)
+	_check("the whole world has exactly two physical cats", physical.size() == 2 and life.roaming_cats.size() == 2, {"models": physical.map(func(node: Node3D) -> String: return str(node.get_meta("model_id")))})
+	_check("no cat model remains on a wall bench or in the house", physical.all(func(node: Node3D) -> bool: return str(node.get_meta("model_id")).begins_with("AN_cat_")))
+
+func _collect_cat_models(node: Node, found: Array[Node3D]) -> void:
+	if node is Node3D and str(node.get_meta("model_id", "")) in ["G08_cat", "A20_cat_sleep", "A22_cat_sit", "AN_cat_orange_walk", "AN_cat_calico_walk"]: found.append(node as Node3D)
+	for child: Node in node.get_children(): _collect_cat_models(child, found)
+
+func _skin_surface(mesh: MeshInstance3D, surface: int) -> Dictionary:
+	var arrays: Array = mesh.mesh.surface_get_arrays(surface)
+	var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+	var points: PackedVector3Array = []
+	var paw_points: Array[PackedVector3Array] = [PackedVector3Array(), PackedVector3Array(), PackedVector3Array(), PackedVector3Array()]
+	var skeleton: Skeleton3D = mesh.get_node_or_null(mesh.skeleton) as Skeleton3D
+	if mesh.skin == null or skeleton == null or arrays[Mesh.ARRAY_BONES] == null:
+		for vertex: Vector3 in vertices: points.append(mesh.global_transform * vertex)
+		return {"points": points, "paws": paw_points, "skinned": false}
+	var bones: PackedInt32Array = arrays[Mesh.ARRAY_BONES]
+	var weights: PackedFloat32Array = arrays[Mesh.ARRAY_WEIGHTS]
+	var matrices: Array[Transform3D] = []
+	var feet: Array[int] = []
+	for bind: int in mesh.skin.get_bind_count():
+		var bone: int = mesh.skin.get_bind_bone(bind)
+		if bone < 0: bone = skeleton.find_bone(mesh.skin.get_bind_name(bind))
+		assert(bone >= 0, "Every skinned vertex bind must resolve to a live bone")
+		matrices.append(skeleton.global_transform * skeleton.get_bone_global_pose(bone) * mesh.skin.get_bind_pose(bind))
+		feet.append(["Back_Leg_Foot_L", "Front_Leg_Foot_L", "Back_Leg_Foot_R", "Front_Leg_Foot_R"].find(skeleton.get_bone_name(bone)))
+	var influences: int = bones.size() / vertices.size()
+	for index: int in vertices.size():
+		var world_point := Vector3.ZERO
+		var foot_weights: Array[float] = [0.0, 0.0, 0.0, 0.0]
+		for influence: int in influences:
+			var offset: int = index * influences + influence
+			var weight: float = weights[offset]
+			if weight <= 0.0: continue
+			var bind: int = bones[offset]
+			world_point += (matrices[bind] * vertices[index]) * weight
+			if feet[bind] >= 0: foot_weights[feet[bind]] += weight
+		points.append(world_point)
+		for foot: int in 4:
+			if foot_weights[foot] >= .35:
+				var selected: PackedVector3Array = paw_points[foot]
+				selected.append(world_point)
+				paw_points[foot] = selected
+	return {"points": points, "paws": paw_points, "skinned": true}
+
+func _paw_report(cat: CharacterBody3D) -> Dictionary:
+	var minima: Array[Vector3] = [Vector3.INF, Vector3.INF, Vector3.INF, Vector3.INF]
+	for mesh: MeshInstance3D in WorldBuilder.find_meshes(cat.model):
+		for surface: int in mesh.mesh.get_surface_count():
+			var geometry: Dictionary = _skin_surface(mesh, surface)
+			for foot: int in 4:
+				for point: Vector3 in geometry.paws[foot]:
+					if point.y < minima[foot].y: minima[foot] = point
+	var count: int = 0
+	var minimum_gap: float = INF
+	var all_finite: bool = true
+	var samples: Array[Dictionary] = []
+	for foot: int in 4:
+		if not minima[foot].is_finite(): all_finite = false; continue
+		var point: Vector3 = minima[foot]
+		var ground: float = WorldBuilder.surface_height(main.world, Vector2(point.x, point.z), cat.global_position.y + .08, true)
+		all_finite = all_finite and is_finite(ground)
+		count += 1
+		minimum_gap = minf(minimum_gap, point.y - ground)
+		samples.append({"paw": foot, "world_minimum": _vec(point), "rendered_ground_y": ground, "gap_m": point.y - ground})
+	return {"paws": count, "finite": all_finite, "minimum_gap_m": minimum_gap, "samples": samples}
+
+func _interactions() -> void:
+	GameState.weather = "sunny"; GameState.minute = 630
+	main.world.set_region("town"); main.world.set_indoor_look(false)
+	main.in_room = false; GameState.player_in_room = false
+	main.player.visible = true; main.player.frozen = false
+	main.player.set_physics_process(true)
+	life.set_process(true)
+	main.ui.auto = false
+	for index: int in life.roaming_cats.size():
+		var cat: CharacterBody3D = life.roaming_cats[index]
+		var target: Interactable = life.cats[index].interact
+		cat.rest_left = maxf(cat.rest_left, 3.0); cat.rest_pose = "Idle"; cat.pose_left = 0.0
+		var selected: bool = false
+		for direction: Vector3 in [Vector3(-1, 0, 0), Vector3(0, 0, 1), Vector3(0, 0, -1), Vector3(1, 0, 0)]:
+			main.player.global_position = cat.global_position + direction * 1.05 + Vector3.UP * .05
+			main.player.velocity = Vector3.ZERO; main.player.face_towards(cat.global_position)
+			await _frames(4)
+			if main.player.target == target: selected = true; break
+		_check("physical E target selects cat %d" % index, selected, {"target": main.player.target.id if main.player.target != null else "none", "cat": _vec(cat.global_position), "player": _vec(main.player.global_position)})
+		camera.size = 2.4
+		camera.global_position = cat.global_position + Vector3(-1.7, 1.0, 1.9)
+		camera.look_at(cat.global_position + Vector3(0, .45, 0))
+		await _shot("cat_%d_before_E" % index, {"review": "real_keyboard_pet", "target_selected": selected})
+		var pets_before: int = int(GameState.flags.get("ambient_cat_pets", 0))
+		var at: Vector3 = cat.global_position
+		var event := InputEventKey.new(); event.physical_keycode = KEY_E; event.keycode = KEY_E; event.pressed = true
+		Input.parse_input_event(event)
+		await _frames(2)
+		event = InputEventKey.new(); event.physical_keycode = KEY_E; event.keycode = KEY_E; event.pressed = false
+		Input.parse_input_event(event)
+		await _frames(3)
+		_check("real E pets cat %d audibly without relocating it" % index, selected and int(GameState.flags.get("ambient_cat_pets", 0)) == pets_before + 1 and Audio._last.has("cat_meow") and cat.global_position.distance_to(at) < .002, {"pet_count_before": pets_before, "pet_count_after": int(GameState.flags.get("ambient_cat_pets", 0)), "displacement_m": cat.global_position.distance_to(at)})
+		await _shot("cat_%d_after_E" % index, {"review": "real_keyboard_pet_response", "pet_count": int(GameState.flags.get("ambient_cat_pets", 0)), "telemetry": cat.telemetry()})
+	main.player.set_physics_process(false)

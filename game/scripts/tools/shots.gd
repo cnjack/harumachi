@@ -319,6 +319,12 @@ func _run() -> void:
 	var dir := _arg("shots", "user://shots")
 	DirAccess.make_dir_recursive_absolute(dir)
 	var catalog: Dictionary = VIEWS.duplicate(true)
+	catalog.merge(load("res://scripts/world/distant_mountains.gd").capture_views())
+	for hour: float in [12.0,21.0]:
+		catalog["bridge_lantern_%d"%int(hour)]={"farm":true,"time":hour,"weather":"sunny","player":Vector3(0,.8,17),"camera_at":Vector3(3.4,2.25,20.6),"camera_focus":Vector3(.95,1.65,19.3),"fov":43.0}
+	var bridge_planter_at: Vector3=load("res://scripts/world/bridge_dressing.gd").PLANTERS[0]
+	for weather: String in ["sunny","rain"]:
+		catalog["bridge_planter_"+weather]={"farm":true,"time":12.0,"weather":weather,"player":Vector3(0,.1,11),"camera_at":bridge_planter_at+Vector3(-1.55,1.15,-1.75),"camera_focus":bridge_planter_at+Vector3(.2,.45,.25),"fov":43.0}
 	if _arg("qa-landscape", "") == "1":
 		catalog=LandscapeCoverage.capture_views()
 	if _arg("qa-model-diversity", "") == "1":

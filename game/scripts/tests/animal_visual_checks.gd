@@ -76,30 +76,32 @@ func run() -> void:
 	var home_cat: Node3D
 	for node: Node in main.world.house.find_children("*", "Node3D", true, false):
 		if node.get_meta("model_id", "") == "G08_cat": home_cat = node as Node3D; break
-	var home_material: ShaderMaterial
-	if home_cat != null:
-		for mesh: MeshInstance3D in WorldBuilder.find_meshes(home_cat):
-			var material: ShaderMaterial = mesh.get_active_material(0) as ShaderMaterial
-			if material != null and material.shader == load("res://shaders/animal_motion.gdshader"):
-				home_material = material; break
-	check("the original sleeping home cat has live breathing", home_cat != null and home_material != null)
-	var first_phase: float = float(home_material.get_shader_parameter("phase")) if home_material != null else 0
+	check("the house contains no extra cat or abandoned pet interaction", home_cat == null and t.point("house_cat") == null)
+	GameState.weather = "rain"
+	await t.frames(3)
+	var first_attention: Array[float] = []
+	for cat: CharacterBody3D in walkers: first_attention.append(float(cat.attention.get("attention_time")))
 	await t.frames(40)
-	check("home cat breathing keeps advancing in the main scene", home_material != null and float(home_material.get_shader_parameter("phase")) > first_phase + .2)
-	var home_grounded: bool = false
-	if home_cat != null:
-		var bounds: AABB = home_cat.global_transform * WorldBuilder.local_aabb(home_cat)
-		var home_support: float = WorldBuilder.surface_height(main.world.house,
-			Vector2(home_cat.global_position.x, home_cat.global_position.z), bounds.position.y + .025, true)
-		home_grounded = is_finite(home_support) and absf(bounds.position.y - home_support) < .015
-	check("home cat cushion stays on the rendered engawa floor", home_grounded)
+	var resting_alive: bool = walkers.size() == 2
+	for index: int in walkers.size():
+		var cat: CharacterBody3D = walkers[index]
+		resting_alive = resting_alive and cat.visible and cat.player.active and cat.player.current_animation == "Idle" and float(cat.attention.get("attention_time")) > first_attention[index] + .2
+	check("the same two resting cats keep live breathing and head attention during rain", resting_alive)
+	var feet_supported: bool = walkers.size() == 2
+	var foot_details: Array[String] = []
+	for cat: CharacterBody3D in walkers:
+		var feet: AABB = cat.model.global_transform * WorldBuilder.local_aabb(cat.model)
+		var floor_y: float = WorldBuilder.surface_height(main.world, Vector2(feet.get_center().x, feet.get_center().z), feet.position.y + .06, true)
+		feet_supported = feet_supported and is_finite(floor_y) and absf(feet.position.y - floor_y) < .015
+		foot_details.append("%s: feet %.4f / floor %.4f" % [cat.name, feet.position.y, floor_y])
+	check("both resting cats keep their soles on rendered ground", feet_supported, str(foot_details))
 	var activation: bool = true
 	for weather: String in ["rain", "sunny"]:
 		GameState.weather = weather
 		await t.frames(3)
 		for cat: CharacterBody3D in walkers:
-			activation = activation and cat.player.active == (weather == "sunny") and cat.is_physics_processing() == (weather == "sunny")
-	check("rain shelter and sunny return resume the actual cat controllers", activation)
+			activation = activation and cat.visible and cat.player.active and cat.is_physics_processing() == (weather == "sunny")
+	check("rain rests the same visible cats and sunny weather resumes walking", activation)
 	await _goldfish_checks()
 	await _rain_and_bird_checks()
 	_insect_checks()
@@ -147,25 +149,26 @@ func _goldfish_checks() -> void:
 	main.world.house.visible = house_was_visible
 
 func _rain_and_bird_checks() -> void:
+	GameState.weather = "rain"
+	await t.frames(3)
 	var positions: Array[Vector3] = []
 	for entry: Dictionary in main.life.cats: positions.append(entry.node.global_position)
 	var pets_before: int = int(GameState.flags.get("ambient_cat_pets", 0))
-	GameState.weather = "rain"
-	await t.frames(3)
-	var sheltered: bool = true
+	var resting: bool = main.life.cats.size() == 2
 	for index: int in main.life.cats.size():
 		var target: Interactable = main.life.get_node_or_null("CatInteract_%d" % index) as Interactable
-		sheltered = sheltered and not main.life.cats[index].node.is_visible_in_tree() and target != null and not target.is_visible_in_tree() and target.radius == 0 and target.body == null
+		resting = resting and main.life.cats[index].node.is_visible_in_tree() and target != null and not target.is_visible_in_tree() and target.radius == 0 and target.body == null
 	main.life.pet_cat(0)
-	check("outdoor resting cats shelter from rain with no ghost pet prompt", sheltered and int(GameState.flags.get("ambient_cat_pets", 0)) == pets_before)
+	check("rain retains two visible resting cats with no ghost pet prompt", resting and int(GameState.flags.get("ambient_cat_pets", 0)) == pets_before)
 	GameState.weather = "sunny"
-	var returned: bool = true
+	# Inspect the exact weather transition before advancing either physical actor.
+	main.life._process(0.0)
+	var resumed: bool = main.life.cats.size() == 2
 	for index: int in main.life.cats.size():
-		main.world.set_region("farm" if index == 2 else "town")
-		await t.frames(3)
+		var entry: Dictionary = main.life.cats[index]
 		var target: Interactable = main.life.get_node_or_null("CatInteract_%d" % index) as Interactable
-		returned = returned and main.life.cats[index].node.is_visible_in_tree() and main.life.cats[index].node.global_position.distance_to(positions[index]) < .001 and target != null and target.is_visible_in_tree() and absf(target.radius - 1.9) < .001
-	check("after rain the same cats and pet targets return to their supported places", returned)
+		resumed = resumed and entry.node.is_visible_in_tree() and entry.node.global_position.distance_to(positions[index]) < .0001 and target != null and target.is_visible_in_tree() and absf(target.radius - 1.9) < .001 and target.global_position.distance_to(entry.node.global_position + Vector3(0, .3, 0)) < .001 and target.body == entry.node
+	check("sunny weather resumes the same cats without relocating their pet targets", resumed)
 	main.world.set_region("town")
 	var flock: Dictionary = main.life.flocks[0]
 	var bird: Dictionary = flock.birds[0]

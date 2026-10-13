@@ -41,16 +41,13 @@ func run() -> void:
 	var motion: String=FileAccess.get_file_as_string("res://shaders/water_motion.gdshaderinc") if FileAccess.file_exists("res://shaders/water_motion.gdshaderinc") else ""
 	check("river uses two phase advected flow",river.contains("flow_sample") and motion.contains("phase_b"))
 	check("lake has analytic wave normals and bend flow",motion.contains("gerstner") and lake.contains("flow_direction"))
-	var cat_bad: Array[String]=[]
+	var cat_bad: Array[String] = []
 	for cat: Dictionary in main.life.cats:
-		var node: Node3D=cat.node
-		var box: AABB=node.global_transform*WorldBuilder.local_aabb(node)
-		if node.global_position.x<200 and cat.mode=="watch":
-			var cap: Node=main.world.get_node("BoundaryWall_8/TileCoping")
-			var contact: float=WorldBuilder.surface_height(cap,Vector2(node.global_position.x,node.global_position.z),2.0)
-			if not is_finite(contact) or box.position.y<contact-.008 or box.position.y>contact+.025:cat_bad.append(str(box.position.y)+" / "+str(contact))
-	check("sitting cat clears the real curved tile surface",cat_bad.is_empty(),str(cat_bad))
-	check("all three cats have E interaction targets",main.life.find_children("CatInteract_*","Interactable",true,false).size()==3)
+		var node: Node3D = cat.node
+		var target: Interactable = cat.interact
+		if target == null or target.global_position.distance_to(node.global_position + Vector3(0, .3, 0)) > .025: cat_bad.append(str(node.name))
+	check("pet prompts stay on the actual moving cat bodies", main.life.cats.size() == 2 and cat_bad.is_empty(), str(cat_bad))
+	check("both physical cats have E interaction targets",main.life.find_children("CatInteract_*","Interactable",true,false).size()==2)
 	check("cat interaction has an audible meow",ResourceLoader.exists("res://assets/audio/sfx/cat_meow.wav") and main.life.has_method("pet_cat"))
 	var slots:=SaveDB.has_method("list_slots") and GameState.has_method("save_to_slot") and GameState.has_method("load_slot")
 	check("save manager supports exactly six visible positions",slots and int(SaveDB.get_script().get_script_constant_map().get("MAX_SLOTS",0))==6)

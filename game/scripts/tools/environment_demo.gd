@@ -19,7 +19,7 @@ func _ready() -> void:
 	GameState.placements=[{"uid":990,"item":"bunting","x":5.5,"z":11.2,"rot":0},{"uid":991,"item":"lantern","x":9.5,"z":12.4,"rot":0}]
 	main.placement.rebuild()
 	await segment("bunting_lantern","town","sunny",Vector3(8,.1,10),Vector3(7,2.1,7.5),Vector3(7.5,1.8,12),5.0)
-	await segment("walking_cat","town","sunny",Vector3(19.7,.1,56),Vector3(19,1,53.4),Vector3(19.8,.2,55.0),5.0)
+	await segment("walking_cat","town","sunny",Vector3(19.7,.1,12.5),Vector3(18.7,1.4,13.3),Vector3(20.9,.2,15.5),5.0)
 	await segment("bank_breeze","farm","sunny",Vector3(137,.1,15),Vector3(139,1.6,15),Vector3(133,.5,17),5.0)
 	await segment("bank_rain","farm","rain",Vector3(137,.1,15),Vector3(139,1.6,15),Vector3(133,.5,17),5.0)
 	var file:=FileAccess.open(evidence_directory.path_join("native-motion.json"),FileAccess.WRITE)

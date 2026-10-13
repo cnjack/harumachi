@@ -51,9 +51,9 @@ func run() -> void:
 		if id=="D02_rain_barrel" and model.global_position.x<200:barrel=model
 		if id=="D10_rocks" and model.global_position.x>14 and model.global_position.x<18:stone=model
 		if id=="H02":apartment=model
-		if id in ["A20_cat_sleep","A22_cat_sit"]:cats.append(model)
+		if id in ["AN_cat_orange_walk","AN_cat_calico_walk"]:cats.append(model)
 		if id.begins_with("T0"):trees.append(model)
-	check("deep census includes nested shop stock and AmbientLife",all.size()>550 and cats.size()==3,"%d tagged models; %d cats"%[all.size(),cats.size()])
+	check("deep census includes nested shop stock and AmbientLife",all.size()>550 and cats.size()==2,"%d tagged models; %d cats"%[all.size(),cats.size()])
 	check("rain barrel stands in the garden clear of the residential lane",barrel!=null and bounds(barrel).position.x>=22.35)
 	var barrel_clear:=barrel!=null
 	for model: Node3D in all:
@@ -61,20 +61,15 @@ func run() -> void:
 	check("relocated barrel does not enter the neighbouring house",barrel_clear)
 	check("moss rocks leave the full side-gate approach open",stone!=null and not rectangle(bounds(stone)).intersects(Rect2(15.6,7.0,1.6,3.0)))
 	check("rocks belong to the garden lantern group",stone!=null and Vector2(stone.global_position.x-15.9,stone.global_position.z-12.6).length()<2.0)
-	var cat_bad: Array[String]=[];var sleep_clear:=false
+	var cat_bad: Array[String] = []
+	var floor_cats: bool = cats.size() == 2
 	for cat: Node3D in cats:
-		var cat_box:=bounds(cat);var contact: float=-INF
-		if cat.global_position.x<20:
-			var cap: Node=main.world.get_node("BoundaryWall_5/TileCoping")
-			contact=support(cap,Vector2(cat.global_position.x,cat.global_position.z),2.0)
-			sleep_clear=cat_box.position.y>=contact-.005 and cat_box.position.y<=contact+.025
-		elif cat.global_position.x<200:contact=support(main.world.get_node("BoundaryWall_8/TileCoping"),Vector2(cat.global_position.x,cat.global_position.z),2.0)
-		else:
-			for bench: Node3D in all:
-					if bench.get_meta("model_id")=="A12_bench" and bench.global_position.distance_to(cat.global_position)<2.0:contact=support(bench,Vector2(cat.global_position.x,cat.global_position.z),.76)
-		if not is_finite(contact) or cat_box.position.y<contact-.008 or cat_box.position.y>contact+.025:cat_bad.append("%s base %.3f support %.3f"%[cat.get_meta("model_id"),cat_box.position.y,contact])
-	check("sleeping cat is above the actual tiled coping",sleep_clear)
-	check("all three ambient cats rest on rendered supports",cats.size()==3 and cat_bad.is_empty(),str(cat_bad))
+		var cat_box: AABB = bounds(cat)
+		var contact: float = WorldBuilder.surface_height(main.world, Vector2(cat_box.get_center().x, cat_box.get_center().z), cat_box.position.y + .06, true)
+		floor_cats = floor_cats and cat.global_position.x < 200 and cat_box.position.y < .06
+		if not is_finite(contact) or absf(cat_box.position.y - contact) > .015: cat_bad.append("%s base %.4f / ground %.4f" % [cat.get_meta("model_id"), cat_box.position.y, contact])
+	check("the two cats live on the ground rather than walls or benches", floor_cats)
+	check("both cats have actual rendered ground under their soles", cats.size() == 2 and cat_bad.is_empty(), str(cat_bad))
 	var ground_meshes: Array[MeshInstance3D]=[];primitives(main.world,ground_meshes)
 	var tree_bad: Array[String]=[]
 	for tree: Node3D in trees:

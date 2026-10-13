@@ -6,6 +6,7 @@ var water_mat: ShaderMaterial
 var ground_mesh: MeshInstance3D
 var shore_bodies: Array[StaticBody3D] = []
 var _serial := 0
+const MAX_REFLECTION_LAMPS := 8
 
 func build(world: WorldBuilder) -> void:
 	wb = world
@@ -19,6 +20,8 @@ func build(world: WorldBuilder) -> void:
 	_greenery()
 	_rest_places()
 	_meadow()
+	var fish: Node3D=load("res://scripts/world/river_fish.gd").new()
+	add_child(fish);fish.call("build",wb)
 	_seat_pier_marker.call_deferred()
 
 func _seat_pier_marker() -> void:
@@ -85,11 +88,17 @@ func _terrain_cell(st: SurfaceTool,x: float,z: float,step: float) -> void:
 func _water() -> void:
 	var st := SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
-	var points := [Vector3(-330,0,-69),Vector3(-330,0,120),Vector3(183,0,120),Vector3(183,0,-69)]
-	for i: int in [0,2,1,0,3,2]:
-		st.set_normal(Vector3.UP)
-		st.set_uv(Vector2(points[i].x,points[i].z))
-		st.add_vertex(points[i])
+	# The old two-triangle plane only moved at its remote corners. Subdivide
+	# the actual wet footprint so metre-scale waves also move the shoreline.
+	var step: float=.70
+	for ix: int in ceili(513.0/step):
+		for iz: int in ceili(189.0/step):
+			var at:=Vector2(-330.0+float(ix)*step,-69.0+float(iz)*step)
+			if LakesideLayout.water_distance(at+Vector2.ONE*step*.5)>step:continue
+			var corners: Array[Vector2]=[at,at+Vector2(0,step),at+Vector2.ONE*step,at+Vector2(step,0)]
+			for corner: int in [0,2,1,0,3,2]:
+				st.set_normal(Vector3.UP);st.set_uv(corners[corner]);st.add_vertex(Vector3(corners[corner].x,0,corners[corner].y))
+	st.index()
 	var water := MeshInstance3D.new()
 	water.name = "Connected_lake_and_river"
 	water.mesh = st.commit()
@@ -99,6 +108,9 @@ func _water() -> void:
 	water_mat.set_shader_parameter("rain_ring_radius",.145)
 	water_mat.set_shader_parameter("rain_ring_width",.008)
 	water_mat.set_shader_parameter("rain_ring_strength",.11)
+	water_mat.set_shader_parameter("ripple_contrast",.072)
+	water_mat.set_shader_parameter("sun_path_width",24.0)
+	water_mat.set_shader_parameter("animation_time",-1.0)
 	for sky_time in ["day","dusk","night"]:
 		water_mat.set_shader_parameter("sky_"+sky_time,load("res://assets/textures/"+("sky_equirect.jpg" if sky_time=="day" else "sky_"+sky_time+".jpg")))
 	water.material_override = water_mat
@@ -112,15 +124,19 @@ func _bind_water_lamps() -> void:
 	# a night reflection must never invent an extra light over the empty lake.
 	await get_tree().physics_frame
 	var positions := PackedVector3Array()
+	var weights := PackedFloat32Array()
 	if wb.farm:
 		for lamp: OmniLight3D in wb.farm.lamp_lights:
 			var local_lamp: Vector3=to_local(lamp.global_position)
 			if absf(LakesideLayout.water_distance(Vector2(local_lamp.x,local_lamp.z)))>8.0:continue
 			positions.append(lamp.global_position)
-			if positions.size()==4:break
+			weights.append(float(lamp.get_meta("outdoor_energy_scale",1.0)))
+			if positions.size()==MAX_REFLECTION_LAMPS:break
 	water_mat.set_shader_parameter("reflection_lamp_count",positions.size())
-	positions.resize(4)
+	positions.resize(MAX_REFLECTION_LAMPS)
+	weights.resize(MAX_REFLECTION_LAMPS)
 	water_mat.set_shader_parameter("reflection_lamps",positions)
+	water_mat.set_shader_parameter("reflection_lamp_weights",weights)
 
 func _ribbon(points: PackedVector2Array, width: float, material: Material, walkable: bool = false) -> void:
 	if points.size() < 2: return

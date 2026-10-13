@@ -1,7 +1,7 @@
 class_name AmbientLife
 extends Node3D
 ## Small life around the player: sparrow flocks that hop and peck and take off when you come
-## close, cats (one asleep, one who turns to watch you), butterflies around flowers and
+## close, two rigged street cats, butterflies around flowers and
 ## dragonflies over the river. Everything is cheap procedural motion on static models.
 
 const SPARROW_SPOTS := [
@@ -26,7 +26,6 @@ var flyers: Array = []
 var cats: Array = []
 const CAT_WALKER=preload("res://scripts/animals/cat_walker.gd")
 var roaming_cats: Array[CharacterBody3D] = []
-var home_cat_motion: AnimalMotion
 const GOLDFISH_LIFE = preload("res://scripts/animals/goldfish_life.gd")
 const INSECT_ART = preload("res://scripts/animals/insect_art.gd")
 var _flap_cool := 0.0
@@ -60,34 +59,6 @@ func setup(world: WorldBuilder, p: Node3D) -> void:
 	for s in DRAGONFLY_SPOTS:
 		for i in 2:
 			flyers.append(_dragonfly(s[0], s[1] + (FarmBuilder.ORIGIN if s[0] == "farm" else Vector3.ZERO), rng))
-	# cats: the calico naps on the courtyard's low front wall, the tabby watches the lane from a wall top,
-	# and another calico sleeps on the bench by the allotment gate
-	for c in [["A20_cat_sleep", Vector3(12.6, 0.7, -5.42), 200.0, "sleep"], ["A22_cat_sit", Vector3(22.2, 1.2, 10.6), -90.0, "watch"],
-			["A20_cat_sleep", FarmBuilder.ORIGIN + Vector3(-16.4, 0.46, -1.74), 90.0, "sleep"]]:
-		var n := wb.spawn(c[0], c[1], c[2], 0, self, 1.0)
-		if n:
-			var support_y: float=(c[1] as Vector3).y
-			if (c[1] as Vector3).x<200 and str(c[3])=="sleep":support_y=JapaneseArchitecture.coping_top(.7)
-			elif (c[1] as Vector3).x>200:
-				for bench: Node3D in wb.farm.find_children("*","Node3D",true,false):
-					if bench.get_meta("model_id","")!="A12_bench" or bench.global_position.distance_to(n.global_position)>2.0:continue
-					var seat:=WorldBuilder.surface_height(bench,Vector2(n.global_position.x,n.global_position.z),support_y+.30)
-					if is_finite(seat):support_y=seat;break
-			if (c[1] as Vector3).x<200:
-				var wall: Node3D=wb.get_node("BoundaryWall_5/TileCoping" if str(c[3])=="sleep" else "BoundaryWall_8/TileCoping")
-				var actual:=WorldBuilder.surface_height(wall,Vector2(n.global_position.x,n.global_position.z),2.0)
-				if is_finite(actual):support_y=actual
-			WorldBuilder.rest_on(n,support_y,-.003)
-			n.name="AmbientCat_%d"%cats.size()
-			var target:=Interactable.new();target.name="CatInteract_%d"%cats.size();target.id="ambient_cat_%d"%cats.size();target.radius=1.9
-			target.position=n.position+Vector3(0,.34,0)
-			if n.global_position.x<200:
-				var owner_wall: Node=wb.get_node("BoundaryWall_5" if str(c[3])=="sleep" else "BoundaryWall_8")
-				var bodies:=owner_wall.find_children("*","StaticBody3D",true,false)
-				if not bodies.is_empty():target.body=bodies[0] as CollisionObject3D
-			add_child(target)
-			cats.append({"node": n, "mode": c[3], "yaw": deg_to_rad(c[2]), "t": rng.randf() * 5.0, "head":0.0, "anim":AnimalMotion.new(n,2 if str(c[3])=="sleep" else 1),
-				"region": "farm" if n.global_position.x > 200 else "town", "interact": target, "wall_body": target.body})
 	# One cat keeps to the lane shoulder by home; the other lives down South Town.
 	for index: int in range(2):
 		var model_id: String="AN_cat_orange_walk" if index==0 else "AN_cat_calico_walk"
@@ -112,14 +83,17 @@ func setup(world: WorldBuilder, p: Node3D) -> void:
 		var visual: Node3D=wb.spawn(model_id,Vector3(0,.021 if index==0 else .009,0),0,0,walker)
 		HouseBuilder.toonify(visual)
 		var route: PackedVector3Array = PackedVector3Array([Vector3(20.65,0,14.3),Vector3(21.35,0,14.3),Vector3(21.35,0,17.3),Vector3(20.65,0,17.3)]) if index==0 else PackedVector3Array([Vector3(19.2,0,68.4),Vector3(20.4,0,68.4),Vector3(20.4,0,69.6),Vector3(19.2,0,69.6)])
-		walker.setup(visual,route,.12)
+		walker.setup(visual,route,.36)
 		walker.attention.set("nearby_target", player)
 		roaming_cats.append(walker)
-	# G08 includes its cushion. A separate upper-body mask keeps that support still.
-	for candidate: Node in wb.house.find_children("*","Node3D",true,false):
-		if candidate.get_meta("model_id","") == "G08_cat":
-			home_cat_motion=AnimalMotion.new(candidate as Node3D,3)
-			break
+		var target := Interactable.new()
+		target.name = "CatInteract_%d" % index
+		target.id = "ambient_cat_%d" % index
+		target.radius = 1.9
+		target.body = walker
+		target.position = walker.position + Vector3(0, .3, 0)
+		add_child(target)
+		cats.append({"node": walker, "interact": target, "region": "town"})
 	var bowl: Node3D = wb.house.goldfish
 	if bowl != null and bowl.get_node_or_null("GoldfishLife") == null:
 		var fish_life: Node3D = GOLDFISH_LIFE.new() as Node3D
@@ -240,11 +214,16 @@ func _landing(node: Node3D, at: Vector3) -> Vector3:
 
 func pet_cat(index: int) -> void:
 	if index<0 or index>=cats.size():return
-	if GameState.weather == "rain": return
+	if GameState.weather == "rain" or not (cats[index].node as Node3D).is_visible_in_tree(): return
 	Audio.sfx("cat_meow",-4.0,1.03 if index==0 else .96)
 	GameState.flags["ambient_cat_pets"]=int(GameState.flags.get("ambient_cat_pets",0))+1
-	var cat: Dictionary=cats[index];cat.head=.22
-	(cat.anim as AnimalMotion).phase=0.0
+	var walker: CharacterBody3D = cats[index].node
+	if not walker.is_visible_in_tree(): return
+	# The physical cat stays where it is and briefly looks up before resuming its route.
+	walker.rest_left = maxf(walker.rest_left, 1.2)
+	walker.rest_pose = "Idle"
+	walker.pose_left = 0.0
+	walker.attention.set("attention_time", 10.0)
 
 
 func _butterfly(region: String, home: Vector3, rng: RandomNumberGenerator) -> Dictionary:
@@ -288,18 +267,18 @@ func _active_region() -> String:
 
 func _process(delta: float) -> void:
 	_sync_animal_seed()
-	if home_cat_motion != null: home_cat_motion.update(delta)
 	var G := GameState
 	var reg := _active_region()
 	var h := G.hour()
 	var daylight := h >= 5.5 and h < 19.3 and G.weather != "rain"
 	var bugs := h >= 7.0 and h < 17.5 and G.weather == "sunny"
 	for walker: CharacterBody3D in roaming_cats:
-		var active: bool=reg=="town" and daylight
-		walker.visible=active and not walker.waiting_for_spawn
-		walker.collision_layer=WorldBuilder.L_ACTORS if walker.visible else 0
-		walker.set_physics_process(active)
-		walker.player.active=active
+		# Weather and time change the activity, never the animal's presence or position.
+		var present: bool = reg == "town" and not walker.waiting_for_spawn
+		var active: bool = reg == "town" and daylight
+		walker.visible = present
+		walker.collision_layer = WorldBuilder.L_ACTORS if present else 0
+		walker.set_roaming(active, present)
 	var pp := player.global_position
 	_flap_cool -= delta
 	for f in flocks:
@@ -326,21 +305,14 @@ func _process(delta: float) -> void:
 		n.visible = on and _prepare_flyer(fl)
 		if on and n.global_position.distance_to(pp) < 40.0:
 			_update_flyer(fl, delta)
-	for c in cats:
-		var n: Node3D = c.node
-		var present: bool = str(c.region) == reg and G.weather != "rain"
-		n.visible = present
-		var target: Interactable = c.interact
-		target.visible = present
-		target.radius = 1.9 if present else 0.0
-		target.body = c.wall_body if present else null
-		c.t += delta
-		var d: Vector3 = pp - n.global_position
-		var want:=0.0
-		if c.mode!="sleep" and Vector2(d.x,d.z).length()<7:
-			want=clampf(wrapf(atan2(d.x,d.z)-float(c.yaw),-PI,PI),-.6,.6)
-		c.head=lerpf(float(c.head),want,1.0-exp(-3.0*delta))
-		(c.anim as AnimalMotion).update(delta,false,0.0,float(c.head))
+	for entry: Dictionary in cats:
+		var walker: CharacterBody3D = entry.node
+		var target: Interactable = entry.interact
+		var can_pet: bool = walker.visible and G.weather != "rain"
+		target.global_position = walker.global_position + Vector3(0, .3, 0)
+		target.visible = can_pet
+		target.radius = 1.9 if can_pet else 0.0
+		target.body = walker if can_pet else null
 
 
 

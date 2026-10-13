@@ -159,6 +159,9 @@ func _river() -> void:
 		# the railings keep the player on the deck
 		for side in [-1.0, 1.0]:
 			_solid(Vector3(0.15, 1.6, 10.0), Vector3(BRIDGE_X + side * 0.98, 0.8, (RIVER[0] + RIVER[1]) / 2.0))
+		var dressing: Node3D=load("res://scripts/world/bridge_dressing.gd").new()
+		add_child(dressing)
+		dressing.build(self,bridge)
 
 
 # ------------------------------------------------------------------ the allotment
@@ -556,6 +559,7 @@ func _grass() -> void:
 		[5.4, 4.4, 12.2, 11.6],        # mown patch behind the riverside bench: the fireworks camera sits here
 	]
 	avoid.append_array(ModelDiversity.ground_exclusions("farm"))
+	avoid.append_array(load("res://scripts/world/bridge_dressing.gd").ground_exclusions())
 	var near := [[-30.0,-15.5,27.5,16.8]]
 	var far := [[-30.0,17.2,27.5,30.5]]
 	var height_fn: Callable = func(p:Vector2)->float:return LakesideLayout.height_at(p)
@@ -568,10 +572,12 @@ func _grass() -> void:
 			[-30.0, -24.0, 27.5, -15.5]], [], "meadow", 1.4, 9)
 	# tall grass along both river banks, parted by the bridge
 	var banks := [[-30.0,10.5,27.5,24.5]]
+	var bank_avoid: Array=[[-1.6,0,1.6,40.0]]
+	bank_avoid.append_array(load("res://scripts/world/bridge_dressing.gd").ground_exclusions())
 	var bank_keep: Callable = func(p:Vector2)->bool:return LakesideLayout.water_distance(p)>1.2 and LakesideLayout.water_distance(p)<2.15 and p.distance_to(LakesideLayout.SPOTS.fish_river.stand)>1.3
-	n += g.lawn(banks,[[-1.6,0,1.6,40.0]],"tall",4.5,10,0.0,height_fn,bank_keep)
+	n += g.lawn(banks,bank_avoid,"tall",4.5,10,0.0,height_fn,bank_keep)
 	var fl := g.scatter(near+far,.16,avoid,GrassField.MIX_FLOWERS,Vector2(.24,.42),11,0.0,height_fn,dry_keep)
-	fl += g.scatter(banks,.35,[[-1.6,0,1.6,40.0]],GrassField.MIX_EDGE,Vector2(.5,.85),12,0.0,height_fn,bank_keep)
+	fl += g.scatter(banks,.35,bank_avoid,GrassField.MIX_EDGE,Vector2(.5,.85),12,0.0,height_fn,bank_keep)
 	print("GRASS farm clumps ", n, " flowers ", fl)
 
 

@@ -63,15 +63,48 @@ def audit(folder, report_name="pixel-audit.json"):
                          "p99_delta": p99,
                          "mean_delta": float(delta[mask].mean()),
                          "files": [on, off]}
+        passed = .0005 <= fraction <= limit and p99 > 3.0 / 255.0
+        if name == "lamp" and "bridge_scale_on.png" in shots:
+            actual, disabled, unit = "bridge_scale_on.png", "bridge_scale_off.png", "bridge_scale_unit.png"
+            if not (shots[actual]["analysis_water_quad_png_px"] == shots[disabled]["analysis_water_quad_png_px"]
+                    == shots[unit]["analysis_water_quad_png_px"]):
+                raise ValueError("Bridge weight fixture camera changed")
+            bridge_mask = quad_mask(arrays[actual].shape[:2], shots[actual]["analysis_water_quad_png_px"])
+            actual_delta = np.max(np.abs(arrays[actual] - arrays[disabled]), axis=2)
+            unit_delta = np.max(np.abs(arrays[unit] - arrays[disabled]), axis=2)
+            ratio = float(actual_delta[bridge_mask].sum() / max(unit_delta[bridge_mask].sum(), 1e-9))
+            weighted = {"physical_outdoor_energy_scale": manifest["bridge_outdoor_energy_scale"],
+                        "rendered_difference_ratio_to_unit_scale": ratio,
+                        "p99_actual_delta": float(np.quantile(actual_delta[bridge_mask], .99)),
+                        "p99_unit_delta": float(np.quantile(unit_delta[bridge_mask], .99)),
+                        "scope": "PNG encoded/tone-mapped differences; expected ratio is below unit, not exact linear radiance"}
+            metrics[name]["actual_bridge_weight"] = weighted
+            passed = passed and abs(manifest["bridge_outdoor_energy_scale"] - .35) < 1e-4 and .20 < ratio < .65 and weighted["p99_actual_delta"] > 1.5 / 255.0
         checks.append({"name": name + "_has_localized_rendered_reflection",
-                       "passed": .0005 <= fraction <= limit and p99 > 3.0 / 255.0,
-                       "detail": metrics[name]})
+                       "passed": passed, "detail": metrics[name]})
     sun_mask = quad_mask(arrays["sun_on.png"].shape[:2], shots["sun_on.png"]["analysis_water_quad_png_px"])
     motion = np.max(np.abs(arrays["sun_next.png"] - arrays["sun_on.png"]), axis=2)
     motion_fraction = float((motion[sun_mask] > 2.0 / 255.0).mean())
     checks.append({"name": "real_wave_render_changes_after_point_seven_seconds",
                    "passed": motion_fraction > .005,
                    "detail": {"changed_fraction": motion_fraction}})
+    if "live_wave_0.png" in shots and "live_wave_07.png" in shots:
+        first, last = "live_wave_0.png", "live_wave_07.png"
+        if shots[first]["analysis_water_quad_png_px"] != shots[last]["analysis_water_quad_png_px"]:
+            raise ValueError("Production TIME camera changed")
+        live_mask = quad_mask(arrays[first].shape[:2], shots[first]["analysis_water_quad_png_px"])
+        live_delta = np.max(np.abs(arrays[first] - arrays[last]), axis=2)
+        elapsed = (shots[last]["monotonic_render_time_ms"] - shots[first]["monotonic_render_time_ms"]) / 1000.0
+        detail = {"elapsed_seconds": elapsed, "water_roi_pixels": int(live_mask.sum()),
+                  "changed_fraction_over_two_png_levels": float((live_delta[live_mask] > 2.0 / 255.0).mean()),
+                  "p99_delta": float(np.quantile(live_delta[live_mask], .99))}
+        metrics["live_wave"] = detail
+        checks.append({"name": "ordinary_near_bank_water_moves_with_the_production_TIME_clock",
+                       "passed": shots[first]["animation_time"] == -1.0 and shots[last]["animation_time"] == -1.0
+                                 and .7 <= elapsed <= 1.3 and detail["water_roi_pixels"] > 500
+                                 and detail["changed_fraction_over_two_png_levels"] > .02
+                                 and detail["p99_delta"] > 3.0 / 255.0,
+                       "detail": detail})
     rain_on, rain_off = arrays["rain_on.png"], arrays["rain_off.png"]
     rain_mask = quad_mask(rain_on.shape[:2], shots["rain_on.png"]["analysis_water_quad_png_px"])
     rain_delta = np.max(np.abs(rain_on - rain_off), axis=2)

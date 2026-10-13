@@ -77,7 +77,6 @@ const FURNITURE := [
 	["J03_dining_set", -2.3, 3.0, 0.0, 1, 0.0],
 	["G07_hall_cabinet", 3.0, 1.24, 0.0, 1, 0.0],
 	["G01_getabako", 6.18, 3.55, -90.0, 1, GENKAN_Y],
-	["G08_cat", 3.3, -3.95, 25.0, 2, 0.0],
 	["G03_laundry_stand", -4.0, -5.7, 0.0, 1, GROUND_Y],
 	["A15_potted_plant", 0.9, 4.1, 0.0, 2, 0.0],
 	["P_chest", 1.65, 4.05, 0.0, 1, 0.0],       # v0.7.3: levelled chest is wider; clear of the plant
@@ -92,7 +91,6 @@ const POINTS := [
 	["house_fridge", -5.55, 0.9, 1.45, 1.1],
 	["house_tv", 5.35, 0.8, -0.1, 1.4],
 	["house_kotatsu", 2.4, 0.5, -0.25, 1.4],
-	["house_cat", 3.3, 0.4, -3.75, 1.3],
 	["house_phone", 3.0, 0.9, 1.65, 1.2],
 	["house_goldfish", -0.75, 0.5, -3.85, 1.3],
 	["house_garden", 1.4, 0.8, -4.25, 1.6],

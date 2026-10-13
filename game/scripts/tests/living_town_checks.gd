@@ -49,7 +49,7 @@ func run() -> void:
 	main.player.global_position=(cat.node as Node3D).global_position+Vector3(2,-1,2)
 	var base: Transform3D=(cat.node as Node3D).transform
 	main.life.call("_process",.2)
-	check("watching cats keep body and paws planted while looking",(cat.node as Node3D).transform.is_equal_approx(base) and cat.has("anim"))
+	check("the rigged cat looks without repositioning its physical body",(cat.node as Node3D).transform.is_equal_approx(base) and (cat.node as CharacterBody3D).get("attention") != null)
 	var modern_pool:=GameState.has_method("spot_fish_pool")
 	check("same river has different shallow and bend fish communities",modern_pool and GameState.call("spot_fish_pool","fish_river",8,"sunny")!=GameState.call("spot_fish_pool","fish_bend",8,"sunny"))
 	check("lake pier and reed beds have different catches",modern_pool and GameState.call("spot_fish_pool","fish_pier",20,"sunny")!=GameState.call("spot_fish_pool","fish_reeds",20,"sunny"))

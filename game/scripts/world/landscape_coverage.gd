@@ -44,6 +44,8 @@ static func build(world: WorldBuilder,parent: Node3D,farm: bool) -> void:
 	root.set_meta("terrain_extent",extent)
 	_add_plants(world,root,farm)
 	_add_rocks(world,root,farm)
+	var mountains: Node3D=load("res://scripts/world/distant_mountains.gd").new()
+	root.add_child(mountains);mountains.call("build",world,farm)
 
 static func _distance(point: Vector2,rect: Rect2) -> float:
 	return Vector2(maxf(maxf(rect.position.x-point.x,point.x-rect.end.x),0),maxf(maxf(rect.position.y-point.y,point.y-rect.end.y),0)).length()

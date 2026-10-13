@@ -37,6 +37,7 @@ func _start() -> void:
 	var rig: Node=main.get("rig") as Node
 	rig.process_mode=Node.PROCESS_MODE_DISABLED
 	camera=rig.get("cam") as Camera3D
+	camera.physics_interpolation_mode=Node.PHYSICS_INTERPOLATION_MODE_OFF
 	(main.get("ui") as Node).call("set_hud_visible",false)
 	((main.get("ui") as Node).get("panels") as RefCounted).call("set_cards_visible",false)
 	var player: Node3D=main.get("player") as Node3D
@@ -64,6 +65,15 @@ func _start() -> void:
 	water.set_shader_parameter("sunlight_amount",1.0)
 	water.set_shader_parameter("animation_time",10.7)
 	await _shot("sun_next","solar_motion_after_0.7_seconds")
+	# Ordinary near-bank angle using the production TIME clock, without a
+	# frozen phase override. All scene actors remain paused to isolate water.
+	var live_focus: Vector3=farm.global_position+Vector3(8.5,-.28,16.4)
+	_point(live_focus,farm.global_position+Vector3(5.5,1.5,12.5),false)
+	analysis_span=Vector2(1.4,.45)
+	water.set_shader_parameter("animation_time",-1.0)
+	await _shot("live_wave_0","production_render_clock_near_bank")
+	await create_timer(.7).timeout
+	await _shot("live_wave_07","production_render_clock_after_0.7_seconds")
 	# Whole-water top view: 4.2 metres tall, so ripple components can be measured in metres.
 	var rain_focus: Vector3=farm.global_position+Vector3(20,-.28,17.6)
 	_point(rain_focus,rain_focus+Vector3.UP*7.0,true)
@@ -94,6 +104,9 @@ func _start() -> void:
 	var nearest: float=INF
 	var lamp_focus: Vector3=farm.global_position+Vector3(2.4,-.28,15.7)
 	for lamp: OmniLight3D in farm.get("lamp_lights") as Array:
+		# Keep the original full-strength bank lamp in the regression fixture;
+		# the newly added small bridge lanterns must not displace it.
+		if absf(float(lamp.get_meta("outdoor_energy_scale",1.0))-1.0)>.0001:continue
 		if lamp.global_position.distance_to(lamp_focus)<nearest:
 			nearest=lamp.global_position.distance_to(lamp_focus);lamp_position=lamp.global_position
 	var lamp_ray: Vector3=(lamp_position-lamp_focus).normalized()
@@ -103,6 +116,35 @@ func _start() -> void:
 	await _shot("lamp_on","actual_bridge_lamp_reflection")
 	water.set_shader_parameter("lamp_amount",0.0)
 	await _shot("lamp_off","same_frame_bridge_lamp_disabled")
+	# Isolate one real bridge lamp three ways. A shader that ignores its
+	# production 0.35 scale would produce identical on/unit images.
+	var original_weights: PackedFloat32Array=water.get_shader_parameter("reflection_lamp_weights")
+	var lamp_positions: PackedVector3Array=water.get_shader_parameter("reflection_lamps")
+	var bridge_index: int=-1
+	var bridge_position:=Vector3.ZERO
+	var bridge_weight: float=0.0
+	for lamp: OmniLight3D in farm.get("lamp_lights") as Array:
+		if not lamp.has_meta("outdoor_energy_scale"):continue
+		for index: int in int(water.get_shader_parameter("reflection_lamp_count")):
+			if lamp_positions[index].distance_to(lamp.global_position)<.001:
+				bridge_index=index;bridge_position=lamp.global_position;bridge_weight=float(lamp.get_meta("outdoor_energy_scale"));break
+		if bridge_index>=0:break
+	if bridge_index<0:printerr("Weighted bridge lamp fixture missing");quit(5);return
+	var bridge_focus: Vector3=bridge_position+Vector3(-.55 if bridge_position.x<farm.global_position.x else .55,0,0)
+	bridge_focus.y=farm.global_position.y+LakesideLayout.WATER_Y
+	var bridge_ray: Vector3=(bridge_position-bridge_focus).normalized()
+	_point(bridge_focus,bridge_focus+Vector3(-bridge_ray.x,absf(bridge_ray.y),-bridge_ray.z)*5.0,false)
+	analysis_span=Vector2(.30,.50)
+	var isolated_weights:=PackedFloat32Array();isolated_weights.resize(8)
+	isolated_weights[bridge_index]=bridge_weight
+	water.set_shader_parameter("reflection_lamp_weights",isolated_weights)
+	water.set_shader_parameter("lamp_amount",1.0)
+	await _shot("bridge_scale_on","one_real_bridge_light_at_actual_outdoor_energy_scale")
+	isolated_weights[bridge_index]=0.0;water.set_shader_parameter("reflection_lamp_weights",isolated_weights)
+	await _shot("bridge_scale_off","same_frame_selected_bridge_light_disabled")
+	isolated_weights[bridge_index]=1.0;water.set_shader_parameter("reflection_lamp_weights",isolated_weights)
+	await _shot("bridge_scale_unit","same_frame_selected_bridge_light_at_unit_scale")
+	water.set_shader_parameter("reflection_lamp_weights",original_weights)
 	world.call("update_time",720.0,"sunny",true)
 	_point(farm.global_position+Vector3(8.2,-.15,14.8),farm.global_position+Vector3(5.5,1.45,10.8),false)
 	water.set_shader_parameter("animation_time",10.0)
@@ -113,7 +155,9 @@ func _start() -> void:
 		sources.append({"file":path,"sha256":FileAccess.get_sha256(path)})
 	for dependency: String in ["res://shaders/lakeside_water_surface.gdshaderinc","res://shaders/material_options/water.gdshader","res://scripts/world/material_choice_profile.gd"]:
 		if FileAccess.file_exists(dependency):sources.append({"file":dependency,"sha256":FileAccess.get_sha256(dependency)})
-	var report: Dictionary={"actual_shader":water.shader.resource_path,"schema_version":1,"scope":"native isolated water-shader diagnostic fixtures, not ordinary gameplay screenshots","engine":Engine.get_version_info(),"shots":rows,"sources":sources,"rain_view_height_metres":4.2,"actual_lamp_position":_vector(lamp_position),"moon_position":_vector(moon_position)}
+	var serialized_lamps: Array[Array]=[]
+	for position_value: Vector3 in lamp_positions:serialized_lamps.append(_vector(position_value))
+	var report: Dictionary={"actual_shader":water.shader.resource_path,"schema_version":1,"scope":"native isolated water-shader diagnostic fixtures, not ordinary gameplay screenshots","engine":Engine.get_version_info(),"shots":rows,"sources":sources,"rain_view_height_metres":4.2,"actual_lamp_position":_vector(lamp_position),"moon_position":_vector(moon_position),"reflection_lamp_count":water.get_shader_parameter("reflection_lamp_count"),"reflection_lamps":serialized_lamps,"reflection_lamp_weights":original_weights,"bridge_lamp_position":_vector(bridge_position),"bridge_outdoor_energy_scale":bridge_weight}
 	FileAccess.open(output.path_join("manifest.json"),FileAccess.WRITE).store_string(JSON.stringify(report,"\t"))
 	(root.get_node("Audio") as Node).call("silence")
 	quit(0)
@@ -125,11 +169,15 @@ func _point(target: Vector3,position: Vector3,top: bool) -> void:
 	camera.global_position=position
 	camera.look_at(target,Vector3.FORWARD if top else Vector3.UP)
 	camera.force_update_transform()
+	camera.reset_physics_interpolation()
 
 func _vector(value: Vector3) -> Array[float]:
 	return [value.x,value.y,value.z]
 
 func _shot(label: String,purpose: String) -> void:
+	# Main is paused to isolate water pixels; refresh the passive panorama
+	# explicitly so a night fixture does not carry its previous noon colour.
+	for mountains: Node in world.find_children("DistantMountains","Node3D",true,false):mountains.call("_update_look")
 	for settle: int in 3:await RenderingServer.frame_post_draw
 	var image: Image=root.get_texture().get_image()
 	var path: String=output.path_join(label+".png")
@@ -142,5 +190,5 @@ func _shot(label: String,purpose: String) -> void:
 		var point: Vector3=analysis_focus+Vector3(corner.x*analysis_span.x,0,corner.y*analysis_span.y)
 		var projected: Vector2=camera.unproject_position(point)*png_scale
 		quad.append([projected.x,projected.y])
-	rows.append({"file":label+".png","sha256":FileAccess.get_sha256(path),"purpose":purpose,"png_size_px":[image.get_width(),image.get_height()],"camera_position":_vector(camera.global_position),"camera_basis":[_vector(camera.global_basis.x),_vector(camera.global_basis.y),_vector(camera.global_basis.z)],"projection":camera.projection,"ortho_height_metres":camera.size if camera.projection==Camera3D.PROJECTION_ORTHOGONAL else 0.0,"animation_time":water.get_shader_parameter("animation_time"),"analysis_water_quad_png_px":quad,"analysis_water_quad_world_center":_vector(analysis_focus),"analysis_water_quad_world_half_span":[analysis_span.x,analysis_span.y],"logical_viewport_units":[logical.x,logical.y],"png_px_per_viewport_unit":[png_scale.x,png_scale.y]})
+	rows.append({"file":label+".png","sha256":FileAccess.get_sha256(path),"purpose":purpose,"png_size_px":[image.get_width(),image.get_height()],"camera_position":_vector(camera.global_position),"camera_basis":[_vector(camera.global_basis.x),_vector(camera.global_basis.y),_vector(camera.global_basis.z)],"projection":camera.projection,"ortho_height_metres":camera.size if camera.projection==Camera3D.PROJECTION_ORTHOGONAL else 0.0,"animation_time":water.get_shader_parameter("animation_time"),"monotonic_render_time_ms":Time.get_ticks_msec(),"analysis_water_quad_png_px":quad,"analysis_water_quad_world_center":_vector(analysis_focus),"analysis_water_quad_world_half_span":[analysis_span.x,analysis_span.y],"logical_viewport_units":[logical.x,logical.y],"png_px_per_viewport_unit":[png_scale.x,png_scale.y]})
 	print("MATERIAL_WATER_PROBE ",label)

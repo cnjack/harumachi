@@ -5,7 +5,7 @@ var model: Node3D
 var player: AnimationPlayer
 var route: PackedVector3Array = PackedVector3Array()
 var destination: int = 0
-var speed: float = .12
+var speed: float = .36
 var native_walk_speed: float = .12
 var travelled: float = 0.0
 var arrivals: int = 0
@@ -28,8 +28,10 @@ var native_run_speed: float = .42
 var native_sneak_speed: float = .07
 var animation_history: Array[String] = []
 var move_speed: float = 0.0
+var roaming_active: bool = true
+var maximum_step: float = 0.0
 
-func setup(visual: Node3D, points: PackedVector3Array, walking_speed: float=.12) -> void:
+func setup(visual: Node3D, points: PackedVector3Array, walking_speed: float=.36) -> void:
 	model=visual
 	route=points
 	speed=walking_speed
@@ -177,15 +179,34 @@ func _rest_step(delta: float) -> bool:
 	_play(rest_pose)
 	return true
 
+func set_roaming(active: bool, present: bool) -> void:
+	set_physics_process(active)
+	player.active = present
+	if roaming_active and not active:
+		velocity = Vector3.ZERO
+		move_speed = 0.0
+		_play("Idle")
+		if foot_plant != null: foot_plant.call("reset_contacts")
+	roaming_active = active
+
 func _physics_process(delta: float) -> void:
 	if model==null or route.size()<2: return
 	if waiting_for_spawn:
 		move_speed = 0.0
 		rest_left=maxf(0,rest_left-delta)
-		if rest_left<=0:reset_behaviour(behaviour_seed)
+		# Retry this same entry point. A live cat is never reset to a random anchor.
+		if rest_left <= 0.0:
+			if _clear(global_position):
+				waiting_for_spawn = false
+				show()
+				collision_layer = WorldBuilder.L_ACTORS
+				_choose_destination()
+			else: rest_left = .5
 		return
-	travelled+=global_position.distance_to(last_position)
-	last_position=global_position
+	var previous_step: float = global_position.distance_to(last_position)
+	travelled += previous_step
+	maximum_step = maxf(maximum_step, previous_step)
+	last_position = global_position
 	if _rest_step(delta):
 		move_speed = 0.0
 		if attention != null: attention.set("turn_hint", 0.0)
@@ -203,10 +224,10 @@ func _physics_process(delta: float) -> void:
 	if attention != null: attention.set("turn_hint", angle_difference(rotation.y, desired_yaw))
 	rotation.y=rotate_toward(rotation.y,desired_yaw,delta*2.1)
 	var forward: Vector3 = Vector3(sin(rotation.y),0,cos(rotation.y))
-	var travel_speed: float = native_run_speed if locomotion == "Run" else (native_sneak_speed if locomotion == "Sneak" else speed)
+	var travel_speed: float = speed * 1.9 if locomotion == "Run" else (speed * .48 if locomotion == "Sneak" else speed)
 	var alignment: float = maxf(.35, cos(angle_difference(rotation.y, desired_yaw)))
 	travel_speed *= alignment
-	move_speed = move_toward(move_speed, travel_speed, delta * (.28 if travel_speed > move_speed else .48))
+	move_speed = move_toward(move_speed, travel_speed, delta * (.60 if travel_speed > move_speed else .90))
 	travel_speed = move_speed
 	velocity=forward*travel_speed
 	velocity.y=-.1
@@ -230,7 +251,7 @@ func _physics_process(delta: float) -> void:
 	if headings.is_empty() or absf(angle_difference(headings[-1],rotation.y))>.35: headings.append(rotation.y)
 
 func telemetry() -> Dictionary:
-	return {"travelled_m":travelled,"arrivals":arrivals,"headings":headings,"animation":player.current_animation if player else "","position":[global_position.x,global_position.y,global_position.z], "behaviour": snapshot(), "blocked_seconds": blocked_seconds,
+	return {"maximum_step_m": maximum_step, "walking_speed_mps": speed, "travelled_m":travelled,"arrivals":arrivals,"headings":headings,"animation":player.current_animation if player else "","position":[global_position.x,global_position.y,global_position.z], "behaviour": snapshot(), "blocked_seconds": blocked_seconds,
 		"attention_seconds": float(attention.get("attention_time")) if attention != null else 0.0,
 		"animation_history": animation_history, "rest_pose": rest_pose, "locomotion": locomotion,
 		"foot_locked_samples": int(foot_plant.get("locked_samples")) if foot_plant != null else 0,

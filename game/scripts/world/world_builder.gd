@@ -1613,7 +1613,7 @@ func _apply_look(minute: float, weather: String, force: bool = false) -> void:
 		env.ambient_light_energy = L.amb
 		env.adjustment_saturation = L.sat
 		for l in lamp_lights:
-			l.light_energy = L.lamp
+			l.light_energy = L.lamp * float(l.get_meta("outdoor_energy_scale",1.0))
 		ShopWindows.light(window_mats, L.lamp, L.fog)
 		BuildingLife.update(building_life, minute, L.lamp)
 	# the sky's radiance map is rebuilt when it changes, so only touch it every couple of game minutes

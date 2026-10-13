@@ -138,7 +138,7 @@ func run() -> void:
 	_check("summer rain ripples stay below 36cm diameter with thin weak rings",_declares(material,["rain_amount","rain_ring_radius","rain_ring_width","rain_ring_strength"]) and ring_radius!=null and ring_width!=null and ring_strength!=null and float(ring_radius)<=.18 and float(ring_radius)>=.08 and float(ring_width)<=.012 and float(ring_strength)<=.14,str([ring_radius,ring_width,ring_strength]))
 	var lamp_count: Variant=material.get_shader_parameter("reflection_lamp_count")
 	var lamp_positions: Variant=material.get_shader_parameter("reflection_lamps")
-	var lights_ok: bool=_declares(material,["reflection_lamps","reflection_lamp_count","lamp_amount"]) and lamp_count!=null and int(lamp_count)>=1 and int(lamp_count)<=4 and (lamp_positions is PackedVector3Array or lamp_positions is Array)
+	var lights_ok: bool=_declares(material,["reflection_lamps","reflection_lamp_count","reflection_lamp_weights","lamp_amount"]) and lamp_count!=null and int(lamp_count)>=1 and int(lamp_count)<=8 and (lamp_positions is PackedVector3Array or lamp_positions is Array)
 	if lights_ok:
 		for lamp_index: int in int(lamp_count):
 			var found: bool=false

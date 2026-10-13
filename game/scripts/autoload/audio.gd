@@ -94,7 +94,7 @@ func apply_volumes(s: Dictionary) -> void:
 	var master := float(s.get("vol_master", 1.0))
 	var music := 0.0 if "--no-music" in OS.get_cmdline_user_args() else float(s.get("vol_music", 0.75))
 	var sfx := float(s.get("vol_sfx", 0.8))
-	_voice_vol = float(s.get("vol_voice", 0.9))
+	_voice_vol = float(s.get("vol_voice", 0.0))
 	_set_bus("Voice", _voice_vol)
 	_music_vol = music
 	_set_bus("Master", master)
@@ -107,7 +107,7 @@ func apply_volumes(s: Dictionary) -> void:
 
 # ------------------------------------------------------------------ v0.6 voices
 var _voice: AudioStreamPlayer
-var _voice_vol := 0.9
+var _voice_vol := 0.0
 var _music_vol := 0.75
 const VOICE_DIR := "res://assets/audio/voice/"
 

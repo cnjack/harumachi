@@ -30,7 +30,20 @@ func _ready() -> void:
 	main.ui.instant = true
 	main.ui.auto_work_priority = true # this suite follows its declared work route; the topic-choice suite overrides it
 	await frames(10)
-	if OS.get_cmdline_user_args().has("--only=model-diversity-placement"):
+	if OS.get_cmdline_user_args().has("--only=scene-life"):
+		await load("res://scripts/tests/bridge_dressing_checks.gd").new(self).run()
+		await load("res://scripts/tests/cat_continuity_checks.gd").new(self).run()
+		await load("res://scripts/tests/water_landscape_checks.gd").new(self).run()
+		await load("res://scripts/tests/voice_default_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=bridge-dressing"):
+		await load("res://scripts/tests/bridge_dressing_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=water-landscape"):
+		await load("res://scripts/tests/water_landscape_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=cat-continuity"):
+		await load("res://scripts/tests/cat_continuity_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=voice-default"):
+		await load("res://scripts/tests/voice_default_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=model-diversity-placement"):
 		load("res://scripts/tests/model_diversity_checks.gd").new(self).ground_clearance()
 	elif OS.get_cmdline_user_args().has("--only=model-diversity"):
 		await load("res://scripts/tests/model_diversity_checks.gd").new(self).run()
@@ -237,6 +250,10 @@ func _ready() -> void:
 		await load("res://scripts/tests/environment_visual_checks.gd").new(self).run()
 		await load("res://scripts/tests/tree_locomotion_checks.gd").new(self).run()
 	if not Array(OS.get_cmdline_user_args()).any(func(arg: String)->bool:return arg.begins_with("--only=")):
+		await load("res://scripts/tests/bridge_dressing_checks.gd").new(self).run()
+		await load("res://scripts/tests/cat_continuity_checks.gd").new(self).run()
+		await load("res://scripts/tests/water_landscape_checks.gd").new(self).run()
+		await load("res://scripts/tests/voice_default_checks.gd").new(self).run()
 		await load("res://scripts/tests/landscape_coverage_checks.gd").new(self).run()
 		await load("res://scripts/tests/model_diversity_checks.gd").new(self).run()
 	var fails := results.filter(func(r): return not r.ok).size()
