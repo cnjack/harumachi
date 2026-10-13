@@ -236,6 +236,7 @@ const SHOP_PATHS := {
 	"store_counter": ["store", [Vector2(0.0, 2.2), Vector2(-1.5, 1.95)]],
 	"bakery_counter": ["bakery", [Vector2(1.6, 2.2), Vector2(1.95, 1.75)]],
 	"bakery_oven": ["bakery", [Vector2(1.6, 2.2), Vector2(-1.2, 1.6), Vector2(-1.2, -1.3), Vector2(2.2, -1.25)]],
+	"visit_zakka_memory": ["zakka", [Vector2(0.0, 3.4), Vector2(0.0, 1.5), Vector2(-.75, 1.2)]],
 }
 
 
@@ -262,7 +263,8 @@ func shop_visit(door: String, pt: String, choices: Array = [], shot_name: String
 	for q in back:
 		await drive(Vector2(o.x + q.x, o.z + q.y), false)
 	main.player.auto_move = Vector3.ZERO
-	var ex := point("bakery_exit" if info[0] == "bakery" else "store_exit")
+	var exit_id: String = "visit_" + str(info[0]) + "_exit" if ResidentPlaces.SPECS.has(info[0]) else str(info[0]) + "_exit"
+	var ex := point(exit_id)
 	main.player.face_towards(ex.global_position)
 	await wait(0.3)
 	main.ui.auto_choices = []
@@ -346,7 +348,7 @@ func play() -> void:
 	await use("haru")
 	# Q05 — plan with Mio, buy decor, lay out the courtyard
 	await use("mio")
-	await use("shop_zakka", [["lantern"]])
+	await shop_visit("shop_zakka", "visit_zakka_memory", [1, ["lantern"]], "shop_counter")
 	await shot("shop")
 	await walk_to(STAND["build_sign"][0], STAND["build_sign"][1])
 	var sign := point("build_sign")

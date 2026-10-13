@@ -320,6 +320,7 @@ func _run() -> void:
 	DirAccess.make_dir_recursive_absolute(dir)
 	var catalog: Dictionary = VIEWS.duplicate(true)
 	catalog.merge(load("res://scripts/world/distant_mountains.gd").capture_views())
+	catalog.merge(load("res://scripts/world/scene_lifecycle_capture.gd").capture_views())
 	for hour: float in [12.0,21.0]:
 		catalog["bridge_lantern_%d"%int(hour)]={"farm":true,"time":hour,"weather":"sunny","player":Vector3(0,.8,17),"camera_at":Vector3(3.4,2.25,20.6),"camera_focus":Vector3(.95,1.65,19.3),"fov":43.0}
 	var bridge_planter_at: Vector3=load("res://scripts/world/bridge_dressing.gd").PLANTERS[0]
@@ -396,11 +397,15 @@ func _run() -> void:
 			main.world.apply_phase("prep", false)
 		GameState.minute = float(v.get("time", 10.0)) * 60.0
 		GameState.weather = str(v.get("weather", "sunny"))
+		if v.has("lifecycle_fixture"):
+			if not load("res://scripts/world/scene_lifecycle_capture.gd").prepare(main, str(v.lifecycle_fixture)):
+				get_tree().quit(2); return
 		main.world.update_time(GameState.minute, GameState.weather, true)
 		main.update_npcs(true)
 		main.ui.refresh_hud()
 		main.ui.set_hud_visible(not clean)
 		main.ui.panels.set_cards_visible(not clean and not v.has("bakery_fixture"))
+		main.ui.ambient_layer.visible = not clean
 		for id in main.npcs:
 			var tag := (main.npcs[id] as NPC).tag
 			if tag:

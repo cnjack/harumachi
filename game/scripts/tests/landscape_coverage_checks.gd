@@ -41,11 +41,15 @@ func run() -> void:
 		var root: Node=parent.get_node_or_null("ReviewedLibrary")
 		installed=installed and root!=null
 		if root:
-			for id: String in ["P_library_carton","P_library_bucket","P_library_stool"]:
+			var expected: Array[String] = ["P_library_stool"]
+			if parent == main.world.farm: expected.assign(["P_library_carton","P_library_bucket","P_library_stool"])
+			for id: String in expected:
 				var model: Node3D=root.get_node_or_null(id)
 				installed=installed and model!=null and model.has_meta("library_finish")
-	check("selected small props are placed in both working areas with the new finish",installed)
-	check("plaid material is actually used on a lakeside cloth",main.world.farm.has_node("ReviewedLibrary/PicnicCloth"))
+	installed=installed and not main.world.has_node("ReviewedLibrary/P_library_carton") and not main.world.has_node("ReviewedLibrary/P_library_bucket")
+	check("reviewed work props have specific uses instead of duplicate material display kits",installed)
+	var packed_cloth: Node3D=main.world.farm.get_node_or_null("ReviewedLibrary/PicnicCloth")
+	check("reviewed plaid cloth remains packed until a real picnic invitation exists",packed_cloth!=null and not packed_cloth.visible and packed_cloth is MeshInstance3D and packed_cloth.material_override is ShaderMaterial)
 	check("garden ground extends beyond the free-photo horizon",main.world.house.has_node("GardenTreeCoverage"))
 	var terrain_covered:=true
 	var rooted:=true

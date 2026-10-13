@@ -17,8 +17,13 @@ func _ready() -> void:
 			out = argument.trim_prefix("--out=")
 	RenderingServer.viewport_set_measure_render_time(viewport_id, true)
 	var records: Array[Dictionary] = []
-	for region: String in ["town", "farm", "home", "store"]:
-		if region == "home":
+	var regions: Array=["town", "farm", "home", "store"]
+	if OS.get_cmdline_user_args().has("--resident-rooms"):regions=ResidentPlaces.SPECS.keys()
+	for region: String in regions:
+		if ResidentPlaces.SPECS.has(region):
+			await main.enter_interior(region)
+			main.player.global_position=ResidentPlaces.SPECS[region].entry
+		elif region == "home":
 			await main.enter_room()
 			main.player.global_position = Layout.ROOM_ORIGIN + Vector3(-3.2, .1, 3.5)
 		elif region == "store":
@@ -30,8 +35,8 @@ func _ready() -> void:
 			main.world.set_indoor_look(false)
 			main.rig.fixed = false
 			main.player.global_position = FarmBuilder.ORIGIN + Vector3(0, .2, -.4) if region == "farm" else Vector3(19.7, .2, 56)
-		main.rig.dist = 8.6
-		main.rig.pitch = 46.0 if region in ["home", "store"] else 18.0
+		main.rig.dist = float(ResidentPlaces.SPECS.get(region,{}).get("camera_dist",8.6))
+		main.rig.pitch = 49.0 if ResidentPlaces.SPECS.has(region) else 46.0 if region in ["home", "store"] else 18.0
 		main.rig.yaw = 0.0
 		main.rig.snap()
 		for frame in 120:

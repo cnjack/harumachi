@@ -436,6 +436,7 @@ static func clear_tracking() -> void:
 		GameState.flags.summer_projects.tracked = false
 
 static func track() -> void:
+	ResidentVisits.clear_tracking()
 	state().tracked = true
 	DailyLife.clear_tracking()
 	GameState.flags.erase("request_tracked")

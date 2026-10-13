@@ -30,7 +30,7 @@ func pending(id: String) -> bool:
 		"room_closet", "zelkova", "farm_logs", "farm_hokora":
 			return true
 		"mio":
-			return G.at_step("Q10", "show_mio") or G.at_step("Q11", "report_mio11") or _q("Q11") == "available" \
+			return G.at_step("Q10", "show_mio") or G.at_step("Q11", "report_mio11") or (_q("Q11") == "available" and MainlineProgress.can_offer_revival()) \
 				or (G.at_step("Q12", "give_lanterns") and (G.count("chochin_hand") >= LANTERNS or SummerProjects.uses_cooperation_mainline() and WorkshopProject.state().phase == "retained")) \
 				or G.at_step("Q14", "goldfish_mio") or reunion_pending() or photo_optional() \
 				or _q("Q11") == "done" and G.day <= 17 and not G.flags.get("summer_invitation",{}).get("presented",false)
@@ -195,9 +195,10 @@ func checks() -> void:
 		_hanabi_end.call_deferred()
 
 func _unlock_box() -> void:
-	if _q("Q05") == "done" and _q("Q10") == "locked":
+	MainlineProgress.initialize()
+	if (_q("Q00") == "done" or _q("Q05") == "done") and _q("Q10") == "locked":
 		GameState.quests["Q10"] = {"state":"available","step":0}
-		s.ui.panels.card("奶奶留下的箱子", ["壁橱里还有东西没收拾。有空时自己打开看看。"], "quest")
+		s.ui.panels.card("奶奶留下的箱子", ["卧室壁橱里有写着空的箱子。打开照片，看看奶奶想让你去的地方。"], "quest")
 
 
 # ------------------------------------------------------------------ Q10 奶奶的箱子
@@ -229,8 +230,8 @@ func _revisit_hanabi() -> void:
 	await _say("tanaka", "neutral", "……这发是给健一的。孩子们说，还想看。")
 	await _say("tanaka", "neutral", "下次，一起在这里看。台子也一起检查，别全压在一个人身上。")
 	G.flags["hanabi_revisit"] = true
-	await future_direction("record")
 	G.advance("Q15", "watch_hanabi")
+	await future_direction("record")
 	s.ui.chapter_card("第三章 · 完", "花火已经放过，田中的小本子上留出了下一次的空白。")
 
 
@@ -241,15 +242,17 @@ func _closet() -> void:
 		var choice: int = await s.ui.choose(["打开看看", "先收好，之后再看"])
 		if choice != 0: return
 		G.start_quest("Q10")
-		s.ui.chapter_card("第三章 · 停了十五年的夏祭", "奶奶的箱子里，留着一张旧照片。")
+		s.ui.chapter_card("树底下的约定", "奶奶的箱子里，留着一张旧照片。")
 	if not G.at_step("Q10", "open_box"):
 		await _say("narrator", "", "壁橱里叠着奶奶的被褥，还有一股樟脑的味道。" if _q("Q10") != "done" else "奶奶的箱子收好了。照片和信都在图鉴里（K）。")
 		return
 	await _say("narrator", "", "壁橱最里面，有一只写着“空”的纸箱。")
 	await _say("narrator", "", "箱子里是一叠旧照片、一件叠好的小浴衣，还有一封没有寄出的信。")
 	Progress.find("col_photo2011")
+	await s.ui.show_keepsake("col_photo2011")
 	await _say("sora", "neutral", "这是十岁那年的夏祭。背面写着“空和澪”……会是公告栏边的澪吗？拿去问问她。")
 	Progress.find("col_letter")
+	await s.ui.show_keepsake("col_letter")
 	await _say("narrator", "", "“空：晴町的夏祭停了好多年了。要是哪天你回来，替奶奶去庭院看看那棵榉树，看它是不是又长高了。你们小时候，总约在树底下碰头。——千鹤”")
 	await _say("sora", "neutral", "……树底下碰头。拿去问问澪吧，她什么都记得。")
 	G.advance("Q10", "open_box")
@@ -259,7 +262,7 @@ func _mio() -> void:
 	var G := GameState
 	if G.at_step("Q10", "show_mio"):
 		await _say("mio", "neutral", "嗯？一张旧照片……2011 年的夏祭？")
-		await _say("mio", "surprised", "这个提着金鱼的女孩……是我。那旁边这个男孩，难道是——")
+		await _say("mio", "surprised", "背面是我的字，空和澪。原来你就是那年一起捞金鱼的空。")
 		var c := await s.ui.choose(["是我。那年夏天我住在奶奶家。", "……你还记得吗？"])
 		if c == 0:
 			await _say("mio", "happy", "真的是你！难怪我总觉得在哪儿见过。")
@@ -271,12 +274,18 @@ func _mio() -> void:
 		if summer_missed():
 			await _say("mio", "happy", "……今年大家先办了一次。咱们还可以另约一晚，把那时的约定补上。")
 		else:
-			await _say("mio", "happy", "……喂。我们把夏祭办回来吧？就在这个夏天。")
+			await _say("mio", "neutral", "先不急着把整场夏祭搬回来。树下还空着，我们先请今天的邻居坐一会儿，看看他们需要什么。")
 		G.add_warmth("mio", 2)
 		G.advance("Q10", "show_mio")
-	if _q("Q11") == "available":
-		await _say("mio", "neutral", "当年的准备都写在健一爷爷的账本里。先去社区中心储物间找找？")
-		G.start_quest("Q11")
+		# Recognition is its own scene. Do not chain a new project onto this conversation.
+		return
+	if _q("Q11") == "available" and MainlineProgress.can_offer_revival():
+		await _say("mio", "neutral", "上次的小集市办成了。要一起试着复办今年的夏祭吗？先翻健一爷爷的账本，哪些照旧、哪些改，听过大家的需要再决定。")
+		var accept: int = await s.ui.choose(["一起试试，先去看账本", "我先去听听街坊怎么想"] )
+		if accept == 0:
+			MainlineProgress.accept_revival()
+		else:
+			await _say("mio", "happy", "好。春刚邀请你去家里看图纸。等你想继续时，再来找我，账本不会跑掉。")
 		return
 	if G.at_step("Q11", "report_mio11"):
 		await _say("mio", "neutral", "灯笼、盆舞台、屋台、花火……清单还挺长。")
@@ -340,10 +349,13 @@ func _notebook() -> void:
 func _haru() -> void:
 	var G := GameState
 	if G.at_step("Q11", "show_haru"):
-		await _say("haru", "neutral", "这个本子……是健一的字。")
-		await _say("haru", "happy", "你看，“灯笼二十盏，春负责糊”。他总爱把活儿派给我。")
-		await _say("haru", "neutral", "2011 年那次，他发着烧还爬到盆舞台上系灯笼。那是最后一次了。")
-		await _say("haru", "happy", "要是能再看一次那座台子呀……拿去给澪吧，她会有办法的。")
+		if ResidentVisits.state().get("blueprint_seen", false):
+			await _say("haru", "neutral", "和刚才图纸上一样，是健一的字。账本记的是那一年，咱们试坐时说的需要，也记给澪看吧。")
+		else:
+			await _say("haru", "neutral", "这个本子……是健一的字。")
+			await _say("haru", "happy", "你看，“灯笼二十盏，春负责糊”。他总爱把活儿派给我。")
+			await _say("haru", "neutral", "2011 年那次，他发着烧还爬到盆舞台上系灯笼。那是最后一次了。")
+			await _say("haru", "happy", "要是能再看一次那座台子呀……拿去给澪吧，她会有办法的。")
 		G.add_warmth("haru", 2)
 		G.advance("Q11", "show_haru")
 		return
@@ -461,17 +473,18 @@ func _hanabi_end() -> void:
 	await _say("narrator", "", "你想起那晚，最后一发花火在晴川上方开成金色的花。" if fireworks_missed() else "最后一发花火升上夜空，在晴川上方开成一朵很大的金色的花。")
 	await _say("tanaka", "neutral", "……健一。你看见了吗？")
 	await _say("haru", "happy", "看见了呀。他一定在台子上看着呢。")
+	G.advance("Q15", "watch_hanabi")
 	await future_direction("hanabi")
 	s.ui.dialogue_end()
 	s.busy = false
-	G.advance("Q15", "watch_hanabi")
 	s.ui.chapter_card("第三章 · 完", "田中爷爷把空了的花火筒擦干净，放回了架子最高那层。")
 
 func future_direction(origin: String) -> void:
 	await _say("narrator", "", "回家时，要不要在书桌上留张便笺？写写下一步想做什么。")
 	var choice: int = await s.ui.choose(MainlineProgress.DIRECTION_OPTIONS)
 	if MainlineProgress.choose_direction(choice,origin):
-		await _say("narrator", "", "想不出来也可以先空着。便笺就放在家里的书桌上。")
+		var action: Dictionary = MainlineProgress.direction_action()
+		await _say("narrator", "", str(action.get("text", "便笺放在书桌上。想换个打算，随时回家重写。")))
 
 
 # ------------------------------------------------------------------ Q14 the promise at the goldfish stall

@@ -493,6 +493,8 @@ func _sell(rate: float, where: String) -> void:
 		n += k
 	if n == 0:
 		return
+	if where == "无人菜摊" and total > 0 and is_instance_valid(s.world.get("lifecycle")):
+		s.world.get("lifecycle").record_delivery("harvest", n)
 	_toast("在%s卖出了 %d 份，+%d 生活币" % [where, n, total])
 	if where == "无人菜摊" and G.at_step("Q07", "sell"):
 		G.advance("Q07", "sell")

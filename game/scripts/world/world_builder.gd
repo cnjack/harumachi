@@ -75,6 +75,7 @@ var stall_bread: Node3D
 var stall_bread_surface := Vector3.INF
 var bakery_market_sign: Label3D
 var poster: Node3D
+var lifecycle: Node3D
 var lamp_lights: Array[OmniLight3D] = []
 var window_mats: Array[ShaderMaterial] = []   # v0.7.3 shop windows (ShopWindows)
 var building_life: Array[Dictionary] = []
@@ -322,8 +323,14 @@ func build_steps() -> Array[Callable]:
 	for t in Layout.PLANTS:
 		steps.append(_spawn_plant.bind(t))
 	steps.append(_build_residential)
-	steps.append_array([_build_planter, _build_mg_stations, _build_stall_extras, _build_board_poster, _build_lamps, _build_build_sign, _build_backdrop, _build_house, _build_farm, _build_town_v05, _build_festivals, _build_detail_signs, _build_model_diversity, set_region.bind("town")])
+	steps.append_array([_build_planter, _build_mg_stations, _build_stall_extras, _build_board_poster, _build_lamps, _build_build_sign, _build_backdrop, _build_house, _build_farm, _build_town_v05, _build_festivals, _build_detail_signs, _build_model_diversity, _build_scene_lifecycle, set_region.bind("town")])
 	return steps
+
+
+func _build_scene_lifecycle() -> void:
+	lifecycle = load("res://scripts/world/scene_lifecycle.gd").new()
+	add_child(lifecycle)
+	lifecycle.setup(self)
 
 
 func _build_model_diversity() -> void:
@@ -1397,6 +1404,7 @@ func sync_festivals() -> void:
 	# a wish written this summer stays on the bamboo
 	if tanzaku_root and tanzaku_root.get_child_count() == 0 and GameState.flags.has("tanabata_wish"):
 		hang_tanzaku(int(GameState.flags.tanabata_wish))
+	if is_instance_valid(lifecycle): lifecycle.sync_state()
 
 
 func hang_tanzaku(wish: int) -> void:

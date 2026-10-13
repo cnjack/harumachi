@@ -88,6 +88,7 @@ static func mark_major(source: String) -> void:
 
 
 static func track(id: String) -> void:
+	ResidentVisits.clear_tracking()
 	SummerProjects.clear_tracking()
 	state().tracked = id
 	GameState.flags.erase("request_tracked")

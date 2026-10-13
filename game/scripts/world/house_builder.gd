@@ -192,6 +192,13 @@ static func kitchen_waypoint(world_pos: Vector3) -> Variant:
 
 
 static func surface_at(world_pos: Vector3) -> String:
+	var visiting: String=InteriorBuilder.at(world_pos)
+	if ResidentPlaces.SPECS.has(visiting):
+		var local: Vector3=world_pos-(ResidentPlaces.SPECS[visiting].origin as Vector3)
+		if visiting=="home_haru" and local.x<1.2 and local.z<1.0:return "tatami"
+		if visiting in ["toolshed","florist"] and local.z>=-.7:return "stone"
+		if visiting=="home_tanaka" and local.z>=1.5:return "stone"
+		return "wood"
 	var l := world_pos - ORIGIN
 	if l.x >= PEBBLE_RECT[0] and l.x <= PEBBLE_RECT[2] and l.z >= PEBBLE_RECT[1]:
 		return "stone"

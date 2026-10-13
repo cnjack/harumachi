@@ -303,7 +303,7 @@
   "title": "奶奶的箱子",
   "giver": "mio",
   "order": 10,
-  "chapter": 3,
+  "chapter": 1,
   "steps": [
    {
     "id": "open_box",
@@ -320,9 +320,7 @@
     "mio": 1
    }
   },
-  "unlocks": [
-   "Q11"
-  ]
+  "unlocks": []
  },
  "Q11": {
   "title": "町内会的旧账本",

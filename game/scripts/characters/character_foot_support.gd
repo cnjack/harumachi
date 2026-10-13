@@ -215,7 +215,7 @@ func _process_modification() -> void:
 	if not enabled or model == null or not model.is_visible_in_tree() or animation == null: return
 	if animation.current_animation not in ["idle", "walk", "run", "wave", "bow", "look", "stretch", "tend", "talk", "cheer", "dance"]: return
 	# PublicSeatPose owns hips/legs/soles during seated idle and seated drinking.
-	if actor is Player and (actor as Player).seated: return
+	if actor is Player and (actor as Player).seated or actor.get_meta("resident_seated",false): return
 	var began: int = Time.get_ticks_usec()
 	var sk: Skeleton3D = get_skeleton()
 	for side: String in ["L", "R"]:

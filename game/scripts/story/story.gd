@@ -29,6 +29,7 @@ var space: StorySpace
 var gathering: StoryGathering
 var public_life: PublicLife
 var food_use: StoryFoodUse
+var visits: StoryResidentVisits
 var neighbours: StoryNeighbourMeals
 var morning: ResidentMorning
 var _market_from := -1.0
@@ -48,6 +49,7 @@ func _ready() -> void:
 	public_life=PublicLife.new(self)
 	food_use=StoryFoodUse.new(self)
 	neighbours=StoryNeighbourMeals.new(self)
+	visits=StoryResidentVisits.new(self)
 	Dialogue.load_db()
 
 
@@ -58,6 +60,8 @@ func npc_name(id: String) -> String:
 # ================================================================== prompts
 func prompt_for(id: String) -> String:
 	var G := GameState
+	var visit_prompt: Variant = visits.prompt(id)
+	if visit_prompt != null: return str(visit_prompt)
 	if public_life.handles(id):return public_life.prompt(id)
 	if id=="resident_morning":return morning.prompt() if is_instance_valid(morning) else ""
 	if id=="shared_meal_table":return "在小桌吃带来的饭菜 · 歇一会儿" if neighbours.table_available() else ""
@@ -168,6 +172,9 @@ func prompt_for(id: String) -> String:
 ## Where the floating map pin should hover for the current objective.
 func marker_target() -> Variant:
 	var G := GameState
+	var visit_hud: Dictionary = ResidentVisits.hud()
+	if ResidentVisits.tracked() and not visit_hud.is_empty():
+		return _point(str(visit_hud.target))
 	if SummerProjects.state().tracked:
 		if SummerProjects.phase() == "ready" and G.phase != "market":
 			if G.at_step("Q05", "invite"): return _npc_head("ren" if not G.invited("ren") else "haru")
@@ -198,8 +205,13 @@ func marker_target() -> Variant:
 	if G.flags.get("request_tracked", false) and not request.is_empty() and not request.get("done", false):
 		return _npc_head(str(request.who))
 	var q := G.tracked_quest
+	var next_action: Dictionary = MainlineProgress.direction_action()
+	if G.qstate(q) != "active" and not next_action.is_empty(): return _point(str(next_action.target))
+	if G.qstate(q) != "active" and G.qstate("Q10") == "available": return _point("room_closet" if main.in_room and main.room_kind == "house" else "home_door")
 	if SummerProjects.uses_cooperation_mainline() and G.qstate("Q01") == "done" and G.qstate("Q05") == "locked" and G.qstate(q) != "active": return _point("opening_paper" if main.in_room and main.room_kind == "bakery" else "bakery")
 	if G.qstate(q) != "active":
+		if G.qstate("Q10") == "available": return _point("room_closet" if main.in_room and main.room_kind == "house" else "home_door")
+		if G.qstate("Q05") == "done" and not visit_hud.is_empty(): return _point(str(visit_hud.target))
 		for a in G.quest_order:
 			if G.qstate(a) == "available":
 				if a == "Q10":
@@ -252,7 +264,7 @@ func marker_target() -> Variant:
 func _point(id: String) -> Variant:
 	for n in get_tree().get_nodes_in_group("interactables"):
 		if (n as Interactable).id == id:
-			return _regional((n as Node3D).global_position + Vector3(0, 1.6, 0))
+			return route_marker((n as Node3D).global_position + Vector3(0, 1.6, 0))
 	return null
 
 ## Scene placement must use real coordinates; marker routing may substitute an exit gate.
@@ -265,10 +277,69 @@ func physical_point(id: String) -> Variant:
 func _npc_head(id: String) -> Variant:
 	if npcs.has(id):
 		var n: NPC = npcs[id]
-		if n.home:
+		if n.home and not ResidentVisits.unlocked(ResidentPlaces.room_for(id)):
 			return null
-		return _regional(n.global_position + Vector3(0, 2.55, 0))
+		return route_marker(n.global_position + Vector3(0, 2.55, 0))
 	return null
+
+
+func _marker_room(p: Vector3) -> String:
+	var interior: String = InteriorBuilder.at(p)
+	if interior != "": return interior
+	var local: Vector3 = p - HouseBuilder.ORIGIN
+	# Includes the actual threshold and garden; these belong to the same loaded home.
+	if Rect2(-7.5, -9.0, 15.0, 15.0).has_point(Vector2(local.x, local.z)): return "house"
+	return ""
+
+
+func _raw_marker(id: String) -> Variant:
+	var p: Variant = physical_point(id)
+	return p + Vector3(0, 1.6, 0) if p is Vector3 else null
+
+
+func _entry_id(room: String) -> String:
+	if room in ["house", "store", "bakery", "workroom"]:
+		return {"house":"home_door", "store":"shop_store", "bakery":"bakery", "workroom":"center_door"}[room]
+	return str(ResidentPlaces.SPECS.get(room, {}).get("door_id", ""))
+
+
+func _exit_id(room: String) -> String:
+	if room == "house": return "room_door"
+	for point_spec: Array in InteriorBuilder.spec_for(room).get("points", []):
+		if str(point_spec[0]).ends_with("_exit"): return str(point_spec[0])
+	return ""
+
+
+## Map projection always refers to a real external doorway, never an off-map room origin.
+func outdoor_marker(p: Vector3) -> Vector3:
+	var room: String = _marker_room(p)
+	if room == "": return p
+	var visited: Array[String] = []
+	while room != "" and room not in visited:
+		visited.append(room)
+		var parent: String = str(ResidentPlaces.SPECS.get(room, {}).get("return_room", ""))
+		if parent == "":
+			var door: Variant = _raw_marker(_entry_id(room))
+			return door if door is Vector3 else p
+		room = parent
+	return p
+
+
+## Take one real doorway at a time through nested rooms. No _point/_regional recursion.
+func route_marker(p: Vector3) -> Variant:
+	var target_room: String = _marker_room(p)
+	var current: String = main.room_kind if main.in_room else ""
+	if current == target_room:
+		return _regional(p) if current == "" else p
+	if current == "": return _regional(outdoor_marker(p))
+	var child: String = target_room
+	var visited: Array[String] = []
+	while child != "" and child not in visited:
+		visited.append(child)
+		var parent: String = str(ResidentPlaces.SPECS.get(child, {}).get("return_room", ""))
+		if parent == current: return _raw_marker(_entry_id(child))
+		child = parent
+	return _raw_marker(_exit_id(current))
 
 
 ## A target on the other side (town vs. riverside farm) points at the way there instead.
@@ -307,6 +378,8 @@ func interact(it: Interactable) -> void:
 		personal_handled = await CONVERSATION.personal_event(self, it.id)
 	if personal_handled:
 		pass
+	elif visits.handles(it.id):
+		await visits.handle(it.id)
 	elif public_life.handles(it.id):
 		await public_life.handle(it)
 	elif it.id=="resident_morning":
@@ -502,8 +575,13 @@ func _i_mio() -> void:
 		left.append("春的种植箱")
 	if G.qstate("Q04") != "done":
 		left.append("活动标牌")
-	if not left.is_empty() and G.qstate("Q01") == "done":
+	if not SummerProjects.uses_cooperation_mainline() and not left.is_empty() and G.qstate("Q01") == "done":
 		await say("mio", "neutral", "还有这些要帮忙：%s。每做完一件，拿一枚支持标记回来。" % "、".join(left))
+		G.note_talk("mio")
+		return
+	if SummerProjects.uses_cooperation_mainline() and G.qstate("Q01") == "done" and G.qstate("Q05") != "done":
+		await say("mio", "neutral", "先让一小篮东西真的递到人手里，再看看坐下方不方便。莲店里的合作纸签会记着我们试到哪一步。")
+		await say("narrator", "", SummerProjects.hint())
 		G.note_talk("mio")
 		return
 	await farm.daily_talk("mio")
@@ -931,11 +1009,13 @@ func _i_goldfish_pool() -> void:
 
 
 func _i_taiko_drum() -> void:
+	world.lifecycle.begin_practice("taiko")
 	if not GameState.flags.get("taiko_seen", false):
 		GameState.flags["taiko_seen"] = true
 		await say("narrator", "", "小舞台边放着一面太鼓。鼓面上贴着纸条：“祭典排练中，欢迎试打！”")
 	StoryKnowledge.observe_activity("taiko")
 	await play_mg("taiko")
+	world.lifecycle.end_practice("taiko")
 
 
 ## Neighbours happily take one home-made onigiri each (+1 familiarity, once per person).
@@ -1002,6 +1082,7 @@ func _i_stall() -> void:
 		if G.take_all({"bread_basket": 1}):
 			Audio.fx_at("basket",player.global_position+Vector3.UP*.8,-8)
 			world.stall_bread.visible = true
+			if world.lifecycle != null: world.lifecycle.record_delivery("bread")
 			await say("narrator", "", "你把面包篮放在摊位中央。黄油的香味一下子飘开了。")
 			G.advance("Q02", "deliver_basket")
 			await say("narrator", "", "（莲托人送来了谢礼：一个绣球花盆。）")
@@ -1216,35 +1297,16 @@ func _ending() -> void:
 	busy = true
 	player.frozen = true
 	await get_tree().create_timer(0.05 if ui.instant else 0.6).timeout
-	var counts := {}
-	for p in G.placements:
-		counts[p.item] = int(counts.get(p.item, 0)) + 1
-	var placed := []
-	for id in counts:
-		placed.append("%s ×%d" % [G.item_name(id), counts[id]])
-	var hearts := func(n: int) -> String: return GameState.hearts_text(n)
-	var lines := [
-		"你在晴町度过了第一个周末。庭院里第一次坐满了人。",
-		"用时：%s" % GameUI._fmt_time(G.play_time),
-		"庭院里摆着：%s" % ("、".join(placed) if not placed.is_empty() else "—"),
-		"邻居熟悉度：澪 %s · 莲 %s · 春 %s" % [hearts.call(int(G.affinity.mio)), hearts.call(int(G.affinity.ren)), hearts.call(int(G.affinity.haru))],
-	]
-	var liked := []
-	for d in G.placed_decor():
-		var who: String = G.item(d).get("liked_by", "")
-		if who != "":
-			liked.append("%s很喜欢你挑的%s" % [npc_name(who), G.item_name(d)])
-	if not liked.is_empty():
-		lines.append("、".join(liked) + "。")
-	if SummerProjects.uses_cooperation_mainline(): lines.append(SummerProjects.notes())
-	lines.append("周六傍晚，集市照常开张。明天也可以先歇一歇，收拾家里留下的箱子。")
+	# The first successful market is an invitation into the next piece of town life.
 	MainlineProgress.weekend_complete()
 	DailyLife.record_market()
+	ResidentVisits.invite_after_market()
+	var lines: Array[String] = ["今天这一篮真正递到了街坊手里。你摆过的桌椅，也有人坐下试过了。" if SummerProjects.uses_cooperation_mainline() else "第一场集市按你的布置开张了。莲和春都来过，庭院又有了聊天的声音。"]
+	lines.append("春把健一留下的图纸找了出来。明天十点后，去支巷里的春家坐坐，看看旧台子怎样才适合今天的人。")
+	lines.append("邀请记在 J 里。今晚继续逛，或先回家歇一晚，都能接着做。")
 	G.save_game()
 	Audio.sting("quest_done")
-	var r := await ui.show_ending(lines)
+	await ui.show_notice("第一场集市 · 下一次一起坐下", lines, "春家的邀请已经留好")
 	busy = false
 	player.frozen = false
 	ended.emit()
-	if r == "title":
-		main.go_title()

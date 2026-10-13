@@ -203,8 +203,9 @@ func run() -> void:
 	t.check("DAILY_LIFE", "returning from the yard first marks the actual railing opening", yard_marker != null and absf(yard_marker.x - HouseBuilder.ORIGIN.x - 1.5) < .05 and yard_marker.z - HouseBuilder.ORIGIN.z < -4.72)
 	await main.exit_room()
 	var outside_hint: String = main.ui.obj_text.text
+	var outside_title: String = main.ui.obj_title.text
 	await main.enter_room()
-	t.check("DAILY_LIFE", "leaving and re-entering the house refreshes the meal hint immediately", outside_hint == rules.hint("meal") and main.ui.obj_text.text == "沿走廊向左，穿过暖帘就是厨房。")
+	t.check("DAILY_LIFE", "leaving and re-entering the house refreshes the meal hint immediately", outside_title == MainlineProgress.season_goal() and main.ui.obj_title.text == outside_title and outside_hint == str(rules.title("meal")) + "：" + str(rules.hint("meal")) and main.ui.obj_text.text == str(rules.title("meal")) + "：沿走廊向左，穿过暖帘就是厨房。" and MainlineProgress.objective().source == "life" and str(rules.state().tracked) == "meal", "outside=%s / inside=%s" % [outside_hint, main.ui.obj_text.text])
 	main.player.global_position = prior_position
 	await t.frames(3)
 	await t.use("life_pantry", [1])
@@ -217,7 +218,7 @@ func run() -> void:
 	t.check("DAILY_LIFE", "the actual table packing choice retains food and unlocks the recipe", rules.done("meal") and G.count("onigiri") == 2 and G.recipe_known("plain_onigiri"))
 	DailyLife.track("tea")
 	main.ui.refresh_hud()
-	t.check("DAILY_LIFE", "HUD uses the explicitly tracked life event", main.ui.obj_title.text == rules.title("tea"))
+	t.check("DAILY_LIFE", "HUD uses the explicitly tracked life event", main.ui.obj_title.text == MainlineProgress.season_goal() and main.ui.obj_text.text == str(rules.title("tea")) + "：" + str(rules.hint("tea")) and MainlineProgress.objective().source == "life" and str(rules.state().tracked) == "tea" and not ResidentVisits.tracked() and not SummerProjects.state().tracked, "title=%s / action=%s" % [main.ui.obj_title.text, main.ui.obj_text.text])
 	G.start_quest("Q01")
 	t.check("DAILY_LIFE", "accepting a main quest restores its tracking", str(rules.state().tracked) == "")
 	await main.exit_room()

@@ -151,6 +151,11 @@ const POINTS := [
 	["library", 4.0, -6.1, 1.0, 1.8],
 	["build_sign", -2.6, 1.0, 0.9, 2.0],
 	["shop_store", -36.0, -14.9, 1.0, 2.4],
+	["visit_home_haru_door",23.20,17.205,1.1,2.1],
+	["visit_home_mio_door",21.05,27.9,1.1,1.7],
+	["visit_home_tanaka_door",26.72,44.205,1.1,2.1],
+	["visit_post_door",12.5,-16.1,1.0,1.7],
+	["visit_library_door",-35.0,-5.05,1.0,1.9],
 	
 	["east_end", 44.3, -11.0, 1.1, 3.0],
 	["west_end", -51.2, -11.0, 1.0, 3.0],
@@ -180,6 +185,8 @@ const NOGO_CIRCLES := [[Vector2(4.0, 7.0), 2.4, "树下留出一圈空地，别�
 const SPAWN := Vector3(-41.0, 0.1, -9.5)
 const SPAWN_YAW := 90.0
 const HOME_EXIT := Vector3(20.6, 0.1, 5.9)
+## Explicit new addresses; the other five south-street houses remain unassigned.
+const RESIDENT_HOMES := ResidentPlaces.HOMES
 const AOI_SANDBOX := Vector3(-5.15, 0, 4.4)
 const AOI_SWING := Vector3(-8.85, 0, 1.35)
 

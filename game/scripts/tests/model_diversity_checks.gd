@@ -243,9 +243,13 @@ func crop_lifecycle() -> void:
 
 func festival_lifecycle() -> void:
 	var old_day: int = GameState.day
+	var old_minute: float = GameState.minute
 	var old_region: String = main.world.region
 	for day: int in [17, 19]:
 		GameState.day = day
+		# The complete mask/scoop displays are open with the real evening
+		# festival; merely reaching a preparation morning no longer assembles them.
+		GameState.minute = 19.0 * 60.0
 		main.world.set_region("town")
 		var enabled: bool = day == 17
 		var root: Node3D = main.world.fest_nodes.natsumatsuri.get_node("ModelDiversity")
@@ -257,4 +261,5 @@ func festival_lifecycle() -> void:
 			check(id + (" appears with its festival" if enabled else " hides and releases collision after the festival"),
 				item.is_visible_in_tree() == enabled and collision_ok)
 	GameState.day = old_day
+	GameState.minute = old_minute
 	main.world.set_region(old_region)

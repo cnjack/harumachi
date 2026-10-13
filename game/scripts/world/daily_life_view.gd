@@ -70,6 +70,7 @@ func setup(story: Story) -> void:
 	var tea_cups: Node3D = s.world.spawn("W11_ceramic_set", Vector3(0, .015, 0), 0, 0, tea_root, .90)
 	rest_carried(tea_cups, tea_tray, (tea_tray.global_transform * WorldBuilder.local_aabb(tea_tray)).end.y + .01)
 	tea_label = _label("麦茶 · 春", .0017)
+	tea_label.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
 	tea_label.position = Vector3(0, .23, 0)
 	tea_root.add_child(tea_label)
 	paper_root = Node3D.new()
@@ -112,10 +113,12 @@ func sync_state() -> void:
 	meal_food.visible = meal.get("cooked", false) and not DailyLife.done("meal") and not _eating
 	meal_wrap.visible = DailyLife.done("meal") and int(meal.get("choice", -1)) == 1
 	if is_instance_valid(tea_root):
-		tea_root.visible = GameState.day >= int(DailyLife.state().introduced_day) + 1 and s.world.region == "town" and not tea_root.get_meta("morning_blocked",false)
+		var presentation: String = load("res://scripts/world/scene_lifecycle.gd").tea_state()
+		tea_root.visible = presentation != "stored" and s.world.region == "town" and not tea_root.get_meta("morning_blocked",false)
+		tea_root.set_meta("lifecycle_state",presentation)
 	var tea: Dictionary = DailyLife.event("tea")
 	if is_instance_valid(tea_label):
-		tea_label.text = "常温麦茶 · 杯子已还" if tea.get("temperature", -1) == 1 else ("麦茶 · 春" if not DailyLife.done("tea") else "冰麦茶 · 杯子已还")
+		tea_label.text = "苗台托盘 · 春" if tea_root.get_meta("lifecycle_state", "") == "preparing" else ("常温麦茶 · 杯子已还" if tea.get("temperature", -1) == 1 else ("麦茶 · 春" if not DailyLife.done("tea") else "冰麦茶 · 杯子已还"))
 	var card: Dictionary = DailyLife.event("card")
 	paper_root.visible = GameState.day >= int(DailyLife.state().introduced_day) + 2 and s.world.region == "town"
 	paper_inside.visible = GameState.day >= int(DailyLife.state().introduced_day) + 2

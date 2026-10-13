@@ -132,6 +132,9 @@ func _old_work() -> bool:
 	if not await use("room_closet",[0]): return false
 	if not await leave(): return false
 	if not await use("mio",[0]): return false
+	if not record("recognition leaves the revival as a separate offer",G.qstate("Q10")=="done" and G.qstate("Q11")=="available"): return false
+	if not await use("mio",[0]): return false
+	if not record("revival starts only after an explicit yes",G.at_step("Q11","find_notebook") and G.flags.get("revival_accepted",false)): return false
 	if not await use("center_door"): return false
 	if not await use("workroom_archive",[0]): return false
 	if not await leave(): return false
@@ -225,6 +228,7 @@ func use(id: String, choices: Array=[]) -> bool:
 func leave() -> bool:
 	if not main.in_room: return record("inside before leaving through doorway",false)
 	var id: String="room_door" if main.room_kind=="house" else ("workroom_exit" if main.room_kind=="workroom" else main.room_kind+"_exit")
+	if ResidentPlaces.SPECS.has(main.room_kind):id="visit_"+main.room_kind+"_exit"
 	return await use(id)
 
 func place_opening() -> bool:
@@ -282,6 +286,8 @@ func approach(it: Interactable) -> bool:
 func path_to(destination: Vector3) -> Array[Vector3]:
 	var origin:=Vector2(-46,-18)
 	var dimensions:=Vector2(96,48)
+	if not main.in_room and main.world.region=="town" and maxf(destination.z,main.player.global_position.z)>28.0:
+		dimensions.y=70.0 # The inhabited south street, including Tanaka's actual home at z=43.
 	if main.in_room:
 		if main.room_kind=="house": origin=Vector2(HouseBuilder.ORIGIN.x-7,HouseBuilder.ORIGIN.z-9);dimensions=Vector2(15,15)
 		else:

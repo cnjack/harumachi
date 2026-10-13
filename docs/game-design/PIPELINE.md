@@ -1,8 +1,17 @@
 # 模型、工程与交付流程
 
+## 居民故事与道具生命周期验收（2026-10-14）
+
+`ResidentVisits`只保存真实邀请、约定、试坐结果和回访事实；新照片从原生Viewport保存，headless不生成替代图片。读档必须同时恢复室内/户外、区域、镜头、天气与同一居民。新店铺要验证“门→室内操作→原出口”，不能仍以旧门直接购买的脚本代替验收。
+
+相关测试入口为`--only=resident-visits`、`--only=resident-interiors`、`--only=props-lifecycle`、`--only=narrative-continuity`、`--only=public-visits`。原生故事演示从`res://scenes/main.tscn`启动，使用`--resident-visits-demo --evidence=<绝对路径>`（导出包通过独立`--resident-visits-demo`进入；不叠加`--newgame`，以免同时触发安顿回家）；11处室内矩阵使用`--script res://scripts/tools/resident_interiors_visual.gd -- --out=<绝对路径>`。前者明确声明日期/前置夹具，用实际E键走门、看图、选项和试坐；后者用诊断状态检查全景、故事物件与雨夜，不冒充自然剧情流程。`shots.gd`的`lifecycle_*`机位用于同机位比较普通日、施工、开场和收场。
+
+本轮最终全量2120项，新拜访解压实跑和完整夏季205项均通过。以上命令均设置独立`HARUMACHI_SAVE_DIR`；截图、照片、JSON和日志写`evidence/`。最终完整回归独占运行，桌面导出继续解压跑完整`--autoplay`后才能替换唯一ZIP。详见[居民故事记录](RESIDENT_STORY_DELIVERY_20261014.md)。
+
+
 ## 桥、水岸与两猫回归（2026-10-13批次）
 
-当前全量1841项，`--only=scene-life`41项，分别为桥12、猫12、水山鱼9、语音默认8。低矮花盆必须用完整人物胶囊扫过所有活动停点和移动线；真实草实例也要检查。桥灯与水面使用同一真实灯源、能量比例与容量合同，不能只登记前四盏。水纹须测真实TIME帧差，灯光须做开关和0/0.35/1.0像素配对。远山须从普通及24米高相机四向检查，再做独占配对性能。配音模型比较固定参考、逐字稿、版本与采样条件，ASR和身份相似度只作诊断；听审通过前不批量覆盖正式音频。源工程全量、导出冻结和解压包200项均通过后，原子替换唯一ZIP。见[本轮来源与验收](SCENE_LIFE_20261013.md)。
+当轮全量1841项，`--only=scene-life`41项，分别为桥12、猫12、水山鱼9、语音默认8。低矮花盆必须用完整人物胶囊扫过所有活动停点和移动线；真实草实例也要检查。桥灯与水面使用同一真实灯源、能量比例与容量合同，不能只登记前四盏。水纹须测真实TIME帧差，灯光须做开关和0/0.35/1.0像素配对。远山须从普通及24米高相机四向检查，再做独占配对性能。配音模型比较固定参考、逐字稿、版本与采样条件，ASR和身份相似度只作诊断；听审通过前不批量覆盖正式音频。源工程全量、导出冻结和解压包200项均通过后，原子替换唯一ZIP。见[本轮来源与验收](SCENE_LIFE_20261013.md)。
 
 ## 60点模型批次（2026-10-13）
 
@@ -237,7 +246,7 @@ Godot 这边是 `Audio` 自动加载（`game/scripts/autoload/audio.gd`）：
 
 - **材质视频样板（2026-10-06）**：`art/poc/material_review_20261006/godot/` 是独立 Godot 4.7.2 Forward+ 工程，六种地表各有 A/B；四张 imagegen 图用于实际材质，已有 Hyper3D 住宅用于实景。运行 `python3 art/poc/material_review_20261006/record.py --tag review` 原生录制 40 秒 1080p/30fps 并编码 MP4；视频、8 张截图、日志和检查在 `evidence/material_review_20261006_v1/`。窗口 override 与录制分辨率保持一致，避免 Movie Maker 输出 720p 而截图仍为 1080p。隔离工程不加载游戏 autoload，不修改默认存档。详见该 POC 的 README。
 
-- 自动测试：`res://scenes/tests.tscn`，当前清单1841项，含规则、SQLite、UI、模型摆放、路线、生活、完整夏季和镜头检查。独立HARUMACHI_SAVE_DIR、超时与SCRIPT ERROR检查必须同时使用；全量不与其他Godot实例并发。专项入口与数量见AGENTS，最终数以JSON报告为准。
+- 自动测试：`res://scenes/tests.tscn`，当前清单2120项，含规则、SQLite、UI、模型摆放、路线、生活、完整夏季和镜头检查。独立HARUMACHI_SAVE_DIR、超时与SCRIPT ERROR检查必须同时使用；全量不与其他Godot实例并发。专项入口与数量见AGENTS，最终数以JSON报告为准。
 - 卡顿检查要让时钟实际推进，记录逐帧耗时，不能只看平均FPS。工具`evidence/desktop_stutter_20261007/perf_probe.gd`的`--fixed`模式在真实起床卧室和商店街记录480帧，截图回读放在计时之后；使用固定引擎、置顶原生窗口和独立存档。运动清晰度检查在固定镜头距离下核对人物与镜头的渲染插值位置，镜头避障另跑`--only=camera-body`。桌面缓存用晚会专项检查移动、旋转后的实际食物支撑；方法与结果见[卡顿修复](DESKTOP_STUTTER_20261008.md)。
 - 自动演示：普通标题入口`--autoplay`沿实际碰撞路径、Story交互、摆放控制器、料理面板、灯笼输入、日历赴约和拍照完成新夏季至Q15，检查控制与保存恢复。当前基线200项、9张关键截图。自动对白与阶段暂停明确记录，不作为自然四小时；`--showcase`是节日展示夹具。打印的AP mark/frame用于录像剪辑。
 - 录制时游戏窗口不能被别的窗口完全挡住：macOS 会停止给被挡住的窗口画帧，演示就停在原地。用 `-t --position <x>,<y>` 置顶并放到屏幕角落。

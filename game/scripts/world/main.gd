@@ -40,6 +40,7 @@ func _ready() -> void:
 		await world.build_async()
 	else:
 		world.build()
+	ResidentPlaces.build_doors(world)
 	if not "--material-options" in OS.get_cmdline_user_args():
 		MaterialChoiceProfile.apply(world)
 	for p in Layout.POINTS:
@@ -109,6 +110,8 @@ func _ready() -> void:
 	_add_point("resident_morning",Vector3(15.1,.9,16.55),1.35)
 	story.neighbours.build()
 	_add_point("shared_meal_table",NeighbourMeals.TABLE_CENTER+Vector3(0,1.05,.1),1.9)
+	story.visits.build()
+	_add_point("visit_trial", ResidentVisits.TRIAL_POINT + Vector3.UP, 1.5)
 	story.space.build()
 	_add_point("space_plan", Vector3(10.0, 1.0, 12.0), 1.6)
 	story.space.view.sync_state()
@@ -164,6 +167,7 @@ func _ready() -> void:
 		if a == "--qa-characters": add_child(load("res://scripts/tools/character_visual_qa.gd").new())
 		if a.begins_with("--qa-animals="): add_child(load("res://scripts/tools/animal_visual_audit.gd").new())
 		if a.begins_with("--qa-festival="): add_child(load("res://scripts/tools/festival_visual_qa.gd").new())
+		if a=="--resident-visits-demo":add_child(load("res://scripts/tools/resident_visits_demo.gd").new())
 		if a=="--resident-morning-demo":add_child(load("res://scripts/tools/resident_morning_demo.gd").new())
 		if a=="--bakery-reach-probe":add_child(load("res://scripts/tools/bakery_reach_probe.gd").new())
 		if a=="--meal-routes-demo":add_child(load("res://scripts/tools/meal_route_demo.gd").new())
@@ -430,6 +434,13 @@ func update_npcs(force: bool) -> void:
 		# regular evening schedule or festival stall list sends them home.
 		if dancing and n.fest_key == "natsumatsuri:dance":
 			continue
+		if in_room and ResidentPlaces.SPECS.has(room_kind) and id in ResidentPlaces.SPECS[room_kind].owners:
+			var visit_spec: Dictionary=ResidentPlaces.SPECS[room_kind]
+			var rest: Dictionary=visit_spec.rest_spots[id]
+			n.set_home(false)
+			if force or n.fest_key != room_kind+":visit":n.place(visit_spec.origin+rest.at,float(rest.yaw));n.set_pose("idle")
+			n.fest_key=room_kind+":visit"
+			continue
 		# Main owns indoor keeper placement. Festival and outdoor schedules must wait until exit.
 		var keeper_id: String = {"bakery": "ren", "store": "kazuko"}.get(room_kind, "")
 		if in_room and id == keeper_id:
@@ -630,7 +641,12 @@ func _add_point(id: String, pos: Vector3, radius: float) -> void:
 
 func _restore() -> void:
 	var G := GameState
+	if ResidentVisits.state().phase=="quiet" and G.qstate("Q05")=="done":ResidentVisits.invite_after_market(false)
 	G.load_on_enter = false
+	# A load can cross room boundaries in the same running scene. Reset the previous view first.
+	in_room=false;room_kind=""
+	world.set_indoor_look(false)
+	rig.fixed=false;rig.collide=true;rig.dist=6.5;rig.pitch=35.0
 	world.bus.park_at_stop()
 	world.set_region("farm" if G.player_region == "farm" and not G.player_in_room else "town")
 	world.apply_phase(G.phase, false)
@@ -651,7 +667,7 @@ func _restore() -> void:
 		player.global_position = Layout.SPAWN
 		player.set_facing(deg_to_rad(Layout.SPAWN_YAW))
 		rig.yaw = -Layout.SPAWN_YAW + 180.0 + 180.0
-		if not G.flags.has("arrival_home"):
+		if not G.flags.has("arrival_home") and G.qstate("Q00")!="done":
 			G.toast.emit("欢迎来到晴町。先去支巷里的新家看看信箱吧")
 	if life != null: life._sync_animal_seed(true)
 	_sync_location_props()
@@ -677,12 +693,16 @@ func _sync_location_props() -> void:
 	# Restore this real table, tea and collisions before the next interaction.
 	if is_instance_valid(story) and is_instance_valid(story.neighbours) and is_instance_valid(story.neighbours.view):
 		story.neighbours.view.sync_state()
+	if is_instance_valid(story) and story.visits!=null and is_instance_valid(story.visits.view):story.visits.view.sync_state()
 
 
 func _sync_props() -> void:
 	var G := GameState
-	world.stall_bread.visible = G.qstate("Q02") == "done" or G.phase == "market"
-	world.poster.visible = G.qstate("Q04") == "done" or G.phase == "market"
+	var lifecycle: Node=world.get("lifecycle")
+	if is_instance_valid(lifecycle):lifecycle.call("sync_state")
+	else:
+		world.stall_bread.visible = G.qstate("Q02") == "done" or G.phase == "market"
+		world.poster.visible = G.qstate("Q04") == "done" or G.phase == "market"
 
 
 ## v0.6: activity loops. At a festival each neighbour on the bill wanders between its spot and the stops in
@@ -754,7 +774,8 @@ func _put_in_room(at: Vector3 = HouseBuilder.spawn_point()) -> void:
 		rig.collide = false
 		rig.yaw = 0.0
 		rig.pitch = 46.0
-		rig.dist = 8.6
+		rig.dist = float(InteriorBuilder.spec_for(saved_kind).get("camera_dist",8.6))
+		rig.pitch = float(InteriorBuilder.spec_for(saved_kind).get("camera_pitch",46.0))
 		rig.snap()
 		update_npcs(true)
 		ui.refresh_hud()
@@ -808,8 +829,10 @@ func enter_interior(k: String) -> void:
 	rig.collide = false
 	rig.yaw = 0.0
 	rig.pitch = 46.0
-	rig.dist = 8.6
+	rig.dist = float(InteriorBuilder.spec_for(k).get("camera_dist",8.6))
+	rig.pitch = float(InteriorBuilder.spec_for(k).get("camera_pitch",46.0))
 	rig.snap()
+	update_npcs(true)
 	if k == "bakery" and not npcs.ren.home:
 		var sp := InteriorBuilder.spec_for("bakery")
 		npcs.ren.place(sp.origin + sp.keeper, sp.keeper_yaw)
@@ -828,6 +851,7 @@ func enter_interior(k: String) -> void:
 
 
 func exit_interior() -> void:
+	if not in_room or not InteriorBuilder.SPECS.has(room_kind):return
 	story.public_life.stand(true)
 	if _transition:
 		return
@@ -838,6 +862,16 @@ func exit_interior() -> void:
 	Audio.fx_at("door",player.global_position,-8)
 	await ui.fade_out(0.35)
 	var sp := InteriorBuilder.spec_for(room_kind)
+	var return_room: String=str(sp.get("return_room",""))
+	if return_room!="":
+		_put_in_room(sp.exit)
+		Audio.set_indoor(true)
+		await ui.fade_in(.35)
+		Loading.finish();GameState.unlock_input("transition");_transition=false
+		if shop_life:shop_life.on_enter(return_room)
+		return
+	world.set_region(str(sp.get("entry_region","town")))
+	GameState.player_region=str(sp.get("entry_region","town"))
 	Audio.set_indoor(false, outdoor_amb())
 	Audio.play_music(music_for_now(), 1.5)
 	in_room = false
@@ -855,6 +889,7 @@ func exit_interior() -> void:
 	rig.pitch = 30.0
 	rig.dist = 7.0
 	rig.snap()
+	update_npcs(true)
 	if npcs.ren.fest_key == "bakery:counter":
 		npcs.ren.fest_key = ""
 		npcs.ren.sched_i = -1

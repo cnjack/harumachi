@@ -10,7 +10,7 @@
 - 设计文档：`docs/game-design/`，入口 [README.md](docs/game-design/README.md)，当前事实集中在 [CURRENT_STATUS.md](docs/game-design/CURRENT_STATUS.md)
 - 素材源文件和工具：`art/`
 - 录像、截图、测试结果：`evidence/`
-- 导出包：`builds/HareMachi.zip`，当前Godot4.8-dev7；最新验收见`evidence/scene_life_20261013/delivery.json`
+- 导出包：`builds/HareMachi.zip`，当前Godot4.8-dev7；最新验收见`evidence/layout_story_implementation_20261014/delivery.json`
 - 官方网站与网页试玩：`site/`，说明在 `site/README.md`
 
 ## builds 只保留最新交付（2026-10-05）
@@ -45,7 +45,12 @@ PY=/Users/jack/.copilot/session-state/ca10e179-b441-4d77-b938-250cea2ee4c6/files
 BLENDER=/Applications/Blender.app/Contents/MacOS/Blender
 
 $GODOT --headless --path game --import                               # 加了素材或 class_name 之后必须先跑
-$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前1841项；单独运行，套timeout）
+$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前2120项；单独运行，套timeout）
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=resident-interiors # 124项：11处室内、真实门口、支撑、通路、邀请与读档
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=resident-visits    # 43项：约定、两种试坐、照片、回访、延期与恢复
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=props-lifecycle    # 48项：收纳、准备、练习、开场、散场、木料与晨间茶盘
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=narrative-continuity # 41项：相认、复办门槛、目标、阶段回顾与真实后续
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=public-visits      # 23项：新商铺室内、原交易与收藏兼容
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=scene-life # 41项：桥12、两猫12、水山鱼9、语音默认8
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=landscape # 40项视距、连续地形、树根、透明遮罩、单体隔离与拍照恢复
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=tree-locomotion # 18项树皮镜头预算/误差、低叶、平滑胶囊路线、澪脚道与小葵日程/姿态/节日恢复
@@ -98,7 +103,7 @@ $GODOT --headless --path game --export-release "Windows Desktop" "$HARUMACHI_BUI
 
 ## 必须知道的坑
 
-- **引擎固定4.8-dev7**：精确版本`4.8.dev7.official.c971f93e7`，配置在`tools/godot-version.json`；优先运行`./tools/godot`，它会校验版本。不要依赖可能被自动更新的`/Applications/Godot.app`。`project.godot` features为"4.8"，导出模板为`4.8.dev7`。这是用户要求的开发快照迁移，当前源码1841项独占全量、桥、水岸与两猫最终原生复拍及解压包200项演示均已通过；验收记录不能与历史4.7.2混用。
+- **引擎固定4.8-dev7**：精确版本`4.8.dev7.official.c971f93e7`，配置在`tools/godot-version.json`；优先运行`./tools/godot`，它会校验版本。不要依赖可能被自动更新的`/Applications/Godot.app`。`project.godot` features为"4.8"，导出模板为`4.8.dev7`。这是用户要求的开发快照迁移，当前源码2120项独占全量、新居民室内与拜访原生实拍、解压包新拜访路线及205项完整夏季演示均已通过；验收记录不能与历史4.7.2混用。
 - **卡顿要查真实时钟和渲染帧**：未使用的晚会桌面不能随每个游戏分钟重扫三角面；桌面测量按实例、变换与来源缓存。只有玩家和跟随镜头启用物理插值，普通移动不能误清插值快照；传送与镜头snap须复位。见`docs/game-design/DESKTOP_STUTTER_20261008.md`。大榕树镜头球扫使用实测1.6万面独立代理，不能重新生成17万面可见树皮碰撞，见`docs/game-design/TREE_LOCOMOTION_20261012.md`。
 - **警告当错误**：推断成 Variant 的变量要写明类型（`var p: Vector3 = ...`）；同一个函数里变量不能重名（嵌套循环里也不行）；字典字面量不能有重复键；不要写叫 `_set` 的方法。
 - **窗口被挡住就停帧**：macOS 不给完全被遮住的窗口画帧，自动演示、录像、截图都会停住。带窗口运行时一律加 `-t --position <x>,<y>`（置顶、放屏幕角落）。
@@ -133,6 +138,9 @@ $GODOT --headless --path game --export-release "Windows Desktop" "$HARUMACHI_BUI
 | `scripts/world/farm_builder.gd` | 农园 |
 | `scripts/world/house_builder.gd`、`interior_builder.gd` | 玩家的家、商店和面包店室内 |
 | `scripts/world/shop_windows.gd`、`shaders/shop_window.gdshader` | 店面橱窗：玻璃上的“室内映射”面片，傍晚亮灯 |
+| `scripts/story/resident_visits.gd`、`story_resident_visits.gd` | 邀请、图纸、约定、真实试坐与照片、私人回访和寄信 |
+| `scripts/world/resident_places.gd`、`resident_interior_builder.gd` | 11处新室内的门、住户、时段、格局与摆放 |
+| `scripts/world/scene_lifecycle.gd` | 日常/节日/施工道具状态与对应碰撞 |
 | `scripts/story/*.gd` | 委托、对话、节日、第三章 |
 | `scripts/npc/npc.gd` | 邻居：作息、手势、活动路线、避让 |
 | `scripts/ui/*.gd` | HUD、对话框、各种面板、标题、序章 |

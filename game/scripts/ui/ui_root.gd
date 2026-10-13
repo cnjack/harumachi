@@ -168,21 +168,10 @@ func _coin_popup(delta: int) -> void:
 
 func refresh_hud() -> void:
 	refresh_clock()
-	var q := GameState.tracked_quest
-	obj_title.text = "「%s」" % GameState.quest_title(q) if q != "" and GameState.qstate(q) == "active" else ("集市进行中" if GameState.phase == "market" else "晴町的日常")
-	obj_text.text = GameState.objective_text()
-	if SummerProjects.state().tracked:
-		obj_title.text = "一小篮的合作"
-		obj_text.text = SummerProjects.hint()
-	var request: Dictionary = GameState.request()
-	if GameState.flags.get("request_tracked", false) and not request.is_empty() and not request.get("done", false):
-		obj_title.text = "街坊的小事 · %s" % GameState.npc_display(str(request.who))
-		obj_text.text = "%s ×%d · 可交 %d · 改天也行" % [GameState.item_name(str(request.item)), int(request.n), mini(GameState.unreserved_count(str(request.item)), int(request.n))]
-	var life_id: String = str(DailyLife.state().tracked)
-	if life_id != "" and not DailyLife.done(life_id):
-		obj_title.text = DailyLife.title(life_id)
-		var house_room: String = world_main.world.house.current_room if world_main != null and world_main.in_room and world_main.room_kind == "house" else ""
-		obj_text.text = DailyLife.hint(life_id, house_room)
+	var house_room: String = world_main.world.house.current_room if world_main != null and world_main.in_room and world_main.room_kind == "house" else ""
+	var objective: Dictionary = MainlineProgress.objective(house_room)
+	obj_title.text = str(objective.title)
+	obj_text.text = str(objective.text)
 	coin_label.text = "%d" % GameState.coins
 	token_label.text = "%d / 3" % GameState.count("support_token")
 	if SummerProjects.uses_cooperation_mainline():
@@ -622,6 +611,44 @@ func _on_keepsake(id: String) -> void:
 
 
 # ================================================================== notice board
+func show_keepsake(id: String) -> void:
+	var item: Dictionary = Progress.keepsake(id)
+	if item.is_empty(): return
+	var panel := _open_modal("keepsake")
+	var column := VBoxContainer.new()
+	column.add_theme_constant_override("separation", 12)
+	column.custom_minimum_size.x = 760
+	panel.add_child(column)
+	column.add_child(_header(str(item.name), "book"))
+	var picture := TextureRect.new()
+	picture.name = "StoryPicture"
+	picture.custom_minimum_size = Vector2(760, 310)
+	picture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	picture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	var path: String = "res://assets/ui/collection/%s.jpg" % id
+	if id == "col_photo_new" and FileAccess.file_exists(GameState.photo_path()):
+		picture.texture = ImageTexture.create_from_image(Image.load_from_file(GameState.photo_path()))
+	elif ResourceLoader.exists(path):
+		picture.texture = load(path)
+	column.add_child(picture)
+	var caption := UITheme.label(str(item.text), 25)
+	caption.name = "StoryPictureDescription"
+	caption.custom_minimum_size.x = 760
+	caption.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	column.add_child(caption)
+	var close := _close_button("看好了，继续")
+	column.add_child(close)
+	close.call_deferred("grab_focus")
+	_center(panel)
+	if instant:
+		await get_tree().process_frame
+		close_modal(false)
+		return
+	if auto:
+		get_tree().create_timer(4.0).timeout.connect(func(): if modal == "keepsake": close_modal(), CONNECT_ONE_SHOT)
+	await panel_closed
+
+
 func show_notice(title: String, lines: Array, footer: String = "") -> void:
 	var p := _open_modal("notice")
 	p.add_theme_stylebox_override("panel", UITheme.paper("modal",44))
@@ -699,6 +726,16 @@ func open_quests() -> void:
 	var shown := 0
 	var first_btn: Button = null
 	var request: Dictionary = GameState.request()
+	var visit: Dictionary = ResidentVisits.hud()
+	if not visit.is_empty():
+		var visit_button := Button.new()
+		visit_button.text = str(visit.title)
+		visit_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		visit_button.pressed.connect(func(): _visit_detail(detail))
+		visit_button.focus_entered.connect(func(): _visit_detail(detail))
+		list.add_child(visit_button)
+		if ResidentVisits.tracked() or first_btn == null: first_btn = visit_button
+		shown += 1
 	if GameState.qstate("Q01") == "done":
 		var project_button := Button.new()
 		project_button.text = "一小篮的合作 · " + ("尚未商量" if SummerProjects.phase() == "invitation" else "已完成" if SummerProjects.phase() == "done" else "进行中")
@@ -715,7 +752,7 @@ func open_quests() -> void:
 		request_button.pressed.connect(func(): _request_detail(detail))
 		request_button.focus_entered.connect(func(): _request_detail(detail))
 		list.add_child(request_button)
-		first_btn = request_button
+		if GameState.flags.get("request_tracked", false) or first_btn == null: first_btn = request_button
 		shown += 1
 	for life_id: String in DailyLife.IDS:
 		var life_event: Dictionary = DailyLife.event(life_id)
@@ -744,7 +781,7 @@ func open_quests() -> void:
 		b.pressed.connect(func(): _quest_detail(detail, qid))
 		b.focus_entered.connect(func(): _quest_detail(detail, qid))
 		list.add_child(b)
-		if first_btn == null or (q == GameState.tracked_quest and not GameState.flags.get("request_tracked", false) and str(DailyLife.state().tracked) == "" and not SummerProjects.state().tracked):
+		if first_btn == null or (q == GameState.tracked_quest and not ResidentVisits.tracked() and not GameState.flags.get("request_tracked", false) and str(DailyLife.state().tracked) == "" and not SummerProjects.state().tracked):
 			first_btn = b
 		shown += 1
 	if shown == 0:
@@ -754,6 +791,29 @@ func open_quests() -> void:
 		first_btn.call_deferred("grab_focus")
 		first_btn.pressed.emit()
 	_center(p)
+
+
+func _visit_detail(box: VBoxContainer) -> void:
+	for child in box.get_children(): child.queue_free()
+	var visit: Dictionary = ResidentVisits.hud()
+	box.add_child(UITheme.label(str(visit.get("title", "街坊的邀请")), 34))
+	var detail := UITheme.label(str(visit.get("text", "")), 25)
+	detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	detail.custom_minimum_size.x = 600
+	box.add_child(detail)
+	var promise: String = ResidentVisits.promise_text()
+	if promise != "":
+		var commitment := UITheme.label("约定：" + promise, 23)
+		commitment.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		box.add_child(commitment)
+	var follow := Button.new()
+	follow.text = "继续这件事 · 设为追踪"
+	follow.custom_minimum_size = Vector2(250, 54)
+	follow.pressed.connect(func():
+		ResidentVisits.track()
+		GameState.save_game()
+		_visit_detail(box))
+	box.add_child(follow)
 
 
 func _quest_detail(box: VBoxContainer, qid: String) -> void:
@@ -790,14 +850,16 @@ func _quest_detail(box: VBoxContainer, qid: String) -> void:
 		box.add_child(UITheme.label("报酬：" + "、".join(parts), 22, UITheme.INK_SOFT))
 	if st == "available":
 		var b := Button.new()
-		b.text = "接受委托"
+		b.text = "一起复办，先看账本" if qid == "Q11" else "接受委托"
+		b.disabled = qid == "Q11" and not MainlineProgress.can_offer_revival()
 		b.custom_minimum_size = Vector2(200, 54)
 		b.pressed.connect(func():
 			GameState.flags.erase("request_tracked")
-			GameState.start_quest(qid)
+			if qid == "Q11": MainlineProgress.accept_revival()
+			else: GameState.start_quest(qid)
 			_quest_detail(box, qid))
 		box.add_child(b)
-	elif st == "active" and (SummerProjects.state().tracked or GameState.tracked_quest != qid or GameState.flags.get("request_tracked", false) or str(DailyLife.state().tracked) != ""):
+	elif st == "active" and (ResidentVisits.tracked() or SummerProjects.state().tracked or GameState.tracked_quest != qid or GameState.flags.get("request_tracked", false) or str(DailyLife.state().tracked) != ""):
 		var t := Button.new()
 		t.text = "设为追踪"
 		t.custom_minimum_size = Vector2(200, 54)
@@ -841,6 +903,7 @@ func _request_detail(box: VBoxContainer) -> void:
 		var track := Button.new()
 		track.text = "带齐后当面交 · 设为追踪"
 		track.pressed.connect(func():
+			ResidentVisits.clear_tracking()
 			DailyLife.clear_tracking()
 			SummerProjects.clear_tracking()
 			GameState.flags["request_tracked"] = true

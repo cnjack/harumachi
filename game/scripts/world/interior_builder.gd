@@ -9,7 +9,7 @@ extends Node3D
 ## shops read as real rooms with walking space around the fixtures, not a shelf-packed box. Every
 ## coordinate below (furniture, points, lamps, keeper) was scaled by the same factors so pieces that
 ## used to hug a wall still hug the new, farther-out wall.
-const SPECS := {
+const BASE_SPECS := {
 	"store": {
 		"name": "晴町商店", "origin": Vector3(50, 0, 400), "size": Vector2(11.0, 8.0), "floor": "wood", "wall": "plaster",
 		"back_wall": "plaster", "exit": Vector3(-36.0, 0.1, -13.2), "exit_yaw": 0.0, "door_x": 0.0,
@@ -52,6 +52,13 @@ const SPECS := {
 			["workroom_table", -2.8, .9, -.50, 1.4], ["workroom_lantern_test", 1.8, 1.0, -.5, 1.4], ["workroom_sign", 4.75, 1.0, -2.75, 1.3]],
 	},
 }
+static var SPECS: Dictionary=_all_specs()
+static func _all_specs() -> Dictionary:
+	var combined: Dictionary=BASE_SPECS.duplicate(true)
+	# Layout references addresses while global classes initialise. Build fresh specs
+	# here so a partially initialised ResidentPlaces.SPECS cannot hide all rooms.
+	combined.merge(ResidentPlaces._specs(),true)
+	return combined
 const WALL_H := 2.8
 const FRONT_H := 0.85
 
@@ -100,6 +107,9 @@ func build(world: WorldBuilder, k: String) -> void:
 	origin = spec.origin
 	name = "Interior_" + k
 	position = origin
+	if ResidentPlaces.SPECS.has(k):
+		ResidentInteriorBuilder.build(self)
+		return
 	var house := world.house
 	var w: float = spec.size.x
 	var d: float = spec.size.y
@@ -132,8 +142,10 @@ func build(world: WorldBuilder, k: String) -> void:
 			shop_mat.set_shader_parameter("wain_tint",{"store":Color(.69,.62,.48),"bakery":Color(.79,.65,.48),"workroom":Color(.63,.64,.55)}[k])
 	fm.set_shader_parameter("tint",{"store":Color(.89,.87,.79),"bakery":Color(1.0,.94,.80),"workroom":Color(.81,.86,.81)}[k])
 	if k=="bakery":
-		_wall(Vector3(w,1.15,.16),Vector3(0,.575,-d/2.0-.08),bm)
-		_wall(Vector3(w,ceiling_height-1.15,.16),Vector3(0,1.15+(ceiling_height-1.15)*.5,-d/2.0-.08),wm)
+		_rear_wall_with_door(w,d,wm,-.825)
+	elif k=="store" or k=="workroom":
+		# The rear service doors now lead to real private rooms / photo side room.
+		_rear_wall_with_door(w,d,bm,-.275 if k=="store" else 0.0)
 	else:
 		_wall(Vector3(w, ceiling_height, 0.16), Vector3(0, ceiling_height / 2.0, -d / 2.0 - 0.08), bm)
 	PublicPlaceArt.side_walls(self,wm)
@@ -156,7 +168,7 @@ func build(world: WorldBuilder, k: String) -> void:
 	add_child(roof)
 	# a back-room doorway with a noren on the back wall
 	var noren := house.flat_mat(Color(0.18, 0.28, 0.46) if k == "store" else Color(0.72, 0.36, 0.22), "noren_" + k)
-	var back_door_x := -0.275 if k == "store" else -0.825
+	var back_door_x := -0.275 if k == "store" else (0.0 if k=="workroom" else -.825)
 	for strip in 4:
 		_box(Vector3(0.255, 0.5, 0.035), Vector3(back_door_x - 0.411 + strip * 0.274, 1.85, -d / 2.0 + 0.07), noren, false)
 	_box(Vector3(1.1, 1.62, 0.02), Vector3(back_door_x, 0.81, -d / 2.0 + 0.01), house.flat_mat(Color(0.2, 0.17, 0.15), "doorway"), false)
@@ -198,6 +210,18 @@ func build(world: WorldBuilder, k: String) -> void:
 	RoomIdentity.build(self)
 	PublicPlaceArt.build(self)
 	LandscapeCoverage.build_garden(wb,self,HouseBuilder.GROUND_Y-.08,true)
+	# Construction completes before WorldBuilder moves on to the next room.
+	# The caller also runs this after all rooms exist, making the hook idempotent.
+
+func _rear_wall_with_door(w: float,d: float,mat: Material,door_at: float) -> void:
+	var gap:=1.35
+	var left: float=door_at-gap*.5+w*.5
+	var right: float=w*.5-door_at-gap*.5
+	_wall(Vector3(left,ceiling_height,.16),Vector3(-w*.5+left*.5,ceiling_height*.5,-d*.5-.08),mat)
+	_wall(Vector3(right,ceiling_height,.16),Vector3(door_at+gap*.5+right*.5,ceiling_height*.5,-d*.5-.08),mat)
+	_wall(Vector3(gap,ceiling_height-2.10,.16),Vector3(door_at,2.10+(ceiling_height-2.10)*.5,-d*.5-.08),mat)
+	# A short supported threshold lies behind the doorway before the fade trigger.
+	_collider(Vector3(gap,.12,1.0),Vector3(door_at,-.06,-d*.5-.35),WorldBuilder.L_GROUND)
 
 
 func _wall(size: Vector3, pos: Vector3, m: Material) -> void:

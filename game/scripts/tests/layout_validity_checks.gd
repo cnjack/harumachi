@@ -12,16 +12,31 @@ func run() -> void:
 	var p: Dictionary=SummerProjects.opening();p.phase="site";p.final={"menu":"sandwich","portion":"bite","presentation":"paper","trial_batch":1}
 	var trial_actor: NPC=main.npcs.mio;trial_actor.set_home(false);trial_actor.place(Vector3(-3,0,1),0)
 	main.player.global_position=Vector3(-10,.05,-4);await t.frames(3)
-	var actual_path: Array[Vector3]=trial_actor.MOTION_ROUTE.query(trial_actor,trial_actor.global_position,Vector3(2,0,13))
-	var route: Dictionary={"ok":not actual_path.is_empty(),"revision":SummerProjects.layout_fingerprint(),"path":actual_path}
+	var route_start: Vector3=trial_actor.global_position
+	var waypoints: Array[Vector3]=trial_actor.MOTION_ROUTE.query(trial_actor,route_start,Vector3(2,0,13))
+	# A direct capsule route contains only its destination. Include the real departure too.
+	var actual_path: Array[Vector3]=[route_start]
+	actual_path.append_array(waypoints)
+	var route: Dictionary={"ok":not waypoints.is_empty(),"revision":SummerProjects.layout_fingerprint(),"path":actual_path}
 	check("fixture uses a real clear cooperation route",route.ok and LayoutValidity.path_clear(actual_path),str(actual_path))
 	var accepted: String=SummerProjects.record_layout(route,"mio",true)
 	check("actual trial initially remains usable",accepted=="" and SummerProjects.ready(),accepted)
 	if not route.ok or accepted!="":GameState.from_dict(saved);main._restore();return
 	var empty_trial: Dictionary=route.duplicate(true);empty_trial.path=[]
 	check("a new empty route cannot replace actual cooperation travel",SummerProjects.record_layout(empty_trial,"mio",true)!="")
-	var short_trial: Dictionary=route.duplicate(true);short_trial.path=[actual_path[0]]
-	check("a half-route cannot become a reached serving point",SummerProjects.record_layout(short_trial,"mio",true)!="")
+	var full_distance: float=0.0
+	for measure_index: int in range(1,actual_path.size()):full_distance+=actual_path[measure_index-1].distance_to(actual_path[measure_index])
+	var remaining: float=full_distance*.5
+	var short_path: Array[Vector3]=[route_start]
+	for truncate_index: int in range(1,actual_path.size()):
+		var segment: float=actual_path[truncate_index-1].distance_to(actual_path[truncate_index])
+		if segment<=remaining:
+			short_path.append(actual_path[truncate_index]);remaining-=segment
+		else:
+			short_path.append(actual_path[truncate_index-1].lerp(actual_path[truncate_index],remaining/segment));break
+	var short_trial: Dictionary=route.duplicate(true);short_trial.path=short_path
+	var accepted_trial: Dictionary=p.layout_trial.duplicate(true)
+	check("a half-route cannot become a reached serving point",full_distance>1.0 and short_path[-1].distance_to(actual_path[-1])>.2 and LayoutValidity.path_clear(short_path) and SummerProjects.record_layout(short_trial,"mio",true)!="" and p.layout_trial==accepted_trial,"full=%s / half=%s"%[actual_path,short_path])
 	GameState.add_item("flower_pot",1,true)
 	var remote: int=GameState.add_placement("flower_pot",8,4,0)
 	await t.frames(3)

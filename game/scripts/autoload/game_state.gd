@@ -478,11 +478,14 @@ func quest_title(qid: String) -> String:
 	return quests_db.get(qid, {}).get("title", qid)
 
 func start_quest(qid: String) -> bool:
+	if qid == "Q11" and not MainlineProgress.can_offer_revival(): return false
 	if qstate(qid) != "available":
 		return false
 	DailyLife.clear_tracking()
 	SummerProjects.clear_tracking()
 	flags.erase("request_tracked")
+	ResidentVisits.state().tracked = false
+	if qid == "Q11": flags["revival_accepted"] = true
 	quests[qid] = {"state": "active", "step": 0}
 	if qid == "Q16":
 		recipes_known["veg_sandwich"] = true
@@ -1265,6 +1268,7 @@ func sow(id: String, seed_item: String) -> String:
 	if weather == "rain" and not gh:
 		p.water = true
 	Audio.fx("soil")
+	MainlineProgress.record_direction_action("plant")
 	plots_changed.emit()
 	state_changed.emit()
 	return ""
@@ -1392,6 +1396,7 @@ func sell_produce(iid: String, n: int, rate: float) -> int:
 	flags["sold_total"] = int(flags.get("sold_total", 0)) + n
 	if rate > 1.0:
 		flags["sold_market"] = int(flags.get("sold_market", 0)) + n
+	if rate >= MARKET_RATE: MainlineProgress.record_direction_action("market")
 	Audio.sting("coin")
 	state_changed.emit()
 	return pay
@@ -2014,6 +2019,7 @@ func _read_json(path: String) -> Dictionary:
 
 func track_quest(qid: String) -> void:
 	if qstate(qid) != "active": return
+	ResidentVisits.state().tracked = false
 	tracked_quest = qid
 	DailyLife.clear_tracking()
 	SummerProjects.clear_tracking()

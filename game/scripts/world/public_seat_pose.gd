@@ -1,7 +1,7 @@
 class_name PublicSeatPose
 extends SkeletonModifier3D
 ## A seated lower-body pose on the existing skeleton; the upper body keeps its idle/sip motion.
-var actor: Player
+var actor: Node3D
 var seat_height := .48
 var measured_hip_height := INF
 var measured_knee_forward := 0.0
@@ -57,7 +57,7 @@ func _process_modification() -> void:
 	var hip_world: Vector3=skeleton.to_global(pose.origin)
 	pose.origin+=skeleton.global_basis.inverse()*Vector3.UP*(actor.global_position.y+seat_height+.09-hip_world.y)
 	skeleton.set_bone_global_pose(hips,pose)
-	var forward: Vector3=actor.model_root.global_basis.z.normalized()
+	var forward: Vector3=_forward()
 	for side: String in ["L","R"]:
 		plant_leg(skeleton,side,forward)
 	var head: int=LivingPose.bone(skeleton,"head")
@@ -65,4 +65,9 @@ func _process_modification() -> void:
 	measured_hip_height=skeleton.to_global(skeleton.get_bone_global_pose(hips).origin).y-actor.global_position.y
 	var knee: int=LivingPose.bone(skeleton,"shin.R")
 	if knee>=0:
-		measured_knee_forward=(skeleton.to_global(skeleton.get_bone_global_pose(knee).origin)-skeleton.to_global(skeleton.get_bone_global_pose(hips).origin)).dot(actor.model_root.global_basis.z.normalized())
+		measured_knee_forward=(skeleton.to_global(skeleton.get_bone_global_pose(knee).origin)-skeleton.to_global(skeleton.get_bone_global_pose(hips).origin)).dot(_forward())
+
+func _forward() -> Vector3:
+	if actor is Player:return (actor as Player).model_root.global_basis.z.normalized()
+	if actor is NPC:return (actor as NPC).model.global_basis.z.normalized()
+	return actor.global_basis.z.normalized()

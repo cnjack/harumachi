@@ -72,11 +72,18 @@ func sync_state() -> void:
 	for point in get_tree().get_nodes_in_group("interactables"):
 		if point.id == "space_plan": point.visible = GameState.qstate("Q11") == "done" or active
 	var actual_stage: bool = is_instance_valid(world.fest_nodes.get("natsumatsuri")) and world.fest_nodes.natsumatsuri.visible
-	preview.visible = active and not actual_stage and world.region == "town"
+	# These boxes reserve this summer's tower/stalls while their layout is tried.
+	# After the festival, retained everyday furniture is real; the removed tower
+	# must not return as invisible collision or a permanent debug-shaped display.
+	var festival: Dictionary = GameState.festival("natsumatsuri")
+	var before_cleanup: bool = GameState.day < int(festival.day) or GameState.day == int(festival.day) and GameState.hour() < float(festival.end)
+	var planning: bool = active and not actual_stage and before_cleanup
+	var shown: bool = planning and world.region == "town" and not world.indoor
+	preview.visible = shown
 	for child in preview.get_children():
-		(child as StaticBody3D).collision_layer = WorldBuilder.L_SOLID if active and not actual_stage else 0
+		(child as StaticBody3D).collision_layer = WorldBuilder.L_SOLID if shown else 0
 	for child in get_children():
-		if child.has_meta("space_circle"): child.visible = active and world.region == "town"
+		if child.has_meta("space_circle"): child.visible = shown and str(SummerSpace.state().phase) != "retained"
 	for child in pins.get_children():
 		pins.remove_child(child)
 		child.queue_free()

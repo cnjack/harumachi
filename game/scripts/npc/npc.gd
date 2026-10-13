@@ -253,6 +253,13 @@ func set_home(on: bool) -> void:
 	talk.radius = 0.0 if on else 2.3
 	body.collision_layer = 0 if on else WorldBuilder.L_ACTORS
 	if on:
+		var room: String=ResidentPlaces.room_for(npc_id)
+		if ResidentPlaces.SPECS.has(room):
+			var spec: Dictionary=ResidentPlaces.SPECS[room]
+			var resting: Dictionary=spec.rest_spots.get(npc_id,{})
+			if not resting.is_empty():
+				place(spec.origin+resting.at,float(resting.yaw))
+				set_meta("home_room",room)
 		var contact: Node=model.find_child("NaturalLocomotionPose",true,false)
 		if contact!=null:contact.call("reset_contact")
 		if _moving: walk_finished.emit(false)

@@ -30,7 +30,17 @@ func _ready() -> void:
 	main.ui.instant = true
 	main.ui.auto_work_priority = true # this suite follows its declared work route; the topic-choice suite overrides it
 	await frames(10)
-	if OS.get_cmdline_user_args().has("--only=scene-life"):
+	if OS.get_cmdline_user_args().has("--only=resident-visits"):
+		await load("res://scripts/tests/resident_visits_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=public-visits"):
+		await load("res://scripts/tests/public_visit_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=resident-interiors"):
+		await load("res://scripts/tests/resident_interiors_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=props-lifecycle"):
+		await load("res://scripts/tests/props_lifecycle_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=narrative-continuity"):
+		await load("res://scripts/tests/narrative_continuity_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=scene-life"):
 		await load("res://scripts/tests/bridge_dressing_checks.gd").new(self).run()
 		await load("res://scripts/tests/cat_continuity_checks.gd").new(self).run()
 		await load("res://scripts/tests/water_landscape_checks.gd").new(self).run()
@@ -250,6 +260,11 @@ func _ready() -> void:
 		await load("res://scripts/tests/environment_visual_checks.gd").new(self).run()
 		await load("res://scripts/tests/tree_locomotion_checks.gd").new(self).run()
 	if not Array(OS.get_cmdline_user_args()).any(func(arg: String)->bool:return arg.begins_with("--only=")):
+		await load("res://scripts/tests/resident_visits_checks.gd").new(self).run()
+		await load("res://scripts/tests/resident_interiors_checks.gd").new(self).run()
+		await load("res://scripts/tests/props_lifecycle_checks.gd").new(self).run()
+		await load("res://scripts/tests/narrative_continuity_checks.gd").new(self).run()
+		await load("res://scripts/tests/public_visit_checks.gd").new(self).run()
 		await load("res://scripts/tests/bridge_dressing_checks.gd").new(self).run()
 		await load("res://scripts/tests/cat_continuity_checks.gd").new(self).run()
 		await load("res://scripts/tests/water_landscape_checks.gd").new(self).run()
@@ -266,6 +281,7 @@ func _ready() -> void:
 		var f := FileAccess.open(out, FileAccess.WRITE)
 		f.store_string(JSON.stringify({"engine": Engine.get_version_info().string, "checks": results.size(), "failed": fails, "results": results}, "  "))
 		f.close()
+	Audio.game_on = false
 	Audio.silence()
 	await frames(3)
 	get_tree().quit(1 if fails > 0 else 0)
@@ -639,9 +655,11 @@ func run_all() -> void:
 
 	# ---------- shop + decor limit
 	var c_shop: int = G.coins
-	await use("shop_zakka", [["bunting"]])
+	await use("shop_zakka")
+	await use("visit_zakka_memory", [1, ["bunting"]])
 	check("SHOP", "bought bunting (30)", G.count("bunting") == 1 and G.coins == c_shop - 30)
-	await use("shop_zakka", [["lantern"]])
+	await use("visit_zakka_memory", [1, ["lantern"]])
+	await use("visit_zakka_exit")
 	check("SHOP", "third decor kind refused (max two kinds)", G.count("lantern") == 0 and G.coins == c_shop - 30)
 	var c0: int = G.coins
 	G.coins = 10
@@ -1389,7 +1407,8 @@ func v06_checks() -> void:
 	G.minute = 10.0 * 60.0
 	main.update_npcs(true)
 	await use("mio", [0])
-	check("LORE", "Mio recognises herself in the photo; the notebook quest starts", G.qstate("Q10") == "done" and G.at_step("Q11", "find_notebook"))
+	check("LORE", "Mio recognises herself; the revival still waits for explicit consent", G.qstate("Q10") == "done" and G.qstate("Q11") == "available")
+	await use("mio", [0])
 	await use("center_door")
 	check("LORE", "健一's notebook is in the community centre storeroom", Progress.found("col_notebook") and G.at_step("Q11", "show_haru"))
 	await use("haru")
@@ -1399,7 +1418,10 @@ func v06_checks() -> void:
 	await use("haru")
 	check("LORE", "Haru starts both jobs and hands over the yagura blueprint", G.at_step("Q12", "buy_washi") and G.at_step("Q13", "ask_tanaka") and Progress.found("col_blueprint"))
 	G.coins += 200
-	await use("shop_zakka", [{"buy": {"washi": 5}}])
+	await use("shop_zakka")
+	await use("visit_zakka_memory", [1, {"buy": {"washi": 5}}])
+	await use("visit_zakka_memory", [0])
+	await use("visit_zakka_exit")
 	main.story.lore.checks()
 	check("LORE", "five sheets of washi from the zakka shop", G.count("washi") >= 5 and G.at_step("Q12", "get_bamboo"), "washi %d %s" % [G.count("washi"), G.qstep_id("Q12")])
 	check("LORE", "after the notebook, 阿健 found the old market poster", Progress.found("col_poster"))

@@ -16,8 +16,9 @@ static func build(world: WorldBuilder) -> void:
 	var town:=Node3D.new();town.name="ReviewedLibrary";world.add_child(town)
 	var farm:=Node3D.new();farm.name="ReviewedLibrary";world.farm.add_child(farm)
 	# Containers belong to the working shed/potting area, never to a shop door.
-	for entry: Array in [["P_library_carton",Vector3(14.0,0,3.5),24,0],
-		["P_library_bucket",Vector3(16.5,0,13.3),-15,0],["P_library_stool",Vector3(15.1,0,13.7),12,1]]:
+	# One garden stool belongs beside Haru's potting bench. The farm keeps the
+	# working carton and filled bucket; do not duplicate the same display kit.
+	for entry: Array in [["P_library_stool",Vector3(15.1,0,13.7),12,1]]:
 		_place(world,town,entry,false)
 	for entry: Array in [["P_library_carton",Vector3(-12.2,0,-5.0),-18,0],
 		["P_library_bucket",Vector3(-8.1,0,-4.0),20,0],["P_library_stool",Vector3(-9.0,0,-4.3),-12,1]]:
@@ -37,8 +38,8 @@ static func build(world: WorldBuilder) -> void:
 		var at:=Vector2(36.0+index*3.0,-6.0-index*.29)
 		var rock: Node3D=world.spawn("V%02d_path_pebble"%(16+index%3),Vector3(at.x,LakesideLayout.height_at(at),at.y),index*71,0,farm)
 		if rock:rock.name="PathPebble_%d"%index;WorldBuilder.rest_on_terrain(rock,LakesideLayout.height_at(at),.02)
-	# The picnic cloth demonstrates the selected quiet plaid material near a
-	# resting place; it follows the sloping ground rather than floating as a plane.
+	# Retain the reviewed cloth for a future real invitation, packed away until
+	# that event exists. Merely selecting a material never starts a picnic.
 	var cloth:=SurfaceTool.new();cloth.begin(Mesh.PRIMITIVE_TRIANGLES)
 	for z in 8:
 		for x in 12:
@@ -46,6 +47,7 @@ static func build(world: WorldBuilder) -> void:
 			for q: Vector2 in [p,p+Vector2(.13,.13),p+Vector2(0,.13),p,p+Vector2(.13,0),p+Vector2(.13,.13)]:
 				cloth.set_normal(Vector3.UP);cloth.add_vertex(Vector3(q.x,LakesideLayout.height_at(q)+.025,q.y))
 	var cloth_node:=MeshInstance3D.new();cloth_node.name="PicnicCloth";cloth_node.mesh=cloth.commit();farm.add_child(cloth_node)
+	cloth_node.visible=false
 	var cloth_material:=ShaderMaterial.new();cloth_material.shader=load("res://shaders/library_finish.gdshader");cloth_material.set_shader_parameter("pattern",2);cloth_material.set_shader_parameter("tint",Color(.34,.53,.60));cloth_node.material_override=cloth_material
 
 static func _place(world: WorldBuilder,parent: Node3D,entry: Array,farm: bool) -> void:
