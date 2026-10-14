@@ -1,5 +1,6 @@
 shader_type spatial;
-render_mode diffuse_toon;
+render_mode specular_schlick_ggx;
+#include "res://shaders/furniture_reflection.gdshaderinc"
 
 uniform sampler2D albedo_tex : source_color, filter_linear_mipmap_anisotropic, repeat_enable;
 uniform sampler2D grain_tex : source_color, filter_linear_mipmap_anisotropic, repeat_enable;
@@ -17,7 +18,11 @@ uniform int atlas_mode = 0; // pure timber, mixed atlas, dining top, kotatsu fra
 uniform bool structural = false;
 uniform float wear_strength : hint_range(0., 1.) = .35;
 uniform float sheen_strength : hint_range(0., 1.) = .35;
-uniform float environment_sheen : hint_range(0., .25) = .18;
+uniform float environment_sheen : hint_range(0., .25) = .22;
+uniform float roughness_base = .72;
+uniform float roughness_polished = .48;
+uniform float reflectance = .36;
+uniform float authored_detail_strength = 0.;
 uniform vec3 part_min = vec3(-.5);
 uniform vec3 part_size = vec3(1.);
 uniform int component_count = 0;
@@ -31,6 +36,8 @@ varying vec3 board_min;
 varying vec3 board_size;
 varying float board_horizontal;
 varying float finish_polish;
+varying float reflection_f0;
+varying float reflection_roughness;
 
 void vertex() {
 	root_p = (wood_transform * vec4(VERTEX, 1.)).xyz;
@@ -78,10 +85,13 @@ void fragment() {
 	}
 	if (has_finish_tint) {
 		float authored_fibre = has_original ? dot(texture(albedo_tex, UV * uv_scale + uv_offset).rgb, vec3(.2126, .7152, .0722)) : grain;
-		// SurfaceFinish's existing game wood is the visible grain, including when
-		// the GLB also has an almost-flat image. Keep that image as a quiet detail.
+		// Keep the existing fine fibres and the approved furniture's real UV image.
+		// The source-image contrast remains visible beneath the lacquer reflection.
 		float fibre_contrast = 1. + (grain - .4) * grain_strength;
-		if (has_original) { fibre_contrast *= .96 + .08 * authored_fibre; }
+		if (has_original) {
+			float image_detail = clamp(1. + (authored_fibre - .65) * authored_detail_strength, .72, 1.15);
+			fibre_contrast = authored_detail_strength > 0. ? image_detail : (fibre_contrast * (.96 + .08 * authored_fibre));
+		}
 		vec3 art_wood = finish_tint.rgb * fibre_contrast;
 		original = mix(original, art_wood, timber);
 	}
@@ -137,20 +147,18 @@ void fragment() {
 	}
 	if (use_profile == 3) { colour *= 1. + timber * used_top * wear_strength * .022; }
 	ALBEDO = colour;
-	ROUGHNESS = .88 - timber * polished * .15;
 	finish_polish = timber * polished;
-	// Only contact surfaces catch the real environment in direct-light shadow.
-	// The high roughness and low cap prevent mirrors; backs/legs remain matte.
-	SPECULAR = clamp(sheen_strength * finish_polish * environment_sheen, 0., .08);
+	ROUGHNESS = structural ? .92 : mix(roughness_base, roughness_polished, finish_polish);
+	// Native rough reflection follows the actual curved normals and environment.
+	// The sheen control also drives the gloss-off diagnostic capture.
+	SPECULAR = structural ? .08 : reflectance * clamp(sheen_strength / .35, 0., 1.2) * clamp(environment_sheen / .22, 0., 1.2) * (.65 + .35 * finish_polish);
+	reflection_f0 = .16 * SPECULAR * SPECULAR;
+	reflection_roughness = ROUGHNESS;
 }
 
 void light() {
 	float facing = max(dot(NORMAL, LIGHT), 0.);
 	float cel = mix(.34, 1., smoothstep(.08, .16, facing));
 	DIFFUSE_LIGHT += LIGHT_COLOR * ATTENUATION * cel / 3.14159265;
-	vec3 halfway = normalize(LIGHT + VIEW);
-	float broad_highlight = smoothstep(.58, .87, max(dot(NORMAL, halfway), 0.));
-	// A quiet two-tone satin patch, carried by actual light and view direction.
-	// No environment mirror, normal-map noise or sharp PBR sparkle.
-	SPECULAR_LIGHT += LIGHT_COLOR * ATTENUATION * vec3(1., .96, .88) * broad_highlight * finish_polish * sheen_strength * .46;
+	SPECULAR_LIGHT += LIGHT_COLOR * ATTENUATION * SPECULAR_AMOUNT * furniture_ggx(NORMAL, VIEW, LIGHT, reflection_roughness, reflection_f0);
 }

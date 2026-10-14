@@ -5288,9 +5288,9 @@
     },
     "I02_cake_showcase": {
       "id": "I02_cake_showcase",
-      "sha256": "8b9754eb6be5f5aed6baf280561d1ea003287a1db0a7130c7916bdfd86da1474",
-      "source_mtime": 1791301493.130299,
-      "triangles": 168,
+      "sha256": "c23b9cf4326ba1d3d776c653432842440b8d791ea235c6bd15c094ed77a86e73",
+      "source_mtime": 1791969127.0195525,
+      "triangles": 12600,
       "bounds_godot": {
         "min": [
           -0.6700000166893005,
@@ -5308,11 +5308,11 @@
         1.1490000188350677,
         0.7549999947659671
       ],
-      "surface_area_m2": 14.515,
+      "surface_area_m2": 14.398,
       "albedo_image_sizes": [],
       "topology": {
-        "components": 14,
-        "largest_component_area_fraction": 0.2867,
+        "components": 15,
+        "largest_component_area_fraction": 0.2854,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
@@ -5535,9 +5535,9 @@
     },
     "I04_shop_counter": {
       "id": "I04_shop_counter",
-      "sha256": "0be99ecc76a3894cd440372d99ef8854c91dfb26b210d2a690d3e7c2140ad921",
-      "source_mtime": 1791643596.204527,
-      "triangles": 572,
+      "sha256": "78f5a9ae1192857b525d3a6fcdc832646b64e2d7183668979174a1a0cb2ce60d",
+      "source_mtime": 1791969127.082189,
+      "triangles": 10220,
       "bounds_godot": {
         "min": [
           -1.0549999475479126,
@@ -5555,7 +5555,7 @@
         1.2200000435113907,
         1.1975000128149986
       ],
-      "surface_area_m2": 18.011,
+      "surface_area_m2": 18.298,
       "albedo_image_sizes": [
         [
           1024,
@@ -5563,8 +5563,8 @@
         ]
       ],
       "topology": {
-        "components": 13,
-        "largest_component_area_fraction": 0.5299,
+        "components": 16,
+        "largest_component_area_fraction": 0.5213,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
@@ -5580,15 +5580,15 @@
       "node_density_px_m": {
         "CounterTop": 164.5
       },
-      "untextured_area_fraction": 0.7159,
+      "untextured_area_fraction": 0.7207,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
     "I05_bread_shelf": {
       "id": "I05_bread_shelf",
-      "sha256": "cc2eb99eb1e28e6e98798581e08cdb0fd9ad49f8fdf0a9210ed4e7d6f4ead8d9",
-      "source_mtime": 1791643596.310377,
-      "triangles": 576,
+      "sha256": "d8159bf077bf014d00842861181a22f25a6a586cd8511cb92e65cf5ed504b364",
+      "source_mtime": 1791969127.156065,
+      "triangles": 17296,
       "bounds_godot": {
         "min": [
           -0.5350000262260437,
@@ -5606,7 +5606,7 @@
         1.5099999904632568,
         0.620000016875565
       ],
-      "surface_area_m2": 13.351,
+      "surface_area_m2": 13.873,
       "albedo_image_sizes": [
         [
           1024,
@@ -5614,38 +5614,46 @@
         ]
       ],
       "topology": {
-        "components": 16,
-        "largest_component_area_fraction": 0.1121,
+        "components": 24,
+        "largest_component_area_fraction": 0.1089,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 314.31,
-        "median": 314.9
+        "p10": 45.68,
+        "median": 314.14
       },
       "material_density_px_m": {
         "CedarDark": {
-          "p10": 314.31,
-          "median": 317.36
+          "p10": 28.12,
+          "median": 315.4
         },
         "Cedar": {
-          "p10": 314.31,
-          "median": 314.9
+          "p10": 45.68,
+          "median": 314.14
         }
       },
       "node_density_px_m": {
-        "ShelfFoot": 314.9,
-        "ShelfUpright": 1016.06,
-        "ShelfUpright.001": 1016.06,
-        "TrayBoard_0": 314.9,
-        "TrayBoard_1": 314.9,
-        "TrayBoard_2": 314.9,
-        "TrayBoard_3": 314.9,
-        "TrayLip_0": 971.61,
-        "TrayLip_1": 971.61,
-        "TrayLip_2": 971.61,
-        "TrayLip_3": 971.61
+        "FormShelfBracket_0_1": 716.8,
+        "FormShelfBracket_0_-1": 716.8,
+        "FormShelfBracket_1_1": 716.8,
+        "FormShelfBracket_1_-1": 716.8,
+        "FormShelfBracket_2_1": 716.8,
+        "FormShelfBracket_2_-1": 716.8,
+        "FormShelfBracket_3_1": 716.8,
+        "FormShelfBracket_3_-1": 716.8,
+        "ShelfFoot": 314.14,
+        "ShelfUpright": 1095.51,
+        "ShelfUpright.001": 1095.51,
+        "TrayBoard_0": 314.14,
+        "TrayBoard_1": 314.14,
+        "TrayBoard_2": 314.14,
+        "TrayBoard_3": 314.14,
+        "TrayLip_0": 1050.03,
+        "TrayLip_1": 1050.03,
+        "TrayLip_2": 1050.03,
+        "TrayLip_3": 1050.03
       },
-      "untextured_area_fraction": 0.3725,
+      "untextured_area_fraction": 0.3598,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -8716,27 +8724,27 @@
     },
     "P_cafe_table": {
       "id": "P_cafe_table",
-      "sha256": "acf6ced3dfc97806c2e9cc05ea3927f9fa960d8199609520cffac633fd0d571a",
-      "source_mtime": 1791643596.6417239,
-      "triangles": 868,
+      "sha256": "ae5dc6b49b13af5fe4f23b86e0f4f9b20887766d7c13ee90b867bc27bc944229",
+      "source_mtime": 1791969127.9744272,
+      "triangles": 28116,
       "bounds_godot": {
         "min": [
-          -0.9474999871656129,
+          -0.9464030592046834,
           0.0,
           -0.36000001430511475
         ],
         "max": [
-          0.9474999871656129,
+          0.9464030592046834,
           0.8900000005960464,
           0.36000001430511475
         ]
       },
       "size_m": [
-        1.8949999743312258,
+        1.8928061184093667,
         0.8900000005960464,
         0.7200000286102295
       ],
-      "surface_area_m2": 4.073,
+      "surface_area_m2": 4.375,
       "albedo_image_sizes": [
         [
           1024,
@@ -8744,8 +8752,8 @@
         ]
       ],
       "topology": {
-        "components": 15,
-        "largest_component_area_fraction": 0.2269,
+        "components": 23,
+        "largest_component_area_fraction": 0.2069,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
@@ -8755,28 +8763,36 @@
       "material_density_px_m": {
         "Cedar": {
           "p10": 538.98,
-          "median": 592.3
+          "median": 586.15
         },
         "CedarDark": {
-          "p10": 1117.09,
-          "median": 1873.31
+          "p10": 716.8,
+          "median": 1248.41
         }
       },
       "node_density_px_m": {
-        "ChairLeftBack": 589.79,
-        "ChairLeftLeg": 1941.68,
-        "ChairLeftLeg.001": 1941.68,
-        "ChairLeftLeg.002": 1941.68,
-        "ChairLeftLeg.003": 1941.68,
-        "ChairLeftSeat": 541.3,
-        "ChairRightBack": 589.79,
-        "ChairRightLeg": 1941.68,
-        "ChairRightLeg.001": 1941.68,
-        "ChairRightLeg.002": 1941.68,
-        "ChairRightLeg.003": 1941.68,
-        "ChairRightSeat": 541.3,
+        "ChairLeftBack": 584.29,
+        "ChairLeftBack_BackStile_1": 716.8,
+        "ChairLeftBack_BackStile_-1": 716.8,
+        "ChairLeftLeg": 2110.23,
+        "ChairLeftLeg.001": 2110.23,
+        "ChairLeftLeg.002": 2110.23,
+        "ChairLeftLeg.003": 2110.23,
+        "ChairLeftSeat": 541.1,
+        "ChairLeftSeat_SideStretcher_1": 716.8,
+        "ChairLeftSeat_SideStretcher_-1": 716.8,
+        "ChairRightBack": 584.29,
+        "ChairRightBack_BackStile_1": 716.8,
+        "ChairRightBack_BackStile_-1": 716.8,
+        "ChairRightLeg": 2110.23,
+        "ChairRightLeg.001": 2110.23,
+        "ChairRightLeg.002": 2110.23,
+        "ChairRightLeg.003": 2110.23,
+        "ChairRightSeat": 541.1,
+        "ChairRightSeat_SideStretcher_1": 716.8,
+        "ChairRightSeat_SideStretcher_-1": 716.8,
         "Foot": 1117.09,
-        "Pedestal": 1629.9,
+        "Pedestal": 1628.91,
         "RoundTop": 682.67
       },
       "untextured_area_fraction": 0.0,
@@ -8989,9 +9005,9 @@
     },
     "P_coffee_station": {
       "id": "P_coffee_station",
-      "sha256": "1bd9524e2f2644620b5e9cdb6b92282d6bcb464e3076d290b4f4e9500574dd8b",
-      "source_mtime": 1791643597.0161526,
-      "triangles": 2288,
+      "sha256": "85329fd6419725eb8396b2f9d88c1365509f8447cb4536c392e4569067a87190",
+      "source_mtime": 1791969128.1372633,
+      "triangles": 22300,
       "bounds_godot": {
         "min": [
           -0.5,
@@ -9000,72 +9016,81 @@
         ],
         "max": [
           0.5,
-          1.3260000477312133,
-          0.3549999985843897
+          1.3250000476837158,
+          0.35499998927116394
         ]
       },
       "size_m": [
         1.0,
-        1.3260000477312133,
-        0.6850000116974115
+        1.3250000476837158,
+        0.6850000023841858
       ],
-      "surface_area_m2": 9.011,
+      "surface_area_m2": 10.396,
       "albedo_image_sizes": [
+        [
+          1254,
+          1254
+        ],
         [
           1024,
           1024
         ]
       ],
       "topology": {
-        "components": 31,
-        "largest_component_area_fraction": 0.4181,
+        "components": 77,
+        "largest_component_area_fraction": 0.3619,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 315.11,
-        "median": 315.75
+        "p10": 2048.0,
+        "median": 2483.79
       },
       "material_density_px_m": {
-        "CedarDark": {
-          "p10": 648.57,
-          "median": 650.35
+        "BrushedSteel": {
+          "p10": 2445.85,
+          "median": 2508.0
         },
         "Cedar": {
-          "p10": 315.11,
-          "median": 315.75
+          "p10": 2048.0,
+          "median": 2048.0
+        },
+        "CedarDark": {
+          "p10": 2035.35,
+          "median": 2048.0
         }
       },
       "node_density_px_m": {
-        "MachineSide": 650.35,
-        "Worktop": 315.75
+        "BrushedSteel_Geometry": 2508.0,
+        "Cedar_Geometry": 2048.0,
+        "CedarDark_Geometry": 2048.0
       },
-      "untextured_area_fraction": 0.7998,
+      "untextured_area_fraction": 0.5812,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
     "P_community_table": {
       "id": "P_community_table",
-      "sha256": "6de60883fc611afd633d9ff82b4d56ab5bc1cc7400fdf1b820b534cd7048dc41",
-      "source_mtime": 1791644058.8487449,
-      "triangles": 1804,
+      "sha256": "0d098dd9c607f9d6cbaa6d6f7a4868fc6c6c8ec97d33ed526e0b53514f94039f",
+      "source_mtime": 1791969127.887099,
+      "triangles": 70780,
       "bounds_godot": {
         "min": [
           -1.024999976158142,
           0.0,
-          -1.1175000332295895
+          -1.1164031364023685
         ],
         "max": [
           1.024999976158142,
           0.8900000005960464,
-          1.117500053511673
+          1.1164031364023685
         ]
       },
       "size_m": [
         2.049999952316284,
         0.8900000005960464,
-        2.2350000867412625
+        2.232806272804737
       ],
-      "surface_area_m2": 12.721,
+      "surface_area_m2": 13.668,
       "albedo_image_sizes": [
         [
           1024,
@@ -9073,8 +9098,8 @@
         ]
       ],
       "topology": {
-        "components": 41,
-        "largest_component_area_fraction": 0.3441,
+        "components": 65,
+        "largest_component_area_fraction": 0.3198,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
@@ -9087,51 +9112,75 @@
           "median": 538.98
         },
         "CedarDark": {
-          "p10": 1342.54,
-          "median": 1936.83
+          "p10": 712.37,
+          "median": 1408.44
         }
       },
       "node_density_px_m": {
-        "ChairBackBack": 589.79,
-        "ChairBackBack.001": 589.79,
-        "ChairBackBack.002": 589.79,
-        "ChairBackLeg": 1941.68,
-        "ChairBackLeg.001": 1941.68,
-        "ChairBackLeg.002": 1941.68,
-        "ChairBackLeg.003": 1941.68,
-        "ChairBackLeg.004": 1941.68,
-        "ChairBackLeg.005": 1941.68,
-        "ChairBackLeg.006": 1941.68,
-        "ChairBackLeg.007": 1941.68,
-        "ChairBackLeg.008": 1941.68,
-        "ChairBackLeg.009": 1941.68,
-        "ChairBackLeg.010": 1941.68,
-        "ChairBackLeg.011": 1941.68,
-        "ChairBackSeat": 541.3,
-        "ChairBackSeat.001": 541.3,
-        "ChairBackSeat.002": 541.3,
-        "ChairFrontBack": 589.79,
-        "ChairFrontBack.001": 589.79,
-        "ChairFrontBack.002": 589.79,
-        "ChairFrontLeg": 1941.68,
-        "ChairFrontLeg.001": 1941.68,
-        "ChairFrontLeg.002": 1941.68,
-        "ChairFrontLeg.003": 1941.68,
-        "ChairFrontLeg.004": 1941.68,
-        "ChairFrontLeg.005": 1941.68,
-        "ChairFrontLeg.006": 1941.68,
-        "ChairFrontLeg.007": 1941.68,
-        "ChairFrontLeg.008": 1941.68,
-        "ChairFrontLeg.009": 1941.68,
-        "ChairFrontLeg.010": 1941.68,
-        "ChairFrontLeg.011": 1941.68,
-        "ChairFrontSeat": 541.3,
-        "ChairFrontSeat.001": 541.3,
-        "ChairFrontSeat.002": 541.3,
-        "SharedLeg": 1344.51,
-        "SharedLeg.001": 1344.51,
-        "SharedLeg.002": 1344.51,
-        "SharedLeg.003": 1344.51,
+        "ChairBackBack": 584.29,
+        "ChairBackBack_BackStile_1": 716.8,
+        "ChairBackBack_BackStile_-1": 716.8,
+        "ChairBackBack.001": 584.29,
+        "ChairBackBack.001_BackStile_1": 716.8,
+        "ChairBackBack.001_BackStile_-1": 716.8,
+        "ChairBackBack.002": 584.29,
+        "ChairBackBack.002_BackStile_1": 716.8,
+        "ChairBackBack.002_BackStile_-1": 716.8,
+        "ChairBackLeg": 2110.23,
+        "ChairBackLeg.001": 2110.23,
+        "ChairBackLeg.002": 2110.23,
+        "ChairBackLeg.003": 2110.23,
+        "ChairBackLeg.004": 2110.23,
+        "ChairBackLeg.005": 2110.23,
+        "ChairBackLeg.006": 2110.23,
+        "ChairBackLeg.007": 2110.23,
+        "ChairBackLeg.008": 2110.23,
+        "ChairBackLeg.009": 2110.23,
+        "ChairBackLeg.010": 2110.23,
+        "ChairBackLeg.011": 2110.23,
+        "ChairBackSeat": 541.1,
+        "ChairBackSeat_SideStretcher_1": 716.8,
+        "ChairBackSeat_SideStretcher_-1": 716.8,
+        "ChairBackSeat.001": 541.1,
+        "ChairBackSeat.001_SideStretcher_1": 716.8,
+        "ChairBackSeat.001_SideStretcher_-1": 716.8,
+        "ChairBackSeat.002": 541.1,
+        "ChairBackSeat.002_SideStretcher_1": 716.8,
+        "ChairBackSeat.002_SideStretcher_-1": 716.8,
+        "ChairFrontBack": 584.29,
+        "ChairFrontBack_BackStile_1": 716.8,
+        "ChairFrontBack_BackStile_-1": 716.8,
+        "ChairFrontBack.001": 584.29,
+        "ChairFrontBack.001_BackStile_1": 716.8,
+        "ChairFrontBack.001_BackStile_-1": 716.8,
+        "ChairFrontBack.002": 584.29,
+        "ChairFrontBack.002_BackStile_1": 716.8,
+        "ChairFrontBack.002_BackStile_-1": 716.8,
+        "ChairFrontLeg": 2110.23,
+        "ChairFrontLeg.001": 2110.23,
+        "ChairFrontLeg.002": 2110.23,
+        "ChairFrontLeg.003": 2110.23,
+        "ChairFrontLeg.004": 2110.23,
+        "ChairFrontLeg.005": 2110.23,
+        "ChairFrontLeg.006": 2110.23,
+        "ChairFrontLeg.007": 2110.23,
+        "ChairFrontLeg.008": 2110.23,
+        "ChairFrontLeg.009": 2110.23,
+        "ChairFrontLeg.010": 2110.23,
+        "ChairFrontLeg.011": 2110.23,
+        "ChairFrontSeat": 541.1,
+        "ChairFrontSeat_SideStretcher_1": 716.8,
+        "ChairFrontSeat_SideStretcher_-1": 716.8,
+        "ChairFrontSeat.001": 541.1,
+        "ChairFrontSeat.001_SideStretcher_1": 716.8,
+        "ChairFrontSeat.001_SideStretcher_-1": 716.8,
+        "ChairFrontSeat.002": 541.1,
+        "ChairFrontSeat.002_SideStretcher_1": 716.8,
+        "ChairFrontSeat.002_SideStretcher_-1": 716.8,
+        "SharedLeg": 1460.05,
+        "SharedLeg.001": 1460.05,
+        "SharedLeg.002": 1460.05,
+        "SharedLeg.003": 1460.05,
         "SharedTop": 178.97
       },
       "untextured_area_fraction": 0.0,
@@ -9140,9 +9189,9 @@
     },
     "P_deck_oven": {
       "id": "P_deck_oven",
-      "sha256": "d78d5fe1807e1648d55ec5986e4ac9c8b371d9ab01d5168005fd0a29fbf4e575",
-      "source_mtime": 1791727268.5415144,
-      "triangles": 17122,
+      "sha256": "643b9d9cf4571855175a190324e53de56403c2245fc4f10221764c611210844e",
+      "source_mtime": 1791969127.5538728,
+      "triangles": 32564,
       "bounds_godot": {
         "min": [
           -0.7300000190734863,
@@ -9160,7 +9209,7 @@
         2.0799999237060547,
         0.9548000395298004
       ],
-      "surface_area_m2": 22.949,
+      "surface_area_m2": 29.091,
       "albedo_image_sizes": [
         [
           1254,
@@ -9168,24 +9217,34 @@
         ]
       ],
       "topology": {
-        "components": 137,
-        "largest_component_area_fraction": 0.9334,
-        "boundary_edge_fraction": 0.0
+        "components": 157,
+        "largest_component_area_fraction": 0.587,
+        "boundary_edge_fraction": 0.0042
       },
       "uv_density_px_m": {
-        "p10": 1253.96,
-        "median": 1254.0
+        "p10": 2507.95,
+        "median": 2508.0
       },
       "material_density_px_m": {
+        "Oven_BrushedSteel": {
+          "p10": 2187.57,
+          "median": 2445.87
+        },
+        "Oven_ControlPanel": {
+          "p10": 2508.0,
+          "median": 2508.0
+        },
         "Oven_MaintainedEnamel": {
-          "p10": 1253.96,
-          "median": 1254.0
+          "p10": 2507.95,
+          "median": 2508.0
         }
       },
       "node_density_px_m": {
-        "Oven_MaintainedEnamel_Geometry": 1254.0
+        "Oven_BrushedSteel_Geometry": 2445.87,
+        "Oven_ControlPanel_Geometry": 2508.0,
+        "Oven_MaintainedEnamel_Geometry": 2508.0
       },
-      "untextured_area_fraction": 0.157,
+      "untextured_area_fraction": 0.13,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -9242,12 +9301,12 @@
     },
     "P_gondola": {
       "id": "P_gondola",
-      "sha256": "5edcfdc4388eca3458b06da29e358ebd7ba94f8fc48aa44d8813e23f5686075d",
-      "source_mtime": 1790861995.8726325,
-      "triangles": 2468,
+      "sha256": "f0d86f3ac3b799a6f09d4b52c0df75c2ed43cabc9868273c2ec1943e59c836d7",
+      "source_mtime": 1791969127.3879695,
+      "triangles": 53060,
       "bounds_godot": {
         "min": [
-          -0.9200000166893005,
+          -0.9200000762939453,
           0.0,
           -0.3100000023841858
         ],
@@ -9258,11 +9317,11 @@
         ]
       },
       "size_m": [
-        1.8400000929832458,
+        1.8400001525878906,
         1.600000023841858,
         0.6200000047683716
       ],
-      "surface_area_m2": 23.205,
+      "surface_area_m2": 23.057,
       "albedo_image_sizes": [
         [
           1254,
@@ -9271,25 +9330,25 @@
       ],
       "topology": {
         "components": 91,
-        "largest_component_area_fraction": 0.1099,
+        "largest_component_area_fraction": 0.1112,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 1709.87,
-        "median": 4118.67
+        "p10": 0.85,
+        "median": 1422.18
       },
       "material_density_px_m": {
         "M_P_gondola": {
-          "p10": 1750.81,
-          "median": 1766.33
+          "p10": 0.99,
+          "median": 1421.7
         },
         "M_P_gondola.001": {
-          "p10": 1706.48,
-          "median": 4406.11
+          "p10": 0.71,
+          "median": 1701.7
         }
       },
       "node_density_px_m": {
-        "P_gondola": 4118.67
+        "P_gondola": 1422.18
       },
       "untextured_area_fraction": 0.011,
       "inherited_pbr_maps": 0,
@@ -9555,9 +9614,9 @@
     },
     "P_reading_chair": {
       "id": "P_reading_chair",
-      "sha256": "b3ef52fff75115490b43bab9c2e9984b02a71949bd0d3acf64695a46d43e2836",
-      "source_mtime": 1791643596.7562404,
-      "triangles": 440,
+      "sha256": "cedb06022adf2ba6f47ff1b48a3cba0388094715770191d4364b7ec93bf5e32b",
+      "source_mtime": 1791969128.0377445,
+      "triangles": 18144,
       "bounds_godot": {
         "min": [
           -0.30250000581145287,
@@ -9575,7 +9634,7 @@
         0.8900000005960464,
         0.5099999904632568
       ],
-      "surface_area_m2": 1.551,
+      "surface_area_m2": 1.723,
       "albedo_image_sizes": [
         [
           1024,
@@ -9583,35 +9642,39 @@
         ]
       ],
       "topology": {
-        "components": 10,
-        "largest_component_area_fraction": 0.3582,
+        "components": 14,
+        "largest_component_area_fraction": 0.312,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 1528.53,
-        "median": 1878.0
+        "p10": 716.8,
+        "median": 1561.5
       },
       "material_density_px_m": {
         "Cedar": {
-          "p10": 1354.74,
-          "median": 1567.23
+          "p10": 1324.73,
+          "median": 1565.4
         },
         "CedarDark": {
-          "p10": 1873.31,
-          "median": 1966.96
+          "p10": 712.37,
+          "median": 1534.27
         }
       },
       "node_density_px_m": {
-        "ReadingChairArm": 1567.23,
-        "ReadingChairArm.001": 1567.23,
-        "ReadingChairLeg": 1941.68,
-        "ReadingChairLeg.001": 1941.68,
-        "ReadingChairLeg.002": 1941.68,
-        "ReadingChairLeg.003": 1941.68,
-        "ReadingChairPost": 3562.32,
-        "ReadingChairPost.001": 3562.32
+        "ReadingChairArm": 1565.4,
+        "ReadingChairArm.001": 1565.4,
+        "ReadingChairBack_BackStile_1": 716.8,
+        "ReadingChairBack_BackStile_-1": 716.8,
+        "ReadingChairLeg": 2110.23,
+        "ReadingChairLeg.001": 2110.23,
+        "ReadingChairLeg.002": 2110.23,
+        "ReadingChairLeg.003": 2110.23,
+        "ReadingChairPost": 3795.14,
+        "ReadingChairPost.001": 3795.14,
+        "ReadingChairSeat_SideStretcher_1": 716.8,
+        "ReadingChairSeat_SideStretcher_-1": 716.8
       },
-      "untextured_area_fraction": 0.6567,
+      "untextured_area_fraction": 0.5856,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -10342,9 +10405,9 @@
       "node_density_px_m": {
         "cedar__display": 1087.18,
         "cedar_dark__display": 4519.11,
-        "Lettering_\u5f53\u65e5\u9c9c\u852c__display": 46445.82,
-        "Lettering_\u5f53\u65e5\u9c9c\u852c__display.001": 46445.3,
-        "Lettering_\u5f53\u65e5\u9c9c\u852c__display.002": 46445.82,
+        "Lettering_当日鲜蔬__display": 46445.82,
+        "Lettering_当日鲜蔬__display.001": 46445.3,
+        "Lettering_当日鲜蔬__display.002": 46445.82,
         "paper__display": 895.71,
         "Pixal_whole_cucumbers_0__display": 759.71,
         "Pixal_whole_cucumbers_1__display": 759.71,
@@ -13103,9 +13166,9 @@
     },
     "W13_cedar_worktable": {
       "id": "W13_cedar_worktable",
-      "sha256": "43c95c872e9b900fbbbb33bb0fc0c3e1557a77be5dc605311e01f15717941a20",
-      "source_mtime": 1791224427.806764,
-      "triangles": 288,
+      "sha256": "ebb04610a230d60d9782362ece06a8728536d41fa26109939b81a20046d7f17d",
+      "source_mtime": 1791969127.638172,
+      "triangles": 15744,
       "bounds_godot": {
         "min": [
           -0.9000000357627869,
@@ -13123,11 +13186,11 @@
         0.7799999713897705,
         0.9225000143051147
       ],
-      "surface_area_m2": 7.365,
+      "surface_area_m2": 7.169,
       "albedo_image_sizes": [],
       "topology": {
         "components": 24,
-        "largest_component_area_fraction": 0.5031,
+        "largest_component_area_fraction": 0.5085,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
@@ -13295,9 +13358,9 @@
     },
     "W17_display_shelf": {
       "id": "W17_display_shelf",
-      "sha256": "f596a7a84b303d564d502126adddb53a1303dfda8584ee0c4e87c64128246a42",
-      "source_mtime": 1791643596.4130883,
-      "triangles": 476,
+      "sha256": "7a31aa2112bf3467cb7fb5c536ff46091eb947a4084c4c1335e388afb060776d",
+      "source_mtime": 1791969127.7009308,
+      "triangles": 14084,
       "bounds_godot": {
         "min": [
           -0.5450000166893005,
@@ -13315,7 +13378,7 @@
         1.25,
         0.5
       ],
-      "surface_area_m2": 8.915,
+      "surface_area_m2": 9.243,
       "albedo_image_sizes": [
         [
           1024,
@@ -13323,36 +13386,42 @@
         ]
       ],
       "topology": {
-        "components": 13,
-        "largest_component_area_fraction": 0.1402,
+        "components": 19,
+        "largest_component_area_fraction": 0.1366,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 346.77,
-        "median": 347.42
+        "p10": 50.88,
+        "median": 346.52
       },
       "material_density_px_m": {
         "CedarDark": {
-          "p10": 346.77,
-          "median": 350.54
+          "p10": 31.57,
+          "median": 347.95
         },
         "Cedar": {
-          "p10": 346.77,
-          "median": 347.42
+          "p10": 50.88,
+          "median": 346.52
         }
       },
       "node_density_px_m": {
-        "ShelfFoot": 347.42,
-        "ShelfUpright": 1116.89,
-        "ShelfUpright.001": 1116.89,
-        "TrayBoard_0": 347.42,
-        "TrayBoard_1": 347.42,
-        "TrayBoard_2": 347.42,
-        "TrayLip_0": 962.62,
-        "TrayLip_1": 962.62,
-        "TrayLip_2": 962.62
+        "FormShelfBracket_0_1": 716.8,
+        "FormShelfBracket_0_-1": 716.8,
+        "FormShelfBracket_1_1": 716.8,
+        "FormShelfBracket_1_-1": 716.8,
+        "FormShelfBracket_2_1": 716.8,
+        "FormShelfBracket_2_-1": 716.8,
+        "ShelfFoot": 346.52,
+        "ShelfUpright": 1204.23,
+        "ShelfUpright.001": 1204.23,
+        "TrayBoard_0": 346.52,
+        "TrayBoard_1": 346.52,
+        "TrayBoard_2": 346.52,
+        "TrayLip_0": 1040.41,
+        "TrayLip_1": 1040.41,
+        "TrayLip_2": 1040.41
       },
-      "untextured_area_fraction": 0.3568,
+      "untextured_area_fraction": 0.346,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },

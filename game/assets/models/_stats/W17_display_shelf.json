@@ -1,18 +1,24 @@
 {
  "id": "W17_display_shelf",
- "src": "raw/inhabited_places_20261010/W17_display_shelf.glb",
- "provider": "Blender precise joinery from imagegen inhabited room references",
+ "src": "raw/furniture_forms_20261014/W17_display_shelf.glb",
+ "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
  "preserve_parts": true,
  "origin_preserved": true,
- "tris": 476,
+ "tris": 14084,
  "tex": 1024,
- "bytes": 110692,
+ "bytes": 397152,
  "godot_size_m_xyz": [
   1.09,
   1.25,
   0.5
  ],
  "mesh_nodes": [
+  "FormShelfBracket_0_-1",
+  "FormShelfBracket_0_1",
+  "FormShelfBracket_1_-1",
+  "FormShelfBracket_1_1",
+  "FormShelfBracket_2_-1",
+  "FormShelfBracket_2_1",
   "LinenLiner_0",
   "LinenLiner_1",
   "LinenLiner_2",

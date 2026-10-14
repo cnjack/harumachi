@@ -2,6 +2,8 @@ extends Node
 ## Evidence camera: `-- --shots=<dir> [--views=a,b]` renders predefined views to PNG and quits.
 
 const VIEWS := {
+ "form_shared_sit": {"interior":"workroom","at":Vector3(-1.45,.05,3.15),"time":10.5,"seat_id":"public_shared_seat","show_actor":true,"inside_camera":Vector3(-1.0,1.6,4.4),"inside_focus":Vector3(-3.1,.85,2.7)},
+ "form_cafe_0_sit": {"interior":"bakery","at":Vector3(-2.85,.05,3.4),"time":10.5,"seat_id":"public_cafe_0","show_actor":true,"inside_camera":Vector3(-4.8,1.7,4.0),"inside_focus":Vector3(-2.85,.85,2.55)},
  "truck_town_front": {"player":Vector3(32,.1,-9),"time":10.5,"camera_at":Vector3(38,2.1,-9.3),"camera_focus":Vector3(33.8,1,-12.85),"fov":43.0},
  "truck_town_back": {"player":Vector3(32,.1,-9),"time":10.5,"camera_at":Vector3(29.4,1.8,-9.5),"camera_focus":Vector3(33.8,.95,-12.85),"fov":43.0},
  "truck_farm_front": {"farm":true,"player":Vector3(-8,.1,5),"time":10.5,"camera_at":Vector3(-5.8,2.1,6.4),"camera_focus":Vector3(-10,1,2.85),"fov":43.0},

@@ -1391,37 +1391,43 @@
       "rebake": true
     },
     "I02_cake_showcase": {
-      "src": "raw/I02_cake_showcase_clear_20261006/ready.glb",
+      "src": "raw/furniture_forms_20261014/I02_cake_showcase.glb",
       "preserve_parts": true,
       "preserve_origin": true,
-      "tex": 2048,
       "level": false,
-      "provider": "Blender measured cabinet rebuild, actual shelves and runtime thin glass; original Pixal3D source preserved"
+      "tex": 2048,
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
+      "reference_images": [
+        "art/references/furniture_forms_20261014/01_bakery_counter.png"
+      ],
+      "license": "项目自制；生成素材服务条款",
+      "image_format": "AUTO"
     },
     "I04_shop_counter": {
-      "src": "raw/inhabited_places_20261010/I04_shop_counter.glb",
+      "src": "raw/furniture_forms_20261014/I04_shop_counter.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 1024,
-      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
       "reference_images": [
-        "art/references/inhabited_places_20261010/bakery_cafe_layout.png",
-        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+        "art/references/furniture_forms_20261014/01_bakery_counter.png"
       ],
-      "license": "项目自制；生成素材服务条款"
+      "license": "项目自制；生成素材服务条款",
+      "image_format": "AUTO"
     },
     "I05_bread_shelf": {
-      "src": "raw/inhabited_places_20261010/I05_bread_shelf.glb",
+      "src": "raw/furniture_forms_20261014/I05_bread_shelf.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 1024,
-      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
       "reference_images": [
-        "art/references/inhabited_places_20261010/bakery_cafe_layout.png"
+        "art/references/furniture_forms_20261014/05_toolshed_workbench.png"
       ],
-      "license": "项目自制；生成素材服务条款"
+      "license": "项目自制；生成素材服务条款",
+      "image_format": "AUTO"
     },
     "I06_store_gondola": {
       "src": "raw/I06_store_gondola_pix/model.glb",
@@ -1520,13 +1526,17 @@
       "yaw_note": "v0.6 review: replaces the plain procedural box; Pixal3D output 63.5 deg off-axis, turned square, lock plate to +Z"
     },
     "P_gondola": {
-      "src": "raw/landmarks_aged_20261001/P_gondola.glb",
+      "src": "raw/furniture_forms_20261014/P_gondola.glb",
       "preserve_parts": true,
       "preserve_origin": true,
-      "tex": 2048,
       "level": false,
-      "provider": "Blender preserved geometry + imagegen aged timber, 2026-10-01",
-      "note": "Existing UV layout and physical geometry retained; honey-new cedar replaced with weathered timber."
+      "tex": 2048,
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
+      "reference_images": [
+        "art/references/furniture_forms_20261014/08_grocer_shelves.png"
+      ],
+      "license": "项目自制；生成素材服务条款",
+      "image_format": "AUTO"
     },
     "P_shop_wall_frame": {
       "src": "raw/landmarks_aged_20261001/P_shop_wall_frame.glb",
@@ -1624,30 +1634,17 @@
       "rebake": true
     },
     "P_deck_oven": {
-      "src": "raw/material_refine_stall_oven_20261011/P_deck_oven.glb",
-      "fit": "h",
-      "size": 2.0799999237060547,
-      "tris": 18000,
-      "tex": 2048,
-      "weld": 0,
-      "provider": "Blender local closed-cabinet rebuild retaining accepted Hyper3D base/feet and complete flue; built-in imagegen enamel, 2026-10-11",
-      "generation_id": "b6b8327d-a750-4a04-8d8f-cf4ec4299016",
-      "fit_bounds_blender": {
-        "min": [
-          -0.7300000190734863,
-          -0.5099999904632568,
-          0.0
-        ],
-        "max": [
-          0.7300000190734863,
-          0.4449999928474426,
-          2.0799999237060547
-        ]
-      },
-      "note": "Original base/feet below0.5855m and complete upper flue above1.8995m retained. Self-intersecting scanned middle shell replaced by regular closed insulated cabinet with two real chambers, control bays, rear plenum and through ventilation. Straight framed doors, fitted seals/glass, level bars and four marked knobs preserve dimensions/interaction. No new paid3D generation.",
-      "rebake": false,
+      "src": "raw/appliance_forms_20261014/P_deck_oven.glb",
       "preserve_parts": true,
-      "image_format": "AUTO"
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Blender in-place rounded appliance rebuild from approved imagegen reference, 2026-10-14",
+      "license": "项目自制；生成素材服务条款",
+      "reference_images": [
+        "art/references/furniture_forms_20261014/06_bakery_oven.png"
+      ]
     },
     "T02_summer_tree": {
       "src": "raw/free_foliage_20261004/ready/T02_summer_tree.glb",
@@ -1831,13 +1828,17 @@
       ]
     },
     "W13_cedar_worktable": {
-      "src": "raw/W13_worktable_hyper3d/metre_worktable.glb",
+      "src": "raw/furniture_forms_20261014/W13_cedar_worktable.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 512,
-      "provider": "Hyper3D Agentic Business, task cb502e12-9abb-4812-9167-75a25a04bbad",
-      "note": "Original raw retained; uniform 1.5 scale to 0.78 metre height; flat cedar colours and 24 structural parts"
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
+      "reference_images": [
+        "art/references/furniture_forms_20261014/05_toolshed_workbench.png"
+      ],
+      "license": "项目自制；生成素材服务条款",
+      "image_format": "AUTO"
     },
     "W12_cedar_tray": {
       "src": "raw/W12_cedar_tray_pixal_modules_20261003/model.glb",
@@ -2082,17 +2083,17 @@
       "source_page": "https://hyper3d.ai/workspace/rodin/26ecd969-3d41-4191-80af-ed29457abe84"
     },
     "W17_display_shelf": {
-      "src": "raw/inhabited_places_20261010/W17_display_shelf.glb",
+      "src": "raw/furniture_forms_20261014/W17_display_shelf.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 1024,
-      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
       "reference_images": [
-        "art/references/inhabited_places_20261010/bakery_cafe_layout.png",
-        "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
+        "art/references/furniture_forms_20261014/05_toolshed_workbench.png"
       ],
-      "license": "项目自制；生成素材服务条款"
+      "license": "项目自制；生成素材服务条款",
+      "image_format": "AUTO"
     },
     "W18_retro_tv": {
       "src": "raw/W18_retro_tv_hyper3d/model.glb",
@@ -2192,40 +2193,43 @@
       "note": "Derived from the original exported grocery bundle, no new generation; diffuse and UV retained."
     },
     "P_community_table": {
-      "src": "raw/inhabited_places_20261010/P_community_table.glb",
+      "src": "raw/furniture_forms_20261014/P_community_table.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 1024,
-      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
       "reference_images": [
-        "art/references/inhabited_places_20261010/community_living_layout.png"
+        "art/references/furniture_forms_20261014/03_community_table.png"
       ],
-      "license": "项目自制；生成素材服务条款"
+      "license": "项目自制；生成素材服务条款",
+      "image_format": "AUTO"
     },
     "P_cafe_table": {
-      "src": "raw/inhabited_places_20261010/P_cafe_table.glb",
+      "src": "raw/furniture_forms_20261014/P_cafe_table.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 1024,
-      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
       "reference_images": [
-        "art/references/inhabited_places_20261010/bakery_cafe_layout.png"
+        "art/references/furniture_forms_20261014/02_cafe_seating.png"
       ],
-      "license": "项目自制；生成素材服务条款"
+      "license": "项目自制；生成素材服务条款",
+      "image_format": "AUTO"
     },
     "P_reading_chair": {
-      "src": "raw/inhabited_places_20261010/P_reading_chair.glb",
+      "src": "raw/furniture_forms_20261014/P_reading_chair.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 1024,
-      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
       "reference_images": [
-        "art/references/inhabited_places_20261010/community_living_layout.png"
+        "art/references/furniture_forms_20261014/03_community_table.png"
       ],
-      "license": "项目自制；生成素材服务条款"
+      "license": "项目自制；生成素材服务条款",
+      "image_format": "AUTO"
     },
     "P_low_bookcase": {
       "src": "raw/inhabited_places_20261010/P_low_bookcase.glb",
@@ -2240,16 +2244,17 @@
       "license": "项目自制；生成素材服务条款"
     },
     "P_coffee_station": {
-      "src": "raw/inhabited_places_20261010/P_coffee_station.glb",
+      "src": "raw/appliance_forms_20261014/P_coffee_station.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
-      "tex": 1024,
-      "provider": "Blender precise joinery from imagegen inhabited room references",
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Blender in-place rounded appliance rebuild from approved imagegen reference, 2026-10-14",
+      "license": "项目自制；生成素材服务条款",
       "reference_images": [
-        "art/references/inhabited_places_20261010/bakery_cafe_layout.png"
-      ],
-      "license": "项目自制；生成素材服务条款"
+        "art/references/furniture_forms_20261014/07_espresso_station.png"
+      ]
     },
     "I03_drink_fridge": {
       "src": "raw/inhabited_places_20261010/I03_drink_fridge.glb",

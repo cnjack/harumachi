@@ -1,12 +1,12 @@
 {
  "id": "W13_cedar_worktable",
- "src": "raw/W13_worktable_hyper3d/metre_worktable.glb",
- "provider": "Hyper3D Agentic Business, task cb502e12-9abb-4812-9167-75a25a04bbad",
+ "src": "raw/furniture_forms_20261014/W13_cedar_worktable.glb",
+ "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
  "preserve_parts": true,
  "origin_preserved": true,
- "tris": 288,
+ "tris": 15744,
  "tex": 512,
- "bytes": 36228,
+ "bytes": 359652,
  "godot_size_m_xyz": [
   1.8,
   0.78,

@@ -19,6 +19,14 @@ const TARGETS := [
 	["bakery", "I02_cake_showcase", "cake_glass", 0],
 	["bakery", "I04_shop_counter", "bakery_play_camera", 5],
 	["store", "I04_shop_counter", "store_counter_rotated", 0],
+	["store", "P_gondola", "store_rack", 0],
+	["store", "P_gondola", "store_rack_back", 1],
+	["bakery", "I05_bread_shelf", "bread_wall_shelf", 0],
+	["bakery", "W17_display_shelf", "bread_display_shelf", 0],
+	["store", "W17_display_shelf", "store_display_shelf", 0],
+	["bakery", "CafeTable_0", "cafe_night", 2],
+	["bakery", "CafeTable_0", "cafe_detail", 3],
+	["workroom", "ReadingChair_0", "reading_chair_side", 1],
 	["store", "I03_drink_fridge", "fridge", 0],
 	["store", "I07_ice_freezer", "freezer", 0],
 	["workroom", "W13_cedar_worktable", "worktable", 0],
@@ -139,6 +147,7 @@ func _run() -> void:
 		var direction:=Vector3(-.65,.60,1.38) if variant==1 else Vector3(.62,.64,1.42)
 		if label in ["coffee","fridge","freezer"]:direction=Vector3(-.75,.75,1.15)
 		if label.begins_with("cafe"):direction=Vector3(.40,1.0,-1.30) if variant==0 else Vector3(-.60,.80,-1.25)
+		if label.ends_with("rack_back"):direction=Vector3(-.6,.64,-1.42)
 		if label in ["family_table","drawing_desk"]:direction=Vector3(.45,1.10,.80)
 		if label=="coffee_detail":direction=Vector3(.12,.65,1.15);centre+=Vector3.UP*.20
 		if label=="postal_detail":extent=.85;direction=Vector3(-.20,1.1,1.05);centre+=Vector3(-.25,.02,.04)

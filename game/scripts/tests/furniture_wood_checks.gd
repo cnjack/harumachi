@@ -171,7 +171,7 @@ func run() -> void:
 	var leg: MeshInstance3D = workroom.find_child("NeighbourTeaStationLeg_*", true, false) as MeshInstance3D if workroom != null else null
 	check("procedural tea furniture keeps a used tabletop and quiet structural legs", tea != null and leg != null and finished(tea.material_override) and finished(leg.material_override) and not bool(parameter(tea.material_override, "structural", true)) and bool(parameter(leg.material_override, "structural", false)))
 	var shader: Shader = load(FINISH) as Shader if ResourceLoader.exists(FINISH) else null
-	check("the actual wood shader carries direct and weak real-environment satin reflection", shader != null and shader.code.contains("SPECULAR_LIGHT +=") and shader.code.contains("LIGHT + VIEW") and shader.code.contains("finish_polish * sheen_strength") and shader.code.contains("SPECULAR = clamp(sheen_strength * finish_polish * environment_sheen") and not shader.code.contains("EMISSION"))
+	check("the actual wood shader carries direct and weak real-environment satin reflection", shader != null and shader.code.contains("specular_schlick_ggx") and shader.code.contains("ROUGHNESS =") and shader.code.contains("SPECULAR =") and not shader.code.contains("EMISSION"))
 	grain_and_contact_checks()
 	await fixture_checks()
 

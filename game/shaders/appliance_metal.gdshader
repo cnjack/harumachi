@@ -1,12 +1,16 @@
 shader_type spatial;
-render_mode diffuse_toon;
-// Broad painted enamel and a narrower restrained steel lobe, both from actual lights.
-uniform sampler2D albedo_tex : source_color, filter_linear_mipmap_anisotropic;
+render_mode specular_schlick_ggx;
+#include "res://shaders/furniture_reflection.gdshaderinc"
+// Native rough reflections include the real sky/environment even in direct-light shadow.
+// Curved bevels and authored surface painting provide the visible material response.
+uniform sampler2D albedo_tex : source_color, filter_linear_mipmap_anisotropic, repeat_enable;
 uniform sampler2D emission_tex : source_color, filter_linear_mipmap;
 uniform vec4 base_color : source_color = vec4(1.0);
 uniform vec4 emission_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 uniform bool has_albedo = false;
 uniform bool has_emission = false;
+uniform vec2 uv_scale = vec2(1.0);
+uniform vec2 uv_offset = vec2(0.0);
 uniform float opacity = 1.0; // Kept for material diagnostics; this shader stays opaque.
 uniform int finish_kind = 0; // enamel, brushed steel, brass, coated content painting
 uniform float roughness_value = .48;
@@ -16,7 +20,8 @@ uniform bool oven_surface = false;
 uniform mat4 part_transform;
 varying vec3 part_position;
 varying vec3 part_normal;
-varying float polish;
+varying float reflection_f0;
+varying float reflection_roughness;
 
 void vertex() {
 	part_position = (part_transform * vec4(VERTEX, 1.0)).xyz;
@@ -41,7 +46,13 @@ float dial_touch(vec2 point, float level) {
 }
 
 void fragment() {
-	vec3 colour = base_color.rgb * (has_albedo ? texture(albedo_tex, UV).rgb : vec3(1.0));
+	vec2 authored_uv = UV * uv_scale + uv_offset;
+	vec3 colour = base_color.rgb * (has_albedo ? texture(albedo_tex, authored_uv).rgb : vec3(1.0));
+	if (has_albedo && finish_kind == 1) {
+		// The authored horizontal brushing is real UV colour, kept quiet enough
+		// that curved metal reflections, rather than dense fibres, describe steel.
+		colour = base_color.rgb * mix(vec3(.42), texture(albedo_tex, authored_uv).rgb, .35);
+	}
 	float use_polish = 0.0;
 	if (oven_surface) {
 		float front = smoothstep(.62, .94, part_normal.z) * smoothstep(.40, .43, part_position.z);
@@ -53,29 +64,23 @@ void fragment() {
 		use_polish = touch * front;
 	}
 	// Sparse long wiping marks belong to metal, never to every face of the appliance.
-	if (finish_kind == 1 || finish_kind == 2) {
+	if (!has_albedo && (finish_kind == 1 || finish_kind == 2)) {
 		float wipe = pow(.5 + .5 * sin(part_position.y * 164.0 + part_position.x * .8), 18.0);
 		colour *= 1.0 - wipe * wear_strength * .022;
 	}
 	ALBEDO = colour;
 	ROUGHNESS = clamp(roughness_value - use_polish * .035, .3, .8);
 	METALLIC = 0.0;
-	SPECULAR = 0.0;
-	EMISSION = emission_color.rgb * (has_emission ? texture(emission_tex, UV).rgb : vec3(1.0));
-	polish = use_polish;
+	SPECULAR = clamp(gloss_strength * (finish_kind == 0 ? 1.85 : 2.25), 0.0, .65);
+	reflection_f0 = .16 * SPECULAR * SPECULAR;
+	reflection_roughness = ROUGHNESS;
+	EMISSION = emission_color.rgb * (has_emission ? texture(emission_tex, authored_uv).rgb : vec3(1.0));
 }
 
 void light() {
-	float n_dot_l = max(dot(normalize(NORMAL), normalize(LIGHT)), 0.0);
-	float ramp = mix(.34, 1.0, smoothstep(.12, .23, n_dot_l));
-	// Forward+ multiplies accumulated diffuse light by ALBEDO after light().
-	DIFFUSE_LIGHT += LIGHT_COLOR * ATTENUATION * ramp / 3.14159265;
-	vec3 half_direction = normalize(normalize(LIGHT) + normalize(VIEW));
-	float facing = max(dot(normalize(NORMAL), half_direction), 0.0);
-	float exponent = finish_kind == 0 ? 18.0 : (finish_kind == 3 ? 32.0 : 70.0);
-	float lobe = pow(facing, exponent);
-	// A wide low shoulder with a soft-edged, bounded core reads as painted gloss.
-	float band = .35 * lobe + .65 * smoothstep(.34, .64, lobe);
-	vec3 tint = finish_kind == 2 ? vec3(1.0, .90, .68) : vec3(.92, .97, 1.0);
-	SPECULAR_LIGHT += tint * LIGHT_COLOR * ATTENUATION * band * gloss_strength * (1.0 + polish * .12) * smoothstep(.02, .22, n_dot_l);
+	float facing = max(dot(normalize(NORMAL), normalize(LIGHT)), 0.0);
+	float cel = mix(.34, 1.0, smoothstep(.12, .23, facing));
+	// Forward+ applies ALBEDO once after accumulating DIFFUSE_LIGHT.
+	DIFFUSE_LIGHT += LIGHT_COLOR * ATTENUATION * cel / 3.14159265;
+	SPECULAR_LIGHT += furniture_ggx(NORMAL, VIEW, LIGHT, reflection_roughness, reflection_f0) * LIGHT_COLOR * ATTENUATION * SPECULAR_AMOUNT;
 }

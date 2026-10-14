@@ -1188,7 +1188,7 @@
   "verts": 4065
  },
  "I02_cake_showcase": {
-  "base_frac": 0.985,
+  "base_frac": 0.969,
   "normal": [
    0.0,
    0.0,
@@ -1197,7 +1197,7 @@
   "rect_fill": 0.999,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 336
+  "verts": 7656
  },
  "I02_desk": {
   "base_frac": 0.951,
@@ -1248,7 +1248,7 @@
   "verts": 4051
  },
  "I04_shop_counter": {
-  "base_frac": 0.864,
+  "base_frac": 0.884,
   "normal": [
    0.0,
    0.0,
@@ -1257,10 +1257,10 @@
   "rect_fill": 1.0,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 1248
+  "verts": 7708
  },
  "I05_bread_shelf": {
-  "base_frac": 0.961,
+  "base_frac": 0.98,
   "normal": [
    0.0,
    0.0,
@@ -1269,7 +1269,7 @@
   "rect_fill": 1.0,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 1248
+  "verts": 10904
  },
  "I05_wardrobe": {
   "base_frac": 0.943,
@@ -1980,7 +1980,7 @@
   "verts": 4134
  },
  "P_cafe_table": {
-  "base_frac": 0.661,
+  "base_frac": 0.687,
   "normal": [
    0.0,
    0.0,
@@ -1989,7 +1989,7 @@
   "rect_fill": 1.0,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 1680
+  "verts": 16274
  },
  "P_chest": {
   "base_frac": 0.83,
@@ -2049,10 +2049,10 @@
   "rect_fill": 0.992,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 3972
+  "verts": 20848
  },
  "P_community_table": {
-  "base_frac": 0.901,
+  "base_frac": 0.918,
   "normal": [
    0.0,
    0.0,
@@ -2061,7 +2061,7 @@
   "rect_fill": 0.983,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 3936
+  "verts": 40756
  },
  "P_deck_oven": {
   "base_frac": 0.876,
@@ -2073,7 +2073,7 @@
   "rect_fill": 0.988,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 28122
+  "verts": 32602
  },
  "P_farm_gate": {
   "base_frac": 0.097,
@@ -2088,7 +2088,7 @@
   "verts": 26262
  },
  "P_gondola": {
-  "base_frac": 0.923,
+  "base_frac": 0.944,
   "normal": [
    0.0,
    0.0,
@@ -2097,7 +2097,7 @@
   "rect_fill": 1.0,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 5280
+  "verts": 114583
  },
  "P_library_bucket": {
   "base_frac": 0.516,
@@ -2172,16 +2172,16 @@
   "verts": 1848
  },
  "P_reading_chair": {
-  "base_frac": 0.519,
+  "base_frac": 0.55,
   "normal": [
    0.0,
    0.0,
    -1.0
   ],
-  "rect_fill": 0.911,
+  "rect_fill": 0.909,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 960
+  "verts": 10166
  },
  "P_shop_wall_frame": {
   "base_frac": 0.73,
@@ -2982,10 +2982,10 @@
    0.0,
    -1.0
   ],
-  "rect_fill": 1.0,
+  "rect_fill": 0.999,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 576
+  "verts": 8945
  },
  "W14_grocery_stock": {
   "base_frac": 0.72,
@@ -3024,7 +3024,7 @@
   "verts": 24408
  },
  "W17_display_shelf": {
-  "base_frac": 0.957,
+  "base_frac": 0.987,
   "normal": [
    0.0,
    0.0,
@@ -3033,7 +3033,7 @@
   "rect_fill": 1.0,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 1032
+  "verts": 8816
  },
  "W18_retro_tv": {
   "base_frac": 0.657,

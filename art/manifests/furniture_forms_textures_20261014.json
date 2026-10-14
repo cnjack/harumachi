@@ -1,0 +1,17 @@
+{
+  "generated_with": "imagegen",
+  "entries": [
+    {
+      "key": "oven_enamel_albedo",
+      "prompt": "Generate a single seamless tileable base-color texture, square 1024x1024, for the maintained warm off-white enamel casing of a Japanese small-town bakery oven in a clean TV-anime game. This is a flat material color map, not a scene, photograph, normal map, grayscale roughness map, or lit sphere. Orthographic edge-to-edge uniform flat illumination. Warm ivory/light gray enamel with extremely restrained small hand-drawn surface variation, a few nearly invisible soft cleaning wipe traces, clean areas dominate. Fine simple anime line/flat-color material language, no painterly noise. NO highlights, no shadows, no gradients, no reflections baked into the image, no edges or borders, no rust, no large stains, no black flecks, no scratches crossing the whole image, no text, no objects, no hardware. All four edges must repeat seamlessly. The base is very light warm gray, low contrast.",
+      "target": "game/assets/textures/furniture_forms_20261014/oven_enamel_albedo.png",
+      "generation_id": "exec-bbf95de5-fc23-42d4-a665-f1cf77032c77"
+    },
+    {
+      "key": "brushed_steel_albedo",
+      "prompt": "Generate one seamless tileable brushed stainless-steel BASE COLOR texture, square 1024x1024, for oven trim and an espresso machine in a Japanese TV-anime small-town game. A flat edge-to-edge surface color map with uniform orthographic illumination, middle-light neutral cool gray, restrained fine parallel horizontal hairlines, clean clearly directed subtle hand-drawn brushing, occasional extremely faint wipe variation. This texture must stay simple and quiet when used on a small game model. No objects, no sphere, no scene, no text, no logos, no border, no panel divisions, no screws. NO baked highlights, no light streaks, no shiny gradients, no reflection of surroundings, no shadows, no dark edges, no rust, no gritty noise. Any real reflection will be computed by the game material. Seamless repeating on all four edges. Anime cel-shaded material language, not macro photography.",
+      "target": "game/assets/textures/furniture_forms_20261014/brushed_steel_albedo.png",
+      "generation_id": "exec-f52e767f-6863-4129-b3b5-07cf0daeaba3"
+    }
+  ]
+}

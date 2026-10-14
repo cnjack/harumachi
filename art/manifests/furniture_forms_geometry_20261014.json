@@ -1,0 +1,2711 @@
+{
+  "revision": "20261014",
+  "kind": "approved_imagegen_furniture_geometry",
+  "source_is_current_game_archive": true,
+  "units": "metres",
+  "assets": {
+    "P_cafe_table": {
+      "src": "raw/furniture_forms_20261014/P_cafe_table.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
+      "source_archive": "art/library/furniture_forms_20261014/source/P_cafe_table.glb",
+      "source_sha256": "acf6ced3dfc97806c2e9cc05ea3927f9fa960d8199609520cffac633fd0d571a",
+      "raw_sha256": "f07b6b87aac797bf599a23a31f371cf083b59f9eafee39480670cbd8051a9199",
+      "retention": {
+        "all_original_node_names_present": true,
+        "original_material_names_preserved": true,
+        "embedded_texture_bytes_exact": true,
+        "texture_sha256": [
+          "06e6bdd9be9bc10cacb0a12d83d2e3f81e167ebd6eb62f51464a2a3f33486e78"
+        ]
+      },
+      "measurements": {
+        "source_triangles": 868,
+        "triangles": 28116,
+        "before_min_xyz": [
+          -0.9475,
+          0.0,
+          -0.36
+        ],
+        "before_max_xyz": [
+          0.9475,
+          0.89,
+          0.36
+        ],
+        "after_min_xyz": [
+          -0.9464031,
+          0.0,
+          -0.36
+        ],
+        "after_max_xyz": [
+          0.9464031,
+          0.89,
+          0.36
+        ],
+        "footprint_expansion_m": 0.0,
+        "original_nodes": 17,
+        "marker_names": [
+          "ChairLeftSeatPoint",
+          "ChairRightSeatPoint"
+        ],
+        "missing_nodes": [],
+        "changed_original_transforms": [],
+        "support_probes": [
+          {
+            "node": "ChairLeftSeat",
+            "original_top_y_m": 0.48,
+            "actual_centre_top_y_m": 0.48,
+            "delta_m": 0.0
+          },
+          {
+            "node": "ChairRightSeat",
+            "original_top_y_m": 0.48,
+            "actual_centre_top_y_m": 0.48,
+            "delta_m": 0.0
+          },
+          {
+            "node": "RoundTop",
+            "original_top_y_m": 0.76,
+            "actual_centre_top_y_m": 0.76,
+            "delta_m": 0.0
+          }
+        ],
+        "forms": [
+          {
+            "node": "ChairLeftBack",
+            "kind": "curved_reclined_back",
+            "horizontal_bow_m": 0.024,
+            "bow_radius_m": 1.1986873970035619,
+            "measured_probe_span_m": 0.35999999195337296,
+            "measured_probe_sag_m": 0.013591840863227844,
+            "recline_degrees": 6.999997366015097,
+            "edge_radius_m": 0.009,
+            "arc_segments": 6
+          },
+          {
+            "node": "ChairLeftBack",
+            "kind": "continuous_back_stiles",
+            "count": 2,
+            "joinery_width_m": 0.03,
+            "connects_original_rear_legs": true
+          },
+          {
+            "node": "ChairLeftLeg",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000834465077,
+            "edge_radius_m": 0.00600000035762789,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairLeftLeg.001",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000834465077,
+            "edge_radius_m": 0.00600000035762789,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairLeftLeg.002",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000834465077,
+            "edge_radius_m": 0.00600000035762789,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairLeftLeg.003",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000834465077,
+            "edge_radius_m": 0.00600000035762789,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairLeftSeat",
+            "kind": "shaped_seat",
+            "outer_drop_m": 0.007,
+            "measured_drop_at80percent_width_m": 0.004616200923919678,
+            "centre_support_local_z": 0.032499998807907104,
+            "centre_contact_width_m": 0.2303999948501587,
+            "edge_radius_m": 0.014,
+            "arc_segments": 6
+          },
+          {
+            "node": "ChairLeftSeat",
+            "kind": "supported_chair_stretchers",
+            "count": 2,
+            "centre_height_below_seat_m": 0.1875
+          },
+          {
+            "node": "ChairRightBack",
+            "kind": "curved_reclined_back",
+            "horizontal_bow_m": 0.024,
+            "bow_radius_m": 1.1986873970035619,
+            "measured_probe_span_m": 0.35999999195337296,
+            "measured_probe_sag_m": 0.013591840863227844,
+            "recline_degrees": 6.999997366015097,
+            "edge_radius_m": 0.009,
+            "arc_segments": 6
+          },
+          {
+            "node": "ChairRightBack",
+            "kind": "continuous_back_stiles",
+            "count": 2,
+            "joinery_width_m": 0.03,
+            "connects_original_rear_legs": true
+          },
+          {
+            "node": "ChairRightLeg",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000834465077,
+            "edge_radius_m": 0.00600000035762789,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairRightLeg.001",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000834465077,
+            "edge_radius_m": 0.00600000035762789,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairRightLeg.002",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000834465077,
+            "edge_radius_m": 0.00600000035762789,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairRightLeg.003",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000834465077,
+            "edge_radius_m": 0.00600000035762789,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairRightSeat",
+            "kind": "shaped_seat",
+            "outer_drop_m": 0.007,
+            "measured_drop_at80percent_width_m": 0.004616200923919678,
+            "centre_support_local_z": 0.032499998807907104,
+            "centre_contact_width_m": 0.2303999948501587,
+            "edge_radius_m": 0.014,
+            "arc_segments": 6
+          },
+          {
+            "node": "ChairRightSeat",
+            "kind": "supported_chair_stretchers",
+            "count": 2,
+            "centre_height_below_seat_m": 0.1875
+          },
+          {
+            "node": "Foot",
+            "kind": "turned_pedestal_rim",
+            "radius_m": 0.2199999988079071,
+            "edge_radius_m": 0.004,
+            "radial_segments": 64,
+            "arc_segments": 6
+          },
+          {
+            "node": "Pedestal",
+            "kind": "turned_pedestal_rim",
+            "radius_m": 0.04500000178813934,
+            "edge_radius_m": 0.004,
+            "radial_segments": 64,
+            "arc_segments": 6
+          },
+          {
+            "node": "RoundTop",
+            "kind": "turned_pedestal_rim",
+            "radius_m": 0.36000001430511475,
+            "edge_radius_m": 0.011,
+            "radial_segments": 96,
+            "arc_segments": 6
+          }
+        ]
+      }
+    },
+    "I04_shop_counter": {
+      "src": "raw/furniture_forms_20261014/I04_shop_counter.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
+      "source_archive": "art/library/furniture_forms_20261014/source/I04_shop_counter.glb",
+      "source_sha256": "0be99ecc76a3894cd440372d99ef8854c91dfb26b210d2a690d3e7c2140ad921",
+      "raw_sha256": "ad3182d6d5c88ea30e0a80f5a2f4180dd1cf4b8902d3fab33f1679b1c1ced2a2",
+      "retention": {
+        "all_original_node_names_present": true,
+        "original_material_names_preserved": true,
+        "embedded_texture_bytes_exact": true,
+        "texture_sha256": [
+          "06e6bdd9be9bc10cacb0a12d83d2e3f81e167ebd6eb62f51464a2a3f33486e78"
+        ]
+      },
+      "measurements": {
+        "source_triangles": 572,
+        "triangles": 10220,
+        "before_min_xyz": [
+          -1.0549999,
+          0.0,
+          -0.575
+        ],
+        "before_max_xyz": [
+          1.0549999,
+          1.22,
+          0.6225
+        ],
+        "after_min_xyz": [
+          -1.0549999,
+          0.0,
+          -0.575
+        ],
+        "after_max_xyz": [
+          1.0549999,
+          1.22,
+          0.6225
+        ],
+        "footprint_expansion_m": 0.0,
+        "original_nodes": 13,
+        "marker_names": [],
+        "missing_nodes": [],
+        "changed_original_transforms": [],
+        "support_probes": [
+          {
+            "node": "CounterTop",
+            "original_top_y_m": 0.87,
+            "actual_centre_top_y_m": 0.87,
+            "delta_m": 0.0
+          }
+        ],
+        "forms": [
+          {
+            "node": "CounterBody",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.028,
+            "edge_radius_m": 0.007,
+            "arc_segments": 6,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "CounterTop",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.04,
+            "edge_radius_m": 0.011,
+            "arc_segments": 6,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "FootRail",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "FrontPanel",
+            "kind": "recessed_framed_panel",
+            "frame_width_m": 0.035,
+            "recess_m": 0.007500000186264515,
+            "edge_radius_m": 0.003,
+            "arc_segments": 5
+          },
+          {
+            "node": "FrontPanel.001",
+            "kind": "recessed_framed_panel",
+            "frame_width_m": 0.035,
+            "recess_m": 0.007500000186264515,
+            "edge_radius_m": 0.003,
+            "arc_segments": 5
+          },
+          {
+            "node": "FrontPanel.002",
+            "kind": "recessed_framed_panel",
+            "frame_width_m": 0.035,
+            "recess_m": 0.007500000186264515,
+            "edge_radius_m": 0.003,
+            "arc_segments": 5
+          }
+        ]
+      }
+    },
+    "P_community_table": {
+      "src": "raw/furniture_forms_20261014/P_community_table.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
+      "source_archive": "art/library/furniture_forms_20261014/source/P_community_table.glb",
+      "source_sha256": "6de60883fc611afd633d9ff82b4d56ab5bc1cc7400fdf1b820b534cd7048dc41",
+      "raw_sha256": "5f3c6a01883d6a3d1505ba47281760fe88133abc726a137681887c9e79c4f222",
+      "retention": {
+        "all_original_node_names_present": true,
+        "original_material_names_preserved": true,
+        "embedded_texture_bytes_exact": true,
+        "texture_sha256": [
+          "06e6bdd9be9bc10cacb0a12d83d2e3f81e167ebd6eb62f51464a2a3f33486e78"
+        ]
+      },
+      "measurements": {
+        "source_triangles": 1804,
+        "triangles": 70780,
+        "before_min_xyz": [
+          -1.025,
+          0.0,
+          -1.1175001
+        ],
+        "before_max_xyz": [
+          1.025,
+          0.89,
+          1.1175001
+        ],
+        "after_min_xyz": [
+          -1.025,
+          0.0,
+          -1.1164031
+        ],
+        "after_max_xyz": [
+          1.025,
+          0.89,
+          1.1164031
+        ],
+        "footprint_expansion_m": 0.0,
+        "original_nodes": 47,
+        "marker_names": [
+          "ChairBackSeatPoint",
+          "ChairBackSeatPoint.001",
+          "ChairBackSeatPoint.002",
+          "ChairFrontSeatPoint",
+          "ChairFrontSeatPoint.001",
+          "ChairFrontSeatPoint.002"
+        ],
+        "missing_nodes": [],
+        "changed_original_transforms": [],
+        "support_probes": [
+          {
+            "node": "ChairBackSeat",
+            "original_top_y_m": 0.48,
+            "actual_centre_top_y_m": 0.48,
+            "delta_m": 0.0
+          },
+          {
+            "node": "ChairBackSeat.001",
+            "original_top_y_m": 0.48,
+            "actual_centre_top_y_m": 0.48,
+            "delta_m": 0.0
+          },
+          {
+            "node": "ChairBackSeat.002",
+            "original_top_y_m": 0.48,
+            "actual_centre_top_y_m": 0.48,
+            "delta_m": 0.0
+          },
+          {
+            "node": "ChairFrontSeat",
+            "original_top_y_m": 0.48,
+            "actual_centre_top_y_m": 0.48,
+            "delta_m": 0.0
+          },
+          {
+            "node": "ChairFrontSeat.001",
+            "original_top_y_m": 0.48,
+            "actual_centre_top_y_m": 0.48,
+            "delta_m": 0.0
+          },
+          {
+            "node": "ChairFrontSeat.002",
+            "original_top_y_m": 0.48,
+            "actual_centre_top_y_m": 0.48,
+            "delta_m": 0.0
+          },
+          {
+            "node": "SharedTop",
+            "original_top_y_m": 0.75,
+            "actual_centre_top_y_m": 0.75,
+            "delta_m": 0.0
+          }
+        ],
+        "forms": [
+          {
+            "node": "ChairBackBack",
+            "kind": "curved_reclined_back",
+            "horizontal_bow_m": 0.024,
+            "bow_radius_m": 1.1986873970035619,
+            "measured_probe_span_m": 0.35999999195337296,
+            "measured_probe_sag_m": 0.013591840863227844,
+            "recline_degrees": 6.999997366015097,
+            "edge_radius_m": 0.009,
+            "arc_segments": 6
+          },
+          {
+            "node": "ChairBackBack",
+            "kind": "continuous_back_stiles",
+            "count": 2,
+            "joinery_width_m": 0.03,
+            "connects_original_rear_legs": true
+          },
+          {
+            "node": "ChairBackBack.001",
+            "kind": "curved_reclined_back",
+            "horizontal_bow_m": 0.024,
+            "bow_radius_m": 1.1986873970035619,
+            "measured_probe_span_m": 0.35999999195337296,
+            "measured_probe_sag_m": 0.013591840863227844,
+            "recline_degrees": 6.999997366015097,
+            "edge_radius_m": 0.009,
+            "arc_segments": 6
+          },
+          {
+            "node": "ChairBackBack.001",
+            "kind": "continuous_back_stiles",
+            "count": 2,
+            "joinery_width_m": 0.03,
+            "connects_original_rear_legs": true
+          },
+          {
+            "node": "ChairBackBack.002",
+            "kind": "curved_reclined_back",
+            "horizontal_bow_m": 0.024,
+            "bow_radius_m": 1.1986873970035619,
+            "measured_probe_span_m": 0.35999999195337296,
+            "measured_probe_sag_m": 0.013591840863227844,
+            "recline_degrees": 6.999997366015097,
+            "edge_radius_m": 0.009,
+            "arc_segments": 6
+          },
+          {
+            "node": "ChairBackBack.002",
+            "kind": "continuous_back_stiles",
+            "count": 2,
+            "joinery_width_m": 0.03,
+            "connects_original_rear_legs": true
+          },
+          {
+            "node": "ChairBackLeg",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairBackLeg.001",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairBackLeg.002",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairBackLeg.003",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairBackLeg.004",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairBackLeg.005",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairBackLeg.006",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairBackLeg.007",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairBackLeg.008",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairBackLeg.009",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairBackLeg.010",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairBackLeg.011",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairBackSeat",
+            "kind": "shaped_seat",
+            "outer_drop_m": 0.007,
+            "measured_drop_at80percent_width_m": 0.004616200923919678,
+            "centre_support_local_z": 0.032499998807907104,
+            "centre_contact_width_m": 0.2303999948501587,
+            "edge_radius_m": 0.014,
+            "arc_segments": 6
+          },
+          {
+            "node": "ChairBackSeat",
+            "kind": "supported_chair_stretchers",
+            "count": 2,
+            "centre_height_below_seat_m": 0.1875
+          },
+          {
+            "node": "ChairBackSeat.001",
+            "kind": "shaped_seat",
+            "outer_drop_m": 0.007,
+            "measured_drop_at80percent_width_m": 0.004616200923919678,
+            "centre_support_local_z": 0.032499998807907104,
+            "centre_contact_width_m": 0.2303999948501587,
+            "edge_radius_m": 0.014,
+            "arc_segments": 6
+          },
+          {
+            "node": "ChairBackSeat.001",
+            "kind": "supported_chair_stretchers",
+            "count": 2,
+            "centre_height_below_seat_m": 0.1875
+          },
+          {
+            "node": "ChairBackSeat.002",
+            "kind": "shaped_seat",
+            "outer_drop_m": 0.007,
+            "measured_drop_at80percent_width_m": 0.004616200923919678,
+            "centre_support_local_z": 0.032499998807907104,
+            "centre_contact_width_m": 0.2303999948501587,
+            "edge_radius_m": 0.014,
+            "arc_segments": 6
+          },
+          {
+            "node": "ChairBackSeat.002",
+            "kind": "supported_chair_stretchers",
+            "count": 2,
+            "centre_height_below_seat_m": 0.1875
+          },
+          {
+            "node": "ChairFrontBack",
+            "kind": "curved_reclined_back",
+            "horizontal_bow_m": 0.024,
+            "bow_radius_m": 1.1986873970035619,
+            "measured_probe_span_m": 0.35999999195337296,
+            "measured_probe_sag_m": 0.013591840863227844,
+            "recline_degrees": 6.999997366015097,
+            "edge_radius_m": 0.009,
+            "arc_segments": 6
+          },
+          {
+            "node": "ChairFrontBack",
+            "kind": "continuous_back_stiles",
+            "count": 2,
+            "joinery_width_m": 0.03,
+            "connects_original_rear_legs": true
+          },
+          {
+            "node": "ChairFrontBack.001",
+            "kind": "curved_reclined_back",
+            "horizontal_bow_m": 0.024,
+            "bow_radius_m": 1.1986873970035619,
+            "measured_probe_span_m": 0.35999999195337296,
+            "measured_probe_sag_m": 0.013591840863227844,
+            "recline_degrees": 6.999997366015097,
+            "edge_radius_m": 0.009,
+            "arc_segments": 6
+          },
+          {
+            "node": "ChairFrontBack.001",
+            "kind": "continuous_back_stiles",
+            "count": 2,
+            "joinery_width_m": 0.03,
+            "connects_original_rear_legs": true
+          },
+          {
+            "node": "ChairFrontBack.002",
+            "kind": "curved_reclined_back",
+            "horizontal_bow_m": 0.024,
+            "bow_radius_m": 1.1986873970035619,
+            "measured_probe_span_m": 0.35999999195337296,
+            "measured_probe_sag_m": 0.013591840863227844,
+            "recline_degrees": 6.999997366015097,
+            "edge_radius_m": 0.009,
+            "arc_segments": 6
+          },
+          {
+            "node": "ChairFrontBack.002",
+            "kind": "continuous_back_stiles",
+            "count": 2,
+            "joinery_width_m": 0.03,
+            "connects_original_rear_legs": true
+          },
+          {
+            "node": "ChairFrontLeg",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairFrontLeg.001",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairFrontLeg.002",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairFrontLeg.003",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairFrontLeg.004",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairFrontLeg.005",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairFrontLeg.006",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairFrontLeg.007",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairFrontLeg.008",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairFrontLeg.009",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairFrontLeg.010",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairFrontLeg.011",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ChairFrontSeat",
+            "kind": "shaped_seat",
+            "outer_drop_m": 0.007,
+            "measured_drop_at80percent_width_m": 0.004616200923919678,
+            "centre_support_local_z": 0.032499998807907104,
+            "centre_contact_width_m": 0.2303999948501587,
+            "edge_radius_m": 0.014,
+            "arc_segments": 6
+          },
+          {
+            "node": "ChairFrontSeat",
+            "kind": "supported_chair_stretchers",
+            "count": 2,
+            "centre_height_below_seat_m": 0.1875
+          },
+          {
+            "node": "ChairFrontSeat.001",
+            "kind": "shaped_seat",
+            "outer_drop_m": 0.007,
+            "measured_drop_at80percent_width_m": 0.004616200923919678,
+            "centre_support_local_z": 0.032499998807907104,
+            "centre_contact_width_m": 0.2303999948501587,
+            "edge_radius_m": 0.014,
+            "arc_segments": 6
+          },
+          {
+            "node": "ChairFrontSeat.001",
+            "kind": "supported_chair_stretchers",
+            "count": 2,
+            "centre_height_below_seat_m": 0.1875
+          },
+          {
+            "node": "ChairFrontSeat.002",
+            "kind": "shaped_seat",
+            "outer_drop_m": 0.007,
+            "measured_drop_at80percent_width_m": 0.004616200923919678,
+            "centre_support_local_z": 0.032499998807907104,
+            "centre_contact_width_m": 0.2303999948501587,
+            "edge_radius_m": 0.014,
+            "arc_segments": 6
+          },
+          {
+            "node": "ChairFrontSeat.002",
+            "kind": "supported_chair_stretchers",
+            "count": 2,
+            "centre_height_below_seat_m": 0.1875
+          },
+          {
+            "node": "SharedLeg",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "SharedLeg.001",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "SharedLeg.002",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "SharedLeg.003",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "SharedTop",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.04,
+            "edge_radius_m": 0.011,
+            "arc_segments": 6,
+            "uv": "original_triangle_field_interpolation"
+          }
+        ]
+      }
+    },
+    "P_reading_chair": {
+      "src": "raw/furniture_forms_20261014/P_reading_chair.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
+      "source_archive": "art/library/furniture_forms_20261014/source/P_reading_chair.glb",
+      "source_sha256": "b3ef52fff75115490b43bab9c2e9984b02a71949bd0d3acf64695a46d43e2836",
+      "raw_sha256": "584b2eb8ecdd7e08c772cc03be5ebf1ef6753e7d38f649ab8cc481a9e405f06a",
+      "retention": {
+        "all_original_node_names_present": true,
+        "original_material_names_preserved": true,
+        "embedded_texture_bytes_exact": true,
+        "texture_sha256": [
+          "06e6bdd9be9bc10cacb0a12d83d2e3f81e167ebd6eb62f51464a2a3f33486e78"
+        ]
+      },
+      "measurements": {
+        "source_triangles": 440,
+        "triangles": 18144,
+        "before_min_xyz": [
+          -0.3025,
+          0.0,
+          -0.255
+        ],
+        "before_max_xyz": [
+          0.3025,
+          0.89,
+          0.255
+        ],
+        "after_min_xyz": [
+          -0.3025,
+          0.0,
+          -0.255
+        ],
+        "after_max_xyz": [
+          0.3025,
+          0.89,
+          0.255
+        ],
+        "footprint_expansion_m": 0.0,
+        "original_nodes": 11,
+        "marker_names": [
+          "ReadingChairSeatPoint"
+        ],
+        "missing_nodes": [],
+        "changed_original_transforms": [],
+        "support_probes": [
+          {
+            "node": "ReadingChairSeat",
+            "original_top_y_m": 0.48,
+            "actual_centre_top_y_m": 0.48,
+            "delta_m": 0.0
+          }
+        ],
+        "forms": [
+          {
+            "node": "ReadingChairArm",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.022,
+            "edge_radius_m": 0.012,
+            "arc_segments": 7,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ReadingChairArm.001",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.022,
+            "edge_radius_m": 0.012,
+            "arc_segments": 7,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ReadingChairBack",
+            "kind": "curved_reclined_back",
+            "horizontal_bow_m": 0.024,
+            "bow_radius_m": 1.1986873970035619,
+            "measured_probe_span_m": 0.35999999195337296,
+            "measured_probe_sag_m": 0.013591840863227844,
+            "recline_degrees": 6.999997366015097,
+            "edge_radius_m": 0.009,
+            "arc_segments": 6
+          },
+          {
+            "node": "ReadingChairBack",
+            "kind": "continuous_back_stiles",
+            "count": 2,
+            "joinery_width_m": 0.03,
+            "connects_original_rear_legs": true
+          },
+          {
+            "node": "ReadingChairLeg",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ReadingChairLeg.001",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ReadingChairLeg.002",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ReadingChairLeg.003",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ReadingChairPost",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.011200000047683716,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ReadingChairPost.001",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.011200000047683716,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ReadingChairSeat",
+            "kind": "shaped_seat",
+            "outer_drop_m": 0.007,
+            "measured_drop_at80percent_width_m": 0.004616200923919678,
+            "centre_support_local_z": 0.032499998807907104,
+            "centre_contact_width_m": 0.2303999948501587,
+            "edge_radius_m": 0.014,
+            "arc_segments": 6
+          },
+          {
+            "node": "ReadingChairSeat",
+            "kind": "supported_chair_stretchers",
+            "count": 2,
+            "centre_height_below_seat_m": 0.1875
+          }
+        ]
+      }
+    },
+    "P_gondola": {
+      "src": "raw/furniture_forms_20261014/P_gondola.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
+      "source_archive": "art/library/furniture_forms_20261014/source/P_gondola.glb",
+      "source_sha256": "5edcfdc4388eca3458b06da29e358ebd7ba94f8fc48aa44d8813e23f5686075d",
+      "raw_sha256": "3dd63ac41c9789eaa891f1d31af014ea07231a26e7f1be1ef8adc84f0424073d",
+      "retention": {
+        "all_original_node_names_present": true,
+        "original_material_names_preserved": true,
+        "embedded_texture_bytes_exact": true,
+        "texture_sha256": [
+          "e8600c651e72e3369ed5610804983c46fabaeafcc0612645a2e4062e3deef9b4"
+        ]
+      },
+      "measurements": {
+        "source_triangles": 2468,
+        "triangles": 53060,
+        "before_min_xyz": [
+          -0.92,
+          0.0,
+          -0.31
+        ],
+        "before_max_xyz": [
+          0.9200001,
+          1.6,
+          0.31
+        ],
+        "after_min_xyz": [
+          -0.9200001,
+          0.0,
+          -0.31
+        ],
+        "after_max_xyz": [
+          0.9200001,
+          1.6,
+          0.31
+        ],
+        "footprint_expansion_m": 6e-08,
+        "original_nodes": 1,
+        "marker_names": [],
+        "missing_nodes": [],
+        "changed_original_transforms": [],
+        "support_probes": [
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              -0.65,
+              -0.17
+            ],
+            "ray_ceiling": 0.2,
+            "original_top_y_m": 0.13999998569488525,
+            "actual_centre_top_y_m": 0.13999998569488525,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              -0.65,
+              -0.065
+            ],
+            "ray_ceiling": 0.2,
+            "original_top_y_m": 0.13999998569488525,
+            "actual_centre_top_y_m": 0.13999998569488525,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              -0.65,
+              0.065
+            ],
+            "ray_ceiling": 0.2,
+            "original_top_y_m": 0.13999998569488525,
+            "actual_centre_top_y_m": 0.13999998569488525,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              -0.65,
+              0.17
+            ],
+            "ray_ceiling": 0.2,
+            "original_top_y_m": 0.13999998569488525,
+            "actual_centre_top_y_m": 0.13999998569488525,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0,
+              -0.17
+            ],
+            "ray_ceiling": 0.2,
+            "original_top_y_m": 0.13999998569488525,
+            "actual_centre_top_y_m": 0.13999998569488525,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0,
+              -0.065
+            ],
+            "ray_ceiling": 0.2,
+            "original_top_y_m": 0.13999998569488525,
+            "actual_centre_top_y_m": 0.13999998569488525,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0,
+              0.065
+            ],
+            "ray_ceiling": 0.2,
+            "original_top_y_m": 0.13999998569488525,
+            "actual_centre_top_y_m": 0.13999998569488525,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0,
+              0.17
+            ],
+            "ray_ceiling": 0.2,
+            "original_top_y_m": 0.13999998569488525,
+            "actual_centre_top_y_m": 0.13999998569488525,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0.65,
+              -0.17
+            ],
+            "ray_ceiling": 0.2,
+            "original_top_y_m": 0.13999998569488525,
+            "actual_centre_top_y_m": 0.13999998569488525,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0.65,
+              -0.065
+            ],
+            "ray_ceiling": 0.2,
+            "original_top_y_m": 0.13999998569488525,
+            "actual_centre_top_y_m": 0.13999998569488525,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0.65,
+              0.065
+            ],
+            "ray_ceiling": 0.2,
+            "original_top_y_m": 0.13999998569488525,
+            "actual_centre_top_y_m": 0.13999998569488525,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0.65,
+              0.17
+            ],
+            "ray_ceiling": 0.2,
+            "original_top_y_m": 0.13999998569488525,
+            "actual_centre_top_y_m": 0.13999998569488525,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              -0.65,
+              -0.17
+            ],
+            "ray_ceiling": 0.54,
+            "original_top_y_m": 0.47999998927116394,
+            "actual_centre_top_y_m": 0.47999998927116394,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              -0.65,
+              -0.065
+            ],
+            "ray_ceiling": 0.54,
+            "original_top_y_m": 0.47999998927116394,
+            "actual_centre_top_y_m": 0.47999998927116394,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              -0.65,
+              0.065
+            ],
+            "ray_ceiling": 0.54,
+            "original_top_y_m": 0.47999998927116394,
+            "actual_centre_top_y_m": 0.47999998927116394,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              -0.65,
+              0.17
+            ],
+            "ray_ceiling": 0.54,
+            "original_top_y_m": 0.47999998927116394,
+            "actual_centre_top_y_m": 0.47999998927116394,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0,
+              -0.17
+            ],
+            "ray_ceiling": 0.54,
+            "original_top_y_m": 0.47999998927116394,
+            "actual_centre_top_y_m": 0.47999998927116394,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0,
+              -0.065
+            ],
+            "ray_ceiling": 0.54,
+            "original_top_y_m": 0.47999998927116394,
+            "actual_centre_top_y_m": 0.47999998927116394,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0,
+              0.065
+            ],
+            "ray_ceiling": 0.54,
+            "original_top_y_m": 0.47999998927116394,
+            "actual_centre_top_y_m": 0.47999998927116394,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0,
+              0.17
+            ],
+            "ray_ceiling": 0.54,
+            "original_top_y_m": 0.47999998927116394,
+            "actual_centre_top_y_m": 0.47999998927116394,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0.65,
+              -0.17
+            ],
+            "ray_ceiling": 0.54,
+            "original_top_y_m": 0.47999998927116394,
+            "actual_centre_top_y_m": 0.47999998927116394,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0.65,
+              -0.065
+            ],
+            "ray_ceiling": 0.54,
+            "original_top_y_m": 0.47999998927116394,
+            "actual_centre_top_y_m": 0.47999998927116394,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0.65,
+              0.065
+            ],
+            "ray_ceiling": 0.54,
+            "original_top_y_m": 0.47999998927116394,
+            "actual_centre_top_y_m": 0.47999998927116394,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0.65,
+              0.17
+            ],
+            "ray_ceiling": 0.54,
+            "original_top_y_m": 0.47999998927116394,
+            "actual_centre_top_y_m": 0.47999998927116394,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              -0.65,
+              -0.17
+            ],
+            "ray_ceiling": 0.88,
+            "original_top_y_m": 0.8199999928474426,
+            "actual_centre_top_y_m": 0.8199999928474426,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              -0.65,
+              -0.065
+            ],
+            "ray_ceiling": 0.88,
+            "original_top_y_m": 0.8199999928474426,
+            "actual_centre_top_y_m": 0.8199999928474426,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              -0.65,
+              0.065
+            ],
+            "ray_ceiling": 0.88,
+            "original_top_y_m": 0.8199999928474426,
+            "actual_centre_top_y_m": 0.8199999928474426,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              -0.65,
+              0.17
+            ],
+            "ray_ceiling": 0.88,
+            "original_top_y_m": 0.8199999928474426,
+            "actual_centre_top_y_m": 0.8199999928474426,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0,
+              -0.17
+            ],
+            "ray_ceiling": 0.88,
+            "original_top_y_m": 0.8199999928474426,
+            "actual_centre_top_y_m": 0.8199999928474426,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0,
+              -0.065
+            ],
+            "ray_ceiling": 0.88,
+            "original_top_y_m": 0.8199999928474426,
+            "actual_centre_top_y_m": 0.8199999928474426,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0,
+              0.065
+            ],
+            "ray_ceiling": 0.88,
+            "original_top_y_m": 0.8199999928474426,
+            "actual_centre_top_y_m": 0.8199999928474426,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0,
+              0.17
+            ],
+            "ray_ceiling": 0.88,
+            "original_top_y_m": 0.8199999928474426,
+            "actual_centre_top_y_m": 0.8199999928474426,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0.65,
+              -0.17
+            ],
+            "ray_ceiling": 0.88,
+            "original_top_y_m": 0.8199999928474426,
+            "actual_centre_top_y_m": 0.8199999928474426,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0.65,
+              -0.065
+            ],
+            "ray_ceiling": 0.88,
+            "original_top_y_m": 0.8199999928474426,
+            "actual_centre_top_y_m": 0.8199999928474426,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0.65,
+              0.065
+            ],
+            "ray_ceiling": 0.88,
+            "original_top_y_m": 0.8199999928474426,
+            "actual_centre_top_y_m": 0.8199999928474426,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0.65,
+              0.17
+            ],
+            "ray_ceiling": 0.88,
+            "original_top_y_m": 0.8199999928474426,
+            "actual_centre_top_y_m": 0.8199999928474426,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              -0.65,
+              -0.17
+            ],
+            "ray_ceiling": 1.22,
+            "original_top_y_m": 1.1600000858306885,
+            "actual_centre_top_y_m": 1.1600000858306885,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              -0.65,
+              -0.065
+            ],
+            "ray_ceiling": 1.22,
+            "original_top_y_m": 1.1600000858306885,
+            "actual_centre_top_y_m": 1.1600000858306885,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              -0.65,
+              0.065
+            ],
+            "ray_ceiling": 1.22,
+            "original_top_y_m": 1.1600000858306885,
+            "actual_centre_top_y_m": 1.1600000858306885,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              -0.65,
+              0.17
+            ],
+            "ray_ceiling": 1.22,
+            "original_top_y_m": 1.1600000858306885,
+            "actual_centre_top_y_m": 1.1600000858306885,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0,
+              -0.17
+            ],
+            "ray_ceiling": 1.22,
+            "original_top_y_m": 1.1600000858306885,
+            "actual_centre_top_y_m": 1.1600000858306885,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0,
+              -0.065
+            ],
+            "ray_ceiling": 1.22,
+            "original_top_y_m": 1.1600000858306885,
+            "actual_centre_top_y_m": 1.1600000858306885,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0,
+              0.065
+            ],
+            "ray_ceiling": 1.22,
+            "original_top_y_m": 1.1600000858306885,
+            "actual_centre_top_y_m": 1.1600000858306885,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0,
+              0.17
+            ],
+            "ray_ceiling": 1.22,
+            "original_top_y_m": 1.1600000858306885,
+            "actual_centre_top_y_m": 1.1600000858306885,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0.65,
+              -0.17
+            ],
+            "ray_ceiling": 1.22,
+            "original_top_y_m": 1.1600000858306885,
+            "actual_centre_top_y_m": 1.1600000858306885,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0.65,
+              -0.065
+            ],
+            "ray_ceiling": 1.22,
+            "original_top_y_m": 1.1600000858306885,
+            "actual_centre_top_y_m": 1.1600000858306885,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0.65,
+              0.065
+            ],
+            "ray_ceiling": 1.22,
+            "original_top_y_m": 1.1600000858306885,
+            "actual_centre_top_y_m": 1.1600000858306885,
+            "delta_m": 0.0
+          },
+          {
+            "node": "P_gondola",
+            "point_xz": [
+              0.65,
+              0.17
+            ],
+            "ray_ceiling": 1.22,
+            "original_top_y_m": 1.1600000858306885,
+            "actual_centre_top_y_m": 1.1600000858306885,
+            "delta_m": 0.0
+          }
+        ],
+        "forms": [
+          {
+            "node": "P_gondola/component_000",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.010880000591278076,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_001",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.010880000591278076,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_002",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.010880000591278076,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_003",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.010880000591278076,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_004",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.010880000591278076,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_005",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.010880000591278076,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_006",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.010880000591278076,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_007",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.010880000591278076,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_008",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.010880000591278076,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_009",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.010880000591278076,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_010",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.010880000591278076,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_011",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.010880000591278076,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_012",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.010880000591278076,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_013",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.010880000591278076,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_014",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.010880000591278076,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_015",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_016",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_017",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_018",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_019",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_020",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_021",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_022",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_023",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_024",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_025",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_026",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_027",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_028",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_029",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_030",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_031",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.008640003204345704,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_032",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.008640003204345704,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_033",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.008640003204345704,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_034",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.008640003204345704,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_035",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.008640003204345704,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_036",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.008640003204345704,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_037",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.008640003204345704,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_038",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.008640003204345704,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_039",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_040",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_041",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola/component_042",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.012,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "P_gondola",
+            "kind": "individual_joined_timber_roundovers",
+            "measured_components": 91,
+            "paper_material_untouched": true,
+            "arc_segments": 5
+          }
+        ]
+      }
+    },
+    "W17_display_shelf": {
+      "src": "raw/furniture_forms_20261014/W17_display_shelf.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
+      "source_archive": "art/library/furniture_forms_20261014/source/W17_display_shelf.glb",
+      "source_sha256": "f596a7a84b303d564d502126adddb53a1303dfda8584ee0c4e87c64128246a42",
+      "raw_sha256": "5b91f3b52a75f04c27770a0641d4bf72fa2b513fbcef8ce41a507e7c14bddd44",
+      "retention": {
+        "all_original_node_names_present": true,
+        "original_material_names_preserved": true,
+        "embedded_texture_bytes_exact": true,
+        "texture_sha256": [
+          "06e6bdd9be9bc10cacb0a12d83d2e3f81e167ebd6eb62f51464a2a3f33486e78"
+        ]
+      },
+      "measurements": {
+        "source_triangles": 476,
+        "triangles": 14084,
+        "before_min_xyz": [
+          -0.545,
+          0.0,
+          -0.25
+        ],
+        "before_max_xyz": [
+          0.545,
+          1.25,
+          0.25
+        ],
+        "after_min_xyz": [
+          -0.545,
+          0.0,
+          -0.25
+        ],
+        "after_max_xyz": [
+          0.545,
+          1.25,
+          0.25
+        ],
+        "footprint_expansion_m": 0.0,
+        "original_nodes": 13,
+        "marker_names": [],
+        "missing_nodes": [],
+        "changed_original_transforms": [],
+        "support_probes": [
+          {
+            "node": "TrayBoard_0",
+            "original_top_y_m": 0.35,
+            "actual_centre_top_y_m": 0.35,
+            "delta_m": 0.0
+          },
+          {
+            "node": "TrayBoard_1",
+            "original_top_y_m": 0.65,
+            "actual_centre_top_y_m": 0.65,
+            "delta_m": 0.0
+          },
+          {
+            "node": "TrayBoard_2",
+            "original_top_y_m": 1.0,
+            "actual_centre_top_y_m": 1.0,
+            "delta_m": 0.0
+          }
+        ],
+        "forms": [
+          {
+            "node": "ShelfBack",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.009599999785423278,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ShelfFoot",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ShelfUpright",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ShelfUpright.001",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "TrayBoard_0",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "TrayBoard_1",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "TrayBoard_2",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "TrayLip_0",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.00800000011920929,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "TrayLip_1",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.00800000011920929,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "TrayLip_2",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.00800000011920929,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "FormShelfBracket_0_-1",
+            "kind": "real_shelf_support",
+            "width_m": 0.026,
+            "length_m": 0.3716517218905165,
+            "edge_radius_m": 0.004,
+            "arc_segments": 5
+          },
+          {
+            "node": "FormShelfBracket_0_1",
+            "kind": "real_shelf_support",
+            "width_m": 0.026,
+            "length_m": 0.3716517218905165,
+            "edge_radius_m": 0.004,
+            "arc_segments": 5
+          },
+          {
+            "node": "FormShelfBracket_1_-1",
+            "kind": "real_shelf_support",
+            "width_m": 0.026,
+            "length_m": 0.3716517306611713,
+            "edge_radius_m": 0.004,
+            "arc_segments": 5
+          },
+          {
+            "node": "FormShelfBracket_1_1",
+            "kind": "real_shelf_support",
+            "width_m": 0.026,
+            "length_m": 0.3716517306611713,
+            "edge_radius_m": 0.004,
+            "arc_segments": 5
+          },
+          {
+            "node": "FormShelfBracket_2_-1",
+            "kind": "real_shelf_support",
+            "width_m": 0.026,
+            "length_m": 0.3716517306611713,
+            "edge_radius_m": 0.004,
+            "arc_segments": 5
+          },
+          {
+            "node": "FormShelfBracket_2_1",
+            "kind": "real_shelf_support",
+            "width_m": 0.026,
+            "length_m": 0.3716517306611713,
+            "edge_radius_m": 0.004,
+            "arc_segments": 5
+          }
+        ]
+      }
+    },
+    "I05_bread_shelf": {
+      "src": "raw/furniture_forms_20261014/I05_bread_shelf.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
+      "source_archive": "art/library/furniture_forms_20261014/source/I05_bread_shelf.glb",
+      "source_sha256": "cc2eb99eb1e28e6e98798581e08cdb0fd9ad49f8fdf0a9210ed4e7d6f4ead8d9",
+      "raw_sha256": "dd4b540b8f3a0ed232c25966ff09e4e27eed5bc727f5e026c7c9acf52617fcb3",
+      "retention": {
+        "all_original_node_names_present": true,
+        "original_material_names_preserved": true,
+        "embedded_texture_bytes_exact": true,
+        "texture_sha256": [
+          "06e6bdd9be9bc10cacb0a12d83d2e3f81e167ebd6eb62f51464a2a3f33486e78"
+        ]
+      },
+      "measurements": {
+        "source_triangles": 576,
+        "triangles": 17296,
+        "before_min_xyz": [
+          -0.535,
+          0.0,
+          -0.31
+        ],
+        "before_max_xyz": [
+          0.535,
+          1.51,
+          0.31
+        ],
+        "after_min_xyz": [
+          -0.535,
+          0.0,
+          -0.31
+        ],
+        "after_max_xyz": [
+          0.535,
+          1.51,
+          0.31
+        ],
+        "footprint_expansion_m": 0.0,
+        "original_nodes": 16,
+        "marker_names": [],
+        "missing_nodes": [],
+        "changed_original_transforms": [],
+        "support_probes": [
+          {
+            "node": "TrayBoard_0",
+            "original_top_y_m": 0.27,
+            "actual_centre_top_y_m": 0.27,
+            "delta_m": -0.0
+          },
+          {
+            "node": "TrayBoard_1",
+            "original_top_y_m": 0.61,
+            "actual_centre_top_y_m": 0.61,
+            "delta_m": 0.0
+          },
+          {
+            "node": "TrayBoard_2",
+            "original_top_y_m": 0.94,
+            "actual_centre_top_y_m": 0.94,
+            "delta_m": 0.0
+          },
+          {
+            "node": "TrayBoard_3",
+            "original_top_y_m": 1.26,
+            "actual_centre_top_y_m": 1.26,
+            "delta_m": 0.0
+          }
+        ],
+        "forms": [
+          {
+            "node": "ShelfBack",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.009599999785423278,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ShelfFoot",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ShelfUpright",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "ShelfUpright.001",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "TrayBoard_0",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "TrayBoard_1",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "TrayBoard_2",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "TrayBoard_3",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "TrayLip_0",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.00800000011920929,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "TrayLip_1",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.00800000011920929,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "TrayLip_2",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.00800000011920929,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "TrayLip_3",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.00800000011920929,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "FormShelfBracket_0_-1",
+            "kind": "real_shelf_support",
+            "width_m": 0.026,
+            "length_m": 0.4875705334030057,
+            "edge_radius_m": 0.004,
+            "arc_segments": 5
+          },
+          {
+            "node": "FormShelfBracket_0_1",
+            "kind": "real_shelf_support",
+            "width_m": 0.026,
+            "length_m": 0.4875705334030057,
+            "edge_radius_m": 0.004,
+            "arc_segments": 5
+          },
+          {
+            "node": "FormShelfBracket_1_-1",
+            "kind": "real_shelf_support",
+            "width_m": 0.026,
+            "length_m": 0.4875705343580702,
+            "edge_radius_m": 0.004,
+            "arc_segments": 5
+          },
+          {
+            "node": "FormShelfBracket_1_1",
+            "kind": "real_shelf_support",
+            "width_m": 0.026,
+            "length_m": 0.4875705343580702,
+            "edge_radius_m": 0.004,
+            "arc_segments": 5
+          },
+          {
+            "node": "FormShelfBracket_2_-1",
+            "kind": "real_shelf_support",
+            "width_m": 0.026,
+            "length_m": 0.4875705343580702,
+            "edge_radius_m": 0.004,
+            "arc_segments": 5
+          },
+          {
+            "node": "FormShelfBracket_2_1",
+            "kind": "real_shelf_support",
+            "width_m": 0.026,
+            "length_m": 0.4875705343580702,
+            "edge_radius_m": 0.004,
+            "arc_segments": 5
+          },
+          {
+            "node": "FormShelfBracket_3_-1",
+            "kind": "real_shelf_support",
+            "width_m": 0.026,
+            "length_m": 0.4875705343580702,
+            "edge_radius_m": 0.004,
+            "arc_segments": 5
+          },
+          {
+            "node": "FormShelfBracket_3_1",
+            "kind": "real_shelf_support",
+            "width_m": 0.026,
+            "length_m": 0.4875705343580702,
+            "edge_radius_m": 0.004,
+            "arc_segments": 5
+          }
+        ]
+      }
+    },
+    "W13_cedar_worktable": {
+      "src": "raw/furniture_forms_20261014/W13_cedar_worktable.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 512,
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
+      "source_archive": "art/library/furniture_forms_20261014/source/W13_cedar_worktable.glb",
+      "source_sha256": "43c95c872e9b900fbbbb33bb0fc0c3e1557a77be5dc605311e01f15717941a20",
+      "raw_sha256": "54f8ee5449f7018a0ed24ed587a70f4b4c67d646034e037768fc02ec9b02632b",
+      "retention": {
+        "all_original_node_names_present": true,
+        "original_material_names_preserved": true,
+        "embedded_texture_bytes_exact": true,
+        "texture_sha256": []
+      },
+      "measurements": {
+        "source_triangles": 288,
+        "triangles": 15744,
+        "before_min_xyz": [
+          -0.9,
+          0.0,
+          -0.46125
+        ],
+        "before_max_xyz": [
+          0.9,
+          0.78,
+          0.46125
+        ],
+        "after_min_xyz": [
+          -0.9,
+          0.0,
+          -0.46125
+        ],
+        "after_max_xyz": [
+          0.9,
+          0.78,
+          0.46125
+        ],
+        "footprint_expansion_m": 0.0,
+        "original_nodes": 25,
+        "marker_names": [
+          "WORLD"
+        ],
+        "missing_nodes": [],
+        "changed_original_transforms": [],
+        "support_probes": [
+          {
+            "node": "Solid rectangular tabletop_export",
+            "original_top_y_m": 0.78,
+            "actual_centre_top_y_m": 0.78,
+            "delta_m": 0.0
+          }
+        ],
+        "forms": [
+          {
+            "node": "Front upper apron_export",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000000000002,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "Left front square leg_export",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000000000002,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "Left lower side stretcher_export",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000000000002,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "Left rear square leg_export",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000000000002,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "Left upper side apron_export",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000000000002,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "Long lower front stretcher_export",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000000000002,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "Rear upper apron_export",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000000000002,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "Right front square leg_export",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000000000002,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "Right lower side stretcher_export",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000000000002,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "Right rear square leg_export",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000000000002,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "Right upper side apron_export",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014000000000000002,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "Solid rectangular tabletop_export",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.04,
+            "edge_radius_m": 0.011,
+            "arc_segments": 6,
+            "uv": "original_triangle_field_interpolation"
+          }
+        ]
+      }
+    },
+    "I02_cake_showcase": {
+      "src": "raw/furniture_forms_20261014/I02_cake_showcase.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
+      "source_archive": "art/library/furniture_forms_20261014/source/I02_cake_showcase.glb",
+      "source_sha256": "8b9754eb6be5f5aed6baf280561d1ea003287a1db0a7130c7916bdfd86da1474",
+      "raw_sha256": "ba02c718750ed1f968defc30a5037018b1d5e8783388c8baef106ce111c5704b",
+      "retention": {
+        "all_original_node_names_present": true,
+        "original_material_names_preserved": true,
+        "embedded_texture_bytes_exact": true,
+        "texture_sha256": []
+      },
+      "measurements": {
+        "source_triangles": 168,
+        "triangles": 12600,
+        "before_min_xyz": [
+          -0.67,
+          0.0,
+          -0.3745
+        ],
+        "before_max_xyz": [
+          0.67,
+          1.149,
+          0.3805
+        ],
+        "after_min_xyz": [
+          -0.67,
+          0.0,
+          -0.3745
+        ],
+        "after_max_xyz": [
+          0.67,
+          1.149,
+          0.3805
+        ],
+        "footprint_expansion_m": 0.0,
+        "original_nodes": 14,
+        "marker_names": [],
+        "missing_nodes": [],
+        "changed_original_transforms": [],
+        "support_probes": [
+          {
+            "node": "GlassTop",
+            "original_top_y_m": 1.143,
+            "actual_centre_top_y_m": 1.143,
+            "delta_m": 0.0
+          },
+          {
+            "node": "Shelf_0",
+            "original_top_y_m": 0.5735,
+            "actual_centre_top_y_m": 0.5735,
+            "delta_m": 0.0
+          },
+          {
+            "node": "Shelf_1",
+            "original_top_y_m": 0.8135,
+            "actual_centre_top_y_m": 0.8135,
+            "delta_m": 0.0
+          },
+          {
+            "node": "TopRail",
+            "original_top_y_m": 1.1485001,
+            "actual_centre_top_y_m": 1.1485001,
+            "delta_m": 0.0
+          }
+        ],
+        "forms": [
+          {
+            "node": "BackRail",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "CabinetBase",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.028,
+            "edge_radius_m": 0.007,
+            "arc_segments": 6,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "InsetFront",
+            "kind": "recessed_framed_panel",
+            "frame_width_m": 0.035,
+            "recess_m": 0.0024999998323619365,
+            "edge_radius_m": 0.003,
+            "arc_segments": 5
+          },
+          {
+            "node": "Post_1_1",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.011200000047683716,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "Post_1_-1",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.011200000047683716,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "Post_-1_1",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.011200000047683716,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "Post_-1_-1",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.011200000047683716,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "Shelf_0",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "Shelf_1",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.014,
+            "edge_radius_m": 0.006,
+            "arc_segments": 5,
+            "uv": "original_triangle_field_interpolation"
+          },
+          {
+            "node": "TopRail",
+            "kind": "rounded_joinery",
+            "plan_corner_radius_m": 0.04,
+            "edge_radius_m": 0.011,
+            "arc_segments": 6,
+            "uv": "original_triangle_field_interpolation"
+          }
+        ]
+      }
+    }
+  }
+}

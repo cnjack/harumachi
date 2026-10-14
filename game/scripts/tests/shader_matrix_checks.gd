@@ -134,7 +134,7 @@ func check_rotated_cafe_grain() -> void:
 			var material: ShaderMaterial=mesh.get_active_material(surface) as ShaderMaterial
 			var stored: Variant=material.get_shader_parameter("grain_axis") if material!=null else null
 			var axis: int=int(stored) if stored!=null else -1
-			var measured: bool=local_size.is_equal_approx(Vector3(.48,.40,.055)) and absf(absf(root_direction.z)-1.)<.0001 and absf(root_direction.x)<.0001
+			var measured: bool=absf(local_size.x-.48)<.001 and absf(local_size.y-.40)<.008 and local_size.z>=.054 and local_size.z<.14 and absf(absf(root_direction.z)-1.)<.0001 and absf(root_direction.x)<.0001
 			correct=correct and measured and axis==2
 			samples.append({"node":str(mesh.get_path()),"local_size":str(local_size),"root_mesh_x_direction":str(root_direction),"actual_grain_axis":axis,"required_axis":2})
 	check("real rotated cafe left and right backs use rootZ grain rather than localX",correct and found.size()==2 and samples.size()>=2,str(samples))

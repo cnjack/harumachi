@@ -1,0 +1,14 @@
+{
+  "P_deck_oven": {
+    "path": "art/library/appliance_forms_20261014/source/P_deck_oven.glb",
+    "sha256": "d78d5fe1807e1648d55ec5986e4ac9c8b371d9ab01d5168005fd0a29fbf4e575",
+    "bytes": 2867060,
+    "mode": "0o444"
+  },
+  "P_coffee_station": {
+    "path": "art/library/appliance_forms_20261014/source/P_coffee_station.glb",
+    "sha256": "1bd9524e2f2644620b5e9cdb6b92282d6bcb464e3076d290b4f4e9500574dd8b",
+    "bytes": 222216,
+    "mode": "0o444"
+  }
+}

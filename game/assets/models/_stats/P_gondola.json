@@ -1,12 +1,12 @@
 {
  "id": "P_gondola",
- "src": "raw/landmarks_aged_20261001/P_gondola.glb",
- "provider": "Blender preserved geometry + imagegen aged timber, 2026-10-01",
+ "src": "raw/furniture_forms_20261014/P_gondola.glb",
+ "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
  "preserve_parts": true,
  "origin_preserved": true,
- "tris": 2468,
+ "tris": 53060,
  "tex": 2048,
- "bytes": 708032,
+ "bytes": 4713692,
  "godot_size_m_xyz": [
   1.84,
   1.6,

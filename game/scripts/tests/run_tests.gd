@@ -30,7 +30,13 @@ func _ready() -> void:
 	main.ui.instant = true
 	main.ui.auto_work_priority = true # this suite follows its declared work route; the topic-choice suite overrides it
 	await frames(10)
-	if OS.get_cmdline_user_args().has("--only=furniture-finish"):
+	if OS.get_cmdline_user_args().has("--only=furniture-forms"):
+		await load("res://scripts/tests/furniture_form_checks.gd").new(self).run()
+		await load("res://scripts/tests/furniture_wood_checks.gd").new(self).run()
+		await load("res://scripts/tests/appliance_finish_checks.gd").new(self).run()
+		await load("res://scripts/tests/stall_oven_material_checks.gd").new(self).run()
+		await load("res://scripts/tests/shader_matrix_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=furniture-finish"):
 		await load("res://scripts/tests/furniture_wood_checks.gd").new(self).run()
 		await load("res://scripts/tests/appliance_finish_checks.gd").new(self).run()
 		await load("res://scripts/tests/stall_oven_material_checks.gd").new(self).run()
@@ -271,6 +277,7 @@ func _ready() -> void:
 		await load("res://scripts/tests/environment_visual_checks.gd").new(self).run()
 		await load("res://scripts/tests/tree_locomotion_checks.gd").new(self).run()
 	if not Array(OS.get_cmdline_user_args()).any(func(arg: String)->bool:return arg.begins_with("--only=")):
+		await load("res://scripts/tests/furniture_form_checks.gd").new(self).run()
 		await load("res://scripts/tests/furniture_wood_checks.gd").new(self).run()
 		await load("res://scripts/tests/appliance_finish_checks.gd").new(self).run()
 		await load("res://scripts/tests/resident_visits_checks.gd").new(self).run()

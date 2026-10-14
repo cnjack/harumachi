@@ -117,12 +117,15 @@ static func prop(room: InteriorBuilder,parent: Node3D,id: String,at: Vector3,hei
 
 static func bench(parent: Node3D,label: String,at: Vector3,width: float,depth: float,height: float=.78) -> MeshInstance3D:
  var top:=box(parent,label,Vector3(width,.055,depth),at+Vector3(0,height-.0275,0),wood(),true)
+ top.mesh=FurnitureForms.rounded_box(Vector3(width,.055,depth),.035,.009)
  FurnitureWoodFinish.board(top,label)
  for x: float in [-width*.5+.08,width*.5-.08]:
   for z: float in [-depth*.5+.06,depth*.5-.06]:
    var leg:=box(parent,label+"Leg_%d_%d"%[int(x*100),int(z*100)],Vector3(.065,height-.055,.065),at+Vector3(x,(height-.055)*.5,z),wood(Color(.51,.36,.24)))
+   leg.mesh=FurnitureForms.rounded_box(Vector3(.065,height-.055,.065),.006,.006,3)
    FurnitureWoodFinish.board(leg,label,true)
  var lower:=box(parent,label+"LowerBoard",Vector3(width-.05,.045,depth-.02),at+Vector3(0,.20,0),wood(Color(.58,.43,.29)))
+ lower.mesh=FurnitureForms.rounded_box(Vector3(width-.05,.045,depth-.02),.015,.006,3)
  FurnitureWoodFinish.board(lower,label,true)
  return top
 
