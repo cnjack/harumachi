@@ -118,6 +118,8 @@ func spawn(id: String, pos: Vector3, yaw_deg: float, collide: int = 1, parent: N
 		mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 	SurfaceFinish.apply(n,id)
 	ModelDiversity.apply(n,id)
+	FurnitureWoodFinish.apply(n,id)
+	ApplianceFinish.apply(n,id)
 	if id == "D07_kei_truck":
 		TruckGlazing.apply(n)
 	if id == "T05_old_shade_tree":

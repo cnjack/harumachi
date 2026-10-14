@@ -1,5 +1,11 @@
 # 模型、工程与交付流程
 
+## 家具材质验收（2026-10-14）
+
+家具按原材质分区处理。`FurnitureWoodFinish` 保留源贴图/UV和暖桌面、深框腿的既有配色，按板件与用途增加接触磨亮；`ApplianceFinish` 区分搪瓷、钢材、铜件和真实玻璃。两者在 `WorldBuilder.spawn()` 的基础处理之后接入，程序桌凳另从 `PublicPlaceArt.bench()` 接入；纸布、橡胶、石板和商品图不随木材一起改。
+
+`--only=furniture-finish` 汇总33项新检查及11项炉件/矩阵回归；旧版33项中29项正常失败。原生 `--furniture-finish-review --furniture-review-out=<绝对路径>` 从标题或解压应用直接启动，须设独立 `HARUMACHI_SAVE_DIR`。包含同机位近景、原图集家具、日夜、户外雨天及光泽/磨耗关闭对照。最终交付以 `evidence/furniture_finish_20261014/delivery.json` 和 [本轮记录](FURNITURE_FINISH_20261014.md) 为准。
+
 ## 小货车与日常动作验收（2026-10-14）
 
 `art/tools/rebuild_kei_truck.py`读取`art/library/vehicles/source/D07_textured_predecessor.glb`，保留货斗UV并重建车身，输出可编辑的`art/library/vehicles/authoring/D07_kei_truck.blend`及本地中间GLB。经`game_export.py`保留部件导出后，运行`level_check.py`并刷新`model_audit.measure()`的D07记录；不能仅改旧测量的时间戳。游戏通过`TruckGlazing`对独立窗面应用透光材质。
@@ -114,7 +120,7 @@ Blender -b --factory-startup -P art/tools/game_export.py -- art/models/game_asse
 | `level` | v0.7.3。默认 `"auto"`：把模型立在它凸包最大的朝下的面上（见第 14 节）；这个面不到外形投影的 15%（作物、灯笼、人物）就不动。`true` / `false` 强制放平或不放平 |
 | `tilt` | 放平之后再额外转一个轴角 `[ax, ay, az, 度]`，一般用不到 |
 
-每个资产的处理顺序是：导入 → 合并 → 放平 → 转正 → 缩放 → 切裙边 → 定原点 → 减面（v0.4 起最多重复 5 轮，直到面数不超过目标的 110%）→ 平滑 → 缩贴图 → 改成哑光材质 → 导出 GLB（JPEG 贴图），并写 `_stats/<ID>.json`（里面有放平前后的倾角 `lean_src_deg` / `lean_deg`）。`art/tools/ce_preview.py` 会从前、后、左、右和俯视出预览图，逐个检查。**导出之后要跑一次 `level_check.py`**（第 14 节），PROPS 测试读它的结果。
+每个资产的处理顺序是：导入 → 合并 → 放平 → 转正 → 缩放 → 切裙边 → 定原点 → 减面（v0.4 起最多重复 5 轮，直到面数不超过目标的 110%）→ 平滑 → 缩贴图 → 保留颜色贴图和材质分区，以漫反射作为导出基础 → 导出 GLB（JPEG 贴图），并写 `_stats/<ID>.json`（里面有放平前后的倾角 `lean_src_deg` / `lean_deg`）。`art/tools/ce_preview.py` 会从前、后、左、右和俯视出预览图，逐个检查。**导出之后要跑一次 `level_check.py`**（第 14 节），PROPS 测试读它的结果。
 
 v0.4 之后是 100 个游戏用 GLB，约 76 万三角面、57 MB（v0.3 时 78 个、约 64 万面），其中 27 个来自 Hyper3D。v0.3 的数字：78 个游戏用 GLB，约 64 万三角面、47 MB（v0.2 时是 61 个）。其中 47 个来自这次的 45 个任务（种植箱 H12a 拆成箱体、植物、整体三份）；另外 14 个（灯笼、长椅、自动售货机、自行车、町屋等）复用上一轮新海诚街景做的混元模型，用同一个脚本重新减面导出，来源记在 `art/models/game_assets.json` 的 `provider` 字段。
 
@@ -166,7 +172,7 @@ v1（只有整腿前后摆，看起来像两根筷子）和 v2（侧面正常，
 - **剖面视角**：每面东西向墙挂在一个枢轴节点下。玩家进入某个房间时（`track_player` → `update_cutaway`），z 不小于这个房间南边界的东西向墙用 0.35 秒缩到 32 cm，门框横梁、窗格、玻璃一起隐藏；南外墙一直是矮的。墙的碰撞体不跟着缩，所以矮墙照样挡人；墙和家具在 `L_PLACED` 层，挡人不挡镜头，镜头的弹簧臂在家里也关掉碰撞。
 - **地面着色器** `shaders/house_floor.gdshader`：一个着色器四种地面（木地板、榻榻米、洗石子、缘侧木板）。贴图按世界坐标采样，两种尺度混合去掉重复感；榻榻米按 1.8×0.9 米错缝算出每一块，每块换一点色相和纹理偏移，长边画布边（ヘリ），短边画接缝；靠墙的地方画一圈淡淡的暗边。
 - **墙面着色器** `shaders/house_wall.gdshader`：灰泥贴图加低频手绘斑驳；0.86 米以下是竖向木腰板（用木地板贴图竖着铺，画板缝），上沿压一条深色压条；底部踢脚线，1.86 米门楣高度一条长押，顶部一圈天花边线。这些线脚都按世界高度画，墙被切矮时自然只剩踢脚线和腰板。厨房的瓷砖和客厅的隔扇纸用同一个着色器，关掉线脚。
-- **卡通光照**：两个着色器和地毯着色器 `house_rug.gdshader` 的 `light()` 都是两段色阶：平行光在 0.5 附近做一个柔和的阶跃，受光面平涂，阴影面加 `shadow_tint`（淡紫）× `shadow_fill` 的补光；点光源分两级亮度。生成的家具模型进屋后由 `HouseBuilder.toonify()` 换成 `DIFFUSE_TOON`、关掉高光和金属度。
+- **卡通光照**：两个着色器和地毯着色器 `house_rug.gdshader` 的 `light()` 都是两段色阶：平行光在 0.5 附近做一个柔和的阶跃，受光面平涂，阴影面加 `shadow_tint`（淡紫）× `shadow_fill` 的补光；点光源分两级亮度。普通家具的基础材质由 `HouseBuilder.toonify()` 处理为卡通漫反射；木家具与家电先按独立表面应用专用着色器，再进入室内。木漆接触区、金属、搪瓷和玻璃按 ART_STYLE 保留克制光泽，纸、布、橡胶不受影响。不能用全局去高光覆盖已分类的家具材质。
 - **阳光与光柱**：屋顶不画出来，只用两块 `SHADOWS_ONLY` 的盒子投影（`ROOF_PARTS`）：缘侧上方的屋檐故意留短，下午的阳光能照进客厅深处；卧室那块屋檐到墙为止，格子窗的影子落在书桌和地板上。光柱 `_build_sunbeams()`：按白天的太阳方向（`SUN_DAY_ROT`，和 `WorldBuilder.apply_phase` 共用），从每个北面开口里屋檐挡不住的那一段，扫出 5 层平行的四边形薄片，一直落到地面。着色器 `house_beam.gdshader` 是加法混合、不写深度，从开口到地面逐渐变淡，两侧和斜看时淡出，拉门的柱子和窗格留出暗缝，还有缓慢漂移的条纹。傍晚光柱隐藏，太阳压低变橙，吊灯、台灯（带影子的点光源）和灯罩自发光亮起。室内还打开了体积雾、SSIL 和偏紫的环境光（`WorldBuilder.set_indoor_look`）。
 - **窗外和院子**：厨房、客厅侧窗后面 12 cm 贴一张 codex 画的街景（`card_window`），面朝屋里，从外面看是背面被剔除，所以从院子里看不到。北面庭院画 `card_garden` 向后倾斜 47°，正对家里固定镜头的视线，看起来像一幅平整的背景画。四周是木板围墙。小镇的远景地面原来铺到 z = 400，正好盖住家的北院，现在收到 z = 360。
 - **状态**：`sync_state()` 按标记切换纸箱（`house_tidy`）、缘侧金鱼缸（`goldfish_home`）和卧室墙上的地图相框（`map_framed`，贴图就是拼图小游戏的那张地图）。
@@ -256,7 +262,7 @@ Godot 这边是 `Audio` 自动加载（`game/scripts/autoload/audio.gd`）：
 
 - **材质视频样板（2026-10-06）**：`art/poc/material_review_20261006/godot/` 是独立 Godot 4.7.2 Forward+ 工程，六种地表各有 A/B；四张 imagegen 图用于实际材质，已有 Hyper3D 住宅用于实景。运行 `python3 art/poc/material_review_20261006/record.py --tag review` 原生录制 40 秒 1080p/30fps 并编码 MP4；视频、8 张截图、日志和检查在 `evidence/material_review_20261006_v1/`。窗口 override 与录制分辨率保持一致，避免 Movie Maker 输出 720p 而截图仍为 1080p。隔离工程不加载游戏 autoload，不修改默认存档。详见该 POC 的 README。
 
-- 自动测试：`res://scenes/tests.tscn`，当前2170项，全量通过；含规则、SQLite、UI、模型摆放、路线、生活、完整夏季和镜头检查。独立HARUMACHI_SAVE_DIR、超时与SCRIPT ERROR检查必须同时使用；全量不与其他Godot实例并发。专项入口与数量见AGENTS，最终数以JSON报告为准。
+- 自动测试：`res://scenes/tests.tscn`，当前2203项，全量通过；含规则、SQLite、UI、模型摆放、路线、生活、完整夏季和镜头检查。独立HARUMACHI_SAVE_DIR、超时与SCRIPT ERROR检查必须同时使用；全量不与其他Godot实例并发。专项入口与数量见AGENTS，最终数以JSON报告为准。
 - 卡顿检查要让时钟实际推进，记录逐帧耗时，不能只看平均FPS。工具`evidence/desktop_stutter_20261007/perf_probe.gd`的`--fixed`模式在真实起床卧室和商店街记录480帧，截图回读放在计时之后；使用固定引擎、置顶原生窗口和独立存档。运动清晰度检查在固定镜头距离下核对人物与镜头的渲染插值位置，镜头避障另跑`--only=camera-body`。桌面缓存用晚会专项检查移动、旋转后的实际食物支撑；方法与结果见[卡顿修复](DESKTOP_STUTTER_20261008.md)。
 - 自动演示：普通标题入口`--autoplay`沿实际碰撞路径、Story交互、摆放控制器、料理面板、灯笼输入、日历赴约和拍照完成新夏季至Q15，检查控制与保存恢复。本轮解压包205项通过，最终报告及关键截图在本轮证据目录。自动对白与阶段暂停明确记录，不作为自然四小时；`--showcase`是节日展示夹具。打印的AP mark/frame用于录像剪辑。
 - 录制时游戏窗口不能被别的窗口完全挡住：macOS 会停止给被挡住的窗口画帧，演示就停在原地。用 `-t --position <x>,<y>` 置顶并放到屏幕角落。

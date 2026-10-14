@@ -7,7 +7,7 @@ func check(label: String,ok: bool,detail: String="") -> void: t.check("SCENE_QUA
 func painted(material: Material) -> bool:
 	if material is StandardMaterial3D: return material.albedo_texture!=null
 	if material is ShaderMaterial:
-		for name: String in ["painted_tex","albedo_tex","wood_tex"]:
+		for name: String in ["painted_tex","albedo_tex","wood_tex","grain_tex"]:
 			if material.get_shader_parameter(name) is Texture2D: return true
 	return false
 

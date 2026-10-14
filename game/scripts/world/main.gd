@@ -208,6 +208,8 @@ func _ready() -> void:
 			add_child(demo)
 		if a == "--seating-demo":
 			add_child(load("res://scripts/tools/seating_demo.gd").new())
+		if a == "--furniture-finish-review":
+			add_child(load("res://scripts/tools/furniture_finish_review.gd").new())
 		if a == "--lake-demo":
 			var lake_demo=load("res://scripts/tools/lake_demo.gd").new()
 			add_child(lake_demo)

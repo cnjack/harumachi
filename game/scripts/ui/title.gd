@@ -5,7 +5,7 @@ var menu := VBoxContainer.new()
 var status: Label
 var panel_layer := Control.new()
 const MENU_CAT=preload("res://scripts/ui/menu_cat.gd")
-const DIRECT_FIXTURES: Array[String] = ["--resident-visits-demo", "--lake-demo", "--seating-demo"]
+const DIRECT_FIXTURES: Array[String] = ["--resident-visits-demo", "--lake-demo", "--seating-demo", "--furniture-finish-review"]
 
 func _direct_fixture() -> bool:
 	for argument: String in OS.get_cmdline_user_args():

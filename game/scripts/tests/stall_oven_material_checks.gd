@@ -11,14 +11,33 @@ func _init(runner: Node) -> void:
 func check(label: String,ok: bool,detail: String="") -> void:
 	t.check("STALL_OVEN_MATERIAL",label,ok,detail)
 
+func translucent(material: Material) -> bool:
+	if material is StandardMaterial3D:
+		return material.transparency!=BaseMaterial3D.TRANSPARENCY_DISABLED and material.albedo_color.a<.5
+	if material is ShaderMaterial and material.shader!=null and material.shader.resource_path=="res://shaders/appliance_glass.gdshader":
+		var opacity: Variant=material.get_shader_parameter("opacity")
+		return opacity!=null and float(opacity)>0.0 and float(opacity)<.5
+	return false
+
+func emissive(material: Material) -> bool:
+	if material is StandardMaterial3D:
+		return material.emission_enabled and material.emission_energy_multiplier>0.0 and maxf(material.emission.r,maxf(material.emission.g,material.emission.b))>0.0
+	if material is ShaderMaterial and material.shader!=null and material.shader.resource_path in ["res://shaders/appliance_metal.gdshader","res://shaders/appliance_glass.gdshader"]:
+		var colour: Variant=material.get_shader_parameter("emission_color")
+		if colour is Color:
+			return maxf(colour.r,maxf(colour.g,colour.b))>0.0
+		if colour is Vector4:
+			return maxf(colour.x,maxf(colour.y,colour.z))>0.0
+	return false
+
 func local_triangles(model: Node3D,minimum_y: float=-INF,skip_glass: bool=false) -> PackedVector3Array:
 	var result:=PackedVector3Array()
 	for mesh: MeshInstance3D in WorldBuilder.find_meshes(model):
 		if mesh.mesh==null:continue
 		var relative: Transform3D=model.global_transform.affine_inverse()*mesh.global_transform
 		for surface: int in mesh.mesh.get_surface_count():
-			var material: StandardMaterial3D=mesh.get_active_material(surface) as StandardMaterial3D
-			if skip_glass and material!=null and material.transparency!=BaseMaterial3D.TRANSPARENCY_DISABLED:continue
+			var material: Material=mesh.get_active_material(surface)
+			if skip_glass and translucent(material):continue
 			var arrays: Array=mesh.mesh.surface_get_arrays(surface)
 			var vertices: PackedVector3Array=arrays[Mesh.ARRAY_VERTEX]
 			var indices: PackedInt32Array=arrays[Mesh.ARRAY_INDEX] if arrays[Mesh.ARRAY_INDEX] is PackedInt32Array else PackedInt32Array()
@@ -116,11 +135,11 @@ func run() -> void:
 	var warm_count:=0
 	for mesh: MeshInstance3D in WorldBuilder.find_meshes(oven):
 		for surface: int in mesh.mesh.get_surface_count():
-			var material: StandardMaterial3D=mesh.get_active_material(surface) as StandardMaterial3D
+			var material: Material=mesh.get_active_material(surface)
 			if material==null:continue
 			roles[material.resource_name]=true
-			if material.transparency!=BaseMaterial3D.TRANSPARENCY_DISABLED and material.albedo_color.a<.5:glass_count+=1
-			if material.emission_enabled and material.emission_energy_multiplier>0:warm_count+=1
+			if translucent(material):glass_count+=1
+			if emissive(material):warm_count+=1
 	check("oven enamel seals controls glass and cavity have independent real materials",roles.size()>=7 and glass_count>=2 and warm_count>=2,str({"materials":roles.keys(),"glass":glass_count,"warm":warm_count}))
 	var recesses: Array[float]=[]
 	for height: float in [.905,1.465]:
