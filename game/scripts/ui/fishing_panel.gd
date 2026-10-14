@@ -67,7 +67,12 @@ func _process(delta: float) -> void:
 			detail_label.text="背包 +1  ·  %d 生活币%s" % [int(session.result.sell)," · 新的长度纪录！" if session.result.new_record else ""]
 		else:
 			_result_icon.visible=false
-			detail_label.text="按住 →  ·  松开 ←  ·  跟住鱼影，红线时松开"
+			if session.state==FishingSession.State.BITE:
+				detail_label.text="浮漂沉下后，%.1f 秒内点 E / 空格或左键提竿"%FishingSession.BITE_WINDOW
+			elif session.state==FishingSession.State.REEL:
+				detail_label.text="按住 →  ·  松开 ←  ·  短暂出界可以追回，红线时先松开"
+			else:
+				detail_label.text="等浮漂下沉再点一下提竿；收线时让鱼影留在绿色区间"
 		action_button.text="再抛一竿  E / 空格" if session.state in [FishingSession.State.LANDED,FishingSession.State.MISSED] else ("按住 →   /   松开 ←" if session.state==FishingSession.State.REEL else "抛竿 / 提竿  E / 空格")
 	state_label.text="%s  ·  %d" % [LakesideLayout.SPOTS[session.spot].name,GameState.count("fishing_bait")]
 

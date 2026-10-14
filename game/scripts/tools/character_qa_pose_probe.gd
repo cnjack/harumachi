@@ -49,7 +49,7 @@ func _process_modification() -> void:
 	var sk: Skeleton3D = get_skeleton()
 	if sk == null: return
 	joints.clear()
-	for joint: String in ["hips", "head", "hand.R", "thigh.L", "shin.L", "foot.L", "toe.L", "thigh.R", "shin.R", "foot.R", "toe.R"]:
+	for joint: String in ["hips", "head", "hand.R", "hand.L", "thigh.L", "shin.L", "foot.L", "toe.L", "thigh.R", "shin.R", "foot.R", "toe.R"]:
 		var index: int = LivingPose.bone(sk, joint)
 		if index >= 0:
 			var point: Vector3 = sk.to_global(sk.get_bone_global_pose(index).origin)

@@ -5,6 +5,12 @@ var menu := VBoxContainer.new()
 var status: Label
 var panel_layer := Control.new()
 const MENU_CAT=preload("res://scripts/ui/menu_cat.gd")
+const DIRECT_FIXTURES: Array[String] = ["--resident-visits-demo", "--lake-demo", "--seating-demo"]
+
+func _direct_fixture() -> bool:
+	for argument: String in OS.get_cmdline_user_args():
+		if argument in DIRECT_FIXTURES or argument.begins_with("--shots="):return true
+	return false
 
 
 func _ready() -> void:
@@ -76,7 +82,7 @@ func _ready() -> void:
 	panel_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(panel_layer)
 	first.call_deferred("grab_focus")
-	if "--autoplay" in OS.get_cmdline_user_args() or "--newgame" in OS.get_cmdline_user_args() or "--prologue-only" in OS.get_cmdline_user_args() or "--resident-visits-demo" in OS.get_cmdline_user_args():
+	if "--autoplay" in OS.get_cmdline_user_args() or "--newgame" in OS.get_cmdline_user_args() or "--prologue-only" in OS.get_cmdline_user_args() or _direct_fixture():
 		get_tree().create_timer(1.5 if "--autoplay" in OS.get_cmdline_user_args() else 0.05).timeout.connect(_new_game)
 
 
@@ -89,8 +95,8 @@ func _start_new(slot: int) -> void:
 	GameState.load_on_enter = false
 	# v0.6: a new game opens with the prologue slideshow (skipped under --autoplay / --newgame;
 	# --prologue-only plays it and quits, which also works in the exported app).
-	# The visit fixture has its own entry flag so --newgame cannot also start arrival_home.
-	var direct := "--autoplay" in OS.get_cmdline_user_args() or "--newgame" in OS.get_cmdline_user_args() or "--resident-visits-demo" in OS.get_cmdline_user_args()
+	# Dedicated fixtures must not also start arrival_home through --newgame.
+	var direct := "--autoplay" in OS.get_cmdline_user_args() or "--newgame" in OS.get_cmdline_user_args() or _direct_fixture()
 	Loading.change_scene("res://scenes/main.tscn" if direct else "res://scenes/prologue.tscn", "开始新的一天")
 
 
@@ -100,7 +106,7 @@ func _new_game() -> void:
 			GameState.load_on_enter=true
 			Loading.change_scene("res://scenes/main.tscn","恢复自动验证进度")
 		return
-	var direct:=OS.get_cmdline_user_args().has("--newgame") or OS.get_cmdline_user_args().has("--autoplay") or OS.get_cmdline_user_args().has("--prologue-only") or OS.get_cmdline_user_args().has("--resident-visits-demo")
+	var direct:=OS.get_cmdline_user_args().has("--newgame") or OS.get_cmdline_user_args().has("--autoplay") or OS.get_cmdline_user_args().has("--prologue-only") or _direct_fixture()
 	if direct:
 		var chosen:=1
 		for row: Dictionary in SaveDB.list_slots():

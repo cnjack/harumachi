@@ -34,7 +34,7 @@ const HOUSE_KITCHEN_STAND := Vector3(-4.7, 0.05, 2.7)
 const FSTAND := {
 	"plot_farm0": [Vector2(-3.45, -1.85), "f_mid"], "plot_farm1": [Vector2(-1.15, -1.85), "f_mid"],
 	"plot_farm2": [Vector2(1.15, -1.85), "f_mid"], "plot_farm3": [Vector2(3.45, -1.85), "f_mid"],
-	"farm_pump": [Vector2(-7.2, -2.2), "f_pump"], "farm_bench": [Vector2(9.6, 10.9), "f_bench"],
+	"farm_pump": [Vector2(-7.2, -2.2), "f_pump"], "farm_bench": [Vector2(9.6, 13.15), "f_bench"],
 	"veggie_stand": [Vector2(6.5, 1.4), "f_stand"], "farm_exit": [Vector2(-27.2, 0.3), "f_in"],
 }
 const EDGES := [

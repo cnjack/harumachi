@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-14",
+  "provider": "Blender geometric rebuild; original Hyper3D textured bed and produce retained",
+  "paid_generations": 0,
+  "credits": 0,
+  "assets": {
+    "D07_kei_truck": {
+      "authoring": "art/library/vehicles/authoring/D07_kei_truck.blend",
+      "source": "art/models/raw/D07_kei_truck_glass_20261014/ready.glb",
+      "predecessor": "art/library/vehicles/source/D07_textured_predecessor.glb",
+      "recipe": "art/tools/rebuild_kei_truck.py",
+      "game": "game/assets/models/D07_kei_truck.glb",
+      "reused": "Original UV-mapped flatbed, produce crates and vegetables",
+      "rebuilt": "Cab shell and window openings, four thin glass panes, two seats and headrests, dashboard and right-hand steering, chassis, wheels, wheel arches, lamps and mirrors",
+      "glass_runtime": "game/scripts/world/truck_glazing.gd",
+      "texture_style": "Existing cargo atlas plus six quiet painted UV textures; no photographic PBR reflections",
+      "usage": [
+        "Town east farm approach",
+        "Farm loading area"
+      ],
+      "source_sha256": "05c69e01df7fa81d36d0aa3c76aec3d33be34cc03f17df7897b9c58df8af7844",
+      "game_sha256": "6b9eb587e2cbf3dd432fcc6ee2848a3fd3e4baa9bdb1a1510a90d9f4078bca04",
+      "stats": {
+        "id": "D07_kei_truck",
+        "src": "raw/D07_kei_truck_glass_20261014/ready.glb",
+        "provider": "Blender remade hollow cab, glazing, chassis and wheels; retained original Hyper3D UV cargo bed",
+        "preserve_parts": true,
+        "origin_preserved": true,
+        "tris": 19427,
+        "tex": 2048,
+        "bytes": 1560916,
+        "godot_size_m_xyz": [
+          2.026,
+          1.855,
+          3.4515
+        ],
+        "mesh_nodes": [
+          "Body_Amber_signal",
+          "Body_Blue_grey_trim",
+          "Body_Cream_headlamp",
+          "Body_Ivory_painted_body",
+          "Body_Matte_wheel_steel",
+          "Body_Red_tail_lamp",
+          "Body_Rubber_seals_and_grille",
+          "Body_Tyre_rubber",
+          "Body_Yellow_local_plate",
+          "Glass_Left",
+          "Glass_Rear",
+          "Glass_Right",
+          "Glass_Windshield",
+          "Headrest_Left",
+          "Headrest_Right",
+          "Seat_Left",
+          "Seat_Right",
+          "Seatback_Left",
+          "Seatback_Right",
+          "SteeringWheel",
+          "TexturedBedAndCargo",
+          "Tyre_Front_Left",
+          "Tyre_Front_Right",
+          "Tyre_Rear_Left",
+          "Tyre_Rear_Right"
+        ]
+      },
+      "level": {
+        "base_frac": 0.603,
+        "normal": [
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "rect_fill": 0.986,
+        "square_deg": 0.0,
+        "tilt": 0.0,
+        "verts": 34942
+      },
+      "authoring_sha256": "340fc10344c2d61e2e793c55bfc85167f8742e7ae70dab492409e3275693dbcc"
+    }
+  }
+}

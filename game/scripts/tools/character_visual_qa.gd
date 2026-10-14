@@ -342,13 +342,13 @@ func capture_seats() -> void:
 			await snapshot({"id": "sora", "action": "sit", "phase": .5, "scene": seat_id, "kind": "real_seat_modifier", "hip_height": main.story.public_life.pose.measured_hip_height, "knee_forward": main.story.public_life.pose.measured_knee_forward}, view)
 		var drink := LivingAction.new()
 		main.add_child(drink)
-		drink.setup(main.player, "sip", "coffee")
+		drink.setup(main.player, "rest")
 		drink.duration = 1000
 		for phase: float in [.25, .5, .75]:
 			drink.clock = phase * 1000
 			await settle(8)
 			for view: String in VIEWS:
-				await snapshot({"id": "sora", "action": "seated_sip", "phase": phase, "scene": seat_id, "kind": "real_seat_and_living_action"}, view)
+				await snapshot({"id": "sora", "action": "seated_rest", "phase": phase, "scene": seat_id, "kind": "real_seat_without_held_prop"}, view)
 		drink.queue_free()
 		await get_tree().process_frame
 		main.story.public_life.stand(true)

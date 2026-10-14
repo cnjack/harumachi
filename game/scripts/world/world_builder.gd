@@ -118,6 +118,8 @@ func spawn(id: String, pos: Vector3, yaw_deg: float, collide: int = 1, parent: N
 		mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 	SurfaceFinish.apply(n,id)
 	ModelDiversity.apply(n,id)
+	if id == "D07_kei_truck":
+		TruckGlazing.apply(n)
 	if id == "T05_old_shade_tree":
 		preload("res://scripts/world/old_tree_lower_foliage.gd").attach(n)
 	if id in ["P_farm_gate", "P_signpost", "P_bridge", "P_yagura", "H01", "H02", "H03", "S06", "S01", "S02", "S03", "S05", "S08", "M01_timber_machiya", "M03_gable_house", "M05_residential"]:

@@ -148,8 +148,8 @@ static func get_activity_views() -> Dictionary:
 		"qa_activity_obon_farbank": _farm("activity_obon", "盂兰盆 · 对岸河灯", Vector3(0, .1, 24), Vector3(7, 1.8, 25), Vector3(-3, .2, 17)),
 		"qa_activity_reading_side": _inside_detail("activity_reading", "阅读 · 椅子与身体侧面", "workroom", Vector3(3.5, .05, 1.35), Vector3(1.5, 1.9, 4.3), Vector3(4.35, .85, 2.1)),
 		"qa_activity_reading_back": _inside_detail("activity_reading", "阅读 · 座椅后侧", "workroom", Vector3(3.5, .05, 1.35), Vector3(5.2, 1.55, -.2), Vector3(4.35, .85, 1.35)),
-		"qa_activity_cafe_sip_side": _inside_detail("activity_cafe", "咖啡 · 持杯与桌沿", "bakery", Vector3(.2, .05, 3.4), Vector3(-1.8, 1.55, 3.9), Vector3(.2, .95, 2.55)),
-		"qa_activity_cafe_sip_reverse": _inside_detail("activity_cafe", "咖啡 · 持杯背侧", "bakery", Vector3(.2, .05, 3.4), Vector3(.8, 1.65, .8), Vector3(.2, .95, 2.55)),
+		"qa_activity_cafe_sip_side": _inside_detail("activity_cafe", "咖啡 · 桌上杯子与休息", "bakery", Vector3(.2, .05, 3.4), Vector3(-1.8, 1.55, 3.9), Vector3(.2, .95, 2.55)),
+		"qa_activity_cafe_sip_reverse": _inside_detail("activity_cafe", "咖啡 · 桌边休息背侧", "bakery", Vector3(.2, .05, 3.4), Vector3(.8, 1.65, .8), Vector3(.2, .95, 2.55)),
 	}
 	for id: String in views:
 		var view: Dictionary = views[id]

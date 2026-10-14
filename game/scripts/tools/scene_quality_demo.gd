@@ -44,7 +44,10 @@ func run() -> void:
 	await get_tree().create_timer(.65).timeout
 	Audio.fx_at("dish_place",ears.global_position+right*30,-5)
 	await get_tree().create_timer(.65).timeout
-	var drink:=LivingAction.new();main.add_child(drink);drink.setup(main.player,"sip")
+	var drink:=LivingAction.new();main.add_child(drink)
+	var tea_station: Node3D=main.world.interiors.workroom.find_child("NeighbourTeaStation",true,false)
+	drink.surface_at=tea_station.global_position+Vector3.UP*.86
+	drink.show_table_cup=false;drink.setup(main.player,"sip")
 	while not drink.finished:await get_tree().process_frame
 	results.sip_cue_played=bool(drink.get_meta("foley_played",false));drink.queue_free()
 	await get_tree().create_timer(.3).timeout

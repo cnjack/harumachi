@@ -2,6 +2,14 @@ extends Node
 ## Evidence camera: `-- --shots=<dir> [--views=a,b]` renders predefined views to PNG and quits.
 
 const VIEWS := {
+ "truck_town_front": {"player":Vector3(32,.1,-9),"time":10.5,"camera_at":Vector3(38,2.1,-9.3),"camera_focus":Vector3(33.8,1,-12.85),"fov":43.0},
+ "truck_town_back": {"player":Vector3(32,.1,-9),"time":10.5,"camera_at":Vector3(29.4,1.8,-9.5),"camera_focus":Vector3(33.8,.95,-12.85),"fov":43.0},
+ "truck_farm_front": {"farm":true,"player":Vector3(-8,.1,5),"time":10.5,"camera_at":Vector3(-5.8,2.1,6.4),"camera_focus":Vector3(-10,1,2.85),"fov":43.0},
+ "truck_farm_cab": {"farm":true,"player":Vector3(-8,.1,5),"time":10.5,"camera_at":Vector3(-6.8,1.65,4.9),"camera_focus":Vector3(-8.9,1.35,2.85),"fov":40.0},
+ "truck_farm_back": {"farm":true,"player":Vector3(-8,.1,5),"time":10.5,"camera_at":Vector3(-13.8,1.85,.0),"camera_focus":Vector3(-10,.95,2.85),"fov":43.0},
+ "truck_farm_rain": {"farm":true,"player":Vector3(-8,.1,5),"time":10.5,"weather":"rain","camera_at":Vector3(-5.8,2.1,6.4),"camera_focus":Vector3(-10,1,2.85),"fov":43.0},
+ "truck_town_night": {"player":Vector3(32,.1,-9),"time":21.0,"camera_at":Vector3(38,2.1,-9.3),"camera_focus":Vector3(33.8,1,-12.85),"fov":43.0},
+
  "inhabited_cafe_sip": {"interior":"bakery","at":Vector3(.2,.05,3.4),"time":10.5,"seat_id":"public_cafe_1","sip":"coffee","show_actor":true,"inside_camera":Vector3(-1.8,1.55,3.9),"inside_focus":Vector3(.2,.95,2.55)},
 
  "inhabited_community": {"interior":"workroom","at":Vector3(0,.05,2.6),"face":180.0,"pitch":46.0,"dist":9.4,"time":10.5},
@@ -351,7 +359,7 @@ func _run() -> void:
 		if v.get("group", "") in ["environments", "activities"] and v.get("weather", "sunny") == "rain":
 			v["settle_seconds"] = maxf(float(v.get("settle_seconds", 0.0)), .8)
 		manifest.append({"name": n, "file": n + ".png", "configuration": v})
-		main.story.public_life.stand()
+		main.story.public_life.stand(true)
 		main.player.process_mode = Node.PROCESS_MODE_INHERIT
 		for actor_id in main.npcs:
 			main.npcs[actor_id].process_mode = Node.PROCESS_MODE_INHERIT
@@ -463,7 +471,11 @@ func _run() -> void:
 					if candidate.id==v.seat_id:main.story.public_life.sit(candidate);break
 			var sip_action: LivingAction
 			if v.has("sip"):
-				sip_action=LivingAction.new();main.add_child(sip_action);sip_action.setup(main.player,"sip",v.sip);sip_action.duration=1000;sip_action.clock=500
+				sip_action=LivingAction.new();main.add_child(sip_action)
+				var occupied: Interactable=main.story.public_life.current_seat
+				if is_instance_valid(occupied) and occupied.has_meta("table_position"):
+					sip_action.surface_at=occupied.get_parent().to_global(occupied.get_meta("table_position"))
+				sip_action.setup(main.player,"sip",v.sip);sip_action.duration=1000;sip_action.clock=500
 			for i in 40:
 				await get_tree().process_frame
 			if v.has("tv_signal"):
@@ -473,7 +485,7 @@ func _run() -> void:
 			get_viewport().get_texture().get_image().save_png("%s/%s.png" % [dir, n])
 			print("SHOT ", n)
 			if sip_action!=null:sip_action.queue_free()
-			main.story.public_life.stand()
+			main.story.public_life.stand(true)
 			main.in_room = false
 			main.room_kind = ""
 			GameState.player_in_room = false
@@ -513,7 +525,11 @@ func _run() -> void:
 					if candidate.id==v.seat_id:main.story.public_life.sit(candidate);break
 			var sip_action: LivingAction
 			if v.has("sip"):
-				sip_action=LivingAction.new();main.add_child(sip_action);sip_action.setup(main.player,"sip",v.sip);sip_action.duration=1000;sip_action.clock=500
+				sip_action=LivingAction.new();main.add_child(sip_action)
+				var occupied: Interactable=main.story.public_life.current_seat
+				if is_instance_valid(occupied) and occupied.has_meta("table_position"):
+					sip_action.surface_at=occupied.get_parent().to_global(occupied.get_meta("table_position"))
+				sip_action.setup(main.player,"sip",v.sip);sip_action.duration=1000;sip_action.clock=500
 			for i in 40:
 				await get_tree().process_frame
 			var im := get_viewport().get_texture().get_image()
@@ -522,7 +538,7 @@ func _run() -> void:
 			print("SHOT ", n)
 			if sip_action != null:
 				sip_action.queue_free()
-			main.story.public_life.stand()
+			main.story.public_life.stand(true)
 			continue
 		if main.in_room:
 			main.in_room = false

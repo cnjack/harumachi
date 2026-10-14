@@ -1,5 +1,5 @@
 extends Node
-## Visual integration run. Use an isolated HARUMACHI_SAVE_DIR and --newgame --lake-demo.
+## Visual integration run. Use an isolated HARUMACHI_SAVE_DIR and --lake-demo from the title.
 ## Walks the lake loop, drives the real fishing key handlers, sells, cooks and saves.
 var main: Node
 var out := "/tmp/harumachi-lake-demo"
@@ -76,21 +76,30 @@ func _cast_once(index:int)->bool:
 	if panel.session.state!=FishingSession.State.BITE:
 		failures.append("no bite in native input run");return false
 	if index==0:await _shot("04_bite")
+	# Leave a human-scale reaction delay on the first bite, then use the real E handler.
+	if index==0:
+		while panel.session.state==FishingSession.State.BITE and panel.session.timer<3.0:await _frames(1)
+	var bite_reaction: float=panel.session.timer
 	await _tap(KEY_E)
 	var held:=false
 	var photographed:=false
+	var next_reaction: float=.35
 	deadline=_qa_now_msec()+35000
 	while panel.session.state==FishingSession.State.REEL and _qa_now_msec()<deadline:
-		var next:=held
-		next=panel.session.suggested_hold()
-		if next!=held:_key(KEY_E,next);held=next
+		# Read only visible positions every 350 ms; no perfect per-frame or private-velocity controller.
+		if panel.session.timer>=next_reaction:
+			var next: bool=panel.session.cursor<panel.session.fish_position and panel.session.tension<.84
+			if next!=held:_key(KEY_E,next);held=next
+			next_reaction=panel.session.timer+.35
 		if index==0 and panel.session.reel_progress>.4 and not photographed:
 			photographed=true;await _shot("05_reeling")
 		await _frames(1)
 	_key(KEY_E,false)
 	if panel.session.state!=FishingSession.State.LANDED:
 		failures.append("catch failed: "+panel.session.message);return false
-	catches.append(panel.session.result.duplicate(true))
+	var caught: Dictionary=panel.session.result.duplicate(true)
+	caught["bite_reaction_seconds"]=bite_reaction;caught["control_interval_seconds"]=.35
+	catches.append(caught)
 	await _shot("06_catch_%d"%index)
 	return true
 

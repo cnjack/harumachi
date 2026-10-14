@@ -1,20 +1,42 @@
 {
  "id": "D07_kei_truck",
- "src": "raw/D07_kei_truck_h3d/model.glb",
- "provider": "hyper3d rodin gen-2.5 (v0.6 review)",
- "tris_src": 29913,
- "tris": 11999,
- "size_m": [
-  2.009,
-  3.399,
-  1.863
- ],
- "godot_size_m_xyz": [
-  2.009,
-  1.863,
-  3.399
- ],
+ "src": "raw/D07_kei_truck_glass_20261014/ready.glb",
+ "provider": "Blender remade hollow cab, glazing, chassis and wheels; retained original Hyper3D UV cargo bed",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 19427,
  "tex": 2048,
- "bytes": 1262392,
- "yaw_fix": 0
+ "bytes": 1560916,
+ "godot_size_m_xyz": [
+  2.026,
+  1.855,
+  3.4515
+ ],
+ "mesh_nodes": [
+  "Body_Amber_signal",
+  "Body_Blue_grey_trim",
+  "Body_Cream_headlamp",
+  "Body_Ivory_painted_body",
+  "Body_Matte_wheel_steel",
+  "Body_Red_tail_lamp",
+  "Body_Rubber_seals_and_grille",
+  "Body_Tyre_rubber",
+  "Body_Yellow_local_plate",
+  "Glass_Left",
+  "Glass_Rear",
+  "Glass_Right",
+  "Glass_Windshield",
+  "Headrest_Left",
+  "Headrest_Right",
+  "Seat_Left",
+  "Seat_Right",
+  "Seatback_Left",
+  "Seatback_Right",
+  "SteeringWheel",
+  "TexturedBedAndCargo",
+  "Tyre_Front_Left",
+  "Tyre_Front_Right",
+  "Tyre_Rear_Left",
+  "Tyre_Rear_Right"
+ ]
 }

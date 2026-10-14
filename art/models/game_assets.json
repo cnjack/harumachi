@@ -1373,13 +1373,13 @@
       "yaw_note": "v0.6 review (round 2): the roof frame was 52 deg off-axis (first review wrongly treated the well as round); turned square, the open side with the bucket to +Z"
     },
     "D07_kei_truck": {
-      "src": "raw/D07_kei_truck_h3d/model.glb",
-      "fit": "max",
-      "size": 3.4,
-      "tris": 12000,
+      "src": "raw/D07_kei_truck_glass_20261014/ready.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
       "tex": 2048,
-      "provider": "hyper3d rodin gen-2.5 (v0.6 review)",
-      "prev_src": "raw/D07_kei_truck_pix/model.glb"
+      "provider": "Blender remade hollow cab, glazing, chassis and wheels; retained original Hyper3D UV cargo bed",
+      "prev_src": "raw/D07_kei_truck_h3d/model.glb"
     },
     "I01_deck_oven": {
       "src": "raw/I01_deck_oven_pix/model.glb",

@@ -732,16 +732,16 @@
   "verts": 11798
  },
  "D07_kei_truck": {
-  "base_frac": 0.547,
+  "base_frac": 0.603,
   "normal": [
-   -0.0029,
-   -0.002,
+   0.0,
+   0.0,
    -1.0
   ],
-  "rect_fill": 0.983,
-  "square_deg": -0.0,
-  "tilt": 0.2,
-  "verts": 16518
+  "rect_fill": 0.986,
+  "square_deg": 0.0,
+  "tilt": 0.0,
+  "verts": 34942
  },
  "D08_tool_rack": {
   "base_frac": 0.976,

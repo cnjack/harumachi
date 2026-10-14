@@ -155,6 +155,10 @@ func play_action(kind: String, item_id: String = "onigiri") -> String:
 	var action := LivingAction.new()
 	s.main.add_child(action)
 	action.duration = .08 if s.ui.instant else (1.8 if kind == "eat" else 2.4)
+	if kind == "sip":
+		action.surface_at = tea_root.global_position
+		action.show_table_cup = false # Keep the existing cup set on its supported tray.
+		action.allow_cancel = true
 	if kind == "eat":
 		action.surface_at = _food_surface()
 		if s.main.in_room and s.main.room_kind == "house": action.surface_normal = _meal_normal()
@@ -172,7 +176,7 @@ func play_action(kind: String, item_id: String = "onigiri") -> String:
 		s.ui.dlg.hide()
 		camera = Camera3D.new()
 		s.main.add_child(camera)
-		if kind == "eat" and action.surface_at.is_finite():
+		if kind in ["eat", "sip"] and action.surface_at.is_finite():
 			camera.global_position = action.surface_at + Vector3(.55, .8, 1.1)
 			camera.fov = 40.0
 			camera.look_at(action.surface_at + Vector3.UP * .025)
@@ -186,6 +190,7 @@ func play_action(kind: String, item_id: String = "onigiri") -> String:
 	if kind not in ["sip","eat"]:Audio.fx_at("paper",s.player.global_position,-9)
 	while not action.finished:
 		await get_tree().process_frame
+	var cancelled: bool = action.cancelled
 	action.queue_free()
 	_eating = false
 	if is_instance_valid(camera):
@@ -193,7 +198,7 @@ func play_action(kind: String, item_id: String = "onigiri") -> String:
 			previous_camera.make_current()
 		camera.queue_free()
 		s.ui.dlg.visible = dialogue_visible
-	return ""
+	return "先把杯子留在托盘上，等有空再来。" if cancelled else ""
 
 
 func _meal_normal() -> Vector3:

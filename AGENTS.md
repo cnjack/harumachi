@@ -10,7 +10,7 @@
 - 设计文档：`docs/game-design/`，入口 [README.md](docs/game-design/README.md)，当前事实集中在 [CURRENT_STATUS.md](docs/game-design/CURRENT_STATUS.md)
 - 素材源文件和工具：`art/`
 - 录像、截图、测试结果：`evidence/`
-- 导出包：`builds/HareMachi.zip`，当前Godot4.8-dev7；最新验收见`evidence/layout_story_implementation_20261014/delivery.json`
+- 导出包：`builds/HareMachi.zip`，Godot4.8-dev7；最新货车、休息与钓鱼交付见`evidence/farm_truck_seating_fishing_20261014/delivery.json`。
 - 官方网站与网页试玩：`site/`，说明在 `site/README.md`
 
 ## builds 只保留最新交付（2026-10-05）
@@ -45,7 +45,10 @@ PY=/Users/jack/.copilot/session-state/ca10e179-b441-4d77-b938-250cea2ee4c6/files
 BLENDER=/Applications/Blender.app/Contents/MacOS/Blender
 
 $GODOT --headless --path game --import                               # 加了素材或 class_name 之后必须先跑
-$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前2120项；单独运行，套timeout）
+$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前2170项；单独运行，套timeout）
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=truck-glazing # 10项：真实窗洞、玻璃内饰、贴图和四轮接地
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=seating # 27项：9张长椅、取消/起身、保存过夜与旧花火入口
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=fishing-tolerance # 13项：3秒反应、350ms控鱼、短时出界与真实失败
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=resident-interiors # 124项：11处室内、真实门口、支撑、通路、邀请与读档
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=resident-visits    # 43项：约定、两种试坐、照片、回访、延期与恢复
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=props-lifecycle    # 48项：收纳、准备、练习、开场、散场、木料与晨间茶盘
@@ -103,7 +106,7 @@ $GODOT --headless --path game --export-release "Windows Desktop" "$HARUMACHI_BUI
 
 ## 必须知道的坑
 
-- **引擎固定4.8-dev7**：精确版本`4.8.dev7.official.c971f93e7`，配置在`tools/godot-version.json`；优先运行`./tools/godot`，它会校验版本。不要依赖可能被自动更新的`/Applications/Godot.app`。`project.godot` features为"4.8"，导出模板为`4.8.dev7`。这是用户要求的开发快照迁移，当前源码2120项独占全量、新居民室内与拜访原生实拍、解压包新拜访路线及205项完整夏季演示均已通过；验收记录不能与历史4.7.2混用。
+- **引擎固定4.8-dev7**：精确版本`4.8.dev7.official.c971f93e7`，配置在`tools/godot-version.json`；优先运行`./tools/godot`，它会校验版本。不要依赖可能被自动更新的`/Applications/Godot.app`。`project.godot` features为"4.8"，导出模板为`4.8.dev7`。这是用户要求的开发快照迁移。当前货车、休息与钓鱼批次2170项独占全量、原生专项及205项解压包完整演示已通过。验收记录不能与历史4.7.2混用。
 - **卡顿要查真实时钟和渲染帧**：未使用的晚会桌面不能随每个游戏分钟重扫三角面；桌面测量按实例、变换与来源缓存。只有玩家和跟随镜头启用物理插值，普通移动不能误清插值快照；传送与镜头snap须复位。见`docs/game-design/DESKTOP_STUTTER_20261008.md`。大榕树镜头球扫使用实测1.6万面独立代理，不能重新生成17万面可见树皮碰撞，见`docs/game-design/TREE_LOCOMOTION_20261012.md`。
 - **警告当错误**：推断成 Variant 的变量要写明类型（`var p: Vector3 = ...`）；同一个函数里变量不能重名（嵌套循环里也不行）；字典字面量不能有重复键；不要写叫 `_set` 的方法。
 - **窗口被挡住就停帧**：macOS 不给完全被遮住的窗口画帧，自动演示、录像、截图都会停住。带窗口运行时一律加 `-t --position <x>,<y>`（置顶、放屏幕角落）。
@@ -123,6 +126,13 @@ $GODOT --headless --path game --export-release "Windows Desktop" "$HARUMACHI_BUI
 - **橱窗位置是按店铺模型量出来的**（`scripts/world/shop_windows.gd` 的 `WINDOWS`）：重新导出 S01、S02、S03、S05、S08 以后要重新量，方法见 PIPELINE 第 15 节。
 - **别用顶点统计猜模型歪了多少**：回归、主成分、上下截面质心对不对称的模型（带顶棚的货架、带把手的推车）结果从 11° 到 37° 都有。用 `art/tools/level_util.py` 的 `support_plane()`（凸包最大的朝下的面），最后以游戏里的截图为准。
 - **摆放不能只跑旧PropAudit**：它按模型脚印检查，动物/树属于跳过项，也不单列嵌套商品。现在镇与农园都检查；还要跑PLACEMENT的实际渲染地面、墙帽/座面支撑和树冠净空。见 [摆放修复记录](docs/game-design/PLACEMENT_REVIEW_20261003.md)。
+
+## 日常休息与钓鱼接线（2026-10-14）
+
+- 小镇、农园及湖边9张现有长椅由`OutdoorSeating`接入；湖畔有纪念册的座位按实际`HomageDisplay`位置偏向空侧，不能占住蓝羽书签彩蛋；原`farm_bench`复用已有点，普通休息必须让出有效花火节和错过花火后的剧情入口。坐姿切区、过夜、读档前清理，取消Tween不能留下等待中的协程；E/Esc起身先于暂停菜单。
+- 喝水和交接不再创建手持杯、手掌抓握或嘴部目标；杯子留在真实桌面/茶盘，咖啡完成后才扣库存，取消茶水不记作完成。不要按旧抓握断言恢复已移除的动作。
+- 钓鱼窗口3.6秒，短暂出界缓冲0.35秒；验证要覆盖350毫秒反应延迟及持续拉紧/不操作的失败，鱼种、奖励、扣饵和时间成本保持原规则。
+- `--lake-demo`、`--seating-demo`与`--shots=<绝对路径>`可从标题或解压应用直接启动，使用独立`HARUMACHI_SAVE_DIR`，不与`--newgame`混用。模型264件、配音436条不变；整包结果待本轮最终验收。
 
 ## 代码地图
 

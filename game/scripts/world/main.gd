@@ -107,6 +107,7 @@ func _ready() -> void:
 	story.morning=ResidentMorning.new()
 	add_child(story.morning)
 	story.morning.setup(story)
+	story.public_life.setup()
 	_add_point("resident_morning",Vector3(15.1,.9,16.55),1.35)
 	story.neighbours.build()
 	_add_point("shared_meal_table",NeighbourMeals.TABLE_CENTER+Vector3(0,1.05,.1),1.9)
@@ -205,6 +206,8 @@ func _ready() -> void:
 		if a == "--bakery-demo":
 			var demo = load("res://scripts/tools/bakery_demo.gd").new()
 			add_child(demo)
+		if a == "--seating-demo":
+			add_child(load("res://scripts/tools/seating_demo.gd").new())
 		if a == "--lake-demo":
 			var lake_demo=load("res://scripts/tools/lake_demo.gd").new()
 			add_child(lake_demo)
@@ -533,6 +536,7 @@ func _on_late_night() -> void:
 
 ## Advance to the next morning in the bedroom (screen is already dark). Saves.
 func sleep_now(_late: bool = false) -> bool:
+	_clear_rest_seat()
 	# The preceding settlement already happened. Save it before showing a new day's summary.
 	if GameState.calendar_pending_save == GameState.day and not GameState.save_game(true):
 		GameState.toast.emit("这一日还没有保存，先停在今天。按C重试保存后再休息。")
@@ -554,6 +558,7 @@ func sleep_now(_late: bool = false) -> bool:
 
 ## Town <-> riverside allotment (east end of the main street).
 func go_farm() -> void:
+	_clear_rest_seat()
 	if _transition:
 		return
 	_transition = true
@@ -580,6 +585,7 @@ func go_farm() -> void:
 
 
 func leave_farm() -> void:
+	_clear_rest_seat()
 	if _transition:
 		return
 	_transition = true
@@ -640,6 +646,7 @@ func _add_point(id: String, pos: Vector3, radius: float) -> void:
 
 
 func _restore() -> void:
+	_clear_rest_seat()
 	var G := GameState
 	if ResidentVisits.state().phase=="quiet" and G.qstate("Q05")=="done":ResidentVisits.invite_after_market(false)
 	G.load_on_enter = false
@@ -753,6 +760,12 @@ func to_market_positions(for_walk: bool) -> void:
 			n.place(info.market, info.market_yaw)
 
 
+## All teleports finish a seat transition before changing the save region.
+func _clear_rest_seat() -> void:
+	if is_instance_valid(story) and story.public_life != null:
+		story.public_life.stand(true)
+
+
 func before_save() -> void:
 	GameState.player_pos = story.public_life.save_position()
 	GameState.player_yaw = player._face_yaw
@@ -760,6 +773,7 @@ func before_save() -> void:
 
 
 func _put_in_room(at: Vector3 = HouseBuilder.spawn_point()) -> void:
+	_clear_rest_seat()
 	var saved_kind: String = InteriorBuilder.at(at)
 	if saved_kind != "":
 		in_room = true
@@ -809,6 +823,7 @@ var photo_mode := false       # the festival photo is being taken: keep the ques
 
 ## The general store and the bakery: fade in through the shop door, fixed diorama camera inside.
 func enter_interior(k: String) -> void:
+	_clear_rest_seat()
 	if _transition:
 		return
 	_transition = true
@@ -960,6 +975,7 @@ func _loading_region(text: String) -> void:
 
 
 func go_title() -> void:
+	_clear_rest_seat()
 	Audio.game_on = false
 	GameState.clear_locks()
 	GameState.clock_paused = false
@@ -1067,10 +1083,10 @@ func _fall_rescue() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if player.seated and event.is_action_pressed("ui_cancel") and not story.busy:
-		story.public_life.stand();get_viewport().set_input_as_handled();return
 	if not loading_ready:
 		return
+	if player.seated and event.is_action_pressed("ui_cancel") and not story.busy:
+		story.public_life.stand();get_viewport().set_input_as_handled();return
 	if event.is_action_pressed("build") and not in_room:
 		get_viewport().set_input_as_handled()
 		story.try_build()

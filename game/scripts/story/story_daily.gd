@@ -217,7 +217,10 @@ func _tea() -> void:
 		return
 	GameState.save_game()
 	if not DailyLife.event("tea").get("drank", false):
-		await view.play_action("sip")
+		var display_result: String = await view.play_action("sip")
+		if display_result!="":
+			await s.say("narrator","",display_result)
+			return
 		DailyLife.event("tea").drank = true
 		DailyLife.event("tea").temperature = temperature
 		GameState.save_game()

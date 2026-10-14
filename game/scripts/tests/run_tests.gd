@@ -30,7 +30,13 @@ func _ready() -> void:
 	main.ui.instant = true
 	main.ui.auto_work_priority = true # this suite follows its declared work route; the topic-choice suite overrides it
 	await frames(10)
-	if OS.get_cmdline_user_args().has("--only=resident-visits"):
+	if OS.get_cmdline_user_args().has("--only=seating"):
+		await load("res://scripts/tests/seating_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=fishing-tolerance"):
+		await load("res://scripts/tests/fishing_tolerance_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=truck-glazing"):
+		await load("res://scripts/tests/truck_glazing_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=resident-visits"):
 		await load("res://scripts/tests/resident_visits_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=public-visits"):
 		await load("res://scripts/tests/public_visit_checks.gd").new(self).run()
@@ -271,6 +277,9 @@ func _ready() -> void:
 		await load("res://scripts/tests/voice_default_checks.gd").new(self).run()
 		await load("res://scripts/tests/landscape_coverage_checks.gd").new(self).run()
 		await load("res://scripts/tests/model_diversity_checks.gd").new(self).run()
+		await load("res://scripts/tests/fishing_tolerance_checks.gd").new(self).run()
+		await load("res://scripts/tests/truck_glazing_checks.gd").new(self).run()
+		await load("res://scripts/tests/seating_checks.gd").new(self).run()
 	var fails := results.filter(func(r): return not r.ok).size()
 	print("\n==== %d checks, %d failed ====" % [results.size(), fails])
 	var out := ""
@@ -385,6 +394,13 @@ func point(id: String) -> Interactable:
 func stand_at(id: String, dist: float = 1.2) -> Interactable:
 	var it := point(id)
 	var p: Vector3 = it.global_position
+	if it.has_meta("stand_position"):
+		# Rest seats expose their measured clear approach; the generic 1.2 m
+		# offset would put the player outside their smaller interaction radius.
+		main.player.global_position = it.get_parent().to_global(it.get_meta("stand_position")) + Vector3.UP * .1
+		main.player.velocity = Vector3.ZERO
+		main.player.face_towards(it.get_parent().to_global(it.get_meta("seat_position")))
+		return it
 	var from: Vector3 = main.player.global_position
 	var dir := Vector3(from.x - p.x, 0, from.z - p.z)
 	if dir.length() < 0.1 or dir.length() > 30.0:

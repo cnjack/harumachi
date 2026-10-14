@@ -57,7 +57,7 @@ func run() -> void:
 	check("the timing and tension game can land an actual inventory fish",session.state==FishingSession.State.LANDED and G.count("fish_crucian")==1 and int(G.fishing.landed)==1,session.message)
 	check("catch completion cannot award the same ticket twice",G.land_fish(used_ticket,1).has("error") and G.count("fish_crucian")==1)
 	check("invalid negative catch tickets are harmless",G.land_fish(-1,1).has("error"))
-	var timed:=FishingSession.new("fish_river");timed.tap(0,.3);timed.wait_seconds=.01;_tick(timed,4)
+	var timed:=FishingSession.new("fish_river");timed.tap(0,.3);timed.wait_seconds=.01;_tick(timed,5)
 	check("missing a bite consumes the cast without inventing a catch",timed.state==FishingSession.State.MISSED and G.count("fish_crucian")==1 and G.count("fishing_bait")==8)
 	var cut:=FishingSession.new("fish_river");cut.tap(0,.3);cut.close()
 	check("cancelling clears the active line and does not award fish",G._fishing_ticket.is_empty() and G.count("fish_crucian")==1 and G.count("fishing_bait")==7)

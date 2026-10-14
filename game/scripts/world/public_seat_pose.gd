@@ -1,10 +1,11 @@
 class_name PublicSeatPose
 extends SkeletonModifier3D
-## A seated lower-body pose on the existing skeleton; the upper body keeps its idle/sip motion.
+## Hips contact the measured seat; feet stay planted and the upper body keeps its idle.
 var actor: Node3D
 var seat_height := .48
 var measured_hip_height := INF
 var measured_knee_forward := 0.0
+var blend := 1.0
 
 func plant_leg(skeleton: Skeleton3D,side: String,forward_world: Vector3) -> void:
 	var thigh: int=LivingPose.bone(skeleton,"thigh."+side)
@@ -51,6 +52,10 @@ func aim(skeleton: Skeleton3D,joint_name: String,end_name: String,direction: Vec
 func _process_modification() -> void:
 	var skeleton:=get_skeleton()
 	if skeleton==null or not is_instance_valid(actor):return
+	var before: Dictionary = {}
+	if blend < 1.0:
+		for index: int in skeleton.get_bone_count():
+			before[index] = Transform3D(Basis(skeleton.get_bone_pose_rotation(index)).scaled(skeleton.get_bone_pose_scale(index)), skeleton.get_bone_pose_position(index))
 	var hips: int=LivingPose.bone(skeleton,"hips")
 	if hips<0:return
 	var pose: Transform3D=skeleton.get_bone_global_pose(hips)
@@ -60,12 +65,24 @@ func _process_modification() -> void:
 	var forward: Vector3=_forward()
 	for side: String in ["L","R"]:
 		plant_leg(skeleton,side,forward)
-	var head: int=LivingPose.bone(skeleton,"head")
-	if head>=0:actor.set_meta("seated_mouth",skeleton.to_global(skeleton.get_bone_global_pose(head).origin)-Vector3.UP*.05)
+		# Relax the forearms toward the lap instead of letting straight fingers
+		# hang through a seat. This pose carries no prop and has no grip target.
+		aim(skeleton,"fore."+side,"hand."+side,skeleton.global_basis.inverse()*(forward*.70-Vector3.UP*.72))
 	measured_hip_height=skeleton.to_global(skeleton.get_bone_global_pose(hips).origin).y-actor.global_position.y
 	var knee: int=LivingPose.bone(skeleton,"shin.R")
 	if knee>=0:
 		measured_knee_forward=(skeleton.to_global(skeleton.get_bone_global_pose(knee).origin)-skeleton.to_global(skeleton.get_bone_global_pose(hips).origin)).dot(_forward())
+	if blend < 1.0:
+		for index: int in before:
+			var previous: Transform3D = before[index]
+			var current := Transform3D(Basis(skeleton.get_bone_pose_rotation(index)).scaled(skeleton.get_bone_pose_scale(index)), skeleton.get_bone_pose_position(index))
+			var mixed: Transform3D=previous.interpolate_with(current,clampf(blend,0.0,1.0))
+			skeleton.set_bone_pose_position(index,mixed.origin)
+			skeleton.set_bone_pose_rotation(index,mixed.basis.get_rotation_quaternion())
+			skeleton.set_bone_pose_scale(index,mixed.basis.get_scale())
+
+func _exit_tree() -> void:
+	if is_instance_valid(actor) and actor.has_meta("seated_mouth"): actor.remove_meta("seated_mouth")
 
 func _forward() -> Vector3:
 	if actor is Player:return (actor as Player).model_root.global_basis.z.normalized()

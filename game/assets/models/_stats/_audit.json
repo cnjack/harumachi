@@ -3142,52 +3142,95 @@
     },
     "D07_kei_truck": {
       "id": "D07_kei_truck",
-      "sha256": "7f9acc2570d87a225cedb9bd448cbdc95144ce20798791826c3aca9f15ca63e2",
-      "source_mtime": 1790877354.7928221,
-      "triangles": 11999,
+      "sha256": "6b9eb587e2cbf3dd432fcc6ee2848a3fd3e4baa9bdb1a1510a90d9f4078bca04",
+      "source_mtime": 1791939802.155458,
+      "triangles": 19427,
       "bounds_godot": {
         "min": [
-          -1.0087734460830688,
-          -0.003083405550569296,
-          -1.6973768472671509
+          -1.0130000114440918,
+          0.0,
+          -1.725000023841858
         ],
         "max": [
-          1.000126600265503,
-          1.8601000308990479,
-          1.7013578414916992
+          1.0130000114440918,
+          1.8550000190734863,
+          1.7265000343322754
         ]
       },
       "size_m": [
-        2.0089000463485718,
-        1.8631834364496171,
-        3.39873468875885
+        2.0260000228881836,
+        1.8550000190734863,
+        3.4515000581741333
       ],
-      "surface_area_m2": 48.62,
+      "surface_area_m2": 70.112,
       "albedo_image_sizes": [
+        [
+          512,
+          512
+        ],
         [
           2048,
           2048
         ]
       ],
       "topology": {
-        "components": 1,
-        "largest_component_area_fraction": 1.0,
-        "boundary_edge_fraction": 0.0007
+        "components": 135,
+        "largest_component_area_fraction": 0.2851,
+        "boundary_edge_fraction": 0.0179
       },
       "uv_density_px_m": {
-        "p10": 129.1,
-        "median": 193.92
+        "p10": 90.86,
+        "median": 197.85
       },
       "material_density_px_m": {
-        "M_D07_kei_truck": {
-          "p10": 129.1,
-          "median": 193.92
+        "Blue_grey_trim": {
+          "p10": 86.82,
+          "median": 86.82
+        },
+        "Cream_headlamp": {
+          "p10": 604.06,
+          "median": 604.06
+        },
+        "Ivory_painted_body": {
+          "p10": 90.86,
+          "median": 141.7
+        },
+        "Matte_wheel_steel": {
+          "p10": 574.2,
+          "median": 574.21
+        },
+        "Tyre_rubber": {
+          "p10": 378.09,
+          "median": 378.09
+        },
+        "Blue_woven_seats": {
+          "p10": 253.58,
+          "median": 292.85
+        },
+        "Original_textured_produce_and_bed": {
+          "p10": 118.5,
+          "median": 188.46
         }
       },
       "node_density_px_m": {
-        "D07_kei_truck": 193.92
+        "Body_Blue_grey_trim": 86.82,
+        "Body_Cream_headlamp": 604.06,
+        "Body_Ivory_painted_body": 141.7,
+        "Body_Matte_wheel_steel": 574.21,
+        "Body_Tyre_rubber": 533.33,
+        "Headrest_Left": 703.19,
+        "Headrest_Right": 703.19,
+        "Seat_Left": 292.86,
+        "Seat_Right": 292.86,
+        "Seatback_Left": 253.58,
+        "Seatback_Right": 253.58,
+        "TexturedBedAndCargo": 188.46,
+        "Tyre_Front_Left": 378.09,
+        "Tyre_Front_Right": 378.09,
+        "Tyre_Rear_Left": 378.09,
+        "Tyre_Rear_Right": 378.09
       },
-      "untextured_area_fraction": 0.0,
+      "untextured_area_fraction": 0.2196,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },

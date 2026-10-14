@@ -1,5 +1,5 @@
 extends RefCounted
-## Actual skinned shoe support after seat/sip modifiers, including every public seat type.
+## Actual skinned shoe support while seated and resting, including every public seat type.
 var t: Node
 var main: Node
 
@@ -43,7 +43,8 @@ func run() -> void:
 		await t.frames(10)
 		var sip_soles: Dictionary = probe.get("soles")
 		foot_support = foot_support and absf(float(sip_soles.get("L", INF)) - actor_y) < .02 and absf(float(sip_soles.get("R", INF)) - actor_y) < .02 and float(sip_soles.get("pitch_error_L", INF)) < 8.0 and float(sip_soles.get("pitch_error_R", INF)) < 8.0
-		t.check("CHARACTER_VISUAL", "both rendered shoes stay flat on the floor while sitting and sipping at " + seat_id, foot_support, "L %.4fm / R %.4fm; pitch errors %.2f / %.2f deg; sip %.4f / %.4f" % [left, right, float(soles.get("pitch_error_L", INF)), float(soles.get("pitch_error_R", INF)), float(sip_soles.get("L", INF)) - actor_y, float(sip_soles.get("R", INF)) - actor_y])
+		foot_support = foot_support and drink.pose == null and drink.hand < 0
+		t.check("CHARACTER_VISUAL", "both rendered shoes stay flat during seated rest without a hand-held drink at " + seat_id, foot_support, "L %.4fm / R %.4fm; pitch errors %.2f / %.2f deg; rest %.4f / %.4f" % [left, right, float(soles.get("pitch_error_L", INF)), float(soles.get("pitch_error_R", INF)), float(sip_soles.get("L", INF)) - actor_y, float(sip_soles.get("R", INF)) - actor_y])
 		hip_support = hip_support and absf(main.story.public_life.pose.measured_hip_height - .57) < .02 and main.story.public_life.pose.measured_knee_forward > .20
 		details.append("%s hips %.3f" % [seat_id, main.story.public_life.pose.measured_hip_height])
 		drink.queue_free()

@@ -1,6 +1,6 @@
 class_name LivingAction
 extends Node3D
-## Eating uses a table cut. Other actions can still follow the rig.
+## Food and drink stay on their actual support. Characters keep their natural idle.
 var actor: Node3D
 var skeleton: Skeleton3D
 var hand := -1
@@ -15,6 +15,9 @@ var surface_at := Vector3.INF
 var surface_normal := Vector3.UP
 var meal_food: Node3D
 var meal_presentation := "plate"
+var allow_cancel := false
+var cancelled := false
+var show_table_cup := true
 
 
 static func matte(color: Color) -> StandardMaterial3D:
@@ -28,7 +31,7 @@ static func matte(color: Color) -> StandardMaterial3D:
 
 static func cup(item_id: String="") -> Node3D:
 	var root := Node3D.new()
-	root.name = "HandCup"
+	root.name = "TableCup"
 	var ceramic := MeshInstance3D.new()
 	var shell := CylinderMesh.new()
 	shell.top_radius = .055
@@ -61,23 +64,14 @@ func setup(who: Node3D, kind: String, item_id: String = "onigiri") -> void:
 	if kind == "eat":
 		_setup_meal(item_id)
 		return
-	var models: Array[Node] = actor.find_children("*", "Skeleton3D", true, false)
-	if not models.is_empty():
-		skeleton = models[0] as Skeleton3D
-		hand = LivingPose.bone(skeleton, "hand.R")
-		pose = LivingPose.new()
-		pose.sip = kind == "sip"
-		skeleton.add_child(pose)
-		if not (actor is Player and (actor as Player).seated):skeleton.move_child(pose, 0)
-		pose.modification_processed.connect(_position_prop)
-	if kind == "sip":
+	# "sip" remains a compatible event name for old demos and story callers;
+	# it no longer moves an arm, targets a mouth, or attaches anything to a hand.
+	set_meta("presentation", "tabletop_pause" if kind == "sip" else "quiet_handoff" if kind == "give" else "rest")
+	if kind == "sip" and show_table_cup and surface_at.is_finite():
 		prop = cup(item_id)
-	else:
-		var world: WorldBuilder = get_parent().get("world") as WorldBuilder
-		prop = MealModels.spawn(world,self,item_id,.105)
-		if prop==null: prop=Node3D.new()
-		prop.name="HandFood"
-	if prop.get_parent()==null: add_child(prop)
+		add_child(prop)
+		prop.global_position = surface_at + surface_normal.normalized() * .055
+		prop.global_basis = Basis(Quaternion(Vector3.UP, surface_normal.normalized()))
 
 
 func _setup_meal(item_id: String) -> void:
@@ -138,40 +132,29 @@ func _add_plate() -> void:
 
 
 func _process(delta: float) -> void:
+	if finished: return
+	if not is_instance_valid(actor): cancel(); return
 	clock += delta
 	var phase: float = clampf(clock / duration, 0.0, 1.0)
 	if not get_meta("foley_played",false) and phase>=.55:
 		set_meta("foley_played",true)
 		if mode=="eat" and surface_at.is_finite():Audio.fx_at("dish_place",surface_at,-10)
-		elif mode=="sip" and is_instance_valid(prop):Audio.fx_at("cup_sip",prop.global_position,-9)
+		elif mode=="sip" and surface_at.is_finite():Audio.fx_at("dish_place",surface_at,-13)
 	if mode == "eat":
 		if is_instance_valid(meal_food): meal_food.visible = phase < .55
 		finished = phase >= 1.0
 		return
-	if is_instance_valid(pose):
-		pose.amount = 1.0
-		pose.phase = phase
-		var head: int = LivingPose.bone(skeleton, "head")
-		var mouth: Vector3 = actor.global_position + Vector3.UP * 1.52
-		if head >= 0:
-			mouth = (skeleton.global_transform * skeleton.get_bone_global_pose(head)).origin - Vector3.UP * .05
-		if actor.has_meta("seated_mouth"):mouth=actor.get_meta("seated_mouth")
-		pose.goal_world = destination if mode == "give" and destination.is_finite() else mouth + (actor.model_root.global_basis.z.normalized() if actor is Player else (actor.model.global_basis.z.normalized() if actor is NPC else actor.global_basis.z.normalized())) * .16
-	if is_instance_valid(prop):
-		prop.visible = phase > .05 and phase < .97
-	if not is_instance_valid(pose):
-		_position_prop()
 	finished = phase >= 1.0
 
 
-func _position_prop() -> void:
-	if not is_instance_valid(actor) or not is_instance_valid(prop): return
-	var anchor: Vector3 = actor.global_position + Vector3(0, 1.12, -.1)
-	if is_instance_valid(skeleton) and hand >= 0:
-		anchor = (skeleton.global_transform * skeleton.get_bone_global_pose(hand)).origin
-	prop.global_position = anchor + Vector3(0, .02, 0)
-	var phase: float = clampf(clock / duration, 0.0, 1.0)
-	prop.rotation.z = -.20 * sin(phase * PI) if mode == "sip" else 0.0
+func cancel() -> void:
+	cancelled = true
+	finished = true
+
+func _input(event: InputEvent) -> void:
+	if allow_cancel and not finished and (event.is_action_pressed("ui_cancel") or event.is_action_pressed("cancel")):
+		cancel()
+		get_viewport().set_input_as_handled()
 
 
 func _exit_tree() -> void:

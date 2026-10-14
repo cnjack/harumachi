@@ -236,7 +236,7 @@ func run() -> void:
 	await t.frames(8)
 	await t.use("life_bakery_card", [0])
 	t.check("DAILY_LIFE", "the actual sign interaction records helping without fictional market supply", rules.done("card") and rules.event("card").get("helped_sign", false) and G.qstate("Q05") != "done")
-	# Eating is independent of rigging; sip keeps the existing rig regression.
+	# Eating and tea both use supported props, never a hand or mouth target.
 	for mode: String in ["eat", "sip"]:
 		var action := LivingAction.new()
 		main.add_child(action)
@@ -248,7 +248,7 @@ func run() -> void:
 		if mode == "eat":
 			t.check("DAILY_LIFE", "eating leaves an empty plate without a rig, held prop or floating completion text", action.skeleton == null and action.pose == null and action.hand < 0 and not action.meal_food.visible and action.prop.get_node_or_null("Plate") != null and action.prop.find_children("*", "Label3D", true, false).is_empty())
 		else:
-			t.check("DAILY_LIFE", "the current character rig renders a hand-held sip near the mouth", action.hand >= 0 and action.prop.global_position.distance_to(action.pose.goal_world) < .12)
+			t.check("DAILY_LIFE", "tea remains on the real surface without a hand pose or mouth target", action.hand < 0 and action.pose == null and action.skeleton == null and action.prop.name == "TableCup" and action.prop.global_position.distance_to(action.surface_at + Vector3.UP*.055) < .001)
 		action.queue_free()
 		await t.frames(3)
 	G.new_game()

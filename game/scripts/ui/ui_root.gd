@@ -546,6 +546,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if GameState.input_locked():
 		return
+	# The UI receives unhandled input before Main. Leave a resting seat before
+	# treating Esc as pause; an already-open modal still closes above.
+	if event.is_action_pressed("ui_cancel") and is_instance_valid(world_main) and is_instance_valid(world_main.player) and is_instance_valid(world_main.story) and world_main.player.seated and not world_main.story.busy:
+		get_viewport().set_input_as_handled()
+		world_main.story.public_life.stand()
+		return
 	if event.is_action_pressed("world_map"):
 		get_viewport().set_input_as_handled()
 		open_world_map()

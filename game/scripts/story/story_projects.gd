@@ -313,18 +313,9 @@ func _deliver(who: String) -> void:
 	gesture.duration = .08 if s.ui.instant else 2.1
 	gesture.setup(s.player, "give", str(SummerProjects.MENUS[SummerProjects.opening().final.menu]))
 	gesture.destination = actor.global_position.lerp(s.player.global_position, .5) + Vector3.UP * 1.05
-	var receive_pose: LivingPose = null
-	var rigs: Array[Node] = actor.find_children("*", "Skeleton3D", true, false)
-	if not rigs.is_empty():
-		receive_pose = LivingPose.new()
-		(rigs[0] as Skeleton3D).add_child(receive_pose)
-		receive_pose.goal_world = gesture.destination
-		receive_pose.amount = 1
 	s.ui.dlg.hide()
 	while not gesture.finished:
-		if receive_pose != null: receive_pose.phase = clampf(gesture.clock / gesture.duration, 0, 1)
 		await s.main.get_tree().process_frame
-	if receive_pose != null: receive_pose.queue_free()
 	gesture.queue_free()
 	prior.make_current()
 	camera.queue_free()

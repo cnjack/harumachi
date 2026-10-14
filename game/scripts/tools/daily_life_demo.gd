@@ -82,7 +82,7 @@ func _ready() -> void:
 	var loaded: bool = GameState.load_game()
 	print("DAILY_RELOAD ", loaded, " ", JSON.stringify(DailyLife.state()), " expected ", JSON.stringify(facts))
 	check("SQLite restores all three life events", DailyLife.state().events == facts.events)
-	check("meal table cut and tea gesture rendered", seen_actions.has("eat") and seen_actions.has("eat_empty") and seen_actions.has("sip"))
+	check("meal table cut and supported tea pause rendered", seen_actions.has("eat") and seen_actions.has("eat_empty") and seen_actions.has("sip"))
 	var file := FileAccess.open(folder.path_join("native-demo.json"), FileAccess.WRITE)
 	var report: Dictionary = {"engine": Engine.get_version_info().string, "passed": failures.is_empty(), "failures": failures, "shots": shots, "input": "E / numeric choices / mouse cook / J / Escape", "scope": "fixture-positioned three-day sample; not human fun evidence", "facts": facts}
 	if bakery_sample: report.bakery_sample = {"scope": "Real third-day life_bakery_card E interaction and tasting choice; actual LivingAction surfaces captured without moving the meal.", "captures": _qa_bakery_sample_captures}
@@ -176,7 +176,7 @@ func use_point(id: String, picks: Array) -> void:
 				if action.mode == "eat":
 					check("eating is shown on a real surface without character rigging", action.pose == null and action.skeleton == null and action.surface_at.is_finite() and action.meal_food.visible)
 				else:
-					check("gesture hand approaches mouth " + action.mode, action.prop.global_position.distance_to(action.pose.goal_world) < .22)
+					check("tea stays on its real tray without hand or mouth IK", action.mode == "sip" and action.hand < 0 and action.pose == null and action.skeleton == null and action.surface_at.is_finite())
 		elif main.ui.dlg.visible:
 			var observed_camera: Camera3D=get_viewport().get_camera_3d()
 			if id=="workroom_lantern_test" and main.ui.dlg_choices.visible and observed_camera!=main.rig.cam:
