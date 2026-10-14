@@ -1,0 +1,20 @@
+{
+ "id": "HFF10_wall_shelf",
+ "src": "raw/hyper3d_furniture_20261015/assembled/HFF10_wall_shelf.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 37226,
+ "tex": 2048,
+ "bytes": 2957016,
+ "godot_size_m_xyz": [
+  1.6,
+  0.95,
+  0.3
+ ],
+ "mesh_nodes": [
+  "RackFrame",
+  "TrayBoard_0",
+  "TrayBoard_1"
+ ]
+}

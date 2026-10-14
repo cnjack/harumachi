@@ -155,65 +155,52 @@
     },
     "A12_bench": {
       "id": "A12_bench",
-      "sha256": "91132149f5421c879661ae3acbed7550ec2a2277e52254719cd848e501831a9a",
-      "source_mtime": 1791541244.8417912,
-      "triangles": 1080,
+      "sha256": "43ef728153fa42f8b648d05d060654d1239f2445c0995e2080087b9a6b283add",
+      "source_mtime": 1792001256.773421,
+      "triangles": 37426,
       "bounds_godot": {
         "min": [
           -0.8999999761581421,
           0.0,
-          -0.2800000011920929
+          -0.30000001192092896
         ],
         "max": [
           0.8999999761581421,
-          0.5574999749660492,
-          0.2800000011920929
+          0.8299999833106995,
+          0.30000001192092896
         ]
       },
       "size_m": [
         1.7999999523162842,
-        0.5574999749660492,
-        0.5600000023841858
+        0.8299999833106995,
+        0.6000000238418579
       ],
-      "surface_area_m2": 4.257,
+      "surface_area_m2": 4.293,
       "albedo_image_sizes": [
         [
-          1254,
-          1254
+          2048,
+          2048
         ]
       ],
       "topology": {
-        "components": 10,
-        "largest_component_area_fraction": 0.2028,
+        "components": 1,
+        "largest_component_area_fraction": 1.0,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 996.93,
-        "median": 1649.75
+        "p10": 710.15,
+        "median": 782.65
       },
       "material_density_px_m": {
-        "CedarAge_0": {
-          "p10": 996.93,
-          "median": 996.93
-        },
-        "CedarAge_1": {
-          "p10": 996.93,
-          "median": 996.93
-        },
-        "CedarAge_2": {
-          "p10": 2273.63,
-          "median": 2327.13
-        },
-        "CedarAge_3": {
-          "p10": 1608.22,
-          "median": 2602.92
+        "Hyper3D_OriginalAtlas_HFF14_outdoor_bench": {
+          "p10": 710.15,
+          "median": 782.65
         }
       },
       "node_density_px_m": {
-        "CedarAge_0": 996.93,
-        "CedarAge_1": 996.93,
-        "CedarAge_2": 2327.13,
-        "CedarAge_3": 2602.92
+        "Back": 779.2,
+        "Frame": 782.13,
+        "Seat": 785.61
       },
       "untextured_area_fraction": 0.0,
       "inherited_pbr_maps": 0,
@@ -5235,6 +5222,767 @@
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
+    "HFF01_cafe_chair": {
+      "id": "HFF01_cafe_chair",
+      "sha256": "eeaac08442863ed4a807b82d6cc619a9f68277b4d075399a82dd3f3dd3dc467c",
+      "source_mtime": 1792001259.0324485,
+      "triangles": 37068,
+      "bounds_godot": {
+        "min": [
+          -0.23999999463558197,
+          0.0,
+          -0.23499999940395355
+        ],
+        "max": [
+          0.23999999463558197,
+          0.8899999856948853,
+          0.23499999940395355
+        ]
+      },
+      "size_m": [
+        0.47999998927116394,
+        0.8899999856948853,
+        0.4699999988079071
+      ],
+      "surface_area_m2": 1.165,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 1,
+        "largest_component_area_fraction": 1.0,
+        "boundary_edge_fraction": 0.0
+      },
+      "uv_density_px_m": {
+        "p10": 1375.54,
+        "median": 1503.88
+      },
+      "material_density_px_m": {
+        "Hyper3D_OriginalAtlas_HFF01_cafe_chair": {
+          "p10": 1375.54,
+          "median": 1503.88
+        }
+      },
+      "node_density_px_m": {
+        "Back": 1485.62,
+        "Frame": 1469.66,
+        "Seat": 1589.94
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "HFF02_round_table": {
+      "id": "HFF02_round_table",
+      "sha256": "84cd7286e747cf347b3c9835a1e9a025fc24ae9e6e3af6cc79f246279e9a0103",
+      "source_mtime": 1792001259.135014,
+      "triangles": 27608,
+      "bounds_godot": {
+        "min": [
+          -0.36000001430511475,
+          0.0,
+          -0.36000001430511475
+        ],
+        "max": [
+          0.36000001430511475,
+          0.7599999904632568,
+          0.36000001430511475
+        ]
+      },
+      "size_m": [
+        0.7200000286102295,
+        0.7599999904632568,
+        0.7200000286102295
+      ],
+      "surface_area_m2": 1.379,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 1,
+        "largest_component_area_fraction": 1.0,
+        "boundary_edge_fraction": 0.0
+      },
+      "uv_density_px_m": {
+        "p10": 1191.22,
+        "median": 1406.51
+      },
+      "material_density_px_m": {
+        "Hyper3D_OriginalAtlas_HFF02_round_table": {
+          "p10": 1191.22,
+          "median": 1406.51
+        }
+      },
+      "node_density_px_m": {
+        "Foot": 1454.12,
+        "Pedestal": 1235.84,
+        "Top": 1413.99
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "HFF03_rect_table": {
+      "id": "HFF03_rect_table",
+      "sha256": "f5a62f995abb85e28abc20ca5a075c2ff24ca185dfc48f368f2fb80652c0741b",
+      "source_mtime": 1792001259.2557495,
+      "triangles": 39502,
+      "bounds_godot": {
+        "min": [
+          -1.024999976158142,
+          0.0,
+          -0.5
+        ],
+        "max": [
+          1.024999976158142,
+          0.75,
+          0.5
+        ]
+      },
+      "size_m": [
+        2.049999952316284,
+        0.75,
+        1.0
+      ],
+      "surface_area_m2": 7.028,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 1,
+        "largest_component_area_fraction": 1.0,
+        "boundary_edge_fraction": 0.0
+      },
+      "uv_density_px_m": {
+        "p10": 518.26,
+        "median": 578.44
+      },
+      "material_density_px_m": {
+        "Hyper3D_OriginalAtlas_HFF03_rect_table": {
+          "p10": 518.26,
+          "median": 578.44
+        }
+      },
+      "node_density_px_m": {
+        "Frame": 582.51,
+        "Top": 575.16
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "HFF04_low_table": {
+      "id": "HFF04_low_table",
+      "sha256": "9cad84dd0738f2fa96edc10b224caf251e39c65fef48d545cf2742f561da4e69",
+      "source_mtime": 1792001259.3708475,
+      "triangles": 37804,
+      "bounds_godot": {
+        "min": [
+          -0.7250000238418579,
+          0.0,
+          -0.42500001192092896
+        ],
+        "max": [
+          0.7250000238418579,
+          0.4300000071525574,
+          0.42500001192092896
+        ]
+      },
+      "size_m": [
+        1.4500000476837158,
+        0.4300000071525574,
+        0.8500000238418579
+      ],
+      "surface_area_m2": 4.156,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 1,
+        "largest_component_area_fraction": 1.0,
+        "boundary_edge_fraction": 0.0
+      },
+      "uv_density_px_m": {
+        "p10": 576.6,
+        "median": 847.12
+      },
+      "material_density_px_m": {
+        "Hyper3D_OriginalAtlas_HFF04_low_table": {
+          "p10": 576.6,
+          "median": 847.12
+        }
+      },
+      "node_density_px_m": {
+        "Frame": 840.19,
+        "Top": 849.24
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "HFF05_utility_stand": {
+      "id": "HFF05_utility_stand",
+      "sha256": "0cb649724d994b0552e748ce5e24fba4f915a4706c4a94b27ffc600cd5fa9d4d",
+      "source_mtime": 1792001259.4956155,
+      "triangles": 39058,
+      "bounds_godot": {
+        "min": [
+          -0.44999998807907104,
+          0.0,
+          -0.30000001192092896
+        ],
+        "max": [
+          0.44999998807907104,
+          0.8399999737739563,
+          0.30000001192092896
+        ]
+      },
+      "size_m": [
+        0.8999999761581421,
+        0.8399999737739563,
+        0.6000000238418579
+      ],
+      "surface_area_m2": 3.517,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 1,
+        "largest_component_area_fraction": 1.0,
+        "boundary_edge_fraction": 0.0
+      },
+      "uv_density_px_m": {
+        "p10": 606.22,
+        "median": 871.46
+      },
+      "material_density_px_m": {
+        "Hyper3D_OriginalAtlas_HFF05_utility_stand": {
+          "p10": 606.22,
+          "median": 871.46
+        }
+      },
+      "node_density_px_m": {
+        "Frame": 860.92,
+        "LowerBoard": 884.04,
+        "Top": 859.09
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "HFF06_indoor_bench": {
+      "id": "HFF06_indoor_bench",
+      "sha256": "07f8e60b959a351010470d3f0d25cffea49746a5024dfacfe8fd53cd86403ef8",
+      "source_mtime": 1792001259.616912,
+      "triangles": 36800,
+      "bounds_godot": {
+        "min": [
+          -0.7749999761581421,
+          0.0,
+          -0.25999999046325684
+        ],
+        "max": [
+          0.7749999761581421,
+          0.4300000071525574,
+          0.25999999046325684
+        ]
+      },
+      "size_m": [
+        1.5499999523162842,
+        0.4300000071525574,
+        0.5199999809265137
+      ],
+      "surface_area_m2": 3.045,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 1,
+        "largest_component_area_fraction": 1.0,
+        "boundary_edge_fraction": 0.0
+      },
+      "uv_density_px_m": {
+        "p10": 468.42,
+        "median": 1043.65
+      },
+      "material_density_px_m": {
+        "Hyper3D_OriginalAtlas_HFF06_indoor_bench": {
+          "p10": 468.42,
+          "median": 1043.65
+        }
+      },
+      "node_density_px_m": {
+        "Frame": 816.52,
+        "Top": 1063.81
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "HFF07_sage_counter": {
+      "id": "HFF07_sage_counter",
+      "sha256": "101a41582435006020a3550410e8ced5b659e7bc20f049fa7e77429c497e4490",
+      "source_mtime": 1792001259.7411492,
+      "triangles": 39436,
+      "bounds_godot": {
+        "min": [
+          -1.0549999475479126,
+          0.0,
+          -0.574999988079071
+        ],
+        "max": [
+          1.0549999475479126,
+          0.8700000047683716,
+          0.574999988079071
+        ]
+      },
+      "size_m": [
+        2.109999895095825,
+        0.8700000047683716,
+        1.149999976158142
+      ],
+      "surface_area_m2": 18.633,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 1,
+        "largest_component_area_fraction": 1.0,
+        "boundary_edge_fraction": 0.0
+      },
+      "uv_density_px_m": {
+        "p10": 313.59,
+        "median": 363.09
+      },
+      "material_density_px_m": {
+        "Hyper3D_OriginalAtlas_HFF07_sage_counter": {
+          "p10": 313.59,
+          "median": 363.09
+        }
+      },
+      "node_density_px_m": {
+        "CounterBody": 370.81,
+        "CounterTop": 353.68
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "HFF08_bread_rack4": {
+      "id": "HFF08_bread_rack4",
+      "sha256": "bdc3284403d855d0ac0a7039db6d12e077e7251f6cadf16f2a6711c8bd35f94a",
+      "source_mtime": 1792001259.8721013,
+      "triangles": 40413,
+      "bounds_godot": {
+        "min": [
+          -0.5350000262260437,
+          0.0,
+          -0.3100000023841858
+        ],
+        "max": [
+          0.5350000262260437,
+          1.5099999904632568,
+          0.3100000023841858
+        ]
+      },
+      "size_m": [
+        1.0700000524520874,
+        1.5099999904632568,
+        0.6200000047683716
+      ],
+      "surface_area_m2": 7.871,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 1,
+        "largest_component_area_fraction": 1.0,
+        "boundary_edge_fraction": 0.0
+      },
+      "uv_density_px_m": {
+        "p10": 501.73,
+        "median": 566.06
+      },
+      "material_density_px_m": {
+        "Hyper3D_OriginalAtlas_HFF08_bread_rack4": {
+          "p10": 501.73,
+          "median": 566.06
+        }
+      },
+      "node_density_px_m": {
+        "RackFrame": 568.22,
+        "TrayBoard_0": 561.33,
+        "TrayBoard_1": 567.98,
+        "TrayBoard_2": 560.05,
+        "TrayBoard_3": 579.51
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "HFF09_bread_rack3": {
+      "id": "HFF09_bread_rack3",
+      "sha256": "ed7c460dd54c44cc0774669b9be749bc086a2502aa73afeb3bc5091bd52d86b5",
+      "source_mtime": 1792001259.997358,
+      "triangles": 38906,
+      "bounds_godot": {
+        "min": [
+          -0.5450000166893005,
+          0.0,
+          -0.25
+        ],
+        "max": [
+          0.5450000166893005,
+          1.25,
+          0.25
+        ]
+      },
+      "size_m": [
+        1.090000033378601,
+        1.25,
+        0.5
+      ],
+      "surface_area_m2": 5.093,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 2,
+        "largest_component_area_fraction": 0.9704,
+        "boundary_edge_fraction": 0.0001
+      },
+      "uv_density_px_m": {
+        "p10": 535.82,
+        "median": 734.0
+      },
+      "material_density_px_m": {
+        "Hyper3D_OriginalAtlas_HFF09_bread_rack3": {
+          "p10": 535.82,
+          "median": 734.0
+        }
+      },
+      "node_density_px_m": {
+        "RackFrame": 728.39,
+        "TrayBoard_0": 780.73,
+        "TrayBoard_1": 737.83,
+        "TrayBoard_2": 727.89
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "HFF10_wall_shelf": {
+      "id": "HFF10_wall_shelf",
+      "sha256": "5119cf706aeb0bfc39c01d518521aa6fb0f15feeaa3653c88e4f06830ba65113",
+      "source_mtime": 1792002354.278493,
+      "triangles": 37226,
+      "bounds_godot": {
+        "min": [
+          -0.800000011920929,
+          0.0,
+          -0.15000000596046448
+        ],
+        "max": [
+          0.800000011920929,
+          0.949999988079071,
+          0.15000000596046448
+        ]
+      },
+      "size_m": [
+        1.600000023841858,
+        0.949999988079071,
+        0.30000001192092896
+      ],
+      "surface_area_m2": 2.828,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 2,
+        "largest_component_area_fraction": 1.0,
+        "boundary_edge_fraction": 0.0001
+      },
+      "uv_density_px_m": {
+        "p10": 622.1,
+        "median": 1023.07
+      },
+      "material_density_px_m": {
+        "Hyper3D_OriginalAtlas_HFF10_wall_shelf": {
+          "p10": 622.1,
+          "median": 1023.07
+        }
+      },
+      "node_density_px_m": {
+        "RackFrame": 1040.05,
+        "TrayBoard_0": 1019.1,
+        "TrayBoard_1": 1025.42
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "HFF11_glass_case": {
+      "id": "HFF11_glass_case",
+      "sha256": "d50407e12a938631a0ad7247c982c753f2744e3675b6cef8776019e0bfffd88f",
+      "source_mtime": 1792001260.2457376,
+      "triangles": 33552,
+      "bounds_godot": {
+        "min": [
+          -0.6700000166893005,
+          0.0,
+          -0.375
+        ],
+        "max": [
+          0.6700000166893005,
+          1.1490000486373901,
+          0.375
+        ]
+      },
+      "size_m": [
+        1.340000033378601,
+        1.1490000486373901,
+        0.75
+      ],
+      "surface_area_m2": 13.184,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 24,
+        "largest_component_area_fraction": 0.3716,
+        "boundary_edge_fraction": 0.0448
+      },
+      "uv_density_px_m": {
+        "p10": 470.05,
+        "median": 505.83
+      },
+      "material_density_px_m": {
+        "Hyper3D_CaseAtlas": {
+          "p10": 470.05,
+          "median": 505.83
+        }
+      },
+      "node_density_px_m": {
+        "CabinetBase": 502.54,
+        "CabinetFrameAndShelves": 578.05,
+        "TopRail": 579.88
+      },
+      "untextured_area_fraction": 0.6863,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "HFF12_reading_armchair": {
+      "id": "HFF12_reading_armchair",
+      "sha256": "005821cdd8cba51526422e3f1ec398273fe140bdf6c6a1e8ddd372b09f9a7d6e",
+      "source_mtime": 1792001260.374455,
+      "triangles": 37992,
+      "bounds_godot": {
+        "min": [
+          -0.30250000953674316,
+          0.0,
+          -0.2549999952316284
+        ],
+        "max": [
+          0.30250000953674316,
+          0.8899999856948853,
+          0.2549999952316284
+        ]
+      },
+      "size_m": [
+        0.6050000190734863,
+        0.8899999856948853,
+        0.5099999904632568
+      ],
+      "surface_area_m2": 1.68,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 1,
+        "largest_component_area_fraction": 1.0,
+        "boundary_edge_fraction": 0.0
+      },
+      "uv_density_px_m": {
+        "p10": 1196.33,
+        "median": 1333.93
+      },
+      "material_density_px_m": {
+        "Hyper3D_OriginalAtlas_HFF12_reading_armchair": {
+          "p10": 1196.33,
+          "median": 1333.93
+        }
+      },
+      "node_density_px_m": {
+        "Arm": 1314.84,
+        "Arm_001": 1341.39,
+        "Back": 1249.4,
+        "Frame": 1358.1,
+        "Seat": 1415.34
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "HFF13_espresso_station": {
+      "id": "HFF13_espresso_station",
+      "sha256": "58b56129886f4a77f4193f9984e8e7126eb8d6693c6a3da5b77041ed71d271f0",
+      "source_mtime": 1792001260.5932298,
+      "triangles": 44878,
+      "bounds_godot": {
+        "min": [
+          -0.5,
+          0.0,
+          -0.3425000011920929
+        ],
+        "max": [
+          0.5,
+          1.3250000476837158,
+          0.3425000011920929
+        ]
+      },
+      "size_m": [
+        1.0,
+        1.3250000476837158,
+        0.6850000023841858
+      ],
+      "surface_area_m2": 8.976,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 68,
+        "largest_component_area_fraction": 0.9783,
+        "boundary_edge_fraction": 0.0026
+      },
+      "uv_density_px_m": {
+        "p10": 490.06,
+        "median": 554.31
+      },
+      "material_density_px_m": {
+        "BrushedSteel": {
+          "p10": 507.95,
+          "median": 576.12
+        },
+        "Sage": {
+          "p10": 488.47,
+          "median": 546.22
+        },
+        "Brass": {
+          "p10": 516.07,
+          "median": 561.81
+        },
+        "Charcoal": {
+          "p10": 434.03,
+          "median": 591.83
+        },
+        "Hyper3D_TimberAtlas": {
+          "p10": 499.84,
+          "median": 564.0
+        }
+      },
+      "node_density_px_m": {
+        "BrushedSteel_Geometry": 576.12,
+        "CabinetPaint": 546.22,
+        "CabinetPulls": 561.81,
+        "RubberParts": 591.83,
+        "Worktop": 564.0
+      },
+      "untextured_area_fraction": 0.0175,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "HFF14_outdoor_bench": {
+      "id": "HFF14_outdoor_bench",
+      "sha256": "43ef728153fa42f8b648d05d060654d1239f2445c0995e2080087b9a6b283add",
+      "source_mtime": 1792001260.716684,
+      "triangles": 37426,
+      "bounds_godot": {
+        "min": [
+          -0.8999999761581421,
+          0.0,
+          -0.30000001192092896
+        ],
+        "max": [
+          0.8999999761581421,
+          0.8299999833106995,
+          0.30000001192092896
+        ]
+      },
+      "size_m": [
+        1.7999999523162842,
+        0.8299999833106995,
+        0.6000000238418579
+      ],
+      "surface_area_m2": 4.293,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
+      "topology": {
+        "components": 1,
+        "largest_component_area_fraction": 1.0,
+        "boundary_edge_fraction": 0.0
+      },
+      "uv_density_px_m": {
+        "p10": 710.15,
+        "median": 782.65
+      },
+      "material_density_px_m": {
+        "Hyper3D_OriginalAtlas_HFF14_outdoor_bench": {
+          "p10": 710.15,
+          "median": 782.65
+        }
+      },
+      "node_density_px_m": {
+        "Back": 779.2,
+        "Frame": 782.13,
+        "Seat": 785.61
+      },
+      "untextured_area_fraction": 0.0,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
     "I01_bed": {
       "id": "I01_bed",
       "sha256": "c8d1e6f84b5966045387935f6932dca4fcaa5a2ee4a2623959c877304a337539",
@@ -5288,40 +6036,54 @@
     },
     "I02_cake_showcase": {
       "id": "I02_cake_showcase",
-      "sha256": "c23b9cf4326ba1d3d776c653432842440b8d791ea235c6bd15c094ed77a86e73",
-      "source_mtime": 1791969127.0195525,
-      "triangles": 12600,
+      "sha256": "d50407e12a938631a0ad7247c982c753f2744e3675b6cef8776019e0bfffd88f",
+      "source_mtime": 1792001257.2592895,
+      "triangles": 33552,
       "bounds_godot": {
         "min": [
           -0.6700000166893005,
           0.0,
-          -0.37449999898672104
+          -0.375
         ],
         "max": [
           0.6700000166893005,
-          1.1490000188350677,
-          0.3804999957792461
+          1.1490000486373901,
+          0.375
         ]
       },
       "size_m": [
         1.340000033378601,
-        1.1490000188350677,
-        0.7549999947659671
+        1.1490000486373901,
+        0.75
       ],
-      "surface_area_m2": 14.398,
-      "albedo_image_sizes": [],
+      "surface_area_m2": 13.184,
+      "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ]
+      ],
       "topology": {
-        "components": 15,
-        "largest_component_area_fraction": 0.2854,
-        "boundary_edge_fraction": 0.0
+        "components": 24,
+        "largest_component_area_fraction": 0.3716,
+        "boundary_edge_fraction": 0.0448
       },
       "uv_density_px_m": {
-        "p10": null,
-        "median": null
+        "p10": 470.05,
+        "median": 505.83
       },
-      "material_density_px_m": {},
-      "node_density_px_m": {},
-      "untextured_area_fraction": 1.0,
+      "material_density_px_m": {
+        "Hyper3D_CaseAtlas": {
+          "p10": 470.05,
+          "median": 505.83
+        }
+      },
+      "node_density_px_m": {
+        "CabinetBase": 502.54,
+        "CabinetFrameAndShelves": 578.05,
+        "TopRail": 579.88
+      },
+      "untextured_area_fraction": 0.6863,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -5535,9 +6297,9 @@
     },
     "I04_shop_counter": {
       "id": "I04_shop_counter",
-      "sha256": "78f5a9ae1192857b525d3a6fcdc832646b64e2d7183668979174a1a0cb2ce60d",
-      "source_mtime": 1791969127.082189,
-      "triangles": 10220,
+      "sha256": "4fc7876081f08fb4b114890cfa430a62d41bb75624f76cb991aa04137f067610",
+      "source_mtime": 1792001257.392526,
+      "triangles": 39744,
       "bounds_godot": {
         "min": [
           -1.0549999475479126,
@@ -5547,48 +6309,49 @@
         "max": [
           1.0549999475479126,
           1.2200000435113907,
-          0.6225000247359276
+          0.574999988079071
         ]
       },
       "size_m": [
         2.109999895095825,
         1.2200000435113907,
-        1.1975000128149986
+        1.149999976158142
       ],
-      "surface_area_m2": 18.298,
+      "surface_area_m2": 19.195,
       "albedo_image_sizes": [
         [
-          1024,
-          1024
+          2048,
+          2048
         ]
       ],
       "topology": {
-        "components": 16,
-        "largest_component_area_fraction": 0.5213,
+        "components": 8,
+        "largest_component_area_fraction": 0.9707,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 164.34,
-        "median": 164.5
+        "p10": 313.59,
+        "median": 363.09
       },
       "material_density_px_m": {
-        "Cedar": {
-          "p10": 164.34,
-          "median": 164.5
+        "Hyper3D_OriginalAtlas_HFF07_sage_counter": {
+          "p10": 313.59,
+          "median": 363.09
         }
       },
       "node_density_px_m": {
-        "CounterTop": 164.5
+        "CounterBody": 370.81,
+        "CounterTop": 353.68
       },
-      "untextured_area_fraction": 0.7207,
+      "untextured_area_fraction": 0.0293,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
     "I05_bread_shelf": {
       "id": "I05_bread_shelf",
-      "sha256": "d8159bf077bf014d00842861181a22f25a6a586cd8511cb92e65cf5ed504b364",
-      "source_mtime": 1791969127.156065,
-      "triangles": 17296,
+      "sha256": "bdc3284403d855d0ac0a7039db6d12e077e7251f6cadf16f2a6711c8bd35f94a",
+      "source_mtime": 1792001257.5250678,
+      "triangles": 40413,
       "bounds_godot": {
         "min": [
           -0.5350000262260437,
@@ -5598,62 +6361,44 @@
         "max": [
           0.5350000262260437,
           1.5099999904632568,
-          0.31000001449137926
+          0.3100000023841858
         ]
       },
       "size_m": [
         1.0700000524520874,
         1.5099999904632568,
-        0.620000016875565
+        0.6200000047683716
       ],
-      "surface_area_m2": 13.873,
+      "surface_area_m2": 7.871,
       "albedo_image_sizes": [
         [
-          1024,
-          1024
+          2048,
+          2048
         ]
       ],
       "topology": {
-        "components": 24,
-        "largest_component_area_fraction": 0.1089,
+        "components": 1,
+        "largest_component_area_fraction": 1.0,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 45.68,
-        "median": 314.14
+        "p10": 501.73,
+        "median": 566.06
       },
       "material_density_px_m": {
-        "CedarDark": {
-          "p10": 28.12,
-          "median": 315.4
-        },
-        "Cedar": {
-          "p10": 45.68,
-          "median": 314.14
+        "Hyper3D_OriginalAtlas_HFF08_bread_rack4": {
+          "p10": 501.73,
+          "median": 566.06
         }
       },
       "node_density_px_m": {
-        "FormShelfBracket_0_1": 716.8,
-        "FormShelfBracket_0_-1": 716.8,
-        "FormShelfBracket_1_1": 716.8,
-        "FormShelfBracket_1_-1": 716.8,
-        "FormShelfBracket_2_1": 716.8,
-        "FormShelfBracket_2_-1": 716.8,
-        "FormShelfBracket_3_1": 716.8,
-        "FormShelfBracket_3_-1": 716.8,
-        "ShelfFoot": 314.14,
-        "ShelfUpright": 1095.51,
-        "ShelfUpright.001": 1095.51,
-        "TrayBoard_0": 314.14,
-        "TrayBoard_1": 314.14,
-        "TrayBoard_2": 314.14,
-        "TrayBoard_3": 314.14,
-        "TrayLip_0": 1050.03,
-        "TrayLip_1": 1050.03,
-        "TrayLip_2": 1050.03,
-        "TrayLip_3": 1050.03
+        "RackFrame": 568.22,
+        "TrayBoard_0": 561.33,
+        "TrayBoard_1": 567.98,
+        "TrayBoard_2": 560.05,
+        "TrayBoard_3": 579.51
       },
-      "untextured_area_fraction": 0.3598,
+      "untextured_area_fraction": 0.0,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -6106,50 +6851,61 @@
     },
     "J03_dining_set": {
       "id": "J03_dining_set",
-      "sha256": "9c20762b10c84a6967e5f1257101eab2faa6299d3524f8dadc55c35dafda37cf",
-      "source_mtime": 1790484070.9145732,
-      "triangles": 8000,
+      "sha256": "820ef4236d2ab6396a9f57f4e7a4d7cfa85abcf46af2aa49dd58670aef10b2f3",
+      "source_mtime": 1792001257.0070593,
+      "triangles": 113638,
       "bounds_godot": {
         "min": [
-          -0.7500715851783752,
-          0.00012940239685121924,
-          -0.500547468662262
+          -0.7499998980563066,
+          0.0,
+          -0.5005000233650208
         ],
         "max": [
-          0.7500061392784119,
-          0.8934617638587952,
-          0.5004620552062988
+          0.750000056053943,
+          0.8899999856948853,
+          0.5005000233650208
         ]
       },
       "size_m": [
-        1.500077724456787,
-        0.893332361461944,
-        1.0010095238685608
+        1.4999999541102498,
+        0.8899999856948853,
+        1.0010000467300415
       ],
-      "surface_area_m2": 6.145,
+      "surface_area_m2": 6.053,
       "albedo_image_sizes": [
         [
-          1024,
-          1024
+          2048,
+          2048
         ]
       ],
       "topology": {
         "components": 3,
-        "largest_component_area_fraction": 0.4767,
+        "largest_component_area_fraction": 0.6151,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 290.73,
-        "median": 313.23
+        "p10": 573.91,
+        "median": 975.81
       },
       "material_density_px_m": {
-        "M_J03_dining_set": {
-          "p10": 290.73,
-          "median": 313.23
+        "Hyper3D_OriginalAtlas_HFF01_cafe_chair": {
+          "p10": 1375.54,
+          "median": 1503.88
+        },
+        "Hyper3D_OriginalAtlas_HFF03_rect_table": {
+          "p10": 549.52,
+          "median": 813.19
         }
       },
       "node_density_px_m": {
-        "J03_dining_set": 313.23
+        "DiningLeftBack": 1485.62,
+        "DiningLeftFrame.001": 1469.66,
+        "DiningLeftSeat": 1589.94,
+        "DiningRightBack": 1485.62,
+        "DiningRightFrame.001": 1469.66,
+        "DiningRightSeat": 1589.94,
+        "Frame": 613.31,
+        "Top": 934.18
       },
       "untextured_area_fraction": 0.0,
       "inherited_pbr_maps": 0,
@@ -6310,50 +7066,60 @@
     },
     "J07_kotatsu": {
       "id": "J07_kotatsu",
-      "sha256": "cc7bc4a18b2df7cbe67a6a254e33c9241a921dcc7eea2dab5a0c38ac30d87f58",
-      "source_mtime": 1790484072.4245331,
-      "triangles": 5999,
+      "sha256": "600c0f8cd909c6fd3feeaa8c0cb8e418092c25a238a88d694242e153ca4b2e3b",
+      "source_mtime": 1792001257.13175,
+      "triangles": 43394,
       "bounds_godot": {
         "min": [
-          -0.7249495387077332,
-          0.00017698596639093012,
+          -0.7250000238418579,
+          0.0,
           -0.7495492100715637
         ],
         "max": [
-          0.7249742150306702,
-          0.44576913118362427,
+          0.7250000238418579,
+          0.44600000977516174,
           0.7504105567932129
         ]
       },
       "size_m": [
-        1.4499237537384033,
-        0.44559214521723334,
+        1.4500000476837158,
+        0.44600000977516174,
         1.4999597668647766
       ],
-      "surface_area_m2": 5.549,
+      "surface_area_m2": 9.296,
       "albedo_image_sizes": [
+        [
+          2048,
+          2048
+        ],
         [
           1024,
           1024
         ]
       ],
       "topology": {
-        "components": 1,
-        "largest_component_area_fraction": 1.0,
-        "boundary_edge_fraction": 0.0002
+        "components": 2,
+        "largest_component_area_fraction": 0.594,
+        "boundary_edge_fraction": 0.0016
       },
       "uv_density_px_m": {
-        "p10": 312.45,
-        "median": 338.88
+        "p10": 324.12,
+        "median": 613.69
       },
       "material_density_px_m": {
+        "Hyper3D_OriginalAtlas_HFF04_low_table": {
+          "p10": 566.8,
+          "median": 689.12
+        },
         "M_J07_kotatsu": {
-          "p10": 312.45,
-          "median": 338.88
+          "p10": 312.46,
+          "median": 337.71
         }
       },
       "node_density_px_m": {
-        "J07_kotatsu": 338.88
+        "Frame": 691.55,
+        "KotatsuQuilt": 337.71,
+        "Top": 687.81
       },
       "untextured_area_fraction": 0.0,
       "inherited_pbr_maps": 0,
@@ -8724,76 +9490,62 @@
     },
     "P_cafe_table": {
       "id": "P_cafe_table",
-      "sha256": "ae5dc6b49b13af5fe4f23b86e0f4f9b20887766d7c13ee90b867bc27bc944229",
-      "source_mtime": 1791969127.9744272,
-      "triangles": 28116,
+      "sha256": "108cdcb247385ec51a9f8c607134f1a6636e8ea9980536336ceac7b3f4bc8010",
+      "source_mtime": 1792001258.4131176,
+      "triangles": 101744,
       "bounds_godot": {
         "min": [
-          -0.9464030592046834,
+          -0.9349999004404924,
           0.0,
           -0.36000001430511475
         ],
         "max": [
-          0.9464030592046834,
-          0.8900000005960464,
+          0.9350000584381288,
+          0.8899999856948853,
           0.36000001430511475
         ]
       },
       "size_m": [
-        1.8928061184093667,
-        0.8900000005960464,
+        1.8699999588786214,
+        0.8899999856948853,
         0.7200000286102295
       ],
-      "surface_area_m2": 4.375,
+      "surface_area_m2": 3.709,
       "albedo_image_sizes": [
         [
-          1024,
-          1024
+          2048,
+          2048
         ]
       ],
       "topology": {
-        "components": 23,
-        "largest_component_area_fraction": 0.2069,
+        "components": 3,
+        "largest_component_area_fraction": 0.3719,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 538.98,
-        "median": 682.67
+        "p10": 1260.21,
+        "median": 1463.44
       },
       "material_density_px_m": {
-        "Cedar": {
-          "p10": 538.98,
-          "median": 586.15
+        "Hyper3D_OriginalAtlas_HFF01_cafe_chair": {
+          "p10": 1375.54,
+          "median": 1503.88
         },
-        "CedarDark": {
-          "p10": 716.8,
-          "median": 1248.41
+        "Hyper3D_OriginalAtlas_HFF02_round_table": {
+          "p10": 1191.22,
+          "median": 1406.51
         }
       },
       "node_density_px_m": {
-        "ChairLeftBack": 584.29,
-        "ChairLeftBack_BackStile_1": 716.8,
-        "ChairLeftBack_BackStile_-1": 716.8,
-        "ChairLeftLeg": 2110.23,
-        "ChairLeftLeg.001": 2110.23,
-        "ChairLeftLeg.002": 2110.23,
-        "ChairLeftLeg.003": 2110.23,
-        "ChairLeftSeat": 541.1,
-        "ChairLeftSeat_SideStretcher_1": 716.8,
-        "ChairLeftSeat_SideStretcher_-1": 716.8,
-        "ChairRightBack": 584.29,
-        "ChairRightBack_BackStile_1": 716.8,
-        "ChairRightBack_BackStile_-1": 716.8,
-        "ChairRightLeg": 2110.23,
-        "ChairRightLeg.001": 2110.23,
-        "ChairRightLeg.002": 2110.23,
-        "ChairRightLeg.003": 2110.23,
-        "ChairRightSeat": 541.1,
-        "ChairRightSeat_SideStretcher_1": 716.8,
-        "ChairRightSeat_SideStretcher_-1": 716.8,
-        "Foot": 1117.09,
-        "Pedestal": 1628.91,
-        "RoundTop": 682.67
+        "ChairLeftBack": 1485.62,
+        "ChairLeftFrame": 1469.66,
+        "ChairLeftSeat": 1589.94,
+        "ChairRightBack": 1485.62,
+        "ChairRightFrame": 1469.66,
+        "ChairRightSeat": 1589.94,
+        "Foot": 1454.12,
+        "Pedestal": 1235.84,
+        "RoundTop": 1413.99
       },
       "untextured_area_fraction": 0.0,
       "inherited_pbr_maps": 0,
@@ -9005,19 +9757,19 @@
     },
     "P_coffee_station": {
       "id": "P_coffee_station",
-      "sha256": "85329fd6419725eb8396b2f9d88c1365509f8447cb4536c392e4569067a87190",
-      "source_mtime": 1791969128.1372633,
-      "triangles": 22300,
+      "sha256": "58b56129886f4a77f4193f9984e8e7126eb8d6693c6a3da5b77041ed71d271f0",
+      "source_mtime": 1792001258.9159508,
+      "triangles": 44878,
       "bounds_godot": {
         "min": [
           -0.5,
           0.0,
-          -0.33000001311302185
+          -0.3425000011920929
         ],
         "max": [
           0.5,
           1.3250000476837158,
-          0.35499998927116394
+          0.3425000011920929
         ]
       },
       "size_m": [
@@ -9025,163 +9777,124 @@
         1.3250000476837158,
         0.6850000023841858
       ],
-      "surface_area_m2": 10.396,
+      "surface_area_m2": 8.976,
       "albedo_image_sizes": [
         [
-          1254,
-          1254
-        ],
-        [
-          1024,
-          1024
+          2048,
+          2048
         ]
       ],
       "topology": {
-        "components": 77,
-        "largest_component_area_fraction": 0.3619,
-        "boundary_edge_fraction": 0.0
+        "components": 68,
+        "largest_component_area_fraction": 0.9783,
+        "boundary_edge_fraction": 0.0026
       },
       "uv_density_px_m": {
-        "p10": 2048.0,
-        "median": 2483.79
+        "p10": 490.06,
+        "median": 554.31
       },
       "material_density_px_m": {
         "BrushedSteel": {
-          "p10": 2445.85,
-          "median": 2508.0
+          "p10": 507.95,
+          "median": 576.12
         },
-        "Cedar": {
-          "p10": 2048.0,
-          "median": 2048.0
+        "Sage": {
+          "p10": 488.47,
+          "median": 546.22
         },
-        "CedarDark": {
-          "p10": 2035.35,
-          "median": 2048.0
+        "Brass": {
+          "p10": 516.07,
+          "median": 561.81
+        },
+        "Charcoal": {
+          "p10": 434.03,
+          "median": 591.83
+        },
+        "Hyper3D_TimberAtlas": {
+          "p10": 499.84,
+          "median": 564.0
         }
       },
       "node_density_px_m": {
-        "BrushedSteel_Geometry": 2508.0,
-        "Cedar_Geometry": 2048.0,
-        "CedarDark_Geometry": 2048.0
+        "BrushedSteel_Geometry": 576.12,
+        "CabinetPaint": 546.22,
+        "CabinetPulls": 561.81,
+        "RubberParts": 591.83,
+        "Worktop": 564.0
       },
-      "untextured_area_fraction": 0.5812,
+      "untextured_area_fraction": 0.0175,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
     "P_community_table": {
       "id": "P_community_table",
-      "sha256": "0d098dd9c607f9d6cbaa6d6f7a4868fc6c6c8ec97d33ed526e0b53514f94039f",
-      "source_mtime": 1791969127.887099,
-      "triangles": 70780,
+      "sha256": "108d239c5f538bdae1f40e43921c1bbe75f3c5e6b8737b409aa2628ead443d69",
+      "source_mtime": 1792001258.1876242,
+      "triangles": 261910,
       "bounds_godot": {
         "min": [
           -1.024999976158142,
           0.0,
-          -1.1164031364023685
+          -1.1050000041723251
         ],
         "max": [
           1.024999976158142,
-          0.8900000005960464,
-          1.1164031364023685
+          0.8899999856948853,
+          1.1049999720549744
         ]
       },
       "size_m": [
         2.049999952316284,
-        0.8900000005960464,
-        2.232806272804737
+        0.8899999856948853,
+        2.2099999762272997
       ],
-      "surface_area_m2": 13.668,
+      "surface_area_m2": 14.016,
       "albedo_image_sizes": [
         [
-          1024,
-          1024
+          2048,
+          2048
         ]
       ],
       "topology": {
-        "components": 65,
-        "largest_component_area_fraction": 0.3198,
+        "components": 7,
+        "largest_component_area_fraction": 0.5014,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 178.8,
-        "median": 548.33
+        "p10": 549.44,
+        "median": 929.17
       },
       "material_density_px_m": {
-        "Cedar": {
-          "p10": 178.8,
-          "median": 538.98
+        "Hyper3D_OriginalAtlas_HFF01_cafe_chair": {
+          "p10": 1375.54,
+          "median": 1503.88
         },
-        "CedarDark": {
-          "p10": 712.37,
-          "median": 1408.44
+        "Hyper3D_OriginalAtlas_HFF03_rect_table": {
+          "p10": 518.26,
+          "median": 578.44
         }
       },
       "node_density_px_m": {
-        "ChairBackBack": 584.29,
-        "ChairBackBack_BackStile_1": 716.8,
-        "ChairBackBack_BackStile_-1": 716.8,
-        "ChairBackBack.001": 584.29,
-        "ChairBackBack.001_BackStile_1": 716.8,
-        "ChairBackBack.001_BackStile_-1": 716.8,
-        "ChairBackBack.002": 584.29,
-        "ChairBackBack.002_BackStile_1": 716.8,
-        "ChairBackBack.002_BackStile_-1": 716.8,
-        "ChairBackLeg": 2110.23,
-        "ChairBackLeg.001": 2110.23,
-        "ChairBackLeg.002": 2110.23,
-        "ChairBackLeg.003": 2110.23,
-        "ChairBackLeg.004": 2110.23,
-        "ChairBackLeg.005": 2110.23,
-        "ChairBackLeg.006": 2110.23,
-        "ChairBackLeg.007": 2110.23,
-        "ChairBackLeg.008": 2110.23,
-        "ChairBackLeg.009": 2110.23,
-        "ChairBackLeg.010": 2110.23,
-        "ChairBackLeg.011": 2110.23,
-        "ChairBackSeat": 541.1,
-        "ChairBackSeat_SideStretcher_1": 716.8,
-        "ChairBackSeat_SideStretcher_-1": 716.8,
-        "ChairBackSeat.001": 541.1,
-        "ChairBackSeat.001_SideStretcher_1": 716.8,
-        "ChairBackSeat.001_SideStretcher_-1": 716.8,
-        "ChairBackSeat.002": 541.1,
-        "ChairBackSeat.002_SideStretcher_1": 716.8,
-        "ChairBackSeat.002_SideStretcher_-1": 716.8,
-        "ChairFrontBack": 584.29,
-        "ChairFrontBack_BackStile_1": 716.8,
-        "ChairFrontBack_BackStile_-1": 716.8,
-        "ChairFrontBack.001": 584.29,
-        "ChairFrontBack.001_BackStile_1": 716.8,
-        "ChairFrontBack.001_BackStile_-1": 716.8,
-        "ChairFrontBack.002": 584.29,
-        "ChairFrontBack.002_BackStile_1": 716.8,
-        "ChairFrontBack.002_BackStile_-1": 716.8,
-        "ChairFrontLeg": 2110.23,
-        "ChairFrontLeg.001": 2110.23,
-        "ChairFrontLeg.002": 2110.23,
-        "ChairFrontLeg.003": 2110.23,
-        "ChairFrontLeg.004": 2110.23,
-        "ChairFrontLeg.005": 2110.23,
-        "ChairFrontLeg.006": 2110.23,
-        "ChairFrontLeg.007": 2110.23,
-        "ChairFrontLeg.008": 2110.23,
-        "ChairFrontLeg.009": 2110.23,
-        "ChairFrontLeg.010": 2110.23,
-        "ChairFrontLeg.011": 2110.23,
-        "ChairFrontSeat": 541.1,
-        "ChairFrontSeat_SideStretcher_1": 716.8,
-        "ChairFrontSeat_SideStretcher_-1": 716.8,
-        "ChairFrontSeat.001": 541.1,
-        "ChairFrontSeat.001_SideStretcher_1": 716.8,
-        "ChairFrontSeat.001_SideStretcher_-1": 716.8,
-        "ChairFrontSeat.002": 541.1,
-        "ChairFrontSeat.002_SideStretcher_1": 716.8,
-        "ChairFrontSeat.002_SideStretcher_-1": 716.8,
-        "SharedLeg": 1460.05,
-        "SharedLeg.001": 1460.05,
-        "SharedLeg.002": 1460.05,
-        "SharedLeg.003": 1460.05,
-        "SharedTop": 178.97
+        "ChairBackBack": 1485.62,
+        "ChairBackBack.001": 1485.62,
+        "ChairBackBack.002": 1485.62,
+        "ChairBackFrame": 1469.66,
+        "ChairBackFrame.001": 1469.66,
+        "ChairBackFrame.002": 1469.66,
+        "ChairBackSeat": 1589.94,
+        "ChairBackSeat.001": 1589.94,
+        "ChairBackSeat.002": 1589.94,
+        "ChairFrontBack": 1485.62,
+        "ChairFrontBack.001": 1485.62,
+        "ChairFrontBack.002": 1485.62,
+        "ChairFrontFrame": 1469.66,
+        "ChairFrontFrame.001": 1469.66,
+        "ChairFrontFrame.002": 1469.66,
+        "ChairFrontSeat": 1589.94,
+        "ChairFrontSeat.001": 1589.94,
+        "ChairFrontSeat.002": 1589.94,
+        "SharedFrame": 582.51,
+        "SharedTop": 575.16
       },
       "untextured_area_fraction": 0.0,
       "inherited_pbr_maps": 0,
@@ -9301,56 +10014,61 @@
     },
     "P_gondola": {
       "id": "P_gondola",
-      "sha256": "f0d86f3ac3b799a6f09d4b52c0df75c2ed43cabc9868273c2ec1943e59c836d7",
-      "source_mtime": 1791969127.3879695,
-      "triangles": 53060,
+      "sha256": "b1db7c29dde10fc1227060028095e5bf839e08d08db68a3fc0e6293c11bb2d81",
+      "source_mtime": 1792001257.7276344,
+      "triangles": 80826,
       "bounds_godot": {
         "min": [
-          -0.9200000762939453,
+          -0.9200000166893005,
           0.0,
-          -0.3100000023841858
+          -0.30999998018274705
         ],
         "max": [
-          0.9200000762939453,
+          0.920000025613065,
           1.600000023841858,
           0.3100000023841858
         ]
       },
       "size_m": [
-        1.8400001525878906,
+        1.8400000423023655,
         1.600000023841858,
-        0.6200000047683716
+        0.6199999825669329
       ],
-      "surface_area_m2": 23.057,
+      "surface_area_m2": 15.455,
       "albedo_image_sizes": [
         [
-          1254,
-          1254
+          2048,
+          2048
         ]
       ],
       "topology": {
-        "components": 91,
-        "largest_component_area_fraction": 0.1112,
+        "components": 2,
+        "largest_component_area_fraction": 0.5,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 0.85,
-        "median": 1422.18
+        "p10": 335.17,
+        "median": 470.0
       },
       "material_density_px_m": {
-        "M_P_gondola": {
-          "p10": 0.99,
-          "median": 1421.7
-        },
-        "M_P_gondola.001": {
-          "p10": 0.71,
-          "median": 1701.7
+        "Hyper3D_OriginalAtlas_HFF08_bread_rack4": {
+          "p10": 335.17,
+          "median": 470.0
         }
       },
       "node_density_px_m": {
-        "P_gondola": 1422.18
+        "FrontRackFrame": 478.22,
+        "FrontTrayBoard_0": 524.0,
+        "FrontTrayBoard_1": 455.22,
+        "FrontTrayBoard_2": 439.98,
+        "FrontTrayBoard_3": 450.82,
+        "RearRackFrame": 478.22,
+        "RearTrayBoard_0": 524.0,
+        "RearTrayBoard_1": 455.22,
+        "RearTrayBoard_2": 439.98,
+        "RearTrayBoard_3": 450.82
       },
-      "untextured_area_fraction": 0.011,
+      "untextured_area_fraction": 0.0,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -9512,9 +10230,9 @@
     },
     "P_low_bookcase": {
       "id": "P_low_bookcase",
-      "sha256": "4f3c1f58698caaaef92bedffb8b50f8e57019831473ee57642541c1c77043334",
-      "source_mtime": 1791643596.888669,
-      "triangles": 1848,
+      "sha256": "2a31c7a65abf0d17436f0ac9edb63abfc02efb2fd33d31621f4803c04d63a314",
+      "source_mtime": 1792001258.7139776,
+      "triangles": 40314,
       "bounds_godot": {
         "min": [
           -0.675000011920929,
@@ -9532,44 +10250,35 @@
         1.090000033378601,
         0.3400000035762787
       ],
-      "surface_area_m2": 10.315,
+      "surface_area_m2": 9.012,
       "albedo_image_sizes": [
         [
-          1024,
-          1024
+          2048,
+          2048
         ]
       ],
       "topology": {
-        "components": 42,
-        "largest_component_area_fraction": 0.1055,
-        "boundary_edge_fraction": 0.0
+        "components": 34,
+        "largest_component_area_fraction": 0.4719,
+        "boundary_edge_fraction": 0.0001
       },
       "uv_density_px_m": {
-        "p10": 377.86,
-        "median": 378.43
+        "p10": 517.12,
+        "median": 723.43
       },
       "material_density_px_m": {
-        "CedarDark": {
-          "p10": 377.86,
-          "median": 382.79
-        },
-        "Cedar": {
-          "p10": 377.86,
-          "median": 378.43
+        "Hyper3D_OriginalAtlas_HFF09_bread_rack3": {
+          "p10": 517.12,
+          "median": 723.43
         }
       },
       "node_density_px_m": {
-        "ShelfFoot": 378.43,
-        "ShelfUpright": 1196.21,
-        "ShelfUpright.001": 1196.21,
-        "TrayBoard_0": 378.43,
-        "TrayBoard_1": 378.43,
-        "TrayBoard_2": 378.43,
-        "TrayLip_0": 864.6,
-        "TrayLip_1": 864.6,
-        "TrayLip_2": 864.6
+        "RackFrame": 735.71,
+        "TrayBoard_0": 723.59,
+        "TrayBoard_1": 658.31,
+        "TrayBoard_2": 722.77
       },
-      "untextured_area_fraction": 0.5004,
+      "untextured_area_fraction": 0.5059,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -9614,67 +10323,56 @@
     },
     "P_reading_chair": {
       "id": "P_reading_chair",
-      "sha256": "cedb06022adf2ba6f47ff1b48a3cba0388094715770191d4364b7ec93bf5e32b",
-      "source_mtime": 1791969128.0377445,
-      "triangles": 18144,
+      "sha256": "d7757df5cb9f833d0702a0313992ce627ce4a27b6132ad94b73d7ec0040fb050",
+      "source_mtime": 1792001258.5494618,
+      "triangles": 37992,
       "bounds_godot": {
         "min": [
-          -0.30250000581145287,
+          -0.30250000953674316,
           0.0,
           -0.2549999952316284
         ],
         "max": [
-          0.30250000581145287,
-          0.8900000005960464,
+          0.30250000953674316,
+          0.8899999856948853,
           0.2549999952316284
         ]
       },
       "size_m": [
-        0.6050000116229057,
-        0.8900000005960464,
+        0.6050000190734863,
+        0.8899999856948853,
         0.5099999904632568
       ],
-      "surface_area_m2": 1.723,
+      "surface_area_m2": 1.68,
       "albedo_image_sizes": [
         [
-          1024,
-          1024
+          2048,
+          2048
         ]
       ],
       "topology": {
-        "components": 14,
-        "largest_component_area_fraction": 0.312,
+        "components": 1,
+        "largest_component_area_fraction": 1.0,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 716.8,
-        "median": 1561.5
+        "p10": 1196.33,
+        "median": 1333.93
       },
       "material_density_px_m": {
-        "Cedar": {
-          "p10": 1324.73,
-          "median": 1565.4
-        },
-        "CedarDark": {
-          "p10": 712.37,
-          "median": 1534.27
+        "Hyper3D_OriginalAtlas_HFF12_reading_armchair": {
+          "p10": 1196.33,
+          "median": 1333.93
         }
       },
       "node_density_px_m": {
-        "ReadingChairArm": 1565.4,
-        "ReadingChairArm.001": 1565.4,
-        "ReadingChairBack_BackStile_1": 716.8,
-        "ReadingChairBack_BackStile_-1": 716.8,
-        "ReadingChairLeg": 2110.23,
-        "ReadingChairLeg.001": 2110.23,
-        "ReadingChairLeg.002": 2110.23,
-        "ReadingChairLeg.003": 2110.23,
-        "ReadingChairPost": 3795.14,
-        "ReadingChairPost.001": 3795.14,
-        "ReadingChairSeat_SideStretcher_1": 716.8,
-        "ReadingChairSeat_SideStretcher_-1": 716.8
+        "ReadingChairArm": 1314.84,
+        "ReadingChairArm_001": 1341.39,
+        "ReadingChairBack": 1249.4,
+        "ReadingChairFrame": 1358.1,
+        "ReadingChairSeat": 1415.34
       },
-      "untextured_area_fraction": 0.5856,
+      "untextured_area_fraction": 0.0,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -10405,9 +11103,9 @@
       "node_density_px_m": {
         "cedar__display": 1087.18,
         "cedar_dark__display": 4519.11,
-        "Lettering_当日鲜蔬__display": 46445.82,
-        "Lettering_当日鲜蔬__display.001": 46445.3,
-        "Lettering_当日鲜蔬__display.002": 46445.82,
+        "Lettering_\u5f53\u65e5\u9c9c\u852c__display": 46445.82,
+        "Lettering_\u5f53\u65e5\u9c9c\u852c__display.001": 46445.3,
+        "Lettering_\u5f53\u65e5\u9c9c\u852c__display.002": 46445.82,
         "paper__display": 895.71,
         "Pixal_whole_cucumbers_0__display": 759.71,
         "Pixal_whole_cucumbers_1__display": 759.71,
@@ -13358,9 +14056,9 @@
     },
     "W17_display_shelf": {
       "id": "W17_display_shelf",
-      "sha256": "7a31aa2112bf3467cb7fb5c536ff46091eb947a4084c4c1335e388afb060776d",
-      "source_mtime": 1791969127.7009308,
-      "triangles": 14084,
+      "sha256": "ed7c460dd54c44cc0774669b9be749bc086a2502aa73afeb3bc5091bd52d86b5",
+      "source_mtime": 1792001257.8512526,
+      "triangles": 38906,
       "bounds_godot": {
         "min": [
           -0.5450000166893005,
@@ -13378,50 +14076,35 @@
         1.25,
         0.5
       ],
-      "surface_area_m2": 9.243,
+      "surface_area_m2": 5.093,
       "albedo_image_sizes": [
         [
-          1024,
-          1024
+          2048,
+          2048
         ]
       ],
       "topology": {
-        "components": 19,
-        "largest_component_area_fraction": 0.1366,
-        "boundary_edge_fraction": 0.0
+        "components": 2,
+        "largest_component_area_fraction": 0.9704,
+        "boundary_edge_fraction": 0.0001
       },
       "uv_density_px_m": {
-        "p10": 50.88,
-        "median": 346.52
+        "p10": 535.82,
+        "median": 734.0
       },
       "material_density_px_m": {
-        "CedarDark": {
-          "p10": 31.57,
-          "median": 347.95
-        },
-        "Cedar": {
-          "p10": 50.88,
-          "median": 346.52
+        "Hyper3D_OriginalAtlas_HFF09_bread_rack3": {
+          "p10": 535.82,
+          "median": 734.0
         }
       },
       "node_density_px_m": {
-        "FormShelfBracket_0_1": 716.8,
-        "FormShelfBracket_0_-1": 716.8,
-        "FormShelfBracket_1_1": 716.8,
-        "FormShelfBracket_1_-1": 716.8,
-        "FormShelfBracket_2_1": 716.8,
-        "FormShelfBracket_2_-1": 716.8,
-        "ShelfFoot": 346.52,
-        "ShelfUpright": 1204.23,
-        "ShelfUpright.001": 1204.23,
-        "TrayBoard_0": 346.52,
-        "TrayBoard_1": 346.52,
-        "TrayBoard_2": 346.52,
-        "TrayLip_0": 1040.41,
-        "TrayLip_1": 1040.41,
-        "TrayLip_2": 1040.41
+        "RackFrame": 728.39,
+        "TrayBoard_0": 780.73,
+        "TrayBoard_1": 737.83,
+        "TrayBoard_2": 727.89
       },
-      "untextured_area_fraction": 0.346,
+      "untextured_area_fraction": 0.0,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -13938,6 +14621,30 @@
   "details": {
     "matte": [],
     "fragmented": [],
+    "assembly_surfaces": {
+      "P_deck_oven": {
+        "ok": true,
+        "actual_material_area_m2": {
+          "Oven_BrushedSteel": 0.030422071626849338,
+          "Oven_ControlPanel": 1.544542284743803,
+          "Oven_HeatGlass": 0.6761838872585315,
+          "Oven_DialMarkings": 0.004273130325613961,
+          "Oven_HeatingElement": 0.03409965033039751,
+          "Oven_HeatproofHandle": 0.25309095332914233,
+          "Oven_HeatSeal": 0.3140055714232322,
+          "Oven_MaintainedEnamel": 23.733054693952653,
+          "Oven_StoneDeck": 1.2297133624150676,
+          "Oven_WarmCavity": 1.2717696895601849
+        },
+        "insufficient_parts": {},
+        "closed_edges": true,
+        "topology": {
+          "components": 157,
+          "largest_component_area_fraction": 0.587,
+          "boundary_edge_fraction": 0.0042
+        }
+      }
+    },
     "density": [],
     "apartment_modules": {
       "Rodin_tenant_0_0": 312.97,
@@ -13949,5 +14656,5 @@
     },
     "bounds": []
   },
-  "contract_sha256": "33e6404171491907c7963280f8e07f02484843e854bd6be3829b40a213bf3f67"
+  "contract_sha256": "4a4c3f20695df8934e0d0c6298978484ed3a1eef8d8906c259fb000e4fc01b0c"
 }

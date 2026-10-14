@@ -1,21 +1,20 @@
 {
  "id": "A12_bench",
- "src": "raw/plaza_paintover_20261009/A12_bench.glb",
- "provider": "Blender reference-built joinery from accepted imagegen plaza paintover",
+ "src": "raw/hyper3d_furniture_20261015/assembled/A12_bench.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
  "preserve_parts": true,
  "origin_preserved": true,
- "tris": 1080,
+ "tris": 37426,
  "tex": 2048,
- "bytes": 1765328,
+ "bytes": 3953256,
  "godot_size_m_xyz": [
   1.8,
-  0.5575,
-  0.56
+  0.83,
+  0.6
  ],
  "mesh_nodes": [
-  "CedarAge_0",
-  "CedarAge_1",
-  "CedarAge_2",
-  "CedarAge_3"
+  "Back",
+  "Frame",
+  "Seat"
  ]
 }

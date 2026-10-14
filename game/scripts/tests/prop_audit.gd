@@ -35,9 +35,17 @@ static func loose(id: String) -> bool:
 			return true
 	return false
 
+static func geometry_key(n: Node3D) -> String:
+	var key: String=str(n.get_meta("model_id"))
+	if n.has_meta("hyper3d_reuse"):
+		# Fitted variants share a provider ID but have different real ArrayMeshes.
+		# Material changes do not affect this key; actual geometry resources do.
+		for mesh: MeshInstance3D in WorldBuilder.find_meshes(n):
+			key+="/%d"%mesh.mesh.get_instance_id()
+	return key
 
 static func tris(n: Node3D) -> PackedVector3Array:
-	var id: String = n.get_meta("model_id")
+	var id: String = geometry_key(n)
 	if _tris.has(id):
 		return _tris[id]
 	var out := PackedVector3Array()
@@ -61,7 +69,7 @@ static func tris(n: Node3D) -> PackedVector3Array:
 ## Footprint in world XZ. band < 0 = the whole height.
 static func footprint(n: Node3D, band: float = LOW) -> PackedVector2Array:
 	var s := n.global_transform.basis.get_scale().x
-	var key := "%s@%.3f@%.2f" % [n.get_meta("model_id"), s, band]
+	var key := "%s@%.3f@%.2f" % [geometry_key(n), s, band]
 	var local: PackedVector2Array
 	if _hull.has(key):
 		local = _hull[key]
@@ -87,13 +95,32 @@ static func footprint(n: Node3D, band: float = LOW) -> PackedVector2Array:
 
 ## A declared support is valid only where its rendered surface actually meets the prop's base.
 static func mount_supported(prop: Node3D, support: Node3D) -> bool:
-	if not prop.has_meta("support_surface") or prop.get_node_or_null(prop.get_meta("support_surface")) != support: return false
+	if not prop.has_meta("support_surface"):return false
+	var declared: Node3D=prop.get_node_or_null(prop.get_meta("support_surface")) as Node3D
+	if declared==null or (declared!=support and not support.is_ancestor_of(declared)):return false
 	var hull: PackedVector2Array = footprint(prop)
 	if hull.is_empty(): return false
 	var centre: Vector2 = _centroid(hull)
-	var surface_y: float = WorldBuilder.rendered_support_height(support, Vector3(centre.x, 0, centre.y),float(prop.get_meta("support_ceiling",INF)))
+	var surface_y: float = WorldBuilder.rendered_support_height(declared, Vector3(centre.x, 0, centre.y),float(prop.get_meta("support_ceiling",INF)))
 	return absf(base_y(prop) - surface_y) <= .04
 
+## A wall-mounted rack is held only where its real rear wood meets the real
+## rendered box wall. A marker alone cannot exempt a floating model.
+static func wall_supported(prop: Node3D) -> bool:
+	if not prop.has_meta("wall_mount_surface"):return false
+	var wall: MeshInstance3D=prop.get_node_or_null(prop.get_meta("wall_mount_surface")) as MeshInstance3D
+	if wall==null or not wall.mesh is BoxMesh:return false
+	var box: AABB=wall.get_aabb()
+	var contacts: Dictionary={}
+	var left: float=INF;var right: float=-INF;var bottom: float=INF;var top: float=-INF
+	for mesh: MeshInstance3D in WorldBuilder.find_meshes(prop):
+		var transform: Transform3D=wall.global_transform.affine_inverse()*mesh.global_transform
+		for vertex: Vector3 in mesh.mesh.get_faces():
+			var at: Vector3=transform*vertex
+			if absf(at.z-box.end.z)>.012 or at.x<box.position.x or at.x>box.end.x or at.y<box.position.y or at.y>box.end.y:continue
+			contacts[Vector3i(roundi(at.x*1000),roundi(at.y*1000),roundi(at.z*1000))]=true
+			left=minf(left,at.x);right=maxf(right,at.x);bottom=minf(bottom,at.y);top=maxf(top,at.y)
+	return contacts.size()>=6 and right-left>.60 and top-bottom>.20
 
 static func area(poly: PackedVector2Array) -> float:
 	var a := 0.0
@@ -271,7 +298,7 @@ static func run(root: Node3D, walls: Array = []) -> Array:
 			continue
 		var dy: float = a.base - (hit.position as Vector3).y
 		if dy > 0.04:
-			var held := false
+			var held := wall_supported(a.n)
 			for b: Dictionary in small + big:
 				if b.n != a.n and absf(b.top - a.base) < 0.08 and b.box.has_point(c):
 					held = true

@@ -243,7 +243,6 @@ static func _mio(room: InteriorBuilder,root: Node3D,wall: Material) -> void:
 	_model(room,root,"I03_bookshelf",Vector3(-2.9,0,-2.7),90,.60)
 	var desk:=_table(room,root,"PrivateWindowDesk",Vector3(-2.4,0,-.3),Vector2(1.65,.95),.72)
 	_paper(root,"TravelNote",Vector3(-2.7,.72,-.45),Vector2(.42,.27),desk)
-	_model(room,root,"G06_zabuton",Vector3(1.25,0,-.65),0,.85,false)
 	_model(room,root,"I08_boxes",Vector3(2.8,0,2.5),0,.36)
 	_model(room,root,"G01_getabako",Vector3(-2.85,0,2.65),90,.65)
 	ClearSignage.paper_tag(root,"PrivateMemo","下次休息，去远处看看",Vector3(-3.39,1.6,2.65),Vector2(1.3,.24),PI*.5,.085)
@@ -254,7 +253,6 @@ static func _tanaka(room: InteriorBuilder,root: Node3D,wall: Material) -> void:
 	_model(room,root,"J05_dish_cabinet",Vector3(-3.4,0,-2.9),0,.65)
 	var table:=_table(room,root,"OnePersonSupper",Vector3(-2.6,0,-.2),Vector2(1.10,.75),.68)
 	_single_meal(root,Vector3(-2.6,.68,-.2),table)
-	_model(room,root,"G06_zabuton",Vector3(1.25,0,-.65),0,.85,false)
 	_model(room,root,"G01_getabako",Vector3(3.1,0,3.12),-90,.70)
 	ClearSignage.paper_tag(root,"HomeBoundary","农具留在工具屋",Vector3(3.9,1.65,2.3),Vector2(1.15,.2),-PI*.5,.08)
 
@@ -262,7 +260,7 @@ static func _ren(room: InteriorBuilder,root: Node3D,wall: Material) -> void:
 	_partition(room,Vector3(.3,0,-2.1),3.8,.5,false,wall)
 	_model(room,root,"I01_bed",Vector3(2.35,0,-2.65),0,.80)
 	_model(room,root,"I05_wardrobe",Vector3(-2.9,0,-3.15),0,.55)
-	var table:=_table(room,root,"AfterClosingTable",Vector3(-2.3,0,-.4),Vector2(1.35,.75),.74)
+	var table:=_table(room,root,"AfterClosingTable",Vector3(-2.3,0,-.4),Vector2(1.35,1.05),.74)
 	_prop(room,root,"W07_pastry_tray",Vector3(-2.3,.74,-.4),.18,table)
 	_paper(root,"PackingTrial",Vector3(-2.3,.74,-.05),Vector2(.42,.24),table)
 	_model(room,root,"W19_flour_bag",Vector3(2.8,0,2.9),0,.45,false)
@@ -278,7 +276,6 @@ static func _kazuko(room: InteriorBuilder,root: Node3D,wall: Material) -> void:
 	var table:=_table(room,root,"RoundConversationTable",Vector3(-2.4,0,-.1),Vector2(1.35,.85),.43)
 	_prop(room,root,"W21_tea_tin",Vector3(-2.8,.43,-.1),.18,table)
 	_paper(root,"OldPriceTags",Vector3(-2.2,.43,-.1),Vector2(.40,.27),table)
-	_model(room,root,"G06_zabuton",Vector3(1.25,0,-.65),0,.85,false)
 	_model(room,root,"J05_dish_cabinet",Vector3(3.3,0,2.5),-90,.60)
 
 static func _toolshed(room: InteriorBuilder,root: Node3D,_wall: Material) -> void:
@@ -393,7 +390,7 @@ static func _functional_fitout(room: InteriorBuilder,root: Node3D,wall: Material
 			_model(room,root,"P_low_bookcase",Vector3(3.20,0,.65),-90,.92)
 			_model(room,root,"P_reading_chair",Vector3(2.30,0,1.20),135,1.0)
 			_model(room,root,"P_reading_chair",Vector3(-2.35,0,.65),180,.92)
-			var desk: Node3D=root.get_node("PrivateWindowDesk")
+			var desk: Node3D=root.find_child("PrivateWindowDesk",true,false)
 			_book_stack(root,"InvitationRecords",Vector3(-2.95,.72,.02),desk)
 			ClearSignage.paper_tag(root,"ReadingLabel","还没收到回信的邀请",Vector3(-3.39,1.55,1.2),Vector2(.9,.2),PI*.5,.070)
 			var side:=_table(room,root,"ReadingSideTable",Vector3(2.45,0,-.05),Vector2(.55,.52),.56)
@@ -449,14 +446,14 @@ static func _functional_fitout(room: InteriorBuilder,root: Node3D,wall: Material
 				_prop(room,root,"W01_flower_buckets",Vector3(side*2.65,.38,2.1),.68,display)
 				var high:=_table(room,root,"FlowerDisplayHigh_%d"%side,Vector3(side*2.65,0,3.25),Vector2(1.45,.65),.68)
 				_prop(room,root,"W06_lily_vase" if side<0 else "W05_hydrangea_pot",Vector3(side*2.65,.68,3.25),.52,high)
-			var wrap: Node3D=root.get_node("FlowerWrapping")
+			var wrap: Node3D=root.find_child("FlowerWrapping",true,false)
 			_paper(root,"BouquetWrappingPaper",Vector3(-3.20,.78,-.3),Vector2(.44,.60),wrap)
 			_cubbies(root,"DryFlowerPaperStorage",Vector3(.7,0,-3.55),2.0,1.10,3,2)
 		"zakka":
 			for side: int in [-1,1]:
 				var island:=_table(room,root,"DailyGoodsIsland_%d"%side,Vector3(side*2.05,0,1.65),Vector2(1.2,1.8),.65)
 				for index: int in 3:_prop(room,root,["W25_salt_box","W24_sugar_pack","W26_miso_tub"][index],Vector3(side*2.05,.65,1.1+index*.55),.22,island)
-				PublicPlaceArt.folded_cloth(root,"ShopLinen_%d"%side,Vector3(side*2.05,.2225,1.65),Color(.69,.68,.48),root.get_node("DailyGoodsIsland_%dLowerBoard"%side))
+				PublicPlaceArt.folded_cloth(root,"ShopLinen_%d"%side,Vector3(side*2.05,.2225,1.65),Color(.69,.68,.48),root.find_child("DailyGoodsIsland_%dLowerBoard"%side,true,false))
 			_cubbies(root,"AwaitingRepair",Vector3(-2.25,0,-3.95),1.75,1.04,3,2)
 			var checkout:=_table(room,root,"ZakkaCheckout",Vector3(2.5,0,-.65),Vector2(1.3,.75),.85)
 			_paper(root,"RepairReceipt",Vector3(2.5,.85,-.65),Vector2(.38,.26),checkout)

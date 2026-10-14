@@ -1,4 +1,21 @@
 {
+  "intentional_assemblies": {
+    "P_deck_oven": {
+      "maximum_open_edge_fraction": 0.01,
+      "required_material_area_m2": {
+        "Oven_MaintainedEnamel": 20.0,
+        "Oven_ControlPanel": 1.2,
+        "Oven_BrushedSteel": 0.028,
+        "Oven_HeatGlass": 0.60,
+        "Oven_HeatSeal": 0.28,
+        "Oven_StoneDeck": 1.10,
+        "Oven_HeatproofHandle": 0.22,
+        "Oven_HeatingElement": 0.030,
+        "Oven_WarmCavity": 1.10,
+        "Oven_DialMarkings": 0.0035
+      }
+    }
+  },
   "continuous_meshes": [
     "A21_sparrow",
     "F01_tool_shed",

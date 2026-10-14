@@ -1,0 +1,480 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-15",
+  "provider": "Hyper3D CLI Gen-2.5-High",
+  "generation_count": 14,
+  "settled_credits": 7,
+  "wallet_before": 150,
+  "wallet_after": 143,
+  "frozen_after": 0,
+  "assets": {
+    "HFF01_cafe_chair": {
+      "asset": "HFF01_cafe_chair",
+      "candidate": "a",
+      "generation_id": "25a6fc7f-1528-4940-9f16-3e1bcc2062a4",
+      "source": "Hyper3D CLI Gen-2.5-High",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF01_cafe_chair.png",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "1f33ff55e84a3eba621960ff91236893ce2396d4518f8b59f48de2ed62b9e460",
+      "bytes": 9661620,
+      "status": "downloaded",
+      "task_url": "https://hyper3d.ai/workspace/rodin/25a6fc7f-1528-4940-9f16-3e1bcc2062a4",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF01_cafe_chair.glb",
+      "reference_sha256": "fe3f2b246b58fababe3782dbadde432d251ed5c971e48bc11dccbd1463af830b",
+      "settled_credits": 0.5,
+      "source_review": {
+        "source_sha256": "1f33ff55e84a3eba621960ff91236893ce2396d4518f8b59f48de2ed62b9e460",
+        "reviewer": "root visual inspection of actual generated GLB renders",
+        "views": [
+          "front",
+          "back",
+          "left",
+          "right",
+          "oblique",
+          "clay_front",
+          "clay_oblique"
+        ],
+        "source_geometry_usable_with_repairs": true,
+        "required_local_work": [
+          "physical size and support fitting; preserve original atlas and source faces"
+        ],
+        "native_game_acceptance": false
+      }
+    },
+    "HFF02_round_table": {
+      "asset": "HFF02_round_table",
+      "candidate": "a",
+      "generation_id": "11709d12-2231-4b43-a263-8bbd7e27ec00",
+      "source": "Hyper3D CLI Gen-2.5-High",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF02_round_table.png",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "061056b302f6633b6a75999778e9cabf8b0e89f8377259b8dd0640a47a0adba6",
+      "bytes": 9993572,
+      "status": "downloaded",
+      "task_url": "https://hyper3d.ai/workspace/rodin/11709d12-2231-4b43-a263-8bbd7e27ec00",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF02_round_table.glb",
+      "reference_sha256": "5bb3920e72aa7e91e208d061ce362f6cde4b7d731bd681b565672a00db155a83",
+      "settled_credits": 0.5,
+      "source_review": {
+        "source_sha256": "061056b302f6633b6a75999778e9cabf8b0e89f8377259b8dd0640a47a0adba6",
+        "reviewer": "root visual inspection of actual generated GLB renders",
+        "views": [
+          "front",
+          "back",
+          "left",
+          "right",
+          "oblique",
+          "clay_front",
+          "clay_oblique"
+        ],
+        "source_geometry_usable_with_repairs": true,
+        "required_local_work": [
+          "physical size and support fitting; preserve original atlas and source faces"
+        ],
+        "native_game_acceptance": false
+      }
+    },
+    "HFF03_rect_table": {
+      "asset": "HFF03_rect_table",
+      "candidate": "a",
+      "generation_id": "f3a63d0b-9416-4535-b519-4e6b48ae69a2",
+      "source": "Hyper3D CLI Gen-2.5-High",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF03_rect_table.png",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "55a48e9e14fe131986e7095699754789d3c90886aebb4b8e036fb23d99bda2b1",
+      "bytes": 10829564,
+      "status": "downloaded",
+      "task_url": "https://hyper3d.ai/workspace/rodin/f3a63d0b-9416-4535-b519-4e6b48ae69a2",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF03_rect_table.glb",
+      "reference_sha256": "b8da0fc58dca422f035dc82d7500558b33de17ef90232fe057ec0f4b1c89e87b",
+      "settled_credits": 0.5,
+      "source_review": {
+        "source_sha256": "55a48e9e14fe131986e7095699754789d3c90886aebb4b8e036fb23d99bda2b1",
+        "reviewer": "root visual inspection of actual generated GLB renders",
+        "views": [
+          "front",
+          "back",
+          "left",
+          "right",
+          "oblique",
+          "clay_front",
+          "clay_oblique"
+        ],
+        "source_geometry_usable_with_repairs": true,
+        "required_local_work": [
+          "physical size and support fitting; preserve original atlas and source faces"
+        ],
+        "native_game_acceptance": false
+      }
+    },
+    "HFF04_low_table": {
+      "asset": "HFF04_low_table",
+      "candidate": "a",
+      "generation_id": "b0956a25-3530-4234-8698-3b637e1573e3",
+      "source": "Hyper3D CLI Gen-2.5-High",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF04_low_table.png",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "915b809499cc0eeb3e21b60b53a3bad7aa46a89fad7b0451e240d4c3b3ba1562",
+      "bytes": 8170708,
+      "status": "downloaded",
+      "task_url": "https://hyper3d.ai/workspace/rodin/b0956a25-3530-4234-8698-3b637e1573e3",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF04_low_table.glb",
+      "reference_sha256": "f74d0b443af182421f0584e537e6095e0bc8872959229f14c8d58c17fb020659",
+      "settled_credits": 0.5,
+      "source_review": {
+        "source_sha256": "915b809499cc0eeb3e21b60b53a3bad7aa46a89fad7b0451e240d4c3b3ba1562",
+        "reviewer": "root visual inspection of actual generated GLB renders",
+        "views": [
+          "front",
+          "back",
+          "left",
+          "right",
+          "oblique",
+          "clay_front",
+          "clay_oblique"
+        ],
+        "source_geometry_usable_with_repairs": true,
+        "required_local_work": [
+          "physical size and support fitting; preserve original atlas and source faces"
+        ],
+        "native_game_acceptance": false
+      }
+    },
+    "HFF05_utility_stand": {
+      "asset": "HFF05_utility_stand",
+      "candidate": "a",
+      "generation_id": "3cfe0f4f-6ce9-45ab-b172-5025bd214bff",
+      "source": "Hyper3D CLI Gen-2.5-High",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF05_utility_stand.png",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "a8cc8b8a68f66cd6d710df4256baedec9ef857d28765fa6939f99d2082ae7df5",
+      "bytes": 11291208,
+      "status": "downloaded",
+      "task_url": "https://hyper3d.ai/workspace/rodin/3cfe0f4f-6ce9-45ab-b172-5025bd214bff",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF05_utility_stand.glb",
+      "reference_sha256": "dcc5b2680c8e5a70ed3a55a0e1834f86a2690b4fd3e0d4bbec20282ba66301d5",
+      "settled_credits": 0.5,
+      "source_review": {
+        "source_sha256": "a8cc8b8a68f66cd6d710df4256baedec9ef857d28765fa6939f99d2082ae7df5",
+        "reviewer": "root visual inspection of actual generated GLB renders",
+        "views": [
+          "front",
+          "back",
+          "left",
+          "right",
+          "oblique",
+          "clay_front",
+          "clay_oblique"
+        ],
+        "source_geometry_usable_with_repairs": true,
+        "required_local_work": [
+          "physical size and support fitting; preserve original atlas and source faces"
+        ],
+        "native_game_acceptance": false
+      }
+    },
+    "HFF06_indoor_bench": {
+      "asset": "HFF06_indoor_bench",
+      "candidate": "a",
+      "generation_id": "72ef855d-1e55-49ad-ad6c-bc82eeab082a",
+      "source": "Hyper3D CLI Gen-2.5-High",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF06_indoor_bench.png",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "4b75422bc000c1fc861c7b74bf6e8f082af4a0ce50da9fa854a7b9221a08dd24",
+      "bytes": 9325748,
+      "status": "downloaded",
+      "task_url": "https://hyper3d.ai/workspace/rodin/72ef855d-1e55-49ad-ad6c-bc82eeab082a",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF06_indoor_bench.glb",
+      "reference_sha256": "823f42a5439b5df895136f439c75088acf706a19fcd32f364b5c36b126c76f27",
+      "settled_credits": 0.5,
+      "source_review": {
+        "source_sha256": "4b75422bc000c1fc861c7b74bf6e8f082af4a0ce50da9fa854a7b9221a08dd24",
+        "reviewer": "root visual inspection of actual generated GLB renders",
+        "views": [
+          "front",
+          "back",
+          "left",
+          "right",
+          "oblique",
+          "clay_front",
+          "clay_oblique"
+        ],
+        "source_geometry_usable_with_repairs": true,
+        "required_local_work": [
+          "physical size and support fitting; preserve original atlas and source faces"
+        ],
+        "native_game_acceptance": false
+      }
+    },
+    "HFF07_sage_counter": {
+      "asset": "HFF07_sage_counter",
+      "candidate": "a",
+      "generation_id": "b81fba31-d4bd-4117-a237-6ab94f3e102d",
+      "source": "Hyper3D CLI Gen-2.5-High",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF07_sage_counter.png",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "da5cd4885b3229db5a3875fd42ffd5f9d48d72fb53b9baa2ca06a21f5ed937a9",
+      "bytes": 6630496,
+      "status": "downloaded",
+      "task_url": "https://hyper3d.ai/workspace/rodin/b81fba31-d4bd-4117-a237-6ab94f3e102d",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF07_sage_counter.glb",
+      "reference_sha256": "9eaa82cb96be940d8a8cf966f0110f952835200d33b8165f93a26f6466bb7b3b",
+      "settled_credits": 0.5,
+      "source_review": {
+        "source_sha256": "da5cd4885b3229db5a3875fd42ffd5f9d48d72fb53b9baa2ca06a21f5ed937a9",
+        "reviewer": "root visual inspection of actual generated GLB renders",
+        "views": [
+          "front",
+          "back",
+          "left",
+          "right",
+          "oblique",
+          "clay_front",
+          "clay_oblique"
+        ],
+        "source_geometry_usable_with_repairs": true,
+        "required_local_work": [
+          "physical size and support fitting; preserve original atlas and source faces"
+        ],
+        "native_game_acceptance": false
+      }
+    },
+    "HFF08_bread_rack4": {
+      "asset": "HFF08_bread_rack4",
+      "candidate": "a",
+      "generation_id": "41563a5b-9da1-4134-a72f-8cebfa9c453e",
+      "source": "Hyper3D CLI Gen-2.5-High",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF08_bread_rack4.png",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "a24950f6f3ddd73bc18136834ede938bec5a3bb6df383d5821a263d54208918f",
+      "bytes": 8727780,
+      "status": "downloaded",
+      "task_url": "https://hyper3d.ai/workspace/rodin/41563a5b-9da1-4134-a72f-8cebfa9c453e",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF08_bread_rack4.glb",
+      "reference_sha256": "0861a78c905057e4385c101f6b6c7859bb0d71f83490ab46eeda9f998dc69a96",
+      "settled_credits": 0.5,
+      "source_review": {
+        "source_sha256": "a24950f6f3ddd73bc18136834ede938bec5a3bb6df383d5821a263d54208918f",
+        "reviewer": "root visual inspection of actual generated GLB renders",
+        "views": [
+          "front",
+          "back",
+          "left",
+          "right",
+          "oblique",
+          "clay_front",
+          "clay_oblique"
+        ],
+        "source_geometry_usable_with_repairs": true,
+        "required_local_work": [
+          "physical size and support fitting; preserve original atlas and source faces"
+        ],
+        "native_game_acceptance": false
+      }
+    },
+    "HFF09_bread_rack3": {
+      "asset": "HFF09_bread_rack3",
+      "candidate": "a",
+      "generation_id": "253e08a2-44e2-4a54-b153-e850c8b828f9",
+      "source": "Hyper3D CLI Gen-2.5-High",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF09_bread_rack3.png",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "6355c282ae9e2cf82522c7de8284ac61343586885e4bf92ad0fc5581ff142327",
+      "bytes": 9043364,
+      "status": "downloaded",
+      "task_url": "https://hyper3d.ai/workspace/rodin/253e08a2-44e2-4a54-b153-e850c8b828f9",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF09_bread_rack3.glb",
+      "reference_sha256": "2d42fd7d453d783241b1bcabf070e26e28f34149ffac87cbc70d2cdbd9d8f2fb",
+      "settled_credits": 0.5,
+      "source_review": {
+        "source_sha256": "6355c282ae9e2cf82522c7de8284ac61343586885e4bf92ad0fc5581ff142327",
+        "reviewer": "root visual inspection of actual generated GLB renders",
+        "views": [
+          "front",
+          "back",
+          "left",
+          "right",
+          "oblique",
+          "clay_front",
+          "clay_oblique"
+        ],
+        "source_geometry_usable_with_repairs": true,
+        "required_local_work": [
+          "physical size and support fitting; preserve original atlas and source faces"
+        ],
+        "native_game_acceptance": false
+      }
+    },
+    "HFF10_wall_shelf": {
+      "asset": "HFF10_wall_shelf",
+      "candidate": "a",
+      "generation_id": "e9640dd9-9656-405e-a6a6-bb0bbf6254a4",
+      "source": "Hyper3D CLI Gen-2.5-High",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF10_wall_shelf.png",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "400175c4e53f80ac993753f8b81359d9786d10028ee696db2dbf03d49878d193",
+      "bytes": 7636612,
+      "status": "downloaded",
+      "task_url": "https://hyper3d.ai/workspace/rodin/e9640dd9-9656-405e-a6a6-bb0bbf6254a4",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF10_wall_shelf.glb",
+      "reference_sha256": "bfa9cd3e6c485e87cfe996f473335e2c5b41e592ebf6870526895075705906da",
+      "settled_credits": 0.5,
+      "source_review": {
+        "source_sha256": "400175c4e53f80ac993753f8b81359d9786d10028ee696db2dbf03d49878d193",
+        "reviewer": "root visual inspection of actual generated GLB renders",
+        "views": [
+          "front",
+          "back",
+          "left",
+          "right",
+          "oblique",
+          "clay_front",
+          "clay_oblique"
+        ],
+        "source_geometry_usable_with_repairs": true,
+        "required_local_work": [
+          "physical size and support fitting; preserve original atlas and source faces"
+        ],
+        "native_game_acceptance": false
+      }
+    },
+    "HFF11_glass_case": {
+      "asset": "HFF11_glass_case",
+      "candidate": "a",
+      "generation_id": "462e31f9-b336-439e-b2cb-40b7789c5722",
+      "source": "Hyper3D CLI Gen-2.5-High",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF11_glass_case.png",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "d0cb8dd593a06b8116d359bb6128a69aa8283e68b1ca3db205f60d98ad1ff0aa",
+      "bytes": 8315264,
+      "status": "downloaded",
+      "task_url": "https://hyper3d.ai/workspace/rodin/462e31f9-b336-439e-b2cb-40b7789c5722",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF11_glass_case.glb",
+      "reference_sha256": "5305760fe63b0cba5ee7ed9bcef7165e8ffd4131546827b0e68760180ccaad62",
+      "settled_credits": 0.5,
+      "source_review": {
+        "source_sha256": "d0cb8dd593a06b8116d359bb6128a69aa8283e68b1ca3db205f60d98ad1ff0aa",
+        "reviewer": "root visual inspection of actual generated GLB renders",
+        "views": [
+          "front",
+          "back",
+          "left",
+          "right",
+          "oblique",
+          "clay_front",
+          "clay_oblique"
+        ],
+        "source_geometry_usable_with_repairs": true,
+        "required_local_work": [
+          "remove opaque generated glazing locally, retain principal generated cabinet and frame",
+          "independent thin clear glazing and measured shelf support"
+        ],
+        "native_game_acceptance": false
+      }
+    },
+    "HFF12_reading_armchair": {
+      "asset": "HFF12_reading_armchair",
+      "candidate": "a",
+      "generation_id": "ab6b2b77-485d-4d1c-b243-e03130486180",
+      "source": "Hyper3D CLI Gen-2.5-High",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF12_reading_armchair.png",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "ee99c0e4ba3f56410f7475a70abe4f05d188636d9b773fd7db3d25c8bbf080c0",
+      "bytes": 14881484,
+      "status": "downloaded",
+      "task_url": "https://hyper3d.ai/workspace/rodin/ab6b2b77-485d-4d1c-b243-e03130486180",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF12_reading_armchair.glb",
+      "reference_sha256": "332d1580c35d7d9ef6f66cf25d3ef9fcd3fa5fa338f3965294359af758b3a9d8",
+      "settled_credits": 0.5,
+      "source_review": {
+        "source_sha256": "ee99c0e4ba3f56410f7475a70abe4f05d188636d9b773fd7db3d25c8bbf080c0",
+        "reviewer": "root visual inspection of actual generated GLB renders",
+        "views": [
+          "front",
+          "back",
+          "left",
+          "right",
+          "oblique",
+          "clay_front",
+          "clay_oblique"
+        ],
+        "source_geometry_usable_with_repairs": true,
+        "required_local_work": [
+          "physical size and support fitting; preserve original atlas and source faces"
+        ],
+        "native_game_acceptance": false
+      }
+    },
+    "HFF13_espresso_station": {
+      "asset": "HFF13_espresso_station",
+      "candidate": "a",
+      "generation_id": "1f995138-4ec9-4ae7-ad02-bbe357e1c7e8",
+      "source": "Hyper3D CLI Gen-2.5-High",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF13_espresso_station.png",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "7a04ace3216a1ed73382fc30e2298cea1241ae58de2975afd03c88d98c71c5c6",
+      "bytes": 8739896,
+      "status": "downloaded",
+      "task_url": "https://hyper3d.ai/workspace/rodin/1f995138-4ec9-4ae7-ad02-bbe357e1c7e8",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF13_espresso_station.glb",
+      "reference_sha256": "32e3207d8c801b354619d358d4bd2a5ad03db3d53fde90e8861e2f8775a34c04",
+      "settled_credits": 0.5,
+      "source_review": {
+        "source_sha256": "7a04ace3216a1ed73382fc30e2298cea1241ae58de2975afd03c88d98c71c5c6",
+        "reviewer": "root visual inspection of actual generated GLB renders",
+        "views": [
+          "front",
+          "back",
+          "left",
+          "right",
+          "oblique",
+          "clay_front",
+          "clay_oblique"
+        ],
+        "source_geometry_usable_with_repairs": true,
+        "required_local_work": [
+          "retain generated cabinet machine grinder and controls",
+          "local opaque hopper replacement, material roles and worktop support fitting"
+        ],
+        "native_game_acceptance": false
+      }
+    },
+    "HFF14_outdoor_bench": {
+      "asset": "HFF14_outdoor_bench",
+      "candidate": "a",
+      "generation_id": "14a35376-8ecc-488c-9ebd-7425c3da36a0",
+      "source": "Hyper3D CLI Gen-2.5-High",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF14_outdoor_bench.png",
+      "selected_file": "base_basic_pbr.glb",
+      "sha256": "198fa2d7970041e6b67dad5499051b6ad069bc92a84d47f5b86fb3e65feb627d",
+      "bytes": 10326968,
+      "status": "downloaded",
+      "task_url": "https://hyper3d.ai/workspace/rodin/14a35376-8ecc-488c-9ebd-7425c3da36a0",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF14_outdoor_bench.glb",
+      "reference_sha256": "689a119d969f1606cb50dd4c6713355e5707370d497a6e1c752badd42409d9ee",
+      "settled_credits": 0.5,
+      "source_review": {
+        "source_sha256": "198fa2d7970041e6b67dad5499051b6ad069bc92a84d47f5b86fb3e65feb627d",
+        "reviewer": "root visual inspection of actual generated GLB renders",
+        "views": [
+          "front",
+          "back",
+          "left",
+          "right",
+          "oblique",
+          "clay_front",
+          "clay_oblique"
+        ],
+        "source_geometry_usable_with_repairs": true,
+        "required_local_work": [
+          "physical size and support fitting; preserve original atlas and source faces"
+        ],
+        "native_game_acceptance": false
+      }
+    }
+  },
+  "game_integrated": true,
+  "native_package_accepted": true,
+  "delivery": "evidence/hyper3d_furniture_20261015/delivery.json",
+  "package_sha256": "b6b1c7532039ad4de5589efdea87f9e72e02d7f22bc4ab9ccb11ffd10f226dd7"
+}

@@ -1,36 +1,21 @@
 {
  "id": "W17_display_shelf",
- "src": "raw/furniture_forms_20261014/W17_display_shelf.glb",
- "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
+ "src": "raw/hyper3d_furniture_20261015/assembled/W17_display_shelf.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
  "preserve_parts": true,
  "origin_preserved": true,
- "tris": 14084,
- "tex": 1024,
- "bytes": 397152,
+ "tris": 38906,
+ "tex": 2048,
+ "bytes": 3918940,
  "godot_size_m_xyz": [
   1.09,
   1.25,
   0.5
  ],
  "mesh_nodes": [
-  "FormShelfBracket_0_-1",
-  "FormShelfBracket_0_1",
-  "FormShelfBracket_1_-1",
-  "FormShelfBracket_1_1",
-  "FormShelfBracket_2_-1",
-  "FormShelfBracket_2_1",
-  "LinenLiner_0",
-  "LinenLiner_1",
-  "LinenLiner_2",
-  "ShelfBack",
-  "ShelfFoot",
-  "ShelfUpright",
-  "ShelfUpright.001",
+  "RackFrame",
   "TrayBoard_0",
   "TrayBoard_1",
-  "TrayBoard_2",
-  "TrayLip_0",
-  "TrayLip_1",
-  "TrayLip_2"
+  "TrayBoard_2"
  ]
 }

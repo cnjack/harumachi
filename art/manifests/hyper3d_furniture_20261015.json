@@ -1,0 +1,792 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-15",
+  "objective": "Hyper3D rebuild of all named non-Hyper3D bakery furniture plus compatible reuse throughout the game, real glass verified",
+  "provider": "Hyper3D CLI Gen-2.5-High",
+  "credit_budget": {
+    "expected_each": 0.5,
+    "primary_assets": 14,
+    "first_round": 7,
+    "max_submission_slots": 28,
+    "max_spend": 14,
+    "minimum_available_after": 136,
+    "pricing_source": "https://docs.hyper3d.ai/en/api-specification/rodin-gen2-5#pricing"
+  },
+  "assets": [
+    {
+      "id": "HFF01_cafe_chair",
+      "label": "弧背木椅",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF01_cafe_chair.png",
+      "subject": "One complete curved-back wooden cafe chair; shallow sculpted seat at 48cm; four separate level legs, real rails and open gaps.",
+      "model_prompt": "Japanese TV-anime game prop, clean cel colours, subtle hand-painted grain, rounded functional joinery, restrained lacquer sheen, no photorealism. One complete curved-back wooden cafe chair; shallow sculpted seat at 48cm; four separate level legs, real rails and open gaps. Reconstruct only the referenced object with original textures, straight level supports and actual open spaces. No background or ground platform. Keep transparent panels separate from timber; do not paint reflections onto wood.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000,
+      "nominal_size_m_xyz": [
+        0.48,
+        0.89,
+        0.47
+      ],
+      "reuse_targets": [
+        "P_cafe_table chair pair",
+        "P_community_table six chairs",
+        "compatible home dining chairs"
+      ],
+      "status": "delivered_native_accepted",
+      "generation_id": "25a6fc7f-1528-4940-9f16-3e1bcc2062a4",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF01_cafe_chair.glb",
+      "source_sha256": "1f33ff55e84a3eba621960ff91236893ce2396d4518f8b59f48de2ed62b9e460",
+      "prepared_local": "art/models/raw/hyper3d_furniture_20261015/ready/HFF01_cafe_chair.glb",
+      "game_installed": true,
+      "native_accepted": true,
+      "candidate_game_installed": true
+    },
+    {
+      "id": "HFF02_round_table",
+      "label": "咖啡圆桌",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF02_round_table.png",
+      "subject": "One empty round wooden pedestal table, rounded circular top, one slender central pedestal and low wide round foot.",
+      "model_prompt": "Japanese TV-anime game prop, clean cel colours, subtle hand-painted grain, rounded functional joinery, restrained lacquer sheen, no photorealism. One empty round wooden pedestal table, rounded circular top, one slender central pedestal and low wide round foot. Reconstruct only the referenced object with original textures, straight level supports and actual open spaces. No background or ground platform. Keep transparent panels separate from timber; do not paint reflections onto wood.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000,
+      "nominal_size_m_xyz": [
+        0.72,
+        0.76,
+        0.72
+      ],
+      "reuse_targets": [
+        "P_cafe_table table",
+        "community reading tea table"
+      ],
+      "status": "delivered_native_accepted",
+      "generation_id": "11709d12-2231-4b43-a263-8bbd7e27ec00",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF02_round_table.glb",
+      "source_sha256": "061056b302f6633b6a75999778e9cabf8b0e89f8377259b8dd0640a47a0adba6",
+      "prepared_local": "art/models/raw/hyper3d_furniture_20261015/ready/HFF02_round_table.glb",
+      "game_installed": true,
+      "native_accepted": true,
+      "candidate_game_installed": true
+    },
+    {
+      "id": "HFF03_rect_table",
+      "label": "长方餐桌与工作桌",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF03_rect_table.png",
+      "subject": "One empty rectangular cedar table with rounded thick top, four dark tapered legs, visible apron and real joinery, open knee space and flat usable top.",
+      "model_prompt": "Japanese TV-anime game prop, clean cel colours, subtle hand-painted grain, rounded functional joinery, restrained lacquer sheen, no photorealism. One empty rectangular cedar table with rounded thick top, four dark tapered legs, visible apron and real joinery, open knee space and flat usable top. Reconstruct only the referenced object with original textures, straight level supports and actual open spaces. No background or ground platform. Keep transparent panels separate from timber; do not paint reflections onto wood.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000,
+      "nominal_size_m_xyz": [
+        2.05,
+        0.75,
+        1.0
+      ],
+      "reuse_targets": [
+        "P_community_table tabletop",
+        "bakery kneading table",
+        "resident desks and workbenches",
+        "postal/library/flower desks"
+      ],
+      "status": "delivered_native_accepted",
+      "generation_id": "f3a63d0b-9416-4535-b519-4e6b48ae69a2",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF03_rect_table.glb",
+      "source_sha256": "55a48e9e14fe131986e7095699754789d3c90886aebb4b8e036fb23d99bda2b1",
+      "prepared_local": "art/models/raw/hyper3d_furniture_20261015/ready/HFF03_rect_table.glb",
+      "game_installed": true,
+      "native_accepted": true,
+      "candidate_game_installed": true
+    },
+    {
+      "id": "HFF04_low_table",
+      "label": "日式矮桌",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF04_low_table.png",
+      "subject": "One empty low rectangular Japanese cedar table, rounded broad top, four short thick legs and real open under-table space, no cloth or props.",
+      "model_prompt": "Japanese TV-anime game prop, clean cel colours, subtle hand-painted grain, rounded functional joinery, restrained lacquer sheen, no photorealism. One empty low rectangular Japanese cedar table, rounded broad top, four short thick legs and real open under-table space, no cloth or props. Reconstruct only the referenced object with original textures, straight level supports and actual open spaces. No background or ground platform. Keep transparent panels separate from timber; do not paint reflections onto wood.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000,
+      "nominal_size_m_xyz": [
+        1.45,
+        0.43,
+        0.85
+      ],
+      "reuse_targets": [
+        "FamilyLowTable",
+        "AoiDrawingDesk",
+        "RoundConversationTable",
+        "compatible low home tables"
+      ],
+      "status": "delivered_native_accepted",
+      "generation_id": "b0956a25-3530-4234-8698-3b637e1573e3",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF04_low_table.glb",
+      "source_sha256": "915b809499cc0eeb3e21b60b53a3bad7aa46a89fad7b0451e240d4c3b3ba1562",
+      "prepared_local": "art/models/raw/hyper3d_furniture_20261015/ready/HFF04_low_table.glb",
+      "game_installed": true,
+      "native_accepted": true,
+      "candidate_game_installed": true
+    },
+    {
+      "id": "HFF05_utility_stand",
+      "label": "双层小工作架",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF05_utility_stand.png",
+      "subject": "One empty compact cedar utility work stand, thick rounded flat top at84cm, one lower flat shelf at20cm, four legs, real open gaps.",
+      "model_prompt": "Japanese TV-anime game prop, clean cel colours, subtle hand-painted grain, rounded functional joinery, restrained lacquer sheen, no photorealism. One empty compact cedar utility work stand, thick rounded flat top at84cm, one lower flat shelf at20cm, four legs, real open gaps. Reconstruct only the referenced object with original textures, straight level supports and actual open spaces. No background or ground platform. Keep transparent panels separate from timber; do not paint reflections onto wood.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000,
+      "nominal_size_m_xyz": [
+        0.9,
+        0.84,
+        0.6
+      ],
+      "reuse_targets": [
+        "PrepShelf",
+        "HerbLedge",
+        "CafeReturnStation",
+        "WrappingBench",
+        "resident side and storage shelves"
+      ],
+      "status": "delivered_native_accepted",
+      "generation_id": "3cfe0f4f-6ce9-45ab-b172-5025bd214bff",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF05_utility_stand.glb",
+      "source_sha256": "a8cc8b8a68f66cd6d710df4256baedec9ef857d28765fa6939f99d2082ae7df5",
+      "prepared_local": "art/models/raw/hyper3d_furniture_20261015/ready/HFF05_utility_stand.glb",
+      "game_installed": true,
+      "native_accepted": true,
+      "candidate_game_installed": true
+    },
+    {
+      "id": "HFF06_indoor_bench",
+      "label": "室内木长凳",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF06_indoor_bench.png",
+      "subject": "One empty backless indoor cedar sitting bench, softly rounded solid seat at43cm, four short sturdy legs and dark lower cross rails, real open gaps.",
+      "model_prompt": "Japanese TV-anime game prop, clean cel colours, subtle hand-painted grain, rounded functional joinery, restrained lacquer sheen, no photorealism. One empty backless indoor cedar sitting bench, softly rounded solid seat at43cm, four short sturdy legs and dark lower cross rails, real open gaps. Reconstruct only the referenced object with original textures, straight level supports and actual open spaces. No background or ground platform. Keep transparent panels separate from timber; do not paint reflections onto wood.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000,
+      "nominal_size_m_xyz": [
+        1.55,
+        0.43,
+        0.52
+      ],
+      "reuse_targets": [
+        "VisitSeat household seating",
+        "EngawaWindowSeat",
+        "BootChangingBench",
+        "WaitingBench",
+        "ArchiveBagBench"
+      ],
+      "status": "delivered_native_accepted",
+      "generation_id": "72ef855d-1e55-49ad-ad6c-bc82eeab082a",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF06_indoor_bench.glb",
+      "source_sha256": "4b75422bc000c1fc861c7b74bf6e8f082af4a0ce50da9fa854a7b9221a08dd24",
+      "prepared_local": "art/models/raw/hyper3d_furniture_20261015/ready/HFF06_indoor_bench.glb",
+      "game_installed": true,
+      "native_accepted": true,
+      "candidate_game_installed": true
+    },
+    {
+      "id": "HFF07_sage_counter",
+      "label": "鼠尾草绿木柜台",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF07_sage_counter.png",
+      "subject": "One empty sage-green bakery counter with honey cedar rounded top, three inset green front panels, brass cup pulls and low brass foot rail. No register or attached glass case.",
+      "model_prompt": "Japanese TV-anime game prop, clean cel colours, subtle hand-painted grain, rounded functional joinery, restrained lacquer sheen, no photorealism. One empty sage-green bakery counter with honey cedar rounded top, three inset green front panels, brass cup pulls and low brass foot rail. No register or attached glass case. Reconstruct only the referenced object with original textures, straight level supports and actual open spaces. No background or ground platform. Keep transparent panels separate from timber; do not paint reflections onto wood.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000,
+      "nominal_size_m_xyz": [
+        2.11,
+        0.87,
+        1.15
+      ],
+      "reuse_targets": [
+        "I04_shop_counter bakery/store",
+        "compatible shop checkout"
+      ],
+      "status": "delivered_native_accepted",
+      "generation_id": "b81fba31-d4bd-4117-a237-6ab94f3e102d",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF07_sage_counter.glb",
+      "source_sha256": "da5cd4885b3229db5a3875fd42ffd5f9d48d72fb53b9baa2ca06a21f5ed937a9",
+      "prepared_local": "art/models/raw/hyper3d_furniture_20261015/ready/HFF07_sage_counter.glb",
+      "game_installed": true,
+      "native_accepted": true,
+      "candidate_game_installed": true
+    },
+    {
+      "id": "HFF08_bread_rack4",
+      "label": "四层面包架",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF08_bread_rack4.png",
+      "subject": "One empty narrow four-tier cedar bread rack with shallow tray lips and thin corner uprights. Exactly four level usable shelves at28/62/95/127cm. All gaps open; no products or labels.",
+      "model_prompt": "Japanese TV-anime game prop, clean cel colours, subtle hand-painted grain, rounded functional joinery, restrained lacquer sheen, no photorealism. One empty narrow four-tier cedar bread rack with shallow tray lips and thin corner uprights. Exactly four level usable shelves at28/62/95/127cm. All gaps open; no products or labels. Reconstruct only the referenced object with original textures, straight level supports and actual open spaces. No background or ground platform. Keep transparent panels separate from timber; do not paint reflections onto wood.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000,
+      "nominal_size_m_xyz": [
+        1.07,
+        1.51,
+        0.62
+      ],
+      "reuse_targets": [
+        "I05_bread_shelf two bakery racks",
+        "compatible pantry shelves"
+      ],
+      "status": "delivered_native_accepted",
+      "generation_id": "41563a5b-9da1-4134-a72f-8cebfa9c453e",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF08_bread_rack4.glb",
+      "source_sha256": "a24950f6f3ddd73bc18136834ede938bec5a3bb6df383d5821a263d54208918f",
+      "prepared_local": "art/models/raw/hyper3d_furniture_20261015/ready/HFF08_bread_rack4.glb",
+      "game_installed": true,
+      "native_accepted": true,
+      "candidate_game_installed": true
+    },
+    {
+      "id": "HFF09_bread_rack3",
+      "label": "三层陈列架",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF09_bread_rack3.png",
+      "subject": "One empty three-tier cedar display rack with shallow tray lips and thin corner uprights. Exactly three level usable shelves at36/66/101cm. Open spaces, no goods.",
+      "model_prompt": "Japanese TV-anime game prop, clean cel colours, subtle hand-painted grain, rounded functional joinery, restrained lacquer sheen, no photorealism. One empty three-tier cedar display rack with shallow tray lips and thin corner uprights. Exactly three level usable shelves at36/66/101cm. Open spaces, no goods. Reconstruct only the referenced object with original textures, straight level supports and actual open spaces. No background or ground platform. Keep transparent panels separate from timber; do not paint reflections onto wood.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000,
+      "nominal_size_m_xyz": [
+        1.09,
+        1.25,
+        0.5
+      ],
+      "reuse_targets": [
+        "W17_display_shelf bakery and general displays"
+      ],
+      "status": "delivered_native_accepted",
+      "generation_id": "253e08a2-44e2-4a54-b153-e850c8b828f9",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF09_bread_rack3.glb",
+      "source_sha256": "6355c282ae9e2cf82522c7de8284ac61343586885e4bf92ad0fc5581ff142327",
+      "prepared_local": "art/models/raw/hyper3d_furniture_20261015/ready/HFF09_bread_rack3.glb",
+      "game_installed": true,
+      "native_accepted": true,
+      "candidate_game_installed": true
+    },
+    {
+      "id": "HFF10_wall_shelf",
+      "label": "双层壁挂搁架",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF10_wall_shelf.png",
+      "subject": "One complete empty two-tier wall-mounted cedar shelf with two thick rounded level boards and two slim vertical support rails, visible brackets, no wall or floor, no products.",
+      "model_prompt": "Japanese TV-anime game prop, clean cel colours, subtle hand-painted grain, rounded functional joinery, restrained lacquer sheen, no photorealism. One complete empty two-tier wall-mounted cedar shelf with two thick rounded level boards and two slim vertical support rails, visible brackets, no wall or floor, no products. Reconstruct only the referenced object with original textures, straight level supports and actual open spaces. No background or ground platform. Keep transparent panels separate from timber; do not paint reflections onto wood.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000,
+      "nominal_size_m_xyz": [
+        1.6,
+        0.72,
+        0.3
+      ],
+      "reuse_targets": [
+        "bakery flour wall shelf",
+        "compatible resident/public wall shelves"
+      ],
+      "status": "delivered_native_accepted",
+      "generation_id": "e9640dd9-9656-405e-a6a6-bb0bbf6254a4",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF10_wall_shelf.glb",
+      "source_sha256": "400175c4e53f80ac993753f8b81359d9786d10028ee696db2dbf03d49878d193",
+      "prepared_local": "art/models/raw/hyper3d_furniture_20261015/ready/HFF10_wall_shelf.glb",
+      "game_installed": true,
+      "native_accepted": true,
+      "candidate_game_installed": true
+    },
+    {
+      "id": "HFF11_glass_case",
+      "label": "透光糕点柜",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF11_glass_case.png",
+      "subject": "One empty bakery display cabinet: sage low plinth, slender rounded cedar frame, two ivory display shelves, thin transparent glass front/sides/top. See fully through glass into real cavity. No opaque blue slab, cakes, labels or attached counter.",
+      "model_prompt": "Japanese TV-anime game prop, clean cel colours, subtle hand-painted grain, rounded functional joinery, restrained lacquer sheen, no photorealism. One empty bakery display cabinet: sage low plinth, slender rounded cedar frame, two ivory display shelves, thin transparent glass front/sides/top. See fully through glass into real cavity. No opaque blue slab, cakes, labels or attached counter. Reconstruct only the referenced object with original textures, straight level supports and actual open spaces. No background or ground platform. Keep transparent panels separate from timber; do not paint reflections onto wood.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000,
+      "nominal_size_m_xyz": [
+        1.34,
+        1.149,
+        0.75
+      ],
+      "reuse_targets": [
+        "I02_cake_showcase",
+        "compatible bakery/store clear displays"
+      ],
+      "status": "delivered_native_accepted",
+      "generation_id": "462e31f9-b336-439e-b2cb-40b7789c5722",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF11_glass_case.glb",
+      "source_sha256": "d0cb8dd593a06b8116d359bb6128a69aa8283e68b1ca3db205f60d98ad1ff0aa",
+      "prepared_local": "art/models/raw/hyper3d_furniture_20261015/ready/HFF11_glass_case.glb",
+      "game_installed": true,
+      "native_accepted": true,
+      "candidate_game_installed": true
+    },
+    {
+      "id": "HFF12_reading_armchair",
+      "label": "阅读扶手椅",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF12_reading_armchair.png",
+      "subject": "One cedar reading armchair with gently curved back, rounded wooden arms, muted sage fabric seat and back cushion, four level legs, visible frame joints and real gaps. Seat48cm high.",
+      "model_prompt": "Japanese TV-anime game prop, clean cel colours, subtle hand-painted grain, rounded functional joinery, restrained lacquer sheen, no photorealism. One cedar reading armchair with gently curved back, rounded wooden arms, muted sage fabric seat and back cushion, four level legs, visible frame joints and real gaps. Seat48cm high. Reconstruct only the referenced object with original textures, straight level supports and actual open spaces. No background or ground platform. Keep transparent panels separate from timber; do not paint reflections onto wood.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000,
+      "nominal_size_m_xyz": [
+        0.605,
+        0.89,
+        0.51
+      ],
+      "reuse_targets": [
+        "P_reading_chair public and resident interiors"
+      ],
+      "status": "delivered_native_accepted",
+      "generation_id": "ab6b2b77-485d-4d1c-b243-e03130486180",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF12_reading_armchair.glb",
+      "source_sha256": "ee99c0e4ba3f56410f7475a70abe4f05d188636d9b773fd7db3d25c8bbf080c0",
+      "prepared_local": "art/models/raw/hyper3d_furniture_20261015/ready/HFF12_reading_armchair.glb",
+      "game_installed": true,
+      "native_accepted": true,
+      "candidate_game_installed": true
+    },
+    {
+      "id": "HFF13_espresso_station",
+      "label": "咖啡机与底柜",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF13_espresso_station.png",
+      "subject": "One compact espresso station: sage cupboard, rounded cedar worktop, brushed steel espresso machine with real open work bay, two group heads, drip grid, curved steam wand, grinder with clear amber hopper and visible beans. No wall or extra furniture.",
+      "model_prompt": "Japanese TV-anime game prop, clean cel colours, subtle hand-painted grain, rounded functional joinery, restrained lacquer sheen, no photorealism. One compact espresso station: sage cupboard, rounded cedar worktop, brushed steel espresso machine with real open work bay, two group heads, drip grid, curved steam wand, grinder with clear amber hopper and visible beans. No wall or extra furniture. Reconstruct only the referenced object with original textures, straight level supports and actual open spaces. No background or ground platform. Keep transparent panels separate from timber; do not paint reflections onto wood.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000,
+      "nominal_size_m_xyz": [
+        1.0,
+        1.325,
+        0.685
+      ],
+      "reuse_targets": [
+        "P_coffee_station bakery station",
+        "glass hopper verification"
+      ],
+      "status": "delivered_native_accepted",
+      "generation_id": "1f995138-4ec9-4ae7-ad02-bbe357e1c7e8",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF13_espresso_station.glb",
+      "source_sha256": "7a04ace3216a1ed73382fc30e2298cea1241ae58de2975afd03c88d98c71c5c6",
+      "prepared_local": "art/models/raw/hyper3d_furniture_20261015/ready/HFF13_espresso_station.glb",
+      "game_installed": true,
+      "native_accepted": true,
+      "candidate_game_installed": true
+    },
+    {
+      "id": "HFF14_outdoor_bench",
+      "label": "户外木长椅",
+      "reference": "art/references/hyper3d_furniture_20261015/HFF14_outdoor_bench.png",
+      "subject": "One Japanese small-town outdoor wooden bench: honey cedar rounded seat boards and gently curved slatted backrest, dark wooden supports, all four feet level, real slat gaps. Maintained slight weathering, no moss covering usable seat.",
+      "model_prompt": "Japanese TV-anime game prop, clean cel colours, subtle hand-painted grain, rounded functional joinery, restrained lacquer sheen, no photorealism. One Japanese small-town outdoor wooden bench: honey cedar rounded seat boards and gently curved slatted backrest, dark wooden supports, all four feet level, real slat gaps. Maintained slight weathering, no moss covering usable seat. Reconstruct only the referenced object with original textures, straight level supports and actual open spaces. No background or ground platform. Keep transparent panels separate from timber; do not paint reflections onto wood.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Quad",
+      "quality": 18000,
+      "nominal_size_m_xyz": [
+        1.8,
+        0.83,
+        0.6
+      ],
+      "reuse_targets": [
+        "A12_bench town/farm/lake nine existing seating points"
+      ],
+      "status": "delivered_native_accepted",
+      "generation_id": "14a35376-8ecc-488c-9ebd-7425c3da36a0",
+      "source_glb": "art/library/hyper3d_furniture_20261015/source/HFF14_outdoor_bench.glb",
+      "source_sha256": "198fa2d7970041e6b67dad5499051b6ad069bc92a84d47f5b86fb3e65feb627d",
+      "prepared_local": "art/models/raw/hyper3d_furniture_20261015/ready/HFF14_outdoor_bench.glb",
+      "game_installed": true,
+      "native_accepted": true,
+      "candidate_game_installed": true
+    }
+  ],
+  "existing_furniture_inventory": [
+    {
+      "file": "game/scripts/world/public_place_art.gd",
+      "line": 118,
+      "expression": "static func bench(parent: Node3D,label: String,at: Vector3,width: float,depth: float,height: float=.78) -> MeshInstance3D:"
+    },
+    {
+      "file": "game/scripts/world/public_place_art.gd",
+      "line": 162,
+      "expression": "var archive:=bench(root,\"ArchiveWorkbench\",Vector3(-4.0,0,-4.02),1.9,.70)"
+    },
+    {
+      "file": "game/scripts/world/public_place_art.gd",
+      "line": 183,
+      "expression": "var prep:=bench(root,\"PrepShelf\",Vector3(-2.05,0,-3.65),.90,.60,.84)"
+    },
+    {
+      "file": "game/scripts/world/public_place_art.gd",
+      "line": 191,
+      "expression": "var ledge:=bench(root,\"HerbLedge\",Vector3(5.16,0,2.95),.54,.62,.84)"
+    },
+    {
+      "file": "game/scripts/world/public_place_art.gd",
+      "line": 200,
+      "expression": "var wrap:=bench(root,\"WrappingBench\",Vector3(-4.35,0,2.3),.58,.68,.83)"
+    },
+    {
+      "file": "game/scripts/world/public_place_art.gd",
+      "line": 206,
+      "expression": "var plant_stand:=bench(root,\"PantryPlantStand\",Vector3(-4.86,0,-3.60),.47,.48,.70)"
+    },
+    {
+      "file": "game/scripts/world/public_place_art.gd",
+      "line": 209,
+      "expression": "var boxes:=bench(root,\"BasketStation\",Vector3(5.12,0,3.11),.48,.61,.48)"
+    },
+    {
+      "file": "game/scripts/world/public_room_life.gd",
+      "line": 27,
+      "expression": "var table:=fixture(room,root,\"P_community_table\",\"SharedNeighbourTable\",Vector3(-3.1,0,2.1))"
+    },
+    {
+      "file": "game/scripts/world/public_room_life.gd",
+      "line": 35,
+      "expression": "fixture(room,root,\"P_reading_chair\",\"ReadingChair_%d\"%index,at,0 if index==0 else 180)"
+    },
+    {
+      "file": "game/scripts/world/public_room_life.gd",
+      "line": 41,
+      "expression": "var tea:=PublicPlaceArt.bench(root,\"NeighbourTeaStation\",Vector3(-2.20,0,-3.93),1.60,.68,.86)"
+    },
+    {
+      "file": "game/scripts/world/public_room_life.gd",
+      "line": 69,
+      "expression": "var table:=fixture(room,root,\"P_cafe_table\",\"CafeTable_%d\"%index,at)"
+    },
+    {
+      "file": "game/scripts/world/public_room_life.gd",
+      "line": 76,
+      "expression": "var return_shelf:=PublicPlaceArt.bench(root,\"CafeReturnStation\",Vector3(4.8,0,2.7),.65,.55,.84)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 37,
+      "expression": "var support:=_table(room,root,\"VisitSeat_\"+who,Vector3(spot.x,0,spot.z),Vector2(.68,.58),.31)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 197,
+      "expression": "static func _table(room: InteriorBuilder,parent: Node3D,label: String,at: Vector3,size: Vector2,height: float=.76) -> MeshInstance3D:"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 198,
+      "expression": "return PublicPlaceArt.bench(parent,label,at,size.x,size.y,height)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 225,
+      "expression": "var drawing:=_table(room,root,\"AoiDrawingDesk\",Vector3(-3.25,0,2.05),Vector2(1.75,.76),.39)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 230,
+      "expression": "_table(room,root,\"EngawaWindowSeat\",Vector3(4.40,0,2.35),Vector2(.70,1.65),.42)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 232,
+      "expression": "var table:=_table(room,root,\"FamilyLowTable\",Vector3(-2.3,0,-.45),Vector2(1.45,.85),.43)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 237,
+      "expression": "_table(room,root,\"GiftFlowerStand\",Vector3(4.2,0,-3.2),Vector2(.38,.32),.20)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 244,
+      "expression": "var desk:=_table(room,root,\"PrivateWindowDesk\",Vector3(-2.4,0,-.3),Vector2(1.65,.95),.72)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 255,
+      "expression": "var table:=_table(room,root,\"OnePersonSupper\",Vector3(-2.6,0,-.2),Vector2(1.10,.75),.68)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 265,
+      "expression": "var table:=_table(room,root,\"AfterClosingTable\",Vector3(-2.3,0,-.4),Vector2(1.35,.75),.74)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 269,
+      "expression": "var breakfast:=_table(room,root,\"PrivateBreakfastShelf\",Vector3(2.8,0,1.65),Vector2(.75,1.35),.72)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 278,
+      "expression": "var table:=_table(room,root,\"RoundConversationTable\",Vector3(-2.4,0,-.1),Vector2(1.35,.85),.43)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 285,
+      "expression": "var work:=_table(room,root,\"DirtyWorkBench\",Vector3(-2.3,0,.0),Vector2(1.8,.75),.70)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 297,
+      "expression": "var dry:=_table(room,root,\"RaisedSeedCounter\",Vector3(2.55,0,-1.55),Vector2(1.35,.65),1.08)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 300,
+      "expression": "var wash:=_table(room,root,\"ToolCleaningShelf\",Vector3(2.55,0,2.50),Vector2(1.30,.70),.70)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 306,
+      "expression": "var table:=_table(room,root,\"PhotoComparisonDesk\",Vector3(-1.9,0,-1.1),Vector2(1.25,2.1),.74)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 314,
+      "expression": "var wet:=_table(room,root,\"FlowerWrapping\",Vector3(-2.6,0,-.3),Vector2(1.75,.85),.78)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 316,
+      "expression": "var dry:=_table(room,root,\"PressedFlowerDesk\",Vector3(2.8,0,-2.9),Vector2(1.6,.7),.76)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 318,
+      "expression": "var drain:=_table(room,root,\"FlowerDrainShelf\",Vector3(2.85,0,.65),Vector2(1.30,.70),.66)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 326,
+      "expression": "var bench:=_table(room,root,\"RepairWorkbench\",Vector3(-2.25,0,-.8),Vector2(1.6,.80),.78)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 333,
+      "expression": "var counter:=_table(room,root,\"PostalCounter\",Vector3(1.4,0,-1.5),Vector2(4.3,.65),.90)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 335,
+      "expression": "var writing:=_table(room,root,\"LetterWriting\",Vector3(-3.3,0,-.25),Vector2(1.15,1.45),.74)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 339,
+      "expression": "var parcels:=_table(room,root,\"ParcelDropShelf\",Vector3(3.65,0,2.10),Vector2(.70,1.25),.68)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 347,
+      "expression": "var table:=_table(room,root,\"MapReadingDesk\",Vector3(-2.5,0,-1.0),Vector2(1.65,1.25),.74)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 394,
+      "expression": "_model(room,root,\"P_reading_chair\",Vector3(2.30,0,1.20),135,1.0)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 395,
+      "expression": "_model(room,root,\"P_reading_chair\",Vector3(-2.35,0,.65),180,.92)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 399,
+      "expression": "var side:=_table(room,root,\"ReadingSideTable\",Vector3(2.45,0,-.05),Vector2(.55,.52),.56)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 405,
+      "expression": "var kettle:=_table(room,root,\"PrivateKettleShelf\",Vector3(2.80,0,2.20),Vector2(1.10,.68),.78)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 407,
+      "expression": "_model(room,root,\"P_reading_chair\",Vector3(-2.60,0,.70),180,.95)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 410,
+      "expression": "_table(room,root,\"BootChangingBench\",Vector3(-2.7,0,2.70),Vector2(1.55,.52),.40)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 413,
+      "expression": "var packing:=_table(room,root,\"CleanPackingStorage\",Vector3(-2.3,0,2.75),Vector2(1.5,.65),.72)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 416,
+      "expression": "_model(room,root,\"P_reading_chair\",Vector3(1.95,0,1.65),90,.94)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 427,
+      "expression": "var ledger:=_table(room,root,\"HouseholdLedgerDesk\",Vector3(2.9,0,.75),Vector2(1.15,.65),.72)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 431,
+      "expression": "_table(room,root,\"WorkStep\",Vector3(-2.4,0,1.45),Vector2(1.55,.65),.36)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 432,
+      "expression": "var potting:=_table(room,root,\"PottingSupplies\",Vector3(-.65,0,-2.85),Vector2(1.65,.6),.80)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 439,
+      "expression": "var archive:=_table(room,root,\"ArchiveDrawers\",Vector3(2.35,0,.10),Vector2(.65,2.4),.86)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 443,
+      "expression": "_model(room,root,\"P_reading_chair\",Vector3(-.85,0,-1.10),-90,.90)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 444,
+      "expression": "_table(room,root,\"ArchiveBagBench\",Vector3(2.0,0,2.9),Vector2(1.25,.55),.42)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 448,
+      "expression": "var display:=_table(room,root,\"FlowerDisplay_%d\"%side,Vector3(side*2.65,0,2.1),Vector2(1.45,1.15),.38)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 450,
+      "expression": "var high:=_table(room,root,\"FlowerDisplayHigh_%d\"%side,Vector3(side*2.65,0,3.25),Vector2(1.45,.65),.68)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 457,
+      "expression": "var island:=_table(room,root,\"DailyGoodsIsland_%d\"%side,Vector3(side*2.05,0,1.65),Vector2(1.2,1.8),.65)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 461,
+      "expression": "var checkout:=_table(room,root,\"ZakkaCheckout\",Vector3(2.5,0,-.65),Vector2(1.3,.75),.85)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 465,
+      "expression": "_model(room,root,\"P_reading_chair\",Vector3(-2.30,0,-.25),-90,.94)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 466,
+      "expression": "_table(room,root,\"WaitingBench\",Vector3(-2.6,0,2.65),Vector2(2.3,.55),.43)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 467,
+      "expression": "var returntray:=_table(room,root,\"StampAndEnvelopeShelf\",Vector3(1.6,0,2.3),Vector2(1.7,.68),.72)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 471,
+      "expression": "var reading:=_table(room,root,\"QuietReadingTable\",Vector3(1.8,0,1.75),Vector2(2.0,1.10),.72)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 474,
+      "expression": "_model(room,root,\"P_reading_chair\",Vector3(1.2,0,2.75),180,1.0)"
+    },
+    {
+      "file": "game/scripts/world/resident_interior_builder.gd",
+      "line": 475,
+      "expression": "_model(room,root,\"P_reading_chair\",Vector3(2.4,0,.75),0,1.0)"
+    },
+    {
+      "file": "game/scripts/world/interior_builder.gd",
+      "line": 187,
+      "expression": "_wall_shelf(Vector3(2.2, 0, -d / 2.0 + 0.16), 2.0, 0.0, [0.95, 1.4, 1.85], [0, 1, 2, 3, 4, 5, 12, 13, 14, 15])"
+    },
+    {
+      "file": "game/scripts/world/interior_builder.gd",
+      "line": 188,
+      "expression": "_wall_shelf(Vector3(-w / 2.0 + 0.16, 0, 1.05), 1.8, PI / 2.0, [1.0, 1.45, 1.9], [6, 7, 8, 9, 10, 11, 18, 19, 20, 21])"
+    },
+    {
+      "file": "game/scripts/world/interior_builder.gd",
+      "line": 191,
+      "expression": "_worktable()"
+    },
+    {
+      "file": "game/scripts/world/interior_builder.gd",
+      "line": 192,
+      "expression": "_wall_shelf(Vector3(0.825, 0, -d / 2.0 + 0.16), 1.6, 0.0, [1.45, 1.9], [16, 17, 15, 14, 16, 17])"
+    },
+    {
+      "file": "game/scripts/world/interior_builder.gd",
+      "line": 377,
+      "expression": "func _wall_shelf(at: Vector3, length: float, yaw: float, levels: Array, cells: Array) -> void:"
+    },
+    {
+      "file": "game/scripts/world/interior_builder.gd",
+      "line": 440,
+      "expression": "func _worktable() -> void:"
+    },
+    {
+      "file": "game/scripts/world/house_builder.gd",
+      "line": 67,
+      "expression": "[\"J07_kotatsu\", 2.4, -1.25, 0.0, 1, 0.0],"
+    },
+    {
+      "file": "game/scripts/world/house_builder.gd",
+      "line": 77,
+      "expression": "[\"J03_dining_set\", -2.3, 3.0, 0.0, 1, 0.0],"
+    }
+  ],
+  "acceptance": [
+    "Preserve visible Hyper3D generated principal geometry and original generated UV/albedo; local repair must be recorded, never replace it wholesale with procedural furniture.",
+    "All bakery named tables/chairs/racks/counters and espresso station replaced; reuse compatible tables/seats throughout public/resident/home/outdoor areas.",
+    "Actual glass cavities, independent thin panels, visible interior stock, view-dependent subtle reflection; multi-angle/day/night native screenshots.",
+    "Actual shelf/table/seat support and use, paths/collisions, old failure proof, exclusive full suite, native package shots/seating/autoplay, latest-only package and clean temporary stages."
+  ],
+  "reuse_candidate_groups": [
+    "P_cafe_table",
+    "P_community_table",
+    "P_reading_chair",
+    "I04_shop_counter",
+    "I05_bread_shelf",
+    "W17_display_shelf",
+    "I02_cake_showcase",
+    "P_coffee_station",
+    "A12_bench",
+    "J03_dining_set",
+    "J07_kotatsu",
+    "P_low_bookcase",
+    "P_gondola"
+  ],
+  "runtime_fixture_count_first_measured": 58,
+  "delivered_package_updated": true,
+  "actual_credits_settled": 7,
+  "runtime_reuse_groups_verified": 100,
+  "actual_runtime_model_counts": {
+    "A12_bench": 9,
+    "HFF02_round_table": 1,
+    "HFF04_low_table": 8,
+    "HFF05_utility_stand": 38,
+    "HFF06_indoor_bench": 12,
+    "HFF10_wall_shelf": 1,
+    "I02_cake_showcase": 1,
+    "I04_shop_counter": 2,
+    "I05_bread_shelf": 2,
+    "J03_dining_set": 1,
+    "J07_kotatsu": 1,
+    "P_cafe_table": 2,
+    "P_coffee_station": 1,
+    "P_community_table": 1,
+    "P_gondola": 2,
+    "P_low_bookcase": 6,
+    "P_reading_chair": 10,
+    "W17_display_shelf": 2
+  },
+  "delivery": "evidence/hyper3d_furniture_20261015/delivery.json",
+  "package_sha256": "b6b1c7532039ad4de5589efdea87f9e72e02d7f22bc4ab9ccb11ffd10f226dd7"
+}

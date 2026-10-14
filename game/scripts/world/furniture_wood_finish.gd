@@ -19,7 +19,7 @@ const ATLAS_IDS: Array[String] = ["J01_kitchen_counter", "J03_dining_set", "J07_
 static var _parts: Dictionary = {}
 
 static func apply(root: Node3D, id: String) -> void:
-	if root == null or not PROFILES.has(id):
+	if root == null:
 		return
 	var count: int = 0
 	for mesh: MeshInstance3D in WorldBuilder.find_meshes(root):
@@ -34,18 +34,23 @@ static func apply(root: Node3D, id: String) -> void:
 			if source == null or source.transparency != BaseMaterial3D.TRANSPARENCY_DISABLED:
 				continue
 			var role: String = source.resource_name.to_lower()
-			var atlas: bool = id in ATLAS_IDS
+			var generated: bool = role.begins_with("hyper3d_")
+			if not PROFILES.has(id) and not generated: continue
+			var atlas: bool = id in ATLAS_IDS or generated
 			if not atlas and not (role.contains("wood") or role.contains("cedar") or role.contains("oak")):
 				continue
 			if atlas and source.albedo_texture == null:
 				continue
-			var material: ShaderMaterial = _material(mesh, surface, source, root, int(PROFILES[id]), active)
-			material.set_shader_parameter("structural", role.contains("dark") or role.contains("plug"))
+			var material: ShaderMaterial = _material(mesh, surface, source, root, int(PROFILES.get(id, 1)), active)
+			material.set_shader_parameter("generated_atlas", generated)
+			material.set_shader_parameter("generated_cloth", generated and (id == "HFF12_reading_armchair" or id == "P_reading_chair"))
+			var part: String=str(mesh.name).to_lower()
+			material.set_shader_parameter("structural", role.contains("dark") or role.contains("plug") or (generated and (part.ends_with("frame") or part.ends_with("foot") or part.ends_with("pedestal") or part.ends_with("back"))))
 			material.set_shader_parameter("atlas_mode", 1 if atlas else 0)
 			if id in ["P_cafe_table", "P_community_table", "P_reading_chair", "I04_shop_counter", "I02_cake_showcase", "W17_display_shelf", "I05_bread_shelf", "P_coffee_station"]:
 				material.set_shader_parameter("authored_detail_strength", 1.35)
-			if id == "J03_dining_set": material.set_shader_parameter("atlas_mode", 2)
-			if id == "J07_kotatsu": material.set_shader_parameter("atlas_mode", 3)
+			if id == "J03_dining_set" and not generated: material.set_shader_parameter("atlas_mode", 2)
+			if id == "J07_kotatsu" and not generated: material.set_shader_parameter("atlas_mode", 3)
 			mesh.set_surface_override_material(surface, material)
 			# A whole-mesh override would silently hide the new surface material.
 			mesh.material_override = null
@@ -112,6 +117,7 @@ static func _material(mesh: MeshInstance3D, surface: int, source: StandardMateri
 		if old_grain is Texture2D: grain_texture = old_grain as Texture2D
 		grain_strength = float(old_strength) if old_strength != null else 1.0
 	material.set_shader_parameter("has_original", source.albedo_texture != null)
+	if source.resource_name.to_lower().begins_with("hyper3d_"): material.set_shader_parameter("has_finish_tint", false)
 	if source.albedo_texture != null: material.set_shader_parameter("albedo_tex", source.albedo_texture)
 	material.set_shader_parameter("uv_scale", Vector2(source.uv1_scale.x, source.uv1_scale.y))
 	material.set_shader_parameter("uv_offset", Vector2(source.uv1_offset.x, source.uv1_offset.y))
@@ -128,7 +134,11 @@ static func _material(mesh: MeshInstance3D, surface: int, source: StandardMateri
 	material.set_shader_parameter("part_size", box.size)
 	var minima := PackedVector4Array()
 	var maxima := PackedVector4Array()
-	var parts: Array[AABB] = _components(mesh.mesh, surface)
+	# Imported generated faces have already been partitioned into real support
+	# parts. Do not weld tens of thousands of atlas vertices on every instance.
+	var parts: Array[AABB] = []
+	if source.resource_name.to_lower().begins_with("hyper3d_"): parts.append(box)
+	else: parts = _components(mesh.mesh, surface)
 	for part: AABB in parts:
 		minima.append(Vector4(part.position.x, part.position.y, part.position.z, 0.))
 		var horizontal: bool = part.size.y < maxf(part.size.x, part.size.z) * .60

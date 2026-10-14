@@ -1,18 +1,27 @@
 {
  "id": "P_gondola",
- "src": "raw/furniture_forms_20261014/P_gondola.glb",
- "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
+ "src": "raw/hyper3d_furniture_20261015/assembled/P_gondola.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High source geometry, original UVs and atlas, fitted and assembled in Blender",
  "preserve_parts": true,
  "origin_preserved": true,
- "tris": 53060,
+ "tris": 80826,
  "tex": 2048,
- "bytes": 4713692,
+ "bytes": 4640628,
  "godot_size_m_xyz": [
   1.84,
   1.6,
   0.62
  ],
  "mesh_nodes": [
-  "P_gondola"
+  "FrontRackFrame",
+  "FrontTrayBoard_0",
+  "FrontTrayBoard_1",
+  "FrontTrayBoard_2",
+  "FrontTrayBoard_3",
+  "RearRackFrame",
+  "RearTrayBoard_0",
+  "RearTrayBoard_1",
+  "RearTrayBoard_2",
+  "RearTrayBoard_3"
  ]
 }

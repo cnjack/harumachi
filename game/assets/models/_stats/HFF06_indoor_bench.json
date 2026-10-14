@@ -1,0 +1,19 @@
+{
+ "id": "HFF06_indoor_bench",
+ "src": "raw/hyper3d_furniture_20261015/assembled/HFF06_indoor_bench.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 36800,
+ "tex": 2048,
+ "bytes": 3820108,
+ "godot_size_m_xyz": [
+  1.55,
+  0.43,
+  0.52
+ ],
+ "mesh_nodes": [
+  "Frame",
+  "Top"
+ ]
+}

@@ -40,12 +40,14 @@ func timber_coverage(ids: Array[String], minimum: int) -> Dictionary:
 				var source: StandardMaterial3D = mesh.mesh.surface_get_material(surface) as StandardMaterial3D
 				if source == null: continue
 				var role: String = source.resource_name.to_lower()
-				if not (role.contains("wood") or role.contains("cedar") or role.contains("oak")): continue
+				if not (role.contains("wood") or role.contains("cedar") or role.contains("oak") or role.begins_with("hyper3d_")): continue
 				local_count += 1
 				samples += 1
 				var material: Material = mesh.get_active_material(surface)
 				if not finished(material): errors.append(str(mesh.get_path()) + "/" + role)
-				if root.get_meta("model_id", "") in ["P_cafe_table", "P_reading_chair"]:
+				if role.begins_with("hyper3d_"):
+					if not bool(parameter(material,"has_original",false)) or parameter(material,"albedo_tex")!=source.albedo_texture or int(parameter(material,"atlas_mode",0))!=1:errors.append(str(mesh.get_path())+" lost original generated atlas or selective timber mask")
+				elif root.get_meta("model_id", "") in ["P_cafe_table", "P_reading_chair"]:
 					var tone: Color = parameter(material, "finish_tint", Color.WHITE)
 					var dark: bool = role.contains("dark")
 					if not bool(parameter(material, "has_finish_tint", false)) or (tone.r > .55 if dark else tone.r < .70 or tone.r > .80): errors.append(str(mesh.get_path()) + " lost warm-top/dark-frame colour hierarchy")
@@ -145,7 +147,7 @@ func run() -> void:
 				var source: Material = mesh.mesh.surface_get_material(surface)
 				if source == null: continue
 				var role: String = source.resource_name.to_lower()
-				if role.contains("wood") or role.contains("cedar") or role.contains("oak"): continue
+				if role.contains("wood") or role.contains("cedar") or role.contains("oak") or role.begins_with("hyper3d_"): continue
 				skipped += 1
 				if finished(mesh.get_active_material(surface)): nonwood.append(str(mesh.get_path()) + "/" + role)
 	check("actual glass, seat fabric, canvas and appliance metal never receive the timber shader", skipped > 10 and nonwood.is_empty(), str({"nonwood_surfaces": skipped, "errors": nonwood}))
@@ -159,7 +161,7 @@ func run() -> void:
 				var source: StandardMaterial3D = mesh.mesh.surface_get_material(surface) as StandardMaterial3D
 				# The live home adds KitchenMemo/Board below J05 after spawning.
 				# Its paper is an override on an unmaterialled BoxMesh, not the GLB atlas.
-				if source == null or source.albedo_texture == null or not source.resource_name.begins_with("M_" + str(root.get_meta("model_id", ""))):
+				if source == null or source.albedo_texture == null or not (source.resource_name.begins_with("M_" + str(root.get_meta("model_id", ""))) or source.resource_name.to_lower().begins_with("hyper3d_")):
 					atlas_extras += 1
 					if finished(material): atlas.append(str(mesh.get_path()) + " non-atlas addition was painted as timber")
 					continue
@@ -168,8 +170,9 @@ func run() -> void:
 	check("old mixed-atlas furniture retains a selective timber mask while added paper stays separate", atlas_count > 5 and atlas_extras > 0 and atlas.is_empty(), str({"atlas_surfaces": atlas_count, "non_atlas_additions": atlas_extras, "errors": atlas}))
 	var workroom: Node3D = rooms.get("workroom") as Node3D
 	var tea: MeshInstance3D = workroom.find_child("NeighbourTeaStation", true, false) as MeshInstance3D if workroom != null else null
-	var leg: MeshInstance3D = workroom.find_child("NeighbourTeaStationLeg_*", true, false) as MeshInstance3D if workroom != null else null
-	check("procedural tea furniture keeps a used tabletop and quiet structural legs", tea != null and leg != null and finished(tea.material_override) and finished(leg.material_override) and not bool(parameter(tea.material_override, "structural", true)) and bool(parameter(leg.material_override, "structural", false)))
+	var tea_root: Node3D=workroom.find_child("NeighbourTeaStationFixture",true,false) as Node3D if workroom!=null else null
+	var leg: MeshInstance3D=tea_root.find_child("Frame",true,false) as MeshInstance3D if tea_root!=null else null
+	check("generated tea furniture keeps a used tabletop and quiet structural legs", tea != null and leg != null and finished(tea.get_active_material(0)) and finished(leg.get_active_material(0)) and not bool(parameter(tea.get_active_material(0), "structural", true)) and bool(parameter(leg.get_active_material(0), "structural", false)))
 	var shader: Shader = load(FINISH) as Shader if ResourceLoader.exists(FINISH) else null
 	check("the actual wood shader carries direct and weak real-environment satin reflection", shader != null and shader.code.contains("specular_schlick_ggx") and shader.code.contains("ROUGHNESS =") and shader.code.contains("SPECULAR =") and not shader.code.contains("EMISSION"))
 	grain_and_contact_checks()
@@ -185,13 +188,15 @@ func grain_and_contact_checks() -> void:
 				var source: StandardMaterial3D = grain_mesh.mesh.surface_get_material(grain_surface) as StandardMaterial3D
 				if source == null: continue
 				var role: String = source.resource_name.to_lower()
-				if not (role.contains("cedar") or role.contains("oak")): continue
+				if not (role.contains("cedar") or role.contains("oak") or role.begins_with("hyper3d_")): continue
 				grain_samples += 1
 				if source.albedo_texture != null: with_original_image += 1
 				var grain_material: Material = grain_mesh.get_active_material(grain_surface)
-				if parameter(grain_material, "grain_tex") != SurfaceFinish.GRAIN or absf(float(parameter(grain_material, "grain_strength", 0.)) - 1.) > .00001 or not bool(parameter(grain_material, "has_finish_tint", false)):
+				if role.begins_with("hyper3d_"):
+					if parameter(grain_material,"albedo_tex")!=source.albedo_texture or not bool(parameter(grain_material,"has_original",false)) or bool(parameter(grain_material,"has_finish_tint",true)):grain_errors.append(str(grain_mesh.get_path())+" lost original generated grain")
+				elif parameter(grain_material, "grain_tex") != SurfaceFinish.GRAIN or absf(float(parameter(grain_material, "grain_strength", 0.)) - 1.) > .00001 or not bool(parameter(grain_material, "has_finish_tint", false)):
 					grain_errors.append(str(grain_mesh.get_path()) + " lost the existing game grain layer")
-	check("cafe and reader retain the actual game grain even when their GLB has a separate image", grain_samples > 30 and with_original_image > 20 and grain_errors.is_empty(), str({"surfaces": grain_samples, "with_GLB_image": with_original_image, "errors": grain_errors}))
+	check("cafe and reader retain their original generated grain while the community oak keeps its finish", grain_samples > 30 and with_original_image > 20 and grain_errors.is_empty(), str({"surfaces": grain_samples, "with_GLB_image": with_original_image, "errors": grain_errors}))
 	var contact_errors: Array[String] = []
 	var seen: Dictionary = {}
 	var contact_samples: int = 0

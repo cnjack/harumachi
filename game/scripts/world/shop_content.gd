@@ -117,7 +117,7 @@ func _bakery(room: InteriorBuilder,root: Node3D) -> void:
 			ClearSignage.paper_tag(cake_case,"CakePrice_%d_%d"%[row,family],["草莓","巧克力","巴斯克","水果塔"][family]+" %d"%int(GameState.item(["shortcake","chocolate_cake","basque_cheesecake","fruit_tart"][family]).price),Vector3(-.45+family*.30,[.586,.826][row],.333),Vector2(.27,.075),0,.039)
 	for wall_shelf: Node3D in room.wall_shelves:
 		var levels: Array=wall_shelf.get_meta("levels")
-		for row in levels.size():_group(room,root,wall_shelf,"W19_flour_bag",6,1.4,float(levels[row])+.01,.14,"bakery",.82,0,"pantry")
+		for row in levels.size():_group(room,root,wall_shelf,"W19_flour_bag",6,1.4,float(levels[row])+.01,-.01,"bakery",.82,0,"pantry")
 	poster(room,root,"bakery_poster","莲的面包店\n每日烘焙",Vector3(5.465,2.05,.8),-PI*.5)
 	var price:=ClearSignage.paper_tag(shelf,"ShelfPriceSign","当日烘焙",Vector3(0,.20,.265),Vector2(.78,.13),0,.075)
 	labels.append({"node":price,"kind":"bakery"})

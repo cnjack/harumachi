@@ -116,6 +116,8 @@ static func prop(room: InteriorBuilder,parent: Node3D,id: String,at: Vector3,hei
  return node
 
 static func bench(parent: Node3D,label: String,at: Vector3,width: float,depth: float,height: float=.78) -> MeshInstance3D:
+ var generated: MeshInstance3D=Hyper3DFurniture.bench(parent,label,at,width,depth,height)
+ if generated!=null:return generated
  var top:=box(parent,label,Vector3(width,.055,depth),at+Vector3(0,height-.0275,0),wood(),true)
  top.mesh=FurnitureForms.rounded_box(Vector3(width,.055,depth),.035,.009)
  FurnitureWoodFinish.board(top,label)
@@ -165,7 +167,7 @@ static func _workroom(room: InteriorBuilder,root: Node3D) -> void:
  prop(room,root,"W11_ceramic_set",Vector3(-3.32,.78,-4.02),.20,archive)
  for index in 3:
   var storage:=box(root,"ArchiveDrawer_%d"%index,Vector3(.55,.26,.56),Vector3(-4.64+index*.62,.3525,-4.02),matte(Color(.64,.51,.35)))
-  supported(storage,root.get_node("ArchiveWorkbenchLowerBoard"))
+  supported(storage,root.find_child("ArchiveWorkbenchLowerBoard",true,false))
   ClearSignage.paper_tag(storage,"Label",["试样","布料","修补"][index],Vector3(0,0,.288),Vector2(.30,.11),0,.06)
  sketch(root,"CraftJointStudy",Vector3(4.5,1.93,-4.38),Vector2(.78,.70),0)
  sketch(root,"FestivalClothStudy",Vector3(5.87,2.65,1.35),Vector2(.66,.63),2,-PI*.5)
@@ -182,14 +184,14 @@ static func _workroom(room: InteriorBuilder,root: Node3D) -> void:
 static func _bakery(room: InteriorBuilder,root: Node3D) -> void:
  var prep:=bench(root,"PrepShelf",Vector3(-2.05,0,-3.65),.90,.60,.84)
  prop(room,root,"W19_flour_bag",Vector3(-2.05,.84,-3.65),.45,prep)
- prop(room,root,"W19_flour_bag",Vector3(-2.05,.2225,-3.65),.32,root.get_node("PrepShelfLowerBoard"))
+ prop(room,root,"W19_flour_bag",Vector3(-2.05,.2225,-3.65),.32,root.find_child("PrepShelfLowerBoard",true,false))
  sketch(root,"BreadCraftSketch",Vector3(-5.39,2.0,1.25),Vector2(.64,.61),2,PI*.5)
  # Cloth is draped over the existing preparation surface; all added pieces have real support.
  var prep_top: float=.89
  var support: Node3D=box(root,"KneadingBoard",Vector3(.48,.018,.46),Vector3(1.85,prep_top+.009,-3.2),wood(Color(.79,.62,.40)))
  folded_cloth(root,"BakingTowel",Vector3(1.85,prep_top+.018,-3.2),Color(.92,.81,.70),support)
- var ledge:=bench(root,"HerbLedge",Vector3(5.16,0,2.95),.54,.62,.84)
- prop(room,root,"A15_potted_plant",Vector3(5.16,.84,2.95),.42,ledge)
+ var ledge:=bench(root,"HerbLedge",Vector3(5.16,0,1.65),.54,.62,.84)
+ prop(room,root,"A15_potted_plant",Vector3(5.16,.84,1.65),.42,ledge)
  var counter: Node3D=room.pieces[3]
  var counter_top: float=WorldBuilder.surface_height(counter,Vector2(room.origin.x,room.origin.z)+Vector2(2.80,.10),2.0)
  if is_finite(counter_top):
@@ -205,9 +207,9 @@ static func _store(room: InteriorBuilder,root: Node3D) -> void:
   var paper:=box(root,"CounterWrappingPaper",Vector3(.39,.01,.32),Vector3(-4.10,counter_top+.005,.10),canvas(Color(.76,.60,.39)));supported(paper,counter)
  var plant_stand:=bench(root,"PantryPlantStand",Vector3(-4.86,0,-3.60),.47,.48,.70)
  prop(room,root,"A15_potted_plant",Vector3(-4.86,.70,-3.60),.48,plant_stand)
- folded_cloth(root,"StoredApron",Vector3(-4.86,.20+.0225,-3.60),Color(.31,.41,.38),plant_stand.get_parent().get_node("PantryPlantStandLowerBoard"))
- var boxes:=bench(root,"BasketStation",Vector3(5.12,0,3.11),.48,.61,.48)
- prop(room,root,"W21_tea_tin",Vector3(5.12,.48,3.11),.24,boxes)
+ folded_cloth(root,"StoredApron",Vector3(-4.86,.20+.0225,-3.60),Color(.31,.41,.38),root.find_child("PantryPlantStandLowerBoard",true,false))
+ var boxes:=bench(root,"BasketStation",Vector3(5.12,0,-.85),.48,.61,.48)
+ prop(room,root,"W21_tea_tin",Vector3(5.12,.48,-.85),.24,boxes)
  ClearSignage.paper_tag(root,"WrappingHint","纸袋与包纸",Vector3(-5.39,1.35,2.3),Vector2(.78,.16),PI*.5,.08)
 
 static func rod(parent: Node3D,label: String,from: Vector3,to: Vector3,radius: float,material: Material) -> MeshInstance3D:

@@ -3,6 +3,7 @@ extends RefCounted
 ## Local enamel/steel/glass treatment. The source geometry and authored UVs stay intact.
 const SHADER: Shader = preload("res://shaders/appliance_metal.gdshader")
 const GLASS: Shader = preload("res://shaders/appliance_glass.gdshader")
+const HOPPER_GLASS: Shader = preload("res://shaders/appliance_hopper_glass.gdshader")
 const MODELS := ["P_deck_oven", "P_coffee_station", "I03_drink_fridge", "I07_ice_freezer", "I04_shop_counter"]
 
 static func apply(root: Node3D, id: String) -> void:
@@ -18,7 +19,7 @@ static func apply(root: Node3D, id: String) -> void:
 			if profile.is_empty():
 				continue
 			var finish := ShaderMaterial.new()
-			finish.shader = GLASS if bool(profile.get("glass", false)) else SHADER
+			finish.shader = HOPPER_GLASS if bool(profile.get("hopper", false)) else (GLASS if bool(profile.get("glass", false)) else SHADER)
 			finish.resource_name = role
 			finish.set_meta("source_material", role)
 			finish.set_meta("source_base", original.albedo_color)
@@ -62,7 +63,7 @@ static func _profile(id: String, role: String) -> Dictionary:
 		if role == "Glass" and id == "I03_drink_fridge":
 			return {"glass": true, "gloss": .16}
 		if role == "Coffee_HopperGlass" and id == "P_coffee_station":
-			return {"glass": true, "gloss": .18}
+			return {"glass": true, "hopper": true, "gloss": .18}
 	elif id == "I07_ice_freezer":
 		if role == "freezer_trim":
 			return {"kind": 1, "roughness": .38, "gloss": .23, "wear": .18}

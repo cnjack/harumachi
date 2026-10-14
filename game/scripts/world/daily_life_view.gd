@@ -220,7 +220,7 @@ func _food_surface() -> Vector3:
 		return Vector3(at.x, WorldBuilder.surface_height(tray, Vector2(at.x,at.z),box.end.y+.01), at.z)
 	if s.main.in_room and s.main.room_kind == "bakery":
 		var counter: Node3D = s.world.interiors.bakery.get_node("I04_shop_counter")
-		var at: Vector3 = counter.global_position + counter.global_basis * Vector3(.32, 0, 0)
+		var at: Vector3 = counter.global_position + counter.global_basis * Vector3(.32, 0, .22)
 		return Vector3(at.x, support_height(counter, at, 1.35), at.z)
 	return _cart_site(false).point
 

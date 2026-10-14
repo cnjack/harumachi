@@ -1,41 +1,22 @@
 {
  "id": "I05_bread_shelf",
- "src": "raw/furniture_forms_20261014/I05_bread_shelf.glb",
- "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
+ "src": "raw/hyper3d_furniture_20261015/assembled/I05_bread_shelf.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
  "preserve_parts": true,
  "origin_preserved": true,
- "tris": 17296,
- "tex": 1024,
- "bytes": 468008,
+ "tris": 40413,
+ "tex": 2048,
+ "bytes": 3846348,
  "godot_size_m_xyz": [
   1.07,
   1.51,
   0.62
  ],
  "mesh_nodes": [
-  "FormShelfBracket_0_-1",
-  "FormShelfBracket_0_1",
-  "FormShelfBracket_1_-1",
-  "FormShelfBracket_1_1",
-  "FormShelfBracket_2_-1",
-  "FormShelfBracket_2_1",
-  "FormShelfBracket_3_-1",
-  "FormShelfBracket_3_1",
-  "LinenLiner_0",
-  "LinenLiner_1",
-  "LinenLiner_2",
-  "LinenLiner_3",
-  "ShelfBack",
-  "ShelfFoot",
-  "ShelfUpright",
-  "ShelfUpright.001",
+  "RackFrame",
   "TrayBoard_0",
   "TrayBoard_1",
   "TrayBoard_2",
-  "TrayBoard_3",
-  "TrayLip_0",
-  "TrayLip_1",
-  "TrayLip_2",
-  "TrayLip_3"
+  "TrayBoard_3"
  ]
 }

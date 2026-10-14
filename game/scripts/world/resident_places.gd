@@ -62,7 +62,7 @@ static func _specs() -> Dictionary:
 		for who: String in room.owners:
 			var index: int=(room.owners as Array).find(who)
 			room.rest_spots[who]={"at":Vector3(1.25+index*.85,0,.35),"yaw":-90.0}
-			room.seats[who]={"at":Vector3(1.25+index*.85,.31,-.65),"yaw":180.0,"support":"ResidentInterior/VisitSeat_"+who,"height":.31}
+			room.seats[who]={"at":Vector3(1.25+index*.85,.31,-.65),"yaw":180.0,"support":"ResidentInterior/VisitSeat_"+who+"Fixture/VisitSeat_"+who,"height":.31}
 	out.home_haru.rest_spots.haru={"at":Vector3(-.70,0,-1.30),"yaw":180.0}
 	out.home_haru.rest_spots.aoi={"at":Vector3(-3.55,0,.45),"yaw":90.0}
 	return out

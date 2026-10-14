@@ -330,17 +330,14 @@
       "provider": "hunyuan hy-3d-3.1 (shinkai-dry set)"
     },
     "A12_bench": {
-      "src": "raw/plaza_paintover_20261009/A12_bench.glb",
+      "src": "raw/hyper3d_furniture_20261015/assembled/A12_bench.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 2048,
       "image_format": "AUTO",
-      "provider": "Blender joinery from accepted imagegen plaza paintover",
-      "license": "项目自制；生成素材服务条款",
-      "reference_images": [
-        "art/references/plaza_paintover_20261009/plaza_facilities_inspiration.png"
-      ]
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
     },
     "A13_chalkboard": {
       "src": "raw/A13_texture_edit_20261001/model.glb",
@@ -615,11 +612,14 @@
       "tex": 1024
     },
     "J03_dining_set": {
-      "src": "raw/J03_dining_set/model.glb",
-      "fit": "w",
-      "size": 1.5,
-      "tris": 8000,
-      "tex": 1024
+      "src": "raw/hyper3d_furniture_20261015/assembled/J03_dining_set.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High source geometry, original UVs and atlas, fitted and assembled in Blender",
+      "note": "J07 retains original quilt; bookcase retains original displayed books. Main furniture is Hyper3D. Native package acceptance passed 2026-10-15; see scope delivery record."
     },
     "J04_rice_cabinet": {
       "src": "raw/J04_rice_cabinet/model.glb",
@@ -643,11 +643,14 @@
       "tex": 1024
     },
     "J07_kotatsu": {
-      "src": "raw/J07_kotatsu/model.glb",
-      "fit": "w",
-      "size": 1.45,
-      "tris": 6000,
-      "tex": 1024
+      "src": "raw/hyper3d_furniture_20261015/assembled/J07_kotatsu.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High source geometry, original UVs and atlas, fitted and assembled in Blender",
+      "note": "J07 retains original quilt; bookcase retains original displayed books. Main furniture is Hyper3D. Native package acceptance passed 2026-10-15; see scope delivery record."
     },
     "J08_fan": {
       "src": "raw/J08_fan/model.glb",
@@ -1391,43 +1394,34 @@
       "rebake": true
     },
     "I02_cake_showcase": {
-      "src": "raw/furniture_forms_20261014/I02_cake_showcase.glb",
+      "src": "raw/hyper3d_furniture_20261015/assembled/I02_cake_showcase.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 2048,
-      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
-      "reference_images": [
-        "art/references/furniture_forms_20261014/01_bakery_counter.png"
-      ],
-      "license": "项目自制；生成素材服务条款",
-      "image_format": "AUTO"
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
     },
     "I04_shop_counter": {
-      "src": "raw/furniture_forms_20261014/I04_shop_counter.glb",
+      "src": "raw/hyper3d_furniture_20261015/assembled/I04_shop_counter.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
-      "tex": 1024,
-      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
-      "reference_images": [
-        "art/references/furniture_forms_20261014/01_bakery_counter.png"
-      ],
-      "license": "项目自制；生成素材服务条款",
-      "image_format": "AUTO"
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
     },
     "I05_bread_shelf": {
-      "src": "raw/furniture_forms_20261014/I05_bread_shelf.glb",
+      "src": "raw/hyper3d_furniture_20261015/assembled/I05_bread_shelf.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
-      "tex": 1024,
-      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
-      "reference_images": [
-        "art/references/furniture_forms_20261014/05_toolshed_workbench.png"
-      ],
-      "license": "项目自制；生成素材服务条款",
-      "image_format": "AUTO"
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
     },
     "I06_store_gondola": {
       "src": "raw/I06_store_gondola_pix/model.glb",
@@ -1526,17 +1520,14 @@
       "yaw_note": "v0.6 review: replaces the plain procedural box; Pixal3D output 63.5 deg off-axis, turned square, lock plate to +Z"
     },
     "P_gondola": {
-      "src": "raw/furniture_forms_20261014/P_gondola.glb",
+      "src": "raw/hyper3d_furniture_20261015/assembled/P_gondola.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 2048,
-      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
-      "reference_images": [
-        "art/references/furniture_forms_20261014/08_grocer_shelves.png"
-      ],
-      "license": "项目自制；生成素材服务条款",
-      "image_format": "AUTO"
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High source geometry, original UVs and atlas, fitted and assembled in Blender",
+      "note": "J07 retains original quilt; bookcase retains original displayed books. Main furniture is Hyper3D. Native package acceptance passed 2026-10-15; see scope delivery record."
     },
     "P_shop_wall_frame": {
       "src": "raw/landmarks_aged_20261001/P_shop_wall_frame.glb",
@@ -2083,17 +2074,14 @@
       "source_page": "https://hyper3d.ai/workspace/rodin/26ecd969-3d41-4191-80af-ed29457abe84"
     },
     "W17_display_shelf": {
-      "src": "raw/furniture_forms_20261014/W17_display_shelf.glb",
+      "src": "raw/hyper3d_furniture_20261015/assembled/W17_display_shelf.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
-      "tex": 1024,
-      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
-      "reference_images": [
-        "art/references/furniture_forms_20261014/05_toolshed_workbench.png"
-      ],
-      "license": "项目自制；生成素材服务条款",
-      "image_format": "AUTO"
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
     },
     "W18_retro_tv": {
       "src": "raw/W18_retro_tv_hyper3d/model.glb",
@@ -2193,68 +2181,54 @@
       "note": "Derived from the original exported grocery bundle, no new generation; diffuse and UV retained."
     },
     "P_community_table": {
-      "src": "raw/furniture_forms_20261014/P_community_table.glb",
-      "preserve_parts": true,
-      "preserve_origin": true,
-      "level": false,
-      "tex": 1024,
-      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
-      "reference_images": [
-        "art/references/furniture_forms_20261014/03_community_table.png"
-      ],
-      "license": "项目自制；生成素材服务条款",
-      "image_format": "AUTO"
-    },
-    "P_cafe_table": {
-      "src": "raw/furniture_forms_20261014/P_cafe_table.glb",
-      "preserve_parts": true,
-      "preserve_origin": true,
-      "level": false,
-      "tex": 1024,
-      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
-      "reference_images": [
-        "art/references/furniture_forms_20261014/02_cafe_seating.png"
-      ],
-      "license": "项目自制；生成素材服务条款",
-      "image_format": "AUTO"
-    },
-    "P_reading_chair": {
-      "src": "raw/furniture_forms_20261014/P_reading_chair.glb",
-      "preserve_parts": true,
-      "preserve_origin": true,
-      "level": false,
-      "tex": 1024,
-      "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
-      "reference_images": [
-        "art/references/furniture_forms_20261014/03_community_table.png"
-      ],
-      "license": "项目自制；生成素材服务条款",
-      "image_format": "AUTO"
-    },
-    "P_low_bookcase": {
-      "src": "raw/inhabited_places_20261010/P_low_bookcase.glb",
-      "preserve_parts": true,
-      "preserve_origin": true,
-      "level": false,
-      "tex": 1024,
-      "provider": "Blender precise joinery from imagegen inhabited room references",
-      "reference_images": [
-        "art/references/inhabited_places_20261010/community_living_layout.png"
-      ],
-      "license": "项目自制；生成素材服务条款"
-    },
-    "P_coffee_station": {
-      "src": "raw/appliance_forms_20261014/P_coffee_station.glb",
+      "src": "raw/hyper3d_furniture_20261015/assembled/P_community_table.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 2048,
       "image_format": "AUTO",
-      "provider": "Blender in-place rounded appliance rebuild from approved imagegen reference, 2026-10-14",
-      "license": "项目自制；生成素材服务条款",
-      "reference_images": [
-        "art/references/furniture_forms_20261014/07_espresso_station.png"
-      ]
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "P_cafe_table": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/P_cafe_table.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "P_reading_chair": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/P_reading_chair.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "P_low_bookcase": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/P_low_bookcase.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High source geometry, original UVs and atlas, fitted and assembled in Blender",
+      "note": "J07 retains original quilt; bookcase retains original displayed books. Main furniture is Hyper3D. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "P_coffee_station": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/P_coffee_station.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
     },
     "I03_drink_fridge": {
       "src": "raw/inhabited_places_20261010/I03_drink_fridge.glb",
@@ -3146,6 +3120,146 @@
       "yaw": 0,
       "license": "Hyper3D account-generated asset; provenance in models_hyper3d_diversity_20261013.json",
       "source_page": "https://hyper3d.ai/workspace/rodin/c4f4a70f-ccf4-42bf-b314-f96f73730739"
+    },
+    "HFF01_cafe_chair": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/HFF01_cafe_chair.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "HFF02_round_table": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/HFF02_round_table.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "HFF03_rect_table": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/HFF03_rect_table.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "HFF04_low_table": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/HFF04_low_table.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "HFF05_utility_stand": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/HFF05_utility_stand.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "HFF06_indoor_bench": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/HFF06_indoor_bench.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "HFF07_sage_counter": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/HFF07_sage_counter.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "HFF08_bread_rack4": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/HFF08_bread_rack4.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "HFF09_bread_rack3": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/HFF09_bread_rack3.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "HFF10_wall_shelf": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/HFF10_wall_shelf.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "HFF11_glass_case": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/HFF11_glass_case.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "HFF12_reading_armchair": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/HFF12_reading_armchair.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "HFF13_espresso_station": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/HFF13_espresso_station.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "HFF14_outdoor_bench": {
+      "src": "raw/hyper3d_furniture_20261015/assembled/HFF14_outdoor_bench.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+      "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
     }
   },
   "procedural_overrides": {

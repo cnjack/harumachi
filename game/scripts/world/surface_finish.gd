@@ -10,6 +10,7 @@ static func apply(root: Node3D,id: String) -> void:
 			var original: StandardMaterial3D=mesh.get_active_material(index) as StandardMaterial3D
 			if original==null:continue
 			var role: String=original.resource_name.to_lower()
+			if role.begins_with("hyper3d_"):continue
 			var kind: int=0
 			if id=="J03_dining_set":kind=2
 			elif id=="J07_kotatsu":kind=3

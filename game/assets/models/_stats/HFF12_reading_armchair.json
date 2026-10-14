@@ -1,0 +1,22 @@
+{
+ "id": "HFF12_reading_armchair",
+ "src": "raw/hyper3d_furniture_20261015/assembled/HFF12_reading_armchair.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 37992,
+ "tex": 2048,
+ "bytes": 6074096,
+ "godot_size_m_xyz": [
+  0.605,
+  0.89,
+  0.51
+ ],
+ "mesh_nodes": [
+  "Arm",
+  "Arm_001",
+  "Back",
+  "Frame",
+  "Seat"
+ ]
+}

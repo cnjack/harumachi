@@ -22,7 +22,8 @@ func setup(story: Story) -> void:
 				if absf(on_bench.x)<.9 and absf(on_bench.z)<.3:
 					position+=seat.basis.x.normalized()*(.62 if on_bench.x<=0.0 else -.62)
 					break
-			var top: float = WorldBuilder.surface_height(seat, Vector2(seat.global_position.x, seat.global_position.z), seat.global_position.y + .80)
+			var seated_at: Vector3 = root.to_global(position + front * .16)
+			var top: float = WorldBuilder.surface_height(seat, Vector2(seated_at.x, seated_at.z), seat.global_position.y + .60)
 			if not is_finite(top): continue
 			var point: Interactable
 			if farm and index==0:

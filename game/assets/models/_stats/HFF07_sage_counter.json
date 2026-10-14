@@ -1,0 +1,19 @@
+{
+ "id": "HFF07_sage_counter",
+ "src": "raw/hyper3d_furniture_20261015/assembled/HFF07_sage_counter.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 39436,
+ "tex": 2048,
+ "bytes": 3127824,
+ "godot_size_m_xyz": [
+  2.11,
+  0.87,
+  1.15
+ ],
+ "mesh_nodes": [
+  "CounterBody",
+  "CounterTop"
+ ]
+}

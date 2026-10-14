@@ -100,6 +100,23 @@ def measure(path):
             'inherited_pbr_maps':sum('normalTexture' in g['materials'][i] or 'metallicRoughnessTexture' in g['materials'][i].get('pbrMetallicRoughness',{}) for i in materials),
             'metallic_max':max((g['materials'][i].get('pbrMetallicRoughness',{}).get('metallicFactor',1.) for i in materials),default=0)}
 
+def assembly_report(path, spec, topology):
+    """Independent doors, seals and decks are intentional components.
+
+    Check their actual used triangle area and open edges, rather than requiring
+    a glass door and steel casing to be one connected mesh. Unused material
+    declarations cannot satisfy this contract.
+    """
+    g,b=load(path);areas={}
+    for primitive,vertices,indices,_ in primitives(g,b):
+        faces=vertices[indices]
+        area=float(np.linalg.norm(np.cross(faces[:,1]-faces[:,0],faces[:,2]-faces[:,0]),axis=1).sum()*.5)
+        role=g['materials'][primitive.get('material',0)].get('name','')
+        areas[role]=areas.get(role,0.)+area
+    missing={role:areas.get(role,0.) for role,minimum in spec['required_material_area_m2'].items() if areas.get(role,0.)<minimum}
+    closed=topology.get('boundary_edge_fraction',1)<=spec['maximum_open_edge_fraction']
+    return {'ok':closed and not missing,'actual_material_area_m2':areas,'insufficient_parts':missing,'closed_edges':closed,'topology':topology}
+
 
 if __name__=='__main__':
     ap=argparse.ArgumentParser();ap.add_argument('model_dir',type=Path);ap.add_argument('output',type=Path)
@@ -113,9 +130,15 @@ if __name__=='__main__':
         details['matte']=[k for k,m in models.items() if m['inherited_pbr_maps'] or m['metallic_max']>0]
         checks['matte_materials']=not details['matte']
         details['fragmented']=[]
+        details['assembly_surfaces']={}
         for k in contract['continuous_meshes']:
             topo=models.get(k,{}).get('topology',{})
-            if topo.get('boundary_edge_fraction',1)>.03 or topo.get('largest_component_area_fraction',0)<.85:details['fragmented'].append(k)
+            assembly=contract.get('intentional_assemblies',{}).get(k)
+            if assembly:
+                result=assembly_report(args.model_dir/(k+'.glb'),assembly,topo)
+                details['assembly_surfaces'][k]=result
+                if not result['ok']:details['fragmented'].append(k)
+            elif topo.get('boundary_edge_fraction',1)>.03 or topo.get('largest_component_area_fraction',0)<.85:details['fragmented'].append(k)
         checks['continuous_surfaces']=not details['fragmented']
         details['density']=[]
         for k,minimum in contract['building_density_px_m'].items():

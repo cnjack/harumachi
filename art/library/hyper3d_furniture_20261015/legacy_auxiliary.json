@@ -1,0 +1,12 @@
+{
+  "J07_kotatsu": {
+    "file": "art/library/hyper3d_furniture_20261015/legacy_auxiliary/J07_kotatsu.glb",
+    "sha256": "cc7bc4a18b2df7cbe67a6a254e33c9241a921dcc7eea2dab5a0c38ac30d87f58",
+    "use": "Retain only existing quilt for kotatsu or books for bookcase; main furniture replaced by Hyper3D."
+  },
+  "P_low_bookcase": {
+    "file": "art/library/hyper3d_furniture_20261015/legacy_auxiliary/P_low_bookcase.glb",
+    "sha256": "4f3c1f58698caaaef92bedffb8b50f8e57019831473ee57642541c1c77043334",
+    "use": "Retain only existing quilt for kotatsu or books for bookcase; main furniture replaced by Hyper3D."
+  }
+}

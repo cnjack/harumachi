@@ -1,0 +1,20 @@
+{
+ "id": "HFF01_cafe_chair",
+ "src": "raw/hyper3d_furniture_20261015/assembled/HFF01_cafe_chair.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 37068,
+ "tex": 2048,
+ "bytes": 3791768,
+ "godot_size_m_xyz": [
+  0.48,
+  0.89,
+  0.47
+ ],
+ "mesh_nodes": [
+  "Back",
+  "Frame",
+  "Seat"
+ ]
+}

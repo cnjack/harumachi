@@ -15,6 +15,8 @@ uniform int grain_axis = 0;
 uniform float grain_strength = .62;
 uniform int use_profile = 1; // counter, home/cafe, workshop, outdoor seat, shelf
 uniform int atlas_mode = 0; // pure timber, mixed atlas, dining top, kotatsu frame
+uniform bool generated_atlas = false;
+uniform bool generated_cloth = false;
 uniform bool structural = false;
 uniform float wear_strength : hint_range(0., 1.) = .35;
 uniform float sheen_strength : hint_range(0., 1.) = .35;
@@ -152,6 +154,16 @@ void fragment() {
 	// Native rough reflection follows the actual curved normals and environment.
 	// The sheen control also drives the gloss-off diagnostic capture.
 	SPECULAR = structural ? .08 : reflectance * clamp(sheen_strength / .35, 0., 1.2) * clamp(environment_sheen / .22, 0., 1.2) * (.65 + .35 * finish_polish);
+	if (generated_atlas) {
+		float paint = smoothstep(1.03, 1.16, original.g / max(original.r, .005));
+		float original_reflectance = SPECULAR;
+		ROUGHNESS = mix(mix(.91, .58, paint), ROUGHNESS, timber);
+		SPECULAR = mix(mix(.09, .25, paint), original_reflectance, timber);
+		if (generated_cloth) {
+			ROUGHNESS = mix(.94, ROUGHNESS, timber);
+			SPECULAR = mix(.07, SPECULAR, timber);
+		}
+	}
 	reflection_f0 = .16 * SPECULAR * SPECULAR;
 	reflection_roughness = ROUGHNESS;
 }

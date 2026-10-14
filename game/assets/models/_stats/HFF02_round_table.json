@@ -1,0 +1,20 @@
+{
+ "id": "HFF02_round_table",
+ "src": "raw/hyper3d_furniture_20261015/assembled/HFF02_round_table.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 27608,
+ "tex": 2048,
+ "bytes": 3766288,
+ "godot_size_m_xyz": [
+  0.72,
+  0.76,
+  0.72
+ ],
+ "mesh_nodes": [
+  "Foot",
+  "Pedestal",
+  "Top"
+ ]
+}

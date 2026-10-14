@@ -1,0 +1,435 @@
+{
+  "schema_version": 1,
+  "assets": {
+    "A12_bench": {
+      "source_components": [
+        {
+          "asset": "HFF14_outdoor_bench",
+          "prepared_sha256": "e0f1c10c02fa04c2888e3f15d0e6b4f74f726d3799ec42a494331c09d3cdd62b",
+          "generation_id": "14a35376-8ecc-488c-9ebd-7425c3da36a0"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/A12_bench.glb",
+      "game_sha256": "43ef728153fa42f8b648d05d060654d1239f2445c0995e2080087b9a6b283add",
+      "game_triangles": 37426
+    },
+    "HFF01_cafe_chair": {
+      "source_components": [
+        {
+          "asset": "HFF01_cafe_chair",
+          "prepared_sha256": "e9b4cf17f33ff9870b3aab19a2a7d19c7ee55e9e93b82b4c557849ab49303811",
+          "generation_id": "25a6fc7f-1528-4940-9f16-3e1bcc2062a4"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/HFF01_cafe_chair.glb",
+      "game_sha256": "eeaac08442863ed4a807b82d6cc619a9f68277b4d075399a82dd3f3dd3dc467c",
+      "game_triangles": 37068
+    },
+    "HFF02_round_table": {
+      "source_components": [
+        {
+          "asset": "HFF02_round_table",
+          "prepared_sha256": "44c23771856244c1ee6916f301027296732d6ab2d74bcc9bf01b74459b219822",
+          "generation_id": "11709d12-2231-4b43-a263-8bbd7e27ec00"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/HFF02_round_table.glb",
+      "game_sha256": "84cd7286e747cf347b3c9835a1e9a025fc24ae9e6e3af6cc79f246279e9a0103",
+      "game_triangles": 27608
+    },
+    "HFF03_rect_table": {
+      "source_components": [
+        {
+          "asset": "HFF03_rect_table",
+          "prepared_sha256": "44ea8f4bfbe0f5960592af9410a9829708c6366cfbb9fd7ddd78f85919a8616d",
+          "generation_id": "f3a63d0b-9416-4535-b519-4e6b48ae69a2"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/HFF03_rect_table.glb",
+      "game_sha256": "f5a62f995abb85e28abc20ca5a075c2ff24ca185dfc48f368f2fb80652c0741b",
+      "game_triangles": 39502
+    },
+    "HFF04_low_table": {
+      "source_components": [
+        {
+          "asset": "HFF04_low_table",
+          "prepared_sha256": "b99f0710dca4b12f38d68201a0194216e8ccb51030824ba84fc85db4e23189c2",
+          "generation_id": "b0956a25-3530-4234-8698-3b637e1573e3"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/HFF04_low_table.glb",
+      "game_sha256": "9cad84dd0738f2fa96edc10b224caf251e39c65fef48d545cf2742f561da4e69",
+      "game_triangles": 37804
+    },
+    "HFF05_utility_stand": {
+      "source_components": [
+        {
+          "asset": "HFF05_utility_stand",
+          "prepared_sha256": "b3bb23775d7c3990cbe0368dcba631f3637ee39115309d3b66918c165f505286",
+          "generation_id": "3cfe0f4f-6ce9-45ab-b172-5025bd214bff"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/HFF05_utility_stand.glb",
+      "game_sha256": "0cb649724d994b0552e748ce5e24fba4f915a4706c4a94b27ffc600cd5fa9d4d",
+      "game_triangles": 39058
+    },
+    "HFF06_indoor_bench": {
+      "source_components": [
+        {
+          "asset": "HFF06_indoor_bench",
+          "prepared_sha256": "e2837eca01e6abbf3f3d916864a7205bac544d4a403005f5c2d044ae86c8faee",
+          "generation_id": "72ef855d-1e55-49ad-ad6c-bc82eeab082a"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/HFF06_indoor_bench.glb",
+      "game_sha256": "07f8e60b959a351010470d3f0d25cffea49746a5024dfacfe8fd53cd86403ef8",
+      "game_triangles": 36800
+    },
+    "HFF07_sage_counter": {
+      "source_components": [
+        {
+          "asset": "HFF07_sage_counter",
+          "prepared_sha256": "95e3298e4d8cb8a1c072a0db765532615f2fdd740070fcfbd558cfc6cc7ee77f",
+          "generation_id": "b81fba31-d4bd-4117-a237-6ab94f3e102d"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/HFF07_sage_counter.glb",
+      "game_sha256": "101a41582435006020a3550410e8ced5b659e7bc20f049fa7e77429c497e4490",
+      "game_triangles": 39436
+    },
+    "HFF08_bread_rack4": {
+      "source_components": [
+        {
+          "asset": "HFF08_bread_rack4",
+          "prepared_sha256": "cc2fa330ce2ed24af630bf566c875d38dc3290f08672a45770058fd10f7cae10",
+          "generation_id": "41563a5b-9da1-4134-a72f-8cebfa9c453e"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/HFF08_bread_rack4.glb",
+      "game_sha256": "bdc3284403d855d0ac0a7039db6d12e077e7251f6cadf16f2a6711c8bd35f94a",
+      "game_triangles": 40413
+    },
+    "HFF09_bread_rack3": {
+      "source_components": [
+        {
+          "asset": "HFF09_bread_rack3",
+          "prepared_sha256": "b9c3490e63ca76825152b5bea0e125b2a6b41641ea92002e6ca8fa119f720aa2",
+          "generation_id": "253e08a2-44e2-4a54-b153-e850c8b828f9"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/HFF09_bread_rack3.glb",
+      "game_sha256": "ed7c460dd54c44cc0774669b9be749bc086a2502aa73afeb3bc5091bd52d86b5",
+      "game_triangles": 38906
+    },
+    "HFF10_wall_shelf": {
+      "source_components": [
+        {
+          "asset": "HFF10_wall_shelf",
+          "prepared_sha256": "5ab07692ddd2151d0b410339b7067d93f4c04da1ffe4cdcd0e40c0111964a7c7",
+          "generation_id": "e9640dd9-9656-405e-a6a6-bb0bbf6254a4"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/HFF10_wall_shelf.glb",
+      "game_sha256": "5119cf706aeb0bfc39c01d518521aa6fb0f15feeaa3653c88e4f06830ba65113",
+      "game_triangles": 37226
+    },
+    "HFF11_glass_case": {
+      "source_components": [
+        {
+          "asset": "HFF11_glass_case",
+          "prepared_sha256": "7b91486a0ec144a3f42517b0cfb1f393d554e3975f5eaf637336fddb9d5e4d94",
+          "generation_id": "462e31f9-b336-439e-b2cb-40b7789c5722"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/HFF11_glass_case.glb",
+      "game_sha256": "d50407e12a938631a0ad7247c982c753f2744e3675b6cef8776019e0bfffd88f",
+      "game_triangles": 33552
+    },
+    "HFF12_reading_armchair": {
+      "source_components": [
+        {
+          "asset": "HFF12_reading_armchair",
+          "prepared_sha256": "048f643e88879d54b2b0f192e72bd340e7d51c99442daa7c56643ba99a48bed0",
+          "generation_id": "ab6b2b77-485d-4d1c-b243-e03130486180"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/HFF12_reading_armchair.glb",
+      "game_sha256": "005821cdd8cba51526422e3f1ec398273fe140bdf6c6a1e8ddd372b09f9a7d6e",
+      "game_triangles": 37992
+    },
+    "HFF13_espresso_station": {
+      "source_components": [
+        {
+          "asset": "HFF13_espresso_station",
+          "prepared_sha256": "21f3a2468270d24709f2a60978caf50c108d3d0ce2b5f9d25e8d143d1f432f7b",
+          "generation_id": "1f995138-4ec9-4ae7-ad02-bbe357e1c7e8"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/HFF13_espresso_station.glb",
+      "game_sha256": "58b56129886f4a77f4193f9984e8e7126eb8d6693c6a3da5b77041ed71d271f0",
+      "game_triangles": 44878
+    },
+    "HFF14_outdoor_bench": {
+      "source_components": [
+        {
+          "asset": "HFF14_outdoor_bench",
+          "prepared_sha256": "e0f1c10c02fa04c2888e3f15d0e6b4f74f726d3799ec42a494331c09d3cdd62b",
+          "generation_id": "14a35376-8ecc-488c-9ebd-7425c3da36a0"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/HFF14_outdoor_bench.glb",
+      "game_sha256": "43ef728153fa42f8b648d05d060654d1239f2445c0995e2080087b9a6b283add",
+      "game_triangles": 37426
+    },
+    "I02_cake_showcase": {
+      "source_components": [
+        {
+          "asset": "HFF11_glass_case",
+          "prepared_sha256": "7b91486a0ec144a3f42517b0cfb1f393d554e3975f5eaf637336fddb9d5e4d94",
+          "generation_id": "462e31f9-b336-439e-b2cb-40b7789c5722"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/I02_cake_showcase.glb",
+      "game_sha256": "d50407e12a938631a0ad7247c982c753f2744e3675b6cef8776019e0bfffd88f",
+      "game_triangles": 33552
+    },
+    "I04_shop_counter": {
+      "source_components": [
+        {
+          "asset": "HFF07_sage_counter",
+          "prepared_sha256": "95e3298e4d8cb8a1c072a0db765532615f2fdd740070fcfbd558cfc6cc7ee77f",
+          "generation_id": "b81fba31-d4bd-4117-a237-6ab94f3e102d"
+        }
+      ],
+      "retained_auxiliary": [
+        "existing register, keys and display; counter geometry entirely Hyper3D"
+      ],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/I04_shop_counter.glb",
+      "game_sha256": "4fc7876081f08fb4b114890cfa430a62d41bb75624f76cb991aa04137f067610",
+      "game_triangles": 39744
+    },
+    "I05_bread_shelf": {
+      "source_components": [
+        {
+          "asset": "HFF08_bread_rack4",
+          "prepared_sha256": "cc2fa330ce2ed24af630bf566c875d38dc3290f08672a45770058fd10f7cae10",
+          "generation_id": "41563a5b-9da1-4134-a72f-8cebfa9c453e"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/I05_bread_shelf.glb",
+      "game_sha256": "bdc3284403d855d0ac0a7039db6d12e077e7251f6cadf16f2a6711c8bd35f94a",
+      "game_triangles": 40413
+    },
+    "J03_dining_set": {
+      "source_components": [
+        {
+          "asset": "HFF03_rect_table",
+          "prepared_sha256": "44ea8f4bfbe0f5960592af9410a9829708c6366cfbb9fd7ddd78f85919a8616d",
+          "generation_id": "f3a63d0b-9416-4535-b519-4e6b48ae69a2"
+        },
+        {
+          "asset": "HFF01_cafe_chair",
+          "prepared_sha256": "e9b4cf17f33ff9870b3aab19a2a7d19c7ee55e9e93b82b4c557849ab49303811",
+          "generation_id": "25a6fc7f-1528-4940-9f16-3e1bcc2062a4"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/J03_dining_set.glb",
+      "game_sha256": "820ef4236d2ab6396a9f57f4e7a4d7cfa85abcf46af2aa49dd58670aef10b2f3",
+      "game_triangles": 113638
+    },
+    "J07_kotatsu": {
+      "source_components": [
+        {
+          "asset": "HFF04_low_table",
+          "prepared_sha256": "b99f0710dca4b12f38d68201a0194216e8ccb51030824ba84fc85db4e23189c2",
+          "generation_id": "b0956a25-3530-4234-8698-3b637e1573e3"
+        }
+      ],
+      "retained_auxiliary": [
+        "existing Hunyuan quilt faces retained; table and legs are Hyper3D"
+      ],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/J07_kotatsu.glb",
+      "game_sha256": "600c0f8cd909c6fd3feeaa8c0cb8e418092c25a238a88d694242e153ca4b2e3b",
+      "game_triangles": 43394
+    },
+    "P_cafe_table": {
+      "source_components": [
+        {
+          "asset": "HFF02_round_table",
+          "prepared_sha256": "44c23771856244c1ee6916f301027296732d6ab2d74bcc9bf01b74459b219822",
+          "generation_id": "11709d12-2231-4b43-a263-8bbd7e27ec00"
+        },
+        {
+          "asset": "HFF01_cafe_chair",
+          "prepared_sha256": "e9b4cf17f33ff9870b3aab19a2a7d19c7ee55e9e93b82b4c557849ab49303811",
+          "generation_id": "25a6fc7f-1528-4940-9f16-3e1bcc2062a4"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/P_cafe_table.glb",
+      "game_sha256": "108cdcb247385ec51a9f8c607134f1a6636e8ea9980536336ceac7b3f4bc8010",
+      "game_triangles": 101744
+    },
+    "P_coffee_station": {
+      "source_components": [
+        {
+          "asset": "HFF13_espresso_station",
+          "prepared_sha256": "21f3a2468270d24709f2a60978caf50c108d3d0ce2b5f9d25e8d143d1f432f7b",
+          "generation_id": "1f995138-4ec9-4ae7-ad02-bbe357e1c7e8"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/P_coffee_station.glb",
+      "game_sha256": "58b56129886f4a77f4193f9984e8e7126eb8d6693c6a3da5b77041ed71d271f0",
+      "game_triangles": 44878
+    },
+    "P_community_table": {
+      "source_components": [
+        {
+          "asset": "HFF03_rect_table",
+          "prepared_sha256": "44ea8f4bfbe0f5960592af9410a9829708c6366cfbb9fd7ddd78f85919a8616d",
+          "generation_id": "f3a63d0b-9416-4535-b519-4e6b48ae69a2"
+        },
+        {
+          "asset": "HFF01_cafe_chair",
+          "prepared_sha256": "e9b4cf17f33ff9870b3aab19a2a7d19c7ee55e9e93b82b4c557849ab49303811",
+          "generation_id": "25a6fc7f-1528-4940-9f16-3e1bcc2062a4"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/P_community_table.glb",
+      "game_sha256": "108d239c5f538bdae1f40e43921c1bbe75f3c5e6b8737b409aa2628ead443d69",
+      "game_triangles": 261910
+    },
+    "P_gondola": {
+      "source_components": [
+        {
+          "asset": "HFF08_bread_rack4",
+          "prepared_sha256": "cc2fa330ce2ed24af630bf566c875d38dc3290f08672a45770058fd10f7cae10",
+          "generation_id": "41563a5b-9da1-4134-a72f-8cebfa9c453e"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/P_gondola.glb",
+      "game_sha256": "b1db7c29dde10fc1227060028095e5bf839e08d08db68a3fc0e6293c11bb2d81",
+      "game_triangles": 80826
+    },
+    "P_low_bookcase": {
+      "source_components": [
+        {
+          "asset": "HFF09_bread_rack3",
+          "prepared_sha256": "b9c3490e63ca76825152b5bea0e125b2a6b41641ea92002e6ca8fa119f720aa2",
+          "generation_id": "253e08a2-44e2-4a54-b153-e850c8b828f9"
+        }
+      ],
+      "retained_auxiliary": [
+        "existing displayed books retained; all rack structure is Hyper3D"
+      ],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/P_low_bookcase.glb",
+      "game_sha256": "2a31c7a65abf0d17436f0ac9edb63abfc02efb2fd33d31621f4803c04d63a314",
+      "game_triangles": 40314
+    },
+    "P_reading_chair": {
+      "source_components": [
+        {
+          "asset": "HFF12_reading_armchair",
+          "prepared_sha256": "048f643e88879d54b2b0f192e72bd340e7d51c99442daa7c56643ba99a48bed0",
+          "generation_id": "ab6b2b77-485d-4d1c-b243-e03130486180"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/P_reading_chair.glb",
+      "game_sha256": "d7757df5cb9f833d0702a0313992ce627ce4a27b6132ad94b73d7ec0040fb050",
+      "game_triangles": 37992
+    },
+    "W17_display_shelf": {
+      "source_components": [
+        {
+          "asset": "HFF09_bread_rack3",
+          "prepared_sha256": "b9c3490e63ca76825152b5bea0e125b2a6b41641ea92002e6ca8fa119f720aa2",
+          "generation_id": "253e08a2-44e2-4a54-b153-e850c8b828f9"
+        }
+      ],
+      "retained_auxiliary": [],
+      "actual_source_face_partition": true,
+      "invisible_support_geometry": false,
+      "game_glb": "game/assets/models/W17_display_shelf.glb",
+      "game_sha256": "ed7c460dd54c44cc0774669b9be749bc086a2502aa73afeb3bc5091bd52d86b5",
+      "game_triangles": 38906
+    }
+  },
+  "native_package_accepted": true,
+  "game_integrated": true,
+  "delivery": "evidence/hyper3d_furniture_20261015/delivery.json",
+  "package_sha256": "b6b1c7532039ad4de5589efdea87f9e72e02d7f22bc4ab9ccb11ffd10f226dd7"
+}

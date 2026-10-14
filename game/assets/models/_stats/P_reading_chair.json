@@ -1,12 +1,12 @@
 {
  "id": "P_reading_chair",
- "src": "raw/furniture_forms_20261014/P_reading_chair.glb",
- "provider": "Blender measured curved joinery from approved imagegen previews 20261014",
+ "src": "raw/hyper3d_furniture_20261015/assembled/P_reading_chair.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
  "preserve_parts": true,
  "origin_preserved": true,
- "tris": 18144,
- "tex": 1024,
- "bytes": 461700,
+ "tris": 37992,
+ "tex": 2048,
+ "bytes": 6074156,
  "godot_size_m_xyz": [
   0.605,
   0.89,
@@ -14,18 +14,9 @@
  ],
  "mesh_nodes": [
   "ReadingChairArm",
-  "ReadingChairArm.001",
+  "ReadingChairArm_001",
   "ReadingChairBack",
-  "ReadingChairBack_BackStile_-1",
-  "ReadingChairBack_BackStile_1",
-  "ReadingChairLeg",
-  "ReadingChairLeg.001",
-  "ReadingChairLeg.002",
-  "ReadingChairLeg.003",
-  "ReadingChairPost",
-  "ReadingChairPost.001",
-  "ReadingChairSeat",
-  "ReadingChairSeat_SideStretcher_-1",
-  "ReadingChairSeat_SideStretcher_1"
+  "ReadingChairFrame",
+  "ReadingChairSeat"
  ]
 }

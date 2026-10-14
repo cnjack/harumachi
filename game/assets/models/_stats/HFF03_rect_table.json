@@ -1,0 +1,19 @@
+{
+ "id": "HFF03_rect_table",
+ "src": "raw/hyper3d_furniture_20261015/assembled/HFF03_rect_table.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 39502,
+ "tex": 2048,
+ "bytes": 4693200,
+ "godot_size_m_xyz": [
+  2.05,
+  0.75,
+  1.0
+ ],
+ "mesh_nodes": [
+  "Frame",
+  "Top"
+ ]
+}

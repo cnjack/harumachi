@@ -17,6 +17,9 @@ const TARGETS := [
 	["bakery", "CafeTable_0", "cafe", 0],
 	["bakery", "CafeTable_0", "cafe_side", 1],
 	["bakery", "I02_cake_showcase", "cake_glass", 0],
+	["bakery", "I02_cake_showcase", "cake_glass_side", 1],
+	["bakery", "I02_cake_showcase", "cake_glass_night", 2],
+	["bakery", "EspressoStation", "coffee_night", 2],
 	["bakery", "I04_shop_counter", "bakery_play_camera", 5],
 	["store", "I04_shop_counter", "store_counter_rotated", 0],
 	["store", "P_gondola", "store_rack", 0],
@@ -34,6 +37,7 @@ const TARGETS := [
 	["workroom", "ReadingChair_0", "reading_chair", 0],
 	["home_haru", "FamilyLowTable", "family_table", 0],
 	["home_haru", "AoiDrawingDesk", "drawing_desk", 0],
+	["home_ren", "AfterClosingTable", "ren_packing_table", 0],
 	["toolshed", "DirtyWorkBench", "toolshed", 0],
 	["florist", "FlowerWrapping", "florist", 0],
 	["post", "PostalCounter", "postal_counter", 0],
@@ -67,6 +71,7 @@ func frames(count: int) -> void:
 func target(root: Node, key: String, region: String) -> Node3D:
 	if region=="farm" and root==main.world.farm.lakeside:return null
 	if root is Node3D and (root.name==key or str(root.get_meta("model_id",""))==key):
+		if root is MeshInstance3D and root.get_parent().has_meta("hyper3d_reuse"):return root.get_parent() as Node3D
 		var x: float=(root as Node3D).global_position.x
 		if region!="town" or x<500.0:return root as Node3D
 	for child: Node in root.get_children():
@@ -145,12 +150,12 @@ func _run() -> void:
 		var extent: float=maxf(.65,maxf(bounds.size.x,maxf(bounds.size.y,bounds.size.z)))
 		var centre: Vector3=item.to_global(bounds.get_center())
 		var direction:=Vector3(-.65,.60,1.38) if variant==1 else Vector3(.62,.64,1.42)
-		if label in ["coffee","fridge","freezer"]:direction=Vector3(-.75,.75,1.15)
+		if label in ["coffee","coffee_night","fridge","freezer"]:direction=Vector3(-.75,.75,1.15)
 		if label.begins_with("cafe"):direction=Vector3(.40,1.0,-1.30) if variant==0 else Vector3(-.60,.80,-1.25)
 		if label.ends_with("rack_back"):direction=Vector3(-.6,.64,-1.42)
 		if label in ["family_table","drawing_desk"]:direction=Vector3(.45,1.10,.80)
 		if label=="coffee_detail":direction=Vector3(.12,.65,1.15);centre+=Vector3.UP*.20
-		if label=="postal_detail":extent=.85;direction=Vector3(-.20,1.1,1.05);centre+=Vector3(-.25,.02,.04)
+		if label=="postal_detail":extent=.85;direction=Vector3(-.20,1.1,1.05);centre=item.to_global(Vector3(bounds.get_center().x-.25,bounds.end.y+.02,bounds.get_center().z+.04))
 		var offset: Vector3=item.global_basis.orthonormalized()*direction*extent
 		if label in ["home_books","home_tansu"]:offset=Vector3(1.25,.25,.20)*extent
 		camera.global_position=centre+offset;camera.look_at(centre);camera.make_current();camera.reset_physics_interpolation()
@@ -159,7 +164,13 @@ func _run() -> void:
 		else:camera.fov=43
 		var context: Dictionary={"region":region,"node":str(item.get_path()),"minute":GameState.minute,"weather":GameState.weather,"camera":vec(camera.global_position),"target":vec(centre),"bounds_size":vec(bounds.size)}
 		await capture(label,context)
-		if label in ["oven","bakery_counter","cafe","toolshed","town_bench"]:
+		if label=="coffee_detail":
+			var hopper: Node3D=item.find_child("HopperGlass",true,false) as Node3D
+			if hopper!=null:
+				hopper.visible=false
+				await capture(label+"_glass_hidden",context)
+				hopper.visible=true
+		if label in ["oven","bakery_counter","cafe","toolshed","town_bench","cake_glass","coffee_detail"]:
 			await control(item,label+"_gloss_off",context,["sheen_strength","gloss_strength"])
 			await control(item,label+"_wear_off",context,["wear_strength"])
 	FileAccess.open(folder.path_join("manifest.json"),FileAccess.WRITE).store_string(JSON.stringify({"kind":"actual_native_furniture_diagnostic","passed":failures.is_empty(),"failures":failures,"screenshots":rows},"\t"))

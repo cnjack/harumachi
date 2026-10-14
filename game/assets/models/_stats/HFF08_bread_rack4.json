@@ -1,0 +1,22 @@
+{
+ "id": "HFF08_bread_rack4",
+ "src": "raw/hyper3d_furniture_20261015/assembled/HFF08_bread_rack4.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 40413,
+ "tex": 2048,
+ "bytes": 3846348,
+ "godot_size_m_xyz": [
+  1.07,
+  1.51,
+  0.62
+ ],
+ "mesh_nodes": [
+  "RackFrame",
+  "TrayBoard_0",
+  "TrayBoard_1",
+  "TrayBoard_2",
+  "TrayBoard_3"
+ ]
+}

@@ -1,20 +1,20 @@
 {
  "id": "J07_kotatsu",
- "src": "raw/J07_kotatsu/model.glb",
- "provider": "hunyuan hy-3d-3.1",
- "tris_src": 15987,
- "tris": 5999,
- "size_m": [
-  1.45,
-  1.5,
-  0.446
- ],
+ "src": "raw/hyper3d_furniture_20261015/assembled/J07_kotatsu.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High source geometry, original UVs and atlas, fitted and assembled in Blender",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 43394,
+ "tex": 2048,
+ "bytes": 3762428,
  "godot_size_m_xyz": [
   1.45,
   0.446,
   1.5
  ],
- "tex": 1024,
- "bytes": 303572,
- "yaw_fix": 0
+ "mesh_nodes": [
+  "Frame",
+  "KotatsuQuilt",
+  "Top"
+ ]
 }

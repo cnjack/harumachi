@@ -1,12 +1,12 @@
 {
  "id": "P_low_bookcase",
- "src": "raw/inhabited_places_20261010/P_low_bookcase.glb",
- "provider": "Blender precise joinery from imagegen inhabited room references",
+ "src": "raw/hyper3d_furniture_20261015/assembled/P_low_bookcase.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High source geometry, original UVs and atlas, fitted and assembled in Blender",
  "preserve_parts": true,
  "origin_preserved": true,
- "tris": 1848,
- "tex": 1024,
- "bytes": 229556,
+ "tris": 40314,
+ "tex": 2048,
+ "bytes": 4039476,
  "godot_size_m_xyz": [
   1.35,
   1.09,
@@ -45,15 +45,9 @@
   "Book_1_7",
   "Book_1_8",
   "Book_1_9",
-  "ShelfBack",
-  "ShelfFoot",
-  "ShelfUpright",
-  "ShelfUpright.001",
+  "RackFrame",
   "TrayBoard_0",
   "TrayBoard_1",
-  "TrayBoard_2",
-  "TrayLip_0",
-  "TrayLip_1",
-  "TrayLip_2"
+  "TrayBoard_2"
  ]
 }

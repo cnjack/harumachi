@@ -7,7 +7,7 @@ const BOUNDS := {
 	"P_cafe_table": [Vector3(-.9475, 0, -.36), Vector3(.9475, .89, .36)],
 	"P_community_table": [Vector3(-1.025, 0, -1.1175), Vector3(1.025, .89, 1.1175)],
 	"P_reading_chair": [Vector3(-.3025, 0, -.255), Vector3(.3025, .89, .255)],
-	"I04_shop_counter": [Vector3(-1.055, 0, -.575), Vector3(1.055, 1.22, .6225)],
+	"I04_shop_counter": [Vector3(-1.055, 0, -.575), Vector3(1.055, 1.22, .575)],
 	"P_gondola": [Vector3(-.92, 0, -.31), Vector3(.92, 1.6, .31)],
 	"W17_display_shelf": [Vector3(-.545, 0, -.25), Vector3(.545, 1.25, .25)],
 	"I05_bread_shelf": [Vector3(-.535, 0, -.31), Vector3(.535, 1.51, .31)],
@@ -212,7 +212,7 @@ func run() -> void:
 		imported[id] = model
 	var timber_ids: Array[String] = []
 	for id: String in ROUNDED: timber_ids.append(id)
-	_bounds_contract(timber_ids, "all nine rebuilt furnishings retain their original footprint height and floor contact")
+	_bounds_contract(timber_ids, "all nine rebuilt furnishings retain reviewed footprints height and floor contact")
 	_bounds_contract(["P_deck_oven", "P_coffee_station"], "appliances retain their placed footprint and original working heights")
 	for id: String in ROUNDED:
 		var details: Dictionary = {}
@@ -233,7 +233,7 @@ func run() -> void:
 		var report: Dictionary = _support_plane(str(row[0]), [row[1]], float(row[2]), row[3])
 		if not report.ok: tabletop_errors[str(row[0])] = report
 	check("table and serving centers retain the original flat support patches beneath books dishes and food", tabletop_errors.is_empty(), str(tabletop_errors))
-	for row: Array in [["W17_display_shelf", [.354, .654, 1.004], .88, [-.11, .11]], ["I05_bread_shelf", [.274, .614, .944, 1.264], .82, [-.12, .15]], ["P_gondola", [.14, .48, .82, 1.16], 1.5, [-.17, -.065, .065, .17]], ["I02_cake_showcase", [.5735, .8135], .90, [-.11, .12]]]:
+	for row: Array in [["W17_display_shelf", [.36, .66, 1.01], .88, [-.11, .11]], ["I05_bread_shelf", [.28, .62, .95, 1.27], .82, [-.12, .15]], ["P_gondola", [.14, .48, .82, 1.16], 1.5, [-.17, -.065, .065, .17]], ["I02_cake_showcase", [.60, .84], .90, [-.11, .12]]]:
 		var report: Dictionary = _support_plane(str(row[0]), row[1], float(row[2]), row[3], .025)
 		check(str(row[0]) + " keeps every stocked shelf level and both product rows supported", bool(report.ok), str(report))
 	var procedural_errors: Dictionary = {}

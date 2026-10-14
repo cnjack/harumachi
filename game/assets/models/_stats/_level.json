@@ -36,16 +36,16 @@
   "verts": 10613
  },
  "A12_bench": {
-  "base_frac": 0.72,
+  "base_frac": 0.847,
   "normal": [
    0.0,
    0.0,
    -1.0
   ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
+  "rect_fill": 0.896,
+  "square_deg": 0.33,
   "tilt": 0.0,
-  "verts": 2160
+  "verts": 21530
  },
  "A13_chalkboard": {
   "base_frac": 0.737,
@@ -1175,6 +1175,174 @@
   "tilt": 0.12,
   "verts": 7439
  },
+ "HFF01_cafe_chair": {
+  "base_frac": 0.905,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.923,
+  "square_deg": 0.0,
+  "tilt": 0.0,
+  "verts": 20539
+ },
+ "HFF02_round_table": {
+  "base_frac": 0.304,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.786,
+  "square_deg": 35.17,
+  "tilt": 0.0,
+  "verts": 15654
+ },
+ "HFF03_rect_table": {
+  "base_frac": 0.855,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.995,
+  "square_deg": -0.06,
+  "tilt": 0.0,
+  "verts": 22629
+ },
+ "HFF04_low_table": {
+  "base_frac": 0.855,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.998,
+  "square_deg": -0.02,
+  "tilt": 0.0,
+  "verts": 21596
+ },
+ "HFF05_utility_stand": {
+  "base_frac": 0.471,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.975,
+  "square_deg": 0.0,
+  "tilt": 0.0,
+  "verts": 23095
+ },
+ "HFF06_indoor_bench": {
+  "base_frac": 0.858,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.996,
+  "square_deg": 0.0,
+  "tilt": 0.0,
+  "verts": 21128
+ },
+ "HFF07_sage_counter": {
+  "base_frac": 0.877,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.999,
+  "square_deg": -0.01,
+  "tilt": 0.0,
+  "verts": 23922
+ },
+ "HFF08_bread_rack4": {
+  "base_frac": 0.945,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.983,
+  "square_deg": -0.01,
+  "tilt": 0.0,
+  "verts": 24664
+ },
+ "HFF09_bread_rack3": {
+  "base_frac": 0.499,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.987,
+  "square_deg": 0.17,
+  "tilt": 0.0,
+  "verts": 22974
+ },
+ "HFF10_wall_shelf": {
+  "base_frac": 0.226,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.987,
+  "square_deg": 0.0,
+  "tilt": 0.0,
+  "verts": 20511
+ },
+ "HFF11_glass_case": {
+  "base_frac": 0.946,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.999,
+  "square_deg": 0.0,
+  "tilt": 0.0,
+  "verts": 22827
+ },
+ "HFF12_reading_armchair": {
+  "base_frac": 0.997,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.975,
+  "square_deg": 0.0,
+  "tilt": 0.0,
+  "verts": 21636
+ },
+ "HFF13_espresso_station": {
+  "base_frac": 0.764,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.992,
+  "square_deg": 0.0,
+  "tilt": 0.0,
+  "verts": 41027
+ },
+ "HFF14_outdoor_bench": {
+  "base_frac": 0.847,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.896,
+  "square_deg": 0.33,
+  "tilt": 0.0,
+  "verts": 21530
+ },
  "I01_bed": {
   "base_frac": 0.836,
   "normal": [
@@ -1188,7 +1356,7 @@
   "verts": 4065
  },
  "I02_cake_showcase": {
-  "base_frac": 0.969,
+  "base_frac": 0.946,
   "normal": [
    0.0,
    0.0,
@@ -1197,7 +1365,7 @@
   "rect_fill": 0.999,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 7656
+  "verts": 22827
  },
  "I02_desk": {
   "base_frac": 0.951,
@@ -1248,28 +1416,28 @@
   "verts": 4051
  },
  "I04_shop_counter": {
-  "base_frac": 0.884,
+  "base_frac": 0.883,
   "normal": [
    0.0,
    0.0,
    -1.0
   ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
+  "rect_fill": 0.989,
+  "square_deg": 0.07,
   "tilt": 0.0,
-  "verts": 7708
+  "verts": 24594
  },
  "I05_bread_shelf": {
-  "base_frac": 0.98,
+  "base_frac": 0.945,
   "normal": [
    0.0,
    0.0,
    -1.0
   ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
+  "rect_fill": 0.983,
+  "square_deg": -0.01,
   "tilt": 0.0,
-  "verts": 10904
+  "verts": 24664
  },
  "I05_wardrobe": {
   "base_frac": 0.943,
@@ -1380,16 +1548,16 @@
   "verts": 4556
  },
  "J03_dining_set": {
-  "base_frac": 0.817,
+  "base_frac": 0.869,
   "normal": [
-   -0.0005,
-   0.0077,
+   0.0,
+   0.0,
    -1.0
   ],
-  "rect_fill": 0.896,
-  "square_deg": 0.02,
-  "tilt": 0.44,
-  "verts": 7090
+  "rect_fill": 0.86,
+  "square_deg": -0.1,
+  "tilt": 0.0,
+  "verts": 63743
  },
  "J04_rice_cabinet": {
   "base_frac": 0.894,
@@ -1428,7 +1596,7 @@
   "verts": 7234
  },
  "J07_kotatsu": {
-  "base_frac": 0.999,
+  "base_frac": 0.996,
   "normal": [
    0.0,
    0.0,
@@ -1437,7 +1605,7 @@
   "rect_fill": 0.981,
   "square_deg": -0.12,
   "tilt": 0.0,
-  "verts": 4180
+  "verts": 25531
  },
  "J08_fan": {
   "base_frac": 0.434,
@@ -1980,16 +2148,16 @@
   "verts": 4134
  },
  "P_cafe_table": {
-  "base_frac": 0.687,
+  "base_frac": 0.76,
   "normal": [
    0.0,
    0.0,
    -1.0
   ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
+  "rect_fill": 0.972,
+  "square_deg": 0.41,
   "tilt": 0.0,
-  "verts": 16274
+  "verts": 56732
  },
  "P_chest": {
   "base_frac": 0.83,
@@ -2040,7 +2208,7 @@
   "verts": 4564
  },
  "P_coffee_station": {
-  "base_frac": 0.839,
+  "base_frac": 0.764,
   "normal": [
    0.0,
    0.0,
@@ -2049,19 +2217,19 @@
   "rect_fill": 0.992,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 20848
+  "verts": 41027
  },
  "P_community_table": {
-  "base_frac": 0.918,
+  "base_frac": 0.957,
   "normal": [
    0.0,
    0.0,
    -1.0
   ],
-  "rect_fill": 0.983,
+  "rect_fill": 0.969,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 40756
+  "verts": 145863
  },
  "P_deck_oven": {
   "base_frac": 0.876,
@@ -2088,16 +2256,16 @@
   "verts": 26262
  },
  "P_gondola": {
-  "base_frac": 0.944,
+  "base_frac": 0.965,
   "normal": [
    0.0,
    0.0,
    -1.0
   ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
+  "rect_fill": 0.995,
+  "square_deg": 0.05,
   "tilt": 0.0,
-  "verts": 114583
+  "verts": 49358
  },
  "P_library_bucket": {
   "base_frac": 0.516,
@@ -2148,16 +2316,16 @@
   "verts": 192
  },
  "P_low_bookcase": {
-  "base_frac": 0.949,
+  "base_frac": 0.505,
   "normal": [
    0.0,
    0.0,
    -1.0
   ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
+  "rect_fill": 0.987,
+  "square_deg": 0.14,
   "tilt": 0.0,
-  "verts": 4032
+  "verts": 26018
  },
  "P_offer_stand": {
   "base_frac": 0.694,
@@ -2172,16 +2340,16 @@
   "verts": 1848
  },
  "P_reading_chair": {
-  "base_frac": 0.55,
+  "base_frac": 0.997,
   "normal": [
    0.0,
    0.0,
    -1.0
   ],
-  "rect_fill": 0.909,
+  "rect_fill": 0.975,
   "square_deg": 0.0,
   "tilt": 0.0,
-  "verts": 10166
+  "verts": 21636
  },
  "P_shop_wall_frame": {
   "base_frac": 0.73,
@@ -3024,16 +3192,16 @@
   "verts": 24408
  },
  "W17_display_shelf": {
-  "base_frac": 0.987,
+  "base_frac": 0.499,
   "normal": [
    0.0,
    0.0,
    -1.0
   ],
-  "rect_fill": 1.0,
-  "square_deg": 0.0,
+  "rect_fill": 0.987,
+  "square_deg": 0.17,
   "tilt": 0.0,
-  "verts": 8816
+  "verts": 22974
  },
  "W18_retro_tv": {
   "base_frac": 0.657,

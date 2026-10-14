@@ -329,6 +329,10 @@ func _run() -> void:
 	var dir := _arg("shots", "user://shots")
 	DirAccess.make_dir_recursive_absolute(dir)
 	var catalog: Dictionary = VIEWS.duplicate(true)
+	for room_id: String in ResidentPlaces.SPECS:
+		var room_spec: Dictionary=ResidentPlaces.SPECS[room_id]
+		var room_size: Vector2=room_spec.size
+		catalog["hyper3d_room_"+room_id]={"interior":room_id,"at":Vector3(0,.05,1.0),"time":12.0,"pitch":49.0,"dist":maxf(room_size.x,room_size.y)*.85+2.0,"face":180.0}
 	catalog.merge(load("res://scripts/world/distant_mountains.gd").capture_views())
 	catalog.merge(load("res://scripts/world/scene_lifecycle_capture.gd").capture_views())
 	for hour: float in [12.0,21.0]:

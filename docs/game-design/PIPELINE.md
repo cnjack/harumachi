@@ -1,12 +1,20 @@
 # 模型、工程与交付流程
 
-## 家具形体与反射验收（2026-10-14）
+## Hyper3D家具与真实玻璃（2026-10-15）
+
+14个不可变原始GLB与逐件来源位于`art/library/hyper3d_furniture_20261015/`，14张参考图及提示记录位于对应references、manifests目录。原始生成均为不透明单网格，不能直接宣称具备可用玻璃。按源目录README依次运行木作、玻璃柜、咖啡台准备工具和组合工具，再按`game_assets.json`的本批27个ID导出；此流程不调用付费生成。
+
+12个木作单体须保持原三角面数量、UV和图集RGB像素，修承重面时同步原位置相同的UV接缝副本。玻璃柜保留生成柜体，局部窗洞配5块6毫米薄玻璃；咖啡豆仓使用闭合3毫米壳。离线通透射线、商品支撑和原生正侧面/昼夜截图都要通过。不同尺寸复用使用实际网格资源作为缓存键，长边转向与UV一起旋转；墙架需要真实后背接触实际墙面。
+
+`--only=furniture-hyper3d`为11项，`--only=furniture-forms`共87项。`--furniture-finish-review`输出63张图；11处新室内使用`hyper3d_room_<房间ID>`视角。解压应用另验38项坐姿和205项完整演示。质量清单使用`art/models/model_quality_contracts.json`；烤箱作为实际多部件组装检查10种材质的已用面片面积，删去真实玻璃时必须失败。最新交付见[本轮记录](HYPER3D_FURNITURE_20261015.md)及`evidence/hyper3d_furniture_20261015/delivery.json`。
+
+## 前次家具形体与反射验收（2026-10-14）
 
 先从`art/library/furniture_forms_20261014/source/`及`art/library/appliance_forms_20261014/source/`读取不变的前身GLB，再运行`art/tools/refine_furniture_forms_20261014.py`与`art/tools/refine_appliance_forms_20261014.py`生成可编辑Blender源和中间GLB，经`game_export.py`导出。两张imagegen材质原图及提示词见`art/manifests/furniture_forms_textures_20261014.json`，批准的8张预览在`art/references/furniture_forms_20261014/`。完整命令见[FURNITURE_FORMS](FURNITURE_FORMS_20261014.md)。
 
 测量实际曲率、座面、桌面与货架支撑，更新`model_audit`、`level_check.py`及`model_quality_check.py`记录。`--only=furniture-forms`共76项，包含32项新增与44项已有材质回归。`FurnitureForms`仅在构建时缓存圆角网格；木漆和家电通过自定义两段漫反射与GGX保留环境反射，不能再启用会把零金属表面间接反射乘成零的`diffuse_toon`。
 
-`--furniture-finish-review`现在输出54张图，包含货架前后、弧背侧面、日夜雨天及光泽/磨耗关闭对照。解压应用另外拍7张实际坐姿/全景，运行`--seating-demo`与完整`--autoplay`。最新交付为`evidence/furniture_forms_20261014/delivery.json`；前次材质记录保持历史身份。
+此前家具形体批次`--furniture-finish-review`输出54张图，包含货架前后、弧背侧面、日夜雨天及光泽/磨耗关闭对照。解压应用另外拍7张实际坐姿/全景，运行`--seating-demo`与完整`--autoplay`。该历史交付为`evidence/furniture_forms_20261014/delivery.json`；前次材质记录保持历史身份。
 
 ## 前次家具材质验收（2026-10-14）
 
@@ -270,7 +278,7 @@ Godot 这边是 `Audio` 自动加载（`game/scripts/autoload/audio.gd`）：
 
 - **材质视频样板（2026-10-06）**：`art/poc/material_review_20261006/godot/` 是独立 Godot 4.7.2 Forward+ 工程，六种地表各有 A/B；四张 imagegen 图用于实际材质，已有 Hyper3D 住宅用于实景。运行 `python3 art/poc/material_review_20261006/record.py --tag review` 原生录制 40 秒 1080p/30fps 并编码 MP4；视频、8 张截图、日志和检查在 `evidence/material_review_20261006_v1/`。窗口 override 与录制分辨率保持一致，避免 Movie Maker 输出 720p 而截图仍为 1080p。隔离工程不加载游戏 autoload，不修改默认存档。详见该 POC 的 README。
 
-- 自动测试：`res://scenes/tests.tscn`，当前2235项，全量通过；含规则、SQLite、UI、模型摆放、路线、生活、完整夏季和镜头检查。独立HARUMACHI_SAVE_DIR、超时与SCRIPT ERROR检查必须同时使用；全量不与其他Godot实例并发。专项入口与数量见AGENTS，最终数以JSON报告为准。
+- 自动测试：`res://scenes/tests.tscn`，当前2246项，全量通过；含规则、SQLite、UI、模型摆放、路线、生活、完整夏季和镜头检查。独立HARUMACHI_SAVE_DIR、超时与SCRIPT ERROR检查必须同时使用；全量不与其他Godot实例并发。专项入口与数量见AGENTS，最终数以JSON报告为准。
 - 卡顿检查要让时钟实际推进，记录逐帧耗时，不能只看平均FPS。工具`evidence/desktop_stutter_20261007/perf_probe.gd`的`--fixed`模式在真实起床卧室和商店街记录480帧，截图回读放在计时之后；使用固定引擎、置顶原生窗口和独立存档。运动清晰度检查在固定镜头距离下核对人物与镜头的渲染插值位置，镜头避障另跑`--only=camera-body`。桌面缓存用晚会专项检查移动、旋转后的实际食物支撑；方法与结果见[卡顿修复](DESKTOP_STUTTER_20261008.md)。
 - 自动演示：普通标题入口`--autoplay`沿实际碰撞路径、Story交互、摆放控制器、料理面板、灯笼输入、日历赴约和拍照完成新夏季至Q15，检查控制与保存恢复。本轮解压包205项通过，最终报告及关键截图在本轮证据目录。自动对白与阶段暂停明确记录，不作为自然四小时；`--showcase`是节日展示夹具。打印的AP mark/frame用于录像剪辑。
 - 录制时游戏窗口不能被别的窗口完全挡住：macOS 会停止给被挡住的窗口画帧，演示就停在原地。用 `-t --position <x>,<y>` 置顶并放到屏幕角落。

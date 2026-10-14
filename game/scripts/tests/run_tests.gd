@@ -30,7 +30,10 @@ func _ready() -> void:
 	main.ui.instant = true
 	main.ui.auto_work_priority = true # this suite follows its declared work route; the topic-choice suite overrides it
 	await frames(10)
-	if OS.get_cmdline_user_args().has("--only=furniture-forms"):
+	if OS.get_cmdline_user_args().has("--only=furniture-hyper3d"):
+		await load("res://scripts/tests/hyper3d_furniture_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=furniture-forms"):
+		await load("res://scripts/tests/hyper3d_furniture_checks.gd").new(self).run()
 		await load("res://scripts/tests/furniture_form_checks.gd").new(self).run()
 		await load("res://scripts/tests/furniture_wood_checks.gd").new(self).run()
 		await load("res://scripts/tests/appliance_finish_checks.gd").new(self).run()
@@ -277,6 +280,7 @@ func _ready() -> void:
 		await load("res://scripts/tests/environment_visual_checks.gd").new(self).run()
 		await load("res://scripts/tests/tree_locomotion_checks.gd").new(self).run()
 	if not Array(OS.get_cmdline_user_args()).any(func(arg: String)->bool:return arg.begins_with("--only=")):
+		await load("res://scripts/tests/hyper3d_furniture_checks.gd").new(self).run()
 		await load("res://scripts/tests/furniture_form_checks.gd").new(self).run()
 		await load("res://scripts/tests/furniture_wood_checks.gd").new(self).run()
 		await load("res://scripts/tests/appliance_finish_checks.gd").new(self).run()
@@ -2060,7 +2064,7 @@ func model_inventory_checks() -> void:
 	var detail: Dictionary = report.get("details", {})
 	check("PROPS", "all game models have a fresh size, UV and topology inventory", models.size() >= 153 and stale.is_empty(), str(stale))
 	check("PROPS", "anime assets do not inherit metallic or normal maps", bool(quality.get("matte_materials", false)), str(detail.get("matte", [])))
-	check("PROPS", "solid regenerated props retain continuous surfaces after reduction", bool(quality.get("continuous_surfaces", false)), str(detail.get("fragmented", [])))
+	check("PROPS", "single props retain continuous surfaces and declared appliances retain their closed real parts", bool(quality.get("continuous_surfaces", false)), str(detail.get("fragmented", [])))
 	check("PROPS", "large rebuilt houses retain sufficient albedo pixels per metre", bool(quality.get("building_density", false)), str(detail.get("density", [])))
 	check("PROPS", "apartment retains six independently textured facades above 280 pixels per metre", bool(quality.get("apartment_modular_detail", false)), str(detail.get("apartment_modules", {})))
 	check("PROPS", "rebuilt houses and shed preserve their measured footprint", bool(quality.get("physical_bounds", false)), str(detail.get("bounds", [])))

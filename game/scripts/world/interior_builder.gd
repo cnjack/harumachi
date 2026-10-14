@@ -375,13 +375,25 @@ func _stock_gondolas() -> void:
 
 ## Wooden wall shelf with goods facing into the room (and so toward the camera).
 func _wall_shelf(at: Vector3, length: float, yaw: float, levels: Array, cells: Array) -> void:
-	var wood := wb.house.wood_mat(false)
 	var n := Node3D.new()
 	n.position = at
 	n.rotation.y = yaw
 	add_child(n)
 	n.name="WallStockShelf_%d"%wall_shelves.size()
 	n.set_meta("levels",levels);n.set_meta("shelf_length",length);wall_shelves.append(n)
+	if kind == "bakery":
+		var generated: Node3D = wb.spawn("HFF10_wall_shelf", Vector3(0, float(levels[0])-.25, -.01), 0, 0, n)
+		generated.scale.x = length / 1.6
+		var wall_point: Vector3=n.to_global(Vector3(0,1.7,-.20))
+		for wall_mesh: MeshInstance3D in WorldBuilder.find_meshes(self):
+			if not wall_mesh.mesh is BoxMesh:continue
+			var wall_box: AABB=wall_mesh.global_transform*wall_mesh.get_aabb()
+			if wall_box.size.z<=.17 and wall_box.size.y>1.7 and wall_box.has_point(wall_point):
+				generated.set_meta("wall_mount_surface",generated.get_path_to(wall_mesh))
+				break
+		HouseBuilder.toonify(generated)
+		return
+	var wood := wb.house.wood_mat(false)
 	for shelf_index: int in levels.size():
 		var shelf_y: float=levels[shelf_index]
 		var plank:=MeshInstance3D.new();plank.name="ShelfBoard_%d"%shelf_index
@@ -438,12 +450,7 @@ func _outside(w: float, d: float) -> void:
 
 
 func _worktable() -> void:
-	var wood := wb.house.wood_mat(false)
-	_box(Vector3(1.6, 0.06, 0.8), Vector3(1.4, 0.86, -3.2), wood)
-	for x in [.7,2.1]:
-		for z in [-3.50,-2.90]:
-			_box(Vector3(0.06, 0.84, 0.06), Vector3(x, 0.42, z), wood)
-	_collider(Vector3(1.6, 0.9, 0.8), Vector3(1.4, 0.45, -3.2), WorldBuilder.L_SOLID)
+	PublicPlaceArt.bench(self,"DoughWorktable",Vector3(1.4,0,-3.2),1.6,.8,.89)
 	var dough := StandardMaterial3D.new()
 	dough.albedo_color = Color(0.96, 0.9, 0.78)
 	dough.diffuse_mode = BaseMaterial3D.DIFFUSE_TOON

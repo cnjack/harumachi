@@ -4,6 +4,7 @@ var t: Object
 var main: Node
 const METAL_PATH := "res://shaders/appliance_metal.gdshader"
 const GLASS_PATH := "res://shaders/appliance_glass.gdshader"
+const HOPPER_PATH := "res://shaders/appliance_hopper_glass.gdshader"
 const IDS := ["P_deck_oven", "P_coffee_station", "I03_drink_fridge", "I07_ice_freezer"]
 
 func _init(runner: Object) -> void:
@@ -81,7 +82,7 @@ func _glass(rows: Array[Dictionary], count: int, opacity: float) -> bool:
 		return false
 	for row: Dictionary in rows:
 		var active: Material = row.active
-		if not _uses(active, GLASS_PATH):
+		if not (_uses(active, GLASS_PATH) or (_uses(active, HOPPER_PATH) and row.original.resource_name == "Coffee_HopperGlass")):
 			return false
 		var finish: ShaderMaterial = active as ShaderMaterial
 		var source: StandardMaterial3D = row.original as StandardMaterial3D
@@ -217,7 +218,7 @@ func run() -> void:
 	check("both actual espresso cabinet pulls receive brass rather than steel", _metal_area(_surfaces(coffee, "Brass"), 2, .006) and _contains_geometry(coffee, "Brass", Vector3(-.24, .65, .345), .07) and _contains_geometry(coffee, "Brass", Vector3(.24, .65, .345), .07))
 	var painted_parts: Array[Dictionary] = _surfaces(coffee, "Cream")
 	painted_parts.append_array(_surfaces(coffee, "Sage"))
-	check("espresso timber grounds rubber enamel cups and transparent hopper keep distinct materials after batching", _kept_roles(coffee, ["Cedar", "CedarDark", "Coffee", "Charcoal"]) and _metal_area(painted_parts, 0, 1.5) and _glass(_surfaces(coffee, "Coffee_HopperGlass"), 1, .25))
+	check("espresso timber coffee rubber paint and transparent hopper keep distinct materials after batching", _kept_roles(coffee, ["Hyper3D_TimberAtlas", "Coffee", "Charcoal"]) and _metal_area(painted_parts, 0, 1.5) and _glass(_surfaces(coffee, "Coffee_HopperGlass"), 1, .12))
 	check("cold cabinet shelves and pulls retain different steel and brass roles", _metal(_surfaces(fridge, "BrushedSteel"), 1, 4) and _metal(_surfaces(fridge, "Brass"), 2, 2))
 	check("both cold cabinet glass doors preserve their clear twelve percent tint", _glass(_surfaces(fridge, "Glass"), 2, .12))
 	var freezer_paint: Array[Dictionary] = _surfaces(freezer, "freezer_white")

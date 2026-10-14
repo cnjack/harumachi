@@ -1,20 +1,25 @@
 {
  "id": "J03_dining_set",
- "src": "raw/J03_dining_set/model.glb",
- "provider": "hunyuan hy-3d-3.1",
- "tris_src": 15998,
- "tris": 8000,
- "size_m": [
-  1.5,
-  1.001,
-  0.893
- ],
+ "src": "raw/hyper3d_furniture_20261015/assembled/J03_dining_set.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High source geometry, original UVs and atlas, fitted and assembled in Blender",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 113638,
+ "tex": 2048,
+ "bytes": 8486520,
  "godot_size_m_xyz": [
   1.5,
-  0.893,
+  0.89,
   1.001
  ],
- "tex": 1024,
- "bytes": 378752,
- "yaw_fix": 0
+ "mesh_nodes": [
+  "DiningLeftBack",
+  "DiningLeftFrame.001",
+  "DiningLeftSeat",
+  "DiningRightBack",
+  "DiningRightFrame.001",
+  "DiningRightSeat",
+  "Frame",
+  "Top"
+ ]
 }
