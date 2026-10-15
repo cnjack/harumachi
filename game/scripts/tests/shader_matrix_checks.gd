@@ -64,27 +64,29 @@ func run() -> void:
 			var material: ShaderMaterial=mesh.get_active_material(surface) as ShaderMaterial
 			if material==null or material.shader==null:continue
 			var names: Dictionary=declarations(material.shader)
-			if not names.has("part_transform"):continue
+			var engraved: bool=parameter_bool(material,names,"engraving_enabled")
+			if not names.has("part_transform") and not engraved:continue
+			var matrix_name: String="engraving_transform" if engraved else "part_transform"
 			bindings+=1
 			unique[material.get_instance_id()]=true
 			var path: String=material.shader.resource_path.get_file()
 			var kind_value: Variant=material.get_shader_parameter("finish_kind") if names.has("finish_kind") else null
 			var kind: int=int(kind_value) if kind_value!=null else (0 if names.has("finish_kind") else -1)
 			var measured_timber: bool=path=="painted_finish.gdshader" and parameter_bool(material,names,"timber_detail") and kind!=4
-			var role: String=path
+			var role: String="engraved_timber_space" if engraved else path
 			if path=="painted_finish.gdshader":
 				role="notice_kind4" if kind==4 else ("timber_measurement_space" if measured_timber else "original_surface_finish_apply")
 			elif path in ["sign_support_refined.gdshader","direction_support.gdshader"]:role="direction_or_sign_support"
 			categories[role]=int(categories.get(role,0))+1
 			var label: String="%s surface%d %s"%[mesh.get_path(),surface,role]
-			var value: Variant=material.get_shader_parameter("part_transform")
+			var value: Variant=material.get_shader_parameter(matrix_name)
 			if not value is Projection:
 				type_bad.append("%s stored%s"%[label,type_string(typeof(value))])
 				geometry_bad.append(label+" has no usable Projection")
 				continue
 			var actual: Projection=value as Projection
 			var expected_transform:=Transform3D.IDENTITY
-			var root: Node3D=model_root(mesh)
+			var root: Node3D=instance_from_id(int(material.get_meta("engraving_root",0))) as Node3D if engraved else model_root(mesh)
 			if measured_timber:
 				pure_timber+=1
 			elif root==null:
@@ -108,7 +110,7 @@ func run() -> void:
 			var round_trip: float=(mesh.global_basis*(Vector3(returned.x,returned.y,returned.z)-point)).length()
 			if maximum_error>.00001 or point_error>.0002 or round_trip>.0002 or absf(mapped.w-1.0)>.00001:
 				geometry_bad.append("%s matrix%.8f point%.8f roundtrip%.8f"%[label,maximum_error,point_error,round_trip])
-	var required: Array[String]=["notice_kind4","direction_or_sign_support","chalk_face.gdshader","public_facade_finish.gdshader","original_surface_finish_apply","timber_measurement_space"]
+	var required: Array[String]=["notice_kind4","engraved_timber_space","chalk_face.gdshader","public_facade_finish.gdshader","original_surface_finish_apply","timber_measurement_space"]
 	for role: String in required:
 		if int(categories.get(role,0))==0:geometry_bad.append("missing actual material family "+role)
 	check("every active part_transform mat4 stores a Projection including original SurfaceFinish",bindings>0 and type_bad.is_empty(),str({"bindings":bindings,"unique_materials":unique.size(),"bad":type_bad}))

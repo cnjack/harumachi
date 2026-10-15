@@ -17,3 +17,7 @@
 - `P_library_carton`、`P_library_bucket`、`P_library_stool`来自维护者提供的`YNA. BU S2.blend`，重新整理独立网格与材质。
 - 维护者于2026-10-12明确确认拥有游戏商用及公开衍生源文件授权。保留第三方权利；这些衍生素材不因本仓库的MIT协议而自动获得额外再许可。来源、对象名和原始文件摘要见`art/manifests/models_reviewed_library.json`。
 - Komikaze仅作基础卡通材质的效果参考，新增Godot着色器为独立实现，没有包含其节点库。Coloso课程文件、贴图和节点组未复制到游戏或仓库。
+
+## 2026-10-15 无文字组合道具
+
+13个Hyper3D单体、3个本地组合导出及候车亭修复按对应账户/原始来源条款使用，未改称第三方素材为CC0。原始输出、任务链接与SHA256保存在`art/library/modular_props_20261015/provenance.json`，可编辑Blender文件和参考图随仓库保留；字体刻字继续使用项目已有OFL字体。维护者已授权游戏商用及公开源文件，原服务与字体权利继续保留。

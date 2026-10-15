@@ -1,0 +1,2518 @@
+{
+  "schema_version": 1,
+  "selected_scope": [
+    "S01",
+    "S02",
+    "S03",
+    "S05",
+    "S06",
+    "S07",
+    "S13",
+    "S14",
+    "S19",
+    "S20",
+    "S21",
+    "S22",
+    "S23",
+    "S24",
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07"
+  ],
+  "generated_models": 13,
+  "assembled_models": 3,
+  "assets": {
+    "MS01_signpost": {
+      "label": "木路标立柱",
+      "reference": "art/references/modular_props_20261015/MS01_signpost.png",
+      "generation": {
+        "asset": "MS01_signpost",
+        "candidate": "a",
+        "generation_id": "95472a66-f79c-4c07-a0b8-3376687a71ae",
+        "source": "Hyper3D CLI Gen-2.5-High",
+        "reference": "art/references/modular_props_20261015/MS01_signpost.png",
+        "selected_file": "base_basic_pbr.glb",
+        "sha256": "b33ed60d5694879484661800aa12d781dc0f8ea88d708570dfb6ba3c93f6ec62",
+        "bytes": 7582980,
+        "status": "downloaded",
+        "task_url": "https://hyper3d.ai/workspace/rodin/95472a66-f79c-4c07-a0b8-3376687a71ae"
+      },
+      "preparation": {
+        "id": "MS01_signpost",
+        "source_sha256": "b33ed60d5694879484661800aa12d781dc0f8ea88d708570dfb6ba3c93f6ec62",
+        "prepared_sha256": "5831733619683ccfffd5eff098e20ef22b4c30f5f53f4f8854f5b53fa065ace7",
+        "source_generation": "95472a66-f79c-4c07-a0b8-3376687a71ae",
+        "original_triangles": 18000,
+        "prepared_triangles": 6500,
+        "nominal_size_m_xyz": [
+          0.16,
+          2.2,
+          0.16
+        ],
+        "local_changes": [
+          "affine metre-scale fit and base centering",
+          "up to 3mm foot leveling",
+          "limited coplanar triangle reduction with original UV interpolation"
+        ],
+        "atlas_repainted": false,
+        "source_front": "Godot +Z"
+      },
+      "export": {
+        "src": "raw/modular_props_20261015/ready/MS01_signpost.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+        "generation_id": "95472a66-f79c-4c07-a0b8-3376687a71ae",
+        "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+        "source_page": "https://hyper3d.ai/workspace/rodin/95472a66-f79c-4c07-a0b8-3376687a71ae"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "",
+          "id": "MS01_signpost",
+          "path": "R09/Post",
+          "position": [
+            22.6000003814697,
+            0.0,
+            -6.19999980926514
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS01_signpost",
+          "path": "P_signpost/Post",
+          "position": [
+            40.0,
+            0.0,
+            -7.19999980926514
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS01_signpost",
+          "path": "BuildSign/SignAssembly/Post_55",
+          "position": [
+            -2.04999995231628,
+            0.0,
+            1.6800000667572
+          ],
+          "scale": [
+            0.5,
+            0.636363625526428,
+            0.5
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS01_signpost",
+          "path": "BuildSign/SignAssembly/Post_-55",
+          "position": [
+            -3.14999985694885,
+            0.0,
+            1.6800000667572
+          ],
+          "scale": [
+            0.5,
+            0.636363625526428,
+            0.5
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS01_signpost",
+          "path": "Farm/Lakeside/P_signpost/Post",
+          "position": [
+            724.0,
+            0.0,
+            2.79999995231628
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS01_signpost",
+          "path": "Farm/P_signpost/Post",
+          "position": [
+            677.400024414062,
+            0.0,
+            1.89999997615814
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/MS01_signpost.blend",
+        "sha256": "3b867c7d7d11b0ae695d5c0c247a6aecfa1791a8cf5bbab42b99b899af714a17",
+        "bytes": 7293321
+      },
+      "game_sha256": "3e251686ec55dc76252a607cde0f16cf0436595edf18e1a2a7d643f7b547a5e4",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    },
+    "MS02_arrow_board": {
+      "label": "可翻转箭头板",
+      "reference": "art/references/modular_props_20261015/MS02_arrow_board.png",
+      "generation": {
+        "asset": "MS02_arrow_board",
+        "candidate": "a",
+        "generation_id": "fdc8387b-1db7-4aa5-9461-4474e7f4675b",
+        "source": "Hyper3D CLI Gen-2.5-High",
+        "reference": "art/references/modular_props_20261015/MS02_arrow_board.png",
+        "selected_file": "base_basic_pbr.glb",
+        "sha256": "7d9a3fdaaa4720585fe3339e7efa29da08566d531b56e018c4528a06f753aaf6",
+        "bytes": 8020488,
+        "status": "downloaded",
+        "task_url": "https://hyper3d.ai/workspace/rodin/fdc8387b-1db7-4aa5-9461-4474e7f4675b"
+      },
+      "preparation": {
+        "id": "MS02_arrow_board",
+        "source_sha256": "7d9a3fdaaa4720585fe3339e7efa29da08566d531b56e018c4528a06f753aaf6",
+        "prepared_sha256": "132f9bac892bfb6ba1de8ab1d81d603001a35275263999583c2af35f0909c2f9",
+        "source_generation": "fdc8387b-1db7-4aa5-9461-4474e7f4675b",
+        "original_triangles": 18000,
+        "prepared_triangles": 6500,
+        "nominal_size_m_xyz": [
+          1.1,
+          0.26,
+          0.05
+        ],
+        "local_changes": [
+          "affine metre-scale fit and base centering",
+          "up to 3mm foot leveling",
+          "limited coplanar triangle reduction with original UV interpolation"
+        ],
+        "atlas_repainted": false,
+        "source_front": "Godot +Z"
+      },
+      "export": {
+        "src": "raw/modular_props_20261015/ready/MS02_arrow_board.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+        "generation_id": "fdc8387b-1db7-4aa5-9461-4474e7f4675b",
+        "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+        "source_page": "https://hyper3d.ai/workspace/rodin/fdc8387b-1db7-4aa5-9461-4474e7f4675b"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "商店街",
+          "id": "MS02_arrow_board",
+          "path": "R09/Arrow_0",
+          "position": [
+            22.5,
+            1.85000002384186,
+            -6.41999959945679
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "住宅支巷",
+          "id": "MS02_arrow_board",
+          "path": "R09/Arrow_1",
+          "position": [
+            22.5,
+            1.45000004768372,
+            -5.98000001907349
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "河边农园",
+          "id": "MS02_arrow_board",
+          "path": "R09/Arrow_2",
+          "position": [
+            22.5,
+            1.04999995231628,
+            -6.41999959945679
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "河边农园",
+          "id": "MS02_arrow_board",
+          "path": "P_signpost/Arrow_0",
+          "position": [
+            40.2200012207031,
+            1.85000002384186,
+            -7.09999990463257
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "公交站",
+          "id": "MS02_arrow_board",
+          "path": "P_signpost/Arrow_1",
+          "position": [
+            39.7799987792969,
+            1.45000004768372,
+            -7.09999990463257
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "住宅支巷",
+          "id": "MS02_arrow_board",
+          "path": "P_signpost/Arrow_2",
+          "position": [
+            40.2200012207031,
+            1.04999995231628,
+            -7.09999990463257
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "镜波湖",
+          "id": "MS02_arrow_board",
+          "path": "Farm/Lakeside/P_signpost/Arrow_0",
+          "position": [
+            724.18701171875,
+            1.57250010967255,
+            2.88499999046326
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "沿河步道",
+          "id": "MS02_arrow_board",
+          "path": "Farm/Lakeside/P_signpost/Arrow_1",
+          "position": [
+            723.81298828125,
+            1.23250007629395,
+            2.88499999046326
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "钓鱼 · 木桥",
+          "id": "MS02_arrow_board",
+          "path": "Farm/Lakeside/P_signpost/Arrow_2",
+          "position": [
+            724.18701171875,
+            0.892499983310699,
+            2.88499999046326
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "菜地 · 温室",
+          "id": "MS02_arrow_board",
+          "path": "Farm/P_signpost/Arrow_0",
+          "position": [
+            677.619995117188,
+            1.85000002384186,
+            2.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "回晴町",
+          "id": "MS02_arrow_board",
+          "path": "Farm/P_signpost/Arrow_1",
+          "position": [
+            677.180053710938,
+            1.45000004768372,
+            2.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "河边 · 木桥",
+          "id": "MS02_arrow_board",
+          "path": "Farm/P_signpost/Arrow_2",
+          "position": [
+            677.619995117188,
+            1.04999995231628,
+            2.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/MS02_arrow_board.blend",
+        "sha256": "c24a70e0b98ae4c7972636f70e899d9e8d5d65f926f031010cce28fc5c2921b3",
+        "bytes": 7639672
+      },
+      "game_sha256": "c79bb651d93f9513e8a60a490c72ae03ab24b0da04d53aa1ae9d316e3cf6ef4b",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    },
+    "MS03_garden_board": {
+      "label": "农园落地名牌",
+      "reference": "art/references/modular_props_20261015/MS03_garden_board.png",
+      "generation": {
+        "asset": "MS03_garden_board",
+        "candidate": "a",
+        "generation_id": "e977f2f8-9a1a-4b66-a821-f543ec9aea73",
+        "source": "Hyper3D CLI Gen-2.5-High",
+        "reference": "art/references/modular_props_20261015/MS03_garden_board.png",
+        "selected_file": "base_basic_pbr.glb",
+        "sha256": "555023466aefdea98ea82fdf644e0b5713bf66604010abdc4b788a82db1ba4b4",
+        "bytes": 9227856,
+        "status": "downloaded",
+        "task_url": "https://hyper3d.ai/workspace/rodin/e977f2f8-9a1a-4b66-a821-f543ec9aea73"
+      },
+      "preparation": {
+        "id": "MS03_garden_board",
+        "source_sha256": "555023466aefdea98ea82fdf644e0b5713bf66604010abdc4b788a82db1ba4b4",
+        "prepared_sha256": "d6818193d8fb0316f53ecca5ee0385261bb4b54ac484908e5ed06f09bf5b8079",
+        "source_generation": "e977f2f8-9a1a-4b66-a821-f543ec9aea73",
+        "original_triangles": 18000,
+        "prepared_triangles": 12000,
+        "nominal_size_m_xyz": [
+          1.15,
+          1.5,
+          0.12
+        ],
+        "local_changes": [
+          "affine metre-scale fit and base centering",
+          "up to 3mm foot leveling",
+          "limited coplanar triangle reduction with original UV interpolation"
+        ],
+        "atlas_repainted": false,
+        "source_front": "Godot +Z"
+      },
+      "export": {
+        "src": "raw/modular_props_20261015/ready/MS03_garden_board.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+        "generation_id": "e977f2f8-9a1a-4b66-a821-f543ec9aea73",
+        "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+        "source_page": "https://hyper3d.ai/workspace/rodin/e977f2f8-9a1a-4b66-a821-f543ec9aea73"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "晴町 市民农园",
+          "id": "MS03_garden_board",
+          "path": "Farm/FarmNameSign",
+          "position": [
+            678.5,
+            0.0,
+            -2.40000009536743
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/MS03_garden_board.blend",
+        "sha256": "7c5de70615d3bca8f7531623e4f9406853ed1731839b83a767f4027ee66e9198",
+        "bytes": 9033763
+      },
+      "game_sha256": "80907777a737ff6dd48a84d1dcdd40d0e047d030915b3b77bab2cb65e724fc8f",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    },
+    "MS04_wall_plaque": {
+      "label": "可刻字木匾",
+      "reference": "art/references/modular_props_20261015/MS04_wall_plaque.png",
+      "generation": {
+        "asset": "MS04_wall_plaque",
+        "candidate": "a",
+        "generation_id": "ac8e4729-f4d6-449f-b1aa-69fb780f9524",
+        "source": "Hyper3D CLI Gen-2.5-High",
+        "reference": "art/references/modular_props_20261015/MS04_wall_plaque.png",
+        "selected_file": "base_basic_pbr.glb",
+        "sha256": "c015ece19db240b901bd5f743a542faf9f2ea0b4dab0eb74914b9db0e8ec44d8",
+        "bytes": 7420192,
+        "status": "downloaded",
+        "task_url": "https://hyper3d.ai/workspace/rodin/ac8e4729-f4d6-449f-b1aa-69fb780f9524"
+      },
+      "preparation": {
+        "id": "MS04_wall_plaque",
+        "source_sha256": "c015ece19db240b901bd5f743a542faf9f2ea0b4dab0eb74914b9db0e8ec44d8",
+        "prepared_sha256": "7c7d417a44c08b2b44d85d72aea0ffc2daef8c72fe194756fa21184a3b53dffa",
+        "source_generation": "ac8e4729-f4d6-449f-b1aa-69fb780f9524",
+        "original_triangles": 18000,
+        "prepared_triangles": 6500,
+        "nominal_size_m_xyz": [
+          1.2,
+          0.24,
+          0.04
+        ],
+        "local_changes": [
+          "affine metre-scale fit and base centering",
+          "up to 3mm foot leveling",
+          "limited coplanar triangle reduction with original UV interpolation"
+        ],
+        "atlas_repainted": false,
+        "source_front": "Godot +Z"
+      },
+      "export": {
+        "src": "raw/modular_props_20261015/ready/MS04_wall_plaque.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+        "generation_id": "ac8e4729-f4d6-449f-b1aa-69fb780f9524",
+        "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+        "source_page": "https://hyper3d.ai/workspace/rodin/ac8e4729-f4d6-449f-b1aa-69fb780f9524"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "晴町 小集市",
+          "id": "MS04_wall_plaque",
+          "path": "BuildSign/SignAssembly/EventBoard",
+          "position": [
+            -2.59999990463257,
+            0.75,
+            1.74500000476837
+          ],
+          "scale": [
+            0.916666686534882,
+            2.5,
+            1.25
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/MS04_wall_plaque.blend",
+        "sha256": "7a46de483614d3d98a4386c1faaca1f1be638dc791d93c6fe88f2cc4e39c75e1",
+        "bytes": 7145746
+      },
+      "game_sha256": "edeb55183f3f70f4ee4c80b247dc5680342da6c0a3d146f93080d250cbe8ebd4",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    },
+    "MS05_table_sign": {
+      "label": "桌面小立牌",
+      "reference": "art/references/modular_props_20261015/MS05_table_sign.png",
+      "generation": {
+        "asset": "MS05_table_sign",
+        "candidate": "a",
+        "generation_id": "92a9142d-aa54-4782-9aa7-15c0e85af05b",
+        "source": "Hyper3D CLI Gen-2.5-High",
+        "reference": "art/references/modular_props_20261015/MS05_table_sign.png",
+        "selected_file": "base_basic_pbr.glb",
+        "sha256": "db00ae9330e2be76a218b29bb13592c562b3a321de399a5e5dcd619592701f85",
+        "bytes": 10044064,
+        "status": "downloaded",
+        "task_url": "https://hyper3d.ai/workspace/rodin/92a9142d-aa54-4782-9aa7-15c0e85af05b"
+      },
+      "preparation": {
+        "id": "MS05_table_sign",
+        "source_sha256": "db00ae9330e2be76a218b29bb13592c562b3a321de399a5e5dcd619592701f85",
+        "prepared_sha256": "d6ace1ce0105a746f5d805c9ad018616d53c64357128653f7c5b9371f82f47b6",
+        "source_generation": "92a9142d-aa54-4782-9aa7-15c0e85af05b",
+        "original_triangles": 18000,
+        "prepared_triangles": 12000,
+        "nominal_size_m_xyz": [
+          0.44,
+          0.3,
+          0.18
+        ],
+        "local_changes": [
+          "affine metre-scale fit and base centering",
+          "up to 3mm foot leveling",
+          "limited coplanar triangle reduction with original UV interpolation"
+        ],
+        "atlas_repainted": false,
+        "source_front": "Godot +Z"
+      },
+      "export": {
+        "src": "raw/modular_props_20261015/ready/MS05_table_sign.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+        "generation_id": "92a9142d-aa54-4782-9aa7-15c0e85af05b",
+        "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+        "source_page": "https://hyper3d.ai/workspace/rodin/92a9142d-aa54-4782-9aa7-15c0e85af05b"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "小份试作",
+          "id": "MS05_table_sign",
+          "path": "Interior_bakery/BakeryTrialStand",
+          "position": [
+            81.5500030517578,
+            0.870057880878448,
+            400.299987792969
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/MS05_table_sign.blend",
+        "sha256": "ff5ae38232f30ec179fcfe1c95bbf8eb1a00cec3acf4fc3474128dca9bed1b8b",
+        "bytes": 9908857
+      },
+      "game_sha256": "224a93101e6fa66609747be5cd87ca8418081269d4efe7ec39386ae7b45c1e92",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    },
+    "MS06_bus_pole": {
+      "label": "公交站牌立柱",
+      "reference": "art/references/modular_props_20261015/MS06_bus_pole.png",
+      "generation": {
+        "asset": "MS06_bus_pole",
+        "candidate": "a",
+        "generation_id": "086d8db1-053f-48c9-8b52-41b264bf2935",
+        "source": "Hyper3D CLI Gen-2.5-High",
+        "reference": "art/references/modular_props_20261015/MS06_bus_pole.png",
+        "selected_file": "base_basic_pbr.glb",
+        "sha256": "bec54ce339c14a6efe851a00ba147b65e59aed07ed49854c1942dce0e737d9c2",
+        "bytes": 7664704,
+        "status": "downloaded",
+        "task_url": "https://hyper3d.ai/workspace/rodin/086d8db1-053f-48c9-8b52-41b264bf2935"
+      },
+      "preparation": {
+        "id": "MS06_bus_pole",
+        "source_sha256": "bec54ce339c14a6efe851a00ba147b65e59aed07ed49854c1942dce0e737d9c2",
+        "prepared_sha256": "8dbe63fba148ee02fa9f92b591fc052020a0c1c08507557acaea596ca2133a1a",
+        "source_generation": "086d8db1-053f-48c9-8b52-41b264bf2935",
+        "original_triangles": 18000,
+        "prepared_triangles": 11999,
+        "nominal_size_m_xyz": [
+          0.38,
+          2.3,
+          0.16
+        ],
+        "local_changes": [
+          "affine metre-scale fit and base centering",
+          "up to 3mm foot leveling",
+          "limited coplanar triangle reduction with original UV interpolation"
+        ],
+        "atlas_repainted": false,
+        "source_front": "Godot +Z"
+      },
+      "export": {
+        "src": "raw/modular_props_20261015/ready/MS06_bus_pole.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+        "generation_id": "086d8db1-053f-48c9-8b52-41b264bf2935",
+        "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+        "source_page": "https://hyper3d.ai/workspace/rodin/086d8db1-053f-48c9-8b52-41b264bf2935"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "晴町",
+          "id": "MS06_bus_pole",
+          "path": "R06/BusStopPole",
+          "position": [
+            -44.7799987792969,
+            0.0,
+            -5.20999956130981
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/MS06_bus_pole.blend",
+        "sha256": "efa3263981d72bf4ba6ac04dc9e68b6d666fd70382b7f5aabd1d78021d7461fd",
+        "bytes": 7525572
+      },
+      "game_sha256": "364b9850256acb4aadd699cd8da19d12785ea469ff9308bbcd02b2839ba82d33",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    },
+    "MS07_timetable_case": {
+      "label": "公交时刻表框",
+      "reference": "art/references/modular_props_20261015/MS07_timetable_case.png",
+      "generation": {
+        "asset": "MS07_timetable_case",
+        "candidate": "a",
+        "generation_id": "3c4f879b-e405-467a-a6d6-09d5b7b8d932",
+        "source": "Hyper3D CLI Gen-2.5-High",
+        "reference": "art/references/modular_props_20261015/MS07_timetable_case.png",
+        "selected_file": "base_basic_pbr.glb",
+        "sha256": "9e60a5e25a112fab5e01bd4c782dbde8d3c1f1fa8c8ae12959fc16fe87e821ac",
+        "bytes": 7647324,
+        "status": "downloaded",
+        "task_url": "https://hyper3d.ai/workspace/rodin/3c4f879b-e405-467a-a6d6-09d5b7b8d932"
+      },
+      "preparation": {
+        "id": "MS07_timetable_case",
+        "source_sha256": "9e60a5e25a112fab5e01bd4c782dbde8d3c1f1fa8c8ae12959fc16fe87e821ac",
+        "prepared_sha256": "fcb36bbea7b77d959634ab050bf20d7ea27a747da160c861ee448c533fda3816",
+        "source_generation": "3c4f879b-e405-467a-a6d6-09d5b7b8d932",
+        "original_triangles": 18000,
+        "prepared_triangles": 6500,
+        "nominal_size_m_xyz": [
+          1.1,
+          1,
+          0.08
+        ],
+        "local_changes": [
+          "affine metre-scale fit and base centering",
+          "up to 3mm foot leveling",
+          "limited coplanar triangle reduction with original UV interpolation"
+        ],
+        "atlas_repainted": false,
+        "source_front": "Godot +Z"
+      },
+      "export": {
+        "src": "raw/modular_props_20261015/ready/MS07_timetable_case.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+        "generation_id": "3c4f879b-e405-467a-a6d6-09d5b7b8d932",
+        "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+        "source_page": "https://hyper3d.ai/workspace/rodin/3c4f879b-e405-467a-a6d6-09d5b7b8d932"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "",
+          "id": "MS07_timetable_case",
+          "path": "R06/Timetable",
+          "position": [
+            -43.6199989318848,
+            1.00499999523163,
+            -4.77999973297119
+          ],
+          "scale": [
+            0.954545378684998,
+            1.04999995231628,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS07_timetable_case",
+          "path": "R06/RouteMap",
+          "position": [
+            -42.3800010681152,
+            1.00499999523163,
+            -4.77999973297119
+          ],
+          "scale": [
+            0.954545378684998,
+            1.04999995231628,
+            1.0
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/MS07_timetable_case.blend",
+        "sha256": "e86001c8c4de41da7753ad2348c5a28cf9fc5a62a065f63a07e3d0c599679c78",
+        "bytes": 7266477
+      },
+      "game_sha256": "8866351478a0ebe2959fc761e14241b53428d9a25b9051ced1d48573daf1cdca",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    },
+    "MS08_storage_bay": {
+      "label": "可堆叠收纳格",
+      "reference": "art/references/modular_props_20261015/MS08_storage_bay.png",
+      "generation": {
+        "asset": "MS08_storage_bay",
+        "candidate": "a",
+        "generation_id": "488f6837-ae06-41dc-bcd3-41abd47f1f18",
+        "source": "Hyper3D CLI Gen-2.5-High",
+        "reference": "art/references/modular_props_20261015/MS08_storage_bay.png",
+        "selected_file": "base_basic_pbr.glb",
+        "sha256": "ea7023ee30dd60615d09c0e753bdb832bc7e9079d9bf8c74c6cb134d72805b52",
+        "bytes": 9027860,
+        "status": "downloaded",
+        "task_url": "https://hyper3d.ai/workspace/rodin/488f6837-ae06-41dc-bcd3-41abd47f1f18"
+      },
+      "preparation": {
+        "id": "MS08_storage_bay",
+        "source_sha256": "ea7023ee30dd60615d09c0e753bdb832bc7e9079d9bf8c74c6cb134d72805b52",
+        "prepared_sha256": "dc0f8ff0b8d04685256e283be432cb8890508d7246d3a2074eb957a73ab6baaa",
+        "source_generation": "488f6837-ae06-41dc-bcd3-41abd47f1f18",
+        "original_triangles": 18000,
+        "prepared_triangles": 5000,
+        "nominal_size_m_xyz": [
+          0.62,
+          0.48,
+          0.4
+        ],
+        "local_changes": [
+          "affine metre-scale fit and base centering",
+          "up to 3mm foot leveling",
+          "limited coplanar triangle reduction with original UV interpolation"
+        ],
+        "atlas_repainted": false,
+        "source_front": "Godot +Z"
+      },
+      "export": {
+        "src": "raw/modular_props_20261015/ready/MS08_storage_bay.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+        "generation_id": "488f6837-ae06-41dc-bcd3-41abd47f1f18",
+        "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+        "source_page": "https://hyper3d.ai/workspace/rodin/488f6837-ae06-41dc-bcd3-41abd47f1f18"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_home_kazuko/ResidentInterior/BorrowReturnCabinet/Bay_0_0",
+          "position": [
+            274.474975585938,
+            0.0,
+            402.600006103516
+          ],
+          "scale": [
+            1.04838705062866,
+            1.09375,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_home_kazuko/ResidentInterior/BorrowReturnCabinet/Bay_0_1",
+          "position": [
+            275.125,
+            0.0,
+            402.600006103516
+          ],
+          "scale": [
+            1.04838705062866,
+            1.09375,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_home_kazuko/ResidentInterior/BorrowReturnCabinet/Bay_1_0",
+          "position": [
+            274.474975585938,
+            0.524999976158142,
+            402.600006103516
+          ],
+          "scale": [
+            1.04838705062866,
+            1.09375,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_home_kazuko/ResidentInterior/BorrowReturnCabinet/Bay_1_1",
+          "position": [
+            275.125,
+            0.524999976158142,
+            402.600006103516
+          ],
+          "scale": [
+            1.04838705062866,
+            1.09375,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Bay_0_0",
+          "position": [
+            340.568756103516,
+            0.0,
+            396.649993896484
+          ],
+          "scale": [
+            1.27016127109528,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Bay_0_1",
+          "position": [
+            341.356262207031,
+            0.0,
+            396.649993896484
+          ],
+          "scale": [
+            1.27016127109528,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Bay_0_2",
+          "position": [
+            342.143737792969,
+            0.0,
+            396.649993896484
+          ],
+          "scale": [
+            1.27016127109528,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Bay_0_3",
+          "position": [
+            342.931243896484,
+            0.0,
+            396.649993896484
+          ],
+          "scale": [
+            1.27016127109528,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Bay_1_0",
+          "position": [
+            340.568756103516,
+            0.346666663885117,
+            396.649993896484
+          ],
+          "scale": [
+            1.27016127109528,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Bay_1_1",
+          "position": [
+            341.356262207031,
+            0.346666663885117,
+            396.649993896484
+          ],
+          "scale": [
+            1.27016127109528,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Bay_1_2",
+          "position": [
+            342.143737792969,
+            0.346666663885117,
+            396.649993896484
+          ],
+          "scale": [
+            1.27016127109528,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Bay_1_3",
+          "position": [
+            342.931243896484,
+            0.346666663885117,
+            396.649993896484
+          ],
+          "scale": [
+            1.27016127109528,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Bay_2_0",
+          "position": [
+            340.568756103516,
+            0.693333327770233,
+            396.649993896484
+          ],
+          "scale": [
+            1.27016127109528,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Bay_2_1",
+          "position": [
+            341.356262207031,
+            0.693333327770233,
+            396.649993896484
+          ],
+          "scale": [
+            1.27016127109528,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Bay_2_2",
+          "position": [
+            342.143737792969,
+            0.693333327770233,
+            396.649993896484
+          ],
+          "scale": [
+            1.27016127109528,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Bay_2_3",
+          "position": [
+            342.931243896484,
+            0.693333327770233,
+            396.649993896484
+          ],
+          "scale": [
+            1.27016127109528,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_florist/ResidentInterior/DryFlowerPaperStorage/Bay_0_0",
+          "position": [
+            374.033355712891,
+            0.0,
+            396.450012207031
+          ],
+          "scale": [
+            1.07526886463165,
+            1.14583337306976,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_florist/ResidentInterior/DryFlowerPaperStorage/Bay_0_1",
+          "position": [
+            374.700012207031,
+            0.0,
+            396.450012207031
+          ],
+          "scale": [
+            1.07526886463165,
+            1.14583337306976,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_florist/ResidentInterior/DryFlowerPaperStorage/Bay_0_2",
+          "position": [
+            375.366668701172,
+            0.0,
+            396.450012207031
+          ],
+          "scale": [
+            1.07526886463165,
+            1.14583337306976,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_florist/ResidentInterior/DryFlowerPaperStorage/Bay_1_0",
+          "position": [
+            374.033355712891,
+            0.550000011920929,
+            396.450012207031
+          ],
+          "scale": [
+            1.07526886463165,
+            1.14583337306976,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_florist/ResidentInterior/DryFlowerPaperStorage/Bay_1_1",
+          "position": [
+            374.700012207031,
+            0.550000011920929,
+            396.450012207031
+          ],
+          "scale": [
+            1.07526886463165,
+            1.14583337306976,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_florist/ResidentInterior/DryFlowerPaperStorage/Bay_1_2",
+          "position": [
+            375.366668701172,
+            0.550000011920929,
+            396.450012207031
+          ],
+          "scale": [
+            1.07526886463165,
+            1.14583337306976,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_zakka/ResidentInterior/AwaitingRepair/Bay_0_0",
+          "position": [
+            403.166656494141,
+            0.0,
+            396.049987792969
+          ],
+          "scale": [
+            0.940860152244568,
+            1.08333337306976,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_zakka/ResidentInterior/AwaitingRepair/Bay_0_1",
+          "position": [
+            403.75,
+            0.0,
+            396.049987792969
+          ],
+          "scale": [
+            0.940860152244568,
+            1.08333337306976,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_zakka/ResidentInterior/AwaitingRepair/Bay_0_2",
+          "position": [
+            404.333343505859,
+            0.0,
+            396.049987792969
+          ],
+          "scale": [
+            0.940860152244568,
+            1.08333337306976,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_zakka/ResidentInterior/AwaitingRepair/Bay_1_0",
+          "position": [
+            403.166656494141,
+            0.519999980926514,
+            396.049987792969
+          ],
+          "scale": [
+            0.940860152244568,
+            1.08333337306976,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_zakka/ResidentInterior/AwaitingRepair/Bay_1_1",
+          "position": [
+            403.75,
+            0.519999980926514,
+            396.049987792969
+          ],
+          "scale": [
+            0.940860152244568,
+            1.08333337306976,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_zakka/ResidentInterior/AwaitingRepair/Bay_1_2",
+          "position": [
+            404.333343505859,
+            0.519999980926514,
+            396.049987792969
+          ],
+          "scale": [
+            0.940860152244568,
+            1.08333337306976,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Bay_0_0",
+          "position": [
+            436.769989013672,
+            0.0,
+            396.850006103516
+          ],
+          "scale": [
+            1.19354844093323,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Bay_0_1",
+          "position": [
+            437.510009765625,
+            0.0,
+            396.850006103516
+          ],
+          "scale": [
+            1.19354844093323,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Bay_0_2",
+          "position": [
+            438.25,
+            0.0,
+            396.850006103516
+          ],
+          "scale": [
+            1.19354844093323,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Bay_0_3",
+          "position": [
+            438.989990234375,
+            0.0,
+            396.850006103516
+          ],
+          "scale": [
+            1.19354844093323,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Bay_0_4",
+          "position": [
+            439.730010986328,
+            0.0,
+            396.850006103516
+          ],
+          "scale": [
+            1.19354844093323,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Bay_1_0",
+          "position": [
+            436.769989013672,
+            0.346666663885117,
+            396.850006103516
+          ],
+          "scale": [
+            1.19354844093323,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Bay_1_1",
+          "position": [
+            437.510009765625,
+            0.346666663885117,
+            396.850006103516
+          ],
+          "scale": [
+            1.19354844093323,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Bay_1_2",
+          "position": [
+            438.25,
+            0.346666663885117,
+            396.850006103516
+          ],
+          "scale": [
+            1.19354844093323,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Bay_1_3",
+          "position": [
+            438.989990234375,
+            0.346666663885117,
+            396.850006103516
+          ],
+          "scale": [
+            1.19354844093323,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Bay_1_4",
+          "position": [
+            439.730010986328,
+            0.346666663885117,
+            396.850006103516
+          ],
+          "scale": [
+            1.19354844093323,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Bay_2_0",
+          "position": [
+            436.769989013672,
+            0.693333327770233,
+            396.850006103516
+          ],
+          "scale": [
+            1.19354844093323,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Bay_2_1",
+          "position": [
+            437.510009765625,
+            0.693333327770233,
+            396.850006103516
+          ],
+          "scale": [
+            1.19354844093323,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Bay_2_2",
+          "position": [
+            438.25,
+            0.693333327770233,
+            396.850006103516
+          ],
+          "scale": [
+            1.19354844093323,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Bay_2_3",
+          "position": [
+            438.989990234375,
+            0.693333327770233,
+            396.850006103516
+          ],
+          "scale": [
+            1.19354844093323,
+            0.722222208976746,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS08_storage_bay",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Bay_2_4",
+          "position": [
+            439.730010986328,
+            0.693333327770233,
+            396.850006103516
+          ],
+          "scale": [
+            1.19354844093323,
+            0.722222208976746,
+            1.0
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/MS08_storage_bay.blend",
+        "sha256": "c5e1cc504a9ddc6ad4e73716546e108f57c182a0848bf1de4081c43a43f5daad",
+        "bytes": 8630188
+      },
+      "game_sha256": "7ee28c229f342aa7e44c8c09001fb33319c1168f675cb4ad4ea14fc77c48621e",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    },
+    "MS09_archive_box": {
+      "label": "档案盒与照片袋",
+      "reference": "art/references/modular_props_20261015/MS09_archive_box.png",
+      "generation": {
+        "asset": "MS09_archive_box",
+        "candidate": "a",
+        "generation_id": "62b83036-c5c7-4d29-bf9d-bbc8d8a032c7",
+        "source": "Hyper3D CLI Gen-2.5-High",
+        "reference": "art/references/modular_props_20261015/MS09_archive_box.png",
+        "selected_file": "base_basic_pbr.glb",
+        "sha256": "0fa8730b1d157bea5a7828cd2f57cc24974802cfe3b11029a1c730d622b9e8e1",
+        "bytes": 6956104,
+        "status": "downloaded",
+        "task_url": "https://hyper3d.ai/workspace/rodin/62b83036-c5c7-4d29-bf9d-bbc8d8a032c7"
+      },
+      "preparation": {
+        "id": "MS09_archive_box",
+        "source_sha256": "0fa8730b1d157bea5a7828cd2f57cc24974802cfe3b11029a1c730d622b9e8e1",
+        "prepared_sha256": "dc9bd56c6962ea07f5affd0d8b1466e0310713324845dea25a2bbb8539b5cfb4",
+        "source_generation": "62b83036-c5c7-4d29-bf9d-bbc8d8a032c7",
+        "original_triangles": 18000,
+        "prepared_triangles": 12000,
+        "nominal_size_m_xyz": [
+          0.35,
+          0.16,
+          0.29
+        ],
+        "local_changes": [
+          "affine metre-scale fit and base centering",
+          "up to 3mm foot leveling",
+          "limited coplanar triangle reduction with original UV interpolation"
+        ],
+        "atlas_repainted": false,
+        "source_front": "Godot +Z"
+      },
+      "export": {
+        "src": "raw/modular_props_20261015/ready/MS09_archive_box.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+        "generation_id": "62b83036-c5c7-4d29-bf9d-bbc8d8a032c7",
+        "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+        "source_page": "https://hyper3d.ai/workspace/rodin/62b83036-c5c7-4d29-bf9d-bbc8d8a032c7"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Contents_0_0",
+          "position": [
+            340.568756103516,
+            0.0216698925942183,
+            396.654998779297
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Contents_0_1",
+          "position": [
+            341.356262207031,
+            0.0216698925942183,
+            396.654998779297
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Contents_0_2",
+          "position": [
+            342.143737792969,
+            0.0216698925942183,
+            396.654998779297
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Contents_1_0",
+          "position": [
+            340.568756103516,
+            0.36833655834198,
+            396.654998779297
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Contents_1_1",
+          "position": [
+            341.356262207031,
+            0.36833655834198,
+            396.654998779297
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Contents_1_2",
+          "position": [
+            342.143737792969,
+            0.36833655834198,
+            396.654998779297
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Contents_2_0",
+          "position": [
+            340.568756103516,
+            0.715003192424774,
+            396.654998779297
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Contents_2_1",
+          "position": [
+            341.356262207031,
+            0.715003192424774,
+            396.654998779297
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_photo_room/ResidentInterior/DatedArchive/Contents_2_2",
+          "position": [
+            342.143737792969,
+            0.715003192424774,
+            396.654998779297
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Contents_0_0",
+          "position": [
+            436.769989013672,
+            0.0216698925942183,
+            396.855010986328
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Contents_0_1",
+          "position": [
+            437.510009765625,
+            0.0216698925942183,
+            396.855010986328
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Contents_0_2",
+          "position": [
+            438.25,
+            0.0216698925942183,
+            396.855010986328
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Contents_0_4",
+          "position": [
+            439.730010986328,
+            0.0216698925942183,
+            396.855010986328
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Contents_1_0",
+          "position": [
+            436.769989013672,
+            0.36833655834198,
+            396.855010986328
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Contents_1_1",
+          "position": [
+            437.510009765625,
+            0.36833655834198,
+            396.855010986328
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Contents_1_3",
+          "position": [
+            438.989990234375,
+            0.36833655834198,
+            396.855010986328
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Contents_1_4",
+          "position": [
+            439.730010986328,
+            0.36833655834198,
+            396.855010986328
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Contents_2_0",
+          "position": [
+            436.769989013672,
+            0.715003192424774,
+            396.855010986328
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Contents_2_2",
+          "position": [
+            438.25,
+            0.715003192424774,
+            396.855010986328
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Contents_2_3",
+          "position": [
+            438.989990234375,
+            0.715003192424774,
+            396.855010986328
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS09_archive_box",
+          "path": "Interior_post/ResidentInterior/MailRouteSorting/Contents_2_4",
+          "position": [
+            439.730010986328,
+            0.715003192424774,
+            396.855010986328
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/MS09_archive_box.blend",
+        "sha256": "3ecc912458fb1c5786404f668695fa188d984b9a4d3ba25416573764a144f369",
+        "bytes": 6637391
+      },
+      "game_sha256": "bf45b4f7d105f4f4eaca9ea3362f744593205608366361d9aa2db4a56a0df5c8",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    },
+    "MS10_wrapping_rolls": {
+      "label": "包花纸卷组合",
+      "reference": "art/references/modular_props_20261015/MS10_wrapping_rolls.png",
+      "generation": {
+        "asset": "MS10_wrapping_rolls",
+        "candidate": "a",
+        "generation_id": "55a5a0ea-fff5-4789-8e2b-31deb84656e8",
+        "source": "Hyper3D CLI Gen-2.5-High",
+        "reference": "art/references/modular_props_20261015/MS10_wrapping_rolls.png",
+        "selected_file": "base_basic_pbr.glb",
+        "sha256": "189f5637532cd12f6ceadc3069ce8f04feae26a591b7ac82106a6112e0ebec17",
+        "bytes": 7304020,
+        "status": "downloaded",
+        "task_url": "https://hyper3d.ai/workspace/rodin/55a5a0ea-fff5-4789-8e2b-31deb84656e8"
+      },
+      "preparation": {
+        "id": "MS10_wrapping_rolls",
+        "source_sha256": "189f5637532cd12f6ceadc3069ce8f04feae26a591b7ac82106a6112e0ebec17",
+        "prepared_sha256": "8659f85e2ffbfc8c6611628f322708bfb7f297a2b773e81260796313531eae38",
+        "source_generation": "55a5a0ea-fff5-4789-8e2b-31deb84656e8",
+        "original_triangles": 18000,
+        "prepared_triangles": 12000,
+        "nominal_size_m_xyz": [
+          0.38,
+          0.32,
+          0.3
+        ],
+        "local_changes": [
+          "affine metre-scale fit and base centering",
+          "up to 3mm foot leveling",
+          "limited coplanar triangle reduction with original UV interpolation"
+        ],
+        "atlas_repainted": false,
+        "source_front": "Godot +Z"
+      },
+      "export": {
+        "src": "raw/modular_props_20261015/ready/MS10_wrapping_rolls.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+        "generation_id": "55a5a0ea-fff5-4789-8e2b-31deb84656e8",
+        "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+        "source_page": "https://hyper3d.ai/workspace/rodin/55a5a0ea-fff5-4789-8e2b-31deb84656e8"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "",
+          "id": "MS10_wrapping_rolls",
+          "path": "Interior_florist/ResidentInterior/DryFlowerPaperStorage/Contents_0_0",
+          "position": [
+            374.033355712891,
+            0.0342906340956688,
+            396.455017089844
+          ],
+          "scale": [
+            0.999999940395355,
+            0.99999988079071,
+            0.99999988079071
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS10_wrapping_rolls",
+          "path": "Interior_florist/ResidentInterior/DryFlowerPaperStorage/Contents_0_1",
+          "position": [
+            374.700012207031,
+            0.0342906340956688,
+            396.455017089844
+          ],
+          "scale": [
+            0.999999940395355,
+            0.99999988079071,
+            0.99999988079071
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS10_wrapping_rolls",
+          "path": "Interior_florist/ResidentInterior/DryFlowerPaperStorage/Contents_0_2",
+          "position": [
+            375.366668701172,
+            0.0342906340956688,
+            396.455017089844
+          ],
+          "scale": [
+            0.999999940395355,
+            0.99999988079071,
+            0.99999988079071
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS10_wrapping_rolls",
+          "path": "Interior_florist/ResidentInterior/DryFlowerPaperStorage/Contents_1_1",
+          "position": [
+            374.700012207031,
+            0.584290683269501,
+            396.455017089844
+          ],
+          "scale": [
+            0.999999940395355,
+            0.99999988079071,
+            0.99999988079071
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS10_wrapping_rolls",
+          "path": "Interior_florist/ResidentInterior/DryFlowerPaperStorage/Contents_1_2",
+          "position": [
+            375.366668701172,
+            0.584290683269501,
+            396.455017089844
+          ],
+          "scale": [
+            0.999999940395355,
+            0.99999988079071,
+            0.99999988079071
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/MS10_wrapping_rolls.blend",
+        "sha256": "386714df1f160d0c3034d3e92b845ea1e099d364771a58fc87b7c1216150b3ce",
+        "bytes": 7021638
+      },
+      "game_sha256": "6ee5b97c7567404b161e593dbf0511257d15209d59515faae1e8a9defd8ab3a3",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    },
+    "MS11_archive_drawer": {
+      "label": "抽拉档案屉",
+      "reference": "art/references/modular_props_20261015/MS11_archive_drawer.png",
+      "generation": {
+        "asset": "MS11_archive_drawer",
+        "candidate": "a",
+        "generation_id": "369772a7-99a2-4464-8b25-4fee857fde42",
+        "source": "Hyper3D CLI Gen-2.5-High",
+        "reference": "art/references/modular_props_20261015/MS11_archive_drawer.png",
+        "selected_file": "base_basic_pbr.glb",
+        "sha256": "e9144b16d608857af155fcba33dc46a639e7ec3995dee4da7fd446fe32834cd5",
+        "bytes": 7711584,
+        "status": "downloaded",
+        "task_url": "https://hyper3d.ai/workspace/rodin/369772a7-99a2-4464-8b25-4fee857fde42"
+      },
+      "preparation": {
+        "id": "MS11_archive_drawer",
+        "source_sha256": "e9144b16d608857af155fcba33dc46a639e7ec3995dee4da7fd446fe32834cd5",
+        "prepared_sha256": "49f9de12b55fbb3be2402f190b2fda4bce1dd5a445bbf58bf7b0f29e8bf722a5",
+        "source_generation": "369772a7-99a2-4464-8b25-4fee857fde42",
+        "original_triangles": 18000,
+        "prepared_triangles": 11999,
+        "nominal_size_m_xyz": [
+          0.52,
+          0.18,
+          0.65
+        ],
+        "local_changes": [
+          "affine metre-scale fit and base centering",
+          "up to 3mm foot leveling",
+          "limited coplanar triangle reduction with original UV interpolation"
+        ],
+        "atlas_repainted": false,
+        "source_front": "Godot +Z"
+      },
+      "export": {
+        "src": "raw/modular_props_20261015/ready/MS11_archive_drawer.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+        "generation_id": "369772a7-99a2-4464-8b25-4fee857fde42",
+        "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+        "source_page": "https://hyper3d.ai/workspace/rodin/369772a7-99a2-4464-8b25-4fee857fde42"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "",
+          "id": "MS11_archive_drawer",
+          "path": "Interior_photo_room/ResidentInterior/ArchiveDrawer_0",
+          "position": [
+            344.350006103516,
+            0.222526967525482,
+            399.350006103516
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS11_archive_drawer",
+          "path": "Interior_photo_room/ResidentInterior/ArchiveDrawer_1",
+          "position": [
+            344.350006103516,
+            0.222526967525482,
+            400.100006103516
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS11_archive_drawer",
+          "path": "Interior_photo_room/ResidentInterior/ArchiveDrawer_2",
+          "position": [
+            344.350006103516,
+            0.222526967525482,
+            400.850006103516
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/MS11_archive_drawer.blend",
+        "sha256": "c46a6dd93d26d5e53137f68000cc8576ba35a3265d6d810a93635b0681212acf",
+        "bytes": 7569507
+      },
+      "game_sha256": "8bc07f9c12afa3ed64c00512517f440fd9519966ecc845256f48a0079b6fd3d9",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    },
+    "MS12_linen_frame": {
+      "label": "晾布木架",
+      "reference": "art/references/modular_props_20261015/MS12_linen_frame.png",
+      "generation": {
+        "asset": "MS12_linen_frame",
+        "candidate": "a",
+        "generation_id": "c4c1cb15-48bf-431d-b08f-d667fbf93d8e",
+        "source": "Hyper3D CLI Gen-2.5-High",
+        "reference": "art/references/modular_props_20261015/MS12_linen_frame.png",
+        "selected_file": "base_basic_pbr.glb",
+        "sha256": "fa6b563bcf9d9b9cbc4e244cdd02312100b3e78454595724733e2c7fcd21b46d",
+        "bytes": 13052448,
+        "status": "downloaded",
+        "task_url": "https://hyper3d.ai/workspace/rodin/c4c1cb15-48bf-431d-b08f-d667fbf93d8e"
+      },
+      "preparation": {
+        "id": "MS12_linen_frame",
+        "source_sha256": "fa6b563bcf9d9b9cbc4e244cdd02312100b3e78454595724733e2c7fcd21b46d",
+        "prepared_sha256": "4bfa8d6a50d3f7084f484216752276e866cb9cd133eda7171183c01ee695b7c0",
+        "source_generation": "c4c1cb15-48bf-431d-b08f-d667fbf93d8e",
+        "original_triangles": 18000,
+        "prepared_triangles": 12000,
+        "nominal_size_m_xyz": [
+          0.72,
+          1.45,
+          0.38
+        ],
+        "local_changes": [
+          "affine metre-scale fit and base centering",
+          "up to 3mm foot leveling",
+          "limited coplanar triangle reduction with original UV interpolation"
+        ],
+        "atlas_repainted": false,
+        "source_front": "Godot +Z"
+      },
+      "export": {
+        "src": "raw/modular_props_20261015/ready/MS12_linen_frame.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+        "generation_id": "c4c1cb15-48bf-431d-b08f-d667fbf93d8e",
+        "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+        "source_page": "https://hyper3d.ai/workspace/rodin/c4c1cb15-48bf-431d-b08f-d667fbf93d8e"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "",
+          "id": "MS12_linen_frame",
+          "path": "Interior_home_ren/ResidentInterior/DryingLinenFrame",
+          "position": [
+            249.0,
+            0.0,
+            399.450012207031
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/MS12_linen_frame.blend",
+        "sha256": "026266a3a3f967bbb52e3f3099b33adc2698c72cdde76b2655e7a07917a21e3f",
+        "bytes": 12865235
+      },
+      "game_sha256": "5012c3934b7d4342b1fe0ed33580ad5ba0f8b69e90c9e2e7923d9b8563c565cf",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    },
+    "MS13_picture_frame": {
+      "label": "生活照片画框",
+      "reference": "art/references/modular_props_20261015/MS13_picture_frame.png",
+      "generation": {
+        "asset": "MS13_picture_frame",
+        "candidate": "a",
+        "generation_id": "5d456d8b-cfe7-47f2-884c-a287c035e47f",
+        "source": "Hyper3D CLI Gen-2.5-High",
+        "reference": "art/references/modular_props_20261015/MS13_picture_frame.png",
+        "selected_file": "base_basic_pbr.glb",
+        "sha256": "3cb8654f422d641a6702d10e698c5a941b7648beab6fa16a49a60b86d2123d44",
+        "bytes": 10465028,
+        "status": "downloaded",
+        "task_url": "https://hyper3d.ai/workspace/rodin/5d456d8b-cfe7-47f2-884c-a287c035e47f"
+      },
+      "preparation": {
+        "id": "MS13_picture_frame",
+        "source_sha256": "3cb8654f422d641a6702d10e698c5a941b7648beab6fa16a49a60b86d2123d44",
+        "prepared_sha256": "c6f273f36fba71c222533253c0cfaba9bab9e4b80e46f2fa33f0d4a948ee8536",
+        "source_generation": "5d456d8b-cfe7-47f2-884c-a287c035e47f",
+        "original_triangles": 18000,
+        "prepared_triangles": 6500,
+        "nominal_size_m_xyz": [
+          0.65,
+          0.5,
+          0.05
+        ],
+        "local_changes": [
+          "affine metre-scale fit and base centering",
+          "up to 3mm foot leveling",
+          "limited coplanar triangle reduction with original UV interpolation"
+        ],
+        "atlas_repainted": false,
+        "source_front": "Godot +Z"
+      },
+      "export": {
+        "src": "raw/modular_props_20261015/ready/MS13_picture_frame.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+        "generation_id": "5d456d8b-cfe7-47f2-884c-a287c035e47f",
+        "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+        "source_page": "https://hyper3d.ai/workspace/rodin/5d456d8b-cfe7-47f2-884c-a287c035e47f"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "",
+          "id": "MS13_picture_frame",
+          "path": "Interior_home_haru/ResidentInterior/FamilyMemoryFrame",
+          "position": [
+            154.975006103516,
+            1.20000004768372,
+            400.850006103516
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS13_picture_frame",
+          "path": "Interior_photo_room/ResidentInterior/PhotoWall_0",
+          "position": [
+            344.875,
+            1.30999994277954,
+            398.450012207031
+          ],
+          "scale": [
+            1.01538467407227,
+            0.959999978542328,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "MS13_picture_frame",
+          "path": "Interior_photo_room/ResidentInterior/PhotoWall_1",
+          "position": [
+            344.875,
+            1.30999994277954,
+            400.049987792969
+          ],
+          "scale": [
+            1.01538467407227,
+            0.959999978542328,
+            1.0
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/MS13_picture_frame.blend",
+        "sha256": "f4530c6d051010e13ece99b60e370f3b717793b85ac41f2875446cb26c286e86",
+        "bytes": 10195476
+      },
+      "game_sha256": "7ff2c3178cfeb7466ca9c577f9b7481d00bb394cf912ddbf3a3768078a3e6a49",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    },
+    "P_signpost": {
+      "label": "组合三向路标",
+      "source_assets": [
+        "MS01_signpost",
+        "MS02_arrow_board"
+      ],
+      "export": {
+        "src": "raw/modular_props_20261015/ready/P_signpost.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "provider": "Local assembly of original Hyper3D modular sources, 2026-10-15",
+        "source_assets": [
+          "MS01_signpost",
+          "MS02_arrow_board"
+        ],
+        "license": "Hyper3D account-generated assets; authorized game commercial use and public source repository"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "",
+          "id": "P_signpost",
+          "path": "P_signpost",
+          "position": [
+            40.0,
+            0.0,
+            -7.19999980926514
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "P_signpost",
+          "path": "Farm/Lakeside/P_signpost",
+          "position": [
+            724.0,
+            0.0,
+            2.79999995231628
+          ],
+          "scale": [
+            0.850000023841858,
+            0.850000023841858,
+            0.850000023841858
+          ]
+        },
+        {
+          "engraved_text": "",
+          "id": "P_signpost",
+          "path": "Farm/P_signpost",
+          "position": [
+            677.400024414062,
+            0.0,
+            1.89999997615814
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/P_signpost.blend",
+        "sha256": "5c23d758b9a2d307aeafe35e594cf98e6da5da241b5081f10c58ecbdc40bb9ff",
+        "bytes": 9660551
+      },
+      "game_sha256": "269bddba419ce35ce5f84350eaa4d8c1e763c52bae66880bca321c2842c736e8",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    },
+    "R09": {
+      "label": "组合支巷路标",
+      "source_assets": [
+        "MS01_signpost",
+        "MS02_arrow_board"
+      ],
+      "export": {
+        "src": "raw/modular_props_20261015/ready/R09.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "provider": "Local assembly of original Hyper3D modular sources, 2026-10-15",
+        "source_assets": [
+          "MS01_signpost",
+          "MS02_arrow_board"
+        ],
+        "license": "Hyper3D account-generated assets; authorized game commercial use and public source repository"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "",
+          "id": "R09",
+          "path": "R09",
+          "position": [
+            22.6000003814697,
+            0.0,
+            -6.19999980926514
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/R09.blend",
+        "sha256": "53807f830f757aac631ea43cf06e2b4bc3f81b1a1bba7255113e1a4ecf7f22f4",
+        "bytes": 9660579
+      },
+      "game_sha256": "6fec8133d9e57d1183c06f1f2c8bbf9df8ba3fdbe70c08109743bba6192d5751",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    },
+    "MS14_event_board": {
+      "label": "组合活动木牌",
+      "source_assets": [
+        "MS01_signpost",
+        "MS04_wall_plaque"
+      ],
+      "export": {
+        "src": "raw/modular_props_20261015/ready/MS14_event_board.glb",
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "tex": 2048,
+        "provider": "Local assembly of original Hyper3D modular sources, 2026-10-15",
+        "source_assets": [
+          "MS01_signpost",
+          "MS04_wall_plaque"
+        ],
+        "license": "Hyper3D account-generated assets; authorized game commercial use and public source repository"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "",
+          "id": "MS14_event_board",
+          "path": "BuildSign/SignAssembly",
+          "position": [
+            -2.59999990463257,
+            0.0,
+            1.70000004768372
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/MS14_event_board.blend",
+        "sha256": "c00fadcbc50a0138c3590012d3e823ce73a19f9c4f25eaa6d8f70de2869fb8e1",
+        "bytes": 7008454
+      },
+      "game_sha256": "037044505dcb582fd0d88966412c0002c324a61178a66ea723ce7fa74e93d0a6",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    },
+    "R06": {
+      "label": "候车亭（去除旧站牌）",
+      "source_assets": [
+        "R06 original Hunyuan shelter"
+      ],
+      "export": {
+        "src": "raw/modular_props_20261015/ready/R06.glb",
+        "fit": "h",
+        "size": 2.7,
+        "tris": 8000,
+        "tex": 2048,
+        "preserve_parts": true,
+        "preserve_origin": true,
+        "level": false,
+        "provider": "Existing Hunyuan shelter; measured old sign-pole component removed locally for Hyper3D modular bus-stop upgrade, 2026-10-15"
+      },
+      "runtime_uses": [
+        {
+          "engraved_text": "",
+          "id": "R06",
+          "path": "R06",
+          "position": [
+            -43.0,
+            0.0,
+            -4.59999990463257
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "native_accepted": true,
+      "local_repair": {
+        "removed_vertices": 658,
+        "removed_component_bounds_godot": {
+          "min": [
+            1.6623,
+            0.0045,
+            -0.3523
+          ],
+          "max": [
+            2.2221,
+            2.5713,
+            0.0699
+          ]
+        },
+        "retained_shelter_max_x": 1.5275,
+        "source_geometry": "existing Hunyuan R06 shelter",
+        "atlas_repainted": false
+      },
+      "preparation": {
+        "removed_vertices": 658,
+        "removed_component_bounds_godot": {
+          "min": [
+            1.6623,
+            0.0045,
+            -0.3523
+          ],
+          "max": [
+            2.2221,
+            2.5713,
+            0.0699
+          ]
+        },
+        "retained_shelter_max_x": 1.5275,
+        "source_geometry": "existing Hunyuan R06 shelter",
+        "atlas_repainted": false
+      },
+      "raw_path": "art/library/modular_props_20261015/source/R06.glb",
+      "authoring": {
+        "file": "art/library/modular_props_20261015/authoring/R06.blend",
+        "sha256": "50c1602720034485c33dcd9aec380965cacb4d195a4f079d0070b0996a519ad5",
+        "bytes": 578784
+      },
+      "game_sha256": "53d71faf8a720bf0605c199442f740466093779d5abd2c4a67b25def7a4e5960",
+      "native_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+    }
+  },
+  "runtime_source_components": 100,
+  "runtime_composite_roots": 6,
+  "runtime_snapshot_package_sha256": "916059090713d4aa4bba34e0dc1d652871dd278371bceb1de62fc8381802c436"
+}

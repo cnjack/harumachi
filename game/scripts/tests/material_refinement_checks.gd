@@ -114,27 +114,28 @@ func run() -> void:
 	check("wall moss has a few actual centimetre fibre silhouettes rather than a painted green band",moss_ok,str({"vertices":moss.mesh.get_faces().size() if moss else 0,"min_y":str(moss_min),"max_y":str(moss_max)}))
 	var farm: Node3D=world.farm
 	var sign:=farm.get_node_or_null("FarmNameSign") as Node3D
-	var axis_ok: bool=sign!=null
-	var horizontal:=0;var vertical:=0;var fonts:=0
+	var sign_original: bool=false
 	if sign:
-		for mesh: MeshInstance3D in sign.find_children("*","MeshInstance3D",false,false):
-			var axis: int=int(parameter(mesh.material_override,"grain_axis",-1))
-			if mesh.mesh.get_aabb().size.x>1.:horizontal+=1;axis_ok=axis_ok and axis==0
-			elif mesh.mesh.get_aabb().size.y>1.:vertical+=1;axis_ok=axis_ok and axis==1
-		for glyph: Label3D in sign.find_children("*","Label3D",false,false):
-			if glyph.font!=null and glyph.font.resource_path.ends_with("LXGWWenKai-Medium.ttf") and backed_ink(sign,glyph):fonts+=1
-	check("farm board and upright posts follow separate physical grain axes",axis_ok and horizontal==1 and vertical==2)
-	check("farm entrance lettering uses the game font and its whole ink footprint is backed by wood",fonts==2,str(fonts))
-	var direction_result: Dictionary=directions(world)
-	check("town farm and lake direction ink fits every real arrow front and back",int(direction_result.count)>=18 and bool(direction_result.supported),str(direction_result))
+		for mesh: MeshInstance3D in WorldBuilder.find_meshes(sign):
+			for surface: int in mesh.mesh.get_surface_count():
+				var mat: Material=mesh.get_active_material(surface)
+				sign_original=sign_original or parameter(mat,"albedo_tex") is Texture2D
+	check("farm sign retains the real generated joined board, posts and painted grain",sign!=null and sign.get_meta("modular_source","")=="MS03_garden_board" and sign_original)
+	check("farm lettering is incised into the same physical wood instead of floating labels",sign!=null and sign.get_meta("engraved_surfaces",0)>0 and sign.get_meta("engraving_two_sided",false) and sign.find_children("*","Label3D",true,false).is_empty())
+	var engraved_arrows:=0
+	var arrow_support:=true
+	for node: Node in world.find_children("*","Node3D",true,false):
+		if not node.get_meta("modular_signpost",false):continue
+		for arrow: Node3D in node.find_children("Arrow_*","Node3D",true,false):
+			engraved_arrows+=1
+			arrow_support=arrow_support and arrow.get_meta("engraved_surfaces",0)>0 and arrow.get_meta("engraving_two_sided",false)
+			var ink_rect: Vector4=arrow.get_meta("engraving_rect",Vector4.ZERO)
+			var wood_box: AABB=WorldBuilder.local_aabb(arrow)
+			arrow_support=arrow_support and ink_rect.z>0 and ink_rect.w>0 and ink_rect.x-ink_rect.z*.5>=wood_box.position.x and ink_rect.x+ink_rect.z*.5<=wood_box.end.x and ink_rect.y-ink_rect.w*.5>=wood_box.position.y and ink_rect.y+ink_rect.w*.5<=wood_box.end.y
+	check("town farm and lake arrows carry front/back lettering on the actual generated wood",engraved_arrows>=12 and arrow_support,str(engraved_arrows))
 	var build:=world.get_node_or_null("BuildSign") as Node3D
-	var build_ink:=0;var build_wood:=0
-	if build:
-		for glyph: Label3D in build.find_children("*","Label3D",true,false):
-			if glyph.font!=null and glyph.font.resource_path.ends_with("LXGWWenKai-Medium.ttf") and backed_ink(build,glyph):build_ink+=1
-		for mesh: MeshInstance3D in build.find_children("*","MeshInstance3D",true,false):
-			if bool(parameter(mesh.material_override,"timber_detail",false)):build_wood+=1
-	check("build-area information is supported by a physical painted timber board and fixings",build_ink==2 and build_wood==3,str(Vector2i(build_ink,build_wood)))
+	var build_face:=build.find_child("EventBoard",true,false) as Node3D if build else null
+	check("build-area sign combines reusable generated posts and an engraved real board",build_face!=null and build_face.get_meta("engraved_surfaces",0)>0 and build.find_children("*","Label3D",true,false).is_empty())
 	var joined_axes:=0
 	var joined_ok:=true
 	for node: Node in farm.find_children("*","Node3D",true,false):

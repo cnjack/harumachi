@@ -1,0 +1,18 @@
+{
+ "id": "MS08_storage_bay",
+ "src": "raw/modular_props_20261015/ready/MS08_storage_bay.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 5000,
+ "tex": 2048,
+ "bytes": 476576,
+ "godot_size_m_xyz": [
+  0.622,
+  0.4832,
+  0.4026
+ ],
+ "mesh_nodes": [
+  "MS08_storage_bay_Hyper3D"
+ ]
+}

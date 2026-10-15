@@ -157,13 +157,8 @@ func sync_state() -> void:
 	if str(state.sign) == "summer_planning" and int(state.wood_moved) > 0: caption = "田中正在搭台\n木料到场 %d / 6" % int(state.wood_moved)
 	if str(state.sign) == "summer_planning" and bool(state.resident_finished): caption = "田中与街坊在搭台\n先留出通道"
 	if str(state.sign) == "open" and str(state.festival) == "ready" and str(world.fest_nodes.natsumatsuri.get_meta("assembled_by", "")) == "residents": caption = "田中与街坊已搭好\n今晚一起过来"
-	for label: Label3D in sign.find_children("*", "Label3D", true, false):
-		if label.text != caption:
-			label.text = caption
-			# Each caption starts at the intended em before fitting; a short later
-			# caption must recover its size after a longer resident-work notice.
-			label.pixel_size = .1584 / float(label.font_size)
-			ClearSignage.fit(label, Vector2(1.1, .62), .06)
+	# Stage instructions belong to the interaction, not a changing wall of text.
+	sign.set_meta("activity_caption",caption)
 	if seedling:
 		activate(seedling, bool(state.nursery)); seedling.set_meta("lifecycle_state", "ready" if state.nursery else "stored")
 	if harvest:

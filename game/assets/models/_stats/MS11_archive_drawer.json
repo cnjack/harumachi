@@ -1,0 +1,18 @@
+{
+ "id": "MS11_archive_drawer",
+ "src": "raw/modular_props_20261015/ready/MS11_archive_drawer.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 11999,
+ "tex": 2048,
+ "bytes": 628896,
+ "godot_size_m_xyz": [
+  0.52,
+  0.18,
+  0.65
+ ],
+ "mesh_nodes": [
+  "MS11_archive_drawer_Hyper3D"
+ ]
+}

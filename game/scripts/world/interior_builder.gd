@@ -230,17 +230,17 @@ func _wall(size: Vector3, pos: Vector3, m: Material) -> void:
 
 
 func _build_bakery_sign() -> void:
-	# A small counter menu has an actual stem and foot on the .87 m worktop.
 	var top := .87
-	var wood := PublicPlaceArt.wood()
-	var paper := PublicPlaceArt.matte(Color(1.0,.95,.8))
-	_box(Vector3(.26,.025,.18),Vector3(1.55,top+.0125,.30),wood)
-	_box(Vector3(.025,.13,.025),Vector3(1.55,top+.09,.30),wood)
-	_box(Vector3(.49,.29,.018),Vector3(1.55,top+.29,.30),paper)
+	var stand: Node3D=ModularProps.part(wb,self,"MS05_table_sign","BakeryTrialStand",Vector3(1.55,top,.30))
+	for counter: Node3D in pieces:
+		if counter.get_meta("model_id","")=="I04_shop_counter":
+			var surface: float=WorldBuilder.rendered_support_height(counter,stand.global_position,top+.04,true)
+			if is_finite(surface):WorldBuilder.rest_on(stand,surface);PublicPlaceArt.supported(stand,counter)
 	bakery_sign=Label3D.new();bakery_sign.name="BakeryTrialSign"
 	bakery_sign.font=load("res://assets/fonts/LXGWWenKai-Medium.ttf");bakery_sign.font_size=40
 	bakery_sign.pixel_size=.00155;bakery_sign.outline_size=0;bakery_sign.modulate=Color(.3,.18,.11)
-	bakery_sign.position=Vector3(1.55,top+.29,.312);add_child(bakery_sign)
+	bakery_sign.position=Vector3(1.55,top+.29,.312);bakery_sign.visible=false;add_child(bakery_sign)
+	ModularProps.engrave(get_node("BakeryTrialStand"),"小份试作",Vector4(0,.17,.31,.12),false,.46)
 	var point:=Interactable.new();point.name="BakeryOrderPoint";point.id="bakery_orders";point.radius=1.4
 	point.position=Vector3(1.20,1.1,1.35);add_child(point)
 	sync_bakery_sign()

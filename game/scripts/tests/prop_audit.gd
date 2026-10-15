@@ -111,15 +111,20 @@ static func wall_supported(prop: Node3D) -> bool:
 	var wall: MeshInstance3D=prop.get_node_or_null(prop.get_meta("wall_mount_surface")) as MeshInstance3D
 	if wall==null or not wall.mesh is BoxMesh:return false
 	var box: AABB=wall.get_aabb()
+	# Box walls can face X or Z. Inspect the nearest real thin-axis face.
+	var axis: int=0 if box.size.x<box.size.z else 2
+	var lateral: int=2 if axis==0 else 0
+	var centre: Vector3=wall.to_local(prop.global_position)
+	var face: float=box.position[axis] if centre[axis]<box.get_center()[axis] else box.end[axis]
 	var contacts: Dictionary={}
 	var left: float=INF;var right: float=-INF;var bottom: float=INF;var top: float=-INF
 	for mesh: MeshInstance3D in WorldBuilder.find_meshes(prop):
 		var transform: Transform3D=wall.global_transform.affine_inverse()*mesh.global_transform
 		for vertex: Vector3 in mesh.mesh.get_faces():
 			var at: Vector3=transform*vertex
-			if absf(at.z-box.end.z)>.012 or at.x<box.position.x or at.x>box.end.x or at.y<box.position.y or at.y>box.end.y:continue
+			if absf(at[axis]-face)>.012 or at[lateral]<box.position[lateral] or at[lateral]>box.end[lateral] or at.y<box.position.y or at.y>box.end.y:continue
 			contacts[Vector3i(roundi(at.x*1000),roundi(at.y*1000),roundi(at.z*1000))]=true
-			left=minf(left,at.x);right=maxf(right,at.x);bottom=minf(bottom,at.y);top=maxf(top,at.y)
+			left=minf(left,at[lateral]);right=maxf(right,at[lateral]);bottom=minf(bottom,at.y);top=maxf(top,at.y)
 	return contacts.size()>=6 and right-left>.60 and top-bottom>.20
 
 static func area(poly: PackedVector2Array) -> float:

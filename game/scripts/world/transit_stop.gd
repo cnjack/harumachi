@@ -7,18 +7,23 @@ static func build(world: WorldBuilder) -> void:
 		var header:=ClearSignage.plate(shelter,"StopName",Vector2(2.4,.28),Vector3(0,2.13,1.02),0,Color(.19,.40,.36))
 		header.add_child(ClearSignage.label("晴町  HARUMACHI",Vector3(0,0,.02),0,.21,Color(.99,.96,.83)))
 		ClearSignage.plate(shelter,"RouteBacking",Vector2(2.42,1.12),Vector3(0,1.53,.15),0,Color(.32,.40,.38))
-		var timetable:=ClearSignage.plate(shelter,"Timetable",Vector2(1.05,1.05),Vector3(.62,1.53,.18),0,Color(.96,.93,.81))
+		var timetable: Node3D=ModularProps.part(world,shelter,"MS07_timetable_case","Timetable",Vector3(.62,1.005,.18),Vector3(1.05,1.05,.08))
 		for index in 5:
 			var row: String=["路 线  07","晴町 → 青海駅","08:10   10:40","13:20   16:50","末班车  18:30"][index]
-			timetable.add_child(ClearSignage.label(row,Vector3(0,.37-.18*index,.025),0,.11))
-		var map:=ClearSignage.plate(shelter,"RouteMap",Vector2(1.05,1.05),Vector3(-.62,1.53,.18),0,Color(.94,.94,.83))
-		map.add_child(ClearSignage.label("晴町 · 青海線",Vector3(0,.36,.025),0,.13))
+			timetable.add_child(ClearSignage.label(row,Vector3(0,.87-.18*index,.052),0,.11))
+		var map: Node3D=ModularProps.part(world,shelter,"MS07_timetable_case","RouteMap",Vector3(-.62,1.005,.18),Vector3(1.05,1.05,.08))
+		map.add_child(ClearSignage.label("晴町 · 青海線",Vector3(0,.86,.052),0,.13))
 		for i in 3:
-			var y:=.13-.23*i
-			var dot:=MeshInstance3D.new();dot.name="RouteDot_%d"%i;var circle:=SphereMesh.new();circle.radius=.034;circle.height=.068;dot.mesh=circle;dot.material_override=JapaneseArchitecture._flat(Color(.19,.42,.37));dot.position=Vector3(-.29,y,.027);map.add_child(dot)
-			map.add_child(ClearSignage.label(["晴町","山下橋","青海駅"][i],Vector3(.08,y,.025),0,.12))
-		var pole:=ClearSignage.plate(shelter,"BusStopPole",Vector2(.40,1.35),Vector3(1.78,1.63,.61),0,Color(.18,.39,.38))
-		pole.add_child(ClearSignage.label("BUS\n07\n晴町\n青海線",Vector3(0,0,.025),0,.14,Color(1,.97,.86)))
+			var y:=.63-.23*i
+			var dot:=MeshInstance3D.new();dot.name="RouteDot_%d"%i;var circle:=SphereMesh.new();circle.radius=.034;circle.height=.068;dot.mesh=circle;dot.material_override=JapaneseArchitecture._flat(Color(.19,.42,.37));dot.position=Vector3(-.29,y,.054);map.add_child(dot)
+			map.add_child(ClearSignage.label(["晴町","山下橋","青海駅"][i],Vector3(.08,y,.052),0,.12))
+		var pole: Node3D=ModularProps.part(world,shelter,"MS06_bus_pole","BusStopPole",Vector3(1.78,0,.61))
+		if pole:
+			ModularProps.engrave(pole,"晴町",Vector4(0,2.09,.29,.15),true,.72)
+			var pole_body:=StaticBody3D.new();pole_body.name="PoleCollision";pole_body.collision_layer=WorldBuilder.L_SOLID;pole_body.set_meta("model_part",true)
+			var pole_shape:=CollisionShape3D.new();var pole_volume:=CylinderShape3D.new();pole_volume.radius=.07;pole_volume.height=2.0
+			pole_shape.shape=pole_volume;pole_shape.position.y=1.0;pole_body.add_child(pole_shape);pole.add_child(pole_body)
+
 	# The incoming road passes through the opened west boundary, continuing into the hills.
 	var asphalt:=WorldBuilder.ground_material("gravel");asphalt.set_shader_parameter("tint",Color(.39,.44,.48));asphalt.set_shader_parameter("tile",4.0)
 	var road: MeshInstance3D=world.call("_plane",[-330.0,-14.4,-51.9,-7.6],asphalt,.01)
@@ -53,24 +58,7 @@ static func build(world: WorldBuilder) -> void:
 static func _replace_small_signs(world: WorldBuilder) -> void:
 	var directions:=world.get_node_or_null("R09") as Node3D
 	if directions:
-		for mesh: MeshInstance3D in WorldBuilder.find_meshes(directions):
-			var old: StandardMaterial3D=mesh.get_active_material(0) as StandardMaterial3D
-			var finish:=ShaderMaterial.new();finish.shader=load("res://shaders/sign_support_refined.gdshader")
-			finish.set_shader_parameter("albedo_tex",old.albedo_texture)
-			finish.set_shader_parameter("wood_tex",SurfaceFinish.refined_grain())
-			finish.set_shader_parameter("part_transform",Projection(directions.global_transform.affine_inverse()*mesh.global_transform));mesh.material_override=finish
-		for index in 3:
-			# The post faces west: local -X points north to the main street;
-			# local +X points south into the residential lane.
-			var arrow:=ClearSignage.arrow(directions,"ClearDirection_%d"%index,Vector3(.10,2.15-.34*index,-.016),index!=1,[Color(.60,.48,.28),Color(.34,.48,.37),Color(.62,.36,.23)][index])
-			var caption: String=["商店街","住宅支巷","农园 · 沿主街向东"][index]
-			var em: float=.125 if index<2 else .075
-			var front: Label3D=ClearSignage.label(caption,Vector3(0,0,.019),0,em,Color(.99,.98,.88))
-			ClearSignage.fit(front,Vector2(1.02,.20),.015);arrow.add_child(front)
-			# Back lettering is placed beside the measured upright, not behind it.
-			var back_caption: String=caption if index<2 else "农园\n沿主街向东"
-			var back_ink: Label3D=ClearSignage.label(back_caption,Vector3(.235,0,-.019),PI,em if index<2 else .068,Color(.99,.98,.88))
-			ClearSignage.fit(back_ink,Vector2(.68,.20),.015);arrow.add_child(back_ink)
+		ModularProps.directions(directions,["商店街","住宅支巷","河边农园"])
 	var chalk:=world.get_node_or_null("A13_chalkboard") as Node3D
 	if chalk:
 		for mesh: MeshInstance3D in WorldBuilder.find_meshes(chalk):

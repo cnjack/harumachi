@@ -71,8 +71,6 @@ static func build(room: InteriorBuilder,root: Node3D) -> void:
 			var mat:=PublicPlaceArt.box(root,"CafePlacemat_%d"%index,Vector3(.32,.004,.24),at+Vector3(0,.762,0),PublicPlaceArt.canvas(Color(.79,.80,.65)));PublicPlaceArt.supported(mat,table)
 		fixture(room,root,"P_coffee_station","EspressoStation",Vector3(4.8,0,-3.2))
 		PublicPlaceArt.box(root,"CounterConnector",Vector3(.18,.82,.75),Vector3(1.01,.41,.30),PublicPlaceArt.matte(Color(.73,.76,.61)),true)
-		ClearSignage.paper_tag(root,"CoffeeMenu","咖啡 %d\n拿铁 %d\n坐下来慢慢喝"%[int(GameState.item("coffee").price),int(GameState.item("cafe_latte").price)],Vector3(5.39,1.92,.2),Vector2(.94,.69),-PI*.5,.09)
 		point(root,"public_cafe_order",Vector3(3.5,1,1.1),1.2)
 		var return_shelf:=PublicPlaceArt.bench(root,"CafeReturnStation",Vector3(4.8,0,2.7),.65,.55,.84)
 		PublicPlaceArt.tray(root,"ReturnedDishTray",Vector3(4.8,.84,2.7),Vector2(.55,.40),return_shelf)
-		ClearSignage.paper_tag(root,"ReturnDishes","杯碟回收",Vector3(5.38,1.20,2.7),Vector2(.54,.20),-PI*.5,.09)

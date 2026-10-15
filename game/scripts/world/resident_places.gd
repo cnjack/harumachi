@@ -84,14 +84,12 @@ static func build_doors(world: WorldBuilder) -> void:
 		for side: float in [-1.0,1.0]:PublicPlaceArt.box(frame,"Post_%d"%int(side),Vector3(.065,2.05,.12),Vector3(side*.43,1.025,0),wood)
 		PublicPlaceArt.box(frame,"Lintel",Vector3(.93,.08,.14),Vector3(0,2.06,0),wood)
 		PublicPlaceArt.box(frame,"SideDoor",Vector3(.78,1.90,.035),Vector3(0,.95,.02),PublicPlaceArt.matte(Color(.42,.52,.42)))
-		ClearSignage.paper_tag(frame,"ToolshedDoorName","工具屋 · 工作入口",Vector3(0,1.68,.05),Vector2(.72,.15),0,.065)
 	for id: String in ["home_ren","home_kazuko","photo_room"]:
 		var spec: Dictionary=SPECS[id]
 		var parent: Node3D=world.interiors.get(str(spec.return_room))
 		if parent==null or parent.find_child(str(spec.door_id),true,false)!=null:continue
 		var door:=Interactable.new();door.name=str(spec.door_id);door.id=str(spec.door_id);door.radius=1.45
 		parent.add_child(door);door.global_position=spec.outside_point
-		ClearSignage.paper_tag(parent,"ResidentDoorLabel_"+id,str(spec.name),parent.to_local(spec.outside_point)+Vector3(0,.75,-.12),Vector2(1.1,.2),0,.09)
 	for who: String in HOMES:
 		var address: Dictionary=HOMES[who]
 		if not address.has("building_at"):continue
@@ -121,7 +119,6 @@ static func build_doors(world: WorldBuilder) -> void:
 		var model: String=str(building.get_meta("model_id",""))
 		if model not in ["H02","H03","M03_gable_house","M05_residential","M01_timber_machiya"]:continue
 		if building.get_node_or_null("VisitDoorPlaque")!=null:continue
-		var bounds: AABB=WorldBuilder.local_aabb(building as Node3D)
 		var at: Vector3=(building as Node3D).position
 		var assigned: String=str(building.get_meta("resident_room",""))
 		var title: String="普通民居 · 无来访约定"
@@ -129,10 +126,7 @@ static func build_doors(world: WorldBuilder) -> void:
 		elif model=="H02":title="普通公寓 · 无来访约定"
 		elif at.distance_to(Vector3(-35,0,-3))<.05:
 			title="晴町小阅览室 · 09–20时";building.set_meta("public_room","library")
-		ClearSignage.paper_tag(building as Node3D,"VisitDoorPlaque",title,Vector3(-.55,1.45,bounds.end.z+.028),Vector2(1.5,.22),0,.085)
-		# Roof overhangs define the front AABB, so support this yard plaque with
-		# its own timber stake instead of pretending it touches a recessed wall.
-		PublicPlaceArt.box(building as Node3D,"VisitDoorPlaquePost",Vector3(.055,1.50,.055),Vector3(-.55,.75,bounds.end.z+.005),PublicPlaceArt.wood())
+		# Visiting rules are shown when interacting with the actual door.
 		building.set_meta("door_visit_status","invitation" if assigned!="" else ("public" if title.begins_with("晴町小") else "background"))
 
 static func _bind_mio_door(added: Node,owned_proxy: StaticBody3D) -> void:

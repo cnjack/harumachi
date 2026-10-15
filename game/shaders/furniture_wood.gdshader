@@ -30,6 +30,15 @@ uniform vec3 part_size = vec3(1.);
 uniform int component_count = 0;
 uniform vec4 component_min[64];
 uniform vec4 component_max[64];
+// Project into the actual timber surface: no floating paper or emissive glyph.
+uniform bool engraving_enabled = false;
+uniform sampler2D engraving_mask : filter_linear_mipmap, repeat_disable;
+uniform vec4 engraving_rect = vec4(0., .1, .5, .1);
+uniform mat4 engraving_transform;
+uniform bool engraving_two_sided = false;
+uniform float engraving_strength = .70;
+varying vec3 engraving_p;
+varying vec3 engraving_n;
 varying vec3 root_p;
 varying vec3 root_normal;
 varying vec3 board_p;
@@ -42,6 +51,8 @@ varying float reflection_f0;
 varying float reflection_roughness;
 
 void vertex() {
+	engraving_p = (engraving_transform * vec4(VERTEX, 1.)).xyz;
+	engraving_n = normalize(mat3(engraving_transform) * NORMAL);
 	root_p = (wood_transform * vec4(VERTEX, 1.)).xyz;
 	root_normal = normalize(mat3(wood_transform) * NORMAL);
 	board_p = VERTEX;
@@ -61,6 +72,8 @@ void vertex() {
 }
 
 void fragment() {
+	NORMAL_MAP = vec3(.5, .5, 1.);
+	NORMAL_MAP_DEPTH = 0.;
 	vec3 extent = max(board_size, vec3(.001));
 	vec3 q = clamp((board_p - board_min) / extent, vec3(0.), vec3(1.));
 	float along = grain_axis == 1 ? root_p.y : (grain_axis == 2 ? root_p.z : root_p.x);
@@ -148,6 +161,23 @@ void fragment() {
 		colour += timber * wear_strength * used_top * scratch_lip * vec3(.035, .029, .018);
 	}
 	if (use_profile == 3) { colour *= 1. + timber * used_top * wear_strength * .022; }
+	if (engraving_enabled && (engraving_n.z > .45 || (engraving_two_sided && engraving_n.z < -.45))) {
+		vec2 ink_uv = (engraving_p.xy - engraving_rect.xy) / engraving_rect.zw + vec2(.5);
+		ink_uv.y = 1. - ink_uv.y;
+		if (engraving_n.z < 0.) { ink_uv.x = 1. - ink_uv.x; }
+		if (all(greaterThanEqual(ink_uv, vec2(0.))) && all(lessThanEqual(ink_uv, vec2(1.)))) {
+			vec2 pixel = 1. / vec2(textureSize(engraving_mask, 0));
+			float cut = texture(engraving_mask, ink_uv).r;
+			float lip = texture(engraving_mask, ink_uv + pixel * vec2(-1.2, -1.2)).r - texture(engraving_mask, ink_uv + pixel * vec2(1.2, 1.2)).r;
+			// Dark recessed fibres with an asymmetric bevel lip, lit by the same
+			// sun/room light as the underlying original atlas. Never a bright label.
+			colour *= 1. - cut * engraving_strength;
+			colour += lip * vec3(.13, .095, .055) * engraving_strength;
+			vec2 slope = vec2(texture(engraving_mask, ink_uv + vec2(pixel.x, 0.)).r - texture(engraving_mask, ink_uv - vec2(pixel.x, 0.)).r, texture(engraving_mask, ink_uv + vec2(0., pixel.y)).r - texture(engraving_mask, ink_uv - vec2(0., pixel.y)).r);
+			NORMAL_MAP = normalize(vec3(-slope * .42, 1.)) * .5 + .5;
+			NORMAL_MAP_DEPTH = engraving_strength;
+		}
+	}
 	ALBEDO = colour;
 	finish_polish = timber * polished;
 	ROUGHNESS = structural ? .92 : mix(roughness_base, roughness_polished, finish_polish);

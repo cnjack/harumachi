@@ -22,24 +22,24 @@ func run() -> void:
 	check("physical bakery menu advertises actual available food and its real price",text.contains("菠萝包") and text.contains(str(int(GameState.item("melon_pan").get("price",0)))) and not text.contains("珈琲") and not text.contains("咖啡"),text)
 	var directions: Node=world.get_node("R09")
 	var direction_text: String=""
-	for glyph: Label3D in directions.find_children("*","Label3D",true,false): direction_text+=glyph.text
+	for part: Node in directions.find_children("Arrow_*","Node3D",true,false):direction_text+=str(part.get_meta("engraved_text",""))
 	check("direction names have consistent spacing and retain all three destinations",direction_text.contains("商店街") and direction_text.contains("住宅支巷") and direction_text.contains("农园") and not direction_text.contains("商 店") and not direction_text.contains("农 园"))
 	for index: int in 3:
-		var arrow: Node3D=directions.get_node("ClearDirection_%d"%index)
-		var board: MeshInstance3D=arrow.get_node_or_null("ArrowBoard") as MeshInstance3D
+		var arrow: Node3D=directions.find_child("Arrow_%d"%index,true,false) as Node3D
+		var meshes: Array[MeshInstance3D]=WorldBuilder.find_meshes(arrow) if arrow else []
 		var aligned: bool=false
-		if board:
-			for vertex: Vector3 in board.mesh.get_faces():
-				if absf(vertex.x)>.625 and absf(vertex.y)<.001:
-					var vector: Vector3=arrow.global_basis*Vector3(vertex.x,0,0)
-					aligned=vector.normalized().dot(Vector3(0,0,1 if index==1 else -1))>.98
+		for mesh: MeshInstance3D in meshes:
+			# The authored arrow tip is +X; use its actual transformed geometry axis.
+			var vector: Vector3=mesh.global_basis*Vector3.RIGHT
+			aligned=aligned or vector.normalized().dot(Vector3(0,0,1 if index==1 else -1))>.98
 		check("physical arrow %d points along the actual village route"%index,aligned)
-		check("physical arrow %d is readable from both approaches"%index,arrow.find_children("*","Label3D",true,false).size()==2)
-		var unobscured: bool=false
-		for glyph: Label3D in arrow.find_children("*","Label3D",true,false):
-			if glyph.position.z>=0:continue
-			var ink: AABB=glyph.transform*glyph.get_aabb()
-			unobscured=ink.position.x>-.16 and ink.end.x<.62
+		check("physical arrow %d is readable from both approaches"%index,arrow!=null and arrow.get_meta("engraved_surfaces",0)>0 and arrow.get_meta("engraving_two_sided",false))
+		var unobscured:=false
+		if arrow:
+			var rect: Vector4=arrow.get_meta("engraving_rect",Vector4.ZERO)
+			var left: Vector3=directions.to_local(arrow.to_global(Vector3(rect.x-rect.z*.5,rect.y,0)))
+			var right: Vector3=directions.to_local(arrow.to_global(Vector3(rect.x+rect.z*.5,rect.y,0)))
+			unobscured=minf(absf(left.x),absf(right.x))>.08 and left.x*right.x>0
 		check("back lettering %d clears the measured wooden upright"%index,unobscured)
 	var work: InteriorBuilder=world.interiors.workroom
 	var loose: int=0

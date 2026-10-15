@@ -14,6 +14,9 @@ diversity={r['id']:r for r in json.loads(diversity_path.read_text())['assets']} 
 diversity_verified_path=ROOT/'art/manifests/models_hyper3d_diversity_20261013.json'
 diversity_verified=json.loads(diversity_verified_path.read_text())['assets'] if diversity_verified_path.exists() else {}
 
+modular_path=ROOT/'art/manifests/models_modular_props_20261015.json'
+modular=json.loads(modular_path.read_text())['assets'] if modular_path.exists() else {}
+
 def category(name):
  if name in diversity:
   if name.startswith('T'):return '树木'
@@ -57,6 +60,10 @@ for path in sorted((ROOT/'game/assets/models').glob('*.glb')):
               reference=reviewed['reference'],revision='20261013',
               provenance='art/manifests/models_hyper3d_diversity_20261013.json',
               triangle_budget=reviewed['triangle_budget'])
+ if path.stem in modular:
+  mod=modular[path.stem];gen=mod.get('generation',{});uses=mod.get('runtime_uses',[])
+  item.update(name=mod['label'],category='道具',collection='组合道具',source=gen.get('task_url',''),raw_path=('art/library/modular_props_20261015/source/'+path.stem+'.glb') if gen else mod.get('raw_path',''),authoring_path='art/library/modular_props_20261015/authoring/'+path.stem+'.blend',reference=mod.get('reference',''),references=[mod['reference']] if mod.get('reference') else [],runtime_uses=uses,revision='20261015',provenance='art/library/modular_props_20261015/provenance.json',modular={'source_assets':mod.get('source_assets',[path.stem]),'unlettered':path.stem!='R06','uses':uses,'compatibility':'独立米制单件；正面 +Z；底部居中；路标可转向，格柜可横向/竖向拼接，文字与网格分离。'})
+  item['recipe']='ModularProps.part(world, parent, "'+path.stem+'", "MyProp", Vector3.ZERO)'
  if path.stem in roster:
   person=roster[path.stem]
   if hashlib.sha256(path.read_bytes()).hexdigest()!=person['sha256']:
@@ -84,6 +91,6 @@ for person in roster.values():
  assets.append(item)
 
 engine_lock=json.loads((ROOT/'tools/godot-version.json').read_text())
-catalog={'schema_version':2,'title':'晴町素材室','updated':datetime.now(ZoneInfo('Asia/Shanghai')).date().isoformat(),'engine':'Godot '+engine_lock['release_tag'],'count':len(assets),'categories':['全部','树木','植物','草地','地景','建筑','道具','人物','动物'],'collections':['全部','人物角色','人物原稿','游戏资产','Quaternius 免费','Kenney 免费'],'assets':assets}
+catalog={'schema_version':2,'title':'晴町素材室','updated':datetime.now(ZoneInfo('Asia/Shanghai')).date().isoformat(),'engine':'Godot '+engine_lock['release_tag'],'count':len(assets),'categories':['全部','树木','植物','草地','地景','建筑','道具','人物','动物'],'collections':['全部','组合道具','人物角色','人物原稿','游戏资产','Quaternius 免费','Kenney 免费'],'assets':assets}
 (OUT/'catalog.json').write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n')
 print('CATALOG',len(assets),'assets')

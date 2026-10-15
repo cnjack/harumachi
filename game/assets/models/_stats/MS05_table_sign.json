@@ -1,0 +1,18 @@
+{
+ "id": "MS05_table_sign",
+ "src": "raw/modular_props_20261015/ready/MS05_table_sign.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 12000,
+ "tex": 2048,
+ "bytes": 762100,
+ "godot_size_m_xyz": [
+  0.44,
+  0.3001,
+  0.18
+ ],
+ "mesh_nodes": [
+  "MS05_table_sign_Hyper3D"
+ ]
+}

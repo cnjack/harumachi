@@ -189,11 +189,15 @@
       "square_note": "v0.7.3: footprint measured 2.9 deg off-axis after levelling (art/tools/level_check.py); yaw 0.0 -> -2.9"
     },
     "R06": {
-      "src": "raw/R06/model.glb",
+      "src": "raw/modular_props_20261015/ready/R06.glb",
       "fit": "h",
       "size": 2.7,
       "tris": 8000,
-      "tex": 1024
+      "tex": 2048,
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "provider": "Existing Hunyuan shelter; measured old sign-pole component removed locally for Hyper3D modular bus-stop upgrade, 2026-10-15"
     },
     "R10": {
       "src": "raw/R10/model.glb",
@@ -277,11 +281,17 @@
       "tex": 1024
     },
     "R09": {
-      "src": "raw/R09/model.glb",
-      "fit": "h",
-      "size": 2.6,
-      "tris": 4000,
-      "tex": 1024
+      "src": "raw/modular_props_20261015/ready/R09.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Local assembly of original Hyper3D modular sources, 2026-10-15",
+      "source_assets": [
+        "MS01_signpost",
+        "MS02_arrow_board"
+      ],
+      "license": "Hyper3D account-generated assets; authorized game commercial use and public source repository"
     },
     "R11": {
       "src": "raw/R11/model.glb",
@@ -1583,13 +1593,17 @@
       "rebake": true
     },
     "P_signpost": {
-      "src": "raw/landmarks_aged_20261001/P_signpost.glb",
+      "src": "raw/modular_props_20261015/ready/P_signpost.glb",
       "preserve_parts": true,
       "preserve_origin": true,
-      "tex": 2048,
       "level": false,
-      "provider": "Blender UV/material refinement + imagegen aged textures, 2026-10-01",
-      "note": "Original physical geometry and node hierarchy retained, including bridge deck. No recenter/scale/decimation."
+      "tex": 2048,
+      "provider": "Local assembly of original Hyper3D modular sources, 2026-10-15",
+      "source_assets": [
+        "MS01_signpost",
+        "MS02_arrow_board"
+      ],
+      "license": "Hyper3D account-generated assets; authorized game commercial use and public source repository"
     },
     "P_bridge": {
       "src": "raw/landmarks_aged_20261001/P_bridge.glb",
@@ -3260,6 +3274,162 @@
       "image_format": "AUTO",
       "provider": "Hyper3D CLI Gen-2.5-High; original geometry and atlas; measured local support/glass repairs and assembly",
       "note": "Source IDs and hashes: art/library/hyper3d_furniture_20261015/provenance.json; actual source face partitions, no invisible support proxies. Native package acceptance passed 2026-10-15; see scope delivery record."
+    },
+    "MS01_signpost": {
+      "src": "raw/modular_props_20261015/ready/MS01_signpost.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+      "generation_id": "95472a66-f79c-4c07-a0b8-3376687a71ae",
+      "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+      "source_page": "https://hyper3d.ai/workspace/rodin/95472a66-f79c-4c07-a0b8-3376687a71ae"
+    },
+    "MS02_arrow_board": {
+      "src": "raw/modular_props_20261015/ready/MS02_arrow_board.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+      "generation_id": "fdc8387b-1db7-4aa5-9461-4474e7f4675b",
+      "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+      "source_page": "https://hyper3d.ai/workspace/rodin/fdc8387b-1db7-4aa5-9461-4474e7f4675b"
+    },
+    "MS03_garden_board": {
+      "src": "raw/modular_props_20261015/ready/MS03_garden_board.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+      "generation_id": "e977f2f8-9a1a-4b66-a821-f543ec9aea73",
+      "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+      "source_page": "https://hyper3d.ai/workspace/rodin/e977f2f8-9a1a-4b66-a821-f543ec9aea73"
+    },
+    "MS04_wall_plaque": {
+      "src": "raw/modular_props_20261015/ready/MS04_wall_plaque.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+      "generation_id": "ac8e4729-f4d6-449f-b1aa-69fb780f9524",
+      "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+      "source_page": "https://hyper3d.ai/workspace/rodin/ac8e4729-f4d6-449f-b1aa-69fb780f9524"
+    },
+    "MS05_table_sign": {
+      "src": "raw/modular_props_20261015/ready/MS05_table_sign.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+      "generation_id": "92a9142d-aa54-4782-9aa7-15c0e85af05b",
+      "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+      "source_page": "https://hyper3d.ai/workspace/rodin/92a9142d-aa54-4782-9aa7-15c0e85af05b"
+    },
+    "MS06_bus_pole": {
+      "src": "raw/modular_props_20261015/ready/MS06_bus_pole.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+      "generation_id": "086d8db1-053f-48c9-8b52-41b264bf2935",
+      "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+      "source_page": "https://hyper3d.ai/workspace/rodin/086d8db1-053f-48c9-8b52-41b264bf2935"
+    },
+    "MS07_timetable_case": {
+      "src": "raw/modular_props_20261015/ready/MS07_timetable_case.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+      "generation_id": "3c4f879b-e405-467a-a6d6-09d5b7b8d932",
+      "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+      "source_page": "https://hyper3d.ai/workspace/rodin/3c4f879b-e405-467a-a6d6-09d5b7b8d932"
+    },
+    "MS08_storage_bay": {
+      "src": "raw/modular_props_20261015/ready/MS08_storage_bay.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+      "generation_id": "488f6837-ae06-41dc-bcd3-41abd47f1f18",
+      "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+      "source_page": "https://hyper3d.ai/workspace/rodin/488f6837-ae06-41dc-bcd3-41abd47f1f18"
+    },
+    "MS09_archive_box": {
+      "src": "raw/modular_props_20261015/ready/MS09_archive_box.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+      "generation_id": "62b83036-c5c7-4d29-bf9d-bbc8d8a032c7",
+      "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+      "source_page": "https://hyper3d.ai/workspace/rodin/62b83036-c5c7-4d29-bf9d-bbc8d8a032c7"
+    },
+    "MS10_wrapping_rolls": {
+      "src": "raw/modular_props_20261015/ready/MS10_wrapping_rolls.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+      "generation_id": "55a5a0ea-fff5-4789-8e2b-31deb84656e8",
+      "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+      "source_page": "https://hyper3d.ai/workspace/rodin/55a5a0ea-fff5-4789-8e2b-31deb84656e8"
+    },
+    "MS11_archive_drawer": {
+      "src": "raw/modular_props_20261015/ready/MS11_archive_drawer.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+      "generation_id": "369772a7-99a2-4464-8b25-4fee857fde42",
+      "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+      "source_page": "https://hyper3d.ai/workspace/rodin/369772a7-99a2-4464-8b25-4fee857fde42"
+    },
+    "MS12_linen_frame": {
+      "src": "raw/modular_props_20261015/ready/MS12_linen_frame.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+      "generation_id": "c4c1cb15-48bf-431d-b08f-d667fbf93d8e",
+      "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+      "source_page": "https://hyper3d.ai/workspace/rodin/c4c1cb15-48bf-431d-b08f-d667fbf93d8e"
+    },
+    "MS13_picture_frame": {
+      "src": "raw/modular_props_20261015/ready/MS13_picture_frame.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+      "generation_id": "5d456d8b-cfe7-47f2-884c-a287c035e47f",
+      "license": "Hyper3D account-generated asset; authorized game commercial use and public source repository",
+      "source_page": "https://hyper3d.ai/workspace/rodin/5d456d8b-cfe7-47f2-884c-a287c035e47f"
+    },
+    "MS14_event_board": {
+      "src": "raw/modular_props_20261015/ready/MS14_event_board.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "provider": "Local assembly of original Hyper3D modular sources, 2026-10-15",
+      "source_assets": [
+        "MS01_signpost",
+        "MS04_wall_plaque"
+      ],
+      "license": "Hyper3D account-generated assets; authorized game commercial use and public source repository"
     }
   },
   "procedural_overrides": {

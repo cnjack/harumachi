@@ -1,20 +1,18 @@
 {
  "id": "R06",
- "src": "raw/R06/model.glb",
- "provider": "hunyuan hy-3d-3.1",
- "tris_src": 20000,
- "tris": 8000,
- "size_m": [
-  4.444,
-  1.904,
-  2.7
- ],
+ "src": "raw/modular_props_20261015/ready/R06.glb",
+ "provider": "Existing Hunyuan shelter; measured old sign-pole component removed locally for Hyper3D modular bus-stop upgrade, 2026-10-15",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 7240,
+ "tex": 2048,
+ "bytes": 467384,
  "godot_size_m_xyz": [
-  4.444,
+  3.749,
   2.7,
-  1.904
+  1.9044
  ],
- "tex": 1024,
- "bytes": 490576,
- "yaw_fix": 0
+ "mesh_nodes": [
+  "R06"
+ ]
 }

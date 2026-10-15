@@ -78,15 +78,4 @@ static func pins(parent: Node3D,extent: Vector2,depth: float=.013) -> void:
 			parent.add_child(pin)
 
 static func signpost_text(root: Node3D,captions: Array[String]) -> void:
-	# P_signpost's measured arrow boards: 5--95 cm rectangular area, 20 cm pointed tip.
-	for index: int in mini(3,captions.size()):
-		var yaw: float=[0.,PI,deg_to_rad(25.)][index]
-		var normal:=Vector3(sin(yaw),0,cos(yaw))
-		var axis:=Vector3(cos(yaw),0,-sin(yaw))
-		var centre: Vector3=axis*.50+Vector3(0,2.-index*.4,0)
-		for side: float in [1.,-1.]:
-			# Source boards extrude toward local -Z; front is the original face at z=0.
-			var ink:=label(captions[index],centre+normal*(.007 if side>0 else -.057),yaw+(PI if side<0 else 0.),.115,Color(.24,.19,.12))
-			ink.name="SupportedDirection_%d_%d"%[index,int(side)]
-			fit(ink,Vector2(.83,.28),.025);root.add_child(ink)
-		root.set_meta("supported_direction_count",mini(3,captions.size()))
+	ModularProps.directions(root,captions)

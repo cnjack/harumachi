@@ -1,0 +1,20 @@
+{
+ "id": "MS14_event_board",
+ "src": "raw/modular_props_20261015/ready/MS14_event_board.glb",
+ "provider": "Local assembly of original Hyper3D modular sources, 2026-10-15",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 19500,
+ "tex": 2048,
+ "bytes": 1164636,
+ "godot_size_m_xyz": [
+  1.1799,
+  1.4003,
+  0.1302
+ ],
+ "mesh_nodes": [
+  "EventBoard",
+  "Post_-55",
+  "Post_55"
+ ]
+}

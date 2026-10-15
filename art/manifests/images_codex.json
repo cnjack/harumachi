@@ -4029,6 +4029,110 @@
       "bitmap_postprocessing": false,
       "task": "model_diversity_20261013",
       "manifest": "art/manifests/model_diversity_20261013.json"
+    },
+    {
+      "file": "art/references/modular_props_20261015/MS01_signpost.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/modular_props_20261015/MS01_signpost.txt",
+      "sha256": "0b9b8ff41650b4e48cd414364d385ae32de006198c0b7d522ed880d2c924f451",
+      "purpose": "unlettered reusable Hyper3D prop reference"
+    },
+    {
+      "file": "art/references/modular_props_20261015/MS02_arrow_board.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/modular_props_20261015/MS02_arrow_board.txt",
+      "sha256": "28547e785d8218140996e8db371691928291a385182a2bbeaa2c94ee4ce56f70",
+      "purpose": "unlettered reusable Hyper3D prop reference"
+    },
+    {
+      "file": "art/references/modular_props_20261015/MS03_garden_board.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/modular_props_20261015/MS03_garden_board.txt",
+      "sha256": "6f15e3bd045f3483c749ac358aec2cf9b22129513a99a4186242e67d3218e450",
+      "purpose": "unlettered reusable Hyper3D prop reference"
+    },
+    {
+      "file": "art/references/modular_props_20261015/MS04_wall_plaque.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/modular_props_20261015/MS04_wall_plaque.txt",
+      "sha256": "9590415624284385afe081feaaf2f13b3f173a1ffba1b38628ff419249090e18",
+      "purpose": "unlettered reusable Hyper3D prop reference"
+    },
+    {
+      "file": "art/references/modular_props_20261015/MS05_table_sign.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/modular_props_20261015/MS05_table_sign.txt",
+      "sha256": "0b26eaa88c1020ee4a79d20266a67b74c81bac47560a8ecf97d51e9e70aff9ea",
+      "purpose": "unlettered reusable Hyper3D prop reference"
+    },
+    {
+      "file": "art/references/modular_props_20261015/MS06_bus_pole.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/modular_props_20261015/MS06_bus_pole.txt",
+      "sha256": "74d9290c90565227e4828c235659b1b0dd672c9ae7958a1c31da1b4970b618d8",
+      "purpose": "unlettered reusable Hyper3D prop reference"
+    },
+    {
+      "file": "art/references/modular_props_20261015/MS07_timetable_case.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/modular_props_20261015/MS07_timetable_case.txt",
+      "sha256": "834466748a0413e989e01889cfbe3de134c625003fa2f35351091ee306aa098e",
+      "purpose": "unlettered reusable Hyper3D prop reference"
+    },
+    {
+      "file": "art/references/modular_props_20261015/MS08_storage_bay.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/modular_props_20261015/MS08_storage_bay.txt",
+      "sha256": "73ad5232d02c341cae0b5720d90a76ee92a567cd4289385e70b1a9a6f8891f77",
+      "purpose": "unlettered reusable Hyper3D prop reference"
+    },
+    {
+      "file": "art/references/modular_props_20261015/MS09_archive_box.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/modular_props_20261015/MS09_archive_box.txt",
+      "sha256": "42fc841174c1177fa1a61171639f869e1751b9ed37d8298fc311f6c8229a69ee",
+      "purpose": "unlettered reusable Hyper3D prop reference"
+    },
+    {
+      "file": "art/references/modular_props_20261015/MS10_wrapping_rolls.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/modular_props_20261015/MS10_wrapping_rolls.txt",
+      "sha256": "6f88224f9f6246ea29298cfffc6fb0c980e8b36143600da76623a1156b630f9e",
+      "purpose": "unlettered reusable Hyper3D prop reference"
+    },
+    {
+      "file": "art/references/modular_props_20261015/MS11_archive_drawer.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/modular_props_20261015/MS11_archive_drawer.txt",
+      "sha256": "f9525b14818e4579dc0030dc7f443ba197b8268dccb22cbb757f82932847b170",
+      "purpose": "unlettered reusable Hyper3D prop reference"
+    },
+    {
+      "file": "art/references/modular_props_20261015/MS12_linen_frame.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/modular_props_20261015/MS12_linen_frame.txt",
+      "sha256": "d47922aa84aca0dc5474d54124383df65e7a54f8d06d81495ed1614bc12ab2ae",
+      "purpose": "unlettered reusable Hyper3D prop reference"
+    },
+    {
+      "file": "art/references/modular_props_20261015/MS13_picture_frame.png",
+      "exists": true,
+      "tool": "built-in image_gen",
+      "prompt": "art/manifests/prompts/modular_props_20261015/MS13_picture_frame.txt",
+      "sha256": "aaeac74394a3a424474bf777f9c353a6bf1c2ef4a816a211064926ccf6dbb729",
+      "purpose": "unlettered reusable Hyper3D prop reference"
     }
   ]
 }

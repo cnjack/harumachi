@@ -30,7 +30,9 @@ func _ready() -> void:
 	main.ui.instant = true
 	main.ui.auto_work_priority = true # this suite follows its declared work route; the topic-choice suite overrides it
 	await frames(10)
-	if OS.get_cmdline_user_args().has("--only=furniture-hyper3d"):
+	if OS.get_cmdline_user_args().has("--only=modular-props"):
+		await load("res://scripts/tests/modular_props_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=furniture-hyper3d"):
 		await load("res://scripts/tests/hyper3d_furniture_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=furniture-forms"):
 		await load("res://scripts/tests/hyper3d_furniture_checks.gd").new(self).run()
@@ -225,6 +227,7 @@ func _ready() -> void:
 	elif OS.get_cmdline_user_args().has("--only=daily-save"):
 		await load("res://scripts/tests/daily_save_checks.gd").new(self).run()
 	else:
+		await load("res://scripts/tests/modular_props_checks.gd").new(self).run()
 		await load("res://scripts/tests/shader_matrix_checks.gd").new(self).run()
 		await load("res://scripts/tests/material_refinement_checks.gd").new(self).run()
 		await load("res://scripts/tests/material_water_checks.gd").new(self).run()

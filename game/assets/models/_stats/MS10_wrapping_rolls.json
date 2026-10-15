@@ -1,0 +1,18 @@
+{
+ "id": "MS10_wrapping_rolls",
+ "src": "raw/modular_props_20261015/ready/MS10_wrapping_rolls.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 12000,
+ "tex": 2048,
+ "bytes": 688724,
+ "godot_size_m_xyz": [
+  0.38,
+  0.3201,
+  0.3004
+ ],
+ "mesh_nodes": [
+  "MS10_wrapping_rolls_Hyper3D"
+ ]
+}

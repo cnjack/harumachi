@@ -1,0 +1,18 @@
+{
+ "id": "MS01_signpost",
+ "src": "raw/modular_props_20261015/ready/MS01_signpost.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 6500,
+ "tex": 2048,
+ "bytes": 493824,
+ "godot_size_m_xyz": [
+  0.1597,
+  2.2005,
+  0.161
+ ],
+ "mesh_nodes": [
+  "MS01_signpost_Hyper3D"
+ ]
+}

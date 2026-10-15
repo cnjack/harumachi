@@ -8,7 +8,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
  def translate_path(self,path):
   relative=unquote(urlsplit(path).path).lstrip('/')
   target=(ROOT/(relative or 'art/library/index.html')).resolve()
-  permitted=[ROOT/'art/library',ROOT/'art/models',ROOT/'game/assets/models',ROOT/'game/assets/fonts',ROOT/'art/references/characters_apose_20261004',ROOT/'art/poc/character_pipeline_20261003/tpose_20261004/static',ROOT/'docs/game-design']
+  permitted=[ROOT/'art/library',ROOT/'art/models',ROOT/'game/assets/models',ROOT/'game/assets/fonts',ROOT/'art/references/characters_apose_20261004',ROOT/'art/references/modular_props_20261015',ROOT/'art/poc/character_pipeline_20261003/tpose_20261004/static',ROOT/'docs/game-design']
   if not any(target==p or p in target.parents for p in permitted):return str(ROOT/'art/library/__not_found__')
   return str(target)
  def list_directory(self,path):self.send_error(403,'Directory listing disabled');return None

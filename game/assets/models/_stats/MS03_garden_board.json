@@ -1,0 +1,18 @@
+{
+ "id": "MS03_garden_board",
+ "src": "raw/modular_props_20261015/ready/MS03_garden_board.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 12000,
+ "tex": 2048,
+ "bytes": 831684,
+ "godot_size_m_xyz": [
+  1.1503,
+  1.5011,
+  0.12
+ ],
+ "mesh_nodes": [
+  "MS03_garden_board_Hyper3D"
+ ]
+}

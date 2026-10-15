@@ -203,41 +203,10 @@ func _field() -> void:
 	_solid(Vector3(0.2, 1.2, rect[3] - rect[1]), Vector3(rect[2], 0.6, (rect[1] + rect[3]) / 2.0))
 	wb.spawn("F04_scarecrow", Vector3(6.3, 0, -5.3), -20.0, 2, self, 1.0)
 	# name board at the entrance
-	var sign := Node3D.new()
-	sign.name="FarmNameSign"
-	sign.position = Vector3(-21.5, 0, -2.4)
-	sign.rotation.z=deg_to_rad(-.7)
-	sign.set_meta("decorated_sign",true)
-	add_child(sign)
-	for x in [-0.55, 0.55]:
-		var post := MeshInstance3D.new()
-		var pb := BoxMesh.new()
-		pb.size = Vector3(0.08, 1.5, 0.08)
-		post.mesh = pb
-		post.material_override = SurfaceFinish.timber(pb.get_aabb(),Color(.48,.37,.25),1)
-		post.position = Vector3(x, 0.75, 0)
-		sign.add_child(post)
-	var board := MeshInstance3D.new()
-	var bb := BoxMesh.new()
-	bb.size = Vector3(1.12, 0.55, 0.05)
-	board.mesh = bb
-	board.material_override = SurfaceFinish.timber(bb.get_aabb(),Color(.79,.64,.43),0,true,.12)
-	board.position = Vector3(0, 1.2, 0)
-	sign.add_child(board)
-	for pin_index: int in range(4):
-		var pin: MeshInstance3D=MeshInstance3D.new()
-		pin.name="OldIronPin_%d"%pin_index
-		var head: CylinderMesh=CylinderMesh.new()
-		head.top_radius=.009;head.bottom_radius=.009;head.height=.004;head.radial_segments=8
-		pin.mesh=head
-		pin.material_override=JapaneseArchitecture._flat(Color(.29,.30,.28))
-		pin.rotation.x=PI/2.0
-		pin.position=Vector3(-.48 if pin_index%2==0 else .48,1.2+(-.20 if pin_index<2 else .20),.028)
-		sign.add_child(pin)
-	for side in [-1.0, 1.0]:
-		var lbl: Label3D=ClearSignage.label("晴町 市民农园",Vector3(0,1.2,.031*side),0. if side>0 else PI,.136,Color(.32,.22,.14))
-		ClearSignage.fit(lbl,Vector2(1.12,.55),.075)
-		sign.add_child(lbl)
+	var sign: Node3D=ModularProps.part(wb,self,"MS03_garden_board","FarmNameSign",Vector3(-21.5,0,-2.4))
+	if sign:
+		sign.set_meta("decorated_sign",true)
+		ModularProps.engrave(sign,"晴町 市民农园",Vector4(.02,1.05,.80,.25),true,.65)
 
 
 func _buildings() -> void:

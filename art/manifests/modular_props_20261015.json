@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "provider": "Hyper3D CLI",
+  "budget_credits": 6.5,
+  "selected_scope": [
+    "S01",
+    "S02",
+    "S03",
+    "S05",
+    "S06",
+    "S07",
+    "S13",
+    "S14",
+    "S19",
+    "S20",
+    "S21",
+    "S22",
+    "S23",
+    "S24",
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07"
+  ],
+  "assets": [
+    {
+      "id": "MS01_signpost",
+      "label": "木路标立柱",
+      "nominal_size_m_xyz": [
+        0.16,
+        2.2,
+        0.16
+      ],
+      "reference": "art/references/modular_props_20261015/MS01_signpost.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: image-to-3D reference for a Japanese anime village game. One solitary tapered cedar signpost, height 2.2 m, square section 16 cm, subtly rounded corners, three carefully carved shallow mounting notches on its upper front, old dark iron foot sleeve and two small iron bolts. NO attached directional arms, no base platform. Style: hand-painted anime prop, clean contours, restrained directional wood grain, subtle edge wear and broad cel shading, warm wood and quiet sage palette, no photoreal noise. Three-quarter front view from slightly above, complete object centered with generous margins, neutral pale gray studio background, even diffuse lighting, no cast ground platform. Absolutely no text, letters, numbers, watermarks or humans. Single prop only.",
+      "model_prompt": "Reconstruct ONLY this complete unlettered anime game prop, preserving the reference shape, real joinery, open spaces and surface design. One solitary tapered cedar signpost, height 2.2 m, square section 16 cm, subtly rounded corners, three carefully carved shallow mounting notches on its upper front, old dark iron foot sleeve and two small iron bolts. NO attached directional arms, no base platform. Front faces Godot +Z. Keep a blank flat front area for later engraved decals. Clean hand-painted color, subdued wood grain, mild bevel highlights, not photoreal. No lettering, symbols resembling text, extra objects, ground or platform.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 18000
+    },
+    {
+      "id": "MS02_arrow_board",
+      "label": "可翻转箭头板",
+      "nominal_size_m_xyz": [
+        1.1,
+        0.26,
+        0.05
+      ],
+      "reference": "art/references/modular_props_20261015/MS02_arrow_board.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: image-to-3D reference for a Japanese anime village game. One horizontal thick wooden direction arrow board, width 110 cm, height 26 cm, thickness 5 cm, pointing right, broad absolutely blank flat writing area, slightly rounded edges, bevelled arrow tip, visible carved end-grain and two small dark iron fastening pegs. No pole or stand. Style: clean hand-painted Japanese animation prop, rounded crafted edges, restrained directional grain, gentle wear at contacts, broad cel shading. Warm wood and quiet sage palette. Three-quarter front view from slightly above, complete object centered with generous margins, neutral pale gray studio background, even diffuse lighting. No ground platform, no scene, no text, letters, numbers, watermark or humans. Single prop only.",
+      "model_prompt": "Reconstruct ONLY this complete unlettered anime game prop, preserving the reference shape, real joinery, open spaces and surface design. One horizontal thick wooden direction arrow board, width 110 cm, height 26 cm, thickness 5 cm, pointing right, broad absolutely blank flat writing area, slightly rounded edges, bevelled arrow tip, visible carved end-grain and two small dark iron fastening pegs. No pole or stand. Front faces Godot +Z. Keep a blank flat front area for later engraved decals. Clean hand-painted color, subdued wood grain, mild bevel highlights, not photoreal. No lettering, symbols resembling text, extra objects, ground or platform.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 18000
+    },
+    {
+      "id": "MS03_garden_board",
+      "label": "农园落地名牌",
+      "nominal_size_m_xyz": [
+        1.15,
+        1.5,
+        0.12
+      ],
+      "reference": "art/references/modular_props_20261015/MS03_garden_board.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: image-to-3D reference for a Japanese anime village game. One small Japanese community-garden wooden name sign: two stout cedar legs with rounded ends supporting an organic rectangular thick BLANK wood board at chest height, a tiny separately shaped carved leaf ornament on left corner, understated curved top edge, honest mortise joints. Overall width 115 cm, height 150 cm. NO text, no drawings resembling letters, no scenery. Style: clean hand-painted Japanese animation prop, rounded crafted edges, restrained directional grain, gentle wear at contacts, broad cel shading. Warm wood and quiet sage palette. Three-quarter front view from slightly above, complete object centered with generous margins, neutral pale gray studio background, even diffuse lighting. No ground platform, no scene, no text, letters, numbers, watermark or humans. Single prop only.",
+      "model_prompt": "Reconstruct ONLY this complete unlettered anime game prop, preserving the reference shape, real joinery, open spaces and surface design. One small Japanese community-garden wooden name sign: two stout cedar legs with rounded ends supporting an organic rectangular thick BLANK wood board at chest height, a tiny separately shaped carved leaf ornament on left corner, understated curved top edge, honest mortise joints. Overall width 115 cm, height 150 cm. NO text, no drawings resembling letters, no scenery. Front faces Godot +Z. Keep a blank flat front area for later engraved decals. Clean hand-painted color, subdued wood grain, mild bevel highlights, not photoreal. No lettering, symbols resembling text, extra objects, ground or platform.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 18000
+    },
+    {
+      "id": "MS04_wall_plaque",
+      "label": "可刻字木匾",
+      "nominal_size_m_xyz": [
+        1.2,
+        0.24,
+        0.04
+      ],
+      "reference": "art/references/modular_props_20261015/MS04_wall_plaque.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: image-to-3D reference for a Japanese anime village game. One horizontal unlettered wooden wall plaque, 120 by 24 cm, 4 cm thick, quiet warm honey cedar, subtly irregular rounded hand-planed ends, shallow recessed central blank field and a very thin chamfered border, two small black countersunk mounting screws. No stand, no chain, no writing. Style: clean hand-painted Japanese animation prop, rounded crafted edges, restrained directional grain, gentle wear at contacts, broad cel shading. Warm wood and quiet sage palette. Three-quarter front view from slightly above, complete object centered with generous margins, neutral pale gray studio background, even diffuse lighting. No ground platform, no scene, no text, letters, numbers, watermark or humans. Single prop only.",
+      "model_prompt": "Reconstruct ONLY this complete unlettered anime game prop, preserving the reference shape, real joinery, open spaces and surface design. One horizontal unlettered wooden wall plaque, 120 by 24 cm, 4 cm thick, quiet warm honey cedar, subtly irregular rounded hand-planed ends, shallow recessed central blank field and a very thin chamfered border, two small black countersunk mounting screws. No stand, no chain, no writing. Front faces Godot +Z. Keep a blank flat front area for later engraved decals. Clean hand-painted color, subdued wood grain, mild bevel highlights, not photoreal. No lettering, symbols resembling text, extra objects, ground or platform.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 18000
+    },
+    {
+      "id": "MS05_table_sign",
+      "label": "桌面小立牌",
+      "nominal_size_m_xyz": [
+        0.44,
+        0.3,
+        0.18
+      ],
+      "reference": "art/references/modular_props_20261015/MS05_table_sign.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: image-to-3D reference for a Japanese anime village game. One tabletop Japanese bakery sign holder, width 44 cm height 30 cm, warm chestnut wood slim rounded frame holding a blank pale wood face, tilted backward 8 degrees, real triangular rear support and low rounded weighted foot, refined crafted edges. No paper words, no text, no food. Style: clean hand-painted Japanese animation prop, rounded crafted edges, restrained directional grain, gentle wear at contacts, broad cel shading. Warm wood and quiet sage palette. Three-quarter front view from slightly above, complete object centered with generous margins, neutral pale gray studio background, even diffuse lighting. No ground platform, no scene, no text, letters, numbers, watermark or humans. Single prop only.",
+      "model_prompt": "Reconstruct ONLY this complete unlettered anime game prop, preserving the reference shape, real joinery, open spaces and surface design. One tabletop Japanese bakery sign holder, width 44 cm height 30 cm, warm chestnut wood slim rounded frame holding a blank pale wood face, tilted backward 8 degrees, real triangular rear support and low rounded weighted foot, refined crafted edges. No paper words, no text, no food. Front faces Godot +Z. Keep a blank flat front area for later engraved decals. Clean hand-painted color, subdued wood grain, mild bevel highlights, not photoreal. No lettering, symbols resembling text, extra objects, ground or platform.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 18000
+    },
+    {
+      "id": "MS06_bus_pole",
+      "label": "公交站牌立柱",
+      "nominal_size_m_xyz": [
+        0.38,
+        2.3,
+        0.16
+      ],
+      "reference": "art/references/modular_props_20261015/MS06_bus_pole.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: image-to-3D reference for a Japanese anime village game. One slim Japanese rural bus-stop sign pole, dark forest-green painted iron, height 230 cm. Rounded oblong enamel head plate 38 cm wide, completely blank cream interior with narrow sage border, thin sturdy pole with modest flanged foot and bolt heads. No text, numbers, route symbols, station platform or surroundings. Style: clean hand-painted Japanese animation prop, carefully rounded functional edges, restrained surface detail and broad cel shading, very mild contact wear. Complete SINGLE object centered with generous margins, three-quarter front view slightly above, neutral pale gray studio background, diffuse studio lighting. NO ground platform, surroundings, text, letters, numbers, watermark or humans.",
+      "model_prompt": "Reconstruct ONLY this complete unlettered anime game prop, preserving the reference shape, real joinery, open spaces and surface design. One slim Japanese rural bus-stop sign pole, dark forest-green painted iron, height 230 cm. Rounded oblong enamel head plate 38 cm wide, completely blank cream interior with narrow sage border, thin sturdy pole with modest flanged foot and bolt heads. No text, numbers, route symbols, station platform or surroundings. Front faces Godot +Z. Keep a blank flat front area for later engraved decals. Clean hand-painted color, subdued wood grain, mild bevel highlights, not photoreal. No lettering, symbols resembling text, extra objects, ground or platform.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 18000
+    },
+    {
+      "id": "MS07_timetable_case",
+      "label": "公交时刻表框",
+      "nominal_size_m_xyz": [
+        1.1,
+        1,
+        0.08
+      ],
+      "reference": "art/references/modular_props_20261015/MS07_timetable_case.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: image-to-3D reference for a Japanese anime village game. One wall-mount rural Japanese bus timetable display case, 110 cm wide by 100 cm tall, shallow sage-green painted metal rounded-corner frame with a dark rubber gasket, completely blank ivory backing panel, tiny hinge and metal latch. Front open, NO glass sheet; glass is added separately in 3D. No lettering, no paper, no stand. Style: clean hand-painted Japanese animation prop, carefully rounded functional edges, restrained surface detail and broad cel shading, very mild contact wear. Complete SINGLE object centered with generous margins, three-quarter front view slightly above, neutral pale gray studio background, diffuse studio lighting. NO ground platform, surroundings, text, letters, numbers, watermark or humans.",
+      "model_prompt": "Reconstruct ONLY this complete unlettered anime game prop, preserving the reference shape, real joinery, open spaces and surface design. One wall-mount rural Japanese bus timetable display case, 110 cm wide by 100 cm tall, shallow sage-green painted metal rounded-corner frame with a dark rubber gasket, completely blank ivory backing panel, tiny hinge and metal latch. Front open, NO glass sheet; glass is added separately in 3D. No lettering, no paper, no stand. Front faces Godot +Z. Keep a blank flat front area for later engraved decals. Clean hand-painted color, subdued wood grain, mild bevel highlights, not photoreal. No lettering, symbols resembling text, extra objects, ground or platform.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 18000
+    },
+    {
+      "id": "MS08_storage_bay",
+      "label": "可堆叠收纳格",
+      "nominal_size_m_xyz": [
+        0.62,
+        0.48,
+        0.4
+      ],
+      "reference": "art/references/modular_props_20261015/MS08_storage_bay.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: image-to-3D reference for a Japanese anime village game. ONE SINGLE empty open-front stacking compartment, crafted cedar wood cubby module, external width 62 cm, height 48 cm, depth 40 cm. Solid bottom, top and side boards with visible dovetail-style corner joints, thinner muted sage rear panel. Fully open rectangular front, gently rounded exposed board edges. Stackable flat top and bottom, NO feet, NO shelves inside, NO objects, NO words. It is one box-shaped module, not a grid of modules. Style: clean hand-painted Japanese animation prop, carefully rounded functional edges, restrained surface detail and broad cel shading, very mild contact wear. Complete SINGLE object centered with generous margins, three-quarter front view slightly above, neutral pale gray studio background, diffuse studio lighting. NO ground platform, surroundings, text, letters, numbers, watermark or humans.",
+      "model_prompt": "Reconstruct ONLY this complete unlettered anime game prop, preserving the reference shape, real joinery, open spaces and surface design. ONE SINGLE empty open-front stacking compartment, crafted cedar wood cubby module, external width 62 cm, height 48 cm, depth 40 cm. Solid bottom, top and side boards with visible dovetail-style corner joints, thinner muted sage rear panel. Fully open rectangular front, gently rounded exposed board edges. Stackable flat top and bottom, NO feet, NO shelves inside, NO objects, NO words. It is one box-shaped module, not a grid of modules. Front faces Godot +Z. Keep a blank flat front area for later engraved decals. Clean hand-painted color, subdued wood grain, mild bevel highlights, not photoreal. No lettering, symbols resembling text, extra objects, ground or platform.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 18000
+    },
+    {
+      "id": "MS09_archive_box",
+      "label": "档案盒与照片袋",
+      "nominal_size_m_xyz": [
+        0.35,
+        0.16,
+        0.29
+      ],
+      "reference": "art/references/modular_props_20261015/MS09_archive_box.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: image-to-3D reference for a Japanese anime village game. One shallow Japanese photo archive box, 35 cm wide, 16 cm tall, 29 cm deep, warm gray-blue stiff paperboard, fitted lid sitting slightly ajar, inside a few cream kraft photographic envelopes with naturally uneven edges, one small blank brass label holder on front and subtle cloth pull. No writing, no pictures, no lettering. Style: clean hand-painted Japanese animation prop, carefully rounded functional edges, restrained surface detail and broad cel shading, very mild contact wear. Complete SINGLE object centered with generous margins, three-quarter front view slightly above, neutral pale gray studio background, diffuse studio lighting. NO ground platform, surroundings, text, letters, numbers, watermark or humans.",
+      "model_prompt": "Reconstruct ONLY this complete unlettered anime game prop, preserving the reference shape, real joinery, open spaces and surface design. One shallow Japanese photo archive box, 35 cm wide, 16 cm tall, 29 cm deep, warm gray-blue stiff paperboard, fitted lid sitting slightly ajar, inside a few cream kraft photographic envelopes with naturally uneven edges, one small blank brass label holder on front and subtle cloth pull. No writing, no pictures, no lettering. Front faces Godot +Z. Keep a blank flat front area for later engraved decals. Clean hand-painted color, subdued wood grain, mild bevel highlights, not photoreal. No lettering, symbols resembling text, extra objects, ground or platform.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 18000
+    },
+    {
+      "id": "MS10_wrapping_rolls",
+      "label": "包花纸卷组合",
+      "nominal_size_m_xyz": [
+        0.38,
+        0.32,
+        0.3
+      ],
+      "reference": "art/references/modular_props_20261015/MS10_wrapping_rolls.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: image-to-3D reference for a Japanese anime village game. One compact freestanding bundle of flower-wrapping paper rolls in a low folded kraft carton, total width 38 cm height 32 cm. Five rolls with clearly hollow curled paper openings, soft ivory, muted sage and dusty rose paper, natural rolled rims, a loose length of twine on one corner. No flowers, no writing, no labels. Style: clean hand-painted Japanese animation prop, crafted rounded functional edges, restrained directional grain and broad cel shading, very mild contact wear. Complete SINGLE object centered with generous margins, three-quarter front view slightly above, neutral pale gray studio background, diffuse studio lighting. NO ground platform, surroundings, text, letters, numbers, watermark or humans.",
+      "model_prompt": "Reconstruct ONLY this complete unlettered anime game prop, preserving the reference shape, real joinery, open spaces and surface design. One compact freestanding bundle of flower-wrapping paper rolls in a low folded kraft carton, total width 38 cm height 32 cm. Five rolls with clearly hollow curled paper openings, soft ivory, muted sage and dusty rose paper, natural rolled rims, a loose length of twine on one corner. No flowers, no writing, no labels. Front faces Godot +Z. Keep a blank flat front area for later engraved decals. Clean hand-painted color, subdued wood grain, mild bevel highlights, not photoreal. No lettering, symbols resembling text, extra objects, ground or platform.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 18000
+    },
+    {
+      "id": "MS11_archive_drawer",
+      "label": "抽拉档案屉",
+      "nominal_size_m_xyz": [
+        0.52,
+        0.18,
+        0.65
+      ],
+      "reference": "art/references/modular_props_20261015/MS11_archive_drawer.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: image-to-3D reference for a Japanese anime village game. One single shallow pull-out archival drawer/tray, width 52 cm height 18 cm depth 65 cm. Muted gray-blue painted wooden outside with rounded front corners, warm bare cedar interior, open top, realistic thin side walls, one curved dark brass pull handle, tiny empty recessed label holder. Empty drawer, NO cabinet, NO legs, NO text. Style: clean hand-painted Japanese animation prop, crafted rounded functional edges, restrained directional grain and broad cel shading, very mild contact wear. Complete SINGLE object centered with generous margins, three-quarter front view slightly above, neutral pale gray studio background, diffuse studio lighting. NO ground platform, surroundings, text, letters, numbers, watermark or humans.",
+      "model_prompt": "Reconstruct ONLY this complete unlettered anime game prop, preserving the reference shape, real joinery, open spaces and surface design. One single shallow pull-out archival drawer/tray, width 52 cm height 18 cm depth 65 cm. Muted gray-blue painted wooden outside with rounded front corners, warm bare cedar interior, open top, realistic thin side walls, one curved dark brass pull handle, tiny empty recessed label holder. Empty drawer, NO cabinet, NO legs, NO text. Front faces Godot +Z. Keep a blank flat front area for later engraved decals. Clean hand-painted color, subdued wood grain, mild bevel highlights, not photoreal. No lettering, symbols resembling text, extra objects, ground or platform.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 18000
+    },
+    {
+      "id": "MS12_linen_frame",
+      "label": "晾布木架",
+      "nominal_size_m_xyz": [
+        0.72,
+        1.45,
+        0.38
+      ],
+      "reference": "art/references/modular_props_20261015/MS12_linen_frame.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: image-to-3D reference for a Japanese anime village game. One small Japanese wooden towel drying rack, width 72 cm height 145 cm, real rounded upright posts, joined horizontal top bar, two stable T-shaped feet in 38 cm depth. One unprinted oatmeal linen cloth draped over the top with visible front and back layers, naturally sagging woven fabric, broad soft folds and stitched hem. No room, no text. Style: clean hand-painted Japanese animation prop, crafted rounded functional edges, restrained directional grain and broad cel shading, very mild contact wear. Complete SINGLE object centered with generous margins, three-quarter front view slightly above, neutral pale gray studio background, diffuse studio lighting. NO ground platform, surroundings, text, letters, numbers, watermark or humans.",
+      "model_prompt": "Reconstruct ONLY this complete unlettered anime game prop, preserving the reference shape, real joinery, open spaces and surface design. One small Japanese wooden towel drying rack, width 72 cm height 145 cm, real rounded upright posts, joined horizontal top bar, two stable T-shaped feet in 38 cm depth. One unprinted oatmeal linen cloth draped over the top with visible front and back layers, naturally sagging woven fabric, broad soft folds and stitched hem. No room, no text. Front faces Godot +Z. Keep a blank flat front area for later engraved decals. Clean hand-painted color, subdued wood grain, mild bevel highlights, not photoreal. No lettering, symbols resembling text, extra objects, ground or platform.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 18000
+    },
+    {
+      "id": "MS13_picture_frame",
+      "label": "生活照片画框",
+      "nominal_size_m_xyz": [
+        0.65,
+        0.5,
+        0.05
+      ],
+      "reference": "art/references/modular_props_20261015/MS13_picture_frame.png",
+      "reference_prompt": "Use case: stylized-concept. Asset type: image-to-3D reference for a Japanese anime village game. One simple crafted Japanese wooden picture frame, 65 cm wide 50 cm tall, softly rounded honey-cedar moulding with mitred joints, shallow rebate, cream archival mount and entirely blank ivory picture area. No glass, no support stand, no picture, no lettering. Thin but clearly three-dimensional side and rear edge. Style: clean hand-painted Japanese animation prop, crafted rounded functional edges, restrained directional grain and broad cel shading, very mild contact wear. Complete SINGLE object centered with generous margins, three-quarter front view slightly above, neutral pale gray studio background, diffuse studio lighting. NO ground platform, surroundings, text, letters, numbers, watermark or humans.",
+      "model_prompt": "Reconstruct ONLY this complete unlettered anime game prop, preserving the reference shape, real joinery, open spaces and surface design. One simple crafted Japanese wooden picture frame, 65 cm wide 50 cm tall, softly rounded honey-cedar moulding with mitred joints, shallow rebate, cream archival mount and entirely blank ivory picture area. No glass, no support stand, no picture, no lettering. Thin but clearly three-dimensional side and rear edge. Front faces Godot +Z. Keep a blank flat front area for later engraved decals. Clean hand-painted color, subdued wood grain, mild bevel highlights, not photoreal. No lettering, symbols resembling text, extra objects, ground or platform.",
+      "tier": "Gen-2.5-High",
+      "mesh_mode": "Raw",
+      "quality": 18000
+    }
+  ]
+}

@@ -1703,6 +1703,174 @@
   "tilt": 5.05,
   "verts": 2745
  },
+ "MS01_signpost": {
+  "base_frac": 0.917,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.97,
+  "square_deg": -0.29,
+  "tilt": 0.0,
+  "verts": 8540
+ },
+ "MS02_arrow_board": {
+  "base_frac": 0.287,
+  "normal": [
+   0.0024,
+   -0.0004,
+   -1.0
+  ],
+  "rect_fill": 0.857,
+  "square_deg": 0.0,
+  "tilt": 0.14,
+  "verts": 9220
+ },
+ "MS03_garden_board": {
+  "base_frac": 0.655,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.935,
+  "square_deg": -0.43,
+  "tilt": 0.0,
+  "verts": 16629
+ },
+ "MS04_wall_plaque": {
+  "base_frac": 0.808,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.993,
+  "square_deg": 0.0,
+  "tilt": 0.0,
+  "verts": 7448
+ },
+ "MS05_table_sign": {
+  "base_frac": 0.976,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.971,
+  "square_deg": -0.04,
+  "tilt": 0.0,
+  "verts": 14822
+ },
+ "MS06_bus_pole": {
+  "base_frac": 0.353,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.791,
+  "square_deg": -16.33,
+  "tilt": 0.0,
+  "verts": 13649
+ },
+ "MS07_timetable_case": {
+  "base_frac": 0.057,
+  "normal": [
+   0.0053,
+   0.3997,
+   -0.9166
+  ],
+  "rect_fill": 0.905,
+  "square_deg": -0.78,
+  "tilt": 23.56,
+  "verts": 9361
+ },
+ "MS08_storage_bay": {
+  "base_frac": 0.923,
+  "normal": [
+   0.0021,
+   -0.0023,
+   -1.0
+  ],
+  "rect_fill": 0.995,
+  "square_deg": 0.16,
+  "tilt": 0.18,
+  "verts": 7553
+ },
+ "MS09_archive_box": {
+  "base_frac": 0.925,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.98,
+  "square_deg": 0.11,
+  "tilt": 0.0,
+  "verts": 17742
+ },
+ "MS10_wrapping_rolls": {
+  "base_frac": 0.743,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.937,
+  "square_deg": -0.19,
+  "tilt": 0.0,
+  "verts": 15536
+ },
+ "MS11_archive_drawer": {
+  "base_frac": 0.874,
+  "normal": [
+   0.0014,
+   -0.0009,
+   -1.0
+  ],
+  "rect_fill": 0.943,
+  "square_deg": 0.04,
+  "tilt": 0.1,
+  "verts": 13132
+ },
+ "MS12_linen_frame": {
+  "base_frac": 0.956,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.998,
+  "square_deg": 0.03,
+  "tilt": 0.0,
+  "verts": 16802
+ },
+ "MS13_picture_frame": {
+  "base_frac": 0.369,
+  "normal": [
+   -0.0272,
+   0.0033,
+   -0.9996
+  ],
+  "rect_fill": 0.995,
+  "square_deg": 0.0,
+  "tilt": 1.57,
+  "verts": 8235
+ },
+ "MS14_event_board": {
+  "base_frac": 0.581,
+  "normal": [
+   0.0,
+   0.0,
+   -1.0
+  ],
+  "rect_fill": 0.976,
+  "square_deg": 0.0,
+  "tilt": 0.0,
+  "verts": 24528
+ },
  "N01_enamel_kettle": {
   "base_frac": 0.79,
   "normal": [
@@ -2364,16 +2532,16 @@
   "verts": 960
  },
  "P_signpost": {
-  "base_frac": 0.018,
+  "base_frac": 0.05,
   "normal": [
    0.0,
    0.0,
    -1.0
   ],
-  "rect_fill": 0.581,
-  "square_deg": 15.09,
+  "rect_fill": 0.559,
+  "square_deg": 25.3,
   "tilt": 0.0,
-  "verts": 162
+  "verts": 36200
  },
  "P_store_sidepanel": {
   "base_frac": 0.846,
@@ -2412,16 +2580,16 @@
   "verts": 21261
  },
  "R06": {
-  "base_frac": 0.901,
+  "base_frac": 0.913,
   "normal": [
    0.0,
    0.0,
    -1.0
   ],
-  "rect_fill": 0.941,
+  "rect_fill": 1.0,
   "square_deg": -0.01,
   "tilt": 0.0,
-  "verts": 8918
+  "verts": 8337
  },
  "R07a": {
   "base_frac": 0.807,
@@ -2448,16 +2616,16 @@
   "verts": 6638
  },
  "R09": {
-  "base_frac": 0.434,
+  "base_frac": 0.114,
   "normal": [
-   -0.0049,
-   -0.0055,
+   0.0,
+   0.0,
    -1.0
   ],
-  "rect_fill": 0.813,
-  "square_deg": 0.21,
-  "tilt": 0.42,
-  "verts": 8620
+  "rect_fill": 0.632,
+  "square_deg": -0.5,
+  "tilt": 0.0,
+  "verts": 36200
  },
  "R10": {
   "base_frac": 1.0,

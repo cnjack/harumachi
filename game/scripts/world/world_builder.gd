@@ -878,28 +878,12 @@ func _build_build_sign() -> void:
 	root.name = "BuildSign"
 	root.position = Layout.BUILD_SIGN_POS
 	add_child(root)
-	# posts stand just outside the board's edges so they never cover the lettering
-	for x in [-0.6, 0.6]:
-		var post := MeshInstance3D.new()
-		var pb := BoxMesh.new()
-		pb.size = Vector3(0.08, 1.4, 0.08)
-		post.mesh = pb
-		post.material_override = SurfaceFinish.timber(pb.get_aabb(),Color(.55,.41,.27),1)
-		post.position = Vector3(x, 0.65, 0)
-		root.add_child(post)
-	var board := MeshInstance3D.new()
-	var bb := BoxMesh.new()
-	bb.size = Vector3(1.1, 0.62, 0.05)
-	board.mesh = bb
-	board.material_override = SurfaceFinish.timber(bb.get_aabb(),Color(.91,.85,.70),0,true,.72)
-	board.position = Vector3(0, 1.05, 0)
-	root.add_child(board)
-	ClearSignage.pins(board,Vector2(1.1,.62),.029)
-	for side in [-1.0, 1.0]:
-		var lbl: Label3D=ClearSignage.label("集市布置区\n桌椅 · 装饰",Vector3(0,1.05,.032*side),0. if side>0 else PI,.1584,Color(.36,.22,.12))
-		lbl.line_spacing=6
-		ClearSignage.fit(lbl,Vector2(1.1,.62),.06)
-		root.add_child(lbl)
+	var assembly: Node3D=ModularProps.part(self,root,"MS14_event_board","SignAssembly",Vector3.ZERO)
+	if assembly:
+		var face:=assembly.find_child("EventBoard",true,false) as Node3D
+		if face:face.set_meta("modular_source","MS04_wall_plaque")
+		for post: Node3D in assembly.find_children("Post_*","Node3D",true,false):post.set_meta("modular_source","MS01_signpost")
+		ModularProps.engrave(face,"晴町 小集市",Vector4(0,.12,.88,.12),true,.60)
 	var body := StaticBody3D.new()
 	body.collision_layer = L_SOLID
 	var cs := CollisionShape3D.new()

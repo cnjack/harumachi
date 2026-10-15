@@ -1,0 +1,18 @@
+{
+ "id": "MS12_linen_frame",
+ "src": "raw/modular_props_20261015/ready/MS12_linen_frame.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 12000,
+ "tex": 2048,
+ "bytes": 849956,
+ "godot_size_m_xyz": [
+  0.72,
+  1.4508,
+  0.3799
+ ],
+ "mesh_nodes": [
+  "MS12_linen_frame_Hyper3D"
+ ]
+}

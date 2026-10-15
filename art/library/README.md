@@ -9,3 +9,5 @@
 - `index.html`、`library.css`、`library.js`：分类、搜索和三维查看器。
 
 模型原包在 `art/models/raw/`，游戏导出在 `game/assets/models/`。不要把它们复制成另一套失去来源的文件。完整许可、更新与 Godot 接入步骤见 [ASSET_LIBRARY.md](../../docs/game-design/ASSET_LIBRARY.md)。
+
+本轮17件[组合道具](modular_props_20261015/README.md)保留无文字原稿、可编辑Blender文件与实际场景位置，支持单件和组合复用。

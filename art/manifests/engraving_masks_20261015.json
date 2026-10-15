@@ -1,0 +1,97 @@
+{
+  "font": "game/assets/fonts/LXGWWenKai-Medium.ttf",
+  "font_sha256": "d4bdeb38a39151d74d084cba5090f8cb7d20bf83eedb78c35939ae70b9f4e3f6",
+  "style": "WenKai hand lettering projected into actual timber; dark recessed fibres, bevel edge and local normal response",
+  "assets": [
+    {
+      "text": "晴町",
+      "mask": "game/assets/textures/engraving/4ee8e24531f3b997f7e5ba987efa5156.png",
+      "sha256": "73e48bcbb9f08fe9a6e839240de517fe66eaf89440e3aa15e0f0eb34ac4d0820"
+    },
+    {
+      "text": "商店街",
+      "mask": "game/assets/textures/engraving/a7c280c38606af42db6f6d0ceebc4416.png",
+      "sha256": "3f9e2eaae6ee4404315339d3260ecc4a97bed7fc21fc8c06c9d75912309331a2"
+    },
+    {
+      "text": "住宅支巷",
+      "mask": "game/assets/textures/engraving/35d4f3e3bcb8ed0f9d30ad3adc63741d.png",
+      "sha256": "a66f68eda073a76ba4e20a93b7128d821e8c1b99e02bcfd0c6c9f37b4190be53"
+    },
+    {
+      "text": "河边农园",
+      "mask": "game/assets/textures/engraving/57720817b8119086ebcfd4f618f7049e.png",
+      "sha256": "afa2ab850c7dcf843798967daa18644664410a6f6e8d09856889635136ad67c1"
+    },
+    {
+      "text": "公交站",
+      "mask": "game/assets/textures/engraving/006a215bba41ee6b80c378aeeba98f00.png",
+      "sha256": "7225d30f67c848ad8dc60ffbd609df6c76764f1af88c75b34286660912c82ac5"
+    },
+    {
+      "text": "菜地 · 温室",
+      "mask": "game/assets/textures/engraving/495d4dd62d9b3853b435ec81a491c1df.png",
+      "sha256": "654b6ab46809c1722f06168c17ab66921e62fbd7d68228ddaf191418a76a5cad"
+    },
+    {
+      "text": "回晴町",
+      "mask": "game/assets/textures/engraving/2b8e3d9d40b6cc7b91c7acb7b10a9735.png",
+      "sha256": "cf36e14f4880edaf90149b665c5339713c908be0bdd00252447b2a5821ab9fcf"
+    },
+    {
+      "text": "河边 · 木桥",
+      "mask": "game/assets/textures/engraving/887f6698504a1465d719b13d38456690.png",
+      "sha256": "7560c7e3184a14ac0182f701836948efceae75976b08addeb08e4e3104148217"
+    },
+    {
+      "text": "镜波湖",
+      "mask": "game/assets/textures/engraving/6ffb49e0264490f36727b9663311491c.png",
+      "sha256": "71970e7e4aa338218dfc753eda3ee2477d9ee182e2f3be93bfd18fd46835f150"
+    },
+    {
+      "text": "沿河步道",
+      "mask": "game/assets/textures/engraving/dfb036a4a0c439a40780c3d5fd571e29.png",
+      "sha256": "958453ece4f6caf159e57692ad32a7bcb1cd4e295f01e20402d2411b4cc3b248"
+    },
+    {
+      "text": "钓鱼 · 木桥",
+      "mask": "game/assets/textures/engraving/8458a1767f0c65e2b19dfcd25af44d45.png",
+      "sha256": "a2de227fd6b0358b2035fb0ea750c4d5058ca25da8d9b925db3f64f5ae423eb4"
+    },
+    {
+      "text": "晴町 市民农园",
+      "mask": "game/assets/textures/engraving/7823ee5d13fee1e3774c300e8df6e614.png",
+      "sha256": "3f728be138e5cb3280124048f8c2b5d15cbd16ac932eeee967ce45d5f1ec1794"
+    },
+    {
+      "text": "晴町 小集市",
+      "mask": "game/assets/textures/engraving/68cbca52233dd17431f3034ab3551625.png",
+      "sha256": "a902bda4bcf42802e2dcd4dad7c6ffd6c87a3fc345b10bb65fe3ab811f5f5b32"
+    },
+    {
+      "text": "小份试作",
+      "mask": "game/assets/textures/engraving/9b5295a569b4fdf9120c709c0eddd975.png",
+      "sha256": "27a5cce78edbd9a7ce752fa038e996abece521ac73bb302eb93ffb89cd68577b"
+    },
+    {
+      "text": "焼菓子",
+      "mask": "game/assets/textures/engraving/853e50fb8be015856077a884bef06494.png",
+      "sha256": "b03125085990ad04827a0e443bab2ecb64c4eb5106fc6d5feb0a35afaa7731e2"
+    },
+    {
+      "text": "焼きたて",
+      "mask": "game/assets/textures/engraving/1612393ffdffceb51c2dbb06aadc42d3.png",
+      "sha256": "8a6b0717e866504307cf7894577bdf5b323ffc556e9f6439d44a6eec8c7185b7"
+    },
+    {
+      "text": "米粮",
+      "mask": "game/assets/textures/engraving/fbaf8c920f160c2ccb770ed04d7d27f8.png",
+      "sha256": "8fc1a33c9dcc7e1128e1ca9b528447dffd189adff4b908167eee8f64c743674f"
+    },
+    {
+      "text": "茶と調味料",
+      "mask": "game/assets/textures/engraving/7b16aafde25cc4d8433c3878e4c6de23.png",
+      "sha256": "92a98702d0ce74fd46c60d54e66b8b6e739dc1fda99d3791306d698357add0a3"
+    }
+  ]
+}

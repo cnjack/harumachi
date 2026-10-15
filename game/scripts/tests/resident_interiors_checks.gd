@@ -34,7 +34,7 @@ func run() -> void:
 			var support: Node3D=prop.get_node_or_null(prop.get_meta("support_surface")) as Node3D
 			if support==null:unsupported.append(prop.name);continue
 			var bottom: float=(prop.global_transform*WorldBuilder.local_aabb(prop)).position.y
-			var top: float=WorldBuilder.rendered_support_height(support,prop.global_position,2.5,true)
+			var top: float=WorldBuilder.rendered_support_height(support,prop.global_position,minf(2.5,bottom+.025),true)
 			if not is_finite(top) or absf(bottom-top)>.035:unsupported.append("%s gap=%.4f"%[prop.name,bottom-top])
 		check(id+" reusable tabletop props have measured real support",unsupported.is_empty(),str(unsupported))
 		var bad_seats: Array[String]=[]

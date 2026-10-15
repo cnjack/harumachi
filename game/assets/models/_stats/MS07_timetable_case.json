@@ -1,0 +1,18 @@
+{
+ "id": "MS07_timetable_case",
+ "src": "raw/modular_props_20261015/ready/MS07_timetable_case.glb",
+ "provider": "Hyper3D CLI Gen-2.5-High, reviewed unlettered modular prop, 2026-10-15",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 6500,
+ "tex": 2048,
+ "bytes": 462940,
+ "godot_size_m_xyz": [
+  1.1002,
+  1.0026,
+  0.0806
+ ],
+ "mesh_nodes": [
+  "MS07_timetable_case_Hyper3D"
+ ]
+}

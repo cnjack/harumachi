@@ -52,7 +52,6 @@ func _store(room: InteriorBuilder,root: Node3D) -> void:
 				_group(room,root,piece,ids[row],counts[row],1.65,ceiling,sign_value*.17,"store",scales[row],facing,"pantry" if gondola_index==0 else "tea")
 				if row>=2:
 					_group(room,root,piece,ids[row],counts[row],1.65,ceiling,sign_value*.065,"store",scales[row],facing,"pantry" if gondola_index==0 else "tea",true)
-			ClearSignage.paper_tag(piece,"Aisle_%d"%face,"米面 · 调料" if gondola_index==0 else "味噌 · 咖喱 · 茶",Vector3(0,1.52,sign_value*.325),Vector2(1.0,.16),deg_to_rad(facing),.08)
 		gondola_index+=1
 	for wall_shelf: Node3D in room.wall_shelves:
 		var levels: Array=wall_shelf.get_meta("levels")
@@ -75,10 +74,8 @@ func _store(room: InteriorBuilder,root: Node3D) -> void:
 	var tools:=world.spawn("W16_handtools_board",Vector3(-5.03,0,1.05),90,0,root,.78);tools.name="GardeningTools";HouseBuilder.toonify(tools)
 	var seeds:=PublicPlaceArt.bench(root,"SeedDisplay",Vector3(-4.35,0,3.35),.58,.34,.72)
 	_group(room,root,seeds,"W28_seed_packets",5,.48,.73,0,"store",1,0,"seeds")
-	ClearSignage.paper_tag(seeds,"SeedPrice","晴町育苗 · 种子",Vector3(0,-.10,.19),Vector2(.56,.13),0,.055)
 	poster(room,root,"store_poster","晴町商店\n本日鲜蔬",Vector3(2.2,2.20,-3.975),0)
 	poster(room,root,"tools_poster","园艺与种子",Vector3(-5.465,2.45,1.05),PI*.5)
-	ClearSignage.paper_tag(root,"PantryPrice","米 %d · 面粉 %d · 酱油 %d"%[int(GameState.item("rice").price),int(GameState.item("flour").price),int(GameState.item("soy_sauce").price)],Vector3(2.2,.28,-2.875),Vector2(.98,.14),0,.065)
 	ClearSignage.paper_tag(fridge,"ColdTitle","冷藏 · 牛奶与鸡蛋",Vector3(0,1.85,.405),Vector2(1.2,.13),0,.075)
 	_television(room,root)
 
@@ -88,7 +85,6 @@ func _bakery(room: InteriorBuilder,root: Node3D) -> void:
 		var id: String=["B04_shokupan","B07_iced_donut","B11_cream_bun"][row]
 		_group(room,root,shelf,id,4 if row==0 else 6,.92,[.36,.66,1.01][row],.11,"bakery",.92,0,"bread")
 		if row>0:_group(room,root,shelf,id,5,.86,[.36,.66,1.01][row],-.11,"bakery",.92,0,"bread",true)
-		ClearSignage.paper_tag(shelf,"BreadTag_%d"%row,["吐司 %d"%int(GameState.item("shokupan").price), "甜甜圈 %d"%int(GameState.item("donut").price), "奶油包 %d"%int(GameState.item("cream_bun").price)][row],Vector3(0,[.35,.65,1.0][row],.265),Vector2(.62,.10),0,.055)
 	var rack_index:=0
 	for rack: Node3D in room.pieces:
 		if rack.get_meta("model_id","")!="I05_bread_shelf":continue
@@ -97,9 +93,7 @@ func _bakery(room: InteriorBuilder,root: Node3D) -> void:
 			var baguette: bool=id=="B03_baguette"
 			_group(room,root,rack,id,4 if id=="B04_shokupan" else (3 if baguette else 5),.91,[.28,.62,.95,1.27][row],0 if baguette else .15,"bakery",.94,90 if baguette else 0,"bread")
 			if not baguette:_group(room,root,rack,id,4,.82,[.28,.62,.95,1.27][row],-.12,"bakery",.94,0,"bread",true)
-			var menu_ids: Array=["croissant","melon_pan","curry_pan","baguette","shokupan","anpan","croissant","cream_bun"]
-			var item_id: String=menu_ids[rack_index*4+row]
-			ClearSignage.paper_tag(rack,"TrayPrice_%d"%row,GameState.item_name(item_id)+" %d"%int(GameState.item(item_id).price),Vector3(0,[.27,.61,.94,1.26][row],.325),Vector2(.63,.095),0,.053)
+		ModularProps.engrave(rack,"焼きたて",Vector4(0,.23,.22,.045),false,.38)
 		rack_index+=1
 	var cake_case: Node3D=_piece(room,"I02_cake_showcase")
 	for glass_node: MeshInstance3D in WorldBuilder.find_meshes(cake_case):
@@ -119,8 +113,7 @@ func _bakery(room: InteriorBuilder,root: Node3D) -> void:
 		var levels: Array=wall_shelf.get_meta("levels")
 		for row in levels.size():_group(room,root,wall_shelf,"W19_flour_bag",6,1.4,float(levels[row])+.01,-.01,"bakery",.82,0,"pantry")
 	poster(room,root,"bakery_poster","莲的面包店\n每日烘焙",Vector3(5.465,2.05,.8),-PI*.5)
-	var price:=ClearSignage.paper_tag(shelf,"ShelfPriceSign","当日烘焙",Vector3(0,.20,.265),Vector2(.78,.13),0,.075)
-	labels.append({"node":price,"kind":"bakery"})
+	ModularProps.engrave(shelf,"焼菓子",Vector4(0,.31,.22,.045),false,.38)
 
 func _piece(room: InteriorBuilder,id: String) -> Node3D:
 	for piece: Node3D in room.pieces:
