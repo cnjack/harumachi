@@ -1,0 +1,8 @@
+{
+  "model": "MiniMax-Music3-MLX-Serve-8bit",
+  "prompt": "Global Metadata\nOriginal instrumental score for a 90-second Japanese village-life game trailer, complete 90 second composition, 96 BPM, D major, warm and hopeful. Piano and fingerpicked acoustic guitar, gentle celesta, soft strings, restrained brushed percussion.\nVocal Details\nStrictly instrumental, no vocals, no singing, no humming, no choir, no words. All section labels indicate instrumental passages only.\nArrangement\n0-12 seconds intimate delicate piano and acoustic guitar. 12-40 seconds memorable guitar and piano melody, light bass and brushes for everyday cooking and growing vegetables. 40-65 seconds develop the same theme with strings and celesta for neighbours working together. 65-82 seconds joyful village summer festival crescendo, light hand percussion. 82-96 seconds resolve the theme with a gentle expressive piano cadence and lingering last note. Give every section its full length; cohesive full-length music, no early ending, no epic booms.",
+  "lyrics": "[Intro]\n[Instrumental]\n[Verse]\n[Instrumental]\n[Chorus]\n[Instrumental]\n[Verse]\n[Instrumental]\n[Chorus]\n[Instrumental]\n[Bridge]\n[Instrumental]\n[Final Chorus]\n[Instrumental]\n[Outro]\n[Instrumental]",
+  "duration_seconds": 96,
+  "steps": 30,
+  "seed": 101590
+}

@@ -285,7 +285,7 @@ Godot 这边是 `Audio` 自动加载（`game/scripts/autoload/audio.gd`）：
 - 自动测试：`res://scenes/tests.tscn`，当前2296项，全量通过；含规则、SQLite、UI、模型摆放、路线、生活、完整夏季和镜头检查。独立HARUMACHI_SAVE_DIR、超时与SCRIPT ERROR检查必须同时使用；全量不与其他Godot实例并发。专项入口与数量见AGENTS，最终数以JSON报告为准。
 - 卡顿检查要让时钟实际推进，记录逐帧耗时，不能只看平均FPS。工具`evidence/desktop_stutter_20261007/perf_probe.gd`的`--fixed`模式在真实起床卧室和商店街记录480帧，截图回读放在计时之后；使用固定引擎、置顶原生窗口和独立存档。运动清晰度检查在固定镜头距离下核对人物与镜头的渲染插值位置，镜头避障另跑`--only=camera-body`。桌面缓存用晚会专项检查移动、旋转后的实际食物支撑；方法与结果见[卡顿修复](DESKTOP_STUTTER_20261008.md)。
 - 自动演示：普通标题入口`--autoplay`沿实际碰撞路径、Story交互、摆放控制器、料理面板、灯笼输入、日历赴约和拍照完成新夏季至Q15，检查控制与保存恢复。本轮解压包205项通过，最终报告及关键截图在本轮证据目录。自动对白与阶段暂停明确记录，不作为自然四小时；`--showcase`是节日展示夹具。打印的AP mark/frame用于录像剪辑。
-- 录制时游戏窗口不能被别的窗口完全挡住：macOS 会停止给被挡住的窗口画帧，演示就停在原地。用 `-t --position <x>,<y>` 置顶并放到屏幕角落。
+- 录制时游戏窗口不能被别的窗口完全挡住：macOS 会停止给被挡住的窗口画帧，演示就停在原地。默认使用独立虚拟屏幕，实测屏幕编号与Godot像素坐标后设置`--screen`、`-t --position`，并在测试进程使用`--audio-driver Dummy`。以下历史命令中的机位须按当前隔离屏幕替换。
 
   ```bash
   W="-t --position 3100,1990"
@@ -299,6 +299,7 @@ Godot 这边是 `Audio` 自动加载（`game/scripts/autoload/audio.gd`）：
   ```
 
   剪辑公共部分在 `art/tools/reel_lib.py`（读标记、0.4 秒交叉淡化、字幕卡、垫音乐、−16 LUFS）。全程录像用 ffmpeg 两遍 loudnorm 压到 −16 LUFS。
+- 2026-10-15宣传片使用`art/tools/record_promo.py`在临时工程隔离存档和录制控制器，原生1080p/30fps；视口设置与Movie Maker分辨率必须一致。`build_promo.py`按镜头清单剪辑，`download_promo_video.py`只按已有任务ID断点续传。动画人物要抽帧检查实际迈步、落脚、手臂与位移，不能用镜头缩放代替；`queue_promo_video.py`要求动作样片已完成视觉复核，主片导出要求清单`review_status=approved`。记录见[PROMO_20261015](PROMO_20261015.md)。
 - 实机：导出包解压后运行，`--print-fps` 记录帧率，记录见 [PLAN.md](PLAN.md)。
 
 ## 10. 时间、天气、风与小动物（v0.4）

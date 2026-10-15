@@ -53,3 +53,7 @@ tools/.local/
 **/.cache/
 **/.pytest_cache/
 **/.mypy_cache/
+
+# Local promotional recording delivery and generation task state.
+/outputs/harumachi-promo-20261015/
+/work/promo_20261015/

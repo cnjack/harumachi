@@ -1,0 +1,23 @@
+{
+  "model": "minimax-h3",
+  "prompt": "Continue this exact Japanese TV anime keyframe. The same brown-haired young man in mint short sleeves, white T-shirt, cream cropped trousers and orange-white canvas shoes takes three calm natural steps along the stone street. Subtle tracking camera stays at his eye level and keeps the community building, blue tile roofs, timber lattice, notice case and blue streetlamp stable. Leaves move gently and light remains warm. Preserve his face, age, hairstyle, body proportions, clothing and shoes exactly. Clean outlined anime drawing and crisp cel shadows, no realistic rendering or painterly texture. One continuous shot, no cuts, no new people or objects, no speech, no subtitles, no logo. Ambient birds and soft footsteps only, no music.",
+  "seconds": 8,
+  "size": "1344x768",
+  "quality": "lossless",
+  "output_compression": 80,
+  "task": "fl2va",
+  "conditions": [
+    {
+      "type": "image",
+      "uri": "art/references/promo_20261015/town.png (submitted as data URI)",
+      "role": "keyframe",
+      "frame_index": 0
+    }
+  ],
+  "target": {
+    "short_edge": 768,
+    "aspect_ratio": "16:9",
+    "duration_seconds": 8
+  },
+  "seed": 1020
+}

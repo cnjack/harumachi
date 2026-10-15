@@ -1,0 +1,23 @@
+{
+  "model": "minimax-h3",
+  "prompt": "A calm Japanese TV anime opening shot continuing this exact supplied keyframe. One young brown-haired male in a mint shirt and cream cropped trousers stands on the curved wooden bridge, quietly looking along the river. His shirt hem and hair move very slightly in the summer breeze, bamboo leaves and grasses sway, sunlight sparkles softly on flowing shallow water. A very slow gentle camera push forward by a few centimetres, same composition and stable bridge geometry throughout. Preserve his identity, outfit, proportions, bridge, lanterns, paths, river and all spatial relationships. Clean line art, crisp cel shading, luminous summer colours. No extra people, no new buildings, no cuts, no zoom rush, no walking, no speaking, no subtitles or logos. Sound: gentle stream and distant birds only, no music and no voices.",
+  "seconds": 6,
+  "size": "1344x768",
+  "quality": "lossless",
+  "output_compression": 100,
+  "task": "fl2va",
+  "conditions": [
+    {
+      "type": "image",
+      "uri": "bridge-keyframe.png (submitted as data URI)",
+      "role": "keyframe",
+      "frame_index": 0
+    }
+  ],
+  "target": {
+    "short_edge": 768,
+    "aspect_ratio": "16:9",
+    "duration_seconds": 6
+  },
+  "seed": 1015
+}

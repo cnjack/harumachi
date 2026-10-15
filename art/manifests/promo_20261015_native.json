@@ -1,0 +1,230 @@
+{
+  "version": 1,
+  "title": "明年夏祭 · 90秒实机版",
+  "duration_seconds": 90,
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "transition_seconds": 0.25,
+  "music": "outputs/harumachi-promo-20261015/music-90/song.wav",
+  "music_original_seconds": 96.119,
+  "story": "安顿生活 → 邻里合作 → 夏祭重开",
+  "shots": [
+    {
+      "id": "bridge_cg",
+      "file": "outputs/harumachi-promo-20261015/scenic-takes.mp4",
+      "start": 47.7,
+      "duration": 6,
+      "caption": "停办十五年的夏祭\n等你回来",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "bridge_real",
+      "file": "outputs/harumachi-promo-20261015/scenic-takes.mp4",
+      "start": 47.7,
+      "duration": 4,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "town_walk",
+      "file": "outputs/harumachi-promo-20261015/scenic-takes.mp4",
+      "start": 10.9,
+      "duration": 4,
+      "caption": "在晴町，过自己的日子",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "meet_mio",
+      "file": "outputs/harumachi-promo-20261015/full-gameplay.mp4",
+      "start": 78,
+      "duration": 3,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": true
+    },
+    {
+      "id": "cook",
+      "file": "outputs/harumachi-promo-20261015/full-gameplay.mp4",
+      "start": 39.2,
+      "duration": 3,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": true
+    },
+    {
+      "id": "meal",
+      "file": "outputs/harumachi-promo-20261015/full-gameplay.mp4",
+      "start": 45.6,
+      "duration": 4,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": true
+    },
+    {
+      "id": "bakery",
+      "file": "outputs/harumachi-promo-20261015/scenic-takes.mp4",
+      "start": 66.6,
+      "duration": 3,
+      "caption": "从一顿饭，到一间小店",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "cafe",
+      "file": "outputs/harumachi-promo-20261015/scenic-takes.mp4",
+      "start": 77.0,
+      "duration": 4,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "harvest",
+      "file": "outputs/harumachi-promo-20261015/scenic-takes.mp4",
+      "start": 29.3,
+      "duration": 5,
+      "caption": "种下自己的收获",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "water",
+      "file": "outputs/harumachi-promo-20261015/watering-take.mp4",
+      "start": 11.6,
+      "duration": 4,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "cast",
+      "file": "outputs/harumachi-promo-20261015/fishing-take.mp4",
+      "start": 82.5,
+      "duration": 3,
+      "caption": "也留一点时间，给湖边",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "reel_and_catch",
+      "file": "outputs/harumachi-promo-20261015/fishing-take.mp4",
+      "start": 96.8,
+      "duration": 4,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "placement",
+      "file": "outputs/harumachi-promo-20261015/full-gameplay.mp4",
+      "start": 212.0,
+      "duration": 4,
+      "caption": "试着把这里，变成大家喜欢的样子",
+      "kind": "gameplay",
+      "game_audio": true
+    },
+    {
+      "id": "trial",
+      "file": "outputs/harumachi-promo-20261015/full-gameplay.mp4",
+      "start": 216.0,
+      "duration": 3,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": true
+    },
+    {
+      "id": "workroom",
+      "file": "outputs/harumachi-promo-20261015/scenic-takes.mp4",
+      "start": 86.7,
+      "duration": 3,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "lantern_assembly",
+      "file": "outputs/harumachi-promo-20261015/full-gameplay.mp4",
+      "start": 528.0,
+      "duration": 5,
+      "caption": "亲手做一盏灯",
+      "kind": "gameplay",
+      "game_audio": true
+    },
+    {
+      "id": "lantern_trial",
+      "file": "outputs/harumachi-promo-20261015/full-gameplay.mp4",
+      "start": 535,
+      "duration": 3,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": true
+    },
+    {
+      "id": "gathering",
+      "file": "outputs/harumachi-promo-20261015/full-gameplay.mp4",
+      "start": 600.4,
+      "duration": 4,
+      "caption": "让准备，变成真正的相聚",
+      "kind": "gameplay",
+      "game_audio": true
+    },
+    {
+      "id": "festival_wide",
+      "file": "outputs/harumachi-promo-20261015/scenic-takes.mp4",
+      "start": 95.7,
+      "duration": 4,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "festival_dance",
+      "file": "outputs/harumachi-promo-20261015/full-gameplay.mp4",
+      "start": 623.0,
+      "duration": 4,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": true
+    },
+    {
+      "id": "photo",
+      "file": "outputs/harumachi-promo-20261015/full-gameplay.mp4",
+      "start": 641.0,
+      "duration": 3,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": true
+    },
+    {
+      "id": "fireworks",
+      "file": "outputs/harumachi-promo-20261015/scenic-takes.mp4",
+      "start": 106.2,
+      "duration": 5,
+      "caption": "把夏祭，再办一次",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "festival_cg",
+      "file": "outputs/harumachi-promo-20261015/scenic-takes.mp4",
+      "start": 95.7,
+      "duration": 6,
+      "caption": "这个夏天，有人等你回来",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "end",
+      "file": "outputs/harumachi-promo-20261015/festival-keyframe.png",
+      "start": 0,
+      "duration": 4.75,
+      "caption": "明年夏祭\nHarumachi: Next Summer\n晴町的这个夏天 · 开发中",
+      "kind": "title",
+      "game_audio": false
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "model": "minimax-h3",
+  "prompt": "A continuous animated Japanese anime scene with clearly visible CHARACTER ACTION. Use this image as the first frame. The camera is LOCKED OFF on a tripod: the buildings, platform and edges of the frame remain fixed, no zoom, no push-in, no camera movement. The brown-haired young man in mint short sleeves and cream cropped trousers is the main moving subject. Over the first four seconds, he WALKs forward toward the young woman with four distinct alternating steps: hips translate forward through the courtyard, knees bend and extend, each foot lifts and plants on the ground, and arms swing naturally. He stops about one metre in front of her. The young woman with brown bobbed hair, cream cardigan and dark navy skirt visibly raises her right arm and waves twice to greet him. In the remaining four seconds, the young man turns his head and upper body slightly toward her, raises his right hand to shoulder height and waves back once. She smiles and lowers her hand. Both characters remain fully visible, with coherent faces and clothes. The changes in pose and position must be obvious throughout the clip; lively traditional hand-drawn animation of the walking and greeting, not a still image or moving photograph. Warm red-and-white lanterns sway softly, background villagers make small natural movements. Preserve the recognizable summer festival courtyard and clean flat cel shading of the reference, crisp line art, cool indigo evening sky, warm orange light. One shot, eight seconds, no cuts, no new characters, no subtitles, no logos, no speaking, no music. Soft footsteps and festival ambience.",
+  "seconds": 8,
+  "size": "1344x768",
+  "quality": "lossless",
+  "output_compression": 80,
+  "task": "fl2va",
+  "conditions": [
+    {
+      "type": "image",
+      "uri": "art/references/promo_20261015/festival.png (submitted as data URI)",
+      "role": "keyframe",
+      "frame_index": 0
+    }
+  ],
+  "target": {
+    "short_edge": 768,
+    "aspect_ratio": "16:9",
+    "duration_seconds": 8
+  },
+  "seed": 1041
+}

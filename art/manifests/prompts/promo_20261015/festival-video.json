@@ -1,0 +1,23 @@
+{
+  "model": "minimax-h3",
+  "prompt": "Continue this exact clean Japanese TV anime summer festival keyframe in a single calm shot. The brown-haired young man in mint short sleeves and cream cropped trousers faces the young woman by the red-white timber bon-odori platform. They quietly look toward one another; only subtle natural breathing and tiny hair and clothing movement. Warm paper lanterns sway very gently, tree leaves stir in the evening breeze, lantern light stays stable. Extremely slow gentle camera push-in. Preserve every face, hairstyle, outfit, age, body, position and the architecture of this actual village courtyard. Keep the background residents in place, no new people. Crisp two-tone cel shading, indigo sky, warm orange lantern glow. No scene cuts, no rapid zoom, no walking, no touching, no dancing, no mouth movement, no subtitles, no logos. Sound: soft evening insects and distant festival ambience, no speaking and no music.",
+  "seconds": 6,
+  "size": "1344x768",
+  "quality": "lossless",
+  "output_compression": 100,
+  "task": "fl2va",
+  "conditions": [
+    {
+      "type": "image",
+      "uri": "festival-keyframe.png (submitted as data URI)",
+      "role": "keyframe",
+      "frame_index": 0
+    }
+  ],
+  "target": {
+    "short_edge": 768,
+    "aspect_ratio": "16:9",
+    "duration_seconds": 6
+  },
+  "seed": 1016
+}

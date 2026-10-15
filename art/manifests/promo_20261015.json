@@ -1,0 +1,170 @@
+{
+  "version": 2,
+  "title": "明年夏祭 · 动画CG主片：回到晴町",
+  "duration_seconds": 90,
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "transition_seconds": 0.25,
+  "music": "outputs/harumachi-promo-20261015/music-90/song.wav",
+  "music_original_seconds": 96.119,
+  "story": "安顿生活 → 邻里合作 → 夏祭重开",
+  "shots": [
+    {
+      "id": "bridge_cg",
+      "file": "outputs/harumachi-promo-20261015/bridge-video/video-ranged.mp4",
+      "start": 0,
+      "duration": 4,
+      "caption": "停办十五年的夏祭\n等你回来",
+      "kind": "animation",
+      "game_audio": false
+    },
+    {
+      "id": "town_cg",
+      "file": "outputs/harumachi-promo-20261015/town-action-v2-video/video-ranged.mp4",
+      "start": 0,
+      "duration": 8,
+      "caption": "回到晴町，重新开始生活",
+      "kind": "animation",
+      "game_audio": false
+    },
+    {
+      "id": "town_walk",
+      "file": "outputs/harumachi-promo-20261015/scenic-takes.mp4",
+      "start": 10.9,
+      "duration": 3.5,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "breakfast_cg",
+      "file": "outputs/harumachi-promo-20261015/breakfast-action-v2-video/video-ranged.mp4",
+      "start": 0,
+      "duration": 8,
+      "caption": "从一顿饭开始",
+      "kind": "animation",
+      "game_audio": false
+    },
+    {
+      "id": "meal",
+      "file": "outputs/harumachi-promo-20261015/full-gameplay.mp4",
+      "start": 45.6,
+      "duration": 4,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": true
+    },
+    {
+      "id": "bakery_cg",
+      "file": "outputs/harumachi-promo-20261015/bakery-action-v2-video/video-ranged.mp4",
+      "start": 0,
+      "duration": 8,
+      "caption": "和街坊，慢慢熟悉起来",
+      "kind": "animation",
+      "game_audio": false
+    },
+    {
+      "id": "cafe",
+      "file": "outputs/harumachi-promo-20261015/scenic-takes.mp4",
+      "start": 77,
+      "duration": 2.5,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "farm_cg",
+      "file": "outputs/harumachi-promo-20261015/farm-action-v2-video/video-ranged.mp4",
+      "start": 0,
+      "duration": 8,
+      "caption": "种下一季的收获",
+      "kind": "animation",
+      "game_audio": false
+    },
+    {
+      "id": "harvest",
+      "file": "outputs/harumachi-promo-20261015/scenic-takes.mp4",
+      "start": 29.3,
+      "duration": 3.5,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "water",
+      "file": "outputs/harumachi-promo-20261015/watering-take.mp4",
+      "start": 11.6,
+      "duration": 3,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "fishing_cg",
+      "file": "outputs/harumachi-promo-20261015/fishing-action-v2-video/video-ranged.mp4",
+      "start": 0,
+      "duration": 8,
+      "caption": "也留一点时间，给湖边",
+      "kind": "animation",
+      "game_audio": false
+    },
+    {
+      "id": "reel_and_catch",
+      "file": "outputs/harumachi-promo-20261015/fishing-take.mp4",
+      "start": 96.8,
+      "duration": 4,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": false
+    },
+    {
+      "id": "lantern_cg",
+      "file": "outputs/harumachi-promo-20261015/lantern-action-v2-video/video-ranged.mp4",
+      "start": 0,
+      "duration": 8,
+      "caption": "亲手做一盏灯",
+      "kind": "animation",
+      "game_audio": false
+    },
+    {
+      "id": "lantern_assembly",
+      "file": "outputs/harumachi-promo-20261015/full-gameplay.mp4",
+      "start": 528,
+      "duration": 4,
+      "caption": "",
+      "kind": "gameplay",
+      "game_audio": true
+    },
+    {
+      "id": "festival_dance",
+      "file": "outputs/harumachi-promo-20261015/full-gameplay.mp4",
+      "start": 623,
+      "duration": 4.5,
+      "caption": "把夏祭，再办一次",
+      "kind": "gameplay",
+      "game_audio": true
+    },
+    {
+      "id": "festival_cg",
+      "file": "outputs/harumachi-promo-20261015/festival-action-v2-video/video-ranged.mp4",
+      "start": 0,
+      "duration": 8,
+      "caption": "这个夏天，有人等你回来",
+      "kind": "animation",
+      "game_audio": false
+    },
+    {
+      "id": "end",
+      "file": "outputs/harumachi-promo-20261015/festival-keyframe.png",
+      "start": 0,
+      "duration": 5,
+      "caption": "明年夏祭\nHarumachi: Next Summer\n晴町的这个夏天 · 开发中",
+      "kind": "title",
+      "game_audio": false
+    }
+  ],
+  "user_direction": "90秒横屏；动画CG为主，少量实机展示玩法；更偏二维动画、平涂与通透夏日光；人物必须有清楚的连续动作，不以画面放大代替表演",
+  "review_status": "motion_revision_pending",
+  "motion_direction": "art/manifests/prompts/promo_20261015/motion-direction-v2.md"
+}

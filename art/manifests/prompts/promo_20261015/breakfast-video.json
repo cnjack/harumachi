@@ -1,0 +1,23 @@
+{
+  "model": "minimax-h3",
+  "prompt": "Continue this exact clean Japanese TV anime keyframe. The same brown-haired young man in a mint short-sleeved overshirt and white T-shirt sits at his actual breakfast table. He glances down at the single rice ball, then makes a small quiet smile. His hands remain relaxed beside the tray. Soft leaf shadows move very gently over the wooden table, warm morning light and subtle breathing. The rice ball, blue-and-white tea set, chair and cabinets stay exactly in place. No eating, grasping, hand-to-mouth gesture or new food. Keep the same expressive anime face, hairstyle, outfit, proportions and scene geometry. Crisp flat cel shading and clean line art throughout, no photorealistic rendering, no painterly texture. One continuous eight-second shot, no cuts, no speech, subtitles or logos. Quiet location ambience only, no music.",
+  "seconds": 8,
+  "size": "1344x768",
+  "quality": "lossless",
+  "output_compression": 80,
+  "task": "fl2va",
+  "conditions": [
+    {
+      "type": "image",
+      "uri": "art/references/promo_20261015/breakfast.png (submitted as data URI)",
+      "role": "keyframe",
+      "frame_index": 0
+    }
+  ],
+  "target": {
+    "short_edge": 768,
+    "aspect_ratio": "16:9",
+    "duration_seconds": 8
+  },
+  "seed": 1021
+}

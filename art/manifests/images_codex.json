@@ -4133,6 +4133,102 @@
       "prompt": "art/manifests/prompts/modular_props_20261015/MS13_picture_frame.txt",
       "sha256": "aaeac74394a3a424474bf777f9c353a6bf1c2ef4a816a211064926ccf6dbb729",
       "purpose": "unlettered reusable Hyper3D prop reference"
+    },
+    {
+      "file": "art/references/promo_20261015/bridge.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "mode": "edit/style-transfer",
+      "prompt": "art/manifests/prompts/promo_20261015/bridge-image.txt",
+      "reference": "art/references/promo_20261015/native_bridge.png",
+      "purpose": "promotional cinematic keyframe; external trailer asset"
+    },
+    {
+      "file": "art/references/promo_20261015/festival.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "mode": "edit/style-transfer",
+      "prompt": "art/manifests/prompts/promo_20261015/festival-image.txt",
+      "reference": "art/references/promo_20261015/native_festival.png",
+      "purpose": "promotional cinematic keyframe; external trailer asset"
+    },
+    {
+      "file": "art/references/promo_20261015/town.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "mode": "edit/style-transfer",
+      "prompt": "art/manifests/prompts/promo_20261015/town-image.txt",
+      "reference": "art/references/promo_20261015/native_town.png",
+      "supporting_references": [
+        "game/assets/ui/portraits/sora_neutral.png",
+        "art/references/promo_20261015/bridge.png"
+      ],
+      "purpose": "user-selected anime CG promotional trailer"
+    },
+    {
+      "file": "art/references/promo_20261015/breakfast.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "mode": "edit/style-transfer",
+      "prompt": "art/manifests/prompts/promo_20261015/breakfast-image.txt",
+      "reference": "art/references/promo_20261015/native_breakfast.png",
+      "supporting_references": [
+        "game/assets/ui/portraits/sora_neutral.png",
+        "art/references/promo_20261015/bridge.png"
+      ],
+      "purpose": "user-selected anime CG promotional trailer"
+    },
+    {
+      "file": "art/references/promo_20261015/bakery.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "mode": "edit/style-transfer",
+      "prompt": "art/manifests/prompts/promo_20261015/bakery-image.txt",
+      "reference": "art/references/promo_20261015/native_bakery.png",
+      "supporting_references": [
+        "game/assets/ui/portraits/ren_neutral.png",
+        "art/references/promo_20261015/bridge.png"
+      ],
+      "purpose": "user-selected anime CG promotional trailer"
+    },
+    {
+      "file": "art/references/promo_20261015/farm.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "mode": "edit/style-transfer",
+      "prompt": "art/manifests/prompts/promo_20261015/farm-image.txt",
+      "reference": "art/references/promo_20261015/native_farm.png",
+      "supporting_references": [
+        "game/assets/ui/portraits/sora_neutral.png",
+        "art/references/promo_20261015/bridge.png"
+      ],
+      "purpose": "user-selected anime CG promotional trailer"
+    },
+    {
+      "file": "art/references/promo_20261015/fishing.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "mode": "edit/style-transfer",
+      "prompt": "art/manifests/prompts/promo_20261015/fishing-image.txt",
+      "reference": "art/references/promo_20261015/native_fishing.png",
+      "supporting_references": [
+        "game/assets/ui/portraits/sora_neutral.png",
+        "art/references/promo_20261015/bridge.png"
+      ],
+      "purpose": "user-selected anime CG promotional trailer"
+    },
+    {
+      "file": "art/references/promo_20261015/lantern.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "mode": "edit/style-transfer",
+      "prompt": "art/manifests/prompts/promo_20261015/lantern-image.txt",
+      "reference": "art/references/promo_20261015/native_lantern.png",
+      "supporting_references": [
+        "game/assets/ui/portraits/sora_neutral.png",
+        "art/references/promo_20261015/bridge.png"
+      ],
+      "purpose": "user-selected anime CG promotional trailer"
     }
   ]
 }
