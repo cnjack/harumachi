@@ -299,7 +299,7 @@ Godot 这边是 `Audio` 自动加载（`game/scripts/autoload/audio.gd`）：
   ```
 
   剪辑公共部分在 `art/tools/reel_lib.py`（读标记、0.4 秒交叉淡化、字幕卡、垫音乐、−16 LUFS）。全程录像用 ffmpeg 两遍 loudnorm 压到 −16 LUFS。
-- 2026-10-15宣传片使用`art/tools/record_promo.py`在临时工程隔离存档和录制控制器，原生1080p/30fps；视口设置与Movie Maker分辨率必须一致。`build_promo.py`按镜头清单剪辑，`download_promo_video.py`只按已有任务ID断点续传。动画人物要抽帧检查实际迈步、落脚、手臂与位移，不能用镜头缩放代替；`queue_promo_video.py`要求动作样片已完成视觉复核，主片导出要求清单`review_status=approved`。记录见[PROMO_20261015](PROMO_20261015.md)。
+- 2026-10-15宣传片使用`art/tools/record_promo.py`在临时工程隔离存档和录制控制器，原生1080p/30fps；视口设置与Movie Maker分辨率必须一致。`build_promo.py`按镜头清单剪辑，`download_promo_video.py`只按已有任务ID断点续传。动画人物要抽帧检查实际迈步、落脚、手臂与位移，不能用镜头缩放代替；`queue_promo_video.py`要求动作样片已完成视觉复核，主片导出要求清单`review_status=approved`。输出各段及主片统一为有限范围BT.709与yuv420p，避免PNG和视频混合后黑位偏灰。`review_promo.py`完整解码并抽帧；`verify_promo_delivery.py --media-only`检查媒体，最终模式还要求远端提交及CI证据。记录见[PROMO_20261015](PROMO_20261015.md)。
 - 实机：导出包解压后运行，`--print-fps` 记录帧率，记录见 [PLAN.md](PLAN.md)。
 
 ## 10. 时间、天气、风与小动物（v0.4）

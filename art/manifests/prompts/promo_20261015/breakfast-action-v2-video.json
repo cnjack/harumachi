@@ -1,0 +1,23 @@
+{
+  "model": "minimax-h3",
+  "prompt": "Animate clear, purposeful character action from this Japanese anime first frame. Starting seated as shown, the brown-haired young man in mint short sleeves and white T-shirt lifts both forearms off the table, stretches his arms out to either side at shoulder level, briefly tilts his head back, then lowers his arms and turns to look toward the sunlit window. Clearly animate his elbows, shoulders, hands and head through the full movement. Keep the rice ball and tea set on the table. No eating or drinking gesture. The camera stays stable, the movement comes from the articulated character and objects rather than zooming the image. Keep the same face, hairstyle, outfit and clean flat cel shading, with expressive traditional anime movement. One continuous eight-second shot, no cuts, no speech, subtitles or logos. Quiet location ambience only, no music.",
+  "seconds": 8,
+  "size": "1344x768",
+  "quality": "lossless",
+  "output_compression": 80,
+  "task": "fl2va",
+  "conditions": [
+    {
+      "type": "image",
+      "uri": "art/references/promo_20261015/breakfast.png (submitted as data URI)",
+      "role": "keyframe",
+      "frame_index": 0
+    }
+  ],
+  "target": {
+    "short_edge": 768,
+    "aspect_ratio": "16:9",
+    "duration_seconds": 8
+  },
+  "seed": 1051
+}

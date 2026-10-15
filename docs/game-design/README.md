@@ -48,7 +48,7 @@
 | --- | --- |
 | [CURRENT_STATUS](CURRENT_STATUS.md) | 当前事实、交付与待验范围 |
 | [PLAN](PLAN.md) | 已实现工作、下一步与验收门槛 |
-| [90秒宣传片制作](PROMO_20261015.md) | 实机版已完成；动画CG主片正在按人物动作反馈重做 |
+| [90秒宣传片交付](PROMO_20261015.md) | 动画CG主片、实机版、配乐与制作工具；含动作及整片验收 |
 | [货车、休息与钓鱼](TRUCK_REST_FISHING_20261014.md) | 两辆贴图玻璃货车、9张长椅、去抓握及钓鱼容错；含整包验收记录 |
 | [场景与居民故事提案](LAYOUT_STORY_REDESIGN_20261014.md) | 已接受的道具阶段、室内和连续目标设计；实现见[交付记录](RESIDENT_STORY_DELIVERY_20261014.md) |
 | [GAMEPLAY](GAMEPLAY.md) | 当前流程、操作与规则 |

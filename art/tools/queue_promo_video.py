@@ -7,6 +7,7 @@ import argparse,fcntl,json,os,subprocess,sys,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 DETAILS={
+ 'bridge':'The existing lone young man on the wooden bridge takes three clear alternating steps toward the right river bank along the curved walkway, with lifted feet, moving hips and naturally swinging arms. Keep him on the bridge deck, behind its railing. The stream visibly flows beneath the bridge with traveling ripples and shifting sunlight sparkles; nearby grass and leaves sway in the breeze. The landscape and camera stay stable. Preserve the same wooden bridge, river, distant mountains and single person. No new people or buildings.',
  'town':'The brown-haired young man in mint short sleeves, white T-shirt, cream cropped trousers and orange-white shoes walks along the street toward the community notice case. Show several distinct alternating steps, foot lift and ground contact, moving hips and naturally swinging arms. He slows to a stop beside the notice case and turns his head toward it. Maintain his appearance and the existing town architecture. His body must visibly travel through the scene.',
  'breakfast':'Starting seated as shown, the brown-haired young man in mint short sleeves and white T-shirt lifts both forearms off the table, stretches his arms out to either side at shoulder level, briefly tilts his head back, then lowers his arms and turns to look toward the sunlit window. Clearly animate his elbows, shoulders, hands and head through the full movement. Keep the rice ball and tea set on the table. No eating or drinking gesture.',
  'bakery':'Starting behind the green counter as shown, Ren, the dark-haired baker in a yellow headscarf, orange shirt and white apron, lifts his right arm and gives a broad welcoming wave. He lowers his hand, turns his whole body toward the oven on his right and takes two visible steps along the space behind the counter toward it. His body changes position; he does not pass through the counter. Preserve the actual bakery furniture and appliances.',
@@ -24,6 +25,7 @@ def main():
         raise SystemExit('Character motion sample has not been visually approved; no batch submitted')
     from video import Client
     out=ROOT/'outputs/harumachi-promo-20261015';work=ROOT/'work/promo_20261015';evidence=ROOT/'evidence/promo_20261015'
+    record_name='cg-action-queue.json' if args.names=='town,breakfast,bakery,farm,fishing,lantern' else 'cg-action-queue-'+args.names.replace(',','-')+'.json'
     lock=(evidence/'cg-queue.lock').open('w');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     client=Client('https://ai.szshuqi.com',(Path.home()/'.config/shuqi-video/api-key').read_text().strip())
     downloads=[];waiting=[];records=[]
@@ -34,8 +36,7 @@ def main():
             if result is None:active.append(process)
             elif result!=0:raise RuntimeError('Download failed; resume its existing job without regenerating')
         downloads[:]=active
-        old_done=all((out/n/'video-ranged.mp4').is_file() for n in ['bridge-video','festival-video'])
-        while waiting and old_done and len(downloads)<2:
+        while waiting and len(downloads)<2:
             name=waiting.pop(0);folder=out/(name+'-action-v2-video')
             log=(folder/'range-download.log').open('w')
             p=subprocess.Popen([sys.executable,str(ROOT/'art/tools/download_promo_video.py'),'--out',str(folder),'--workers','2'],stdout=log,stderr=subprocess.STDOUT,cwd=ROOT);log.close();downloads.append(p)
@@ -48,8 +49,9 @@ def main():
             while not image.exists():kick();time.sleep(10)
             template=ROOT/'art/manifests/prompts/promo_20261015'/(name+'-action-v2-video.json')
             import base64
-            prompt='Animate clear, purposeful character action from this Japanese anime first frame. '+DETAILS[name]+' The camera stays stable, the movement comes from the articulated character and objects rather than zooming the image. Keep the same face, hairstyle, outfit and clean flat cel shading, with expressive traditional anime movement. One continuous eight-second shot, no cuts, no speech, subtitles or logos. Quiet location ambience only, no music.'
-            payload={'model':'minimax-h3','prompt':prompt,'seconds':8,'size':'1344x768','quality':'lossless','output_compression':80,'task':'fl2va','conditions':[{'type':'image','uri':'data:image/png;base64,'+base64.b64encode(image.read_bytes()).decode(),'role':'keyframe','frame_index':0}],'target':{'short_edge':768,'aspect_ratio':'16:9','duration_seconds':8},'seed':1050+number}
+            seconds=4 if name=='bridge' else 8
+            prompt='Animate clear, purposeful character action from this Japanese anime first frame. '+DETAILS[name]+' The camera stays stable, the movement comes from the articulated character and objects rather than zooming the image. Keep the same face, hairstyle, outfit and clean flat cel shading, with expressive traditional anime movement. One continuous '+str(seconds)+'-second shot, no cuts, no speech, subtitles or logos. Quiet location ambience only, no music.'
+            payload={'model':'minimax-h3','prompt':prompt,'seconds':seconds,'size':'1344x768','quality':'lossless','output_compression':80,'task':'fl2va','conditions':[{'type':'image','uri':'data:image/png;base64,'+base64.b64encode(image.read_bytes()).decode(),'role':'keyframe','frame_index':0}],'target':{'short_edge':768,'aspect_ratio':'16:9','duration_seconds':seconds},'seed':1050+number}
             safe=payload.copy();safe['conditions']=[{'type':'image','uri':str(image.relative_to(ROOT))+' (submitted as data URI)','role':'keyframe','frame_index':0}];template.write_text(json.dumps(safe,ensure_ascii=False,indent=2)+'\n')
             request=work/(name+'-action-v2-request.json');request.write_text(json.dumps(payload))
             with (folder/'submit.log').open('w') as log:subprocess.run([sys.executable,str(skill/'scripts/video.py'),'generate','--payload',str(request),'--out',str(folder),'--wait','0'],stdout=log,stderr=subprocess.STDOUT,cwd=ROOT)
@@ -64,7 +66,7 @@ def main():
             if status=='completed':break
             if status in ['failed','cancelled','expired']:raise RuntimeError(name+': generation '+status)
             kick();time.sleep(30)
-        records.append({'name':name,'id':state['id'],'status':'completed'});(evidence/'cg-action-queue.json').write_text(json.dumps(records,indent=2)+'\n')
+        records.append({'name':name,'id':state['id'],'status':'completed'});(evidence/record_name).write_text(json.dumps(records,indent=2)+'\n')
         if not (folder/'video-ranged.mp4').exists():waiting.append(name)
         kick()
     while waiting or downloads:kick();time.sleep(10)
