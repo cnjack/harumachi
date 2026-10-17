@@ -1,0 +1,15 @@
+{
+  "name": "harumachi-character-review",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Local character review UI regression tests",
+  "scripts": {
+    "test": "node --test model.test.cjs dom.test.cjs"
+  },
+  "devDependencies": {
+    "linkedom": "0.18.12"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
