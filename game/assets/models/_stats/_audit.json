@@ -2458,8 +2458,8 @@
     },
     "CH_aoi": {
       "id": "CH_aoi",
-      "sha256": "0955f26195245a5231bdfd2fe2492c7fd7fdc1ca90d6f4346802769dec65f211",
-      "source_mtime": 1792334797.1146607,
+      "sha256": "8fc96166cb4b38cee20d2d1d3e58937256f2e72760e89b9ec8ddd3e68f409a21",
+      "source_mtime": 1792339571.7612357,
       "triangles": 92351,
       "bounds_godot": {
         "min": [
@@ -2509,8 +2509,8 @@
     },
     "CH_haru": {
       "id": "CH_haru",
-      "sha256": "26f2a248fa7c84549e33eedb50cfca1f49e04fa3cfe6bb5fffed72441cc40492",
-      "source_mtime": 1792334796.5168762,
+      "sha256": "b440fb8845c6b2867f6fcc79ebb52e97556f19a51e4978f5a12b7db343cfbd92",
+      "source_mtime": 1792339571.6464715,
       "triangles": 89683,
       "bounds_godot": {
         "min": [
@@ -2560,8 +2560,8 @@
     },
     "CH_kazuko": {
       "id": "CH_kazuko",
-      "sha256": "82f55f34ccb0aa6df08e628e6cc44d046d81647ffb4312e2547eb0f9ccf686f4",
-      "source_mtime": 1792334797.7062316,
+      "sha256": "a01062b238d794d76a5a7047891dac5cd53e4498c08d1a3c4d9cea928fa93d77",
+      "source_mtime": 1792339571.8353567,
       "triangles": 97948,
       "bounds_godot": {
         "min": [
@@ -2611,8 +2611,8 @@
     },
     "CH_mio": {
       "id": "CH_mio",
-      "sha256": "9cb271aa2a01ed4a115b253991a3c7d1dff5445fce299e1c502bceadd3f98bd0",
-      "source_mtime": 1792334796.8309987,
+      "sha256": "fa0caa667ae11ec94f579dab0f5ecf98827ae9a2bd4b384ec6eef445f2535877",
+      "source_mtime": 1792339571.7246716,
       "triangles": 96748,
       "bounds_godot": {
         "min": [
@@ -2666,8 +2666,8 @@
     },
     "CH_ren": {
       "id": "CH_ren",
-      "sha256": "baf894e365726bc6814a678011160080754c9a70b81c1a1264bbd18e6da1878b",
-      "source_mtime": 1792334796.2861772,
+      "sha256": "c2fb3e6c2a4be6b3b3135fdefcda80d9820692eac5236fc7964f77fe5c061707",
+      "source_mtime": 1792339571.6254041,
       "triangles": 94957,
       "bounds_godot": {
         "min": [
@@ -2717,8 +2717,8 @@
     },
     "CH_sora": {
       "id": "CH_sora",
-      "sha256": "d6489e044856eb8038e510abe8dc1f9dbb6a4071fa772f3923bfb754ed1885c9",
-      "source_mtime": 1792334796.034848,
+      "sha256": "5565c95a0c3a1341767500af76a1db320aa293687f3e2cc0058a170926014dd6",
+      "source_mtime": 1792339571.5993671,
       "triangles": 94032,
       "bounds_godot": {
         "min": [
@@ -2772,8 +2772,8 @@
     },
     "CH_tanaka": {
       "id": "CH_tanaka",
-      "sha256": "bf1d421e202b16e588c5b0520450c0b5bcd8b62fa58ce763d6ef5e4f5bd9edcb",
-      "source_mtime": 1792334797.36003,
+      "sha256": "3a3bb069b8b8656cbdc15356ca3c42de42bc71b258c82b455a9b5b07186d4320",
+      "source_mtime": 1792339571.786453,
       "triangles": 89902,
       "bounds_godot": {
         "min": [

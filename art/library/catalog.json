@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "title": "晴町素材室",
-  "updated": "2026-10-18",
+  "updated": "2026-10-19",
   "engine": "Godot 4.8-dev7",
   "count": 696,
   "categories": [
@@ -2325,7 +2325,7 @@
       "path": "game/assets/models/CH_aoi.glb",
       "format": "GLB",
       "triangles": 92351,
-      "bytes": 11173628,
+      "bytes": 11181636,
       "license": "项目角色；Hyper3D 账户生成素材",
       "source": "https://hyper3d.ai/workspace/rodin/76e516db-ac2e-4aef-9573-7bfd6517db34",
       "status": "已接入",
@@ -2353,7 +2353,7 @@
       "metrics": {
         "id": "CH_aoi",
         "tris": 92351,
-        "bytes": 11173628,
+        "bytes": 11181636,
         "bones": 54,
         "animations": [
           "idle",
@@ -2369,12 +2369,12 @@
           "dance",
           "reference"
         ],
-        "sha256": "0955f26195245a5231bdfd2fe2492c7fd7fdc1ca90d6f4346802769dec65f211",
-        "src": "character_source_cloth_arms_20261018/exports/CH_aoi.glb",
+        "sha256": "8fc96166cb4b38cee20d2d1d3e58937256f2e72760e89b9ec8ddd3e68f409a21",
+        "src": "character_run_arm_20261019/exports/CH_aoi.glb",
         "provider": "Hyper3D Rodin / welded anatomical character pipeline",
         "preserve_rigged_character": true,
         "character_pipeline": "characters-apose-20261004",
-        "rig_review_manifest": "art/manifests/character_source_cloth_arms_20261018.json"
+        "rig_review_manifest": "art/manifests/character_run_arm_20261019.json"
       },
       "recipe": "world.spawn(\"CH_aoi\", Vector3(0, 0, 0), 0, 0)",
       "character_id": "aoi",
@@ -2415,7 +2415,7 @@
       "path": "game/assets/models/CH_haru.glb",
       "format": "GLB",
       "triangles": 89683,
-      "bytes": 8491648,
+      "bytes": 8501248,
       "license": "项目角色；Hyper3D 账户生成素材",
       "source": "https://hyper3d.ai/workspace/rodin/abb0fdaf-2fec-430a-b6d6-2e9daf32cc00",
       "status": "已接入",
@@ -2443,7 +2443,7 @@
       "metrics": {
         "id": "CH_haru",
         "tris": 89683,
-        "bytes": 8491648,
+        "bytes": 8501248,
         "bones": 54,
         "animations": [
           "idle",
@@ -2459,12 +2459,12 @@
           "dance",
           "reference"
         ],
-        "sha256": "26f2a248fa7c84549e33eedb50cfca1f49e04fa3cfe6bb5fffed72441cc40492",
-        "src": "character_source_cloth_arms_20261018/exports/CH_haru.glb",
+        "sha256": "b440fb8845c6b2867f6fcc79ebb52e97556f19a51e4978f5a12b7db343cfbd92",
+        "src": "character_run_arm_20261019/exports/CH_haru.glb",
         "provider": "Hyper3D Rodin / welded anatomical character pipeline",
         "preserve_rigged_character": true,
         "character_pipeline": "characters-apose-20261004",
-        "rig_review_manifest": "art/manifests/character_source_cloth_arms_20261018.json"
+        "rig_review_manifest": "art/manifests/character_run_arm_20261019.json"
       },
       "recipe": "world.spawn(\"CH_haru\", Vector3(0, 0, 0), 0, 0)",
       "character_id": "haru",
@@ -2505,7 +2505,7 @@
       "path": "game/assets/models/CH_kazuko.glb",
       "format": "GLB",
       "triangles": 97948,
-      "bytes": 44365732,
+      "bytes": 44374540,
       "license": "项目角色；Hyper3D 账户生成素材",
       "source": "https://hyper3d.ai/workspace/rodin/02faef2e-028f-43e0-933d-47541dcc167b",
       "status": "已接入",
@@ -2533,7 +2533,7 @@
       "metrics": {
         "id": "CH_kazuko",
         "tris": 97948,
-        "bytes": 44365732,
+        "bytes": 44374540,
         "bones": 54,
         "animations": [
           "idle",
@@ -2549,12 +2549,12 @@
           "dance",
           "reference"
         ],
-        "sha256": "82f55f34ccb0aa6df08e628e6cc44d046d81647ffb4312e2547eb0f9ccf686f4",
-        "src": "character_source_cloth_arms_20261018/exports/CH_kazuko.glb",
+        "sha256": "a01062b238d794d76a5a7047891dac5cd53e4498c08d1a3c4d9cea928fa93d77",
+        "src": "character_run_arm_20261019/exports/CH_kazuko.glb",
         "provider": "Hyper3D Rodin / welded anatomical character pipeline",
         "preserve_rigged_character": true,
         "character_pipeline": "characters-apose-20261004",
-        "rig_review_manifest": "art/manifests/character_source_cloth_arms_20261018.json"
+        "rig_review_manifest": "art/manifests/character_run_arm_20261019.json"
       },
       "recipe": "world.spawn(\"CH_kazuko\", Vector3(0, 0, 0), 0, 0)",
       "character_id": "kazuko",
@@ -3071,7 +3071,7 @@
       "path": "game/assets/models/CH_mio.glb",
       "format": "GLB",
       "triangles": 96748,
-      "bytes": 69842292,
+      "bytes": 69851500,
       "license": "项目角色；Hyper3D 账户生成素材",
       "source": "https://hyper3d.ai/workspace/rodin/0d52126c-8342-42af-9b32-2d470fdbc48b",
       "status": "已接入",
@@ -3099,7 +3099,7 @@
       "metrics": {
         "id": "CH_mio",
         "tris": 96748,
-        "bytes": 69842292,
+        "bytes": 69851500,
         "bones": 66,
         "animations": [
           "idle",
@@ -3115,12 +3115,12 @@
           "dance",
           "reference"
         ],
-        "sha256": "9cb271aa2a01ed4a115b253991a3c7d1dff5445fce299e1c502bceadd3f98bd0",
-        "src": "character_source_cloth_arms_20261018/exports/CH_mio.glb",
+        "sha256": "fa0caa667ae11ec94f579dab0f5ecf98827ae9a2bd4b384ec6eef445f2535877",
+        "src": "character_run_arm_20261019/exports/CH_mio.glb",
         "provider": "Hyper3D Rodin / welded anatomical character pipeline",
         "preserve_rigged_character": true,
         "character_pipeline": "characters-apose-20261004",
-        "rig_review_manifest": "art/manifests/character_source_cloth_arms_20261018.json"
+        "rig_review_manifest": "art/manifests/character_run_arm_20261019.json"
       },
       "recipe": "world.spawn(\"CH_mio\", Vector3(0, 0, 0), 0, 0)",
       "character_id": "mio",
@@ -3516,7 +3516,7 @@
       "path": "game/assets/models/CH_ren.glb",
       "format": "GLB",
       "triangles": 94957,
-      "bytes": 19553952,
+      "bytes": 19563160,
       "license": "项目角色；Hyper3D 账户生成素材",
       "source": "https://hyper3d.ai/workspace/rodin/8fde314d-f354-4843-89b6-9f7dfb15c243",
       "status": "已接入",
@@ -3544,7 +3544,7 @@
       "metrics": {
         "id": "CH_ren",
         "tris": 94957,
-        "bytes": 19553952,
+        "bytes": 19563160,
         "bones": 54,
         "animations": [
           "idle",
@@ -3560,12 +3560,12 @@
           "dance",
           "reference"
         ],
-        "sha256": "baf894e365726bc6814a678011160080754c9a70b81c1a1264bbd18e6da1878b",
-        "src": "character_source_cloth_arms_20261018/exports/CH_ren.glb",
+        "sha256": "c2fb3e6c2a4be6b3b3135fdefcda80d9820692eac5236fc7964f77fe5c061707",
+        "src": "character_run_arm_20261019/exports/CH_ren.glb",
         "provider": "Hyper3D Rodin / welded anatomical character pipeline",
         "preserve_rigged_character": true,
         "character_pipeline": "characters-apose-20261004",
-        "rig_review_manifest": "art/manifests/character_source_cloth_arms_20261018.json"
+        "rig_review_manifest": "art/manifests/character_run_arm_20261019.json"
       },
       "recipe": "world.spawn(\"CH_ren\", Vector3(0, 0, 0), 0, 0)",
       "character_id": "ren",
@@ -3623,7 +3623,7 @@
       "path": "game/assets/models/CH_sora.glb",
       "format": "GLB",
       "triangles": 94032,
-      "bytes": 12582836,
+      "bytes": 12591744,
       "license": "项目角色；Hyper3D 账户生成素材",
       "source": "https://hyper3d.ai/workspace/rodin/027128d0-b34b-44b3-938a-bbf48f96ba58",
       "status": "已接入",
@@ -3651,7 +3651,7 @@
       "metrics": {
         "id": "CH_sora",
         "tris": 94032,
-        "bytes": 12582836,
+        "bytes": 12591744,
         "bones": 66,
         "animations": [
           "idle",
@@ -3667,12 +3667,12 @@
           "dance",
           "reference"
         ],
-        "sha256": "d6489e044856eb8038e510abe8dc1f9dbb6a4071fa772f3923bfb754ed1885c9",
-        "src": "character_source_cloth_arms_20261018/exports/CH_sora.glb",
+        "sha256": "5565c95a0c3a1341767500af76a1db320aa293687f3e2cc0058a170926014dd6",
+        "src": "character_run_arm_20261019/exports/CH_sora.glb",
         "provider": "Hyper3D Rodin / welded anatomical character pipeline",
         "preserve_rigged_character": true,
         "character_pipeline": "characters-apose-20261004",
-        "rig_review_manifest": "art/manifests/character_source_cloth_arms_20261018.json"
+        "rig_review_manifest": "art/manifests/character_run_arm_20261019.json"
       },
       "recipe": "world.spawn(\"CH_sora\", Vector3(0, 0, 0), 0, 0)",
       "character_id": "sora",
@@ -3722,7 +3722,7 @@
       "path": "game/assets/models/CH_tanaka.glb",
       "format": "GLB",
       "triangles": 89902,
-      "bytes": 20014704,
+      "bytes": 20023552,
       "license": "项目角色；Hyper3D 账户生成素材",
       "source": "https://hyper3d.ai/workspace/rodin/1772f045-fe8c-45c6-8f33-4fe89dfc5143",
       "status": "已接入",
@@ -3751,7 +3751,7 @@
       "metrics": {
         "id": "CH_tanaka",
         "tris": 89902,
-        "bytes": 20014704,
+        "bytes": 20023552,
         "bones": 54,
         "animations": [
           "idle",
@@ -3767,12 +3767,12 @@
           "dance",
           "reference"
         ],
-        "sha256": "bf1d421e202b16e588c5b0520450c0b5bcd8b62fa58ce763d6ef5e4f5bd9edcb",
-        "src": "character_source_cloth_arms_20261018/exports/CH_tanaka.glb",
+        "sha256": "3a3bb069b8b8656cbdc15356ca3c42de42bc71b258c82b455a9b5b07186d4320",
+        "src": "character_run_arm_20261019/exports/CH_tanaka.glb",
         "provider": "Hyper3D Rodin / welded anatomical character pipeline",
         "preserve_rigged_character": true,
         "character_pipeline": "characters-apose-20261004",
-        "rig_review_manifest": "art/manifests/character_source_cloth_arms_20261018.json"
+        "rig_review_manifest": "art/manifests/character_run_arm_20261019.json"
       },
       "recipe": "world.spawn(\"CH_tanaka\", Vector3(0, 0, 0), 0, 0)",
       "character_id": "tanaka",

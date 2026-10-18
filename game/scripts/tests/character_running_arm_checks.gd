@@ -416,9 +416,12 @@ func source_arm_contract(id: String, model: Node3D, skeleton: Skeleton3D, contro
 		var stats: Dictionary = statistics[side_name]
 		var span: float = float(stats.pitch_max) - float(stats.pitch_min)
 		geometry_ok = geometry_ok and span >= 25.0 and span <= 42.0 and float(stats.wrist_above_shoulder_max) <= float(wrist_limits[id])
+		# Low wrists alone can still resemble carrying a tray. Require the elbow
+		# to pass behind the shoulder and limit its forward pitch independently.
+		geometry_ok = geometry_ok and float(stats.pitch_min) <= -20.0 and float(stats.pitch_max) <= 12.0
 	var authored: Dictionary = source_extras(model).get("source_running_style", {})
 	var declared_ok: bool = int(authored.get("version", 0)) == 1 and bool(authored.get("arms_authored", false)) and bool(authored.get("wrists_authored", false)) and bool(authored.get("grip_authored", false)) and not bool(authored.get("runtime_arm_style_required", true))
-	check(id + " source run keeps low compact arms without game modifiers", declared_ok and geometry_ok, {"fresh_samples": fresh, "expected": PHASE_STEPS + 1, "statistics": statistics, "upper_span_limits_deg": [25, 42], "wrist_shoulder_limit_m": wrist_limits[id], "source_profile": authored, "all_game_modifiers_disabled": true})
+	check(id + " source run keeps low compact arms without game modifiers", declared_ok and geometry_ok, {"fresh_samples": fresh, "expected": PHASE_STEPS + 1, "statistics": statistics, "upper_span_limits_deg": [25, 42], "rear_pitch_at_most_deg": -20, "forward_pitch_at_most_deg": 12, "wrist_shoulder_limit_m": wrist_limits[id], "source_profile": authored, "all_game_modifiers_disabled": true})
 	check(id + " source running wrists stay neutral and slightly inward", declared_ok and fresh == PHASE_STEPS + 1 and hands_ok, {"fresh_samples": fresh, "minimum_inward_deg": minimum_inward, "maximum_wrist_angle_deg": maximum_wrist_angle, "limits_deg": {"minimum_inward": 2, "maximum_total": 10}})
 	for modifier: Node in modifiers:
 		(modifier as SkeletonModifier3D).active = bool(modifiers[modifier])

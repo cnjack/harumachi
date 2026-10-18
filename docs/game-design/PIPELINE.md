@@ -1,8 +1,12 @@
 # 模型、工程与交付流程
 
+## 跑步摆臂源修订（2026-10-19）
+
+当前七人源输出为`art/models/character_run_arm_20261019/exports/`，清单为`art/manifests/character_run_arm_20261019.json`。在上一轮已修衣物与接地的GLB上执行`author_running_style.py --refine-existing`，只重写run六条Arm/ForeArm/Hand旋转曲线，保留手指及其余源数据；拒绝二次叠加revision2。验收仍运行112项摆臂、旧版反例、田中真实手/蓝衣精确相交和莲新内容指纹的衣物复核，再用固定工程录制实际跑步。见[参数与结果](RUN_ARM_POSE_20261019.md)。
+
 ## 本轮源衣物与跑步修复（2026-10-18）
 
-先关掉游戏修正器核对源模型，能由网格、蒙皮、骨骼、形态键或源动画解决的先写回资产。七人当前源输出统一为 `art/models/character_source_cloth_arms_20261018/exports/`，来源和 SHA 登记于 `art/manifests/character_source_cloth_arms_20261018.json`，相同 GLB 同步游戏和素材库。旧 Blender 文件保持历史作者来源，不能直接覆盖本轮源修形。
+先关掉游戏修正器核对源模型，能由网格、蒙皮、骨骼、形态键或源动画解决的先写回资产。上一轮七人源输出统一为 `art/models/character_source_cloth_arms_20261018/exports/`，来源和 SHA 登记于 `art/manifests/character_source_cloth_arms_20261018.json`，相同 GLB 同步游戏和素材库。旧 Blender 文件保持历史作者来源，不能直接覆盖本轮源修形。
 
 本轮跑步手臂/手腕/手指由源轨道提供，Natural 按元数据跳过重复处理。澪采用源接触与接缝修形，和子采用固定模型 X/Y、逆蒙皮 XYZ 接触修形，原权重与静止骨架保留。平地鞋底从完整源鞋面修，均匀小路面偏差允许共同 Hips 上移，高差与坡面保留每脚 IK。源导入明确 120fps、和子 240fps，关闭曲线优化和压缩；独立源、实际游戏、原有压力相位均须检查。详细工具和验收见[本轮记录](SOURCE_CLOTH_ARMS_20261018.md)。本会话一律 `--display existing --screen 0`，禁止自动新建虚拟显示器。
 
