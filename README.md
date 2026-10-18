@@ -1,6 +1,8 @@
 <p align="center"><img src="site/assets/wallpapers/summer-river.webp" alt="晴川与山谷中的晴町，明年夏祭官方概念插画" width="100%"></p>
 
-人物骨骼与动作已按49项原始点评逐项处理并登记：收拢腿轴、修正肩肘与手部、减小莲的重复侧倾，补上衣裙局部接触和袖形。七模型与前版运行代码曾通过2451项完整功能回归；本次空走路内扣反馈已作[专项修复](docs/game-design/SORA_WALK_KNEES_20261018.md)，89项步态回归通过，新增一项后的2452项全量尚未重跑；原生衣物求解在本机三人走跑中通过原8毫秒预算。有限技术验收与人工自然度复评分别记录，见[逐项记录](docs/game-design/CHARACTER_RIG_REVIEW_20261018.md)。[新版单人合集（2分48秒）](evidence/character_videos_final_20261018/solo-collection.mp4)和[多人合集（48秒）](evidence/character_videos_final_20261018/group-collection.mp4)已完成，九片555项媒体与输入身份检查通过；自然度仍待人工复评，可在[新版视频逐项点评页](evidence/character_videos_final_20261018/index.html)按49项记录意见并导出结果。
+人物最新四组反馈已处理：空走路膝内扣、爷爷左臂被衣身挡住、和子走跑腿形，以及七人挥手/鞠躬时腿保持站姿。当前源码组合通过2502项独占完整功能回归、退出0，包含92项步态与47项手势；原5毫米衣物穿透与8毫秒求解门槛未放宽。和子仍保留约1弱像素的围裙微折交叉，自然度待人工复评，见[修复与边界](docs/game-design/CHARACTER_FEEDBACK_20261018.md)。新录[爷爷单人](evidence/rig_fix_20261018_followup/movie-tanaka-natural-transition/solo-tanaka/video.mp4)、[和子单人](evidence/rig_fix_20261018_followup/movie/solo-kazuko/video.mp4)与[七人同场](evidence/rig_fix_20261018_followup/movie/group-all-actions/video.mp4)各24秒、1080p30，完整解码通过；使用现有屏幕、静音和独立存档，未创建虚拟显示器。
+
+此前49项[逐项记录](docs/game-design/CHARACTER_RIG_REVIEW_20261018.md)、九段旧复评视频及[点评页](evidence/character_videos_final_20261018/index.html)原样保留；新反馈覆盖对应的旧人工结论，不由功能测试代填自然度通过。
 
 本轮更新源码与素材库；桌面ZIP仍是2026-10-15已验收包，Web未随本轮发布。旧人工页面、旧视频和历史2296项包验收保持原含义。
 

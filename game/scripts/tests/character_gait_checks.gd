@@ -185,6 +185,9 @@ func gait_contract(id: String,model: Node3D,sk: Skeleton3D,support: Node,control
 		var min_forward: float=INF
 		var min_outward: float=INF
 		var inward_case: String=""
+		var recovery_raise: float=INF
+		var recovery_heel_below_hip: float=0.0
+		var left_wrist_out: float=INF
 		var max_length_error: float=0
 		var max_elbow_out: float=0
 		var max_wrist_out: float=0
@@ -214,6 +217,7 @@ func gait_contract(id: String,model: Node3D,sk: Skeleton3D,support: Node,control
 						(hand_forward[swing_side] as Array).append((model.global_basis.inverse()*(point(pose,"hand."+swing_side)-point(pose,"hips"))).z)
 						(foot_forward[swing_side] as Array).append((model.global_basis.inverse()*(point(pose,"foot."+swing_side)-point(pose,"hips"))).z)
 			var gaps: Array[float]=[]
+			if id=="tanaka" and clip=="walk":left_wrist_out=minf(left_wrist_out,model.to_local(point(pose,"hand.L")).x)
 			# Absolute separation would also accept feet that swapped sides.
 			var ankle_span: float=(model.to_local(point(pose,"foot.L")).x-model.to_local(point(pose,"foot.R")).x)*track_sign
 			min_ankle_span=minf(min_ankle_span,ankle_span)
@@ -232,6 +236,10 @@ func gait_contract(id: String,model: Node3D,sk: Skeleton3D,support: Node,control
 				var hip: Vector3=point(pose,"thigh."+side)
 				var knee: Vector3=point(pose,"shin."+side)
 				var ankle: Vector3=point(pose,"foot."+side)
+				if id=="kazuko" and clip=="run" and ((index==8 and side=="R") or (index==24 and side=="L")):
+					var recovery: Vector3=model.global_basis.inverse()*(knee-hip)
+					recovery_raise=minf(recovery_raise,rad_to_deg(atan2(recovery.z,-recovery.y)))
+					recovery_heel_below_hip=maxf(recovery_heel_below_hip,(model.global_basis.inverse()*(hip-ankle)).y)
 				var toe_direction: Vector3=model.global_basis.inverse()*(point(pose,"toe."+side)-ankle)
 				max_foot_yaw=maxf(max_foot_yaw,absf(rad_to_deg(atan2(toe_direction.x,toe_direction.z))))
 				var line: Vector3=ankle-hip
@@ -255,6 +263,12 @@ func gait_contract(id: String,model: Node3D,sk: Skeleton3D,support: Node,control
 		check(id+" "+clip+" full skinned shoes clear the street at thirty three final poses",fresh and lowest>=-.005,"minimum complete shoe gap %.5fm"%lowest+coverage)
 		check(id+" "+clip+" final leg segments preserve the source anatomy",fresh and max_length_error<.001,"maximum bone length error %.6fm"%max_length_error+coverage)
 		if id=="sora" and clip=="walk":check("Sora walking knees do not collapse inward from their own hip to ankle line",fresh and min_outward>=-.010,"minimum directed outward knee offset %.5fm at %s"%[min_outward,inward_case]+coverage)
+		if id=="kazuko" and clip=="walk":check("Kazuko walking shins do not turn the ankles outward from an inward knee plane",fresh and min_outward>=-.010,"minimum directed outward knee offset %.5fm at %s"%[min_outward,inward_case]+coverage)
+		# A recovering heel may remain behind the hip during natural running.
+		# Require visible forward knee lift and heel recovery, rather than the
+		# former forward-ankle proxy which drove the thigh into the apron.
+		if id=="kazuko" and clip=="run":check("Kazuko swing knees lift forward while the heel recovers upwards",fresh and recovery_raise>=30.0 and recovery_heel_below_hip<=.420,"mid-recovery minimum thigh raise %.2f degrees; maximum heel below hip %.5fm"%[recovery_raise,recovery_heel_below_hip]+coverage)
+		if id=="tanaka" and clip=="walk":check("Tanaka left wrist stays beside the coat instead of buried against its centre",fresh and left_wrist_out>=.145,"minimum left wrist outside centre %.5fm"%left_wrist_out+coverage)
 		if clip in (REBUILT[id] as Array):
 			check(id+" "+clip+" knees stay forward after safety IK",fresh and min_forward>=-.004,"minimum forward knee offset %.5fm"%min_forward+coverage)
 			if clip=="run":check(id+" running retains real simultaneous shoe flight after safety IK",fresh and flight>=2,"%d/32 phases both complete shoes >25mm"%flight+coverage)

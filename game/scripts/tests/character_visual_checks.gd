@@ -223,9 +223,18 @@ func dance_transition_contract() -> void:
 	controller.idle_clip = "idle"
 	controller.ap.play("idle", 0)
 	npc._idle_life(.016)
+	var greeting_queued: bool = npc._greeted_day == GameState.day and controller.busy()
+	# The greeting must face the player and settle its final standing legs
+	# before the upper-body gesture. This fixture disables NPC processing, so
+	# drive its real controller until the deferred request actually plays.
+	var greeting_deadline: int = Time.get_ticks_msec() + 2000
+	while controller.ap.current_animation != "wave" and Time.get_ticks_msec() < greeting_deadline:
+		controller.update(0)
+		await t.get_tree().process_frame
 	var greeting_returns: bool = controller.ap.current_animation == "wave" and npc._greeted_day == GameState.day
-	t.check("CHARACTER_VISUAL", "group dancing defers the first greeting and restores it after the dance", protected and greeting_returns, "protected %s; greeting restored %s" % [protected, greeting_returns])
+	t.check("CHARACTER_VISUAL", "group dancing defers the first greeting and restores it after the dance", protected and greeting_queued and greeting_returns, "protected %s; greeting queued %s; actual greeting restored %s" % [protected, greeting_queued, greeting_returns])
 	await t.frames(20)
+	controller.set_idle("idle", true)
 	npc.fest_key = str(saved.fest)
 	npc._greeted_day = int(saved.greeted)
 	npc.global_position = saved.position

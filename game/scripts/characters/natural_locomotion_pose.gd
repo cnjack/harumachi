@@ -234,7 +234,7 @@ func _aim(sk: Skeleton3D,joint: int,end: int,target: Vector3) -> void:
  pose.basis=Basis(Quaternion(current.normalized(),target.normalized()))*pose.basis
  sk.set_bone_global_pose(joint,pose)
 
-func _place_ankle(sk: Skeleton3D,side: String,target: Vector3) -> void:
+func _place_ankle(sk: Skeleton3D,side: String,target: Vector3,pole_outward: float=.08) -> void:
  var thigh: int=LivingPose.bone(sk,"thigh."+side);var shin: int=LivingPose.bone(sk,"shin."+side);var foot: int=LivingPose.bone(sk,"foot."+side)
  if mini(thigh,mini(shin,foot))<0:return
  var hip: Vector3=sk.to_global(sk.get_bone_global_pose(thigh).origin)
@@ -247,7 +247,7 @@ func _place_ankle(sk: Skeleton3D,side: String,target: Vector3) -> void:
  var reach: float=clampf(target.distance_to(hip),absf(upper-lower)+.0001,upper+lower-.0001)
  var along: float=(upper*upper-lower*lower+reach*reach)/(2.0*reach)
  var bend: float=sqrt(maxf(0.0,upper*upper-along*along))
- var pole: Vector3=model.global_basis.z+model.global_basis.x*(.08 if side=="L" else -.08)
+ var pole: Vector3=model.global_basis.z+model.global_basis.x*(pole_outward if side=="L" else -pole_outward)
  pole-=direction*pole.dot(direction)
  if pole.length_squared()<.000001:return
  var goal: Vector3=hip+direction*along+pole.normalized()*bend
@@ -269,24 +269,63 @@ func _ground_gap(sk: Skeleton3D,side: String,support: Node,prepared_points: Arra
   gap=minf(gap,plane_gap)
  return gap
 
+func _tanaka_arm_clearance(sk: Skeleton3D,clip: String) -> void:
+ if clip not in ["idle","walk","wave","bow","stretch"]:return
+ var weight: float=1.0
+ if clip=="stretch":
+  var phase: float=clampf(animation.current_animation_position/maxf(animation.current_animation_length,.001),0.0,1.0)
+  weight=1.0-smoothstep(0.0,.2,phase)+smoothstep(.85,1.0,phase)
+ var upper: int=LivingPose.bone(sk,"upper.L")
+ if upper<0 or weight<=0.0:return
+ # Only the left upper arm was buried beside the coat. Leave the already
+ # qualified run, right arm and local forearm/hand articulation untouched.
+ var pose: Transform3D=sk.get_bone_global_pose(upper)
+ var axis: Vector3=(sk.global_basis.inverse()*model.global_basis.z).normalized()
+ pose.basis=Basis(axis,deg_to_rad(14.0)*weight)*pose.basis
+ sk.set_bone_global_pose(upper,pose)
+
+func _kazuko_running_recovery(sk: Skeleton3D) -> void:
+ var phase: float=fposmod(animation.current_animation_position/maxf(animation.current_animation_length,.001),1.0)
+ for side: String in ["L","R"]:
+  var leg_phase: float=fposmod(phase+(0.0 if side=="L" else .5),1.0)
+  # Keep the planted path and fore/aft foot timing. Recover the heel upwards
+  # so the knee lifts forward without forcing the whole thigh into the apron.
+  if leg_phase<=.28:continue
+  var pulse: float=pow(sin(PI*(leg_phase-.28)/.72),2.0)
+  # Settle the heel during the last quarter before the next plant. Holding
+  # it high into late swing folds the thigh against the apron boundary.
+  # Earlier knee lift and the planted path remain unchanged.
+  pulse*=pow(1.0-smoothstep(.75,1.0,leg_phase),2.0)
+  if pulse<.000001:continue
+  var foot: int=LivingPose.bone(sk,"foot."+side)
+  if foot<0:continue
+  var target: Vector3=sk.to_global(sk.get_bone_global_pose(foot).origin)
+  target+=Vector3.UP*(.20*pulse)
+  _place_ankle(sk,side,target,.035)
+
 func _process_pose() -> void:
  corrections.clear()
  if model==null or animation==null or not model.is_visible_in_tree():return
  var clip: String=animation.current_animation
  var sk: Skeleton3D=get_skeleton()
+ if profile=="tanaka":_tanaka_arm_clearance(sk,clip)
  # User-rejected neutral legs share the same pose in idle, wave and bow. The
  # former safety IK raised ankles under a fixed low pelvis and chose the old
  # knee plane, which made straight legs bow sideways or bend behind the calf.
  if profile in ["sora","ren","aoi","tanaka","kazuko"] and clip in ["idle","talk","wave","bow","look","stretch","cheer"]:
   _standing_support(sk)
   return
- if profile=="sora" and clip=="walk":
+ if profile in ["sora","kazuko"] and clip=="walk":
   # The old walk bends sideways; ground support then amplifies that inward
   # knee pole. Reorient the two-bone bend at the unchanged authored ankle,
   # preserving segment lengths, foot orientation, pelvis and upper-body motion.
   for side: String in ["L","R"]:
    var foot: int=LivingPose.bone(sk,"foot."+side)
-   if foot>=0:_place_ankle(sk,side,sk.to_global(sk.get_bone_global_pose(foot).origin))
+   if foot>=0:_place_ankle(sk,side,sk.to_global(sk.get_bone_global_pose(foot).origin),.02 if profile=="kazuko" else .08)
+  anchors.clear();was_stance.clear();last_phase=-1.0;last_position=actor.global_position
+  return
+ if profile=="kazuko" and clip=="run":
+  _kazuko_running_recovery(sk)
   anchors.clear();was_stance.clear();last_phase=-1.0;last_position=actor.global_position
   return
  if clip in rebuilt_clips:

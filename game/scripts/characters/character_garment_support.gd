@@ -162,6 +162,8 @@ func native_contact_original_performance() -> Dictionary:
 		"cloth_triangles_back": (faces.back as PackedInt32Array).size() / 3, "local_weights": current, "pose_cache_hits": cache_hits, "ray_queries_mean": float(total_ray_queries) / maxi(updates, 1), "broadphase_skips_mean": float(total_broadphase_skips) / maxi(updates, 1)}
 
 func reset_performance() -> void:
+	native_geometry_calls = 0
+	native_geometry_fallbacks = 0
 	native_contact_layers = 0
 	native_contact_pack_usec = 0
 	native_contact_eager_trees = 0
@@ -351,6 +353,11 @@ func source_signature(index: int, points: PackedVector3Array, binds: PackedInt32
 func prepare(model: Node3D, profile: Dictionary) -> void:
 	native_contact_prepare()
 	character = str(profile.get("character", ""))
+	native_geometry_prepare()
+	# Scale each shared cloth vertex once before rebuilding ordered face
+	# corners. Kazu's changing leg pose needs full contact solves; this avoids
+	# repeated multiplies without changing geometry or any body constraint.
+	diagnostic_unique_panel_scaling = character == "kazuko"
 	# Generic profile rule: retain every original body vertex and add
 	# physical pure-body edge midpoints, without clip/phase/face IDs.
 	var supplement_body_edges: bool = character == "mio"
@@ -874,28 +881,41 @@ func _process_modification() -> void:
 						geometry_reused = true
 						total_layer_geometry_cache_hits += 1
 				if not geometry_reused:
-					for index: int in panel_vertices[layer]:
-						lower = lower.min(posed[index])
-						upper = upper.max(posed[index])
-					columns = maxi(1, ceili((upper.x - lower.x) * 25.0) + 1)
-					rows = maxi(1, ceili((upper.y - lower.y) * 25.0) + 1)
-					depth_bounds.resize(columns * rows)
-					depth_bounds.fill(INF)
-					for offset: int in range(0, triangles.size(), 3):
-						var triangle_a: Vector3 = posed[triangles[offset]]
-						var triangle_b: Vector3 = posed[triangles[offset + 1]]
-						var triangle_c: Vector3 = posed[triangles[offset + 2]]
-						var triangle_lower: Vector3 = triangle_a.min(triangle_b).min(triangle_c)
-						var triangle_upper: Vector3 = triangle_a.max(triangle_b).max(triangle_c)
-						var signed_lower: float = minf(triangle_a.z * sign_z, minf(triangle_b.z * sign_z, triangle_c.z * sign_z))
-						var first_x: int = clampi(floori((triangle_lower.x - lower.x - .000001) * 25), 0, columns - 1)
-						var last_x: int = clampi(floori((triangle_upper.x - lower.x + .000001) * 25), 0, columns - 1)
-						var first_y: int = clampi(floori((triangle_lower.y - lower.y - .000001) * 25), 0, rows - 1)
-						var last_y: int = clampi(floori((triangle_upper.y - lower.y + .000001) * 25), 0, rows - 1)
-						for cell_y: int in range(first_y, last_y + 1):
-							for cell_x: int in range(first_x, last_x + 1):
-								var cell: int = cell_y * columns + cell_x
-								depth_bounds[cell] = minf(depth_bounds[cell], signed_lower)
+					var native_geometry: Dictionary = {}
+					if native_geometry_enabled and native_contact_ready and ClassDB.class_has_method(&"NativeTriangleFilter", &"build_layer_geometry"):
+						var native_geometry_value: Variant = ClassDB.class_call_static(&"NativeTriangleFilter", &"build_layer_geometry", posed, panel_vertices[layer], triangles, sign_z)
+						if native_geometry_value is Dictionary and native_geometry_valid(native_geometry_value as Dictionary): native_geometry = native_geometry_value
+					if not native_geometry.is_empty():
+						lower = native_geometry.lower
+						upper = native_geometry.upper
+						columns = int(native_geometry.columns)
+						rows = int(native_geometry.rows)
+						depth_bounds = native_geometry.depth_bounds
+						native_geometry_calls += 1
+					else:
+						if native_geometry_enabled: native_geometry_fallbacks += 1
+						for index: int in panel_vertices[layer]:
+							lower = lower.min(posed[index])
+							upper = upper.max(posed[index])
+						columns = maxi(1, ceili((upper.x - lower.x) * 25.0) + 1)
+						rows = maxi(1, ceili((upper.y - lower.y) * 25.0) + 1)
+						depth_bounds.resize(columns * rows)
+						depth_bounds.fill(INF)
+						for offset: int in range(0, triangles.size(), 3):
+							var triangle_a: Vector3 = posed[triangles[offset]]
+							var triangle_b: Vector3 = posed[triangles[offset + 1]]
+							var triangle_c: Vector3 = posed[triangles[offset + 2]]
+							var triangle_lower: Vector3 = triangle_a.min(triangle_b).min(triangle_c)
+							var triangle_upper: Vector3 = triangle_a.max(triangle_b).max(triangle_c)
+							var signed_lower: float = minf(triangle_a.z * sign_z, minf(triangle_b.z * sign_z, triangle_c.z * sign_z))
+							var first_x: int = clampi(floori((triangle_lower.x - lower.x - .000001) * 25), 0, columns - 1)
+							var last_x: int = clampi(floori((triangle_upper.x - lower.x + .000001) * 25), 0, columns - 1)
+							var first_y: int = clampi(floori((triangle_lower.y - lower.y - .000001) * 25), 0, rows - 1)
+							var last_y: int = clampi(floori((triangle_upper.y - lower.y + .000001) * 25), 0, rows - 1)
+							for cell_y: int in range(first_y, last_y + 1):
+								for cell_x: int in range(first_x, last_x + 1):
+									var cell: int = cell_y * columns + cell_x
+									depth_bounds[cell] = minf(depth_bounds[cell], signed_lower)
 				total_bounds_usec += Time.get_ticks_usec() - bounds_began
 				var query_began: int = Time.get_ticks_usec()
 				var layer_build_usec := 0
@@ -1143,4 +1163,29 @@ func performance() -> Dictionary:
 	result["native_filter_body_pack_mean_usec"] = float(native_contact_pack_usec) / maxi(updates - cache_hits - steady_fast_updates, 1)
 	result["native_filter_eager_tree_builds"] = native_contact_eager_trees
 	result["native_filter_zero_query_eager_trees"] = native_contact_zero_query_trees
+	result["native_geometry_enabled"] = native_geometry_enabled
+	result["native_geometry_calls"] = native_geometry_calls
+	result["native_geometry_fallbacks"] = native_geometry_fallbacks
 	return result
+
+
+# Optional native bounds/grid construction; old libraries retain full GD work.
+var native_geometry_enabled := false
+var native_geometry_calls := 0
+var native_geometry_fallbacks := 0
+
+func native_geometry_prepare() -> void:
+	native_geometry_enabled = character == "kazuko"
+	for native_geometry_argument: String in OS.get_cmdline_user_args():
+		if native_geometry_argument == "--native-geometry=off": native_geometry_enabled = false
+
+func native_geometry_valid(value: Dictionary) -> bool:
+	if not bool(value.get("valid", false)): return false
+	if not value.get("lower") is Vector3 or not value.get("upper") is Vector3: return false
+	if typeof(value.get("columns")) != TYPE_INT or typeof(value.get("rows")) != TYPE_INT: return false
+	if not value.get("depth_bounds") is PackedFloat32Array: return false
+	var native_geometry_columns: int = int(value.columns)
+	var native_geometry_rows: int = int(value.rows)
+	var native_geometry_lower: Vector3 = value.lower
+	var native_geometry_upper: Vector3 = value.upper
+	return native_geometry_lower.is_finite() and native_geometry_upper.is_finite() and native_geometry_columns > 0 and native_geometry_rows > 0 and float(native_geometry_columns) <= 2147483647.0 / float(native_geometry_rows) and (value.depth_bounds as PackedFloat32Array).size() == native_geometry_columns * native_geometry_rows

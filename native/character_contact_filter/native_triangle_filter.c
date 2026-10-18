@@ -43,6 +43,8 @@ API(PackedFloat32ArrayOperatorIndexConst, packed_float32_array_operator_index_co
 API(PackedFloat64ArrayOperatorIndex, packed_float64_array_operator_index);
 API(PackedByteArrayOperatorIndex, packed_byte_array_operator_index);
 API(PackedInt32ArrayOperatorIndex, packed_int32_array_operator_index);
+API(PackedInt32ArrayOperatorIndexConst, packed_int32_array_operator_index_const);
+API(PackedFloat32ArrayOperatorIndex, packed_float32_array_operator_index);
 
 #undef API
 
@@ -184,6 +186,7 @@ static void configure_method_hash(void *data, GDExtensionClassInstancePtr instan
 }
 
 #include "native_triangle_filter_impl.h"
+#include "native_bounds_impl.h"
 
 static void initialize(void *data, GDExtensionInitializationLevel level) {
     (void)data;
@@ -242,11 +245,13 @@ static void initialize(void *data, GDExtensionInitializationLevel level) {
     destroy_string_name(&configure_name);
     destroy_string_name(&hash_name);
     filter_register();
+    geometry_register();
 }
 
 static void deinitialize(void *data, GDExtensionInitializationLevel level) {
     (void)data;
     if (level != GDEXTENSION_INITIALIZATION_SCENE) return;
+    geometry_cleanup();
     filter_cleanup();
     api_classdb_unregister_extension_class(library, &class_name);
     Storage *names[] = {&class_name, &parent_name, &method_name, &ray_name, &size_name,
@@ -294,6 +299,8 @@ __attribute__((visibility("default"))) GDExtensionBool native_triangle_filter_in
     LOAD(PackedFloat64ArrayOperatorIndex, packed_float64_array_operator_index);
     LOAD(PackedByteArrayOperatorIndex, packed_byte_array_operator_index);
     LOAD(PackedInt32ArrayOperatorIndex, packed_int32_array_operator_index);
+    LOAD(PackedInt32ArrayOperatorIndexConst, packed_int32_array_operator_index_const);
+    LOAD(PackedFloat32ArrayOperatorIndex, packed_float32_array_operator_index);
 #undef LOAD
     GDExtensionGodotVersion2 version = {0};
     api_get_godot_version2(&version);

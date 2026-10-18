@@ -97,7 +97,9 @@ func capture_character(qa: Node, id: String, output: String) -> void:
 	await stage(qa, actor, controller, continuous, bone_probe, record, images, "walk_after_run", .90, original_speed)
 	await stage(qa, actor, controller, continuous, bone_probe, record, images, "stop", .55, original_speed)
 	for gesture: String in ["wave", "bow"]:
-		var duration: float = controller.ap.get_animation(gesture).length + .35
+		# Include the stationary preparation and full return to idle; requesting
+		# the next gesture while the previous return still blends hides its end.
+		var duration: float = controller.ap.get_animation(gesture).length + 1.0
 		await stage(qa, actor, controller, continuous, bone_probe, record, images, gesture, duration, original_speed)
 	continuous.set("recording", false)
 	if foot_debug != null: foot_debug.set("qa_trace_enabled", false)

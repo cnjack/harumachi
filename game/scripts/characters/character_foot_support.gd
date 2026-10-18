@@ -18,9 +18,118 @@ static var town_patches: Array[Dictionary] = []
 static var town_curbs: Array[Dictionary] = []
 # A sparse shoe envelope misses small curved/weighted edges by a few millimetres.
 const FLOOR_MARGIN := .008
+const GESTURE_BONES: Array[String] = ["hips", "thigh.L", "shin.L", "foot.L", "toe.L", "thigh.R", "shin.R", "foot.R", "toe.R"]
+var _gesture_preparing := false
+var _gesture_lock_active := false
+var _gesture_seen_clip := false
+var _gesture_pose: Dictionary = {}
+var _gesture_hold_pose: Dictionary = {}
+var _gesture_stable_seconds := 0.0
+var _gesture_context := Transform3D.IDENTITY
+var _gesture_placement := -1
+var _gesture_frame := -1
+var _gesture_natural_elapsed := 0.0
 
 func performance() -> Dictionary:
-	return {"updates": updates, "mean_usec": float(total_usec) / maxi(updates, 1), "max_usec": max_usec, "landmarks_L": (samples.L as Array).size(), "landmarks_R": (samples.R as Array).size()}
+	return {"updates": updates, "mean_usec": float(total_usec) / maxi(updates, 1), "max_usec": max_usec, "landmarks_L": (samples.L as Array).size(), "landmarks_R": (samples.R as Array).size(), "gesture_lock_active": _gesture_lock_active, "gesture_neutral_ready": gesture_pose_ready(), "gesture_stable_seconds": _gesture_stable_seconds}
+
+func prepare_gesture_pose() -> bool:
+	if not enabled or (actor is Player and (actor as Player).seated) or actor.get_meta("resident_seated", false):
+		release_gesture_pose()
+		return false
+	_gesture_preparing = true
+	_gesture_pose.clear()
+	_gesture_stable_seconds = 0.0
+	_gesture_context = model.global_transform
+	_gesture_placement = (actor as NPC)._placement_generation if actor is NPC else -1
+	return true
+
+func gesture_request_active() -> bool:
+	return _gesture_preparing
+
+func release_gesture_pose() -> void:
+	_gesture_preparing = false
+	_gesture_lock_active = false
+	_gesture_seen_clip = false
+	_gesture_stable_seconds = 0.0
+	_gesture_pose.clear()
+	_gesture_hold_pose.clear()
+
+func _gesture_same_context() -> bool:
+	var at: Transform3D = model.global_transform
+	return at.origin.distance_to(_gesture_context.origin) <= .0001 and at.basis.x.distance_to(_gesture_context.basis.x) <= .0001 and at.basis.y.distance_to(_gesture_context.basis.y) <= .0001 and at.basis.z.distance_to(_gesture_context.basis.z) <= .0001 and (not actor is NPC or (actor as NPC)._placement_generation == _gesture_placement)
+
+func gesture_pose_ready() -> bool:
+	return _gesture_preparing and _gesture_pose.size() == GESTURE_BONES.size() and _gesture_stable_seconds >= .25 and animation.current_animation == "idle" and _gesture_same_context()
+
+func gesture_pose_held() -> bool:
+	return _gesture_lock_active and _gesture_hold_pose.size() == GESTURE_BONES.size() and _gesture_same_context()
+
+func hold_gesture_pose() -> void:
+	if not gesture_pose_ready(): return
+	_gesture_preparing = false
+	_gesture_lock_active = true
+	# CharAnim starts the gesture synchronously after this handshake. A very
+	# short gesture may finish before this modifier observes its clip name.
+	_gesture_seen_clip = true
+	_gesture_hold_pose = _gesture_pose.duplicate(true)
+
+func _gesture_before_floor(sk: Skeleton3D) -> void:
+	if not _gesture_preparing and not _gesture_lock_active: return
+	var natural: SkeletonModifier3D = sk.get_node_or_null("NaturalLocomotionPose") as SkeletonModifier3D
+	var duration: float = float(natural.get("_transition_duration")) if natural != null else 0.0
+	var elapsed: float = float(natural.get("_transition_elapsed")) if natural != null else 0.0
+	var reset: bool = duration == 0.0 and elapsed + .00001 < _gesture_natural_elapsed
+	_gesture_natural_elapsed = elapsed
+	if not _gesture_same_context() or reset:
+		_gesture_lock_active = false
+		_gesture_seen_clip = false
+		_gesture_pose.clear()
+		_gesture_hold_pose.clear()
+		_gesture_stable_seconds = 0.0
+		_gesture_context = model.global_transform
+		_gesture_placement = (actor as NPC)._placement_generation if actor is NPC else -1
+	if not _gesture_lock_active: return
+	var clip: String = animation.current_animation
+	if clip in ["wave", "bow"]: _gesture_seen_clip = true
+	elif clip not in ["", "idle"] or (clip == "idle" and _gesture_seen_clip and duration == 0.0):
+		_gesture_lock_active = false
+		_gesture_seen_clip = false
+		_gesture_hold_pose.clear()
+		return
+	for index: int in _gesture_hold_pose:
+		var pose: Dictionary = _gesture_hold_pose[index]
+		sk.set_bone_pose_position(index, pose.position as Vector3)
+		sk.set_bone_pose_rotation(index, pose.rotation as Quaternion)
+		sk.set_bone_pose_scale(index, pose.scale as Vector3)
+
+func _gesture_after_floor(sk: Skeleton3D) -> void:
+	if not _gesture_preparing: return
+	var natural: SkeletonModifier3D = sk.get_node_or_null("NaturalLocomotionPose") as SkeletonModifier3D
+	if animation.current_animation != "idle" or (natural != null and (not natural.active or float(natural.get("_transition_duration")) > 0.0)):
+		_gesture_pose.clear()
+		_gesture_stable_seconds = 0.0
+		return
+	var poses: Dictionary = {}
+	var stable: bool = _gesture_pose.size() == GESTURE_BONES.size()
+	for name: String in GESTURE_BONES:
+		var index: int = LivingPose.bone(sk, name)
+		if index < 0:
+			_gesture_pose.clear()
+			_gesture_stable_seconds = 0.0
+			return
+		var pose: Dictionary = {"position": sk.get_bone_pose_position(index), "rotation": sk.get_bone_pose_rotation(index), "scale": sk.get_bone_pose_scale(index)}
+		poses[index] = pose
+		if not _gesture_pose.has(index): stable = false
+		else:
+			var previous: Dictionary = _gesture_pose[index]
+			stable = stable and (pose.position as Vector3).is_equal_approx(previous.position as Vector3) and (pose.rotation as Quaternion).is_equal_approx(previous.rotation as Quaternion) and (pose.scale as Vector3).is_equal_approx(previous.scale as Vector3)
+	if not stable:
+		_gesture_pose = poses
+		_gesture_stable_seconds = 0.0
+	elif _gesture_frame != Engine.get_process_frames():
+		_gesture_stable_seconds += get_process_delta_time()
+	_gesture_frame = Engine.get_process_frames()
 
 func reset_performance() -> void:
 	updates = 0
@@ -245,15 +354,22 @@ func _process_modification() -> void:
 	correction.clear()
 	if qa_trace_enabled:
 		qa_trace = {"frame": Engine.get_process_frames(), "clip": animation.current_animation if animation != null else "", "clip_time": animation.current_animation_position if animation != null else null, "enabled": enabled, "applied": false, "process_delta_s": get_process_delta_time(), "sides": {}}
-	if not enabled or model == null or not model.is_visible_in_tree() or animation == null: return
+	if not enabled or model == null or not model.is_visible_in_tree() or animation == null:
+		release_gesture_pose()
+		return
 	# A finished gesture leaves its final raw pose while current_animation is
 	# empty, until CharAnim starts idle. Keep safety support on that frame too;
 	# otherwise old shoes lose their correction and drop before rising again.
-	if animation.current_animation not in ["", "idle", "walk", "run", "wave", "bow", "look", "stretch", "tend", "talk", "cheer", "dance"]: return
+	if animation.current_animation not in ["", "idle", "walk", "run", "wave", "bow", "look", "stretch", "tend", "talk", "cheer", "dance"]:
+		release_gesture_pose()
+		return
 	# PublicSeatPose owns hips/legs/soles during seated idle and rest.
-	if actor is Player and (actor as Player).seated or actor.get_meta("resident_seated",false): return
+	if actor is Player and (actor as Player).seated or actor.get_meta("resident_seated",false):
+		release_gesture_pose()
+		return
 	var began: int = Time.get_ticks_usec()
 	var sk: Skeleton3D = get_skeleton()
+	_gesture_before_floor(sk)
 	for side: String in ["L", "R"]:
 		var foot: int = LivingPose.bone(sk, "foot." + side)
 		if foot < 0 or (samples[side] as Array).is_empty(): continue
@@ -269,6 +385,7 @@ func _process_modification() -> void:
 		correction[side] = total
 		if qa_trace_enabled:
 			qa_trace.sides[side] = {"before": before, "after": _qa_snapshot(sk, side, floor), "correction": total, "floor_position": _qa_vector(floor.position), "floor_normal": _qa_vector(floor.normal)}
+	_gesture_after_floor(sk)
 	if qa_trace_enabled: qa_trace.applied = true
 	var elapsed: int = Time.get_ticks_usec() - began
 	updates += 1

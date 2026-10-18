@@ -4,13 +4,14 @@
   "validated_platform": "macos.arm64",
   "method_hash": 3648293151,
   "compile_inputs": {
-    "native_triangle_filter.c": "a9c342f49596c2a9657a2859188f87d85e9ea2f37184414830f9c230a6b6fd62",
+    "native_triangle_filter.c": "9f2728a1aabf923f46c4566892ac9ff6fc6a054e0360e1065a6ce4f030250113",
     "native_triangle_filter_impl.h": "c9b6940ca5dd98daee9bbea03f36788b676b3ac2355d2bc4fdc5f83fdbc75326",
     "filter_abi.h": "3c639c9acd191396487a042a6eaeb13fe0de4f0c6b601da13fb67b88be9b75d0",
     "vendor/gdextension_interface.h": "cbc40bb06dc97287f3c95834e7994e45193de08a1256808884041e216aabd714",
-    "api-layout.json": "5e289d98214eab3a44855b461d625d2b81d16e7a8cf97bf052a1b0d2c040cc85"
+    "api-layout.json": "5e289d98214eab3a44855b461d625d2b81d16e7a8cf97bf052a1b0d2c040cc85",
+    "native_bounds_impl.h": "eed838ce0aaa41ce0bd25a3ded3bb0b9c03f48a5c08914f09a682f1bb714ddc4"
   },
-  "accepted_library_sha256": "f6c60416b6c6d04473c8a7bda3153e125a33b8f9ba5a73bf376da4ab2373b379",
+  "accepted_library_sha256": "c521f8dd10adfeb5ebd84e4698cffa3a3a9f77dcfd8761e8d17fa5cf9f4b4822",
   "official_api_dump_sha256": "b9b10796e8806e0e83ea4601b3f4c97e07406accedaf598937050b4abf59afa1",
   "official_sources": {
     "engine_commit": "c971f93e7",
