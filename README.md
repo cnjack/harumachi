@@ -1,6 +1,8 @@
 <p align="center"><img src="site/assets/wallpapers/summer-river.webp" alt="晴川与山谷中的晴町，明年夏祭官方概念插画" width="100%"></p>
 
-七人跑步已降低手位、缩小前后摆臂，并让肘部随步幅屈伸；春保留原节拍，爷爷左臂另留衣物净空。77项专项、224张正侧面原生姿态复查及2579项独占完整功能回归通过；见[跑步摆臂修改](docs/game-design/RUNNING_ARMS_20261018.md)。新录[42秒七人依次跑步](evidence/run_arm_fix_20261018/movie-v2/group-run-review/video.mp4)，每人正面/右侧各3秒，保留真实启动，1080p30严格完整解码通过。自然度待人工复评，桌面包/Web未更新。
+七人跑步已按两段参考微调手部朝向：前摆轻微向胸中线收，后摆恢复原姿态，澪原本内倾的左手保留。98项专项及2600项独占完整功能回归通过，224张正侧面及修改前后各70张手部近景已复查；见[跑步手型修改](docs/game-design/RUNNING_HANDS_20261018.md)。新录[42秒七人依次跑步](evidence/run_hand_inward_20261018/movie/group-run-review/video.mp4)，每人正面/右侧各3秒，保留真实起跑，1080p30严格完整解码通过。自然度待人工复评，桌面包/Web未更新。
+
+前次七人跑步已降低手位、缩小前后摆臂，并让肘部随步幅屈伸；春保留原节拍，爷爷左臂另留衣物净空。当时77项专项、224张正侧面原生姿态复查及2579项独占完整功能回归通过；见[跑步摆臂修改](docs/game-design/RUNNING_ARMS_20261018.md)。
 
 上一轮人物四组反馈已处理：空走路膝内扣、爷爷左臂被衣身挡住、和子走跑腿形，以及七人挥手/鞠躬时腿保持站姿。当时源码组合通过2502项独占完整功能回归、退出0，包含92项步态与47项手势；原5毫米衣物穿透与8毫秒求解门槛未放宽。和子仍保留约1弱像素的围裙微折交叉，自然度待人工复评，见[修复与边界](docs/game-design/CHARACTER_FEEDBACK_20261018.md)。新录[爷爷单人](evidence/rig_fix_20261018_followup/movie-tanaka-natural-transition/solo-tanaka/video.mp4)、[和子单人](evidence/rig_fix_20261018_followup/movie/solo-kazuko/video.mp4)与[七人同场](evidence/rig_fix_20261018_followup/movie/group-all-actions/video.mp4)各24秒、1080p30，完整解码通过；使用现有屏幕、静音和独立存档，未创建虚拟显示器。
 

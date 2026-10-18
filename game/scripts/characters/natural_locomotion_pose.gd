@@ -14,7 +14,7 @@ var anchors: Dictionary={}
 var was_stance: Dictionary={}
 var corrections: Dictionary={}
 const NAMES: Array[String]=["hips","chest","thigh.L","thigh.R","shin.L","shin.R","upper.L","upper.R"]
-const TRANSITION_BONES: Array[String]=["hips","chest","head","thigh.L","thigh.R","shin.L","shin.R","foot.L","foot.R","upper.L","upper.R","fore.L","fore.R"]
+const TRANSITION_BONES: Array[String]=["hips","chest","head","thigh.L","thigh.R","shin.L","shin.R","foot.L","foot.R","upper.L","upper.R","fore.L","fore.R","hand.L","hand.R"]
 var _last_delta: Dictionary={}
 var _blend_from: Dictionary={}
 var _transition_clip: String=""
@@ -25,6 +25,7 @@ var _transition_frame: int=-1
 var _pose_actor_position:=Vector3.INF
 # Run-only style correction; the switch is used by final-pose A/B audits.
 var running_arms_enabled:=true
+var running_hand_style_enabled:=true
 # Source pitch min/max, desired pitch min/max, elbow at forward/backward peak.
 # These are per-character art targets for a relaxed run, not anatomy limits.
 const RUN_ARM_STYLE: Dictionary={
@@ -35,6 +36,14 @@ const RUN_ARM_STYLE: Dictionary={
  "aoi":[-32.4,42.4,-24.0,27.0,78.0,88.0],
  "tanaka":[-20.16,30.16,-18.0,26.0,78.0,86.0],
  "kazuko":[-24.24,34.24,-21.0,26.0,76.0,86.0]
+}
+# Maximum inward Hand correction at the forward stroke, left/right degrees.
+# Preserve Mio's already inward left fist and Tanaka's coat clearance; these
+# are small style changes, not a common wrist pose or a new finger curl.
+const RUN_HAND_STYLE: Dictionary={
+ "sora":[14.0,14.0],"ren":[16.0,13.0],"haru":[5.0,8.0],
+ "mio":[0.0,12.0],"aoi":[5.0,16.0],"tanaka":[15.0,15.0],
+ "kazuko":[5.0,8.0]
 }
 var qa_trace_enabled:=false
 var qa_trace: Dictionary={}
@@ -358,7 +367,55 @@ func _relaxed_running_arms(sk: Skeleton3D) -> void:
    var outward_axis: Vector3=(sk.global_basis.inverse()*model.global_basis.z).normalized()
    clearance.basis=Basis(outward_axis,deg_to_rad(3.0))*clearance.basis
    sk.set_bone_global_pose(upper,clearance)
-  # Hand and all finger local transforms retain the qualified source shape.
+  # All finger local transforms retain the qualified source shape.
+
+func _running_hand_style(sk: Skeleton3D) -> void:
+ if not running_hand_style_enabled or not RUN_HAND_STYLE.has(profile):return
+ var chest: int=LivingPose.bone(sk,"chest")
+ if chest<0:return
+ var arm_style: Array=RUN_ARM_STYLE[profile]
+ var hand_style: Array=RUN_HAND_STYLE[profile]
+ var to_model: Basis=model.global_basis.inverse()*sk.global_basis
+ for side_index: int in range(2):
+  var side: String="L" if side_index==0 else "R"
+  var imported_side: String="Left" if side_index==0 else "Right"
+  var upper: int=LivingPose.bone(sk,"upper."+side)
+  var fore: int=LivingPose.bone(sk,"fore."+side)
+  var hand: int=LivingPose.bone(sk,"hand."+side)
+  if mini(upper,mini(fore,hand))<0:continue
+  var wrist: Vector3=sk.get_bone_global_pose(hand).origin
+  var elbow: Vector3=sk.get_bone_global_pose(fore).origin
+  var fore_direction: Vector3=wrist-elbow
+  if fore_direction.length_squared()<.000001:continue
+  fore_direction=fore_direction.normalized()
+  var knuckles:=Vector3.ZERO
+  var count:=0
+  for finger: String in ["Index","Middle","Ring","Pinky"]:
+   var knuckle: int=LivingPose.bone(sk,imported_side+"Hand"+finger+"1")
+   if knuckle>=0:
+    knuckles+=sk.get_bone_global_pose(knuckle).origin
+    count+=1
+  if count!=4:continue
+  var fist_direction: Vector3=knuckles/float(count)-wrist
+  var inward: Vector3=sk.get_bone_global_pose(chest).origin-wrist
+  inward-=fore_direction*inward.dot(fore_direction)
+  if fist_direction.length_squared()<.000001 or inward.length_squared()<.000001:continue
+  fist_direction=fist_direction.normalized();inward=inward.normalized()
+  # Correct only deviation in the forearm/chest plane. Preserve the other
+  # authored component and palm roll; a universal local X/Y axis would not.
+  var deviation: float=atan2(fist_direction.dot(inward),fist_direction.dot(fore_direction))
+  var correction: float=clampf(deg_to_rad(3.0)-deviation,0.0,deg_to_rad(float(hand_style[side_index])))
+  var upper_direction: Vector3=to_model*(elbow-sk.get_bone_global_pose(upper).origin)
+  var pitch: float=rad_to_deg(atan2(upper_direction.z,-upper_direction.y))
+  var range_start: int=2 if running_arms_enabled else 0
+  var forward: float=clampf((pitch-float(arm_style[range_start]))/(float(arm_style[range_start+1])-float(arm_style[range_start])),0.0,1.0)
+  correction*=smoothstep(.15,.85,forward)
+  if correction<.000001:continue
+  # Rotate about the existing wrist. Elbow/wrist paths and finger local TRS
+  # stay unchanged, and the backward stroke returns to its source hand pose.
+  var pose: Transform3D=sk.get_bone_global_pose(hand)
+  pose.basis=Basis(fore_direction.cross(inward).normalized(),correction)*pose.basis
+  sk.set_bone_global_pose(hand,pose)
 
 func _process_pose() -> void:
  corrections.clear()
@@ -366,7 +423,9 @@ func _process_pose() -> void:
  var clip: String=animation.current_animation
  var sk: Skeleton3D=get_skeleton()
  if profile=="tanaka":_tanaka_arm_clearance(sk,clip)
- if clip=="run":_relaxed_running_arms(sk)
+ if clip=="run":
+  _relaxed_running_arms(sk)
+  _running_hand_style(sk)
  # User-rejected neutral legs share the same pose in idle, wave and bow. The
  # former safety IK raised ankles under a fixed low pelvis and chose the old
  # knee plane, which made straight legs bow sideways or bend behind the calf.

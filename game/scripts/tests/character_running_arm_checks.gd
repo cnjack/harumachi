@@ -23,6 +23,18 @@ class BeforeNaturalArmProbe:
 	var relative_points: Dictionary = {}
 	var local_rotations: Dictionary = {}
 
+	static func fist_point(skeleton: Skeleton3D, side: String) -> Vector3:
+		var sum := Vector3.ZERO
+		var count := 0
+		var side_name: String = "Left" if side == "L" else "Right"
+		for finger_name: String in ["Index1", "Middle1", "Ring1", "Pinky1"]:
+			for bone_index: int in skeleton.get_bone_count():
+				if str(skeleton.get_bone_name(bone_index)).ends_with(side_name + "Hand" + finger_name):
+					sum += skeleton.to_global(skeleton.get_bone_global_pose(bone_index).origin)
+					count += 1
+					break
+		return sum / 4.0 if count == 4 else Vector3.INF
+
 	func _process_modification() -> void:
 		var skeleton: Skeleton3D = get_skeleton()
 		relative_points.clear()
@@ -30,11 +42,12 @@ class BeforeNaturalArmProbe:
 		for side: String in ["L", "R"]:
 			var shoulder: int = LivingPose.bone(skeleton, "upper." + side)
 			var shoulder_point: Vector3 = skeleton.to_global(skeleton.get_bone_global_pose(shoulder).origin)
-			for label: String in ["upper." + side, "fore." + side]:
+			for label: String in ["upper." + side, "fore." + side, "hand." + side]:
 				local_rotations[label] = skeleton.get_bone_pose_rotation(LivingPose.bone(skeleton, label))
 			for point_label: String in ["fore." + side, "hand." + side]:
 				var point: Vector3 = skeleton.to_global(skeleton.get_bone_global_pose(LivingPose.bone(skeleton, point_label)).origin)
 				relative_points[point_label] = model.global_basis.inverse() * (point - shoulder_point)
+			relative_points["fist." + side] = model.global_basis.inverse() * (fist_point(skeleton, side) - shoulder_point)
 		serial += 1
 		frame = Engine.get_process_frames()
 
@@ -68,7 +81,7 @@ class TransitionFinalArmProbe:
 		for side: String in ["L", "R"]:
 			var shoulder: int = LivingPose.bone(skeleton, "upper." + side)
 			var shoulder_point: Vector3 = skeleton.to_global(skeleton.get_bone_global_pose(shoulder).origin)
-			for label: String in ["upper." + side, "fore." + side]:
+			for label: String in ["upper." + side, "fore." + side, "hand." + side]:
 				var source_rotation: Quaternion = before.local_rotations.get(label, Quaternion.IDENTITY)
 				var final_rotation: Quaternion = skeleton.get_bone_pose_rotation(LivingPose.bone(skeleton, label))
 				final_rotations[label] = final_rotation
@@ -83,7 +96,12 @@ class TransitionFinalArmProbe:
 				var delta: Vector3 = final_relative - source
 				deltas[point_label] = delta
 				finite = finite and delta.is_finite()
-		var fresh: bool = before.frame == frame and before.serial > request_raw_serial and frame > request_frame and finite and deltas.size() == 4 and rotations.size() == 4
+			var fist: Vector3 = BeforeNaturalArmProbe.fist_point(skeleton, side)
+			var final_fist: Vector3 = model.global_basis.inverse() * (fist - shoulder_point)
+			final_points["fist." + side] = final_fist
+			deltas["fist." + side] = final_fist - (before.relative_points.get("fist." + side, Vector3.INF) as Vector3)
+			finite = finite and final_fist.is_finite() and (deltas["fist." + side] as Vector3).is_finite()
+		var fresh: bool = before.frame == frame and before.serial > request_raw_serial and frame > request_frame and finite and deltas.size() == 6 and rotations.size() == 6
 		var natural_diagnostic: Dictionary = {"elapsed_s": float(natural.get("_transition_elapsed")), "duration_s": float(natural.get("_transition_duration")), "transition_clip": str(natural.get("_transition_clip"))} if natural != null else {}
 		result = {"request_id": request_id, "request_frame": request_frame, "frame": frame, "raw_frame": before.frame, "raw_serial": before.serial, "fresh": fresh, "clip": animation.current_animation, "clip_time": animation.current_animation_position, "speed_scale": animation.speed_scale, "wall_usec": Time.get_ticks_usec(), "delta_s": get_process_delta_time(), "points": deltas, "rotations": rotations, "raw_relative_points": before.relative_points.duplicate(true), "final_relative_points": final_points, "raw_local_rotations": before.local_rotations.duplicate(true), "final_local_rotations": final_rotations, "natural_diagnostic_only": natural_diagnostic}
 		if not fresh: return
@@ -136,11 +154,11 @@ func finite_bones(pose: Dictionary, expected_count: int) -> bool:
 				if not is_finite(component): return false
 	return true
 
-func sample(controller: CharAnim, phase: float, probe: SkeletonModifier3D, expected_count: int) -> Dictionary:
-	controller.ap.play("run", 0.0)
+func sample(controller: CharAnim, phase: float, probe: SkeletonModifier3D, expected_count: int, clip: String = "run") -> Dictionary:
+	controller.ap.play(clip, 0.0)
 	controller.ap.speed_scale = 0.0
-	var animation: Animation = controller.ap.get_animation("run")
-	var expected_time: float = fposmod(animation.length * phase, animation.length)
+	var animation: Animation = controller.ap.get_animation(clip)
+	var expected_time: float = fposmod(animation.length * phase, animation.length) if animation.loop_mode != Animation.LOOP_NONE else animation.length * phase
 	controller.ap.seek(expected_time, true)
 	controller.ap.advance(0.0)
 	var natural: Node = probe.get_skeleton().get_node_or_null("NaturalLocomotionPose")
@@ -148,14 +166,14 @@ func sample(controller: CharAnim, phase: float, probe: SkeletonModifier3D, expec
 	# Headless process waits alone can observe a prior restored skeleton. Require
 	# the existing last modifier to acknowledge this exact request on a later frame.
 	for settle_frame: int in 3: await t.get_tree().process_frame
-	var requested: int = int(probe.call("request", "run", expected_time))
+	var requested: int = int(probe.call("request", clip, expected_time))
 	var measured: Dictionary = {}
 	for capture_frame: int in 8:
 		await t.get_tree().process_frame
 		if int(probe.get("completed_request")) != requested: continue
 		measured = (probe.get("result") as Dictionary).duplicate(true)
 		if int(measured.get("request_id", -1)) == requested: break
-	var fresh: bool = int(measured.get("request_id", -1)) == requested and str(measured.get("clip", "")) == "run" and absf(float(measured.get("clip_time", INF)) - expected_time) < .0001 and int(measured.get("applied_frame", -1)) > int(measured.get("request_frame", -1)) and bool(measured.get("measure_bones", false)) and finite_bones(measured, expected_count)
+	var fresh: bool = int(measured.get("request_id", -1)) == requested and str(measured.get("clip", "")) == clip and absf(float(measured.get("clip_time", INF)) - expected_time) < .0001 and int(measured.get("applied_frame", -1)) > int(measured.get("request_frame", -1)) and bool(measured.get("measure_bones", false)) and finite_bones(measured, expected_count)
 	measured["fresh"] = fresh
 	if fresh:
 		print("RUNNING_ARM_FINAL_SAMPLE ", JSON.stringify({"skeleton": str(probe.get_skeleton().get_path()), "request_id": requested, "phase": phase, "clip_time": measured.clip_time, "request_frame": measured.request_frame, "applied_frame": measured.applied_frame, "bone_count": expected_count, "bone_pose_hash": measured.bone_pose_hash}))
@@ -237,6 +255,9 @@ func hand_local_difference(first: Dictionary, second: Dictionary, skeleton: Skel
 	var rotation_error := 0.0
 	var scale_error := 0.0
 	var counted := 0
+	var finger_rotation_error := 0.0
+	var hand_rotation_error := 0.0
+	var finger_count := 0
 	for index: int in skeleton.get_bone_count():
 		var ancestor: int = index
 		var belongs := false
@@ -253,8 +274,14 @@ func hand_local_difference(first: Dictionary, second: Dictionary, skeleton: Skel
 		position_error = maxf(position_error, first_local.origin.distance_to(second_local.origin))
 		rotation_error = maxf(rotation_error, rad_to_deg(first_local.basis.orthonormalized().get_rotation_quaternion().angle_to(second_local.basis.orthonormalized().get_rotation_quaternion())))
 		scale_error = maxf(scale_error, first_local.basis.get_scale().distance_to(second_local.basis.get_scale()))
+		var local_angle: float = rad_to_deg(first_local.basis.orthonormalized().get_rotation_quaternion().angle_to(second_local.basis.orthonormalized().get_rotation_quaternion()))
+		if index in hands:
+			hand_rotation_error = maxf(hand_rotation_error, local_angle)
+		else:
+			finger_rotation_error = maxf(finger_rotation_error, local_angle)
+			finger_count += 1
 		counted += 1
-	return {"position_m": position_error, "rotation_deg": rotation_error, "scale": scale_error, "hand_and_finger_bones": counted}
+	return {"position_m": position_error, "rotation_deg": rotation_error, "scale": scale_error, "hand_rotation_deg": hand_rotation_error, "finger_rotation_deg": finger_rotation_error, "finger_bones": finger_count, "hand_and_finger_bones": counted}
 
 func fixture_options() -> Dictionary:
 	var actors: Array[String] = IDS.duplicate()
@@ -312,6 +339,8 @@ func run() -> void:
 		var skeleton: Skeleton3D = model.find_child("Skeleton3D", true, false) as Skeleton3D
 		var natural: Node = skeleton.get_node_or_null("NaturalLocomotionPose")
 		var has_switch: bool = natural != null and has_property(natural, "running_arms_enabled")
+		var has_hand_switch: bool = natural != null and has_property(natural, "running_hand_style_enabled")
+		var saved_hand_switch: bool = bool(natural.get("running_hand_style_enabled")) if has_hand_switch else false
 		var saved: Dictionary = {"position": actor.global_position, "visible": actor.visible, "process": actor.is_processing(), "physics": actor.is_physics_processing(), "model_transform": model.transform, "clip": animation.current_animation, "time": animation.current_animation_position, "speed": animation.speed_scale, "state": controller._state, "oneshot": controller._oneshot, "idle": controller.idle_clip, "arms_enabled": bool(natural.get("running_arms_enabled")) if has_switch else false}
 		actor.set_process(false)
 		actor.set_physics_process(false)
@@ -319,16 +348,20 @@ func run() -> void:
 		actor.global_position = Vector3(-8.0, 0.0, -10.0)
 		model.rotation.x = 0.0
 		if has_switch: natural.set("running_arms_enabled", true)
+		if has_hand_switch: natural.set("running_hand_style_enabled", true)
 		var probe: SkeletonModifier3D = load("res://scripts/tools/character_qa_pose_probe.gd").new()
 		probe.name = "RunningArmRegressionFinalProbe"
 		skeleton.add_child(probe)
 		probe.call("prepare", model)
 		probe.set("measure_bones", true)
-		if not bool(options.transitions_only): await actor_contract(id, model, skeleton, natural, has_switch, controller, probe)
+		if not bool(options.transitions_only):
+			await actor_contract(id, model, skeleton, natural, has_switch, controller, probe)
+			await hand_style_contract(id, model, skeleton, natural, has_hand_switch, controller, probe)
 		Engine.max_fps = int(options.fps)
 		await transition_contracts(id, model, skeleton, natural, controller)
 		Engine.max_fps = saved_max_fps
 		if has_switch: natural.set("running_arms_enabled", bool(saved.arms_enabled))
+		if has_hand_switch: natural.set("running_hand_style_enabled", saved_hand_switch)
 		probe.queue_free()
 		actor.global_position = saved.position
 		model.transform = saved.model_transform
@@ -353,6 +386,7 @@ func actor_contract(id: String, model: Node3D, skeleton: Skeleton3D, natural: No
 	var hand_position_max := 0.0
 	var hand_rotation_max := 0.0
 	var hand_scale_max := 0.0
+	var finger_rotation_max := 0.0
 	var hand_bone_count := 0
 	for index: int in range(PHASE_STEPS + 1):
 		var phase: float = float(index) / PHASE_STEPS
@@ -373,6 +407,7 @@ func actor_contract(id: String, model: Node3D, skeleton: Skeleton3D, natural: No
 			hand_position_max = maxf(hand_position_max, float(hand_difference.position_m))
 			hand_rotation_max = maxf(hand_rotation_max, float(hand_difference.rotation_deg))
 			hand_scale_max = maxf(hand_scale_max, float(hand_difference.scale))
+			finger_rotation_max = maxf(finger_rotation_max, float(hand_difference.finger_rotation_deg))
 			hand_bone_count = int(hand_difference.hand_and_finger_bones)
 	if has_switch: natural.set("running_arms_enabled", true)
 	var fresh: bool = fresh_samples == PHASE_STEPS + 1
@@ -402,7 +437,200 @@ func actor_contract(id: String, model: Node3D, skeleton: Skeleton3D, natural: No
 		for seam_label: String in ["upper.L", "fore.L", "hand.L", "upper.R", "fore.R", "hand.R"]:
 			seam_error = maxf(seam_error, position(before, skeleton, seam_label).distance_to(position(after, skeleton, seam_label)))
 	check(id + " running elbows and wrists close across two cycle boundaries", seam_fresh == 4 and seam_error < .004, {"fresh_final_samples": seam_fresh, "expected": 4, "max_position_error_m": seam_error, "limit_m": .004})
-	check(id + " running arm changes preserve legs torso and local hand finger articulation", fresh and baseline_samples == PHASE_STEPS + 1 and preserve_position_max < .001 and preserve_rotation_max < .1 and hand_bone_count >= 4 and hand_position_max < .00005 and hand_rotation_max < .1 and hand_scale_max < .0001, {"arm_correction_switch_available": has_switch, "max_position_error_m": preserve_position_max, "max_rotation_error_deg": preserve_rotation_max, "limits": {"position_m": .001, "rotation_deg": .1}, "preserved_bones": PRESERVED, "local_hand_finger_trs": {"bones": hand_bone_count, "position_m": hand_position_max, "rotation_deg": hand_rotation_max, "scale": hand_scale_max, "limits": {"position_m": .00005, "rotation_deg": .1, "scale": .0001}}, "coverage": coverage})
+	check(id + " running arm changes preserve legs torso and local hand finger articulation", fresh and baseline_samples == PHASE_STEPS + 1 and preserve_position_max < .001 and preserve_rotation_max < .1 and hand_bone_count == 32 and hand_position_max < .00005 and hand_rotation_max <= 20.0 and finger_rotation_max < .1 and hand_scale_max < .0001, {"arm_correction_switch_available": has_switch, "max_position_error_m": preserve_position_max, "max_rotation_error_deg": preserve_rotation_max, "limits": {"position_m": .001, "rotation_deg": .1}, "preserved_bones": PRESERVED, "local_hand_finger_trs": {"bones": hand_bone_count, "position_m": hand_position_max, "hand_rotation_deg": hand_rotation_max, "finger_rotation_deg": finger_rotation_max, "scale": hand_scale_max, "limits": {"position_m": .00005, "hand_rotation_deg": 20.0, "finger_rotation_deg": .1, "scale": .0001}, "contract": "Hand translation/scale and all finger local TRS remain fixed; Hand rotation may turn the fist inward"}, "coverage": coverage})
+
+func hand_descendant(skeleton: Skeleton3D, index: int) -> bool:
+	var ancestor: int = index
+	var left_hand: int = LivingPose.bone(skeleton, "hand.L")
+	var right_hand: int = LivingPose.bone(skeleton, "hand.R")
+	while ancestor >= 0:
+		if ancestor == left_hand or ancestor == right_hand: return true
+		ancestor = skeleton.get_bone_parent(ancestor)
+	return false
+
+func fist_geometry(pose: Dictionary, skeleton: Skeleton3D, model: Node3D, side: String) -> Dictionary:
+	var sum := Vector3.ZERO
+	var count := 0
+	var side_name: String = "Left" if side == "L" else "Right"
+	for finger_name: String in ["Index1", "Middle1", "Ring1", "Pinky1"]:
+		for index: int in skeleton.get_bone_count():
+			if str(skeleton.get_bone_name(index)).ends_with(side_name + "Hand" + finger_name):
+				sum += global_transform_from_sample(pose, index).origin
+				count += 1
+				break
+	var shoulder: Vector3 = position(pose, skeleton, "upper." + side)
+	var elbow: Vector3 = position(pose, skeleton, "fore." + side)
+	var wrist: Vector3 = position(pose, skeleton, "hand." + side)
+	var chest: Vector3 = position(pose, skeleton, "chest")
+	var mcp: Vector3 = sum / 4.0
+	var fore: Vector3 = (wrist - elbow).normalized()
+	var hand: Vector3 = (mcp - wrist).normalized()
+	var inward: Vector3 = chest - wrist
+	inward = (inward - fore * inward.dot(fore)).normalized()
+	var upper: Vector3 = model.global_basis.inverse() * (elbow - shoulder)
+	var lateral: Vector3 = model.global_basis.inverse() * (mcp - chest)
+	return {"valid": count == 4 and mcp.is_finite() and (mcp - wrist).length() > .01 and inward.length() > .5, "pitch_deg": rad_to_deg(atan2(upper.z, -upper.y)), "signed_inward_deg": rad_to_deg(atan2(hand.dot(inward), hand.dot(fore))), "wrist_total_deg": rad_to_deg(fore.angle_to(hand)), "midline_distance_m": absf(lateral.x), "hand_length_m": mcp.distance_to(wrist)}
+
+func dynamic_sleeve_bones(model: Node3D, skeleton: Skeleton3D) -> Dictionary:
+	# AP seek pauses clip time, not native spring integration. Identify only the
+	# configured helper chains of the actual active simulator; no name-wide skip.
+	var simulator: SpringBoneSimulator3D = skeleton.get_node_or_null("CharacterSleeveSpring") as SpringBoneSimulator3D
+	var indices: Array[int] = []
+	var names: Array[String] = []
+	if simulator == null or not simulator.active: return {"valid": true, "indices": indices, "names": names}
+	var rig: Node = model.find_child("Rig", true, false)
+	if rig == null or not rig.has_meta("extras"): return {"valid": false, "indices": indices, "names": names}
+	var extras: Dictionary = rig.get_meta("extras")
+	var clothing: Dictionary = extras.get("character_clothing", {})
+	var chains: Array = clothing.get("spring_chains", [])
+	var valid: bool = not chains.is_empty() and int(simulator.setting_count) == chains.size()
+	for chain: Dictionary in chains:
+		var root_name: String = str(chain.get("root", ""))
+		var end_name: String = str(chain.get("end", ""))
+		var root_index: int = skeleton.find_bone(root_name)
+		var end_index: int = skeleton.find_bone(end_name)
+		var chain_indices: Array[int] = []
+		var cursor: int = end_index
+		while cursor >= 0 and chain_indices.size() <= skeleton.get_bone_count():
+			chain_indices.append(cursor)
+			if cursor == root_index: break
+			cursor = skeleton.get_bone_parent(cursor)
+		var connected: bool = root_index >= 0 and end_index >= 0 and not chain_indices.is_empty() and chain_indices[-1] == root_index
+		valid = valid and connected
+		for chain_index: int in chain_indices:
+			var bone_name: String = str(skeleton.get_bone_name(chain_index))
+			valid = valid and bone_name.begins_with("Cloth_")
+			if connected and chain_index not in indices:
+				indices.append(chain_index)
+				names.append(bone_name)
+	return {"valid": valid, "indices": indices, "names": names, "chains": chains, "simulator": str(simulator.get_path())}
+
+func hand_style_contract(id: String, model: Node3D, skeleton: Skeleton3D, natural: Node, has_hand_switch: bool, controller: CharAnim, probe: SkeletonModifier3D) -> void:
+	var expected_count: int = 66 if id in ["sora", "mio"] else 54
+	var fresh_pairs := 0
+	var geometry_ok := true
+	var isolation_ok := true
+	var sides: Dictionary = {"L": [], "R": []}
+	var other_position_max := 0.0
+	var other_rotation_max := 0.0
+	var local_position_max := 0.0
+	var local_scale_max := 0.0
+	var hand_rotation_max := 0.0
+	var finger_rotation_max := 0.0
+	var observed_finger_bones := 0
+	var dynamic: Dictionary = dynamic_sleeve_bones(model, skeleton)
+	var dynamic_position_max := 0.0
+	var dynamic_rotation_max := 0.0
+	var worst_body_position: Dictionary = {}
+	var worst_body_rotation: Dictionary = {}
+	var worst_dynamic_position: Dictionary = {}
+	var worst_dynamic_rotation: Dictionary = {}
+	var body_bones_measured := 0
+	for phase_index: int in range(PHASE_STEPS + 1):
+		var phase: float = float(phase_index) / PHASE_STEPS
+		if has_hand_switch: natural.set("running_hand_style_enabled", true)
+		var actual: Dictionary = await sample(controller, phase, probe, expected_count)
+		if has_hand_switch: natural.set("running_hand_style_enabled", false)
+		var source: Dictionary = await sample(controller, phase, probe, expected_count)
+		if not bool(actual.get("fresh", false)) or not bool(source.get("fresh", false)): continue
+		fresh_pairs += 1
+		var local: Dictionary = hand_local_difference(actual, source, skeleton)
+		local_position_max = maxf(local_position_max, float(local.position_m))
+		local_scale_max = maxf(local_scale_max, float(local.scale))
+		hand_rotation_max = maxf(hand_rotation_max, float(local.hand_rotation_deg))
+		finger_rotation_max = maxf(finger_rotation_max, float(local.finger_rotation_deg))
+		observed_finger_bones = int(local.finger_bones)
+		body_bones_measured = 0
+		for bone_index: int in skeleton.get_bone_count():
+			if hand_descendant(skeleton, bone_index): continue
+			var first: Transform3D = global_transform_from_sample(actual, bone_index)
+			var second: Transform3D = global_transform_from_sample(source, bone_index)
+			var position_delta: float = first.origin.distance_to(second.origin)
+			var angle_delta: float = rad_to_deg(first.basis.orthonormalized().get_rotation_quaternion().angle_to(second.basis.orthonormalized().get_rotation_quaternion()))
+			var bone_detail: Dictionary = {"bone": str(skeleton.get_bone_name(bone_index)), "index": bone_index, "phase": phase, "position_m": position_delta, "rotation_deg": angle_delta}
+			if bone_index in dynamic.indices:
+				if position_delta > dynamic_position_max:
+					dynamic_position_max = position_delta
+					worst_dynamic_position = bone_detail
+				if angle_delta > dynamic_rotation_max:
+					dynamic_rotation_max = angle_delta
+					worst_dynamic_rotation = bone_detail
+				continue
+			body_bones_measured += 1
+			if position_delta > other_position_max:
+				other_position_max = position_delta
+				worst_body_position = bone_detail
+			if angle_delta > other_rotation_max:
+				other_rotation_max = angle_delta
+				worst_body_rotation = bone_detail
+		for side: String in ["L", "R"]:
+			var before: Dictionary = fist_geometry(source, skeleton, model, side)
+			var after: Dictionary = fist_geometry(actual, skeleton, model, side)
+			geometry_ok = geometry_ok and bool(before.valid) and bool(after.valid) and float(after.wrist_total_deg) <= maxf(float(before.wrist_total_deg), 12.0) + 2.0 and float(after.signed_inward_deg) <= maxf(float(before.signed_inward_deg), 8.0) + .1
+			var hand_index: int = LivingPose.bone(skeleton, "hand." + side)
+			var hand_parent: int = skeleton.get_bone_parent(hand_index)
+			var source_hand: Transform3D = global_transform_from_sample(source, hand_parent).affine_inverse() * global_transform_from_sample(source, hand_index)
+			var actual_hand: Transform3D = global_transform_from_sample(actual, hand_parent).affine_inverse() * global_transform_from_sample(actual, hand_index)
+			var hand_change: float = rad_to_deg(source_hand.basis.orthonormalized().get_rotation_quaternion().angle_to(actual_hand.basis.orthonormalized().get_rotation_quaternion()))
+			(sides[side] as Array).append({"phase": phase, "before": before, "after": after, "local_hand_rotation_change_deg": hand_change})
+	var side_details: Dictionary = {}
+	var required_sides := 0
+	for measured_side: String in ["L", "R"]:
+		var entries: Array = sides[measured_side]
+		if entries.size() != PHASE_STEPS + 1:
+			geometry_ok = false
+			continue
+		var front: Dictionary = entries[0]
+		var back: Dictionary = entries[0]
+		var preserved_side_max := 0.0
+		for entry: Dictionary in entries:
+			if float(entry.before.pitch_deg) > float(front.before.pitch_deg): front = entry
+			if float(entry.before.pitch_deg) < float(back.before.pitch_deg): back = entry
+			preserved_side_max = maxf(preserved_side_max, float(entry.local_hand_rotation_change_deg))
+		var outward_before: float = maxf(0.0, -float(front.before.signed_inward_deg))
+		var outward_after: float = maxf(0.0, -float(front.after.signed_inward_deg))
+		var required: bool = outward_before > 1.0 and not (id == "mio" and measured_side == "L")
+		var improvement_required: float = minf(3.0, outward_before * .5) if required else 0.0
+		var midline_gain: float = float(front.before.midline_distance_m) - float(front.after.midline_distance_m)
+		var midline_required: float = float(front.before.hand_length_m) * .005 if required else 0.0
+		if required:
+			required_sides += 1
+			geometry_ok = geometry_ok and outward_before - outward_after >= improvement_required and midline_gain >= midline_required
+		if id == "mio" and measured_side == "L": geometry_ok = geometry_ok and preserved_side_max < .1
+		geometry_ok = geometry_ok and float(back.local_hand_rotation_change_deg) < .2
+		side_details[measured_side] = {"front": front, "back": back, "required_outward_improvement_deg": improvement_required, "outward_improvement_deg": outward_before - outward_after, "midline_gain_m": midline_gain, "required_midline_gain_m": midline_required, "all_phase_local_rotation_change_max_deg": preserved_side_max}
+	print("RUNNING_HAND_GEOMETRY_TRACE ", JSON.stringify({"character": id, "hand_style_switch_available": has_hand_switch, "fresh_pairs": fresh_pairs, "sides": sides}))
+	var complete: bool = fresh_pairs == PHASE_STEPS + 1
+	isolation_ok = complete and bool(dynamic.valid) and (dynamic.indices as Array).size() == (12 if expected_count == 66 else 0) and body_bones_measured == 22 and observed_finger_bones == 30 and other_position_max < .00005 and other_rotation_max < .1 and local_position_max < .00005 and local_scale_max < .0001 and hand_rotation_max <= 20.0 and finger_rotation_max < .1
+	check(id + " running forward fists reduce outward deviation without forcing a common wrist angle", complete and geometry_ok and required_sides > 0, {"hand_style_switch_available": has_hand_switch, "fresh_pairs": fresh_pairs, "expected_pairs": PHASE_STEPS + 1, "required_sides": required_sides, "sides": side_details, "policy": "Independent final MCP-centroid/forearm geometry: outward error improves by min(3deg,half original), MCP moves inward by 0.5% hand length; full wrist angle <=max(original,12deg)+2deg; back swing returns original; Mio left stays original"})
+	check(id + " running fist styling preserves arm centers body and all finger local articulation", isolation_ok, {"fresh_pairs": fresh_pairs, "other_bone_position_m": other_position_max, "other_bone_rotation_deg": other_rotation_max, "local_hand_finger_position_m": local_position_max, "local_hand_finger_scale": local_scale_max, "hand_local_rotation_change_deg": hand_rotation_max, "finger_local_rotation_change_deg": finger_rotation_max, "finger_bones": observed_finger_bones, "unchanged_body_bones": body_bones_measured, "worst_body_position": worst_body_position, "worst_body_rotation": worst_body_rotation, "dynamic_sleeves": dynamic, "dynamic_position_max_m": dynamic_position_max, "dynamic_rotation_max_deg": dynamic_rotation_max, "worst_dynamic_position": worst_dynamic_position, "worst_dynamic_rotation": worst_dynamic_rotation, "sampling_scope": "All original 54 bones protected: 22 non-Hand body bones at 50um/0.1deg plus both Hand T/S and 30 finger local TRS. Only validated GLB metadata chains of the actual active native spring are separately reported because their integration continues between paused-AP callbacks.", "limits": {"position_m": .00005, "rotation_deg": .1, "hand_rotation_deg": 20.0, "scale": .0001}})
+	var nonrun_pairs := 0
+	var nonrun_expected := 0
+	var nonrun_ok := true
+	var nonrun_position_max := 0.0
+	var nonrun_rotation_max := 0.0
+	var nonrun_scale_max := 0.0
+	var clips: Array[String] = []
+	for clip: String in controller.ap.get_animation_list():
+		if clip == "run" or clip == "RESET": continue
+		clips.append(clip)
+		for nonrun_phase: float in [0.0, .125, .25, .5, .75, .875]:
+			nonrun_expected += 1
+			if has_hand_switch: natural.set("running_hand_style_enabled", true)
+			var styled: Dictionary = await sample(controller, nonrun_phase, probe, expected_count, clip)
+			if has_hand_switch: natural.set("running_hand_style_enabled", false)
+			var original: Dictionary = await sample(controller, nonrun_phase, probe, expected_count, clip)
+			if not bool(styled.get("fresh", false)) or not bool(original.get("fresh", false)):
+				nonrun_ok = false
+				continue
+			nonrun_pairs += 1
+			var nonrun_difference: Dictionary = hand_local_difference(styled, original, skeleton)
+			nonrun_position_max = maxf(nonrun_position_max, float(nonrun_difference.position_m))
+			nonrun_rotation_max = maxf(nonrun_rotation_max, float(nonrun_difference.rotation_deg))
+			nonrun_scale_max = maxf(nonrun_scale_max, float(nonrun_difference.scale))
+			nonrun_ok = nonrun_ok and int(nonrun_difference.hand_and_finger_bones) == 32
+	check(id + " fist styling leaves every available non-running hand and finger pose intact", nonrun_ok and nonrun_pairs == nonrun_expected and clips.size() >= 3 and nonrun_expected >= 18 and nonrun_position_max < .00005 and nonrun_rotation_max < .1 and nonrun_scale_max < .0001, {"clips": clips, "fresh_pairs": nonrun_pairs, "expected_pairs": nonrun_expected, "max_local_position_m": nonrun_position_max, "max_local_rotation_deg": nonrun_rotation_max, "max_local_scale": nonrun_scale_max})
+	if has_hand_switch: natural.set("running_hand_style_enabled", true)
 
 func live_settle(controller: CharAnim, probe: TransitionFinalArmProbe, clip: String, speed: float, seconds: float) -> Dictionary:
 	var requested: int = probe.request()
@@ -430,8 +658,8 @@ func rotation_diameter(values: Array) -> float:
 	return diameter
 
 func transition_statistics(reference: Dictionary, rows: Array[Dictionary], request: int, target: String, clip_length: float, activation: Dictionary) -> Dictionary:
-	var point_paths: Dictionary = {"fore.L": [], "hand.L": [], "fore.R": [], "hand.R": []}
-	var rotation_paths: Dictionary = {"upper.L": [], "fore.L": [], "upper.R": [], "fore.R": []}
+	var point_paths: Dictionary = {"fore.L": [], "hand.L": [], "fist.L": [], "fore.R": [], "hand.R": [], "fist.R": []}
+	var rotation_paths: Dictionary = {"upper.L": [], "fore.L": [], "hand.L": [], "upper.R": [], "fore.R": [], "hand.R": []}
 	var reference_valid: bool = bool(reference.get("fresh", false)) and bool(reference.get("settled", false))
 	var fresh := reference_valid
 	var correct_clip := str(activation.get("clip", "")) == target
