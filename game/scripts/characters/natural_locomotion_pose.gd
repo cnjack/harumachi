@@ -7,6 +7,7 @@ var profile: String=""
 var rebuilt_clips: Array=[]
 var authored_walk_knee_plane:=false
 var source_foundation: Dictionary={}
+var source_running_style: Dictionary={}
 var references: Dictionary={}
 var reference_hips:=Vector3.ZERO
 var ready_reference:=false
@@ -232,6 +233,7 @@ static func attach(source: Node3D,player: AnimationPlayer) -> SkeletonModifier3D
  var modifier: SkeletonModifier3D=load("res://scripts/characters/natural_locomotion_pose.gd").new()
  modifier.set("rebuilt_clips",(extras.get("locomotion_rebuild",{}) as Dictionary).get("rebuilt_clips",[]))
  modifier.set("source_foundation",extras.get("source_pose_foundation",{}))
+ modifier.set("source_running_style",extras.get("source_running_style",{}))
  modifier.set("authored_walk_knee_plane",bool((extras.get("leg_foundation",{}) as Dictionary).get("walk_knee_plane_authored",false)))
  modifier.name="NaturalLocomotionPose";modifier.set("model",source);modifier.set("actor",source.get_parent());modifier.set("animation",player);modifier.set("profile",who)
  var actor_root: Node3D=source
@@ -330,6 +332,7 @@ func _kazuko_running_recovery(sk: Skeleton3D,recovery_lift: float=.20,settle_end
   _place_ankle(sk,side,target,.035)
 
 func _relaxed_running_arms(sk: Skeleton3D) -> void:
+ if bool(source_running_style.get("arms_authored",false)):return
  if not running_arms_enabled or not RUN_ARM_STYLE.has(profile):return
  var style: Array=RUN_ARM_STYLE[profile]
  var to_model: Basis=model.global_basis.inverse()*sk.global_basis
@@ -374,6 +377,7 @@ func _relaxed_running_arms(sk: Skeleton3D) -> void:
   # All finger local transforms retain the qualified source shape.
 
 func _running_hand_style(sk: Skeleton3D) -> void:
+ if bool(source_running_style.get("wrists_authored",false)):return
  if not running_hand_style_enabled or not RUN_HAND_STYLE.has(profile):return
  var chest: int=LivingPose.bone(sk,"chest")
  if chest<0:return

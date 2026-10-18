@@ -1,7 +1,7 @@
 {
   "id": "CH_aoi",
   "tris": 92351,
-  "bytes": 11128244,
+  "bytes": 11173628,
   "bones": 54,
   "animations": [
     "idle",
@@ -17,10 +17,10 @@
     "dance",
     "reference"
   ],
-  "sha256": "d4e5d2921f7481e7e0c583c314c2fd4b485476e7794384a11f75aa47d3d7ed06",
-  "src": "character_roster_foundation_20261018/exports/CH_aoi.glb",
+  "sha256": "0955f26195245a5231bdfd2fe2492c7fd7fdc1ca90d6f4346802769dec65f211",
+  "src": "character_source_cloth_arms_20261018/exports/CH_aoi.glb",
   "provider": "Hyper3D Rodin / welded anatomical character pipeline",
   "preserve_rigged_character": true,
   "character_pipeline": "characters-apose-20261004",
-  "rig_review_manifest": "art/manifests/character_roster_foundation_20261018.json"
+  "rig_review_manifest": "art/manifests/character_source_cloth_arms_20261018.json"
 }

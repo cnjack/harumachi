@@ -1,10 +1,16 @@
 # 模型、工程与交付流程
 
-## 人物修复与有限验收（2026-10-18）
+## 本轮源衣物与跑步修复（2026-10-18）
+
+先关掉游戏修正器核对源模型，能由网格、蒙皮、骨骼、形态键或源动画解决的先写回资产。七人当前源输出统一为 `art/models/character_source_cloth_arms_20261018/exports/`，来源和 SHA 登记于 `art/manifests/character_source_cloth_arms_20261018.json`，相同 GLB 同步游戏和素材库。旧 Blender 文件保持历史作者来源，不能直接覆盖本轮源修形。
+
+本轮跑步手臂/手腕/手指由源轨道提供，Natural 按元数据跳过重复处理。澪采用源接触与接缝修形，和子采用固定模型 X/Y、逆蒙皮 XYZ 接触修形，原权重与静止骨架保留。平地鞋底从完整源鞋面修，均匀小路面偏差允许共同 Hips 上移，高差与坡面保留每脚 IK。源导入明确 120fps、和子 240fps，关闭曲线优化和压缩；独立源、实际游戏、原有压力相位均须检查。详细工具和验收见[本轮记录](SOURCE_CLOTH_ARMS_20261018.md)。本会话一律 `--display existing --screen 0`，禁止自动新建虚拟显示器。
+
+## 前次人物修复与有限验收（2026-10-18）
 
 七人跑步摆臂使用`NaturalLocomotionPose`的run分支按各自原曲线收敛上臂俯仰、动态屈肘，并把fore两骨纳入进出跑步淡入。最新手型调整只在前摆收正Hand方向，后摆回源；左右Hand同样纳入过渡，保留手指局部姿态。`--only=character-running-arms`共98项：原56项最终姿态/保护、新21项手轴/隔离/非run保护和21项真实控制器过渡。过渡用实际AP时间比较新增插值残差，原动画本身的残差单列；不能用内部混合时钟作通过依据，也不能把源姿态seek当连续位移。空、澪的12根动态Cloth骨仅按真实元数据与活跃spring确认后单列，原54骨保护不减少。田中实际手/蓝衣交叉另用`audit_run_hand_clearance.py --native-manifest`核验完整最终蒙皮；paired0不能替代真实边面相交检查。范围、反例与视频见[手型记录](RUNNING_HANDS_20261018.md)和[前次摆臂记录](RUNNING_ARMS_20261018.md)。
 
-空、莲的当前GLB来源在`art/models/character_leg_foundation_20261018/exports/`，其余角色在`art/models/character_rig_review_20261018/exports/`，分别登记于同名art/manifests清单；重新导出必须保留绑定、动画、corrective和原始provider/license。结构/步态/衣物工具在`art/tools/characters/`，袖形重建见`SLEEVE_GUIDE.md`。SCALAR min/max格式规范化只更改JSON范围数组，不重采样或重写BIN。
+前次空、莲的GLB来源在`art/models/character_leg_foundation_20261018/exports/`，其余角色在`art/models/character_rig_review_20261018/exports/`，分别登记于同名art/manifests清单；重新导出必须保留绑定、动画、corrective和原始provider/license。结构/步态/衣物工具在`art/tools/characters/`，袖形重建见`SLEEVE_GUIDE.md`。SCALAR min/max格式规范化只更改JSON范围数组，不重采样或重写BIN。
 
 空、莲的基础修复先在关闭全部游戏修正器的独立源场景检查：莲重建裤腿/围裙权重及四处裤面 Local 模板接缝，空把膝盖弯曲平面写回 walk 六条骨旋转轨道，并跳过旧的逐帧膝向修正。接地继续负责地面辅助。修复、独立审计和原生 A/B 录像工具见[源资产修复](LEG_FOUNDATION_20261018.md)；`capture.py --force-render` 仅用于 QA 显式绘制视口，未开启时维持原流程。
 
@@ -304,7 +310,7 @@ Godot 这边是 `Audio` 自动加载（`game/scripts/autoload/audio.gd`）：
 
 - **材质视频样板（2026-10-06）**：`art/poc/material_review_20261006/godot/` 是独立 Godot 4.7.2 Forward+ 工程，六种地表各有 A/B；四张 imagegen 图用于实际材质，已有 Hyper3D 住宅用于实景。运行 `python3 art/poc/material_review_20261006/record.py --tag review` 原生录制 40 秒 1080p/30fps 并编码 MP4；视频、8 张截图、日志和检查在 `evidence/material_review_20261006_v1/`。窗口 override 与录制分辨率保持一致，避免 Movie Maker 输出 720p 而截图仍为 1080p。隔离工程不加载游戏 autoload，不修改默认存档。详见该 POC 的 README。
 
-- 自动测试：`res://scenes/tests.tscn`，最新全员源基础姿态与跑步手型组合2606项独占完整功能回归通过、退出0，含98项步态、98项跑步摆臂/手型与47项真实单次/持续手势检查（见[全员源姿态与动作实验](ROSTER_FOUNDATION_MOTIONBRICKS_20261018.md)、[源腿部修复](LEG_FOUNDATION_20261018.md)、[手型修改](RUNNING_HANDS_20261018.md)、[摆臂修改](RUNNING_ARMS_20261018.md)和[前次修复](CHARACTER_FEEDBACK_20261018.md)）。原5mm衣面及8ms求解门槛不变；和子使用已验证等价的可选C11 bounds/grid，旧库/无native/`--native-geometry=off`回退原GD。完整原始ERROR按Dummy、故障注入与启动环境分别保留，严格无错误日志资格仍为false。含规则、SQLite、UI、模型摆放、路线、生活、完整夏季和镜头检查。独立HARUMACHI_SAVE_DIR、超时与SCRIPT ERROR检查必须同时使用；全量不与其他Godot实例并发。专项入口与数量见AGENTS，最终数以JSON报告为准。
+- 自动测试：`res://scenes/tests.tscn`，最新源衣物/手臂/平地接触组合2628项独占完整功能回归通过、退出0，含102项步态、112项跑步手臂/手型、47项手势和45项衣物专项，见[本轮源修复](SOURCE_CLOTH_ARMS_20261018.md)。独立 HARUMACHI_SAVE_DIR、超时和 SCRIPT/SHADER ERROR 检查必须同时使用，全量不与其他 Godot 并发。原5mm衣面、12cm模板及8ms求解门槛不变，原始 ERROR 分组保留，严格无 ERROR 日志资格为false。最终数量以JSON报告为准。
 - 卡顿检查要让时钟实际推进，记录逐帧耗时，不能只看平均FPS。工具`evidence/desktop_stutter_20261007/perf_probe.gd`的`--fixed`模式在真实起床卧室和商店街记录480帧，截图回读放在计时之后；使用固定引擎、置顶原生窗口和独立存档。运动清晰度检查在固定镜头距离下核对人物与镜头的渲染插值位置，镜头避障另跑`--only=camera-body`。桌面缓存用晚会专项检查移动、旋转后的实际食物支撑；方法与结果见[卡顿修复](DESKTOP_STUTTER_20261008.md)。
 - 自动演示：普通标题入口`--autoplay`沿实际碰撞路径、Story交互、摆放控制器、料理面板、灯笼输入、日历赴约和拍照完成新夏季至Q15，检查控制与保存恢复。本轮解压包205项通过，最终报告及关键截图在本轮证据目录。自动对白与阶段暂停明确记录，不作为自然四小时；`--showcase`是节日展示夹具。打印的AP mark/frame用于录像剪辑。
 - 录制时游戏窗口不能被别的窗口完全挡住：macOS 会停止给被挡住的窗口画帧，演示就停在原地。默认使用独立虚拟屏幕，实测屏幕编号与Godot像素坐标后设置`--screen`、`-t --position`，并在测试进程使用`--audio-driver Dummy`。以下历史命令中的机位须按当前隔离屏幕替换。

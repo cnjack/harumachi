@@ -1,8 +1,8 @@
 {
   "ren": {
     "certificate_version": 2,
-    "source_model_sha256": "093563a8106edcb76139954acf95211ddbc472c96fc7b9dd70254fd191c10df5",
-    "imported_content_sha256": "47bb63db888f976c7e606f63e87bb6d90d772baf9c91719b39138f61c5d005e4",
+    "source_model_sha256": "baf894e365726bc6814a678011160080754c9a70b81c1a1264bbd18e6da1878b",
+    "imported_content_sha256": "6e963593ffe4aad212739d8989f0dbc31762d1124117a548dc492f71d797e8d4",
     "certificate_helper_source_sha256": "2aab693e6f8063b1e4b4abc947e077d9f103613613ca7f4b540b59c373889c43",
     "allowed_clips": [
       "idle",
@@ -10,8 +10,8 @@
       "run"
     ],
     "native_root_zero_proof": {
-      "report": "evidence/leg_binding_foundation_20261018/surface-root-zero-v8.json",
-      "report_sha256": "f01907489bdf752eb2afcda82b2c26c9d7616d112d2bc1e85aabd4e2eed5424b",
+      "report": "evidence/source_cloth_arms_20261018/surface-v3-ren-zero.json",
+      "report_sha256": "6ea6a9234ed6e428dc485be441c28382c204d08b41cebe5d2ab0f32a8420b610",
       "steady_phases_per_clip": 128,
       "steady_fresh_samples": 384,
       "additional_uv_labelled_surface_witnesses_per_pose": 58758,
@@ -21,14 +21,14 @@
       "maximum_additional_surface_penetration_m": 0.0,
       "all_actual_local_weights_zero": true,
       "fixture_root_height_m": 0.0,
-      "source_model_sha256": "093563a8106edcb76139954acf95211ddbc472c96fc7b9dd70254fd191c10df5",
-      "actual_imported_content_sha256": "47bb63db888f976c7e606f63e87bb6d90d772baf9c91719b39138f61c5d005e4",
+      "source_model_sha256": "baf894e365726bc6814a678011160080754c9a70b81c1a1264bbd18e6da1878b",
+      "actual_imported_content_sha256": "6e963593ffe4aad212739d8989f0dbc31762d1124117a548dc492f71d797e8d4",
       "certificate_helper_source_sha256": "2aab693e6f8063b1e4b4abc947e077d9f103613613ca7f4b540b59c373889c43",
       "body_classifier_source_sha256": "f6f546bb530b52010dadb749f011f17ab35588366f9eb4720565914408d7de0b"
     },
     "native_proof": {
-      "report": "evidence/leg_binding_foundation_20261018/surface-root-010-v8.json",
-      "report_sha256": "9e12b7681e0f8213851edc7cb661416c0e2f31149fcbb62019c6fa212b48e287",
+      "report": "evidence/source_cloth_arms_20261018/surface-v3-ren-010.json",
+      "report_sha256": "dc9ac86c109b64e8b8cdb203752ebfa4ec8731f66e545271d6213b1bc19cbfc8",
       "steady_phases_per_clip": 128,
       "steady_fresh_samples": 384,
       "additional_uv_labelled_surface_witnesses_per_pose": 58758,
@@ -38,12 +38,12 @@
       "maximum_additional_surface_penetration_m": 0.0,
       "all_actual_local_weights_zero": true,
       "fixture_root_height_m": 0.01,
-      "source_model_sha256": "093563a8106edcb76139954acf95211ddbc472c96fc7b9dd70254fd191c10df5",
-      "actual_imported_content_sha256": "47bb63db888f976c7e606f63e87bb6d90d772baf9c91719b39138f61c5d005e4",
+      "source_model_sha256": "baf894e365726bc6814a678011160080754c9a70b81c1a1264bbd18e6da1878b",
+      "actual_imported_content_sha256": "6e963593ffe4aad212739d8989f0dbc31762d1124117a548dc492f71d797e8d4",
       "certificate_helper_source_sha256": "2aab693e6f8063b1e4b4abc947e077d9f103613613ca7f4b540b59c373889c43",
       "body_classifier_source_sha256": "f6f546bb530b52010dadb749f011f17ab35588366f9eb4720565914408d7de0b"
     },
-    "scope": "Exact Ren leg-foundation model with corrected trouser and apron weights and four cleared stray Local trouser seam target vertices. Independently repeated384 native steady idle/walk/run poses at each root height0 and.010, full original body vertices and triangle7-point witnesses, original5mm/.35 normal gates, actual Local weights zero and garment solver disabled. Only the matching imported content and eligible steady state may bypass the solver. Transitions, other motions, changed models and untested terrain retain normal garment assistance. This is discrete collision qualification, not an automatic naturalness verdict.",
+    "scope": "Exact Ren source leg foundation plus authored compact running arms, inward wrists and relaxed fingers. Source skin, apron and walk remain exact. Independently repeated384 final native steady poses at root0 and.010, full original body and all triangle7-point witnesses, original5mm/.35 gates, actual Local weights zero, solver disabled. Matching content and eligible steady state only; transitions and terrain outside these fixtures retain assistance. Discrete collision qualification, not naturalness acceptance.",
     "certified_flat_ground": {
       "physical_height_m": 0.0,
       "painted_height_m": 0.01,
@@ -67,8 +67,8 @@
     },
     "identity_evidence": {
       "actual_imported_fingerprint_reports": [
-        "evidence/leg_binding_foundation_20261018/surface-root-zero-v8.json",
-        "evidence/leg_binding_foundation_20261018/surface-root-010-v8.json"
+        "evidence/source_cloth_arms_20261018/surface-v3-ren-zero.json",
+        "evidence/source_cloth_arms_20261018/surface-v3-ren-010.json"
       ],
       "actual_certificate_helper_version": 2,
       "both_reports_serialize_same_fingerprint": true,

@@ -8,6 +8,7 @@ export). For each model it prints the angle between its standing face (see
 level_util.support_plane) and the ground, and how much of its footprint that face covers.
 """
 import glob
+import hashlib
 import json
 import os
 import sys
@@ -69,9 +70,14 @@ for path in files:
     n, tilt, area, foot = support_plane(pts)
     sq, rect = squareness(pts)
     aid = os.path.splitext(os.path.basename(path))[0]
+    source_hash = hashlib.sha256()
+    with open(path, "rb") as source_file:
+        for source_chunk in iter(lambda: source_file.read(1024 * 1024), b""):
+            source_hash.update(source_chunk)
     report[aid] = {"tilt": round(tilt, 2), "normal": [round(float(x), 4) for x in n],
                    "base_frac": round(area / foot, 3) if foot else 0, "verts": int(len(pts)),
-                   "square_deg": round(sq, 2), "rect_fill": round(rect, 3)}
+                   "square_deg": round(sq, 2), "rect_fill": round(rect, 3),
+                   "source_sha256": source_hash.hexdigest()}
     print("LEVEL %-24s %6.2f deg  base %.2f  turned %5.1f deg (rect %.2f)" % (aid, tilt, report[aid]["base_frac"], sq, rect))
 
 json.dump(report, open(out_path, "w"), indent=1, sort_keys=True)

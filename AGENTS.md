@@ -45,7 +45,7 @@ PY=/Users/jack/.copilot/session-state/ca10e179-b441-4d77-b938-250cea2ee4c6/files
 BLENDER=/Applications/Blender.app/Contents/MacOS/Blender
 
 $GODOT --headless --path game --import                               # 加了素材或 class_name 之后必须先跑
-$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前2451项；单独运行，套timeout）
+$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前2628项；单独运行，套timeout）
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=modular-props # 50项：真实单体、拼柜支撑、相框凹槽、刻字与提示牌清理
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=furniture-forms # 87项：圆角、弧背、真实支撑、UV、反射与材质回归
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=furniture-hyper3d # 11项：真实来源复用、玻璃、承重面、缓存与墙面接触
@@ -62,6 +62,7 @@ $GODOT --headless --path game res://scenes/tests.tscn -- --only=scene-life # 41�
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=landscape # 40项视距、连续地形、树根、透明遮罩、单体隔离与拍照恢复
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=tree-locomotion # 18项树皮镜头预算/误差、低叶、平滑胶囊路线、澪脚道与小葵日程/姿态/节日恢复
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=character-visual # 20项实际鞋底、七人17相位、座椅、掌心、舞蹈、持竿与围裙65样本
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=character-foot-support # 4项：完整鞋底/真实路面、最终帧确认、共同抬升与相对姿态
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=animal-visual # 22项猫动作、栖息地、呼吸、鱼缸与鸟虫
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=environment-visual # 35项天气窗光、湖路远景、餐具支撑、房间显示与拍照恢复
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=material-detail # 40项墙路木牌、水石、连续帆布、炉件、实际遮雨与矩阵
@@ -194,10 +195,13 @@ Pixal3D 的三个老问题：
 
 ## 和用户协作
 
+- **人物问题优先修源资产（2026-10-18用户要求）**：骨骼、蒙皮、裙子/围裙穿模和动作姿态，先检查关闭游戏修正器后的源模型；能通过源网格、权重、骨骼、形态键或源动画解决的，先修改源资产并同步游戏、素材库和来源清单。游戏修正器承担地面适配、动作过渡、动态交互及必要残差辅助，不能仅靠新增运行时补丁就宣称源问题已解决。修后同时检查无辅助源播放与实际游戏画面，并复验此前暴露问题的压力动作。
+
 - **官网与网页版发布**：官网使用 `site/ui.css` 与 `site/assets/ui/`，来自 `game/ui_kit/`，不要另造一套边框。网页版从已验证的冻结工程经 `tools/web/prepare_web.py --source <工程> --target <新目录> --evidence <证据目录>` 构建；保留原UI图集像素坐标，不缩放 `ui_kit/assets`。桌面工程继续Forward+，网页只在独立工程使用Compatibility。发布前检查浏览器实际启动、保存后刷新继续、下载分段、COOP/COEP、WASM MIME与字体；服务器创建新release、核对摘要后原子切换current，保留旧版。完整命令见 `site/README.md` 和 `docs/game-design/WEB.md`。
 
 - 用户说中文，回复用中文，简短直接。
 - **测试默认静音**：为了测试而启动的游戏、自动演示、调试、截图和录像，除音频/配音验收、明确需要声音的复现或用户要求外，一律在测试进程内关闭音频输出；不要修改系统总音量或玩家的持久化音量设置。需要开声音时先说明具体原因，验收结束后恢复测试静音。
+- **当前人物绑定审查会话禁用虚拟显示器（2026-10-18用户再次要求）**：不得创建、重建或自动启动虚拟屏幕，包括性能测试脚本的隐式创建。本会话视觉检查使用现有显示器，纯逻辑检查使用 headless。
 - 纯逻辑测试用 headless；视觉验收必须保留真实渲染并确认画面持续更新，以截图取证。
 - 日期文档是当轮历史；当前引擎、包、测试数、已解决问题和待验范围以CURRENT_STATUS及对应verification为准。更新入口文档时检查矛盾，不批量改写旧日志/旧版本。
 - 四小时是目标；当前45–90分钟只是估算，普通三天/完整两路线/75分乐趣尚未通过。不要把自动演示、游戏日或测试数量当自然时长。

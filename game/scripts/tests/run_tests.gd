@@ -99,6 +99,8 @@ func _ready() -> void:
 		await load("res://scripts/tests/stall_rain_shelter_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=shader-matrices"):
 		await load("res://scripts/tests/shader_matrix_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=character-foot-support"):
+		await load("res://scripts/tests/character_visual_checks.gd").new(self).foot_support_contract()
 	elif OS.get_cmdline_user_args().has("--only=character-visual"):
 		await load("res://scripts/tests/character_visual_checks.gd").new(self).run()
 		await load("res://scripts/tests/character_gait_checks.gd").new(self).run()
@@ -1975,10 +1977,16 @@ func props_checks() -> void:
 		if not f.ends_with(".glb"):
 			continue
 		var id := f.get_basename()
-		if not rep.has(id) or FileAccess.get_modified_time("res://assets/models/" + f) > rep_time + 5:
+		if not rep.has(id):
 			stale.append(id)
 			continue
 		var r: Dictionary = rep[id]
+		# A measured content hash survives checkout/COW timestamp changes and
+		# rejects changed exports. Historical measurements retain their fallback.
+		var measured_source: String = str(r.get("source_sha256", ""))
+		if (not measured_source.is_empty() and measured_source != FileAccess.get_sha256("res://assets/models/" + f)) or (measured_source.is_empty() and FileAccess.get_modified_time("res://assets/models/" + f) > rep_time + 5):
+			stale.append(id)
+			continue
 		if float(r.base_frac) >= 0.45 and float(r.tilt) > 2.0:
 			leaning.append("%s %.1f°" % [id, float(r.tilt)])
 		if id not in LandscapeCoverage.PLANTS and float(r.base_frac) >= 0.45 and float(r.get("rect_fill", 0.0)) >= 0.9 and absf(float(r.get("square_deg", 0.0))) > 2.0:

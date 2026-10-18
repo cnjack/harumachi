@@ -1,6 +1,6 @@
 extends SkeletonModifier3D
 ## Keep the existing gait and airborne swing, correcting only a shoe that crosses the floor.
-## Original mesh/clip bytes are untouched; 26 cached extreme points per shoe replace a mesh scan.
+## Terrain assistance only; 26 cached extreme points per shoe replace a mesh scan.
 var model: Node3D
 var actor: Node3D
 var animation: AnimationPlayer
@@ -12,6 +12,7 @@ var qa_trace_enabled := false
 var qa_trace: Dictionary = {}
 var enabled := true
 var source_foundation: Dictionary = {}
+var source_flat_contact: Dictionary = {}
 var updates := 0
 var total_usec := 0
 var max_usec := 0
@@ -151,6 +152,7 @@ func prepare(source: Node3D, player: AnimationPlayer) -> void:
 	var rig: Node = model.find_child("Rig",true,false)
 	var extras: Dictionary = rig.get_meta("extras",{}) if rig != null else {}
 	source_foundation = extras.get("source_pose_foundation",{})
+	source_flat_contact = extras.get("source_flat_floor_contact",{})
 	animation = player
 	if town_patches.is_empty():
 		for z: float in [Layout.STREET_Z - Layout.STREET_HALF, Layout.STREET_Z + Layout.STREET_HALF]:
@@ -290,6 +292,42 @@ func rise_required(sk: Skeleton3D, side: String, floor: Dictionary) -> float:
 		required = maxf(required, FLOOR_MARGIN - gap)
 	return required
 
+func flat_ground_rise(sk: Skeleton3D) -> float:
+	# A small uniform paving offset moves the authored skeleton and cloth
+	# together. Curbs, slopes and unequal support retain individual ankle IK.
+	var minimum_height := INF
+	var maximum_height := -INF
+	var required := 0.0
+	for side: String in ["L", "R"]:
+		var foot: int = LivingPose.bone(sk, "foot." + side)
+		if foot < 0: return 0.0
+		var floor: Dictionary = floor_below(sk.to_global(sk.get_bone_global_pose(foot).origin))
+		if floor.is_empty() or (floor.normal as Vector3).distance_to(Vector3.UP) > .0001: return 0.0
+		var shoe_points: Array[Vector3] = points(sk, side)
+		if shoe_points.is_empty(): return 0.0
+		var minimum := Vector2(INF, INF)
+		var maximum := Vector2(-INF, -INF)
+		for point: Vector3 in shoe_points:
+			minimum = Vector2(minf(minimum.x, point.x), minf(minimum.y, point.z))
+			maximum = Vector2(maxf(maximum.x, point.x), maxf(maximum.y, point.z))
+			var painted: float = visible_town_height(Vector2(point.x, point.z))
+			var height: float = maxf((floor.position as Vector3).y, painted)
+			minimum_height = minf(minimum_height, height)
+			maximum_height = maxf(maximum_height, height)
+		var footprint := Rect2(minimum, maximum - minimum).grow(.002)
+		for curb: Dictionary in town_curbs:
+			if footprint.intersects(curb.rect): maximum_height = maxf(maximum_height, float(curb.height))
+		required = maxf(required, rise_required(sk, side, floor))
+	if maximum_height - minimum_height > .0005 or required > .025: return 0.0
+	return required
+
+func raise_root(sk: Skeleton3D, rise: float) -> void:
+	if rise <= .0002: return
+	var hips: int = LivingPose.bone(sk, "hips")
+	var root_pose: Transform3D = sk.get_bone_global_pose(hips)
+	root_pose.origin += sk.global_basis.inverse() * Vector3.UP * rise
+	sk.set_bone_global_pose(hips, root_pose)
+
 func aim(sk: Skeleton3D, joint: int, end: int, toward: Vector3) -> void:
 	var pose: Transform3D = sk.get_bone_global_pose(joint)
 	var current: Vector3 = sk.get_bone_global_pose(end).origin - pose.origin
@@ -387,11 +425,9 @@ func _process_modification() -> void:
 				common_rise = 0.0
 				break
 			common_rise = minf(common_rise,rise_required(sk,planted,planted_floor))
-		if is_finite(common_rise) and common_rise > .0002:
-			var hips: int = LivingPose.bone(sk,"hips")
-			var root_pose: Transform3D = sk.get_bone_global_pose(hips)
-			root_pose.origin += sk.global_basis.inverse()*Vector3.UP*common_rise
-			sk.set_bone_global_pose(hips,root_pose)
+		if is_finite(common_rise): raise_root(sk, common_rise)
+	elif animation.current_animation in source_flat_contact.get("verified_flat_clips", []):
+		raise_root(sk, flat_ground_rise(sk))
 	for side: String in ["L", "R"]:
 		var foot: int = LivingPose.bone(sk, "foot." + side)
 		if foot < 0 or (samples[side] as Array).is_empty(): continue

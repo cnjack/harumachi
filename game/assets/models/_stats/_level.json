@@ -583,6 +583,7 @@
       -1.0
     ],
     "rect_fill": 0.711,
+    "source_sha256": "0955f26195245a5231bdfd2fe2492c7fd7fdc1ca90d6f4346802769dec65f211",
     "square_deg": 0.13,
     "tilt": 0.0,
     "verts": 55856
@@ -595,6 +596,7 @@
       -1.0
     ],
     "rect_fill": 0.721,
+    "source_sha256": "26f2a248fa7c84549e33eedb50cfca1f49e04fa3cfe6bb5fffed72441cc40492",
     "square_deg": -4.34,
     "tilt": 0.0,
     "verts": 51067
@@ -607,6 +609,7 @@
       -1.0
     ],
     "rect_fill": 0.68,
+    "source_sha256": "82f55f34ccb0aa6df08e628e6cc44d046d81647ffb4312e2547eb0f9ccf686f4",
     "square_deg": -2.22,
     "tilt": 0.0,
     "verts": 57199
@@ -619,6 +622,7 @@
       -1.0
     ],
     "rect_fill": 0.735,
+    "source_sha256": "9cb271aa2a01ed4a115b253991a3c7d1dff5445fce299e1c502bceadd3f98bd0",
     "square_deg": -6.01,
     "tilt": 0.0,
     "verts": 57133
@@ -631,6 +635,7 @@
       -1.0
     ],
     "rect_fill": 0.735,
+    "source_sha256": "baf894e365726bc6814a678011160080754c9a70b81c1a1264bbd18e6da1878b",
     "square_deg": -0.04,
     "tilt": 0.0,
     "verts": 54115
@@ -643,6 +648,7 @@
       -1.0
     ],
     "rect_fill": 0.77,
+    "source_sha256": "d6489e044856eb8038e510abe8dc1f9dbb6a4071fa772f3923bfb754ed1885c9",
     "square_deg": 0.03,
     "tilt": 0.0,
     "verts": 54172
@@ -655,6 +661,7 @@
       -1.0
     ],
     "rect_fill": 0.712,
+    "source_sha256": "bf1d421e202b16e588c5b0520450c0b5bcd8b62fa58ce763d6ef5e4f5bd9edcb",
     "square_deg": 2.15,
     "tilt": 0.0,
     "verts": 50581

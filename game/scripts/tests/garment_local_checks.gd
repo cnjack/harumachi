@@ -17,8 +17,10 @@ func run() -> void:
 	main.world.set_region("town")
 	main.world.set_indoor_look(false)
 	for id: String in ["mio", "ren", "kazuko"]:
+		if OS.get_cmdline_user_args().has("--garment-source-only") and id == "ren": continue
 		await character_contract(id)
-	await load("res://scripts/tests/garment_steady_guard_checks.gd").new(t).run()
+	if not OS.get_cmdline_user_args().has("--garment-source-only"):
+		await load("res://scripts/tests/garment_steady_guard_checks.gd").new(t).run()
 	main.in_room = context.in_room
 	main.room_kind = context.room_kind
 	GameState.player_in_room = context.player_in_room
@@ -54,6 +56,48 @@ func sample(npc: NPC, probe: SkeletonModifier3D, clip: String, phase: float) -> 
 	measured["fresh"] = int(probe.get("completed_request")) == requested and int(measured.get("request_id", -1)) == requested and int(measured.get("applied_frame", -1)) > int(measured.get("request_frame", -1)) and str(measured.get("clip", "")) == clip and absf(float(measured.get("clip_time", INF)) - expected_time) < .0001
 	return measured
 
+func source_contact_contract(id: String, npc: NPC, skeleton: Skeleton3D, probe: SkeletonModifier3D) -> void:
+	# Evaluate the imported source without any production pose/contact modifier.
+	# Every original body vertex and complete triangle witness stays in the probe.
+	var active: Dictionary = {}
+	for child: Node in skeleton.get_children():
+		if child is SkeletonModifier3D and child != probe:
+			active[child] = (child as SkeletonModifier3D).active
+			(child as SkeletonModifier3D).active = false
+	var rig: Node = npc.model.find_child("Rig", true, false)
+	var extras: Dictionary = rig.get_meta("extras", {}) if rig != null else {}
+	var authored: Dictionary = extras.get("source_garment_animation", {})
+	var declared: bool = int(authored.get("version", 0)) == 1 and authored.get("authored_clips", []) == ["idle", "run", "walk"] and bool(authored.get("runtime_owned_source_weights_zero", false))
+	var count := 0
+	var covered := true
+	var owned_zero := true
+	var maximum := 0.0
+	var bad: Array[Dictionary] = []
+	for clip: String in ["idle", "walk", "run"]:
+		var phases: Array[float] = []
+		for index: int in 16: phases.append(float(index) / 16.0)
+		if id == "mio" and clip == "walk": phases.append(.203125)
+		# Include the independent midpoint failures between authored source keys.
+		if id == "kazuko" and clip == "run": phases.append_array([.796875, .8046875, .48046875, .94921875])
+		for phase: float in phases:
+			var measured: Dictionary = await sample(npc, probe, clip, phase)
+			count += 1
+			covered = covered and bool(measured.get("fresh", false)) and int(measured.get("body_vertices", 0)) > 500 and int(measured.get("covered_body_vertices", 0)) > 100
+			var depth: float = float(measured.get("max_penetration_m", INF))
+			maximum = maxf(maximum, depth)
+			var tables: Dictionary = measured.get("blend_shape_values", {})
+			for mesh_name: String in tables:
+				var values: Dictionary = tables[mesh_name]
+				for shape_name: String in values:
+					if shape_name.begins_with("Garment_Local_"):
+						owned_zero = owned_zero and absf(float(values[shape_name])) < .0000001
+			if depth > .005 or not bool(measured.get("fresh", false)):
+				bad.append({"clip": clip, "phase": phase, "depth_m": depth, "fresh": measured.get("fresh", false)})
+	for modifier: Node in active:
+		(modifier as SkeletonModifier3D).active = bool(active[modifier])
+	t.check("GARMENT_SOURCE", id + " source poses contain authored cloth and zero runtime corrections", declared and count == (52 if id == "kazuko" else 49) and covered and owned_zero, JSON.stringify({"samples": count, "coverage": covered, "runtime_owned_weights_zero": owned_zero, "source_profile": authored}))
+	t.check("GARMENT_SOURCE", id + " source idle walk run retain original5mm full-surface gate without helpers", declared and covered and owned_zero and maximum <= .005, JSON.stringify({"samples": count, "max_penetration_m": maximum, "bad": bad, "original_gate_m": .005, "all_production_modifiers_disabled": true}))
+
 func character_contract(id: String) -> void:
 	var npc: NPC = main.npcs[id]
 	var saved: Dictionary = {"position": npc.global_position, "home": npc.home, "process": npc.is_processing(), "yaw": npc._yaw, "clip": npc.anim.ap.current_animation, "time": npc.anim.ap.current_animation_position, "speed": npc.anim.ap.speed_scale, "state": npc.anim._state, "oneshot": npc.anim._oneshot}
@@ -67,6 +111,21 @@ func character_contract(id: String) -> void:
 	probe.name = "FullSourceGarmentRegression"
 	skeleton.add_child(probe)
 	probe.call("prepare", npc.model)
+	if id in ["mio", "kazuko"]:
+		await source_contact_contract(id, npc, skeleton, probe)
+	if OS.get_cmdline_user_args().has("--garment-source-only"):
+		probe.queue_free()
+		npc.global_position = saved.position
+		npc.set_yaw(float(saved.yaw))
+		npc.set_home(bool(saved.home))
+		npc.set_process(bool(saved.process))
+		npc.anim._oneshot = ""
+		npc.anim._go(str(saved.state), 1.0)
+		npc.anim._oneshot = str(saved.oneshot)
+		npc.anim.ap.play(str(saved.clip), 0)
+		npc.anim.ap.seek(float(saved.time), true)
+		npc.anim.ap.speed_scale = float(saved.speed)
+		return
 	var coverage := support != null
 	var clear := true
 	var bounded := true

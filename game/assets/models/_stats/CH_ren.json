@@ -1,7 +1,7 @@
 {
   "id": "CH_ren",
   "tris": 94957,
-  "bytes": 19501612,
+  "bytes": 19553952,
   "bones": 54,
   "animations": [
     "idle",
@@ -17,10 +17,10 @@
     "dance",
     "reference"
   ],
-  "sha256": "093563a8106edcb76139954acf95211ddbc472c96fc7b9dd70254fd191c10df5",
-  "src": "character_leg_foundation_20261018/exports/CH_ren.glb",
+  "sha256": "baf894e365726bc6814a678011160080754c9a70b81c1a1264bbd18e6da1878b",
+  "src": "character_source_cloth_arms_20261018/exports/CH_ren.glb",
   "provider": "Hyper3D Rodin / welded anatomical character pipeline",
   "preserve_rigged_character": true,
   "character_pipeline": "characters-apose-20261004",
-  "rig_review_manifest": "art/manifests/character_leg_foundation_20261018.json"
+  "rig_review_manifest": "art/manifests/character_source_cloth_arms_20261018.json"
 }

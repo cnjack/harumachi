@@ -1,7 +1,7 @@
 {
   "id": "CH_tanaka",
   "tris": 89902,
-  "bytes": 19964684,
+  "bytes": 20014704,
   "bones": 54,
   "animations": [
     "idle",
@@ -17,10 +17,10 @@
     "dance",
     "reference"
   ],
-  "sha256": "c8193d3fe3033b2eb2e08a67b9077a1a619c469811c4c88cccc14f2b45cef1ec",
-  "src": "character_roster_foundation_20261018/exports/CH_tanaka.glb",
+  "sha256": "bf1d421e202b16e588c5b0520450c0b5bcd8b62fa58ce763d6ef5e4f5bd9edcb",
+  "src": "character_source_cloth_arms_20261018/exports/CH_tanaka.glb",
   "provider": "Hyper3D Rodin / welded anatomical character pipeline",
   "preserve_rigged_character": true,
   "character_pipeline": "characters-apose-20261004",
-  "rig_review_manifest": "art/manifests/character_roster_foundation_20261018.json"
+  "rig_review_manifest": "art/manifests/character_source_cloth_arms_20261018.json"
 }

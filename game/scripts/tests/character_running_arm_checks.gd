@@ -286,10 +286,12 @@ func hand_local_difference(first: Dictionary, second: Dictionary, skeleton: Skel
 func fixture_options() -> Dictionary:
 	var actors: Array[String] = IDS.duplicate()
 	var transitions_only := false
+	var source_only := false
 	var fps := 120
 	var valid := true
 	for argument: String in OS.get_cmdline_user_args():
 		if argument == "--running-arm-transitions-only": transitions_only = true
+		elif argument == "--running-arm-source-only": source_only = true
 		elif argument.begins_with("--running-arm-transition-actors="):
 			actors.clear()
 			for actor_part: String in argument.trim_prefix("--running-arm-transition-actors=").split(","):
@@ -303,7 +305,7 @@ func fixture_options() -> Dictionary:
 			valid = valid and requested_fps.is_valid_int()
 			fps = int(requested_fps)
 			valid = valid and fps in [120, 240]
-	return {"actors": actors, "transitions_only": transitions_only, "fps": fps, "valid": valid and not actors.is_empty()}
+	return {"actors": actors, "transitions_only": transitions_only, "source_only": source_only, "fps": fps, "valid": valid and not actors.is_empty()}
 
 func json_trace_value(value: Variant) -> Variant:
 	if value is Vector3:
@@ -355,10 +357,12 @@ func run() -> void:
 		probe.call("prepare", model)
 		probe.set("measure_bones", true)
 		if not bool(options.transitions_only):
-			await actor_contract(id, model, skeleton, natural, has_switch, controller, probe)
-			await hand_style_contract(id, model, skeleton, natural, has_hand_switch, controller, probe)
+			await source_arm_contract(id, model, skeleton, controller, probe)
+			if not bool(options.source_only):
+				await actor_contract(id, model, skeleton, natural, has_switch, controller, probe)
+				await hand_style_contract(id, model, skeleton, natural, has_hand_switch, controller, probe)
 		Engine.max_fps = int(options.fps)
-		await transition_contracts(id, model, skeleton, natural, controller)
+		if not bool(options.source_only): await transition_contracts(id, model, skeleton, natural, controller)
 		Engine.max_fps = saved_max_fps
 		if has_switch: natural.set("running_arms_enabled", bool(saved.arms_enabled))
 		if has_hand_switch: natural.set("running_hand_style_enabled", saved_hand_switch)
@@ -376,8 +380,51 @@ func run() -> void:
 		actor.set_physics_process(bool(saved.physics))
 		if actor is Player: (actor as Player).reset_physics_interpolation()
 
+func source_extras(model: Node3D) -> Dictionary:
+	var rig: Node = model.find_child("Rig", true, false)
+	return rig.get_meta("extras", {}) if rig != null else {}
+
+func source_bone_count(id: String, model: Node3D) -> int:
+	return 66 if id in ["sora", "mio"] else 54
+
+func source_arm_contract(id: String, model: Node3D, skeleton: Skeleton3D, controller: CharAnim, probe: SkeletonModifier3D) -> void:
+	# Independently measure the imported source with every game modifier off.
+	# The old source exceeds these art limits even if its runtime fix is enabled.
+	var modifiers: Dictionary = {}
+	for child: Node in skeleton.get_children():
+		if child is SkeletonModifier3D and child != probe:
+			modifiers[child] = (child as SkeletonModifier3D).active
+			(child as SkeletonModifier3D).active = false
+	var statistics: Dictionary = {"L": new_statistics(), "R": new_statistics()}
+	var wrist_limits: Dictionary = {"sora": -.22, "ren": -.21, "haru": -.22, "mio": -.16, "aoi": -.14, "tanaka": -.20, "kazuko": -.18}
+	var fresh := 0
+	var hands_ok := true
+	var minimum_inward := INF
+	var maximum_wrist_angle := 0.0
+	for index: int in range(PHASE_STEPS + 1):
+		var source: Dictionary = await sample(controller, float(index) / PHASE_STEPS, probe, source_bone_count(id, model))
+		if not bool(source.get("fresh", false)): continue
+		fresh += 1
+		for side: String in ["L", "R"]:
+			accumulate(statistics[side], source, skeleton, model, side, false)
+			var geometry: Dictionary = fist_geometry(source, skeleton, model, side)
+			minimum_inward = minf(minimum_inward, float(geometry.signed_inward_deg))
+			maximum_wrist_angle = maxf(maximum_wrist_angle, float(geometry.wrist_total_deg))
+			hands_ok = hands_ok and bool(geometry.valid) and float(geometry.signed_inward_deg) >= 2.0 and float(geometry.wrist_total_deg) <= 10.0
+	var geometry_ok: bool = fresh == PHASE_STEPS + 1
+	for side_name: String in ["L", "R"]:
+		var stats: Dictionary = statistics[side_name]
+		var span: float = float(stats.pitch_max) - float(stats.pitch_min)
+		geometry_ok = geometry_ok and span >= 25.0 and span <= 42.0 and float(stats.wrist_above_shoulder_max) <= float(wrist_limits[id])
+	var authored: Dictionary = source_extras(model).get("source_running_style", {})
+	var declared_ok: bool = int(authored.get("version", 0)) == 1 and bool(authored.get("arms_authored", false)) and bool(authored.get("wrists_authored", false)) and bool(authored.get("grip_authored", false)) and not bool(authored.get("runtime_arm_style_required", true))
+	check(id + " source run keeps low compact arms without game modifiers", declared_ok and geometry_ok, {"fresh_samples": fresh, "expected": PHASE_STEPS + 1, "statistics": statistics, "upper_span_limits_deg": [25, 42], "wrist_shoulder_limit_m": wrist_limits[id], "source_profile": authored, "all_game_modifiers_disabled": true})
+	check(id + " source running wrists stay neutral and slightly inward", declared_ok and fresh == PHASE_STEPS + 1 and hands_ok, {"fresh_samples": fresh, "minimum_inward_deg": minimum_inward, "maximum_wrist_angle_deg": maximum_wrist_angle, "limits_deg": {"minimum_inward": 2, "maximum_total": 10}})
+	for modifier: Node in modifiers:
+		(modifier as SkeletonModifier3D).active = bool(modifiers[modifier])
+
 func actor_contract(id: String, model: Node3D, skeleton: Skeleton3D, natural: Node, has_switch: bool, controller: CharAnim, probe: SkeletonModifier3D) -> void:
-	var expected_count: int = 66 if id in ["sora", "mio"] else 54
+	var expected_count: int = source_bone_count(id, model)
 	var statistics: Dictionary = {"L": new_statistics(), "R": new_statistics()}
 	var fresh_samples := 0
 	var baseline_samples := 0
@@ -506,7 +553,7 @@ func dynamic_sleeve_bones(model: Node3D, skeleton: Skeleton3D) -> Dictionary:
 	return {"valid": valid, "indices": indices, "names": names, "chains": chains, "simulator": str(simulator.get_path())}
 
 func hand_style_contract(id: String, model: Node3D, skeleton: Skeleton3D, natural: Node, has_hand_switch: bool, controller: CharAnim, probe: SkeletonModifier3D) -> void:
-	var expected_count: int = 66 if id in ["sora", "mio"] else 54
+	var expected_count: int = source_bone_count(id, model)
 	var fresh_pairs := 0
 	var geometry_ok := true
 	var isolation_ok := true
@@ -575,6 +622,7 @@ func hand_style_contract(id: String, model: Node3D, skeleton: Skeleton3D, natura
 			(sides[side] as Array).append({"phase": phase, "before": before, "after": after, "local_hand_rotation_change_deg": hand_change})
 	var side_details: Dictionary = {}
 	var required_sides := 0
+	var source_authored: bool = bool((source_extras(model).get("source_running_style", {}) as Dictionary).get("wrists_authored", false))
 	for measured_side: String in ["L", "R"]:
 		var entries: Array = sides[measured_side]
 		if entries.size() != PHASE_STEPS + 1:
@@ -589,7 +637,7 @@ func hand_style_contract(id: String, model: Node3D, skeleton: Skeleton3D, natura
 			preserved_side_max = maxf(preserved_side_max, float(entry.local_hand_rotation_change_deg))
 		var outward_before: float = maxf(0.0, -float(front.before.signed_inward_deg))
 		var outward_after: float = maxf(0.0, -float(front.after.signed_inward_deg))
-		var required: bool = outward_before > 1.0 and not (id == "mio" and measured_side == "L")
+		var required: bool = not source_authored and outward_before > 1.0 and not (id == "mio" and measured_side == "L")
 		var improvement_required: float = minf(3.0, outward_before * .5) if required else 0.0
 		var midline_gain: float = float(front.before.midline_distance_m) - float(front.after.midline_distance_m)
 		var midline_required: float = float(front.before.hand_length_m) * .005 if required else 0.0
@@ -601,8 +649,8 @@ func hand_style_contract(id: String, model: Node3D, skeleton: Skeleton3D, natura
 		side_details[measured_side] = {"front": front, "back": back, "required_outward_improvement_deg": improvement_required, "outward_improvement_deg": outward_before - outward_after, "midline_gain_m": midline_gain, "required_midline_gain_m": midline_required, "all_phase_local_rotation_change_max_deg": preserved_side_max}
 	print("RUNNING_HAND_GEOMETRY_TRACE ", JSON.stringify({"character": id, "hand_style_switch_available": has_hand_switch, "fresh_pairs": fresh_pairs, "sides": sides}))
 	var complete: bool = fresh_pairs == PHASE_STEPS + 1
-	isolation_ok = complete and bool(dynamic.valid) and (dynamic.indices as Array).size() == (12 if expected_count == 66 else 0) and body_bones_measured == 22 and observed_finger_bones == 30 and other_position_max < .00005 and other_rotation_max < .1 and local_position_max < .00005 and local_scale_max < .0001 and hand_rotation_max <= 20.0 and finger_rotation_max < .1
-	check(id + " running forward fists reduce outward deviation without forcing a common wrist angle", complete and geometry_ok and required_sides > 0, {"hand_style_switch_available": has_hand_switch, "fresh_pairs": fresh_pairs, "expected_pairs": PHASE_STEPS + 1, "required_sides": required_sides, "sides": side_details, "policy": "Independent final MCP-centroid/forearm geometry: outward error improves by min(3deg,half original), MCP moves inward by 0.5% hand length; full wrist angle <=max(original,12deg)+2deg; back swing returns original; Mio left stays original"})
+	isolation_ok = complete and bool(dynamic.valid) and (dynamic.indices as Array).size() == (12 if id in ["sora", "mio"] else 0) and body_bones_measured == 22 and observed_finger_bones == 30 and other_position_max < .00005 and other_rotation_max < .1 and local_position_max < .00005 and local_scale_max < .0001 and hand_rotation_max <= 20.0 and finger_rotation_max < .1
+	check(id + " running forward fists reduce outward deviation without forcing a common wrist angle", complete and geometry_ok and (source_authored or required_sides > 0), {"hand_style_switch_available": has_hand_switch, "fresh_pairs": fresh_pairs, "expected_pairs": PHASE_STEPS + 1, "required_sides": required_sides, "sides": side_details, "source_authored": source_authored, "policy": "Independent final MCP-centroid/forearm geometry: outward error improves by min(3deg,half original), MCP moves inward by 0.5% hand length; full wrist angle <=max(original,12deg)+2deg; back swing returns original; Mio left stays original"})
 	check(id + " running fist styling preserves arm centers body and all finger local articulation", isolation_ok, {"fresh_pairs": fresh_pairs, "other_bone_position_m": other_position_max, "other_bone_rotation_deg": other_rotation_max, "local_hand_finger_position_m": local_position_max, "local_hand_finger_scale": local_scale_max, "hand_local_rotation_change_deg": hand_rotation_max, "finger_local_rotation_change_deg": finger_rotation_max, "finger_bones": observed_finger_bones, "unchanged_body_bones": body_bones_measured, "worst_body_position": worst_body_position, "worst_body_rotation": worst_body_rotation, "dynamic_sleeves": dynamic, "dynamic_position_max_m": dynamic_position_max, "dynamic_rotation_max_deg": dynamic_rotation_max, "worst_dynamic_position": worst_dynamic_position, "worst_dynamic_rotation": worst_dynamic_rotation, "sampling_scope": "All original 54 bones protected: 22 non-Hand body bones at 50um/0.1deg plus both Hand T/S and 30 finger local TRS. Only validated GLB metadata chains of the actual active native spring are separately reported because their integration continues between paused-AP callbacks.", "limits": {"position_m": .00005, "rotation_deg": .1, "hand_rotation_deg": 20.0, "scale": .0001}})
 	var nonrun_pairs := 0
 	var nonrun_expected := 0
@@ -657,7 +705,7 @@ func rotation_diameter(values: Array) -> float:
 			diameter = maxf(diameter, rad_to_deg((values[first_index] as Quaternion).angle_to(values[second_index] as Quaternion)))
 	return diameter
 
-func transition_statistics(reference: Dictionary, rows: Array[Dictionary], request: int, target: String, clip_length: float, activation: Dictionary) -> Dictionary:
+func transition_statistics(reference: Dictionary, rows: Array[Dictionary], request: int, target: String, clip_length: float, activation: Dictionary, source_authored: bool) -> Dictionary:
 	var point_paths: Dictionary = {"fore.L": [], "hand.L": [], "fist.L": [], "fore.R": [], "hand.R": [], "fist.R": []}
 	var rotation_paths: Dictionary = {"upper.L": [], "fore.L": [], "hand.L": [], "upper.R": [], "fore.R": [], "hand.R": []}
 	var reference_valid: bool = bool(reference.get("fresh", false)) and bool(reference.get("settled", false))
@@ -794,8 +842,29 @@ func transition_statistics(reference: Dictionary, rows: Array[Dictionary], reque
 		entry["rotations"] = rotation_residuals
 		interpolation_trace.append(entry)
 	var effect_observed: bool = max_point_diameter >= .005 or max_rotation_diameter >= 2.0
-	var coverage: bool = reference_valid and fresh and correct_clip and geometry_valid and valid_clock and rows.size() >= 16 and positive_clock_steps >= 8 and clock_travel >= CharAnim.BLEND + .12 and first_step_qualified and qualified_triplets >= 8 and early_triplets >= 3 and tail_triplets >= 2 and crossing_triplets >= 1 and steady_triplets >= 3 and effect_observed
-	return {"ok": coverage and maximum_first_angle_excess <= .001 and maximum_position_excess <= .000001 and maximum_rotation_excess <= .001, "coverage": coverage, "reference_valid": reference_valid, "fresh": fresh, "target_clip_observed_throughout": correct_clip, "valid_actual_ap_clock": valid_clock, "fresh_frame_samples": rows.size(), "positive_actual_ap_clock_steps": positive_clock_steps, "actual_ap_clock_advance_s": clock_travel, "first_step_qualified": first_step_qualified, "first_step": first_step_details, "maximum_first_rotation_limit_excess_deg": maximum_first_angle_excess, "qualified_triplets": qualified_triplets, "early_blend_triplets": early_triplets, "blend_tail_triplets": tail_triplets, "blend_crossing_triplets": crossing_triplets, "steady_tail_triplets": steady_triplets, "correction_effect_observed": effect_observed, "arm_chain_lengths_m": arm_lengths, "point_path_diameters_m": point_diameters, "rotation_path_diameters_deg": rotation_diameters, "maximum_raw_interpolation_position_m": maximum_raw_position, "maximum_final_interpolation_position_m": maximum_final_position, "maximum_added_interpolation_position_m": maximum_position_added, "maximum_raw_interpolation_rotation_deg": maximum_raw_rotation, "maximum_final_interpolation_rotation_deg": maximum_final_rotation, "maximum_added_interpolation_rotation_deg": maximum_rotation_added, "maximum_position_limit_excess_m": maximum_position_excess, "maximum_rotation_limit_excess_deg": maximum_rotation_excess, "worst_position": worst_position, "worst_rotation": worst_rotation, "interpolation_trace": interpolation_trace, "continuity_policy": "New arm corrections must not increase discrete impulses: first qualified local correction step <=25% of its measured rotation path +0.5 degree; actual AP-clock three-point final residual minus raw residual <=1% of that side's complete arm length and <=2 degrees. Entry, fresh triplets, blend interior, blend-end crossing and steady tail must all be sampled. Raw/final absolute residuals remain reported; this does not qualify the original AP as jump-free."}
+	var source_point_diameter := 0.0
+	var source_rotation_diameter := 0.0
+	var maximum_applied_point := 0.0
+	var maximum_applied_rotation := 0.0
+	if source_authored:
+		for source_point_label: String in point_paths:
+			var source_point_path: Array = [reference.raw_relative_points[source_point_label]]
+			for point_row: Dictionary in rows:
+				source_point_path.append(point_row.raw_relative_points[source_point_label])
+				maximum_applied_point = maxf(maximum_applied_point,(point_row.points[source_point_label] as Vector3).length())
+			source_point_diameter = maxf(source_point_diameter,vector_diameter(source_point_path))
+		for source_rotation_label: String in rotation_paths:
+			var source_rotation_path: Array = [reference.raw_local_rotations[source_rotation_label]]
+			for rotation_row: Dictionary in rows:
+				source_rotation_path.append(rotation_row.raw_local_rotations[source_rotation_label])
+				var delta: Quaternion = rotation_row.rotations[source_rotation_label]
+				maximum_applied_rotation = maxf(maximum_applied_rotation,rad_to_deg(2.0*atan2(Vector3(delta.x,delta.y,delta.z).length(),absf(delta.w))))
+			source_rotation_diameter = maxf(source_rotation_diameter,rotation_diameter(source_rotation_path))
+	# Source style must move through real AP blending with no duplicate arm
+	# correction. Legacy assets still require an observable runtime correction.
+	var source_passthrough: bool = source_authored and (source_point_diameter >= .005 or source_rotation_diameter >= 2.0) and maximum_applied_point < .00005 and maximum_applied_rotation < .1
+	var coverage: bool = reference_valid and fresh and correct_clip and geometry_valid and valid_clock and rows.size() >= 16 and positive_clock_steps >= 8 and clock_travel >= CharAnim.BLEND + .12 and first_step_qualified and qualified_triplets >= 8 and early_triplets >= 3 and tail_triplets >= 2 and crossing_triplets >= 1 and steady_triplets >= 3 and (source_passthrough if source_authored else effect_observed)
+	return {"ok": coverage and maximum_first_angle_excess <= .001 and maximum_position_excess <= .000001 and maximum_rotation_excess <= .001, "coverage": coverage, "reference_valid": reference_valid, "fresh": fresh, "target_clip_observed_throughout": correct_clip, "valid_actual_ap_clock": valid_clock, "fresh_frame_samples": rows.size(), "positive_actual_ap_clock_steps": positive_clock_steps, "actual_ap_clock_advance_s": clock_travel, "first_step_qualified": first_step_qualified, "first_step": first_step_details, "maximum_first_rotation_limit_excess_deg": maximum_first_angle_excess, "qualified_triplets": qualified_triplets, "early_blend_triplets": early_triplets, "blend_tail_triplets": tail_triplets, "blend_crossing_triplets": crossing_triplets, "steady_tail_triplets": steady_triplets, "correction_effect_observed": effect_observed, "source_authored": source_authored, "source_motion_and_passthrough_verified": source_passthrough, "source_point_motion_diameter_m": source_point_diameter, "source_rotation_motion_diameter_deg": source_rotation_diameter, "maximum_duplicate_point_shift_m": maximum_applied_point, "maximum_duplicate_rotation_deg": maximum_applied_rotation, "arm_chain_lengths_m": arm_lengths, "point_path_diameters_m": point_diameters, "rotation_path_diameters_deg": rotation_diameters, "maximum_raw_interpolation_position_m": maximum_raw_position, "maximum_final_interpolation_position_m": maximum_final_position, "maximum_added_interpolation_position_m": maximum_position_added, "maximum_raw_interpolation_rotation_deg": maximum_raw_rotation, "maximum_final_interpolation_rotation_deg": maximum_final_rotation, "maximum_added_interpolation_rotation_deg": maximum_rotation_added, "maximum_position_limit_excess_m": maximum_position_excess, "maximum_rotation_limit_excess_deg": maximum_rotation_excess, "worst_position": worst_position, "worst_rotation": worst_rotation, "interpolation_trace": interpolation_trace, "continuity_policy": "New arm corrections must not increase discrete impulses: first qualified local correction step <=25% of its measured rotation path +0.5 degree; actual AP-clock three-point final residual minus raw residual <=1% of that side's complete arm length and <=2 degrees. Entry, fresh triplets, blend interior, blend-end crossing and steady tail must all be sampled. Raw/final absolute residuals remain reported; this does not qualify the original AP as jump-free."}
 
 func live_transition(id: String, controller: CharAnim, probe: TransitionFinalArmProbe, reference: Dictionary, source_clip: String, target_clip: String, speed: float) -> Dictionary:
 	var requested: int = probe.request()
@@ -806,7 +875,9 @@ func live_transition(id: String, controller: CharAnim, probe: TransitionFinalArm
 		await t.get_tree().process_frame
 		controller.update(speed)
 	var captured: Array[Dictionary] = probe.rows.duplicate(true)
-	var statistics: Dictionary = transition_statistics(reference, captured, requested, target_clip, controller.ap.get_animation(target_clip).length, activation)
+	var authored: Dictionary = source_extras(probe.model).get("source_running_style", {})
+	var source_authored: bool = bool(authored.get("arms_authored",false)) and bool(authored.get("wrists_authored",false))
+	var statistics: Dictionary = transition_statistics(reference, captured, requested, target_clip, controller.ap.get_animation(target_clip).length, activation, source_authored)
 	var interpolation_trace: Array = statistics.get("interpolation_trace", [])
 	statistics.erase("interpolation_trace")
 	statistics["source_clip"] = source_clip

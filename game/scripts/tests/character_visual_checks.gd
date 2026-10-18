@@ -255,15 +255,32 @@ func dance_transition_contract() -> void:
 func support_sample(animation: CharAnim, clip: String, phase: float, probe: SkeletonModifier3D) -> Dictionary:
 	animation.ap.play(clip, 0)
 	animation.ap.speed_scale = 0
-	animation.ap.seek(animation.ap.get_animation(clip).length * phase, true)
-	await t.frames(2)
-	return {"soles": (probe.get("soles") as Dictionary).duplicate(true), "joints": (probe.get("joints") as Dictionary).duplicate(true)}
+	var resource: Animation = animation.ap.get_animation(clip)
+	var at: float = resource.length * phase
+	if resource.loop_mode != Animation.LOOP_NONE: at = fposmod(at, resource.length)
+	animation.ap.seek(at, true)
+	animation.ap.advance(0)
+	var natural: Node = probe.get_skeleton().get_node_or_null("NaturalLocomotionPose")
+	if natural != null and natural.has_method("finish_transition"): natural.call("finish_transition")
+	# Physics ticks can repeat an earlier modifier snapshot in headless tests.
+	# Require the final modifier to acknowledge this exact source time later.
+	for settle_frame: int in 3: await t.get_tree().process_frame
+	var requested: int = probe.call("request", clip, at)
+	var measured: Dictionary = {}
+	for capture_frame: int in 8:
+		await t.get_tree().process_frame
+		if int(probe.get("completed_request")) != requested: continue
+		measured = (probe.get("result") as Dictionary).duplicate(true)
+		if int(measured.get("request_id", -1)) == requested: break
+	var fresh: bool = int(measured.get("request_id", -1)) == requested and str(measured.get("clip", "")) == clip and absf(float(measured.get("clip_time", INF)) - at) < .0001 and int(measured.get("applied_frame", -1)) > int(measured.get("request_frame", -1))
+	return {"soles": measured.get("soles", {}), "joints": measured.get("joints", {}), "fresh": fresh}
 
 func foot_support_contract() -> void:
 	var gait_ok := true
 	var standing_ok := true
 	var upper_ok := true
 	var swing_ok := true
+	var samples_fresh := true
 	var gait_details: Array[String] = []
 	var standing_details: Array[String] = []
 	var invariant_details: Array[String] = []
@@ -280,6 +297,9 @@ func foot_support_contract() -> void:
 	for id: String in ["sora", "ren", "haru", "mio", "aoi", "tanaka", "kazuko"]:
 		var target: Node3D = main.player if id == "sora" else main.npcs[id]
 		var source: Node3D = target.get("model") as Node3D
+		var source_rig: Node = source.find_child("Rig", true, false)
+		var flat_source: Dictionary = (source_rig.get_meta("extras", {}) as Dictionary).get("source_flat_floor_contact", {}) if source_rig != null else {}
+		var verified_run: bool = int(flat_source.get("version", 0)) == 1 and "run" in flat_source.get("verified_flat_clips", [])
 		var controller: CharAnim = target.get("anim") as CharAnim
 		var saved: Dictionary = {"position": target.global_position, "visible": target.visible, "process": target.is_processing(), "physics": target.is_physics_processing(), "model_transform": source.transform, "clip": controller.ap.current_animation, "time": controller.ap.current_animation_position, "speed": controller.ap.speed_scale}
 		target.set_process(false)
@@ -304,6 +324,7 @@ func foot_support_contract() -> void:
 			for clip: String in ["walk", "run"]:
 				for index: int in range(17):
 					var gait_sample: Dictionary = await support_sample(controller, clip, index / 16.0, probe)
+					samples_fresh = samples_fresh and bool(gait_sample.fresh)
 					var gait_left: float = float(gait_sample.soles.get("ground_gap_L", float(gait_sample.soles.L) - float(fixture.height))) if fixture.name == "curb" else float(gait_sample.soles.L) - float(fixture.height)
 					var gait_right: float = float(gait_sample.soles.get("ground_gap_R", float(gait_sample.soles.R) - float(fixture.height))) if fixture.name == "curb" else float(gait_sample.soles.R) - float(fixture.height)
 					lowest = minf(lowest, minf(gait_left, gait_right))
@@ -313,6 +334,7 @@ func foot_support_contract() -> void:
 			for clip: String in ["idle", "wave", "bow", "cheer", "tend", "dance"]:
 				for phase: float in ([.25, .75] if clip == "dance" else [.5]):
 					var standing_sample: Dictionary = await support_sample(controller, clip, phase, probe)
+					samples_fresh = samples_fresh and bool(standing_sample.fresh)
 					var standing_left: float = float(standing_sample.soles.get("ground_gap_L", float(standing_sample.soles.L) - float(fixture.height))) if fixture.name == "curb" else float(standing_sample.soles.L) - float(fixture.height)
 					var standing_right: float = float(standing_sample.soles.get("ground_gap_R", float(standing_sample.soles.R) - float(fixture.height))) if fixture.name == "curb" else float(standing_sample.soles.R) - float(fixture.height)
 					standing_lowest = minf(standing_lowest, minf(standing_left, standing_right))
@@ -325,14 +347,32 @@ func foot_support_contract() -> void:
 			var original: Dictionary = await support_sample(controller, "run", phase, probe)
 			if support != null: support.set("enabled", true)
 			var corrected: Dictionary = await support_sample(controller, "run", phase, probe)
+			samples_fresh = samples_fresh and bool(original.fresh) and bool(corrected.fresh)
+			# This fixture is the measured uniform street, away from curbs. An
+			# independently bounded whole-skeleton lift must preserve relative
+			# source poses. The cached 26-point envelope is not the full shoe, so
+			# measure the actual shared lift rather than inventing an exact value.
+			# Unsupported sources retain the absolute gate.
+			var needed_rise: float = maxf(0.0, .008 + float(fixtures[0].height) - minf(float(original.soles.L), float(original.soles.R)))
+			var before_root: Array = original.joints.hips
+			var after_root: Array = corrected.joints.hips
+			var actual_root_shift: Vector3 = Vector3(after_root[0], after_root[1], after_root[2]) - Vector3(before_root[0], before_root[1], before_root[2])
+			var source_lift_allowed: bool = verified_run and needed_rise <= .025
+			var common_valid: bool = actual_root_shift.y >= -.0001 and absf(actual_root_shift.x) < .0001 and absf(actual_root_shift.z) < .0001 and actual_root_shift.y <= minf(.025, needed_rise) + .001
+			if source_lift_allowed and needed_rise > .0002: common_valid = common_valid and actual_root_shift.y > .0002
+			if not source_lift_allowed: common_valid = actual_root_shift.length() < .001
+			var common_shift: Vector3 = Vector3.UP * actual_root_shift.y if source_lift_allowed else Vector3.ZERO
+			upper_ok = upper_ok and common_valid
+			swing_ok = swing_ok and common_valid
+			invariant_details.append("%s/%.2f full-shoe lift upper bound %.6fm; actual %s; valid %s" % [id, phase, needed_rise, actual_root_shift, common_valid])
 			for joint: String in ["hips", "head", "hand.R"]:
 				var before: Array = original.joints[joint]
 				var after: Array = corrected.joints[joint]
-				upper_ok = upper_ok and Vector3(before[0], before[1], before[2]).distance_to(Vector3(after[0], after[1], after[2])) < .001
+				upper_ok = upper_ok and (Vector3(after[0], after[1], after[2]) - Vector3(before[0], before[1], before[2]) - common_shift).length() < .001
 			for side: String in ["L", "R"]:
 				if float(original.soles[side]) > .06 + float(fixtures[0].height):
 					swings += 1
-					swing_ok = swing_ok and absf(float(corrected.soles[side]) - float(original.soles[side])) < .001
+					swing_ok = swing_ok and absf(float(corrected.soles[side]) - float(original.soles[side]) - common_shift.y) < .001
 				for pair: Array in [["thigh." + side, "shin." + side], ["shin." + side, "foot." + side]]:
 					var old_first: Array = original.joints[pair[0]]
 					var old_second: Array = original.joints[pair[1]]
@@ -354,10 +394,10 @@ func foot_support_contract() -> void:
 		target.visible = bool(saved.visible)
 		target.set_process(bool(saved.process))
 		target.set_physics_process(bool(saved.physics))
-	t.check("CHARACTER_VISUAL", "all seven walk and run clips clear actual visible street plaza grass and curbs at seventeen phases", gait_ok, str(gait_details))
-	t.check("CHARACTER_VISUAL", "standing gestures and idle clear actual visible street plaza grass and curbs for all seven actors", standing_ok, str(standing_details))
-	t.check("CHARACTER_VISUAL", "shoe support preserves upper body and leg lengths using at most 26 probes per foot", upper_ok, str(invariant_details))
-	t.check("CHARACTER_VISUAL", "shoe support leaves raised swing feet and running flight untouched", swing_ok and swings >= 7, "%d raised shoes checked" % swings)
+	t.check("CHARACTER_VISUAL", "all seven walk and run clips clear actual visible street plaza grass and curbs at seventeen phases", samples_fresh and gait_ok, str(gait_details))
+	t.check("CHARACTER_VISUAL", "standing gestures and idle clear actual visible street plaza grass and curbs for all seven actors", samples_fresh and standing_ok, str(standing_details))
+	t.check("CHARACTER_VISUAL", "shoe support preserves upper body relative to bounded paving lift and leg lengths using at most 26 probes per foot", samples_fresh and upper_ok, str(invariant_details))
+	t.check("CHARACTER_VISUAL", "shoe support preserves raised swing feet relative to bounded paving lift and leaves running flight untouched", samples_fresh and swing_ok and swings >= 7, "%d raised shoes checked; fresh %s; original1mm relative gate and independent full-shoe/root lift bound" % [swings, samples_fresh])
 
 func hand_tone_contract() -> void:
 	var model: Node3D = main.npcs.aoi.model

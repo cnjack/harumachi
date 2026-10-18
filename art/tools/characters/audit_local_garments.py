@@ -88,6 +88,7 @@ def mesh_state(path,who):
     masks=[garment&((z-hip_z)*sign>.025) for sign in [1,-1]]
     layers={side:faces[np.all(mask[faces],axis=1)] for side,mask in zip(['front','back'],masks)}
     binds=read(d,b,skin['inverseBindMatrices']).reshape(-1,4,4).transpose(0,2,1)
+    if any(not np.isfinite(shape).all() for shape in shapes):raise ValueError('Source morph payload must be finite even when its weight is zero')
     cloth_faces=np.concatenate(list(layers.values()));cloth_vertices=np.unique(cloth_faces)
     body_faces=faces[np.all(np.isin(faces,body),axis=1)]
     return dict(d=d,b=b,node=node,ni=ni,positions=positions,joints=joints,weights=weights,shapes=shapes,names=names,local=local,body=body,body_faces=body_faces,layers=layers,binds=binds,skin=skin,cloth_faces=cloth_faces,cloth_vertices=cloth_vertices)
@@ -118,6 +119,7 @@ def pose(state,clip,time,row=None,disable_global=False,actual_shapes=False,disab
         # this option and still require every native scalar plus matching SHA.
         values=np.array([float(table[name]) if name in table else values[i] for i,name in enumerate(state['names'])])
     for i,(v,delta) in enumerate(zip(values,state['shapes'])):
+        if v == 0.:continue
         if (i in state['local'] and (not actual_shapes or disable_local)) or (disable_global and state['names'][i] in ['Skirt_Clearance','Apron_Clearance']):continue
         rest+=v*delta
     base=np.zeros_like(rest,dtype=float);direction=np.zeros_like(rest,dtype=float);pos4=np.c_[rest,np.ones(len(rest))]

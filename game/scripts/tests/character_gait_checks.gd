@@ -86,6 +86,7 @@ func floor_height(support: Node,at: Vector3) -> float:
 
 func run() -> void:
 	for id: String in ["sora","ren","haru","mio","aoi","tanaka","kazuko"]:
+		if OS.get_cmdline_user_args().has("--flat-ground-only") and id not in ["sora","haru","mio","kazuko"]: continue
 		var actor: Node3D=main.player if id=="sora" else main.npcs[id]
 		var model: Node3D=actor.get("model") as Node3D
 		var controller: CharAnim=actor.get("anim") as CharAnim
@@ -104,13 +105,16 @@ func run() -> void:
 		probe.call("prepare",model)
 		probe.set("measure_feet",true)
 		probe.set("measure_bones",true)
-		if id in ["sora","ren","aoi","tanaka","kazuko"]:
-			await standing_contract(id,model,sk,support,controller,probe)
-		if id in ["sora","kazuko"]:
-			await source_walk_contract(model,sk,controller,probe,id)
-		if id in ["mio","aoi","tanaka","kazuko"]:
-			await source_foundation_contract(id,model,sk,controller,probe)
-		await gait_contract(id,model,sk,support,controller,probe)
+		if id in ["sora","haru","mio","kazuko"]:
+			await flat_contact_contract(id,model,sk,support,controller,probe)
+		if not OS.get_cmdline_user_args().has("--flat-ground-only"):
+			if id in ["sora","ren","aoi","tanaka","kazuko"]:
+				await standing_contract(id,model,sk,support,controller,probe)
+			if id in ["sora","kazuko"]:
+				await source_walk_contract(model,sk,controller,probe,id)
+			if id in ["mio","aoi","tanaka","kazuko"]:
+				await source_foundation_contract(id,model,sk,controller,probe)
+			await gait_contract(id,model,sk,support,controller,probe)
 		probe.queue_free()
 		actor.global_position=saved.position
 		model.transform=saved.model_transform
@@ -123,6 +127,43 @@ func run() -> void:
 		actor.set_process(bool(saved.process))
 		actor.set_physics_process(bool(saved.physics))
 		if actor is Player:(actor as Player).reset_physics_interpolation()
+
+func flat_contact_contract(id: String,model: Node3D,sk: Skeleton3D,support: Node,controller: CharAnim,probe: SkeletonModifier3D) -> void:
+	var active: Dictionary = {}
+	for child: Node in sk.get_children():
+		if child is SkeletonModifier3D and child != probe:
+			active[child] = (child as SkeletonModifier3D).active
+			(child as SkeletonModifier3D).active = false
+	var minimum_source := INF
+	var minimum_final := INF
+	var maximum_rise := 0.0
+	var relative_error := 0.0
+	var basis_error := 0.0
+	var fresh := 0
+	for clip: String in ["walk","run"]:
+		for phase: float in [0.,.125,.375,.625,.875]:
+			(support as SkeletonModifier3D).active = false
+			var raw: Dictionary = await sample(controller,clip,phase,probe)
+			(support as SkeletonModifier3D).active = true
+			var placed: Dictionary = await sample(controller,clip,phase,probe)
+			if not bool(raw.get("fresh",false)) or not bool(placed.get("fresh",false)): continue
+			fresh += 1
+			var shift: Vector3 = point(placed,"hips") - point(raw,"hips")
+			maximum_rise = maxf(maximum_rise,shift.y)
+			for side: String in ["L","R"]:
+				minimum_source = minf(minimum_source,float(raw.soles[side])-model.global_position.y)
+				minimum_final = minf(minimum_final,float(placed.soles[side])-floor_height(support,point(placed,"foot."+side)))
+			for joint: String in raw.joints:
+				relative_error = maxf(relative_error,(point(placed,joint)-point(raw,joint)-shift).length())
+			for bone: int in sk.get_bone_count():
+				var first: Basis = bone_world_basis(raw,bone)
+				var second: Basis = bone_world_basis(placed,bone)
+				basis_error = maxf(basis_error,maxf(first.x.distance_to(second.x),maxf(first.y.distance_to(second.y),first.z.distance_to(second.z))))
+	for child: SkeletonModifier3D in active: child.active = bool(active[child])
+	# Terrain keeps the existing -4mm complete-shoe tolerance; the independent
+	# source-flat gate is stricter at +6mm. Basis vectors avoid quaternion-angle
+	# roundoff for otherwise identical float32 rotations.
+	check(id+" source shoes clear flat ground and paving assistance preserves the authored leg and cloth pose",fresh == 10 and minimum_source >= .006 and minimum_final >= -.004 and maximum_rise > .001 and maximum_rise <= .0251 and relative_error < .0001 and basis_error < .0001,"fresh %d/10; raw sole %.6fm; final gap %.6fm; root rise %.6fm; relative joint error %.6fm; basis vector error %.6f" % [fresh,minimum_source,minimum_final,maximum_rise,relative_error,basis_error])
 
 func source_walk_contract(model: Node3D,sk: Skeleton3D,controller: CharAnim,probe: SkeletonModifier3D,id: String) -> void:
 	# This gate failed on the old GLB even when the runtime knee fix passed the

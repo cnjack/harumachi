@@ -1,7 +1,7 @@
 {
   "id": "CH_kazuko",
   "tris": 97948,
-  "bytes": 173325264,
+  "bytes": 44365732,
   "bones": 54,
   "animations": [
     "idle",
@@ -17,10 +17,10 @@
     "dance",
     "reference"
   ],
-  "sha256": "cccc38a550ec8aad7a5f209fc62755914ce3bb04257de69396aef6798a1bf78a",
-  "src": "character_roster_foundation_20261018/exports/CH_kazuko.glb",
+  "sha256": "82f55f34ccb0aa6df08e628e6cc44d046d81647ffb4312e2547eb0f9ccf686f4",
+  "src": "character_source_cloth_arms_20261018/exports/CH_kazuko.glb",
   "provider": "Hyper3D Rodin / welded anatomical character pipeline",
   "preserve_rigged_character": true,
   "character_pipeline": "characters-apose-20261004",
-  "rig_review_manifest": "art/manifests/character_roster_foundation_20261018.json"
+  "rig_review_manifest": "art/manifests/character_source_cloth_arms_20261018.json"
 }
