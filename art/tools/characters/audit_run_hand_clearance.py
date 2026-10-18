@@ -6,6 +6,10 @@ its near-side jacket sheet AND between distinct actual front/back blue sheets.
 This is a local paired-surface relation, not a watertight-volume assertion. It
 rejects ordinary rear-hand visibility occlusion. All seven barycentric samples
 of every semantic hand triangle plus every semantic vertex are checked.
+
+With --native-manifest, skin the unchanged full source mesh using captured final
+world bone bases and actual morph scalars. This is a separate post-modifier audit;
+it does not reconstruct the runtime arm correction or seek the source animation.
 """
 import os
 for name in ('OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'VECLIB_MAXIMUM_THREADS'):
@@ -30,7 +34,7 @@ def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def prepare(path):
+def prepare(path, require_zero_run_morphs=True):
     s = mesh_state(path, 'tanaka')
     doc, raw = s['d'], s['b']
     primitive = doc['meshes'][s['node']['mesh']]['primitives'][0]
@@ -53,7 +57,7 @@ def prepare(path):
     action = next(action for action in doc['animations'] if action['name'] == 'run')
     duration = max(float(read(doc, raw, sampler['input']).max()) for sampler in action['samplers'])
     # No source/candidate run morph may be silently omitted from the LBS audit.
-    for channel in action['channels']:
+    for channel in action['channels'] if require_zero_run_morphs else []:
         if channel['target']['path'] == 'weights':
             if np.any(read(doc, raw, action['samplers'][channel['sampler']]['output']) != 0):
                 raise ValueError('This audit requires the measured run-zero morph fixture')
@@ -62,14 +66,195 @@ def prepare(path):
                 ids={node.get('name'): index for index,node in enumerate(doc['nodes'])})
 
 
-def skin_points(state, world):
+def skin_points(state, world, positions=None):
     s = state['s']
     mats = np.array([world[joint] @ bind for joint,bind in zip(s['skin']['joints'], s['binds'])])
-    homogeneous = np.c_[s['positions'], np.ones(len(s['positions']))]
-    points = np.zeros_like(s['positions'], dtype=float)
+    source = s['positions'] if positions is None else np.asarray(positions, dtype=float)
+    if source.shape != s['positions'].shape or not np.isfinite(source).all():
+        raise ValueError('Skin positions must be complete finite source-mesh vertices')
+    homogeneous = np.c_[source, np.ones(len(source))]
+    points = np.zeros_like(source, dtype=float)
     for column in range(s['joints'].shape[1]):
         points += np.einsum('nij,nj->ni', mats[s['joints'][:,column],:3,:], homogeneous) * s['weights'][:,column,None]
     return points
+
+
+def native_bone_worlds(doc, required_nodes, row):
+    """World capture -> original GLB model frame, retaining real basis/scale.
+
+    Godot stores basis columns as three XYZ arrays. Actor position is deliberately
+    unused: the visual model may have its own offset, heading or scale. Every skin
+    joint must come from the final capture; missing joints never use source tracks.
+    """
+    def array(value, shape, label):
+        result = np.asarray(value, dtype=float)
+        if result.shape != shape or not np.isfinite(result).all():
+            raise ValueError('Native capture needs finite ' + label)
+        return result
+
+    if 'model_basis' not in row or 'model_position' not in row:
+        raise ValueError('Native capture needs model_basis and model_position')
+    basis = array(row['model_basis'], (3, 3), 'model_basis').T
+    origin = array(row['model_position'], (3,), 'model_position')
+    try:
+        inverse = np.linalg.inv(basis)
+    except np.linalg.LinAlgError as error:
+        raise ValueError('Native model_basis is singular') from error
+    if not np.isfinite(inverse).all():
+        raise ValueError('Native model_basis inverse is not finite')
+    bones = row.get('bones')
+    if not isinstance(bones, list) or not bones:
+        raise ValueError('Native capture lacks final bone bases')
+    by_name = {}
+    for bone in bones:
+        name = bone.get('name', '')
+        if name.startswith('mixamorig_'):
+            name = 'mixamorig:' + name[len('mixamorig_'):]
+        if not name or name in by_name:
+            raise ValueError('Native capture has an empty or duplicate bone: ' + name)
+        by_name[name] = bone
+    worlds = {}
+    for node in required_nodes:
+        name = doc['nodes'][node].get('name', '')
+        if name not in by_name:
+            raise ValueError('Native capture lacks required skin joint: ' + name)
+        bone = by_name[name]
+        if 'basis' not in bone or 'position' not in bone:
+            raise ValueError('Native capture lacks complete final transform: ' + name)
+        world = np.eye(4)
+        world[:3, :3] = inverse @ array(bone['basis'], (3, 3), name + ' basis').T
+        world[:3, 3] = inverse @ (array(bone['position'], (3,), name + ' position') - origin)
+        if abs(float(np.linalg.det(world[:3, :3]))) < 1e-12:
+            raise ValueError('Native final bone basis is singular: ' + name)
+        worlds[node] = world
+    return worlds
+
+
+def native_morph_positions(mesh, row):
+    """Apply every actual captured morph, including nonzero runtime residuals."""
+    names = mesh['names']
+    shapes = mesh['shapes']
+    if len(names) != len(shapes) or len(set(names)) != len(names):
+        raise ValueError('Source mesh target names and position deltas differ')
+    actual = row.get('blend_shape_values')
+    if not isinstance(actual, dict):
+        raise ValueError('Native capture lacks actual blend_shape_values')
+    mesh_name = mesh['node'].get('name', '')
+    table = actual.get(mesh_name)
+    if not isinstance(table, dict) or set(table) != set(names):
+        raise ValueError('Native shape table does not cover source mesh: ' + mesh_name)
+    values = np.asarray([table[name] for name in names], dtype=float)
+    if values.shape != (len(names),) or not np.isfinite(values).all():
+        raise ValueError('Native morph values must be finite scalar values')
+    positions = mesh['positions'].astype(float, copy=True)
+    for value, delta in zip(values, shapes):
+        positions += value * delta
+    return positions, dict(zip(names, values.tolist()))
+
+
+def native_points(state, row):
+    """Independent source LBS from all final native joints and actual shapes."""
+    worlds = native_bone_worlds(state['doc'], state['s']['skin']['joints'], row)
+    positions, values = native_morph_positions(state['s'], row)
+    return skin_points(state, worlds, positions=positions), values
+
+
+def native_domain_coverage(state):
+    """Missing semantic coverage is unqualified, never a zero-intersection pass."""
+    torso_faces = len(state['torso_faces'])
+    if not torso_faces:
+        raise ValueError('Native semantic blue-torso face domain is empty')
+    hands = {}
+    for side in ['Left', 'Right']:
+        hand = state['hands'][side]
+        counts = {key: len(hand[key]) for key in ['vertices', 'faces', 'edges']}
+        if not all(counts.values()):
+            raise ValueError('Native semantic hand domain is empty or incomplete: ' + side)
+        hands[side] = counts
+    return dict(blue_torso_faces=torso_faces, hands=hands)
+
+
+def native_sample_clock(row):
+    """Require a finite, same-frame acknowledgement for the captured pose."""
+    ack = row.get('pose_sample', {})
+    if (not ack or ack.get('request_id') is None or ack.get('request_id') != ack.get('acknowledged_request') or
+            ack.get('applied_frame') is None or ack.get('applied_frame') != ack.get('captured_frame') or
+            ack.get('clip') != 'run'):
+        raise ValueError('Native run shot lacks a matching same-frame final-pose acknowledgement')
+    try:
+        time, phase, acknowledged_time = float(row['clip_time']), float(row['phase']), float(ack['clip_time'])
+    except (KeyError, TypeError, ValueError) as error:
+        raise ValueError('Native run shot lacks numeric clip time/phase/acknowledgement') from error
+    if (not np.isfinite([time, phase, acknowledged_time]).all() or time < 0 or
+            not 0 <= phase <= 1 or abs(acknowledged_time - time) > 1e-6):
+        raise ValueError('Native run shot has invalid or inconsistent clip time/phase')
+    return time, phase
+
+
+def audit_native(candidate_path, manifest_path):
+    """Audit every captured Tanaka run shot; retain distinct camera samples."""
+    state = prepare(candidate_path, require_zero_run_morphs=False)
+    rig = next(node for node in state['doc']['nodes'] if node.get('name') == 'Rig')
+    if rig.get('extras', {}).get('character_id') != 'tanaka':
+        raise ValueError('Native blue-coat/hand semantic domain is qualified for Tanaka only')
+    coverage = native_domain_coverage(state)
+    provenance = manifest_path.parent.parent / 'model-hashes.json'
+    if not provenance.is_file():
+        raise ValueError('Native audit requires capture companion model-hashes.json')
+    expected = json.loads(provenance.read_text()).get('CH_tanaka.glb')
+    candidate_hash = sha(candidate_path)
+    if expected != candidate_hash:
+        raise ValueError('Native capture model SHA differs from candidate GLB; recapture this candidate')
+    manifest = json.loads(manifest_path.read_text())
+    shots = manifest.get('shots', [])
+    if not isinstance(shots, list) or not shots or manifest.get('failures'):
+        raise ValueError('Native manifest is incomplete or contains capture failures')
+    for field in ['images', 'expected_images']:
+        if field in manifest and manifest[field] != len(shots):
+            raise ValueError('Native manifest count differs from completed shots: ' + field)
+    selected = [row for row in shots if row.get('id') == 'tanaka' and row.get('clip') == 'run']
+    if not selected:
+        raise ValueError('Native manifest has no Tanaka run shots')
+    samples = []
+    image_files = set()
+    for row in selected:
+        time, phase = native_sample_clock(row)
+        relative = row.get('file', '')
+        image = (manifest_path.parent / relative).resolve()
+        if (not relative or image == manifest_path.parent.resolve() or
+                manifest_path.parent.resolve() not in image.parents or
+                not image.is_file() or image.stat().st_size == 0 or relative in image_files):
+            raise ValueError('Native shot needs a unique nonempty capture image within its folder')
+        image_files.add(relative)
+        points, values = native_points(state, row)
+        intersections = exact_edge_intersections(state, points)
+        for side in ['Left', 'Right']:
+            samples.append(dict(phase=phase, clip='run', clip_time=time, view=row.get('view'),
+                                source_file=relative, image_sha256=sha(image), side=side,
+                                actual_morph_values=values, **measure(state, points, side), **intersections[side]))
+    summary = {}
+    for side in ['Left', 'Right']:
+        rows = [row for row in samples if row['side'] == side]
+        summary[side] = dict(samples=len(rows),
+            exact_crossing_samples=sum(row['exact_hand_edge_crossing_count'] > 0 for row in rows),
+            maximum_exact_edge_crossing_count=max(row['exact_hand_edge_crossing_count'] for row in rows),
+            paired_samples=sum(row['paired_queries'] > 0 for row in rows),
+            reliable_paired_samples=sum(row['reliable_paired_queries'] > 0 for row in rows),
+            maximum_paired_depth_m=max(row['max_all_paired_depth_m'] for row in rows),
+            same_side_occluded_samples=sum(row['one_sided_occluded_queries'] > 0 for row in rows),
+            maximum_same_side_occluded_queries=max(row['one_sided_occluded_queries'] for row in rows),
+            pass_hand_clearance=all(row['paired_queries'] == 0 and row['exact_hand_edge_crossing_count'] == 0 for row in rows),
+            pass_same_side_blue_sheet_visibility=all(row['one_sided_occluded_queries'] == 0 for row in rows))
+    return dict(pass_audit=all(side['pass_hand_clearance'] for side in summary.values()),
+        mode='captured-final-native-bones-and-morphs',
+        scope='Original full source GLB mesh, inverse binds and skin weights, actual final world bones and every captured body morph scalar. Model transform removed with its full inverse. Original semantic bare-hand / blue-torso domains and original exact edge and paired-sheet gates; not a GPU pixel visibility or whole-body intersection assertion. Same-side blue-sheet visibility is reported separately because rear occlusion alone is not physical entry.',
+        candidate_sha256=candidate_hash, native_manifest=str(manifest_path), native_manifest_sha256=sha(manifest_path),
+        native_model_hashes_sha256=sha(provenance), tool_sha256=sha(__file__),
+        native_shots=len(selected), phases=sorted({row['phase'] for row in selected}),
+        views=sorted({str(row.get('view')) for row in selected}),
+        semantic_domain_coverage=coverage,
+        limits=dict(near_sheet_depth_m=.0005, normal_abs_dot_axis=.35),
+        summary=summary, samples=samples)
 
 
 def measure(state, points, side):
@@ -235,9 +420,16 @@ def audit(reference_path, candidate_path, phases):
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--reference',type=Path,required=True);p.add_argument('--candidate',type=Path,required=True)
+    p.add_argument('--reference',type=Path);p.add_argument('--candidate',type=Path,required=True)
+    p.add_argument('--native-manifest',type=Path,help='Audit actual Tanaka run final bones/morphs instead of comparing source clips')
     p.add_argument('--report',type=Path,required=True);p.add_argument('--phases',type=int,default=192)
-    args=p.parse_args();result=audit(args.reference,args.candidate,args.phases)
+    args=p.parse_args()
+    if args.native_manifest:
+        if args.reference:p.error('--reference is for source comparison; use --candidate with --native-manifest')
+        result=audit_native(args.candidate,args.native_manifest)
+    else:
+        if not args.reference:p.error('--reference is required unless --native-manifest is supplied')
+        result=audit(args.reference,args.candidate,args.phases)
     args.report.parent.mkdir(parents=True,exist_ok=True);args.report.write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps({key:value for key,value in result.items() if key!='samples'}),flush=True)
     raise SystemExit(0 if result['pass_audit'] else 1)

@@ -14,7 +14,7 @@ var anchors: Dictionary={}
 var was_stance: Dictionary={}
 var corrections: Dictionary={}
 const NAMES: Array[String]=["hips","chest","thigh.L","thigh.R","shin.L","shin.R","upper.L","upper.R"]
-const TRANSITION_BONES: Array[String]=["hips","chest","head","thigh.L","thigh.R","shin.L","shin.R","foot.L","foot.R","upper.L","upper.R"]
+const TRANSITION_BONES: Array[String]=["hips","chest","head","thigh.L","thigh.R","shin.L","shin.R","foot.L","foot.R","upper.L","upper.R","fore.L","fore.R"]
 var _last_delta: Dictionary={}
 var _blend_from: Dictionary={}
 var _transition_clip: String=""
@@ -23,6 +23,19 @@ var _transition_elapsed: float=0.0
 var _transition_duration: float=0.0
 var _transition_frame: int=-1
 var _pose_actor_position:=Vector3.INF
+# Run-only style correction; the switch is used by final-pose A/B audits.
+var running_arms_enabled:=true
+# Source pitch min/max, desired pitch min/max, elbow at forward/backward peak.
+# These are per-character art targets for a relaxed run, not anatomy limits.
+const RUN_ARM_STYLE: Dictionary={
+ "sora":[-29.0,39.0,-21.0,26.0,74.0,86.0],
+ "ren":[-26.96,36.96,-19.0,24.0,74.0,85.0],
+ "haru":[-55.9,17.8,-31.0,19.0,76.0,86.0],
+ "mio":[-24.92,34.92,-21.0,26.0,76.0,86.0],
+ "aoi":[-32.4,42.4,-24.0,27.0,78.0,88.0],
+ "tanaka":[-20.16,30.16,-18.0,26.0,78.0,86.0],
+ "kazuko":[-24.24,34.24,-21.0,26.0,76.0,86.0]
+}
 var qa_trace_enabled:=false
 var qa_trace: Dictionary={}
 const GAIT_MATCH_WEIGHTS: Dictionary={"hips":.25,"thigh.L":2.0,"thigh.R":2.0,"shin.L":1.0,"shin.R":1.0,"foot.L":.25,"foot.R":.25}
@@ -303,12 +316,57 @@ func _kazuko_running_recovery(sk: Skeleton3D) -> void:
   target+=Vector3.UP*(.20*pulse)
   _place_ankle(sk,side,target,.035)
 
+func _relaxed_running_arms(sk: Skeleton3D) -> void:
+ if not running_arms_enabled or not RUN_ARM_STYLE.has(profile):return
+ var style: Array=RUN_ARM_STYLE[profile]
+ var to_model: Basis=model.global_basis.inverse()*sk.global_basis
+ var to_skeleton: Basis=to_model.inverse()
+ for side: String in ["L","R"]:
+  var upper: int=LivingPose.bone(sk,"upper."+side)
+  var fore: int=LivingPose.bone(sk,"fore."+side)
+  var hand: int=LivingPose.bone(sk,"hand."+side)
+  if mini(upper,mini(fore,hand))<0:continue
+  var shoulder: Vector3=sk.get_bone_global_pose(upper).origin
+  var elbow: Vector3=sk.get_bone_global_pose(fore).origin
+  var original: Vector3=to_model*(elbow-shoulder)
+  if original.length_squared()<.000001:continue
+  var pitch: float=rad_to_deg(atan2(original.z,-original.y))
+  # Map the actual authored pitch, preserving each arm's phase, including
+  # Haru's original clip. Rotating around model X retains lateral clearance.
+  var forward: float=clampf((pitch-float(style[0]))/(float(style[1])-float(style[0])),0.0,1.0)
+  var desired: float=lerpf(float(style[2]),float(style[3]),forward)
+  var target: Vector3=original.rotated(Vector3.RIGHT,deg_to_rad(pitch-desired))
+  _aim(sk,upper,fore,to_skeleton*target)
+  shoulder=sk.get_bone_global_pose(upper).origin
+  elbow=sk.get_bone_global_pose(fore).origin
+  var wrist: Vector3=sk.get_bone_global_pose(hand).origin
+  var upper_direction: Vector3=elbow-shoulder
+  var fore_direction: Vector3=wrist-elbow
+  var hinge: Vector3=upper_direction.cross(fore_direction)
+  if hinge.length_squared()<.000001:continue
+  var flex: float=acos(clampf(upper_direction.normalized().dot(fore_direction.normalized()),-1.0,1.0))
+  var relaxed_flex: float=deg_to_rad(lerpf(float(style[5]),float(style[4]),forward))
+  # Keep the measured three-dimensional bend plane. In particular, Tanaka's
+  # two arms have different authored clearance and must not be sagittalized.
+  var pose: Transform3D=sk.get_bone_global_pose(fore)
+  pose.basis=Basis(hinge.normalized(),relaxed_flex-flex)*pose.basis
+  sk.set_bone_global_pose(fore,pose)
+  if profile=="tanaka" and side=="L":
+   # Lowering the recovering hand exposes a coat crossing not seen by the
+   # paired-volume query. Keep a small measured clearance for this whole chain.
+   var clearance: Transform3D=sk.get_bone_global_pose(upper)
+   var outward_axis: Vector3=(sk.global_basis.inverse()*model.global_basis.z).normalized()
+   clearance.basis=Basis(outward_axis,deg_to_rad(3.0))*clearance.basis
+   sk.set_bone_global_pose(upper,clearance)
+  # Hand and all finger local transforms retain the qualified source shape.
+
 func _process_pose() -> void:
  corrections.clear()
  if model==null or animation==null or not model.is_visible_in_tree():return
  var clip: String=animation.current_animation
  var sk: Skeleton3D=get_skeleton()
  if profile=="tanaka":_tanaka_arm_clearance(sk,clip)
+ if clip=="run":_relaxed_running_arms(sk)
  # User-rejected neutral legs share the same pose in idle, wave and bow. The
  # former safety IK raised ankles under a fixed low pelvis and chose the old
  # knee plane, which made straight legs bow sideways or bend behind the calf.

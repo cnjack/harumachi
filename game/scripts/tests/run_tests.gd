@@ -105,6 +105,8 @@ func _ready() -> void:
 		await load("res://scripts/tests/garment_local_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=character-gait"):
 		await load("res://scripts/tests/character_gait_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=character-running-arms"):
+		await load("res://scripts/tests/character_running_arm_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=character-gestures"):
 		await load("res://scripts/tests/character_gesture_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=garment-local"):
@@ -298,6 +300,7 @@ func _ready() -> void:
 		await load("res://scripts/tests/inhabited_places_checks.gd").new(self).run()
 		await load("res://scripts/tests/character_visual_checks.gd").new(self).run()
 		await load("res://scripts/tests/character_gait_checks.gd").new(self).run()
+		await load("res://scripts/tests/character_running_arm_checks.gd").new(self).run()
 		await load("res://scripts/tests/character_gesture_checks.gd").new(self).run()
 		await load("res://scripts/tests/garment_local_checks.gd").new(self).run()
 		await load("res://scripts/tests/animal_visual_checks.gd").new(self).run()
