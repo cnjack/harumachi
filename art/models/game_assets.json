@@ -477,7 +477,7 @@
       "keep_origin": true
     },
     "CH_sora": {
-      "src": "character_run_arm_20261019/exports/CH_sora.glb",
+      "src": "character_run_arm_cross_20261019/exports/CH_sora.glb",
       "fit": "h",
       "size": 1.62,
       "preserve_rigged_character": true,
@@ -487,10 +487,10 @@
       "license": "项目角色；Hyper3D 账户生成素材",
       "tex": 2048,
       "note": "Use art/tools/characters/; preserve clips, fingers and validated sleeve physics. Do not rebind with old rig_char.",
-      "rig_review_manifest": "art/manifests/character_run_arm_20261019.json"
+      "rig_review_manifest": "art/manifests/character_run_arm_cross_20261019.json"
     },
     "CH_mio": {
-      "src": "character_run_arm_20261019/exports/CH_mio.glb",
+      "src": "character_run_arm_cross_20261019/exports/CH_mio.glb",
       "fit": "h",
       "size": 1.58,
       "preserve_rigged_character": true,
@@ -500,10 +500,10 @@
       "license": "项目角色；Hyper3D 账户生成素材",
       "tex": 2048,
       "note": "Use art/tools/characters/; preserve clips, fingers and validated sleeve physics. Do not rebind with old rig_char.",
-      "rig_review_manifest": "art/manifests/character_run_arm_20261019.json"
+      "rig_review_manifest": "art/manifests/character_run_arm_cross_20261019.json"
     },
     "CH_ren": {
-      "src": "character_run_arm_20261019/exports/CH_ren.glb",
+      "src": "character_run_arm_cross_20261019/exports/CH_ren.glb",
       "fit": "h",
       "size": 1.76,
       "preserve_rigged_character": true,
@@ -513,10 +513,10 @@
       "license": "项目角色；Hyper3D 账户生成素材",
       "tex": 2048,
       "note": "Use art/tools/characters/; preserve clips, fingers and validated sleeve physics. Do not rebind with old rig_char.",
-      "rig_review_manifest": "art/manifests/character_run_arm_20261019.json"
+      "rig_review_manifest": "art/manifests/character_run_arm_cross_20261019.json"
     },
     "CH_haru": {
-      "src": "character_run_arm_20261019/exports/CH_haru.glb",
+      "src": "character_run_arm_cross_20261019/exports/CH_haru.glb",
       "fit": "h",
       "size": 1.52,
       "preserve_rigged_character": true,
@@ -526,7 +526,7 @@
       "license": "项目角色；Hyper3D 账户生成素材",
       "tex": 2048,
       "note": "Use art/tools/characters/; preserve clips, fingers and validated sleeve physics. Do not rebind with old rig_char.",
-      "rig_review_manifest": "art/manifests/character_run_arm_20261019.json"
+      "rig_review_manifest": "art/manifests/character_run_arm_cross_20261019.json"
     },
     "M01_timber_machiya": {
       "src": "raw/material_detail_20261003/M01_timber_machiya.glb",
@@ -763,7 +763,7 @@
       "note": "Metre scale, root on ground, trunk/foliage split; original UVs and alpha preserved"
     },
     "CH_tanaka": {
-      "src": "character_run_arm_20261019/exports/CH_tanaka.glb",
+      "src": "character_run_arm_cross_20261019/exports/CH_tanaka.glb",
       "fit": "h",
       "size": 1.6,
       "preserve_rigged_character": true,
@@ -773,10 +773,10 @@
       "license": "项目角色；Hyper3D 账户生成素材",
       "tex": 2048,
       "note": "Use art/tools/characters/; preserve clips, fingers and validated sleeve physics. Do not rebind with old rig_char.",
-      "rig_review_manifest": "art/manifests/character_run_arm_20261019.json"
+      "rig_review_manifest": "art/manifests/character_run_arm_cross_20261019.json"
     },
     "CH_aoi": {
-      "src": "character_run_arm_20261019/exports/CH_aoi.glb",
+      "src": "character_run_arm_cross_20261019/exports/CH_aoi.glb",
       "fit": "h",
       "size": 1.3,
       "preserve_rigged_character": true,
@@ -786,7 +786,7 @@
       "license": "项目角色；Hyper3D 账户生成素材",
       "tex": 2048,
       "note": "Use art/tools/characters/; preserve clips, fingers and validated sleeve physics. Do not rebind with old rig_char.",
-      "rig_review_manifest": "art/manifests/character_run_arm_20261019.json"
+      "rig_review_manifest": "art/manifests/character_run_arm_cross_20261019.json"
     },
     "F01_tool_shed": {
       "src": "raw/F01_tool_shed_h3d_audit_20261002/model.glb",
@@ -1931,7 +1931,7 @@
       "note": "1900 alpha cards across uneven crown shelves; 8 moss shells 1-22 mm above bark. WorldBuilder applies moss_pile.gdshader (triplanar texture and sparse pile) and aged bark tint. Generic GLB viewers do not reproduce this runtime moss material. Preserve zelkova save/story identity."
     },
     "CH_kazuko": {
-      "src": "character_run_arm_20261019/exports/CH_kazuko.glb",
+      "src": "character_run_arm_cross_20261019/exports/CH_kazuko.glb",
       "fit": "h",
       "size": 1.56,
       "preserve_rigged_character": true,
@@ -1941,7 +1941,7 @@
       "license": "项目角色；Hyper3D 账户生成素材",
       "tex": 2048,
       "note": "Use art/tools/characters/; preserve clips, fingers and validated sleeve physics. Do not rebind with old rig_char.",
-      "rig_review_manifest": "art/manifests/character_run_arm_20261019.json"
+      "rig_review_manifest": "art/manifests/character_run_arm_cross_20261019.json"
     },
     "E01_furin": {
       "src": "raw/E01_furin_hyper3d/ready.glb",

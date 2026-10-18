@@ -387,6 +387,46 @@ func source_extras(model: Node3D) -> Dictionary:
 func source_bone_count(id: String, model: Node3D) -> int:
 	return 66 if id in ["sora", "mio"] else 54
 
+func cross_chest_profile(model: Node3D) -> bool:
+	var authored: Dictionary = source_extras(model).get("source_running_style", {})
+	return int(authored.get("pose_revision", 0)) == 3 and str(authored.get("profile", "")) == "cross_chest_front_outward_rear"
+
+func cross_chest_geometry(pose: Dictionary, skeleton: Skeleton3D, model: Node3D, side: String) -> Dictionary:
+	# Angles come from captured bones, independently of the source recipe values.
+	var hand: Dictionary = fist_geometry(pose, skeleton, model, side)
+	var shoulder: Vector3 = position(pose, skeleton, "upper." + side)
+	var elbow: Vector3 = position(pose, skeleton, "fore." + side)
+	var wrist: Vector3 = position(pose, skeleton, "hand." + side)
+	var chest: Vector3 = position(pose, skeleton, "chest")
+	var up: Vector3 = (position(pose, skeleton, "Neck") - position(pose, skeleton, "hips")).normalized()
+	var across: Vector3 = position(pose, skeleton, "upper.L") - position(pose, skeleton, "upper.R")
+	var right: Vector3 = (across - up * across.dot(up)).normalized()
+	var forward: Vector3 = right.cross(up).normalized()
+	var sign_value: float = 1.0 if side == "L" else -1.0
+	var upper: Vector3 = elbow - shoulder
+	var fore: Vector3 = (wrist - elbow).normalized()
+	var fist: Vector3 = hand.mcp_world
+	return {"valid": hand.valid, "pitch_deg": hand.pitch_deg, "forearm_elevation_deg": rad_to_deg(asin(clampf(fore.dot(Vector3.UP), -1.0, 1.0))), "upper_frontal_deg": rad_to_deg(atan2(upper.dot(right) * sign_value, -upper.dot(up))), "elbow_flex_deg": rad_to_deg(upper.normalized().angle_to(fore)), "fist_own_side_m": (fist - chest).dot(right) * sign_value, "fist_above_chest_m": (fist - chest).dot(up), "elbow_forward_m": upper.dot(forward)}
+
+func cross_chest_peaks_ok(peaks: Dictionary) -> bool:
+	for side: String in ["L", "R"]:
+		var front: Dictionary = peaks[side].front
+		var rear: Dictionary = peaks[side].rear
+		if front.is_empty() or rear.is_empty(): return false
+		if not bool(front.valid) or not bool(rear.valid): return false
+		if float(front.forearm_elevation_deg) < 30.0 or float(front.forearm_elevation_deg) > 45.0: return false
+		if float(front.upper_frontal_deg) < -20.0 or float(front.upper_frontal_deg) > -10.0: return false
+		if float(front.elbow_flex_deg) < 80.0 or float(front.elbow_flex_deg) > 100.0: return false
+		if float(front.fist_own_side_m) > -.005 or float(front.fist_above_chest_m) < 0.0: return false
+		if float(rear.elbow_forward_m) > -.03 or float(rear.upper_frontal_deg) < 10.0: return false
+	return true
+
+func accumulate_cross_chest(peaks: Dictionary, pose: Dictionary, skeleton: Skeleton3D, model: Node3D) -> void:
+	for side: String in ["L", "R"]:
+		var geometry: Dictionary = cross_chest_geometry(pose, skeleton, model, side)
+		if (peaks[side].front as Dictionary).is_empty() or float(geometry.pitch_deg) > float(peaks[side].front.pitch_deg): peaks[side].front = geometry
+		if (peaks[side].rear as Dictionary).is_empty() or float(geometry.pitch_deg) < float(peaks[side].rear.pitch_deg): peaks[side].rear = geometry
+
 func source_arm_contract(id: String, model: Node3D, skeleton: Skeleton3D, controller: CharAnim, probe: SkeletonModifier3D) -> void:
 	# Independently measure the imported source with every game modifier off.
 	# The old source exceeds these art limits even if its runtime fix is enabled.
@@ -401,10 +441,13 @@ func source_arm_contract(id: String, model: Node3D, skeleton: Skeleton3D, contro
 	var hands_ok := true
 	var minimum_inward := INF
 	var maximum_wrist_angle := 0.0
+	var cross_profile: bool = cross_chest_profile(model)
+	var cross_peaks: Dictionary = {"L": {"front": {}, "rear": {}}, "R": {"front": {}, "rear": {}}}
 	for index: int in range(PHASE_STEPS + 1):
 		var source: Dictionary = await sample(controller, float(index) / PHASE_STEPS, probe, source_bone_count(id, model))
 		if not bool(source.get("fresh", false)): continue
 		fresh += 1
+		if cross_profile: accumulate_cross_chest(cross_peaks, source, skeleton, model)
 		for side: String in ["L", "R"]:
 			accumulate(statistics[side], source, skeleton, model, side, false)
 			var geometry: Dictionary = fist_geometry(source, skeleton, model, side)
@@ -421,7 +464,10 @@ func source_arm_contract(id: String, model: Node3D, skeleton: Skeleton3D, contro
 		geometry_ok = geometry_ok and float(stats.pitch_min) <= -20.0 and float(stats.pitch_max) <= 12.0
 	var authored: Dictionary = source_extras(model).get("source_running_style", {})
 	var declared_ok: bool = int(authored.get("version", 0)) == 1 and bool(authored.get("arms_authored", false)) and bool(authored.get("wrists_authored", false)) and bool(authored.get("grip_authored", false)) and not bool(authored.get("runtime_arm_style_required", true))
-	check(id + " source run keeps low compact arms without game modifiers", declared_ok and geometry_ok, {"fresh_samples": fresh, "expected": PHASE_STEPS + 1, "statistics": statistics, "upper_span_limits_deg": [25, 42], "rear_pitch_at_most_deg": -20, "forward_pitch_at_most_deg": 12, "wrist_shoulder_limit_m": wrist_limits[id], "source_profile": authored, "all_game_modifiers_disabled": true})
+	if cross_profile:
+		check(id + " source run reaches opposite upper chest with a diagonal forearm and rear outward elbow", declared_ok and fresh == PHASE_STEPS + 1 and cross_chest_peaks_ok(cross_peaks), {"fresh_samples": fresh, "peaks": cross_peaks, "forearm_elevation_limits_deg": [30, 45], "front_adduction_limits_deg": [10, 20], "elbow_flex_limits_deg": [80, 100], "all_game_modifiers_disabled": true})
+	else:
+		check(id + " source run keeps low compact arms without game modifiers", declared_ok and geometry_ok, {"fresh_samples": fresh, "expected": PHASE_STEPS + 1, "statistics": statistics, "upper_span_limits_deg": [25, 42], "rear_pitch_at_most_deg": -20, "forward_pitch_at_most_deg": 12, "wrist_shoulder_limit_m": wrist_limits[id], "source_profile": authored, "all_game_modifiers_disabled": true})
 	check(id + " source running wrists stay neutral and slightly inward", declared_ok and fresh == PHASE_STEPS + 1 and hands_ok, {"fresh_samples": fresh, "minimum_inward_deg": minimum_inward, "maximum_wrist_angle_deg": maximum_wrist_angle, "limits_deg": {"minimum_inward": 2, "maximum_total": 10}})
 	for modifier: Node in modifiers:
 		(modifier as SkeletonModifier3D).active = bool(modifiers[modifier])
@@ -438,6 +484,8 @@ func actor_contract(id: String, model: Node3D, skeleton: Skeleton3D, natural: No
 	var hand_scale_max := 0.0
 	var finger_rotation_max := 0.0
 	var hand_bone_count := 0
+	var cross_profile: bool = cross_chest_profile(model)
+	var cross_peaks: Dictionary = {"L": {"front": {}, "rear": {}}, "R": {"front": {}, "rear": {}}}
 	for index: int in range(PHASE_STEPS + 1):
 		var phase: float = float(index) / PHASE_STEPS
 		if has_switch: natural.set("running_arms_enabled", true)
@@ -447,6 +495,7 @@ func actor_contract(id: String, model: Node3D, skeleton: Skeleton3D, natural: No
 		if bool(baseline.get("fresh", false)): baseline_samples += 1
 		if not bool(actual.get("fresh", false)): continue
 		fresh_samples += 1
+		if cross_profile: accumulate_cross_chest(cross_peaks, actual, skeleton, model)
 		for side: String in ["L", "R"]:
 			accumulate(statistics[side], actual, skeleton, model, side, index < PHASE_STEPS)
 		if bool(baseline.get("fresh", false)):
@@ -471,9 +520,14 @@ func actor_contract(id: String, model: Node3D, skeleton: Skeleton3D, natural: No
 	var right_opposition: float = correlation(right.hand_forward, right.foot_forward)
 	var coverage: Dictionary = {"actual_final_samples": fresh_samples, "baseline_final_samples": baseline_samples, "expected_each": PHASE_STEPS + 1, "expected_bones": expected_count}
 	check(id + " running arm measurements use fresh complete final modifier poses", fresh and baseline_samples == PHASE_STEPS + 1, coverage)
-	check(id + " running upper arms keep a compact role-specific forward and backward swing", fresh and left_span <= float(UPPER_SPAN_LIMIT[id]) and right_span <= float(UPPER_SPAN_LIMIT[id]), {"L_span_deg": left_span, "R_span_deg": right_span, "limit_deg": UPPER_SPAN_LIMIT[id], "coverage": coverage})
-	check(id + " running wrists stay below their own shoulder peaks", fresh and float(left.wrist_above_shoulder_max) <= float(WRIST_SHOULDER_LIMIT[id]) and float(right.wrist_above_shoulder_max) <= float(WRIST_SHOULDER_LIMIT[id]), {"L_peak_m": left.wrist_above_shoulder_max, "R_peak_m": right.wrist_above_shoulder_max, "limit_m": WRIST_SHOULDER_LIMIT[id], "coverage": coverage})
-	check(id + " running elbows change gently instead of holding a frozen right angle", fresh and minf(float(left.flex_min), float(right.flex_min)) >= 60.0 and maxf(float(left.flex_max), float(right.flex_max)) <= 110.0 and minf(left_flex_span, right_flex_span) >= MIN_ELBOW_SPAN and maxf(left_flex_span, right_flex_span) <= MAX_ELBOW_SPAN, {"L_min_deg": left.flex_min, "L_max_deg": left.flex_max, "R_min_deg": right.flex_min, "R_max_deg": right.flex_max, "L_span_deg": left_flex_span, "R_span_deg": right_flex_span, "span_limits_deg": [MIN_ELBOW_SPAN, MAX_ELBOW_SPAN], "coverage": coverage})
+	if cross_profile:
+		check(id + " running final arms retain the requested cross-chest and rear outward pose", fresh and cross_chest_peaks_ok(cross_peaks), {"peaks": cross_peaks, "coverage": coverage})
+		check(id + " running final arm swing stays bounded on both sides", fresh and left_span >= 60.0 and right_span >= 60.0 and left_span <= 100.0 and right_span <= 100.0, {"L_span_deg": left_span, "R_span_deg": right_span, "limits_deg": [60, 100], "coverage": coverage})
+		check(id + " running elbows stay approximately at a right angle", fresh and minf(float(left.flex_min), float(right.flex_min)) >= 80.0 and maxf(float(left.flex_max), float(right.flex_max)) <= 100.0 and minf(left_flex_span, right_flex_span) >= 4.0 and maxf(left_flex_span, right_flex_span) <= MAX_ELBOW_SPAN, {"L_min_deg": left.flex_min, "L_max_deg": left.flex_max, "R_min_deg": right.flex_min, "R_max_deg": right.flex_max, "coverage": coverage})
+	else:
+		check(id + " running upper arms keep a compact role-specific forward and backward swing", fresh and left_span <= float(UPPER_SPAN_LIMIT[id]) and right_span <= float(UPPER_SPAN_LIMIT[id]), {"L_span_deg": left_span, "R_span_deg": right_span, "limit_deg": UPPER_SPAN_LIMIT[id], "coverage": coverage})
+		check(id + " running wrists stay below their own shoulder peaks", fresh and float(left.wrist_above_shoulder_max) <= float(WRIST_SHOULDER_LIMIT[id]) and float(right.wrist_above_shoulder_max) <= float(WRIST_SHOULDER_LIMIT[id]), {"L_peak_m": left.wrist_above_shoulder_max, "R_peak_m": right.wrist_above_shoulder_max, "limit_m": WRIST_SHOULDER_LIMIT[id], "coverage": coverage})
+		check(id + " running elbows change gently instead of holding a frozen right angle", fresh and minf(float(left.flex_min), float(right.flex_min)) >= 60.0 and maxf(float(left.flex_max), float(right.flex_max)) <= 110.0 and minf(left_flex_span, right_flex_span) >= MIN_ELBOW_SPAN and maxf(left_flex_span, right_flex_span) <= MAX_ELBOW_SPAN, {"L_min_deg": left.flex_min, "L_max_deg": left.flex_max, "R_min_deg": right.flex_min, "R_max_deg": right.flex_max, "L_span_deg": left_flex_span, "R_span_deg": right_flex_span, "span_limits_deg": [MIN_ELBOW_SPAN, MAX_ELBOW_SPAN], "coverage": coverage})
 	check(id + " running arm correction preserves upper and forearm bone lengths", fresh and maxf(float(left.length_error_max), float(right.length_error_max)) < .001, {"max_length_error_m": maxf(float(left.length_error_max), float(right.length_error_max)), "limit_m": .001, "coverage": coverage})
 	check(id + " running hands still oppose the same-side foot movement", fresh and left_opposition < -.65 and right_opposition < -.65, {"L_correlation": left_opposition, "R_correlation": right_opposition, "maximum": -.65, "coverage": coverage})
 	var seam_error := 0.0
@@ -519,7 +573,7 @@ func fist_geometry(pose: Dictionary, skeleton: Skeleton3D, model: Node3D, side: 
 	inward = (inward - fore * inward.dot(fore)).normalized()
 	var upper: Vector3 = model.global_basis.inverse() * (elbow - shoulder)
 	var lateral: Vector3 = model.global_basis.inverse() * (mcp - chest)
-	return {"valid": count == 4 and mcp.is_finite() and (mcp - wrist).length() > .01 and inward.length() > .5, "pitch_deg": rad_to_deg(atan2(upper.z, -upper.y)), "signed_inward_deg": rad_to_deg(atan2(hand.dot(inward), hand.dot(fore))), "wrist_total_deg": rad_to_deg(fore.angle_to(hand)), "midline_distance_m": absf(lateral.x), "hand_length_m": mcp.distance_to(wrist)}
+	return {"valid": count == 4 and mcp.is_finite() and (mcp - wrist).length() > .01 and inward.length() > .5, "mcp_world": mcp, "pitch_deg": rad_to_deg(atan2(upper.z, -upper.y)), "signed_inward_deg": rad_to_deg(atan2(hand.dot(inward), hand.dot(fore))), "wrist_total_deg": rad_to_deg(fore.angle_to(hand)), "midline_distance_m": absf(lateral.x), "hand_length_m": mcp.distance_to(wrist)}
 
 func dynamic_sleeve_bones(model: Node3D, skeleton: Skeleton3D) -> Dictionary:
 	# AP seek pauses clip time, not native spring integration. Identify only the

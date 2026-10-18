@@ -2,7 +2,7 @@
 
 ## 跑步摆臂源修订（2026-10-19）
 
-当前七人源输出为`art/models/character_run_arm_20261019/exports/`，清单为`art/manifests/character_run_arm_20261019.json`。在上一轮已修衣物与接地的GLB上执行`author_running_style.py --refine-existing`，只重写run六条Arm/ForeArm/Hand旋转曲线，保留手指及其余源数据；拒绝二次叠加revision2。验收仍运行112项摆臂、旧版反例、田中真实手/蓝衣精确相交和莲新内容指纹的衣物复核，再用固定工程录制实际跑步。见[参数与结果](RUN_ARM_POSE_20261019.md)。
+当前七人源输出为`art/models/character_run_arm_cross_20261019/exports/`，清单为`art/manifests/character_run_arm_cross_20261019.json`。从明确的revision2源运行`author_crossbody_running_style.py`，只重写run六条Arm/ForeArm/Hand旋转曲线，实现前臂斜向对侧上胸、后臂向后外侧，保留手指及其余源数据；工具拒绝重复叠加revision3。用户要求本轮结束测试，现有屏幕28张姿态预览后仅继续编译和必要包检查，完整动态验收未重跑。旧112项/加密衣物检查属于revision2，莲新源摘要未获得零辅助证明。见[参数与结果](RUN_ARM_POSE_20261019.md)。
 
 ## 本轮源衣物与跑步修复（2026-10-18）
 

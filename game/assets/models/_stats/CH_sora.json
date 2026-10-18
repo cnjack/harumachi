@@ -1,7 +1,7 @@
 {
   "id": "CH_sora",
   "tris": 94032,
-  "bytes": 12591744,
+  "bytes": 12600664,
   "bones": 66,
   "animations": [
     "idle",
@@ -17,10 +17,10 @@
     "dance",
     "reference"
   ],
-  "sha256": "5565c95a0c3a1341767500af76a1db320aa293687f3e2cc0058a170926014dd6",
-  "src": "character_run_arm_20261019/exports/CH_sora.glb",
+  "sha256": "c9ade8067d706b13cf61062d05debc82c5e2bda17e8400282824ceb850ef1c2d",
+  "src": "character_run_arm_cross_20261019/exports/CH_sora.glb",
   "provider": "Hyper3D Rodin / welded anatomical character pipeline",
   "preserve_rigged_character": true,
   "character_pipeline": "characters-apose-20261004",
-  "rig_review_manifest": "art/manifests/character_run_arm_20261019.json"
+  "rig_review_manifest": "art/manifests/character_run_arm_cross_20261019.json"
 }
