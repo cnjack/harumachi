@@ -280,6 +280,15 @@ func _process_pose() -> void:
  if profile in ["sora","ren","aoi","tanaka","kazuko"] and clip in ["idle","talk","wave","bow","look","stretch","cheer"]:
   _standing_support(sk)
   return
+ if profile=="sora" and clip=="walk":
+  # The old walk bends sideways; ground support then amplifies that inward
+  # knee pole. Reorient the two-bone bend at the unchanged authored ankle,
+  # preserving segment lengths, foot orientation, pelvis and upper-body motion.
+  for side: String in ["L","R"]:
+   var foot: int=LivingPose.bone(sk,"foot."+side)
+   if foot>=0:_place_ankle(sk,side,sk.to_global(sk.get_bone_global_pose(foot).origin))
+  anchors.clear();was_stance.clear();last_phase=-1.0;last_position=actor.global_position
+  return
  if clip in rebuilt_clips:
   anchors.clear();was_stance.clear();last_phase=-1.0;last_position=actor.global_position
   return

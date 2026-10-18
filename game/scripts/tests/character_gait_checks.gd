@@ -183,6 +183,8 @@ func gait_contract(id: String,model: Node3D,sk: Skeleton3D,support: Node,control
 		var lowest: float=INF
 		var flight: int=0
 		var min_forward: float=INF
+		var min_outward: float=INF
+		var inward_case: String=""
 		var max_length_error: float=0
 		var max_elbow_out: float=0
 		var max_wrist_out: float=0
@@ -235,6 +237,10 @@ func gait_contract(id: String,model: Node3D,sk: Skeleton3D,support: Node,control
 				var line: Vector3=ankle-hip
 				var knee_offset: Vector3=knee-hip-line*(knee-hip).dot(line)/line.length_squared()
 				min_forward=minf(min_forward,(model.global_basis.inverse()*knee_offset).z)
+				var outward: float=(model.global_basis.inverse()*knee_offset).x*track_sign*(1.0 if side=="L" else -1.0)
+				if outward<min_outward:
+					min_outward=outward
+					inward_case="phase %.5f %s"%[float(index)/32.0,side]
 				var gap: float=float(pose.soles[side])-floor_height(support,ankle)
 				gaps.append(gap)
 				lowest=minf(lowest,gap)
@@ -248,6 +254,7 @@ func gait_contract(id: String,model: Node3D,sk: Skeleton3D,support: Node,control
 		var coverage: String="; fresh final poses %d/33"%fresh_samples
 		check(id+" "+clip+" full skinned shoes clear the street at thirty three final poses",fresh and lowest>=-.005,"minimum complete shoe gap %.5fm"%lowest+coverage)
 		check(id+" "+clip+" final leg segments preserve the source anatomy",fresh and max_length_error<.001,"maximum bone length error %.6fm"%max_length_error+coverage)
+		if id=="sora" and clip=="walk":check("Sora walking knees do not collapse inward from their own hip to ankle line",fresh and min_outward>=-.010,"minimum directed outward knee offset %.5fm at %s"%[min_outward,inward_case]+coverage)
 		if clip in (REBUILT[id] as Array):
 			check(id+" "+clip+" knees stay forward after safety IK",fresh and min_forward>=-.004,"minimum forward knee offset %.5fm"%min_forward+coverage)
 			if clip=="run":check(id+" running retains real simultaneous shoe flight after safety IK",fresh and flight>=2,"%d/32 phases both complete shoes >25mm"%flight+coverage)
