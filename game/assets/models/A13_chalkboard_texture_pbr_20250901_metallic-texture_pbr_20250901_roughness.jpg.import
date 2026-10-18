@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ktndjrhucef3"
-path="res://.godot/imported/A13_chalkboard_texture_pbr_20250901_metallic-texture_pbr_20250901_roughness.jpg-c00506210fcd1aebbe5112718783e782.ctex"
+path.bptc="res://.godot/imported/A13_chalkboard_texture_pbr_20250901_metallic-texture_pbr_20250901_roughness.jpg-c00506210fcd1aebbe5112718783e782.bptc.ctex"
+path.astc="res://.godot/imported/A13_chalkboard_texture_pbr_20250901_metallic-texture_pbr_20250901_roughness.jpg-c00506210fcd1aebbe5112718783e782.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "2d5d93ed4c07207e33d20cdd10e1c474"
@@ -14,12 +16,13 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/A13_chalkboard_texture_pbr_20250901_metallic-texture_pbr_20250901_roughness.jpg"
-dest_files=["res://.godot/imported/A13_chalkboard_texture_pbr_20250901_metallic-texture_pbr_20250901_roughness.jpg-c00506210fcd1aebbe5112718783e782.ctex"]
+dest_files=["res://.godot/imported/A13_chalkboard_texture_pbr_20250901_metallic-texture_pbr_20250901_roughness.jpg-c00506210fcd1aebbe5112718783e782.bptc.ctex", "res://.godot/imported/A13_chalkboard_texture_pbr_20250901_metallic-texture_pbr_20250901_roughness.jpg-c00506210fcd1aebbe5112718783e782.astc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
+compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
@@ -28,6 +31,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
+mipmaps/preserve_alpha_test_coverage=false
+mipmaps/alpha_test_threshold=0.5
 roughness/mode=0
 roughness/src_normal=""
 process/channel_remap/red=0
@@ -39,5 +44,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=2048
 detect_3d/compress_to=1

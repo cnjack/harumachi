@@ -30,6 +30,8 @@ const GOLDFISH_LIFE = preload("res://scripts/animals/goldfish_life.gd")
 const INSECT_ART = preload("res://scripts/animals/insect_art.gd")
 var _flap_cool := 0.0
 var world_seed := -1
+var _air_shape := SphereShape3D.new()
+var _air_params := PhysicsShapeQueryParameters3D.new()
 
 
 func setup(world: WorldBuilder, p: Node3D) -> void:
@@ -181,14 +183,16 @@ func _move_air(node: Node3D, at: Vector3) -> bool:
 	return true
 
 func _air_query(node: Node3D,at: Vector3) -> PhysicsShapeQueryParameters3D:
-	var query:=PhysicsShapeQueryParameters3D.new();var shape:=SphereShape3D.new();shape.radius=.075
-	query.shape=shape;query.collision_mask=WorldBuilder.L_SOLID|WorldBuilder.L_PLACED|WorldBuilder.L_ACTORS
+	_air_shape.radius=.075
+	_air_params.shape=_air_shape
+	_air_params.collision_mask=WorldBuilder.L_SOLID|WorldBuilder.L_PLACED|WorldBuilder.L_ACTORS
+	_air_params.motion=Vector3.ZERO
 	var offset:=Vector3.ZERO
 	if node.has_meta("model_id"):
 		var bounds: AABB=node.global_transform*WorldBuilder.local_aabb(node)
 		offset=Vector3(bounds.get_center().x,bounds.position.y+minf(.075,bounds.size.y*.45),bounds.get_center().z)-node.global_position
-	query.transform=Transform3D(Basis.IDENTITY,at+offset)
-	return query
+	_air_params.transform=Transform3D(Basis.IDENTITY,at+offset)
+	return _air_params
 
 func _air_clear(node: Node3D,at: Vector3) -> bool:
 	return get_world_3d().direct_space_state.intersect_shape(_air_query(node,at),1).is_empty()
@@ -284,7 +288,12 @@ func _process(delta: float) -> void:
 	for f in flocks:
 		var show: bool = f.region == reg and daylight
 		for b in f.birds:
-			if show and b.get("grounded",false) and not _air_clear(b.node,b.node.global_position):
+			var was_shown: bool=bool(b.get("was_shown",false))
+			b["clear_t"]=float(b.get("clear_t",0.0))-delta
+			if show and (float(b.clear_t)<=0.0 or not was_shown):
+				b["clear_t"]=0.12+f.rng.randf()*0.08
+				b["clear_ok"]=_air_clear(b.node,b.node.global_position)
+			if show and b.get("grounded",false) and not bool(b.get("clear_ok",true)):
 				b["grounded"]=false;b.node.hide();b.retry=0.0
 			if show and f.state == "ground" and not b.get("grounded", false):
 				b["retry"] = maxf(0.0, float(b.get("retry", 0.0))-delta)
@@ -293,17 +302,28 @@ func _process(delta: float) -> void:
 						var offset: Vector3 = b.off if attempt == 0 else Vector3(f.rng.randf_range(-1.2,1.2), 0, f.rng.randf_range(-1.2,1.2))
 						var landing: Vector3 = _landing(b.node, f.home + offset)
 						if landing.is_finite() and _move_air(b.node, landing):
-							b.off = landing - f.home; b.from = landing; b.to = landing; b["grounded"] = true; break
+							b.off = landing - f.home; b.from = landing; b.to = landing; b["grounded"] = true; b["clear_ok"]=true; break
 					b.retry = 1.5
-			(b.node as Node3D).visible = show and f.state != "gone" and (f.state != "ground" or bool(b.get("grounded", false))) and _air_clear(b.node,b.node.global_position)
+			(b.node as Node3D).visible = show and f.state != "gone" and (f.state != "ground" or bool(b.get("grounded", false))) and bool(b.get("clear_ok",true))
+			b["was_shown"]=show
 		if not show:
 			continue
 		_update_flock(f, delta, pp)
 	for fl in flyers:
 		var n: Node3D = fl.node
 		var on: bool = fl.region == reg and (bugs if fl.kind == "butterfly" else (daylight and h >= 9.0))
-		n.visible = on and _prepare_flyer(fl)
-		if on and n.global_position.distance_to(pp) < 40.0:
+		var was_on: bool=bool(fl.get("was_on",false))
+		fl["was_on"]=on
+		if on:
+			fl["clear_t"]=float(fl.get("clear_t",0.0))-delta
+			if not was_on or float(fl.clear_t)<=0.0:
+				fl["clear_t"]=0.15+fl.rng.randf()*0.1
+				fl["clear_ok"]=_prepare_flyer(fl)
+			n.visible=bool(fl.get("clear_ok",false))
+		else:
+			n.visible=false
+			fl["clear_ok"]=false
+		if on and n.visible and n.global_position.distance_to(pp) < 40.0:
 			_update_flyer(fl, delta)
 	for entry: Dictionary in cats:
 		var walker: CharacterBody3D = entry.node

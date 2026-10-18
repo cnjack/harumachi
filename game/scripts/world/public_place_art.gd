@@ -79,8 +79,14 @@ static func _window(room: InteriorBuilder,side: float,z: float,width: float,inde
  box(root,"LinenValance",Vector3(width*.98,.14,.035),Vector3(0,height*.5-.12,.075),canvas(Color(.88,.89,.79)))
 
 static func set_evening(room: InteriorBuilder,_evening: bool) -> void:
- for view: MeshInstance3D in room.find_children("SummerView","MeshInstance3D",true,false):
-  window_weather(view.material_override as ShaderMaterial,float(room.wb.look.get("night",0.0)),GameState.weather)
+ var views: Array=room.get_meta("summer_views",[])
+ if not room.has_meta("summer_views"):
+  for view: MeshInstance3D in room.find_children("SummerView","MeshInstance3D",true,false):
+   views.append(view)
+  room.set_meta("summer_views",views)
+ var night: float=float(room.wb.look.get("night",0.0))
+ for view: MeshInstance3D in views:
+  window_weather(view.material_override as ShaderMaterial,night,GameState.weather)
 
 static func window_weather(material: ShaderMaterial,night: float,weather: String) -> void:
  var rain: bool=weather=="rain"

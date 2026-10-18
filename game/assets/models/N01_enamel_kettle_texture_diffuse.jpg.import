@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dqhmhcd3eglwq"
-path="res://.godot/imported/N01_enamel_kettle_texture_diffuse.jpg-1d33985616e421320e7e3b247301e7c9.ctex"
+path.bptc="res://.godot/imported/N01_enamel_kettle_texture_diffuse.jpg-1d33985616e421320e7e3b247301e7c9.bptc.ctex"
+path.astc="res://.godot/imported/N01_enamel_kettle_texture_diffuse.jpg-1d33985616e421320e7e3b247301e7c9.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "7db652f73b2d6d1eb22093c1678e7c33"
@@ -14,12 +16,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/N01_enamel_kettle_texture_diffuse.jpg"
-dest_files=["res://.godot/imported/N01_enamel_kettle_texture_diffuse.jpg-1d33985616e421320e7e3b247301e7c9.ctex"]
+dest_files=["res://.godot/imported/N01_enamel_kettle_texture_diffuse.jpg-1d33985616e421320e7e3b247301e7c9.bptc.ctex", "res://.godot/imported/N01_enamel_kettle_texture_diffuse.jpg-1d33985616e421320e7e3b247301e7c9.astc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -42,5 +44,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=2048
 detect_3d/compress_to=1

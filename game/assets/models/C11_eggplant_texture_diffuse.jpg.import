@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dg3xqnrh27wgd"
-path="res://.godot/imported/C11_eggplant_texture_diffuse.jpg-2e00144a7b5571ef5679c23c260c1240.ctex"
+path.bptc="res://.godot/imported/C11_eggplant_texture_diffuse.jpg-2e00144a7b5571ef5679c23c260c1240.bptc.ctex"
+path.astc="res://.godot/imported/C11_eggplant_texture_diffuse.jpg-2e00144a7b5571ef5679c23c260c1240.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "526ba30164fc5233a6e3304f7dfb33bc"
@@ -14,12 +16,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/C11_eggplant_texture_diffuse.jpg"
-dest_files=["res://.godot/imported/C11_eggplant_texture_diffuse.jpg-2e00144a7b5571ef5679c23c260c1240.ctex"]
+dest_files=["res://.godot/imported/C11_eggplant_texture_diffuse.jpg-2e00144a7b5571ef5679c23c260c1240.bptc.ctex", "res://.godot/imported/C11_eggplant_texture_diffuse.jpg-2e00144a7b5571ef5679c23c260c1240.astc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -42,5 +44,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=2048
 detect_3d/compress_to=1

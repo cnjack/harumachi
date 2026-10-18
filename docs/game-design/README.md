@@ -40,7 +40,7 @@
 - 最新已验收桌面包：`builds/HareMachi.zip`，Apple Silicon/Intel通用；当前为2026-10-15 Hyper3D家具批次，2246项全量及205项解压完整演示通过。
 - `builds/`最多保留桌面ZIP和一个Web目录，不再保留日期包、备份包、解压应用或冻结工程。
 - 2026-10-08历史验收为1359项独占全量0失败，解压包200项完整夏季演示通过，结果见`evidence/scene_quality_delivery_20261008/delivery.json`。4.8迁移阶段的1329项记录保留在`evidence/godot48_docs_20261007/delivery.json`；迁移前4.7.2的1329项基线见`evidence/first_meal_route_20261007/delivery.json`。
-- 游戏包含15种作物、32条配方、6种鱼、6项节日；`game/assets/models/`有278个GLB文件，配音登记436条。数量来自当前文件/数据，不代表自然时长。
+- 游戏包含15种作物、32条配方、6种鱼、6项节日；`game/assets/models/`有292个GLB文件，配音登记436条。数量来自当前文件/数据，不代表自然时长。
 
 ## 文档入口
 
@@ -48,6 +48,7 @@
 | --- | --- |
 | [CURRENT_STATUS](CURRENT_STATUS.md) | 当前事实、交付与待验范围 |
 | [PLAN](PLAN.md) | 已实现工作、下一步与验收门槛 |
+| [运行性能优化](PERFORMANCE_20261019.md) | AI 资产的贴图显存压缩、衣物求解缓存与每帧逻辑削减；含同屏 A/B 与截图对照 |
 | [90秒宣传片交付](PROMO_20261015.md) | 动画CG主片、实机版、配乐与制作工具；含动作及整片验收 |
 | [货车、休息与钓鱼](TRUCK_REST_FISHING_20261014.md) | 两辆贴图玻璃货车、9张长椅、去抓握及钓鱼容错；含整包验收记录 |
 | [场景与居民故事提案](LAYOUT_STORY_REDESIGN_20261014.md) | 已接受的道具阶段、室内和连续目标设计；实现见[交付记录](RESIDENT_STORY_DELIVERY_20261014.md) |

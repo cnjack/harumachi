@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cu3l4j5talms6"
-path="res://.godot/imported/P_deck_oven_enamel_metal.png-cbe26a46d3c9d46b008ed545258aa9ae.ctex"
+path.bptc="res://.godot/imported/P_deck_oven_enamel_metal.png-cbe26a46d3c9d46b008ed545258aa9ae.bptc.ctex"
+path.astc="res://.godot/imported/P_deck_oven_enamel_metal.png-cbe26a46d3c9d46b008ed545258aa9ae.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "8e86a4b27c2a98ebc6355a72bc3e893b"
@@ -14,12 +16,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/P_deck_oven_enamel_metal.png"
-dest_files=["res://.godot/imported/P_deck_oven_enamel_metal.png-cbe26a46d3c9d46b008ed545258aa9ae.ctex"]
+dest_files=["res://.godot/imported/P_deck_oven_enamel_metal.png-cbe26a46d3c9d46b008ed545258aa9ae.bptc.ctex", "res://.godot/imported/P_deck_oven_enamel_metal.png-cbe26a46d3c9d46b008ed545258aa9ae.astc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -42,5 +44,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=2048
 detect_3d/compress_to=1

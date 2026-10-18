@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://biov7lryfxo7b"
-path="res://.godot/imported/A12_bench_texture_diffuse.png-440af27741ab3c72cd385810a496e2fb.ctex"
+path.bptc="res://.godot/imported/A12_bench_texture_diffuse.png-440af27741ab3c72cd385810a496e2fb.bptc.ctex"
+path.astc="res://.godot/imported/A12_bench_texture_diffuse.png-440af27741ab3c72cd385810a496e2fb.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "f2db3ab47bb8dd65c071aa06d805a053"
@@ -14,12 +16,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/A12_bench_texture_diffuse.png"
-dest_files=["res://.godot/imported/A12_bench_texture_diffuse.png-440af27741ab3c72cd385810a496e2fb.ctex"]
+dest_files=["res://.godot/imported/A12_bench_texture_diffuse.png-440af27741ab3c72cd385810a496e2fb.bptc.ctex", "res://.godot/imported/A12_bench_texture_diffuse.png-440af27741ab3c72cd385810a496e2fb.astc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -42,5 +44,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=2048
 detect_3d/compress_to=1

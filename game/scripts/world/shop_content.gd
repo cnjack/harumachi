@@ -133,6 +133,10 @@ func stock(room: InteriorBuilder,parent: Node3D,support: Node3D,id: String,at: V
 	product.set_meta("shop_product",true);product.set_meta("support_surface",product.get_path_to(support))
 	product.set_meta("support_ceiling",height+.025)
 	HouseBuilder.toonify(product)
+	# Shelf goods are centimetre-scale and their shadow pass is invisible at play
+	# distance, but each lit mesh still costs one shadow draw per split.
+	for mesh: MeshInstance3D in WorldBuilder.find_meshes(product):
+		mesh.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	products.append({"node":product,"support":support,"height":height,"kind":kind,"slot":slot,"base":product.position,"day":GameState.day})
 	return product
 
@@ -170,19 +174,23 @@ func _television(room: InteriorBuilder,parent: Node3D) -> void:
 	televisions.append({"node":television,"screen":screen,"title":title,"kind":"store"})
 
 func update(elapsed: float) -> void:
+	var hour: float=GameState.hour()
+	var open: Dictionary={}
+	for kind: String in ["store","bakery"]:
+		var shop: Dictionary=GameState.shop(kind)
+		open[kind]=hour>=float(shop.open) and hour<float(shop.close) and GameState.weekday()!=int(shop.get("closed_weekday",-1))
 	for entry: Dictionary in products:
-		var shop: Dictionary=GameState.shop(entry.kind)
-		var open: bool=GameState.hour()>=float(shop.open) and GameState.hour()<float(shop.close) and GameState.weekday()!=int(shop.get("closed_weekday",-1))
 		var fresh: bool=bool(entry.get("fresh",false))
-		entry.node.visible=not fresh or ((open or GameState.hour()<21.0) and (GameState.hour()<14.0 or int(entry.slot)%3!=2 or elapsed<float(restock_until[entry.kind])))
+		var visible_now: bool=not fresh or ((bool(open[entry.kind]) or hour<21.0) and (hour<14.0 or int(entry.slot)%3!=2 or elapsed<float(restock_until[entry.kind])))
+		if entry.node.visible!=visible_now:entry.node.visible=visible_now
 	for television: Dictionary in televisions:
-		var shop: Dictionary=GameState.shop(television.kind)
-		var open: bool=GameState.hour()>=float(shop.open) and GameState.hour()<float(shop.close) and GameState.weekday()!=int(shop.get("closed_weekday",-1))
 		var channel: int=int(elapsed/12.0)%2
-		ShopTelevision.update(television.screen,elapsed,open,GameState.weather=="rain")
-		television.title.text=("晴町小记" if channel==0 else "晴町天气 · "+GameState.weather_name()) if open else ""
+		ShopTelevision.update(television.screen,elapsed,bool(open[television.kind]),GameState.weather=="rain")
+		var title: String=("晴町小记" if channel==0 else "晴町天气 · "+GameState.weather_name()) if bool(open[television.kind]) else ""
+		if television.title.text!=title:television.title.text=title
 	for label: Dictionary in labels:
-		label.node.text=("午后少量烘焙" if GameState.hour()>=14 else "当日烘焙") if label.kind=="bakery" else "米粮 · 日用"
+		var text: String=("午后少量烘焙" if hour>=14 else "当日烘焙") if label.kind=="bakery" else "米粮 · 日用"
+		if label.node.text!=text:label.node.text=text
 
 func replenish(kind: String,elapsed: float) -> void:
 	restock_until[kind]=elapsed+50.0;restock_count+=1;update(elapsed)

@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dc3uyqnnhodc8"
-path="res://.godot/imported/N07_watering_can_texture_diffuse.jpg-7cf7ab3627aa90e66f0d57799aaa414e.ctex"
+path.bptc="res://.godot/imported/N07_watering_can_texture_diffuse.jpg-7cf7ab3627aa90e66f0d57799aaa414e.bptc.ctex"
+path.astc="res://.godot/imported/N07_watering_can_texture_diffuse.jpg-7cf7ab3627aa90e66f0d57799aaa414e.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "45989d9304a07b55cb3f5dd9be174188"
@@ -14,12 +16,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/N07_watering_can_texture_diffuse.jpg"
-dest_files=["res://.godot/imported/N07_watering_can_texture_diffuse.jpg-7cf7ab3627aa90e66f0d57799aaa414e.ctex"]
+dest_files=["res://.godot/imported/N07_watering_can_texture_diffuse.jpg-7cf7ab3627aa90e66f0d57799aaa414e.bptc.ctex", "res://.godot/imported/N07_watering_can_texture_diffuse.jpg-7cf7ab3627aa90e66f0d57799aaa414e.astc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -42,5 +44,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=2048
 detect_3d/compress_to=1

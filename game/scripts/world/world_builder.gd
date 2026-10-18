@@ -1366,16 +1366,17 @@ func _process(_delta: float) -> void:
 	if swing.is_empty():
 		return
 	var t := Time.get_ticks_msec() / 1000.0
-	for e in swing.duplicate():
+	var power: float=EnvironmentLife.wind_at(t,GameState.weather)
+	for index: int in range(swing.size()-1,-1,-1):
+		var e: Array=swing[index]
 		var candidate: Variant=e[0]
 		if not is_instance_valid(candidate):
-			swing.erase(e)
+			swing.remove_at(index)
 			continue
 		var lan:=candidate as Node3D
 		if not lan.is_visible_in_tree():
 			continue
 		var ph: float = e[1]
-		var power: float=EnvironmentLife.wind_at(t,GameState.weather)
 		lan.rotation = Vector3(sin(t * 1.1 + ph) * 0.05 * power, float(e[2]) + sin(t * 0.37 + ph) * 0.12, sin(t * 1.4 + ph * 1.7) * 0.07 * power)
 
 
@@ -1540,6 +1541,9 @@ const WEATHER_MOD := {
 var _look_tween: Tween
 var _sky_min := -999.0
 var _sky_weather := ""
+var _interior_look_key := ""
+var _interior_look_ms := -100000
+var _building_look_key := ""
 
 
 static func look_at_hour(h: float) -> Dictionary:
@@ -1586,8 +1590,16 @@ func _apply_look(minute: float, weather: String, force: bool = false) -> void:
 	var evening := minute >= 16.5 * 60.0 or minute < 6.3 * 60.0 or market
 	if house:
 		house.set_evening(evening, false, weather)
-	for k in interiors:
-		(interiors[k] as InteriorBuilder).set_evening(evening)
+	# Interior window shaders only change on the evening/weather/room boundary.
+	# The 13 rooms each recurse their whole subtree, so refresh them at 4 Hz
+	# instead of once per frame; the night ramp is far slower than that.
+	var interior_key := "%s|%s|%s|%s" % [str(evening), weather, str(indoor), public_interior_kind]
+	var now_ms := Time.get_ticks_msec()
+	if force or interior_key != _interior_look_key or now_ms - _interior_look_ms >= 250:
+		_interior_look_key = interior_key
+		_interior_look_ms = now_ms
+		for k in interiors:
+			(interiors[k] as InteriorBuilder).set_evening(evening)
 	if indoor:
 		var day_rot: Vector3=Vector3(-33,110,0) if public_interior_kind!="" else HouseBuilder.SUN_DAY_ROT
 		var i_rot := Vector3(-16, 228, 0) if evening else day_rot
@@ -1610,8 +1622,11 @@ func _apply_look(minute: float, weather: String, force: bool = false) -> void:
 		env.adjustment_saturation = L.sat
 		for l in lamp_lights:
 			l.light_energy = L.lamp * float(l.get_meta("outdoor_energy_scale",1.0))
-		ShopWindows.light(window_mats, L.lamp, L.fog)
-		BuildingLife.update(building_life, minute, L.lamp)
+		var building_key := "%d|%s|%d|%s" % [int(minute), weather, GameState.day, GameState.phase]
+		if force or building_key != _building_look_key:
+			_building_look_key = building_key
+			ShopWindows.light(window_mats, L.lamp, L.fog)
+			BuildingLife.update(building_life, minute, L.lamp)
 	# the sky's radiance map is rebuilt when it changes, so only touch it every couple of game minutes
 	if force or absf(minute - _sky_min) >= 2.0 or weather != _sky_weather:
 		_sky_min = minute

@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://01bf1wpdmr1g"
-path="res://.godot/imported/N19_burlap_sacks_texture_diffuse.jpg-9a08a12ad6a9cf76b1f503e22252236f.ctex"
+path.bptc="res://.godot/imported/N19_burlap_sacks_texture_diffuse.jpg-9a08a12ad6a9cf76b1f503e22252236f.bptc.ctex"
+path.astc="res://.godot/imported/N19_burlap_sacks_texture_diffuse.jpg-9a08a12ad6a9cf76b1f503e22252236f.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "68d59d3647f7a829c458887208ce6077"
@@ -14,12 +16,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/N19_burlap_sacks_texture_diffuse.jpg"
-dest_files=["res://.godot/imported/N19_burlap_sacks_texture_diffuse.jpg-9a08a12ad6a9cf76b1f503e22252236f.ctex"]
+dest_files=["res://.godot/imported/N19_burlap_sacks_texture_diffuse.jpg-9a08a12ad6a9cf76b1f503e22252236f.bptc.ctex", "res://.godot/imported/N19_burlap_sacks_texture_diffuse.jpg-9a08a12ad6a9cf76b1f503e22252236f.astc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -42,5 +44,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=2048
 detect_3d/compress_to=1

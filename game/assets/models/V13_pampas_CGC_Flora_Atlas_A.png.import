@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bu8ycww2w0pyb"
-path="res://.godot/imported/V13_pampas_CGC_Flora_Atlas_A.png-ba36bb27385e6a79df60d3f5710ad3e3.ctex"
+path.bptc="res://.godot/imported/V13_pampas_CGC_Flora_Atlas_A.png-ba36bb27385e6a79df60d3f5710ad3e3.bptc.ctex"
+path.astc="res://.godot/imported/V13_pampas_CGC_Flora_Atlas_A.png-ba36bb27385e6a79df60d3f5710ad3e3.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "64bd513f21de697052e183ac340e8fe5"
@@ -14,12 +16,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/V13_pampas_CGC_Flora_Atlas_A.png"
-dest_files=["res://.godot/imported/V13_pampas_CGC_Flora_Atlas_A.png-ba36bb27385e6a79df60d3f5710ad3e3.ctex"]
+dest_files=["res://.godot/imported/V13_pampas_CGC_Flora_Atlas_A.png-ba36bb27385e6a79df60d3f5710ad3e3.bptc.ctex", "res://.godot/imported/V13_pampas_CGC_Flora_Atlas_A.png-ba36bb27385e6a79df60d3f5710ad3e3.astc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -42,5 +44,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=2048
 detect_3d/compress_to=1

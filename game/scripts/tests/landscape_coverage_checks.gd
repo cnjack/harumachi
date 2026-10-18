@@ -20,20 +20,27 @@ func run() -> void:
 	for id: String in ["V06_fine_grass","V07_grass_card","V08_blade_rosette","V09_fern_cluster","V10_leaf_shrub","V11_fallen_leaf","V12_tulip","V13_pampas","V14_broad_grass","V15_wheat_stem","P_library_carton","P_library_bucket","P_library_stool","V16_path_pebble","V17_path_pebble","V18_path_pebble","V19_distant_cliff"]:
 		check(id+" exported",ResourceLoader.exists("res://assets/models/"+id+".glb"))
 	var alpha_ok:=true
+	var alpha_bad: Array[String]=[]
 	var vertices_ok:=true
 	for id: String in LandscapeCoverage.PLANTS:
 		var scene: PackedScene=WorldBuilder.model_scene(id)
-		if scene==null:alpha_ok=false;continue
+		if scene==null:alpha_ok=false;alpha_bad.append(id+" missing");continue
 		var model: Node3D=scene.instantiate();main.add_child(model)
 		for mesh: MeshInstance3D in WorldBuilder.find_meshes(model):
 			for surface in mesh.mesh.get_surface_count():
 				var material:=mesh.get_active_material(surface) as StandardMaterial3D
-				if material==null or material.albedo_texture==null:alpha_ok=false;continue
+				if material==null or material.albedo_texture==null:alpha_ok=false;alpha_bad.append("%s/%d no albedo" % [id,surface]);continue
 				var image: Image=material.albedo_texture.get_image()
-				alpha_ok=alpha_ok and image.detect_alpha()!=Image.ALPHA_NONE
+				# VRAM-compressed textures keep alpha but detect_alpha() cannot
+				# inspect a BPTC image without decompressing it first.
+				if image.is_compressed():image.decompress()
+				if image.detect_alpha()==Image.ALPHA_NONE:
+					alpha_ok=false
+					alpha_bad.append("%s/%d %s fmt%d %s" % [id,surface,material.albedo_texture.resource_path.get_file(),image.get_format(),str(material.albedo_texture.get_image().get_size())])
 				var box: AABB=mesh.mesh.get_aabb()
 				vertices_ok=vertices_ok and box.size.length()<5.0 and box.position.y>=-.04
 		model.free()
+	if not alpha_bad.is_empty():print("LANDSCAPE_ALPHA_BAD ",", ".join(alpha_bad))
 	check("all foliage masks are true alpha textures rather than opaque JPEG cards",alpha_ok)
 	check("library plants have grounded metre-scale geometry",vertices_ok)
 	var installed:=true

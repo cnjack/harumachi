@@ -88,10 +88,18 @@ var max_displacement := 0.0
 var active_targets := 0
 var last_original_values := PackedFloat32Array()
 var cached_matrices: Array[Transform3D] = []
+var cached_full_pose: Array[Transform3D] = []
 var cached_original_values := PackedFloat32Array()
 var cached_amounts := PackedFloat32Array()
 var cached_enabled := true
 var cache_hits := 0
+# Idle breathing changes every bone matrix by a fraction of a millimetre, so an
+# exact pose comparison never hits. Reuse the last solve while the whole body
+# stays inside a sub-millimetre envelope; the garment can lag by less than the
+# 3 mm contact margin, and a full solve resumes as soon as it drifts further.
+var pose_cache_tolerance_m := 0.0006
+var tolerance_cache_hits := 0
+var last_pose_delta_m := 0.0
 var frame_times := PackedInt32Array()
 var solve_times := PackedInt32Array()
 var solve_total_usec := 0
@@ -159,7 +167,7 @@ func native_contact_original_performance() -> Dictionary:
 		"max_local_displacement_m": max_displacement, "max_contact_depth_m": max_contact_depth,
 		"saturated_constraints": saturated_constraints, "body_anchors": body.size(), "physical_body_anchors": physical_body_anchors, "body_classification": body_classification_preparation, "body_surface_centroids": body_surface_triangles.size() / 3, "body_surface_edge_midpoints": body_surface_edges.size() / 2, "body_edge_min_rest_length_m": body_edge_min_rest_length_m, "body_edge_policy": body_edge_policy, "skinned_source_vertices": positions.size(), "nonzero_skin_influences": bone_weights.size(),
 		"cloth_triangles_front": (faces.front as PackedInt32Array).size() / 3,
-		"cloth_triangles_back": (faces.back as PackedInt32Array).size() / 3, "local_weights": current, "pose_cache_hits": cache_hits, "ray_queries_mean": float(total_ray_queries) / maxi(updates, 1), "broadphase_skips_mean": float(total_broadphase_skips) / maxi(updates, 1)}
+		"cloth_triangles_back": (faces.back as PackedInt32Array).size() / 3, "local_weights": current, "pose_cache_hits": cache_hits, "pose_tolerance_cache_hits": tolerance_cache_hits, "pose_cache_tolerance_m": pose_cache_tolerance_m, "last_pose_delta_m": last_pose_delta_m, "ray_queries_mean": float(total_ray_queries) / maxi(updates, 1), "broadphase_skips_mean": float(total_broadphase_skips) / maxi(updates, 1)}
 
 func reset_performance() -> void:
 	native_geometry_calls = 0
@@ -172,6 +180,7 @@ func reset_performance() -> void:
 	total_usec = 0
 	max_usec = 0
 	cache_hits = 0
+	tolerance_cache_hits = 0
 	frame_times.clear()
 	solve_times.clear()
 	solve_total_usec = 0
@@ -393,6 +402,7 @@ func prepare(model: Node3D, profile: Dictionary) -> void:
 			proxy_target_triangles = maxf(800.0, argument.trim_prefix(quality_flag).to_float())
 			diagnostic_proxy_override = true
 		if argument.begins_with("--garment-proxy-export-dir="): proxy_export_dir = argument.trim_prefix("--garment-proxy-export-dir=")
+		if argument.begins_with("--garment-pose-tolerance="): pose_cache_tolerance_m = maxf(0.0, argument.trim_prefix("--garment-pose-tolerance=").to_float())
 	var rgb: Array = profile.get("body_rgb_reference", [.92, .73, .63])
 	body_rgb = Vector3(float(rgb[0]), float(rgb[1]), float(rgb[2]))
 	body_rgb_tolerance = float(profile.get("body_rgb_tolerance", .12))
@@ -736,6 +746,30 @@ func patch_value_signature(values: PackedFloat32Array, support: PackedInt32Array
 	for slot: int in support.size(): selected[slot] = values[support[slot]]
 	return selected.to_byte_array()
 
+func _pose_delta_squared(current: Transform3D, solved: Transform3D) -> float:
+	var worst := current.origin.distance_squared_to(solved.origin)
+	worst = maxf(worst, (current.basis.x - solved.basis.x).length_squared())
+	worst = maxf(worst, (current.basis.y - solved.basis.y).length_squared())
+	worst = maxf(worst, (current.basis.z - solved.basis.z).length_squared())
+	return worst
+
+func _pose_within_cache_envelope(matrices: Array[Transform3D], skeleton: Skeleton3D) -> bool:
+	if pose_cache_tolerance_m <= 0.0 or cached_matrices.size() != matrices.size(): return false
+	# Contact is solved against the whole body, not only the garment's bound
+	# bones: a leg swinging 14 mm while the waist stays inside 0.6 mm must still
+	# force a solve. Compare the complete skeleton pose as well.
+	if cached_full_pose.size() != skeleton.get_bone_count(): return false
+	var worst := 0.0
+	for index: int in matrices.size(): worst = maxf(worst, _pose_delta_squared(matrices[index], cached_matrices[index]))
+	for index: int in cached_full_pose.size(): worst = maxf(worst, _pose_delta_squared(skeleton.get_bone_global_pose(index), cached_full_pose[index]))
+	last_pose_delta_m = sqrt(worst)
+	return worst <= pose_cache_tolerance_m * pose_cache_tolerance_m
+
+func _snapshot_full_pose(skeleton: Skeleton3D) -> Array[Transform3D]:
+	var pose: Array[Transform3D] = []
+	for index: int in skeleton.get_bone_count(): pose.append(skeleton.get_bone_global_pose(index))
+	return pose
+
 func _process_modification() -> void:
 	if mesh == null or not mesh.is_visible_in_tree(): return
 	var began: int = Time.get_ticks_usec()
@@ -754,6 +788,7 @@ func _process_modification() -> void:
 		for patch: int in local_indices.size(): mesh.set_blend_shape_value(local_indices[patch], 0)
 		cached_amounts = amounts.duplicate()
 		cached_matrices = matrices
+		cached_full_pose = _snapshot_full_pose(skeleton)
 		cached_original_values = original_values
 		cached_enabled = enabled
 		max_contact_depth = 0.0
@@ -764,14 +799,22 @@ func _process_modification() -> void:
 		last_branch = "steady_fast"
 		record_elapsed(began)
 		return
-	if cached_matrices == matrices and cached_original_values == original_values and cached_enabled == enabled and cached_amounts.size() == local_indices.size():
+	if cached_matrices == matrices and cached_full_pose == _snapshot_full_pose(skeleton) and cached_original_values == original_values and cached_enabled == enabled and cached_amounts.size() == local_indices.size():
 		for patch: int in local_indices.size(): mesh.set_blend_shape_value(local_indices[patch], cached_amounts[patch])
 		cache_hits += 1
 		last_branch = "pose_cache"
 		record_elapsed(began)
 		return
+	if _pose_within_cache_envelope(matrices, skeleton) and cached_original_values == original_values and cached_enabled == enabled and cached_amounts.size() == local_indices.size():
+		for patch: int in local_indices.size(): mesh.set_blend_shape_value(local_indices[patch], cached_amounts[patch])
+		tolerance_cache_hits += 1
+		cache_hits += 1
+		last_branch = "pose_cache_tolerance"
+		record_elapsed(began)
+		return
 	last_branch = "full"
 	cached_matrices = matrices
+	cached_full_pose = _snapshot_full_pose(skeleton)
 	cached_original_values = original_values
 	cached_enabled = enabled
 	amounts.fill(0)

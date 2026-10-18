@@ -26,6 +26,8 @@ var _leaf_timer := 0.0
 var _sky_timer := 0.0
 var _sky_weather := ""
 var _sky_indoor := false
+var _state_weather := ""
+var _state_cache: Dictionary = {}
 var _region := ""
 var _leaf_mesh: ArrayMesh
 var _leaf_material: StandardMaterial3D
@@ -59,7 +61,10 @@ func _process(delta: float) -> void:
 
 func tick(delta: float) -> void:
 	elapsed+=delta
-	state=(WEATHER.get(GameState.weather,WEATHER.sunny) as Dictionary).duplicate()
+	if _state_weather!=GameState.weather:
+		_state_weather=GameState.weather
+		_state_cache=(WEATHER.get(_state_weather,WEATHER.sunny) as Dictionary).duplicate()
+	state=_state_cache
 	wind_power=wind_at(Time.get_ticks_msec()/1000.0,GameState.weather)
 	wind_direction=Vector2(.8+.12*sin(elapsed*.09),.6).normalized()
 	RenderingServer.global_shader_parameter_set("wind_strength",wind_power)

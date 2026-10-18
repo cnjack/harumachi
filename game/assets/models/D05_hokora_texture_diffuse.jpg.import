@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://keb70tppqjyd"
-path="res://.godot/imported/D05_hokora_texture_diffuse.jpg-ab9d6b50a70711f439598940ec3674c1.ctex"
+path.bptc="res://.godot/imported/D05_hokora_texture_diffuse.jpg-ab9d6b50a70711f439598940ec3674c1.bptc.ctex"
+path.astc="res://.godot/imported/D05_hokora_texture_diffuse.jpg-ab9d6b50a70711f439598940ec3674c1.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "369efbe48ab28920ecd9f722d15d1f74"
@@ -14,12 +16,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/D05_hokora_texture_diffuse.jpg"
-dest_files=["res://.godot/imported/D05_hokora_texture_diffuse.jpg-ab9d6b50a70711f439598940ec3674c1.ctex"]
+dest_files=["res://.godot/imported/D05_hokora_texture_diffuse.jpg-ab9d6b50a70711f439598940ec3674c1.bptc.ctex", "res://.godot/imported/D05_hokora_texture_diffuse.jpg-ab9d6b50a70711f439598940ec3674c1.astc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -42,5 +44,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=2048
 detect_3d/compress_to=1

@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddvgxhwsi4ssy"
-path="res://.godot/imported/P07_texture_20250901.jpg-f3b15ab6edfee03475d81a5dd79b38a2.ctex"
+path.bptc="res://.godot/imported/P07_texture_20250901.jpg-f3b15ab6edfee03475d81a5dd79b38a2.bptc.ctex"
+path.astc="res://.godot/imported/P07_texture_20250901.jpg-f3b15ab6edfee03475d81a5dd79b38a2.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "d6863a3c2a9b89ec4884d87bec58c2b8"
@@ -14,12 +16,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/P07_texture_20250901.jpg"
-dest_files=["res://.godot/imported/P07_texture_20250901.jpg-f3b15ab6edfee03475d81a5dd79b38a2.ctex"]
+dest_files=["res://.godot/imported/P07_texture_20250901.jpg-f3b15ab6edfee03475d81a5dd79b38a2.bptc.ctex", "res://.godot/imported/P07_texture_20250901.jpg-f3b15ab6edfee03475d81a5dd79b38a2.astc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -42,5 +44,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=2048
 detect_3d/compress_to=1

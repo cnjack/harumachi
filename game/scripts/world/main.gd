@@ -20,6 +20,12 @@ var photo: PhotoMode
 var life: AmbientLife
 var shop_life: ShopLife
 var _amb_check := 0.0
+var _hud_check := 0.0
+var _hud_photo := false
+var _hud_modal := ""
+var _hud_placement := false
+var _hud_room := false
+var _marker_target: Variant = null
 var _last_fest := ""
 var dancing := false
 const FEST_POINTS := [
@@ -1022,11 +1028,24 @@ func _process(delta: float) -> void:
 			story.lore.checks()
 			story.bakery.checks()
 		_sync_roams()
-	ui.set_area(area_name())
-	var t := player.target
-	ui.set_prompt(story.prompt_for(t.id) if t and not GameState.input_locked() else "")
+	# Marker/prompt visibility depends on these modes; refresh on the transition
+	# itself so exiting photo mode or a modal never leaves a stale marker.
+	var photo_now: bool = photo_mode or (photo != null and photo.active)
+	if photo_now != _hud_photo or ui.modal != _hud_modal or placement.active != _hud_placement or in_room != _hud_room:
+		_hud_photo = photo_now
+		_hud_modal = ui.modal
+		_hud_placement = placement.active
+		_hud_room = in_room
+		_hud_check = 0.0
+	_hud_check -= delta
+	if _hud_check <= 0.0:
+		_hud_check = 0.1
+		ui.set_area(area_name())
+		var t := player.target
+		ui.set_prompt(story.prompt_for(t.id) if t and not GameState.input_locked() else "")
+		_marker_target = story.marker_target()
 	_marker_t += delta
-	var mt = story.marker_target()
+	var mt: Variant = _marker_target
 	marker.visible = mt != null and (not in_room or player.global_position.distance_to(mt) < 22.0) and not placement.active and ui.modal == "" and not photo_mode and not (photo!=null and photo.active) and not GameState._ui_locks.has("arrival")
 	if marker.visible:
 		var mp: Vector3 = mt

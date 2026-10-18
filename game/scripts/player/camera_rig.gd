@@ -22,6 +22,9 @@ var yaw_node := Node3D.new()
 var pitch_node := Node3D.new()
 var arm := SpringArm3D.new()
 var cam := Camera3D.new()
+var _fade_model: Node = null
+var _fade_meshes: Array[MeshInstance3D] = []
+var _fade_amount := -1.0
 
 
 func _ready() -> void:
@@ -101,13 +104,22 @@ func _process(_delta: float) -> void:
 func _update_body_fade() -> void:
 	# Retraction under a roof can put the follow camera inside the avatar.
 	# Change only this instance's rendering; its collision stays in place.
-	if not target is Player or not is_instance_valid((target as Player).model):return
+	if not target is Player:return
+	var model: Node=(target as Player).model
+	if not is_instance_valid(model):return
+	if model!=_fade_model:
+		_fade_model=model
+		_fade_meshes.clear()
+		for mesh: MeshInstance3D in WorldBuilder.find_meshes(model):_fade_meshes.append(mesh)
+		_fade_amount=-1.0
 	var amount: float=0.0
 	if get_viewport().get_camera_3d()==cam:
 		var focus: Vector3=target.get_global_transform_interpolated().origin+Vector3.UP*1.25
 		var camera_position: Vector3=cam.get_global_transform_interpolated().origin
 		amount=clampf((1.8-camera_position.distance_to(focus))/.8,0.0,1.0)
-	for mesh: MeshInstance3D in WorldBuilder.find_meshes((target as Player).model):mesh.transparency=amount
+	if amount==_fade_amount:return
+	_fade_amount=amount
+	for mesh: MeshInstance3D in _fade_meshes:mesh.transparency=amount
 
 
 func forward_yaw() -> float:

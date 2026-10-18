@@ -18,7 +18,11 @@ func run() -> void:
 			var material:=mesh.get_surface_override_material(surface) as ShaderMaterial
 			if material:
 				var texture: Texture2D=material.get_shader_parameter("albedo_tex")
-				alpha=alpha or (texture!=null and texture.get_image().detect_alpha()!=Image.ALPHA_NONE)
+				if texture!=null:
+					var image: Image=texture.get_image()
+					# BC7 keeps alpha; detect_alpha() only reads uncompressed pixels.
+					if image.is_compressed():image.decompress()
+					alpha=alpha or image.detect_alpha()!=Image.ALPHA_NONE
 				roles=roles and int(material.get_shader_parameter("part_role"))==1
 	check("tree leaf textures retain their alpha channel",alpha)
 	check("foliage uses its own wind role",roles)

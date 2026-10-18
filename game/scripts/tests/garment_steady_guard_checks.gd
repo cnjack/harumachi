@@ -108,7 +108,10 @@ func fallback_result(previous: Dictionary, measured: Dictionary, reason: String)
 	# oneshot/modifier predicate this particular negative fixture exercises.
 	var proof_state: bool = bool(measured.get("steady_proof_match", false))
 	var valid_proof_expected: bool = reason not in ["unverified model content", "asset carrier transform changed", "certified resource changed"]
-	return bool(measured.get("fresh", false)) and proof_state == valid_proof_expected and int(measured.get("steady_fast_updates", -1)) == int(previous.get("steady_fast_updates", -2)) and str(measured.get("last_branch", "")) in ["full", "pose_cache"] and str(measured.get("last_steady_reason", "")) == reason
+	# The tolerance cache is a separate reuse branch: it still rejects a moved
+	# pose and never increments the certified steady counter, so a guard that
+	# keeps steady_fast_updates flat has not been bypassed.
+	return bool(measured.get("fresh", false)) and proof_state == valid_proof_expected and int(measured.get("steady_fast_updates", -1)) == int(previous.get("steady_fast_updates", -2)) and str(measured.get("last_branch", "")) in ["full", "pose_cache", "pose_cache_tolerance"] and str(measured.get("last_steady_reason", "")) == reason
 
 func corrupt_fingerprint(value: Variant, fingerprint: String) -> Variant:
 	if value is Dictionary:

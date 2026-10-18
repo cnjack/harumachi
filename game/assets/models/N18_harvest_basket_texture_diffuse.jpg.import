@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbfjyncyjoqhx"
-path="res://.godot/imported/N18_harvest_basket_texture_diffuse.jpg-12ac37aa086e2800bcefda4145318473.ctex"
+path.bptc="res://.godot/imported/N18_harvest_basket_texture_diffuse.jpg-12ac37aa086e2800bcefda4145318473.bptc.ctex"
+path.astc="res://.godot/imported/N18_harvest_basket_texture_diffuse.jpg-12ac37aa086e2800bcefda4145318473.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "a847a2b132c5c22c85ae2cb87c818a2a"
@@ -14,12 +16,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/N18_harvest_basket_texture_diffuse.jpg"
-dest_files=["res://.godot/imported/N18_harvest_basket_texture_diffuse.jpg-12ac37aa086e2800bcefda4145318473.ctex"]
+dest_files=["res://.godot/imported/N18_harvest_basket_texture_diffuse.jpg-12ac37aa086e2800bcefda4145318473.bptc.ctex", "res://.godot/imported/N18_harvest_basket_texture_diffuse.jpg-12ac37aa086e2800bcefda4145318473.astc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -42,5 +44,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=2048
 detect_3d/compress_to=1

@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cj57tdj55l41p"
-path="res://.godot/imported/C15_wheat_texture_diffuse.jpg-aed10d7d13a8449e4c3cc51c92da0c50.ctex"
+path.bptc="res://.godot/imported/C15_wheat_texture_diffuse.jpg-aed10d7d13a8449e4c3cc51c92da0c50.bptc.ctex"
+path.astc="res://.godot/imported/C15_wheat_texture_diffuse.jpg-aed10d7d13a8449e4c3cc51c92da0c50.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "94c1e7ee22659701069bfa77fd5732b1"
@@ -14,12 +16,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/C15_wheat_texture_diffuse.jpg"
-dest_files=["res://.godot/imported/C15_wheat_texture_diffuse.jpg-aed10d7d13a8449e4c3cc51c92da0c50.ctex"]
+dest_files=["res://.godot/imported/C15_wheat_texture_diffuse.jpg-aed10d7d13a8449e4c3cc51c92da0c50.bptc.ctex", "res://.godot/imported/C15_wheat_texture_diffuse.jpg-aed10d7d13a8449e4c3cc51c92da0c50.astc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -42,5 +44,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=2048
 detect_3d/compress_to=1

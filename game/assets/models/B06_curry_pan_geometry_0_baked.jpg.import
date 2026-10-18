@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://nm76r1rwggom"
-path="res://.godot/imported/B06_curry_pan_geometry_0_baked.jpg-5c05a0c2a64ddadb927e9db37c3e23be.ctex"
+path.bptc="res://.godot/imported/B06_curry_pan_geometry_0_baked.jpg-5c05a0c2a64ddadb927e9db37c3e23be.bptc.ctex"
+path.astc="res://.godot/imported/B06_curry_pan_geometry_0_baked.jpg-5c05a0c2a64ddadb927e9db37c3e23be.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "d2521e199e08a10a5a14b20c2f7cc5b5"
@@ -14,12 +16,13 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/B06_curry_pan_geometry_0_baked.jpg"
-dest_files=["res://.godot/imported/B06_curry_pan_geometry_0_baked.jpg-5c05a0c2a64ddadb927e9db37c3e23be.ctex"]
+dest_files=["res://.godot/imported/B06_curry_pan_geometry_0_baked.jpg-5c05a0c2a64ddadb927e9db37c3e23be.bptc.ctex", "res://.godot/imported/B06_curry_pan_geometry_0_baked.jpg-5c05a0c2a64ddadb927e9db37c3e23be.astc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
+compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
@@ -28,6 +31,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
+mipmaps/preserve_alpha_test_coverage=false
+mipmaps/alpha_test_threshold=0.5
 roughness/mode=0
 roughness/src_normal=""
 process/channel_remap/red=0
@@ -39,5 +44,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=2048
 detect_3d/compress_to=1

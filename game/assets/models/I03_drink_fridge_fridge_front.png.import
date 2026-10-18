@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://6kdqyokj5mu4"
-path="res://.godot/imported/I03_drink_fridge_fridge_front.png-7d8142dc6541bc80061ac75bcbb2d76e.ctex"
+path.bptc="res://.godot/imported/I03_drink_fridge_fridge_front.png-7d8142dc6541bc80061ac75bcbb2d76e.bptc.ctex"
+path.astc="res://.godot/imported/I03_drink_fridge_fridge_front.png-7d8142dc6541bc80061ac75bcbb2d76e.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "51d94fd3400f47b0ae801ae51600b9f3"
@@ -14,12 +16,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/I03_drink_fridge_fridge_front.png"
-dest_files=["res://.godot/imported/I03_drink_fridge_fridge_front.png-7d8142dc6541bc80061ac75bcbb2d76e.ctex"]
+dest_files=["res://.godot/imported/I03_drink_fridge_fridge_front.png-7d8142dc6541bc80061ac75bcbb2d76e.bptc.ctex", "res://.godot/imported/I03_drink_fridge_fridge_front.png-7d8142dc6541bc80061ac75bcbb2d76e.astc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -42,5 +44,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=2048
 detect_3d/compress_to=1

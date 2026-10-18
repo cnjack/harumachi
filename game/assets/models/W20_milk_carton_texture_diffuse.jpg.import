@@ -3,9 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cxe4xw4ng2b3i"
-path="res://.godot/imported/W20_milk_carton_texture_diffuse.jpg-35dd8e7b468758645c2a6d89da49820c.ctex"
+path.bptc="res://.godot/imported/W20_milk_carton_texture_diffuse.jpg-35dd8e7b468758645c2a6d89da49820c.bptc.ctex"
+path.astc="res://.godot/imported/W20_milk_carton_texture_diffuse.jpg-35dd8e7b468758645c2a6d89da49820c.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "f80e4ffdbd9a0e61583256f668f4a4c5"
@@ -14,12 +16,12 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/W20_milk_carton_texture_diffuse.jpg"
-dest_files=["res://.godot/imported/W20_milk_carton_texture_diffuse.jpg-35dd8e7b468758645c2a6d89da49820c.ctex"]
+dest_files=["res://.godot/imported/W20_milk_carton_texture_diffuse.jpg-35dd8e7b468758645c2a6d89da49820c.bptc.ctex", "res://.godot/imported/W20_milk_carton_texture_diffuse.jpg-35dd8e7b468758645c2a6d89da49820c.astc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -42,5 +44,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=2048
 detect_3d/compress_to=1
