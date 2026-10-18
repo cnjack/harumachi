@@ -12,18 +12,18 @@
 <body>
   <header class="topbar">
     <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">晴</span><span>人物绑定<span class="brand-sub">人工点评 / 明年夏祭</span></span></a>
-    <div class="global-progress"><span id="progressText">0 / 49 项已点评</span><progress id="progressBar" max="49" value="0" aria-label="点评进度"></progress></div>
+    <div class="global-progress"><span id="progressText">正在读取项目</span><progress id="progressBar" max="1" value="0" aria-label="点评进度"></progress></div>
     <div class="top-actions"><span id="saveStatus" role="status">正在读取进度</span><button id="overviewButton" class="quiet">总览</button><button id="importButton" class="quiet">导入进度</button><button id="exportButton" class="primary">导出结果 <span aria-hidden="true">↗</span></button></div>
   </header>
   <div id="saveWarning" class="save-warning" role="alert" hidden></div>
   <div class="workspace">
     <aside class="queue" aria-label="点评项目">
-      <div class="queue-heading"><span class="eyebrow">逐项查看</span><span id="queueCount">49 项</span></div>
+      <div class="queue-heading"><span class="eyebrow">逐项查看</span><span id="queueCount">正在读取</span></div>
       <label class="field-label" for="filter">筛选项目</label><select id="filter"><option value="all">全部项目</option><option value="unreviewed">尚未点评</option><option value="issue">有问题</option><option value="unsure">不确定</option><option value="pass">已通过</option><option value="later">稍后再看</option></select>
       <div id="caseList" class="case-list"></div>
       <button id="nextUnreviewed" class="outline wide">下一个未点评项目 <span aria-hidden="true">→</span></button>
       <p class="queue-help">意见会随输入保存。完成后导出 JSON 文件，发到聊天里即可。</p>
-      <a class="report-link" href="REPORT.html" target="_blank" rel="noopener">查看之前的审查报告 ↗</a>
+      __OPTIONAL_REPORT_LINK__
     </aside>
     <main class="inspection">
       <div class="case-heading"><div><span id="caseNumber" class="eyebrow"></span><h1 id="caseTitle"></h1></div><div class="case-navigation"><button id="previousCase" class="icon-button" aria-label="上一个项目" title="上一个项目（←）">←</button><button id="nextCase" class="icon-button" aria-label="下一个项目" title="下一个项目（→）">→</button></div></div>
@@ -36,6 +36,11 @@
       <div id="staticControls" class="static-controls">
         <div class="phase-line"><span class="field-label">动作相位</span><div id="phaseButtons" class="phase-buttons" role="group" aria-label="动作相位"></div></div>
         <div id="angleButtons" class="angle-buttons" role="group" aria-label="观察方向"></div>
+      </div>
+      <div id="motionControls" class="static-controls" hidden>
+        <div class="phase-line"><span class="field-label">连续录制方向</span></div>
+        <div id="motionAngleButtons" class="angle-buttons" role="group" aria-label="连续动作实际录制方向"></div>
+        <p id="motionViewNotice" class="inspection-help" role="status"></p>
       </div>
       <div class="annotation-toolbar"><button id="pinButton" class="outline">＋ 在画面上标记位置</button><button id="frameNoteButton" class="quiet">给当前画面写意见</button><span id="seenCount" class="muted"></span></div>
       <p class="inspection-help" id="inspectionHelp">可以逐相位、逐方向看，也可以只给有疑问的画面写意见。键盘 1 / 2 / 3 / 4 标记判断，← / → 切换项目。</p>
@@ -52,11 +57,11 @@
     </aside>
   </div>
   <div id="toast" class="toast" role="status" hidden><span id="toastText"></span><button id="undoButton" hidden>撤销</button></div>
-  <dialog id="overviewDialog" class="overview-dialog"><div class="dialog-heading"><div><span class="eyebrow">点评总览</span><h2>你的49项判断</h2></div><button class="icon-button" data-close="overviewDialog" aria-label="关闭总览">×</button></div><div id="overviewSummary" class="overview-summary"></div><div class="table-scroll"><table><thead><tr><th>人物</th><th>动作</th><th>判断</th><th>意见</th><th></th></tr></thead><tbody id="overviewRows"></tbody></table></div></dialog>
+  <dialog id="overviewDialog" class="overview-dialog"><div class="dialog-heading"><div><span class="eyebrow">点评总览</span><h2>你的逐项判断</h2></div><button class="icon-button" data-close="overviewDialog" aria-label="关闭总览">×</button></div><div id="overviewSummary" class="overview-summary"></div><div class="table-scroll"><table><thead><tr><th>人物</th><th>动作</th><th>判断</th><th>意见</th><th></th></tr></thead><tbody id="overviewRows"></tbody></table></div></dialog>
   <dialog id="exportDialog" class="export-dialog"><div class="dialog-heading"><div><span class="eyebrow">交回点评</span><h2>把你的结果发给我</h2></div><button class="icon-button" data-close="exportDialog" aria-label="关闭导出">×</button></div><p id="exportSummary"></p><label class="field-label" for="reviewer">你的称呼 <span class="muted">（选填）</span></label><input id="reviewer" maxlength="100" placeholder="留空也可以"><div class="export-actions"><button id="downloadJson" class="primary wide">下载点评结果 JSON</button><button id="downloadMarkdown" class="outline wide">下载可读文字版</button></div><p class="dialog-note">把下载的 JSON 文件发到聊天里，我就能按人物、动作、画面位置逐条处理。没点评完也可以导出，之后用“导入进度”接着看。</p></dialog>
   <dialog id="importDialog" class="import-dialog"><div class="dialog-heading"><h2>导入之前的点评</h2><button class="icon-button" data-close="importDialog" aria-label="关闭导入">×</button></div><p id="importSummary"></p><label class="import-choice"><input type="radio" name="importMode" value="merge" checked><span>只补未填写的项目，已有项目保留当前意见</span></label><label class="import-choice"><input type="radio" name="importMode" value="replace"><span>以导入文件为准，替换当前进度</span></label><p class="dialog-note">第一种方式按项目补充；同一项目已有意见时，导入文件中的该项目会跳过。导入前保留当前进度，可立即撤销；继续编辑后不再整包撤销，以保护新写的意见。文件需要对应这批审查画面。</p><button id="confirmImport" class="primary wide">导入点评</button></dialog>
   <dialog id="zoomDialog" class="zoom-dialog"><div class="dialog-heading"><strong id="zoomTitle"></strong><button class="icon-button" data-close="zoomDialog" aria-label="关闭放大画面">×</button></div><div class="zoom-scroll"><img id="zoomImage" alt="放大画面"></div><p class="dialog-note">关闭后，可在主画面标记具体位置。</p></dialog>
   <input id="importFile" type="file" accept="application/json,.json" hidden>
-  <noscript>这个点评界面需要启用 JavaScript。原始审查报告仍可通过 REPORT.html 查看。</noscript>
+  <noscript>这个点评界面需要启用 JavaScript。</noscript>
 </body>
 </html>

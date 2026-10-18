@@ -202,7 +202,9 @@ func trial(application: bool) -> void:
 		var actor: NPC = s.npcs[who]
 		var started_at: Vector3=actor.global_position
 		var original_speed: float = actor.speed
-		actor.speed = 4.5 if speed == 1 else 1.5
+		# Their shorter running stride keeps feet under the pelvis and the skirt
+		# over the leg. Haru retains the already reviewed quick movement.
+		actor.speed = (4.5 if who == "haru" else 3.2) if speed == 1 else 1.5
 		actor.set_talking(true)
 		var target: Vector3 = SummerSpace.DEMO if who == "mio" else SummerSpace.stop_for("bench" if who == "haru" else "picnic_table")
 		var circles: Array = [[SummerSpace.DANCE_CENTER, SummerSpace.DANCE_RADIUS]] if application and who != "mio" else []

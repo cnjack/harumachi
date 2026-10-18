@@ -1,0 +1,8 @@
+[configuration]
+entry_symbol="native_triangle_filter_init"
+compatibility_minimum="4.8"
+include_tags=PackedStringArray("macos.arm64")
+reloadable=false
+[libraries]
+macos.debug.arm64="res://addons/character_contact_filter/bin/libnative_triangle_filter.arm64.dylib"
+macos.release.arm64="res://addons/character_contact_filter/bin/libnative_triangle_filter.arm64.dylib"

@@ -12,25 +12,46 @@ from scipy.spatial.transform import Rotation, Slerp
 from scipy.spatial import cKDTree
 
 ROOT = Path(__file__).resolve().parents[3]
-sys.path.insert(0, str(ROOT / 'art/poc/character_pipeline_20261003/appearance_preserved'))
-from retime_glb import load, durations
+from glb_io import load, durations
 
 HEAD_START = {'sora': .855, 'mio': .81, 'ren': .86, 'haru': .815,
               'tanaka': .835, 'aoi': .80, 'kazuko': .835}
-DTYPE = {5121: '<u1', 5123: '<u2', 5125: '<u4', 5126: '<f4'}
+DTYPE = {5120: '<i1', 5121: '<u1', 5122: '<i2', 5123: '<u2', 5125: '<u4', 5126: '<f4'}
 WIDTH = {'SCALAR': 1, 'VEC2': 2, 'VEC3': 3, 'VEC4': 4, 'MAT4': 16}
 
 
 def read(d, b, index):
-    a = d['accessors'][index]; v = d['bufferViews'][a['bufferView']]
+    a = d['accessors'][index]
     dtype = np.dtype(DTYPE[a['componentType']]); width = WIDTH[a['type']]
-    return np.ndarray((a['count'], width), dtype=dtype, buffer=b,
-                      offset=v.get('byteOffset', 0) + a.get('byteOffset', 0),
-                      strides=(v.get('byteStride', width * dtype.itemsize), dtype.itemsize)).copy()
+    if 'bufferView' in a:
+        v = d['bufferViews'][a['bufferView']]
+        result = np.ndarray((a['count'], width), dtype=dtype, buffer=b,
+                            offset=v.get('byteOffset', 0) + a.get('byteOffset', 0),
+                            strides=(v.get('byteStride', width * dtype.itemsize), dtype.itemsize)).copy()
+    else:
+        result = np.zeros((a['count'], width), dtype=dtype)
+    if 'sparse' in a:
+        sparse = a['sparse']; indices = sparse['indices']; values = sparse['values']
+        iv = d['bufferViews'][indices['bufferView']]
+        vd = d['bufferViews'][values['bufferView']]
+        if indices['componentType'] not in (5121, 5123, 5125):
+            raise ValueError('Sparse indices must be unsigned integers')
+        index_dtype = np.dtype(DTYPE[indices['componentType']])
+        ids = np.ndarray((sparse['count'],), dtype=index_dtype, buffer=b,
+                         offset=iv.get('byteOffset', 0) + indices.get('byteOffset', 0),
+                         strides=(iv.get('byteStride', index_dtype.itemsize),))
+        if len(ids) and (int(ids[-1]) >= a['count'] or np.any(np.diff(ids.astype(np.int64)) <= 0)):
+            raise ValueError('Sparse indices must be ordered and within the accessor')
+        replacement = np.ndarray((sparse['count'], width), dtype=dtype, buffer=b,
+                                 offset=vd.get('byteOffset', 0) + values.get('byteOffset', 0),
+                                 strides=(vd.get('byteStride', width * dtype.itemsize), dtype.itemsize))
+        result[ids] = replacement
+    return result
 
 
 def append(d, b, old_index, values):
     a = copy.deepcopy(d['accessors'][old_index])
+    a.pop('sparse', None)
     data = np.asarray(values, dtype=DTYPE[a['componentType']])
     a['count'] = len(data)
     b.extend(b'\0' * ((-len(b)) % 4))

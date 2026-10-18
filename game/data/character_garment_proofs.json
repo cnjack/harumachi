@@ -1,0 +1,77 @@
+{
+  "ren": {
+    "certificate_version": 2,
+    "source_model_sha256": "964388d728336fe914e142b39ece3417db5d61af1c2d97b5b504fdeb0a983c83",
+    "imported_content_sha256": "8bf01da7e92c72d5f0102a90fefbeda14520b3165cfedd2a8c5564cfe5d6b2c9",
+    "certificate_helper_source_sha256": "2aab693e6f8063b1e4b4abc947e077d9f103613613ca7f4b540b59c373889c43",
+    "allowed_clips": [
+      "idle",
+      "walk",
+      "run"
+    ],
+    "native_root_zero_proof": {
+      "report": "evidence/rig_fix_20261017/ren-v32-clean-root-zero-full-union/full-surface.json",
+      "report_sha256": "ffe7a0cd4cd9508dfb432c43ca0845e81068e820c272670781e5908664d53051",
+      "steady_phases_per_clip": 128,
+      "steady_fresh_samples": 384,
+      "additional_uv_labelled_surface_witnesses_per_pose": 58754,
+      "original_body_anchors": 4625,
+      "preserved_pure_body_source_triangles": 8177,
+      "maximum_vertex_penetration_m": 0.00454858690500259,
+      "maximum_additional_surface_penetration_m": 0.000782102346420288,
+      "all_actual_local_weights_zero": true,
+      "fixture_root_height_m": 0.0,
+      "source_model_sha256": "964388d728336fe914e142b39ece3417db5d61af1c2d97b5b504fdeb0a983c83",
+      "actual_imported_content_sha256": "8bf01da7e92c72d5f0102a90fefbeda14520b3165cfedd2a8c5564cfe5d6b2c9",
+      "certificate_helper_source_sha256": "2aab693e6f8063b1e4b4abc947e077d9f103613613ca7f4b540b59c373889c43",
+      "body_classifier_source_sha256": "f6f546bb530b52010dadb749f011f17ab35588366f9eb4720565914408d7de0b"
+    },
+    "native_proof": {
+      "report": "evidence/rig_fix_20261017/ren-v32-clean-root-painted-full-union/full-surface.json",
+      "report_sha256": "cb0b4be884579c62c8f17a3a4916aff42547bacb426b7a1988ce82cbada062a6",
+      "steady_phases_per_clip": 128,
+      "steady_fresh_samples": 384,
+      "additional_uv_labelled_surface_witnesses_per_pose": 58754,
+      "original_body_anchors": 4625,
+      "preserved_pure_body_source_triangles": 8177,
+      "maximum_vertex_penetration_m": 0.00454805046319962,
+      "maximum_additional_surface_penetration_m": 0.0,
+      "all_actual_local_weights_zero": true,
+      "fixture_root_height_m": 0.01,
+      "source_model_sha256": "964388d728336fe914e142b39ece3417db5d61af1c2d97b5b504fdeb0a983c83",
+      "actual_imported_content_sha256": "8bf01da7e92c72d5f0102a90fefbeda14520b3165cfedd2a8c5564cfe5d6b2c9",
+      "certificate_helper_source_sha256": "2aab693e6f8063b1e4b4abc947e077d9f103613613ca7f4b540b59c373889c43",
+      "body_classifier_source_sha256": "f6f546bb530b52010dadb749f011f17ab35588366f9eb4720565914408d7de0b"
+    },
+    "scope": "Only this exact imported mesh, skin, skeleton rest, internal carrier transforms and idle/walk/run animation content. Only steady Ren NPC with completed blend, no oneshot, seating, extra pose modifier or additional morph, at the two independently tested flat-ground levels. Native proofs sample128 discrete phases per clip/height, original vertices and source triangle7-point witnesses, nearest exterior union of independent pigment and complete Local-support cloth, unchanged5mm/.35 normal gate. Semantic correction preserves every pure body triangle and UV-copy body boundary; independently identified white-apron texels are clothing, not trousers. This is not a continuous mathematical no-intersection bound or natural-fit verdict. Untested states or mismatching identity retain full solver. No d541 micro-waist, oldpaint, old65d18/e180 or old429-transition proof is reused.",
+    "certified_flat_ground": {
+      "physical_height_m": 0.0,
+      "painted_height_m": 0.01,
+      "npc_root_height_m": [
+        0.0,
+        0.01
+      ],
+      "scope": "Independent native384 proofs at root0 and root.010; only these levels within1e-5m, not the interval."
+    },
+    "body_domain_semantics": {
+      "classifier_source_sha256": "f6f546bb530b52010dadb749f011f17ab35588366f9eb4720565914408d7de0b",
+      "source_pure_body_triangles_preserved": 8177,
+      "original_rgb_body_anchors": 4629,
+      "retained_real_body_anchors": 4625,
+      "isolated_clothing_anchors_reclassified": 4,
+      "additional_mixed_uv_clothing_queries_reclassified": 656,
+      "retained_additional_mixed_uv_body_queries": 1515,
+      "total_vertex_and_surface_queries_per_pose": 63379,
+      "scope": "Strict topology, physical UV copies, independent neutral-white source faces and Local support; no hardcoded vertex or face IDs."
+    },
+    "identity_evidence": {
+      "actual_imported_fingerprint_reports": [
+        "evidence/rig_fix_20261017/ren-v32-clean-root-zero-full-union/full-surface.json",
+        "evidence/rig_fix_20261017/ren-v32-clean-root-painted-full-union/full-surface.json"
+      ],
+      "actual_certificate_helper_version": 2,
+      "both_reports_serialize_same_fingerprint": true,
+      "engine": "4.8.dev7.official.c971f93e7"
+    }
+  }
+}

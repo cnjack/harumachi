@@ -10,7 +10,7 @@
   const cases = new Map(data.cases.map(c => [c.id,c]));
   const frames = new Map(data.cases.flatMap(c => c.frames.map(f => [f.key,f])));
   let state = M.createState(data);
-  let ui = {caseId:data.cases[0].id,phase:0,view:'front',bones:false,mode:'static',filter:'all'};
+  let ui = {caseId:data.cases[0].id,phase:data.cases[0].phases[0],view:'front',bones:false,mode:'static',filter:'all'};
   let storageFailed = false;
   let unreadableSavedState = null;
   let pinMode = false;
@@ -26,6 +26,26 @@
   const currentFrame = () => currentCase().frames.find(f => f.phase === ui.phase && f.view === ui.view);
   const phaseLabel = phase => String(phase * 100) + '%';
   const actualMode = frame => ui.bones && frame.overlay ? 'bones' : 'original';
+  function motionViews(c) {
+    const available = Object.fromEntries(Object.keys(data.views).filter(view => c.motion_views && c.motion_views[view] && c.motion_views[view].file).map(view => [view,c.motion_views[view]]));
+    if (Object.keys(available).length) return available;
+    if (!c.motion || !c.motion.file) return {};
+    // Historical canonical previews were right-side recordings. Their missing
+    // view field must never make them inherit a requested top/front direction.
+    const view = Object.hasOwn(data.views,c.motion.view) ? c.motion.view : 'right';
+    return {[view]:c.motion};
+  }
+  const hasMotion = c => Object.keys(motionViews(c)).length > 0;
+  function selectedMotion(c) {
+    const views = motionViews(c),available = Object.keys(views);
+    if (!available.length) return null;
+    const view = views[ui.view] ? ui.view : views.right ? 'right' : available[0];
+    return {entry:views[view],view,available,fallback:view !== ui.view};
+  }
+  function motionNotice(selection) {
+    const choices = selection.available.map(view => data.views[view]).join('、');
+    return (selection.fallback ? '尚未录制' + data.views[ui.view] + '连续动作；当前显示' + data.views[selection.view] + '。' : '') + '已有实际录制方向：' + choices + '。';
+  }
   const element = (tag, className, text) => {
     const node = document.createElement(tag);
     if (className) node.className = className;
@@ -140,7 +160,7 @@
     ui.caseId = id;
     const c = currentCase();
     if (!c.phases.includes(ui.phase)) ui.phase = c.phases[0];
-    if (ui.mode === 'motion' && !c.motion) ui.mode = 'static';
+    if (ui.mode === 'motion' && !hasMotion(c)) ui.mode = 'static';
     persist();
     renderAll();
   }
@@ -156,7 +176,7 @@
     const ordered = data.cases.slice(index + 1).concat(data.cases.slice(0,index + 1));
     const next = ordered.find(c => ['unreviewed','later'].includes(state.items[c.id].verdict));
     if (next) navigate(next.id);
-    else showToast('49项都有判断了，可以导出结果。');
+    else showToast(data.cases.length + '项都有判断了，可以导出结果。');
   }
   function setVerdict(verdict) {
     currentItem().verdict = verdict;
@@ -221,29 +241,49 @@
       button.addEventListener('click',() => {stopDraft();ui.view=view;persist();renderControls();renderImage();});
       $('angleButtons').append(button);
     }
-    $('motionTab').disabled = !c.motion;
-    $('motionTab').title = c.motion ? c.motion.label : '这一动作没有连续移动预览，可检查五向姿态';
+    const selection = selectedMotion(c);
+    $('motionTab').disabled = !selection;
+    $('motionTab').title = selection ? selection.entry.label : '这一动作没有连续移动预览，可检查五向姿态';
     $('staticTab').classList.toggle('active',ui.mode === 'static');
     $('motionTab').classList.toggle('active',ui.mode === 'motion');
     $('staticControls').hidden = ui.mode === 'motion';
+    $('motionControls').hidden = ui.mode !== 'motion';
+    $('motionAngleButtons').replaceChildren();
+    if (selection) {
+      const available = motionViews(c);
+      for (const [view,label] of Object.entries(data.views)) {
+        const button = element('button','angle-button' + (view === selection.view ? ' active' : ''));
+        button.dataset.motionView = view;
+        button.disabled = !available[view];
+        button.setAttribute('aria-pressed',String(view === selection.view));
+        button.setAttribute('aria-label',label + (available[view] ? '连续动作' : '连续动作未录制'));
+        button.title = available[view] ? available[view].label : '尚未录制这个方向，可选择已有实际录制方向';
+        button.append(element('span','',label + (available[view] ? '' : ' · 未录制')));
+        button.addEventListener('click',() => {if(!available[view])return;stopDraft();ui.view=view;persist();renderControls();renderImage();});
+        $('motionAngleButtons').append(button);
+      }
+      $('motionViewNotice').textContent = motionNotice(selection);
+    }
     $('bones').checked = ui.bones;
     $('bones').disabled = ui.mode === 'motion';
     $('pinButton').disabled = ui.mode === 'motion';
     $('frameNoteButton').disabled = ui.mode === 'motion';
-    $('inspectionHelp').textContent = ui.mode === 'motion' ? '连续动作的意见写在右侧“本项意见”里。切回五向画面，可以标记某一相位、某个部位。GIF末尾重新播放，是预览本身的回放。' : '可以逐相位、逐方向看，也可以只给有疑问的画面写意见。键盘 1 / 2 / 3 / 4 标记判断，← / → 切换项目。';
+    $('inspectionHelp').textContent = ui.mode === 'motion' ? '可切换已有实际录制方向。连续动作的意见写在右侧“本项意见”里；相位和位置标记用于静态画面。GIF按原采集时间播放，末尾重新播放是预览本身的回放。' : '可以逐相位、逐方向看，也可以只给有疑问的画面写意见。键盘 1 / 2 / 3 / 4 标记判断，← / → 切换项目。';
   }
   function renderImage() {
     const c = currentCase(),frame = currentFrame();
     const generation = ++imageGeneration;
     const image = $('stageImage');
-    const motion = ui.mode === 'motion';
-    const src = motion ? c.motion.file : actualMode(frame) === 'bones' ? frame.overlay : frame.file;
+    const selection = selectedMotion(c);
+    const motion = ui.mode === 'motion' && selection !== null;
+    const src = motion ? selection.entry.file : actualMode(frame) === 'bones' ? frame.overlay : frame.file;
     $('imageSurface').classList.toggle('motion',motion);
-    $('frameTitle').textContent = motion ? c.motion.label : frameDescription(frame,actualMode(frame));
+    $('frameTitle').textContent = motion ? data.views[selection.view] + ' · ' + selection.entry.label : frameDescription(frame,actualMode(frame));
     $('imageCounter').textContent = motion ? '连续两个动作周期' : '五向原生画面';
     $('imageMessage').classList.remove('error');
-    $('imageMessage').textContent = motion ? (c.motion.kind === 'fast_fixture' ? '这是4.5米/秒的快速移动对照，用于检查跑步；不代表居民通常就以这个速度行动。' : '实际移动录制，按原采集时间播放。') : ui.bones && !frame.overlay ? '这个相位只有原图；其他相位可切换查看骨架透视。当前点评仍准确对应这张原图。' : pinMode ? '点击画面中的具体位置，再在右侧写意见。' : '原图与骨架透视共用同一张画面的点评；切换显示不会丢失意见。';
-    image.alt = c.actor_label + ' ' + c.action_label + ' ' + (motion ? '实际连续移动' : frame.view_label + ' ' + phaseLabel(frame.phase));
+    $('imageMessage').textContent = motion ? (selection.fallback ? motionNotice(selection) : '') + (selection.entry.kind === 'fast_fixture' ? selection.entry.label + '。按原采集时间播放，用于跑步动作对照；不代表居民日程中的通常移动速度。' : '实际移动录制，按原采集时间播放。' + (selection.entry.speed_label ? '速度：' + selection.entry.speed_label + '。' : '')) : ui.bones && !frame.overlay ? '这个相位只有原图；其他相位可切换查看骨架透视。当前点评仍准确对应这张原图。' : pinMode ? '点击画面中的具体位置，再在右侧写意见。' : '原图与骨架透视共用同一张画面的点评；切换显示不会丢失意见。';
+    image.alt = c.actor_label + ' ' + c.action_label + ' ' + (motion ? data.views[selection.view] + ' 实际连续移动' : frame.view_label + ' ' + phaseLabel(frame.phase));
+    image.dataset.view = motion ? selection.view : frame.view;
     image.onload = () => {
       if (generation !== imageGeneration) return;
       if (!motion && !currentItem().seen_frames.includes(frame.key)) {
@@ -438,10 +478,10 @@
     const savedUI = JSON.parse(localStorage.getItem(uiKey) || 'null');
     if (savedUI && cases.has(savedUI.caseId)) {
       ui.caseId=savedUI.caseId;
-      if (currentCase().phases.includes(savedUI.phase)) ui.phase=savedUI.phase;
+      ui.phase=currentCase().phases.includes(savedUI.phase) ? savedUI.phase : currentCase().phases[0];
       if (Object.hasOwn(data.views,savedUI.view)) ui.view=savedUI.view;
       ui.bones=savedUI.bones===true;
-      if (savedUI.mode==='motion'&&currentCase().motion)ui.mode='motion';
+      if (savedUI.mode==='motion'&&hasMotion(currentCase()))ui.mode='motion';
       if (['all','unreviewed','pass','issue','unsure','later'].includes(savedUI.filter))ui.filter=savedUI.filter;
     }
   } catch (_) {warnStorage();}
@@ -459,8 +499,9 @@
   $('filter').addEventListener('change',() => {ui.filter=$('filter').value;persist();renderQueue();});
   $('bones').addEventListener('change',() => {ui.bones=$('bones').checked;persist();renderImage();});
   $('staticTab').addEventListener('click',() => {stopDraft();ui.mode='static';persist();renderControls();renderImage();});
-  $('motionTab').addEventListener('click',() => {if(!currentCase().motion)return;stopDraft();ui.mode='motion';persist();renderControls();renderImage();});
+  $('motionTab').addEventListener('click',() => {if(!hasMotion(currentCase()))return;stopDraft();ui.mode='motion';persist();renderControls();renderImage();});
   $('pinButton').addEventListener('click',() => {
+    if(ui.mode!=='static')return;
     pinMode=!pinMode;
     $('imageSurface').classList.toggle('pin-mode',pinMode);
     $('pinButton').textContent=pinMode?'取消标记位置':'＋ 在画面上标记位置';

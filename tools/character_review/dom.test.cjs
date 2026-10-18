@@ -2,12 +2,14 @@
 const assert = require('node:assert/strict');
 const path = require('node:path');
 const fs = require('node:fs');
+const os = require('node:os');
+const { execFileSync } = require('node:child_process');
 const { createReviewEnvironment } = require('./dom-harness.cjs');
 const test = require('node:test');
 
 // Exercise the real template and scripts with small, deterministic metadata.
 // No ignored evidence directory, image files, browser, or Godot process is needed.
-function fixtureHtml() {
+function fixtureHtml(transform) {
   const actors = { sora:'空', ren:'莲', haru:'春', mio:'澪', aoi:'小葵', tanaka:'田中', kazuko:'和子' };
   const actions = { idle:'站立', walk:'走路', run:'跑步', wave:'挥手', stretch:'伸展', bow:'鞠躬', dance:'舞蹈' };
   const views = { front:'正面', right:'右侧', back:'背面', left:'左侧', top:'正上方' };
@@ -29,13 +31,43 @@ function fixtureHtml() {
   }
   const data = { id:'human-review-dom-fixture-v1', evidence_id:'memory-only-fixture', case_count:cases.length,
     frame_count:cases.reduce((sum, item) => sum + item.frames.length, 0), views, cases };
-  return fs.readFileSync(path.join(__dirname, 'index.template.html'), 'utf8').replace('__REVIEW_DATA__', JSON.stringify(data).replace(/</g, '\\u003c'));
+  if (transform) transform(data);
+  return fs.readFileSync(path.join(__dirname, 'index.template.html'), 'utf8').replace('__REVIEW_DATA__', JSON.stringify(data).replace(/</g, '\\u003c')).replace('__OPTIONAL_REPORT_LINK__', '');
 }
+
+function generatedFocusedHtml(reportExists) {
+  const folder = fs.mkdtempSync(path.join(os.tmpdir(), 'harumachi-review-report-'));
+  try {
+    const shots = ['front','right','back','left','top'].map(view => ({id:'ren', action:'walk', view, phase:0, file:`ren-walk-${view}.png`}));
+    for (const batch of ['joint-poses','locomotion-poses']) fs.mkdirSync(path.join(folder,batch));
+    fs.writeFileSync(path.join(folder,'joint-poses/manifest.json'), JSON.stringify({shots:[]}));
+    fs.writeFileSync(path.join(folder,'locomotion-poses/manifest.json'), JSON.stringify({shots}));
+    for (const shot of shots) fs.writeFileSync(path.join(folder,'locomotion-poses',shot.file), 'synthetic metadata fixture');
+    if (reportExists) fs.writeFileSync(path.join(folder,'REPORT.html'), '<h1>Actual earlier report</h1>');
+    execFileSync('python3', [path.join(__dirname,'build.py'),'--evidence',folder,'--actors','ren','--actions','walk']);
+    return fs.readFileSync(path.join(folder,'index.html'),'utf8');
+  } finally { fs.rmSync(folder, {recursive:true, force:true}); }
+}
+
+test('真实builder在无报告的单项collection不产生报告入口', () => {
+  const e=createReviewEnvironment(generatedFocusedHtml(false));
+  assert.equal(e.document.querySelector('a.report-link'),null);
+  assert.equal(e.document.querySelectorAll('[href="REPORT.html"]').length,0);
+  assert.equal(e.document.getElementById('caseNumber').textContent,'第 1 / 1 项');
+});
+test('真实builder在有报告的collection保留原报告入口', () => {
+  const e=createReviewEnvironment(generatedFocusedHtml(true));
+  const link=e.document.querySelector('a.report-link');
+  assert.ok(link);
+  assert.equal(link.getAttribute('href'),'REPORT.html');
+  assert.equal(link.getAttribute('target'),'_blank');
+  assert.match(link.textContent,/查看之前的审查报告/);
+});
 
 const tick = () => new Promise(setImmediate);
 
 function env(options) {
-  const e = createReviewEnvironment(fixtureHtml(), options);
+  const e = createReviewEnvironment(fixtureHtml(options && options.datasetTransform), options);
   e.el = id => e.document.getElementById(id);
   e.click = id => e.el(id).click();
   e.type = (id, value) => { e.el(id).value = value; e.event(id, 'input'); };
@@ -58,6 +90,69 @@ test('49项与五向画面初始渲染，默认未点评', async () => {
     assert.equal(doc.items.length, 49);
     assert.ok(doc.items.every(i => i.verdict === 'unreviewed'));
   });
+function focusRenWalk(data) {
+  data.id = 'focused-ren-walk-dom-fixture-v1';
+  data.cases = data.cases.filter(item => item.id === 'ren/walk');
+  data.case_count = data.cases.length;
+  data.frame_count = data.cases.reduce((sum,item) => sum + item.frames.length,0);
+}
+test('单项莲走路可五向点评和导出，总览与完成提示按1项计算', async () => {
+  const e=env({datasetTransform:focusRenWalk});
+  assert.equal(e.document.querySelectorAll('.case-button').length,1);
+  assert.equal(e.el('caseTitle').textContent,'莲 · 走路');
+  assert.equal(e.el('caseNumber').textContent,'第 1 / 1 项');
+  assert.equal(e.el('queueCount').textContent,'1 项');
+  assert.equal(e.el('progressText').textContent,'0 / 1 项已点评');
+  assert.equal(e.document.querySelectorAll('#angleButtons [data-view]').length,5);
+  e.document.querySelector('[data-view="top"]').click();
+  assert.match(e.el('stageImage').src,/ren-walk-p0-top/);
+  e.type('itemComment','只复评莲走路，其他人物不在本次范围');
+  e.document.querySelector('[data-verdict="pass"]').click();
+  e.click('nextUnreviewed');
+  assert.equal(e.el('toastText').textContent,'1项都有判断了，可以导出结果。');
+  e.click('overviewButton');
+  assert.equal(e.document.querySelectorAll('#overviewRows tr').length,1);
+  assert.match(e.el('overviewSummary').textContent,/已点评 1 \/ 1/);
+  assert.equal(e.document.querySelector('#overviewDialog h2').textContent,'你的逐项判断');
+  const doc=await e.export();
+  assert.equal(doc.schema_version,1);
+  assert.equal(doc.items.length,1);
+  assert.equal(doc.items[0].id,'ren/walk');
+  assert.equal(doc.items[0].comment,'只复评莲走路，其他人物不在本次范围');
+  assert.equal(doc.items[0].verdict,'pass');
+});
+test('单项批次刷新和导入保留意见，不能覆盖另一49项批次进度', async () => {
+  const old=env();old.type('itemComment','原49项批次意见');
+  let e=env({datasetTransform:focusRenWalk,storage:old.storage});
+  assert.equal(e.el('itemComment').value,'');
+  e.type('itemComment','莲走路单项复评');
+  const doc=await e.export();
+  e=env({datasetTransform:focusRenWalk,storage:e.storage});
+  assert.equal(e.el('itemComment').value,'莲走路单项复评');
+  const original=env({storage:e.storage});
+  assert.equal(original.el('itemComment').value,'原49项批次意见');
+  await original.import(doc);
+  assert.match(original.el('toastText').textContent,/没有导入/);
+  assert.equal(original.el('itemComment').value,'原49项批次意见');
+  const imported=env({datasetTransform:focusRenWalk});
+  await imported.import(doc);imported.click('confirmImport');
+  assert.equal(imported.el('itemComment').value,'莲走路单项复评');
+});
+test('单项只有非零相位时从实际首相位开始，保留精确帧来源', async () => {
+  const transform=data => {
+    focusRenWalk(data);
+    data.cases[0].phases=[.25,.75];
+    data.cases[0].frames=data.cases[0].frames.filter(frame => [.25,.75].includes(frame.phase));
+    data.frame_count=data.cases[0].frames.length;
+  };
+  const e=env({datasetTransform:transform});
+  assert.match(e.el('frameTitle').textContent,/25%/);
+  assert.match(e.el('stageImage').src,/ren-walk-p25-front/);
+  e.click('frameNoteButton');e.type('frameComment','这个相位复评');
+  const doc=await e.export();
+  assert.equal(doc.items[0].frame_comments[0].source.phase,.25);
+  assert.equal(doc.items[0].frame_comments[0].frame_key,'ren/walk/250/front');
+});
 test('输入即保存，跨项与刷新后意见和分项不丢', async () => {
     let e = env();
     e.type('itemComment', '第一项的人工点评');
@@ -238,3 +333,111 @@ test('帧意见删除可撤销，跨项撤销恢复到原人物动作', async ()
     assert.equal(e.state().items['sora/idle'].frame_comments[0].text, '待删意见');
     assert.equal(e.state().items['sora/walk'].frame_comments.length, 0);
   });
+
+function threeViewData(data) {
+  const item = data.cases.find(c => c.id === 'ren/run');
+  item.motion = null; // A new collection need not contain the old right alias.
+  item.motion_views = Object.fromEntries(['front','right','back'].map(view => [view,{
+    file:`motion/ren-run-fast-${view}.gif`,view,view_label:data.views[view],
+    label:`快速移动对照 · ${view === 'right' ? '4.5' : '3.2'}米/秒`,
+    speed_label:`${view === 'right' ? '4.5' : '3.2'}米/秒`,kind:'fast_fixture',sha256:view.repeat(16)
+  }]));
+}
+const motionView = (e,view) => e.document.querySelector('[data-motion-view="' + view + '"]');
+
+test('真实连续移动按当前正右背视角选择各自GIF，速度来自该视角记录', () => {
+  const e = env({datasetTransform:threeViewData});
+  e.chooseCase('ren/run'); e.click('motionTab');
+  assert.equal(e.el('motionControls').hidden,false);
+  assert.equal(e.el('stageImage').src,'motion/ren-run-fast-front.gif');
+  assert.match(e.el('frameTitle').textContent,/正面.*3\.2米\/秒/);
+  assert.match(e.el('imageMessage').textContent,/3\.2米\/秒/);
+  assert.doesNotMatch(e.el('imageMessage').textContent,/4\.5米\/秒/);
+  motionView(e,'right').click();
+  assert.equal(e.el('stageImage').src,'motion/ren-run-fast-right.gif');
+  assert.match(e.el('frameTitle').textContent,/右侧.*4\.5米\/秒/);
+  assert.match(e.el('imageMessage').textContent,/4\.5米\/秒/);
+  motionView(e,'back').click();
+  assert.equal(e.el('stageImage').src,'motion/ren-run-fast-back.gif');
+  assert.match(e.el('stageImage').alt,/背面/);
+  assert.equal(motionView(e,'back').getAttribute('aria-pressed'),'true');
+});
+
+test('缺少正上方连续录制时显示实际右侧和已有方向，静态正上方选择保留', () => {
+  const e = env({datasetTransform:threeViewData});
+  e.chooseCase('ren/run');
+  e.document.querySelector('[data-view="top"]').click(); e.click('motionTab');
+  assert.equal(e.el('stageImage').src,'motion/ren-run-fast-right.gif');
+  assert.match(e.el('frameTitle').textContent,/^右侧/);
+  assert.doesNotMatch(e.el('stageImage').alt,/正上方/);
+  assert.match(e.el('motionViewNotice').textContent,/尚未录制正上方.*当前显示右侧/);
+  assert.match(e.el('motionViewNotice').textContent,/正面、右侧、背面/);
+  assert.equal(motionView(e,'top').disabled,true);
+  assert.equal(motionView(e,'left').disabled,true);
+  motionView(e,'top').click();
+  assert.equal(e.el('stageImage').src,'motion/ren-run-fast-right.gif');
+  e.click('staticTab');
+  assert.match(e.el('stageImage').src,/-top\.png$/);
+  assert.equal(e.el('motionControls').hidden,true);
+});
+
+test('没有右侧时只回退到真实已有方向，旧单motion始终标明右侧', () => {
+  const e = env({datasetTransform:data => {threeViewData(data);delete data.cases.find(c => c.id === 'ren/run').motion_views.right;}});
+  e.chooseCase('ren/run');e.document.querySelector('[data-view="right"]').click();e.click('motionTab');
+  assert.equal(e.el('stageImage').src,'motion/ren-run-fast-front.gif');
+  assert.match(e.el('motionViewNotice').textContent,/尚未录制右侧.*当前显示正面/);
+  const legacy = env();legacy.chooseCase('mio/run');legacy.document.querySelector('[data-view="top"]').click();legacy.click('motionTab');
+  assert.equal(legacy.el('stageImage').src,'motion/mio-run-fast.gif');
+  assert.match(legacy.el('frameTitle').textContent,/^右侧/);
+  assert.match(legacy.el('motionViewNotice').textContent,/已有实际录制方向：右侧/);
+});
+
+test('五向连续素材存在时左侧和顶部独立显示，不共用右侧GIF', () => {
+  const e = env({datasetTransform:data => {
+    threeViewData(data);const item=data.cases.find(c => c.id === 'ren/run');
+    for(const view of ['left','top'])item.motion_views[view]={...item.motion_views.front,view,file:`motion/ren-run-fast-${view}.gif`};
+  }});
+  e.chooseCase('ren/run');e.click('motionTab');
+  for(const view of ['left','top']) {
+    assert.equal(motionView(e,view).disabled,false);motionView(e,view).click();
+    assert.equal(e.el('stageImage').src,`motion/ren-run-fast-${view}.gif`);
+    assert.equal(e.el('stageImage').dataset.view,view);
+  }
+});
+
+test('连续模式不显示或新建静态XY标记，也不把GIF载入记成已看静态帧', async () => {
+  const e = env({datasetTransform:threeViewData});e.chooseCase('ren/run');
+  Object.defineProperty(e.el('stageImage'),'naturalWidth',{configurable:true,value:1600});
+  Object.defineProperty(e.el('stageImage'),'naturalHeight',{configurable:true,value:900});
+  e.click('pinButton');
+  const click=new e.window.Event('click',{bubbles:true});Object.assign(click,{clientX:250,clientY:350});
+  e.el('imageSurface').dispatchEvent(click);
+  e.type('frameComment','静态正面膝盖意见');e.click('finishFrameEditor');
+  assert.equal(e.el('pinLayer').children.length,1);
+  const before=e.state().items['ren/run'];
+  assert.deepEqual(before.frame_comments[0].position,{x:.25,y:.5});
+  e.click('motionTab');e.el('stageImage').onload();e.click('pinButton');e.click('frameNoteButton');
+  assert.equal(e.el('pinLayer').children.length,0);
+  assert.equal(e.el('frameEditor').hidden,true);
+  assert.equal(e.el('imageSurface').classList.contains('pin-mode'),false);
+  assert.deepEqual(e.state().items['ren/run'].seen_frames,before.seen_frames);
+  assert.deepEqual(e.state().items['ren/run'].frame_comments,before.frame_comments);
+  const doc=await e.export();const item=doc.items.find(i=>i.id==='ren/run');
+  assert.equal(item.frame_comments[0].source.view,'front');
+  assert.deepEqual(item.frame_comments[0].position,{x:.25,y:.5});
+  assert.match(item.frame_comments[0].source.file,/\.png$/);
+  e.document.querySelector('.note-location').click();
+  assert.equal(e.el('staticControls').hidden,false);
+  assert.match(e.el('stageImage').src,/\.png$/);
+});
+
+test('新多视角界面的选择和意见可刷新恢复，继续沿用原JSON导入协议', async () => {
+  let e=env({datasetTransform:threeViewData});e.chooseCase('ren/run');e.click('motionTab');motionView(e,'back').click();
+  e.type('itemComment','背面连续动作仍需复评');const doc=await e.export();
+  e=env({datasetTransform:threeViewData,storage:e.storage});
+  assert.equal(e.el('stageImage').src,'motion/ren-run-fast-back.gif');
+  assert.equal(e.el('itemComment').value,'背面连续动作仍需复评');
+  const imported=env({datasetTransform:threeViewData});await imported.import(doc);imported.click('confirmImport');
+  imported.chooseCase('ren/run');assert.equal(imported.el('itemComment').value,'背面连续动作仍需复评');
+  assert.equal(doc.schema_version,1);
+});

@@ -41,6 +41,13 @@ static func attach(model: Node3D, _player: AnimationPlayer) -> SkeletonModifier3
 	var rig: Node = model.find_child("Rig", true, false)
 	if sk == null or rig == null or not rig.has_meta("extras"): return null
 	var extras: Dictionary = rig.get_meta("extras")
+	var local_profile: Dictionary = extras.get("garment_local_clearance", {})
+	if not local_profile.is_empty():
+		var local: SkeletonModifier3D = load("res://scripts/characters/character_garment_support.gd").new()
+		local.name = "CharacterGarmentSupport"
+		sk.add_child(local)
+		local.call("prepare", model, local_profile)
+		return local
 	if extras.get("character_id", "") != "kazuko": return null
 	var support: SkeletonModifier3D = load("res://scripts/characters/character_apron_support.gd").new()
 	support.name = "CharacterApronSupport"

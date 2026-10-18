@@ -1,0 +1,250 @@
+{
+  "scope": "Two actual source triangles per case: exact final-basis replayed outer blue face and same-callback native inner pleat. Regression requires the correct nearest outer face and metre-unit restoration. Original-scale inner hits are diagnostic negative controls, never acceptance.",
+  "model_sha256": "2790de537711113dc5200297c3ad207be3eb271b7cf2de096799cd07012eb3a9",
+  "probe_sha256": "6e186611123bd75171d5c9b57ada018fbba03b791f4dd59054f185820e61daa9",
+  "cases": [
+    {
+      "name": "mio-run-0.25-front",
+      "source_phase": 0.25,
+      "source_layer": "front",
+      "same_callback_frame": 124,
+      "sign": 1,
+      "query": [
+        -0.00762588437646627,
+        0.431307226419449,
+        0.144891187548637
+      ],
+      "source_outer_face": 43282,
+      "source_inner_face": 42659,
+      "source_outer_vertices": [
+        30289,
+        30288,
+        30254
+      ],
+      "outer_triangle": [
+        [
+          -0.007937968513584082,
+          0.42972391408553906,
+          0.16555064302613687
+        ],
+        [
+          -0.006469386343736616,
+          0.4333857294240455,
+          0.15526665125175754
+        ],
+        [
+          -0.007373377006942405,
+          0.4329088394790675,
+          0.1656974064546617
+        ]
+      ],
+      "inner_triangle": [
+        [
+          -0.00600935518741608,
+          0.433111608028412,
+          0.131009891629219
+        ],
+        [
+          -0.0116338785737753,
+          0.432070940732956,
+          0.145242273807526
+        ],
+        [
+          -0.00537722511216998,
+          0.429722309112549,
+          0.131285592913628
+        ]
+      ],
+      "native_inner_depth_m": 0.00898806750774384,
+      "expected_outer_hit": [
+        -0.00762588437646627,
+        0.431307226419449,
+        0.16522293899119422
+      ],
+      "expected_outer_depth_m": -0.020331751442557222
+    },
+    {
+      "name": "mio-run-0.3125-front",
+      "source_phase": 0.3125,
+      "source_layer": "front",
+      "same_callback_frame": 129,
+      "sign": 1,
+      "query": [
+        -0.00503848027437925,
+        0.468153208494186,
+        0.164996296167374
+      ],
+      "source_outer_face": 41901,
+      "source_inner_face": 42475,
+      "source_outer_vertices": [
+        29636,
+        29637,
+        29634
+      ],
+      "outer_triangle": [
+        [
+          -0.004875638502475965,
+          0.461929266946239,
+          0.17617700279084225
+        ],
+        [
+          -0.004710808561599222,
+          0.4694427561686031,
+          0.17581826766895503
+        ],
+        [
+          -0.005791090025608625,
+          0.4702915593592919,
+          0.18683430632827402
+        ]
+      ],
+      "inner_triangle": [
+        [
+          -0.0113942064344883,
+          0.475400596857071,
+          0.158142402768135
+        ],
+        [
+          -0.00469941459596157,
+          0.464936584234238,
+          0.140058636665344
+        ],
+        [
+          -0.00434737559407949,
+          0.472784131765366,
+          0.139519110321999
+        ]
+      ],
+      "native_inner_depth_m": 0.0238353312015533,
+      "expected_outer_hit": [
+        -0.00503848027437925,
+        0.468153208494186,
+        0.17889205631688204
+      ],
+      "expected_outer_depth_m": -0.013895760149508052
+    },
+    {
+      "name": "mio-run-0.375-front",
+      "source_phase": 0.375,
+      "source_layer": "front",
+      "same_callback_frame": 134,
+      "sign": 1,
+      "query": [
+        -0.00382109894417226,
+        0.501434147357941,
+        0.135186478495598
+      ],
+      "source_outer_face": 42869,
+      "source_inner_face": 42474,
+      "source_outer_vertices": [
+        29632,
+        29630,
+        30105
+      ],
+      "outer_triangle": [
+        [
+          -0.003982751438377008,
+          0.5025933751650871,
+          0.16977027199462036
+        ],
+        [
+          -0.004023654915506825,
+          0.4954860623532529,
+          0.1697378829599021
+        ],
+        [
+          -0.0029565496179291273,
+          0.4959322160208337,
+          0.1582220268978798
+        ]
+      ],
+      "inner_triangle": [
+        [
+          -0.010429859161377,
+          0.500832378864288,
+          0.140949115157127
+        ],
+        [
+          -0.00351710082031786,
+          0.499301552772522,
+          0.122355051338673
+        ],
+        [
+          -0.00326189096085727,
+          0.506499588489532,
+          0.122444845736027
+        ]
+      ],
+      "native_inner_depth_m": 0.0117727965116501,
+      "expected_outer_hit": [
+        -0.00382109894417226,
+        0.501434147357941,
+        0.16794378808874055
+      ],
+      "expected_outer_depth_m": -0.03275730959314255
+    },
+    {
+      "name": "mio-run-0.375-back",
+      "source_phase": 0.375,
+      "source_layer": "back",
+      "same_callback_frame": 134,
+      "sign": -1,
+      "query": [
+        0.154422238469124,
+        0.699116706848145,
+        -0.0926564931869507
+      ],
+      "source_outer_face": 22034,
+      "source_inner_face": 36903,
+      "source_outer_vertices": [
+        18290,
+        18291,
+        18289
+      ],
+      "outer_triangle": [
+        [
+          0.15541690720434165,
+          0.6906352679477986,
+          -0.11734283288890879
+        ],
+        [
+          0.15356996654969723,
+          0.7030718103176806,
+          -0.11352949885113972
+        ],
+        [
+          0.15424075368569934,
+          0.7043592124515329,
+          -0.11776993060411378
+        ]
+      ],
+      "inner_triangle": [
+        [
+          0.161547258496284,
+          0.69038987159729,
+          -0.0826007947325706
+        ],
+        [
+          0.149978533387184,
+          0.698415815830231,
+          -0.0811068117618561
+        ],
+        [
+          0.161009237170219,
+          0.703090786933899,
+          -0.0850395560264587
+        ]
+      ],
+      "native_inner_depth_m": 0.0102227926254272,
+      "expected_outer_hit": [
+        0.154422238469124,
+        0.699116706848145,
+        -0.11616670717686646
+      ],
+      "expected_outer_depth_m": -0.023510213989915763
+    }
+  ],
+  "source_capture": "garment-proxy3300-diagnostic; Mio run same later-frame callback, request_id 25/26/27; full bones and actual morph scalars",
+  "source_engine": "4.8.dev7.official.c971f93e7",
+  "source_vertex_mapping": "Original GLB POSITION+UV to imported surface; independent final-pose replay error 7\u201315 micrometres; inner triangle/query copied directly from native callback"
+}

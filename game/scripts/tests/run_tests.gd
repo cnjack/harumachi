@@ -101,6 +101,22 @@ func _ready() -> void:
 		await load("res://scripts/tests/shader_matrix_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=character-visual"):
 		await load("res://scripts/tests/character_visual_checks.gd").new(self).run()
+		await load("res://scripts/tests/character_gait_checks.gd").new(self).run()
+		await load("res://scripts/tests/garment_local_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=character-gait"):
+		await load("res://scripts/tests/character_gait_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=garment-local"):
+		await load("res://scripts/tests/garment_local_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=garment-steady-surface"):
+		await load("res://scripts/tests/garment_steady_surface_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=garment-steady-guards"):
+		await load("res://scripts/tests/garment_steady_guard_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=garment-authored-shapes"):
+		await load("res://scripts/tests/garment_authored_shape_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=garment-global-policy"):
+		await load("res://scripts/tests/garment_global_policy_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=garment-source-domains"):
+		await load("res://scripts/tests/garment_source_domain_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=apron-clearance"):
 		await load("res://scripts/tests/character_visual_checks.gd").new(self).run_apron_only()
 	elif OS.get_cmdline_user_args().has("--only=animal-visual"):
@@ -279,7 +295,11 @@ func _ready() -> void:
 		await load("res://scripts/tests/public_place_art_checks.gd").new(self).run()
 		await load("res://scripts/tests/inhabited_places_checks.gd").new(self).run()
 		await load("res://scripts/tests/character_visual_checks.gd").new(self).run()
+		await load("res://scripts/tests/character_gait_checks.gd").new(self).run()
+		await load("res://scripts/tests/garment_local_checks.gd").new(self).run()
 		await load("res://scripts/tests/animal_visual_checks.gd").new(self).run()
+		await load("res://scripts/tests/garment_authored_shape_checks.gd").new(self).run()
+		await load("res://scripts/tests/garment_global_policy_checks.gd").new(self).run()
 		await load("res://scripts/tests/environment_visual_checks.gd").new(self).run()
 		await load("res://scripts/tests/tree_locomotion_checks.gd").new(self).run()
 	if not Array(OS.get_cmdline_user_args()).any(func(arg: String)->bool:return arg.begins_with("--only=")):

@@ -7,7 +7,7 @@ extends Node
 const IDS: Array[String] = ["sora", "ren", "haru", "mio", "aoi", "tanaka", "kazuko"]
 const CLIPS: Array[String] = ["idle", "walk", "run", "wave", "bow", "look", "stretch", "tend", "talk", "cheer", "dance"]
 const VIEWS: Dictionary = {"front": Vector3(0, 1.15, 4.5), "right": Vector3(4.5, 1.15, 0), "back": Vector3(0, 1.15, -4.5), "left": Vector3(-4.5, 1.15, 0)}
-const EXTRA_VIEWS: Dictionary = {"oblique_front": Vector3(1.1, 1.5, 1.2), "oblique_back": Vector3(-1.1, 1.5, -1.2), "high": Vector3(1.1, 3.0, 1.2), "low": Vector3(-1.1, .35, 1.2)}
+const EXTRA_VIEWS: Dictionary = {"oblique_front": Vector3(1.1, 1.5, 1.2), "oblique_back": Vector3(-1.1, 1.5, -1.2), "high": Vector3(1.1, 3.0, 1.2), "low": Vector3(-1.1, .35, 1.2), "top": Vector3(0, 3.5, 0)}
 const STREET := Vector3(-8, .03, -10)
 var output := ""
 var pilot := false
@@ -20,6 +20,7 @@ var actor: Node3D
 var model: Node3D
 var anim: CharAnim
 var rows: Array[Dictionary] = []
+var snapshot_files: Dictionary = {}
 var failures: Array[String] = []
 var started_at := 0
 var camera_override := false
@@ -34,6 +35,11 @@ var perf_last_usec := 0
 var perf_frames: Array[float] = []
 var perf_excluded := 0
 var measure_motion_soles := false
+var pose_views: PackedStringArray = ["front", "right", "back", "left"]
+var measure_final_bones := false
+var hide_arm_fill := false
+var disable_lod := false
+var hand_clips: PackedStringArray = ["idle", "wave"]
 
 func _ready() -> void:
 	_run.call_deferred()
@@ -47,17 +53,29 @@ func _run() -> void:
 		if argument.begins_with("--phases="):
 			phases.clear()
 			for value: String in argument.substr(9).split(","): phases.append(float(value))
+		if argument.begins_with("--pose-views="): pose_views = argument.substr(13).split(",")
+		if argument == "--final-bones": measure_final_bones = true
+		if argument == "--hide-arm-fill": hide_arm_fill = true
+		if argument == "--disable-lod": disable_lod = true
+		if argument.begins_with("--hand-clips="): hand_clips = argument.substr(13).split(",")
 		if argument == "--pilot": pilot = true
 		if argument == "--measure-motion-soles": measure_motion_soles = true
 	if output.is_empty():
 		push_error("character_visual_qa requires --out=<directory>")
 		get_tree().quit(2)
 		return
+	if disable_lod: get_viewport().mesh_lod_threshold = 0.0
+	for view: String in pose_views:
+		if not VIEWS.has(view) and view != "top":
+			push_error("Unknown character QA pose view: " + view)
+			get_tree().quit(2)
+			return
 	if pilot:
 		ids = ["sora", "kazuko"]
 		clips = ["idle", "wave"]
 	DirAccess.make_dir_recursive_absolute(output)
 	started_at = Time.get_ticks_msec()
+	print("CHARACTER_QA_DISPLAY ", JSON.stringify({"screen": DisplayServer.window_get_current_screen(), "position": vector(Vector3(DisplayServer.window_get_position().x, DisplayServer.window_get_position().y, 0)), "size": [DisplayServer.window_get_size().x, DisplayServer.window_get_size().y], "no_focus": DisplayServer.window_get_flag(DisplayServer.WINDOW_FLAG_NO_FOCUS), "renderer": RenderingServer.get_current_rendering_method()}))
 	GameState.new_game()
 	GameState.clock_paused = true
 	GameState.minute = 630
@@ -102,8 +120,12 @@ func _run() -> void:
 	if "hand-compare" in modes: await capture_hand_compare()
 	if "static-support" in modes: await capture_static_support()
 	if "fishing" in modes: await capture_fishing()
+	if "continuous" in modes: await load("res://scripts/tools/character_continuous_qa.gd").new().capture(self, output)
+	if "transitions" in modes: await load("res://scripts/tools/character_transition_qa.gd").new().capture(self, output)
+	if "multi-performance" in modes: await load("res://scripts/tools/character_multi_performance_qa.gd").new().capture(self, output)
+	if "hands" in modes: await load("res://scripts/tools/character_hand_detail_qa.gd").new().capture(self)
 	var expected: int = 0
-	if "poses" in modes: expected += ids.size() * clips.size() * phases.size() * 4
+	if "poses" in modes: expected += ids.size() * clips.size() * phases.size() * pose_views.size()
 	if "indoor" in modes: expected += ids.size() * (1 if pilot else 4) * 8
 	if "seats" in modes: expected += 18 if pilot else 72
 	if "motion" in modes: expected += (2 + 1 if pilot else ids.size() + (1 if "sora" in ids else 0)) * 12
@@ -118,6 +140,7 @@ func _run() -> void:
 	if "static-support" in modes: expected += 12
 	if "fishing" in modes: expected += 48
 	if "apron" in modes: expected += 36 if pilot else 72
+	if "hands" in modes: expected += ids.size() * hand_clips.size() * 5
 	if rows.size() != expected: failures.append("incomplete capture: expected %d, got %d" % [expected, rows.size()])
 	var report: Dictionary = {"engine": Engine.get_version_info().string, "images": rows.size(), "expected_images": expected, "elapsed_seconds": (Time.get_ticks_msec() - started_at) / 1000.0, "pilot": pilot, "failures": failures, "shots": rows, "notes": ["Authored pose samples use seek and leave skeleton modifiers running; these alone do not validate locomotion.", "Native motion samples use Player auto_move or NPC walk; each includes actual positions and clip.", "NPC sitting is unsupported by the current game; real seat checks cover the player."]}
 	FileAccess.open(output.path_join("manifest.json"), FileAccess.WRITE).store_string(JSON.stringify(report, "\t"))
@@ -171,6 +194,9 @@ func choose(id: String, at: Vector3) -> void:
 		(actor as NPC)._greeted_day = GameState.day
 		(actor as NPC)._idle_t = 10000
 	if not anim.valid(): failures.append(id + ": missing actual CharAnim")
+	if hide_arm_fill:
+		for diagnostic_mesh: MeshInstance3D in WorldBuilder.find_meshes(model):
+			if str(diagnostic_mesh.name).begins_with("HiddenArm"): diagnostic_mesh.visible = false
 	actor.set_meta("qa_floor_support", support)
 
 func look(view: String, focus_height: float = .98) -> void:
@@ -180,13 +206,14 @@ func look(view: String, focus_height: float = .98) -> void:
 	if not main.in_room: focus_height = 1.05
 	var offset: Vector3 = VIEWS[view] if VIEWS.has(view) else EXTRA_VIEWS[view]
 	# Orthographic framing needs no long lens distance; stay inside nearby walls/signs.
-	if VIEWS.has(view):
+	if VIEWS.has(view) and view != "top":
 		offset.x *= .32
 		offset.z *= .32
 	camera.global_position = actor.global_position + offset.rotated(Vector3.UP, yaw)
-	camera.look_at(actor.global_position + Vector3.UP * focus_height)
+	camera.look_at(actor.global_position + Vector3.UP * focus_height, Vector3.FORWARD if view == "top" else Vector3.UP)
 
 func snapshot(row: Dictionary, view: String) -> void:
+	if disable_lod: row["diagnostic_disabled_lod"] = true
 	if perf_active: perf_skip_frames = 3
 	var probe: SkeletonModifier3D
 	var skeleton_nodes: Array[Node] = model.find_children("*", "Skeleton3D", true, false)
@@ -201,6 +228,7 @@ func snapshot(row: Dictionary, view: String) -> void:
 		skeleton.move_child(probe, skeleton.get_child_count() - 1)
 		probe.set("measure_feet", row.action in ["sit", "seated_sip", "stand_after_seat", "indoor_idle"] or str(row.action).begins_with("idle") or row.kind == "native_context_locomotion" or (measure_motion_soles and (str(row.action).begins_with("walk") or str(row.action).begins_with("run"))))
 		probe.set("support_rect_enabled", false)
+		probe.set("measure_bones", measure_final_bones)
 		if row.get("scene", "") == "context_town_curb":
 			for curb: MeshInstance3D in floor_meshes:
 				if not curb.mesh is BoxMesh: continue
@@ -212,23 +240,61 @@ func snapshot(row: Dictionary, view: String) -> void:
 				probe.set("support_rect_enabled", true)
 	look(view)
 	await settle(int(row.get("settle_frames", 8)))
+	var final_request := -1
 	var apron_probe: Node = model.find_child("ApronQAPoseProbe", true, false)
-	var apron_request := -1
-	if apron_probe != null:
-		apron_request = apron_probe.call("request")
-		await get_tree().process_frame
-	await RenderingServer.frame_post_draw
+	var expected_clip: String = anim.ap.current_animation
+	var expected_time: float = anim.ap.current_animation_position if is_zero_approx(anim.ap.speed_scale) else -1.0
+	if expected_time >= 0 and anim.ap.get_animation(expected_clip).loop_mode != Animation.LOOP_NONE:
+		expected_time = fposmod(expected_time, anim.ap.get_animation(expected_clip).length)
+	var apron_request: int = int(apron_probe.call("request", expected_clip, expected_time)) if apron_probe != null else -1
+	if probe != null:
+		final_request = int(probe.call("request", expected_clip, expected_time))
+		for wait_frame: int in 8:
+			await get_tree().process_frame
+			await RenderingServer.frame_post_draw
+			if int(probe.get("completed_request")) == final_request and (apron_probe == null or int((apron_probe.get("result") as Dictionary).get("request_id", -2)) == apron_request): break
+		if int(probe.get("completed_request")) != final_request:
+			failures.append("Final skeleton sample timed out: %s %s %.5f" % [str(row.id), expected_clip, expected_time])
+			probe.set("measure_feet", false)
+			return
+	else:
+		await RenderingServer.frame_post_draw
+	if probe != null:
+		var sampled_time: float = float(probe.get("clip_time"))
+		var acknowledged: Dictionary = probe.get("result") as Dictionary
+		if int(probe.get("applied_frame")) != Engine.get_process_frames() or int(acknowledged.get("applied_frame", -1)) != Engine.get_process_frames() or str(probe.get("clip")) != expected_clip or (expected_time >= 0 and absf(sampled_time - expected_time) >= .0001):
+			failures.append("Rendered frame and final skeleton sample differ: %s %s" % [str(row.id), expected_clip])
+			probe.set("measure_feet", false)
+			return
 	var stem: String = "%s-%s-%s-p%02d-%s" % [row.get("scene", "street"), row.id, row.action, roundi(float(row.get("phase", 0)) * 100), view]
 	if row.has("time"): stem += "-t%04d" % int(row.time)
 	if row.has("sample"): stem += "-s%03d" % int(row.sample)
 	var file: String = stem + ".png"
+	# Dense authored keys can round to the same displayed percentage. Preserve
+	# each captured image instead of silently overwriting an earlier phase.
+	var duplicate_index := 1
+	while snapshot_files.has(file):
+		file = stem + "-r%03d.png" % duplicate_index
+		duplicate_index += 1
+	snapshot_files[file] = true
 	# Read the actual rendered frame now; encode only after a native short route ends.
 	# PNG compression must not consume the available walking/running distance.
 	var captured: Image = get_viewport().get_texture().get_image()
 	var info: Dictionary = row.duplicate(true)
 	info["file"] = file
+	if hide_arm_fill: info["diagnostic_hidden_arm_fill"] = true
 	info["view"] = view
 	info["position"] = vector(actor.global_position)
+	info["model_position"] = vector(model.global_position)
+	info["model_basis"] = [vector(model.global_basis.x), vector(model.global_basis.y), vector(model.global_basis.z)]
+	var natural_reference_probe: Node = model.find_child("NaturalLocomotionPose", true, false)
+	if natural_reference_probe != null:
+		var reference_quaternions: Dictionary = {}
+		var natural_references: Dictionary = natural_reference_probe.get("references") as Dictionary
+		for reference_name: String in natural_references:
+			var reference_rotation: Quaternion = natural_references[reference_name] as Quaternion
+			reference_quaternions[reference_name] = [reference_rotation.x, reference_rotation.y, reference_rotation.z, reference_rotation.w]
+		info["natural_reference"] = {"ready": natural_reference_probe.get("ready_reference"), "hips_position": vector(natural_reference_probe.get("reference_hips") as Vector3), "rotations": reference_quaternions}
 	info["camera"] = vector(camera.global_position)
 	info["camera_orthographic_size"] = camera.size
 	info["floor_support"] = actor.get_meta("qa_floor_support", {})
@@ -237,15 +303,36 @@ func snapshot(row: Dictionary, view: String) -> void:
 	info["clip_time"] = anim.ap.current_animation_position
 	if apron_probe != null:
 		info["apron"] = (apron_probe.get("result") as Dictionary).duplicate(true)
-		if int(info.apron.get("request_id", -2)) != apron_request: failures.append("apron measurement did not consume its capture request")
+		if int(info.apron.get("request_id", -2)) != apron_request or int(info.apron.get("applied_frame", -1)) != Engine.get_process_frames() or str(info.apron.get("clip", "")) != expected_clip or (expected_time >= 0 and absf(float(info.apron.get("clip_time", INF)) - expected_time) >= .0001):
+			failures.append("apron measurement differs from its rendered frame, clip or time")
 	var apron_support: Node = model.find_child("CharacterApronSupport", true, false)
 	if apron_support != null: info["apron_support"] = apron_support.call("performance")
+	var garment_support: Node = model.find_child("CharacterGarmentSupport", true, false)
+	if garment_support != null: info["garment_support"] = garment_support.call("performance")
 	var grounding: Node = model.find_child("CharacterFootSupport", true, false)
 	if grounding != null:
 		info["foot_constraint_performance"] = grounding.call("performance")
 		info["foot_constraint_correction"] = (grounding.get("correction") as Dictionary).duplicate()
 	if probe != null:
+		info["pose_sample"] = {"request_id": final_request, "acknowledged_request": probe.get("completed_request"), "applied_frame": probe.get("applied_frame"), "captured_frame": Engine.get_process_frames(), "clip": probe.get("clip"), "clip_time": probe.get("clip_time"), "bone_pose_hash": hash(probe.get("all_bones")) if measure_final_bones else hash(probe.get("joints"))}
 		info["joints"] = (probe.get("joints") as Dictionary).duplicate(true)
+		if measure_final_bones:
+			info["projection_viewport"] = [get_viewport().get_visible_rect().size.x, get_viewport().get_visible_rect().size.y]
+			var final_bones: Array = (probe.get("all_bones") as Array).duplicate(true)
+			for bone_row: Dictionary in final_bones:
+				var point: Array = bone_row.position
+				var screen_point: Vector2 = camera.unproject_position(Vector3(point[0], point[1], point[2]))
+				bone_row["screen"] = [screen_point.x, screen_point.y]
+			info["bones"] = final_bones
+			var shape_values: Dictionary = {}
+			for sampled_mesh: MeshInstance3D in WorldBuilder.find_meshes(model):
+				if not sampled_mesh.mesh is ArrayMesh: continue
+				var geometry: ArrayMesh = sampled_mesh.mesh as ArrayMesh
+				var values: Dictionary = {}
+				for shape: int in geometry.get_blend_shape_count():
+					values[str(geometry.get_blend_shape_name(shape))] = sampled_mesh.get_blend_shape_value(shape)
+				shape_values[str(sampled_mesh.name)] = values
+			info["blend_shape_values"] = shape_values
 		if bool(probe.get("measure_feet")): info["rendered_shoe_soles"] = (probe.get("soles") as Dictionary).duplicate(true)
 		probe.set("measure_feet", false)
 	if anim.clothing and anim.clothing.limiter:
@@ -265,9 +352,15 @@ func save_pending_images() -> void:
 	pending_images.clear()
 
 func pose(clip: String, phase: float) -> void:
+	# Freeze the controller alongside the authored clip. Playing AP directly
+	# while CharAnim still says idle would exercise a QA-only fallback branch.
+	anim._oneshot = ""
+	anim._go(clip, 1.0)
 	anim.ap.play(clip, 0)
 	anim.ap.speed_scale = 0
 	anim.ap.seek(anim.ap.get_animation(clip).length * phase, true)
+	var natural: Node = model.find_child("NaturalLocomotionPose", true, false)
+	if natural != null and natural.has_method("finish_transition"): natural.call("finish_transition")
 	if anim.clothing: anim.clothing.reset()
 
 func outdoors() -> void:
@@ -291,7 +384,7 @@ func capture_poses() -> void:
 				continue
 			for phase: float in phases:
 				pose(clip, phase)
-				for view: String in VIEWS:
+				for view: String in pose_views:
 					await snapshot({"id": id, "action": clip, "phase": phase, "scene": "street", "kind": "authored_pose_seek", "weather": "sunny"}, view)
 
 func capture_indoor() -> void:

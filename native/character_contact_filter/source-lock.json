@@ -1,0 +1,79 @@
+{
+  "engine": "4.8.dev7.official.c971f93e7",
+  "precision": "single",
+  "validated_platform": "macos.arm64",
+  "method_hash": 3648293151,
+  "compile_inputs": {
+    "native_triangle_filter.c": "a9c342f49596c2a9657a2859188f87d85e9ea2f37184414830f9c230a6b6fd62",
+    "native_triangle_filter_impl.h": "c9b6940ca5dd98daee9bbea03f36788b676b3ac2355d2bc4fdc5f83fdbc75326",
+    "filter_abi.h": "3c639c9acd191396487a042a6eaeb13fe0de4f0c6b601da13fb67b88be9b75d0",
+    "vendor/gdextension_interface.h": "cbc40bb06dc97287f3c95834e7994e45193de08a1256808884041e216aabd714",
+    "api-layout.json": "5e289d98214eab3a44855b461d625d2b81d16e7a8cf97bf052a1b0d2c040cc85"
+  },
+  "accepted_library_sha256": "f6c60416b6c6d04473c8a7bda3153e125a33b8f9ba5a73bf376da4ab2373b379",
+  "official_api_dump_sha256": "b9b10796e8806e0e83ea4601b3f4c97e07406accedaf598937050b4abf59afa1",
+  "official_sources": {
+    "engine_commit": "c971f93e7",
+    "files": [
+      {
+        "path": "vendor/gdextension_interface.json",
+        "url": "https://raw.githubusercontent.com/godotengine/godot/c971f93e7/core/extension/gdextension_interface.json",
+        "sha256": "24bf12720a6fdef3f9d270c792c5abe9ef5f645d67335615383d7e42d77143f3",
+        "bytes": 328092
+      },
+      {
+        "path": "vendor/make_interface_header.py",
+        "url": "https://raw.githubusercontent.com/godotengine/godot/c971f93e7/core/extension/make_interface_header.py",
+        "sha256": "caf856e19765a889857e620bc2391dac5844a03a4dfb9dad991948f3be8240e2",
+        "bytes": 12639
+      },
+      {
+        "path": "vendor/gdextension.cpp",
+        "url": "https://raw.githubusercontent.com/godotengine/godot/c971f93e7/core/extension/gdextension.cpp",
+        "sha256": "b78a9287ee57ab7c128e9f43d8eba227579f78b63601ae0a7fe2176a6d71973c",
+        "bytes": 55382
+      },
+      {
+        "path": "vendor/gdextension_interface.cpp",
+        "url": "https://raw.githubusercontent.com/godotengine/godot/c971f93e7/core/extension/gdextension_interface.cpp",
+        "sha256": "ff3777c6de0bb40cc016702930ac8cd8cfb05552ca3507ad85b06a15e364ab29",
+        "bytes": 88257
+      },
+      {
+        "path": "vendor/triangle_mesh.cpp",
+        "url": "https://raw.githubusercontent.com/godotengine/godot/c971f93e7/core/math/triangle_mesh.cpp",
+        "sha256": "ecef18fbd06565ce1f204944c3eaeb7e00b7c585b8f3a5a06ae7875ff564974a",
+        "bytes": 15874
+      },
+      {
+        "path": "vendor/triangle_mesh.h",
+        "url": "https://raw.githubusercontent.com/godotengine/godot/c971f93e7/core/math/triangle_mesh.h",
+        "sha256": "4cd9a61589c8c1b32850c85d0fe532302a40d66022e8c1c173e79a3b7c7565c5",
+        "bytes": 4718
+      },
+      {
+        "path": "vendor/ClassDB.xml",
+        "url": "https://raw.githubusercontent.com/godotengine/godot/c971f93e7/doc/classes/ClassDB.xml",
+        "sha256": "b343cb748da36b931eb24acdfe3400dac8ca9cf3ec3f89bdd5d7fd0ff3182541",
+        "bytes": 12763
+      }
+    ]
+  },
+  "generated_header_sha256": "cbc40bb06dc97287f3c95834e7994e45193de08a1256808884041e216aabd714",
+  "compile_options": [
+    "-std=c11",
+    "-O2",
+    "-g",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-fno-fast-math",
+    "-ffp-contract=off",
+    "-fvisibility=hidden",
+    "-arch",
+    "arm64",
+    "-mmacosx-version-min=14.0",
+    "-dynamiclib"
+  ],
+  "semantic_revalidation_after_rebuild": true
+}

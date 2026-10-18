@@ -1,8 +1,14 @@
 extends SkeletonModifier3D
-## Test-only full skinning and independent front/back visible-panel BVHs.
+## Test-only full skinning and independent front/back original painted-source BVHs.
+## Source paint survives hidden rest folds; exterior selection uses final poses.
 var pending := false
 var request_id := 0
 var measured_id := 0
+var request_frame := -1
+var expected_clip := ""
+var expected_time := -1.0
+var callback_frame := -1
+var callbacks_in_frame := 0
 var result: Dictionary = {}
 var mesh: MeshInstance3D
 var animation: AnimationPlayer
@@ -12,8 +18,11 @@ var pants: PackedInt32Array = []
 var records: Dictionary = {}
 var support: Node
 
-func request() -> int:
+func request(clip: String = "", time: float = -1.0) -> int:
 	request_id += 1
+	request_frame = Engine.get_process_frames()
+	expected_clip = clip
+	expected_time = time
 	pending = true
 	return request_id
 
@@ -51,31 +60,40 @@ func prepare(model: Node3D) -> void:
 	for point: Vector3 in positions: height = maxf(height, point.y)
 	var hip: int = LivingPose.bone(sk, "hips")
 	var hip_z: float = sk.get_bone_global_rest(hip).origin.z
-	var source_faces: PackedVector3Array = []
-	for index: int in indices: source_faces.append(positions[index])
-	var original_tree := TriangleMesh.new()
-	original_tree.create_from_faces(source_faces)
 	var yellow: Dictionary = {"front": PackedByteArray(), "back": PackedByteArray()}
 	# Packed arrays are values; resize and assign explicitly.
 	for layer: String in ["front", "back"]:
 		var flags: PackedByteArray = yellow[layer]
 		flags.resize(positions.size())
 		yellow[layer] = flags
+	var local_shape_indices := PackedInt32Array()
+	for local_target: int in geometry.get_blend_shape_count():
+		if str(geometry.get_blend_shape_name(local_target)).begins_with("Garment_Local_"): local_shape_indices.append(local_target)
 	for index: int in positions.size():
 		var point: Vector3 = positions[index]
 		if absf(point.x) > .20 * height or point.y < .20 * height or point.y > .55 * height: continue
 		var texel: Color = atlas.get_pixel(posmod(int(uv[index].x * atlas.get_width()), atlas.get_width()), posmod(int(uv[index].y * atlas.get_height()), atlas.get_height()))
 		var cloth: bool = texel.r > texel.g * .95 and texel.r < texel.g * 1.9 and texel.b < texel.g * .65 and texel.g > .18
 		if cloth:
+			# Keep every original painted source face in this region. A fold
+			# hidden at rest can become the exterior after skinning/morphs;
+			# select its first exterior only in the final-pose BVH below.
 			for layer: String in ["front", "back"]:
-				var sign: float = 1.0 if layer == "front" else -1.0
-				var first: Dictionary = original_tree.intersect_ray(Vector3(point.x, point.y, sign * 2), Vector3(0, 0, -sign))
-				if not first.is_empty() and sign * ((first.position as Vector3).z - point.z) < .012:
-					var flags: PackedByteArray = yellow[layer]
-					flags[index] = 1
-					yellow[layer] = flags
+				var flags: PackedByteArray = yellow[layer]
+				flags[index] = 1
+				yellow[layer] = flags
 		elif maxf(texel.r, maxf(texel.g, texel.b)) < .36 and point.y > .24 * height and absf(point.x) < .14 * height:
-			pants.append(index)
+			var neutral: bool = maxf(texel.r, maxf(texel.g, texel.b)) - minf(texel.r, minf(texel.g, texel.b)) < .08
+			var clothing_support := 0.0
+			if not neutral:
+				for local_shape: int in local_shape_indices:
+					var local_points: PackedVector3Array = shapes[local_shape][Mesh.ARRAY_VERTEX]
+					var local_delta: Vector3 = local_points[index] if relative else local_points[index] - positions[index]
+					clothing_support += absf(local_delta.z)
+			# Preserve every neutral trouser label and every unknown unsupported
+			# boundary point. Only a nonneutral Local-supported cloth point is
+			# excluded; source faces and physical acceptance gates stay intact.
+			if neutral or clothing_support <= .000001: pants.append(index)
 	for offset: int in range(0, indices.size(), 3):
 		var triangle := PackedInt32Array([indices[offset], indices[offset + 1], indices[offset + 2]])
 		var centre: Vector3 = (positions[triangle[0]] + positions[triangle[1]] + positions[triangle[2]]) / 3.0
@@ -109,7 +127,16 @@ func prepare(model: Node3D) -> void:
 	result = {"prepared": true, "pants_vertices": pants.size(), "skinned_vertices": records.size()}
 
 func _process_modification() -> void:
-	if not pending or mesh == null: return
+	if mesh == null: return
+	var applied_frame: int = Engine.get_process_frames()
+	if callback_frame != applied_frame:
+		callback_frame = applied_frame
+		callbacks_in_frame = 0
+	callbacks_in_frame += 1
+	var refresh_same_frame: bool = not pending and measured_id == request_id and int(result.get("request_id", -1)) == request_id and int(result.get("applied_frame", -1)) == applied_frame
+	if (not pending and not refresh_same_frame) or applied_frame <= request_frame: return
+	if expected_clip != "" and animation.current_animation != expected_clip: return
+	if expected_time >= 0 and absf(animation.current_animation_position - expected_time) >= .0001: return
 	pending = false
 	measured_id = request_id
 	var sk: Skeleton3D = get_skeleton()
@@ -205,4 +232,4 @@ func _process_modification() -> void:
 		deepest = maxf(deepest, penetration)
 		total_covered += covered
 		total_hits += intersections
-	result = {"prepared": true, "request_id": measured_id, "frame": Engine.get_process_frames(), "clip": animation.current_animation, "clip_time": animation.current_animation_position, "layers": layers, "apron_triangles": (faces.front as Array).size() + (faces.back as Array).size(), "pants_vertices": pants.size(), "skinned_vertices": records.size(), "covered_vertices": total_covered, "penetrations_over_5mm": total_hits, "max_penetration_m": deepest, "morph_weight": mesh.get_blend_shape_value(shape_index), "morph_weights": morph_weights}
+	result = {"prepared": true, "request_id": measured_id, "request_frame": request_frame, "frame": applied_frame, "applied_frame": applied_frame, "callbacks_in_frame": callbacks_in_frame, "clip": animation.current_animation, "clip_time": animation.current_animation_position, "layers": layers, "apron_triangles": (faces.front as Array).size() + (faces.back as Array).size(), "pants_vertices": pants.size(), "skinned_vertices": records.size(), "covered_vertices": total_covered, "penetrations_over_5mm": total_hits, "max_penetration_m": deepest, "morph_weight": mesh.get_blend_shape_value(shape_index), "morph_weights": morph_weights}

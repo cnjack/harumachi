@@ -4,6 +4,7 @@ var model: Node3D
 var actor: Node3D
 var animation: AnimationPlayer
 var profile: String=""
+var rebuilt_clips: Array=[]
 var references: Dictionary={}
 var reference_hips:=Vector3.ZERO
 var ready_reference:=false
@@ -13,20 +14,205 @@ var anchors: Dictionary={}
 var was_stance: Dictionary={}
 var corrections: Dictionary={}
 const NAMES: Array[String]=["hips","chest","thigh.L","thigh.R","shin.L","shin.R","upper.L","upper.R"]
+const TRANSITION_BONES: Array[String]=["hips","chest","head","thigh.L","thigh.R","shin.L","shin.R","foot.L","foot.R","upper.L","upper.R"]
+var _last_delta: Dictionary={}
+var _blend_from: Dictionary={}
+var _transition_clip: String=""
+var _observed_clip: String=""
+var _transition_elapsed: float=0.0
+var _transition_duration: float=0.0
+var _transition_frame: int=-1
+var _pose_actor_position:=Vector3.INF
+var qa_trace_enabled:=false
+var qa_trace: Dictionary={}
+const GAIT_MATCH_WEIGHTS: Dictionary={"hips":.25,"thigh.L":2.0,"thigh.R":2.0,"shin.L":1.0,"shin.R":1.0,"foot.L":.25,"foot.R":.25}
+const GAIT_MATCH_SAMPLES:=64
+const NORMALIZED_GAIT_DIRECTIONS: Dictionary={"haru":["walk","run"],"mio":["walk"],"aoi":["walk"]}
+var _gait_phase_cache: Dictionary={}
+var _last_raw_pose: Dictionary={}
+var _last_phase_match: Dictionary={}
+
+func _prepare_phase_cache() -> void:
+ # Read interpolation tracks directly once. Never seek/play the live skeleton,
+ # and never skin a mesh while finding a locomotion entry phase.
+ var sk: Skeleton3D=get_skeleton()
+ var wanted: Dictionary={}
+ for name: String in GAIT_MATCH_WEIGHTS:
+  var bone: int=LivingPose.bone(sk,name)
+  if bone>=0:wanted[bone]=float(GAIT_MATCH_WEIGHTS[name])
+ for clip_name: String in ["walk","run"]:
+  if not animation.has_animation(clip_name):continue
+  var resource: Animation=animation.get_animation(clip_name)
+  var tracks: Dictionary={}
+  for track: int in resource.get_track_count():
+   if resource.track_get_type(track)!=Animation.TYPE_ROTATION_3D:continue
+   var path: NodePath=resource.track_get_path(track)
+   if path.get_subname_count()==0:continue
+   var label: String=str(path.get_subname(0))
+   var track_bone: int=sk.find_bone(label)
+   if track_bone<0:track_bone=sk.find_bone(label.replace("mixamorig:","mixamorig_"))
+   if wanted.has(track_bone):tracks[track_bone]=track
+  # A partial match could choose the wrong contact leg. Fall back to the
+  # normalized phase if this imported resource lacks a required bone track.
+  if tracks.size()!=wanted.size() or wanted.size()!=GAIT_MATCH_WEIGHTS.size():continue
+  var entries: Array[Dictionary]=[]
+  for sample: int in GAIT_MATCH_SAMPLES:
+   var phase: float=float(sample)/GAIT_MATCH_SAMPLES
+   var rotations: Dictionary={}
+   for sampled_bone: int in tracks:rotations[sampled_bone]=resource.rotation_track_interpolate(int(tracks[sampled_bone]),phase*resource.length).normalized()
+   entries.append({"phase":phase,"rotations":rotations})
+  _gait_phase_cache[clip_name]={"entries":entries,"weights":wanted}
+
+func match_gait_phase(next_clip: String,fallback_phase: float) -> float:
+ # Native A/B exposed regressions in these directions despite a lower local
+ # rotation cost. Preserve their preceding normalized phase instead.
+ if next_clip in NORMALIZED_GAIT_DIRECTIONS.get(profile,[]):
+  _last_phase_match={"from_clip":animation.current_animation,"to_clip":next_clip,"normalized_phase":fallback_phase,"matched_phase":fallback_phase,"cache_samples":0,"fallback_reason":"normalized direction retained after native A/B"}
+  return fallback_phase
+ if not _gait_phase_cache.has(next_clip) or _last_raw_pose.is_empty():
+  _last_phase_match={"to_clip":next_clip,"normalized_phase":fallback_phase,"matched_phase":fallback_phase,"cache_samples":0,"fallback_reason":"missing complete animation tracks or preceding raw pose"}
+  return fallback_phase
+ var cache: Dictionary=_gait_phase_cache[next_clip]
+ var entries: Array=cache.entries
+ var best_phase: float=fallback_phase
+ var best_cost:=INF
+ for entry: Dictionary in entries:
+  var cost:=0.0
+  for index: int in cache.weights:
+   if not _last_raw_pose.has(index):return fallback_phase
+   var source: Quaternion=_last_raw_pose[index].rotation
+   var target: Quaternion=entry.rotations[index]
+   var angle: float=2.0*acos(clampf(absf(source.dot(target)),0.0,1.0))
+   cost+=float(cache.weights[index])*angle*angle
+  # Only break essentially equal pose ties by the preceding cycle position.
+  var separation: float=absf(float(entry.phase)-fallback_phase)
+  var cycle_distance: float=minf(separation,1.0-separation)
+  var best_separation: float=absf(best_phase-fallback_phase)
+  if cost<best_cost-.000001 or (absf(cost-best_cost)<=.000001 and cycle_distance<minf(best_separation,1.0-best_separation)):
+   best_cost=cost;best_phase=float(entry.phase)
+ _last_phase_match={"from_clip":animation.current_animation,"to_clip":next_clip,"normalized_phase":fallback_phase,"matched_phase":best_phase,"angular_cost":best_cost,"cache_samples":entries.size()}
+ return best_phase
+
+func begin_transition(next_clip: String,duration: float) -> void:
+ _transition_clip=next_clip
+ _blend_from=_last_delta.duplicate(true)
+ _transition_elapsed=0.0
+ _transition_frame=Engine.get_process_frames()
+ # A placement can clear correction history while AnimationPlayer still has
+ # its preceding clip. Keep the same blend clock even without old deltas;
+ # zero correction is the starting pose, not proof that the AP blend ended.
+ _transition_duration=maxf(duration,0.0)
+
+func finish_transition() -> void:
+ # Frozen pose audits seek directly and ask for the steady result. Real
+ # CharAnim playback uses begin_transition and never calls this method.
+ _transition_duration=0.0
+ _blend_from.clear()
+
+func _local_poses(sk: Skeleton3D) -> Dictionary:
+ var poses: Dictionary={}
+ for name: String in TRANSITION_BONES:
+  var index: int=LivingPose.bone(sk,name)
+  if index>=0:poses[index]={"position":sk.get_bone_pose_position(index),"rotation":sk.get_bone_pose_rotation(index)}
+ return poses
+
+func _pose_deltas(sk: Skeleton3D,raw: Dictionary) -> Dictionary:
+ var deltas: Dictionary={}
+ for index: int in raw:
+  var base: Dictionary=raw[index]
+  deltas[index]={"position":sk.get_bone_pose_position(index)-(base.position as Vector3),"rotation":(base.rotation as Quaternion).inverse()*sk.get_bone_pose_rotation(index)}
+ return deltas
+
+func _apply_deltas(sk: Skeleton3D,raw: Dictionary,deltas: Dictionary) -> void:
+ for index: int in raw:
+  var base: Dictionary=raw[index]
+  var delta: Dictionary=deltas.get(index,{"position":Vector3.ZERO,"rotation":Quaternion.IDENTITY})
+  sk.set_bone_pose_position(index,(base.position as Vector3)+(delta.position as Vector3))
+  sk.set_bone_pose_rotation(index,((base.rotation as Quaternion)*(delta.rotation as Quaternion)).normalized())
+
+func _qa_joints(sk: Skeleton3D) -> Dictionary:
+ var result: Dictionary={}
+ for name: String in ["hips","foot.L","foot.R"]:
+  var index: int=LivingPose.bone(sk,name)
+  if index<0:continue
+  var point: Vector3=sk.to_global(sk.get_bone_global_pose(index).origin)
+  result[name]=[point.x,point.y,point.z]
+ return result
+
+func _process_modification() -> void:
+ if model==null or animation==null or not model.is_visible_in_tree():return
+ var at: Vector3=actor.global_position
+ # NPC.place/set_home reset explicitly. Player/world teleports can arrive
+ # through interpolation resets; discard local correction history on a real
+ # discontinuity, with a delta-scaled bound well above any walking/running speed.
+ if _pose_actor_position.is_finite() and _pose_actor_position.distance_to(at)>maxf(.5,get_process_delta_time()*12.0):reset_contact()
+ _pose_actor_position=at
+ if actor is Player and (actor as Player).seated or actor.get_meta("resident_seated",false):
+  finish_transition();_last_delta.clear();return
+ var sk: Skeleton3D=get_skeleton()
+ var raw: Dictionary=_local_poses(sk)
+ _last_raw_pose=raw
+ var clip: String=animation.current_animation
+ if qa_trace_enabled:qa_trace={"frame":Engine.get_process_frames(),"clip":clip,"clip_time":animation.current_animation_position,"before":_qa_joints(sk),"transition_elapsed":_transition_elapsed,"transition_duration":_transition_duration,"process_delta_s":get_process_delta_time()}
+ if qa_trace_enabled:qa_trace["phase_match"]=_last_phase_match.duplicate()
+ if clip=="":
+  # A completed one-shot can expose an empty clip for one process frame
+  # before the controller starts idle. Keep the last correction on that pose.
+  _apply_deltas(sk,raw,_last_delta)
+  if qa_trace_enabled:qa_trace["after"]=_qa_joints(sk)
+  return
+ if clip!=_observed_clip:
+  if clip!=_transition_clip:finish_transition()
+  _observed_clip=clip
+ _process_pose()
+ if qa_trace_enabled:
+  qa_trace["desired"]=_qa_joints(sk);qa_trace["corrections"]=corrections.duplicate()
+  qa_trace["contact_anchors_active"]={"L":anchors.has("L"),"R":anchors.has("R")}
+ var desired: Dictionary=_pose_deltas(sk,raw)
+ if _transition_duration>0 and _transition_frame!=Engine.get_process_frames():
+  # AnimationPlayer consumes its blend clock at abs(speed_scale)*delta.
+  # Follow that same clock, including pause/time_scale and cadence changes.
+  _transition_elapsed+=get_process_delta_time()*absf(animation.speed_scale)
+  _transition_frame=Engine.get_process_frames()
+ if _transition_duration>0 and _transition_elapsed<_transition_duration:
+  var weight: float=clampf(_transition_elapsed/_transition_duration,0.0,1.0)
+  # Smooth correction deltas, alongside AnimationPlayer's source-pose blend.
+  # Local rotations preserve bone lengths; FootSupport still owns floor safety.
+  weight=weight*weight*(3.0-2.0*weight)
+  var blended: Dictionary={}
+  for index: int in raw:
+   var previous: Dictionary=_blend_from.get(index,{"position":Vector3.ZERO,"rotation":Quaternion.IDENTITY})
+   var target: Dictionary=desired[index]
+   blended[index]={"position":(previous.position as Vector3).lerp(target.position as Vector3,weight),"rotation":(previous.rotation as Quaternion).slerp(target.rotation as Quaternion,weight)}
+  _apply_deltas(sk,raw,blended)
+  _last_delta=blended
+ else:
+  _last_delta=desired
+  _transition_duration=0.0
+ if qa_trace_enabled:qa_trace["after"]=_qa_joints(sk)
 
 func reset_contact() -> void:
  anchors.clear();was_stance.clear();corrections.clear();last_phase=-1.0;last_position=Vector3.INF
+ finish_transition()
+ _last_delta.clear();_transition_clip="";_observed_clip=""
+ _last_raw_pose.clear();_last_phase_match.clear()
+ _transition_elapsed=0.0;_transition_frame=-1;_pose_actor_position=Vector3.INF
 
 static func attach(source: Node3D,player: AnimationPlayer) -> SkeletonModifier3D:
  var rig: Node=source.find_child("Rig",true,false)
  var extras: Dictionary=rig.get_meta("extras",{}) if rig!=null else {}
  var who: String=str(extras.get("character_id",""))
- if who not in ["mio","aoi"]:return null
+ if who not in ["sora","ren","haru","mio","aoi","tanaka","kazuko"]:return null
  var sk: Skeleton3D=source.find_child("Skeleton3D",true,false) as Skeleton3D
  if sk==null:return null
  var modifier: SkeletonModifier3D=load("res://scripts/characters/natural_locomotion_pose.gd").new()
+ modifier.set("rebuilt_clips",(extras.get("locomotion_rebuild",{}) as Dictionary).get("rebuilt_clips",[]))
  modifier.name="NaturalLocomotionPose";modifier.set("model",source);modifier.set("actor",source.get_parent());modifier.set("animation",player);modifier.set("profile",who)
+ var actor_root: Node3D=source
+ while actor_root.get_parent() is Node3D and not(actor_root is Player or actor_root is NPC):actor_root=actor_root.get_parent() as Node3D
+ modifier.set("actor",actor_root)
  sk.add_child(modifier)
+ modifier.call("_prepare_phase_cache")
  return modifier
 
 func _remember(sk: Skeleton3D) -> void:
@@ -70,12 +256,12 @@ func _place_ankle(sk: Skeleton3D,side: String,target: Vector3) -> void:
  _aim(sk,shin,foot,sk.global_basis.inverse()*(target-new_knee))
  var pose: Transform3D=sk.get_bone_global_pose(foot);pose.basis=foot_basis;sk.set_bone_global_pose(foot,pose)
 
-func _ground_gap(sk: Skeleton3D,side: String,support: Node) -> float:
+func _ground_gap(sk: Skeleton3D,side: String,support: Node,prepared_points: Array=[]) -> float:
  var foot: int=LivingPose.bone(sk,"foot."+side)
  var floor: Dictionary=support.call("floor_below",sk.to_global(sk.get_bone_global_pose(foot).origin))
  if floor.is_empty() or (floor.normal as Vector3).y<.5:return INF
  var gap: float=INF
- var points: Array=support.call("points",sk,side)
+ var points: Array=prepared_points if not prepared_points.is_empty() else support.call("points",sk,side)
  for point: Vector3 in points:
   var plane_gap: float=(floor.normal as Vector3).dot(point-(floor.position as Vector3))/(floor.normal as Vector3).y
   var painted: float=support.call("visible_town_height",Vector2(point.x,point.z))
@@ -83,11 +269,20 @@ func _ground_gap(sk: Skeleton3D,side: String,support: Node) -> float:
   gap=minf(gap,plane_gap)
  return gap
 
-func _process_modification() -> void:
+func _process_pose() -> void:
  corrections.clear()
  if model==null or animation==null or not model.is_visible_in_tree():return
  var clip: String=animation.current_animation
  var sk: Skeleton3D=get_skeleton()
+ # User-rejected neutral legs share the same pose in idle, wave and bow. The
+ # former safety IK raised ankles under a fixed low pelvis and chose the old
+ # knee plane, which made straight legs bow sideways or bend behind the calf.
+ if profile in ["sora","ren","aoi","tanaka","kazuko"] and clip in ["idle","talk","wave","bow","look","stretch","cheer"]:
+  _standing_support(sk)
+  return
+ if clip in rebuilt_clips:
+  anchors.clear();was_stance.clear();last_phase=-1.0;last_position=actor.global_position
+  return
  if not ready_reference:
   if clip=="idle":_remember(sk)
   else:return
@@ -124,8 +319,18 @@ func _process_modification() -> void:
   var target: Vector3=model.to_global(local)
   var stance: bool=active_idle or (phase<.5 if side=="L" else phase>=.5)
   if active_walk and stance and actual_motion:
-   if not bool(was_stance.get(side,false)) or not anchors.has(side):anchors[side]=target
-   target.x=(anchors[side] as Vector3).x;target.z=(anchors[side] as Vector3).z
+   if not bool(was_stance.get(side,false)) or not anchors.has(side):
+    # Incoming walk can still contain a high outgoing run swing while the
+    # AnimationPlayer blends. A phase label alone is not physical contact:
+    # pinning that airborne point keeps the ankle unreachable for half a
+    # cycle, then releases it abruptly at the stance boundary.
+    var observed_gap: float=_ground_gap(sk,side,support) if support!=null else INF
+    if qa_trace_enabled:
+     if not qa_trace.has("contact_observations"):qa_trace["contact_observations"]={}
+     qa_trace["contact_observations"][side]=observed_gap if is_finite(observed_gap) else null
+    if is_finite(observed_gap) and observed_gap<=.020:anchors[side]=target
+   if anchors.has(side):
+    target.x=(anchors[side] as Vector3).x;target.z=(anchors[side] as Vector3).z
   elif not stance or not actual_motion:anchors.erase(side)
   was_stance[side]=stance
   _place_ankle(sk,side,target)
@@ -141,4 +346,87 @@ func _process_modification() -> void:
      hip_pose.origin-=sk.global_basis.inverse()*Vector3.UP*minf(remaining-.008,.035)
      sk.set_bone_global_pose(hips,hip_pose)
      _place_ankle(sk,side,target)
+ sk.set_meta("natural_locomotion_profile",profile)
+
+
+func _standing_pelvis_height(sk: Skeleton3D,targets: Dictionary) -> float:
+ var hips: int=LivingPose.bone(sk,"hips")
+ var root_world: Vector3=sk.to_global(sk.get_bone_global_pose(hips).origin)
+ var hip_height: float=INF
+ for side: String in ["L","R"]:
+  var thigh: int=LivingPose.bone(sk,"thigh."+side)
+  var shin: int=LivingPose.bone(sk,"shin."+side)
+  var foot: int=LivingPose.bone(sk,"foot."+side)
+  var hip: Vector3=sk.to_global(sk.get_bone_global_pose(thigh).origin)
+  var knee: Vector3=sk.to_global(sk.get_bone_global_pose(shin).origin)
+  var ankle: Vector3=sk.to_global(sk.get_bone_global_pose(foot).origin)
+  var target: Vector3=targets[side]
+  var upper: float=hip.distance_to(knee)
+  var lower: float=knee.distance_to(ankle)
+  var flex: float=deg_to_rad(12.0 if profile=="tanaka" else 9.0)
+  var reach_squared: float=upper*upper+lower*lower+2.0*upper*lower*cos(flex)
+  var horizontal_squared: float=Vector2(target.x-hip.x,target.z-hip.z).length_squared()
+  var vertical: float=sqrt(maxf(.002,reach_squared-horizontal_squared))
+  hip_height=minf(hip_height,target.y+vertical-(hip.y-root_world.y))
+ return hip_height
+
+func _standing_place(sk: Skeleton3D,targets: Dictionary) -> void:
+ var hips: int=LivingPose.bone(sk,"hips")
+ var height: float=_standing_pelvis_height(sk,targets)
+ var root: Transform3D=sk.get_bone_global_pose(hips)
+ var root_world: Vector3=sk.to_global(root.origin)
+ root_world.y=height
+ root.origin=sk.to_local(root_world)
+ sk.set_bone_global_pose(hips,root)
+ for side: String in ["L","R"]:_place_ankle(sk,side,targets[side])
+
+func _standing_support(sk: Skeleton3D) -> void:
+ # These five IDs were flagged by the human review. Haru/Mio's accepted
+ # standing actions are deliberately outside this correction.
+ if actor is Player and (actor as Player).seated or actor.get_meta("resident_seated",false):return
+ var support: Node=sk.get_node_or_null("CharacterFootSupport")
+ if support==null:return
+ var hips: int=LivingPose.bone(sk,"hips")
+ if hips<0:return
+ var targets: Dictionary={}
+ for side: String in ["L","R"]:
+  var thigh: int=LivingPose.bone(sk,"thigh."+side)
+  var shin: int=LivingPose.bone(sk,"shin."+side)
+  var foot: int=LivingPose.bone(sk,"foot."+side)
+  if mini(thigh,mini(shin,foot))<0:return
+  var ankle: Vector3=sk.to_global(sk.get_bone_global_pose(foot).origin)
+  var local: Vector3=model.to_local(ankle)
+  var rest_hip: Vector3=sk.get_bone_global_rest(thigh).origin
+  var half_width: float=clampf(absf(rest_hip.x)*.75,.073,.102)
+  var shoe_min_x: float=INF
+  var shoe_max_x: float=-INF
+  var shoe_points: Array=support.call("points",sk,side)
+  for shoe_point: Vector3 in shoe_points:
+   var shoe_x: float=model.to_local(shoe_point).x
+   shoe_min_x=minf(shoe_min_x,shoe_x)
+   shoe_max_x=maxf(shoe_max_x,shoe_x)
+  var shoe_centre_x: float=(shoe_min_x+shoe_max_x)*.5 if is_finite(shoe_min_x) else local.x
+  # A fitted ankle pivot can be off-centre inside the boot. Move the complete
+  # shoe to the stance track, retaining that measured pivot-to-surface offset.
+  local.x+=(half_width if side=="L" else -half_width)-shoe_centre_x
+  var target: Vector3=model.to_global(local)
+  var gap: float=_ground_gap(sk,side,support,shoe_points)
+  if is_finite(gap):target.y+=clampf(.008-gap,-.16,.16)
+  targets[side]=target
+ _standing_place(sk,targets)
+ # A few millimetres of weighted-sole calibration can consume all the slack
+ # of a nearly straight leg. Recompute pelvis height as well as both ankles;
+ # do not extend a foot under a pelvis fixed for the preceding target.
+ for _iteration: int in range(2):
+  var changed: bool=false
+  for planted_side: String in ["L","R"]:
+   var final_gap: float=_ground_gap(sk,planted_side,support)
+   if is_finite(final_gap) and absf(final_gap-.008)>.0003:
+    var adjusted_target: Vector3=targets[planted_side]
+    adjusted_target.y+=clampf(.008-final_gap,-.025,.025)
+    targets[planted_side]=adjusted_target
+    corrections[planted_side]=.008-final_gap
+    changed=true
+  if not changed:break
+  _standing_place(sk,targets)
  sk.set_meta("natural_locomotion_profile",profile)

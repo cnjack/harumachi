@@ -408,7 +408,41 @@ func hand_tone_contract() -> void:
 	t.check("CHARACTER_VISUAL", "palm correction keeps original vertex skin index UV and every LOD stream", geometry, str(stream_details))
 	t.check("CHARACTER_VISUAL", "skin correction has zero non-hand mask and uses one opaque surface without depth offset", mask_is_local and shader_is_opaque and body.mesh.get_surface_count() == original.get_surface_count())
 	var digest: String = FileAccess.get_sha256("res://assets/models/CH_aoi.glb")
-	t.check("CHARACTER_VISUAL", "Aoi source GLB and imported skin weights remain byte-identical", skin_is_identical and digest == "24211d3f3eb5d129abf37b3ee5602798d8b8b381a99297a70c3aef1310290618", digest)
+	t.check("CHARACTER_VISUAL", "palm tone preserves the accepted Aoi source GLB and imported skin weights", skin_is_identical and digest == accepted_source_digest("aoi"), digest)
+
+func accepted_source_digest(id: String) -> String:
+	var path: String = "res://assets/models/_stats/CH_" + id + ".json"
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+	return str((parsed as Dictionary).get("sha256", "")) if parsed is Dictionary else ""
+
+func apron_sample_matches(measured: Dictionary, requested_id: int, requested_frame: int, clip: String, requested_time: float) -> bool:
+	return int(measured.get("request_id", -1)) == requested_id and int(measured.get("request_frame", -1)) == requested_frame and int(measured.get("applied_frame", -1)) > requested_frame and str(measured.get("clip", "")) == clip and absf(float(measured.get("clip_time", INF)) - requested_time) < .0001
+
+func await_apron_sample(probe: SkeletonModifier3D, clip: String, requested_time: float) -> Dictionary:
+	var requested_id: int = probe.call("request", clip, requested_time)
+	var requested_frame: int = int(probe.get("request_frame"))
+	var measured: Dictionary = {}
+	# Several physics ticks may pass without a process/modifier callback in
+	# headless runs. Wait for this request's later final pose, never a prepared
+	# record or the preceding phase. Timeout remains a failed measurement.
+	for capture_frame: int in 8:
+		await t.get_tree().process_frame
+		measured = (probe.get("result") as Dictionary).duplicate(true)
+		if apron_sample_matches(measured, requested_id, requested_frame, clip, requested_time): break
+	measured["fresh"] = apron_sample_matches(measured, requested_id, requested_frame, clip, requested_time)
+	if not bool(measured.fresh):
+		print("APRON_SAMPLE_TIMEOUT ", JSON.stringify({"requested_id": requested_id, "requested_frame": requested_frame, "requested_clip": clip, "requested_time": requested_time, "actual_id": measured.get("request_id", -1), "applied_frame": measured.get("applied_frame", -1), "actual_clip": measured.get("clip", ""), "actual_time": measured.get("clip_time", -1.0)}))
+	return measured
+
+func sample_apron_pose(npc: NPC, probe: SkeletonModifier3D, clip: String, phase: float) -> Dictionary:
+	var animation: Animation = npc.anim.ap.get_animation(clip)
+	var requested_time: float = animation.length * phase
+	if animation.loop_mode != Animation.LOOP_NONE: requested_time = fposmod(requested_time, animation.length)
+	npc.anim.ap.play(clip, 0)
+	npc.anim.ap.speed_scale = 0
+	npc.anim.ap.seek(requested_time, true)
+	npc.anim.ap.advance(0)
+	return await await_apron_sample(probe, clip, requested_time)
 
 func apron_clearance_contract() -> void:
 	var context: Dictionary = {"region": main.world.region, "in_room": main.in_room, "room_kind": main.room_kind, "player_in_room": GameState.player_in_room}
@@ -437,8 +471,14 @@ func apron_clearance_contract() -> void:
 		var vertex: Dictionary = actual_records[index]
 		for shape: int in range((original_mesh.mesh as ArrayMesh).get_blend_shape_count(), (vertex.deltas as Array).size()):
 			mesh_preserved = mesh_preserved and (vertex.deltas[shape] as Vector3).length() < .000001
+	# Contact may legitimately need a nonzero local target at rest. Record the
+	# actual idle geometry before movement and require the same values on return.
+	var idle_sample: Dictionary = await sample_apron_pose(npc, probe, "idle", .5)
+	var idle_reference := PackedFloat32Array()
+	for shape: int in (actual_mesh.mesh as ArrayMesh).get_blend_shape_count():
+		idle_reference.append(actual_mesh.get_blend_shape_value(shape))
 	var clear := true
-	var coverage := true
+	var coverage: bool = bool(idle_sample.get("fresh", false))
 	var max_depth := 0.0
 	var bad: Array[String] = []
 	for clip: String in ["walk", "run", "dance", "idle", "wave", "bow", "look", "stretch", "tend", "talk", "cheer"]:
@@ -451,16 +491,8 @@ func apron_clearance_contract() -> void:
 			phases.append(.8)
 			phases.sort()
 		for phase: float in phases:
-			var request_id: int = probe.call("request")
-			npc.anim.ap.play(clip, 0)
-			npc.anim.ap.speed_scale = 0
-			npc.anim.ap.seek(npc.anim.ap.get_animation(clip).length * phase, true)
-			npc.anim.ap.advance(0)
-			await t.frames(2)
-			var measured: Dictionary = probe.get("result")
-			var requested_time: float = npc.anim.ap.get_animation(clip).length * phase
-			if npc.anim.ap.get_animation(clip).loop_mode != Animation.LOOP_NONE: requested_time = fposmod(requested_time, npc.anim.ap.get_animation(clip).length)
-			var fresh: bool = int(measured.get("request_id", -1)) == request_id and str(measured.get("clip", "")) == clip and absf(float(measured.get("clip_time", INF)) - requested_time) < .0001
+			var measured: Dictionary = await sample_apron_pose(npc, probe, clip, phase)
+			var fresh: bool = bool(measured.get("fresh", false))
 			coverage = coverage and fresh and int(measured.get("apron_triangles", 0)) > 1000 and int(measured.get("pants_vertices", 0)) > 1000 and int(measured.get("covered_vertices", 0)) > 500
 			var layers: Dictionary = measured.get("layers", {})
 			for layer: String in ["front", "back"]:
@@ -473,23 +505,21 @@ func apron_clearance_contract() -> void:
 				clear = false
 				bad.append("%s p%.4f %.4fm" % [clip, phase, depth])
 	# Blend shapes are node properties, so repeated modifier ticks must not accumulate.
-	npc.anim.ap.play("walk", 0)
-	npc.anim.ap.seek(npc.anim.ap.get_animation("walk").length * .2, true)
-	await t.frames(3)
+	var stability_sample: Dictionary = await sample_apron_pose(npc, probe, "walk", .2)
+	var stability_time: float = npc.anim.ap.current_animation_position
 	var first: PackedFloat32Array = []
 	var actual_geometry: ArrayMesh = actual_mesh.mesh as ArrayMesh
 	for shape: int in actual_geometry.get_blend_shape_count(): first.append(actual_mesh.get_blend_shape_value(shape))
-	var stable := true
+	var stable: bool = bool(stability_sample.get("fresh", false))
 	for frame: int in 20:
-		await t.frames(1)
+		var repeated_sample: Dictionary = await await_apron_sample(probe, "walk", stability_time)
+		stable = stable and bool(repeated_sample.get("fresh", false))
 		for shape: int in first.size(): stable = stable and absf(actual_mesh.get_blend_shape_value(shape) - first[shape]) < .001
-	npc.anim.ap.play("idle", 0)
-	npc.anim.ap.seek(npc.anim.ap.get_animation("idle").length * .5, true)
-	await t.frames(5)
-	var restored := true
-	for shape: int in actual_geometry.get_blend_shape_count(): restored = restored and absf(actual_mesh.get_blend_shape_value(shape)) < .0001
+	var restored_sample: Dictionary = await sample_apron_pose(npc, probe, "idle", .5)
+	var restored: bool = bool(restored_sample.get("fresh", false)) and idle_reference.size() == actual_geometry.get_blend_shape_count()
+	for shape: int in idle_reference.size(): restored = restored and absf(actual_mesh.get_blend_shape_value(shape) - idle_reference[shape]) < .001
 	var digest: String = FileAccess.get_sha256("res://assets/models/CH_kazuko.glb")
-	mesh_preserved = mesh_preserved and digest == "e2a5c324cc9a114d36a3b653de6cba266f68d501abeed2c1a9a89fab4de5255c"
+	mesh_preserved = mesh_preserved and digest == accepted_source_digest("kazuko")
 	t.check("CHARACTER_VISUAL", "actual Kazuko apron encloses the final IK legs through gait dance gestures and stable restoration", coverage and clear and stable and restored and mesh_preserved, "coverage %s; max %.5fm; stable %s; restored %s; original mesh %s; bad %s" % [coverage, max_depth, stable, restored, mesh_preserved, str(bad)])
 	original_model.free()
 	probe.queue_free()

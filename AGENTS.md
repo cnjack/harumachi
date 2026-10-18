@@ -45,7 +45,7 @@ PY=/Users/jack/.copilot/session-state/ca10e179-b441-4d77-b938-250cea2ee4c6/files
 BLENDER=/Applications/Blender.app/Contents/MacOS/Blender
 
 $GODOT --headless --path game --import                               # 加了素材或 class_name 之后必须先跑
-$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前2296项；单独运行，套timeout）
+$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前2451项；单独运行，套timeout）
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=modular-props # 50项：真实单体、拼柜支撑、相框凹槽、刻字与提示牌清理
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=furniture-forms # 87项：圆角、弧背、真实支撑、UV、反射与材质回归
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=furniture-hyper3d # 11项：真实来源复用、玻璃、承重面、缓存与墙面接触

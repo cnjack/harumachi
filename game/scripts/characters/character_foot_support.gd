@@ -6,6 +6,10 @@ var actor: Node3D
 var animation: AnimationPlayer
 var samples: Dictionary = {"L": [], "R": []}
 var correction: Dictionary = {}
+## Optional native evidence, captured in this modifier's callback. Production
+## leaves it disabled and does no additional shoe skinning or floor queries.
+var qa_trace_enabled := false
+var qa_trace: Dictionary = {}
 var enabled := true
 var updates := 0
 var total_usec := 0
@@ -210,10 +214,42 @@ func lift_ankle(sk: Skeleton3D, side: String, rise: float) -> void:
 	pose.basis = foot_basis
 	sk.set_bone_global_pose(foot, pose)
 
+func _qa_vector(value: Vector3) -> Array[float]:
+	return [value.x, value.y, value.z]
+
+func _qa_snapshot(sk: Skeleton3D, side: String, floor: Dictionary) -> Dictionary:
+	var foot: int = LivingPose.bone(sk, "foot." + side)
+	var shoe_points: Array[Vector3] = points(sk, side)
+	var minimum := Vector2(INF, INF)
+	var maximum := Vector2(-INF, -INF)
+	var lowest := INF
+	for extent_point: Vector3 in shoe_points:
+		lowest = minf(lowest, extent_point.y)
+		minimum = Vector2(minf(minimum.x, extent_point.x), minf(minimum.y, extent_point.z))
+		maximum = Vector2(maxf(maximum.x, extent_point.x), maxf(maximum.y, extent_point.z))
+	var gap := INF
+	if not floor.is_empty() and (floor.normal as Vector3).y >= .5:
+		var footprint := Rect2(minimum, maximum - minimum).grow(.002)
+		var curb_top := -INF
+		for curb: Dictionary in town_curbs:
+			if footprint.intersects(curb.rect): curb_top = maxf(curb_top, float(curb.height))
+		for point: Vector3 in shoe_points:
+			var plane_gap: float = (floor.normal as Vector3).dot(point - (floor.position as Vector3)) / (floor.normal as Vector3).y
+			var painted: float = visible_town_height(Vector2(point.x, point.z))
+			if is_finite(painted): plane_gap = minf(plane_gap, point.y - painted)
+			if is_finite(curb_top): plane_gap = minf(plane_gap, point.y - curb_top)
+			gap = minf(gap, plane_gap)
+	return {"ankle_world": _qa_vector(sk.to_global(sk.get_bone_global_pose(foot).origin)), "shoe_min_y": lowest if is_finite(lowest) else null, "shoe_surface_gap": gap if is_finite(gap) else null, "cached_point_count": shoe_points.size()}
+
 func _process_modification() -> void:
 	correction.clear()
+	if qa_trace_enabled:
+		qa_trace = {"frame": Engine.get_process_frames(), "clip": animation.current_animation if animation != null else "", "clip_time": animation.current_animation_position if animation != null else null, "enabled": enabled, "applied": false, "process_delta_s": get_process_delta_time(), "sides": {}}
 	if not enabled or model == null or not model.is_visible_in_tree() or animation == null: return
-	if animation.current_animation not in ["idle", "walk", "run", "wave", "bow", "look", "stretch", "tend", "talk", "cheer", "dance"]: return
+	# A finished gesture leaves its final raw pose while current_animation is
+	# empty, until CharAnim starts idle. Keep safety support on that frame too;
+	# otherwise old shoes lose their correction and drop before rising again.
+	if animation.current_animation not in ["", "idle", "walk", "run", "wave", "bow", "look", "stretch", "tend", "talk", "cheer", "dance"]: return
 	# PublicSeatPose owns hips/legs/soles during seated idle and rest.
 	if actor is Player and (actor as Player).seated or actor.get_meta("resident_seated",false): return
 	var began: int = Time.get_ticks_usec()
@@ -222,6 +258,7 @@ func _process_modification() -> void:
 		var foot: int = LivingPose.bone(sk, "foot." + side)
 		if foot < 0 or (samples[side] as Array).is_empty(): continue
 		var floor: Dictionary = floor_below(sk.to_global(sk.get_bone_global_pose(foot).origin))
+		var before: Dictionary = _qa_snapshot(sk, side, floor) if qa_trace_enabled else {}
 		if floor.is_empty(): continue
 		var total := 0.0
 		for iteration: int in range(3):
@@ -230,6 +267,9 @@ func _process_modification() -> void:
 			lift_ankle(sk, side, rise)
 			total += rise
 		correction[side] = total
+		if qa_trace_enabled:
+			qa_trace.sides[side] = {"before": before, "after": _qa_snapshot(sk, side, floor), "correction": total, "floor_position": _qa_vector(floor.position), "floor_normal": _qa_vector(floor.normal)}
+	if qa_trace_enabled: qa_trace.applied = true
 	var elapsed: int = Time.get_ticks_usec() - began
 	updates += 1
 	total_usec += elapsed
