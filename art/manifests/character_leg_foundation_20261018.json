@@ -1,0 +1,482 @@
+{
+  "version": 1,
+  "batch": "character_leg_foundation_20261018",
+  "date": "2026-10-18",
+  "kind": "derived_existing_characters_no_paid_generation",
+  "status": "installed and technically verified; user naturalness review pending",
+  "parent_manifest": "art/manifests/character_rig_review_20261018.json",
+  "parent_manifest_sha256": "88b9d5341de3084d2f72cd0a8813c6c4576fe32d6267796c6f958e4dafff0c91",
+  "new_paid_jobs": 0,
+  "scope": "Ren trouser/apron skin weights and four stray Local target vertices at trouser UV seams; Sora six authored walk leg rotation tracks. Rest joints, bind matrices, rest geometry, textures, other morph data and other actions retained. MotionBricks remains isolated POC.",
+  "characters": [
+    {
+      "id": "CH_sora",
+      "sha256": "bec59bc63d3638a80df3cf29c5e989bdccfa9b0e4aed2663bc7b3cf830ef1025",
+      "bytes": 12491596,
+      "tris": 94032,
+      "bones": 66,
+      "animations": [
+        "idle",
+        "walk",
+        "run",
+        "wave",
+        "bow",
+        "look",
+        "stretch",
+        "tend",
+        "talk",
+        "cheer",
+        "dance",
+        "reference"
+      ],
+      "corrective_shapes": [
+        "Shoulder_Left",
+        "Cuff_Left",
+        "Shoulder_Right",
+        "Cuff_Right",
+        "GreetingSmile",
+        "SleeveFit_wave_125",
+        "SleeveFit_wave_375",
+        "SleeveFit_wave_625",
+        "SleeveFit_wave_875",
+        "SleeveFit_stretch_125",
+        "SleeveFit_stretch_375",
+        "SleeveFit_stretch_625",
+        "SleeveFit_stretch_875",
+        "SkinElbow_stretch_125",
+        "SkinElbow_stretch_375",
+        "SkinElbow_stretch_625",
+        "SkinElbow_stretch_875"
+      ],
+      "rig": {
+        "body_bones": 54,
+        "clothing_bones": 12,
+        "finger_bones": 30
+      },
+      "rig_metadata": {
+        "palm_normal_Left": [
+          -0.774656355381012,
+          0.009240065701305866,
+          -0.632314920425415
+        ],
+        "palm_plane_samples_Left": 392,
+        "palm_normal_Right": [
+          0.7814775109291077,
+          -0.026142537593841553,
+          -0.6233853697776794
+        ],
+        "palm_plane_samples_Right": 393,
+        "walk_speed": 1.4166334336442796,
+        "run_speed": 3.7,
+        "MPFB_GEN_scale_factor": 0.10000000149011612,
+        "MhScaleFactor": 0.10000000149011612,
+        "MPFB_GEN_object_type": "Skeleton",
+        "MhObjectType": "Skeleton",
+        "character_id": "sora",
+        "character_name": "空",
+        "character_pipeline": "leads-apose-20261005",
+        "reference_pose": "A 45 degrees below horizontal",
+        "character_clothing": {
+          "spring_chains": [
+            {
+              "side": "Left",
+              "sector": "Front",
+              "root": "Cloth_Left_Front0",
+              "end": "Cloth_Left_Front2"
+            },
+            {
+              "side": "Left",
+              "sector": "Back",
+              "root": "Cloth_Left_Back0",
+              "end": "Cloth_Left_Back2"
+            },
+            {
+              "side": "Right",
+              "sector": "Front",
+              "root": "Cloth_Right_Front0",
+              "end": "Cloth_Right_Front2"
+            },
+            {
+              "side": "Right",
+              "sector": "Back",
+              "root": "Cloth_Right_Back0",
+              "end": "Cloth_Right_Back2"
+            }
+          ],
+          "sleeves": {
+            "Left": {
+              "vertices": 1840,
+              "faces": 3546,
+              "length": 0.2201793888278426,
+              "skin_radius": 0.017305868657943122,
+              "helper_parent": "mixamorig:LeftArm"
+            },
+            "Right": {
+              "vertices": 2285,
+              "faces": 4435,
+              "length": 0.22197983653565986,
+              "skin_radius": 0.018213126723979414,
+              "helper_parent": "mixamorig:RightArm"
+            }
+          },
+          "limit_degrees": 12
+        },
+        "head_neck_repair": {
+          "head_start_fraction": 0.855,
+          "pivot_offset_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "head_rigid_vertices": 10235,
+          "neck_blend_vertices": 513,
+          "elderly_gestures": false
+        },
+        "greeting_palm": {
+          "side": "Right",
+          "faces": "recipient / character +Z",
+          "forearm_share": 0.8,
+          "review": "wave-smile-20261005"
+        },
+        "greeting_expression": {
+          "mode": "closed-mouth smile trial",
+          "target": "GreetingSmile",
+          "max_corner_lift_mm": 1.4990343800529198,
+          "eyes_changed": false
+        },
+        "hand_size_review": {
+          "scale": 0.9,
+          "wrist_preserved": true,
+          "fingers_scale_with_palm": true,
+          "review": "wave-smile-20261005"
+        },
+        "joint_fit_repair": {
+          "version": 1,
+          "hands": [],
+          "elbows": [
+            "Left",
+            "Right"
+          ],
+          "legs": [
+            "LeftLeg",
+            "LeftFoot",
+            "RightLeg",
+            "RightFoot"
+          ],
+          "rest_surface_max_error_m": 8.986882903733349e-08
+        },
+        "locomotion_rebuild": {
+          "version": 1,
+          "character": "sora",
+          "rebuilt_clips": [
+            "run"
+          ],
+          "contact_calibration": "all skinned shoe vertices, 8mm terrain safety margin",
+          "walk_stance_duty": 0.56,
+          "run_stance_duty": 0.27,
+          "profile": {
+            "walk_speed": 1.8,
+            "walk_t": 0.74,
+            "run_speed": 3.7,
+            "run_t": 0.65,
+            "run_duty": 0.27,
+            "arm": 1.0,
+            "run_arm": 1.0,
+            "width": 0.76,
+            "sway": 0.01,
+            "lift": 0.065,
+            "run_lift": 0.25,
+            "lean": 8.0
+          },
+          "walk_phase_origin": "Left heel strike",
+          "run_phase_origin": "Left landing",
+          "periodic_endpoint": true
+        },
+        "sleeve_action_correctives": {
+          "version": 1,
+          "clips": [
+            "wave",
+            "stretch"
+          ],
+          "cap_m": 0.05,
+          "source_weights_untouched": true
+        },
+        "arm_seam_revision": {
+          "version": 1,
+          "method": "shared medial garment seam skin and morph field",
+          "feather_m": 0.065
+        },
+        "finger_fit_repair": {
+          "version": 2,
+          "hands": [
+            "Left",
+            "Right"
+          ],
+          "elbows": [],
+          "legs": [],
+          "shoulders": [],
+          "rest_surface_max_error_m": 2.9926886576676685e-07
+        },
+        "leg_foundation": {
+          "version": 1,
+          "character": "sora",
+          "walk_knee_plane_authored": true,
+          "trouser_weights_rebuilt": false,
+          "apron_weights_transferred": false,
+          "source_sha256": "1a9dbf5516486c3770b0ce498ea009d73a89cfe4a5a5e3fe8489f352617f639b"
+        }
+      },
+      "character": "sora",
+      "name": "空",
+      "file": "art/models/character_leg_foundation_20261018/exports/CH_sora.glb",
+      "game_path": "game/assets/models/CH_sora.glb",
+      "preview_path": "art/library/characters/CH_sora.glb",
+      "candidate_source": "art/poc/leg_binding_20261018/candidate-v6/CH_sora.glb",
+      "candidate_provenance": {
+        "source": "art/poc/leg_binding_20261018/before/CH_sora.glb",
+        "source_sha256": "1a9dbf5516486c3770b0ce498ea009d73a89cfe4a5a5e3fe8489f352617f639b",
+        "repair_tool": "art/tools/characters/repair_leg_foundation.py",
+        "repair_report": "evidence/leg_binding_foundation_20261018/sora-candidate-v3.json"
+      },
+      "source_page": "https://hyper3d.ai/workspace/rodin/027128d0-b34b-44b3-938a-bbf48f96ba58",
+      "license": "项目角色；Hyper3D 账户生成素材",
+      "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+      "previous_source": "art/models/character_rig_review_20261018/exports/CH_sora.glb",
+      "previous_source_sha256": "1a9dbf5516486c3770b0ce498ea009d73a89cfe4a5a5e3fe8489f352617f639b",
+      "raw_path": "art/models/raw/CH_sora_rodin_apose_20261005/model.glb",
+      "references": [
+        "art/library/characters/references/sora_front.png",
+        "art/library/characters/references/sora_back.png"
+      ],
+      "authoring_path": "art/models/character_wave_smile_20261005/authoring/CH_sora.blend",
+      "authoring_scope": "Historical Blender foundation only. This dated GLB and committed correction tools contain the current rig/shape/animation changes; no matching Blender rewrite is claimed.",
+      "leg_foundation_audit": "evidence/leg_binding_foundation_20261018/audit-sora-final.json"
+    },
+    {
+      "id": "CH_ren",
+      "sha256": "093563a8106edcb76139954acf95211ddbc472c96fc7b9dd70254fd191c10df5",
+      "bytes": 19501612,
+      "tris": 94957,
+      "bones": 54,
+      "animations": [
+        "idle",
+        "walk",
+        "run",
+        "wave",
+        "bow",
+        "look",
+        "stretch",
+        "tend",
+        "talk",
+        "cheer",
+        "dance",
+        "reference"
+      ],
+      "corrective_shapes": [
+        "GreetingSmile",
+        "Garment_Local_Front_0_0",
+        "Garment_Local_Front_0_1",
+        "Garment_Local_Front_0_2",
+        "Garment_Local_Front_0_3",
+        "Garment_Local_Front_1_0",
+        "Garment_Local_Front_1_1",
+        "Garment_Local_Front_1_2",
+        "Garment_Local_Front_1_3",
+        "Garment_Local_Front_2_0",
+        "Garment_Local_Front_2_1",
+        "Garment_Local_Front_2_2",
+        "Garment_Local_Front_2_3",
+        "Garment_Local_Back_0_0",
+        "Garment_Local_Back_0_1",
+        "Garment_Local_Back_0_2",
+        "Garment_Local_Back_0_3",
+        "Garment_Local_Back_1_0",
+        "Garment_Local_Back_1_1",
+        "Garment_Local_Back_1_2",
+        "Garment_Local_Back_1_3",
+        "Garment_Local_Back_2_0",
+        "Garment_Local_Back_2_1",
+        "Garment_Local_Back_2_2",
+        "Garment_Local_Back_2_3"
+      ],
+      "rig": {
+        "body_bones": 54,
+        "clothing_bones": 0,
+        "finger_bones": 30
+      },
+      "rig_metadata": {
+        "palm_normal_Left": [
+          -0.7304187417030334,
+          -0.04494316130876541,
+          -0.6815194487571716
+        ],
+        "palm_plane_samples_Left": 582,
+        "palm_normal_Right": [
+          0.7470328211784363,
+          0.08085277676582336,
+          -0.6598522067070007
+        ],
+        "palm_plane_samples_Right": 397,
+        "walk_speed": 1.5,
+        "run_speed": 3.2,
+        "MPFB_GEN_scale_factor": 0.10000000149011612,
+        "MhScaleFactor": 0.10000000149011612,
+        "MPFB_GEN_object_type": "Skeleton",
+        "MhObjectType": "Skeleton",
+        "character_id": "ren",
+        "character_name": "莲",
+        "character_pipeline": "apose-roster-20261004",
+        "reference_pose": "A 45 degrees below horizontal",
+        "head_neck_repair": {
+          "head_start_fraction": 0.848,
+          "pivot_offset_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "head_rigid_vertices": 9764,
+          "neck_blend_vertices": 44,
+          "elderly_gestures": false
+        },
+        "character_pose_review": {
+          "character": "ren",
+          "look_head_factor": 0.62,
+          "look_neck_factor": 0.45,
+          "look_chest_factor": 0.7,
+          "review": "individual-review-20261005"
+        },
+        "greeting_palm": {
+          "side": "Right",
+          "faces": "recipient / character +Z",
+          "forearm_share": 0.8,
+          "review": "wave-smile-20261005"
+        },
+        "greeting_expression": {
+          "mode": "closed-mouth smile trial",
+          "target": "GreetingSmile",
+          "max_corner_lift_mm": 1.5,
+          "eyes_changed": false
+        },
+        "hand_size_review": {
+          "scale": 0.9,
+          "wrist_preserved": true,
+          "fingers_scale_with_palm": true,
+          "review": "wave-smile-20261005"
+        },
+        "joint_fit_repair": {
+          "version": 1,
+          "hands": [],
+          "elbows": [],
+          "legs": [],
+          "shoulders": [
+            "Left",
+            "Right"
+          ],
+          "rest_surface_max_error_m": 3.7345677778312855e-08
+        },
+        "locomotion_rebuild": {
+          "version": 2,
+          "character": "ren",
+          "rebuilt_clips": [
+            "run",
+            "walk"
+          ],
+          "contact_calibration": "all skinned shoe vertices, 8mm terrain safety margin",
+          "walk_stance_duty": 0.52,
+          "run_stance_duty": 0.3,
+          "profile": {
+            "walk_speed": 1.5,
+            "walk_t": 0.78,
+            "walk_duty": 0.52,
+            "walk_center": -0.065,
+            "run_speed": 3.2,
+            "run_t": 0.67,
+            "arm": 0.94,
+            "run_arm": 0.94,
+            "width": 0.76,
+            "sway": 0.01,
+            "lift": 0.061,
+            "run_lift": 0.18,
+            "lean": 8.5
+          },
+          "walk_phase_origin": "Left heel strike",
+          "run_phase_origin": "Left landing",
+          "periodic_endpoint": true
+        },
+        "garment_local_clearance": {
+          "version": 1,
+          "character": "ren",
+          "rows": 3,
+          "columns": 4,
+          "shape_prefix": "Garment_Local_",
+          "shape_amplitude_m": 0.12,
+          "maximum_weight": 1.0,
+          "clearance_margin_m": 0.006,
+          "disable_global_shapes": [
+            "Skirt_Clearance",
+            "Apron_Clearance"
+          ]
+        },
+        "finger_fit_repair": {
+          "version": 2,
+          "hands": [
+            "Left",
+            "Right"
+          ],
+          "elbows": [],
+          "legs": [],
+          "shoulders": [],
+          "rest_surface_max_error_m": 3.7934563753235875e-07
+        },
+        "leg_foundation": {
+          "version": 1,
+          "character": "ren",
+          "walk_knee_plane_authored": false,
+          "trouser_weights_rebuilt": true,
+          "apron_weights_transferred": true,
+          "source_sha256": "964388d728336fe914e142b39ece3417db5d61af1c2d97b5b504fdeb0a983c83",
+          "trouser_local_template_seams_repaired": true
+        }
+      },
+      "character": "ren",
+      "name": "莲",
+      "file": "art/models/character_leg_foundation_20261018/exports/CH_ren.glb",
+      "game_path": "game/assets/models/CH_ren.glb",
+      "preview_path": "art/library/characters/CH_ren.glb",
+      "candidate_source": "art/poc/leg_binding_20261018/candidate-v8/CH_ren.glb",
+      "candidate_provenance": {
+        "source": "art/poc/leg_binding_20261018/before/CH_ren.glb",
+        "source_sha256": "964388d728336fe914e142b39ece3417db5d61af1c2d97b5b504fdeb0a983c83",
+        "repair_tool": "art/tools/characters/repair_leg_foundation.py",
+        "repair_report": "evidence/leg_binding_foundation_20261018/ren-candidate-v8.json"
+      },
+      "source_page": "https://hyper3d.ai/workspace/rodin/8fde314d-f354-4843-89b6-9f7dfb15c243",
+      "license": "项目角色；Hyper3D 账户生成素材",
+      "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+      "previous_source": "art/models/character_rig_review_20261018/exports/CH_ren.glb",
+      "previous_source_sha256": "964388d728336fe914e142b39ece3417db5d61af1c2d97b5b504fdeb0a983c83",
+      "raw_path": "art/models/raw/CH_ren_rodin_apose_20261004/model.glb",
+      "references": [
+        "art/library/characters/references/ren_front.png",
+        "art/library/characters/references/ren_back.png"
+      ],
+      "authoring_path": "art/models/character_wave_smile_20261005/authoring/CH_ren.blend",
+      "authoring_scope": "Historical Blender foundation only. This dated GLB and committed correction tools contain the current rig/shape/animation changes; no matching Blender rewrite is claimed.",
+      "leg_foundation_audit": "evidence/leg_binding_foundation_20261018/audit-ren-v8.json"
+    }
+  ],
+  "verification": {
+    "status": "passed",
+    "evidence": "evidence/leg_binding_foundation_20261018",
+    "full_regression": {
+      "report": "evidence/leg_binding_foundation_20261018/full-v8-tests.json",
+      "checks": 2601,
+      "failed": 0,
+      "seconds": 713.33
+    },
+    "native_visual_review": "evidence/leg_binding_foundation_20261018/native-visual-review.json",
+    "source_video_review": "evidence/leg_binding_foundation_20261018/source-video-review.json",
+    "user_naturalness_approval": false,
+    "desktop_web_exported": false
+  }
+}

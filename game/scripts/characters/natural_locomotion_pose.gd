@@ -5,6 +5,7 @@ var actor: Node3D
 var animation: AnimationPlayer
 var profile: String=""
 var rebuilt_clips: Array=[]
+var authored_walk_knee_plane:=false
 var references: Dictionary={}
 var reference_hips:=Vector3.ZERO
 var ready_reference:=false
@@ -229,6 +230,7 @@ static func attach(source: Node3D,player: AnimationPlayer) -> SkeletonModifier3D
  if sk==null:return null
  var modifier: SkeletonModifier3D=load("res://scripts/characters/natural_locomotion_pose.gd").new()
  modifier.set("rebuilt_clips",(extras.get("locomotion_rebuild",{}) as Dictionary).get("rebuilt_clips",[]))
+ modifier.set("authored_walk_knee_plane",bool((extras.get("leg_foundation",{}) as Dictionary).get("walk_knee_plane_authored",false)))
  modifier.name="NaturalLocomotionPose";modifier.set("model",source);modifier.set("actor",source.get_parent());modifier.set("animation",player);modifier.set("profile",who)
  var actor_root: Node3D=source
  while actor_root.get_parent() is Node3D and not(actor_root is Player or actor_root is NPC):actor_root=actor_root.get_parent() as Node3D
@@ -433,6 +435,11 @@ func _process_pose() -> void:
   _standing_support(sk)
   return
  if profile in ["sora","kazuko"] and clip=="walk":
+  if authored_walk_knee_plane:
+   # The source GLB now owns its bend plane. Ground/terrain assistance runs
+   # separately; do not replace the authored leg pose on every walking frame.
+   anchors.clear();was_stance.clear();last_phase=-1.0;last_position=actor.global_position
+   return
   # The old walk bends sideways; ground support then amplifies that inward
   # knee pole. Reorient the two-bone bend at the unchanged authored ankle,
   # preserving segment lengths, foot orientation, pelvis and upper-body motion.

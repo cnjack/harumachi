@@ -80,6 +80,7 @@ def main():
     parser.add_argument("--continuous-clips", type=continuous_clips, help="Filter native movement to walk,run; omitted captures both")
     parser.add_argument("--hide-arm-fill", action="store_true", help="Diagnostic only: hide internal arm fill meshes")
     parser.add_argument("--disable-lod", action="store_true", help="Diagnostic only: disable viewport mesh LOD")
+    parser.add_argument("--force-render", action="store_true", help="QA only: force native viewport draws when macOS suppresses window draws")
     parser.add_argument("--export-garment-proxy", action="store_true", help="Export actual imported proxy source indices for diagnosis")
     parser.add_argument("--garment-fine-contact", action="store_true", help="Diagnostic only: evaluate complete source garment contact")
     parser.add_argument("--garment-safe-face-cache", action="store_true", help="Diagnostic only: measure same-frame safe-ray certificates")
@@ -168,6 +169,7 @@ def main():
                 overrides = []
                 if args.hide_arm_fill: overrides.append("--hide-arm-fill")
                 if args.disable_lod: overrides.append("--disable-lod")
+                if args.force_render: overrides.append("--qa-force-draw")
                 if job == "hands" and args.hand_clips: overrides.append("--hand-clips=" + args.hand_clips)
                 if job == "continuous" and args.continuous_views: overrides.append("--continuous-views=" + args.continuous_views)
                 overrides.extend(continuous_clip_override(job, args.continuous_clips))

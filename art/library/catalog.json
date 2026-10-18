@@ -3153,7 +3153,7 @@
       "path": "game/assets/models/CH_ren.glb",
       "format": "GLB",
       "triangles": 94957,
-      "bytes": 11057212,
+      "bytes": 19501612,
       "license": "项目角色；Hyper3D 账户生成素材",
       "source": "https://hyper3d.ai/workspace/rodin/8fde314d-f354-4843-89b6-9f7dfb15c243",
       "status": "已接入",
@@ -3181,7 +3181,7 @@
       "metrics": {
         "id": "CH_ren",
         "tris": 94957,
-        "bytes": 11057212,
+        "bytes": 19501612,
         "bones": 54,
         "animations": [
           "idle",
@@ -3197,12 +3197,12 @@
           "dance",
           "reference"
         ],
-        "sha256": "964388d728336fe914e142b39ece3417db5d61af1c2d97b5b504fdeb0a983c83",
-        "src": "character_rig_review_20261018/exports/CH_ren.glb",
+        "sha256": "093563a8106edcb76139954acf95211ddbc472c96fc7b9dd70254fd191c10df5",
+        "src": "character_leg_foundation_20261018/exports/CH_ren.glb",
         "provider": "Hyper3D Rodin / welded anatomical character pipeline",
         "preserve_rigged_character": true,
         "character_pipeline": "characters-apose-20261004",
-        "rig_review_manifest": "art/manifests/character_rig_review_20261018.json"
+        "rig_review_manifest": "art/manifests/character_leg_foundation_20261018.json"
       },
       "recipe": "world.spawn(\"CH_ren\", Vector3(0, 0, 0), 0, 0)",
       "character_id": "ren",
@@ -3249,7 +3249,7 @@
         "art/library/characters/references/ren_front.png",
         "art/library/characters/references/ren_back.png"
       ],
-      "rig_review_manifest": "art/manifests/character_rig_review_20261018.json"
+      "rig_review_manifest": "art/manifests/character_leg_foundation_20261018.json"
     },
     {
       "id": "game/CH_sora",
@@ -3259,7 +3259,7 @@
       "path": "game/assets/models/CH_sora.glb",
       "format": "GLB",
       "triangles": 94032,
-      "bytes": 12455480,
+      "bytes": 12491596,
       "license": "项目角色；Hyper3D 账户生成素材",
       "source": "https://hyper3d.ai/workspace/rodin/027128d0-b34b-44b3-938a-bbf48f96ba58",
       "status": "已接入",
@@ -3287,7 +3287,7 @@
       "metrics": {
         "id": "CH_sora",
         "tris": 94032,
-        "bytes": 12455480,
+        "bytes": 12491596,
         "bones": 66,
         "animations": [
           "idle",
@@ -3303,12 +3303,12 @@
           "dance",
           "reference"
         ],
-        "sha256": "1a9dbf5516486c3770b0ce498ea009d73a89cfe4a5a5e3fe8489f352617f639b",
-        "src": "character_rig_review_20261018/exports/CH_sora.glb",
+        "sha256": "bec59bc63d3638a80df3cf29c5e989bdccfa9b0e4aed2663bc7b3cf830ef1025",
+        "src": "character_leg_foundation_20261018/exports/CH_sora.glb",
         "provider": "Hyper3D Rodin / welded anatomical character pipeline",
         "preserve_rigged_character": true,
         "character_pipeline": "characters-apose-20261004",
-        "rig_review_manifest": "art/manifests/character_rig_review_20261018.json"
+        "rig_review_manifest": "art/manifests/character_leg_foundation_20261018.json"
       },
       "recipe": "world.spawn(\"CH_sora\", Vector3(0, 0, 0), 0, 0)",
       "character_id": "sora",
@@ -3347,7 +3347,7 @@
         "art/library/characters/references/sora_front.png",
         "art/library/characters/references/sora_back.png"
       ],
-      "rig_review_manifest": "art/manifests/character_rig_review_20261018.json"
+      "rig_review_manifest": "art/manifests/character_leg_foundation_20261018.json"
     },
     {
       "id": "game/CH_tanaka",

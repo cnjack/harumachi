@@ -106,6 +106,8 @@ func run() -> void:
 		probe.set("measure_bones",true)
 		if id in ["sora","ren","aoi","tanaka","kazuko"]:
 			await standing_contract(id,model,sk,support,controller,probe)
+		if id == "sora":
+			await source_walk_contract(model,sk,controller,probe)
 		await gait_contract(id,model,sk,support,controller,probe)
 		probe.queue_free()
 		actor.global_position=saved.position
@@ -119,6 +121,33 @@ func run() -> void:
 		actor.set_process(bool(saved.process))
 		actor.set_physics_process(bool(saved.physics))
 		if actor is Player:(actor as Player).reset_physics_interpolation()
+
+func source_walk_contract(model: Node3D,sk: Skeleton3D,controller: CharAnim,probe: SkeletonModifier3D) -> void:
+	# This gate failed on the old GLB even when the runtime knee fix passed the
+	# normal gait contract. The model must carry a valid bend plane by itself.
+	var saved_modifiers: Dictionary = {}
+	for child: Node in sk.get_children():
+		if child is SkeletonModifier3D and child != probe:
+			saved_modifiers[child] = (child as SkeletonModifier3D).active
+			(child as SkeletonModifier3D).active = false
+	var minimum_outward: float = INF
+	var minimum_forward: float = INF
+	var fresh_count: int = 0
+	for index: int in 33:
+		var pose: Dictionary = await sample(controller,"walk",float(index)/32.0,probe)
+		if not bool(pose.get("fresh",false)):continue
+		fresh_count += 1
+		for side: String in ["L","R"]:
+			var hip: Vector3 = point(pose,"thigh."+side)
+			var knee: Vector3 = point(pose,"shin."+side)
+			var ankle: Vector3 = point(pose,"foot."+side)
+			var axis: Vector3 = (ankle-hip).normalized()
+			var offset: Vector3 = model.global_basis.inverse()*(knee-hip-axis*(knee-hip).dot(axis))
+			minimum_outward = minf(minimum_outward,offset.x*(1.0 if side == "L" else -1.0))
+			minimum_forward = minf(minimum_forward,offset.z)
+	check("Sora source walk bends forward without inward collapse with every game modifier disabled",fresh_count == 33 and minimum_outward >= -.010 and minimum_forward > .001,"fresh %d/33; outward %.6fm; forward %.6fm" % [fresh_count,minimum_outward,minimum_forward])
+	for child: SkeletonModifier3D in saved_modifiers:
+		child.active = bool(saved_modifiers[child])
 
 func standing_contract(id: String,model: Node3D,sk: Skeleton3D,support: Node,controller: CharAnim,probe: SkeletonModifier3D) -> void:
 	var min_forward: float=INF

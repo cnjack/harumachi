@@ -39,6 +39,7 @@ var pose_views: PackedStringArray = ["front", "right", "back", "left"]
 var measure_final_bones := false
 var hide_arm_fill := false
 var disable_lod := false
+var force_native_draw := false
 var hand_clips: PackedStringArray = ["idle", "wave"]
 
 func _ready() -> void:
@@ -57,6 +58,7 @@ func _run() -> void:
 		if argument == "--final-bones": measure_final_bones = true
 		if argument == "--hide-arm-fill": hide_arm_fill = true
 		if argument == "--disable-lod": disable_lod = true
+		if argument == "--qa-force-draw": force_native_draw = true
 		if argument.begins_with("--hand-clips="): hand_clips = argument.substr(13).split(",")
 		if argument == "--pilot": pilot = true
 		if argument == "--measure-motion-soles": measure_motion_soles = true
@@ -143,6 +145,7 @@ func _run() -> void:
 	if "hands" in modes: expected += ids.size() * hand_clips.size() * 5
 	if rows.size() != expected: failures.append("incomplete capture: expected %d, got %d" % [expected, rows.size()])
 	var report: Dictionary = {"engine": Engine.get_version_info().string, "images": rows.size(), "expected_images": expected, "elapsed_seconds": (Time.get_ticks_msec() - started_at) / 1000.0, "pilot": pilot, "failures": failures, "shots": rows, "notes": ["Authored pose samples use seek and leave skeleton modifiers running; these alone do not validate locomotion.", "Native motion samples use Player auto_move or NPC walk; each includes actual positions and clip.", "NPC sitting is unsupported by the current game; real seat checks cover the player."]}
+	report["explicit_native_viewport_draw"] = force_native_draw
 	FileAccess.open(output.path_join("manifest.json"), FileAccess.WRITE).store_string(JSON.stringify(report, "\t"))
 	print("CHARACTER_VISUAL_QA ", JSON.stringify({"images": rows.size(), "failures": failures, "output": output}))
 	get_tree().quit(0 if failures.is_empty() else 1)
@@ -151,6 +154,9 @@ func settle(frames: int = 8) -> void:
 	for frame: int in range(frames): await get_tree().process_frame
 
 func _process(_delta: float) -> void:
+	# QA-only rendering, after the modifier callbacks. Keep the same final-pose
+	# freshness checks when macOS suppresses the ordinary window draw signal.
+	if force_native_draw: RenderingServer.force_draw.call_deferred(false)
 	var now: int = Time.get_ticks_usec()
 	if perf_active:
 		if perf_skip_frames > 0:

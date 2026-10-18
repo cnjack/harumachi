@@ -477,7 +477,7 @@
       "keep_origin": true
     },
     "CH_sora": {
-      "src": "character_rig_review_20261018/exports/CH_sora.glb",
+      "src": "character_leg_foundation_20261018/exports/CH_sora.glb",
       "fit": "h",
       "size": 1.62,
       "preserve_rigged_character": true,
@@ -487,7 +487,7 @@
       "license": "项目角色；Hyper3D 账户生成素材",
       "tex": 2048,
       "note": "Use art/tools/characters/; preserve clips, fingers and validated sleeve physics. Do not rebind with old rig_char.",
-      "rig_review_manifest": "art/manifests/character_rig_review_20261018.json"
+      "rig_review_manifest": "art/manifests/character_leg_foundation_20261018.json"
     },
     "CH_mio": {
       "src": "character_rig_review_20261018/exports/CH_mio.glb",
@@ -503,7 +503,7 @@
       "rig_review_manifest": "art/manifests/character_rig_review_20261018.json"
     },
     "CH_ren": {
-      "src": "character_rig_review_20261018/exports/CH_ren.glb",
+      "src": "character_leg_foundation_20261018/exports/CH_ren.glb",
       "fit": "h",
       "size": 1.76,
       "preserve_rigged_character": true,
@@ -513,7 +513,7 @@
       "license": "项目角色；Hyper3D 账户生成素材",
       "tex": 2048,
       "note": "Use art/tools/characters/; preserve clips, fingers and validated sleeve physics. Do not rebind with old rig_char.",
-      "rig_review_manifest": "art/manifests/character_rig_review_20261018.json"
+      "rig_review_manifest": "art/manifests/character_leg_foundation_20261018.json"
     },
     "CH_haru": {
       "src": "character_rig_review_20261018/exports/CH_haru.glb",

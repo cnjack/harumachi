@@ -2666,8 +2666,8 @@
     },
     "CH_ren": {
       "id": "CH_ren",
-      "sha256": "964388d728336fe914e142b39ece3417db5d61af1c2d97b5b504fdeb0a983c83",
-      "source_mtime": 1792284414.949209,
+      "sha256": "093563a8106edcb76139954acf95211ddbc472c96fc7b9dd70254fd191c10df5",
+      "source_mtime": 1792318555.6164627,
       "triangles": 94957,
       "bounds_godot": {
         "min": [
@@ -2717,8 +2717,8 @@
     },
     "CH_sora": {
       "id": "CH_sora",
-      "sha256": "1a9dbf5516486c3770b0ce498ea009d73a89cfe4a5a5e3fe8489f352617f639b",
-      "source_mtime": 1792284414.9067314,
+      "sha256": "bec59bc63d3638a80df3cf29c5e989bdccfa9b0e4aed2663bc7b3cf830ef1025",
+      "source_mtime": 1792314518.8884172,
       "triangles": 94032,
       "bounds_godot": {
         "min": [
