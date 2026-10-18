@@ -2458,8 +2458,8 @@
     },
     "CH_aoi": {
       "id": "CH_aoi",
-      "sha256": "25127d4c9f139fb6fa16161588a5b777dee9c3649687486695547d9d00e1ad20",
-      "source_mtime": 1792284414.9764266,
+      "sha256": "d4e5d2921f7481e7e0c583c314c2fd4b485476e7794384a11f75aa47d3d7ed06",
+      "source_mtime": 1792321438.9506137,
       "triangles": 92351,
       "bounds_godot": {
         "min": [
@@ -2560,8 +2560,8 @@
     },
     "CH_kazuko": {
       "id": "CH_kazuko",
-      "sha256": "fd49e931c62215ada89ee00ce2403310c71b6a318a99acf38acf71a53718bab5",
-      "source_mtime": 1792284415.0234938,
+      "sha256": "cccc38a550ec8aad7a5f209fc62755914ce3bb04257de69396aef6798a1bf78a",
+      "source_mtime": 1792322796.458535,
       "triangles": 97948,
       "bounds_godot": {
         "min": [
@@ -2611,8 +2611,8 @@
     },
     "CH_mio": {
       "id": "CH_mio",
-      "sha256": "289fd7233400dcf1e53db919ff781a6649e7d18c4977de45a239f42aec15c5a7",
-      "source_mtime": 1792284414.930086,
+      "sha256": "6b2378a0eb97b6091d32096f8b66a99701e9c46fc723cd178d3b00ce49c137f1",
+      "source_mtime": 1792321438.5563583,
       "triangles": 96748,
       "bounds_godot": {
         "min": [
@@ -2772,8 +2772,8 @@
     },
     "CH_tanaka": {
       "id": "CH_tanaka",
-      "sha256": "c3e517b838f20ccb93c63e064f1da6d17986532d3796174bd3448b67c92eb5c4",
-      "source_mtime": 1792284414.990853,
+      "sha256": "c8193d3fe3033b2eb2e08a67b9077a1a619c469811c4c88cccc14f2b45cef1ec",
+      "source_mtime": 1792321439.4284604,
       "triangles": 89902,
       "bounds_godot": {
         "min": [

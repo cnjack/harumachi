@@ -6,6 +6,7 @@ var animation: AnimationPlayer
 var profile: String=""
 var rebuilt_clips: Array=[]
 var authored_walk_knee_plane:=false
+var source_foundation: Dictionary={}
 var references: Dictionary={}
 var reference_hips:=Vector3.ZERO
 var ready_reference:=false
@@ -230,6 +231,7 @@ static func attach(source: Node3D,player: AnimationPlayer) -> SkeletonModifier3D
  if sk==null:return null
  var modifier: SkeletonModifier3D=load("res://scripts/characters/natural_locomotion_pose.gd").new()
  modifier.set("rebuilt_clips",(extras.get("locomotion_rebuild",{}) as Dictionary).get("rebuilt_clips",[]))
+ modifier.set("source_foundation",extras.get("source_pose_foundation",{}))
  modifier.set("authored_walk_knee_plane",bool((extras.get("leg_foundation",{}) as Dictionary).get("walk_knee_plane_authored",false)))
  modifier.name="NaturalLocomotionPose";modifier.set("model",source);modifier.set("actor",source.get_parent());modifier.set("animation",player);modifier.set("profile",who)
  var actor_root: Node3D=source
@@ -308,7 +310,7 @@ func _tanaka_arm_clearance(sk: Skeleton3D,clip: String) -> void:
  pose.basis=Basis(axis,deg_to_rad(14.0)*weight)*pose.basis
  sk.set_bone_global_pose(upper,pose)
 
-func _kazuko_running_recovery(sk: Skeleton3D) -> void:
+func _kazuko_running_recovery(sk: Skeleton3D,recovery_lift: float=.20,settle_end: float=1.0) -> void:
  var phase: float=fposmod(animation.current_animation_position/maxf(animation.current_animation_length,.001),1.0)
  for side: String in ["L","R"]:
   var leg_phase: float=fposmod(phase+(0.0 if side=="L" else .5),1.0)
@@ -319,12 +321,12 @@ func _kazuko_running_recovery(sk: Skeleton3D) -> void:
   # Settle the heel during the last quarter before the next plant. Holding
   # it high into late swing folds the thigh against the apron boundary.
   # Earlier knee lift and the planted path remain unchanged.
-  pulse*=pow(1.0-smoothstep(.75,1.0,leg_phase),2.0)
+  pulse*=pow(1.0-smoothstep(.75,settle_end,leg_phase),2.0)
   if pulse<.000001:continue
   var foot: int=LivingPose.bone(sk,"foot."+side)
   if foot<0:continue
   var target: Vector3=sk.to_global(sk.get_bone_global_pose(foot).origin)
-  target+=Vector3.UP*(.20*pulse)
+  target+=Vector3.UP*(recovery_lift*pulse)
   _place_ankle(sk,side,target,.035)
 
 func _relaxed_running_arms(sk: Skeleton3D) -> void:
@@ -424,18 +426,20 @@ func _process_pose() -> void:
  if model==null or animation==null or not model.is_visible_in_tree():return
  var clip: String=animation.current_animation
  var sk: Skeleton3D=get_skeleton()
- if profile=="tanaka":_tanaka_arm_clearance(sk,clip)
+ if profile=="tanaka" and not bool(source_foundation.get("tanaka_arm",false)):_tanaka_arm_clearance(sk,clip)
  if clip=="run":
   _relaxed_running_arms(sk)
   _running_hand_style(sk)
  # User-rejected neutral legs share the same pose in idle, wave and bow. The
  # former safety IK raised ankles under a fixed low pelvis and chose the old
  # knee plane, which made straight legs bow sideways or bend behind the calf.
+ if bool(source_foundation.get("standing",false)) and clip in ["idle","talk","wave","bow","look","stretch","cheer"]:
+  return
  if profile in ["sora","ren","aoi","tanaka","kazuko"] and clip in ["idle","talk","wave","bow","look","stretch","cheer"]:
   _standing_support(sk)
   return
  if profile in ["sora","kazuko"] and clip=="walk":
-  if authored_walk_knee_plane:
+  if authored_walk_knee_plane or bool(source_foundation.get("walk",false)):
    # The source GLB now owns its bend plane. Ground/terrain assistance runs
    # separately; do not replace the authored leg pose on every walking frame.
    anchors.clear();was_stance.clear();last_phase=-1.0;last_position=actor.global_position
@@ -449,7 +453,7 @@ func _process_pose() -> void:
   anchors.clear();was_stance.clear();last_phase=-1.0;last_position=actor.global_position
   return
  if profile=="kazuko" and clip=="run":
-  _kazuko_running_recovery(sk)
+  if not bool(source_foundation.get("kazuko_run",false)):_kazuko_running_recovery(sk)
   anchors.clear();was_stance.clear();last_phase=-1.0;last_position=actor.global_position
   return
  if clip in rebuilt_clips:
@@ -458,6 +462,7 @@ func _process_pose() -> void:
  if not ready_reference:
   if clip=="idle":_remember(sk)
   else:return
+ if (clip=="walk" and bool(source_foundation.get("walk",false))) or (clip=="idle" and bool(source_foundation.get("idle",false))):return
  var active_walk: bool=profile=="mio" and clip=="walk"
  var active_idle: bool=(profile in ["mio","aoi"] and clip=="idle") or (profile=="aoi" and clip=="talk")
  if not active_walk and not active_idle:

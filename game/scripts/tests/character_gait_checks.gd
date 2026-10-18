@@ -106,8 +106,10 @@ func run() -> void:
 		probe.set("measure_bones",true)
 		if id in ["sora","ren","aoi","tanaka","kazuko"]:
 			await standing_contract(id,model,sk,support,controller,probe)
-		if id == "sora":
-			await source_walk_contract(model,sk,controller,probe)
+		if id in ["sora","kazuko"]:
+			await source_walk_contract(model,sk,controller,probe,id)
+		if id in ["mio","aoi","tanaka","kazuko"]:
+			await source_foundation_contract(id,model,sk,controller,probe)
 		await gait_contract(id,model,sk,support,controller,probe)
 		probe.queue_free()
 		actor.global_position=saved.position
@@ -122,7 +124,7 @@ func run() -> void:
 		actor.set_physics_process(bool(saved.physics))
 		if actor is Player:(actor as Player).reset_physics_interpolation()
 
-func source_walk_contract(model: Node3D,sk: Skeleton3D,controller: CharAnim,probe: SkeletonModifier3D) -> void:
+func source_walk_contract(model: Node3D,sk: Skeleton3D,controller: CharAnim,probe: SkeletonModifier3D,id: String) -> void:
 	# This gate failed on the old GLB even when the runtime knee fix passed the
 	# normal gait contract. The model must carry a valid bend plane by itself.
 	var saved_modifiers: Dictionary = {}
@@ -145,7 +147,7 @@ func source_walk_contract(model: Node3D,sk: Skeleton3D,controller: CharAnim,prob
 			var offset: Vector3 = model.global_basis.inverse()*(knee-hip-axis*(knee-hip).dot(axis))
 			minimum_outward = minf(minimum_outward,offset.x*(1.0 if side == "L" else -1.0))
 			minimum_forward = minf(minimum_forward,offset.z)
-	check("Sora source walk bends forward without inward collapse with every game modifier disabled",fresh_count == 33 and minimum_outward >= -.010 and minimum_forward > .001,"fresh %d/33; outward %.6fm; forward %.6fm" % [fresh_count,minimum_outward,minimum_forward])
+	check(id+" source walk bends forward without inward collapse with every game modifier disabled",fresh_count == 33 and minimum_outward >= -.010 and minimum_forward > .001,"fresh %d/33; outward %.6fm; forward %.6fm" % [fresh_count,minimum_outward,minimum_forward])
 	for child: SkeletonModifier3D in saved_modifiers:
 		child.active = bool(saved_modifiers[child])
 
@@ -332,3 +334,32 @@ func gait_contract(id: String,model: Node3D,sk: Skeleton3D,support: Node,control
 			for name: String in ["hips","shin.L","shin.R","foot.L","foot.R","toe.L","toe.R"]:
 				seam_error=maxf(seam_error,point(before,name).distance_to(point(after,name)))
 		check(id+" "+clip+" final knees ankles and toes close across two cycle boundaries",seam_fresh==4 and seam_error<.004,"maximum 99.99 to 0.01 percent seam %.6fm; fresh final poses %d/4"%[seam_error,seam_fresh])
+
+func source_foundation_contract(id: String,model: Node3D,sk: Skeleton3D,controller: CharAnim,probe: SkeletonModifier3D) -> void:
+	# Compare the actual imported asset with the old foundation logic enabled
+	# and disabled. Terrain, cloth and transition modifiers are excluded here.
+	# The original four assets fail this bound. The standing/gait contracts and
+	# independent source audit separately check the resulting anatomical pose.
+	var saved: Dictionary = {}
+	var natural: SkeletonModifier3D = sk.get_node("NaturalLocomotionPose") as SkeletonModifier3D
+	for child: Node in sk.get_children():
+		if child is SkeletonModifier3D and child != probe:
+			saved[child] = (child as SkeletonModifier3D).active
+			(child as SkeletonModifier3D).active = false
+	var maximum: float = 0.0
+	var fresh: int = 0
+	for clip: String in ["idle","walk","run"]:
+		for phase: float in [.0,.125,.375,.625,.875]:
+			natural.active = false
+			var raw: Dictionary = await sample(controller,clip,phase,probe)
+			natural.active = true
+			var aided: Dictionary = await sample(controller,clip,phase,probe)
+			if not bool(raw.get("fresh",false)) or not bool(aided.get("fresh",false)):continue
+			fresh += 1
+			for key: String in ["hips","thigh.L","thigh.R","shin.L","shin.R","foot.L","foot.R"]:
+				maximum = maxf(maximum,point(raw,key).distance_to(point(aided,key)))
+			if id=="tanaka" and clip in ["idle","walk"]:
+				maximum = maxf(maximum,point(raw,"hand.L").distance_to(point(aided,"hand.L")))
+	check(id+" source foundation no longer depends on runtime anatomical pose correction",fresh==15 and maximum<.0015,"fresh %d/15; maximum source-to-helper change %.6fm"%[fresh,maximum])
+	for child: SkeletonModifier3D in saved:
+		child.active = bool(saved[child])

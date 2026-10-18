@@ -5,7 +5,7 @@ import sys
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from generate import action_list, command_sequence, npz_qualification
+from generate import action_list, command_sequence, npz_qualification, load_schedules
 
 
 class ExportContract(unittest.TestCase):
@@ -25,6 +25,17 @@ class ExportContract(unittest.TestCase):
         self.assertEqual(segments[1]["facing_direction_mujoco"], [1., 0., 0.])
         with self.assertRaises(ValueError):
             command_sequence("walk", .01, 7, .5)
+
+    def test_continuous_challenges_use_real_controls_without_speed_scaling(self):
+        schedules = load_schedules(Path(__file__).with_name('challenges.json'))
+        self.assertEqual(len(schedules),6)
+        for commands in schedules.values():
+            self.assertEqual(commands[-1]['end_frame_exclusive'],360)
+            self.assertEqual(commands[0]['start_frame'],0)
+            self.assertEqual([a['end_frame_exclusive'] for a in commands[:-1]],
+                             [b['start_frame'] for b in commands[1:]])
+        self.assertIn('elbow_crawling',[c['mode'] for c in schedules['crawl_style_transition']])
+        self.assertGreater(len({tuple(c['facing_direction_mujoco']) for c in schedules['dance_full_turn']}),3)
 
     def fixture(self):
         import numpy as np

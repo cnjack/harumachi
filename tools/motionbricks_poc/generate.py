@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_REPO = ROOT / "art/poc/motionbricks_20261018/vendor/GR00T-WholeBodyControl"
 ACTIONS = {mode: mode for mode in ("idle", "slow_walk", "walk", "walk_left", "walk_right",
            "stealth_walk", "walk_stealth", "injured_walk", "walk_happy_dance",
-           "walk_boxing", "hand_crawling", "walk_zombie")}
+           "walk_boxing", "hand_crawling", "elbow_crawling", "walk_zombie", "walk_scared", "walk_gun")}
 ALIASES = {"left": "walk_left", "right": "walk_right", "stealth": "stealth_walk",
            "crouch": "walk_stealth", "injured": "injured_walk", "happy": "walk_happy_dance",
            "boxing": "walk_boxing", "zombie": "walk_zombie"}
@@ -65,6 +65,40 @@ def command_sequence(action: str, lead: float, duration: float, tail: float) -> 
         start += count
     if start < 2:
         raise ValueError("At least two frames must be generated")
+    return result
+
+
+def load_schedules(path: Path) -> dict:
+    """Validate steering/style commands without accepting arbitrary pose edits."""
+    payload = json.loads(path.read_text())
+    result = {}
+    for item in payload['sequences']:
+        name = item['id']
+        if not name or any(c not in 'abcdefghijklmnopqrstuvwxyz0123456789_' for c in name) or name in result:
+            raise ValueError('Schedule IDs must be unique lowercase safe filenames')
+        start, commands = 0, []
+        for segment in item['segments']:
+            mode = segment['mode']
+            count = segment_frames(float(segment['seconds']))
+            if mode not in ACTIONS or count < 4:
+                raise ValueError('Each segment needs a released official mode and at least four frames')
+            vectors = {}
+            for key in ['movement_direction_mujoco', 'facing_direction_mujoco']:
+                vector = [float(v) for v in segment[key]]
+                if len(vector) != 3 or not all(math.isfinite(v) for v in vector) or abs(vector[2]) > 1e-8:
+                    raise ValueError('Expected finite horizontal MuJoCo direction')
+                length = math.sqrt(sum(v*v for v in vector))
+                if abs(length-1) > 1e-6 and not (key.startswith('movement') and mode == 'idle' and length == 0):
+                    raise ValueError('Directions must have unit length; no hidden speed scaling')
+                vectors[key] = vector
+            commands.append({'start_frame': start, 'end_frame_exclusive': start+count,
+                             'action': mode, 'mode': mode, **vectors})
+            start += count
+        if not commands:
+            raise ValueError('Empty control schedule')
+        result[name] = commands
+    if not result:
+        raise ValueError('No schedules')
     return result
 
 
@@ -131,14 +165,14 @@ def make_control(agent, command: dict, context):
             "context_mujoco_qpos": context}
 
 
-def generate_motion(agent, models: dict, action: str, seed: int, args, reference: dict) -> dict:
+def generate_motion(agent, models: dict, action: str, seed: int, args, reference: dict, schedule=None) -> dict:
     import numpy as np
     import torch
     np.random.seed(seed)
     random.seed(seed)
     torch.manual_seed(seed)
     agent.reset()
-    commands = command_sequence(action, args.lead_in, args.duration, args.tail)
+    commands = schedule if schedule is not None else command_sequence(action, args.lead_in, args.duration, args.tail)
     frames = commands[-1]["end_frame_exclusive"]
     calls, last_plan = Counter(), {}
     def counted_forward(label):
@@ -210,7 +244,7 @@ def generate_motion(agent, models: dict, action: str, seed: int, args, reference
     if len(contact_indices) != 4 or int(contact_indices.max()) >= raw_features.shape[1]:
         raise ValueError("Cannot qualify official model contact feature indices")
     data = {"fps": np.asarray(30), "joint_names": names,
-            "seed": np.asarray(seed), "mode": np.asarray(ACTIONS[action]),
+            "seed": np.asarray(seed), "mode": np.asarray(ACTIONS.get(action, "multi-mode-sequence")),
             "source_commit": np.asarray(EXPECTED_COMMIT),
             "coordinate_system": np.asarray("right-handed Y-up/Z-forward; metres; quaternion xyzw"),
             "qpos_coordinate_system": np.asarray("MuJoCo right-handed Z-up/X-forward; root wxyz"),
@@ -227,13 +261,13 @@ def generate_motion(agent, models: dict, action: str, seed: int, args, reference
             "buffer_roles": np.asarray(buffer_roles, dtype=str), **reference}
     qualification = {**npz_qualification(data), **fk_check}
     dead = agent._converter.joint_indice_mapping["motion_to_mujoco"].detach().cpu().numpy() < 0
-    metadata = {"action": action, "official_mode": ACTIONS[action], "seed": seed,
+    metadata = {"action": action, "official_mode": ACTIONS.get(action, "multi-mode-sequence"), "seed": seed,
         "commands": commands, "generation_wall_seconds": generation_seconds,
         "neural_generation_calls": timings, "neural_forward_counts": dict(calls),
         "backbone_forward_counts": {name:calls[name] for name in ("root", "pose")},
         "frame_provenance_counts": dict(Counter(buffer_roles)),
         "finite_export_frames": frames,
-        "requested_action_frames": segment_frames(args.duration),
+        "requested_action_frames": sum(c["end_frame_exclusive"]-c["start_frame"] for c in commands if c["mode"] != "idle"),
         "neural_plan_consumed_frames": sum(x > 0 for x in generation_ids),
         "source_conditioning_note": "Initial reference and each plan's four start-context/end-style constraint frames "
                                     "are separately marked; they are not claimed as unconstrained new poses.",
@@ -260,6 +294,7 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--device", choices=["cpu"], default="cpu")
     p.add_argument("--actions", type=action_list, default=["walk"])
     p.add_argument("--seeds", default="1234")
+    p.add_argument("--schedule", type=Path, help="JSON authored control commands; never pose/keyframe overrides")
     p.add_argument("--duration", type=float, default=7.0, help="Action interval in seconds, excluding idle lead/tail; default total8s")
     p.add_argument("--lead-in", type=float, default=.5)
     p.add_argument("--tail", type=float, default=.5)
@@ -280,8 +315,12 @@ def main() -> None:
     seeds = [int(s) for s in args.seeds.split(",")]
     if not seeds or len(seeds) != len(set(seeds)) or any(not 0 <= s < 2 ** 32 for s in seeds):
         raise ValueError("Use distinct integer seeds in [0,2**32)")
-    for action in args.actions:
-        command_sequence(action, args.lead_in, args.duration, args.tail)
+    schedules = load_schedules(args.schedule) if args.schedule else {}
+    if schedules:
+        args.actions = list(schedules)
+    else:
+        for action in args.actions:
+            command_sequence(action, args.lead_in, args.duration, args.tail)
     args.out.mkdir(parents=True)
     cache = ROOT / "art/poc/motionbricks_20261018/cache"
     for variable, subfolder in (("MPLCONFIGDIR", "matplotlib"), ("XDG_CACHE_HOME", "xdg"),
@@ -296,6 +335,7 @@ def main() -> None:
             "generator_sha256": sha(Path(__file__)),
             "host_adapter_sha256": sha(Path(__file__).with_name("official_cpu.py")),
             "actions": args.actions, "seeds": seeds,
+            "control_schedule": schedules,
             "output_scope": "Independent POC; no game asset/runtime write, no GUI, keyboard, other generation model or fake run.",
             "neural_math_changes": False}
     write_json(args.out / "manifest.json", plan)
@@ -331,7 +371,7 @@ def main() -> None:
                 motion_id = f"{action}_seed{seed}"
                 print(f"GENERATE {motion_id}", flush=True)
                 try:
-                    data, metadata = generate_motion(agent, models, action, seed, args, reference)
+                    data, metadata = generate_motion(agent, models, action, seed, args, reference, schedules.get(action))
                 except Exception as error:
                     failure = {"motion_id": motion_id, "action": action, "seed": seed,
                                "error": repr(error), "traceback": traceback.format_exc(),

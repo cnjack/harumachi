@@ -2325,7 +2325,7 @@
       "path": "game/assets/models/CH_aoi.glb",
       "format": "GLB",
       "triangles": 92351,
-      "bytes": 10882260,
+      "bytes": 11128244,
       "license": "项目角色；Hyper3D 账户生成素材",
       "source": "https://hyper3d.ai/workspace/rodin/76e516db-ac2e-4aef-9573-7bfd6517db34",
       "status": "已接入",
@@ -2353,7 +2353,7 @@
       "metrics": {
         "id": "CH_aoi",
         "tris": 92351,
-        "bytes": 10882260,
+        "bytes": 11128244,
         "bones": 54,
         "animations": [
           "idle",
@@ -2369,12 +2369,12 @@
           "dance",
           "reference"
         ],
-        "sha256": "25127d4c9f139fb6fa16161588a5b777dee9c3649687486695547d9d00e1ad20",
-        "src": "character_rig_review_20261018/exports/CH_aoi.glb",
+        "sha256": "d4e5d2921f7481e7e0c583c314c2fd4b485476e7794384a11f75aa47d3d7ed06",
+        "src": "character_roster_foundation_20261018/exports/CH_aoi.glb",
         "provider": "Hyper3D Rodin / welded anatomical character pipeline",
         "preserve_rigged_character": true,
         "character_pipeline": "characters-apose-20261004",
-        "rig_review_manifest": "art/manifests/character_rig_review_20261018.json"
+        "rig_review_manifest": "art/manifests/character_roster_foundation_20261018.json"
       },
       "recipe": "world.spawn(\"CH_aoi\", Vector3(0, 0, 0), 0, 0)",
       "character_id": "aoi",
@@ -2404,7 +2404,7 @@
         "art/library/characters/references/aoi_front.png",
         "art/library/characters/references/aoi_back.png"
       ],
-      "rig_review_manifest": "art/manifests/character_rig_review_20261018.json"
+      "rig_review_manifest": "art/manifests/character_roster_foundation_20261018.json"
     },
     {
       "id": "game/CH_haru",
@@ -2503,7 +2503,7 @@
       "path": "game/assets/models/CH_kazuko.glb",
       "format": "GLB",
       "triangles": 97948,
-      "bytes": 173052496,
+      "bytes": 173325264,
       "license": "项目角色；Hyper3D 账户生成素材",
       "source": "https://hyper3d.ai/workspace/rodin/02faef2e-028f-43e0-933d-47541dcc167b",
       "status": "已接入",
@@ -2531,7 +2531,7 @@
       "metrics": {
         "id": "CH_kazuko",
         "tris": 97948,
-        "bytes": 173052496,
+        "bytes": 173325264,
         "bones": 54,
         "animations": [
           "idle",
@@ -2547,12 +2547,12 @@
           "dance",
           "reference"
         ],
-        "sha256": "fd49e931c62215ada89ee00ce2403310c71b6a318a99acf38acf71a53718bab5",
-        "src": "character_rig_review_20261018/exports/CH_kazuko.glb",
+        "sha256": "cccc38a550ec8aad7a5f209fc62755914ce3bb04257de69396aef6798a1bf78a",
+        "src": "character_roster_foundation_20261018/exports/CH_kazuko.glb",
         "provider": "Hyper3D Rodin / welded anatomical character pipeline",
         "preserve_rigged_character": true,
         "character_pipeline": "characters-apose-20261004",
-        "rig_review_manifest": "art/manifests/character_rig_review_20261018.json"
+        "rig_review_manifest": "art/manifests/character_roster_foundation_20261018.json"
       },
       "recipe": "world.spawn(\"CH_kazuko\", Vector3(0, 0, 0), 0, 0)",
       "character_id": "kazuko",
@@ -2796,7 +2796,7 @@
         "art/library/characters/references/kazuko_front.png",
         "art/library/characters/references/kazuko_back.png"
       ],
-      "rig_review_manifest": "art/manifests/character_rig_review_20261018.json"
+      "rig_review_manifest": "art/manifests/character_roster_foundation_20261018.json"
     },
     {
       "id": "game/CH_mio",
@@ -2806,7 +2806,7 @@
       "path": "game/assets/models/CH_mio.glb",
       "format": "GLB",
       "triangles": 96748,
-      "bytes": 84243080,
+      "bytes": 84307488,
       "license": "项目角色；Hyper3D 账户生成素材",
       "source": "https://hyper3d.ai/workspace/rodin/0d52126c-8342-42af-9b32-2d470fdbc48b",
       "status": "已接入",
@@ -2834,7 +2834,7 @@
       "metrics": {
         "id": "CH_mio",
         "tris": 96748,
-        "bytes": 84243080,
+        "bytes": 84307488,
         "bones": 66,
         "animations": [
           "idle",
@@ -2850,12 +2850,12 @@
           "dance",
           "reference"
         ],
-        "sha256": "289fd7233400dcf1e53db919ff781a6649e7d18c4977de45a239f42aec15c5a7",
-        "src": "character_rig_review_20261018/exports/CH_mio.glb",
+        "sha256": "6b2378a0eb97b6091d32096f8b66a99701e9c46fc723cd178d3b00ce49c137f1",
+        "src": "character_roster_foundation_20261018/exports/CH_mio.glb",
         "provider": "Hyper3D Rodin / welded anatomical character pipeline",
         "preserve_rigged_character": true,
         "character_pipeline": "characters-apose-20261004",
-        "rig_review_manifest": "art/manifests/character_rig_review_20261018.json"
+        "rig_review_manifest": "art/manifests/character_roster_foundation_20261018.json"
       },
       "recipe": "world.spawn(\"CH_mio\", Vector3(0, 0, 0), 0, 0)",
       "character_id": "mio",
@@ -3143,7 +3143,7 @@
         "art/library/characters/references/mio_front.png",
         "art/library/characters/references/mio_back.png"
       ],
-      "rig_review_manifest": "art/manifests/character_rig_review_20261018.json"
+      "rig_review_manifest": "art/manifests/character_roster_foundation_20261018.json"
     },
     {
       "id": "game/CH_ren",
@@ -3357,7 +3357,7 @@
       "path": "game/assets/models/CH_tanaka.glb",
       "format": "GLB",
       "triangles": 89902,
-      "bytes": 19697708,
+      "bytes": 19964684,
       "license": "项目角色；Hyper3D 账户生成素材",
       "source": "https://hyper3d.ai/workspace/rodin/1772f045-fe8c-45c6-8f33-4fe89dfc5143",
       "status": "已接入",
@@ -3386,7 +3386,7 @@
       "metrics": {
         "id": "CH_tanaka",
         "tris": 89902,
-        "bytes": 19697708,
+        "bytes": 19964684,
         "bones": 54,
         "animations": [
           "idle",
@@ -3402,12 +3402,12 @@
           "dance",
           "reference"
         ],
-        "sha256": "c3e517b838f20ccb93c63e064f1da6d17986532d3796174bd3448b67c92eb5c4",
-        "src": "character_rig_review_20261018/exports/CH_tanaka.glb",
+        "sha256": "c8193d3fe3033b2eb2e08a67b9077a1a619c469811c4c88cccc14f2b45cef1ec",
+        "src": "character_roster_foundation_20261018/exports/CH_tanaka.glb",
         "provider": "Hyper3D Rodin / welded anatomical character pipeline",
         "preserve_rigged_character": true,
         "character_pipeline": "characters-apose-20261004",
-        "rig_review_manifest": "art/manifests/character_rig_review_20261018.json"
+        "rig_review_manifest": "art/manifests/character_roster_foundation_20261018.json"
       },
       "recipe": "world.spawn(\"CH_tanaka\", Vector3(0, 0, 0), 0, 0)",
       "character_id": "tanaka",
@@ -3437,7 +3437,7 @@
         "art/library/characters/references/tanaka_front.png",
         "art/library/characters/references/tanaka_back.png"
       ],
-      "rig_review_manifest": "art/manifests/character_rig_review_20261018.json"
+      "rig_review_manifest": "art/manifests/character_roster_foundation_20261018.json"
     },
     {
       "id": "game/D01_wheelbarrow",

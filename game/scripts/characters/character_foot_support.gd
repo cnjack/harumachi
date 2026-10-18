@@ -11,6 +11,7 @@ var correction: Dictionary = {}
 var qa_trace_enabled := false
 var qa_trace: Dictionary = {}
 var enabled := true
+var source_foundation: Dictionary = {}
 var updates := 0
 var total_usec := 0
 var max_usec := 0
@@ -147,6 +148,9 @@ static func attach(source: Node3D, player: AnimationPlayer) -> SkeletonModifier3
 
 func prepare(source: Node3D, player: AnimationPlayer) -> void:
 	model = source
+	var rig: Node = model.find_child("Rig",true,false)
+	var extras: Dictionary = rig.get_meta("extras",{}) if rig != null else {}
+	source_foundation = extras.get("source_pose_foundation",{})
 	animation = player
 	if town_patches.is_empty():
 		for z: float in [Layout.STREET_Z - Layout.STREET_HALF, Layout.STREET_Z + Layout.STREET_HALF]:
@@ -370,6 +374,24 @@ func _process_modification() -> void:
 	var began: int = Time.get_ticks_usec()
 	var sk: Skeleton3D = get_skeleton()
 	_gesture_before_floor(sk)
+	# An authored upright pose already owns its knee slack. A raised flat
+	# surface needs a common vertical root offset, not two ankles driven up
+	# under the unchanged pelvis (which made Aoi crouch again on town paving).
+	var authored_standing: bool = bool(source_foundation.get("standing",false)) and animation.current_animation in ["idle","talk","wave","bow","look","stretch","cheer"]
+	if authored_standing:
+		var common_rise: float = INF
+		for planted: String in ["L","R"]:
+			var planted_foot: int = LivingPose.bone(sk,"foot."+planted)
+			var planted_floor: Dictionary = floor_below(sk.to_global(sk.get_bone_global_pose(planted_foot).origin))
+			if planted_floor.is_empty():
+				common_rise = 0.0
+				break
+			common_rise = minf(common_rise,rise_required(sk,planted,planted_floor))
+		if is_finite(common_rise) and common_rise > .0002:
+			var hips: int = LivingPose.bone(sk,"hips")
+			var root_pose: Transform3D = sk.get_bone_global_pose(hips)
+			root_pose.origin += sk.global_basis.inverse()*Vector3.UP*common_rise
+			sk.set_bone_global_pose(hips,root_pose)
 	for side: String in ["L", "R"]:
 		var foot: int = LivingPose.bone(sk, "foot." + side)
 		if foot < 0 or (samples[side] as Array).is_empty(): continue

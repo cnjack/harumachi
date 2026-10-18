@@ -43,3 +43,28 @@ art/poc/motionbricks_20261018/.venv/bin/python tools/motionbricks_poc/generate.p
 JSON 记录 seed、正式模式、固定命令时间线、原权重摘要、真实 CPU 耗时、实际 pose/root backbone 与 VQ decoder 的 forward 次数、计划长度及 argmax pose tokens。每帧 generation ID 与 buffer role 分开记录初始参考、context、预测内部、结尾 style 约束及 hold；这些分类不把条件帧说成新自由生成。首轮 2 秒 smoke 实际导出 60 帧，三部分各调用 4 次，含 1 帧初始参考、16 帧 context 和 43 帧预测内部；模型加载约 12.17 秒，生成段耗时 0.128 秒包含主机记录开销，仅代表本次样本。
 
 没有真实神经调用就拒绝导出；运动学 qpos 不冒充动力学仿真、人体原生模型或视觉验收。`--json-frames` 可另将全帧数组写进 JSON。
+
+## 连续高难度组合（2026-10-18）
+
+`challenges.json` 定义六个连续控制序列：低姿半圈转向、拳击连续变向、舞步整圈、肘撑爬行起身、手足/肘撑支撑切换、不对称步态恢复。每章12秒/360个真实采样，章内不重置神经模型；不同章节之间重置。每章含1秒idle准备、五段各2秒的控制、1秒idle收尾。指令方向只是条件，实际达成的角度、根高度及接触需要从输出审计。
+
+```sh
+art/poc/motionbricks_20261018/.venv/bin/python tools/motionbricks_poc/generate.py \
+  --out "$PWD/art/poc/motionbricks_20261018/motions/challenges-new" \
+  --schedule tools/motionbricks_poc/challenges.json --seeds 20261018 --threads 6
+```
+
+额外开放固定版本本来就存在的`elbow_crawling`、`walk_scared`、`walk_gun`，没有新增伪造模式。调度器拒绝未知mode、非水平/非单位方向、非法时长与过短片段；`run`仍被拒绝。公开菜单没有翻筋斗/后空翻，不能用官网人体演示或手写关键帧冒充本地模型能力。
+
+`retarget.py --source-dir <冻结人物目录>`允许对本轮已修源资产的副本实验；源目录与游戏目录的身份分别记录。`prepare_viewer.py --challenge-suite`接受六段12秒连续控制章节，仍要求七人完整。
+
+最终录制使用`record_frames.py`：原生引擎每个源采样调用`force_draw`并导出一张真实1080p PNG，然后编码30fps静音H.264。每片逐帧核对源索引/时间、骨姿日志、文件计数，24个采样对比编码帧与原生PNG及前后邻帧，并完整严格解码。验证成功才删除临时PNG序列；18张章节参考帧保留。此路径避开macOS窗口遮挡时MovieMaker重复缓存帧的问题，不依赖更改用户显示器。
+
+```sh
+art/poc/motionbricks_20261018/.venv/bin/python tools/motionbricks_poc/record_frames.py \
+  --project "$PWD/art/poc/motionbricks_20261018/godot-challenges-v5" \
+  --output "$PWD/evidence/roster_foundation_20261018/recordings-final" \
+  --takes solo-sora solo-ren solo-haru solo-mio solo-aoi solo-tanaka solo-kazuko group-three group-four source-motion
+```
+
+录制前先import，再运行`configure_imports.py`关闭独立预览工程的关键帧简化，随后重新import。`--encode-only`用于已有完整PNG序列的恢复，不会重新生成动作；已存在视频拒绝覆盖。默认使用现有screen0、no-focus、Dummy音频和独立存档。多人视频为并排比较，不代表多人交互或接触物理。原生骨姿审计与编码像素审计通过均不等于衣物碰撞、动作自然度或物理支撑通过。

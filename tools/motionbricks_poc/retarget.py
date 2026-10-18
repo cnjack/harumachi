@@ -552,8 +552,8 @@ def verify_written_clips(doc, binary, reports):
             'method': 'Existing motion_math.world_matrices glTF accessor/Slerp evaluator; no TargetPose reuse'}
 
 
-def retarget_character(actor, motions, output_dir, contact_lock, ground_y):
-    source = ROOT / 'game/assets/models' / ('CH_' + actor + '.glb')
+def retarget_character(actor, motions, output_dir, contact_lock, ground_y, source_dir=None):
+    source = (source_dir or ROOT / 'game/assets/models') / ('CH_' + actor + '.glb')
     before_sha = sha(source)
     doc, raw = load_glb(source)
     original = copy.deepcopy(doc)
@@ -597,6 +597,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--motions-dir', '--motion-dir', type=Path, default=POC/'motions')
     parser.add_argument('--output-dir', type=Path, default=POC/'retargeted')
+    parser.add_argument('--source-dir', type=Path, default=ROOT/'game/assets/models')
     parser.add_argument('--characters', nargs='+', choices=ACTORS, default=list(ACTORS))
     parser.add_argument('--motions', nargs='+', help='Explicit npz stems; default all complete source npz files')
     parser.add_argument('--no-contact-lock', action='store_true', help='Explicit contact-lock ablation; still reports generated vs IK corrections')
@@ -620,7 +621,7 @@ def main():
         parser.error('All recordings must share one initialized official idle reference')
     source_hashes_before = {actor:sha(ROOT/'game/assets/models'/('CH_'+actor+'.glb')) for actor in ACTORS}
     output_dir.mkdir(parents=True, exist_ok=True)
-    reports = [retarget_character(actor, motions, output_dir, not args.no_contact_lock, args.ground_y) for actor in args.characters]
+    reports = [retarget_character(actor, motions, output_dir, not args.no_contact_lock, args.ground_y, args.source_dir.resolve()) for actor in args.characters]
     source_hashes_after = {actor:sha(ROOT/'game/assets/models'/('CH_'+actor+'.glb')) for actor in ACTORS}
     if source_hashes_before != source_hashes_after:
         raise AssertionError('Production seven-model source identity changed')

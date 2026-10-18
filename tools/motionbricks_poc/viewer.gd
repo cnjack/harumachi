@@ -26,6 +26,8 @@ var source_data: Dictionary = {}
 var paused: bool = false
 
 func _ready() -> void:
+	get_tree().root.content_scale_size = Vector2i(1920,1080)
+	get_tree().root.content_scale_mode = Window.CONTENT_SCALE_MODE_VIEWPORT
 	for argument: String in OS.get_cmdline_user_args():
 		if argument.begins_with("--take="): take = argument.trim_prefix("--take=")
 		elif argument.begins_with("--out="): output = argument.trim_prefix("--out=")
@@ -47,7 +49,7 @@ func _ready() -> void:
 	canvas.add_child(background)
 	title = _label(canvas, Vector2(30, 15), 30, "MotionBricks · G1 → 人物重定向 POC")
 	subtitle = _label(canvas, Vector2(30, 56), 21, "")
-	_label(canvas, Vector2(30, 1043), 18, "独立实验 · 原人物材质 · 无游戏动作修饰器 · 各片段独立开始，不代表跨动作生成过渡")
+	_label(canvas, Vector2(30, 1043), 18, "独立实验 · 原人物材质 · 无游戏动作修饰器 · 每章内连续生成，章节之间重新开始")
 	var selected: Array[String] = []
 	if take == "group-three": selected.assign(["sora", "ren", "tanaka"])
 	elif take == "group-four": selected.assign(["mio", "haru", "aoi", "kazuko"])
@@ -276,8 +278,12 @@ func _update_panels(view: String) -> void:
 		var camera: Camera3D = panel["camera"] as Camera3D
 		# Fixed per-action framing: do not pump camera scale with individual poses.
 		var wide_action: bool = str(_clip()["official_mode"]) == "hand_crawling"
+		var wide_arms: bool = str(_clip()["official_mode"]) in ["walk_boxing","walk_happy_dance"]
+		for command: Dictionary in _clip().get("commands",[]):
+			wide_action = wide_action or str(command.get("mode","")) in ["hand_crawling","elbow_crawling"]
+			wide_arms = wide_arms or str(command.get("mode","")) in ["walk_boxing","walk_happy_dance"]
 		if wide_action: centre.z += 0.3
-		camera.size = 4.3 if wide_action and panels.size() == 3 else 3.0 if wide_action else 2.6 if str(_clip()["official_mode"]) == "walk_boxing" and panels.size() == 3 else 2.35
+		camera.size = 4.3 if wide_action and panels.size() == 3 else 3.0 if wide_action else 2.9 if wide_arms and panels.size() == 3 else 2.35
 		var direction := Vector3(0, 0.95, 6) if view == "front" else Vector3(6, 0.95, 0) if view == "right" else Vector3(4.5, 1.0, 4.5)
 		camera.position = centre + direction
 		camera.look_at(centre)
@@ -301,6 +307,7 @@ func _snapshot(panel: Dictionary) -> Dictionary:
 	return {"assigned_clip":ap.assigned_animation, "clip_time":ap.current_animation_position, "playing":ap.is_playing(), "root":[root.x, root.y, root.z], "bones":bones, "original_materials":true, "game_modifiers_attached":false, "animation_callback_mode_process":ap.callback_mode_process, "ap_relative_path":str((panel["model"] as Node).get_path_to(ap)), "ap_import_id":ap.get_meta("import_id") if ap.has_meta("import_id") else ""}
 
 func _record() -> void:
+	if not stills_only:DirAccess.make_dir_recursive_absolute(output.path_join("frames"))
 	for warm_frame: int in range(15): await get_tree().process_frame
 	for index: int in (config["clips"] as Array).size():
 		_start_clip(index)
@@ -308,6 +315,7 @@ func _record() -> void:
 		var count: int = int(clip["display_frames"])
 		var first: int = Engine.get_frames_drawn()
 		for frame: int in count:
+			if stills_only and frame not in [count / 6,count / 2,count * 5 / 6]:continue
 			section_elapsed = float(frame) / 30.0
 			for panel: Dictionary in panels:
 				if panel["id"] != "source":
@@ -316,11 +324,14 @@ func _record() -> void:
 			var view: String = VIEWS[mini(2, frame * 3 / count)]
 			_update_panels(view)
 			await get_tree().process_frame
-			await RenderingServer.frame_post_draw
+			RenderingServer.force_draw(false)
+			var pixels: Image = get_viewport().get_texture().get_image()
+			assert(pixels.get_size() == Vector2i(1920,1080))
+			if not stills_only:pixels.save_png(output.path_join("frames/%06d.png"%rows.size()))
 			var state: Dictionary = {}
 			for panel: Dictionary in panels: state[str(panel["id"])] = _snapshot(panel)
 			rows.append({"drawn_frame":Engine.get_frames_drawn(), "process_frame":Engine.get_process_frames(), "clip":clip["clip"], "motion_id":clip["motion_id"], "view":view, "source_frame_index":frame, "source_time":section_elapsed, "actors":state})
-			var capture_frames: Array = [count / 6, count / 2, count * 5 / 6] if stills_only else [0, count / 2, count - 1]
+			var capture_frames: Array = [count / 6, count / 2, count * 5 / 6]
 			if frame in capture_frames:
 				var filename: String = "%02d-%s-%s.png" % [index + 1, str(clip["motion_id"]), view] if stills_only else "native-%02d-%s-f%04d-%s.png" % [index + 1, str(clip["motion_id"]), frame, view]
 				var image_error: Error = get_viewport().get_texture().get_image().save_png(output.path_join(filename))
@@ -330,8 +341,8 @@ func _record() -> void:
 		sections.append({"motion_id":clip["motion_id"], "clip":clip["clip"], "label":clip["label"], "source_duration_s":clip["duration_s"], "display_frames":count, "start_drawn_exclusive":first, "end_drawn_inclusive":Engine.get_frames_drawn(), "tail_policy":clip["tail_policy"], "cross_clip_transition_claimed":false})
 		print("MOTIONBRICKS_POC_SECTION ", JSON.stringify(sections.back()))
 	active = false
-	FileAccess.open(output.path_join("movie-journal.json"), FileAccess.WRITE).store_string(JSON.stringify({"kind":"MotionBricks G1 source/retarget independent POC", "take":take, "fps":30, "engine":Engine.get_version_info().string, "frames":rows, "sections":sections, "failures":failures, "source_config_sha256":config["input_manifest_sha256"], "no_game_controllers":true, "record_evaluation":"Native AnimationPlayer MANUAL exact source n/30, no auto advance, no frame synthesis/loop/hold extension"}))
-	FileAccess.open(output.path_join("native-stills.json"), FileAccess.WRITE).store_string(JSON.stringify({"shots":stills, "expected":(config["clips"] as Array).size() * 3, "same_frame_pose_and_png":true, "capture_mode":"exact source sample n/30 via native AnimationPlayer seek/update; original GLB tracks/materials, no source resampling/loop/extra terminal holds", "native_vs_AVI_frame_index":"Must independently compare native PNG against AVI neighboring frames before asserting trim correspondence"}))
+	FileAccess.open(output.path_join("movie-journal.json"), FileAccess.WRITE).store_string(JSON.stringify({"kind":"MotionBricks G1 source/retarget independent POC", "take":take, "fps":30, "engine":Engine.get_version_info().string, "frames":rows, "sections":sections, "failures":failures, "source_config_sha256":config["input_manifest_sha256"], "no_game_controllers":true,"explicit_native_viewport_draw":true,"png_frame_count":rows.size() if not stills_only else 0, "record_evaluation":"Native AnimationPlayer MANUAL exact source n/30, no auto advance, no frame synthesis/loop/hold extension"}))
+	FileAccess.open(output.path_join("native-stills.json"), FileAccess.WRITE).store_string(JSON.stringify({"shots":stills, "expected":(config["clips"] as Array).size() * 3, "same_frame_pose_and_png":true, "capture_mode":"exact source sample n/30 via native AnimationPlayer seek/update; original GLB tracks/materials, no source resampling/loop/extra terminal holds", "native_vs_video_validation":"Compare native PNG against encoded video and neighboring frames; journal timing alone is insufficient"}))
 	print("MOTIONBRICKS_POC_DONE ", JSON.stringify({"frames":rows.size(), "sections":sections.size(), "take":take}))
 	get_tree().quit(0)
 

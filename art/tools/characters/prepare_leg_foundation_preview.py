@@ -98,17 +98,19 @@ file_logging/enable_file_logging=false
     (project/'main.tscn').write_text('[gd_scene load_steps=2 format=3]\n[ext_resource type="Script" path="res://preview.gd" id="1"]\n[node name="Preview" type="Node"]\nscript=ExtResource("1")\n')
     lengths = durations(args.before)
     samples = []
-    for clip, phases in [('idle', [0.]), ('walk', [0., .25, .5, .75]), ('run', [.25, .75])]:
+    full_views = getattr(args,'full_views',False)
+    views = ['front','right','back','left','top'] if full_views else ['front','right']
+    for clip, phases in [('idle', [0.]), ('walk', [0., .25, .5, .75]), ('run', [0., .25, .5, .75] if full_views else [.25, .75])]:
         for phase in phases:
-            for view in ['front', 'right']:
+            for view in views:
                 samples.append({'id': f'{clip}-{int(phase*100):02}-{view}', 'clip': clip,
                                 'time': phase * lengths[clip], 'view': view,
                                 'label': f'{clip} · {phase:.0%} · {view} · 源动画独立播放'})
     for time, side in [(1.5, '左'), (4.5, '右')]:
-        for view in ['front', 'right']:
+        for view in views:
             samples.append({'id': f'probe-{int(time*10)}-{view}', 'clip': 'binding_probe', 'time': time,
                             'view': view, 'label': f'{side}腿独立压力测试 · 抬髋90° / 屈膝120° · {view}'})
-    settings = {'title': ('空' if args.character == 'sora' else '莲') + ' · 基础绑定与源动画对照',
+    settings = {'title': {'sora':'空','ren':'莲','haru':'春','mio':'澪','aoi':'小葵','tanaka':'田中','kazuko':'和子'}[args.character] + ' · 基础绑定与源动画对照',
                 'output': str(args.output.resolve()), 'samples': samples,
                 'sources': {name: {'path': str(source.resolve()), 'sha256': hashlib.sha256(source.read_bytes()).hexdigest()}
                             for name, source in [('before', args.before), ('after', args.after)]}}
@@ -120,5 +122,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ['before', 'after', 'project', 'output']:
         parser.add_argument('--'+name, type=Path, required=True)
-    parser.add_argument('--character', choices=['sora', 'ren'], required=True)
+    parser.add_argument('--character', choices=['sora','ren','haru','mio','aoi','tanaka','kazuko'], required=True)
+    parser.add_argument('--full-views',action='store_true')
     main(parser.parse_args())
