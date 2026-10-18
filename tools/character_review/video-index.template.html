@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="review-entry" content="harumachi-video-review-entry/v1">
+  <title>人物视频 · 逐项点评</title>
+  <link rel="stylesheet" href="video-base.css">
+  <link rel="stylesheet" href="video-review.css">
+  <script id="video-data" type="application/json">__VIDEO_DATA__</script>
+  <script defer src="video-model.js"></script>
+  <script defer src="video-review.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">晴</span><span>人物视频<span class="brand-sub">逐项复评 / 明年夏祭</span></span></a>
+    <div class="global-progress"><span id="videoProgressText">正在读取项目</span><progress id="videoProgress" max="49" value="0" aria-label="已作判断的项目"></progress></div>
+    <div class="top-actions"><span id="videoSaveStatus" role="status">正在读取本机进度</span><button id="videoImportButton" class="quiet">导入点评</button><button id="videoExportButton" class="primary">导出完整结果 ↗</button></div>
+  </header>
+  <div id="videoSaveWarning" class="save-warning" role="alert" hidden></div>
+  <div class="workspace">
+    <aside class="queue" aria-label="人物与动作">
+      <div class="queue-heading"><span class="eyebrow">一项一项看</span><span>49 项</span></div>
+      <label class="field-label" for="videoFilter">筛选项目</label><select id="videoFilter"><option value="all">全部项目</option><option value="pending">未完成判断</option><option value="issue">有问题</option><option value="unsure">不确定</option><option value="pass">通过</option><option value="later">稍后</option></select>
+      <div id="videoCaseList" class="case-list"></div>
+      <button id="videoNextPending" class="outline wide">下一个未完成项 →</button>
+      <p class="queue-help">“通过 / 有问题 / 不确定”计入已点评。观看、写文字和“稍后”不会自动完成判断。</p>
+      <details class="video-take-links"><summary>直接打开九条原片</summary><div id="videoTakeLinks"></div></details>
+    </aside>
+    <main class="inspection">
+      <div class="case-heading"><div><span id="videoCaseNumber" class="eyebrow"></span><h1 id="videoCaseTitle"></h1></div><div class="case-navigation"><button id="videoPrevious" class="icon-button" aria-label="上一项">←</button><button id="videoNext" class="icon-button" aria-label="下一项">→</button></div></div>
+      <p id="videoCaseContext" class="video-context"></p>
+      <div class="stage">
+        <div class="stage-caption"><span id="videoRange"></span><span id="videoTime">视频时间 —</span></div>
+        <video id="reviewVideo" controls playsinline preload="auto" aria-label="本项人物实际录像"></video>
+        <p id="videoMediaStatus" class="image-message" role="status">正在载入并定位本段。</p>
+      </div>
+      <div class="video-playback-controls" role="group" aria-label="本段播放与时间定位">
+        <button id="videoReplay" class="outline">重播这一段</button>
+        <button id="videoStepBack" class="outline" disabled>− 1/30 秒</button><button id="videoStepForward" class="outline" disabled>＋ 1/30 秒</button>
+        <label class="video-speed">播放速度<select id="videoSpeed"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option></select></label>
+      </div>
+      <div id="videoViewButtons" class="video-view-buttons" role="group" aria-label="本项实际录制方向"></div>
+      <p id="videoViewNotice" class="inspection-help"></p>
+      <button id="videoNoteButton" class="outline" disabled>＋ 记录当前视频时间的意见</button>
+      <p class="inspection-help">切换项目会暂停并定位，不会自动播放。暂停、慢放或按 1/30 秒定位，记录当前视频时间的意见。</p>
+      <p class="inspection-help">动作含起势和收势，舞蹈请按左起位置看对应人物。</p>
+      <details class="video-source-details"><summary>来源与版本</summary><p id="videoIdentity" class="video-identity"></p></details>
+    </main>
+    <aside class="feedback" aria-label="本项点评">
+      <div class="feedback-heading"><span class="eyebrow">你的判断</span><span id="videoItemStatus" class="status-label"></span></div><h2>这一项，你怎么看？</h2>
+      <div id="videoVerdicts" class="verdict-grid" role="group" aria-label="本项判断"></div>
+      <label class="field-label comment-label" for="videoComment">本项意见</label><textarea id="videoComment" rows="5" maxlength="20000" placeholder="例如：跑步摆臂僵硬；膝盖不自然；袖子看着撑空。"></textarea>
+      <section id="videoNoteEditor" class="frame-editor" hidden><div class="editor-heading"><h3>这个视频时间的意见</h3><button id="videoNoteDone" class="small-button">收起</button></div><p id="videoNoteContext" class="editor-context"></p><label class="sr-only" for="videoNoteComment">时间点意见</label><textarea id="videoNoteComment" rows="4" maxlength="20000" placeholder="写下这个时刻看见的问题。"></textarea><p class="editor-save">输入即保存，时间与原片身份随意见一起保留。</p></section>
+      <section class="notes-section"><div class="notes-heading"><h3>本项时间点意见</h3><span id="videoNotesCount">0 条</span></div><div id="videoNotes"></div></section>
+      <button id="videoNextBottom" class="primary wide next-bottom">看下一项 →</button>
+    </aside>
+  </div>
+  <dialog id="videoExportDialog" class="export-dialog"><div class="dialog-heading"><h2>把这次点评交给我</h2><button id="videoCloseExport" class="icon-button" aria-label="关闭导出">×</button></div><p id="videoExportSummary"></p><label class="field-label" for="videoReviewer">你的称呼（选填）</label><input id="videoReviewer" maxlength="100"><div class="export-actions"><button id="videoDownload" class="primary wide">下载完整点评 JSON</button></div><p class="dialog-note">文件始终包含全部 49 项、未点评状态、原模型与视频身份。发回聊天即可。它与旧图片点评协议独立，不会读取旧进度。</p></dialog>
+  <dialog id="videoImportDialog" class="import-dialog"><div class="dialog-heading"><h2>确认导入视频点评</h2><button id="videoCancelImport" class="icon-button" aria-label="取消导入">×</button></div><p id="videoImportSummary"></p><p class="dialog-note">确认后，整包替换当前这批 49 项进度，包括打开此窗口后写入的意见。取消会保持当前进度。</p><button id="videoConfirmImport" class="primary wide">确认替换当前进度</button></dialog>
+  <input id="videoImportFile" type="file" accept="application/json,.json" hidden>
+  <div id="videoToast" class="toast" role="status" hidden></div>
+  <noscript>这个逐项点评界面需要启用 JavaScript。</noscript>
+</body>
+</html>

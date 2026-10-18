@@ -10,6 +10,8 @@
 
 本地最终录像工具为`evidence/character_videos_final_tools_20261018/final_record.py`：必须显式输入已验收完整工程和七模型，冻结runtime/addon/proof/engine/SHA，再记录实际窗口、native活动、720个连续drawn-frame和媒体全解码。旧录像准备器会恢复旧runtime，不能直接复用为最终版本。新九片已完成，555项媒体/身份检查与两个168s/48s合集的严格完整解码均通过；结果见`evidence/character_videos_final_20261018/delivery.json`。范围与未定人评见[人物逐项记录](CHARACTER_RIG_REVIEW_20261018.md)。
 
+`python3 tools/character_review/video_build.py --evidence evidence/character_videos_final_20261018`为最终影片生成49项复评入口。生成前核对delivery、freeze、录制输入、九片SHA/probe/全解码回执和总验收，再用journal累计帧数除fps定位动作与视角。人物舞蹈使用真实七人同场；不从旧v97图页取图或迁移其判断。评论绑定当前原片、人物动作及视频时间，元数据/定位未确认时不允许记时间点，已有损坏进度不自动覆盖。说明见`tools/character_review/video_README.md`；离线DOM/协议测试与真实浏览器播放、布局验收分开记录。
+
 ## 人物绑定人工点评（2026-10-17）
 
 `python3 tools/character_review/build.py --evidence evidence/rig_audit_20261017`把已有五向原生图生成人工点评界面。每个人物的一种动作为一项，共49项；相位、方向、骨架显示与实际移动预览分开。用户可给整体判断、四个分项、文字意见，以及绑定具体画面和位置的点评。浏览器支持存储时即时保存，存储失败持续提示导出；最终下载JSON交回聊天，文字版用于阅读。

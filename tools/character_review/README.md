@@ -61,3 +61,9 @@ python3 tools/character_review/build.py --evidence /path/to/new-evidence
 `--hide-arm-fill`、`--disable-lod`和`--garment-proxy-mio`只用于定位问题，不能生成正式点评素材；构建器会拒绝带这些诊断标记的画面。`--export-garment-proxy`导出实际导入的源顶点与LOD面索引，供离线对照，不能混用GLB与Godot重新排序后的顶点编号。
 
 用户明确要求使用现有桌面时，所有取证命令添加`--display existing`（需要时用`--screen 0`选择已有屏幕）。该分支不编译或启动虚拟显示器程序，仍使用Dummy音频、临时工程和隔离存档，结束后记录`virtual_display_created=false`。
+
+## 最终视频的49项复评
+
+`python3 tools/character_review/video_build.py --evidence evidence/character_videos_final_20261018`为已验证的九条最终影片生成独立入口。每人站立、走、跑、挥手、伸展、鞠躬使用单人原片，舞蹈使用七人同场并标明对应人物位置。可暂停、慢放、按真实机位跳转、记录视频时间点并导出完整49项JSON。新协议和浏览器存储与旧图片页独立，原结果保留。
+
+来源核对、保护规则、导入流程和验证范围见[视频入口说明](video_README.md)。`npm test`同时运行原图片页与新版视频页交互测试；Python协议检查为`python3 -m unittest discover -s tools/character_review -p 'video_test_*.py'`。离线DOM/媒体事件模型不代替真实浏览器播放和布局验收。

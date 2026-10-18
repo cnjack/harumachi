@@ -8,6 +8,8 @@
 
 [新 49 项页面][ui]和[复评说明][guide]已有 1400 张原生图、同帧骨架叠图和 70 组走跑路线。它对应 v97 画面，后续澪、田中的专项修复需看各自补拍，不能把旧页面图片当成新组合。用户的新 49 项结果仍待交回；原页面和原点评保留。
 
+当前组合另有[新版视频逐项点评页][video-ui]：49项分别定位到最终原片的对应动作段，走跑可按实际五个机位跳转；七项舞蹈使用七人同场并指出左起位置。新一轮默认未点评，独立保存时间点意见、判断和文字，完整JSON绑定模型/媒体/时间范围；不会覆盖或自动套用原49项结果。离线交互与来源协议测试通过后仍需实际浏览器播放、布局确认；用户自然度复评未完成。
+
 本稿采用 [integration-v100 候选清单][bank] 的精确身份；该候选清单保留当时未推广状态，正式安装另见`art/manifests/character_rig_review_20261018.json`及`evidence/rig_fix_20261017/v101-production-promotion-completion.json`。相对 v99，仅将澪 78 处、春 312 处 SCALAR accessor 的数字 min/max 规范成单元素数组；两模型 BIN、全部 4580 个 decoded accessor 和其余 JSON 精确保留，另外五份模型逐字相同，[格式修复和原版工具实测][normalization]保留新旧 SHA。没有通过 Blender loader shim 绕过格式错误。历史来源仍见 [LATEST_STATE_V99][state]；当前组合验收记录位于`v101-final-full-tests-supported-probe/root-full-qualification.json`，不能将旧 SHA 或旧检查改名为本组合结果。
 
 | 人物 | 当前候选 SHA 前缀 | 当前范围 |
@@ -126,3 +128,5 @@
 [new-videos]: ../../evidence/character_videos_final_tools_20261018/README.md
 
 [final-videos]: ../../evidence/character_videos_final_20261018/README.md
+
+[video-ui]: ../../evidence/character_videos_final_20261018/index.html
