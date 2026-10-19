@@ -1,0 +1,54 @@
+{
+  "model": "Kimodo-G1-RP-v1",
+  "diffusion_steps": 100,
+  "clips": [
+    {
+      "id": "neutral",
+      "prompt": "A person stands still, facing forward, with arms relaxed at their sides.",
+      "seconds": 2.0,
+      "seed": 1041
+    },
+    {
+      "id": "sora_walk",
+      "prompt": "A person walks forward at a calm, steady pace.",
+      "seconds": 5.0,
+      "seed": 1042
+    },
+    {
+      "id": "sora_stop_look_up",
+      "prompt": "A person walks forward slowly, comes to a stop, and looks up.",
+      "seconds": 5.0,
+      "seed": 1043
+    },
+    {
+      "id": "sora_reach_lantern",
+      "prompt": "A person stands and reaches up with the right hand toward a hanging lantern above, holds for a moment, then lowers the arm.",
+      "seconds": 4.0,
+      "seed": 1044
+    },
+    {
+      "id": "sora_turn_wave",
+      "prompt": "A person stands, turns to their right, and raises the right hand to wave.",
+      "seconds": 4.0,
+      "seed": 1045
+    },
+    {
+      "id": "mio_walk",
+      "prompt": "A person walks forward at a relaxed, gentle pace.",
+      "seconds": 5.0,
+      "seed": 1046
+    },
+    {
+      "id": "mio_wave",
+      "prompt": "A person stands and waves happily with the right hand.",
+      "seconds": 3.0,
+      "seed": 1047
+    },
+    {
+      "id": "look_up_wonder",
+      "prompt": "A person stands still, tilts the head back, and looks up at the sky in quiet wonder.",
+      "seconds": 5.0,
+      "seed": 1048
+    }
+  ]
+}
