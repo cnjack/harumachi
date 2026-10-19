@@ -1,6 +1,15 @@
 {
   "images": [
     {
+      "file": "art/live2d/mio/parts-atlas.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "prompt": "art/manifests/prompts/live2d/mio-parts.txt",
+      "reference": "art/library/characters/references/mio_front.png",
+      "supporting_references": ["game/assets/ui/portraits/mio_neutral.png"],
+      "purpose": "Mio Swift desktop companion layered source"
+    },
+    {
       "file": "art/references/characters/haru_turnaround.png",
       "exists": true,
       "tool": "codex image_gen",

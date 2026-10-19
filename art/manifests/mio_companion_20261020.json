@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-20",
+  "character": "澪",
+  "references": [
+    "art/library/characters/references/mio_front.png",
+    "game/assets/ui/portraits/mio_neutral.png"
+  ],
+  "tool": "imagegen built-in",
+  "prompt": "art/manifests/prompts/live2d/mio-parts.txt",
+  "atlas": "art/live2d/mio/parts-atlas.png",
+  "generated_dimensions": [1774, 887],
+  "note": "Generation did not produce equal-height cells; extraction uses measured explicit rectangles.",
+  "rig": "art/live2d/mio/Mio.rig.json",
+  "layered_source": "art/live2d/mio/Mio.layers.psd",
+  "runtime_resources": "native/mio-companion/Sources/MioApp/Resources/Mio/",
+  "layer_count": 8,
+  "canvas": [600, 1000],
+  "format": "harumachi-layer-rig",
+  "cubism_moc3": false,
+  "cubism_editor_import_verified": false,
+  "engine": "Swift + Metal",
+  "network_policy": "literal loopback IP only; no redirects",
+  "live_clef_verified": false,
+  "verification": "evidence/mio_companion_20261020/verification.json"
+}

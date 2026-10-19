@@ -1,0 +1,66 @@
+openapi: 3.0.3
+info:
+  title: Mio Clef decision dependency
+  version: 1.0.0
+  description: Consumer contract derived from the existing clef-omni /v1/systemone client and deployed wrapper documentation. No generated text or executable actions.
+paths:
+  /v1/systemone:
+    post:
+      summary: Choose a companion expression and a preset response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [model, state, questions]
+              properties:
+                model: {type: string, example: clef-omni}
+                state:
+                  type: object
+                  required: [kind, summary, metadata, persona]
+                  properties:
+                    kind: {type: string}
+                    summary: {type: string, maxLength: 1000}
+                    metadata: {type: object, additionalProperties: {type: string}}
+                    persona: {type: string}
+                questions:
+                  type: object
+                  required: [mood, reaction]
+                  additionalProperties:
+                    type: object
+                    required: [type, instructions, criteria]
+                    properties:
+                      type: {type: string, enum: [choice]}
+                      instructions: {type: string}
+                      criteria: {type: object, additionalProperties: {type: string}}
+      responses:
+        '200':
+          description: Named choice answers; confidence must be finite and between zero and one. The response model must match the requested model.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [model, answers]
+                properties:
+                  model: {type: string}
+                  answers:
+                    type: object
+                    required: [mood, reaction]
+                    additionalProperties:
+                      type: object
+                      required: [choice, confidence]
+                      properties:
+                        type: {type: string, enum: [choice]}
+                        choice: {type: string}
+                        confidence: {type: number, minimum: 0, maximum: 1}
+              example:
+                model: clef-omni
+                answers:
+                  mood: {type: choice, choice: happy, confidence: 0.97}
+                  reaction: {type: choice, choice: notice, confidence: 0.96}
+        '400': {description: Invalid request}
+        '401': {description: Authentication needed}
+        '429': {description: Rate limited}
+        '500': {description: Upstream inference error}
+        '503': {description: Model unavailable}

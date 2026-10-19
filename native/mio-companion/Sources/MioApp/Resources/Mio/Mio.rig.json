@@ -1,0 +1,157 @@
+{
+  "canvas" : [
+    600,
+    1000
+  ],
+  "cubismCompatible" : false,
+  "format" : "harumachi-layer-rig",
+  "layers" : [
+    {
+      "group" : "hair",
+      "id" : "hair_back",
+      "rect" : [
+        176,
+        36,
+        248,
+        260
+      ],
+      "sourceCrop" : [
+        444,
+        55,
+        445,
+        530
+      ],
+      "texture" : "hair_back.png"
+    },
+    {
+      "group" : "body",
+      "id" : "body",
+      "rect" : [
+        65,
+        252,
+        470,
+        730
+      ],
+      "sourceCrop" : [
+        35,
+        0,
+        385,
+        600
+      ],
+      "texture" : "body.png"
+    },
+    {
+      "group" : "head",
+      "id" : "face",
+      "rect" : [
+        214,
+        92,
+        172,
+        180
+      ],
+      "sourceCrop" : [
+        945,
+        155,
+        350,
+        322
+      ],
+      "texture" : "face.png"
+    },
+    {
+      "group" : "eyes_open",
+      "id" : "eyes_open",
+      "rect" : [
+        224,
+        164,
+        152,
+        60
+      ],
+      "sourceCrop" : [
+        20,
+        630,
+        419,
+        216
+      ],
+      "texture" : "eyes_open.png"
+    },
+    {
+      "group" : "eyes_closed",
+      "id" : "eyes_closed",
+      "rect" : [
+        224,
+        164,
+        152,
+        53
+      ],
+      "sourceCrop" : [
+        475,
+        632,
+        400,
+        190
+      ],
+      "texture" : "eyes_closed.png"
+    },
+    {
+      "group" : "mouth_closed",
+      "id" : "mouth_closed",
+      "rect" : [
+        278,
+        239,
+        44,
+        10
+      ],
+      "sourceCrop" : [
+        1010,
+        715,
+        220,
+        110
+      ],
+      "texture" : "mouth_closed.png"
+    },
+    {
+      "group" : "mouth_open",
+      "id" : "mouth_open",
+      "rect" : [
+        285,
+        235,
+        30,
+        21
+      ],
+      "sourceCrop" : [
+        1460,
+        685,
+        180,
+        145
+      ],
+      "texture" : "mouth_open.png"
+    },
+    {
+      "group" : "hair",
+      "id" : "hair_front",
+      "rect" : [
+        176,
+        36,
+        248,
+        260
+      ],
+      "sourceCrop" : [
+        1320,
+        60,
+        454,
+        535
+      ],
+      "texture" : "hair_front.png"
+    }
+  ],
+  "name" : "澪",
+  "parameters" : [
+    "ParamAngleX",
+    "ParamAngleY",
+    "ParamBodyAngleZ",
+    "ParamBreath",
+    "ParamEyeLOpen",
+    "ParamEyeROpen",
+    "ParamMouthOpenY"
+  ],
+  "version" : 1
+}

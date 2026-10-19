@@ -1,5 +1,11 @@
 # 模型、工程与交付流程
 
+## 澪的 Swift 桌面角色（2026-10-20）
+
+独立入口 `open_mio_companion.command`，源码和工具位于 `native/mio-companion/`。imagegen 参考澪的定稿正面和头像生成透明部件；`tools/pack_assets.swift` 按实测区域拆图并输出自有 rig，`tools/export_psd.swift` 导出同布局八层 RGB/8 PSD。它们不是 Cubism 模型编译器，不能产出 `.moc3`。构建用 Swift Package 与系统 Metal，无第三方下载，`.app` 放忽略的 `dist/`，不进游戏 `builds/`。
+
+运行 `tools/test_simulation.sh` 验证生产 HTTP 客户端，再对打包 `.app` 运行 `--smoke-test <本轮证据目录>`；五种状态和眨眼用 `--render-samples` 导出。smoke 只缓存本应用视图并读取自身 Metal 目标，不调用显示器截图 API。按本轮要求只允许本机回环 IP、拒绝重定向，其他网络连接和授权项直接跳过；不启动隧道或改系统权限。静音、现有显示器、无虚拟屏幕。完整用法与当前边界见[桌面角色 README](../../native/mio-companion/README.md)。
+
 ## 跑步摆臂源修订（2026-10-19）
 
 当前七人源输出为`art/models/character_run_arm_cross_20261019/exports/`，清单为`art/manifests/character_run_arm_cross_20261019.json`。从明确的revision2源运行`author_crossbody_running_style.py`，只重写run六条Arm/ForeArm/Hand旋转曲线，实现前臂斜向对侧上胸、后臂向后外侧，保留手指及其余源数据；工具拒绝重复叠加revision3。用户要求本轮结束测试，现有屏幕28张姿态预览后仅继续编译和必要包检查，完整动态验收未重跑。旧112项/加密衣物检查属于revision2，莲新源摘要未获得零辅助证明。见[参数与结果](RUN_ARM_POSE_20261019.md)。

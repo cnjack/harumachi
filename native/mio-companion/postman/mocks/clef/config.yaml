@@ -1,0 +1,11 @@
+version: 1
+id: 54c76d3f-feba-4caa-b971-a653ee5e827d
+name: Mio Clef decision dependency
+slug: mio-clef-decision-dependency
+protocol: http
+port: 4911
+interceptRequests: true
+scenarios:
+  - name: default
+    path: ./default.js
+    default: true

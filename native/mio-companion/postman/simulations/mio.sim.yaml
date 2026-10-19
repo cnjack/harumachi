@@ -1,0 +1,5 @@
+simulation: mio-companion-clef
+routing: path
+mocks:
+  - routeKey: clef
+    path: ../mocks/clef/config.yaml

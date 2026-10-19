@@ -1,0 +1,26 @@
+name: Mio Swift companion
+on:
+  push:
+    paths:
+      - native/mio-companion/**
+      - .github/workflows/mio-companion.yml
+  pull_request:
+    paths:
+      - native/mio-companion/**
+      - .github/workflows/mio-companion.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  swift:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          lfs: false
+          persist-credentials: false
+      - name: Fetch only the companion textures
+        run: git lfs pull --include='native/mio-companion/Sources/MioApp/Resources/Mio/*.png' --exclude=''
+      - name: Compile and test Swift code
+        working-directory: native/mio-companion
+        run: swift test
