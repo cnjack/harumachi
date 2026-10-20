@@ -75,6 +75,7 @@ for (name, crop, originalRect, group) in crops {
         layer["bendSpans"] = [104, 30]
         layer["binding"] = "rigid-shoulder-arc-elbow-wrist"
     }
+    if group == "arm_right" { layer["jointPiece"] = "upper"; layer["binding"] = "split-elbow-overlap" }
     layers.append(layer)
     print("\(name): \(trimmed.width)x\(trimmed.height)")
 }
@@ -156,8 +157,14 @@ for side in ["left", "right"] {
     func along(_ x: Double, _ y: Double, _ origin: CGPoint) -> Double { (x-origin.x)*d.x+(y-origin.y)*d.y }
     // Upper arm root is behind the torso; the sleeve below it is in front.
     // Registered overlap and a 30px feather keep the draw-order split continuous.
-    cut("arm_\(side)") { x,y in along(x,y,elbow) < -8 }
-    cut("sleeve_\(side)") { x,y in along(x,y,shoulder) >= 20 && along(x,y,wrist) < -54 }
+    cut("arm_\(side)") { x,y in along(x,y,elbow) < (side == "right" ? 25 : -8) }
+    cut("sleeve_\(side)") { x,y in
+        let delta = CGPoint(x:x-elbow.x,y:y-elbow.y)
+        let across = delta.x*d.y-delta.y*d.x
+        let root = along(x,y,elbow)
+        let roundedRoot = root >= 0 || root*root+across*across < 32*32
+        return (side == "right" ? roundedRoot : along(x,y,shoulder) >= 20) && along(x,y,wrist) < -54
+    }
     let sleeveImage = load("native/mio-companion/Sources/MioApp/Resources/Mio/sleeve_\(side).png")
     var sleeveBytes = rgba(sleeveImage)
     for y in 0..<sleeveImage.height { for x in 0..<sleeveImage.width {
@@ -172,6 +179,13 @@ for side in ["left", "right"] {
     } }
     write(makeImage(sleeveBytes,width:sleeveImage.width,height:sleeveImage.height),"sleeve_\(side)")
     var sleeve = arm; sleeve["id"] = "sleeve_\(side)"; sleeve["texture"] = "sleeve_\(side).png"
+    if side == "right" {
+        sleeve["jointPiece"] = "forearm"; sleeve["binding"] = "split-elbow-overlap"
+        cut("upper_sleeve_right") { x,y in along(x,y,shoulder) >= 20 && along(x,y,elbow) < 25 }
+        var upper = arm; upper["id"] = "upper_sleeve_right"; upper["texture"] = "upper_sleeve_right.png"
+        upper["jointPiece"] = "upper"; upper["binding"] = "split-elbow-overlap"
+        layers.append(upper)
+    }
     layers.append(sleeve)
     cut("hand_\(side)_relaxed") { x,y in along(x,y,wrist) >= -62 }
     let handRect = [r[0]-20,r[1]-20,r[2]+40,r[3]+50]
@@ -214,7 +228,63 @@ for side in ["left", "right"] {
             y:(pivot.y-40-CGFloat(image.height))*sy,width:CGFloat(image.width)*sx,height:CGFloat(image.height)*sy))
         write(context.makeImage()!,"hand_\(side)_\(variant)")
     }
-    for variant in ["relaxed","palm","back","inward","fist"] {
+    if side == "right" {
+        let image = load("art/live2d/mio/pose-parts/chin-index.png").cropping(to:CGRect(x:0,y:0,width:1254,height:1190))!
+        let context = context()
+        context.translateBy(x:wrist.x-handRect[0],y:handRect[3]-(wrist.y-handRect[1]))
+        let angle = atan2(-d.y,-d.x)-atan2(CGFloat(290),CGFloat(74))
+        context.rotate(by:-angle)
+        // Keep the useful short forearm; the source's distant edge dust is
+        // outside this registered cuff coverage and never enters the texture.
+        context.clip(to:CGRect(x:-150,y:-90,width:300,height:180))
+        // Extend only the bare forearm along its measured source axis. The
+        // hand, wrist width and fingertip remain unchanged; this registration
+        // deformation puts the source edge under the existing painted cuff.
+        let length: CGFloat = sqrt(CGFloat(74*74+290*290))
+        let axis = CGVector(dx:74/length,dy:-290/length)
+        let normal = CGVector(dx:-axis.dy,dy:axis.dx)
+        for forearm in [true,false] {
+            context.saveGState()
+            let region = CGMutablePath()
+            let lo: CGFloat = forearm ? 0 : -250, hi: CGFloat = forearm ? 250 : 0
+            let corners = [(lo,CGFloat(-200)),(lo,CGFloat(200)),(hi,CGFloat(200)),(hi,CGFloat(-200))]
+            for (index,corner) in corners.enumerated() {
+                let p = CGPoint(x:axis.dx*corner.0+normal.dx*corner.1,y:axis.dy*corner.0+normal.dy*corner.1)
+                if index == 0 { region.move(to:p) } else { region.addLine(to:p) }
+            }
+            region.closeSubpath();context.addPath(region);context.clip()
+            if forearm {
+                let k: CGFloat = 1.4
+                context.concatenate(CGAffineTransform(a:1+k*axis.dx*axis.dx,b:k*axis.dx*axis.dy,
+                    c:k*axis.dx*axis.dy,d:1+k*axis.dy*axis.dy,tx:0,ty:0))
+            }
+            context.draw(image,in:CGRect(x:-825*0.09,y:(870-CGFloat(image.height))*0.09,
+                                         width:CGFloat(image.width)*0.09,height:CGFloat(image.height)*0.09))
+            context.restoreGState()
+        }
+        write(context.makeImage()!,"hand_right_chin")
+        let full = load("native/mio-companion/Sources/MioApp/Resources/Mio/hand_right_chin.png")
+        let original = rgba(full)
+        for front in [true,false] {
+            var pixels = original
+            for y in 0..<full.height { for x in 0..<full.width {
+                let px = handRect[0]+(Double(x)+0.5)/3, py = handRect[1]+(Double(y)+0.5)/3
+                let distance = along(px,py,wrist)
+                if front ? distance < -20 : distance >= -18 {
+                    let index = (y*full.width+x)*4
+                    for channel in 0..<4 { pixels[index+channel] = 0 }
+                }
+            } }
+            write(makeImage(pixels,width:full.width,height:full.height),front ? "hand_right_chin_front" : "hand_right_chin")
+        }
+        var front = arm
+        front["id"] = "hand_right_chin_front";front["texture"] = "hand_right_chin_front.png"
+        front["rect"] = handRect;front["group"] = "hand_right";front["jointPiece"] = "forearm"
+        front["binding"] = "split-elbow-overlap";front["defaultVisible"] = false
+        front["contactPoint"] = [547,554];front["sourceAtlas"] = "pose-parts/chin-index.png"
+        layers.append(front)
+    }
+    for variant in ["relaxed","palm","back","inward","fist"] + (side == "right" ? ["chin"] : []) {
         var hand = arm
         hand["id"] = "hand_\(side)_\(variant)"
         hand["texture"] = "hand_\(side)_\(variant).png"
@@ -230,18 +300,55 @@ for side in ["left", "right"] {
             hand["sourceColumn"] = sourceLeft(for:variant) ? "left" : "right"
             hand["sourceCrop"] = [sourceLeft(for:variant) ? 150 : 850,40,600,930]
         }
+        if side == "right" { hand["jointPiece"] = "forearm"; hand["binding"] = "split-elbow-overlap" }
+        if variant == "chin" {
+            hand["sourceAtlas"] = "pose-parts/chin-index.png"
+            hand.removeValue(forKey:"sourceColumn")
+            hand["sourceCrop"] = [0,0,1254,1254]
+            hand["sourceWrist"] = [825,870]
+            hand["sourceIndexTip"] = [353,148]
+            hand["contactPoint"] = [547,554]
+            hand["registrationScale"] = 0.09
+        }
         layers.append(hand)
     }
 }
+// A simple native vector thought bubble, exported with the source layers.
+let cloudWidth = 468, cloudHeight = 285
+let cloud = CGContext(data:nil,width:cloudWidth,height:cloudHeight,bitsPerComponent:8,
+    bytesPerRow:cloudWidth*4,space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue)!
+cloud.scaleBy(x:3,y:3); cloud.translateBy(x:0,y:95); cloud.scaleBy(x:1,y:-1)
+cloud.setFillColor(NSColor(calibratedRed:0.99,green:0.99,blue:0.97,alpha:0.97).cgColor)
+cloud.setStrokeColor(NSColor(calibratedRed:0.46,green:0.57,blue:0.63,alpha:1).cgColor)
+cloud.setLineWidth(1.5)
+let bubble = CGMutablePath()
+bubble.move(to:CGPoint(x:28,y:58))
+bubble.addCurve(to:CGPoint(x:14,y:28),control1:CGPoint(x:4,y:58),control2:CGPoint(x:3,y:36))
+bubble.addCurve(to:CGPoint(x:46,y:13),control1:CGPoint(x:11,y:7),control2:CGPoint(x:32,y:2))
+bubble.addCurve(to:CGPoint(x:79,y:10),control1:CGPoint(x:52,y:-1),control2:CGPoint(x:71,y:0))
+bubble.addCurve(to:CGPoint(x:113,y:17),control1:CGPoint(x:94,y:0),control2:CGPoint(x:111,y:3))
+bubble.addCurve(to:CGPoint(x:142,y:41),control1:CGPoint(x:140,y:10),control2:CGPoint(x:156,y:29))
+bubble.addCurve(to:CGPoint(x:115,y:65),control1:CGPoint(x:151,y:60),control2:CGPoint(x:130,y:73))
+bubble.addCurve(to:CGPoint(x:75,y:66),control1:CGPoint(x:105,y:80),control2:CGPoint(x:83,y:78))
+bubble.addCurve(to:CGPoint(x:28,y:58),control1:CGPoint(x:53,y:76),control2:CGPoint(x:33,y:72))
+bubble.closeSubpath();cloud.addPath(bubble);cloud.drawPath(using:.fillStroke)
+for rect in [CGRect(x:35,y:75,width:12,height:9),CGRect(x:24,y:88,width:6,height:5)] {
+    cloud.addEllipse(in:rect);cloud.drawPath(using:.fillStroke)
+}
+cloud.setFillColor(NSColor(calibratedRed:0.46,green:0.57,blue:0.63,alpha:1).cgColor)
+for x in [55,77,99] { cloud.fillEllipse(in:CGRect(x:x,y:35,width:6,height:6)) }
+write(cloud.makeImage()!,"thought_cloud")
+layers.append(["id":"thought_cloud","texture":"thought_cloud.png","rect":[365,12,156,95],
+               "group":"thought_cloud","defaultVisible":false,"source":"native-vector-path"])
 let order = ["hair_back", "lower_body", "shoulder_left", "shoulder_right", "arm_left", "arm_right", "torso",
-             "sleeve_left",
+             "sleeve_left", "upper_sleeve_right",
              "hand_left_relaxed", "hand_left_palm", "hand_left_back", "hand_left_inward", "hand_left_fist",
-             "hand_right_relaxed", "hand_right_palm", "hand_right_back", "hand_right_inward", "hand_right_fist",
-             "sleeve_right", "face", "eyes_open", "eyes_closed", "mouth_closed", "mouth_open", "hair_front"]
+             "hand_right_relaxed", "hand_right_palm", "hand_right_back", "hand_right_inward", "hand_right_fist", "hand_right_chin",
+             "sleeve_right", "face", "eyes_open", "eyes_closed", "mouth_closed", "mouth_open", "hair_front", "hand_right_chin_front", "thought_cloud"]
 layers.sort { order.firstIndex(of: $0["id"] as! String)! < order.firstIndex(of: $1["id"] as! String)! }
 let manifest: [String: Any] = ["format": "harumachi-layer-rig", "version": 1, "name": "澪", "canvas": [750, 1000],
                               "origin": [-75, 0],
-                              "layoutRevision": "20261020-hand-poses-v8",
+                              "layoutRevision": "20261020-thinking-v9",
                               "cubismCompatible": false, "layers": layers,
                               "parameters": ["ParamAngleX", "ParamAngleY", "ParamBodyAngleZ", "ParamBreath", "ParamEyeLOpen", "ParamEyeROpen", "ParamMouthOpenY"]]
 let json = try JSONSerialization.data(withJSONObject: manifest, options: [.prettyPrinted, .sortedKeys])

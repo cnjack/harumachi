@@ -1,0 +1,9 @@
+Use case: precise-object-edit
+Asset type: one transparent anime hand and short forearm sprite for touching Mio's chin.
+References: user-provided photograph for gesture only; hands-inward.png for anime palette and line art only.
+Pose: index finger extends diagonally up-left to lightly touch the underside of the chin; thumb relaxed and raised upper-right; middle, ring and little fingers curl naturally into the palm. Exactly five digits. Match the photograph's screen orientation. No C grip, no closed index, no thumbs-up fist. Bare forearm extends downward.
+Style: thin warm-brown anime outlines, pale-peach skin, flat color and simple warm hard-edge shadows. No photographic skin.
+Composition: one isolated hand, ample transparent margins. No sleeve, face, body, scene, labels or text.
+BACKGROUND: fully transparent RGBA PNG with alpha channel.
+Built-in imagegen reference edit; selected original output exec-a670cb1b-6574-49a7-9cf5-29b0aa6fdf8a.png (1254x1254).
+This supersedes the discarded open-cradle and four-finger fist prototypes following the user's final photo reference.

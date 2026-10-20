@@ -120,9 +120,10 @@
         104,
         30
       ],
-      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "binding" : "split-elbow-overlap",
       "group" : "arm_right",
       "id" : "arm_right",
+      "jointPiece" : "upper",
       "joints" : [
         [
           369,
@@ -206,6 +207,44 @@
         540
       ],
       "texture" : "sleeve_left.png"
+    },
+    {
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "split-elbow-overlap",
+      "group" : "arm_right",
+      "id" : "upper_sleeve_right",
+      "jointPiece" : "upper",
+      "joints" : [
+        [
+          369,
+          320
+        ],
+        [
+          427,
+          418
+        ],
+        [
+          486,
+          508
+        ]
+      ],
+      "rect" : [
+        341,
+        285,
+        194,
+        280
+      ],
+      "sourceAtlas" : "articulated\/body-arms-atlas.png",
+      "sourceCrop" : [
+        1160,
+        140,
+        376,
+        540
+      ],
+      "texture" : "upper_sleeve_right.png"
     },
     {
       "anatomicalHand" : "right",
@@ -437,10 +476,11 @@
         104,
         30
       ],
-      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "binding" : "split-elbow-overlap",
       "defaultVisible" : true,
       "group" : "hand_right",
       "id" : "hand_right_relaxed",
+      "jointPiece" : "forearm",
       "joints" : [
         [
           369,
@@ -481,10 +521,11 @@
         104,
         30
       ],
-      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "binding" : "split-elbow-overlap",
       "defaultVisible" : false,
       "group" : "hand_right",
       "id" : "hand_right_palm",
+      "jointPiece" : "forearm",
       "joints" : [
         [
           369,
@@ -526,10 +567,11 @@
         104,
         30
       ],
-      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "binding" : "split-elbow-overlap",
       "defaultVisible" : false,
       "group" : "hand_right",
       "id" : "hand_right_back",
+      "jointPiece" : "forearm",
       "joints" : [
         [
           369,
@@ -571,10 +613,11 @@
         104,
         30
       ],
-      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "binding" : "split-elbow-overlap",
       "defaultVisible" : false,
       "group" : "hand_right",
       "id" : "hand_right_inward",
+      "jointPiece" : "forearm",
       "joints" : [
         [
           369,
@@ -616,10 +659,11 @@
         104,
         30
       ],
-      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "binding" : "split-elbow-overlap",
       "defaultVisible" : false,
       "group" : "hand_right",
       "id" : "hand_right_fist",
+      "jointPiece" : "forearm",
       "joints" : [
         [
           369,
@@ -656,13 +700,72 @@
       ]
     },
     {
+      "anatomicalHand" : "left",
       "bendSpans" : [
         104,
         30
       ],
-      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "binding" : "split-elbow-overlap",
+      "contactPoint" : [
+        547,
+        554
+      ],
+      "defaultVisible" : false,
+      "group" : "hand_right",
+      "id" : "hand_right_chin",
+      "jointPiece" : "forearm",
+      "joints" : [
+        [
+          369,
+          320
+        ],
+        [
+          427,
+          418
+        ],
+        [
+          486,
+          508
+        ]
+      ],
+      "rect" : [
+        321,
+        265,
+        234,
+        330
+      ],
+      "registrationScale" : 0.089999999999999997,
+      "sourceAtlas" : "pose-parts\/chin-index.png",
+      "sourceCrop" : [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "sourceIndexTip" : [
+        353,
+        148
+      ],
+      "sourceWrist" : [
+        825,
+        870
+      ],
+      "texture" : "hand_right_chin.png",
+      "variant" : "chin",
+      "wristRegistration" : [
+        486,
+        508
+      ]
+    },
+    {
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "split-elbow-overlap",
       "group" : "arm_right",
       "id" : "sleeve_right",
+      "jointPiece" : "forearm",
       "joints" : [
         [
           369,
@@ -799,9 +902,65 @@
         535
       ],
       "texture" : "hair_front.png"
+    },
+    {
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "split-elbow-overlap",
+      "contactPoint" : [
+        547,
+        554
+      ],
+      "defaultVisible" : false,
+      "group" : "hand_right",
+      "id" : "hand_right_chin_front",
+      "jointPiece" : "forearm",
+      "joints" : [
+        [
+          369,
+          320
+        ],
+        [
+          427,
+          418
+        ],
+        [
+          486,
+          508
+        ]
+      ],
+      "rect" : [
+        321,
+        265,
+        234,
+        330
+      ],
+      "sourceAtlas" : "pose-parts\/chin-index.png",
+      "sourceCrop" : [
+        1160,
+        140,
+        376,
+        540
+      ],
+      "texture" : "hand_right_chin_front.png"
+    },
+    {
+      "defaultVisible" : false,
+      "group" : "thought_cloud",
+      "id" : "thought_cloud",
+      "rect" : [
+        365,
+        12,
+        156,
+        95
+      ],
+      "source" : "native-vector-path",
+      "texture" : "thought_cloud.png"
     }
   ],
-  "layoutRevision" : "20261020-hand-poses-v8",
+  "layoutRevision" : "20261020-thinking-v9",
   "name" : "澪",
   "origin" : [
     -75,

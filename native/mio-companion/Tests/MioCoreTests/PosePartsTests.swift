@@ -42,7 +42,7 @@ final class PosePartsTests: XCTestCase {
             XCTAssertGreaterThan(abs(coverages[0]-coverages[1]),35,"Thumb must be distinguishable from the little-finger edge")
             thumbSigns[layer["id"] as! String] = coverages[0] > coverages[1] ? -1 : 1
         }
-        for (gesture,left) in [(CharacterGesture.wave,false),(.think,false),(.talk,false)] {
+        for (gesture,left) in [(CharacterGesture.wave,false),(.talk,false)] {
             let shoulder = SIMD2<Float>(left ? 231 : 369,320)
             let elbow = SIMD2<Float>(left ? 173 : 427,418), wrist = SIMD2<Float>(left ? 114 : 486,508)
             let axis = wrist-elbow, d = axis/sqrt(axis.x*axis.x+axis.y*axis.y)
@@ -172,7 +172,8 @@ final class PosePartsTests: XCTestCase {
         let layers = try XCTUnwrap(rig["layers"] as? [[String: Any]])
         for side in ["left", "right"] {
             let hands = layers.filter { $0["group"] as? String == "hand_\(side)" }
-            XCTAssertEqual(Set(hands.compactMap { $0["variant"] as? String }), ["relaxed", "palm", "back", "inward", "fist"],
+            let expected: Set<String> = side == "right" ? ["relaxed","palm","back","inward","fist","chin"] : ["relaxed","palm","back","inward","fist"]
+            XCTAssertEqual(Set(hands.compactMap { $0["variant"] as? String }), expected,
                 "Rotating one hand texture cannot turn its palm toward the viewer")
             XCTAssertNotNil(layers.first { $0["id"] as? String == "shoulder_\(side)" },
                 "The shoulder needs drawn underarm coverage")
@@ -194,13 +195,14 @@ final class PosePartsTests: XCTestCase {
         XCTAssertEqual(stretch.rightHand,.zero)
         XCTAssertEqual(stretch.leftFist,1)
         XCTAssertEqual(stretch.rightFist,1)
-        XCTAssertEqual(think.rightHand, SIMD4(0,0,0,1))
+        XCTAssertEqual(think.rightHand,.zero)
+        XCTAssertEqual(think.rightChin,1)
         for gesture in CharacterGesture.allCases {
             for frame in 0...210 {
                 let current = PuppetMotion(pose: RigPose(time: Double(frame)/30, gesture: gesture))
                 let motion = current.blended(from: wave, fraction: Float(frame)/210)
-                for (weights,fist) in [(motion.leftHand,motion.leftFist),(motion.rightHand,motion.rightFist)] {
-                    XCTAssertEqual(weights.x+weights.y+weights.z+weights.w+fist, 1, accuracy: 0.0001)
+                for (weights,fist,chin) in [(motion.leftHand,motion.leftFist,Float(0)),(motion.rightHand,motion.rightFist,motion.rightChin)] {
+                    XCTAssertEqual(weights.x+weights.y+weights.z+weights.w+fist+chin, 1, accuracy: 0.0001)
                     XCTAssertTrue((0..<4).allSatisfy { weights[$0] >= 0 && weights[$0] <= 1 })
                     XCTAssertTrue((0...1).contains(fist))
                 }

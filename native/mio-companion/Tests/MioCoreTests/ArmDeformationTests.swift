@@ -12,6 +12,7 @@ final class ArmDeformationTests: XCTestCase {
             let joints: [[Float]]?
             let bendSpans: [Float]?
             let group: String
+            let jointPiece: String?
         }
         let canvas: [Float]
         let origin: [Float]?
@@ -53,7 +54,7 @@ final class ArmDeformationTests: XCTestCase {
                     if pixels[(py * image.width + px) * 4 + 3] > 192 { triangles.append(triangle) }
                 }
             } }
-            let minimumSamples = arm.group.hasPrefix("hand_") ? 40 : (arm.id.hasPrefix("sleeve_") ? 200 : 400)
+            let minimumSamples = arm.group.hasPrefix("hand_") ? 40 : (arm.id.contains("sleeve_") ? 150 : 400)
             XCTAssertGreaterThan(triangles.count, minimumSamples)
             let gestures: [CharacterGesture] = [.idle, .wave, .stretch, .think, .talk]
             var sequences = gestures.map { gesture in
@@ -78,7 +79,8 @@ final class ArmDeformationTests: XCTestCase {
                 for (frame, motion) in sequence.enumerated() {
                     let deformed = points.map {
                         motion.armPoint($0, shoulder: joints[0], elbow: joints[1], wrist: joints[2], left: arm.group.hasSuffix("_left"),
-                            elbowBendSpan: arm.bendSpans?[0] ?? 104, wristBendSpan: arm.bendSpans?[1] ?? 30)
+                            elbowBendSpan: arm.bendSpans?[0] ?? 104, wristBendSpan: arm.bendSpans?[1] ?? 30,
+                            upperArm:arm.jointPiece.map { $0 == "upper" })
                     }
                     for (a, b, c) in triangles {
                         let ratio = cross(deformed[b] - deformed[a], deformed[c] - deformed[a])
@@ -111,8 +113,8 @@ final class ArmDeformationTests: XCTestCase {
             XCTAssertLessThan(hand(wave).y, 280, "Wave beside the head")
             XCTAssertGreaterThan(hand(wave).x, 420, "Keep the waving hand outside the face")
             let think = PuppetMotion(pose: RigPose(time: time, gesture: .think))
-            XCTAssertLessThan(hand(think).x, 320, "Thinking folds inward across the chest")
-            XCTAssertGreaterThan(hand(think).y, 300, "Keep the fingers below the face")
+            XCTAssertTrue((320...390).contains(hand(think).x),"Thinking wrist stays beside and below the chin")
+            XCTAssertTrue((300...365).contains(hand(think).y),"The index reaches up to the chin")
         }
         for frame in 0...210 {
             let motion = PuppetMotion(pose: RigPose(time: Double(frame) / 30, gesture: .stretch))

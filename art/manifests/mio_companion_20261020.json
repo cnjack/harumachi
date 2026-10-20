@@ -16,7 +16,7 @@
   "rig": "art/live2d/mio/Mio.rig.json",
   "layered_source": "art/live2d/mio/Mio.layers.psd",
   "runtime_resources": "native/mio-companion/Sources/MioApp/Resources/Mio/",
-  "layer_count": 25,
+  "layer_count": 29,
   "canvas": [
     750,
     1000
@@ -27,10 +27,10 @@
   "engine": "Swift + Metal",
   "network_policy": "literal loopback IP only; no redirects",
   "live_clef_verified": false,
-  "layout_revision": "20261020-hand-poses-v8",
+  "layout_revision": "20261020-thinking-v9",
   "face_layout_source": "native/mio-companion/tools/pack_assets.swift",
   "initial_verification": "evidence/mio_companion_20261020/verification.json",
-  "verification": "evidence/mio_stretch_fist_20261020/verification.json",
+  "verification": "evidence/mio_thinking_20261020/verification.json",
   "face_verification": "evidence/mio_face_proportions_20261020/verification.json",
   "head_verification": "evidence/mio_head20_20261020/verification.json",
   "body_revision": {
@@ -164,5 +164,45 @@
     "regression": "actual texture thumb side for palm/back/inward; transformed thumb direction for wave/think/talk; compact fist silhouette, grip timing and full hand mesh transitions",
     "inward_source_columns_corrected": true,
     "inward_mapping": "Screen left uses left column; screen right uses right column. Unlike palm/back/fist sheets, the inward sheet has the opposite anatomical column order."
+  },
+  "previous_hand_verification": "evidence/mio_stretch_fist_20261020/verification.json",
+  "thinking_revision": {
+    "revision": "20261020-thinking-v9",
+    "pose": "index finger diagonally touches chin; thumb raised; other three fingers curled",
+    "user_reference": "local evidence/mio_thinking_20261020/user-reference.png; gesture only",
+    "tool": "imagegen built-in",
+    "atlas": "art/live2d/mio/pose-parts/chin-index.png",
+    "prompt": "art/manifests/prompts/live2d/mio-chin-index.txt",
+    "original_output": "exec-a670cb1b-6574-49a7-9cf5-29b0aa6fdf8a.png",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "source_wrist": [
+      825,
+      870
+    ],
+    "contact_point": [
+      547,
+      554
+    ],
+    "source_forearm_extension": 2.4,
+    "right_arm_binding": "source upper sleeve and rounded forearm overlap; rigid rotations at elbow",
+    "cloud_source": "native vector path exported by pack_assets.swift",
+    "cloud_fade_in": [
+      0.85,
+      1.2
+    ],
+    "cloud_fade_out": [
+      3.9,
+      4.2
+    ],
+    "head_tilt_radians": 0.13,
+    "head_scale_preserved": 0.736,
+    "discarded_candidates": [
+      "open thumb/index cradle",
+      "four-finger loose fist"
+    ],
+    "hand_occlusion": "chin hand foreground above face and hair; forearm under cuff"
   }
 }

@@ -8,6 +8,7 @@ struct RigDescription: Decodable {
         let joints: [[Float]]?
         let bendSpans: [Float]?
         let variant: String?
+        let jointPiece: String?
     }
     let canvas: [Float]
     let origin: [Float]?
@@ -67,17 +68,20 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         fragment float4 rig_fragment(O in [[stage_in]], texture2d<float> t [[texture(0)]],
             texture2d<float> palm [[texture(1)]], texture2d<float> back [[texture(2)]],
             texture2d<float> inward [[texture(3)]], texture2d<float> fist [[texture(4)]],
-            constant float4 &weights [[buffer(0)]], constant float &grip [[buffer(1)]]) {
+            texture2d<float> chin [[texture(5)]], constant float4 &weights [[buffer(0)]],
+            constant float2 &extra [[buffer(1)]], constant float &opacity [[buffer(2)]]) {
             constexpr sampler s(filter::linear, address::clamp_to_edge);
             float4 c = t.sample(s, in.uv);
-            if (weights.x < 0) return c;
-            // Mix registered drawings in premultiplied space. Drawing five
+            if (weights.x < 0) { c.a *= opacity; return c; }
+            // Mix registered drawings in premultiplied space. Drawing six
             // translucent layers separately would make the wrist fade through.
             float4 b = palm.sample(s,in.uv), d = back.sample(s,in.uv), e = inward.sample(s,in.uv);
             float4 f = fist.sample(s,in.uv);
-            c.rgb *= c.a; b.rgb *= b.a; d.rgb *= d.a; e.rgb *= e.a; f.rgb *= f.a;
-            float4 out = c*weights.x + b*weights.y + d*weights.z + e*weights.w + f*grip;
+            float4 g = chin.sample(s,in.uv);
+            c.rgb *= c.a; b.rgb *= b.a; d.rgb *= d.a; e.rgb *= e.a; f.rgb *= f.a; g.rgb *= g.a;
+            float4 out = c*weights.x + b*weights.y + d*weights.z + e*weights.w + f*extra.x + g*extra.y;
             if (out.a > 0.0001) out.rgb /= out.a;
+            out.a *= opacity;
             return out;
         }
         """, options: nil)
@@ -127,7 +131,11 @@ final class MioRenderer: NSObject, MTKViewDelegate {
                 p = motion.armPoint(p, shoulder: SIMD2(joints[0][0], joints[0][1]),
                                     elbow: SIMD2(joints[1][0], joints[1][1]),
                                     wrist: SIMD2(joints[2][0], joints[2][1]), left: layer.group.hasSuffix("_left"),
-                                    elbowBendSpan: layer.bendSpans?[0] ?? 104, wristBendSpan: layer.bendSpans?[1] ?? 30)
+                                    elbowBendSpan: layer.bendSpans?[0] ?? 104, wristBendSpan: layer.bendSpans?[1] ?? 30,
+                                    upperArm:layer.jointPiece.map { $0 == "upper" })
+            } else if layer.group == "thought_cloud" {
+                p += motion.headShift+SIMD2(motion.head*30,Float(sin(pose.time*2))*1.2)
+                p = motion.torsoPoint(p)
             } else if head {
                 if layer.group == "hair" {
                     let weight = max(0, (p.y - 95) / 200)
@@ -168,22 +176,27 @@ final class MioRenderer: NSObject, MTKViewDelegate {
             if layer.group == "eyes_closed" && pose.blink <= 0.5 { continue }
             if layer.group == "mouth_open" && !pose.mouthOpen { continue }
             if layer.group == "mouth_closed" && pose.mouthOpen { continue }
+            var opacity: Float = layer.group == "thought_cloud" ? motion(for:pose).thoughtOpacity : 1
+            if layer.id == "hand_right_chin_front" { opacity = motion(for:pose).rightChin }
+            if opacity < 0.001 { continue }
             let v = vertices(for: layer, size: size, pose: pose)
             guard let buffer = device.makeBuffer(bytes: v, length: v.count * MemoryLayout<Vertex>.stride, options: .storageModeShared) else { continue }
             encoder.setVertexBuffer(buffer, offset: 0, index: 0)
             encoder.setFragmentTexture(textures[layer.id], index: 0)
             var weights = SIMD4<Float>(-1,0,0,0)
-            var grip: Float = 0
-            if layer.group.hasPrefix("hand_") {
+            var extra = SIMD2<Float>.zero
+            if layer.group.hasPrefix("hand_") && layer.id != "hand_right_chin_front" {
                 let motion = motion(for: pose)
                 weights = layer.group == "hand_left" ? motion.leftHand : motion.rightHand
-                grip = layer.group == "hand_left" ? motion.leftFist : motion.rightFist
+                extra = SIMD2(layer.group == "hand_left" ? motion.leftFist : motion.rightFist,
+                              layer.group == "hand_right" ? motion.rightChin : 0)
             }
-            for (index, variant) in ["palm","back","inward","fist"].enumerated() {
+            for (index, variant) in ["palm","back","inward","fist","chin"].enumerated() {
                 encoder.setFragmentTexture(textures[layer.group + "_" + variant] ?? textures[layer.id], index: index+1)
             }
             encoder.setFragmentBytes(&weights, length: MemoryLayout<SIMD4<Float>>.stride, index: 0)
-            encoder.setFragmentBytes(&grip, length: MemoryLayout<Float>.stride, index: 1)
+            encoder.setFragmentBytes(&extra, length: MemoryLayout<SIMD2<Float>>.stride, index: 1)
+            encoder.setFragmentBytes(&opacity, length:MemoryLayout<Float>.stride,index:2)
             encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: v.count)
         }
         encoder.endEncoding()

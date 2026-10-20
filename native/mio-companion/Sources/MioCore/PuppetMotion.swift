@@ -16,6 +16,10 @@ public struct PuppetMotion: Sendable {
     /// Fifth registered drawing; together with the four weights above sums to 1.
     public var leftFist: Float = 0
     public var rightFist: Float = 0
+    public var rightChin: Float = 0
+    public var thoughtOpacity: Float = 0
+    /// Measured index tip after registration of chin-index.png at its wrist.
+    public static let thinkingFinger = SIMD2<Float>(547,554)
 
     public init(pose: RigPose) {
         let t = pose.time
@@ -62,12 +66,25 @@ public struct PuppetMotion: Sendable {
             torso += Float(sin(phase * 0.9)) * 0.025 * blend
             head += Float(sin(phase * 1.2)) * 0.035 * blend
         case .think:
-            rightHand = SIMD4(1 - blend, 0, 0, blend)
-            // Fold across the chest towards the face, rather than wave away
-            // from it. Positive rotation is clockwise in the canvas Y-down frame.
-            rightShoulder += 0.05 * blend; rightElbow += 2.15 * blend
-            rightWrist = 0.08 * blend
-            head += 0.075 * blend; torso += 0.04 * blend
+            rightChin = blend
+            rightHand = SIMD4(1-blend,0,0,0)
+            head += 0.13 * blend; torso += 0.018 * blend
+            // Solve the two painted sleeve pieces against the actual index
+            // tip, keeping contact as the head tilts and follows the pointer.
+            let shoulder = SIMD2<Float>(369,320), elbow = SIMD2<Float>(427,418)
+            let target = headPoint(SIMD2(300,268))+SIMD2(1,1)
+            let upper = elbow-shoulder, lower = Self.thinkingFinger-elbow, reach = target-shoulder
+            let a = sqrt(upper.x*upper.x+upper.y*upper.y)
+            let b = sqrt(lower.x*lower.x+lower.y*lower.y)
+            let cosine = max(-1,min(1,(reach.x*reach.x+reach.y*reach.y-a*a-b*b)/(2*a*b)))
+            let angle = acos(cosine)
+            let rawShoulder = atan2(reach.y,reach.x)-atan2(b*sin(angle),a+b*cos(angle))-atan2(upper.y,upper.x)
+            let solvedShoulder = atan2(sin(rawShoulder),cos(rawShoulder))
+            let solvedElbow = angle-(atan2(lower.y,lower.x)-atan2(upper.y,upper.x))
+            rightShoulder += (solvedShoulder-rightShoulder)*blend
+            rightElbow += (solvedElbow-rightElbow)*blend
+            thoughtOpacity = Self.smooth(0.85,1.2,Float(phase))
+                * (1-Self.smooth(3.9,4.2,Float(phase)))
         case .talk:
             rightHand = SIMD4(1 - blend, blend, 0, 0)
             rightShoulder += (0.10 + 0.03 * oscillation) * blend
@@ -102,6 +119,8 @@ public struct PuppetMotion: Sendable {
         result.rightHand = previous.rightHand + (rightHand - previous.rightHand) * t
         result.leftFist = mix(previous.leftFist,leftFist)
         result.rightFist = mix(previous.rightFist,rightFist)
+        result.rightChin = mix(previous.rightChin,rightChin)
+        result.thoughtOpacity = mix(previous.thoughtOpacity,thoughtOpacity)
         return result
     }
     public static func envelope(_ time: Double, duration: Double) -> Float {
@@ -150,13 +169,21 @@ public struct PuppetMotion: Sendable {
         return center + side * across
     }
     public func armPoint(_ point: SIMD2<Float>, shoulder: SIMD2<Float>, elbow: SIMD2<Float>, wrist: SIMD2<Float>, left: Bool,
-                         elbowBendSpan: Float = 104, wristBendSpan: Float = 30) -> SIMD2<Float> {
+                         elbowBendSpan: Float = 104, wristBendSpan: Float = 30, upperArm: Bool? = nil) -> SIMD2<Float> {
         let axis = wrist - elbow
         let direction = axis / max(1, sqrt(axis.x * axis.x + axis.y * axis.y))
         var p = Self.bend(point, at: wrist, direction: direction,
                           angle: left ? leftWrist : rightWrist, span: wristBendSpan)
-        p = Self.bend(p, at: elbow, direction: direction,
-                      angle: left ? leftElbow : rightElbow, span: elbowBendSpan)
+        if left {
+            p = Self.bend(p, at: elbow, direction: direction,angle:leftElbow,span:elbowBendSpan)
+        } else {
+            // Source upper sleeve and forearm now overlap at a painted elbow.
+            // Their rigid rotations allow a deep fold without inverting cloth.
+            let delta = point-elbow
+            if !(upperArm ?? (delta.x*direction.x+delta.y*direction.y < -24)) {
+                p = Self.rotate(p,around:elbow,by:rightElbow)
+            }
+        }
         // The whole shoulder cap belongs to the upper arm. A Y mask here pins
         // half the cap to the torso and twists it when the arm is raised.
         p = Self.rotate(p, around: shoulder, by: left ? leftShoulder : rightShoulder)

@@ -154,6 +154,14 @@ import MioCore
                             let q = motion.torsoPoint(SIMD2(x,432))
                             points.append([q.x+75,q.y])
                         }
+                        // Probe the painted split elbow and both sides of its
+                        // overlap, beyond the old shoulder/cuff-only checks.
+                        let elbow = motion.armPoint(SIMD2(427,418),shoulder:SIMD2(369,320),
+                            elbow:SIMD2(427,418),wrist:SIMD2(486,508),left:false)
+                        for offset in [SIMD2<Float>(0,0),SIMD2(-8,0),SIMD2(8,0),SIMD2(0,-8),SIMD2(0,8)] {
+                            let q = elbow+offset
+                            points.append([q.x+75,q.y])
+                        }
                         // Inspect the actual chin/neck join after source head scaling.
                         for p in [SIMD2<Float>(294,268),SIMD2(306,268),SIMD2(300,288)] {
                             let q = motion.torsoPoint(motion.neckPoint(p))
