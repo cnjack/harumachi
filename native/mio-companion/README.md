@@ -1,6 +1,6 @@
 # 澪 · 晴町桌面来信
 
-macOS 14+ 的 Swift / Metal 桌面角色原型，沿用游戏女主角澪的棕色短发、黄色发夹、奶油色开衫、蓝衬衣和深蓝百褶裙。双击仓库根目录的 `open_mio_companion.command`，或运行：
+macOS 14+ 的 Swift / Metal 桌面角色原型，沿用游戏女主角澪的棕色短发、黄色发夹、奶油色开衫、蓝衬衣和深蓝百褶裙。当前动作自然度审查未通过，肩肘腕裁片线、换手重影及自动说话打断跳变见[逐动作记录](../../docs/game-design/MIO_MOTION_JOINT_REVIEW_20261020.md)。双击仓库根目录的 `open_mio_companion.command`，或运行：
 
 ```bash
 ./native/mio-companion/tools/build_app.sh
@@ -8,6 +8,15 @@ open native/mio-companion/dist/Mio.app
 ```
 
 需要 Xcode 或包含 Swift 的 Command Line Tools。构建不下载第三方依赖。`dist/Mio.app` 是当前机器的临时签名本地应用，未做 Developer ID 签名或公证。窗口关闭后可从菜单栏「澪」重新打开；菜单可暂停接收、切换角色鼠标穿透和退出。角色窗口可以拖动。
+
+完整离线视觉复拍（不创建系统监控或网络客户端，不启动常驻窗口）：
+
+```bash
+dist/Mio.app/Contents/MacOS/MioCompanion --review-motion /tmp/mio-joints
+python3 tools/review_motion.py /tmp/mio-joints
+```
+
+从此目录执行，Python 工具需要 Pillow。输出 3678 张真实 Metal PNG、关节坐标、五动作十部位放大图、25 组切换表、自动周期/说话打断及视线极值表。测量包含画幅、关节中心 alpha、邻帧腕位移；工具不自动判定自然度。
 
 ## 角色和渲染
 
