@@ -1,8 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
-swift build -c release
-bin="$(swift build -c release --show-bin-path)"
+build_args=(-c release --build-system native --disable-sandbox --scratch-path "${MIO_SWIFT_BUILD_PATH:-$PWD/.build/native}")
+swift build "${build_args[@]}"
+bin="$(swift build "${build_args[@]}" --show-bin-path)"
 app="$PWD/dist/Mio.app"
 mkdir -p "$app/Contents/MacOS" "$app/Contents/Resources"
 cp "$bin/MioCompanion" "$app/Contents/MacOS/MioCompanion"

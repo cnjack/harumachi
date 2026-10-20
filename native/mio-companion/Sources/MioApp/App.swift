@@ -136,6 +136,19 @@ import MioCore
 @main struct MioMain {
     @MainActor static func main() {
         let args = CommandLine.arguments
+        let supported: Set<String> = ["--preview-motion","--review-motion-window","--review-motion","--render-samples","--render-motion","--review-cubism","--smoke-test","--connection-test"]
+        if let unknown = args.dropFirst().first(where: { $0.hasPrefix("--") && !supported.contains($0) }) {
+            fputs("Unknown Mio argument: \(unknown)\n",stderr);exit(2)
+        }
+        for flag in supported.subtracting(["--preview-motion"]) {
+            if let at = args.firstIndex(of:flag), at+1 >= args.count || args[at+1].hasPrefix("--") {
+                fputs("Missing output directory for \(flag)\n",stderr);exit(2)
+            }
+        }
+        if let at = args.firstIndex(of:"--review-cubism"),at+1 < args.count {
+            do { try CubismReview.run(at:URL(fileURLWithPath:args[at+1],isDirectory:true));exit(0) }
+            catch { fputs("Cubism review failed: \(error)\n",stderr);exit(1) }
+        }
         if let at = args.firstIndex(of: "--preview-motion") {
             do {
                 let directory = at+1 < args.count ? args[at+1] : "/tmp/mio-motion-preview"

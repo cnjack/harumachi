@@ -19,8 +19,8 @@ jobs:
         with:
           lfs: false
           persist-credentials: false
-      - name: Fetch only the companion textures
-        run: git lfs pull --include='native/mio-companion/Sources/MioApp/Resources/Mio/*.png' --exclude=''
+      - name: Fetch the companion model and textures
+        run: git lfs pull --include='native/mio-companion/Sources/MioApp/Resources/**' --exclude=''
       - name: Compile and test Swift code
         working-directory: native/mio-companion
         run: swift test

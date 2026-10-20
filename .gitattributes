@@ -33,3 +33,5 @@
 game/addons/godot-sqlite/bin/** filter=lfs diff=lfs merge=lfs -text
 game/addons/godot-sqlite/bin/**/Resources/Info.plist !filter !diff !merge -text
 game/addons/character_contact_filter/bin/** filter=lfs diff=lfs merge=lfs -text
+*.moc3 filter=lfs diff=lfs merge=lfs -text
+*.cmo3 filter=lfs diff=lfs merge=lfs -text

@@ -1,6 +1,6 @@
 # 澪 · 晴町桌面来信
 
-macOS 14+ 的 Swift / Metal 桌面角色原型，沿用游戏女主角澪的棕色短发、黄色发夹、奶油色开衫、蓝衬衣和深蓝百褶裙。当前 v10 已修复肩肘腕裁片线、换手重影及打断跳变，6514 帧与原生六状态复验未再复现已知缺陷，详见[修复记录](../../docs/game-design/MIO_MOTION_REPAIR_20261020.md)。仅看动作可双击 `preview_mio_motion.command`。完整常驻版双击仓库根目录的 `open_mio_companion.command`，或运行：
+macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用真正 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 32 层 PSD 在 `art/live2d/mio/cubism/`。模型含 22 个参数、五套标准 motion3，CLI 生成与兼容边界见[本轮记录](../../docs/game-design/MIO_CUBISM_20261021.md)。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。格式转换沿用原素材，先前手臂自然度反馈仍待修整。仅看动作可双击根目录 `preview_mio_motion.command`；完整常驻版使用 `open_mio_companion.command`。构建：
 
 ```bash
 ./native/mio-companion/tools/build_app.sh
@@ -9,7 +9,13 @@ open native/mio-companion/dist/Mio.app
 
 需要 Xcode 或包含 Swift 的 Command Line Tools。构建不下载第三方依赖。`dist/Mio.app` 是当前机器的临时签名本地应用，未做 Developer ID 签名或公证。窗口关闭后可从菜单栏「澪」重新打开；菜单可暂停接收、切换角色鼠标穿透和退出。角色窗口可以拖动。
 
-完整离线视觉复拍（不创建系统监控或网络客户端，不启动常驻窗口）：
+当前 Cubism 离线复验（不创建系统监控或网络客户端，不启动常驻窗口）：
+
+```bash
+dist/Mio.app/Contents/MacOS/MioCompanion --review-cubism /tmp/mio-cubism
+```
+
+以下为原分层后端的历史复拍工具，需设置 `MIO_LEGACY_RIG=1`，不作为新 Cubism 验收：
 
 ```bash
 dist/Mio.app/Contents/MacOS/MioCompanion --review-motion /tmp/mio-joints

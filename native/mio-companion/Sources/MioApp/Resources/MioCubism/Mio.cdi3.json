@@ -1,0 +1,123 @@
+{
+  "Version": 3,
+  "Parameters": [
+    {
+      "Id": "ParamAngleX",
+      "GroupId": "Mio",
+      "Name": "ParamAngleX"
+    },
+    {
+      "Id": "ParamAngleY",
+      "GroupId": "Mio",
+      "Name": "ParamAngleY"
+    },
+    {
+      "Id": "ParamAngleZ",
+      "GroupId": "Mio",
+      "Name": "ParamAngleZ"
+    },
+    {
+      "Id": "ParamBodyAngleZ",
+      "GroupId": "Mio",
+      "Name": "ParamBodyAngleZ"
+    },
+    {
+      "Id": "ParamBreath",
+      "GroupId": "Mio",
+      "Name": "ParamBreath"
+    },
+    {
+      "Id": "ParamEyeLOpen",
+      "GroupId": "Mio",
+      "Name": "ParamEyeLOpen"
+    },
+    {
+      "Id": "ParamEyeROpen",
+      "GroupId": "Mio",
+      "Name": "ParamEyeROpen"
+    },
+    {
+      "Id": "ParamMouthOpenY",
+      "GroupId": "Mio",
+      "Name": "ParamMouthOpenY"
+    },
+    {
+      "Id": "ParamHairFront",
+      "GroupId": "Mio",
+      "Name": "ParamHairFront"
+    },
+    {
+      "Id": "ParamHairBack",
+      "GroupId": "Mio",
+      "Name": "ParamHairBack"
+    },
+    {
+      "Id": "ParamShoulderL",
+      "GroupId": "Mio",
+      "Name": "ParamShoulderL"
+    },
+    {
+      "Id": "ParamShoulderR",
+      "GroupId": "Mio",
+      "Name": "ParamShoulderR"
+    },
+    {
+      "Id": "ParamElbowL",
+      "GroupId": "Mio",
+      "Name": "ParamElbowL"
+    },
+    {
+      "Id": "ParamElbowR",
+      "GroupId": "Mio",
+      "Name": "ParamElbowR"
+    },
+    {
+      "Id": "ParamWristL",
+      "GroupId": "Mio",
+      "Name": "ParamWristL"
+    },
+    {
+      "Id": "ParamWristR",
+      "GroupId": "Mio",
+      "Name": "ParamWristR"
+    },
+    {
+      "Id": "ParamHandL",
+      "GroupId": "Mio",
+      "Name": "ParamHandL"
+    },
+    {
+      "Id": "ParamHandR",
+      "GroupId": "Mio",
+      "Name": "ParamHandR"
+    },
+    {
+      "Id": "ParamHandOpenL",
+      "GroupId": "Mio",
+      "Name": "ParamHandOpenL"
+    },
+    {
+      "Id": "ParamHandOpenR",
+      "GroupId": "Mio",
+      "Name": "ParamHandOpenR"
+    },
+    {
+      "Id": "ParamThought",
+      "GroupId": "Mio",
+      "Name": "ParamThought"
+    },
+    {
+      "Id": "ParamTorsoLift",
+      "GroupId": "Mio",
+      "Name": "ParamTorsoLift"
+    }
+  ],
+  "ParameterGroups": [
+    {
+      "Id": "Mio",
+      "GroupId": "",
+      "Name": "澪"
+    }
+  ],
+  "Parts": []
+}

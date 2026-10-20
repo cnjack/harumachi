@@ -1,5 +1,7 @@
 # 模型、工程与交付流程
 
+澪桌面角色的正式 Cubism CLI 导出、Swift Core/Metal 渲染与离线验收见 [MIO_CUBISM_20261021.md](MIO_CUBISM_20261021.md)。入口 `python3 art/tools/live2d/export_mio.py`，使用已安装 Editor，不分发厂商库；`--review-cubism` 不启动监控或网络。
+
 ## 澪的 Swift 桌面角色（2026-10-20）
 
 待机源姿势将双臂向内收约 21.8°，手腕垂在胯侧；「放下」按钮沿用 `idle` ID。手势只释放参与动作的手臂偏置，避免招手、托腮时空闲臂仍外张；新增回归检查真实变形后的肩腕距离与动作结束姿态。每次改源动作后重新复拍全组，不能复用前版截图。当前格式核对明确为 `harumachi-layer-rig`、非 Cubism，详见[垂手与格式记录](MIO_REST_AND_FORMAT_20261020.md)。

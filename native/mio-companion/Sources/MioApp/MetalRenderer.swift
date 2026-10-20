@@ -23,6 +23,8 @@ final class MioRenderer: NSObject, MTKViewDelegate {
     let rig: RigDescription
     let textures: [String: MTLTexture]
     let started = ProcessInfo.processInfo.systemUptime
+    let cubism: CubismDrawing?
+    private(set) var cubismError: Error?
     var pose = RigPose(time: 0)
     var frameCount = 0
     var onFrame: (() -> Void)?
@@ -44,11 +46,17 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         gestureRevision = revision
     }
 
-    init(device: MTLDevice) throws {
+    init(device: MTLDevice, legacy: Bool = false) throws {
         self.device = device
+        if legacy || ProcessInfo.processInfo.environment["MIO_LEGACY_RIG"] == "1" { cubism = nil }
+        else { cubism = try CubismDrawing(device:device,manifest:MioResources.directory("MioCubism").appendingPathComponent("Mio.model3.json")) }
         guard let queue = device.makeCommandQueue() else { throw RenderError.unavailable }
         self.queue = queue
-        let resources = Bundle.module.resourceURL!.appendingPathComponent("Resources/Mio")
+        if let cubism {
+            rig = RigDescription(canvas:[cubism.model.width,cubism.model.height],origin:nil,layers:[])
+            textures = [:]
+        } else {
+        let resources = try MioResources.directory("Mio")
         rig = try JSONDecoder().decode(RigDescription.self, from: Data(contentsOf: resources.appendingPathComponent("Mio.rig.json")))
         var loaded: [String: MTLTexture] = [:]
         for layer in rig.layers {
@@ -76,6 +84,7 @@ final class MioRenderer: NSObject, MTKViewDelegate {
             loaded[layer.id] = texture
         }
         textures = loaded
+        }
         let library = try device.makeLibrary(source: """
         #include <metal_stdlib>
         using namespace metal;
@@ -123,14 +132,14 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         frameCount += 1
         if frameCount % 60 == 0 { onFrame?() }
     }
-    func vertices(for layer: RigDescription.Layer, size: CGSize, pose: RigPose) -> [Vertex] {
+    func vertices(for layer: RigDescription.Layer, size: CGSize, pose: RigPose, motion supplied: PuppetMotion? = nil) -> [Vertex] {
         let r = layer.rect
         let scale = min(Float(size.width) / rig.canvas[0], Float(size.height) / rig.canvas[1])
         let offset = SIMD2<Float>((Float(size.width) - rig.canvas[0] * scale) / 2,
                                  (Float(size.height) - rig.canvas[1] * scale) / 2)
         let arm = layer.group.hasPrefix("arm_") || layer.group.hasPrefix("hand_")
         let head = ["head", "hair", "eyes_open", "eyes_closed", "mouth_open", "mouth_closed"].contains(layer.group)
-        let motion = motion(for: pose)
+        let motion = supplied ?? motion(for: pose)
         let handPresentation = layer.group.hasPrefix("hand_")
             ? HandPresentation(motion:motion,left:layer.group.hasSuffix("_left")) : nil
         func point(_ u: Float, _ v: Float) -> Vertex {
@@ -178,10 +187,15 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         } }
         return result
     }
-    func encode(command: MTLCommandBuffer, pass: MTLRenderPassDescriptor, size: CGSize, pose: RigPose) {
+    func encode(command: MTLCommandBuffer, pass: MTLRenderPassDescriptor, size: CGSize, pose: RigPose, motion supplied: PuppetMotion? = nil) {
         guard let encoder = command.makeRenderCommandEncoder(descriptor: pass) else { return }
         encoder.setRenderPipelineState(pipeline)
-        let motion = motion(for:pose)
+        let motion = supplied ?? motion(for:pose)
+        if let cubism {
+            do { try cubism.encode(encoder,size:size,pose:pose,motion:motion) }
+            catch { cubismError = error;fputs("Cubism render failed: \(error)\n",stderr) }
+            encoder.endEncoding();return
+        }
         for layer in rig.layers {
             if let variant = layer.variant, variant != "relaxed" { continue }
             if layer.group == "eyes_open" && pose.blink > 0.5 { continue }
@@ -193,7 +207,7 @@ final class MioRenderer: NSObject, MTKViewDelegate {
             if layer.id == "hand_right_chin_front" { opacity = hand.variant == "chin" ? 1 : 0 }
             else if layer.group == "hand_right", hand.variant == "chin" { continue }
             if opacity < 0.001 { continue }
-            let v = vertices(for: layer, size: size, pose: pose)
+            let v = vertices(for: layer, size: size, pose: pose, motion:motion)
             guard let buffer = device.makeBuffer(bytes: v, length: v.count * MemoryLayout<Vertex>.stride, options: .storageModeShared) else { continue }
             encoder.setVertexBuffer(buffer, offset: 0, index: 0)
             let texture = layer.group.hasPrefix("hand_") && layer.id != "hand_right_chin_front"
@@ -204,15 +218,16 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         }
         encoder.endEncoding()
     }
-    func snapshot(to url: URL, pose: RigPose, width: Int = 750, height: Int = 1000) throws {
+    func snapshot(to url: URL, pose: RigPose, width: Int = 750, height: Int = 1000, motion: PuppetMotion? = nil) throws {
         let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: width, height: height, mipmapped: false)
         descriptor.usage = [.renderTarget, .shaderRead]; descriptor.storageMode = .shared
         guard let texture = device.makeTexture(descriptor: descriptor), let command = queue.makeCommandBuffer() else { throw RenderError.unavailable }
         let pass = MTLRenderPassDescriptor()
         pass.colorAttachments[0].texture = texture; pass.colorAttachments[0].loadAction = .clear
         pass.colorAttachments[0].storeAction = .store; pass.colorAttachments[0].clearColor = MTLClearColorMake(0, 0, 0, 0)
-        encode(command: command, pass: pass, size: CGSize(width: width, height: height), pose: pose)
+        encode(command: command, pass: pass, size: CGSize(width: width, height: height), pose: pose, motion:motion)
         command.commit(); command.waitUntilCompleted()
+        if let cubismError { throw cubismError }
         guard command.status == .completed else { throw RenderError.unavailable }
         var pixels = [UInt8](repeating: 0, count: width * height * 4)
         texture.getBytes(&pixels, bytesPerRow: width * 4, from: MTLRegionMake2D(0,0,width,height), mipmapLevel: 0)
