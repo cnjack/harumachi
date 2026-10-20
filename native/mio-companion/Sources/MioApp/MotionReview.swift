@@ -43,8 +43,8 @@ enum MotionReview {
             record.merge(extra) { _, new in new }
             records.append(record)
         }
-        let isolated = try MioRenderer(device: device)
         for gesture in gestures {
+            let isolated = try MioRenderer(device: device)
             for frame in 0..<210 {
                 let time = Double(frame) / 30
                 try capture(isolated, pose: RigPose(time: time, lookX: Float(sin(time * 0.8)) * 0.65,
@@ -57,12 +57,25 @@ enum MotionReview {
             let renderer = try MioRenderer(device: device)
             renderer.pose = RigPose(time: 2, speaking: from == .talk, gesture: from)
             renderer.selectGesture(to, revision: 1)
-            for frame in 0...36 {
+            let phaseOffset = renderer.pose.gestureTime
+            for frame in 0...120 {
                 let phase = Double(frame) / 30
-                let pose = RigPose(time: 2 + phase, speaking: to == .talk, gesture: to, gestureTime: phase)
+                let pose = RigPose(time: 2 + phase, speaking: to == .talk, gesture: to, gestureTime: phaseOffset+phase)
                 try capture(renderer, pose: pose, group: "switch-\(from.rawValue)-\(to.rawValue)", frame: frame)
             }
         } }
+        for clock in [100.0,3600.0] {
+            for (from,to) in [(CharacterGesture.think,CharacterGesture.stretch),(.stretch,.think)] {
+                let late = try MioRenderer(device:device)
+                late.pose = RigPose(time:clock,gesture:from,gestureTime:2)
+                late.selectGesture(to,revision:1)
+                for frame in 0...120 {
+                    let phase = Double(frame)/30
+                    try capture(late,pose:RigPose(time:clock+phase,gesture:to,gestureTime:phase),
+                        group:"late-\(Int(clock))-\(from.rawValue)-\(to.rawValue)",frame:frame)
+                }
+            }
+        }
         let renderer = try MioRenderer(device: device)
         // Include the wrap into the next automatic cycle, at the actual 30 FPS.
         for frame in 0...1566 {
@@ -71,15 +84,17 @@ enum MotionReview {
         }
         for (index, gesture) in gestures.enumerated() {
             for (lookIndex, look) in [SIMD2<Float>(-1, -1), SIMD2(-1, 1), SIMD2(0, 0), SIMD2(1, -1), SIMD2(1, 1)].enumerated() {
-                try capture(renderer, pose: RigPose(time: 2, lookX: look.x, lookY: look.y,
+                let still = try MioRenderer(device:device)
+                try capture(still, pose: RigPose(time: 2, lookX: look.x, lookY: look.y,
                     speaking: gesture == .talk, gesture: gesture), group: "look-extremes", frame: index * 5 + lookIndex)
             }
         }
         // Automatic speech can interrupt an active action without selectGesture.
         for start in [2.0, 18.0, 36.0] {
-            for frame in 0...36 {
+            let speech = try MioRenderer(device:device)
+            for frame in 0...120 {
                 let time = start + Double(frame) / 30
-                try capture(renderer, pose: RigPose(time: time, speaking: frame >= 10 && frame < 25),
+                try capture(speech, pose: RigPose(time: time, speaking: frame >= 10 && frame < 25),
                     group: "automatic-speech-\(Int(start))", frame: frame)
             }
         }

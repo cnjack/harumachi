@@ -16,7 +16,7 @@
   "rig": "art/live2d/mio/Mio.rig.json",
   "layered_source": "art/live2d/mio/Mio.layers.psd",
   "runtime_resources": "native/mio-companion/Sources/MioApp/Resources/Mio/",
-  "layer_count": 29,
+  "layer_count": 30,
   "canvas": [
     750,
     1000
@@ -27,10 +27,10 @@
   "engine": "Swift + Metal",
   "network_policy": "configured HTTP(S) domain, LAN or loopback endpoint; normal system network authorization; no redirects",
   "live_clef_verified": true,
-  "layout_revision": "20261020-thinking-v9",
+  "layout_revision": "20261020-continuous-v10",
   "face_layout_source": "native/mio-companion/tools/pack_assets.swift",
   "initial_verification": "evidence/mio_companion_20261020/verification.json",
-  "verification": "evidence/mio_thinking_20261020/verification.json",
+  "verification": "evidence/mio_motion_repair_20261020/verification.json",
   "face_verification": "evidence/mio_face_proportions_20261020/verification.json",
   "head_verification": "evidence/mio_head20_20261020/verification.json",
   "body_revision": {
@@ -216,5 +216,33 @@
     "live_verification_scope": "fixed synthetic message; production URLSession and native window; no SystemMonitor or Inbox reader",
     "live_monitoring_verified": false,
     "monitoring_data_approval": "pending explicit user confirmation after automatic review rejected broad native smoke"
+  },
+  "motion_repair_revision": {
+    "revision": "20261020-continuous-v10",
+    "tool": "imagegen built-in",
+    "atlas": "art/live2d/mio/articulated/arms-continuous.png",
+    "atlas_sha256": "f34b069284b62aad432a4a8701df1cb374420b6a0e3709b2c6c98a9a068fef79",
+    "prompt": "art/manifests/prompts/live2d/mio-continuous-arms.txt",
+    "references": [
+      "art/live2d/mio/articulated/body-arms-atlas.png"
+    ],
+    "generated_dimensions": [
+      1536,
+      1024
+    ],
+    "generated_original": "exec-130ceb55-ca69-4973-af4e-0a7b7c83ac7e.png",
+    "binding": "same continuous 116px elbow arc on both sides, measured painted wrist profiles and shared opaque forearms",
+    "hands": "single selected source drawing; inward/fist intermediates with positive-Jacobian geometric closure; no crossfade alpha",
+    "renderer": "premultiplied RGBA before filtering; premultiplied source-over blending",
+    "transitions": "shared stateful automatic/manual playback, measured arm-speed limit and neutral waypoint for opposite elbow folds",
+    "source_files": [
+      "native/mio-companion/tools/pack_assets.swift",
+      "native/mio-companion/Sources/MioCore/PuppetMotion.swift",
+      "native/mio-companion/Sources/MioCore/MotionPlayback.swift",
+      "native/mio-companion/Sources/MioCore/HandPresentation.swift"
+    ],
+    "source_first": true,
+    "head_scale_unchanged": 0.736,
+    "previous_review": "evidence/mio_joint_review_20261020/verification.json"
   }
 }

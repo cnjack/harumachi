@@ -59,7 +59,7 @@
 
 ## 运行与开发
 
-澪的独立 Swift / Metal 桌面角色原型：双击 [`open_mio_companion.command`](open_mio_companion.command)，或查看 [启动、消息接入与验证范围](native/mio-companion/README.md)。提供八层 PSD、分层动画、免授权系统事件和 Clef 决策接口；当前不是 Cubism `.moc3` 格式，真实 Clef 模型尚未联通。
+澪的独立 Swift / Metal 桌面角色原型：角色动作可用 [`preview_mio_motion.command`](preview_mio_motion.command) 本地预览；来信界面入口为 [`open_mio_companion.command`](open_mio_companion.command)，[启动与验证范围](native/mio-companion/README.md)。提供 30 层 PSD、连续袖子、多手型、动作过渡、系统事件和 Clef 决策接口。真实 Clef 固定消息连接已验证，常驻监控外发范围待确认；当前为自有分层格式。
 
 需要 **Git LFS** 与 **Godot 4.8-dev7**，精确版本为 `4.8.dev7.official.c971f93e7`。引擎和导出模板必须一致。
 

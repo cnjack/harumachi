@@ -136,6 +136,19 @@ import MioCore
 @main struct MioMain {
     @MainActor static func main() {
         let args = CommandLine.arguments
+        if let at = args.firstIndex(of: "--preview-motion") {
+            do {
+                let directory = at+1 < args.count ? args[at+1] : "/tmp/mio-motion-preview"
+                try MotionReviewWindow.run(at: URL(fileURLWithPath:directory,isDirectory:true),persistent:true)
+                exit(0)
+            } catch { fputs("Motion preview failed: \(error)\n",stderr);exit(1) }
+        }
+        if let at = args.firstIndex(of: "--review-motion-window"), at + 1 < args.count {
+            do {
+                try MotionReviewWindow.run(at: URL(fileURLWithPath: args[at + 1], isDirectory: true))
+                exit(0)
+            } catch { fputs("Motion window failed: \(error)\n",stderr);exit(1) }
+        }
         if let at = args.firstIndex(of: "--review-motion"), at + 1 < args.count {
             do {
                 try MotionReview.run(at: URL(fileURLWithPath: args[at + 1], isDirectory: true))

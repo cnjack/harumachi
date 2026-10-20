@@ -2,6 +2,7 @@ import Foundation
 
 public struct PuppetMotion: Sendable {
     public var torso: Float = 0
+    public var torsoLift: Float = 0
     public var head: Float = 0
     public var headShift = SIMD2<Float>.zero
     public var leftShoulder: Float = 0
@@ -39,11 +40,16 @@ public struct PuppetMotion: Sendable {
             else if cycle >= 34 && cycle < 41 { gesture = .stretch; phase = cycle - 34 }
             else { gesture = .idle; phase = 0 }
         }
-        let blend = Self.envelope(phase, duration: gesture.duration)
+        let rise: Float = gesture == .stretch ? 1.5 : (gesture == .wave ? 1.35 : 0.85)
+        let blend = Self.envelope(phase, duration: gesture.duration,rise:rise,fall:gesture == .think ? 0.9 : 1.5)
+        let handBlend = Self.smooth(0,0.4,Float(phase))
+            * (1-Self.smooth(Float(gesture.duration-0.4),Float(gesture.duration),Float(phase)))
+        let presentedPalm = Self.smooth(0.18,0.60,Float(phase))
+            * (1-Self.smooth(Float(gesture.duration-1.2),Float(gesture.duration-0.6),Float(phase)))
         let oscillation = Float(sin(phase * 5.5))
         switch gesture {
         case .wave:
-            rightHand = SIMD4(1 - blend, blend, 0, 0)
+            rightHand = SIMD4(1 - presentedPalm, presentedPalm, 0, 0)
             rightShoulder -= 0.65 * Self.smooth(0.25, 1, blend)
             rightElbow -= (1.95 + 0.10 * oscillation) * Self.smooth(0, 0.65, blend)
             rightWrist = 0.13 * oscillation * blend
@@ -63,30 +69,37 @@ public struct PuppetMotion: Sendable {
             let foldedElbow = 1.25 * sin(.pi * blend) + 0.25 * blend
             leftElbow += foldedElbow; rightElbow -= foldedElbow
             headShift.y -= 3 * blend
+            torsoLift = 5 * blend
             torso += Float(sin(phase * 0.9)) * 0.025 * blend
             head += Float(sin(phase * 1.2)) * 0.035 * blend
         case .think:
-            rightChin = blend
-            rightHand = SIMD4(1-blend,0,0,0)
+            rightChin = handBlend
+            rightHand = SIMD4(1-handBlend,0,0,0)
             head += 0.13 * blend; torso += 0.018 * blend
             // Solve the two painted sleeve pieces against the actual index
             // tip, keeping contact as the head tilts and follows the pointer.
             let shoulder = SIMD2<Float>(369,320), elbow = SIMD2<Float>(427,418)
             let target = headPoint(SIMD2(300,268))+SIMD2(1,1)
-            let upper = elbow-shoulder, lower = Self.thinkingFinger-elbow, reach = target-shoulder
-            let a = sqrt(upper.x*upper.x+upper.y*upper.y)
-            let b = sqrt(lower.x*lower.x+lower.y*lower.y)
-            let cosine = max(-1,min(1,(reach.x*reach.x+reach.y*reach.y-a*a-b*b)/(2*a*b)))
-            let angle = acos(cosine)
-            let rawShoulder = atan2(reach.y,reach.x)-atan2(b*sin(angle),a+b*cos(angle))-atan2(upper.y,upper.x)
+            let axis = SIMD2<Float>(59,90)
+            let direction = axis/sqrt(axis.x*axis.x+axis.y*axis.y)
+            let reach = target-shoulder
+            let distance = sqrt(reach.x*reach.x+reach.y*reach.y)
+            var low: Float = 2.5, high: Float = 4.15
+            for _ in 0..<22 {
+                let angle = (low+high)/2
+                let p = Self.bend(Self.thinkingFinger,at:elbow,direction:direction,angle:angle,span:116)-shoulder
+                if sqrt(p.x*p.x+p.y*p.y) > distance { low = angle } else { high = angle }
+            }
+            let angle = (low+high)/2
+            let bent = Self.bend(Self.thinkingFinger,at:elbow,direction:direction,angle:angle,span:116)-shoulder
+            let rawShoulder = atan2(reach.y,reach.x)-atan2(bent.y,bent.x)
             let solvedShoulder = atan2(sin(rawShoulder),cos(rawShoulder))
-            let solvedElbow = angle-(atan2(lower.y,lower.x)-atan2(upper.y,upper.x))
             rightShoulder += (solvedShoulder-rightShoulder)*blend
-            rightElbow += (solvedElbow-rightElbow)*blend
+            rightElbow += (angle-rightElbow)*blend
             thoughtOpacity = Self.smooth(0.85,1.2,Float(phase))
                 * (1-Self.smooth(3.9,4.2,Float(phase)))
         case .talk:
-            rightHand = SIMD4(1 - blend, blend, 0, 0)
+            rightHand = SIMD4(1 - presentedPalm, presentedPalm, 0, 0)
             rightShoulder += (0.10 + 0.03 * oscillation) * blend
             rightElbow -= (0.55 + 0.06 * oscillation) * blend
             leftShoulder -= 0.08 * blend; leftElbow += 0.18 * blend
@@ -107,6 +120,7 @@ public struct PuppetMotion: Sendable {
         func mix(_ a: Float, _ b: Float) -> Float { a + (b - a) * t }
         var result = self
         result.torso = mix(previous.torso, torso)
+        result.torsoLift = mix(previous.torsoLift,torsoLift)
         result.head = mix(previous.head, head)
         result.headShift = previous.headShift + (headShift - previous.headShift) * t
         result.leftShoulder = mix(previous.leftShoulder, leftShoulder)
@@ -123,8 +137,8 @@ public struct PuppetMotion: Sendable {
         result.thoughtOpacity = mix(previous.thoughtOpacity,thoughtOpacity)
         return result
     }
-    public static func envelope(_ time: Double, duration: Double) -> Float {
-        smooth(0, 0.85, Float(time)) * (1 - smooth(Float(duration - 0.9), Float(duration), Float(time)))
+    public static func envelope(_ time: Double, duration: Double, rise: Float = 0.85, fall: Double = 0.9) -> Float {
+        smooth(0, rise, Float(time)) * (1 - smooth(Float(duration - fall), Float(duration), Float(time)))
     }
     public static func rotate(_ point: SIMD2<Float>, around pivot: SIMD2<Float>, by angle: Float) -> SIMD2<Float> {
         let q = point - pivot
@@ -138,7 +152,9 @@ public struct PuppetMotion: Sendable {
         return point + (headPoint(point) - point) * influence
     }
     public func torsoPoint(_ point: SIMD2<Float>, influence: Float = 1) -> SIMD2<Float> {
-        Self.rotate(point, around: SIMD2(300, 432), by: torso * influence)
+        var p = point
+        p.y -= torsoLift*(1-Self.smooth(310,650,p.y))*influence
+        return Self.rotate(p, around: SIMD2(300, 432), by: torso * influence)
     }
     public func lowerBodyPoint(_ point: SIMD2<Float>) -> SIMD2<Float> {
         // The hidden waist extension follows the blouse; the hem and legs stay
@@ -169,21 +185,12 @@ public struct PuppetMotion: Sendable {
         return center + side * across
     }
     public func armPoint(_ point: SIMD2<Float>, shoulder: SIMD2<Float>, elbow: SIMD2<Float>, wrist: SIMD2<Float>, left: Bool,
-                         elbowBendSpan: Float = 104, wristBendSpan: Float = 30, upperArm: Bool? = nil) -> SIMD2<Float> {
+                         elbowBendSpan: Float = 116, wristBendSpan: Float = 30, upperArm: Bool? = nil) -> SIMD2<Float> {
         let axis = wrist - elbow
         let direction = axis / max(1, sqrt(axis.x * axis.x + axis.y * axis.y))
         var p = Self.bend(point, at: wrist, direction: direction,
                           angle: left ? leftWrist : rightWrist, span: wristBendSpan)
-        if left {
-            p = Self.bend(p, at: elbow, direction: direction,angle:leftElbow,span:elbowBendSpan)
-        } else {
-            // Source upper sleeve and forearm now overlap at a painted elbow.
-            // Their rigid rotations allow a deep fold without inverting cloth.
-            let delta = point-elbow
-            if !(upperArm ?? (delta.x*direction.x+delta.y*direction.y < -24)) {
-                p = Self.rotate(p,around:elbow,by:rightElbow)
-            }
-        }
+        p = Self.bend(p,at:elbow,direction:direction,angle:left ? leftElbow : rightElbow,span:elbowBendSpan)
         // The whole shoulder cap belongs to the upper arm. A Y mask here pins
         // half the cap to the torso and twists it when the arm is raised.
         p = Self.rotate(p, around: shoulder, by: left ? leftShoulder : rightShoulder)

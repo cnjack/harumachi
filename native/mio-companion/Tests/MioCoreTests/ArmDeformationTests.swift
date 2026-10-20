@@ -54,7 +54,10 @@ final class ArmDeformationTests: XCTestCase {
                     if pixels[(py * image.width + px) * 4 + 3] > 192 { triangles.append(triangle) }
                 }
             } }
-            let minimumSamples = arm.group.hasPrefix("hand_") ? 40 : (arm.id.contains("sleeve_") ? 150 : 400)
+            // The new registered arm rectangle has more transparent margin;
+            // wrist-only source pieces cover fewer cells than full sleeves.
+            let minimumSamples = arm.group.hasPrefix("hand_") ? 24 :
+                (arm.id.hasPrefix("forearm_") ? 45 : (arm.id.contains("sleeve_") ? 150 : 300))
             XCTAssertGreaterThan(triangles.count, minimumSamples)
             let gestures: [CharacterGesture] = [.idle, .wave, .stretch, .think, .talk]
             var sequences = gestures.map { gesture in

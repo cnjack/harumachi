@@ -77,10 +77,14 @@ def main():
 
     for to in names:
         gallery(f"switch-to-{to}.png", [groups[f"switch-{start}-{to}"] for start in names],
-                [0, 3, 6, 9, 12, 18, 27, 36],
-                lambda e: f'{names[e["group"].split("-")[1]]} → {names[to]} {e["phase"]:.2f}s')
+                [0, 3, 9, 18, 30, 45, 75, 120] if len(groups[f"switch-idle-{to}"]) > 120 else [0, 3, 6, 9, 12, 18, 27, 36],
+                lambda e: f'{names[e["group"].split("-")[1]]} → {names[to]} {int(Path(e["frame"]).stem)/30:.2f}s')
     gallery("automatic-speech.png", [groups[f"automatic-speech-{time}"] for time in [2, 18, 36]],
             [8, 9, 10, 11, 24, 25, 26, 36], lambda e: f'自动/说话 {e["time"]:.2f}s')
+    late = [entries for group, entries in groups.items() if group.startswith("late-")]
+    if late:
+        gallery("late-clock.png", late, [0, 3, 9, 18, 30, 45, 75, 120],
+                lambda e: f'{e["group"]} {int(Path(e["frame"]).stem)/30:.2f}s')
     gallery("look-extremes.png", [groups["look-extremes"][i:i + 5] for i in range(0, 25, 5)],
             list(range(5)), lambda e: f'{names[e["gesture"]]} 视线 {e["look"]}')
     auto_phases = [0, 8, 15, 30, 75, 137, 149, 150, 479, 488, 495, 510, 540, 617, 629, 630,

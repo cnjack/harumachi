@@ -1,6 +1,6 @@
 # 澪 · 晴町桌面来信
 
-macOS 14+ 的 Swift / Metal 桌面角色原型，沿用游戏女主角澪的棕色短发、黄色发夹、奶油色开衫、蓝衬衣和深蓝百褶裙。当前动作自然度审查未通过，肩肘腕裁片线、换手重影及自动说话打断跳变见[逐动作记录](../../docs/game-design/MIO_MOTION_JOINT_REVIEW_20261020.md)。双击仓库根目录的 `open_mio_companion.command`，或运行：
+macOS 14+ 的 Swift / Metal 桌面角色原型，沿用游戏女主角澪的棕色短发、黄色发夹、奶油色开衫、蓝衬衣和深蓝百褶裙。当前 v10 已修复肩肘腕裁片线、换手重影及打断跳变，6514 帧与原生六状态复验未再复现已知缺陷，详见[修复记录](../../docs/game-design/MIO_MOTION_REPAIR_20261020.md)。仅看动作可双击 `preview_mio_motion.command`。完整常驻版双击仓库根目录的 `open_mio_companion.command`，或运行：
 
 ```bash
 ./native/mio-companion/tools/build_app.sh
@@ -16,13 +16,15 @@ dist/Mio.app/Contents/MacOS/MioCompanion --review-motion /tmp/mio-joints
 python3 tools/review_motion.py /tmp/mio-joints
 ```
 
-从此目录执行，Python 工具需要 Pillow。输出 3678 张真实 Metal PNG、关节坐标、五动作十部位放大图、25 组切换表、自动周期/说话打断及视线极值表。测量包含画幅、关节中心 alpha、邻帧腕位移；工具不自动判定自然度。
+从此目录执行，Python 工具需要 Pillow。输出 6514 张真实 Metal PNG、关节坐标、五动作十部位放大图、25 组各 4 秒切换表、自动周期/说话打断、长时钟及视线极值表。测量包含画幅、关节中心 alpha、邻帧腕位移；工具不自动判定自然度。另用 `python3 tools/check_joint_seams.py /tmp/mio-joints` 检查实际皮肤连接带暗线。
+
+只看角色动作可双击仓库根目录 [`preview_mio_motion.command`](../../preview_mio_motion.command)。它打开带动作按钮的本地预览，不创建系统监控或网络客户端。`--review-motion-window <目录>` 运行 28 秒的隔离可见窗口验收。
 
 ## 角色和渲染
 
-源素材在 [`art/live2d/mio/`](../../art/live2d/mio/)：透明原始部件图、29 层 RGB/8 PSD、独立格式的 `Mio.rig.json`。PNG 部件随 Swift Package 打包。上身、腰裙、肩部补片、上臂、前臂袖子、五套常用左右手型、一套食指托腮手型与七个头部部件分别成层；手臂使用 24×64 网格，身体 20×64，头部 20×24，Metal 完成纹理采样和透明混合。当前含呼吸、轻摆、头发运动、眨眼、说话口型和角色区域内的鼠标视线。默认 30 FPS，全程静音。
+源素材在 [`art/live2d/mio/`](../../art/live2d/mio/)：透明原始部件图、30 层 RGB/8 PSD、独立格式的 `Mio.rig.json`。PNG 部件随 Swift Package 打包。上身、腰裙、肩部补片、连续双臂、公共前臂、五套常用左右手型、一套食指托腮手型与七个头部部件分别成层；手臂使用 24×64 网格，身体 20×64，头部 20×24。Metal 对预乘纹理进行过滤和透明混合，手型使用独立实心源图与几何过渡。当前含呼吸、轻摆、头发运动、眨眼、说话口型和角色区域内的鼠标视线。默认 30 FPS，全程静音。
 
-当前头部采用用户在叠图预览中选定的「再缩小 20%」版本：相对前一版为 0.8，相对最初布局为 `0.92 × 0.8 = 0.736`。七个头部图层围绕 `(300, 268)` 的颈部基点一起缩放，五官相对比例及身体保持原值；当前 `20261020-thinking-v9` 加入按用户照片制作的食指抵下巴动作、专用手图和思考云，右侧袖子拆成上臂与前臂源图层；源 rig、PSD 和应用资源同步。
+当前头部采用用户在叠图预览中选定的「再缩小 20%」版本：相对前一版为 0.8，相对最初布局为 `0.92 × 0.8 = 0.736`。七个头部图层围绕 `(300, 268)` 的颈部基点一起缩放，五官相对比例保持原值。当前 `20261020-continuous-v10` 保留按用户照片制作的食指抵下巴和思考云，两侧改用连续袖子、公共前臂及实心手型过渡；源 rig、PSD 和应用资源同步。[修复与复验](../../docs/game-design/MIO_MOTION_REPAIR_20261020.md)。
 
 这是自有分层动画格式，**不是 Cubism `.moc3` 模型，也不能加载 `.model3.json`**。PSD 已通过系统 ImageIO 合成图解码检查，可作为 Cubism 后续制作的来源；尚未在 Cubism Editor 内导入验收。本机未找到 Editor/SDK，本轮未下载或接受它们的许可，也未导出 `.cmo3` / `.moc3`。官方 Core 负责计算 Editor 模型的顶点，不能把分层 JSON 改名当成官方模型，见 [Cubism Core 文档](https://docs.live2d.com/en/cubism-sdk-manual/cubism-core-api-reference/)。
 

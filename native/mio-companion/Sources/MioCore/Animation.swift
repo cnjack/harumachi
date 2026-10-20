@@ -15,7 +15,7 @@ public enum CharacterGesture: String, CaseIterable, Sendable {
     public var duration: Double { self == .stretch ? 7 : 5 }
 }
 
-public struct RigPose: Sendable {
+public struct RigPose: Sendable, Equatable {
     public var time: Double
     public var mood: Mood
     public var lookX: Float

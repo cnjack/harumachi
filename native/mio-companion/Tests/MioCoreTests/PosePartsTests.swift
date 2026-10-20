@@ -4,6 +4,42 @@ import CoreGraphics
 @testable import MioCore
 
 final class PosePartsTests: XCTestCase {
+    func testPaintedWristContoursMatchTheCommonForearm() throws {
+        let resources = URL(fileURLWithPath:#filePath).deletingLastPathComponent().deletingLastPathComponent()
+            .deletingLastPathComponent().appendingPathComponent("Sources/MioApp/Resources/Mio")
+        let rig = try XCTUnwrap(JSONSerialization.jsonObject(with:Data(contentsOf:resources.appendingPathComponent("Mio.rig.json"))) as? [String:Any])
+        let layers = try XCTUnwrap(rig["layers"] as? [[String:Any]])
+        func contour(_ layer: [String:Any],left: Bool) throws -> SIMD2<Double> {
+            let source = try XCTUnwrap(CGImageSourceCreateWithURL(resources.appendingPathComponent(layer["texture"] as! String) as CFURL,nil))
+            let image = try XCTUnwrap(CGImageSourceCreateImageAtIndex(source,0,nil))
+            let rect = layer["rect"] as! [Double]
+            var bytes = [UInt8](repeating:0,count:image.width*image.height*4)
+            bytes.withUnsafeMutableBytes { p in
+                let context = CGContext(data:p.baseAddress,width:image.width,height:image.height,bitsPerComponent:8,
+                    bytesPerRow:image.width*4,space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue)!
+                context.draw(image,in:CGRect(x:0,y:0,width:image.width,height:image.height))
+            }
+            let wrist = SIMD2<Double>(left ? 114 : 486,508),axis = SIMD2<Double>(left ? -59 : 59,90)
+            let d = axis/sqrt(axis.x*axis.x+axis.y*axis.y),n = SIMD2(-d.y,d.x)
+            var positions: [Double] = []
+            for step in -160...160 {
+                let across = Double(step)/4,p = wrist+n*across
+                let x = Int((p.x-rect[0])/rect[2]*Double(image.width)),y = Int((p.y-rect[1])/rect[3]*Double(image.height))
+                if x>=0 && y>=0 && x<image.width && y<image.height && bytes[(y*image.width+x)*4+3]>=128 { positions.append(across) }
+            }
+            return SIMD2(try XCTUnwrap(positions.first),try XCTUnwrap(positions.last))
+        }
+        for left in [true,false] {
+            let side = left ? "left" : "right"
+            let forearm = try XCTUnwrap(layers.first { $0["id"] as? String == "forearm_\(side)" })
+            let expected = try contour(forearm,left:left)
+            for hand in layers where hand["group"] as? String == "hand_\(side)" {
+                let actual = try contour(hand,left:left)
+                XCTAssertEqual(actual.x,expected.x,accuracy:0.75,"\(hand["id"]!): one wrist edge detaches")
+                XCTAssertEqual(actual.y,expected.y,accuracy:0.75,"\(hand["id"]!): one wrist edge overhangs")
+            }
+        }
+    }
     func testPresentedHandsPointActualThumbsTowardHeadThroughGestures() throws {
         let resources = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
             .deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("Sources/MioApp/Resources/Mio")
@@ -66,7 +102,7 @@ final class PosePartsTests: XCTestCase {
                 minimumFacing = min(minimumFacing,facing); samples += 1
             }
             print("Presented thumb \(gesture) \(prefix): \(samples) phases, minimum head-facing dot \(minimumFacing)")
-            XCTAssertGreaterThan(samples,90)
+            XCTAssertGreaterThan(samples,60,"At least two seconds of fully presented palm after the slower lift/return")
             XCTAssertGreaterThan(minimumFacing,0.15,"\(gesture) \(prefix): the presented thumb points away from the head")
         }
     }

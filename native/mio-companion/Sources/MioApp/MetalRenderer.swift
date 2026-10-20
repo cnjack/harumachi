@@ -32,16 +32,15 @@ final class MioRenderer: NSObject, MTKViewDelegate {
     var gestureStart: Double = 0
     var lastFrameTime: Double?
     var targetLook = SIMD2<Float>.zero
-    private var previousMotion: PuppetMotion?
+    private var playback = MotionPlayback()
     func motion(for pose: RigPose) -> PuppetMotion {
-        let current = PuppetMotion(pose: pose)
-        guard let previousMotion else { return current }
-        return current.blended(from: previousMotion, fraction: PuppetMotion.smooth(0, 0.4, Float(pose.time - gestureStart)))
+        playback.sample(pose)
     }
     func selectGesture(_ gesture: CharacterGesture, revision: Int) {
         guard revision != gestureRevision else { return }
-        previousMotion = motion(for: pose)
-        pose.gesture = gesture; gestureStart = pose.time; pose.gestureTime = 0
+        if playback.select(gesture,pose:pose) {
+            pose.gesture = gesture; gestureStart = pose.time; pose.gestureTime = 0
+        }
         gestureRevision = revision
     }
 
@@ -52,9 +51,29 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         let resources = Bundle.module.resourceURL!.appendingPathComponent("Resources/Mio")
         rig = try JSONDecoder().decode(RigDescription.self, from: Data(contentsOf: resources.appendingPathComponent("Mio.rig.json")))
         var loaded: [String: MTLTexture] = [:]
-        let loader = MTKTextureLoader(device: device)
         for layer in rig.layers {
-            loaded[layer.id] = try loader.newTexture(URL: resources.appendingPathComponent(layer.texture), options: [.SRGB: false, .origin: MTKTextureLoader.Origin.topLeft.rawValue])
+            // Premultiply before linear filtering. Straight-alpha textures
+            // interpolate their transparent black cut edges into dark dotted
+            // seams even when another opaque part sits directly underneath.
+            let url = resources.appendingPathComponent(layer.texture)
+            guard let source = CGImageSourceCreateWithURL(url as CFURL,nil),
+                  let image = CGImageSourceCreateImageAtIndex(source,0,nil) else { throw RenderError.unavailable }
+            var pixels = [UInt8](repeating:0,count:image.width*image.height*4)
+            pixels.withUnsafeMutableBytes { buffer in
+                let context = CGContext(data:buffer.baseAddress,width:image.width,height:image.height,
+                    bitsPerComponent:8,bytesPerRow:image.width*4,space:image.colorSpace ?? CGColorSpaceCreateDeviceRGB(),
+                    bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue)!
+                context.draw(image,in:CGRect(x:0,y:0,width:image.width,height:image.height))
+            }
+            let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat:.rgba8Unorm,
+                width:image.width,height:image.height,mipmapped:false)
+            descriptor.storageMode = .shared;descriptor.usage = .shaderRead
+            guard let texture = device.makeTexture(descriptor:descriptor) else { throw RenderError.unavailable }
+            pixels.withUnsafeBytes { buffer in
+                texture.replace(region:MTLRegionMake2D(0,0,image.width,image.height),mipmapLevel:0,
+                    withBytes:buffer.baseAddress!,bytesPerRow:image.width*4)
+            }
+            loaded[layer.id] = texture
         }
         textures = loaded
         let library = try device.makeLibrary(source: """
@@ -66,23 +85,10 @@ final class MioRenderer: NSObject, MTKViewDelegate {
             O out; out.position = float4(v[id].position, 0, 1); out.uv = v[id].uv; return out;
         }
         fragment float4 rig_fragment(O in [[stage_in]], texture2d<float> t [[texture(0)]],
-            texture2d<float> palm [[texture(1)]], texture2d<float> back [[texture(2)]],
-            texture2d<float> inward [[texture(3)]], texture2d<float> fist [[texture(4)]],
-            texture2d<float> chin [[texture(5)]], constant float4 &weights [[buffer(0)]],
-            constant float2 &extra [[buffer(1)]], constant float &opacity [[buffer(2)]]) {
+            constant float &opacity [[buffer(0)]]) {
             constexpr sampler s(filter::linear, address::clamp_to_edge);
             float4 c = t.sample(s, in.uv);
-            if (weights.x < 0) { c.a *= opacity; return c; }
-            // Mix registered drawings in premultiplied space. Drawing six
-            // translucent layers separately would make the wrist fade through.
-            float4 b = palm.sample(s,in.uv), d = back.sample(s,in.uv), e = inward.sample(s,in.uv);
-            float4 f = fist.sample(s,in.uv);
-            float4 g = chin.sample(s,in.uv);
-            c.rgb *= c.a; b.rgb *= b.a; d.rgb *= d.a; e.rgb *= e.a; f.rgb *= f.a; g.rgb *= g.a;
-            float4 out = c*weights.x + b*weights.y + d*weights.z + e*weights.w + f*extra.x + g*extra.y;
-            if (out.a > 0.0001) out.rgb /= out.a;
-            out.a *= opacity;
-            return out;
+            return c * opacity;
         }
         """, options: nil)
         let descriptor = MTLRenderPipelineDescriptor()
@@ -91,7 +97,7 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         descriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
         let blend = descriptor.colorAttachments[0]!
         blend.isBlendingEnabled = true
-        blend.sourceRGBBlendFactor = .sourceAlpha; blend.destinationRGBBlendFactor = .oneMinusSourceAlpha
+        blend.sourceRGBBlendFactor = .one; blend.destinationRGBBlendFactor = .oneMinusSourceAlpha
         blend.sourceAlphaBlendFactor = .one; blend.destinationAlphaBlendFactor = .oneMinusSourceAlpha
         pipeline = try device.makeRenderPipelineState(descriptor: descriptor)
         super.init()
@@ -125,9 +131,14 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         let arm = layer.group.hasPrefix("arm_") || layer.group.hasPrefix("hand_")
         let head = ["head", "hair", "eyes_open", "eyes_closed", "mouth_open", "mouth_closed"].contains(layer.group)
         let motion = motion(for: pose)
+        let handPresentation = layer.group.hasPrefix("hand_")
+            ? HandPresentation(motion:motion,left:layer.group.hasSuffix("_left")) : nil
         func point(_ u: Float, _ v: Float) -> Vertex {
             var p = SIMD2<Float>(r[0] + r[2] * u, r[1] + r[3] * v)
             if arm, let joints = layer.joints, joints.count == 3 {
+                if let handPresentation {
+                    p = handPresentation.point(p,elbow:SIMD2(joints[1][0],joints[1][1]),wrist:SIMD2(joints[2][0],joints[2][1]))
+                }
                 p = motion.armPoint(p, shoulder: SIMD2(joints[0][0], joints[0][1]),
                                     elbow: SIMD2(joints[1][0], joints[1][1]),
                                     wrist: SIMD2(joints[2][0], joints[2][1]), left: layer.group.hasSuffix("_left"),
@@ -170,33 +181,25 @@ final class MioRenderer: NSObject, MTKViewDelegate {
     func encode(command: MTLCommandBuffer, pass: MTLRenderPassDescriptor, size: CGSize, pose: RigPose) {
         guard let encoder = command.makeRenderCommandEncoder(descriptor: pass) else { return }
         encoder.setRenderPipelineState(pipeline)
+        let motion = motion(for:pose)
         for layer in rig.layers {
             if let variant = layer.variant, variant != "relaxed" { continue }
             if layer.group == "eyes_open" && pose.blink > 0.5 { continue }
             if layer.group == "eyes_closed" && pose.blink <= 0.5 { continue }
             if layer.group == "mouth_open" && !pose.mouthOpen { continue }
             if layer.group == "mouth_closed" && pose.mouthOpen { continue }
-            var opacity: Float = layer.group == "thought_cloud" ? motion(for:pose).thoughtOpacity : 1
-            if layer.id == "hand_right_chin_front" { opacity = motion(for:pose).rightChin }
+            var opacity: Float = layer.group == "thought_cloud" ? motion.thoughtOpacity : 1
+            let hand = HandPresentation(motion:motion,left:layer.group.hasSuffix("_left"))
+            if layer.id == "hand_right_chin_front" { opacity = hand.variant == "chin" ? 1 : 0 }
+            else if layer.group == "hand_right", hand.variant == "chin" { continue }
             if opacity < 0.001 { continue }
             let v = vertices(for: layer, size: size, pose: pose)
             guard let buffer = device.makeBuffer(bytes: v, length: v.count * MemoryLayout<Vertex>.stride, options: .storageModeShared) else { continue }
             encoder.setVertexBuffer(buffer, offset: 0, index: 0)
-            encoder.setFragmentTexture(textures[layer.id], index: 0)
-            var weights = SIMD4<Float>(-1,0,0,0)
-            var extra = SIMD2<Float>.zero
-            if layer.group.hasPrefix("hand_") && layer.id != "hand_right_chin_front" {
-                let motion = motion(for: pose)
-                weights = layer.group == "hand_left" ? motion.leftHand : motion.rightHand
-                extra = SIMD2(layer.group == "hand_left" ? motion.leftFist : motion.rightFist,
-                              layer.group == "hand_right" ? motion.rightChin : 0)
-            }
-            for (index, variant) in ["palm","back","inward","fist","chin"].enumerated() {
-                encoder.setFragmentTexture(textures[layer.group + "_" + variant] ?? textures[layer.id], index: index+1)
-            }
-            encoder.setFragmentBytes(&weights, length: MemoryLayout<SIMD4<Float>>.stride, index: 0)
-            encoder.setFragmentBytes(&extra, length: MemoryLayout<SIMD2<Float>>.stride, index: 1)
-            encoder.setFragmentBytes(&opacity, length:MemoryLayout<Float>.stride,index:2)
+            let texture = layer.group.hasPrefix("hand_") && layer.id != "hand_right_chin_front"
+                ? textures[layer.group+"_"+hand.variant] : textures[layer.id]
+            encoder.setFragmentTexture(texture, index: 0)
+            encoder.setFragmentBytes(&opacity, length:MemoryLayout<Float>.stride,index:0)
             encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: v.count)
         }
         encoder.endEncoding()
