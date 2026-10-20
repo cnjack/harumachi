@@ -8,21 +8,28 @@
   "tool": "imagegen built-in",
   "prompt": "art/manifests/prompts/live2d/mio-parts.txt",
   "atlas": "art/live2d/mio/parts-atlas.png",
-  "generated_dimensions": [1774, 887],
+  "generated_dimensions": [
+    1774,
+    887
+  ],
   "note": "Generation did not produce equal-height cells; extraction uses measured explicit rectangles.",
   "rig": "art/live2d/mio/Mio.rig.json",
   "layered_source": "art/live2d/mio/Mio.layers.psd",
   "runtime_resources": "native/mio-companion/Sources/MioApp/Resources/Mio/",
   "layer_count": 8,
-  "canvas": [600, 1000],
+  "canvas": [
+    600,
+    1000
+  ],
   "format": "harumachi-layer-rig",
   "cubism_moc3": false,
   "cubism_editor_import_verified": false,
   "engine": "Swift + Metal",
   "network_policy": "literal loopback IP only; no redirects",
   "live_clef_verified": false,
-  "layout_revision": "20261020-face-proportions-v2",
+  "layout_revision": "20261020-head-proportions-v3",
   "face_layout_source": "native/mio-companion/tools/pack_assets.swift",
   "initial_verification": "evidence/mio_companion_20261020/verification.json",
-  "verification": "evidence/mio_face_proportions_20261020/verification.json"
+  "verification": "evidence/mio_head_proportions_20261020/verification.json",
+  "face_verification": "evidence/mio_face_proportions_20261020/verification.json"
 }

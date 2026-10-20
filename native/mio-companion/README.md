@@ -30,6 +30,10 @@ swift native/mio-companion/tools/export_psd.swift "$PWD"
 
 新增 `FaceProportionsTests` 防止眼睛撑满脸、嘴型拉长、嘴部过低和切换漂移；旧布局先运行，有 7 处断言失败。原生六种状态、前后对照和重建应用的证据在 `evidence/mio_face_proportions_20261020/`，比例是否自然仍以用户复评为准。
 
+## 澪的桌面角色头身比例（2026-10-20）
+
+按用户反馈，将头发、脸和五官七层以颈部为中心整体等比缩小 8%，保留上一轮五官相对比例及身体尺寸。源布局、两个 rig、PSD 与应用资源同步。新增头身比和颈部衔接回归，旧版出现 2 处失败；9 项 Swift 单元测试、六种原生状态及打包应用 480 帧复验通过。API 未改，本轮未重跑 HTTP 模拟。全身前后对照见 `evidence/mio_head_proportions_20261020/head-comparison.png`，证据见同目录 `verification.json`；自然度待用户复评。
+
 ## Clef 决策
 
 使用已有 `clef-omni` 的 `POST /v1/systemone` 协议；`state` 携带事件类型、粗粒度元数据和主动提交的文本，`questions` 要求选择表情与预设回应。没有额外聊天模型，回复来自程序内的中文短句。Clef 无权调用 shell、操纵应用或发送消息。
@@ -72,7 +76,7 @@ dist/Mio.app/Contents/MacOS/MioCompanion --render-samples /tmp/mio-poses
 dist/Mio.app/Contents/MacOS/MioCompanion --smoke-test /tmp/mio-smoke
 ```
 
-九个 XCTest 覆盖五官比例、约束、权限地址、过期/去重和生产 HTTP 客户端；Postman 模拟包含正常、低置信度、未知动作、错模型、坏 JSON、500、HTML 网关、重定向及超时。未登录 Postman，未查询拥有方共享 mock；本地 mock 来自现有客户端/服务说明及本轮消费契约，不能证明真实 Clef 模型的判断准确率。
+十个 XCTest 覆盖头身及五官比例、约束、权限地址、过期/去重和生产 HTTP 客户端；Postman 模拟包含正常、低置信度、未知动作、错模型、坏 JSON、500、HTML 网关、重定向及超时。未登录 Postman，未查询拥有方共享 mock；本地 mock 来自现有客户端/服务说明及本轮消费契约，不能证明真实 Clef 模型的判断准确率。
 
 原生 smoke 使用现有显示器，验证持续出帧、真实 Inbox 接收、暂停丢弃和恢复。PNG 导出只读取本程序自己的视图缓存与 Metal 目标，再合成本程序画面；它不是桌面截屏，也不读取其他窗口。记录位于 `evidence/mio_companion_20261020/`。本轮未改游戏资源、Godot 测试数、`builds/HareMachi.zip` 或 Web 发布。
 

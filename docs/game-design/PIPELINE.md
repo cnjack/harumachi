@@ -2,7 +2,7 @@
 
 ## 澪的 Swift 桌面角色（2026-10-20）
 
-五官比例从 `native/mio-companion/tools/pack_assets.swift` 的源布局修订，再生成两个 rig、PSD 和应用，不能只在运行时缩放蒙混过去。`FaceProportionsTests` 约束眼宽占脸宽、嘴型宽高、眼鼻嘴留白及表情切换中心；新增检查先对旧布局运行，保留失败日志。前后原生渲染使用相同时间和视线参数，至少看静态、闭眼与张嘴，并在现有显示器复验应用。
+头身及五官比例从 `native/mio-companion/tools/pack_assets.swift` 的源布局修订，再生成两个 rig、PSD 和应用，不能只在运行时缩放蒙混过去。整体头部缩放需以颈部为共同锚点应用到全部七个头部图层。`FaceProportionsTests` 约束头部外轮廓占身体宽高、颈部衔接、眼宽占脸宽、嘴型宽高、眼鼻嘴留白及表情切换中心；新增检查先对旧布局运行，保留失败日志。前后原生渲染使用相同时间和视线参数，至少看静态、闭眼与张嘴，并在现有显示器复验应用。
 
 独立入口 `open_mio_companion.command`，源码和工具位于 `native/mio-companion/`。imagegen 参考澪的定稿正面和头像生成透明部件；`tools/pack_assets.swift` 按实测区域拆图并输出自有 rig，`tools/export_psd.swift` 导出同布局八层 RGB/8 PSD。它们不是 Cubism 模型编译器，不能产出 `.moc3`。构建用 Swift Package 与系统 Metal，无第三方下载，`.app` 放忽略的 `dist/`，不进游戏 `builds/`。
 

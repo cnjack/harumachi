@@ -18,8 +18,19 @@ let crops: [(String, CGRect, [Double], String)] = [
     ("mouth_closed", CGRect(x: 1010, y: 715, width: 220, height: 110), [282, 229.2, 36, 9.6], "mouth_closed"),
     ("mouth_open", CGRect(x: 1460, y: 685, width: 180, height: 145), [289, 227.7, 22, 12.6], "mouth_open")
 ]
+// Scale every head part together around the neck in the source layout. Baking
+// this here keeps the PSD and renderer identical and preserves facial ratios.
+let headScale = 0.92
+let neckAnchor = CGPoint(x: 300, y: 268)
+func fittedRect(_ rect: [Double], group: String) -> [Double] {
+    guard group != "body" else { return rect }
+    return [neckAnchor.x + (rect[0] - neckAnchor.x) * headScale,
+            neckAnchor.y + (rect[1] - neckAnchor.y) * headScale,
+            rect[2] * headScale, rect[3] * headScale]
+}
 var layers: [[String: Any]] = []
-for (name, crop, rect, group) in crops {
+for (name, crop, originalRect, group) in crops {
+    let rect = fittedRect(originalRect, group: group)
     let part = atlas.cropping(to: crop)!
     let width = part.width, height = part.height
     var bytes = [UInt8](repeating: 0, count: width * height * 4)
@@ -54,7 +65,7 @@ for (name, crop, rect, group) in crops {
 let order = ["hair_back", "body", "face", "eyes_open", "eyes_closed", "mouth_closed", "mouth_open", "hair_front"]
 layers.sort { order.firstIndex(of: $0["id"] as! String)! < order.firstIndex(of: $1["id"] as! String)! }
 let manifest: [String: Any] = ["format": "harumachi-layer-rig", "version": 1, "name": "澪", "canvas": [600, 1000],
-                              "layoutRevision": "20261020-face-proportions-v2",
+                              "layoutRevision": "20261020-head-proportions-v3",
                               "cubismCompatible": false, "layers": layers,
                               "parameters": ["ParamAngleX", "ParamAngleY", "ParamBodyAngleZ", "ParamBreath", "ParamEyeLOpen", "ParamEyeROpen", "ParamMouthOpenY"]]
 let json = try JSONSerialization.data(withJSONObject: manifest, options: [.prettyPrinted, .sortedKeys])
