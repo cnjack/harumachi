@@ -11,9 +11,9 @@ open native/mio-companion/dist/Mio.app
 
 ## 角色和渲染
 
-源素材在 [`art/live2d/mio/`](../../art/live2d/mio/)：透明原始部件图、23 层 RGB/8 PSD、独立格式的 `Mio.rig.json`。PNG 部件随 Swift Package 打包。上身、腰裙、肩部补片、上臂、前臂袖子、四种左右手型与七个头部部件分别成层；手臂使用 24×64 网格，身体 20×64，头部 20×24，Metal 完成纹理采样和透明混合。当前含呼吸、轻摆、头发运动、眨眼、说话口型和角色区域内的鼠标视线。默认 30 FPS，全程静音。
+源素材在 [`art/live2d/mio/`](../../art/live2d/mio/)：透明原始部件图、25 层 RGB/8 PSD、独立格式的 `Mio.rig.json`。PNG 部件随 Swift Package 打包。上身、腰裙、肩部补片、上臂、前臂袖子、五种左右手型与七个头部部件分别成层；手臂使用 24×64 网格，身体 20×64，头部 20×24，Metal 完成纹理采样和透明混合。当前含呼吸、轻摆、头发运动、眨眼、说话口型和角色区域内的鼠标视线。默认 30 FPS，全程静音。
 
-当前头部采用用户在叠图预览中选定的「再缩小 20%」版本：相对前一版为 0.8，相对最初布局为 `0.92 × 0.8 = 0.736`。七个头部图层围绕 `(300, 268)` 的颈部基点一起缩放，五官相对比例、身体和四套手型保持原值；源 rig、PSD 和应用资源同步，版本为 `20261020-head20-v7`。
+当前头部采用用户在叠图预览中选定的「再缩小 20%」版本：相对前一版为 0.8，相对最初布局为 `0.92 × 0.8 = 0.736`。七个头部图层围绕 `(300, 268)` 的颈部基点一起缩放，五官相对比例及身体保持原值；当前 `20261020-hand-poses-v8` 增加左右握拳图层并纠正内收手映射，源 rig、PSD 和应用资源同步。
 
 这是自有分层动画格式，**不是 Cubism `.moc3` 模型，也不能加载 `.model3.json`**。PSD 已通过系统 ImageIO 合成图解码检查，可作为 Cubism 后续制作的来源；尚未在 Cubism Editor 内导入验收。本机未找到 Editor/SDK，本轮未下载或接受它们的许可，也未导出 `.cmo3` / `.moc3`。官方 Core 负责计算 Editor 模型的顶点，不能把分层 JSON 改名当成官方模型，见 [Cubism Core 文档](https://docs.live2d.com/en/cubism-sdk-manual/cubism-core-api-reference/)。
 
@@ -63,7 +63,7 @@ swift native/mio-companion/tools/preview_motion.swift /tmp/mio-motion
 
 ## 多手型、肩袖和腰部衔接（2026-10-20）
 
-内置 imagegen 新增四张源部件图，位于 `art/live2d/mio/pose-parts/`，提示词为 `art/manifests/prompts/live2d/mio-{palms-out,hands-back,hands-inward,torso-overlaps}.txt`。双手分别有放松、掌心向外、手背和内收侧掌四种源图；招手与说话选掌心，伸展选手背，思考选侧掌。以同一腕点注册，在预乘 alpha 空间混合，手型权重也参与中途动作切换。
+内置 imagegen 新增四张源部件图，位于 `art/live2d/mio/pose-parts/`，提示词为 `art/manifests/prompts/live2d/mio-{palms-out,hands-back,hands-inward,torso-overlaps}.txt`。此轮双手分别有放松、掌心向外、手背和内收侧掌四种源图；招手与说话选掌心，思考选侧掌。伸展手型后续改为下方独立握拳素材。以同一腕点注册，在预乘 alpha 空间混合，手型权重也参与中途动作切换。
 
 肩部补片藏在衣服和上臂后面，肩根在上身后面，前臂袖子可以盖到胸前；上身和裙腰有 144 像素布局重叠，裙子上方绘制隐藏延伸，腰部变形在裙摆前减弱，脚部保持不动。PSD、源 rig 和运行资源共用布局，旧头部比例保留。
 
@@ -76,6 +76,14 @@ native/mio-companion/dist/Mio.app/Contents/MacOS/MioCompanion --render-motion /t
 python3 native/mio-companion/tools/check_pose_frames.py /tmp/mio-motion
 swift native/mio-companion/tools/preview_motion.swift /tmp/mio-motion
 ```
+
+## 握拳伸懒腰与内收手方向（2026-10-20）
+
+用户指出伸手手指方向错误，并确认伸懒腰应握拳。新增内置 imagegen 绘制的 `pose-parts/fists.png`，四指自然收拢，拇指压在弯曲手指外侧；左右手按实际源图列与腕点注册。原始图片与提示词 `art/manifests/prompts/live2d/mio-fists.txt` 均入库，增加两层后为 25 层 PSD。
+
+伸懒腰前 0.35 秒收拢成拳，放下手臂后在最后 0.35 秒松开；手腕沿前臂，五套手型在预乘 alpha 空间连续混合，切换动作也一起过渡。招手和说话继续张掌。回归同时检查实际拇指像素随张掌动作的朝向、握拳的紧凑轮廓、收放时序与总权重；旧版缺失握拳的 7 处断言先失败。最终验收记录在 `evidence/mio_stretch_fist_20261020/verification.json`。
+
+用户随后截图圈出的横在腰前的手属于思考动作。内收侧掌源图的解剖左右列与掌心/手背源图相反，旧代码统一交换图列使拇指朝下；现按每种源图分别注册。旧内收映射的 5 处断言先失败，改后 20 项本地测试通过；同时覆盖招手、思考、说话各 101 个张掌/内收保持相位。保持另外 21 个旧图层、22 张旧纹理及缩小后的头部比例。
 
 ## Clef 决策
 

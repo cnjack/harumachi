@@ -372,6 +372,51 @@
         330
       ],
       "sourceAtlas" : "pose-parts\/hands-inward.png",
+      "sourceColumn" : "left",
+      "sourceCrop" : [
+        150,
+        40,
+        600,
+        930
+      ],
+      "texture" : "hand_left_inward.png",
+      "variant" : "inward",
+      "wristRegistration" : [
+        114,
+        508
+      ]
+    },
+    {
+      "anatomicalHand" : "right",
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "defaultVisible" : false,
+      "group" : "hand_left",
+      "id" : "hand_left_fist",
+      "joints" : [
+        [
+          231,
+          320
+        ],
+        [
+          173,
+          418
+        ],
+        [
+          114,
+          508
+        ]
+      ],
+      "rect" : [
+        45,
+        265,
+        234,
+        330
+      ],
+      "sourceAtlas" : "pose-parts\/fists.png",
       "sourceColumn" : "right",
       "sourceCrop" : [
         850,
@@ -379,8 +424,8 @@
         600,
         930
       ],
-      "texture" : "hand_left_inward.png",
-      "variant" : "inward",
+      "texture" : "hand_left_fist.png",
+      "variant" : "fist",
       "wristRegistration" : [
         114,
         508
@@ -551,6 +596,51 @@
         330
       ],
       "sourceAtlas" : "pose-parts\/hands-inward.png",
+      "sourceColumn" : "right",
+      "sourceCrop" : [
+        850,
+        40,
+        600,
+        930
+      ],
+      "texture" : "hand_right_inward.png",
+      "variant" : "inward",
+      "wristRegistration" : [
+        486,
+        508
+      ]
+    },
+    {
+      "anatomicalHand" : "left",
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "defaultVisible" : false,
+      "group" : "hand_right",
+      "id" : "hand_right_fist",
+      "joints" : [
+        [
+          369,
+          320
+        ],
+        [
+          427,
+          418
+        ],
+        [
+          486,
+          508
+        ]
+      ],
+      "rect" : [
+        321,
+        265,
+        234,
+        330
+      ],
+      "sourceAtlas" : "pose-parts\/fists.png",
       "sourceColumn" : "left",
       "sourceCrop" : [
         150,
@@ -558,8 +648,8 @@
         600,
         930
       ],
-      "texture" : "hand_right_inward.png",
-      "variant" : "inward",
+      "texture" : "hand_right_fist.png",
+      "variant" : "fist",
       "wristRegistration" : [
         486,
         508
@@ -711,7 +801,7 @@
       "texture" : "hair_front.png"
     }
   ],
-  "layoutRevision" : "20261020-head20-v7",
+  "layoutRevision" : "20261020-hand-poses-v8",
   "name" : "澪",
   "origin" : [
     -75,

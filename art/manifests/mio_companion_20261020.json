@@ -16,7 +16,7 @@
   "rig": "art/live2d/mio/Mio.rig.json",
   "layered_source": "art/live2d/mio/Mio.layers.psd",
   "runtime_resources": "native/mio-companion/Sources/MioApp/Resources/Mio/",
-  "layer_count": 23,
+  "layer_count": 25,
   "canvas": [
     750,
     1000
@@ -27,10 +27,10 @@
   "engine": "Swift + Metal",
   "network_policy": "literal loopback IP only; no redirects",
   "live_clef_verified": false,
-  "layout_revision": "20261020-head20-v7",
+  "layout_revision": "20261020-hand-poses-v8",
   "face_layout_source": "native/mio-companion/tools/pack_assets.swift",
   "initial_verification": "evidence/mio_companion_20261020/verification.json",
-  "verification": "evidence/mio_head20_20261020/verification.json",
+  "verification": "evidence/mio_stretch_fist_20261020/verification.json",
   "face_verification": "evidence/mio_face_proportions_20261020/verification.json",
   "head_verification": "evidence/mio_head20_20261020/verification.json",
   "body_revision": {
@@ -132,5 +132,37 @@
     "source": "native/mio-companion/tools/pack_assets.swift",
     "new_bitmap_generated": false,
     "comparison": "evidence/mio_proportion_overlay_20261020/head-comparison.png"
+  },
+  "gesture_hand_revision": {
+    "revision": "20261020-hand-poses-v8",
+    "source": "native/mio-companion/Sources/MioCore/PuppetMotion.swift",
+    "stretch_left": "fist",
+    "stretch_right": "fist",
+    "wave_right": "palm",
+    "talk_right": "palm",
+    "grip_seconds": 0.35,
+    "release_last_seconds": 0.35,
+    "head_layout_preserved": "20261020-head20-v7",
+    "fist_source": {
+      "tool": "imagegen built-in",
+      "atlas": "art/live2d/mio/pose-parts/fists.png",
+      "prompt": "art/manifests/prompts/live2d/mio-fists.txt",
+      "reference": "art/live2d/mio/pose-parts/palms-out.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "original_output": "exec-9e33bdb2-b63b-49d7-b873-83652d8d4325.png"
+    },
+    "hand_variants": [
+      "relaxed",
+      "palm",
+      "back",
+      "inward",
+      "fist"
+    ],
+    "regression": "actual texture thumb side for palm/back/inward; transformed thumb direction for wave/think/talk; compact fist silhouette, grip timing and full hand mesh transitions",
+    "inward_source_columns_corrected": true,
+    "inward_mapping": "Screen left uses left column; screen right uses right column. Unlike palm/back/fist sheets, the inward sheet has the opposite anatomical column order."
   }
 }

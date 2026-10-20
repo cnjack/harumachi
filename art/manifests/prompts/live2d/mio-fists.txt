@@ -1,0 +1,7 @@
+Use case: precise-object-edit.
+Asset type: transparent 2D character rig source atlas, landscape 1536x1024.
+Input image: the supplied open-palm atlas is the edit target and style/skin-tone reference.
+Change only the two open hands into gently closed, anatomically correct fists for a relaxed overhead stretch. Keep the two vertical forearms, their lengths and widths, skin tone, clean anime outlines and flat two-tone cel shading.
+Both forearms start near y=100, wrists near y=500, closed fists end near y=700. Left column centred x=425, right column centred x=1110. Forearms continue vertically DOWN into the fists. No wrist bend.
+Show the palm side of each closed fist: all four fingers curl fully into the palm, only compact folded finger pads and crease arcs visible. Thumb rests naturally across the outside of the curled index and middle fingers; never tucked inside the fist and never sticks up. Left-column thumb originates on the RIGHT edge of the fist and folds LEFT across the fingers. Right-column thumb originates on the LEFT edge and folds RIGHT. The two fists are an anatomical left/right pair. Fist width about 170px, height about 190px, proportional to the slender forearms. No extended fingers.
+BACKGROUND: fully transparent PNG with a real alpha channel. Remove the soft halo around the reference parts: no glow, surrounding colour haze, painted checkerboard, backdrop, shadow, labels, text, sleeve, accessories or body. Preserve clean edges and transparent space between the two separate parts.

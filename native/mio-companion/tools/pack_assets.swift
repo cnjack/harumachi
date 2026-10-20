@@ -187,28 +187,34 @@ for side in ["left", "right"] {
     let relaxedContext = context()
     relaxedContext.draw(relaxed,in:CGRect(x:20,y:30,width:r[2],height:r[3]))
     write(relaxedContext.makeImage()!,"hand_\(side)_relaxed")
-    // Rig side is screen side, not anatomical side. The generated hand sheets
-    // put the character's left hand in the left column; read the opposite
-    // column for each on-screen arm. Never mirror the shoulder or whole rig.
-    let sourceLeft = side == "right"
+    // Register each sheet by its actual thumb/knuckle view. The inward sheet
+    // has the opposite anatomical column order from the palm/back/fist sheets.
+    func sourceLeft(for variant: String) -> Bool {
+        variant == "inward" ? side == "left" : side == "right"
+    }
     let variants: [(String,String,CGPoint)] = [
-        ("palm","palms-out",CGPoint(x: sourceLeft ? 425 : 1110,y:500)),
-        ("back","hands-back",CGPoint(x: sourceLeft ? 443 : 1092,y:500)),
-        ("inward","hands-inward",CGPoint(x: sourceLeft ? 437 : 1092,y:465))
+        ("palm","palms-out",CGPoint(x: sourceLeft(for:"palm") ? 425 : 1110,y:500)),
+        ("back","hands-back",CGPoint(x: sourceLeft(for:"back") ? 443 : 1092,y:500)),
+        ("inward","hands-inward",CGPoint(x: sourceLeft(for:"inward") ? 437 : 1092,y:465)),
+        ("fist","fists",CGPoint(x: sourceLeft(for:"fist") ? 426 : 1110,y:565))
     ]
     for (variant, file, pivot) in variants {
         let atlas = load("art/live2d/mio/pose-parts/\(file).png")
-        let cropX = sourceLeft ? 150 : 850
+        let cropX = sourceLeft(for:variant) ? 150 : 850
         let image = atlas.cropping(to:CGRect(x:cropX,y:40,width:600,height:930))!
         let context = context()
         context.translateBy(x:wrist.x-handRect[0],y:handRect[3]-(wrist.y-handRect[1]))
         context.rotate(by: atan2(d.x,d.y))
+        if variant == "fist" {
+            // Its longer source forearm remains hidden beneath the same cuff.
+            context.clip(to:CGRect(x:-100,y:-150,width:200,height:212))
+        }
         let sx: CGFloat = 0.17, sy: CGFloat = 0.16
         context.draw(image,in:CGRect(x:(CGFloat(cropX)-pivot.x)*sx,
             y:(pivot.y-40-CGFloat(image.height))*sy,width:CGFloat(image.width)*sx,height:CGFloat(image.height)*sy))
         write(context.makeImage()!,"hand_\(side)_\(variant)")
     }
-    for variant in ["relaxed","palm","back","inward"] {
+    for variant in ["relaxed","palm","back","inward","fist"] {
         var hand = arm
         hand["id"] = "hand_\(side)_\(variant)"
         hand["texture"] = "hand_\(side)_\(variant).png"
@@ -216,26 +222,26 @@ for side in ["left", "right"] {
         hand["rect"] = handRect
         hand["variant"] = variant
         hand["defaultVisible"] = variant == "relaxed"
-        hand["sourceAtlas"] = variant == "relaxed" ? "articulated/body-arms-atlas.png" :
-            "pose-parts/\(variant == "palm" ? "palms-out" : "hands-\(variant)").png"
+        let atlasName = variant == "fist" ? "fists" : (variant == "palm" ? "palms-out" : "hands-\(variant)")
+        hand["sourceAtlas"] = variant == "relaxed" ? "articulated/body-arms-atlas.png" : "pose-parts/\(atlasName).png"
         hand["wristRegistration"] = [wrist.x,wrist.y]
         hand["anatomicalHand"] = side == "left" ? "right" : "left"
         if variant != "relaxed" {
-            hand["sourceColumn"] = sourceLeft ? "left" : "right"
-            hand["sourceCrop"] = [sourceLeft ? 150 : 850,40,600,930]
+            hand["sourceColumn"] = sourceLeft(for:variant) ? "left" : "right"
+            hand["sourceCrop"] = [sourceLeft(for:variant) ? 150 : 850,40,600,930]
         }
         layers.append(hand)
     }
 }
 let order = ["hair_back", "lower_body", "shoulder_left", "shoulder_right", "arm_left", "arm_right", "torso",
              "sleeve_left",
-             "hand_left_relaxed", "hand_left_palm", "hand_left_back", "hand_left_inward",
-             "hand_right_relaxed", "hand_right_palm", "hand_right_back", "hand_right_inward",
+             "hand_left_relaxed", "hand_left_palm", "hand_left_back", "hand_left_inward", "hand_left_fist",
+             "hand_right_relaxed", "hand_right_palm", "hand_right_back", "hand_right_inward", "hand_right_fist",
              "sleeve_right", "face", "eyes_open", "eyes_closed", "mouth_closed", "mouth_open", "hair_front"]
 layers.sort { order.firstIndex(of: $0["id"] as! String)! < order.firstIndex(of: $1["id"] as! String)! }
 let manifest: [String: Any] = ["format": "harumachi-layer-rig", "version": 1, "name": "澪", "canvas": [750, 1000],
                               "origin": [-75, 0],
-                              "layoutRevision": "20261020-head20-v7",
+                              "layoutRevision": "20261020-hand-poses-v8",
                               "cubismCompatible": false, "layers": layers,
                               "parameters": ["ParamAngleX", "ParamAngleY", "ParamBodyAngleZ", "ParamBreath", "ParamEyeLOpen", "ParamEyeROpen", "ParamMouthOpenY"]]
 let json = try JSONSerialization.data(withJSONObject: manifest, options: [.prettyPrinted, .sortedKeys])

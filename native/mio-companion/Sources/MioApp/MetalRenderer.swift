@@ -66,15 +66,17 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         }
         fragment float4 rig_fragment(O in [[stage_in]], texture2d<float> t [[texture(0)]],
             texture2d<float> palm [[texture(1)]], texture2d<float> back [[texture(2)]],
-            texture2d<float> inward [[texture(3)]], constant float4 &weights [[buffer(0)]]) {
+            texture2d<float> inward [[texture(3)]], texture2d<float> fist [[texture(4)]],
+            constant float4 &weights [[buffer(0)]], constant float &grip [[buffer(1)]]) {
             constexpr sampler s(filter::linear, address::clamp_to_edge);
             float4 c = t.sample(s, in.uv);
             if (weights.x < 0) return c;
-            // Mix registered drawings in premultiplied space. Drawing four
+            // Mix registered drawings in premultiplied space. Drawing five
             // translucent layers separately would make the wrist fade through.
             float4 b = palm.sample(s,in.uv), d = back.sample(s,in.uv), e = inward.sample(s,in.uv);
-            c.rgb *= c.a; b.rgb *= b.a; d.rgb *= d.a; e.rgb *= e.a;
-            float4 out = c*weights.x + b*weights.y + d*weights.z + e*weights.w;
+            float4 f = fist.sample(s,in.uv);
+            c.rgb *= c.a; b.rgb *= b.a; d.rgb *= d.a; e.rgb *= e.a; f.rgb *= f.a;
+            float4 out = c*weights.x + b*weights.y + d*weights.z + e*weights.w + f*grip;
             if (out.a > 0.0001) out.rgb /= out.a;
             return out;
         }
@@ -171,14 +173,17 @@ final class MioRenderer: NSObject, MTKViewDelegate {
             encoder.setVertexBuffer(buffer, offset: 0, index: 0)
             encoder.setFragmentTexture(textures[layer.id], index: 0)
             var weights = SIMD4<Float>(-1,0,0,0)
+            var grip: Float = 0
             if layer.group.hasPrefix("hand_") {
                 let motion = motion(for: pose)
                 weights = layer.group == "hand_left" ? motion.leftHand : motion.rightHand
+                grip = layer.group == "hand_left" ? motion.leftFist : motion.rightFist
             }
-            for (index, variant) in ["palm","back","inward"].enumerated() {
+            for (index, variant) in ["palm","back","inward","fist"].enumerated() {
                 encoder.setFragmentTexture(textures[layer.group + "_" + variant] ?? textures[layer.id], index: index+1)
             }
             encoder.setFragmentBytes(&weights, length: MemoryLayout<SIMD4<Float>>.stride, index: 0)
+            encoder.setFragmentBytes(&grip, length: MemoryLayout<Float>.stride, index: 1)
             encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: v.count)
         }
         encoder.endEncoding()

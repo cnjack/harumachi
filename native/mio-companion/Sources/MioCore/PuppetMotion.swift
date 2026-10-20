@@ -13,6 +13,9 @@ public struct PuppetMotion: Sendable {
     /// Registered source drawings: relaxed, palm out, hand back, inward/side.
     public var leftHand = SIMD4<Float>(1, 0, 0, 0)
     public var rightHand = SIMD4<Float>(1, 0, 0, 0)
+    /// Fifth registered drawing; together with the four weights above sums to 1.
+    public var leftFist: Float = 0
+    public var rightFist: Float = 0
 
     public init(pose: RigPose) {
         let t = pose.time
@@ -42,7 +45,12 @@ public struct PuppetMotion: Sendable {
             rightWrist = 0.13 * oscillation * blend
             head += 0.045 * blend; torso -= 0.035 * blend
         case .stretch:
-            leftHand = SIMD4(1 - blend, 0, blend, 0)
+            // Close before lifting and release after lowering, with the wrist
+            // aligned to the forearm throughout the relaxed overhead stretch.
+            let grip = Self.smooth(0,0.35,Float(phase))
+                * (1-Self.smooth(Float(gesture.duration-0.35),Float(gesture.duration),Float(phase)))
+            leftFist = grip; rightFist = grip
+            leftHand = SIMD4(1-grip,0,0,0)
             rightHand = leftHand
             // Lift outwards throughout the motion; the previous anticipation
             // reversed the shoulder and folded the elbow almost 180 degrees.
@@ -92,6 +100,8 @@ public struct PuppetMotion: Sendable {
         result.rightWrist = mix(previous.rightWrist, rightWrist)
         result.leftHand = previous.leftHand + (leftHand - previous.leftHand) * t
         result.rightHand = previous.rightHand + (rightHand - previous.rightHand) * t
+        result.leftFist = mix(previous.leftFist,leftFist)
+        result.rightFist = mix(previous.rightFist,rightFist)
         return result
     }
     public static func envelope(_ time: Double, duration: Double) -> Float {
