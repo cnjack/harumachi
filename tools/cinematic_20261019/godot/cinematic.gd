@@ -488,6 +488,7 @@ func _render_stills(output: String) -> void:
 		{"name": "S4_arrival", "t": 16.5},
 		{"name": "S5_greeting", "t": 21.5},
 		{"name": "S6_depart", "t": 26.5},
+		{"name": "S6_depart_late", "t": 28.2},
 		{"name": "S7_festival_walk", "t": 31.5},
 		{"name": "S8_fireworks", "t": 37.6},
 		{"name": "S9_reveal", "t": 47.0},
@@ -675,7 +676,7 @@ func _update_shot(index: int, local: float, t: float) -> void:
 			_seek_clip(sora_ap, CLIP_SORA_TURN, local * 0.8)
 			_seek_clip(mio_ap, CLIP_MIO_WAVE, maxf(0.0, local - 0.8) * 0.75)
 		5:
-			_camera_lerp(local, duration, Vector3(0.6, 2.85, 4.0), Vector3(2.0, 2.95, 6.6),
+			_camera_lerp(local, duration, Vector3(0.6, 2.85, 4.0), Vector3(0.8, 2.95, 5.3),
 				Vector3(3.2, 1.05, 8.8), Vector3(3.45, 1.15, 13.2), 46.0, 45.0, 7.0, 0.0, 0.85, t)
 			_seek_clip(sora_ap, CLIP_SORA_WALK, local)
 			_seek_clip(mio_ap, CLIP_MIO_WALK, local)

@@ -8,6 +8,7 @@ var mesh: ImmediateMesh
 var mesh_instance: MeshInstance3D
 var material: StandardMaterial3D
 var flash_light: OmniLight3D
+var _vertex_count := 0
 
 
 func setup(camera: Camera3D, events: Array[Dictionary]) -> void:
@@ -61,6 +62,7 @@ func update_time(t: float) -> void:
 	if cam == null or not is_instance_valid(cam) or mesh == null:
 		return
 	mesh.clear_surfaces()
+	_vertex_count = 0
 	var right: Vector3 = cam.global_transform.basis.x
 	var up: Vector3 = cam.global_transform.basis.y
 	var started := false
@@ -88,7 +90,10 @@ func update_time(t: float) -> void:
 				best_energy = energy
 				best_pos = burst_pos
 	if started:
-		mesh.surface_end()
+		if _vertex_count > 0:
+			mesh.surface_end()
+		else:
+			mesh.clear_surfaces()
 	if is_instance_valid(flash_light):
 		if best_energy > 0.05:
 			flash_light.global_position = best_pos + Vector3(0.0, -1.0, 0.0)
@@ -174,3 +179,4 @@ func _glow(center: Vector3, size: float, color: Color, right: Vector3, up: Vecto
 func _vertex(point: Vector3, color: Color) -> void:
 	mesh.surface_set_color(color)
 	mesh.surface_add_vertex(point)
+	_vertex_count += 1
