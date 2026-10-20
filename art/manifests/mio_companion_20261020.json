@@ -30,7 +30,7 @@
   "layout_revision": "20261020-continuous-v10",
   "face_layout_source": "native/mio-companion/tools/pack_assets.swift",
   "initial_verification": "evidence/mio_companion_20261020/verification.json",
-  "verification": "evidence/mio_motion_repair_20261020/verification.json",
+  "verification": "evidence/mio_rest_20261020/verification.json",
   "face_verification": "evidence/mio_face_proportions_20261020/verification.json",
   "head_verification": "evidence/mio_head20_20261020/verification.json",
   "body_revision": {
@@ -244,5 +244,18 @@
     "source_first": true,
     "head_scale_unchanged": 0.736,
     "previous_review": "evidence/mio_joint_review_20261020/verification.json"
+  },
+  "rest_motion_revision": {
+    "source": "native/mio-companion/Sources/MioCore/PuppetMotion.swift",
+    "rest_shoulder_closure_radians": [
+      -0.38,
+      0.38
+    ],
+    "gesture_idle_title": "放下",
+    "resting_wrist_horizontal_distance_from_shoulder_max_px": 55,
+    "resting_wrist_vertical_distance_from_shoulder_min_px": 210,
+    "source_bitmaps_psd_and_rig_unchanged": true,
+    "format_audit": "evidence/mio_rest_20261020/format-audit.json",
+    "cubism_format_verified": false
   }
 }

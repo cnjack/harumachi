@@ -42,6 +42,13 @@ public struct PuppetMotion: Sendable {
         }
         let rise: Float = gesture == .stretch ? 1.5 : (gesture == .wave ? 1.35 : 0.85)
         let blend = Self.envelope(phase, duration: gesture.duration,rise:rise,fall:gesture == .think ? 0.9 : 1.5)
+        // The source artwork spreads its arms for rigging. The authored rest
+        // pose closes the shoulders so both wrists hang beside the hips.
+        // Release only the arm used by the gesture, preserving held targets.
+        let leftActivity = gesture == .stretch ? blend : 0
+        let rightActivity = gesture == .idle || gesture == .automatic ? 0 : blend
+        leftShoulder -= 0.38 * (1-leftActivity)
+        rightShoulder += 0.38 * (1-rightActivity)
         let handBlend = Self.smooth(0,0.4,Float(phase))
             * (1-Self.smooth(Float(gesture.duration-0.4),Float(gesture.duration),Float(phase)))
         let presentedPalm = Self.smooth(0.18,0.60,Float(phase))

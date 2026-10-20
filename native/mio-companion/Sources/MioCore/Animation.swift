@@ -5,7 +5,7 @@ public enum CharacterGesture: String, CaseIterable, Sendable {
     public var title: String {
         switch self {
         case .automatic: return "自动"
-        case .idle: return "轻摆"
+        case .idle: return "放下"
         case .wave: return "招手"
         case .stretch: return "伸懒腰"
         case .think: return "思考"

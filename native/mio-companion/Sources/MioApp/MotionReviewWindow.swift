@@ -18,7 +18,7 @@ import MioCore
     var sentSpeech = false
     var revision = 100
     let schedule: [(Double,CharacterGesture)] = [(0,.idle),(1,.wave),(4.5,.stretch),(9.5,.think),(14.5,.talk),(19,.automatic)]
-    let captures: [(Double,String)] = [(0.5,"idle"),(3.5,"wave"),(8.5,"stretch"),(14,"think"),(18.5,"talk"),(25,"automatic")]
+    let captures: [(Double,String)] = [(0.8,"idle"),(3.5,"wave"),(8.5,"stretch"),(14,"think"),(18.5,"talk"),(25,"automatic")]
 
     init(at directory: URL, persistent: Bool) throws {
         self.directory = directory
@@ -82,7 +82,11 @@ import MioCore
                         elbow:SIMD2(left ? 173 : 427,418),wrist:SIMD2(left ? 114 : 486,508),left:left)
                 }
                 let hand = HandPresentation(motion:motion,left:false)
-                if name == "wave" { poseChecks[name] = hand.variant == "palm" && wrist(false).y < 300 }
+                if name == "idle" {
+                    let left = wrist(true),right = wrist(false)
+                    poseChecks[name] = hand.variant == "relaxed" && left.y > 525 && right.y > 525
+                        && abs(left.x-231) < 60 && abs(right.x-369) < 60
+                } else if name == "wave" { poseChecks[name] = hand.variant == "palm" && wrist(false).y < 300 }
                 else if name == "stretch" {
                     poseChecks[name] = hand.variant == "fist" && wrist(false).y < 240 && wrist(true).y < 240
                 } else if name == "think" {

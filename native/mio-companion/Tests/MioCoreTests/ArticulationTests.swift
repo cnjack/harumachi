@@ -2,6 +2,23 @@ import XCTest
 @testable import MioCore
 
 final class ArticulationTests: XCTestCase {
+    func testRestingArmsHangBesideTheBodyAndGesturesReturnThere() {
+        for time in [0.0,2.0,7.0,16.0] {
+            for gesture in [CharacterGesture.idle,.wave,.stretch,.think,.talk] {
+                let motion = PuppetMotion(pose:RigPose(time:time,gesture:gesture,
+                    gestureTime:gesture == .idle ? 0 : gesture.duration+1))
+                for left in [true,false] {
+                    let shoulder = SIMD2<Float>(left ? 231 : 369,320)
+                    let wrist = SIMD2<Float>(left ? 114 : 486,508)
+                    let actual = motion.armPoint(wrist,shoulder:shoulder,
+                        elbow:SIMD2(left ? 173 : 427,418),wrist:wrist,left:left)
+                    let origin = motion.torsoPoint(shoulder)
+                    XCTAssertLessThan(abs(actual.x-origin.x),55,"Resting arms must hang beside the hips, not stay spread out")
+                    XCTAssertGreaterThan(actual.y-origin.y,210,"The relaxed wrist must lower beneath the waist")
+                }
+            }
+        }
+    }
     func testIndependentArmsHaveThreeJoints() throws {
         let package = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
             .deletingLastPathComponent().deletingLastPathComponent()

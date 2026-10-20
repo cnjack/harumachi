@@ -58,7 +58,8 @@ final class MotionPlaybackTests: XCTestCase {
             for frame in 0...150 {
                 let motion = player.sample(RigPose(time:start+Double(frame)/30,gesture:.stretch,gestureTime:Double(frame)/30))
                 if motion.rightElbow>0.6 {
-                    XCTAssertLessThan(abs(motion.leftShoulder),0.08,"Do not lift the other arm while the thinking elbow folds down, clock \(start)")
+                    let resting = PuppetMotion(pose:RigPose(time:start+Double(frame)/30,gesture:.idle))
+                    XCTAssertLessThan(abs(motion.leftShoulder-resting.leftShoulder),0.08,"Do not lift the other arm while the thinking elbow folds down, clock \(start)")
                 }
             }
         }

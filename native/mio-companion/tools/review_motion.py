@@ -31,7 +31,7 @@ def main():
             continue
     else:
         font = ImageFont.load_default()
-    names = dict(idle="轻摆", wave="招手", stretch="伸懒腰", think="思考", talk="说话")
+    names = dict(idle="放下", wave="招手", stretch="伸懒腰", think="思考", talk="说话")
 
     def picture(entry, box=None, size=None, background="#faf9f4"):
         with Image.open(root / entry["frame"]) as source:
