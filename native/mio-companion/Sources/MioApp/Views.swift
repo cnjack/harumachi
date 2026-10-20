@@ -26,6 +26,7 @@ struct CharacterView: NSViewRepresentable {
         return view
     }
     func updateNSView(_ nsView: MTKView, context: Context) {
+        context.coordinator.renderer?.selectGesture(state.gesture, revision: state.gestureRevision)
         context.coordinator.renderer?.pose.mood = state.mood
         context.coordinator.renderer?.speakingUntil = state.speakingUntil
         context.coordinator.renderer?.isPaused = state.paused
@@ -46,10 +47,10 @@ final class TrackingMetalView: MTKView {
     }
     override func mouseMoved(with event: NSEvent) {
         let point = convert(event.locationInWindow, from: nil)
-        rigRenderer?.pose.lookX = Float(max(-1, min(1, point.x / max(1, bounds.width) * 2 - 1)))
-        rigRenderer?.pose.lookY = Float(max(-1, min(1, point.y / max(1, bounds.height) * 2 - 1)))
+        rigRenderer?.targetLook.x = Float(max(-1, min(1, point.x / max(1, bounds.width) * 2 - 1)))
+        rigRenderer?.targetLook.y = Float(max(-1, min(1, point.y / max(1, bounds.height) * 2 - 1)))
     }
-    override func mouseExited(with event: NSEvent) { rigRenderer?.pose.lookX = 0; rigRenderer?.pose.lookY = 0 }
+    override func mouseExited(with event: NSEvent) { rigRenderer?.targetLook = .zero }
 }
 
 private let ink = Color(red: 0.19, green: 0.24, blue: 0.28)
@@ -92,6 +93,12 @@ struct Dashboard: View {
                     Toggle("桌面角色", isOn: $state.showCompanion).toggleStyle(.switch).font(.system(size: 12))
                         .onChange(of: state.showCompanion) { _, value in state.onVisibility?(value) }
                 }
+                HStack(spacing: 8) {
+                    Text("动作").font(.system(size: 11)).foregroundStyle(muted)
+                    ForEach(CharacterGesture.allCases, id: \.self) { gesture in
+                        Button(gesture.title) { state.play(gesture) }.disabled(state.paused)
+                    }
+                }.controlSize(.small)
                 VStack(alignment: .leading, spacing: 7) {
                     Text("CLEF").font(.system(size: 10, weight: .semibold)).tracking(2).foregroundStyle(accent)
                     HStack { TextField("服务地址", text: $state.baseURL); TextField("模型", text: $state.model).frame(width: 105); Button("连接", action: state.reconnect) }

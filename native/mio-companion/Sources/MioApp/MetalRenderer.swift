@@ -3,7 +3,7 @@ import MetalKit
 import MioCore
 
 struct RigDescription: Decodable {
-    struct Layer: Decodable { let id: String; let texture: String; let rect: [Float]; let group: String }
+    struct Layer: Decodable { let id: String; let texture: String; let rect: [Float]; let group: String; let joints: [[Float]]? }
     let canvas: [Float]
     let layers: [Layer]
 }
@@ -21,6 +21,22 @@ final class MioRenderer: NSObject, MTKViewDelegate {
     var onFrame: (() -> Void)?
     var isPaused = false
     var speakingUntil = Date.distantPast
+    var gestureRevision = -1
+    var gestureStart: Double = 0
+    var lastFrameTime: Double?
+    var targetLook = SIMD2<Float>.zero
+    private var previousMotion: PuppetMotion?
+    func motion(for pose: RigPose) -> PuppetMotion {
+        let current = PuppetMotion(pose: pose)
+        guard let previousMotion else { return current }
+        return current.blended(from: previousMotion, fraction: PuppetMotion.smooth(0, 0.4, Float(pose.time - gestureStart)))
+    }
+    func selectGesture(_ gesture: CharacterGesture, revision: Int) {
+        guard revision != gestureRevision else { return }
+        previousMotion = motion(for: pose)
+        pose.gesture = gesture; gestureStart = pose.time; pose.gestureTime = 0
+        gestureRevision = revision
+    }
 
     init(device: MTLDevice) throws {
         self.device = device
@@ -63,8 +79,17 @@ final class MioRenderer: NSObject, MTKViewDelegate {
     func draw(in view: MTKView) {
         guard let drawable = view.currentDrawable, let pass = view.currentRenderPassDescriptor,
               let command = queue.makeCommandBuffer() else { return }
-        if !isPaused { pose.time = ProcessInfo.processInfo.systemUptime - started }
-        pose.speaking = Date() < speakingUntil
+        let now = ProcessInfo.processInfo.systemUptime
+        let dt = min(0.1, max(0, now - (lastFrameTime ?? now)))
+        lastFrameTime = now
+        if !isPaused {
+            pose.time += dt
+            let follow = Float(1 - exp(-dt * 7))
+            pose.lookX += (targetLook.x - pose.lookX) * follow
+            pose.lookY += (targetLook.y - pose.lookY) * follow
+        }
+        pose.gestureTime = pose.time - gestureStart
+        pose.speaking = Date() < speakingUntil || (pose.gesture == .talk && pose.gestureTime < CharacterGesture.talk.duration)
         encode(command: command, pass: pass, size: view.drawableSize, pose: pose)
         command.present(drawable); command.commit()
         frameCount += 1
@@ -75,33 +100,38 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         let scale = min(Float(size.width) / rig.canvas[0], Float(size.height) / rig.canvas[1])
         let offset = SIMD2<Float>((Float(size.width) - rig.canvas[0] * scale) / 2,
                                  (Float(size.height) - rig.canvas[1] * scale) / 2)
-        let head = layer.group != "body"
-        let pivot = SIMD2<Float>(300, 268)
-        let angle = head ? (pose.lookX * 0.025 + pose.sway * 0.012 + (pose.mood == .thinking ? -0.035 : 0)) : pose.sway * 0.003
+        let arm = layer.group == "arm_left" || layer.group == "arm_right"
+        let head = layer.group != "body" && !arm
+        let motion = motion(for: pose)
         func point(_ u: Float, _ v: Float) -> Vertex {
             var p = SIMD2<Float>(r[0] + r[2] * u, r[1] + r[3] * v)
-            if head {
-                p.x += pose.lookX * 5; p.y -= pose.lookY * 3 + pose.breath * 1.5
+            if arm, let joints = layer.joints, joints.count == 3 {
+                p = motion.armPoint(p, shoulder: SIMD2(joints[0][0], joints[0][1]),
+                                    elbow: SIMD2(joints[1][0], joints[1][1]),
+                                    wrist: SIMD2(joints[2][0], joints[2][1]), left: layer.group == "arm_left")
+            } else if head {
                 if layer.group == "hair" {
                     let weight = max(0, (p.y - 95) / 200)
-                    p.x += Float(sin(pose.time * 1.6 + Double(v) * 1.5)) * 2.6 * weight
+                    p.x += Float(sin(pose.time * 1.6 + Double(v) * 1.5 - 0.3)) * 2.6 * weight
                 }
                 if layer.group.hasPrefix("eyes") { p.x += pose.lookX * 1.5; p.y -= pose.lookY * 0.6 }
-                let q = p - pivot
-                p = SIMD2<Float>(q.x * cos(angle) - q.y * sin(angle), q.x * sin(angle) + q.y * cos(angle)) + pivot
+                p = motion.torsoPoint(motion.headPoint(p))
             } else {
                 let upper = max(0, min(1, (750 - p.y) / 500))
-                p.x += pose.sway * 2 * upper
-                p.y -= pose.breath * 2.5 * upper
+                p.y -= pose.breath * 1.5 * upper
                 p.x = 300 + (p.x - 300) * (1 + pose.breath * 0.002 * upper)
+                let influence = 1 - PuppetMotion.smooth(520, 800, p.y)
+                p = motion.torsoPoint(motion.neckPoint(p), influence: influence)
             }
             p = p * scale + offset
             return Vertex(position: SIMD2<Float>(p.x / Float(size.width) * 2 - 1, 1 - p.y / Float(size.height) * 2), uv: SIMD2<Float>(u, v))
         }
         var result: [Vertex] = []
-        // A deformable 12 x 16 mesh per drawable; no full-frame texture warping.
-        for y in 0..<16 { for x in 0..<12 {
-            let u = Float(x) / 12, v = Float(y) / 16, du: Float = 1 / 12, dv: Float = 1 / 16
+        // Denser arm and neck grids resolve joint bends without pulling the torso.
+        let columns = arm ? 24 : 20, rows = head ? 24 : 64
+        for y in 0..<rows { for x in 0..<columns {
+            let u = Float(x) / Float(columns), v = Float(y) / Float(rows)
+            let du: Float = 1 / Float(columns), dv: Float = 1 / Float(rows)
             result += [point(u,v), point(u+du,v), point(u,v+dv), point(u+du,v), point(u+du,v+dv), point(u,v+dv)]
         } }
         return result

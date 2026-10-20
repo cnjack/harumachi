@@ -4,6 +4,9 @@ import MioCore
 
 @MainActor final class CompanionState: ObservableObject {
     @Published var mood: Mood = .neutral
+    @Published var gesture: CharacterGesture = .automatic
+    @Published var gestureRevision = 0
+    func play(_ value: CharacterGesture) { gesture = value; gestureRevision += 1 }
     @Published var phrase = "我是澪。今天也一起慢慢来吧。"
     @Published var source = "正在连接 Clef"
     @Published var connection = "尚未验证"

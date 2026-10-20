@@ -15,6 +15,7 @@
         228.16,
         239.20000000000002
       ],
+      "sourceAtlas" : "parts-atlas.png",
       "sourceCrop" : [
         444,
         55,
@@ -27,18 +28,83 @@
       "group" : "body",
       "id" : "body",
       "rect" : [
-        65,
+        155,
         252,
-        470,
+        290,
         730
       ],
+      "sourceAtlas" : "articulated\/body-arms-atlas.png",
       "sourceCrop" : [
-        35,
+        100,
         0,
-        385,
-        600
+        500,
+        1024
       ],
       "texture" : "body.png"
+    },
+    {
+      "group" : "arm_left",
+      "id" : "arm_left",
+      "joints" : [
+        [
+          238,
+          310
+        ],
+        [
+          168,
+          405
+        ],
+        [
+          117,
+          510
+        ]
+      ],
+      "rect" : [
+        65,
+        285,
+        194,
+        280
+      ],
+      "sourceAtlas" : "articulated\/body-arms-atlas.png",
+      "sourceCrop" : [
+        640,
+        140,
+        370,
+        540
+      ],
+      "texture" : "arm_left.png"
+    },
+    {
+      "group" : "arm_right",
+      "id" : "arm_right",
+      "joints" : [
+        [
+          362,
+          310
+        ],
+        [
+          432,
+          405
+        ],
+        [
+          483,
+          510
+        ]
+      ],
+      "rect" : [
+        341,
+        285,
+        194,
+        280
+      ],
+      "sourceAtlas" : "articulated\/body-arms-atlas.png",
+      "sourceCrop" : [
+        1160,
+        140,
+        376,
+        540
+      ],
+      "texture" : "arm_right.png"
     },
     {
       "group" : "head",
@@ -49,6 +115,7 @@
         158.24000000000001,
         165.59999999999999
       ],
+      "sourceAtlas" : "parts-atlas.png",
       "sourceCrop" : [
         945,
         155,
@@ -66,6 +133,7 @@
         106.72,
         41.068800000000003
       ],
+      "sourceAtlas" : "parts-atlas.png",
       "sourceCrop" : [
         20,
         630,
@@ -83,6 +151,7 @@
         106.72,
         36.266400000000004
       ],
+      "sourceAtlas" : "parts-atlas.png",
       "sourceCrop" : [
         475,
         632,
@@ -100,6 +169,7 @@
         33.120000000000005,
         8.8320000000000007
       ],
+      "sourceAtlas" : "parts-atlas.png",
       "sourceCrop" : [
         1010,
         715,
@@ -117,6 +187,7 @@
         20.240000000000002,
         11.592000000000001
       ],
+      "sourceAtlas" : "parts-atlas.png",
       "sourceCrop" : [
         1460,
         685,
@@ -134,6 +205,7 @@
         228.16,
         239.20000000000002
       ],
+      "sourceAtlas" : "parts-atlas.png",
       "sourceCrop" : [
         1320,
         60,
@@ -143,7 +215,7 @@
       "texture" : "hair_front.png"
     }
   ],
-  "layoutRevision" : "20261020-head-proportions-v3",
+  "layoutRevision" : "20261020-articulated-v4",
   "name" : "澪",
   "parameters" : [
     "ParamAngleX",

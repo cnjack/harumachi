@@ -16,7 +16,7 @@
   "rig": "art/live2d/mio/Mio.rig.json",
   "layered_source": "art/live2d/mio/Mio.layers.psd",
   "runtime_resources": "native/mio-companion/Sources/MioApp/Resources/Mio/",
-  "layer_count": 8,
+  "layer_count": 10,
   "canvas": [
     600,
     1000
@@ -27,9 +27,31 @@
   "engine": "Swift + Metal",
   "network_policy": "literal loopback IP only; no redirects",
   "live_clef_verified": false,
-  "layout_revision": "20261020-head-proportions-v3",
+  "layout_revision": "20261020-articulated-v4",
   "face_layout_source": "native/mio-companion/tools/pack_assets.swift",
   "initial_verification": "evidence/mio_companion_20261020/verification.json",
-  "verification": "evidence/mio_head_proportions_20261020/verification.json",
-  "face_verification": "evidence/mio_face_proportions_20261020/verification.json"
+  "verification": "evidence/mio_animation_20261020/verification.json",
+  "face_verification": "evidence/mio_face_proportions_20261020/verification.json",
+  "head_verification": "evidence/mio_head_proportions_20261020/verification.json",
+  "body_revision": {
+    "tool": "imagegen built-in",
+    "prompt": "art/manifests/prompts/live2d/mio-articulated-body.txt",
+    "atlas": "art/live2d/mio/articulated/body-arms-atlas.png",
+    "generated_dimensions": [
+      1536,
+      1024
+    ],
+    "bag_removed": true,
+    "independent_arms": true,
+    "joints": [
+      "shoulder",
+      "elbow",
+      "wrist"
+    ],
+    "reference_commit": "d3d26d88099ddab94c60ef22745afb251fec8b4c",
+    "references": [
+      "native/mio-companion/Sources/MioApp/Resources/Mio/body.png",
+      "evidence/mio_head_proportions_20261020/after/neutral.png"
+    ]
+  }
 }

@@ -8,8 +8,12 @@ let out = root.appendingPathComponent("native/mio-companion/Sources/MioApp/Resou
 try FileManager.default.createDirectory(at: out, withIntermediateDirectories: true)
 let source = CGImageSourceCreateWithURL(input as CFURL, nil)!
 let atlas = CGImageSourceCreateImageAtIndex(source, 0, nil)!
+let bodyAtlas = CGImageSourceCreateImageAtIndex(CGImageSourceCreateWithURL(
+    root.appendingPathComponent("art/live2d/mio/articulated/body-arms-atlas.png") as CFURL, nil)!, 0, nil)!
 let crops: [(String, CGRect, [Double], String)] = [
-    ("body", CGRect(x: 35, y: 0, width: 385, height: 600), [65, 252, 470, 730], "body"),
+    ("body", CGRect(x: 100, y: 0, width: 500, height: 1024), [155, 252, 290, 730], "body"),
+    ("arm_left", CGRect(x: 640, y: 140, width: 370, height: 540), [65, 285, 194, 280], "arm_left"),
+    ("arm_right", CGRect(x: 1160, y: 140, width: 376, height: 540), [341, 285, 194, 280], "arm_right"),
     ("hair_back", CGRect(x: 444, y: 55, width: 445, height: 530), [176, 36, 248, 260], "hair"),
     ("face", CGRect(x: 945, y: 155, width: 350, height: 322), [214, 92, 172, 180], "head"),
     ("hair_front", CGRect(x: 1320, y: 60, width: 454, height: 535), [176, 36, 248, 260], "hair"),
@@ -23,7 +27,7 @@ let crops: [(String, CGRect, [Double], String)] = [
 let headScale = 0.92
 let neckAnchor = CGPoint(x: 300, y: 268)
 func fittedRect(_ rect: [Double], group: String) -> [Double] {
-    guard group != "body" else { return rect }
+    guard group != "body", !group.hasPrefix("arm_") else { return rect }
     return [neckAnchor.x + (rect[0] - neckAnchor.x) * headScale,
             neckAnchor.y + (rect[1] - neckAnchor.y) * headScale,
             rect[2] * headScale, rect[3] * headScale]
@@ -31,7 +35,8 @@ func fittedRect(_ rect: [Double], group: String) -> [Double] {
 var layers: [[String: Any]] = []
 for (name, crop, originalRect, group) in crops {
     let rect = fittedRect(originalRect, group: group)
-    let part = atlas.cropping(to: crop)!
+    let sourceAtlas = group == "body" || group.hasPrefix("arm_") ? bodyAtlas : atlas
+    let part = sourceAtlas.cropping(to: crop)!
     let width = part.width, height = part.height
     var bytes = [UInt8](repeating: 0, count: width * height * 4)
     let cs = CGColorSpaceCreateDeviceRGB()
@@ -58,14 +63,18 @@ for (name, crop, originalRect, group) in crops {
     let destination = CGImageDestinationCreateWithURL(path as CFURL, "public.png" as CFString, 1, nil)!
     CGImageDestinationAddImage(destination, trimmed, nil)
     guard CGImageDestinationFinalize(destination) else { fatalError("PNG write failed") }
-    layers.append(["id": name, "texture": name + ".png", "rect": rect, "group": group,
-                   "sourceCrop": [crop.minX, crop.minY, crop.width, crop.height]])
+    var layer: [String: Any] = ["id": name, "texture": name + ".png", "rect": rect, "group": group,
+                               "sourceCrop": [crop.minX, crop.minY, crop.width, crop.height],
+                               "sourceAtlas": group == "body" || group.hasPrefix("arm_") ? "articulated/body-arms-atlas.png" : "parts-atlas.png"]
+    if group == "arm_left" { layer["joints"] = [[238, 310], [168, 405], [117, 510]] }
+    if group == "arm_right" { layer["joints"] = [[362, 310], [432, 405], [483, 510]] }
+    layers.append(layer)
     print("\(name): \(trimmed.width)x\(trimmed.height)")
 }
-let order = ["hair_back", "body", "face", "eyes_open", "eyes_closed", "mouth_closed", "mouth_open", "hair_front"]
+let order = ["hair_back", "body", "arm_left", "arm_right", "face", "eyes_open", "eyes_closed", "mouth_closed", "mouth_open", "hair_front"]
 layers.sort { order.firstIndex(of: $0["id"] as! String)! < order.firstIndex(of: $1["id"] as! String)! }
 let manifest: [String: Any] = ["format": "harumachi-layer-rig", "version": 1, "name": "澪", "canvas": [600, 1000],
-                              "layoutRevision": "20261020-head-proportions-v3",
+                              "layoutRevision": "20261020-articulated-v4",
                               "cubismCompatible": false, "layers": layers,
                               "parameters": ["ParamAngleX", "ParamAngleY", "ParamBodyAngleZ", "ParamBreath", "ParamEyeLOpen", "ParamEyeROpen", "ParamMouthOpenY"]]
 let json = try JSONSerialization.data(withJSONObject: manifest, options: [.prettyPrinted, .sortedKeys])

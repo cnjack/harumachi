@@ -9,6 +9,7 @@ import MioCore
     var companion: NSPanel!
     var statusItem: NSStatusItem!
     var smokeDirectory: URL?
+    var smokeGestures: [String] = []
     func applicationDidFinishLaunching(_ notification: Notification) {
         let args = CommandLine.arguments
         if let at = args.firstIndex(of: "--smoke-test"), at + 1 < args.count {
@@ -57,6 +58,17 @@ import MioCore
     func applicationWillTerminate(_ notification: Notification) { state?.stop() }
     private func runSmoke() {
         guard let directory = smokeDirectory else { return }
+        let preview: [(Double, CharacterGesture)] = [(0.4, .wave), (2.6, .stretch), (4.8, .think), (7.0, .talk)]
+        for (delay, gesture) in preview {
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in self?.state.play(gesture) }
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay + 1.3) { [weak self] in
+                guard let self, let renderer = self.state.renderer, renderer.pose.gesture == gesture else { return }
+                do {
+                    try renderer.snapshot(to: directory.appendingPathComponent("live-\(gesture.rawValue).png"), pose: renderer.pose)
+                    self.smokeGestures.append(gesture.rawValue)
+                } catch { fputs("Gesture snapshot failed: \(error)\n", stderr) }
+            }
+        }
         // All stimulus is confined to this app and its own inbox; no desktop automation.
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
             guard let self else { return }
@@ -81,11 +93,12 @@ import MioCore
                     "eventKinds": Array(Set(self.state.events.map(\.kind))).sorted(),
                     "decisions": self.state.decisions, "connection": self.state.connection,
                     "decisionSource": decisionSource, "mood": self.state.mood.rawValue,
+                    "previewedGestures": self.smokeGestures,
                     "virtualDisplayCreated": false, "audioEnabled": false,
                     "screenshotMethod": "own view tree cache plus own Metal render target composition; no display capture API"]
                 try JSONSerialization.data(withJSONObject: summary, options: [.prettyPrinted, .sortedKeys]).write(to: directory.appendingPathComponent("smoke.json"))
                 guard self.state.frames >= 120, renderer.frameCount >= 120, pauseWorks,
-                      summary["inboxReceived"] as? Bool == true else { throw MioRenderer.RenderError.unavailable }
+                      summary["inboxReceived"] as? Bool == true, self.smokeGestures.count == 4 else { throw MioRenderer.RenderError.unavailable }
                 self.state.stop(); exit(0)
             } catch { fputs("Smoke failed: \(error)\n", stderr); self.state.stop(); exit(1) }
         }
@@ -107,6 +120,25 @@ import MioCore
                 try renderer.snapshot(to: dir.appendingPathComponent("blink.png"), pose: RigPose(time: 4.25))
                 print("Metal snapshots: \(dir.path)"); exit(0)
             } catch { fputs("Render failed: \(error)\n", stderr); exit(1) }
+        }
+        if let at = args.firstIndex(of: "--render-motion"), at + 1 < args.count {
+            do {
+                let dir = URL(fileURLWithPath: args[at + 1], isDirectory: true)
+                try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+                guard let device = MTLCreateSystemDefaultDevice() else { throw MioRenderer.RenderError.unavailable }
+                let renderer = try MioRenderer(device: device)
+                let gestures: [CharacterGesture] = [.idle, .wave, .stretch, .think, .talk]
+                for (index, gesture) in gestures.enumerated() {
+                    for frame in 0..<210 {
+                        let t = Double(frame) / 30
+                        let pose = RigPose(time: t, lookX: Float(sin(t * 0.8)) * 0.65, speaking: gesture == .talk,
+                                           gesture: gesture, gestureTime: t)
+                        let name = String(format: "%04d.png", index * 210 + frame)
+                        try renderer.snapshot(to: dir.appendingPathComponent(name), pose: pose)
+                    }
+                }
+                print("Motion frames: 1050 at 30 FPS"); exit(0)
+            } catch { fputs("Motion render failed: \(error)\n", stderr); exit(1) }
         }
         if args.contains("--probe-clef") {
             let env = ProcessInfo.processInfo.environment
