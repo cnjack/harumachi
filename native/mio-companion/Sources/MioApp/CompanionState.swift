@@ -40,10 +40,17 @@ import MioCore
         baseURL = environment["MIO_CLEF_BASE_URL"] ?? defaults.string(forKey: "baseURL") ?? "http://127.0.0.1:8098"
         model = environment["MIO_CLEF_MODEL"] ?? defaults.string(forKey: "model") ?? "clef-omni"
     }
-    func start() {
-        monitor = SystemMonitor(inbox: inbox) { [weak self] in self?.receive($0) }
-        monitor?.start()
-        receive(SystemEvent(kind: "startup", summary: "澪已来到桌面"))
+    func start(monitorSystemEvents: Bool = true) {
+        if monitorSystemEvents {
+            monitor = SystemMonitor(inbox: inbox) { [weak self] in self?.receive($0) }
+            monitor?.start()
+            receive(SystemEvent(kind:"startup",summary:"澪已来到桌面"))
+        } else {
+            // Dedicated connection check: no workspace observers, network/power
+            // monitors or inbox reader exist in this mode.
+            receive(SystemEvent(kind:"message",summary:"你好，澪。这是一条连接验证消息。",
+                                metadata:["source":"connection-test"]))
+        }
     }
     func receive(_ event: SystemEvent) {
         guard !paused, gate.accepts(event) else { return }

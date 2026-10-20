@@ -25,8 +25,8 @@
   "cubism_moc3": false,
   "cubism_editor_import_verified": false,
   "engine": "Swift + Metal",
-  "network_policy": "literal loopback IP only; no redirects",
-  "live_clef_verified": false,
+  "network_policy": "configured HTTP(S) domain, LAN or loopback endpoint; normal system network authorization; no redirects",
+  "live_clef_verified": true,
   "layout_revision": "20261020-thinking-v9",
   "face_layout_source": "native/mio-companion/tools/pack_assets.swift",
   "initial_verification": "evidence/mio_companion_20261020/verification.json",
@@ -204,5 +204,17 @@
       "four-finger loose fist"
     ],
     "hand_occlusion": "chin hand foreground above face and hair; forearm under cuff"
+  },
+  "clef_connection_revision": {
+    "base_url": "https://clef.scgzyun.com",
+    "model": "clef-omni",
+    "endpoint": "/v1/systemone",
+    "preemptive_permission_skip_removed": true,
+    "redirects_followed": false,
+    "verification": "evidence/mio_clef_live_20261020/verification.json",
+    "decision_threshold_preserved": 0.55,
+    "live_verification_scope": "fixed synthetic message; production URLSession and native window; no SystemMonitor or Inbox reader",
+    "live_monitoring_verified": false,
+    "monitoring_data_approval": "pending explicit user confirmation after automatic review rejected broad native smoke"
   }
 }

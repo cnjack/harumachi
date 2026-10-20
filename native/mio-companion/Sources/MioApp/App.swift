@@ -9,6 +9,7 @@ import MioCore
     var companion: NSPanel!
     var statusItem: NSStatusItem!
     var smokeDirectory: URL?
+    var connectionTestDirectory: URL?
     var smokeGestures: [String] = []
     func applicationDidFinishLaunching(_ notification: Notification) {
         let args = CommandLine.arguments
@@ -16,7 +17,11 @@ import MioCore
             smokeDirectory = URL(fileURLWithPath: args[at + 1], isDirectory: true)
             try? FileManager.default.createDirectory(at: smokeDirectory!, withIntermediateDirectories: true)
         }
-        state = CompanionState(dataDirectory: smokeDirectory?.appendingPathComponent("runtime"))
+        if let at = args.firstIndex(of:"--connection-test"), at+1 < args.count {
+            connectionTestDirectory = URL(fileURLWithPath:args[at+1],isDirectory:true)
+            try? FileManager.default.createDirectory(at:connectionTestDirectory!,withIntermediateDirectories:true)
+        }
+        state = CompanionState(dataDirectory: (connectionTestDirectory ?? smokeDirectory)?.appendingPathComponent("runtime"))
         dashboard = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 972, height: 710), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
         dashboard.title = "澪 · 晴町桌面来信"; dashboard.isReleasedWhenClosed = false
         dashboard.contentView = NSHostingView(rootView: Dashboard(state: state))
@@ -45,9 +50,10 @@ import MioCore
         menu.addItem(withTitle: "退出澪", action: #selector(quit), keyEquivalent: "q")
         for item in menu.items { item.target = self }
         statusItem.menu = menu
-        state.start()
+        state.start(monitorSystemEvents:connectionTestDirectory == nil)
         NSApp.activate(ignoringOtherApps: true)
-        if smokeDirectory != nil { runSmoke() }
+        if connectionTestDirectory != nil { runConnectionTest() }
+        else if smokeDirectory != nil { runSmoke() }
     }
     @objc func showDashboard() { dashboard.makeKeyAndOrderFront(nil); NSApp.activate(ignoringOtherApps: true) }
     @objc func togglePause() { state.togglePause() }
@@ -56,6 +62,28 @@ import MioCore
     }
     @objc func quit() { state.stop(); NSApp.terminate(nil) }
     func applicationWillTerminate(_ notification: Notification) { state?.stop() }
+    private func runConnectionTest() {
+        guard let directory = connectionTestDirectory else { return }
+        DispatchQueue.main.asyncAfter(deadline:.now()+8) { [weak self] in
+            guard let self,let renderer = self.state.renderer else { exit(1) }
+            do {
+                let result: [String:Any] = ["connection":self.state.connection,"decisionSource":self.state.source,
+                    "error":self.state.error,"decisions":self.state.decisions,"rendererFrames":renderer.frameCount,
+                    "systemMonitoringStarted":self.state.monitor != nil,"eventKinds":self.state.events.map(\.kind),
+                    "eventMetadata":self.state.events.map(\.metadata),"audioEnabled":false,"virtualDisplayCreated":false,
+                    "screenshotMethod":"own view tree cache plus own Metal render target composition; no display capture API"]
+                try JSONSerialization.data(withJSONObject:result,options:[.prettyPrinted,.sortedKeys])
+                    .write(to:directory.appendingPathComponent("connection.json"))
+                guard self.state.monitor == nil,self.state.events.count == 1,
+                      self.state.events[0].kind == "message",self.state.events[0].metadata == ["source":"connection-test"],
+                      self.state.source == "Clef 决策",self.state.error.isEmpty,renderer.frameCount >= 120 else {
+                    throw MioRenderer.RenderError.unavailable
+                }
+                try saveOwnWindow(self.dashboard,to:directory.appendingPathComponent("dashboard.png"))
+                self.state.stop();exit(0)
+            } catch { fputs("Connection window test failed: \(error.localizedDescription)\n",stderr);self.state.stop();exit(1) }
+        }
+    }
     private func runSmoke() {
         guard let directory = smokeDirectory else { return }
         let preview: [(Double, CharacterGesture)] = [(0.4, .wave), (2.6, .stretch), (4.8, .think), (7.0, .talk)]

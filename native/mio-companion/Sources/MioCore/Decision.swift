@@ -66,16 +66,9 @@ public struct ClefConfiguration: Codable, Sendable {
               timeout.isFinite, (0.1...30).contains(timeout) else { throw ClefError.configuration }
         return url.appendingPathComponent("v1/systemone")
     }
-    public func permissionFreeEndpoint() throws -> URL {
-        let url = try endpoint()
-        // This delivery explicitly skips all permission-dependent integrations.
-        // Literal loopback only also avoids DNS resolving a hostname onto the LAN.
-        guard ["127.0.0.1", "[::1]", "::1"].contains(url.host?.lowercased() ?? "") else { throw ClefError.permissionSkipped }
-        return url
-    }
 }
 public enum ClefError: Error, LocalizedError {
-    case configuration, invalidResponse, status(Int), unknownChoice, confidence, permissionSkipped
+    case configuration, invalidResponse, status(Int), unknownChoice, confidence
     public var errorDescription: String? {
         switch self {
         case .configuration: return "Clef 配置无效"
@@ -83,7 +76,6 @@ public enum ClefError: Error, LocalizedError {
         case .status(let code): return "Clef HTTP \(code)"
         case .unknownChoice: return "Clef 返回未知动作"
         case .confidence: return "Clef 置信度无效"
-        case .permissionSkipped: return "已跳过可能触发网络授权的地址；请使用本机回环 IP"
         }
     }
 }
@@ -106,7 +98,7 @@ public struct ClefClient: Sendable {
         return try JSONSerialization.data(withJSONObject: body, options: [.sortedKeys])
     }
     public func decide(_ event: SystemEvent) async throws -> Decision {
-        var request = URLRequest(url: try configuration.permissionFreeEndpoint())
+        var request = URLRequest(url: try configuration.endpoint())
         request.httpMethod = "POST"; request.timeoutInterval = configuration.timeout
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         if let key = ProcessInfo.processInfo.environment["MIO_CLEF_API_KEY"], !key.isEmpty {
@@ -141,7 +133,8 @@ public struct ClefClient: Sendable {
     }
 }
 
-// An allowed loopback endpoint cannot redirect into a permission-gated network.
+// Use the configured endpoint and surface redirect status instead of forwarding
+// event data or an optional authorization header to another endpoint.
 private final class NoRedirectDelegate: NSObject, URLSessionTaskDelegate, @unchecked Sendable {
     func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse,
                     newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {

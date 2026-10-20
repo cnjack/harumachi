@@ -99,7 +99,9 @@ swift native/mio-companion/tools/preview_motion.swift /tmp/mio-motion
 
 地址和模型可在窗口中设置，或通过 `MIO_CLEF_BASE_URL`、`MIO_CLEF_MODEL` 配置。可选密钥只读 `MIO_CLEF_API_KEY`，不写入设置或日志。缺省为 `http://127.0.0.1:8098` / `clef-omni`。窗口明确区分「Clef 决策」与「离线规则」；请求超时 6 秒，失败后冷却 30 秒，低置信度保持安静。
 
-**本轮按用户要求跳过所有可能触发授权的网络地址，只允许字面回环 IP `127.0.0.1` / `::1`，并拒绝 HTTP 重定向。** 旧服务 `192.168.10.202:8098` 在本轮命令行连通性检查中超时，应用不会自动连接它。macOS 15 起的局域网连接可能要求 Local Network 授权，见 [Apple TN3179](https://developer.apple.com/documentation/technotes/tn3179-understanding-local-network-privacy)。没有启动转发器、隧道或修改系统权限；真实模型接入仍需要一个可用的本机 Clef 服务入口。
+用户随后明确要求不要跳过、直接尝试填写的地址。当前客户端直接请求配置的 HTTP(S) 域名、局域网或本机地址，保留系统正常的网络授权流程；不再因为地址可能触发权限而预先拦截。仍拒绝带账号、密码、查询参数的配置，并报告重定向状态而不自动转发事件或可选密钥。`https://clef.scgzyun.com/v1/systemone` 已使用真实生产客户端验证，服务返回 `clef-omni` 决策；低于 0.55 的置信度继续安静处理。记录在 `evidence/mio_clef_live_20261020/verification.json`。
+
+真实窗口连接验证使用 `--connection-test <证据目录>`：该模式不创建 `SystemMonitor`，不读取 Inbox，只发送固定的“你好，澪。这是一条连接验证消息。”，保存窗口与连接结果后退出。常驻监控向真实服务发送本地事件的操作曾被自动审批拒绝，须单独明确确认事件范围；固定消息的连通证据不替代该项验收。
 
 ## 无需授权的来信
 
@@ -135,8 +137,8 @@ dist/Mio.app/Contents/MacOS/MioCompanion --render-samples /tmp/mio-poses
 dist/Mio.app/Contents/MacOS/MioCompanion --smoke-test /tmp/mio-smoke
 ```
 
-十九个 XCTest（其中一个需要 HTTP 模拟服务）覆盖关节动作、颈部过渡、头身及五官比例、手型方向与混合、腰部连接、约束、权限地址、过期/去重和生产 HTTP 客户端；Postman 模拟包含正常、低置信度、未知动作、错模型、坏 JSON、500、HTML 网关、重定向及超时。未登录 Postman，未查询拥有方共享 mock；本地 mock 来自现有客户端/服务说明及本轮消费契约，不能证明真实 Clef 模型的判断准确率。
+25 个 XCTest（其中 2 个需要 HTTP 模拟服务）覆盖关节动作、颈部过渡、头身及五官比例、手型方向与混合、腰部连接、约束、域名与 IPv4/IPv6 地址配置、过期/去重和生产 HTTP 客户端；Postman 模拟包含正常、低置信度、未知动作、错模型、坏 JSON、500、HTML 网关、重定向及超时。未登录 Postman，未查询拥有方共享 mock；本地 mock 来自现有客户端/服务说明及本轮消费契约，不能证明真实 Clef 模型的判断准确率。
 
 原生 smoke 使用现有显示器，验证持续出帧、真实 Inbox 接收、暂停丢弃和恢复。PNG 导出只读取本程序自己的视图缓存与 Metal 目标，再合成本程序画面；它不是桌面截屏，也不读取其他窗口。记录位于 `evidence/mio_companion_20261020/`。本轮未改游戏资源、Godot 测试数、`builds/HareMachi.zip` 或 Web 发布。
 
-设置 `MIO_TEST_APP` 为已构建应用的绝对可执行路径，再运行 `tools/test_simulation.sh`，会额外验证原生窗口接收 Postman 模拟的 Clef 响应并更新角色。该验证仍不代表真实模型上线。
+设置 `MIO_TEST_APP` 为已构建应用的绝对可执行路径，再运行 `tools/test_simulation.sh`，会额外验证原生窗口接收 Postman 模拟的 Clef 响应并更新角色。该模拟验证与上方真实 Clef 服务连通验证分别记录。

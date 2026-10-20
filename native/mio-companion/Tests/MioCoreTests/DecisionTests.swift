@@ -26,12 +26,11 @@ final class DecisionTests: XCTestCase {
         XCTAssertEqual(try ClefConfiguration(baseURL: "http://localhost:4910/clef/").endpoint().path, "/clef/v1/systemone")
         XCTAssertThrowsError(try ClefConfiguration(timeout: .infinity).endpoint())
     }
-    func testPermissionFreeModeNeverContactsLANOrDNSNames() throws {
-        for host in ["192.168.10.202", "10.0.0.1", "machine.local", "example.com", "localhost"] {
-            XCTAssertThrowsError(try ClefConfiguration(baseURL: "http://\(host):8098").permissionFreeEndpoint())
+    func testConfiguredHTTPSEndpointsAllowDomainsAndLAN() throws {
+        for address in ["https://clef.scgzyun.com", "http://192.168.10.202:8098", "http://machine.local:8098", "http://localhost:4910/clef", "http://127.0.0.1:8098", "http://[::1]:8098"] {
+            let endpoint = try ClefConfiguration(baseURL:address).endpoint()
+            XCTAssertTrue(endpoint.path.hasSuffix("/v1/systemone"))
         }
-        XCTAssertEqual(try ClefConfiguration(baseURL: "http://127.0.0.1:8098").permissionFreeEndpoint().host, "127.0.0.1")
-        XCTAssertNoThrow(try ClefConfiguration(baseURL: "http://[::1]:8098").permissionFreeEndpoint())
     }
     func testEventDedupeExpiryAndDistinctMessages() {
         let now = Date()
@@ -81,5 +80,16 @@ final class DecisionTests: XCTestCase {
             _ = try await fast.decide(SystemEvent(kind: "message", summary: "__timeout__"))
             XCTFail("The transport must time out")
         } catch { XCTAssertLessThan(Date().timeIntervalSince(start), 2) }
+    }
+    func testConfiguredHostnameIsContactedThroughProductionTransport() async throws {
+        guard let baseURL = ProcessInfo.processInfo.environment["MIO_TEST_SIM_URL"] else {
+            throw XCTSkip("Run tools/test_simulation.sh to exercise configured hostnames")
+        }
+        var components = try XCTUnwrap(URLComponents(string:baseURL))
+        components.host = "localhost"
+        let client = ClefClient(configuration:ClefConfiguration(baseURL:try XCTUnwrap(components.string)))
+        let decision = try await client.decide(SystemEvent(kind:"message",summary:"configured-hostname-regression"))
+        XCTAssertEqual(decision.source,"Clef 决策")
+        XCTAssertEqual(decision.reaction,.notice)
     }
 }
