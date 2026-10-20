@@ -16,7 +16,7 @@
   "rig": "art/live2d/mio/Mio.rig.json",
   "layered_source": "art/live2d/mio/Mio.layers.psd",
   "runtime_resources": "native/mio-companion/Sources/MioApp/Resources/Mio/",
-  "layer_count": 10,
+  "layer_count": 23,
   "canvas": [
     750,
     1000
@@ -27,10 +27,10 @@
   "engine": "Swift + Metal",
   "network_policy": "literal loopback IP only; no redirects",
   "live_clef_verified": false,
-  "layout_revision": "20261020-arm-binding-v5",
+  "layout_revision": "20261020-pose-parts-v6",
   "face_layout_source": "native/mio-companion/tools/pack_assets.swift",
   "initial_verification": "evidence/mio_companion_20261020/verification.json",
-  "verification": "evidence/mio_arm_binding_20261020/verification.json",
+  "verification": "evidence/mio_pose_parts_20261020/verification.json",
   "face_verification": "evidence/mio_face_proportions_20261020/verification.json",
   "head_verification": "evidence/mio_head_proportions_20261020/verification.json",
   "body_revision": {
@@ -68,5 +68,53 @@
     ],
     "new_bitmap_generated": false,
     "research": "docs/game-design/MIO_LIVE2D_RESEARCH_20261020.md"
+  },
+  "pose_parts_revision": {
+    "tool": "imagegen built-in",
+    "atlases": [
+      {
+        "atlas": "art/live2d/mio/pose-parts/palms-out.png",
+        "prompt": "art/manifests/prompts/live2d/mio-palms-out.txt",
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      {
+        "atlas": "art/live2d/mio/pose-parts/hands-back.png",
+        "prompt": "art/manifests/prompts/live2d/mio-hands-back.txt",
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      {
+        "atlas": "art/live2d/mio/pose-parts/hands-inward.png",
+        "prompt": "art/manifests/prompts/live2d/mio-hands-inward.txt",
+        "dimensions": [
+          1536,
+          1024
+        ]
+      },
+      {
+        "atlas": "art/live2d/mio/pose-parts/torso-overlaps.png",
+        "prompt": "art/manifests/prompts/live2d/mio-torso-overlaps.txt",
+        "dimensions": [
+          1536,
+          1024
+        ]
+      }
+    ],
+    "hand_variants": [
+      "relaxed",
+      "palm",
+      "back",
+      "inward"
+    ],
+    "source_columns_corrected": true,
+    "anatomy_note": "Screen left is the character right hand. Generated hand sheet columns were opposite to the requested labels; mapping was corrected using actual thumb pixels.",
+    "waist_overlap_pixels": 144,
+    "head_layout_unchanged": true,
+    "cubism_binding": false
   }
 }

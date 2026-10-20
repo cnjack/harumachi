@@ -2,11 +2,13 @@
 
 ## 澪的 Swift 桌面角色（2026-10-20）
 
+多手型源图在 `art/live2d/mio/pose-parts/`。画面左侧是角色自身右手，不能按源图列名直接绑定；需用真实掌心与手背的拇指像素验证方向。手型共用腕点和纹理坐标，在预乘 alpha 空间混合，PSD 中替换手型默认隐藏。肩根在身体后面，前臂在前面，裙腰必须有绘制的隐藏延伸；不要用透明空洞拼接。`PosePartsTests` 检查手型齐全、实际拇指方向、混合权重和腰脚约束；`check_pose_frames.py` 读取发布应用导出的 1050 帧及附件坐标，检查肩部、前臂、腰部 alpha 和裁边。
+
 手臂绑定需从源图量肩帽、肘弯和腕线，弯曲跨度存入 rig；肩帽不能按画布 Y 坐标只旋转一半。`ArmDeformationTests` 用 PNG alpha 筛选真实可见三角形，逐相位及中途切换检查有向面积、伸缩和画幅；负面积代表翻面，关节存在或手掌不出画都不能替代此检查。`preview_motion.swift` 从真实 Metal 序列生成全身、抬落手和前后联系表；PSD 导出与运行时都必须应用 rig 的画布原点。现成 Cubism 模型的多套手臂切换资料见 [MIO_LIVE2D_RESEARCH_20261020.md](MIO_LIVE2D_RESEARCH_20261020.md)。
 
 头身及五官比例从 `native/mio-companion/tools/pack_assets.swift` 的源布局修订，再生成两个 rig、PSD 和应用，不能只在运行时缩放蒙混过去。整体头部缩放需以颈部为共同锚点应用到全部七个头部图层。`FaceProportionsTests` 约束头部外轮廓占身体宽高、颈部衔接、眼宽占脸宽、嘴型宽高、眼鼻嘴留白及表情切换中心；新增检查先对旧布局运行，保留失败日志。前后原生渲染使用相同时间和视线参数，至少看静态、闭眼与张嘴，并在现有显示器复验应用。
 
-独立入口 `open_mio_companion.command`，源码和工具位于 `native/mio-companion/`。imagegen 参考澪的定稿正面和头像生成透明部件；无肩包身体与双臂使用独立的 `articulated/body-arms-atlas.png`，保留原生成 alpha。肩、肘、腕位置随源布局写入 rig；`tools/pack_assets.swift` 按实测区域拆图并输出自有 rig，`tools/export_psd.swift` 导出同布局十层 RGB/8 PSD。它们不是 Cubism 模型编译器，不能产出 `.moc3`。构建用 Swift Package 与系统 Metal，无第三方下载，`.app` 放忽略的 `dist/`，不进游戏 `builds/`。
+独立入口 `open_mio_companion.command`，源码和工具位于 `native/mio-companion/`。imagegen 参考澪的定稿正面和头像生成透明部件；无肩包双臂来自 `articulated/body-arms-atlas.png`，新手型及肩腰部件来自 `pose-parts/`，保留生成 alpha。肩、肘、腕位置随源布局写入 rig；`tools/pack_assets.swift` 按实测区域拆图并输出自有 rig，`tools/export_psd.swift` 导出同布局 23 层 RGB/8 PSD。它们不是 Cubism 模型编译器，不能产出 `.moc3`。构建用 Swift Package 与系统 Metal，无第三方下载，`.app` 放忽略的 `dist/`，不进游戏 `builds/`。
 
 运行 `tools/test_simulation.sh` 验证生产 HTTP 客户端，再对打包 `.app` 运行 `--smoke-test <本轮证据目录>`；五种状态和眨眼用 `--render-samples` 导出；`--render-motion` 导出五组连续动作，检查抬手中间相位、衣领衔接与画面边界，smoke 复验实际四种动作切换。smoke 只缓存本应用视图并读取自身 Metal 目标，不调用显示器截图 API。按本轮要求只允许本机回环 IP、拒绝重定向，其他网络连接和授权项直接跳过；不启动隧道或改系统权限。静音、现有显示器、无虚拟屏幕。完整用法与当前边界见[桌面角色 README](../../native/mio-companion/README.md)。
 

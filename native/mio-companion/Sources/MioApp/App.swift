@@ -128,6 +128,7 @@ import MioCore
                 guard let device = MTLCreateSystemDefaultDevice() else { throw MioRenderer.RenderError.unavailable }
                 let renderer = try MioRenderer(device: device)
                 let gestures: [CharacterGesture] = [.idle, .wave, .stretch, .think, .talk]
+                var probes: [[String: Any]] = []
                 for (index, gesture) in gestures.enumerated() {
                     for frame in 0..<210 {
                         let t = Double(frame) / 30
@@ -135,8 +136,29 @@ import MioCore
                                            gesture: gesture, gestureTime: t)
                         let name = String(format: "%04d.png", index * 210 + frame)
                         try renderer.snapshot(to: dir.appendingPathComponent(name), pose: pose)
+                        let motion = renderer.motion(for: pose)
+                        var points: [[Float]] = []
+                        // Actual attachment centres: shoulder, cuff and waist.
+                        for left in [true, false] {
+                            let shoulder = SIMD2<Float>(left ? 231 : 369,320)
+                            let elbow = SIMD2<Float>(left ? 173 : 427,418)
+                            let wrist = SIMD2<Float>(left ? 114 : 486,508)
+                            let axis = wrist-elbow
+                            let direction = axis / sqrt(axis.x*axis.x+axis.y*axis.y)
+                            for p in [shoulder, wrist-direction*40] {
+                                let q = motion.armPoint(p,shoulder:shoulder,elbow:elbow,wrist:wrist,left:left)
+                                points.append([q.x+75,q.y])
+                            }
+                        }
+                        for x in [Float(268),300,332] {
+                            let q = motion.torsoPoint(SIMD2(x,432))
+                            points.append([q.x+75,q.y])
+                        }
+                        probes.append(["frame":name,"gesture":gesture.rawValue,"attachments":points])
                     }
                 }
+                let data = try JSONSerialization.data(withJSONObject:probes,options:[.sortedKeys])
+                try data.write(to:dir.deletingLastPathComponent().appendingPathComponent("attachment-probes.json"))
                 print("Motion frames: 1050 at 30 FPS"); exit(0)
             } catch { fputs("Motion render failed: \(error)\n", stderr); exit(1) }
         }

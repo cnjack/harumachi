@@ -25,6 +25,8 @@ Hiyori 的 [`pose3.json`](https://github.com/Live2D/CubismWebSamples/blob/b1de66
 
 据此，本项目下一版源素材应准备放松、招手、胸前手势等独立姿态，分别绘制肩袖遮挡、肘内侧、前臂和手型，再在匹配姿态之间过渡。这里是制作建议，尚未生成这些新素材或宣称完成正式 Cubism 绑定。
 
+同日后续：已为自有原型生成掌心、手背、内收侧掌、肩腰拆层源图，与原放松手型组成四套，导出 23 层 PSD。用户发现的拇指镜像错误已在源图列映射修正，并以真实纹理检查复验；源文件与证据见 `art/live2d/mio/pose-parts/`、`evidence/mio_pose_parts_20261020/`。这次工作仍不等于 `.cmo3` / `.moc3` 或官方模型播放验收。
+
 ## Swift / Metal 候选
 
 | 项目 | 已核查情况 | 结论 |

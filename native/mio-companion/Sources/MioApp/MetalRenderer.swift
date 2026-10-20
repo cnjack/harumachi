@@ -7,6 +7,7 @@ struct RigDescription: Decodable {
         let id: String; let texture: String; let rect: [Float]; let group: String
         let joints: [[Float]]?
         let bendSpans: [Float]?
+        let variant: String?
     }
     let canvas: [Float]
     let origin: [Float]?
@@ -63,9 +64,19 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         vertex O rig_vertex(const device V *v [[buffer(0)]], uint id [[vertex_id]]) {
             O out; out.position = float4(v[id].position, 0, 1); out.uv = v[id].uv; return out;
         }
-        fragment float4 rig_fragment(O in [[stage_in]], texture2d<float> t [[texture(0)]]) {
+        fragment float4 rig_fragment(O in [[stage_in]], texture2d<float> t [[texture(0)]],
+            texture2d<float> palm [[texture(1)]], texture2d<float> back [[texture(2)]],
+            texture2d<float> inward [[texture(3)]], constant float4 &weights [[buffer(0)]]) {
             constexpr sampler s(filter::linear, address::clamp_to_edge);
-            return t.sample(s, in.uv);
+            float4 c = t.sample(s, in.uv);
+            if (weights.x < 0) return c;
+            // Mix registered drawings in premultiplied space. Drawing four
+            // translucent layers separately would make the wrist fade through.
+            float4 b = palm.sample(s,in.uv), d = back.sample(s,in.uv), e = inward.sample(s,in.uv);
+            c.rgb *= c.a; b.rgb *= b.a; d.rgb *= d.a; e.rgb *= e.a;
+            float4 out = c*weights.x + b*weights.y + d*weights.z + e*weights.w;
+            if (out.a > 0.0001) out.rgb /= out.a;
+            return out;
         }
         """, options: nil)
         let descriptor = MTLRenderPipelineDescriptor()
@@ -105,15 +116,15 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         let scale = min(Float(size.width) / rig.canvas[0], Float(size.height) / rig.canvas[1])
         let offset = SIMD2<Float>((Float(size.width) - rig.canvas[0] * scale) / 2,
                                  (Float(size.height) - rig.canvas[1] * scale) / 2)
-        let arm = layer.group == "arm_left" || layer.group == "arm_right"
-        let head = layer.group != "body" && !arm
+        let arm = layer.group.hasPrefix("arm_") || layer.group.hasPrefix("hand_")
+        let head = ["head", "hair", "eyes_open", "eyes_closed", "mouth_open", "mouth_closed"].contains(layer.group)
         let motion = motion(for: pose)
         func point(_ u: Float, _ v: Float) -> Vertex {
             var p = SIMD2<Float>(r[0] + r[2] * u, r[1] + r[3] * v)
             if arm, let joints = layer.joints, joints.count == 3 {
                 p = motion.armPoint(p, shoulder: SIMD2(joints[0][0], joints[0][1]),
                                     elbow: SIMD2(joints[1][0], joints[1][1]),
-                                    wrist: SIMD2(joints[2][0], joints[2][1]), left: layer.group == "arm_left",
+                                    wrist: SIMD2(joints[2][0], joints[2][1]), left: layer.group.hasSuffix("_left"),
                                     elbowBendSpan: layer.bendSpans?[0] ?? 104, wristBendSpan: layer.bendSpans?[1] ?? 30)
             } else if head {
                 if layer.group == "hair" {
@@ -122,12 +133,15 @@ final class MioRenderer: NSObject, MTKViewDelegate {
                 }
                 if layer.group.hasPrefix("eyes") { p.x += pose.lookX * 1.5; p.y -= pose.lookY * 0.6 }
                 p = motion.torsoPoint(motion.headPoint(p))
+            } else if layer.group.hasPrefix("shoulder_") {
+                p = motion.torsoPoint(p)
+            } else if layer.group == "lower_body" {
+                p = motion.lowerBodyPoint(p)
             } else {
                 let upper = max(0, min(1, (750 - p.y) / 500))
                 p.y -= pose.breath * 1.5 * upper
                 p.x = 300 + (p.x - 300) * (1 + pose.breath * 0.002 * upper)
-                let influence = 1 - PuppetMotion.smooth(520, 800, p.y)
-                p = motion.torsoPoint(motion.neckPoint(p), influence: influence)
+                p = motion.torsoPoint(motion.neckPoint(p))
             }
             let origin = SIMD2<Float>(rig.origin?[0] ?? 0, rig.origin?[1] ?? 0)
             p = (p - origin) * scale + offset
@@ -147,6 +161,7 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         guard let encoder = command.makeRenderCommandEncoder(descriptor: pass) else { return }
         encoder.setRenderPipelineState(pipeline)
         for layer in rig.layers {
+            if let variant = layer.variant, variant != "relaxed" { continue }
             if layer.group == "eyes_open" && pose.blink > 0.5 { continue }
             if layer.group == "eyes_closed" && pose.blink <= 0.5 { continue }
             if layer.group == "mouth_open" && !pose.mouthOpen { continue }
@@ -155,6 +170,15 @@ final class MioRenderer: NSObject, MTKViewDelegate {
             guard let buffer = device.makeBuffer(bytes: v, length: v.count * MemoryLayout<Vertex>.stride, options: .storageModeShared) else { continue }
             encoder.setVertexBuffer(buffer, offset: 0, index: 0)
             encoder.setFragmentTexture(textures[layer.id], index: 0)
+            var weights = SIMD4<Float>(-1,0,0,0)
+            if layer.group.hasPrefix("hand_") {
+                let motion = motion(for: pose)
+                weights = layer.group == "hand_left" ? motion.leftHand : motion.rightHand
+            }
+            for (index, variant) in ["palm","back","inward"].enumerated() {
+                encoder.setFragmentTexture(textures[layer.group + "_" + variant] ?? textures[layer.id], index: index+1)
+            }
+            encoder.setFragmentBytes(&weights, length: MemoryLayout<SIMD4<Float>>.stride, index: 0)
             encoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: v.count)
         }
         encoder.endEncoding()

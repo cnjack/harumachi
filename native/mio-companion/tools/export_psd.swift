@@ -4,7 +4,11 @@ import AppKit
 import ImageIO
 
 struct Rig: Decodable {
-    struct Layer: Decodable { let id: String; let texture: String; let rect: [Double]; let group: String }
+    struct Layer: Decodable {
+        let id: String; let texture: String; let rect: [Double]; let group: String
+        let defaultVisible: Bool?
+        var hidden: Bool { defaultVisible == false || ["eyes_closed", "mouth_open"].contains(group) }
+    }
     let canvas: [Int]; let origin: [Double]?; let layers: [Layer]
 }
 extension Data {
@@ -45,7 +49,7 @@ for (layer, _) in layers {
     info.u32(0); info.u32(0); info.u32(h); info.u32(w); info.u16(4)
     for channel in [0, 1, 2, -1] { info.u16(channel & 65535); info.u32(2 + count) }
     info.ascii("8BIMnorm"); info.append(255); info.append(0)
-    info.append(["eyes_closed", "mouth_open"].contains(layer.group) ? 2 : 0); info.append(0)
+    info.append(layer.hidden ? 2 : 0); info.append(0)
     var extra = Data(); extra.u32(0); extra.u32(0)
     let name = Array(layer.id.utf8); extra.append(UInt8(name.count)); extra.append(contentsOf: name)
     while extra.count % 4 != 0 { extra.append(0) }
@@ -60,7 +64,7 @@ var psd = Data(); psd.ascii("8BPS"); psd.u16(1); psd.append(contentsOf: [UInt8](
 psd.u16(4); psd.u32(h); psd.u32(w); psd.u16(8); psd.u16(3)
 psd.u32(0); psd.u32(0); psd.u32(layerMask.count); psd.append(layerMask)
 var composite = [UInt8](repeating: 0, count: count * 4)
-for (layer, bytes) in layers.reversed() where !["eyes_closed", "mouth_open"].contains(layer.group) {
+for (layer, bytes) in layers.reversed() where !layer.hidden {
     for i in 0..<count {
         let src = i * 4, a = Int(bytes[src + 3])
         for c in 0..<4 { composite[src+c] = UInt8(min(255, Int(bytes[src+c]) + Int(composite[src+c]) * (255-a) / 255)) }

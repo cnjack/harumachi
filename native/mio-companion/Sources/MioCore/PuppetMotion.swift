@@ -10,6 +10,9 @@ public struct PuppetMotion: Sendable {
     public var rightElbow: Float = 0
     public var leftWrist: Float = 0
     public var rightWrist: Float = 0
+    /// Registered source drawings: relaxed, palm out, hand back, inward/side.
+    public var leftHand = SIMD4<Float>(1, 0, 0, 0)
+    public var rightHand = SIMD4<Float>(1, 0, 0, 0)
 
     public init(pose: RigPose) {
         let t = pose.time
@@ -33,11 +36,14 @@ public struct PuppetMotion: Sendable {
         let oscillation = Float(sin(phase * 5.5))
         switch gesture {
         case .wave:
+            rightHand = SIMD4(1 - blend, blend, 0, 0)
             rightShoulder -= 0.65 * Self.smooth(0.25, 1, blend)
             rightElbow -= (1.95 + 0.10 * oscillation) * Self.smooth(0, 0.65, blend)
             rightWrist = 0.13 * oscillation * blend
-            head += 0.045 * blend; torso -= 0.015 * blend
+            head += 0.045 * blend; torso -= 0.035 * blend
         case .stretch:
+            leftHand = SIMD4(1 - blend, 0, blend, 0)
+            rightHand = leftHand
             // Lift outwards throughout the motion; the previous anticipation
             // reversed the shoulder and folded the elbow almost 180 degrees.
             let liftedShoulder = 1.85 * Self.smooth(0, 1, blend)
@@ -45,14 +51,17 @@ public struct PuppetMotion: Sendable {
             let foldedElbow = 1.25 * sin(.pi * blend) + 0.25 * blend
             leftElbow += foldedElbow; rightElbow -= foldedElbow
             headShift.y -= 3 * blend
+            torso += Float(sin(phase * 0.9)) * 0.025 * blend
             head += Float(sin(phase * 1.2)) * 0.035 * blend
         case .think:
+            rightHand = SIMD4(1 - blend, 0, 0, blend)
             // Fold across the chest towards the face, rather than wave away
             // from it. Positive rotation is clockwise in the canvas Y-down frame.
-            rightShoulder += 0.55 * blend; rightElbow += 2.15 * blend
+            rightShoulder += 0.05 * blend; rightElbow += 2.15 * blend
             rightWrist = 0.08 * blend
-            head += 0.075 * blend; torso += 0.012 * blend
+            head += 0.075 * blend; torso += 0.04 * blend
         case .talk:
+            rightHand = SIMD4(1 - blend, blend, 0, 0)
             rightShoulder += (0.10 + 0.03 * oscillation) * blend
             rightElbow -= (0.55 + 0.06 * oscillation) * blend
             leftShoulder -= 0.08 * blend; leftElbow += 0.18 * blend
@@ -81,6 +90,8 @@ public struct PuppetMotion: Sendable {
         result.rightElbow = mix(previous.rightElbow, rightElbow)
         result.leftWrist = mix(previous.leftWrist, leftWrist)
         result.rightWrist = mix(previous.rightWrist, rightWrist)
+        result.leftHand = previous.leftHand + (leftHand - previous.leftHand) * t
+        result.rightHand = previous.rightHand + (rightHand - previous.rightHand) * t
         return result
     }
     public static func envelope(_ time: Double, duration: Double) -> Float {
@@ -98,7 +109,12 @@ public struct PuppetMotion: Sendable {
         return point + (headPoint(point) - point) * influence
     }
     public func torsoPoint(_ point: SIMD2<Float>, influence: Float = 1) -> SIMD2<Float> {
-        Self.rotate(point, around: SIMD2(300, 520), by: torso * influence)
+        Self.rotate(point, around: SIMD2(300, 432), by: torso * influence)
+    }
+    public func lowerBodyPoint(_ point: SIMD2<Float>) -> SIMD2<Float> {
+        // The hidden waist extension follows the blouse; the hem and legs stay
+        // planted. Artwork overlap carries the joint through the full bend.
+        torsoPoint(point, influence: 1 - Self.smooth(432, 690, point.y))
     }
     /// Bend a strip through a circular arc, preserving its transverse width.
     /// Blending rotated positions collapses the inside of a bent sleeve and can

@@ -11,7 +11,7 @@ open native/mio-companion/dist/Mio.app
 
 ## 角色和渲染
 
-源素材在 [`art/live2d/mio/`](../../art/live2d/mio/)：透明原始部件图、十层 RGB/8 PSD、独立格式的 `Mio.rig.json`。PNG 部件随 Swift Package 打包。身体、双臂、后发、脸、前发、睁眼/闭眼与闭嘴/开嘴分别渲染；手臂使用 24×64 网格，身体 20×64，头部 20×24，Metal 完成纹理采样和透明混合。当前含呼吸、轻摆、头发运动、眨眼、说话口型和角色区域内的鼠标视线。默认 30 FPS，全程静音。
+源素材在 [`art/live2d/mio/`](../../art/live2d/mio/)：透明原始部件图、23 层 RGB/8 PSD、独立格式的 `Mio.rig.json`。PNG 部件随 Swift Package 打包。上身、腰裙、肩部补片、上臂、前臂袖子、四种左右手型与七个头部部件分别成层；手臂使用 24×64 网格，身体 20×64，头部 20×24，Metal 完成纹理采样和透明混合。当前含呼吸、轻摆、头发运动、眨眼、说话口型和角色区域内的鼠标视线。默认 30 FPS，全程静音。
 
 这是自有分层动画格式，**不是 Cubism `.moc3` 模型，也不能加载 `.model3.json`**。PSD 已通过系统 ImageIO 合成图解码检查，可作为 Cubism 后续制作的来源；尚未在 Cubism Editor 内导入验收。本机未找到 Editor/SDK，本轮未下载或接受它们的许可，也未导出 `.cmo3` / `.moc3`。官方 Core 负责计算 Editor 模型的顶点，不能把分层 JSON 改名当成官方模型，见 [Cubism Core 文档](https://docs.live2d.com/en/cubism-sdk-manual/cubism-core-api-reference/)。
 
@@ -59,6 +59,22 @@ swift native/mio-companion/tools/preview_motion.swift /tmp/mio-motion
 
 现成 Cubism 模型与 Swift 接入方案见[调研记录](../../docs/game-design/MIO_LIVE2D_RESEARCH_20261020.md)。本次修复仍是自有分层原型，不把模型调研当作正式 Cubism 接入验收。
 
+## 多手型、肩袖和腰部衔接（2026-10-20）
+
+内置 imagegen 新增四张源部件图，位于 `art/live2d/mio/pose-parts/`，提示词为 `art/manifests/prompts/live2d/mio-{palms-out,hands-back,hands-inward,torso-overlaps}.txt`。双手分别有放松、掌心向外、手背和内收侧掌四种源图；招手与说话选掌心，伸展选手背，思考选侧掌。以同一腕点注册，在预乘 alpha 空间混合，手型权重也参与中途动作切换。
+
+肩部补片藏在衣服和上臂后面，肩根在上身后面，前臂袖子可以盖到胸前；上身和裙腰有 144 像素布局重叠，裙子上方绘制隐藏延伸，腰部变形在裙摆前减弱，脚部保持不动。PSD、源 rig 和运行资源共用布局，旧头部比例保留。
+
+用户指出招手拇指朝外后，确认生成图列与画面左右的对应关系反了。源拆图明确记录角色自身左右手和使用图列，交换掌心、手背及侧掌对应图块；不镜像整条手臂。`PosePartsTests` 读取真实纹理的拇指像素区，旧映射四张图共 8 处断言失败，修正后通过。掌心朝前招手时，拇指指向头部。
+
+本轮 18 项本地 XCTest 通过；API 未改，真实 HTTP 模拟未重跑。发布应用输出 1050 帧，7350 个肩部、前臂及腰部连接采样的最小 alpha 为 253/255，无裁边；原生窗口 304 个实际 Metal 帧，四种动作、Inbox 和暂停通过。当前证据在 `evidence/mio_pose_parts_20261020/verification.json`，包含拇指前后对照、动作联系表与静音预览。视觉自然度仍待用户复评；不是正式 Cubism 模型，也未验证任意三维手腕翻转。
+
+```bash
+native/mio-companion/dist/Mio.app/Contents/MacOS/MioCompanion --render-motion /tmp/mio-motion/frames
+python3 native/mio-companion/tools/check_pose_frames.py /tmp/mio-motion
+swift native/mio-companion/tools/preview_motion.swift /tmp/mio-motion
+```
+
 ## Clef 决策
 
 使用已有 `clef-omni` 的 `POST /v1/systemone` 协议；`state` 携带事件类型、粗粒度元数据和主动提交的文本，`questions` 要求选择表情与预设回应。没有额外聊天模型，回复来自程序内的中文短句。Clef 无权调用 shell、操纵应用或发送消息。
@@ -101,7 +117,7 @@ dist/Mio.app/Contents/MacOS/MioCompanion --render-samples /tmp/mio-poses
 dist/Mio.app/Contents/MacOS/MioCompanion --smoke-test /tmp/mio-smoke
 ```
 
-十六个 XCTest 覆盖关节动作、颈部过渡、头身及五官比例、约束、权限地址、过期/去重和生产 HTTP 客户端；Postman 模拟包含正常、低置信度、未知动作、错模型、坏 JSON、500、HTML 网关、重定向及超时。未登录 Postman，未查询拥有方共享 mock；本地 mock 来自现有客户端/服务说明及本轮消费契约，不能证明真实 Clef 模型的判断准确率。
+十九个 XCTest（其中一个需要 HTTP 模拟服务）覆盖关节动作、颈部过渡、头身及五官比例、手型方向与混合、腰部连接、约束、权限地址、过期/去重和生产 HTTP 客户端；Postman 模拟包含正常、低置信度、未知动作、错模型、坏 JSON、500、HTML 网关、重定向及超时。未登录 Postman，未查询拥有方共享 mock；本地 mock 来自现有客户端/服务说明及本轮消费契约，不能证明真实 Clef 模型的判断准确率。
 
 原生 smoke 使用现有显示器，验证持续出帧、真实 Inbox 接收、暂停丢弃和恢复。PNG 导出只读取本程序自己的视图缓存与 Metal 目标，再合成本程序画面；它不是桌面截屏，也不读取其他窗口。记录位于 `evidence/mio_companion_20261020/`。本轮未改游戏资源、Godot 测试数、`builds/HareMachi.zip` 或 Web 发布。
 

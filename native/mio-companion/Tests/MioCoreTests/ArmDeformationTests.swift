@@ -11,6 +11,7 @@ final class ArmDeformationTests: XCTestCase {
             let rect: [Float]
             let joints: [[Float]]?
             let bendSpans: [Float]?
+            let group: String
         }
         let canvas: [Float]
         let origin: [Float]?
@@ -25,7 +26,7 @@ final class ArmDeformationTests: XCTestCase {
             .deletingLastPathComponent().deletingLastPathComponent()
             .appendingPathComponent("Sources/MioApp/Resources/Mio")
         let rig = try JSONDecoder().decode(Rig.self, from: Data(contentsOf: resources.appendingPathComponent("Mio.rig.json")))
-        for arm in rig.layers where arm.id.hasPrefix("arm_") {
+        for arm in rig.layers where arm.group.hasPrefix("arm_") || arm.group.hasPrefix("hand_") {
             let source = try XCTUnwrap(CGImageSourceCreateWithURL(resources.appendingPathComponent(arm.texture) as CFURL, nil))
             let image = try XCTUnwrap(CGImageSourceCreateImageAtIndex(source, 0, nil))
             var pixels = [UInt8](repeating: 0, count: image.width * image.height * 4)
@@ -52,7 +53,8 @@ final class ArmDeformationTests: XCTestCase {
                     if pixels[(py * image.width + px) * 4 + 3] > 192 { triangles.append(triangle) }
                 }
             } }
-            XCTAssertGreaterThan(triangles.count, 400)
+            let minimumSamples = arm.group.hasPrefix("hand_") ? 40 : (arm.id.hasPrefix("sleeve_") ? 200 : 400)
+            XCTAssertGreaterThan(triangles.count, minimumSamples)
             let gestures: [CharacterGesture] = [.idle, .wave, .stretch, .think, .talk]
             var sequences = gestures.map { gesture in
                 (gesture.rawValue, (0...210).map { PuppetMotion(pose: RigPose(time: Double($0) / 30, gesture: gesture)) })
@@ -75,7 +77,7 @@ final class ArmDeformationTests: XCTestCase {
                 var maxX: Float = -.infinity, maxY: Float = -.infinity
                 for (frame, motion) in sequence.enumerated() {
                     let deformed = points.map {
-                        motion.armPoint($0, shoulder: joints[0], elbow: joints[1], wrist: joints[2], left: arm.id == "arm_left",
+                        motion.armPoint($0, shoulder: joints[0], elbow: joints[1], wrist: joints[2], left: arm.group.hasSuffix("_left"),
                             elbowBendSpan: arm.bendSpans?[0] ?? 104, wristBendSpan: arm.bendSpans?[1] ?? 30)
                     }
                     for (a, b, c) in triangles {

@@ -45,13 +45,26 @@ if CommandLine.arguments.count > 2 {
         for (col, gesture) in [1, 2, 3].enumerated() {
             for (row, directory) in [previous, root].enumerated() {
                 let x = CGFloat(col * 450), y = CGFloat((1 - row) * 410)
-                let old = row == 0, width: CGFloat = old ? 600 : 750
-                frame(gesture * 210 + 60, in: directory).draw(
-                    in: NSRect(x: x + (old ? 45 : 0), y: y, width: width * 0.6, height: 360),
+                let old = row == 0
+                let source = frame(gesture * 210 + 60, in: directory)
+                let width = source.size.width
+                source.draw(
+                    in: NSRect(x: x + (750-width)*0.3, y: y, width: width * 0.6, height: 360),
                     from: NSRect(x: 0, y: 400, width: width, height: 600),
                     operation: .sourceOver, fraction: 1)
                 label("\(old ? "修正前" : "修正后") · \(names[gesture])", x: x + 120, y: y + 377, size: 20)
             }
+        }
+    }
+}
+if let before = NSImage(contentsOf: root.appendingPathComponent("thumb-before.png")) {
+    try save("thumb-comparison.png", size: NSSize(width: 960, height: 590)) {
+        for (col, source) in [before, frame(270, in: root)].enumerated() {
+            source.draw(in: NSRect(x: CGFloat(col*480), y: 0, width: 480, height: 540),
+                from: NSRect(x: 145, y: 430, width: 505, height: 568),
+                operation: .sourceOver, fraction: 1)
+            label(col == 0 ? "修正前 · 拇指朝外" : "修正后 · 拇指朝头部",
+                x: CGFloat(col*480+135), y: 556, size: 20)
         }
     }
 }

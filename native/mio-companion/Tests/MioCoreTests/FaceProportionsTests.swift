@@ -13,10 +13,12 @@ final class FaceProportionsTests: XCTestCase {
             package.appendingPathComponent("Sources/MioApp/Resources/Mio/Mio.rig.json")))
         let layers = Dictionary(uniqueKeysWithValues: rig.layers.map { ($0.id, $0.rect) })
         let head = try XCTUnwrap(layers["hair_front"])
-        let body = try XCTUnwrap(layers["body"])
+        let torso = try XCTUnwrap(layers["torso"])
+        let lower = try XCTUnwrap(layers["lower_body"])
+        let body = [lower[0], torso[1], lower[2], lower[1] + lower[3] - torso[1]]
         let face = try XCTUnwrap(layers["face"])
         // Bound the full hair silhouette, not only the internal facial features.
-        let bodyParts = ["body", "arm_left", "arm_right"].compactMap { layers[$0] }
+        let bodyParts = ["torso", "lower_body", "arm_left", "arm_right"].compactMap { layers[$0] }
         let fullBodyWidth = bodyParts.map { $0[0] + $0[2] }.max()! - bodyParts.map { $0[0] }.min()!
         XCTAssertTrue((0.46...0.50).contains(head[2] / fullBodyWidth), "Head silhouette is too wide relative to the body")
         let standingHeight = body[1] + body[3] - head[1]

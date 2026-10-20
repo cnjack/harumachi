@@ -25,22 +25,58 @@
       "texture" : "hair_back.png"
     },
     {
-      "group" : "body",
-      "id" : "body",
+      "group" : "lower_body",
+      "id" : "lower_body",
       "rect" : [
         155,
-        252,
+        398,
         290,
-        730
+        584
       ],
-      "sourceAtlas" : "articulated\/body-arms-atlas.png",
+      "sourceAtlas" : "pose-parts\/torso-overlaps.png",
       "sourceCrop" : [
-        100,
-        0,
-        500,
-        1024
+        550,
+        25,
+        520,
+        980
       ],
-      "texture" : "body.png"
+      "texture" : "lower_body.png"
+    },
+    {
+      "group" : "shoulder_left",
+      "id" : "shoulder_left",
+      "rect" : [
+        220,
+        307,
+        30,
+        51
+      ],
+      "sourceAtlas" : "pose-parts\/torso-overlaps.png",
+      "sourceCrop" : [
+        1130,
+        150,
+        150,
+        280
+      ],
+      "texture" : "shoulder_left.png"
+    },
+    {
+      "group" : "shoulder_right",
+      "id" : "shoulder_right",
+      "rect" : [
+        350,
+        307,
+        30,
+        51
+      ],
+      "sourceAtlas" : "pose-parts\/torso-overlaps.png",
+      "sourceCrop" : [
+        1320,
+        150,
+        150,
+        280
+      ],
+      "texture" : "shoulder_right.png"
     },
     {
       "bendSpans" : [
@@ -115,6 +151,456 @@
         540
       ],
       "texture" : "arm_right.png"
+    },
+    {
+      "group" : "torso",
+      "id" : "torso",
+      "rect" : [
+        195,
+        252,
+        210,
+        290
+      ],
+      "sourceAtlas" : "pose-parts\/torso-overlaps.png",
+      "sourceCrop" : [
+        55,
+        20,
+        480,
+        670
+      ],
+      "texture" : "torso.png"
+    },
+    {
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "group" : "arm_left",
+      "id" : "sleeve_left",
+      "joints" : [
+        [
+          231,
+          320
+        ],
+        [
+          173,
+          418
+        ],
+        [
+          114,
+          508
+        ]
+      ],
+      "rect" : [
+        65,
+        285,
+        194,
+        280
+      ],
+      "sourceAtlas" : "articulated\/body-arms-atlas.png",
+      "sourceCrop" : [
+        640,
+        140,
+        370,
+        540
+      ],
+      "texture" : "sleeve_left.png"
+    },
+    {
+      "anatomicalHand" : "right",
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "defaultVisible" : true,
+      "group" : "hand_left",
+      "id" : "hand_left_relaxed",
+      "joints" : [
+        [
+          231,
+          320
+        ],
+        [
+          173,
+          418
+        ],
+        [
+          114,
+          508
+        ]
+      ],
+      "rect" : [
+        45,
+        265,
+        234,
+        330
+      ],
+      "sourceAtlas" : "articulated\/body-arms-atlas.png",
+      "sourceCrop" : [
+        640,
+        140,
+        370,
+        540
+      ],
+      "texture" : "hand_left_relaxed.png",
+      "variant" : "relaxed",
+      "wristRegistration" : [
+        114,
+        508
+      ]
+    },
+    {
+      "anatomicalHand" : "right",
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "defaultVisible" : false,
+      "group" : "hand_left",
+      "id" : "hand_left_palm",
+      "joints" : [
+        [
+          231,
+          320
+        ],
+        [
+          173,
+          418
+        ],
+        [
+          114,
+          508
+        ]
+      ],
+      "rect" : [
+        45,
+        265,
+        234,
+        330
+      ],
+      "sourceAtlas" : "pose-parts\/palms-out.png",
+      "sourceColumn" : "right",
+      "sourceCrop" : [
+        850,
+        40,
+        600,
+        930
+      ],
+      "texture" : "hand_left_palm.png",
+      "variant" : "palm",
+      "wristRegistration" : [
+        114,
+        508
+      ]
+    },
+    {
+      "anatomicalHand" : "right",
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "defaultVisible" : false,
+      "group" : "hand_left",
+      "id" : "hand_left_back",
+      "joints" : [
+        [
+          231,
+          320
+        ],
+        [
+          173,
+          418
+        ],
+        [
+          114,
+          508
+        ]
+      ],
+      "rect" : [
+        45,
+        265,
+        234,
+        330
+      ],
+      "sourceAtlas" : "pose-parts\/hands-back.png",
+      "sourceColumn" : "right",
+      "sourceCrop" : [
+        850,
+        40,
+        600,
+        930
+      ],
+      "texture" : "hand_left_back.png",
+      "variant" : "back",
+      "wristRegistration" : [
+        114,
+        508
+      ]
+    },
+    {
+      "anatomicalHand" : "right",
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "defaultVisible" : false,
+      "group" : "hand_left",
+      "id" : "hand_left_inward",
+      "joints" : [
+        [
+          231,
+          320
+        ],
+        [
+          173,
+          418
+        ],
+        [
+          114,
+          508
+        ]
+      ],
+      "rect" : [
+        45,
+        265,
+        234,
+        330
+      ],
+      "sourceAtlas" : "pose-parts\/hands-inward.png",
+      "sourceColumn" : "right",
+      "sourceCrop" : [
+        850,
+        40,
+        600,
+        930
+      ],
+      "texture" : "hand_left_inward.png",
+      "variant" : "inward",
+      "wristRegistration" : [
+        114,
+        508
+      ]
+    },
+    {
+      "anatomicalHand" : "left",
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "defaultVisible" : true,
+      "group" : "hand_right",
+      "id" : "hand_right_relaxed",
+      "joints" : [
+        [
+          369,
+          320
+        ],
+        [
+          427,
+          418
+        ],
+        [
+          486,
+          508
+        ]
+      ],
+      "rect" : [
+        321,
+        265,
+        234,
+        330
+      ],
+      "sourceAtlas" : "articulated\/body-arms-atlas.png",
+      "sourceCrop" : [
+        1160,
+        140,
+        376,
+        540
+      ],
+      "texture" : "hand_right_relaxed.png",
+      "variant" : "relaxed",
+      "wristRegistration" : [
+        486,
+        508
+      ]
+    },
+    {
+      "anatomicalHand" : "left",
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "defaultVisible" : false,
+      "group" : "hand_right",
+      "id" : "hand_right_palm",
+      "joints" : [
+        [
+          369,
+          320
+        ],
+        [
+          427,
+          418
+        ],
+        [
+          486,
+          508
+        ]
+      ],
+      "rect" : [
+        321,
+        265,
+        234,
+        330
+      ],
+      "sourceAtlas" : "pose-parts\/palms-out.png",
+      "sourceColumn" : "left",
+      "sourceCrop" : [
+        150,
+        40,
+        600,
+        930
+      ],
+      "texture" : "hand_right_palm.png",
+      "variant" : "palm",
+      "wristRegistration" : [
+        486,
+        508
+      ]
+    },
+    {
+      "anatomicalHand" : "left",
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "defaultVisible" : false,
+      "group" : "hand_right",
+      "id" : "hand_right_back",
+      "joints" : [
+        [
+          369,
+          320
+        ],
+        [
+          427,
+          418
+        ],
+        [
+          486,
+          508
+        ]
+      ],
+      "rect" : [
+        321,
+        265,
+        234,
+        330
+      ],
+      "sourceAtlas" : "pose-parts\/hands-back.png",
+      "sourceColumn" : "left",
+      "sourceCrop" : [
+        150,
+        40,
+        600,
+        930
+      ],
+      "texture" : "hand_right_back.png",
+      "variant" : "back",
+      "wristRegistration" : [
+        486,
+        508
+      ]
+    },
+    {
+      "anatomicalHand" : "left",
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "defaultVisible" : false,
+      "group" : "hand_right",
+      "id" : "hand_right_inward",
+      "joints" : [
+        [
+          369,
+          320
+        ],
+        [
+          427,
+          418
+        ],
+        [
+          486,
+          508
+        ]
+      ],
+      "rect" : [
+        321,
+        265,
+        234,
+        330
+      ],
+      "sourceAtlas" : "pose-parts\/hands-inward.png",
+      "sourceColumn" : "left",
+      "sourceCrop" : [
+        150,
+        40,
+        600,
+        930
+      ],
+      "texture" : "hand_right_inward.png",
+      "variant" : "inward",
+      "wristRegistration" : [
+        486,
+        508
+      ]
+    },
+    {
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "rigid-shoulder-arc-elbow-wrist",
+      "group" : "arm_right",
+      "id" : "sleeve_right",
+      "joints" : [
+        [
+          369,
+          320
+        ],
+        [
+          427,
+          418
+        ],
+        [
+          486,
+          508
+        ]
+      ],
+      "rect" : [
+        341,
+        285,
+        194,
+        280
+      ],
+      "sourceAtlas" : "articulated\/body-arms-atlas.png",
+      "sourceCrop" : [
+        1160,
+        140,
+        376,
+        540
+      ],
+      "texture" : "sleeve_right.png"
     },
     {
       "group" : "head",
@@ -225,7 +711,7 @@
       "texture" : "hair_front.png"
     }
   ],
-  "layoutRevision" : "20261020-arm-binding-v5",
+  "layoutRevision" : "20261020-pose-parts-v6",
   "name" : "澪",
   "origin" : [
     -75,
