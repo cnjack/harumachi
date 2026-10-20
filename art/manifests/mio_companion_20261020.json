@@ -27,12 +27,12 @@
   "engine": "Swift + Metal",
   "network_policy": "literal loopback IP only; no redirects",
   "live_clef_verified": false,
-  "layout_revision": "20261020-pose-parts-v6",
+  "layout_revision": "20261020-head20-v7",
   "face_layout_source": "native/mio-companion/tools/pack_assets.swift",
   "initial_verification": "evidence/mio_companion_20261020/verification.json",
-  "verification": "evidence/mio_pose_parts_20261020/verification.json",
+  "verification": "evidence/mio_head20_20261020/verification.json",
   "face_verification": "evidence/mio_face_proportions_20261020/verification.json",
-  "head_verification": "evidence/mio_head_proportions_20261020/verification.json",
+  "head_verification": "evidence/mio_head20_20261020/verification.json",
   "body_revision": {
     "tool": "imagegen built-in",
     "prompt": "art/manifests/prompts/live2d/mio-articulated-body.txt",
@@ -116,5 +116,21 @@
     "waist_overlap_pixels": 144,
     "head_layout_unchanged": true,
     "cubism_binding": false
+  },
+  "previous_head_verification": "evidence/mio_head_proportions_20261020/verification.json",
+  "head_revision": {
+    "selection": "20 percent smaller than previous pose-parts v6",
+    "scale_relative_to_previous": 0.8,
+    "scale_relative_to_initial": 0.736,
+    "anchor": [
+      300,
+      268
+    ],
+    "layers": 7,
+    "body_layers_unchanged": 16,
+    "textures_unchanged": 24,
+    "source": "native/mio-companion/tools/pack_assets.swift",
+    "new_bitmap_generated": false,
+    "comparison": "evidence/mio_proportion_overlay_20261020/head-comparison.png"
   }
 }

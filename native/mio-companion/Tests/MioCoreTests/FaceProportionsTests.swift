@@ -17,12 +17,11 @@ final class FaceProportionsTests: XCTestCase {
         let lower = try XCTUnwrap(layers["lower_body"])
         let body = [lower[0], torso[1], lower[2], lower[1] + lower[3] - torso[1]]
         let face = try XCTUnwrap(layers["face"])
-        // Bound the full hair silhouette, not only the internal facial features.
-        let bodyParts = ["torso", "lower_body", "arm_left", "arm_right"].compactMap { layers[$0] }
-        let fullBodyWidth = bodyParts.map { $0[0] + $0[2] }.max()! - bodyParts.map { $0[0] }.min()!
-        XCTAssertTrue((0.46...0.50).contains(head[2] / fullBodyWidth), "Head silhouette is too wide relative to the body")
+        // Compare against the torso, not outstretched arms whose pose can hide
+        // an oversized head. These bounds capture the user's selected -20% view.
+        XCTAssertTrue((0.84...0.90).contains(head[2] / torso[2]), "Head silhouette is too wide relative to the torso")
         let standingHeight = body[1] + body[3] - head[1]
-        XCTAssertTrue((0.245...0.265).contains(head[3] / standingHeight), "Head occupies too much of the full figure")
+        XCTAssertTrue((0.210...0.225).contains(head[3] / standingHeight), "Head occupies too much of the full figure")
         XCTAssertEqual(head, layers["hair_back"], "Front and back hair must share the same layout")
         XCTAssertEqual(face[0] + face[2] / 2, body[0] + body[2] / 2, accuracy: 0.5)
         let neckOverlap = face[1] + face[3] - body[1]

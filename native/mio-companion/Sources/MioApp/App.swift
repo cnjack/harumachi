@@ -154,6 +154,11 @@ import MioCore
                             let q = motion.torsoPoint(SIMD2(x,432))
                             points.append([q.x+75,q.y])
                         }
+                        // Inspect the actual chin/neck join after source head scaling.
+                        for p in [SIMD2<Float>(294,268),SIMD2(306,268),SIMD2(300,288)] {
+                            let q = motion.torsoPoint(motion.neckPoint(p))
+                            points.append([q.x+75,q.y])
+                        }
                         probes.append(["frame":name,"gesture":gesture.rawValue,"attachments":points])
                     }
                 }

@@ -24,7 +24,8 @@ let crops: [(String, CGRect, [Double], String)] = [
 ]
 // Scale every head part together around the neck in the source layout. Baking
 // this here keeps the PSD and renderer identical and preserves facial ratios.
-let headScale = 0.92
+// The selected overlay preview is 20% smaller than the previous 0.92 layout.
+let headScale = 0.92 * 0.80
 let neckAnchor = CGPoint(x: 300, y: 268)
 func fittedRect(_ rect: [Double], group: String) -> [Double] {
     guard group != "body", !group.hasPrefix("arm_") else { return rect }
@@ -234,7 +235,7 @@ let order = ["hair_back", "lower_body", "shoulder_left", "shoulder_right", "arm_
 layers.sort { order.firstIndex(of: $0["id"] as! String)! < order.firstIndex(of: $1["id"] as! String)! }
 let manifest: [String: Any] = ["format": "harumachi-layer-rig", "version": 1, "name": "澪", "canvas": [750, 1000],
                               "origin": [-75, 0],
-                              "layoutRevision": "20261020-pose-parts-v6",
+                              "layoutRevision": "20261020-head20-v7",
                               "cubismCompatible": false, "layers": layers,
                               "parameters": ["ParamAngleX", "ParamAngleY", "ParamBodyAngleZ", "ParamBreath", "ParamEyeLOpen", "ParamEyeROpen", "ParamMouthOpenY"]]
 let json = try JSONSerialization.data(withJSONObject: manifest, options: [.prettyPrinted, .sortedKeys])

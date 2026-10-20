@@ -13,6 +13,8 @@ open native/mio-companion/dist/Mio.app
 
 源素材在 [`art/live2d/mio/`](../../art/live2d/mio/)：透明原始部件图、23 层 RGB/8 PSD、独立格式的 `Mio.rig.json`。PNG 部件随 Swift Package 打包。上身、腰裙、肩部补片、上臂、前臂袖子、四种左右手型与七个头部部件分别成层；手臂使用 24×64 网格，身体 20×64，头部 20×24，Metal 完成纹理采样和透明混合。当前含呼吸、轻摆、头发运动、眨眼、说话口型和角色区域内的鼠标视线。默认 30 FPS，全程静音。
 
+当前头部采用用户在叠图预览中选定的「再缩小 20%」版本：相对前一版为 0.8，相对最初布局为 `0.92 × 0.8 = 0.736`。七个头部图层围绕 `(300, 268)` 的颈部基点一起缩放，五官相对比例、身体和四套手型保持原值；源 rig、PSD 和应用资源同步，版本为 `20261020-head20-v7`。
+
 这是自有分层动画格式，**不是 Cubism `.moc3` 模型，也不能加载 `.model3.json`**。PSD 已通过系统 ImageIO 合成图解码检查，可作为 Cubism 后续制作的来源；尚未在 Cubism Editor 内导入验收。本机未找到 Editor/SDK，本轮未下载或接受它们的许可，也未导出 `.cmo3` / `.moc3`。官方 Core 负责计算 Editor 模型的顶点，不能把分层 JSON 改名当成官方模型，见 [Cubism Core 文档](https://docs.live2d.com/en/cubism-sdk-manual/cubism-core-api-reference/)。
 
 重建资源：
