@@ -3,8 +3,13 @@ import MetalKit
 import MioCore
 
 struct RigDescription: Decodable {
-    struct Layer: Decodable { let id: String; let texture: String; let rect: [Float]; let group: String; let joints: [[Float]]? }
+    struct Layer: Decodable {
+        let id: String; let texture: String; let rect: [Float]; let group: String
+        let joints: [[Float]]?
+        let bendSpans: [Float]?
+    }
     let canvas: [Float]
+    let origin: [Float]?
     let layers: [Layer]
 }
 struct Vertex { var position: SIMD2<Float>; var uv: SIMD2<Float> }
@@ -108,7 +113,8 @@ final class MioRenderer: NSObject, MTKViewDelegate {
             if arm, let joints = layer.joints, joints.count == 3 {
                 p = motion.armPoint(p, shoulder: SIMD2(joints[0][0], joints[0][1]),
                                     elbow: SIMD2(joints[1][0], joints[1][1]),
-                                    wrist: SIMD2(joints[2][0], joints[2][1]), left: layer.group == "arm_left")
+                                    wrist: SIMD2(joints[2][0], joints[2][1]), left: layer.group == "arm_left",
+                                    elbowBendSpan: layer.bendSpans?[0] ?? 104, wristBendSpan: layer.bendSpans?[1] ?? 30)
             } else if head {
                 if layer.group == "hair" {
                     let weight = max(0, (p.y - 95) / 200)
@@ -123,7 +129,8 @@ final class MioRenderer: NSObject, MTKViewDelegate {
                 let influence = 1 - PuppetMotion.smooth(520, 800, p.y)
                 p = motion.torsoPoint(motion.neckPoint(p), influence: influence)
             }
-            p = p * scale + offset
+            let origin = SIMD2<Float>(rig.origin?[0] ?? 0, rig.origin?[1] ?? 0)
+            p = (p - origin) * scale + offset
             return Vertex(position: SIMD2<Float>(p.x / Float(size.width) * 2 - 1, 1 - p.y / Float(size.height) * 2), uv: SIMD2<Float>(u, v))
         }
         var result: [Vertex] = []
@@ -152,7 +159,7 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         }
         encoder.endEncoding()
     }
-    func snapshot(to url: URL, pose: RigPose, width: Int = 600, height: Int = 1000) throws {
+    func snapshot(to url: URL, pose: RigPose, width: Int = 750, height: Int = 1000) throws {
         let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: width, height: height, mipmapped: false)
         descriptor.usage = [.renderTarget, .shaderRead]; descriptor.storageMode = .shared
         guard let texture = device.makeTexture(descriptor: descriptor), let command = queue.makeCommandBuffer() else { throw RenderError.unavailable }

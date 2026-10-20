@@ -2,6 +2,8 @@
 
 ## 澪的 Swift 桌面角色（2026-10-20）
 
+手臂绑定需从源图量肩帽、肘弯和腕线，弯曲跨度存入 rig；肩帽不能按画布 Y 坐标只旋转一半。`ArmDeformationTests` 用 PNG alpha 筛选真实可见三角形，逐相位及中途切换检查有向面积、伸缩和画幅；负面积代表翻面，关节存在或手掌不出画都不能替代此检查。`preview_motion.swift` 从真实 Metal 序列生成全身、抬落手和前后联系表；PSD 导出与运行时都必须应用 rig 的画布原点。现成 Cubism 模型的多套手臂切换资料见 [MIO_LIVE2D_RESEARCH_20261020.md](MIO_LIVE2D_RESEARCH_20261020.md)。
+
 头身及五官比例从 `native/mio-companion/tools/pack_assets.swift` 的源布局修订，再生成两个 rig、PSD 和应用，不能只在运行时缩放蒙混过去。整体头部缩放需以颈部为共同锚点应用到全部七个头部图层。`FaceProportionsTests` 约束头部外轮廓占身体宽高、颈部衔接、眼宽占脸宽、嘴型宽高、眼鼻嘴留白及表情切换中心；新增检查先对旧布局运行，保留失败日志。前后原生渲染使用相同时间和视线参数，至少看静态、闭眼与张嘴，并在现有显示器复验应用。
 
 独立入口 `open_mio_companion.command`，源码和工具位于 `native/mio-companion/`。imagegen 参考澪的定稿正面和头像生成透明部件；无肩包身体与双臂使用独立的 `articulated/body-arms-atlas.png`，保留原生成 alpha。肩、肘、腕位置随源布局写入 rig；`tools/pack_assets.swift` 按实测区域拆图并输出自有 rig，`tools/export_psd.swift` 导出同布局十层 RGB/8 PSD。它们不是 Cubism 模型编译器，不能产出 `.moc3`。构建用 Swift Package 与系统 Metal，无第三方下载，`.app` 放忽略的 `dist/`，不进游戏 `builds/`。

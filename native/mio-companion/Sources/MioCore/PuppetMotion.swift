@@ -16,9 +16,9 @@ public struct PuppetMotion: Sendable {
         torso = pose.sway * 0.012
         head = pose.lookX * 0.055 + Float(sin(t * 0.72 - 0.5)) * 0.022
         headShift = SIMD2(pose.lookX * 3, -pose.lookY * 3 + Float(sin(t * 1.8 - 0.4)) * 1.2)
-        leftShoulder = Float(sin(t * 1.15)) * 0.025
-        rightShoulder = Float(sin(t * 1.15 + 0.7)) * 0.025
-        leftElbow = 0.06; rightElbow = -0.06
+        leftShoulder = Float(sin(t * 1.15)) * 0.018
+        rightShoulder = Float(sin(t * 1.15 + 0.7)) * 0.018
+        leftElbow = 0.04; rightElbow = -0.04
         var gesture = pose.gesture
         var phase = pose.gestureTime
         if gesture == .automatic {
@@ -33,24 +33,28 @@ public struct PuppetMotion: Sendable {
         let oscillation = Float(sin(phase * 5.5))
         switch gesture {
         case .wave:
-            rightShoulder += 0.65 * sin(.pi * blend) - 0.9 * blend * blend
-            rightElbow += (-1.8 + 0.16 * oscillation) * sqrt(blend)
-            rightWrist = 0.23 * oscillation * blend
+            rightShoulder -= 0.65 * Self.smooth(0.25, 1, blend)
+            rightElbow -= (1.95 + 0.10 * oscillation) * Self.smooth(0, 0.65, blend)
+            rightWrist = 0.13 * oscillation * blend
             head += 0.045 * blend; torso -= 0.015 * blend
         case .stretch:
-            let liftedShoulder = 2.35 * blend * blend - 0.85 * sin(.pi * blend)
+            // Lift outwards throughout the motion; the previous anticipation
+            // reversed the shoulder and folded the elbow almost 180 degrees.
+            let liftedShoulder = 1.85 * Self.smooth(0, 1, blend)
             leftShoulder += liftedShoulder; rightShoulder -= liftedShoulder
-            let foldedElbow = 2.5 * sin(.pi * blend) + 0.35 * blend
+            let foldedElbow = 1.25 * sin(.pi * blend) + 0.25 * blend
             leftElbow += foldedElbow; rightElbow -= foldedElbow
             headShift.y -= 3 * blend
             head += Float(sin(phase * 1.2)) * 0.035 * blend
         case .think:
-            rightShoulder += 0.5 * blend + 0.35 * sin(.pi * blend); rightElbow -= 2.55 * blend
-            rightWrist = -0.12 * blend
+            // Fold across the chest towards the face, rather than wave away
+            // from it. Positive rotation is clockwise in the canvas Y-down frame.
+            rightShoulder += 0.55 * blend; rightElbow += 2.15 * blend
+            rightWrist = 0.08 * blend
             head += 0.075 * blend; torso += 0.012 * blend
         case .talk:
-            rightShoulder += (0.20 + 0.04 * oscillation) * blend
-            rightElbow -= (0.65 + 0.08 * oscillation) * blend
+            rightShoulder += (0.10 + 0.03 * oscillation) * blend
+            rightElbow -= (0.55 + 0.06 * oscillation) * blend
             leftShoulder -= 0.08 * blend; leftElbow += 0.18 * blend
             headShift.y += Float(sin(phase * 4)) * 1.6 * blend
             head += Float(sin(phase * 2)) * 0.025 * blend
@@ -96,20 +100,40 @@ public struct PuppetMotion: Sendable {
     public func torsoPoint(_ point: SIMD2<Float>, influence: Float = 1) -> SIMD2<Float> {
         Self.rotate(point, around: SIMD2(300, 520), by: torso * influence)
     }
-    public func armPoint(_ point: SIMD2<Float>, shoulder: SIMD2<Float>, elbow: SIMD2<Float>, wrist: SIMD2<Float>, left: Bool) -> SIMD2<Float> {
+    /// Bend a strip through a circular arc, preserving its transverse width.
+    /// Blending rotated positions collapses the inside of a bent sleeve and can
+    /// reverse triangles. Here the centreline has unit arc length and the radius
+    /// stays larger than the sleeve half-width, as checked against opaque pixels.
+    private static func bend(_ point: SIMD2<Float>, at origin: SIMD2<Float>,
+                             direction: SIMD2<Float>, angle: Float, span: Float) -> SIMD2<Float> {
+        guard abs(angle) > 0.0001 else { return point }
+        let normal = SIMD2(-direction.y, direction.x)
+        let delta = point - origin
+        let along = delta.x * direction.x + delta.y * direction.y
+        let across = delta.x * normal.x + delta.y * normal.y
+        let half = span / 2
+        guard along > -half else { return point }
+        let distance = min(span, along + half)
+        let turn = angle * distance / span
+        let radius = span / angle
+        let tangent = direction * cos(turn) + normal * sin(turn)
+        let side = normal * cos(turn) - direction * sin(turn)
+        let center = origin - direction * half
+            + direction * (sin(turn) * radius) + normal * ((1 - cos(turn)) * radius)
+            + tangent * max(0, along - half)
+        return center + side * across
+    }
+    public func armPoint(_ point: SIMD2<Float>, shoulder: SIMD2<Float>, elbow: SIMD2<Float>, wrist: SIMD2<Float>, left: Bool,
+                         elbowBendSpan: Float = 104, wristBendSpan: Float = 30) -> SIMD2<Float> {
         let axis = wrist - elbow
-        let length = sqrt(axis.x * axis.x + axis.y * axis.y)
-        let direction = axis / max(1, length)
-        func along(_ origin: SIMD2<Float>) -> Float {
-            let delta = point - origin
-            return delta.x * direction.x + delta.y * direction.y
-        }
-        let wristWeight = Self.smooth(-12, 12, along(wrist))
-        var p = point + (Self.rotate(point, around: wrist, by: left ? leftWrist : rightWrist) - point) * wristWeight
-        let elbowWeight = Self.smooth(-18, 18, along(elbow))
-        p += (Self.rotate(p, around: elbow, by: left ? leftElbow : rightElbow) - p) * elbowWeight
-        let shoulderWeight = Self.smooth(-8, 20, (point.y - shoulder.y))
-        p += (Self.rotate(p, around: shoulder, by: left ? leftShoulder : rightShoulder) - p) * shoulderWeight
+        let direction = axis / max(1, sqrt(axis.x * axis.x + axis.y * axis.y))
+        var p = Self.bend(point, at: wrist, direction: direction,
+                          angle: left ? leftWrist : rightWrist, span: wristBendSpan)
+        p = Self.bend(p, at: elbow, direction: direction,
+                      angle: left ? leftElbow : rightElbow, span: elbowBendSpan)
+        // The whole shoulder cap belongs to the upper arm. A Y mask here pins
+        // half the cap to the torso and twists it when the arm is raised.
+        p = Self.rotate(p, around: shoulder, by: left ? leftShoulder : rightShoulder)
         return torsoPoint(p)
     }
 }

@@ -1,6 +1,6 @@
 {
   "canvas" : [
-    600,
+    750,
     1000
   ],
   "cubismCompatible" : false,
@@ -43,20 +43,25 @@
       "texture" : "body.png"
     },
     {
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "rigid-shoulder-arc-elbow-wrist",
       "group" : "arm_left",
       "id" : "arm_left",
       "joints" : [
         [
-          238,
-          310
+          231,
+          320
         ],
         [
-          168,
-          405
+          173,
+          418
         ],
         [
-          117,
-          510
+          114,
+          508
         ]
       ],
       "rect" : [
@@ -75,20 +80,25 @@
       "texture" : "arm_left.png"
     },
     {
+      "bendSpans" : [
+        104,
+        30
+      ],
+      "binding" : "rigid-shoulder-arc-elbow-wrist",
       "group" : "arm_right",
       "id" : "arm_right",
       "joints" : [
         [
-          362,
-          310
+          369,
+          320
         ],
         [
-          432,
-          405
+          427,
+          418
         ],
         [
-          483,
-          510
+          486,
+          508
         ]
       ],
       "rect" : [
@@ -215,8 +225,12 @@
       "texture" : "hair_front.png"
     }
   ],
-  "layoutRevision" : "20261020-articulated-v4",
+  "layoutRevision" : "20261020-arm-binding-v5",
   "name" : "澪",
+  "origin" : [
+    -75,
+    0
+  ],
   "parameters" : [
     "ParamAngleX",
     "ParamAngleY",

@@ -66,15 +66,22 @@ for (name, crop, originalRect, group) in crops {
     var layer: [String: Any] = ["id": name, "texture": name + ".png", "rect": rect, "group": group,
                                "sourceCrop": [crop.minX, crop.minY, crop.width, crop.height],
                                "sourceAtlas": group == "body" || group.hasPrefix("arm_") ? "articulated/body-arms-atlas.png" : "parts-atlas.png"]
-    if group == "arm_left" { layer["joints"] = [[238, 310], [168, 405], [117, 510]] }
-    if group == "arm_right" { layer["joints"] = [[362, 310], [432, 405], [483, 510]] }
+    // Pivots measured on the trimmed sleeve cap, elbow fold and wrist crease.
+    // Arc spans cover the full sleeve width, rather than a narrow skinning seam.
+    if group == "arm_left" { layer["joints"] = [[231, 320], [173, 418], [114, 508]] }
+    if group == "arm_right" { layer["joints"] = [[369, 320], [427, 418], [486, 508]] }
+    if group.hasPrefix("arm_") {
+        layer["bendSpans"] = [104, 30]
+        layer["binding"] = "rigid-shoulder-arc-elbow-wrist"
+    }
     layers.append(layer)
     print("\(name): \(trimmed.width)x\(trimmed.height)")
 }
 let order = ["hair_back", "body", "arm_left", "arm_right", "face", "eyes_open", "eyes_closed", "mouth_closed", "mouth_open", "hair_front"]
 layers.sort { order.firstIndex(of: $0["id"] as! String)! < order.firstIndex(of: $1["id"] as! String)! }
-let manifest: [String: Any] = ["format": "harumachi-layer-rig", "version": 1, "name": "澪", "canvas": [600, 1000],
-                              "layoutRevision": "20261020-articulated-v4",
+let manifest: [String: Any] = ["format": "harumachi-layer-rig", "version": 1, "name": "澪", "canvas": [750, 1000],
+                              "origin": [-75, 0],
+                              "layoutRevision": "20261020-arm-binding-v5",
                               "cubismCompatible": false, "layers": layers,
                               "parameters": ["ParamAngleX", "ParamAngleY", "ParamBodyAngleZ", "ParamBreath", "ParamEyeLOpen", "ParamEyeROpen", "ParamMouthOpenY"]]
 let json = try JSONSerialization.data(withJSONObject: manifest, options: [.prettyPrinted, .sortedKeys])

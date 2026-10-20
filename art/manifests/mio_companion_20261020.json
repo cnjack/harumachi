@@ -18,7 +18,7 @@
   "runtime_resources": "native/mio-companion/Sources/MioApp/Resources/Mio/",
   "layer_count": 10,
   "canvas": [
-    600,
+    750,
     1000
   ],
   "format": "harumachi-layer-rig",
@@ -27,10 +27,10 @@
   "engine": "Swift + Metal",
   "network_policy": "literal loopback IP only; no redirects",
   "live_clef_verified": false,
-  "layout_revision": "20261020-articulated-v4",
+  "layout_revision": "20261020-arm-binding-v5",
   "face_layout_source": "native/mio-companion/tools/pack_assets.swift",
   "initial_verification": "evidence/mio_companion_20261020/verification.json",
-  "verification": "evidence/mio_animation_20261020/verification.json",
+  "verification": "evidence/mio_arm_binding_20261020/verification.json",
   "face_verification": "evidence/mio_face_proportions_20261020/verification.json",
   "head_verification": "evidence/mio_head_proportions_20261020/verification.json",
   "body_revision": {
@@ -53,5 +53,20 @@
       "native/mio-companion/Sources/MioApp/Resources/Mio/body.png",
       "evidence/mio_head_proportions_20261020/after/neutral.png"
     ]
+  },
+  "origin": [
+    -75,
+    0
+  ],
+  "animation_verification": "evidence/mio_animation_20261020/verification.json",
+  "arm_binding_revision": {
+    "source": "native/mio-companion/tools/pack_assets.swift",
+    "deformation": "rigid shoulder; constant-width arc elbow and wrist",
+    "bend_spans": [
+      104,
+      30
+    ],
+    "new_bitmap_generated": false,
+    "research": "docs/game-design/MIO_LIVE2D_RESEARCH_20261020.md"
   }
 }

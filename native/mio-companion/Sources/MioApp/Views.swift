@@ -73,7 +73,7 @@ struct Dashboard: View {
                     Circle().fill(state.source == "Clef 决策" ? accent : Color.orange.opacity(0.7)).frame(width: 6, height: 6)
                     Text(state.source).font(.system(size: 11)).foregroundStyle(muted)
                 }.frame(maxWidth: .infinity).padding(.bottom, 12)
-            }.padding(.horizontal, 30).padding(.top, 24).frame(width: 300)
+            }.padding(.horizontal, 36).padding(.top, 24).frame(width: 372)
                 .background(LinearGradient(colors: [Color(red: 0.91, green: 0.95, blue: 0.95), Color(red: 0.99, green: 0.97, blue: 0.92)], startPoint: .topLeading, endPoint: .bottomTrailing))
             VStack(alignment: .leading, spacing: 17) {
                 HStack {

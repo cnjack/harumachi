@@ -48,7 +48,7 @@ final class ArticulationTests: XCTestCase {
         }
     }
     func testWaveMovesHandWhileKeepingShoulderAttached() {
-        let shoulder = SIMD2<Float>(362, 310), elbow = SIMD2<Float>(432, 405), wrist = SIMD2<Float>(483, 510)
+        let shoulder = SIMD2<Float>(369, 320), elbow = SIMD2<Float>(427, 418), wrist = SIMD2<Float>(486, 508)
         let idle = PuppetMotion(pose: RigPose(time: 2, gesture: .idle))
         let wave = PuppetMotion(pose: RigPose(time: 2, gesture: .wave))
         let raised = wave.armPoint(wrist, shoulder: shoulder, elbow: elbow, wrist: wrist, left: false)
@@ -60,10 +60,10 @@ final class ArticulationTests: XCTestCase {
                 let pose = RigPose(time: Double(frame) / 30, gesture: gesture)
                 let motion = PuppetMotion(pose: pose)
                 let hand = motion.armPoint(SIMD2(535, 565), shoulder: shoulder, elbow: elbow, wrist: wrist, left: false)
-                let leftHand = motion.armPoint(SIMD2(65, 565), shoulder: SIMD2(238, 310), elbow: SIMD2(168, 405), wrist: SIMD2(117, 510), left: true)
-                XCTAssertTrue((5...595).contains(leftHand.x) && (5...995).contains(leftHand.y), "Left hand cropped during \(gesture) frame \(frame): \(leftHand)")
+                let leftHand = motion.armPoint(SIMD2(65, 565), shoulder: SIMD2(231, 320), elbow: SIMD2(173, 418), wrist: SIMD2(114, 508), left: true)
+                XCTAssertTrue((-70...670).contains(leftHand.x) && (5...995).contains(leftHand.y), "Left hand cropped during \(gesture) frame \(frame): \(leftHand)")
                 XCTAssertTrue(hand.x.isFinite && hand.y.isFinite)
-                XCTAssertTrue((5...595).contains(hand.x) && (5...995).contains(hand.y), "Hand cropped during \(gesture) frame \(frame): \(hand)")
+                XCTAssertTrue((-70...670).contains(hand.x) && (5...995).contains(hand.y), "Hand cropped during \(gesture) frame \(frame): \(hand)")
             }
         }
     }

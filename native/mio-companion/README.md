@@ -38,9 +38,26 @@ swift native/mio-companion/tools/export_psd.swift "$PWD"
 
 肩包及肩带已从新身体素材中移除，身体和双臂分别成层。手臂有肩、肘、腕三个关节，颈部从下颌到衣领连续变形；头部视线平滑跟随，带轻微摆头、点头和延迟发梢摆动。保留上一轮缩小 8% 的头部及五官相对比例。
 
-窗口动作按钮提供自动、轻摆、招手、伸懒腰、思考、说话。自动状态约 52 秒穿插一次完整动作组，来信回应期间使用说话手势；手动动作结束后回到轻摆，可点击自动恢复循环。肩肘联动先收臂再抬手，避免过渡时出画；中途切换用 0.4 秒缓动衔接当前姿势。只控制角色自身动画。
+窗口动作按钮提供自动、轻摆、招手、伸懒腰、思考、说话。自动状态约 52 秒穿插一次完整动作组，来信回应期间使用说话手势；手动动作结束后回到轻摆，可点击自动恢复循环。肩部整体转动，肘腕沿保宽弧形弯曲；伸展向外抬肩，思考收向胸前；中途切换用 0.4 秒缓动衔接当前姿势。只控制角色自身动画。
 
 素材使用内置 imagegen，提示词在 `art/manifests/prompts/live2d/mio-articulated-body.txt`，新增源图在 `art/live2d/mio/articulated/body-arms-atlas.png`；旧头部原始图保留。`--render-motion <目录>` 导出轻摆、招手、伸展、思考、说话各 7 秒，共 1050 帧 / 30 FPS。证据在 `evidence/mio_animation_20261020/`。
+
+## 手臂折叠与方向修正（2026-10-20）
+
+上一版以 Y 坐标混合肩部旋转，肩帽一半固定、一半转动，形成折角；肘部混合旋转前后的位置，较大弯曲时会压扁并翻转袖子。`ArmDeformationTests` 读取真实 PNG 的 alpha，只检查可见三角形，在旧版先抓到 9 处断言失败。
+
+源绑定重新量定肩、肘、腕，记录 `bendSpans: [104, 30]`。肩帽跟上臂整体转动，肘腕沿连续圆弧保留横向宽度；伸展取消反向预摆和过大的折肘，思考改为朝胸前收手。画布为 750×1000、原点 [-75, 0]，两边各加 75 像素活动余量；界面同步扩宽，人物显示大小与各部位比例保持。
+
+本轮 15 项本地测试通过，API 未变、HTTP 模拟未重跑。网格检查覆盖每侧五动作各 211 相位及 25 组切换各 13 相位，最小有向面积比 0.284、最大 1.717；画幅内留出至少 5 像素。最终应用导出 1050 帧 / 35 秒，无裁边；原生窗口 600 帧，四个动作切换、Inbox 和暂停通过。证据在 `evidence/mio_arm_binding_20261020/`，用户自然度复评仍待确认。
+
+复拍联系表（包含起手、收手和前后对比）：
+
+```bash
+native/mio-companion/dist/Mio.app/Contents/MacOS/MioCompanion --render-motion /tmp/mio-motion/frames
+swift native/mio-companion/tools/preview_motion.swift /tmp/mio-motion
+```
+
+现成 Cubism 模型与 Swift 接入方案见[调研记录](../../docs/game-design/MIO_LIVE2D_RESEARCH_20261020.md)。本次修复仍是自有分层原型，不把模型调研当作正式 Cubism 接入验收。
 
 ## Clef 决策
 
@@ -84,7 +101,7 @@ dist/Mio.app/Contents/MacOS/MioCompanion --render-samples /tmp/mio-poses
 dist/Mio.app/Contents/MacOS/MioCompanion --smoke-test /tmp/mio-smoke
 ```
 
-十四个 XCTest 覆盖关节动作、颈部过渡、头身及五官比例、约束、权限地址、过期/去重和生产 HTTP 客户端；Postman 模拟包含正常、低置信度、未知动作、错模型、坏 JSON、500、HTML 网关、重定向及超时。未登录 Postman，未查询拥有方共享 mock；本地 mock 来自现有客户端/服务说明及本轮消费契约，不能证明真实 Clef 模型的判断准确率。
+十六个 XCTest 覆盖关节动作、颈部过渡、头身及五官比例、约束、权限地址、过期/去重和生产 HTTP 客户端；Postman 模拟包含正常、低置信度、未知动作、错模型、坏 JSON、500、HTML 网关、重定向及超时。未登录 Postman，未查询拥有方共享 mock；本地 mock 来自现有客户端/服务说明及本轮消费契约，不能证明真实 Clef 模型的判断准确率。
 
 原生 smoke 使用现有显示器，验证持续出帧、真实 Inbox 接收、暂停丢弃和恢复。PNG 导出只读取本程序自己的视图缓存与 Metal 目标，再合成本程序画面；它不是桌面截屏，也不读取其他窗口。记录位于 `evidence/mio_companion_20261020/`。本轮未改游戏资源、Godot 测试数、`builds/HareMachi.zip` 或 Web 发布。
 

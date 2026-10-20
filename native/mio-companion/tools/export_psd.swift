@@ -5,7 +5,7 @@ import ImageIO
 
 struct Rig: Decodable {
     struct Layer: Decodable { let id: String; let texture: String; let rect: [Double]; let group: String }
-    let canvas: [Int]; let layers: [Layer]
+    let canvas: [Int]; let origin: [Double]?; let layers: [Layer]
 }
 extension Data {
     mutating func u16(_ n: Int) { append(UInt8((n >> 8) & 255)); append(UInt8(n & 255)) }
@@ -25,7 +25,8 @@ func raster(_ layer: Rig.Layer) -> [UInt8] {
         let context = CGContext(data: p.baseAddress, width: w, height: h, bitsPerComponent: 8, bytesPerRow: w * 4,
                                 space: cs, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
         let r = layer.rect
-        context.draw(image, in: CGRect(x: r[0], y: Double(h) - r[1] - r[3], width: r[2], height: r[3]))
+        context.draw(image, in: CGRect(x: r[0] - (rig.origin?[0] ?? 0),
+            y: Double(h) - r[1] + (rig.origin?[1] ?? 0) - r[3], width: r[2], height: r[3]))
     }
     return bytes
 }

@@ -17,11 +17,11 @@ import MioCore
             try? FileManager.default.createDirectory(at: smokeDirectory!, withIntermediateDirectories: true)
         }
         state = CompanionState(dataDirectory: smokeDirectory?.appendingPathComponent("runtime"))
-        dashboard = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 900, height: 710), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
+        dashboard = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 972, height: 710), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
         dashboard.title = "澪 · 晴町桌面来信"; dashboard.isReleasedWhenClosed = false
         dashboard.contentView = NSHostingView(rootView: Dashboard(state: state))
         dashboard.center(); dashboard.makeKeyAndOrderFront(nil)
-        companion = NSPanel(contentRect: NSRect(x: 0, y: 0, width: 270, height: 525), styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
+        companion = NSPanel(contentRect: NSRect(x: 0, y: 0, width: 338, height: 525), styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
         companion.isFloatingPanel = true; companion.level = .floating
         companion.isOpaque = false; companion.backgroundColor = .clear; companion.hasShadow = false
         companion.isMovableByWindowBackground = true
@@ -29,7 +29,7 @@ import MioCore
         companion.contentView = NSHostingView(rootView: DesktopCompanion(state: state) { [weak self] in self?.showDashboard() })
         if let screen = NSScreen.main {
             let frame = screen.visibleFrame
-            companion.setFrameOrigin(NSPoint(x: frame.maxX - 285, y: frame.minY + 15))
+            companion.setFrameOrigin(NSPoint(x: frame.maxX - 353, y: frame.minY + 15))
         }
         companion.orderFrontRegardless()
         state.onVisibility = { [weak self] visible in
