@@ -24,6 +24,12 @@ swift native/mio-companion/tools/export_psd.swift "$PWD"
 
 从仓库根目录执行。第一条只按已量定的区域拆图，保留生成的 alpha，清除低于 12/255 的透明量化尘点；不按背景颜色抠图。第二条将同一布局导出为有独立可见状态的 PSD。提示词与来源在 `art/manifests/prompts/live2d/mio-parts.txt` 和 `art/manifests/mio_companion_20261020.json`。
 
+## 五官比例修订（2026-10-20）
+
+按用户反馈对照原头像调整源布局：眼睛整体宽度由 152 降至 116，闭嘴宽度 44 降至 36，开嘴由 30×21 改为 22×12.6；眼睛上移 6，嘴部中心上移约 10。脸型、发型与源 PNG 保留，睁/闭眼、开/闭口分别共用位置基准。修改写在 `pack_assets.swift`，同步两个 rig 和 PSD，应用直接读取修订资源。
+
+新增 `FaceProportionsTests` 防止眼睛撑满脸、嘴型拉长、嘴部过低和切换漂移；旧布局先运行，有 7 处断言失败。原生六种状态、前后对照和重建应用的证据在 `evidence/mio_face_proportions_20261020/`，比例是否自然仍以用户复评为准。
+
 ## Clef 决策
 
 使用已有 `clef-omni` 的 `POST /v1/systemone` 协议；`state` 携带事件类型、粗粒度元数据和主动提交的文本，`questions` 要求选择表情与预设回应。没有额外聊天模型，回复来自程序内的中文短句。Clef 无权调用 shell、操纵应用或发送消息。
@@ -66,7 +72,7 @@ dist/Mio.app/Contents/MacOS/MioCompanion --render-samples /tmp/mio-poses
 dist/Mio.app/Contents/MacOS/MioCompanion --smoke-test /tmp/mio-smoke
 ```
 
-八个 XCTest 覆盖约束、权限地址、过期/去重和生产 HTTP 客户端；Postman 模拟包含正常、低置信度、未知动作、错模型、坏 JSON、500、HTML 网关、重定向及超时。未登录 Postman，未查询拥有方共享 mock；本地 mock 来自现有客户端/服务说明及本轮消费契约，不能证明真实 Clef 模型的判断准确率。
+九个 XCTest 覆盖五官比例、约束、权限地址、过期/去重和生产 HTTP 客户端；Postman 模拟包含正常、低置信度、未知动作、错模型、坏 JSON、500、HTML 网关、重定向及超时。未登录 Postman，未查询拥有方共享 mock；本地 mock 来自现有客户端/服务说明及本轮消费契约，不能证明真实 Clef 模型的判断准确率。
 
 原生 smoke 使用现有显示器，验证持续出帧、真实 Inbox 接收、暂停丢弃和恢复。PNG 导出只读取本程序自己的视图缓存与 Metal 目标，再合成本程序画面；它不是桌面截屏，也不读取其他窗口。记录位于 `evidence/mio_companion_20261020/`。本轮未改游戏资源、Godot 测试数、`builds/HareMachi.zip` 或 Web 发布。
 

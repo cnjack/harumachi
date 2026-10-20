@@ -21,5 +21,8 @@
   "engine": "Swift + Metal",
   "network_policy": "literal loopback IP only; no redirects",
   "live_clef_verified": false,
-  "verification": "evidence/mio_companion_20261020/verification.json"
+  "layout_revision": "20261020-face-proportions-v2",
+  "face_layout_source": "native/mio-companion/tools/pack_assets.swift",
+  "initial_verification": "evidence/mio_companion_20261020/verification.json",
+  "verification": "evidence/mio_face_proportions_20261020/verification.json"
 }

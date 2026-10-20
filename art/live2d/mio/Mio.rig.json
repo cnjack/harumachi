@@ -61,10 +61,10 @@
       "group" : "eyes_open",
       "id" : "eyes_open",
       "rect" : [
-        224,
-        164,
-        152,
-        60
+        242,
+        158,
+        116,
+        44.640000000000001
       ],
       "sourceCrop" : [
         20,
@@ -78,10 +78,10 @@
       "group" : "eyes_closed",
       "id" : "eyes_closed",
       "rect" : [
-        224,
-        164,
-        152,
-        53
+        242,
+        158,
+        116,
+        39.420000000000002
       ],
       "sourceCrop" : [
         475,
@@ -95,10 +95,10 @@
       "group" : "mouth_closed",
       "id" : "mouth_closed",
       "rect" : [
-        278,
-        239,
-        44,
-        10
+        282,
+        229.19999999999999,
+        36,
+        9.5999999999999996
       ],
       "sourceCrop" : [
         1010,
@@ -112,10 +112,10 @@
       "group" : "mouth_open",
       "id" : "mouth_open",
       "rect" : [
-        285,
-        235,
-        30,
-        21
+        289,
+        227.69999999999999,
+        22,
+        12.6
       ],
       "sourceCrop" : [
         1460,
@@ -143,6 +143,7 @@
       "texture" : "hair_front.png"
     }
   ],
+  "layoutRevision" : "20261020-face-proportions-v2",
   "name" : "澪",
   "parameters" : [
     "ParamAngleX",

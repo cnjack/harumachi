@@ -13,10 +13,10 @@ let crops: [(String, CGRect, [Double], String)] = [
     ("hair_back", CGRect(x: 444, y: 55, width: 445, height: 530), [176, 36, 248, 260], "hair"),
     ("face", CGRect(x: 945, y: 155, width: 350, height: 322), [214, 92, 172, 180], "head"),
     ("hair_front", CGRect(x: 1320, y: 60, width: 454, height: 535), [176, 36, 248, 260], "hair"),
-    ("eyes_open", CGRect(x: 20, y: 630, width: 419, height: 216), [224, 164, 152, 60], "eyes_open"),
-    ("eyes_closed", CGRect(x: 475, y: 632, width: 400, height: 190), [224, 164, 152, 53], "eyes_closed"),
-    ("mouth_closed", CGRect(x: 1010, y: 715, width: 220, height: 110), [278, 239, 44, 10], "mouth_closed"),
-    ("mouth_open", CGRect(x: 1460, y: 685, width: 180, height: 145), [285, 235, 30, 21], "mouth_open")
+    ("eyes_open", CGRect(x: 20, y: 630, width: 419, height: 216), [242, 158, 116, 44.64], "eyes_open"),
+    ("eyes_closed", CGRect(x: 475, y: 632, width: 400, height: 190), [242, 158, 116, 39.42], "eyes_closed"),
+    ("mouth_closed", CGRect(x: 1010, y: 715, width: 220, height: 110), [282, 229.2, 36, 9.6], "mouth_closed"),
+    ("mouth_open", CGRect(x: 1460, y: 685, width: 180, height: 145), [289, 227.7, 22, 12.6], "mouth_open")
 ]
 var layers: [[String: Any]] = []
 for (name, crop, rect, group) in crops {
@@ -54,6 +54,7 @@ for (name, crop, rect, group) in crops {
 let order = ["hair_back", "body", "face", "eyes_open", "eyes_closed", "mouth_closed", "mouth_open", "hair_front"]
 layers.sort { order.firstIndex(of: $0["id"] as! String)! < order.firstIndex(of: $1["id"] as! String)! }
 let manifest: [String: Any] = ["format": "harumachi-layer-rig", "version": 1, "name": "澪", "canvas": [600, 1000],
+                              "layoutRevision": "20261020-face-proportions-v2",
                               "cubismCompatible": false, "layers": layers,
                               "parameters": ["ParamAngleX", "ParamAngleY", "ParamBodyAngleZ", "ParamBreath", "ParamEyeLOpen", "ParamEyeROpen", "ParamMouthOpenY"]]
 let json = try JSONSerialization.data(withJSONObject: manifest, options: [.prettyPrinted, .sortedKeys])

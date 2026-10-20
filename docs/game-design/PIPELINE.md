@@ -2,6 +2,8 @@
 
 ## 澪的 Swift 桌面角色（2026-10-20）
 
+五官比例从 `native/mio-companion/tools/pack_assets.swift` 的源布局修订，再生成两个 rig、PSD 和应用，不能只在运行时缩放蒙混过去。`FaceProportionsTests` 约束眼宽占脸宽、嘴型宽高、眼鼻嘴留白及表情切换中心；新增检查先对旧布局运行，保留失败日志。前后原生渲染使用相同时间和视线参数，至少看静态、闭眼与张嘴，并在现有显示器复验应用。
+
 独立入口 `open_mio_companion.command`，源码和工具位于 `native/mio-companion/`。imagegen 参考澪的定稿正面和头像生成透明部件；`tools/pack_assets.swift` 按实测区域拆图并输出自有 rig，`tools/export_psd.swift` 导出同布局八层 RGB/8 PSD。它们不是 Cubism 模型编译器，不能产出 `.moc3`。构建用 Swift Package 与系统 Metal，无第三方下载，`.app` 放忽略的 `dist/`，不进游戏 `builds/`。
 
 运行 `tools/test_simulation.sh` 验证生产 HTTP 客户端，再对打包 `.app` 运行 `--smoke-test <本轮证据目录>`；五种状态和眨眼用 `--render-samples` 导出。smoke 只缓存本应用视图并读取自身 Metal 目标，不调用显示器截图 API。按本轮要求只允许本机回环 IP、拒绝重定向，其他网络连接和授权项直接跳过；不启动隧道或改系统权限。静音、现有显示器、无虚拟屏幕。完整用法与当前边界见[桌面角色 README](../../native/mio-companion/README.md)。
