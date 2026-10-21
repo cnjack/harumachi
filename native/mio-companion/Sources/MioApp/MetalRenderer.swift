@@ -132,9 +132,7 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         }
         pose.gestureTime = pose.time - gestureStart
         pose.speaking = Date() < speakingUntil || (pose.gesture == .talk && pose.gestureTime < CharacterGesture.talk.duration)
-        if let performance, pose.gesture == .automatic {
-            performance.apply(to:&pose,elapsed:Date().timeIntervalSince(performance.started))
-        } else { pose.cueGesture = nil;pose.speech = nil;pose.nod = 0 }
+        pose.present(performance,elapsed:performance.map { Date().timeIntervalSince($0.started) } ?? 0)
         encode(command: command, pass: pass, size: view.drawableSize, pose: pose)
         command.present(drawable); command.commit()
         frameCount += 1

@@ -18,9 +18,9 @@ import MioCore
     var poseMeasurements: [String:[String:Any]] = [:]
     var sentSpeech = false
     var revision = 100
-    let schedule: [(Double,CharacterGesture)] = [(0,.idle),(1,.wave),(9.5,.think),(14.5,.talk),(19,.automatic)]
+    let schedule: [(Double,CharacterGesture)] = [(0,.idle),(1,.wave),(9.5,.think),(14.5,.talk),(19,.encourage),(24.5,.automatic)]
     // Capture the held thinking pose after contact and the cloud's fade.
-    let captures: [(Double,String)] = [(0.8,"idle"),(2.6,"wave"),(12.2,"think"),(16.2,"talk"),(25,"automatic")]
+    let captures: [(Double,String)] = [(0.8,"idle"),(2.6,"wave"),(12.2,"think"),(16.2,"talk"),(21,"encourage"),(30.5,"automatic")]
 
     init(at directory: URL, persistent: Bool) throws {
         self.directory = directory
@@ -74,7 +74,7 @@ import MioCore
             selected = index
             renderer.selectGesture(schedule[index].1,revision:index+1)
         }
-        if elapsed>=20 && !sentSpeech { renderer.speakingUntil = Date().addingTimeInterval(0.6);sentSpeech = true }
+        if elapsed>=25.5 && !sentSpeech { renderer.speakingUntil = Date().addingTimeInterval(0.6);sentSpeech = true }
         progress.append(["wallTime":elapsed,"frames":renderer.frameCount,"animationTime":renderer.pose.time])
         do {
             for (time,name) in captures where elapsed>=time && !captured.contains(name) {
@@ -102,6 +102,7 @@ import MioCore
                     poseMeasurements[name]?["chinWeight"] = motion.rightChin
                     poseChecks[name] = hand.variant == "chin" && d.x*d.x+d.y*d.y < 9 && motion.thoughtOpacity > 0.25
                 } else if name == "talk" { poseChecks[name] = hand.variant == "palm" }
+                else if name == "encourage" { poseChecks[name] = hand.variant == "fist" && wrist(false).y < 380 && wrist(false).y > 230 }
                 else {
                     poseChecks[name] = renderer.pose.gesture == .automatic && !renderer.pose.speaking
                         && hand.variant == "relaxed" && wrist(true).y > 525 && wrist(false).y > 525
@@ -110,7 +111,7 @@ import MioCore
                 try renderer.snapshot(to:directory.appendingPathComponent(name+".png"),pose:renderer.pose)
                 captured.insert(name)
             }
-            if elapsed>=28 {
+            if elapsed>=33.5 {
                 try saveOwnWindow(window,to:directory.appendingPathComponent("window.png"))
                 let report: [String:Any] = ["wallTime":elapsed,"frames":renderer.frameCount,
                     "averageFPS":Double(renderer.frameCount)/elapsed,"captured":captured.sorted(),

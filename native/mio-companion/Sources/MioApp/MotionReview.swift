@@ -8,7 +8,7 @@ enum MotionReview {
     static func run(at directory: URL) throws {
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         guard let device = MTLCreateSystemDefaultDevice() else { throw MioRenderer.RenderError.unavailable }
-        let gestures: [CharacterGesture] = [.idle, .wave, .think, .talk]
+        let gestures: [CharacterGesture] = [.idle, .wave, .think, .talk, .encourage]
         var records: [[String: Any]] = []
         let catalog = try JSONDecoder().decode(CubismRigGeometry.self,from:Data(contentsOf:MioResources.directory("MioCubism").appendingPathComponent("Mio.bindings.json")))
         func capture(_ renderer: MioRenderer, pose: RigPose, group: String, frame: Int,

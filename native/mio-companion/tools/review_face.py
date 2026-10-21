@@ -57,7 +57,7 @@ def main():
     sheet('comparison.png', comparison, len(comparison))
     sheet('look-directions.png', [(f'视线 {x}, {y}', args.current / f'face-{x}-{y}.png') for y in [-1, 0, 1] for x in [-1, 0, 1]])
     sheet('blinks.png', [(f'{t:.2f} 秒', args.current / f'eyelids-{t}.png') for t in [4.17, 4.2, 4.23, 4.25, 4.3, 4.35, 4.39]], 7, (310, 175, 440, 275), (230, 177))
-    sheet('gesture-faces.png', [(f'{name} {t:.1f} 秒', args.current / f'{gesture}-{t}.png') for gesture, name in [('idle', '放下'), ('wave', '招手'), ('think', '思考'), ('talk', '说话')] for t in [0.0, 1.5, 3.0, 4.9]], 4)
+    sheet('gesture-faces.png', [(f'{name} {t:.1f} 秒', args.current / f'{gesture}-{t}.png') for gesture, name in [('idle', '放下'), ('wave', '招手'), ('think', '思考'), ('talk', '说话'), ('encourage', '加油')] for t in [0.0, 1.5, 3.0, 4.9]], 4)
     (args.output / 'face-review.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(report, ensure_ascii=False, indent=2))
     if not report['pixelCheckPassed']:

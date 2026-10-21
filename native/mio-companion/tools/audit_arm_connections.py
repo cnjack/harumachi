@@ -40,7 +40,7 @@ for record in data['records']:
 report={'frames':len(data['records']),'band_pixels':tested,'minimum_band_alpha':alpha_min,'alpha_threshold':250,'worst_alpha':alpha_worst,'maximum_attachment_gap_px':gap_max,'gap_threshold_px':0.15,'worst_gap':gap_worst,'groups':groups,'failures':failures,'scope':'Actual MOC vertex anchors and 15 pixels across each inner joint band. Exterior folds/outlines require contact-sheet review.'}
 (root/'arm-connections.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps({**report,'failures':failures[:12]},indent=2))
-actions = ['idle','wave','think','talk']
+actions = ['idle','wave','think','talk','encourage']
 expected = {f'gesture-{name}':210 for name in actions}
 expected.update({f'switch-{a}-{b}':121 for a in actions for b in actions})
 expected.update({f'late-{clock}-{a}-{b}':121 for clock in [100,3600]

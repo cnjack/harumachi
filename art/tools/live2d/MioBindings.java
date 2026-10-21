@@ -53,7 +53,7 @@ public final class MioBindings {
     rotation("ShoulderL","Body",new String[]{"ParamShoulderL"},new float[][]{shoulderKeys});
     rotation("ShoulderR","Body",new String[]{"ParamShoulderR"},new float[][]{shoulderKeys});
     rotation("ElbowL","ShoulderL",new String[]{"ParamElbowL"},new float[][]{{0,0.04f,1.6f}});
-    rotation("ElbowR","ShoulderR",new String[]{"ParamElbowR"},new float[][]{{-2.2f,-0.04f,0,3.1f}});
+    rotation("ElbowR","ShoulderR",new String[]{"ParamElbowR"},new float[][]{{-2.9f,-0.04f,0,3.1f}});
     rotation("WristL","ElbowL",new String[]{"ParamWristL"},new float[][]{{-0.2f,0,0.2f}});
     rotation("WristR","ElbowR",new String[]{"ParamWristR"},new float[][]{{-0.2f,0,0.2f}});
     Map<String,CArtMeshSource> meshes=new HashMap<>();for(var mesh:source.getAllArtMeshes())meshes.put(mesh.getLocalName(),mesh);
@@ -104,8 +104,9 @@ public final class MioBindings {
     // Original eye/mouth drawings remain intact; the authored face alpha clips
     // their contours at small-angle extremes. The inverse flag is fixture-only.
     for (var entry: meshes.entrySet()) {
-      if (entry.getKey().startsWith("eyes_") || entry.getKey().startsWith("mouth_")) {
-        entry.getValue().getClipGuidList().add(meshes.get("face").getGuid());
+      if (entry.getKey().startsWith("eyes_") || entry.getKey().startsWith("mouth_") || entry.getKey().startsWith("brow_")) {
+        String mask = entry.getKey().startsWith("eyes_iris_") ? "eyes_open_"+entry.getKey().substring("eyes_iris_".length()) : "face";
+        entry.getValue().getClipGuidList().add(meshes.get(mask).getGuid());
         entry.getValue().setInvertClippingMask(Boolean.getBoolean("mio.maskInverse"));
       }
     }

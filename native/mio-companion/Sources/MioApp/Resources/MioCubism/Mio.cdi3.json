@@ -42,6 +42,16 @@
       "Name": "ParamMouthOpenY"
     },
     {
+      "Id": "ParamEyeLSmile",
+      "GroupId": "Mio",
+      "Name": "ParamEyeLSmile"
+    },
+    {
+      "Id": "ParamEyeRSmile",
+      "GroupId": "Mio",
+      "Name": "ParamEyeRSmile"
+    },
+    {
       "Id": "ParamEyeBallX",
       "GroupId": "Mio",
       "Name": "ParamEyeBallX"
@@ -65,6 +75,21 @@
       "Id": "ParamMouthForm",
       "GroupId": "Mio",
       "Name": "ParamMouthForm"
+    },
+    {
+      "Id": "ParamBrowLAngle",
+      "GroupId": "Mio",
+      "Name": "ParamBrowLAngle"
+    },
+    {
+      "Id": "ParamBrowRAngle",
+      "GroupId": "Mio",
+      "Name": "ParamBrowRAngle"
+    },
+    {
+      "Id": "ParamMouthRound",
+      "GroupId": "Mio",
+      "Name": "ParamMouthRound"
     },
     {
       "Id": "ParamHairFront",
@@ -135,6 +160,16 @@
       "Id": "ParamHandCloseR",
       "GroupId": "Mio",
       "Name": "ParamHandCloseR"
+    },
+    {
+      "Id": "ParamFingerSpreadL",
+      "GroupId": "Mio",
+      "Name": "ParamFingerSpreadL"
+    },
+    {
+      "Id": "ParamFingerSpreadR",
+      "GroupId": "Mio",
+      "Name": "ParamFingerSpreadR"
     },
     {
       "Id": "ParamThought",

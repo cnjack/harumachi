@@ -67,7 +67,7 @@ public struct MotionLibrary {
     public let motions: [String:CubismMotion]
     public init(directory: URL) throws {
         var loaded: [String:CubismMotion]=[:]
-        for name in ["idle","wave","think","talk"] {
+        for name in ["idle","wave","think","talk","encourage"] {
             loaded[name]=try CubismMotion(data:Data(contentsOf:directory.appendingPathComponent("motions/\(name).motion3.json")))
         }
         motions=loaded

@@ -20,9 +20,10 @@ public struct DialogueTurn: Codable, Sendable {
     public let date: Date
     public let replyID: String?
     public let eventID: UUID?
-    public init(role: String, text: String, date: Date, replyID: String? = nil, eventID: UUID? = nil) {
+    public let expression: EmotionalExpression?
+    public init(role: String, text: String, date: Date, replyID: String? = nil, eventID: UUID? = nil, expression: EmotionalExpression? = nil) {
         self.role = role; self.text = String(text.prefix(300)); self.date = date
-        self.replyID = replyID; self.eventID = eventID
+        self.replyID = replyID; self.eventID = eventID;self.expression=expression
     }
 }
 
@@ -128,8 +129,8 @@ public struct DialogueMemory {
         default: break
         }
     }
-    public mutating func recordReply(_ line: DialogueLine, at now: Date) {
-        conversation.append(DialogueTurn(role: "mio", text: line.text, date: now, replyID: line.id))
+    public mutating func recordReply(_ line: DialogueLine, at now: Date, expression: EmotionalExpression? = nil) {
+        conversation.append(DialogueTurn(role: "mio", text: line.text, date: now, replyID: line.id,expression:expression))
         conversation = Array(conversation.suffix(12))
         recentReplyIDs.append(line.id); recentReplyIDs = Array(recentReplyIDs.suffix(20))
         replyCount += 1; lastSpokenAt = now

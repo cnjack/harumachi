@@ -12,13 +12,14 @@ README = '''# 澪 Live2D 网页模型
 入口：Mio/Mio.model3.json。请解压整个 Mio 目录并保持相对路径，使用 HTTP/HTTPS 提供文件。
 可导入支持 Cubism 4 的播放器；ZIP 导入功能由播放器决定。
 
-- 格式：官方导出 MOC3，目标 Cubism 4.0，29 参数、30 ArtMesh。
-- 动作组：Idle（12 秒自动待机）、wave（招手）、think（思考）、talk（说话）。后三项各 5 秒。
-- 五种标准 exp3 表情：neutral、happy、thinking、concerned、sleepy；通过 model.expression(name) 选择。
+- 格式：官方导出 MOC3，目标 Cubism 4.0，36 参数、53 ArtMesh。
+- 动作组：Idle（12 秒自动待机）、wave（招手）、think（思考）、talk（说话）、encourage（加油）。后四项各 5 秒。
+- 标准 exp3 表情：neutral、warm、joyful、curious、concerned、surprised、determined、sleepy；兼容 happy、thinking 别名。通过 model.expression(name) 选择。
 - 支持标准 physics3 头发物理及眼口遮罩；播放器应开启物理和自动待机。
 - 可选 mio-performance.js 接入事件和文字：const controller = await MioPerformanceController.create(model, "/Mio/"); controller.event({intent:"reply",mood:"happy",text:"你好，今天也一起加油。"})。
+- Clef 决策可直接传 controller.respond(decision,text)，decision.expression 为 {style:"joyful",intensity:"normal",hand:"explain"}。不含 embedding 或第二个判断模型。
 - intent 支持 welcome / quiet / waiting / reply；欢迎有 180 秒冷却，文字按标点停顿。JS 是 Pixi 0.4.0 适配层，其他播放器直接加载标准模型文件。
-- 手型曲线禁用淡入淡出，肩肘腕曲线仍使用 0.35 秒过渡，避免两只手叠影。
+- 手型曲线禁用淡入淡出，避免两只手叠影。标准播放器使用 0.35 秒淡入淡出；可选控制器增加手腕速度约束与反向屈肘经放下姿态的过渡，适合中途打断动作。
 - Pixi Live2D 示例：Live2DModel.from('/Mio/Mio.model3.json')；手动招手 model.motion('wave', 0, 3)。
 
 本包不含 Live2D Core 或播放器。请在自己的网页中使用已获得的兼容运行库。
@@ -33,7 +34,7 @@ def main():
     args = parser.parse_args()
     manifest = json.loads((SOURCE / 'Mio.model3.json').read_text())
     refs = manifest['FileReferences']
-    names = ['Mio.model3.json', refs['Moc'], refs['DisplayInfo'], refs['Physics'], *refs['Textures']]
+    names = ['Mio.emotion.json','Mio.model3.json', refs['Moc'], refs['DisplayInfo'], refs['Physics'], *refs['Textures']]
     names += [motion['File'] for group in refs['Motions'].values() for motion in group]
     names += [expression['File'] for expression in refs.get('Expressions', [])]
     assert len(names) == len(set(names)), 'Duplicate runtime path'

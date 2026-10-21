@@ -28,11 +28,15 @@ public struct CubismExpression: Codable, Sendable {
             CubismExpression(Type:"Live2D Expression",FadeInTime:0.45,FadeOutTime:0.45,
                              Parameters:values.map { Parameter(Id:$0.0,Value:$0.1,Blend:$0.2) })
         }
-        return ["neutral":expression([]),
-            "happy":expression([("ParamMouthForm",0.65,"Add"),("ParamBrowLY",0.2,"Add"),("ParamBrowRY",0.2,"Add"),("ParamEyeLOpen",0.92,"Multiply"),("ParamEyeROpen",0.92,"Multiply")]),
-            "thinking":expression([("ParamBrowLY",0.55,"Add"),("ParamBrowRY",-0.25,"Add"),("ParamMouthForm",-0.25,"Add")]),
-            "concerned":expression([("ParamBrowLY",0.6,"Add"),("ParamBrowRY",0.6,"Add"),("ParamMouthForm",-0.65,"Add"),("ParamEyeLOpen",0.88,"Multiply"),("ParamEyeROpen",0.88,"Multiply")]),
-            "sleepy":expression([("ParamEyeLOpen",0.58,"Multiply"),("ParamEyeROpen",0.58,"Multiply"),("ParamBrowLY",-0.2,"Add"),("ParamBrowRY",-0.2,"Add")])]
+        var result: [String:CubismExpression] = [:]
+        for style in ExpressionStyle.allCases {
+            var values=style.face.sorted { $0.key<$1.key }.map { ($0.key,$0.value,$0.key.hasSuffix("Open") ? "Multiply":"Add") }
+            if style.restingMouth>0 { values.append(("ParamMouthOpenY",style.restingMouth,"Add")) }
+            result[style.rawValue] = expression(values)
+        }
+        result["neutral"] = expression([])
+        result["happy"] = result["warm"];result["thinking"] = result["curious"]
+        return result
     }()
 }
 

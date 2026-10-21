@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-22",
+  "revision": "mio-emotion-v18",
+  "method": "Deterministic decomposition of approved PNG pixels and authored Cubism keyforms; original artwork unchanged",
+  "referenceProjects": [
+    {
+      "url": "https://github.com/nanlingyin/soullink-emotion-sdk",
+      "commit": "02cd75ac0a085a87d84d1a885f1b33eca8742d53",
+      "use": "Semantic expression channels, continuous interpolation and mouth ownership; no classifier, weights or code copied"
+    },
+    {
+      "url": "https://github.com/wu-tian807/AstraLayering",
+      "commit": "8ab3486c2a46233ab6431690c53fc0d1dd9f6a70",
+      "use": "Semantic layer planning, occluded content, independent inspection and recomposition prompts"
+    }
+  ],
+  "model": {
+    "format": "Cubism MOC3",
+    "target": "Cubism 4.0",
+    "mocVersion": 3,
+    "parameters": 36,
+    "artMeshes": 53,
+    "textures": 3,
+    "motions": [
+      "Idle",
+      "wave",
+      "think",
+      "talk",
+      "encourage"
+    ],
+    "expressions": [
+      "neutral",
+      "warm",
+      "joyful",
+      "curious",
+      "concerned",
+      "surprised",
+      "determined",
+      "sleepy"
+    ]
+  },
+  "decisionModel": "clef-omni /v1/systemone",
+  "extraEmbeddingModel": false,
+  "prompt": "art/manifests/prompts/live2d/mio-emotion-layering.md",
+  "originalPNGCount": 29,
+  "originalPNGsUnchanged": true,
+  "files": {
+    "art/live2d/mio/cubism/Mio.cmo3": "302dfbe29f57fe7978795567239ad3b718690db57bff709fac1b38259b72d574",
+    "art/live2d/mio/cubism/Mio.psd": "3f35e32b7eefab3ef35135c7080dd803765d718750fc79e53a4a2890722a6052",
+    "native/mio-companion/Sources/MioApp/Resources/MioCubism/Mio.moc3": "e380afbdc8652b6b8d4ca3edb365d2e26ac51539e93dcffbdbe199552018cc8d",
+    "native/mio-companion/Sources/MioApp/Resources/Mio/Face.parts.json": "b70e8a47b19127ca5f31a53cbde7634cdc0dfdd27f2b2708cf2551489574c372",
+    "native/mio-companion/Sources/MioApp/Resources/Mio/Mouth.parts.json": "1de03d04c9d97b837c2cd05e48ce63230365d119f6037de7c406acf5dcb64d74"
+  },
+  "verification": "evidence/mio_emotion_20261022/verification.json",
+  "record": "docs/game-design/MIO_EMOTION_20261022.md"
+}

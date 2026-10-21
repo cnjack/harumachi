@@ -1,0 +1,142 @@
+[
+  {
+    "component" : "lip_lower",
+    "defaultVisible" : true,
+    "group" : "mouth_closed",
+    "id" : "mouth_closed_lip_lower",
+    "rect" : [
+      286.75200000000001,
+      239.44319999999999,
+      26.496000000000002,
+      7.0656000000000008
+    ],
+    "sourceAtlas" : "parts-atlas.png",
+    "sourceCrop" : [
+      1010,
+      715,
+      220,
+      110
+    ],
+    "texture" : "mouth_closed.png"
+  },
+  {
+    "component" : "lip_upper",
+    "defaultVisible" : true,
+    "group" : "mouth_closed",
+    "id" : "mouth_closed_lip_upper",
+    "rect" : [
+      286.75200000000001,
+      239.44319999999999,
+      26.496000000000002,
+      7.0656000000000008
+    ],
+    "sourceAtlas" : "parts-atlas.png",
+    "sourceCrop" : [
+      1010,
+      715,
+      220,
+      110
+    ],
+    "texture" : "mouth_closed.png"
+  },
+  {
+    "component" : "cavity",
+    "defaultVisible" : false,
+    "group" : "mouth_open",
+    "id" : "mouth_open_cavity",
+    "rect" : [
+      291.904,
+      238.33919999999998,
+      16.192000000000004,
+      9.2736000000000018
+    ],
+    "sourceAtlas" : "parts-atlas.png",
+    "sourceCrop" : [
+      1460,
+      685,
+      180,
+      145
+    ],
+    "texture" : "mouth_open.png"
+  },
+  {
+    "component" : "tongue",
+    "defaultVisible" : false,
+    "group" : "mouth_open",
+    "id" : "mouth_open_tongue",
+    "rect" : [
+      291.904,
+      238.33919999999998,
+      16.192000000000004,
+      9.2736000000000018
+    ],
+    "sourceAtlas" : "parts-atlas.png",
+    "sourceCrop" : [
+      1460,
+      685,
+      180,
+      145
+    ],
+    "texture" : "mouth_open.png"
+  },
+  {
+    "component" : "teeth",
+    "defaultVisible" : false,
+    "group" : "mouth_open",
+    "id" : "mouth_open_teeth",
+    "rect" : [
+      291.904,
+      238.33919999999998,
+      16.192000000000004,
+      9.2736000000000018
+    ],
+    "sourceAtlas" : "parts-atlas.png",
+    "sourceCrop" : [
+      1460,
+      685,
+      180,
+      145
+    ],
+    "texture" : "mouth_open.png"
+  },
+  {
+    "component" : "lip_upper",
+    "defaultVisible" : false,
+    "group" : "mouth_open",
+    "id" : "mouth_open_lip_upper",
+    "rect" : [
+      291.904,
+      238.33919999999998,
+      16.192000000000004,
+      9.2736000000000018
+    ],
+    "sourceAtlas" : "parts-atlas.png",
+    "sourceCrop" : [
+      1460,
+      685,
+      180,
+      145
+    ],
+    "texture" : "mouth_open.png"
+  },
+  {
+    "component" : "lip_lower",
+    "defaultVisible" : false,
+    "group" : "mouth_open",
+    "id" : "mouth_open_lip_lower",
+    "rect" : [
+      291.904,
+      238.33919999999998,
+      16.192000000000004,
+      9.2736000000000018
+    ],
+    "sourceAtlas" : "parts-atlas.png",
+    "sourceCrop" : [
+      1460,
+      685,
+      180,
+      145
+    ],
+    "texture" : "mouth_open.png"
+  }
+]

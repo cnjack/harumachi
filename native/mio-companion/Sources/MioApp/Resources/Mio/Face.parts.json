@@ -1,5 +1,6 @@
 [
   {
+    "component" : "sclera",
     "defaultVisible" : true,
     "group" : "eyes_open_right",
     "id" : "eyes_open_right",
@@ -19,6 +20,87 @@
     "texture" : "eyes_open.png"
   },
   {
+    "component" : "iris",
+    "defaultVisible" : true,
+    "group" : "eyes_open_right",
+    "id" : "eyes_iris_right",
+    "rect" : [
+      257.31200000000001,
+      187.03999999999999,
+      85.376000000000005,
+      32.855040000000002
+    ],
+    "sourceAtlas" : "parts-atlas.png",
+    "sourceCrop" : [
+      20,
+      630,
+      419,
+      216
+    ],
+    "texture" : "eyes_open.png"
+  },
+  {
+    "component" : "upper",
+    "defaultVisible" : true,
+    "group" : "eyes_open_right",
+    "id" : "eyes_upper_right",
+    "rect" : [
+      257.31200000000001,
+      187.03999999999999,
+      85.376000000000005,
+      32.855040000000002
+    ],
+    "sourceAtlas" : "parts-atlas.png",
+    "sourceCrop" : [
+      20,
+      630,
+      419,
+      216
+    ],
+    "texture" : "eyes_open.png"
+  },
+  {
+    "component" : "lower",
+    "defaultVisible" : true,
+    "group" : "eyes_open_right",
+    "id" : "eyes_lower_right",
+    "rect" : [
+      257.31200000000001,
+      187.03999999999999,
+      85.376000000000005,
+      32.855040000000002
+    ],
+    "sourceAtlas" : "parts-atlas.png",
+    "sourceCrop" : [
+      20,
+      630,
+      419,
+      216
+    ],
+    "texture" : "eyes_open.png"
+  },
+  {
+    "component" : "brow",
+    "defaultVisible" : true,
+    "group" : "eyes_open_right",
+    "id" : "brow_right",
+    "rect" : [
+      257.31200000000001,
+      187.03999999999999,
+      85.376000000000005,
+      32.855040000000002
+    ],
+    "sourceAtlas" : "parts-atlas.png",
+    "sourceCrop" : [
+      20,
+      630,
+      419,
+      216
+    ],
+    "texture" : "eyes_open.png"
+  },
+  {
+    "component" : "sclera",
     "defaultVisible" : true,
     "group" : "eyes_open_left",
     "id" : "eyes_open_left",
@@ -38,6 +120,87 @@
     "texture" : "eyes_open.png"
   },
   {
+    "component" : "iris",
+    "defaultVisible" : true,
+    "group" : "eyes_open_left",
+    "id" : "eyes_iris_left",
+    "rect" : [
+      257.31200000000001,
+      187.03999999999999,
+      85.376000000000005,
+      32.855040000000002
+    ],
+    "sourceAtlas" : "parts-atlas.png",
+    "sourceCrop" : [
+      20,
+      630,
+      419,
+      216
+    ],
+    "texture" : "eyes_open.png"
+  },
+  {
+    "component" : "upper",
+    "defaultVisible" : true,
+    "group" : "eyes_open_left",
+    "id" : "eyes_upper_left",
+    "rect" : [
+      257.31200000000001,
+      187.03999999999999,
+      85.376000000000005,
+      32.855040000000002
+    ],
+    "sourceAtlas" : "parts-atlas.png",
+    "sourceCrop" : [
+      20,
+      630,
+      419,
+      216
+    ],
+    "texture" : "eyes_open.png"
+  },
+  {
+    "component" : "lower",
+    "defaultVisible" : true,
+    "group" : "eyes_open_left",
+    "id" : "eyes_lower_left",
+    "rect" : [
+      257.31200000000001,
+      187.03999999999999,
+      85.376000000000005,
+      32.855040000000002
+    ],
+    "sourceAtlas" : "parts-atlas.png",
+    "sourceCrop" : [
+      20,
+      630,
+      419,
+      216
+    ],
+    "texture" : "eyes_open.png"
+  },
+  {
+    "component" : "brow",
+    "defaultVisible" : true,
+    "group" : "eyes_open_left",
+    "id" : "brow_left",
+    "rect" : [
+      257.31200000000001,
+      187.03999999999999,
+      85.376000000000005,
+      32.855040000000002
+    ],
+    "sourceAtlas" : "parts-atlas.png",
+    "sourceCrop" : [
+      20,
+      630,
+      419,
+      216
+    ],
+    "texture" : "eyes_open.png"
+  },
+  {
+    "component" : "closed",
     "defaultVisible" : false,
     "group" : "eyes_closed_right",
     "id" : "eyes_closed_right",
@@ -57,6 +220,7 @@
     "texture" : "eyes_closed.png"
   },
   {
+    "component" : "closed",
     "defaultVisible" : false,
     "group" : "eyes_closed_left",
     "id" : "eyes_closed_left",

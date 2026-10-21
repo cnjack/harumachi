@@ -1,0 +1,180 @@
+{
+  "classifier" : "clef-omni \/v1\/systemone",
+  "hands" : [
+    "rest",
+    "wave",
+    "explain",
+    "chin",
+    "encourage"
+  ],
+  "intensities" : {
+    "normal" : 0.72000002861022949,
+    "strong" : 1,
+    "subtle" : 0.44999998807907104
+  },
+  "mouthApertureOwner" : "speech",
+  "smoothingSeconds" : 0.22,
+  "styles" : {
+    "concerned" : {
+      "face" : {
+        "ParamBrowLAngle" : 0.75,
+        "ParamBrowLY" : 0.25,
+        "ParamBrowRAngle" : 0.75,
+        "ParamBrowRY" : 0.25,
+        "ParamEyeLOpen" : 0.89999997615814209,
+        "ParamEyeLSmile" : 0,
+        "ParamEyeROpen" : 0.89999997615814209,
+        "ParamEyeRSmile" : 0,
+        "ParamMouthForm" : -0.85000002384185791,
+        "ParamMouthRound" : 0.10000000149011612
+      },
+      "restingMouth" : 0,
+      "vad" : [
+        -0.34999999403953552,
+        -0.15000000596046448,
+        -0.20000000298023224
+      ]
+    },
+    "curious" : {
+      "face" : {
+        "ParamBrowLAngle" : 0.30000001192092896,
+        "ParamBrowLY" : 0.60000002384185791,
+        "ParamBrowRAngle" : -0.10000000149011612,
+        "ParamBrowRY" : -0.15000000596046448,
+        "ParamEyeLOpen" : 1,
+        "ParamEyeLSmile" : 0,
+        "ParamEyeROpen" : 0.94999998807907104,
+        "ParamEyeRSmile" : 0,
+        "ParamMouthForm" : -0.2199999988079071,
+        "ParamMouthRound" : 0.11999999731779099
+      },
+      "restingMouth" : 0,
+      "vad" : [
+        0.10000000149011612,
+        0.30000001192092896,
+        -0.10000000149011612
+      ]
+    },
+    "determined" : {
+      "face" : {
+        "ParamBrowLAngle" : -0.60000002384185791,
+        "ParamBrowLY" : -0.18000000715255737,
+        "ParamBrowRAngle" : -0.60000002384185791,
+        "ParamBrowRY" : -0.18000000715255737,
+        "ParamEyeLOpen" : 0.93999999761581421,
+        "ParamEyeLSmile" : 0,
+        "ParamEyeROpen" : 0.93999999761581421,
+        "ParamEyeRSmile" : 0,
+        "ParamMouthForm" : 0.25,
+        "ParamMouthRound" : 0.18000000715255737
+      },
+      "restingMouth" : 0,
+      "vad" : [
+        0.44999998807907104,
+        0.34999999403953552,
+        0.69999998807907104
+      ]
+    },
+    "joyful" : {
+      "face" : {
+        "ParamBrowLAngle" : -0.20000000298023224,
+        "ParamBrowLY" : 0.44999998807907104,
+        "ParamBrowRAngle" : -0.20000000298023224,
+        "ParamBrowRY" : 0.44999998807907104,
+        "ParamEyeLOpen" : 0.82999998331069946,
+        "ParamEyeLSmile" : 0.75,
+        "ParamEyeROpen" : 0.82999998331069946,
+        "ParamEyeRSmile" : 0.75,
+        "ParamMouthForm" : 0.94999998807907104,
+        "ParamMouthRound" : 0
+      },
+      "restingMouth" : 0,
+      "vad" : [
+        0.85000002384185791,
+        0.64999997615814209,
+        0.34999999403953552
+      ]
+    },
+    "neutral" : {
+      "face" : {
+        "ParamBrowLAngle" : 0,
+        "ParamBrowLY" : 0,
+        "ParamBrowRAngle" : 0,
+        "ParamBrowRY" : 0,
+        "ParamEyeLOpen" : 1,
+        "ParamEyeLSmile" : 0,
+        "ParamEyeROpen" : 1,
+        "ParamEyeRSmile" : 0,
+        "ParamMouthForm" : 0,
+        "ParamMouthRound" : 0
+      },
+      "restingMouth" : 0,
+      "vad" : [
+        0,
+        0,
+        0
+      ]
+    },
+    "sleepy" : {
+      "face" : {
+        "ParamBrowLAngle" : 0.11999999731779099,
+        "ParamBrowLY" : -0.20000000298023224,
+        "ParamBrowRAngle" : 0.11999999731779099,
+        "ParamBrowRY" : -0.20000000298023224,
+        "ParamEyeLOpen" : 0.57999998331069946,
+        "ParamEyeLSmile" : 0,
+        "ParamEyeROpen" : 0.57999998331069946,
+        "ParamEyeRSmile" : 0,
+        "ParamMouthForm" : 0,
+        "ParamMouthRound" : 0.11999999731779099
+      },
+      "restingMouth" : 0,
+      "vad" : [
+        0,
+        -0.80000001192092896,
+        -0.25
+      ]
+    },
+    "surprised" : {
+      "face" : {
+        "ParamBrowLAngle" : 0,
+        "ParamBrowLY" : 0.85000002384185791,
+        "ParamBrowRAngle" : 0,
+        "ParamBrowRY" : 0.85000002384185791,
+        "ParamEyeLOpen" : 1.1000000238418579,
+        "ParamEyeLSmile" : 0,
+        "ParamEyeROpen" : 1.1000000238418579,
+        "ParamEyeRSmile" : 0,
+        "ParamMouthForm" : -0.25,
+        "ParamMouthRound" : 0.89999997615814209
+      },
+      "restingMouth" : 0.55000001192092896,
+      "vad" : [
+        0.05000000074505806,
+        0.85000002384185791,
+        -0.30000001192092896
+      ]
+    },
+    "warm" : {
+      "face" : {
+        "ParamBrowLAngle" : 0.079999998211860657,
+        "ParamBrowLY" : 0.11999999731779099,
+        "ParamBrowRAngle" : 0.079999998211860657,
+        "ParamBrowRY" : 0.11999999731779099,
+        "ParamEyeLOpen" : 0.95999997854232788,
+        "ParamEyeLSmile" : 0.25,
+        "ParamEyeROpen" : 0.95999997854232788,
+        "ParamEyeRSmile" : 0.25,
+        "ParamMouthForm" : 0.5,
+        "ParamMouthRound" : 0
+      },
+      "restingMouth" : 0,
+      "vad" : [
+        0.55000001192092896,
+        -0.25,
+        0.10000000149011612
+      ]
+    }
+  },
+  "version" : 1
+}

@@ -62,10 +62,10 @@ final class NaturalMotionTests: XCTestCase {
         let model = try CubismModel(manifest:assets.appendingPathComponent("Mio.model3.json"))
         try model.update(["ParamEyeBallX":-1]);let left = try model.meshes()
         try model.update(["ParamEyeBallX":1]);let right = try model.meshes()
-        let a = try XCTUnwrap(left.first {$0.id == "eyes_open_left"})
-        let b = try XCTUnwrap(right.first {$0.id == "eyes_open_left"})
+        let a = try XCTUnwrap(left.first {$0.id == "eyes_iris_left"})
+        let b = try XCTUnwrap(right.first {$0.id == "eyes_iris_left"})
         let delta = zip(a.positions,b.positions).map {abs($0-$1)}.max() ?? 0
-        XCTAssertGreaterThan(delta,0.2);XCTAssertLessThan(delta,1.7)
+        XCTAssertGreaterThan(delta,0.2);XCTAssertLessThan(delta,2.5)
         XCTAssertEqual(left.first {$0.id == "face"}?.positions,right.first {$0.id == "face"}?.positions)
     }
 
@@ -87,7 +87,7 @@ final class NaturalMotionTests: XCTestCase {
     }
 
     func testWebHandVariantsDoNotCrossfade() throws {
-        for name in ["idle","wave","think","talk"] {
+        for name in ["idle","wave","think","talk","encourage"] {
             let motion = try JSONSerialization.jsonObject(with:Data(contentsOf:assets.appendingPathComponent("motions/\(name).motion3.json"))) as! [String:Any]
             let hands = (motion["Curves"] as! [[String:Any]]).filter { ["ParamHandL","ParamHandR"].contains($0["Id"] as? String ?? "") }
             XCTAssertEqual(hands.count,2)

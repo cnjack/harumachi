@@ -25,7 +25,7 @@ enum CubismReview {
             checks.append(["id":parameter.id,"maximumVertexDelta":geometry,"maximumOpacityDelta":opacity])
         }
         try renderer.snapshot(to:directory.appendingPathComponent("default.png"),pose:RigPose(time:0,gesture:.idle))
-        guard core.parameters.count == 29 else { throw CubismModel.Failure(message:"Expected 29 live parameters") }
+        guard core.parameters.count == 36 else { throw CubismModel.Failure(message:"Expected 36 live parameters") }
         for x in [-1,0,1] { for y in [-1,0,1] {
             try renderer.snapshot(to:directory.appendingPathComponent("face-\(x)-\(y).png"),pose:RigPose(time:0,lookX:Float(x),lookY:Float(y),gesture:.idle))
         } }
@@ -42,7 +42,7 @@ enum CubismReview {
             }
             frameCount += 1
         }
-        let gestures: [CharacterGesture] = [.idle,.wave,.think,.talk]
+        let gestures: [CharacterGesture] = [.idle,.wave,.think,.talk,.encourage]
         for gesture in gestures {
             let sourcePose = RigPose(time:3,speaking:gesture == .talk,gesture:gesture,gestureTime:3)
             try original.snapshot(to:directory.appendingPathComponent("source-\(gesture.rawValue).png"),pose:sourcePose,motion:PuppetMotion(pose:sourcePose))

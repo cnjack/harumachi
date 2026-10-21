@@ -1,5 +1,21 @@
 import Foundation
 
+extension RigPose {
+    /// Select the performance channels owned by the current user mode.
+    public mutating func present(_ cue: PerformanceCue?,elapsed: Double) {
+        if let cue { cue.apply(to:&self,elapsed:elapsed) }
+        else { cueGesture=nil;speech=nil;nod=0;expression=nil }
+        if gesture != .automatic {
+            // A manual gesture owns the arms, not the face or the new reply's
+            // punctuation. The cue can therefore update and release its face.
+            cueGesture=nil;nod=0
+            if gesture == .talk && gestureTime < gesture.duration && !speaking {
+                speaking=true;speech=nil;speechTime=0
+            }
+        }
+    }
+}
+
 /// A bounded text performance. Whitespace and punctuation are real closed-mouth
 /// intervals; no audio is generated or recorded.
 public struct SpeechTimeline: Sendable, Equatable {
@@ -38,13 +54,15 @@ public struct PerformanceCue: Sendable, Equatable {
     public let intent: Intent
     public let mood: Mood
     public let text: String
+    public let expression: EmotionalExpression?
     public let speech: SpeechTimeline
-    public init(intent: Intent,mood: Mood,text: String = "",at date: Date = Date()) {
+    public init(intent: Intent,mood: Mood,text: String = "",at date: Date = Date(),expression: EmotionalExpression? = nil) {
         id = UUID();started = date;self.intent = intent;self.mood = mood
-        self.text = text;speech = SpeechTimeline(text)
+        self.text = text;speech = SpeechTimeline(text);self.expression=expression
     }
     public func apply(to pose: inout RigPose,elapsed: Double) {
-        pose.mood = mood
+        pose.mood = expression?.style.mood ?? mood
+        pose.expression = expression
         pose.cueGesture = .idle;pose.cueTime = max(0,elapsed)
         pose.speech = speech;pose.speechTime = elapsed-(intent == .welcome ? 0.35:0)
         pose.speaking = !text.isEmpty && pose.speechTime >= 0 && pose.speechTime < speech.duration
@@ -63,7 +81,20 @@ public struct PerformanceCue: Sendable, Equatable {
             pose.nod = speech.emphasis(at:pose.speechTime)*0.7
         case .quiet: pose.speaking = false
         }
-        if elapsed > speech.duration+2, intent != .waiting { pose.mood = .neutral }
+        // Model-selected hands describe the reply, including short answers. Quiet
+        // events never move hands; the greeting director still owns cooldown.
+        if let expression,intent == .reply,elapsed < max(3.6,speech.duration) {
+            switch expression.hand {
+            case .rest: pose.cueGesture = .idle
+            case .wave: pose.cueGesture = .wave;pose.cueTime=min(5,elapsed)
+            case .explain: pose.cueGesture = .talk;pose.cueTime=min(3.8,elapsed)
+            case .encourage: pose.cueGesture = .encourage;pose.cueTime=min(3.8,elapsed)
+            case .chin: pose.cueGesture = .think;pose.cueTime=min(2.2,elapsed)
+            }
+        }
+        if elapsed > max(3.6,speech.duration)+2, intent != .waiting {
+            pose.mood = .neutral;pose.expression=EmotionalExpression(style:.neutral)
+        }
     }
 }
 
@@ -73,13 +104,18 @@ public struct PerformanceDirector {
     public init() {}
     public mutating func response(_ decision: Decision,event: SystemEvent,text: String,now: Date) -> PerformanceCue {
         if decision.reaction == .none || decision.reaction == .focus {
-            return PerformanceCue(intent:.quiet,mood:decision.mood,text:text,at:now)
+            return PerformanceCue(intent:.quiet,mood:decision.mood,text:text,at:now,expression:decision.expression)
         }
         let greeting = decision.reaction == .greet && ["startup","wake","session.active","message"].contains(event.kind)
         if greeting && now.timeIntervalSince(lastWelcome) >= 180 {
             lastWelcome = now
-            return PerformanceCue(intent:.welcome,mood:decision.mood,text:text,at:now)
+            return PerformanceCue(intent:.welcome,mood:decision.mood,text:text,at:now,expression:decision.expression)
         }
-        return PerformanceCue(intent:.reply,mood:decision.mood,text:text,at:now)
+        var expression=decision.expression
+        if let e=expression,e.hand == .wave {
+            if now.timeIntervalSince(lastWelcome)<180 { expression=EmotionalExpression(style:e.style,intensity:e.intensity,hand:.rest) }
+            else { lastWelcome=now }
+        }
+        return PerformanceCue(intent:.reply,mood:decision.mood,text:text,at:now,expression:expression)
     }
 }

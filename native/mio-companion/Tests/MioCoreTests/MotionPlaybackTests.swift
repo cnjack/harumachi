@@ -25,7 +25,7 @@ final class MotionPlaybackTests: XCTestCase {
         }
     }
     func testAllInterruptionsStayWithinAnActualHandSpeedLimit() {
-        let gestures: [CharacterGesture] = [.idle,.wave,.think,.talk]
+        let gestures: [CharacterGesture] = [.idle,.wave,.think,.talk,.encourage]
         for from in gestures { for to in gestures {
             var player = MotionPlayback()
             let before = RigPose(time:2,gesture:from)

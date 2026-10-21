@@ -8,7 +8,7 @@ import MioCore
 struct SourceRig: Decodable {
     struct Layer: Codable {
         var id: String; var texture: String; var rect: [Float]; var group: String
-        var joints: [[Float]]?; var defaultVisible: Bool?; var bendSpans: [Float]?; var jointPiece: String?
+        var component: String?; var textureRect: [Float]?; var sourceVariant: String?; var joints: [[Float]]?; var defaultVisible: Bool?; var bendSpans: [Float]?; var jointPiece: String?
     }
     var canvas: [Int]; var origin: [Float]; var layers: [Layer]; var layoutRevision: String
 }
@@ -22,26 +22,47 @@ let resources = root.appendingPathComponent("native/mio-companion/Sources/MioApp
 let source = try JSONDecoder().decode(SourceRig.self,from:Data(contentsOf:resources.appendingPathComponent("Mio.rig.json")))
 var layers: [SourceRig.Layer] = []
 let faceParts = try JSONDecoder().decode([SourceRig.Layer].self,from:Data(contentsOf:resources.appendingPathComponent("Face.parts.json")))
+let mouthParts = try JSONDecoder().decode([SourceRig.Layer].self,from:Data(contentsOf:resources.appendingPathComponent("Mouth.parts.json")))
 for layer in source.layers {
     if layer.group == "eyes_open" { layers += faceParts }
-    else if layer.group != "eyes_closed" { layers.append(layer) }
+    else if layer.group == "mouth_closed" { layers += mouthParts }
+    else if !["eyes_closed","mouth_open"].contains(layer.group) { layers.append(layer) }
 }
+// Keep palm and whole fingers independently editable. All variants share the
+// same wrist registration; other hand drawings remain intact.
+var articulated: [SourceRig.Layer] = []
+for var layer in layers {
+    if ["hand_left_palm","hand_right_palm"].contains(layer.id) {
+        let left=layer.group.hasSuffix("_left")
+        layer.component="palm";layer.sourceVariant="palm";articulated.append(layer)
+        for (index,name) in FingerParts.names.enumerated() {
+            var finger=layer;finger.id="finger_"+(left ? "left_":"right_")+name
+            finger.component="finger_"+String(index);finger.textureRect=layer.rect
+            finger.rect=FingerParts.rect(index,left:left);articulated.append(finger)
+        }
+    } else { articulated.append(layer) }
+}
+layers=articulated
 let parameters: [Parameter] = [
     .init(id:"ParamAngleX",min:-30,max:30,value:0),.init(id:"ParamAngleY",min:-30,max:30,value:0),
     .init(id:"ParamAngleZ",min:-12,max:12,value:0),.init(id:"ParamBodyAngleZ",min:-3,max:3,value:0),
     .init(id:"ParamBreath",min:0,max:1,value:0.5),
-    .init(id:"ParamEyeLOpen",min:0,max:1,value:1),.init(id:"ParamEyeROpen",min:0,max:1,value:1),
+    .init(id:"ParamEyeLOpen",min:0,max:1.12,value:1),.init(id:"ParamEyeROpen",min:0,max:1.12,value:1),
     .init(id:"ParamMouthOpenY",min:0,max:1,value:0),
+    .init(id:"ParamEyeLSmile",min:0,max:1,value:0),.init(id:"ParamEyeRSmile",min:0,max:1,value:0),
     .init(id:"ParamEyeBallX",min:-1,max:1,value:0),.init(id:"ParamEyeBallY",min:-1,max:1,value:0),
     .init(id:"ParamBrowLY",min:-1,max:1,value:0),.init(id:"ParamBrowRY",min:-1,max:1,value:0),
     .init(id:"ParamMouthForm",min:-1,max:1,value:0),
+    .init(id:"ParamBrowLAngle",min:-1,max:1,value:0),.init(id:"ParamBrowRAngle",min:-1,max:1,value:0),
+    .init(id:"ParamMouthRound",min:0,max:1,value:0),
     .init(id:"ParamHairFront",min:-1,max:1,value:0),.init(id:"ParamHairBack",min:-1,max:1,value:0),
     .init(id:"ParamShoulderL",min:-2.2,max:2.2,value:-0.38),.init(id:"ParamShoulderR",min:-2.2,max:2.2,value:0.38),
-    .init(id:"ParamElbowL",min:0,max:1.6,value:0.04),.init(id:"ParamElbowR",min:-2.2,max:3.1,value:-0.04),
+    .init(id:"ParamElbowL",min:0,max:1.6,value:0.04),.init(id:"ParamElbowR",min:-2.9,max:3.1,value:-0.04),
     .init(id:"ParamWristL",min:-0.2,max:0.2,value:0),.init(id:"ParamWristR",min:-0.2,max:0.2,value:0),
     .init(id:"ParamHandL",min:0,max:4,value:0),.init(id:"ParamHandR",min:0,max:5,value:0),
     .init(id:"ParamHandOpenL",min:0,max:1,value:1),.init(id:"ParamHandOpenR",min:0,max:1,value:1),
     .init(id:"ParamHandCloseL",min:0,max:1,value:0),.init(id:"ParamHandCloseR",min:0,max:1,value:0),
+    .init(id:"ParamFingerSpreadL",min:-1,max:1,value:0),.init(id:"ParamFingerSpreadR",min:-1,max:1,value:0),
     .init(id:"ParamThought",min:0,max:1,value:0),.init(id:"ParamTorsoLift",min:0,max:5,value:0)
 ]
 let defaults = Dictionary(uniqueKeysWithValues:parameters.map { ($0.id,$0.value) })
@@ -89,7 +110,10 @@ for (order,layer) in layers.enumerated() {
         if hand { pivot = SIMD2(left ? 189:561,508) }
         else if upper { pivot = SIMD2(left ? 306:444,320) }
         else { pivot = SIMD2(left ? 248:502,418) }
-        if hand { bindings = [("ParamHandOpen"+side,[0,0.5,1]),("ParamHandClose"+side,[0,1])] }
+        if hand {
+            bindings = [("ParamHandOpen"+side,[0,0.5,1]),("ParamHandClose"+side,[0,1])]
+            if layer.component?.hasPrefix("finger_") == true { bindings.append(("ParamFingerSpread"+side,[-1,0,1])) }
+        }
         else if upper {
             // Root-only tuck is authored in the MOC, under the same rotation
             // deformer as the rigid shaft. External players get identical art.
@@ -100,14 +124,12 @@ for (order,layer) in layers.enumerated() {
         bindings = [("ParamAngleX",[-30,0,30]),("ParamAngleY",[-30,0,30])]
         if layer.group == "hair" { bindings.append((layer.id == "hair_back" ? "ParamHairBack" : "ParamHairFront",[-1,0,1])) }
         if eye {
-            bindings.append(("ParamBrow"+side+"Y",[-1,0,1]))
-            if layer.group.hasPrefix("eyes_open_") {
-                bindings += [("ParamEye"+side+"Open",[0,0.35,0.7,1]),
-                             ("ParamEyeBallX",[-1,0,1]),("ParamEyeBallY",[-1,0,1])]
-            }
+            if layer.component == "brow" { bindings += [("ParamBrow"+side+"Y",[-1,0,1]),("ParamBrow"+side+"Angle",[-1,0,1])] }
+            else if layer.component == "iris" { bindings += [("ParamEyeBallX",[-1,0,1]),("ParamEyeBallY",[-1,0,1])] }
+            else if layer.component != "closed" { bindings += [("ParamEye"+side+"Open",[0,0.35,0.7,1,1.12]),("ParamEye"+side+"Smile",[0,1])] }
         }
         if layer.group.hasPrefix("mouth_") {
-            bindings.append(("ParamMouthForm",[-1,0,1]))
+            bindings += [("ParamMouthForm",[-1,0,1]),("ParamMouthRound",[0,1])]
             if layer.group == "mouth_open" { bindings.append(("ParamMouthOpenY",[0,0.25,0.6,1])) }
         }
     } else if layer.group == "lower_body" {
@@ -140,9 +162,12 @@ for (order,layer) in layers.enumerated() {
             if arm,let joints = layer.joints {
                 let shoulder = SIMD2(joints[0][0],joints[0][1]),elbow = SIMD2(joints[1][0],joints[1][1]),wrist = SIMD2(joints[2][0],joints[2][1])
                 if hand {
+                    if let part=layer.component,part.hasPrefix("finger_"),let index=Int(part.dropFirst(7)) {
+                        p=FingerParts.point(p,index:index,left:left,spread:values["ParamFingerSpread"+side] ?? 0)
+                    }
                     let axis = wrist-elbow,direction = axis/sqrt(axis.x*axis.x+axis.y*axis.y),normal = SIMD2(-direction.y,direction.x)
                     let delta = p-wrist,along = delta.x*direction.x+delta.y*direction.y,across = delta.x*normal.x+delta.y*normal.y
-                    let variant = layer.id == "hand_right_chin_front" ? "chin" : String(layer.id.split(separator:"_").last!)
+                    let variant = layer.sourceVariant ?? (layer.id == "hand_right_chin_front" ? "chin" : String(layer.id.split(separator:"_").last!))
                     let variantIndex = HandPresentation.variants.firstIndex(of:variant) ?? 0
                     let reaches: [Float] = [73,68,68,62,38,95],widths: [Float] = [20,34,34,20,20,40]
                     let open = values["ParamHandOpen"+side] ?? 1
@@ -160,16 +185,12 @@ for (order,layer) in layers.enumerated() {
                 }
             } else if head {
                 if eye {
-                    p = FaceRig.sourceEye(p,side:left ? "left":"right",closed:layer.group.hasPrefix("eyes_closed_"),
-                        open:values["ParamEye"+side+"Open"] ?? 1,
-                        gaze:SIMD2(values["ParamEyeBallX"] ?? 0,values["ParamEyeBallY"] ?? 0),
-                        brow:values["ParamBrow"+side+"Y"] ?? 0)
+                    p = FaceParts.eyePoint(p,side:left ? "left":"right",part:layer.component!,open:values["ParamEye"+side+"Open"] ?? 1,
+                        gaze:SIMD2(values["ParamEyeBallX"] ?? 0,values["ParamEyeBallY"] ?? 0),brow:values["ParamBrow"+side+"Y"] ?? 0,angle:values["ParamBrow"+side+"Angle"] ?? 0,smile:values["ParamEye"+side+"Smile"] ?? 0)
                 }
                 if layer.group.hasPrefix("mouth_") {
-                    let form = values["ParamMouthForm"] ?? 0
-                    p.x = 300+(p.x-300)*(1+0.12*form)
-                    p.y -= form*1.5*pow(min(1,abs(p.x-300)/13),2)
-                    if layer.group == "mouth_open" { p.y = 240+(p.y-240)*(values["ParamMouthOpenY"] ?? 0) }
+                    p = FaceParts.mouthPoint(p,form:values["ParamMouthForm"] ?? 0,round:values["ParamMouthRound"] ?? 0,
+                        open:layer.group == "mouth_open" ? values["ParamMouthOpenY"] ?? 0:nil,part:layer.component!)
                 }
                 p = FaceRig.turn(p,x:values["ParamAngleX"] ?? 0,y:values["ParamAngleY"] ?? 0,group:layer.id)
                 // Small-angle source keyforms preserve neutral identity.
@@ -198,11 +219,11 @@ for (order,layer) in layers.enumerated() {
     }
     var opacity: [String:Any] = [:]
     if hand {
-        let variant = layer.id == "hand_right_chin_front" ? "chin" : String(layer.id.split(separator:"_").last!)
+        let variant = layer.sourceVariant ?? (layer.id == "hand_right_chin_front" ? "chin" : String(layer.id.split(separator:"_").last!))
         let index = HandPresentation.variants.firstIndex(of:variant) ?? 0
         opacity = ["parameter":"ParamHand"+side,"keys":Array(0...(left ? 4 : 5)),"values":Array(0...(left ? 4 : 5)).map { $0 == index ? 1 : 0 }]
         if layer.id == "hand_right_chin" { opacity = ["constant":0] }
-    } else if eye {
+    } else if eye && layer.component != "brow" {
         opacity = ["parameter":"ParamEye"+side+"Open","keys":[0,0.12,0.121,1],"values":layer.group.hasPrefix("eyes_closed_") ? [1,1,0,0] : [0,0,1,1]]
     } else if layer.group.hasPrefix("mouth_") {
         opacity = ["parameter":"ParamMouthOpenY","keys":[0,0.12,0.2,1],"values":layer.group == "mouth_open" ? [0,1,1,1] : [1,0,0,0]]
@@ -235,8 +256,44 @@ let rasters: [(SourceRig.Layer,[UInt8])] = layers.reversed().map { layer in
         if layer.group.hasPrefix("eyes_") {
             context.clip(to:CGRect(x:layer.group.hasSuffix("_left") ? 375 : 0,y:0,width:375,height:height))
         }
-        let r = layer.rect
+        let r = layer.textureRect ?? layer.rect
         context.draw(image,in:CGRect(x:CGFloat(r[0]+75),y:CGFloat(Float(height)-r[1]-r[3]),width:CGFloat(r[2]),height:CGFloat(r[3])))
+    }
+    if let component=layer.component {
+        for y in 0..<height { for x in 0..<width {
+            let i=(y*width+x)*4
+            if pixels[i+3] == 0 { continue }
+            let r=layer.textureRect ?? layer.rect
+            let sx=(Float(x)+0.5-r[0]-75)/r[2]*Float(image.width)
+            let sy=(Float(y)+0.5-r[1])/r[3]*Float(image.height)
+            var keep=false
+            if layer.group.hasPrefix("hand_") {
+                let point=SIMD2(Float(x)+0.5-75,Float(y)+0.5),left=layer.group.hasSuffix("_left")
+                if let owner=FingerParts.owner(point,left:left) {
+                    keep=component == "finger_"+String(owner) || (component == "palm" && FingerParts.rootOverlap(point,index:owner,left:left))
+                } else { keep=component == "palm" }
+            } else if layer.group.hasPrefix("eyes_") {
+                if component == "closed" { keep=sy>=48 }
+                else {
+                    let a=max(1,Int(pixels[i+3]))
+                    let color=(0..<3).map { UInt8(min(255,Int(pixels[i+$0])*255/a)) }
+                    let owner=FaceParts.eyeOwner(x:sx,y:sy,r:color[0],g:color[1],b:color[2])
+                    keep=owner == component
+                    if component == "sclera" && owner == "iris" {
+                        keep=true;let alpha=Float(pixels[i+3])/255
+                        pixels[i]=UInt8(244*alpha);pixels[i+1]=UInt8(237*alpha);pixels[i+2]=UInt8(230*alpha)
+                    }
+                }
+            } else {
+                let owner=FaceParts.mouthOwner(x:sx,y:sy,r:pixels[i],g:pixels[i+1],b:pixels[i+2],open:layer.group == "mouth_open")
+                keep=owner == component
+                if component == "cavity" && ["teeth","tongue"].contains(owner) {
+                    keep=true;let alpha=Float(pixels[i+3])/255
+                    pixels[i]=UInt8(116*alpha);pixels[i+1]=UInt8(47*alpha);pixels[i+2]=UInt8(44*alpha)
+                }
+            }
+            if !keep { pixels[i]=0;pixels[i+1]=0;pixels[i+2]=0;pixels[i+3]=0 }
+        } }
     }
     return (layer,pixels)
 }
@@ -277,12 +334,12 @@ print("Cubism input: \(layers.count) source layers, \(descriptions.reduce(0) { $
 
 let motions = out.appendingPathComponent("motions")
 try FileManager.default.createDirectory(at:motions,withIntermediateDirectories:true)
-let retainedMotions = Set(["idle", "wave", "think", "talk"].map { $0 + ".motion3.json" })
+let retainedMotions = Set(["idle", "wave", "think", "talk", "encourage"].map { $0 + ".motion3.json" })
 for file in try FileManager.default.contentsOfDirectory(at:motions,includingPropertiesForKeys:nil)
     where file.lastPathComponent.hasSuffix(".motion3.json") && !retainedMotions.contains(file.lastPathComponent) {
     try FileManager.default.removeItem(at:file)
 }
-for gesture in [CharacterGesture.idle,.wave,.think,.talk] {
+for gesture in [CharacterGesture.idle,.wave,.think,.talk,.encourage] {
     let duration = gesture == .idle ? 12 : gesture.duration
     let frames = Int(duration*30)
     var samples = (0...frames).map { frame -> [String:Float] in
@@ -327,3 +384,5 @@ for (name,expression) in CubismExpression.presets {
     let encoder = JSONEncoder();encoder.outputFormatting = [.prettyPrinted,.sortedKeys]
     try encoder.encode(expression).write(to:expressionDirectory.appendingPathComponent(name+".exp3.json"))
 }
+
+try EmotionPlayback.profileData().write(to:out.appendingPathComponent("Mio.emotion.json"))

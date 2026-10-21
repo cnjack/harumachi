@@ -45,6 +45,9 @@ extension AppDelegate {
                     results.append(["name":name,"message":message,"replyID":id,"phrase":state.phrase,
                                     "source":state.source,"connection":state.connection,"error":state.error,
                                     "intent":state.performance?.intent.rawValue ?? "missing", "mood":state.performance?.mood.rawValue ?? "missing",
+                                    "expression":state.performance?.expression?.style.rawValue ?? "legacy",
+                                    "intensity":state.performance?.expression?.intensity.rawValue ?? "legacy",
+                                    "hand":state.performance?.expression?.hand.rawValue ?? "legacy",
                                     "quietMinutes":state.dialogueMemory.context(for:SystemEvent(kind:"startup",summary:""),events:[],now:Date()).quietRemainingMinutes])
                 }
                 let frames = state.renderer?.frameCount ?? 0

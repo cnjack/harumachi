@@ -61,7 +61,7 @@ final class ArmDeformationTests: XCTestCase {
             // Each newly separated piece occupies a different fraction of the
             // common texture rectangle. Keep dense sampling of its actual art.
             XCTAssertGreaterThan(triangles.count,max(24,Int(expectedSamples*0.65)))
-            let gestures: [CharacterGesture] = [.idle, .wave, .think, .talk]
+            let gestures: [CharacterGesture] = [.idle, .wave, .think, .talk, .encourage]
             var sequences = gestures.map { gesture in
                 (gesture.rawValue, (0...210).map { PuppetMotion(pose: RigPose(time: Double($0) / 30, gesture: gesture)) })
             }

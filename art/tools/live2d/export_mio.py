@@ -53,9 +53,10 @@ def main():
         runtime.mkdir(parents=True,exist_ok=True)
         shutil.copy2(built/'Mio.moc3',runtime/'Mio.moc3')
         shutil.copy2(bake/'Mio.bindings.json',runtime/'Mio.bindings.json')
+        shutil.copy2(bake/'Mio.emotion.json',runtime/'Mio.emotion.json')
         for name in ('textures','motions','expressions'):
             shutil.copytree((built if name=='textures' else bake)/name,runtime/name,dirs_exist_ok=True)
-        names = ['idle','wave','think','talk']
+        names = ['idle','wave','think','talk','encourage']
         for obsolete in (runtime/'motions').glob('*.motion3.json'):
             if obsolete.name not in {name+'.motion3.json' for name in names}: obsolete.unlink()
         physics = []
@@ -72,7 +73,7 @@ def main():
             'PhysicsDictionary':[{'Id':f'PhysicsSetting{i+1}','Name':name} for i,name in enumerate(['Front hair','Back hair'])]},'PhysicsSettings':physics}
         (runtime/'Mio.physics3.json').write_text(json.dumps(physics_json,indent=2)+'\n')
         manifest = {'Version':3,'FileReferences':{'Moc':'Mio.moc3','Textures':[str(p.relative_to(built)) for p in sorted((built/'textures').glob('*.png'))], 'DisplayInfo':'Mio.cdi3.json','Physics':'Mio.physics3.json','Motions':{('Idle' if name=='idle' else name):[{'File':f'motions/{name}.motion3.json','FadeInTime':0.35,'FadeOutTime':0.35}] for name in names}},'Groups':[{'Target':'Parameter','Name':'EyeBlink','Ids':['ParamEyeLOpen','ParamEyeROpen']},{'Target':'Parameter','Name':'LipSync','Ids':['ParamMouthOpenY']}]}
-        manifest['FileReferences']['Expressions'] = [{'Name':name,'File':f'expressions/{name}.exp3.json'} for name in ['neutral','happy','thinking','concerned','sleepy']]
+        manifest['FileReferences']['Expressions'] = [{'Name':name,'File':f'expressions/{name}.exp3.json'} for name in ['neutral','happy','thinking','concerned','sleepy','warm','joyful','curious','surprised','determined']]
         (runtime/'Mio.model3.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
         params = json.loads((bake/'bake.json').read_text())['parameters']
         display = {'Version':3,'Parameters':[{'Id':p['id'],'GroupId':'Mio','Name':p['id']} for p in params],'ParameterGroups':[{'Id':'Mio','GroupId':'','Name':'澪'}],'Parts':[]}

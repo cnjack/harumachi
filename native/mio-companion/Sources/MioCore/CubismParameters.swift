@@ -14,10 +14,12 @@ public enum CubismParameters {
             "ParamEyeBallY":max(-1,min(1,pose.lookY+FaceRig.attention(pose.time).y)),
             "ParamBrowLY":pose.resolvedGesture == .think ? 0.35 : (pose.speaking ? 0.2*Float(sin(pose.time*2.7)) : 0),
             "ParamBrowRY":pose.resolvedGesture == .think ? -0.15 : (pose.speaking ? 0.15*Float(sin(pose.time*2.7-0.3)) : 0),
-            "ParamMouthForm":pose.speaking ? 0.25 : 0,
+            "ParamMouthForm":pose.speaking ? 0.25 : 0,"ParamMouthRound":0,"ParamEyeLSmile":0,"ParamEyeRSmile":0,"ParamBrowLAngle":0,"ParamBrowRAngle":0,
             "ParamHairFront":0,"ParamHairBack":0,
             "ParamShoulderL":m.leftShoulder,"ParamShoulderR":m.rightShoulder,
             "ParamElbowL":m.leftElbow,"ParamElbowR":m.rightElbow,"ParamWristL":m.leftWrist,"ParamWristR":m.rightWrist,
+            "ParamFingerSpreadL":m.leftHand.y*(0.16+0.22*Float(sin(pose.resolvedTime*3.7))),
+            "ParamFingerSpreadR":m.rightHand.y*(0.16+0.22*Float(sin(pose.resolvedTime*3.7-0.4))),
             "ParamHandL":Float(HandPresentation(motion:m,left:true).index),"ParamHandR":Float(HandPresentation(motion:m,left:false).index),
             "ParamHandOpenL":open(true),"ParamHandOpenR":open(false),
             "ParamHandCloseL":HandPresentation(motion:m,left:true).closure,"ParamHandCloseR":HandPresentation(motion:m,left:false).closure,"ParamThought":m.thoughtOpacity,"ParamTorsoLift":m.torsoLift]

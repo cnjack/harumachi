@@ -1,12 +1,14 @@
 # 澪 · 晴町桌面来信
 
+2026-10-22 v18：原素材拆成 53 个可编辑部件，增加独立眉角、笑眼、圆口和十根手指。现有 Clef 直接选择八种表情、三档强度与五种手势含义，不使用 embedding；肩旁握拳「加油」接入原窗口。来源、原画对照和验收见[语义表情记录](../../docs/game-design/MIO_EMOTION_20261022.md)。
+
 2026-10-21 v16：按用户反馈恢复原眼睛原画、眼位和脸型，撤回 v15 新眼形及脸颊横移形变。保留动作节奏、头发跟随、网页 Idle 和手型防重影。见[脸部恢复记录](../../docs/game-design/MIO_FACE_RESTORE_20261021.md)。
 
 2026-10-21：125 句角色台词接入当地时间、最近对话和系统事件，由 Clef 选句；时间仅参与决策，桌面气泡保持纯台词。见[上下文决策记录](../../docs/game-design/MIO_CONTEXT_DIALOGUE_20261021.md)。
 
 2026-10-21：按用户要求移除伸懒腰，并将当前角色放回原「桌面来信」。统一入口及本轮验收见[接入记录](../../docs/game-design/MIO_MAIL_INTEGRATION_20261021.md)。
 
-macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用真正 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 30 层 PSD 在 `art/live2d/mio/cubism/`。当前 v17 保留用户认可的衣袖拼接、原眼睛及中性脸型，增加源模型小角度转头、六个眼口遮罩、五种标准表情和事件驱动演出，模型含 29 个参数、四套标准 motion3，本轮验收与兼容边界见[表现完善记录](../../docs/game-design/MIO_PERFORMANCE_20261021.md)。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肘部恢复见[修复记录](../../docs/game-design/MIO_ELBOW_RESTORE_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。角色已接入原来的「桌面来信」，统一使用 `open_mio_companion.command`；旧 `preview_mio_motion.command` 也转到同一入口。构建：
+macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用正式 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 53 层 PSD 在 `art/live2d/mio/cubism/`。当前 v18 保留认可的衣袖拼接、原眼睛及中性脸型，模型含 36 参数、五组标准 motion3、八种标准表情和 happy/thinking 兼容别名。眉眼、口腔、手指可独立编辑，小角度转头、眼口遮罩和物理仍由源模型提供。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肘部恢复见[修复记录](../../docs/game-design/MIO_ELBOW_RESTORE_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。角色已接入原来的「桌面来信」，统一使用 `open_mio_companion.command`；旧 `preview_mio_motion.command` 也转到同一入口。构建：
 
 ```bash
 ./native/mio-companion/tools/build_app.sh
@@ -21,6 +23,10 @@ open native/mio-companion/dist/Mio.app
 dist/Mio.app/Contents/MacOS/MioCompanion --review-cubism /tmp/mio-cubism
 dist/Mio.app/Contents/MacOS/MioCompanion --review-performance /tmp/mio-performance
 node tools/verify_web_performance.mjs /tmp/mio-performance/performance.json
+dist/Mio.app/Contents/MacOS/MioCompanion --review-emotion /tmp/mio-emotion
+node tools/verify_web_emotion.mjs /tmp/mio-emotion/emotion-review.json
+python3 tools/review_emotion.py /tmp/mio-emotion
+dist/Mio.app/Contents/MacOS/MioCompanion --review-expression-matrix /tmp/mio-expression-matrix
 ```
 
 正式 Cubism 模型的全动作复拍使用以下入口；默认走官方 Core，只有显式设置 `MIO_LEGACY_RIG=1` 才切换历史分层后端：
@@ -30,21 +36,29 @@ dist/Mio.app/Contents/MacOS/MioCompanion --review-motion /tmp/mio-joints
 python3 tools/review_motion.py /tmp/mio-joints
 ```
 
-从此目录执行，Python 工具需要 Pillow。输出 5210 张真实 Metal PNG、关节坐标、四动作十部位放大图、16 组各 4 秒切换表、自动周期/说话打断、长时钟及视线极值表。测量包含画幅、关节中心 alpha、邻帧腕位移；工具不自动判定自然度。另用 `python3 tools/check_joint_seams.py /tmp/mio-joints` 检查实际皮肤连接带暗线。
+从此目录执行，Python 工具需要 Pillow。输出 6514 张真实 Metal PNG、关节坐标、五动作十部位放大图、25 组各 4 秒切换表、自动周期/说话打断、长时钟及视线极值表。测量包含画幅、关节中心 alpha、邻帧腕位移；工具不自动判定自然度。另用 `python3 tools/check_joint_seams.py /tmp/mio-joints` 检查实际皮肤连接带暗线。
 
-用户入口统一为仓库根目录 [`open_mio_companion.command`](../../open_mio_companion.command)，同时显示来信主窗口与桌面角色。独立预览仅保留为开发调试参数 `--preview-motion`。`--review-motion-window <目录>` 运行 28 秒的隔离可见窗口验收。
+用户入口统一为仓库根目录 [`open_mio_companion.command`](../../open_mio_companion.command)，同时显示来信主窗口与桌面角色。独立预览仅保留为开发调试参数 `--preview-motion`。`--review-motion-window <目录>` 运行 33.5 秒的隔离可见窗口验收。
 
 ## 角色和渲染
 
-当前待机为双臂自然垂下，点击「放下」可平滑退出当前动作；动作结束回到垂手，招手和托腮时空闲手臂也保持下垂。正式 Cubism 模型、源码与四套标准 motion3 同步，当前验收见[肩部修复记录](../../docs/game-design/MIO_SHOULDER_20261021.md)。
+当前待机为双臂自然垂下，点击「放下」可平滑退出当前动作；动作结束回到垂手，招手和托腮时空闲手臂也保持下垂。正式 Cubism 模型、源码与五组标准 motion3 同步，当前验收见[语义表情记录](../../docs/game-design/MIO_EMOTION_20261022.md)。
 
-源素材在 [`art/live2d/mio/`](../../art/live2d/mio/)：透明原始部件图、28 层 RGB/8 PSD、源布局 `Mio.rig.json`，以及 `cubism/` 下当前可编辑 CMO3 和包含原画左右睁闭眼的 30 层 PSD。PNG 部件随 Swift Package 打包。上身、腰裙、独立上下臂衣袖、公共前臂、五套常用左右手型、一套食指托腮手型与七个头部部件分别成层；手臂使用 24×64 网格，身体 20×64，当前 Cubism 头部 16×32（历史分层渲染器保持原网格）。Metal 对预乘纹理进行过滤和透明混合，手型使用独立实心源图与几何过渡。当前含呼吸、轻摆、头发运动、眨眼、说话口型和角色区域内的鼠标视线。默认 60 FPS，全程静音；离线全组复拍按 30 FPS 取样。
+源素材在 [`art/live2d/mio/`](../../art/live2d/mio/)：透明原始部件图、28 层 RGB/8 PSD、源布局 `Mio.rig.json`，以及 `cubism/` 下当前可编辑 CMO3 和包含眉眼、口腔和手指部件的 53 层 PSD。PNG 部件随 Swift Package 打包。上身、腰裙、独立上下臂衣袖、公共前臂、五套常用左右手型、一套食指托腮手型与七个头部部件分别成层；手臂使用 24×64 网格，身体 20×64，当前 Cubism 头部 16×32（历史分层渲染器保持原网格）。Metal 对预乘纹理进行过滤和透明混合，手型使用独立实心源图与几何过渡。当前含呼吸、轻摆、头发运动、眨眼、说话口型和角色区域内的鼠标视线。默认 60 FPS，全程静音；离线全组复拍按 30 FPS 取样。
 
-当前头部采用用户在叠图预览中选定的「再缩小 20%」版本：相对前一版为 0.8，相对最初布局为 `0.92 × 0.8 = 0.736`。头部及五官图层围绕 `(300, 268)` 的颈部基点一起缩放，头部整体比例保持原值；v16 直接使用原眼睛图和原注册位置。当前 v16 基于 `20261021-elbow-v14`，保留按用户照片制作的食指抵下巴和思考云，使用分段衣袖、公共前臂及实心手型过渡；源 rig、PSD、CMO3 和应用资源同步。
+当前头部采用用户在叠图预览中选定的「再缩小 20%」版本：相对前一版为 0.8，相对最初布局为 `0.92 × 0.8 = 0.736`。头部及五官图层围绕 `(300, 268)` 的颈部基点一起缩放，头部整体比例保持原值；v16 直接使用原眼睛图和原注册位置。当前 v18 延续 `20261021-elbow-v14`，保留按用户照片制作的食指抵下巴和思考云，使用分段衣袖、公共前臂及实心手型过渡；源 rig、PSD、CMO3 和应用资源同步。
 
 `Mio.rig.json` 仅用于作者源布局；正式入口是 `MioCubism/Mio.model3.json`，其 `.moc3` 由已安装的 Cubism Editor 官方导出器生成。早期自有分层版本和格式核对保留在[历史记录](../../docs/game-design/MIO_REST_AND_FORMAT_20261020.md)。
 
-重建资源：
+重建当前 Cubism 工程与运行包：
+
+```bash
+python3 art/tools/live2d/export_mio.py --work /tmp/mio-export
+python3 art/tools/live2d/review_parts.py --output /tmp/mio-source-layers
+python3 native/mio-companion/tools/package_web.py --output /tmp/Mio-live2d-web.zip
+```
+
+以下两个命令只重建历史源布局，不能代替上面的正式 Cubism 导出：
 
 ```bash
 swift native/mio-companion/tools/pack_assets.swift "$PWD"
@@ -67,7 +81,7 @@ swift native/mio-companion/tools/export_psd.swift "$PWD"
 
 肩包及肩带已从新身体素材中移除，身体和双臂分别成层。手臂有肩、肘、腕三个关节，颈部从下颌到衣领连续变形；头部视线平滑跟随，带轻微摆头、点头和延迟发梢摆动。保留上一轮缩小 8% 的头部及五官相对比例。
 
-窗口动作按钮提供自动、放下、招手、思考、说话。自动循环为 52 秒，穿插招手和思考，其余时间垂手；来信回应期间使用说话手势。手动动作结束回到垂手，可点击自动恢复循环。中途切换沿实际手部速度约束衔接。伸懒腰已从按钮、调度、源码动作和标准模型动作包删除。
+历史上使用过 52 秒固定动作循环，已由 v17 的事件驱动演出替代。当前窗口提供自动、放下、招手、思考、说话、加油；自动模式安静待机，来信时由 Clef 的语义决策触发手势。手动动作结束回到垂手，可点击自动恢复事件驱动。中途切换沿实际手部速度约束衔接。伸懒腰已从按钮、调度、源码动作和标准模型动作包删除。
 
 素材使用内置 imagegen，提示词在 `art/manifests/prompts/live2d/mio-articulated-body.txt`，新增源图在 `art/live2d/mio/articulated/body-arms-atlas.png`；旧头部原始图保留。`--render-motion <目录>` 导出轻摆、招手、伸展、思考、说话各 7 秒，共 1050 帧 / 30 FPS。证据在 `evidence/mio_animation_20261020/`。
 
@@ -122,7 +136,7 @@ swift native/mio-companion/tools/preview_motion.swift /tmp/mio-motion
 
 ## Clef 决策
 
-使用已有 `clef-omni` 的 `POST /v1/systemone` 协议；`state` 携带事件类型、粗粒度元数据、主动提交的文本、澪的角色设定和有界上下文。`questions` 分别选择表情、回应方式和本次具体台词。125 句中文涵盖六个时段、周末、工作、休息、安慰、庆祝、晴町故事及连续追问；回复由 Clef 从当前候选中选择，不额外接入自由文本聊天模型。Clef 无权调用 shell、操纵应用或发送消息。
+使用已有 `clef-omni` 的 `POST /v1/systemone` 协议；`state` 携带事件类型、粗粒度元数据、主动提交的文本、澪的角色设定和有界上下文。`questions` 分别选择兼容 mood、回应方式、本次台词，以及八种 expression、三档 intensity、五种 hand 含义。125 句中文涵盖六个时段、周末、工作、休息、安慰、庆祝、晴町故事及连续追问；回复由 Clef 从当前候选中选择，不额外接入自由文本聊天模型。Clef 无权调用 shell、操纵应用或发送消息。
 
 时间只参与台词与决策，不在气泡新增时钟。采用 Mac 当地日期、星期、时区和本次陪伴分钟数；问时间时直接填入实测时钟。上下文限最近 30 分钟的 8 条对话、10 分钟的 8 条系统事件及最近 20 个已说台词 ID，全部只保留在当前进程内。发送系统元数据前按事件类型筛选字段，不发送窗口标题、文档内容或未主动提交的自由文本。简短追问沿用前一话题，候选耗尽后按较早使用的句子轮换，并排除上一句。
 
@@ -171,7 +185,7 @@ MIO_CLEF_BASE_URL=https://clef.scgzyun.com dist/Mio.app/Contents/MacOS/MioCompan
 MIO_TEST_CLEF_URL=https://clef.scgzyun.com swift test --filter DialogueTests.testLiveContextualSentenceSelection
 ```
 
-58 个 XCTest（其中 2 个需要 HTTP 模拟服务、1 个需显式指定真实 Clef）覆盖关节动作、比例、手型、时区跨日、六时段、话题连续性、候选轮换、上下文边界、安静策略及生产 HTTP 客户端。Postman 模拟包含正常、低置信度、未知动作/台词、错模型、坏 JSON、500、HTML 网关、重定向及超时。未登录 Postman，未查询拥有方共享 mock；本地 mock 来自现有客户端/服务说明及消费契约，不能证明真实 Clef 模型的判断准确率。时间与上下文批次见 `evidence/mio_context_dialogue_20261021/` 和 [验收记录](../../docs/game-design/MIO_CONTEXT_DIALOGUE_20261021.md)。
+86 个 XCTest（其中 2 个需 HTTP 模拟服务、2 个需显式指定真实 Clef；有官方 Core 的本地环境还会运行真实模型检查）覆盖关节动作、比例、手型、时区跨日、六时段、话题连续性、候选轮换、上下文边界、安静策略及生产 HTTP 客户端。Postman 模拟包含正常、低置信度、未知动作/台词、错模型、坏 JSON、500、HTML 网关、重定向及超时。未登录 Postman，未查询拥有方共享 mock；本地 mock 来自现有客户端/服务说明及消费契约，不能证明真实 Clef 模型的判断准确率。时间与上下文批次见 `evidence/mio_context_dialogue_20261021/` 和 [验收记录](../../docs/game-design/MIO_CONTEXT_DIALOGUE_20261021.md)。
 
 原生 smoke 使用现有显示器，验证持续出帧、真实 Inbox 接收、暂停丢弃和恢复。PNG 导出只读取本程序自己的视图缓存与 Metal 目标，再合成本程序画面；它不是桌面截屏，也不读取其他窗口。记录位于 `evidence/mio_companion_20261020/`。本轮未改游戏资源、Godot 测试数、`builds/HareMachi.zip` 或 Web 发布。
 

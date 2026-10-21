@@ -9,7 +9,7 @@ final class CubismDrawing {
     let device: MTLDevice
     let motions: MotionLibrary
     private var hair: CubismPhysics
-    private var expression: ExpressionPlayback
+    private var expression = EmotionPlayback()
     private var prepared: [CubismModel.Mesh] = []
     private var vertices: [Int:MTLBuffer] = [:]
     private var indices: [Int:MTLBuffer] = [:]
@@ -23,7 +23,6 @@ final class CubismDrawing {
         model = try CubismModel(manifest:manifest)
         hair = try CubismPhysics(data:Data(contentsOf:manifest.deletingLastPathComponent().appendingPathComponent("Mio.physics3.json")),parameters:model.parameters)
         motions = try MotionLibrary(directory:manifest.deletingLastPathComponent())
-        expression = try ExpressionPlayback(directory:manifest.deletingLastPathComponent())
         textures = try model.textureURLs.map { url in
             guard let source = CGImageSourceCreateWithURL(url as CFURL,nil),let image = CGImageSourceCreateImageAtIndex(source,0,nil) else { throw MioRenderer.RenderError.unavailable }
             var pixels = [UInt8](repeating:0,count:image.width*image.height*4)
@@ -72,7 +71,7 @@ final class CubismDrawing {
     }
     private func key(_ masks: [Int]) -> String { masks.sorted().map(String.init).joined(separator:",") }
     func prepare(_ command: MTLCommandBuffer,size: CGSize,pose: RigPose,motion: PuppetMotion) throws {
-        let values = expression.apply(CubismParameters.values(pose:pose,motion:motion),mood:pose.mood,time:pose.time)
+        let values = expression.apply(CubismParameters.values(pose:pose,motion:motion),expression:pose.expression ?? EmotionalExpression(style:.from(pose.mood)),time:pose.time,mouthOwned:pose.speaking || pose.speech != nil)
         try model.update(hair.update(values,time:pose.time))
         prepared = try model.meshes()
         let scale=min(Float(size.width)/model.width,Float(size.height)/model.height)

@@ -40,7 +40,8 @@ public struct MotionPlayback {
         targetPose.gesture = resolved
         if pose.gesture == .automatic, pose.cueGesture == nil, pose.speaking, resolved != effective { targetPose.gestureTime = 1.25 }
         let target = library?.motion(for:targetPose) ?? PuppetMotion(pose:targetPose)
-        if (pending || resolved != effective), let lastMotion {
+        let semanticHandChanged = pose.gesture == .automatic && pose.expression?.hand != lastPose?.expression?.hand
+        if (pending || resolved != effective || semanticHandChanged), let lastMotion {
             previous = lastMotion
             start = pose.time
             let oppositeFold = (lastMotion.rightElbow > 0.6 && target.rightElbow < -0.15)

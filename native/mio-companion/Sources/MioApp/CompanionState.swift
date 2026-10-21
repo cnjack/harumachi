@@ -117,11 +117,11 @@ import MioCore
                 guard self.dialogueMemory.shouldConsider(event,now:Date()),
                       event.kind == "message" || !self.pending.contains(where: { $0.kind == "message" }) else { continue }
                 if let line = SpeechCatalog.resolve(decision,event:event,context:context) {
-                    self.mood = decision.mood
+                    self.mood = decision.expression?.style.mood ?? decision.mood
                     self.phrase = line.text
                     self.performance = self.performanceDirector.response(decision,event:event,text:line.text,now:Date())
                     self.speakingUntil = Date().addingTimeInterval(SpeechTimeline(line.text).duration+0.35)
-                    self.dialogueMemory.recordReply(line,at:Date())
+                    self.dialogueMemory.recordReply(line,at:Date(),expression:decision.expression)
                 }
             }
             if self.epoch == currentEpoch { self.task = nil }

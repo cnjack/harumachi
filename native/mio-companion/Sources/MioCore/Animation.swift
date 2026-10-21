@@ -1,7 +1,7 @@
 import Foundation
 
 public enum CharacterGesture: String, CaseIterable, Sendable {
-    case automatic, idle, wave, think, talk
+    case automatic, idle, wave, think, talk, encourage
     public var title: String {
         switch self {
         case .automatic: return "自动"
@@ -9,6 +9,7 @@ public enum CharacterGesture: String, CaseIterable, Sendable {
         case .wave: return "招手"
         case .think: return "思考"
         case .talk: return "说话"
+        case .encourage: return "加油"
         }
     }
     public var duration: Double { 5 }
@@ -27,6 +28,7 @@ public struct RigPose: Sendable, Equatable {
     public var speech: SpeechTimeline?
     public var speechTime: Double = 0
     public var nod: Float = 0
+    public var expression: EmotionalExpression?
     public var resolvedGesture: CharacterGesture { gesture == .automatic ? (cueGesture ?? (speaking ? .talk : .idle)) : gesture }
     public var resolvedTime: Double { gesture == .automatic ? (cueGesture == nil ? gestureTime : cueTime) : gestureTime }
     public init(time: Double, mood: Mood = .neutral, lookX: Float = 0, lookY: Float = 0, speaking: Bool = false, gesture: CharacterGesture = .automatic, gestureTime: Double? = nil) {

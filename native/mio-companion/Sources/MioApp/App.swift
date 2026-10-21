@@ -157,7 +157,7 @@ import MioCore
 @main struct MioMain {
     @MainActor static func main() {
         let args = CommandLine.arguments
-        let supported: Set<String> = ["--preview-motion","--review-motion-window","--review-motion","--review-shoulders","--render-samples","--render-motion","--review-cubism","--review-performance","--smoke-test","--connection-test","--review-dialogue"]
+        let supported: Set<String> = ["--preview-motion","--review-motion-window","--review-motion","--review-shoulders","--render-samples","--render-motion","--review-cubism","--review-performance","--review-emotion","--review-expression-matrix","--smoke-test","--connection-test","--review-dialogue"]
         if let unknown = args.dropFirst().first(where: { $0.hasPrefix("--") && !supported.contains($0) }) {
             fputs("Unknown Mio argument: \(unknown)\n",stderr);exit(2)
         }
@@ -165,6 +165,14 @@ import MioCore
             if let at = args.firstIndex(of:flag), at+1 >= args.count || args[at+1].hasPrefix("--") {
                 fputs("Missing output directory for \(flag)\n",stderr);exit(2)
             }
+        }
+        if let at = args.firstIndex(of:"--review-expression-matrix"),at+1 < args.count {
+            do { try ExpressionStressReview.run(at:URL(fileURLWithPath:args[at+1],isDirectory:true));exit(0) }
+            catch { fputs("Expression matrix failed: \(error)\n",stderr);exit(1) }
+        }
+        if let at = args.firstIndex(of:"--review-emotion"),at+1 < args.count {
+            do { try EmotionReview.run(at:URL(fileURLWithPath:args[at+1],isDirectory:true));exit(0) }
+            catch { fputs("Emotion review failed: \(error)\n",stderr);exit(1) }
         }
         if let at = args.firstIndex(of:"--review-performance"),at+1 < args.count {
             do { try PerformanceReview.run(at:URL(fileURLWithPath:args[at+1],isDirectory:true));exit(0) }
@@ -199,7 +207,7 @@ import MioCore
                 try FileManager.default.createDirectory(at:directory,withIntermediateDirectories:true)
                 guard let device = MTLCreateSystemDefaultDevice() else { throw MioRenderer.RenderError.unavailable }
                 let renderer = try MioRenderer(device:device)
-                for gesture in [CharacterGesture.idle,.wave,.think,.talk] {
+                for gesture in [CharacterGesture.idle,.wave,.think,.talk,.encourage] {
                     for time in [0.0,0.3,0.6,1.0,2.0,3.0] {
                         let pose = RigPose(time:time,speaking:gesture == .talk,gesture:gesture,gestureTime:time)
                         try renderer.snapshot(to:directory.appendingPathComponent("\(gesture.rawValue)-\(time).png"),
@@ -228,7 +236,7 @@ import MioCore
                 try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
                 guard let device = MTLCreateSystemDefaultDevice() else { throw MioRenderer.RenderError.unavailable }
                 let renderer = try MioRenderer(device: device)
-                let gestures: [CharacterGesture] = [.idle, .wave, .think, .talk]
+                let gestures: [CharacterGesture] = [.idle, .wave, .think, .talk, .encourage]
                 var probes: [[String: Any]] = []
                 for (index, gesture) in gestures.enumerated() {
                     for frame in 0..<210 {

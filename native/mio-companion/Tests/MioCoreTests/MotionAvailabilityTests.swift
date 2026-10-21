@@ -3,7 +3,7 @@ import XCTest
 
 final class MotionAvailabilityTests: XCTestCase {
     func testOnlyRetainedActionsAreSelectableAndPackaged() throws {
-        let names = Set(["idle", "wave", "think", "talk"])
+        let names = Set(["idle", "wave", "think", "talk", "encourage"])
         XCTAssertEqual(Set(CharacterGesture.allCases.map(\.rawValue)), names.union(["automatic"]))
         XCTAssertNil(CharacterGesture(rawValue: "stretch"))
         let resources = URL(fileURLWithPath: #filePath).deletingLastPathComponent()
