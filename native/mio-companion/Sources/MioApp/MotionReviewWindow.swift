@@ -15,10 +15,13 @@ import MioCore
     var captured: Set<String> = []
     var progress: [[String:Any]] = []
     var poseChecks: [String:Bool] = [:]
+    var poseMeasurements: [String:[String:Any]] = [:]
     var sentSpeech = false
     var revision = 100
     let schedule: [(Double,CharacterGesture)] = [(0,.idle),(1,.wave),(4.5,.stretch),(9.5,.think),(14.5,.talk),(19,.automatic)]
-    let captures: [(Double,String)] = [(0.8,"idle"),(3.5,"wave"),(8.5,"stretch"),(14,"think"),(18.5,"talk"),(25,"automatic")]
+    // Stretch -> think uses the safe lowered-arm waypoint. Capture the held
+    // pose after contact and the cloud's 0.25 s fade, not during that fade.
+    let captures: [(Double,String)] = [(0.8,"idle"),(2.6,"wave"),(6.5,"stretch"),(12.2,"think"),(16.2,"talk"),(25,"automatic")]
 
     init(at directory: URL, persistent: Bool) throws {
         self.directory = directory
@@ -37,7 +40,7 @@ import MioCore
         let view = MTKView(frame:NSRect(x:0,y:0,width:persistent ? 480 : 450,height:600),device:device)
         view.colorPixelFormat = .bgra8Unorm
         view.clearColor = MTLClearColorMake(0.96,0.96,0.94,1)
-        view.preferredFramesPerSecond = 30
+        view.preferredFramesPerSecond = 60
         view.delegate = renderer
         content.addSubview(view)
         if persistent {
@@ -82,6 +85,10 @@ import MioCore
                         elbow:SIMD2(left ? 173 : 427,418),wrist:SIMD2(left ? 114 : 486,508),left:left)
                 }
                 let hand = HandPresentation(motion:motion,left:false)
+                poseMeasurements[name] = ["wallTime":elapsed,"animationTime":renderer.pose.time,
+                    "gestureTime":renderer.pose.gestureTime,"hand":hand.variant,
+                    "thoughtOpacity":motion.thoughtOpacity,
+                    "leftWristY":wrist(true).y,"rightWristY":wrist(false).y]
                 if name == "idle" {
                     let left = wrist(true),right = wrist(false)
                     poseChecks[name] = hand.variant == "relaxed" && left.y > 525 && right.y > 525
@@ -94,9 +101,15 @@ import MioCore
                         elbow:SIMD2(427,418),wrist:SIMD2(486,508),left:false)
                     let target = motion.torsoPoint(motion.headPoint(SIMD2(300,268))+SIMD2(1,1))
                     let d = finger-target
+                    poseMeasurements[name]?["fingerDistance"] = sqrt(d.x*d.x+d.y*d.y)
+                    poseMeasurements[name]?["chinWeight"] = motion.rightChin
                     poseChecks[name] = hand.variant == "chin" && d.x*d.x+d.y*d.y < 9 && motion.thoughtOpacity > 0.25
                 } else if name == "talk" { poseChecks[name] = hand.variant == "palm" }
-                else { poseChecks[name] = true }
+                else {
+                    poseChecks[name] = renderer.pose.gesture == .automatic && !renderer.pose.speaking
+                        && hand.variant == "relaxed" && wrist(true).y > 525 && wrist(false).y > 525
+                        && motion.thoughtOpacity == 0
+                }
                 try renderer.snapshot(to:directory.appendingPathComponent(name+".png"),pose:renderer.pose)
                 captured.insert(name)
             }
@@ -104,11 +117,12 @@ import MioCore
                 try saveOwnWindow(window,to:directory.appendingPathComponent("window.png"))
                 let report: [String:Any] = ["wallTime":elapsed,"frames":renderer.frameCount,
                     "averageFPS":Double(renderer.frameCount)/elapsed,"captured":captured.sorted(),
-                    "progress":progress,"poseChecks":poseChecks,"systemMonitoringStarted":false,"networkRequests":0,
+                    "progress":progress,"poseChecks":poseChecks,"poseMeasurements":poseMeasurements,
+                    "systemMonitoringStarted":false,"networkRequests":0,
                     "audioEnabled":false,"virtualDisplayCreated":false]
                 try JSONSerialization.data(withJSONObject:report,options:[.prettyPrinted,.sortedKeys])
                     .write(to:directory.appendingPathComponent("native-window.json"))
-                guard renderer.frameCount>=700,captured.count==6,poseChecks.values.allSatisfy({$0}) else { throw MioRenderer.RenderError.unavailable }
+                guard Double(renderer.frameCount)/elapsed>=50,captured.count==6,poseChecks.values.allSatisfy({$0}) else { throw MioRenderer.RenderError.unavailable }
                 exit(0)
             }
         } catch { fputs("Motion window acceptance failed: \(error)\n",stderr);exit(1) }

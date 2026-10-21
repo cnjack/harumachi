@@ -13,7 +13,7 @@ struct CharacterView: NSViewRepresentable {
         view.layer?.isOpaque = false
         view.wantsLayer = true
         (view.layer as? CAMetalLayer)?.isOpaque = false
-        view.preferredFramesPerSecond = 30
+        view.preferredFramesPerSecond = 60
         do {
             let renderer = try MioRenderer(device: device)
             renderer.onFrame = { [weak state] in

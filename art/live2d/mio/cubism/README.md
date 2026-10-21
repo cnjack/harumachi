@@ -9,3 +9,5 @@
 Swift 默认使用官方 Core 计算变形、Metal 绘制。Core 从本机 Cubism 安装加载，或通过 `MIO_CUBISM_CORE_PATH` 指定单独取得的官方 Native Core dylib；运行包本身不含 Core。当前 Swift 渲染器支持本模型使用的普通混合、无裁剪网格，不表示支持任意带遮罩/高级混合的第三方模型。
 
 已用官方 Core 6.0.513 验证文件一致性、24 个有效参数与实际骨段、关节和手腕固定。新补画分段衣袖并完成 6514 帧全组复拍和已解锁现有屏幕的六状态窗口验收，见 `docs/game-design/MIO_ARM_NATURALNESS_20261021.md`。第三方播放器未在本轮实测。
+
+当前为 v12：源衣袖与前臂加宽、肩根渐变收整，五套 motion3 采用更快起落及错相肩肘腕运动，Swift 窗口 60 FPS。当前复验见 `docs/game-design/MIO_ARM_ENERGY_20261021.md`。

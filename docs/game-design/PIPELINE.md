@@ -1,12 +1,14 @@
 # 模型、工程与交付流程
 
+澪 v12 的手臂粗细与动作节奏见 [MIO_ARM_ENERGY_20261021.md](MIO_ARM_ENERGY_20261021.md)。源宽度从 PNG alpha 实测，动作响应通过 30/60 FPS 两种时钟回归；每次重注册后重新导出 PSD/CMO3、图集和标准 motion3，并复拍全部动作及切换。可见窗口目标 60 FPS，独立验收要求平均至少 50 FPS。
+
 澪的肩肘腕源修复与全动作复拍见 [MIO_ARM_NATURALNESS_20261021.md](MIO_ARM_NATURALNESS_20261021.md)。`--review-motion` 输出实际 Core 顶点接合与真实 Metal 图；`audit_arm_connections.py` 检查内部连接带，`check_joint_seams.py` 按注册的皮肤接缝位置检查暗线，并逐项复核放大图。
 
 澪桌面角色的正式 Cubism CLI 导出、Swift Core/Metal 渲染与离线验收见 [MIO_CUBISM_20261021.md](MIO_CUBISM_20261021.md)。入口 `python3 art/tools/live2d/export_mio.py`，使用已安装 Editor，不分发厂商库；`--review-cubism` 不启动监控或网络。
 
 ## 澪的 Swift 桌面角色（2026-10-20）
 
-待机源姿势将双臂向内收约 21.8°，手腕垂在胯侧；「放下」按钮沿用 `idle` ID。手势只释放参与动作的手臂偏置，避免招手、托腮时空闲臂仍外张；新增回归检查真实变形后的肩腕距离与动作结束姿态。每次改源动作后重新复拍全组，不能复用前版截图。当前格式核对明确为 `harumachi-layer-rig`、非 Cubism，详见[垂手与格式记录](MIO_REST_AND_FORMAT_20261020.md)。
+待机源姿势将双臂向内收约 21.8°，手腕垂在胯侧；「放下」按钮沿用 `idle` ID。手势只释放参与动作的手臂偏置，避免招手、托腮时空闲臂仍外张；新增回归检查真实变形后的肩腕距离与动作结束姿态。每次改源动作后重新复拍全组，不能复用前版截图。早期 `harumachi-layer-rig` 格式核对见[历史记录](MIO_REST_AND_FORMAT_20261020.md)，当前运行格式见上方正式 Cubism 流程。
 
 多手型源图在 `art/live2d/mio/pose-parts/`。画面左侧是角色自身右手，不能按源图列名直接绑定；需用真实掌心与手背的拇指像素验证方向。每套手按实际 alpha 轮廓匹配公共前臂的腕宽和中心，每帧只绘制一套源图，经侧掌或握拳中间态几何收放，避免交叉淡化双手影。纹理上传前预乘 RGBA，再进行线性过滤与 source-over 混合；仅修改混合系数不能消除透明黑边。肩根在身体后面，前臂在前面，裙腰保留绘制的隐藏延伸。`PosePartsTests` 检查真实腕边与拇指，`HandPresentationTests` 检查收放网格，`check_joint_seams.py` 检查真实 Metal 图像中的皮肤连接带暗线。
 
@@ -14,7 +16,7 @@
 
 头身及五官比例从 `native/mio-companion/tools/pack_assets.swift` 的源布局修订，再生成两个 rig、PSD 和应用，不能只在运行时缩放蒙混过去。整体头部缩放需以颈部为共同锚点应用到全部七个头部图层。`FaceProportionsTests` 约束头部外轮廓占身体宽高、颈部衔接、眼宽占脸宽、嘴型宽高、眼鼻嘴留白及表情切换中心；新增检查先对旧布局运行，保留失败日志。前后原生渲染使用相同时间和视线参数，至少看静态、闭眼与张嘴，并在现有显示器复验应用。
 
-来信界面入口 `open_mio_companion.command`，本地动作预览入口 `preview_mio_motion.command`，源码和工具位于 `native/mio-companion/`。imagegen 参考澪的定稿生成透明部件，当前连续双臂使用 `articulated/arms-continuous.png`，手型及肩腰部件来自 `pose-parts/`。肩、肘、腕及腕部轮廓注册写入 rig；`tools/pack_assets.swift` 输出自有布局，`tools/export_psd.swift` 导出同布局 30 层 RGB/8 PSD。它们不是 Cubism 模型编译器，不能产出 `.moc3`。Swift Package 与系统 Metal 构建，无第三方下载；`.app` 放忽略的 `dist/`，不进游戏 `builds/`。
+来信界面入口 `open_mio_companion.command`，本地动作预览入口 `preview_mio_motion.command`，源码和工具位于 `native/mio-companion/`。imagegen 参考澪的定稿生成透明部件，当前分段衣袖使用 `articulated/arm-segments-20261021.png`，手型及肩腰部件来自 `pose-parts/`。肩、肘、腕及腕部轮廓注册写入 rig；`tools/pack_assets.swift` 输出自有布局，`tools/export_psd.swift` 导出同布局 32 层 RGB/8 PSD。它们不是 Cubism 模型编译器，不能产出 `.moc3`。Swift Package 与系统 Metal 构建，无第三方下载；`.app` 放忽略的 `dist/`，不进游戏 `builds/`。
 
 动作验收用 `--review-motion <目录>` 导出 6514 帧，再运行 `tools/review_motion.py` 和 `tools/check_joint_seams.py`；检查五动作、25 组各 4 秒的中断、自动周期、说话打断、长时钟和视线极值。`MotionPlaybackTests` 检查实际腕速、重播与相反折肘落臂顺序；`--review-motion-window <目录>` 在现有显示器持续渲染并只缓存本程序视图。动作入口不创建系统监控、Inbox 或网络客户端。API 改动另外使用 `tools/test_simulation.sh`；真实 Clef 固定消息已验证，常驻监控外发的授权边界见[桌面角色 README](../../native/mio-companion/README.md)。静音，不创建虚拟屏幕。
 

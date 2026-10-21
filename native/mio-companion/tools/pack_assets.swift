@@ -370,18 +370,21 @@ for side in ["left", "right"] {
     for y in 0..<segmentHeight { for x in 0..<segmentWidth {
         let px=r[0]+(Double(x)+0.5)/3,py=r[1]+(Double(y)+0.5)/3,index=(y*segmentWidth+x)*4
         let ux=(px-shoulder.x)*td.x+(py-shoulder.y)*td.y,uy = -(px-shoulder.x)*td.y+(py-shoulder.y)*td.x
-        let su=ux*upperLength/upperTargetLength,sv=uy/(upperTargetLength/upperLength*0.85)
+        // Restore the loose cardigan volume instead of squeezing the source
+        // width to fit its bone length. Longitudinal registration stays fixed.
+        let su=ux*upperLength/upperTargetLength,sv=uy/(upperTargetLength/upperLength*1.25)
         let sx=upperStart.x+ud.x*su-ud.y*sv,sy=upperStart.y+ud.y*su+ud.x*sv
         // Fade only the hidden attachment edge. The other segment supplies
         // opaque fabric underneath; exterior shoulder and sleeve art remain.
-        let upperOpacity=(1-smooth(upperTargetLength+2,upperTargetLength+15,ux))*(1-smooth(19,22,abs(uy)))
+        let rootLimit=22+10*smooth(28,58,ux)
+        let upperOpacity=(1-smooth(upperTargetLength+2,upperTargetLength+15,ux))*(1-smooth(rootLimit-3,rootLimit,abs(uy)))
         sample(sx,sy,side == "left" ? 100...420:820...1120,upperOpacity,&upperBytes,index)
         let frontOpacity=smooth(16,52,ux)
         for c in 0..<4 { frontBytes[index+c]=UInt8(Double(upperBytes[index+c])*frontOpacity) }
         let lx=(px-elbow.x)*d.x+(py-elbow.y)*d.y,ly = -(px-elbow.x)*d.y+(py-elbow.y)*d.x
         let cuffDistance=length-54
         let sourceY = lx<=cuffDistance ? 260+lx*(650-260)/cuffDistance : 650+(lx-cuffDistance)*(900-650)/54
-        let sourceX=lowerX+ly/0.20
+        let sourceX=lowerX+ly/0.28
         let lowerOpacity=smooth(-18,-6,lx)
         if lx<length-42 { sample(sourceX,sourceY,side == "left" ? 470...710:1125...1350,lowerOpacity,&lowerBytes,index) }
         if lx>=length-50 && lx<length+2 { sample(sourceX,sourceY,side == "left" ? 470...710:1125...1350,1,&skinBytes,index) }
@@ -486,7 +489,7 @@ let order = ["hair_back", "lower_body", "shoulder_left", "shoulder_right", "arm_
 layers.sort { order.firstIndex(of: $0["id"] as! String)! < order.firstIndex(of: $1["id"] as! String)! }
 let manifest: [String: Any] = ["format": "harumachi-layer-rig", "version": 1, "name": "澪", "canvas": [750, 1000],
                               "origin": [-75, 0],
-                              "layoutRevision": "20261021-articulated-v11",
+                              "layoutRevision": "20261021-articulated-v12",
                               "cubismCompatible": false, "layers": layers,
                               "parameters": ["ParamAngleX", "ParamAngleY", "ParamBodyAngleZ", "ParamBreath", "ParamEyeLOpen", "ParamEyeROpen", "ParamMouthOpenY"]]
 let json = try JSONSerialization.data(withJSONObject: manifest, options: [.prettyPrinted, .sortedKeys])

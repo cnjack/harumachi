@@ -1,6 +1,6 @@
 # 澪 · 晴町桌面来信
 
-macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用真正 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 34 层 PSD 在 `art/live2d/mio/cubism/`。当前 v11 补画独立上臂/前臂衣袖并重做肩肘腕变形器，模型含 24 个参数、五套标准 motion3，CLI 生成与兼容边界见[本轮记录](../../docs/game-design/MIO_CUBISM_20261021.md)。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮源素材与绑定修复及逐动作验收见[手臂修复记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。仅看动作可双击根目录 `preview_mio_motion.command`；完整常驻版使用 `open_mio_companion.command`。构建：
+macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用真正 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 34 层 PSD 在 `art/live2d/mio/cubism/`。当前 v12 恢复上臂、衣袖与裸露前臂厚度，缩短起落时间并加入肩肘腕错相运动，模型含 24 个参数、五套标准 motion3，CLI 生成与兼容边界见[本轮记录](../../docs/game-design/MIO_CUBISM_20261021.md)。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮粗细与动作节奏修订见[修复记录](../../docs/game-design/MIO_ARM_ENERGY_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。仅看动作可双击根目录 `preview_mio_motion.command`；完整常驻版使用 `open_mio_companion.command`。构建：
 
 ```bash
 ./native/mio-companion/tools/build_app.sh
@@ -15,7 +15,7 @@ open native/mio-companion/dist/Mio.app
 dist/Mio.app/Contents/MacOS/MioCompanion --review-cubism /tmp/mio-cubism
 ```
 
-以下为原分层后端的历史复拍工具，需设置 `MIO_LEGACY_RIG=1`，不作为新 Cubism 验收：
+正式 Cubism 模型的全动作复拍使用以下入口；默认走官方 Core，只有显式设置 `MIO_LEGACY_RIG=1` 才切换历史分层后端：
 
 ```bash
 dist/Mio.app/Contents/MacOS/MioCompanion --review-motion /tmp/mio-joints
@@ -28,13 +28,13 @@ python3 tools/review_motion.py /tmp/mio-joints
 
 ## 角色和渲染
 
-当前待机为双臂自然垂下，点击「放下」可平滑退出当前动作；动作结束回到垂手，招手和托腮时空闲手臂也保持下垂。30 项本地测试和新拍 6514 帧、六状态原生复验通过。正式 Live2D/Cubism 格式尚未完成，源文件与加载器核对见[垂手与格式记录](../../docs/game-design/MIO_REST_AND_FORMAT_20261020.md)。
+当前待机为双臂自然垂下，点击「放下」可平滑退出当前动作；动作结束回到垂手，招手和托腮时空闲手臂也保持下垂。正式 Cubism 模型、源码与五套标准 motion3 同步，当前验收见[粗细与节奏记录](../../docs/game-design/MIO_ARM_ENERGY_20261021.md)。
 
-源素材在 [`art/live2d/mio/`](../../art/live2d/mio/)：透明原始部件图、30 层 RGB/8 PSD、独立格式的 `Mio.rig.json`。PNG 部件随 Swift Package 打包。上身、腰裙、肩部补片、连续双臂、公共前臂、五套常用左右手型、一套食指托腮手型与七个头部部件分别成层；手臂使用 24×64 网格，身体 20×64，头部 20×24。Metal 对预乘纹理进行过滤和透明混合，手型使用独立实心源图与几何过渡。当前含呼吸、轻摆、头发运动、眨眼、说话口型和角色区域内的鼠标视线。默认 30 FPS，全程静音。
+源素材在 [`art/live2d/mio/`](../../art/live2d/mio/)：透明原始部件图、32 层 RGB/8 PSD、源布局 `Mio.rig.json`，以及 `cubism/` 下的可编辑 CMO3 和独立左右眼的 34 层 PSD。PNG 部件随 Swift Package 打包。上身、腰裙、肩部补片、独立上下臂衣袖、公共前臂、五套常用左右手型、一套食指托腮手型与七个头部部件分别成层；手臂使用 24×64 网格，身体 20×64，头部 20×24。Metal 对预乘纹理进行过滤和透明混合，手型使用独立实心源图与几何过渡。当前含呼吸、轻摆、头发运动、眨眼、说话口型和角色区域内的鼠标视线。默认 60 FPS，全程静音；离线全组复拍按 30 FPS 取样。
 
-当前头部采用用户在叠图预览中选定的「再缩小 20%」版本：相对前一版为 0.8，相对最初布局为 `0.92 × 0.8 = 0.736`。七个头部图层围绕 `(300, 268)` 的颈部基点一起缩放，五官相对比例保持原值。当前 `20261020-continuous-v10` 保留按用户照片制作的食指抵下巴和思考云，两侧改用连续袖子、公共前臂及实心手型过渡；源 rig、PSD 和应用资源同步。[修复与复验](../../docs/game-design/MIO_MOTION_REPAIR_20261020.md)。
+当前头部采用用户在叠图预览中选定的「再缩小 20%」版本：相对前一版为 0.8，相对最初布局为 `0.92 × 0.8 = 0.736`。七个头部图层围绕 `(300, 268)` 的颈部基点一起缩放，五官相对比例保持原值。当前 `20261021-articulated-v12` 保留按用户照片制作的食指抵下巴和思考云，使用分段衣袖、公共前臂及实心手型过渡；源 rig、PSD、CMO3 和应用资源同步。
 
-这是自有分层动画格式，**不是 Cubism `.moc3` 模型，也不能加载 `.model3.json`**。PSD 已通过系统 ImageIO 合成图解码检查，可作为 Cubism 后续制作的来源；尚未在 Cubism Editor 内导入验收。本机未找到 Editor/SDK，本轮未下载或接受它们的许可，也未导出 `.cmo3` / `.moc3`。官方 Core 负责计算 Editor 模型的顶点，不能把分层 JSON 改名当成官方模型，见 [Cubism Core 文档](https://docs.live2d.com/en/cubism-sdk-manual/cubism-core-api-reference/)。
+`Mio.rig.json` 仅用于作者源布局；正式入口是 `MioCubism/Mio.model3.json`，其 `.moc3` 由已安装的 Cubism Editor 官方导出器生成。早期自有分层版本和格式核对保留在[历史记录](../../docs/game-design/MIO_REST_AND_FORMAT_20261020.md)。
 
 重建资源：
 
@@ -78,7 +78,7 @@ native/mio-companion/dist/Mio.app/Contents/MacOS/MioCompanion --render-motion /t
 swift native/mio-companion/tools/preview_motion.swift /tmp/mio-motion
 ```
 
-现成 Cubism 模型与 Swift 接入方案见[调研记录](../../docs/game-design/MIO_LIVE2D_RESEARCH_20261020.md)。本次修复仍是自有分层原型，不把模型调研当作正式 Cubism 接入验收。
+现成 Cubism 模型与 Swift 接入方案见[调研记录](../../docs/game-design/MIO_LIVE2D_RESEARCH_20261020.md)。当前正式接入范围与第三方播放器边界见[格式记录](../../docs/game-design/MIO_CUBISM_20261021.md)。
 
 ## 多手型、肩袖和腰部衔接（2026-10-20）
 

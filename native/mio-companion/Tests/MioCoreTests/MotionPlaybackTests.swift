@@ -17,7 +17,7 @@ final class MotionPlaybackTests: XCTestCase {
                 let pose = RigPose(time:start+Double(frame)/30, speaking:frame>=10 && frame<25)
                 let current = player.sample(pose)
                 for left in [true,false] {
-                    XCTAssertLessThan(distance(wrist(current,left:left),wrist(previous,left:left)),18,
+                    XCTAssertLessThan(distance(wrist(current,left:left),wrist(previous,left:left)),MotionPlayback.maximumHandSpeed/30+0.01,
                         "Automatic speech start/stop teleports the hand at \(start) frame \(frame)")
                 }
                 previous = current
@@ -34,7 +34,7 @@ final class MotionPlaybackTests: XCTestCase {
             for frame in 0...150 {
                 let current = player.sample(RigPose(time:2+Double(frame)/30,gesture:to,gestureTime:phaseOffset+Double(frame)/30))
                 for left in [true,false] {
-                    XCTAssertLessThan(distance(wrist(current,left:left),wrist(previous,left:left)),18,
+                    XCTAssertLessThan(distance(wrist(current,left:left),wrist(previous,left:left)),MotionPlayback.maximumHandSpeed/30+0.01,
                         "\(from) -> \(to) too fast at \(frame)")
                 }
                 previous = current

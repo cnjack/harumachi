@@ -40,8 +40,8 @@ public struct PuppetMotion: Sendable {
             else if cycle >= 34 && cycle < 41 { gesture = .stretch; phase = cycle - 34 }
             else { gesture = .idle; phase = 0 }
         }
-        let rise: Float = gesture == .stretch ? 1.5 : (gesture == .wave ? 1.35 : 0.85)
-        let blend = Self.envelope(phase, duration: gesture.duration,rise:rise,fall:gesture == .think ? 0.9 : 1.5)
+        let rise: Float = gesture == .stretch ? 0.85 : (gesture == .wave ? 0.55 : 0.48)
+        let blend = Self.envelope(phase, duration: gesture.duration,rise:rise,fall:gesture == .stretch ? 0.85 : 0.6)
         // The source artwork spreads its arms for rigging. The authored rest
         // pose closes the shoulders so both wrists hang beside the hips.
         // Release only the arm used by the gesture, preserving held targets.
@@ -49,22 +49,26 @@ public struct PuppetMotion: Sendable {
         let rightActivity = gesture == .idle || gesture == .automatic ? 0 : blend
         leftShoulder -= 0.38 * (1-leftActivity)
         rightShoulder += 0.38 * (1-rightActivity)
-        let handBlend = Self.smooth(0,0.4,Float(phase))
+        let handBlend = Self.smooth(0,0.22,Float(phase))
             * (1-Self.smooth(Float(gesture.duration-0.4),Float(gesture.duration),Float(phase)))
-        let presentedPalm = Self.smooth(0.18,0.60,Float(phase))
-            * (1-Self.smooth(Float(gesture.duration-1.2),Float(gesture.duration-0.6),Float(phase)))
-        let oscillation = Float(sin(phase * 5.5))
+        let presentedPalm = Self.smooth(0.08,0.28,Float(phase))
+            * (1-Self.smooth(Float(gesture.duration-0.45),Float(gesture.duration-0.15),Float(phase)))
+        let oscillation = Float(sin(phase * 8.6))
         switch gesture {
         case .wave:
             rightHand = SIMD4(1 - presentedPalm, presentedPalm, 0, 0)
-            rightShoulder -= 0.65 * Self.smooth(0.25, 1, blend)
-            rightElbow -= (1.95 + 0.10 * oscillation) * Self.smooth(0, 0.65, blend)
-            rightWrist = 0.13 * oscillation * blend
-            head += 0.045 * blend; torso -= 0.035 * blend
+            // Elbow leads, wrist follows, with a small shoulder/body response.
+            // Their different phases keep the greeting from moving as one rod.
+            rightShoulder += (-0.65 * Self.smooth(0.25,1,blend)
+                + 0.045 * Float(sin(phase*8.6-0.8))*blend)
+            rightElbow -= (1.95 + 0.185 * oscillation) * Self.smooth(0, 0.65, blend)
+            rightWrist = 0.19 * Float(sin(phase*8.6-0.65)) * blend
+            head += (0.045+0.026*Float(sin(phase*4.3-0.7))) * blend
+            torso += (-0.032+0.006*Float(sin(phase*4.3-1))) * blend
         case .stretch:
             // Close before lifting and release after lowering, with the wrist
             // aligned to the forearm throughout the relaxed overhead stretch.
-            let grip = Self.smooth(0,0.35,Float(phase))
+            let grip = Self.smooth(0,0.18,Float(phase))
                 * (1-Self.smooth(Float(gesture.duration-0.35),Float(gesture.duration),Float(phase)))
             leftFist = grip; rightFist = grip
             leftHand = SIMD4(1-grip,0,0,0)
@@ -75,10 +79,17 @@ public struct PuppetMotion: Sendable {
             leftShoulder += liftedShoulder; rightShoulder -= liftedShoulder
             let foldedElbow = 1.25 * sin(.pi * blend) + 0.25 * blend
             leftElbow += foldedElbow; rightElbow -= foldedElbow
+            let settle = Self.smooth(0.65,1.05,Float(phase))*blend
+            leftShoulder += 0.045*Float(sin((phase-0.65)*2.8))*settle
+            rightShoulder -= 0.045*Float(sin((phase-0.78)*2.8))*settle
+            leftElbow += 0.055*Float(sin(phase*2.8-0.5))*settle
+            rightElbow -= 0.055*Float(sin(phase*2.8-0.9))*settle
+            leftWrist = 0.07*Float(sin(phase*2.8-1))*settle
+            rightWrist = -0.07*Float(sin(phase*2.8-1.4))*settle
             headShift.y -= 3 * blend
             torsoLift = 5 * blend
-            torso += Float(sin(phase * 0.9)) * 0.025 * blend
-            head += Float(sin(phase * 1.2)) * 0.035 * blend
+            torso += Float(sin(phase * 1.6)) * 0.025 * blend
+            head += Float(sin(phase * 2-0.4)) * 0.035 * blend
         case .think:
             rightChin = handBlend
             rightHand = SIMD4(1-handBlend,0,0,0)
@@ -97,15 +108,19 @@ public struct PuppetMotion: Sendable {
             let solvedShoulder = atan2(sin(rawShoulder),cos(rawShoulder))
             rightShoulder += (solvedShoulder-rightShoulder)*blend
             rightElbow += (angle-rightElbow)*blend
-            thoughtOpacity = Self.smooth(0.85,1.2,Float(phase))
+            thoughtOpacity = Self.smooth(0.55,0.8,Float(phase))
                 * (1-Self.smooth(3.9,4.2,Float(phase)))
         case .talk:
             rightHand = SIMD4(1 - presentedPalm, presentedPalm, 0, 0)
-            rightShoulder += (0.10 + 0.03 * oscillation) * blend
-            rightElbow -= (0.55 + 0.06 * oscillation) * blend
-            leftShoulder -= 0.08 * blend; leftElbow += 0.18 * blend
-            headShift.y += Float(sin(phase * 4)) * 1.6 * blend
-            head += Float(sin(phase * 2)) * 0.025 * blend
+            let beat = Float(sin(phase*5.8))
+            rightShoulder += (0.10 + 0.085 * Float(sin(phase*5.8-0.4))) * blend
+            rightElbow -= (0.55 + 0.23 * beat) * blend
+            rightWrist = 0.12*Float(sin(phase*5.8-0.75))*blend
+            leftShoulder -= (0.08+0.025*Float(sin(phase*3.8-0.7))) * blend
+            leftElbow += (0.18+0.05*Float(sin(phase*3.8))) * blend
+            headShift.y += Float(sin(phase * 5.8-0.4)) * 2 * blend
+            head += Float(sin(phase * 2.9)) * 0.035 * blend
+            torso += Float(sin(phase * 2.9-0.8))*0.012*blend
         case .idle, .automatic: break
         }
     }

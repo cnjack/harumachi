@@ -3,6 +3,8 @@ import Foundation
 /// One motion history for explicit gestures and automatic/speech interruptions.
 /// Repeated samples of the same pose are idempotent, including offline snapshots.
 public struct MotionPlayback {
+    /// Source canvas pixels per second; 60 Hz display keeps a fast gesture smooth.
+    public static let maximumHandSpeed: Float = 850
     private var lastPose: RigPose?
     private var lastMotion: PuppetMotion?
     private var effective: CharacterGesture?
@@ -82,7 +84,7 @@ public struct MotionPlayback {
         if let lastPose, let lastMotion {
             let dt = pose.time-lastPose.time
             if dt > 0 && dt < 0.2 {
-                let maximum = Float(dt)*480
+                let maximum = Float(dt)*Self.maximumHandSpeed
                 if Self.maximumStep(lastMotion,result) > maximum {
                     var low: Float = 0, high: Float = 1
                     for _ in 0..<16 {
@@ -96,7 +98,7 @@ public struct MotionPlayback {
         }
         if let handFrom {
             let handMotion = handTo.blended(from:handFrom,
-                fraction:PuppetMotion.smooth(0,0.4,Float(pose.time-handStart)))
+                fraction:PuppetMotion.smooth(0,0.22,Float(pose.time-handStart)))
             result.leftHand = handMotion.leftHand;result.rightHand = handMotion.rightHand
             result.leftFist = handMotion.leftFist;result.rightFist = handMotion.rightFist
             result.rightChin = handMotion.rightChin
@@ -157,6 +159,6 @@ public struct MotionPlayback {
             }
             before = after
         }
-        return max(0.55,Double(peak/480))
+        return max(0.3,Double(peak/Self.maximumHandSpeed))
     }
 }
