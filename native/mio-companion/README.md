@@ -9,7 +9,7 @@ macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用真正 Cubism `.mod
 open native/mio-companion/dist/Mio.app
 ```
 
-需要 Xcode 或包含 Swift 的 Command Line Tools。构建不下载第三方依赖。`dist/Mio.app` 是当前机器的临时签名本地应用，未做 Developer ID 签名或公证。窗口关闭后可从菜单栏「澪」重新打开；菜单可暂停接收、切换角色鼠标穿透和退出。角色窗口可以拖动。
+需要 Xcode 或包含 Swift 的 Command Line Tools。构建不下载第三方依赖。`dist/Mio.app` 是当前机器的临时签名本地应用，未做 Developer ID 签名或公证。窗口关闭后可从菜单栏「澪」重新打开；菜单可暂停接收、切换角色鼠标穿透和退出。角色窗口可以拖动。桌面气泡只显示角色台词，连接与决策来源可在来信主窗口查看。
 
 当前 Cubism 离线复验（不创建系统监控或网络客户端，不启动常驻窗口）：
 

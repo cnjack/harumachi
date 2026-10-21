@@ -149,10 +149,8 @@ struct DesktopCompanion: View {
     var body: some View {
         VStack(spacing: 0) {
             Button(action: openDashboard) {
-                VStack(spacing: 5) {
-                    Text(state.phrase).font(.system(size: 12, design: .serif)).lineSpacing(3)
-                    Text(state.paused ? "已暂停" : state.source).font(.system(size: 9)).foregroundStyle(muted)
-                }.padding(12).frame(maxWidth: .infinity)
+                Text(state.phrase).font(.system(size: 12, design: .serif)).lineSpacing(3)
+                    .padding(12).frame(maxWidth: .infinity)
                     .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 15))
             }.buttonStyle(.plain).padding(.horizontal, 14)
             CharacterView(state: state)
