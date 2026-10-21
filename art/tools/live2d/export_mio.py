@@ -32,6 +32,7 @@ def main():
         for directory in (bake,built,classes,logs): directory.mkdir(exist_ok=True)
         if not args.reuse_bake:
             env = dict(os.environ, CLANG_MODULE_CACHE_PATH=str(work/'clang'), SWIFTPM_MODULECACHE_OVERRIDE=str(work/'clang'))
+            run(['swift',ROOT/'art/tools/live2d/prepare_face.swift',ROOT],ROOT,env)
             run(['swift','run','-c','release','--build-system','native','--disable-sandbox','--package-path',ROOT/'native/mio-companion','--scratch-path',work/'swift','--cache-path',work/'cache','MioCubismBake',ROOT,bake],ROOT,env)
         source = ROOT/'art/tools/live2d'
         run([args.jdk/'javac','-proc:none','-encoding','UTF-8','-cp',str(res/'*'),'-d',classes,source/'MioBindings.java',*sorted((source/'vendor/autolive2d').glob('*.java'))],work)
@@ -41,8 +42,9 @@ def main():
         reports = [json.loads(line) for line in result.stdout.splitlines() if line.startswith('{"status"')]
         if not reports: raise SystemExit('Exporter produced no report; see '+str(work/'export.log'))
         report = reports[-1]
-        expected_meshes = len(json.loads((bake/'bake.json').read_text())['meshes'])
-        assert report['selectedConsistency'] and report['selectedParameterCount']==24 and report['selectedDrawableCount']==expected_meshes, report
+        baked = json.loads((bake/'bake.json').read_text())
+        expected_meshes = len(baked['meshes'])
+        assert report['selectedConsistency'] and report['selectedParameterCount']==len(baked['parameters']) and report['selectedDrawableCount']==expected_meshes, report
         assert report['selectedMocVersion']==3 and report['intermediateArchiveSaved'], report
         runtime = ROOT/'native/mio-companion/Sources/MioApp/Resources/MioCubism'
         runtime.mkdir(exist_ok=True)
@@ -53,7 +55,20 @@ def main():
         names = ['idle','wave','think','talk']
         for obsolete in (runtime/'motions').glob('*.motion3.json'):
             if obsolete.name not in {name+'.motion3.json' for name in names}: obsolete.unlink()
-        manifest = {'Version':3,'FileReferences':{'Moc':'Mio.moc3','Textures':[str(p.relative_to(built)) for p in sorted((built/'textures').glob('*.png'))], 'DisplayInfo':'Mio.cdi3.json','Motions':{name:[{'File':f'motions/{name}.motion3.json','FadeInTime':0,'FadeOutTime':0}] for name in names}},'Groups':[{'Target':'Parameter','Name':'EyeBlink','Ids':['ParamEyeLOpen','ParamEyeROpen']},{'Target':'Parameter','Name':'LipSync','Ids':['ParamMouthOpenY']}]}
+        physics = []
+        for index,(part,delay,mobility) in enumerate([('Front',0.65,0.85),('Back',0.85,0.9)],1):
+            physics.append({'Id':f'PhysicsSetting{index}',
+                'Input':[{'Source':{'Target':'Parameter','Id':param},'Weight':weight,'Type':kind,'Reflect':False}
+                         for param,weight,kind in [('ParamAngleX',60,'X'),('ParamAngleZ',30,'Angle'),('ParamBodyAngleZ',10,'Angle')]],
+                'Output':[{'Destination':{'Target':'Parameter','Id':'ParamHair'+part},'VertexIndex':1,'Scale':1.2,'Weight':100,'Type':'Angle','Reflect':False}],
+                'Vertices':[{'Position':{'X':0,'Y':0},'Mobility':1,'Delay':1,'Acceleration':1,'Radius':0},
+                            {'Position':{'X':0,'Y':8},'Mobility':mobility,'Delay':delay,'Acceleration':1.5,'Radius':8}],
+                'Normalization':{'Position':{'Minimum':-10,'Default':0,'Maximum':10},'Angle':{'Minimum':-30,'Default':0,'Maximum':30}}})
+        physics_json = {'Version':3,'Meta':{'PhysicsSettingCount':2,'TotalInputCount':6,'TotalOutputCount':2,'VertexCount':4,
+            'EffectiveForces':{'Gravity':{'X':0,'Y':-1},'Wind':{'X':0,'Y':0}},
+            'PhysicsDictionary':[{'Id':f'PhysicsSetting{i+1}','Name':name} for i,name in enumerate(['Front hair','Back hair'])]},'PhysicsSettings':physics}
+        (runtime/'Mio.physics3.json').write_text(json.dumps(physics_json,indent=2)+'\n')
+        manifest = {'Version':3,'FileReferences':{'Moc':'Mio.moc3','Textures':[str(p.relative_to(built)) for p in sorted((built/'textures').glob('*.png'))], 'DisplayInfo':'Mio.cdi3.json','Physics':'Mio.physics3.json','Motions':{('Idle' if name=='idle' else name):[{'File':f'motions/{name}.motion3.json','FadeInTime':0.35,'FadeOutTime':0.35}] for name in names}},'Groups':[{'Target':'Parameter','Name':'EyeBlink','Ids':['ParamEyeLOpen','ParamEyeROpen']},{'Target':'Parameter','Name':'LipSync','Ids':['ParamMouthOpenY']}]}
         (runtime/'Mio.model3.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
         params = json.loads((bake/'bake.json').read_text())['parameters']
         display = {'Version':3,'Parameters':[{'Id':p['id'],'GroupId':'Mio','Name':p['id']} for p in params],'ParameterGroups':[{'Id':'Mio','GroupId':'','Name':'澪'}],'Parts':[]}

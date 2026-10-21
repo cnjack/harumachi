@@ -4271,6 +4271,19 @@
       "purpose": "Single-contour flat upper-sleeve artwork without duplicate oval cap",
       "generated_output": "exec-00e9b127-0d05-487a-b07e-f6121df73ae0.png",
       "sha256": "4c60d3102ef32a7aad0849d62895b4a86c1ece8d8cd69318c6654bc4ebcc06fd"
+    },
+    {
+      "file": "art/live2d/mio/face/components-20261021.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "prompt": "art/manifests/prompts/live2d/mio-face-components-v15.txt",
+      "references": [
+        "native/mio-companion/Sources/MioApp/Resources/Mio/eyes_open.png",
+        "native/mio-companion/Sources/MioApp/Resources/Mio/eyes_closed.png"
+      ],
+      "purpose": "Independent sclera, irises, brows and closed lids for source Cubism keyforms",
+      "generated_output": "exec-9354a052-07a9-450b-987a-782d9505ad3c.png",
+      "sha256": "cb1de75b8a13167befa847512591c0b8a54c1ac8ed4a2a3d57cc1db44256edaf"
     }
   ]
 }

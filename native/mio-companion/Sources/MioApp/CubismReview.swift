@@ -25,7 +25,13 @@ enum CubismReview {
             checks.append(["id":parameter.id,"maximumVertexDelta":geometry,"maximumOpacityDelta":opacity])
         }
         try renderer.snapshot(to:directory.appendingPathComponent("default.png"),pose:RigPose(time:0,gesture:.idle))
-        guard core.parameters.count == 24 else { throw CubismModel.Failure(message:"Expected 24 live parameters") }
+        guard core.parameters.count == 29 else { throw CubismModel.Failure(message:"Expected 29 live parameters") }
+        for x in [-1,0,1] { for y in [-1,0,1] {
+            try renderer.snapshot(to:directory.appendingPathComponent("face-\(x)-\(y).png"),pose:RigPose(time:0,lookX:Float(x),lookY:Float(y),gesture:.idle))
+        } }
+        for t in [4.17,4.20,4.23,4.25,4.30,4.35,4.39] {
+            try renderer.snapshot(to:directory.appendingPathComponent("eyelids-\(t).png"),pose:RigPose(time:t,gesture:.idle))
+        }
         var frameCount = 0
         func verify(_ pose: RigPose,_ motion: PuppetMotion) throws {
             try core.update(CubismParameters.values(pose:pose,motion:motion))
@@ -61,7 +67,7 @@ enum CubismReview {
                 try verify(pose,playback.sample(pose))
             }
         } }
-        let report: [String:Any] = ["format":"Cubism MOC3","coreVersion":core.coreVersion,"mocVersion":core.mocVersion,"parameters":checks,"drawables":try core.meshes().count,"coreFrames":frameCount,"metalSnapshots":1+gestures.count*5,"parameterEngine":"official Cubism Core","renderer":"Swift Metal indexed drawables","networkRequests":0,"systemMonitoringStarted":false,"audioEnabled":false,"virtualDisplayCreated":false,"visibleWindowAcceptance":false]
+        let report: [String:Any] = ["format":"Cubism MOC3","coreVersion":core.coreVersion,"mocVersion":core.mocVersion,"parameters":checks,"drawables":try core.meshes().count,"coreFrames":frameCount,"metalSnapshots":1+9+7+gestures.count*5,"parameterEngine":"official Cubism Core","renderer":"Swift Metal indexed drawables","networkRequests":0,"systemMonitoringStarted":false,"audioEnabled":false,"virtualDisplayCreated":false,"visibleWindowAcceptance":false]
         try JSONSerialization.data(withJSONObject:report,options:[.prettyPrinted,.sortedKeys]).write(to:directory.appendingPathComponent("verification.json"))
         print("Cubism Core/Metal: \(checks.count) effective parameters, \(frameCount) verified frames at \(directory.path)")
     }

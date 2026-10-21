@@ -1,0 +1,154 @@
+[
+  {
+    "defaultVisible" : true,
+    "group" : "eye_white_left",
+    "id" : "eye_white_left",
+    "rect" : [
+      256,
+      200,
+      34,
+      20
+    ],
+    "sourceAtlas" : "art\/live2d\/mio\/face\/components-20261021.png",
+    "sourceCrop" : [
+      3,
+      169,
+      455,
+      285
+    ],
+    "texture" : "eye_white_left.png"
+  },
+  {
+    "defaultVisible" : true,
+    "group" : "eye_white_right",
+    "id" : "eye_white_right",
+    "rect" : [
+      310,
+      200,
+      34,
+      20
+    ],
+    "sourceAtlas" : "art\/live2d\/mio\/face\/components-20261021.png",
+    "sourceCrop" : [
+      569,
+      169,
+      446,
+      283
+    ],
+    "texture" : "eye_white_right.png"
+  },
+  {
+    "defaultVisible" : true,
+    "group" : "iris_left",
+    "id" : "iris_left",
+    "rect" : [
+      264.5,
+      201,
+      17,
+      18.5
+    ],
+    "sourceAtlas" : "art\/live2d\/mio\/face\/components-20261021.png",
+    "sourceCrop" : [
+      158,
+      591,
+      242,
+      264
+    ],
+    "texture" : "iris_left.png"
+  },
+  {
+    "defaultVisible" : true,
+    "group" : "iris_right",
+    "id" : "iris_right",
+    "rect" : [
+      318.5,
+      201,
+      17,
+      18.5
+    ],
+    "sourceAtlas" : "art\/live2d\/mio\/face\/components-20261021.png",
+    "sourceCrop" : [
+      624,
+      591,
+      242,
+      264
+    ],
+    "texture" : "iris_right.png"
+  },
+  {
+    "defaultVisible" : true,
+    "group" : "brow_left",
+    "id" : "brow_left",
+    "rect" : [
+      256,
+      187.5,
+      34,
+      4.7999999999999998
+    ],
+    "sourceAtlas" : "art\/live2d\/mio\/face\/components-20261021.png",
+    "sourceCrop" : [
+      32,
+      1002,
+      442,
+      137
+    ],
+    "texture" : "brow_left.png"
+  },
+  {
+    "defaultVisible" : true,
+    "group" : "brow_right",
+    "id" : "brow_right",
+    "rect" : [
+      310,
+      187.5,
+      34,
+      4.7999999999999998
+    ],
+    "sourceAtlas" : "art\/live2d\/mio\/face\/components-20261021.png",
+    "sourceCrop" : [
+      555,
+      1003,
+      439,
+      134
+    ],
+    "texture" : "brow_right.png"
+  },
+  {
+    "defaultVisible" : false,
+    "group" : "eye_lid_left",
+    "id" : "eye_lid_left",
+    "rect" : [
+      256,
+      211.5,
+      34,
+      6.5
+    ],
+    "sourceAtlas" : "art\/live2d\/mio\/face\/components-20261021.png",
+    "sourceCrop" : [
+      40,
+      1266,
+      421,
+      165
+    ],
+    "texture" : "eye_lid_left.png"
+  },
+  {
+    "defaultVisible" : false,
+    "group" : "eye_lid_right",
+    "id" : "eye_lid_right",
+    "rect" : [
+      310,
+      211.5,
+      34,
+      6.5
+    ],
+    "sourceAtlas" : "art\/live2d\/mio\/face\/components-20261021.png",
+    "sourceCrop" : [
+      591,
+      1279,
+      402,
+      154
+    ],
+    "texture" : "eye_lid_right.png"
+  }
+]

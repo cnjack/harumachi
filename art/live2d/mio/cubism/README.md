@@ -1,15 +1,13 @@
 # 澪 Cubism 模型
 
-`Mio.cmo3` 是可继续编辑的 Cubism 工程，`Mio.psd` 是 RGB/8、30 层导入素材。运行包位于 `native/mio-companion/Sources/MioApp/Resources/MioCubism/`，入口为 `Mio.model3.json`；导入第三方播放器时保留整个目录及相对路径。
+当前 v15：`Mio.cmo3` 为可编辑 Cubism 工程，`Mio.psd` 为 RGB/8、34 层导入素材。正式入口为 `native/mio-companion/Sources/MioApp/Resources/MioCubism/Mio.model3.json`。
 
-模型由本机已安装的 Cubism Editor 5.3.04 导入、绑定并导出，目标格式 Cubism 4.0（Core MOC version 3）。保留原人物图和 0.736 头部比例，有 24 个参数、30 个 ArtMesh、肩/肘/腕/头/躯干旋转变形器及独立透明度控制。五套标准 motion3：放下、招手、伸懒腰、思考、说话。没有复制或分发 Editor/Core 二进制。
+模型通过本机 Cubism Editor 5.3.04 官方导出，目标 Cubism 4.0（MOC version 3），29 个有效参数、34 个 ArtMesh。保留 0.736 头部比例及用户认可的 v14 衣袖连接，新增转头网格关键形、独立眼球/眼睑/眉毛与嘴型连续形变。只有 Idle、wave、think、talk 四组动作；伸懒腰已移除。
 
-复现：在仓库根运行 `python3 art/tools/live2d/export_mio.py`。工具使用已安装的 Editor 5.3.04 和 JDK 21，不下载软件、不修改许可证、不调用图形界面。可用 `--editor` / `--jdk` 指定安装目录。桥接依据 autoLive2d MIT 工具，来源、固定提交和许可证在 `art/tools/live2d/vendor/autolive2d/`；5.3 适配和澪的源绑定在相邻文件。
+`Mio.physics3.json` 提供前后发两组物理。Idle 为 12 秒闭环，动作淡入淡出 0.35 秒；手型 ID 曲线单独关闭淡入淡出，避免多手叠影。实际复验包括官方 Core、Swift Metal 和 Pixi Cubism4 网页播放器，详见 [v15 记录](../../../../docs/game-design/MIO_NATURAL_MOTION_20261021.md)。
 
-Swift 默认使用官方 Core 计算变形、Metal 绘制。Core 从本机 Cubism 安装加载，或通过 `MIO_CUBISM_CORE_PATH` 指定单独取得的官方 Native Core dylib；运行包本身不含 Core。当前 Swift 渲染器支持本模型使用的普通混合、无裁剪网格，不表示支持任意带遮罩/高级混合的第三方模型。
+在仓库根运行 `python3 art/tools/live2d/export_mio.py` 重建。工具先注册透明脸部件，再生成源关键形、PSD 和动作，调用本机 Editor 及 JDK 21 导出；`--editor` / `--jdk` 可指定安装目录。桥接依据 autoLive2d MIT 工具，来源、固定提交和许可证在 `art/tools/live2d/vendor/autolive2d/`。不下载软件、不修改许可证、不分发厂商二进制。
 
-已用官方 Core 6.0.513 验证文件一致性、24 个有效参数与实际骨段、关节和手腕固定。新补画分段衣袖并完成 6514 帧全组复拍和已解锁现有屏幕的六状态窗口验收，见 `docs/game-design/MIO_ARM_NATURALNESS_20261021.md`。第三方播放器未在本轮实测。
+网页包由 `python3 native/mio-companion/tools/package_web.py --output /tmp/Mio-live2d-web.zip` 生成，仅包含 model3 引用的十个运行文件与说明。保持 Mio 目录及相对路径，用 HTTP/HTTPS 提供文件。
 
-当前为 v14：恢复旧整袖的连续肘部褶皱，重新注册腕部中心；保留 v13 独立袖窿、垂手肩头上提和伸展内收。这些形变已写入 CMO3/MOC3。保留 v12 的厚度、起落节奏和四套标准动作（放下、招手、思考、说话）。当前复验见 `docs/game-design/MIO_ELBOW_RESTORE_20261021.md`。
-
-2026-10-21：伸懒腰已移出标准 motion3 清单及文件；模型形变、图集和 CMO3 沿用 v14。导出器会清理已移除的动作，防止增量导出重新带回旧文件。见 `docs/game-design/MIO_MAIL_INTEGRATION_20261021.md`。
+Swift 从本机安装目录或 `MIO_CUBISM_CORE_PATH` 加载官方 Core，使用 Metal 绘制本模型普通混合/无遮罩网格；并不代表支持任意第三方模型。Swift 的头发弹簧与网页的标准 physics3 求解器不同，外观已分别复核，未承诺逐帧一致。

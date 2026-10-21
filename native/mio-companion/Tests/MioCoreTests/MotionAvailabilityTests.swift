@@ -13,7 +13,7 @@ final class MotionAvailabilityTests: XCTestCase {
             resources.appendingPathComponent("Mio.model3.json"))) as? [String: Any])
         let references = try XCTUnwrap(manifest["FileReferences"] as? [String: Any])
         let motions = try XCTUnwrap(references["Motions"] as? [String: Any])
-        XCTAssertEqual(Set(motions.keys), names)
+        XCTAssertEqual(Set(motions.keys), names.subtracting(["idle"]).union(["Idle"]))
         let files = try FileManager.default.contentsOfDirectory(atPath: resources.appendingPathComponent("motions").path)
         XCTAssertEqual(Set(files), Set(names.map { $0 + ".motion3.json" }))
     }

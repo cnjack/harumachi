@@ -42,6 +42,31 @@
       "Name": "ParamMouthOpenY"
     },
     {
+      "Id": "ParamEyeBallX",
+      "GroupId": "Mio",
+      "Name": "ParamEyeBallX"
+    },
+    {
+      "Id": "ParamEyeBallY",
+      "GroupId": "Mio",
+      "Name": "ParamEyeBallY"
+    },
+    {
+      "Id": "ParamBrowLY",
+      "GroupId": "Mio",
+      "Name": "ParamBrowLY"
+    },
+    {
+      "Id": "ParamBrowRY",
+      "GroupId": "Mio",
+      "Name": "ParamBrowRY"
+    },
+    {
+      "Id": "ParamMouthForm",
+      "GroupId": "Mio",
+      "Name": "ParamMouthForm"
+    },
+    {
       "Id": "ParamHairFront",
       "GroupId": "Mio",
       "Name": "ParamHairFront"

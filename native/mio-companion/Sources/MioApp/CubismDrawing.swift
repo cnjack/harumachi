@@ -8,6 +8,7 @@ final class CubismDrawing {
     let model: CubismModel
     let textures: [MTLTexture]
     let device: MTLDevice
+    private var hair = HairPhysics()
     init(device: MTLDevice, manifest: URL) throws {
         self.device = device
         model = try CubismModel(manifest:manifest)
@@ -26,7 +27,7 @@ final class CubismDrawing {
         }
     }
     func encode(_ encoder: MTLRenderCommandEncoder,size: CGSize,pose: RigPose,motion: PuppetMotion) throws {
-        try model.update(CubismParameters.values(pose:pose,motion:motion))
+        try model.update(hair.update(CubismParameters.values(pose:pose,motion:motion),time:pose.time))
         let scale = min(Float(size.width)/model.width,Float(size.height)/model.height)
         let offset = SIMD2((Float(size.width)-model.width*scale)/2,(Float(size.height)-model.height*scale)/2)
         for mesh in try model.meshes() where mesh.opacity > 0.001 {

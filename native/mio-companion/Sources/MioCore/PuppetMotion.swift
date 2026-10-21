@@ -26,7 +26,8 @@ public struct PuppetMotion: Sendable {
         let t = pose.time
         torso = pose.sway * 0.012
         head = pose.lookX * 0.055 + Float(sin(t * 0.72 - 0.5)) * 0.022
-        headShift = SIMD2(pose.lookX * 3, -pose.lookY * 3 + Float(sin(t * 1.8 - 0.4)) * 1.2)
+        let attention = FaceRig.attention(t-0.12)
+        headShift = SIMD2((pose.lookX+attention.x)*3, -(pose.lookY+attention.y)*3 + Float(sin(t * 1.8 - 0.4)) * 1.2)
         leftShoulder = Float(sin(t * 1.15)) * 0.018
         rightShoulder = Float(sin(t * 1.15 + 0.7)) * 0.018
         leftElbow = 0.04; rightElbow = -0.04
@@ -51,16 +52,18 @@ public struct PuppetMotion: Sendable {
             * (1-Self.smooth(Float(gesture.duration-0.4),Float(gesture.duration),Float(phase)))
         let presentedPalm = Self.smooth(0.08,0.28,Float(phase))
             * (1-Self.smooth(Float(gesture.duration-0.45),Float(gesture.duration-0.15),Float(phase)))
-        let oscillation = Float(sin(phase * 8.6))
+        let waveBeats: [(Float,Float)] = [(0,0),(0.65,0),(0.90,0.85),(1.22,-0.9),(1.56,1),
+            (1.93,-0.75),(2.29,0.8),(2.65,-0.65),(3.02,0.55),(3.42,-0.3),(3.8,0),(5,0)]
+        let oscillation = Self.phrase(Float(phase),keys:waveBeats)
         switch gesture {
         case .wave:
             rightHand = SIMD4(1 - presentedPalm, presentedPalm, 0, 0)
             // Elbow leads, wrist follows, with a small shoulder/body response.
             // Their different phases keep the greeting from moving as one rod.
             rightShoulder += (-0.65 * Self.smooth(0.25,1,blend)
-                + 0.045 * Float(sin(phase*8.6-0.8))*blend)
+                + 0.035 * Self.phrase(Float(phase-0.12),keys:waveBeats)*blend)
             rightElbow -= (1.95 + 0.185 * oscillation) * Self.smooth(0, 0.65, blend)
-            rightWrist = 0.19 * Float(sin(phase*8.6-0.65)) * blend
+            rightWrist = 0.19 * Self.phrase(Float(phase-0.08),keys:waveBeats) * blend
             head += (0.045+0.026*Float(sin(phase*4.3-0.7))) * blend
             torso += (-0.032+0.006*Float(sin(phase*4.3-1))) * blend
         case .think:
@@ -93,10 +96,12 @@ public struct PuppetMotion: Sendable {
                 * (1-Self.smooth(3.9,4.2,Float(phase)))
         case .talk:
             rightHand = SIMD4(1 - presentedPalm, presentedPalm, 0, 0)
-            let beat = Float(sin(phase*5.8))
-            rightShoulder += (0.10 + 0.085 * Float(sin(phase*5.8-0.4))) * blend
+            let speechBeats: [(Float,Float)] = [(0,0),(0.7,0.2),(1.15,0.9),(1.7,-0.45),
+                (2.3,-0.45),(2.85,0.6),(3.45,-0.2),(4.1,0.35),(5,0)]
+            let beat = Self.phrase(Float(phase),keys:speechBeats)
+            rightShoulder += (0.10 + 0.085 * Self.phrase(Float(phase-0.1),keys:speechBeats)) * blend
             rightElbow -= (0.55 + 0.23 * beat) * blend
-            rightWrist = 0.12*Float(sin(phase*5.8-0.75))*blend
+            rightWrist = 0.12*Self.phrase(Float(phase-0.17),keys:speechBeats)*blend
             leftShoulder -= (0.08+0.025*Float(sin(phase*3.8-0.7))) * blend
             leftElbow += (0.18+0.05*Float(sin(phase*3.8))) * blend
             headShift.y += Float(sin(phase * 5.8-0.4)) * 2 * blend
@@ -109,6 +114,13 @@ public struct PuppetMotion: Sendable {
     public static func smooth(_ low: Float, _ high: Float, _ value: Float) -> Float {
         let x = max(0, min(1, (value - low) / (high - low)))
         return x * x * (3 - 2 * x)
+    }
+    public static func phrase(_ time: Float,keys: [(Float,Float)]) -> Float {
+        for index in 1..<keys.count where time < keys[index].0 {
+            let (a,x) = keys[index-1],(b,y) = keys[index]
+            return x+(y-x)*smooth(a,b,time)
+        }
+        return keys.last?.1 ?? 0
     }
     public func blended(from previous: PuppetMotion, fraction: Float) -> PuppetMotion {
         if fraction <= 0 { return previous }

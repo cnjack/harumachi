@@ -21,12 +21,10 @@ try FileManager.default.createDirectory(at:out,withIntermediateDirectories:true)
 let resources = root.appendingPathComponent("native/mio-companion/Sources/MioApp/Resources/Mio")
 let source = try JSONDecoder().decode(SourceRig.self,from:Data(contentsOf:resources.appendingPathComponent("Mio.rig.json")))
 var layers: [SourceRig.Layer] = []
+let faceParts = try JSONDecoder().decode([SourceRig.Layer].self,from:Data(contentsOf:resources.appendingPathComponent("Face.parts.json")))
 for layer in source.layers {
-    if layer.group.hasPrefix("eyes_") {
-        for side in ["right","left"] {
-            var copy = layer;copy.id += "_"+side;copy.group += "_"+side;layers.append(copy)
-        }
-    } else { layers.append(layer) }
+    if layer.group == "eyes_open" { layers += faceParts }
+    else if layer.group != "eyes_closed" { layers.append(layer) }
 }
 let parameters: [Parameter] = [
     .init(id:"ParamAngleX",min:-30,max:30,value:0),.init(id:"ParamAngleY",min:-30,max:30,value:0),
@@ -34,6 +32,9 @@ let parameters: [Parameter] = [
     .init(id:"ParamBreath",min:0,max:1,value:0.5),
     .init(id:"ParamEyeLOpen",min:0,max:1,value:1),.init(id:"ParamEyeROpen",min:0,max:1,value:1),
     .init(id:"ParamMouthOpenY",min:0,max:1,value:0),
+    .init(id:"ParamEyeBallX",min:-1,max:1,value:0),.init(id:"ParamEyeBallY",min:-1,max:1,value:0),
+    .init(id:"ParamBrowLY",min:-1,max:1,value:0),.init(id:"ParamBrowRY",min:-1,max:1,value:0),
+    .init(id:"ParamMouthForm",min:-1,max:1,value:0),
     .init(id:"ParamHairFront",min:-1,max:1,value:0),.init(id:"ParamHairBack",min:-1,max:1,value:0),
     .init(id:"ParamShoulderL",min:-2.2,max:2.2,value:-0.38),.init(id:"ParamShoulderR",min:-2.2,max:2.2,value:0.38),
     .init(id:"ParamElbowL",min:0,max:1.6,value:0.04),.init(id:"ParamElbowR",min:-2.2,max:3.1,value:-0.04),
@@ -75,7 +76,8 @@ let headGroups = ["head","hair","eyes_open","eyes_closed","mouth_open","mouth_cl
 for (order,layer) in layers.enumerated() {
     let arm = layer.group.hasPrefix("arm_") || layer.group.hasPrefix("hand_")
     let hand = layer.group.hasPrefix("hand_")
-    let head = headGroups.contains(layer.group) || layer.group.hasPrefix("eyes_")
+    let eye = layer.group.hasPrefix("eye_") || layer.group.hasPrefix("iris_") || layer.group.hasPrefix("brow_")
+    let head = headGroups.contains(layer.group) || eye
     let left = layer.group.hasSuffix("_left")
     let side = left ? "L" : "R"
     var bindings: [(String,[Float])] = []
@@ -95,8 +97,21 @@ for (order,layer) in layers.enumerated() {
         }
     } else if head {
         parent = "Head";pivot = SIMD2(375,305)
-        bindings = []
+        bindings = [("ParamAngleX",[-30,0,30]),("ParamAngleY",[-30,0,30])]
         if layer.group == "hair" { bindings.append((layer.id == "hair_back" ? "ParamHairBack" : "ParamHairFront",[-1,0,1])) }
+        if eye {
+            if layer.group.hasPrefix("brow_") { bindings.append(("ParamBrow"+side+"Y",[-1,0,1])) }
+            else if !layer.group.hasPrefix("eye_lid_") {
+                bindings.append(("ParamEye"+side+"Open",[0,0.35,0.7,1]))
+                if layer.group.hasPrefix("iris_") {
+                    bindings += [("ParamEyeBallX",[-1,0,1]),("ParamEyeBallY",[-1,0,1])]
+                }
+            }
+        }
+        if layer.group.hasPrefix("mouth_") {
+            bindings.append(("ParamMouthForm",[-1,0,1]))
+            if layer.group == "mouth_open" { bindings.append(("ParamMouthOpenY",[0,0.25,0.6,1])) }
+        }
     } else if layer.group == "lower_body" {
         parent = "";pivot = .zero
         bindings = [("ParamBodyAngleZ",[-3,-2,-1,0,1,2,3]),("ParamTorsoLift",[0,5])]
@@ -105,8 +120,8 @@ for (order,layer) in layers.enumerated() {
     } else if layer.group == "torso" {
         bindings = [("ParamAngleZ",[-12,-6,0,6,12]),("ParamAngleX",[-30,0,30]),("ParamAngleY",[-30,0,30]),("ParamBreath",[0,0.5,1]),("ParamTorsoLift",[0,5])]
     }
-    let columns = hand ? 12 : (arm ? 24 : (head ? 8 : 20))
-    let rows = hand ? 32 : (head ? 24 : 64)
+    let columns = hand ? 12 : (arm ? 24 : (head ? 16 : 20))
+    let rows = hand ? 32 : (head ? 32 : 64)
     var base: [Float] = [];var indices: [Int] = []
     for y in 0...rows { for x in 0...columns {
         base += [layer.rect[0]+75+layer.rect[2]*Float(x)/Float(columns),layer.rect[1]+layer.rect[3]*Float(y)/Float(rows)]
@@ -146,9 +161,23 @@ for (order,layer) in layers.enumerated() {
                     p = PuppetMotion.sleeveRoot(p,shoulder:shoulder,elbow:elbow,lift:left ? angle:-angle)
                 }
             } else if head {
+                if eye {
+                    let kind = String(layer.group.dropLast(left ? 5 : 6))
+                    p = FaceRig.eye(p,side:left ? "left":"right",kind:kind,
+                        open:values["ParamEye"+side+"Open"] ?? 1,
+                        gaze:SIMD2(values["ParamEyeBallX"] ?? 0,values["ParamEyeBallY"] ?? 0),
+                        brow:values["ParamBrow"+side+"Y"] ?? 0)
+                }
+                if layer.group.hasPrefix("mouth_") {
+                    let form = values["ParamMouthForm"] ?? 0
+                    p.x = 300+(p.x-300)*(1+0.12*form)
+                    p.y -= form*1.5*pow(min(1,abs(p.x-300)/13),2)
+                    if layer.group == "mouth_open" { p.y = 240+(p.y-240)*(values["ParamMouthOpenY"] ?? 0) }
+                }
+                p = FaceRig.turn(p,x:values["ParamAngleX"] ?? 0,y:values["ParamAngleY"] ?? 0,group:layer.id)
                 if layer.group == "hair" {
                     let sway = values[layer.id == "hair_back" ? "ParamHairBack" : "ParamHairFront"] ?? 0
-                    p.x += sway*2.6*max(0,(p.y-95)/200)
+                    p.x += sway*5*pow(max(0,(p.y-95)/200),2)
                 }
                 // Head translation is authored on its parent rotation deformer.
             } else if layer.group == "lower_body" {
@@ -175,10 +204,10 @@ for (order,layer) in layers.enumerated() {
         let index = HandPresentation.variants.firstIndex(of:variant) ?? 0
         opacity = ["parameter":"ParamHand"+side,"keys":Array(0...(left ? 4 : 5)),"values":Array(0...(left ? 4 : 5)).map { $0 == index ? 1 : 0 }]
         if layer.id == "hand_right_chin" { opacity = ["constant":0] }
-    } else if layer.group.hasPrefix("eyes_") {
-        opacity = ["parameter":layer.group.hasSuffix("_left") ? "ParamEyeLOpen" : "ParamEyeROpen","keys":[0,1],"values":layer.group.hasPrefix("eyes_open") ? [0,1] : [1,0]]
+    } else if eye && !layer.group.hasPrefix("brow_") {
+        opacity = ["parameter":"ParamEye"+side+"Open","keys":[0,0.08,0.25,1],"values":layer.group.hasPrefix("eye_lid_") ? [1,1,0,0] : [0,0,1,1]]
     } else if layer.group.hasPrefix("mouth_") {
-        opacity = ["parameter":"ParamMouthOpenY","keys":[0,1],"values":layer.group == "mouth_open" ? [0,1] : [1,0]]
+        opacity = ["parameter":"ParamMouthOpenY","keys":[0,0.12,0.2,1],"values":layer.group == "mouth_open" ? [0,1,1,1] : [1,0,0,0]]
     } else if layer.group == "thought_cloud" {
         opacity = ["parameter":"ParamThought","keys":[0,1],"values":[0,1]]
     }
@@ -256,20 +285,40 @@ for file in try FileManager.default.contentsOfDirectory(at:motions,includingProp
     try FileManager.default.removeItem(at:file)
 }
 for gesture in [CharacterGesture.idle,.wave,.think,.talk] {
-    let frames = Int(gesture.duration*30)
-    let samples = (0...frames).map { frame -> [String:Float] in
+    let duration = gesture == .idle ? 12 : gesture.duration
+    let frames = Int(duration*30)
+    var samples = (0...frames).map { frame -> [String:Float] in
         let t = Double(frame)/30
         let pose = RigPose(time:t,speaking:gesture == .talk,gesture:gesture,gestureTime:t)
         return CubismParameters.values(pose:pose,motion:PuppetMotion(pose:pose))
     }
+    if gesture == .idle {
+        // Bridge the final 1.5 seconds into the start pose. This remains useful
+        // in viewers which restart rather than honor motion3's loop flag.
+        let first = samples[0],start = frames-45,from = samples[frames-45]
+        let v0 = parameters.map { (from[$0.id]!-samples[start-1][$0.id]!)*30 }
+        let v1 = parameters.map { (samples[1][$0.id]!-first[$0.id]!)*30 }
+        for frame in start...frames {
+            let u = Float(frame-start)/45,u2 = u*u,u3 = u2*u
+            for (i,p) in parameters.enumerated() {
+                let value = (2*u3-3*u2+1)*from[p.id]! + (u3-2*u2+u)*1.5*v0[i] +
+                    (-2*u3+3*u2)*first[p.id]! + (u3-u2)*1.5*v1[i]
+                samples[frame][p.id] = max(p.min,min(p.max,value))
+            }
+        }
+    }
     var segmentsCount = 0,pointsCount = 0
     let curves: [[String:Any]] = parameters.map { parameter in
-        let stepped = ["ParamHandL","ParamHandR","ParamEyeLOpen","ParamEyeROpen","ParamMouthOpenY"].contains(parameter.id)
+        let stepped = ["ParamHandL","ParamHandR"].contains(parameter.id)
         var segments: [Double] = [0,Double(samples[0][parameter.id]!)]
         for frame in 1...frames { segments += [stepped ? 2 : 0,Double(frame)/30,Double(samples[frame][parameter.id]!)] }
         segmentsCount += frames;pointsCount += frames+1
-        return ["Target":"Parameter","Id":parameter.id,"Segments":segments]
+        var curve: [String:Any] = ["Target":"Parameter","Id":parameter.id,"Segments":segments]
+        // Hand variants are mutually exclusive drawings. Global motion fade
+        // would interpolate their IDs and show two palms at the same time.
+        if stepped { curve["FadeInTime"] = 0;curve["FadeOutTime"] = 0 }
+        return curve
     }
-    let motion: [String:Any] = ["Version":3,"Meta":["Duration":gesture.duration,"Fps":30,"Loop":false,"AreBeziersRestricted":true,"CurveCount":curves.count,"TotalSegmentCount":segmentsCount,"TotalPointCount":pointsCount,"UserDataCount":0,"TotalUserDataSize":0,"FadeInTime":0,"FadeOutTime":0],"Curves":curves,"UserData":[]]
+    let motion: [String:Any] = ["Version":3,"Meta":["Duration":duration,"Fps":30,"Loop":gesture == .idle,"AreBeziersRestricted":true,"CurveCount":curves.count,"TotalSegmentCount":segmentsCount,"TotalPointCount":pointsCount,"UserDataCount":0,"TotalUserDataSize":0,"FadeInTime":0.35,"FadeOutTime":0.35],"Curves":curves,"UserData":[]]
     try JSONSerialization.data(withJSONObject:motion,options:[.sortedKeys]).write(to:motions.appendingPathComponent(gesture.rawValue+".motion3.json"))
 }

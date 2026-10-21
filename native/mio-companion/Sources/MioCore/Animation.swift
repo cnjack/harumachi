@@ -28,10 +28,13 @@ public struct RigPose: Sendable, Equatable {
     }
     public var blink: Float {
         if mood == .sleepy { return 1 }
-        let phase = time.truncatingRemainder(dividingBy: 4.7)
-        return Float(max(0, 1 - abs(phase - 4.25) / 0.12))
+        return FaceRig.blink(time)
     }
     public var breath: Float { Float(sin(time * 1.8)) }
     public var sway: Float { Float(sin(time * 0.8)) }
     public var mouthOpen: Bool { speaking && sin(time * 15) > -0.15 }
+    public var mouthAmount: Float {
+        guard speaking else { return 0 }
+        return max(0,Float(sin(time*11)*0.34+sin(time*17+0.5)*0.18+0.39))
+    }
 }

@@ -1,10 +1,12 @@
 # 澪 · 晴町桌面来信
 
+2026-10-21 v15：补充独立眼球、眼睑与眉毛素材，转头写入源网格关键形，待机加入视线停顿，招手与说话采用错相节奏；网页自动待机和头发物理已实测。见[自然度修订与网页验收](../../docs/game-design/MIO_NATURAL_MOTION_20261021.md)。
+
 2026-10-21：125 句角色台词接入当地时间、最近对话和系统事件，由 Clef 选句；时间仅参与决策，桌面气泡保持纯台词。见[上下文决策记录](../../docs/game-design/MIO_CONTEXT_DIALOGUE_20261021.md)。
 
 2026-10-21：按用户要求移除伸懒腰，并将当前角色放回原「桌面来信」。统一入口及本轮验收见[接入记录](../../docs/game-design/MIO_MAIL_INTEGRATION_20261021.md)。
 
-macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用真正 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 30 层 PSD 在 `art/live2d/mio/cubism/`。当前 v14 恢复旧版连续袖子褶皱及袖口，保留 v13 垂手上提、伸展内收的肩位，保留 v12 的厚度与动作节奏，模型含 24 个参数、四套标准 motion3，CLI 生成与兼容边界见[本轮记录](../../docs/game-design/MIO_CUBISM_20261021.md)。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肘部恢复见[修复记录](../../docs/game-design/MIO_ELBOW_RESTORE_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。角色已接入原来的「桌面来信」，统一使用 `open_mio_companion.command`；旧 `preview_mio_motion.command` 也转到同一入口。构建：
+macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用真正 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 34 层 PSD 在 `art/live2d/mio/cubism/`。当前 v15 保留用户认可的 v14 肘部与肩位，加入脸部形变和独立五官绑定，模型含 29 个参数、四套标准 motion3，CLI 生成与兼容边界见[本轮记录](../../docs/game-design/MIO_CUBISM_20261021.md)。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肘部恢复见[修复记录](../../docs/game-design/MIO_ELBOW_RESTORE_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。角色已接入原来的「桌面来信」，统一使用 `open_mio_companion.command`；旧 `preview_mio_motion.command` 也转到同一入口。构建：
 
 ```bash
 ./native/mio-companion/tools/build_app.sh
@@ -34,9 +36,9 @@ python3 tools/review_motion.py /tmp/mio-joints
 
 当前待机为双臂自然垂下，点击「放下」可平滑退出当前动作；动作结束回到垂手，招手和托腮时空闲手臂也保持下垂。正式 Cubism 模型、源码与四套标准 motion3 同步，当前验收见[肩部修复记录](../../docs/game-design/MIO_SHOULDER_20261021.md)。
 
-源素材在 [`art/live2d/mio/`](../../art/live2d/mio/)：透明原始部件图、28 层 RGB/8 PSD、源布局 `Mio.rig.json`，以及 `cubism/` 下的可编辑 CMO3 和独立左右眼的 30 层 PSD。PNG 部件随 Swift Package 打包。上身、腰裙、独立上下臂衣袖、公共前臂、五套常用左右手型、一套食指托腮手型与七个头部部件分别成层；手臂使用 24×64 网格，身体 20×64，头部 20×24。Metal 对预乘纹理进行过滤和透明混合，手型使用独立实心源图与几何过渡。当前含呼吸、轻摆、头发运动、眨眼、说话口型和角色区域内的鼠标视线。默认 60 FPS，全程静音；离线全组复拍按 30 FPS 取样。
+源素材在 [`art/live2d/mio/`](../../art/live2d/mio/)：透明原始部件图、28 层 RGB/8 PSD、源布局 `Mio.rig.json`，以及 `cubism/` 下当前可编辑 CMO3 和含独立虹膜、眉毛与眼睑的 34 层 PSD。PNG 部件随 Swift Package 打包。上身、腰裙、独立上下臂衣袖、公共前臂、五套常用左右手型、一套食指托腮手型与七个头部部件分别成层；手臂使用 24×64 网格，身体 20×64，当前 Cubism 头部 16×32（历史分层渲染器保持原网格）。Metal 对预乘纹理进行过滤和透明混合，手型使用独立实心源图与几何过渡。当前含呼吸、轻摆、头发运动、眨眼、说话口型和角色区域内的鼠标视线。默认 60 FPS，全程静音；离线全组复拍按 30 FPS 取样。
 
-当前头部采用用户在叠图预览中选定的「再缩小 20%」版本：相对前一版为 0.8，相对最初布局为 `0.92 × 0.8 = 0.736`。七个头部图层围绕 `(300, 268)` 的颈部基点一起缩放，五官相对比例保持原值。当前 `20261021-elbow-v14` 保留按用户照片制作的食指抵下巴和思考云，使用分段衣袖、公共前臂及实心手型过渡；源 rig、PSD、CMO3 和应用资源同步。
+当前头部采用用户在叠图预览中选定的「再缩小 20%」版本：相对前一版为 0.8，相对最初布局为 `0.92 × 0.8 = 0.736`。头部及五官图层围绕 `(300, 268)` 的颈部基点一起缩放，头部整体比例保持原值；v15 独立眼部件按原眼位注册。当前 v15 基于 `20261021-elbow-v14`，保留按用户照片制作的食指抵下巴和思考云，使用分段衣袖、公共前臂及实心手型过渡；源 rig、PSD、CMO3 和应用资源同步。
 
 `Mio.rig.json` 仅用于作者源布局；正式入口是 `MioCubism/Mio.model3.json`，其 `.moc3` 由已安装的 Cubism Editor 官方导出器生成。早期自有分层版本和格式核对保留在[历史记录](../../docs/game-design/MIO_REST_AND_FORMAT_20261020.md)。
 

@@ -1,5 +1,7 @@
 # 模型、工程与交付流程
 
+澪 v15：`prepare_face.swift` 注册八个透明眼部件 → `MioCubismBake` 写入转头/五官关键形和四动作 → 官方导出器生成 29 参数、34 ArtMesh 的 PSD/CMO3/MOC3。网页需使用 `Idle`（大写 I）自动待机并加载 physics3；手型 ID 曲线必须禁止交叉淡入。完成原生全动作和网页实际播放后，用 `tools/package_web.py` 仅打包 model3 引用的文件。详见[自然度修订与网页验收](MIO_NATURAL_MOTION_20261021.md)。
+
 澪的上下文台词复验：`--review-dialogue <目录>` 在原应用窗口依次发送七条合成消息，不启动系统监控，保存自身主窗口与桌面气泡。`MIO_TEST_CLEF_URL=<地址> swift test --filter DialogueTests.testLiveContextualSentenceSelection` 另验早晚、报时及追问；本地故障使用现有 Postman 模拟，不能代替真实模型。规则与边界见[上下文决策记录](MIO_CONTEXT_DIALOGUE_20261021.md)。
 
 澪统一从 `open_mio_companion.command` 启动原桌面来信，旧预览启动器同样转入该应用。当前四动作；标准导出和构建清理已移除 motion3。复验 5210 帧和 16 组切换，另用 `--smoke-test <目录>` 验证主窗口及桌面角色两处 Cubism 渲染、来信和暂停。详见[应用接入记录](MIO_MAIL_INTEGRATION_20261021.md)。

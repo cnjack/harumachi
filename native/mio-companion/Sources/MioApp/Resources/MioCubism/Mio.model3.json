@@ -7,33 +7,34 @@
       "textures/texture_01.png"
     ],
     "DisplayInfo": "Mio.cdi3.json",
+    "Physics": "Mio.physics3.json",
     "Motions": {
-      "idle": [
+      "Idle": [
         {
           "File": "motions/idle.motion3.json",
-          "FadeInTime": 0,
-          "FadeOutTime": 0
+          "FadeInTime": 0.35,
+          "FadeOutTime": 0.35
         }
       ],
       "wave": [
         {
           "File": "motions/wave.motion3.json",
-          "FadeInTime": 0,
-          "FadeOutTime": 0
+          "FadeInTime": 0.35,
+          "FadeOutTime": 0.35
         }
       ],
       "think": [
         {
           "File": "motions/think.motion3.json",
-          "FadeInTime": 0,
-          "FadeOutTime": 0
+          "FadeInTime": 0.35,
+          "FadeOutTime": 0.35
         }
       ],
       "talk": [
         {
           "File": "motions/talk.motion3.json",
-          "FadeInTime": 0,
-          "FadeOutTime": 0
+          "FadeInTime": 0.35,
+          "FadeOutTime": 0.35
         }
       ]
     }
