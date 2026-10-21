@@ -101,6 +101,14 @@ public final class MioBindings {
       if(opacity.containsKey("parameter")) opacityPart(mesh,(String)opacity.get("parameter"),floats((List<?>)opacity.get("keys")),floats((List<?>)opacity.get("values")));
       mesh.setMeshUpdatedFlag__testImpl();
     }
+    // Original eye/mouth drawings remain intact; the authored face alpha clips
+    // their contours at small-angle extremes. The inverse flag is fixture-only.
+    for (var entry: meshes.entrySet()) {
+      if (entry.getKey().startsWith("eyes_") || entry.getKey().startsWith("mouth_")) {
+        entry.getValue().getClipGuidList().add(meshes.get("face").getGuid());
+        entry.getValue().setInvertClippingMask(Boolean.getBoolean("mio.maskInverse"));
+      }
+    }
     source.updateParamInstance(true);
     System.out.println("Mio bindings: "+parameters.size()+" parameters, "+deformers.size()+" rotation deformers, "+source.getAllArtMeshes().size()+" meshes");
   }

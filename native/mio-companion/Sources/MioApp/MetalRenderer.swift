@@ -30,11 +30,13 @@ final class MioRenderer: NSObject, MTKViewDelegate {
     var onFrame: (() -> Void)?
     var isPaused = false
     var speakingUntil = Date.distantPast
+    var performance: PerformanceCue?
     var gestureRevision = -1
     var gestureStart: Double = 0
     var lastFrameTime: Double?
     var targetLook = SIMD2<Float>.zero
     private var playback = MotionPlayback()
+    private let inFlight = DispatchSemaphore(value:3)
     func motion(for pose: RigPose) -> PuppetMotion {
         playback.sample(pose)
     }
@@ -46,12 +48,13 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         gestureRevision = revision
     }
 
-    init(device: MTLDevice, legacy: Bool = false) throws {
+    init(device: MTLDevice, legacy: Bool = false, manifest: URL? = nil) throws {
         self.device = device
         if legacy || ProcessInfo.processInfo.environment["MIO_LEGACY_RIG"] == "1" { cubism = nil }
-        else { cubism = try CubismDrawing(device:device,manifest:MioResources.directory("MioCubism").appendingPathComponent("Mio.model3.json")) }
+        else { cubism = try CubismDrawing(device:device,manifest:manifest ?? MioResources.directory("MioCubism").appendingPathComponent("Mio.model3.json")) }
         guard let queue = device.makeCommandQueue() else { throw RenderError.unavailable }
         self.queue = queue
+        playback = MotionPlayback(library:cubism?.motions)
         if let cubism {
             rig = RigDescription(canvas:[cubism.model.width,cubism.model.height],origin:nil,layers:[])
             textures = [:]
@@ -116,6 +119,8 @@ final class MioRenderer: NSObject, MTKViewDelegate {
     func draw(in view: MTKView) {
         guard let drawable = view.currentDrawable, let pass = view.currentRenderPassDescriptor,
               let command = queue.makeCommandBuffer() else { return }
+        inFlight.wait()
+        command.addCompletedHandler { [inFlight] _ in inFlight.signal() }
         let now = ProcessInfo.processInfo.systemUptime
         let dt = min(0.1, max(0, now - (lastFrameTime ?? now)))
         lastFrameTime = now
@@ -127,6 +132,9 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         }
         pose.gestureTime = pose.time - gestureStart
         pose.speaking = Date() < speakingUntil || (pose.gesture == .talk && pose.gestureTime < CharacterGesture.talk.duration)
+        if let performance, pose.gesture == .automatic {
+            performance.apply(to:&pose,elapsed:Date().timeIntervalSince(performance.started))
+        } else { pose.cueGesture = nil;pose.speech = nil;pose.nod = 0 }
         encode(command: command, pass: pass, size: view.drawableSize, pose: pose)
         command.present(drawable); command.commit()
         frameCount += 1
@@ -188,14 +196,17 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         return result
     }
     func encode(command: MTLCommandBuffer, pass: MTLRenderPassDescriptor, size: CGSize, pose: RigPose, motion supplied: PuppetMotion? = nil) {
-        guard let encoder = command.makeRenderCommandEncoder(descriptor: pass) else { return }
-        encoder.setRenderPipelineState(pipeline)
         let motion = supplied ?? motion(for:pose)
         if let cubism {
-            do { try cubism.encode(encoder,size:size,pose:pose,motion:motion) }
-            catch { cubismError = error;fputs("Cubism render failed: \(error)\n",stderr) }
-            encoder.endEncoding();return
+            do {
+                try cubism.prepare(command,size:size,pose:pose,motion:motion)
+                guard let encoder = command.makeRenderCommandEncoder(descriptor:pass) else { return }
+                cubism.encode(encoder);encoder.endEncoding()
+            } catch { cubismError = error;fputs("Cubism render failed: \(error)\n",stderr) }
+            return
         }
+        guard let encoder = command.makeRenderCommandEncoder(descriptor: pass) else { return }
+        encoder.setRenderPipelineState(pipeline)
         for layer in rig.layers {
             if let variant = layer.variant, variant != "relaxed" { continue }
             if layer.group == "eyes_open" && pose.blink > 0.5 { continue }
@@ -222,6 +233,8 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         let descriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .bgra8Unorm, width: width, height: height, mipmapped: false)
         descriptor.usage = [.renderTarget, .shaderRead]; descriptor.storageMode = .shared
         guard let texture = device.makeTexture(descriptor: descriptor), let command = queue.makeCommandBuffer() else { throw RenderError.unavailable }
+        inFlight.wait()
+        defer { inFlight.signal() }
         let pass = MTLRenderPassDescriptor()
         pass.colorAttachments[0].texture = texture; pass.colorAttachments[0].loadAction = .clear
         pass.colorAttachments[0].storeAction = .store; pass.colorAttachments[0].clearColor = MTLClearColorMake(0, 0, 0, 0)

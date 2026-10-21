@@ -97,7 +97,7 @@ for (order,layer) in layers.enumerated() {
         }
     } else if head {
         parent = "Head";pivot = SIMD2(375,305)
-        bindings = []
+        bindings = [("ParamAngleX",[-30,0,30]),("ParamAngleY",[-30,0,30])]
         if layer.group == "hair" { bindings.append((layer.id == "hair_back" ? "ParamHairBack" : "ParamHairFront",[-1,0,1])) }
         if eye {
             bindings.append(("ParamBrow"+side+"Y",[-1,0,1]))
@@ -171,8 +171,8 @@ for (order,layer) in layers.enumerated() {
                     p.y -= form*1.5*pow(min(1,abs(p.x-300)/13),2)
                     if layer.group == "mouth_open" { p.y = 240+(p.y-240)*(values["ParamMouthOpenY"] ?? 0) }
                 }
-                // Preserve the original face contour. Head motion belongs to
-                // its parent deformer, not a cheek warp with a pinned chin.
+                p = FaceRig.turn(p,x:values["ParamAngleX"] ?? 0,y:values["ParamAngleY"] ?? 0,group:layer.id)
+                // Small-angle source keyforms preserve neutral identity.
                 if layer.group == "hair" {
                     let sway = values[layer.id == "hair_back" ? "ParamHairBack" : "ParamHairFront"] ?? 0
                     p.x += sway*5*pow(max(0,(p.y-95)/200),2)
@@ -319,4 +319,11 @@ for gesture in [CharacterGesture.idle,.wave,.think,.talk] {
     }
     let motion: [String:Any] = ["Version":3,"Meta":["Duration":duration,"Fps":30,"Loop":gesture == .idle,"AreBeziersRestricted":true,"CurveCount":curves.count,"TotalSegmentCount":segmentsCount,"TotalPointCount":pointsCount,"UserDataCount":0,"TotalUserDataSize":0,"FadeInTime":0.35,"FadeOutTime":0.35],"Curves":curves,"UserData":[]]
     try JSONSerialization.data(withJSONObject:motion,options:[.sortedKeys]).write(to:motions.appendingPathComponent(gesture.rawValue+".motion3.json"))
+}
+
+let expressionDirectory = out.appendingPathComponent("expressions")
+try FileManager.default.createDirectory(at:expressionDirectory,withIntermediateDirectories:true)
+for (name,expression) in CubismExpression.presets {
+    let encoder = JSONEncoder();encoder.outputFormatting = [.prettyPrinted,.sortedKeys]
+    try encoder.encode(expression).write(to:expressionDirectory.appendingPathComponent(name+".exp3.json"))
 }

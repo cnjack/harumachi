@@ -15,7 +15,8 @@ public struct MotionPlayback {
     private var firstDuration: Double = 0
     private var manualStart: Double?
     private var pending = false
-    public init() {}
+    private let library: MotionLibrary?
+    public init(library: MotionLibrary? = nil) { self.library = library }
     public mutating func select(_ gesture: CharacterGesture, pose: RigPose) -> Bool {
         _ = sample(pose)
         if gesture == pose.gesture, gesture != .automatic,
@@ -27,23 +28,18 @@ public struct MotionPlayback {
     }
     public mutating func sample(_ pose: RigPose) -> PuppetMotion {
         if pose == lastPose, let lastMotion { return lastMotion }
-        if let lastPose, pose.time < lastPose.time { self = MotionPlayback() }
+        if let lastPose, pose.time < lastPose.time { self = MotionPlayback(library:library) }
         var targetPose = pose
         var resolved = pose.gesture
         if pose.gesture == .automatic {
-            let cycle = pose.time.truncatingRemainder(dividingBy: 52)
-            if pose.speaking {
-                resolved = .talk
-                targetPose.gestureTime = 1.25 + max(0, pose.time - start - duration)
-            } else if cycle < 5 { resolved = .wave; targetPose.gestureTime = cycle }
-            else if cycle >= 16 && cycle < 21 { resolved = .think; targetPose.gestureTime = cycle - 16 }
-            else { resolved = .idle; targetPose.gestureTime = 0 }
+            resolved = pose.resolvedGesture
+            targetPose.gestureTime = pose.resolvedTime
         } else if manualStart != nil {
             targetPose.gestureTime = pending ? 1.25 : 1.25 + max(0, pose.time - start - duration)
         }
         targetPose.gesture = resolved
-        if pose.gesture == .automatic, pose.speaking, resolved != effective { targetPose.gestureTime = 1.25 }
-        let target = PuppetMotion(pose: targetPose)
+        if pose.gesture == .automatic, pose.cueGesture == nil, pose.speaking, resolved != effective { targetPose.gestureTime = 1.25 }
+        let target = library?.motion(for:targetPose) ?? PuppetMotion(pose:targetPose)
         if (pending || resolved != effective), let lastMotion {
             previous = lastMotion
             start = pose.time

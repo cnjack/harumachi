@@ -4,12 +4,13 @@
 <style>
 body{margin:0;background:#f7f6f0;color:#35434b;font:15px system-ui}header{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:12px 20px;background:#fff}button{font:inherit;padding:7px 14px;background:#fff;border:1px solid #cbd2d4;border-radius:7px;cursor:pointer}button:focus{outline:2px solid #5491a5}main{display:flex;justify-content:center}canvas{max-height:calc(100vh - 110px);max-width:100%;object-fit:contain}output{display:block;overflow-wrap:anywhere;padding:10px;text-align:center;font:12px monospace}body.dark{background:#191a2c;color:#c9d3df}#errors{color:#b52c21}
 </style>
-<header><strong>澪</strong><button data-motion="Idle">放下</button><button data-motion="wave">招手</button><button data-motion="think">思考</button><button data-motion="talk">说话</button><button id="background">切换底色</button><button id="review">检查切换</button></header>
+<header><strong>澪</strong><button data-motion="Idle">放下</button><button data-motion="wave">招手</button><button data-motion="think">思考</button><button data-motion="talk">说话</button><button id="background">切换底色</button><button data-mood="neutral">平静</button><button data-mood="happy">开心</button><button data-mood="thinking">思考表情</button><button data-mood="concerned">关心</button><button data-mood="sleepy">困倦</button><button id="scenario">情境流程</button><button id="review">检查切换</button></header>
 <main id="stage"></main><output id="status">加载模型…</output><output id="errors"></output>
 <script src="https://cdn.jsdelivr.net/npm/pixi.js@6.5.10/dist/browser/pixi.min.js"></script>
 <script src="https://imduck42.github.io/Live2D-Viewer/libs/live2dcubismcore.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/pixi-live2d-display@0.4.0/dist/cubism4.min.js"></script>
-<script>
+<script type="module">
+import {MioPerformanceController} from "./mio-performance.js";
 // Review harness only. Runtime libraries stay external; the model ZIP is
 // renderer-independent and does not redistribute Live2D's proprietary Core.
 (async()=>{
@@ -22,16 +23,26 @@ try {
  document.querySelector('#stage').append(app.view);
  const model=await PIXI.live2d.Live2DModel.from('Mio/Mio.model3.json',{autoInteract:true});
  app.stage.addChild(model);model.scale.set(Math.min(750/model.width,1000/model.height));model.x=(750-model.width)/2;model.y=(1000-model.height)/2;
+ const controller=await MioPerformanceController.create(model);
+ let phases=new Set(),moods=new Set(),speechFrames=0,pauseFrames=0;
  let frames=0,started=performance.now(),current='Idle',reviews=[],timer=null,handFadeFrames=0;
  model.internalModel.motionManager.on('motionStart',(group,index)=>{current=group;reviews.push({group,index,at:performance.now()-started});});
- app.ticker.add(()=>{frames++;const core=model.internalModel.coreModel;for(const id of ['ParamHandL','ParamHandR']){const value=core.getParameterValueById(id);if(Math.abs(value-Math.round(value))>0.0001)handFadeFrames++;}if(frames%30===0)status.textContent=JSON.stringify({loaded:true,frames,seconds:+((performance.now()-started)/1000).toFixed(1),motion:current,physics:!!model.internalModel.physics,parameters:model.internalModel.coreModel.getParameterCount(),motionsStarted:reviews.length,handFadeFrames,review:document.querySelector('#review').dataset.state||'idle'});});
- document.querySelectorAll('[data-motion]').forEach(button=>button.onclick=()=>model.motion(button.dataset.motion,0,3));
+ app.ticker.add(()=>{frames++;phases.add(controller.state.intent);moods.add(controller.state.mood);if(controller.state.speaking){speechFrames++;if(controller.state.mouth===0)pauseFrames++;}const core=model.internalModel.coreModel;for(const id of ['ParamHandL','ParamHandR']){const value=core.getParameterValueById(id);if(Math.abs(value-Math.round(value))>0.0001)handFadeFrames++;}if(frames%30===0)status.textContent=JSON.stringify({loaded:true,frames,seconds:+((performance.now()-started)/1000).toFixed(1),motion:current,physics:!!model.internalModel.physics,parameters:model.internalModel.coreModel.getParameterCount(),motionsStarted:reviews.length,handFadeFrames,review:document.querySelector('#review').dataset.state||'idle',scenario:document.querySelector('#scenario').dataset.state||'idle',performance:controller.state,phases:[...phases],moods:[...moods],speechFrames,pauseFrames});});
+ document.querySelectorAll('[data-motion]').forEach(button=>button.onclick=()=>controller.manual(button.dataset.motion));
+ document.querySelectorAll('[data-mood]').forEach(button=>button.onclick=()=>controller.setMood(button.dataset.mood));
+ document.querySelector('#scenario').onclick=()=>{
+   if(document.querySelector('#scenario').dataset.state==='running')return;
+   document.querySelector('#scenario').dataset.state='running';
+   const events=[[0,{intent:'welcome',mood:'happy',text:'欢迎回来。今天也一起慢慢来吧。'}],[7000,{intent:'quiet',mood:'neutral'}],[13000,{intent:'waiting',mood:'thinking'}],[17000,{intent:'reply',mood:'concerned',text:'我在听，先别着急。我们可以一件一件慢慢来。'}],[25000,{intent:'quiet',mood:'neutral'}]];
+   events.forEach(([delay,event])=>setTimeout(()=>controller.event(event),delay));
+   setTimeout(()=>document.querySelector('#scenario').dataset.state='complete',28000);
+ };
  document.querySelector('#background').onclick=()=>document.body.classList.toggle('dark');
  document.querySelector('#review').onclick=()=>{
    if(timer)return;
    const sequence=['Idle','wave','think','talk','wave','Idle','think','Idle'];let i=0;
    const tick=()=>{if(i===sequence.length){clearInterval(timer);timer=null;document.querySelector('#review').dataset.state='complete';return;}
-     document.querySelector('#review').dataset.state=`${i+1}/${sequence.length}`;model.motion(sequence[i++],0,3);};
+     document.querySelector('#review').dataset.state=`${i+1}/${sequence.length}`;controller.manual(sequence[i++]);};
    tick();timer=setInterval(tick,3600);
  };
 }catch(e){error.textContent=String(e);status.textContent='加载失败';}

@@ -157,7 +157,7 @@ import MioCore
 @main struct MioMain {
     @MainActor static func main() {
         let args = CommandLine.arguments
-        let supported: Set<String> = ["--preview-motion","--review-motion-window","--review-motion","--review-shoulders","--render-samples","--render-motion","--review-cubism","--smoke-test","--connection-test","--review-dialogue"]
+        let supported: Set<String> = ["--preview-motion","--review-motion-window","--review-motion","--review-shoulders","--render-samples","--render-motion","--review-cubism","--review-performance","--smoke-test","--connection-test","--review-dialogue"]
         if let unknown = args.dropFirst().first(where: { $0.hasPrefix("--") && !supported.contains($0) }) {
             fputs("Unknown Mio argument: \(unknown)\n",stderr);exit(2)
         }
@@ -165,6 +165,10 @@ import MioCore
             if let at = args.firstIndex(of:flag), at+1 >= args.count || args[at+1].hasPrefix("--") {
                 fputs("Missing output directory for \(flag)\n",stderr);exit(2)
             }
+        }
+        if let at = args.firstIndex(of:"--review-performance"),at+1 < args.count {
+            do { try PerformanceReview.run(at:URL(fileURLWithPath:args[at+1],isDirectory:true));exit(0) }
+            catch { fputs("Performance review failed: \(error)\n",stderr);exit(1) }
         }
         if let at = args.firstIndex(of:"--review-cubism"),at+1 < args.count {
             do { try CubismReview.run(at:URL(fileURLWithPath:args[at+1],isDirectory:true));exit(0) }

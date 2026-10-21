@@ -68,7 +68,7 @@ final class DecisionTests: XCTestCase {
     func testBlinkAndGazeConstraints() {
         XCTAssertEqual(RigPose(time: 4.25).blink, 1, accuracy: 0.001)
         XCTAssertEqual(RigPose(time: 1).blink, 0)
-        XCTAssertEqual(RigPose(time: 1, mood: .sleepy).blink, 1)
+        XCTAssertEqual(RigPose(time: 1, mood: .sleepy).blink, 0, "Sleepy uses a partial-lid expression and still blinks normally")
         let pose = RigPose(time: 0, lookX: 100, lookY: -100)
         XCTAssertEqual(pose.lookX, 1); XCTAssertEqual(pose.lookY, -1)
     }

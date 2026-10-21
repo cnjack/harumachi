@@ -31,15 +31,10 @@ public struct PuppetMotion: Sendable {
         leftShoulder = Float(sin(t * 1.15)) * 0.018
         rightShoulder = Float(sin(t * 1.15 + 0.7)) * 0.018
         leftElbow = 0.04; rightElbow = -0.04
-        var gesture = pose.gesture
-        var phase = pose.gestureTime
-        if gesture == .automatic {
-            let cycle = t.truncatingRemainder(dividingBy: 52)
-            if pose.speaking { gesture = .talk; phase = t.truncatingRemainder(dividingBy: 5) }
-            else if cycle < 5 { gesture = .wave; phase = cycle }
-            else if cycle >= 16 && cycle < 21 { gesture = .think; phase = cycle - 16 }
-            else { gesture = .idle; phase = 0 }
-        }
+        let gesture = pose.resolvedGesture
+        let phase = pose.resolvedTime
+        headShift.y += pose.nod*1.4
+        torso += pose.nod*0.007
         let rise: Float = gesture == .wave ? 0.55 : 0.48
         let blend = Self.envelope(phase, duration: gesture.duration,rise:rise,fall:0.6)
         // The source artwork spreads its arms for rigging. The authored rest
@@ -55,6 +50,8 @@ public struct PuppetMotion: Sendable {
         let waveBeats: [(Float,Float)] = [(0,0),(0.65,0),(0.90,0.85),(1.22,-0.9),(1.56,1),
             (1.93,-0.75),(2.29,0.8),(2.65,-0.65),(3.02,0.55),(3.42,-0.3),(3.8,0),(5,0)]
         let oscillation = Self.phrase(Float(phase),keys:waveBeats)
+        let anticipation = Self.smooth(0,0.12,Float(phase))*(1-Self.smooth(0.12,0.32,Float(phase)))
+        if gesture != .idle { torso += 0.012*anticipation;head -= 0.018*anticipation }
         switch gesture {
         case .wave:
             rightHand = SIMD4(1 - presentedPalm, presentedPalm, 0, 0)
@@ -104,7 +101,8 @@ public struct PuppetMotion: Sendable {
             rightWrist = 0.12*Self.phrase(Float(phase-0.17),keys:speechBeats)*blend
             leftShoulder -= (0.08+0.025*Float(sin(phase*3.8-0.7))) * blend
             leftElbow += (0.18+0.05*Float(sin(phase*3.8))) * blend
-            headShift.y += Float(sin(phase * 5.8-0.4)) * 2 * blend
+            let emphasis = (pose.speech ?? SpeechTimeline("嗯，我在听。慢慢说就好。")).emphasis(at:pose.speech == nil ? phase : pose.speechTime)
+            headShift.y += emphasis * 1.2 * blend
             head += Float(sin(phase * 2.9)) * 0.035 * blend
             torso += Float(sin(phase * 2.9-0.8))*0.012*blend
         case .idle, .automatic: break
@@ -154,7 +152,7 @@ public struct PuppetMotion: Sendable {
         return pivot + SIMD2(q.x * cos(angle) - q.y * sin(angle), q.x * sin(angle) + q.y * cos(angle))
     }
     public func headPoint(_ point: SIMD2<Float>) -> SIMD2<Float> {
-        Self.rotate(point, around: SIMD2(300, 305), by: head) + headShift
+        Self.rotate(FaceRig.turn(point,x:headShift.x*10,y:-headShift.y*4), around: SIMD2(300, 305), by: head) + headShift
     }
     public func neckPoint(_ point: SIMD2<Float>) -> SIMD2<Float> {
         let influence = 1 - Self.smooth(272, 310, point.y)

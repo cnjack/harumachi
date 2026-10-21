@@ -11,6 +11,7 @@ public final class CubismModel {
     }
     public struct Parameter { public let id: String; public let minimum, maximum, value: Float }
     public struct Mesh {
+        public let sourceIndex: Int; public let masks: [Int]; public let invertedMask: Bool; public let blendMode: Int
         public let id: String; public let positions, uvs: [Float]; public let indices: [UInt16]
         public let texture, order: Int; public let opacity: Float
     }
@@ -83,13 +84,6 @@ public final class CubismModel {
             for i in 0..<(try count("csmGetParameterCount")) {
                 parameters.append(Parameter(id:String(cString:ids[i]!),minimum:mins[i],maximum:maxs[i],value:values[i]))
             }
-            let masks: UnsafePointer<Int32> = try pointer("csmGetDrawableMaskCounts")
-            let flags: UnsafePointer<UInt8> = try pointer("csmGetDrawableConstantFlags")
-            for i in 0..<(try count("csmGetDrawableCount")) {
-                // Mio is exported without clipping/additive/multiplicative or
-                // inverted masks. Reject unsupported models explicitly.
-                guard masks[i] == 0, flags[i]&0x0b == 0 else { throw Failure(message:"This renderer requires unmasked normal-blend Cubism meshes") }
-            }
             try update([:])
         } catch {
             modelMemory?.deallocate();modelMemory = nil
@@ -112,6 +106,9 @@ public final class CubismModel {
         try function("csmUpdateModel",Update.self)(model)
     }
     public func meshes() throws -> [Mesh] {
+        let masks: UnsafePointer<UnsafePointer<Int32>?> = try pointer("csmGetDrawableMasks")
+        let maskCounts: UnsafePointer<Int32> = try pointer("csmGetDrawableMaskCounts")
+        let flags: UnsafePointer<UInt8> = try pointer("csmGetDrawableConstantFlags")
         let ids: UnsafePointer<UnsafePointer<CChar>?> = try pointer("csmGetDrawableIds")
         let positions: UnsafePointer<UnsafePointer<Float>?> = try pointer("csmGetDrawableVertexPositions")
         let uvs: UnsafePointer<UnsafePointer<Float>?> = try pointer("csmGetDrawableVertexUvs")
@@ -130,7 +127,9 @@ public final class CubismModel {
             var canvas: [Float] = []
             for v in 0..<Int(vertices[i]) { canvas += [points[2*v]*ppu+origin[0],height-(points[2*v+1]*ppu+origin[1])] }
             guard canvas.allSatisfy(\.isFinite),opacities[i].isFinite else { throw Failure(message:"Non-finite Core output") }
-            return Mesh(id:String(cString:ids[i]!),positions:canvas,uvs:Array(UnsafeBufferPointer(start:tex,count:Int(vertices[i])*2)),indices:Array(UnsafeBufferPointer(start:triangles,count:Int(counts[i]))),texture:Int(textures[i]),order:Int(orders[i]),opacity:opacities[i])
+            let maskIndices = masks[i].map { Array(UnsafeBufferPointer(start:$0,count:Int(maskCounts[i]))).map(Int.init) } ?? []
+            guard maskIndices.allSatisfy({ $0 >= 0 && $0 < ((try? count("csmGetDrawableCount")) ?? 0) }) else { throw Failure(message:"Invalid drawable mask index") }
+            return Mesh(sourceIndex:i,masks:maskIndices,invertedMask:flags[i]&8 != 0,blendMode:Int(flags[i]&3),id:String(cString:ids[i]!),positions:canvas,uvs:Array(UnsafeBufferPointer(start:tex,count:Int(vertices[i])*2)),indices:Array(UnsafeBufferPointer(start:triangles,count:Int(counts[i]))),texture:Int(textures[i]),order:Int(orders[i]),opacity:opacities[i])
         }.sorted { $0.order < $1.order }
     }
 }

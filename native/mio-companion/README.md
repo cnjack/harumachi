@@ -6,7 +6,7 @@
 
 2026-10-21：按用户要求移除伸懒腰，并将当前角色放回原「桌面来信」。统一入口及本轮验收见[接入记录](../../docs/game-design/MIO_MAIL_INTEGRATION_20261021.md)。
 
-macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用真正 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 30 层 PSD 在 `art/live2d/mio/cubism/`。当前 v16 保留用户认可的 v14 肘部与肩位，恢复原眼睛及原脸型，并在原画内作小幅视线和眉部形变，模型含 29 个参数、四套标准 motion3，CLI 生成与兼容边界见[本轮记录](../../docs/game-design/MIO_CUBISM_20261021.md)。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肘部恢复见[修复记录](../../docs/game-design/MIO_ELBOW_RESTORE_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。角色已接入原来的「桌面来信」，统一使用 `open_mio_companion.command`；旧 `preview_mio_motion.command` 也转到同一入口。构建：
+macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用真正 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 30 层 PSD 在 `art/live2d/mio/cubism/`。当前 v17 保留用户认可的衣袖拼接、原眼睛及中性脸型，增加源模型小角度转头、六个眼口遮罩、五种标准表情和事件驱动演出，模型含 29 个参数、四套标准 motion3，本轮验收与兼容边界见[表现完善记录](../../docs/game-design/MIO_PERFORMANCE_20261021.md)。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肘部恢复见[修复记录](../../docs/game-design/MIO_ELBOW_RESTORE_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。角色已接入原来的「桌面来信」，统一使用 `open_mio_companion.command`；旧 `preview_mio_motion.command` 也转到同一入口。构建：
 
 ```bash
 ./native/mio-companion/tools/build_app.sh
@@ -19,6 +19,8 @@ open native/mio-companion/dist/Mio.app
 
 ```bash
 dist/Mio.app/Contents/MacOS/MioCompanion --review-cubism /tmp/mio-cubism
+dist/Mio.app/Contents/MacOS/MioCompanion --review-performance /tmp/mio-performance
+node tools/verify_web_performance.mjs /tmp/mio-performance/performance.json
 ```
 
 正式 Cubism 模型的全动作复拍使用以下入口；默认走官方 Core，只有显式设置 `MIO_LEGACY_RIG=1` 才切换历史分层后端：

@@ -20,7 +20,7 @@ final class NaturalMotionTests: XCTestCase {
         }
     }
 
-    func testFaceSilhouetteDoesNotShearDuringLook() throws {
+    func testSmallAngleSourceHeadHasCoherentProjection() throws {
         guard FileManager.default.fileExists(atPath:"/Applications/Live2D Cubism 5.3/res/libLive2DCubismCoreJNI.dylib") else { throw XCTSkip("Official Core is installed separately") }
         let model = try CubismModel(manifest:assets.appendingPathComponent("Mio.model3.json"))
         try model.update([:]);let front = try XCTUnwrap(model.meshes().first {$0.id == "face"})
@@ -29,9 +29,22 @@ final class NaturalMotionTests: XCTestCase {
             let turned = try XCTUnwrap(model.meshes().first {$0.id == "face"})
             for axis in 0...1 {
                 let delta = stride(from:axis,to:front.positions.count,by:2).map { turned.positions[$0]-front.positions[$0] }
-                XCTAssertLessThan((delta.max() ?? 0)-(delta.min() ?? 0),0.02,
-                                  "Preserve the approved cheek/chin shape; use the parent for gentle head movement")
+                let spread=(delta.max() ?? 0)-(delta.min() ?? 0)
+                XCTAssertGreaterThan(spread,0.5,"Turning needs source surface depth, not only translation")
+                XCTAssertLessThan(spread,4,"Small-angle projection must not stretch the face")
             }
+        } }
+    }
+
+    func testTurnPreservesNeutralAndHasNoPinnedChin() {
+        let landmarks: [SIMD2<Float>] = [SIMD2(300,268),SIMD2(277,205),SIMD2(323,205),SIMD2(270,230),SIMD2(330,230)]
+        for p in landmarks { XCTAssertEqual(FaceRig.turn(p,x:0,y:0),p) }
+        let chin=FaceRig.turn(landmarks[0],x:30,y:30)-landmarks[0]
+        XCTAssertGreaterThan(abs(chin.x)+abs(chin.y),0.5)
+        for x: Float in [-30,0,30] { for y: Float in [-30,0,30] {
+            let a=FaceRig.turn(landmarks[1],x:x,y:y),b=FaceRig.turn(landmarks[2],x:x,y:y)
+            XCTAssertEqual(b.x-a.x,46*cos(x/30*0.17),accuracy:0.001)
+            XCTAssertEqual(a.y,b.y,accuracy:0.001,"Do not skew one eye above the other")
         } }
     }
 

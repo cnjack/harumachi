@@ -44,6 +44,7 @@ extension AppDelegate {
                     try saveOwnWindow(companion,to:directory.appendingPathComponent("\(name)-desktop.png"))
                     results.append(["name":name,"message":message,"replyID":id,"phrase":state.phrase,
                                     "source":state.source,"connection":state.connection,"error":state.error,
+                                    "intent":state.performance?.intent.rawValue ?? "missing", "mood":state.performance?.mood.rawValue ?? "missing",
                                     "quietMinutes":state.dialogueMemory.context(for:SystemEvent(kind:"startup",summary:""),events:[],now:Date()).quietRemainingMinutes])
                 }
                 let frames = state.renderer?.frameCount ?? 0

@@ -29,6 +29,7 @@ struct CharacterView: NSViewRepresentable {
         context.coordinator.renderer?.selectGesture(state.gesture, revision: state.gestureRevision)
         context.coordinator.renderer?.pose.mood = state.mood
         context.coordinator.renderer?.speakingUntil = state.speakingUntil
+        context.coordinator.renderer?.performance = state.performance
         context.coordinator.renderer?.isPaused = state.paused
         nsView.isPaused = state.paused
     }

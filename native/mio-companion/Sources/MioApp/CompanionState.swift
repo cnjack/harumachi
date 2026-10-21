@@ -3,6 +3,8 @@ import SwiftUI
 import MioCore
 
 @MainActor final class CompanionState: ObservableObject {
+    @Published var performance: PerformanceCue?
+    private var performanceDirector = PerformanceDirector()
     @Published var mood: Mood = .neutral
     @Published var gesture: CharacterGesture = .automatic
     @Published var gestureRevision = 0
@@ -24,6 +26,7 @@ import MioCore
     var monitor: SystemMonitor?
     var renderer: MioRenderer?
     var onVisibility: ((Bool) -> Void)?
+    private var latestMessageID: UUID?
     private var gate = EventGate()
     private var pending: [SystemEvent] = []
     private var task: Task<Void, Never>?
@@ -58,6 +61,12 @@ import MioCore
     func receive(_ event: SystemEvent) {
         guard !paused, gate.accepts(event) else { return }
         dialogueMemory.observe(event)
+        if event.kind == "message" {
+            latestMessageID = event.id
+            performance = PerformanceCue(intent:.waiting,mood:.thinking,at:event.date)
+        } else if ["sleep","session.inactive","app.active"].contains(event.kind), Date() >= speakingUntil {
+            performance = PerformanceCue(intent:.quiet,mood:event.kind == "sleep" ? .sleepy:.neutral,at:event.date)
+        }
         events.insert(event, at: 0)
         if events.count > 80 { events.removeLast(events.count - 80) }
         if pending.count >= 12 { pending.removeFirst() }
@@ -71,6 +80,12 @@ import MioCore
             guard let self else { return }
             while !self.pending.isEmpty, !Task.isCancelled, self.epoch == currentEpoch {
                 let event = self.pending.removeFirst()
+                defer {
+                    if event.kind == "message", self.latestMessageID == event.id,
+                       self.performance?.intent == .waiting {
+                        self.performance = PerformanceCue(intent:.quiet,mood:.neutral)
+                    }
+                }
                 guard Date().timeIntervalSince(event.date) < 60 else { continue }
                 guard self.dialogueMemory.shouldConsider(event,now:Date()) else { continue }
                 self.dialogueMemory.recordUser(event)
@@ -94,6 +109,7 @@ import MioCore
                 }
                 guard !Task.isCancelled, self.epoch == currentEpoch, !self.paused,
                       Date().timeIntervalSince(event.date) < 60 else { continue }
+                if event.kind == "message", self.latestMessageID != event.id { continue }
                 self.decisions += 1; self.source = decision.source
                 self.lastDecision = decision
                 // A delayed routine response must not overwrite a newer direct
@@ -103,7 +119,8 @@ import MioCore
                 if let line = SpeechCatalog.resolve(decision,event:event,context:context) {
                     self.mood = decision.mood
                     self.phrase = line.text
-                    self.speakingUntil = Date().addingTimeInterval(min(6.5,max(2.5,Double(line.text.count)*0.12)))
+                    self.performance = self.performanceDirector.response(decision,event:event,text:line.text,now:Date())
+                    self.speakingUntil = Date().addingTimeInterval(SpeechTimeline(line.text).duration+0.35)
                     self.dialogueMemory.recordReply(line,at:Date())
                 }
             }
@@ -119,7 +136,7 @@ import MioCore
     func togglePause() {
         paused.toggle(); epoch += 1; task?.cancel(); task = nil; pending.removeAll()
         renderer?.isPaused = paused
-        if paused { monitor?.stop(); source = "已暂停接收" }
+        if paused { monitor?.stop(); source = "已暂停接收";performance = nil;speakingUntil = .distantPast }
         else { gate = EventGate(); monitor?.start(); retryAfter = .distantPast; source = "等待事件" }
     }
     func reconnect() {
