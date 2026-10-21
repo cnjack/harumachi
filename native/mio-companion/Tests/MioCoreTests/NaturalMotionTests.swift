@@ -20,23 +20,40 @@ final class NaturalMotionTests: XCTestCase {
         }
     }
 
-    func testHeadTurnsChangeShapeAndEyesMoveIndependently() throws {
+    func testFaceSilhouetteDoesNotShearDuringLook() throws {
         guard FileManager.default.fileExists(atPath:"/Applications/Live2D Cubism 5.3/res/libLive2DCubismCoreJNI.dylib") else { throw XCTSkip("Official Core is installed separately") }
         let model = try CubismModel(manifest:assets.appendingPathComponent("Mio.model3.json"))
         try model.update([:]);let front = try XCTUnwrap(model.meshes().first {$0.id == "face"})
-        try model.update(["ParamAngleX":30]);let turned = try XCTUnwrap(model.meshes().first {$0.id == "face"})
-        let dx = stride(from:0,to:front.positions.count,by:2).map { turned.positions[$0]-front.positions[$0] }
-        XCTAssertGreaterThan((dx.max() ?? 0)-(dx.min() ?? 0),3,"A head turn must deform the face, not translate it as a card")
-        XCTAssertTrue(model.parameters.contains {$0.id == "ParamEyeBallX"})
+        for x: Float in [-30,30] { for y: Float in [-30,30] {
+            try model.update(["ParamAngleX":x,"ParamAngleY":y])
+            let turned = try XCTUnwrap(model.meshes().first {$0.id == "face"})
+            for axis in 0...1 {
+                let delta = stride(from:axis,to:front.positions.count,by:2).map { turned.positions[$0]-front.positions[$0] }
+                XCTAssertLessThan((delta.max() ?? 0)-(delta.min() ?? 0),0.02,
+                                  "Preserve the approved cheek/chin shape; use the parent for gentle head movement")
+            }
+        } }
+    }
+
+    func testOriginalEyesRetainTheirLayoutAndGazeStaysSubtle() throws {
+        let bindings = try JSONSerialization.jsonObject(with:Data(contentsOf:assets.appendingPathComponent("Mio.bindings.json"))) as! [String:Any]
+        let meshes = bindings["meshes"] as! [[String:Any]]
+        for side in ["left","right"] {
+            let eye = try XCTUnwrap(meshes.first {$0["id"] as? String == "eyes_open_"+side},"Use the original rounded eye artwork")
+            let rect = eye["rect"] as! [Double]
+            XCTAssertEqual(rect[0],257.312,accuracy:0.001)
+            XCTAssertEqual(rect[1],187.04,accuracy:0.001)
+            XCTAssertEqual(rect[2]/rect[3],2.59857,accuracy:0.001)
+        }
+        guard FileManager.default.fileExists(atPath:"/Applications/Live2D Cubism 5.3/res/libLive2DCubismCoreJNI.dylib") else { throw XCTSkip("Official Core is installed separately") }
+        let model = try CubismModel(manifest:assets.appendingPathComponent("Mio.model3.json"))
         try model.update(["ParamEyeBallX":-1]);let left = try model.meshes()
         try model.update(["ParamEyeBallX":1]);let right = try model.meshes()
-        let a = try XCTUnwrap(left.first {$0.id == "iris_left"})
-        let b = try XCTUnwrap(right.first {$0.id == "iris_left"})
-        XCTAssertGreaterThan(zip(a.positions,b.positions).map {abs($0-$1)}.max() ?? 0,1)
+        let a = try XCTUnwrap(left.first {$0.id == "eyes_open_left"})
+        let b = try XCTUnwrap(right.first {$0.id == "eyes_open_left"})
+        let delta = zip(a.positions,b.positions).map {abs($0-$1)}.max() ?? 0
+        XCTAssertGreaterThan(delta,0.2);XCTAssertLessThan(delta,1.7)
         XCTAssertEqual(left.first {$0.id == "face"}?.positions,right.first {$0.id == "face"}?.positions)
-        try model.update(["ParamEyeLOpen":0.5]);let half = try XCTUnwrap(model.meshes().first {$0.id == "eye_white_left"})
-        try model.update(["ParamEyeLOpen":1]);let open = try XCTUnwrap(model.meshes().first {$0.id == "eye_white_left"})
-        XCTAssertGreaterThan(zip(half.positions,open.positions).map {abs($0-$1)}.max() ?? 0,3,"Eyelids need continuous geometry")
     }
 
     func testHairRespondsToMotionAndSettles() {

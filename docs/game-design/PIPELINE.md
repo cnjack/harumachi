@@ -1,5 +1,7 @@
 # 模型、工程与交付流程
 
+澪 v16 当前脸部流程：`prepare_face.swift` 从原 `Mio.rig.json` 注册四个原画左右睁闭眼层，不重画或重定眼位；脸型由父级轻微移动和旋转，源脸网格不再作固定下巴的横向扭曲。`review_face.py` 从真实 Core 图批量输出九方向、眨眼和四动作脸部表，并对照原版眼区像素。不能用“参数有变化”证明角色长相正确。见[脸部恢复记录](MIO_FACE_RESTORE_20261021.md)。
+
 澪 v15：`prepare_face.swift` 注册八个透明眼部件 → `MioCubismBake` 写入转头/五官关键形和四动作 → 官方导出器生成 29 参数、34 ArtMesh 的 PSD/CMO3/MOC3。网页需使用 `Idle`（大写 I）自动待机并加载 physics3；手型 ID 曲线必须禁止交叉淡入。完成原生全动作和网页实际播放后，用 `tools/package_web.py` 仅打包 model3 引用的文件。详见[自然度修订与网页验收](MIO_NATURAL_MOTION_20261021.md)。
 
 澪的上下文台词复验：`--review-dialogue <目录>` 在原应用窗口依次发送七条合成消息，不启动系统监控，保存自身主窗口与桌面气泡。`MIO_TEST_CLEF_URL=<地址> swift test --filter DialogueTests.testLiveContextualSentenceSelection` 另验早晚、报时及追问；本地故障使用现有 Postman 模拟，不能代替真实模型。规则与边界见[上下文决策记录](MIO_CONTEXT_DIALOGUE_20261021.md)。

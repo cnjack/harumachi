@@ -3,33 +3,20 @@ import Foundation
 /// Keyform authoring shared with the editable Cubism source. These functions
 /// run at export time; the renderer receives already-deformed Core meshes.
 public enum FaceRig {
-    public static func turn(_ p: SIMD2<Float>, x: Float, y: Float, group: String) -> SIMD2<Float> {
-        let yaw = x * .pi / 180 * 0.65, pitch = y * .pi / 180 * 0.45
-        let dx = p.x-300, dy = p.y-205
-        let chinWeight = 1-PuppetMotion.smooth(245,268,p.y)
-        let curvature = sqrt(max(0,1-pow(dx/78,2)))
-        let depth: Float = (group == "hair_back" ? -16 : (group == "hair_front" ? 20 : 29))*curvature*chinWeight
-        // Different depth across the face yields genuine foreshortening. The
-        // chin contact anchor remains fixed for the authored thinking pose.
-        return SIMD2(300+dx*cos(yaw)+depth*sin(yaw),
-                     205+dy*(1-(1-cos(pitch))*chinWeight)-depth*sin(pitch))
-    }
-    public static func eye(_ p: SIMD2<Float>,side: String,kind: String,open: Float,gaze: SIMD2<Float>,brow: Float) -> SIMD2<Float> {
-        let cx: Float = side == "left" ? 273 : 327
+    /// Tiny local shifts within the original eye drawing. Neutral values are
+    /// the exact source artwork, including its iris, lashes and eyebrows.
+    public static func sourceEye(_ p: SIMD2<Float>,side: String,closed: Bool,open: Float,gaze: SIMD2<Float>,brow: Float) -> SIMD2<Float> {
+        let cx: Float = side == "left" ? 323 : 277
         var q = p
-        if kind == "brow" { q.y -= brow*2.5;return q }
-        if kind == "eye_lid" { return q }
-        if kind == "iris" {
-            q += SIMD2(gaze.x*2.1,gaze.y*1.2)
-            // Dense source grid clips the iris at the lid boundary by
-            // collapsing hidden rows. No renderer-specific mask is required.
-            let edge = min(1,abs((q.x-cx)/15))
-            let top: Float = 202+edge*edge*3
-            let bottom: Float = 218-edge*edge*2
-            q.y = min(bottom,max(top,q.y))
-        }
-        let amount = max(0.025,min(1,open))
-        q.y = 216+(q.y-216)*amount
+        let browWeight = 1-PuppetMotion.smooth(196,200,p.y)
+        q.y -= brow*0.8*browWeight
+        if closed { return q }
+        let nx = (p.x-cx)/12,ny = (p.y-210)/10
+        let weight = pow(max(0,1-nx*nx),2)*pow(max(0,1-ny*ny),2)
+        q += SIMD2(gaze.x*0.75,gaze.y*0.35)*weight
+        // Close around the original lash line; eyebrows stay in place.
+        let lid = PuppetMotion.smooth(196.5,198,p.y)
+        q.y = 211+(q.y-211)*(1-(1-max(0,min(1,open)))*lid)
         return q
     }
     public static func attention(_ time: Double) -> SIMD2<Float> {

@@ -12,7 +12,7 @@ README = '''# 澪 Live2D 网页模型
 入口：Mio/Mio.model3.json。请解压整个 Mio 目录并保持相对路径，使用 HTTP/HTTPS 提供文件。
 可导入支持 Cubism 4 的播放器；ZIP 导入功能由播放器决定。
 
-- 格式：官方导出 MOC3，目标 Cubism 4.0，29 参数、34 ArtMesh。
+- 格式：官方导出 MOC3，目标 Cubism 4.0，29 参数、30 ArtMesh。
 - 动作组：Idle（12 秒自动待机）、wave（招手）、think（思考）、talk（说话）。后三项各 5 秒。
 - 支持标准 physics3 头发物理；播放器应开启物理和自动待机。
 - 手型曲线禁用淡入淡出，肩肘腕曲线仍使用 0.35 秒过渡，避免两只手叠影。

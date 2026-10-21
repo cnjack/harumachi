@@ -1,0 +1,31 @@
+{
+  "revision": "mio-face-v16",
+  "reason": "Restore the approved original eye artwork and face silhouette after user rejected v15 face",
+  "sourceImages": {
+    "eyes_open.png": {
+      "path": "native/mio-companion/Sources/MioApp/Resources/Mio/eyes_open.png",
+      "sha256": "0a9776c398e3334207a25e66115d88339dfa86700d305322e35e8cffcf9f37c0"
+    },
+    "eyes_closed.png": {
+      "path": "native/mio-companion/Sources/MioApp/Resources/Mio/eyes_closed.png",
+      "sha256": "3406220eff819df819b621bbfaabe25d003aa77c74e53dc6ba1822d7139f3bbc"
+    },
+    "face.png": {
+      "path": "native/mio-companion/Sources/MioApp/Resources/Mio/face.png",
+      "sha256": "099116f78553235f8983dd8d29789f39d7f92ef06c4bba7ae8355fcce1e22587"
+    }
+  },
+  "layout": "Mio.rig.json; original rects preserved",
+  "rejectedAtlas": "art/live2d/mio/face/components-20261021.png",
+  "rejectedAtlasUsedByRuntime": false,
+  "headScale": 0.736,
+  "parameters": 29,
+  "artMeshes": 30,
+  "preserved": [
+    "v14 sleeves",
+    "v15 motion timing",
+    "Idle autoplay",
+    "physics3",
+    "discrete hand variants"
+  ]
+}

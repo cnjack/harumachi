@@ -76,7 +76,7 @@ let headGroups = ["head","hair","eyes_open","eyes_closed","mouth_open","mouth_cl
 for (order,layer) in layers.enumerated() {
     let arm = layer.group.hasPrefix("arm_") || layer.group.hasPrefix("hand_")
     let hand = layer.group.hasPrefix("hand_")
-    let eye = layer.group.hasPrefix("eye_") || layer.group.hasPrefix("iris_") || layer.group.hasPrefix("brow_")
+    let eye = layer.group.hasPrefix("eyes_")
     let head = headGroups.contains(layer.group) || eye
     let left = layer.group.hasSuffix("_left")
     let side = left ? "L" : "R"
@@ -97,15 +97,13 @@ for (order,layer) in layers.enumerated() {
         }
     } else if head {
         parent = "Head";pivot = SIMD2(375,305)
-        bindings = [("ParamAngleX",[-30,0,30]),("ParamAngleY",[-30,0,30])]
+        bindings = []
         if layer.group == "hair" { bindings.append((layer.id == "hair_back" ? "ParamHairBack" : "ParamHairFront",[-1,0,1])) }
         if eye {
-            if layer.group.hasPrefix("brow_") { bindings.append(("ParamBrow"+side+"Y",[-1,0,1])) }
-            else if !layer.group.hasPrefix("eye_lid_") {
-                bindings.append(("ParamEye"+side+"Open",[0,0.35,0.7,1]))
-                if layer.group.hasPrefix("iris_") {
-                    bindings += [("ParamEyeBallX",[-1,0,1]),("ParamEyeBallY",[-1,0,1])]
-                }
+            bindings.append(("ParamBrow"+side+"Y",[-1,0,1]))
+            if layer.group.hasPrefix("eyes_open_") {
+                bindings += [("ParamEye"+side+"Open",[0,0.35,0.7,1]),
+                             ("ParamEyeBallX",[-1,0,1]),("ParamEyeBallY",[-1,0,1])]
             }
         }
         if layer.group.hasPrefix("mouth_") {
@@ -162,8 +160,7 @@ for (order,layer) in layers.enumerated() {
                 }
             } else if head {
                 if eye {
-                    let kind = String(layer.group.dropLast(left ? 5 : 6))
-                    p = FaceRig.eye(p,side:left ? "left":"right",kind:kind,
+                    p = FaceRig.sourceEye(p,side:left ? "left":"right",closed:layer.group.hasPrefix("eyes_closed_"),
                         open:values["ParamEye"+side+"Open"] ?? 1,
                         gaze:SIMD2(values["ParamEyeBallX"] ?? 0,values["ParamEyeBallY"] ?? 0),
                         brow:values["ParamBrow"+side+"Y"] ?? 0)
@@ -174,7 +171,8 @@ for (order,layer) in layers.enumerated() {
                     p.y -= form*1.5*pow(min(1,abs(p.x-300)/13),2)
                     if layer.group == "mouth_open" { p.y = 240+(p.y-240)*(values["ParamMouthOpenY"] ?? 0) }
                 }
-                p = FaceRig.turn(p,x:values["ParamAngleX"] ?? 0,y:values["ParamAngleY"] ?? 0,group:layer.id)
+                // Preserve the original face contour. Head motion belongs to
+                // its parent deformer, not a cheek warp with a pinned chin.
                 if layer.group == "hair" {
                     let sway = values[layer.id == "hair_back" ? "ParamHairBack" : "ParamHairFront"] ?? 0
                     p.x += sway*5*pow(max(0,(p.y-95)/200),2)
@@ -204,8 +202,8 @@ for (order,layer) in layers.enumerated() {
         let index = HandPresentation.variants.firstIndex(of:variant) ?? 0
         opacity = ["parameter":"ParamHand"+side,"keys":Array(0...(left ? 4 : 5)),"values":Array(0...(left ? 4 : 5)).map { $0 == index ? 1 : 0 }]
         if layer.id == "hand_right_chin" { opacity = ["constant":0] }
-    } else if eye && !layer.group.hasPrefix("brow_") {
-        opacity = ["parameter":"ParamEye"+side+"Open","keys":[0,0.08,0.25,1],"values":layer.group.hasPrefix("eye_lid_") ? [1,1,0,0] : [0,0,1,1]]
+    } else if eye {
+        opacity = ["parameter":"ParamEye"+side+"Open","keys":[0,0.12,0.121,1],"values":layer.group.hasPrefix("eyes_closed_") ? [1,1,0,0] : [0,0,1,1]]
     } else if layer.group.hasPrefix("mouth_") {
         opacity = ["parameter":"ParamMouthOpenY","keys":[0,0.12,0.2,1],"values":layer.group == "mouth_open" ? [0,1,1,1] : [1,0,0,0]]
     } else if layer.group == "thought_cloud" {
