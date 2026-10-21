@@ -29,7 +29,8 @@ import MioCore
     private var task: Task<Void, Never>?
     private var epoch = 0
     private var retryAfter = Date.distantPast
-    private var nextReaction = Date.distantPast
+    private(set) var dialogueMemory = DialogueMemory()
+    private(set) var lastDecision: Decision?
     private let defaults = UserDefaults(suiteName: "io.harumachi.MioCompanion.preferences")!
 
     init(dataDirectory: URL? = nil) {
@@ -39,6 +40,8 @@ import MioCore
         try? FileManager.default.createDirectory(at: inbox, withIntermediateDirectories: true, attributes: [.posixPermissions: 0o700])
         baseURL = environment["MIO_CLEF_BASE_URL"] ?? defaults.string(forKey: "baseURL") ?? "http://127.0.0.1:8098"
         model = environment["MIO_CLEF_MODEL"] ?? defaults.string(forKey: "model") ?? "clef-omni"
+        let greeting = SystemEvent(kind:"startup",summary:"")
+        phrase = SpeechCatalog.candidates(for:greeting,context:DialogueContext(now:greeting.date)).first?.text ?? phrase
     }
     func start(monitorSystemEvents: Bool = true) {
         if monitorSystemEvents {
@@ -54,6 +57,7 @@ import MioCore
     }
     func receive(_ event: SystemEvent) {
         guard !paused, gate.accepts(event) else { return }
+        dialogueMemory.observe(event)
         events.insert(event, at: 0)
         if events.count > 80 { events.removeLast(events.count - 80) }
         if pending.count >= 12 { pending.removeFirst() }
@@ -68,16 +72,20 @@ import MioCore
             while !self.pending.isEmpty, !Task.isCancelled, self.epoch == currentEpoch {
                 let event = self.pending.removeFirst()
                 guard Date().timeIntervalSince(event.date) < 60 else { continue }
+                guard self.dialogueMemory.shouldConsider(event,now:Date()) else { continue }
+                self.dialogueMemory.recordUser(event)
+                let context = self.dialogueMemory.context(for:event,events:self.events,now:Date())
+                guard !SpeechCatalog.candidates(for:event,context:context).isEmpty else { continue }
                 var decision: Decision
                 if Date() < self.retryAfter {
-                    decision = .offline(for: event)
+                    decision = .offline(for:event,context:context)
                 } else {
                     do {
-                        decision = try await ClefClient(configuration: ClefConfiguration(baseURL: self.baseURL, model: self.model)).decide(event)
+                        decision = try await ClefClient(configuration: ClefConfiguration(baseURL: self.baseURL, model: self.model)).decide(event,context:context)
                         self.connection = "已连接 · \(self.model)"; self.error = ""
                     } catch {
                         guard !Task.isCancelled, self.epoch == currentEpoch else { break }
-                        decision = .offline(for: event)
+                        decision = .offline(for:event,context:context)
                         self.connection = "离线 · 30 秒后重试"
                         // Do not show server bodies or URLs that could contain credentials.
                         self.error = (error as? ClefError)?.localizedDescription ?? "Clef 服务暂不可达"
@@ -87,13 +95,16 @@ import MioCore
                 guard !Task.isCancelled, self.epoch == currentEpoch, !self.paused,
                       Date().timeIntervalSince(event.date) < 60 else { continue }
                 self.decisions += 1; self.source = decision.source
-                if event.kind == "message" || Date() >= self.nextReaction {
+                self.lastDecision = decision
+                // A delayed routine response must not overwrite a newer direct
+                // message, nor speak after the session became inactive.
+                guard self.dialogueMemory.shouldConsider(event,now:Date()),
+                      event.kind == "message" || !self.pending.contains(where: { $0.kind == "message" }) else { continue }
+                if let line = SpeechCatalog.resolve(decision,event:event,context:context) {
                     self.mood = decision.mood
-                    if decision.reaction != .none {
-                        self.phrase = decision.reaction.phrase
-                        self.speakingUntil = Date().addingTimeInterval(2.5)
-                        self.nextReaction = Date().addingTimeInterval(20)
-                    }
+                    self.phrase = line.text
+                    self.speakingUntil = Date().addingTimeInterval(min(6.5,max(2.5,Double(line.text.count)*0.12)))
+                    self.dialogueMemory.recordReply(line,at:Date())
                 }
             }
             if self.epoch == currentEpoch { self.task = nil }

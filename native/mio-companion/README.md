@@ -1,5 +1,7 @@
 # 澪 · 晴町桌面来信
 
+2026-10-21：125 句角色台词接入当地时间、最近对话和系统事件，由 Clef 选句；时间仅参与决策，桌面气泡保持纯台词。见[上下文决策记录](../../docs/game-design/MIO_CONTEXT_DIALOGUE_20261021.md)。
+
 2026-10-21：按用户要求移除伸懒腰，并将当前角色放回原「桌面来信」。统一入口及本轮验收见[接入记录](../../docs/game-design/MIO_MAIL_INTEGRATION_20261021.md)。
 
 macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用真正 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 30 层 PSD 在 `art/live2d/mio/cubism/`。当前 v14 恢复旧版连续袖子褶皱及袖口，保留 v13 垂手上提、伸展内收的肩位，保留 v12 的厚度与动作节奏，模型含 24 个参数、四套标准 motion3，CLI 生成与兼容边界见[本轮记录](../../docs/game-design/MIO_CUBISM_20261021.md)。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肘部恢复见[修复记录](../../docs/game-design/MIO_ELBOW_RESTORE_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。角色已接入原来的「桌面来信」，统一使用 `open_mio_companion.command`；旧 `preview_mio_motion.command` 也转到同一入口。构建：
@@ -116,13 +118,17 @@ swift native/mio-companion/tools/preview_motion.swift /tmp/mio-motion
 
 ## Clef 决策
 
-使用已有 `clef-omni` 的 `POST /v1/systemone` 协议；`state` 携带事件类型、粗粒度元数据和主动提交的文本，`questions` 要求选择表情与预设回应。没有额外聊天模型，回复来自程序内的中文短句。Clef 无权调用 shell、操纵应用或发送消息。
+使用已有 `clef-omni` 的 `POST /v1/systemone` 协议；`state` 携带事件类型、粗粒度元数据、主动提交的文本、澪的角色设定和有界上下文。`questions` 分别选择表情、回应方式和本次具体台词。125 句中文涵盖六个时段、周末、工作、休息、安慰、庆祝、晴町故事及连续追问；回复由 Clef 从当前候选中选择，不额外接入自由文本聊天模型。Clef 无权调用 shell、操纵应用或发送消息。
 
-地址和模型可在窗口中设置，或通过 `MIO_CLEF_BASE_URL`、`MIO_CLEF_MODEL` 配置。可选密钥只读 `MIO_CLEF_API_KEY`，不写入设置或日志。缺省为 `http://127.0.0.1:8098` / `clef-omni`。窗口明确区分「Clef 决策」与「离线规则」；请求超时 6 秒，失败后冷却 30 秒，低置信度保持安静。
+时间只参与台词与决策，不在气泡新增时钟。采用 Mac 当地日期、星期、时区和本次陪伴分钟数；问时间时直接填入实测时钟。上下文限最近 30 分钟的 8 条对话、10 分钟的 8 条系统事件及最近 20 个已说台词 ID，全部只保留在当前进程内。发送系统元数据前按事件类型筛选字段，不发送窗口标题、文档内容或未主动提交的自由文本。简短追问沿用前一话题，候选耗尽后按较早使用的句子轮换，并排除上一句。
+
+用户说“先别打扰”“我先忙”等会暂停主动说话 20 分钟，期间仍回应主动来信；“可以说话了”“继续聊”恢复主动陪伴。普通系统回应至少间隔 90 秒；会话活跃时每 15 分钟提供一次日常话题机会、时段变化提供问候机会，45 分钟休息提醒优先，是否开口由 Clef 决定。会话离开后不主动说话。
+
+地址和模型可在窗口中设置，或通过 `MIO_CLEF_BASE_URL`、`MIO_CLEF_MODEL` 配置。可选密钥只读 `MIO_CLEF_API_KEY`，不写入设置或日志。缺省为 `http://127.0.0.1:8098` / `clef-omni`。主窗口区分「Clef 决策」与「离线规则」，桌面气泡只显示台词；请求超时 6 秒，失败后冷却 30 秒，离线仍使用相同上下文台词库。自动事件的回应分类置信度低于 0.55 时安静；主动消息使用合法候选回复，不因“问候/普通回应”之间的概率分散而被压掉。表情不确定时中性，台词概率只用于候选排序。所有响应仍检查模型 ID、枚举、当前台词 ID 及有限的 0–1 置信度。
 
 用户随后明确要求不要跳过、直接尝试填写的地址。当前客户端直接请求配置的 HTTP(S) 域名、局域网或本机地址，保留系统正常的网络授权流程；不再因为地址可能触发权限而预先拦截。仍拒绝带账号、密码、查询参数的配置，并报告重定向状态而不自动转发事件或可选密钥。`https://clef.scgzyun.com/v1/systemone` 已使用真实生产客户端验证，服务返回 `clef-omni` 决策；低于 0.55 的置信度继续安静处理。记录在 `evidence/mio_clef_live_20261020/verification.json`。
 
-真实窗口连接验证使用 `--connection-test <证据目录>`：该模式不创建 `SystemMonitor`，不读取 Inbox，只发送固定的“你好，澪。这是一条连接验证消息。”，保存窗口与连接结果后退出。常驻监控向真实服务发送本地事件的操作曾被自动审批拒绝，须单独明确确认事件范围；固定消息的连通证据不替代该项验收。
+真实窗口连接验证使用 `--connection-test <证据目录>`：该模式不创建 `SystemMonitor`，不读取 Inbox，只发送固定的“你好，澪。这是一条连接验证消息。”，保存窗口与连接结果后退出。`--review-dialogue <目录>` 同样隔离系统监控，使用七条合成消息依次检查角色介绍、报时、工作、追问、安静、恢复和庆祝，保存主窗口与桌面气泡。常驻模式继续沿用用户授权的粗粒度事件范围；合成测试不代替长期日常使用的自然度验收。
 
 ## 无需授权的来信
 
@@ -130,7 +136,7 @@ swift native/mio-companion/tools/preview_motion.swift /tmp/mio-motion
 | --- | --- |
 | NSWorkspace | 普通应用启退/切换的 bundle ID；睡眠、唤醒、会话状态；设备挂载/卸载事件 |
 | Network / IOKit / ProcessInfo | 在线状态、电源类型、温度等级 |
-| 工作计时 | 连续运行 45 分钟的休息提醒；睡眠唤醒后重新计时 |
+| 时间与陪伴 | 当地时段变化、15 分钟日常话题机会、45 分钟休息提醒；睡眠唤醒后重新计时 |
 | 程序内输入框 | 用户主动输入的文字，最多 1000 字 |
 | 专用 Inbox | 主动投递的 JSON 文本消息；处理后删除 |
 
@@ -144,7 +150,7 @@ printf '%s\n' '{"text":"本次构建已经结束。"}' > "$inbox/message.part"
 mv "$inbox/message.part" "$inbox/message.json"
 ```
 
-只处理该目录中的普通 `.json` 文件，不跟随软链接，文件限制 8 KiB。坏消息丢弃；每轮最多处理 20 件。系统事件 15 秒去重，队列最多 12 件，超过 60 秒丢弃；普通回应冷却 20 秒。暂停会取消在途请求、清空待处理队列并注销监听，恢复后不会应用旧响应。事件列表仅在内存保留最近 80 条。
+只处理该目录中的普通 `.json` 文件，不跟随软链接，文件限制 8 KiB。坏消息丢弃；每轮最多处理 20 件。系统事件 15 秒去重，队列最多 12 件，超过 60 秒丢弃；普通回应冷却 90 秒，主动消息及手动重连不受此冷却影响。暂停会取消在途请求、清空待处理队列并注销监听，恢复后不会应用旧响应。事件列表仅在内存保留最近 80 条。
 
 ## 验证
 
@@ -156,9 +162,12 @@ swift test
 ./tools/build_app.sh
 dist/Mio.app/Contents/MacOS/MioCompanion --render-samples /tmp/mio-poses
 dist/Mio.app/Contents/MacOS/MioCompanion --smoke-test /tmp/mio-smoke
+MIO_CLEF_BASE_URL=https://clef.scgzyun.com dist/Mio.app/Contents/MacOS/MioCompanion --review-dialogue /tmp/mio-dialogue
+# 仅向指定服务发送合成消息；真实模型与本地模拟分别验收：
+MIO_TEST_CLEF_URL=https://clef.scgzyun.com swift test --filter DialogueTests.testLiveContextualSentenceSelection
 ```
 
-25 个 XCTest（其中 2 个需要 HTTP 模拟服务）覆盖关节动作、颈部过渡、头身及五官比例、手型方向与混合、腰部连接、约束、域名与 IPv4/IPv6 地址配置、过期/去重和生产 HTTP 客户端；Postman 模拟包含正常、低置信度、未知动作、错模型、坏 JSON、500、HTML 网关、重定向及超时。未登录 Postman，未查询拥有方共享 mock；本地 mock 来自现有客户端/服务说明及本轮消费契约，不能证明真实 Clef 模型的判断准确率。
+58 个 XCTest（其中 2 个需要 HTTP 模拟服务、1 个需显式指定真实 Clef）覆盖关节动作、比例、手型、时区跨日、六时段、话题连续性、候选轮换、上下文边界、安静策略及生产 HTTP 客户端。Postman 模拟包含正常、低置信度、未知动作/台词、错模型、坏 JSON、500、HTML 网关、重定向及超时。未登录 Postman，未查询拥有方共享 mock；本地 mock 来自现有客户端/服务说明及消费契约，不能证明真实 Clef 模型的判断准确率。时间与上下文批次见 `evidence/mio_context_dialogue_20261021/` 和 [验收记录](../../docs/game-design/MIO_CONTEXT_DIALOGUE_20261021.md)。
 
 原生 smoke 使用现有显示器，验证持续出帧、真实 Inbox 接收、暂停丢弃和恢复。PNG 导出只读取本程序自己的视图缓存与 Metal 目标，再合成本程序画面；它不是桌面截屏，也不读取其他窗口。记录位于 `evidence/mio_companion_20261020/`。本轮未改游戏资源、Godot 测试数、`builds/HareMachi.zip` 或 Web 发布。
 

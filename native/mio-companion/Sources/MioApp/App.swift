@@ -10,6 +10,7 @@ import MioCore
     var statusItem: NSStatusItem!
     var smokeDirectory: URL?
     var connectionTestDirectory: URL?
+    var dialogueReviewDirectory: URL?
     var smokeGestures: [String] = []
     func applicationDidFinishLaunching(_ notification: Notification) {
         let args = CommandLine.arguments
@@ -21,7 +22,11 @@ import MioCore
             connectionTestDirectory = URL(fileURLWithPath:args[at+1],isDirectory:true)
             try? FileManager.default.createDirectory(at:connectionTestDirectory!,withIntermediateDirectories:true)
         }
-        state = CompanionState(dataDirectory: (connectionTestDirectory ?? smokeDirectory)?.appendingPathComponent("runtime"))
+        if let at = args.firstIndex(of:"--review-dialogue"), at+1 < args.count {
+            dialogueReviewDirectory = URL(fileURLWithPath:args[at+1],isDirectory:true)
+            try? FileManager.default.createDirectory(at:dialogueReviewDirectory!,withIntermediateDirectories:true)
+        }
+        state = CompanionState(dataDirectory: (dialogueReviewDirectory ?? connectionTestDirectory ?? smokeDirectory)?.appendingPathComponent("runtime"))
         dashboard = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 972, height: 710), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
         dashboard.title = "澪 · 晴町桌面来信"; dashboard.isReleasedWhenClosed = false
         dashboard.contentView = NSHostingView(rootView: Dashboard(state: state))
@@ -50,9 +55,10 @@ import MioCore
         menu.addItem(withTitle: "退出澪", action: #selector(quit), keyEquivalent: "q")
         for item in menu.items { item.target = self }
         statusItem.menu = menu
-        state.start(monitorSystemEvents:connectionTestDirectory == nil)
+        if dialogueReviewDirectory == nil { state.start(monitorSystemEvents:connectionTestDirectory == nil) }
         NSApp.activate(ignoringOtherApps: true)
-        if connectionTestDirectory != nil { runConnectionTest() }
+        if let directory = dialogueReviewDirectory { runDialogueReview(at:directory) }
+        else if connectionTestDirectory != nil { runConnectionTest() }
         else if smokeDirectory != nil { runSmoke() }
     }
     @objc func showDashboard() { dashboard.makeKeyAndOrderFront(nil); NSApp.activate(ignoringOtherApps: true) }
@@ -151,7 +157,7 @@ import MioCore
 @main struct MioMain {
     @MainActor static func main() {
         let args = CommandLine.arguments
-        let supported: Set<String> = ["--preview-motion","--review-motion-window","--review-motion","--review-shoulders","--render-samples","--render-motion","--review-cubism","--smoke-test","--connection-test"]
+        let supported: Set<String> = ["--preview-motion","--review-motion-window","--review-motion","--review-shoulders","--render-samples","--render-motion","--review-cubism","--smoke-test","--connection-test","--review-dialogue"]
         if let unknown = args.dropFirst().first(where: { $0.hasPrefix("--") && !supported.contains($0) }) {
             fputs("Unknown Mio argument: \(unknown)\n",stderr);exit(2)
         }

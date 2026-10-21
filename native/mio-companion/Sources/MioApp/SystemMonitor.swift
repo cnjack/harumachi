@@ -12,10 +12,15 @@ import MioCore
     private var lastNetwork: String?
     private var lastPower: String?
     private var breakStarted = Date()
+    private var lastCheckin = Date()
+    private var lastPeriod = DayPeriod(hour:Calendar.current.component(.hour,from:Date()))
+    private var sessionActive = true
     init(inbox: URL, emit: @escaping (SystemEvent) -> Void) { self.inbox = inbox; self.emit = emit }
     func start() {
         guard timer == nil else { return }
         breakStarted = Date()
+        lastCheckin = Date()
+        lastPeriod = DayPeriod(hour:Calendar.current.component(.hour,from:Date()))
         let workspace = NSWorkspace.shared.notificationCenter
         func observe(_ center: NotificationCenter, _ name: Notification.Name, _ handler: @escaping @MainActor (Notification) -> Void) {
             observers.append((center, center.addObserver(forName: name, object: nil, queue: .main) { note in
@@ -44,7 +49,12 @@ import MioCore
             (NSWorkspace.didUnmountNotification, "volume.unmount", "存储设备已移除")
         ] {
             observe(workspace, name) { [weak self] _ in
-                if kind == "wake" { self?.breakStarted = Date() }
+                if kind == "sleep" || kind == "session.inactive" { self?.sessionActive = false }
+                if kind == "wake" || kind == "session.active" {
+                    self?.sessionActive = true
+                    self?.breakStarted = Date(); self?.lastCheckin = Date()
+                    self?.lastPeriod = DayPeriod(hour:Calendar.current.component(.hour,from:Date()))
+                }
                 self?.emit(SystemEvent(kind: kind, summary: label))
             }
         }
@@ -78,8 +88,17 @@ import MioCore
             lastPower = power
             emit(SystemEvent(kind: "power", summary: power == kIOPSACPowerValue ? "使用外接电源" : "使用电池", metadata: ["source": power]))
         }
-        if Date().timeIntervalSince(breakStarted) >= 45 * 60 {
-            breakStarted = Date(); emit(SystemEvent(kind: "break.due", summary: "已陪伴工作 45 分钟"))
+        let now = Date()
+        let period = DayPeriod(hour:Calendar.current.component(.hour,from:now))
+        if sessionActive && now.timeIntervalSince(breakStarted) >= 45 * 60 {
+            breakStarted = now; lastCheckin = now; lastPeriod = period
+            emit(SystemEvent(kind: "break.due", summary: "已陪伴工作 45 分钟"))
+        } else if sessionActive && period != lastPeriod {
+            lastPeriod = period; lastCheckin = now
+            emit(SystemEvent(kind:"time.period",summary:"时间走到了新的一段",metadata:["period":period.rawValue]))
+        } else if sessionActive && now.timeIntervalSince(lastCheckin) >= 15*60 {
+            lastCheckin = now
+            emit(SystemEvent(kind:"companion.checkin",summary:"澪的日常陪伴"))
         }
         readInbox()
     }

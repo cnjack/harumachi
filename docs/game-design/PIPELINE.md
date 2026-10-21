@@ -1,5 +1,7 @@
 # 模型、工程与交付流程
 
+澪的上下文台词复验：`--review-dialogue <目录>` 在原应用窗口依次发送七条合成消息，不启动系统监控，保存自身主窗口与桌面气泡。`MIO_TEST_CLEF_URL=<地址> swift test --filter DialogueTests.testLiveContextualSentenceSelection` 另验早晚、报时及追问；本地故障使用现有 Postman 模拟，不能代替真实模型。规则与边界见[上下文决策记录](MIO_CONTEXT_DIALOGUE_20261021.md)。
+
 澪统一从 `open_mio_companion.command` 启动原桌面来信，旧预览启动器同样转入该应用。当前四动作；标准导出和构建清理已移除 motion3。复验 5210 帧和 16 组切换，另用 `--smoke-test <目录>` 验证主窗口及桌面角色两处 Cubism 渲染、来信和暂停。详见[应用接入记录](MIO_MAIL_INTEGRATION_20261021.md)。
 
 澪 v14 恢复旧整袖原画的肘部与袖口，保留 v13 肩部源修改。注册后先运行 `native/mio-companion/tools/audit_elbow_artwork.py --output <报告.json>`，再导出 PSD/CMO3 并检查真实 Core 动作及现有屏幕；原图像素一致不替代自然度。流程和边界见[肘部恢复](MIO_ELBOW_RESTORE_20261021.md)。

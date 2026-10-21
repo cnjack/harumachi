@@ -9,10 +9,11 @@ http.createServer((req, res) => {
   if (req.method !== 'POST' || req.url !== '/v1/systemone') return reply(501, {error: 'Endpoint not modeled'});
   const body = req.body;
   if (!body || body.model !== 'clef-omni' || !body.state || !body.questions ||
-      !['mood','reaction'].every(k => body.questions[k]?.type === 'choice' && body.questions[k]?.criteria && body.questions[k]?.instructions)) {
+      !body.state.context?.localTime || !Array.isArray(body.state.context?.conversation) ||
+      !['mood','reaction','utterance'].every(k => body.questions[k]?.type === 'choice' && body.questions[k]?.criteria && body.questions[k]?.instructions)) {
     return reply(400, {error: 'Request does not match the consumer contract'});
   }
-  const text = body.state.summary;
+  const text = body.state.kind === 'app.active' ? body.state.metadata.bundle_id : body.state.summary;
   if (text === '__redirect__') { res.writeHead(302, {'Location':'http://192.168.10.202:8098/v1/systemone'}); return res.end(); }
   if (text === '__status500__') return reply(500, {error: 'Simulated upstream inference error'});
   if (text === '__html__') { res.writeHead(502, {'Content-Type':'text/html'}); return res.end('<h1>Bad gateway</h1>'); }
@@ -20,7 +21,9 @@ http.createServer((req, res) => {
   const confidence = text === '__lowconfidence__' ? 0.3 : 0.97;
   const result = {model: text === '__wrongmodel__' ? 'wrong-model' : 'clef-omni', answers: {
     mood: {type:'choice', choice:'happy', confidence},
-    reaction: {type:'choice', choice: text === '__unknown__' ? 'run_shell' : 'notice', confidence}
+    reaction: {type:'choice', choice: text === '__unknown__' ? 'run_shell' : 'notice', confidence},
+    utterance: {type:'choice', choice: text === '__unknown_utterance__' ? 'unavailable.0' :
+      Object.keys(body.questions.utterance.criteria).find(k => k !== 'quiet') || 'quiet', confidence}
   }};
   if (text === '__timeout__') return setTimeout(() => reply(200, result), 1500);
   reply(200, result);

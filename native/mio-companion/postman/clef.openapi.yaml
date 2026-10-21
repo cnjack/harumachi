@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Mio Clef decision dependency
-  version: 1.0.0
+  version: 1.1.0
   description: Consumer contract derived from the existing clef-omni /v1/systemone client and deployed wrapper documentation. No generated text or executable actions.
 paths:
   /v1/systemone:
@@ -18,15 +18,53 @@ paths:
                 model: {type: string, example: clef-omni}
                 state:
                   type: object
-                  required: [kind, summary, metadata, persona]
+                  required: [kind, summary, metadata, persona, context]
                   properties:
                     kind: {type: string}
                     summary: {type: string, maxLength: 1000}
                     metadata: {type: object, additionalProperties: {type: string}}
                     persona: {type: string}
+                    context:
+                      type: object
+                      required: [localDate, localTime, weekday, timeZone, period, weekend, sessionMinutes, conversation, recentEvents, recentReplyIDs, replyCount, quietRemainingMinutes]
+                      properties:
+                        localDate: {type: string, example: '2026-10-21'}
+                        localTime: {type: string, example: '19:30'}
+                        weekday: {type: string, example: 星期三}
+                        timeZone: {type: string, example: Asia/Shanghai}
+                        period: {type: string, enum: [dawn, morning, noon, afternoon, evening, night]}
+                        weekend: {type: boolean}
+                        sessionMinutes: {type: integer, minimum: 0, maximum: 1440}
+                        conversation:
+                          type: array
+                          maxItems: 8
+                          description: Last 30 minutes; current user message excluded.
+                          items:
+                            type: object
+                            required: [role, text, date]
+                            properties:
+                              role: {type: string, enum: [user, mio]}
+                              text: {type: string, maxLength: 300}
+                              date: {type: string, format: date-time}
+                              replyID: {type: string}
+                              eventID: {type: string, format: uuid}
+                        recentEvents:
+                          type: array
+                          maxItems: 8
+                          description: Last 10 minutes of coarse system metadata; no window text.
+                          items:
+                            type: object
+                            required: [kind, secondsAgo, metadata]
+                            properties:
+                              kind: {type: string, maxLength: 40}
+                              secondsAgo: {type: integer, minimum: 0, maximum: 600}
+                              metadata: {type: object, additionalProperties: {type: string, maxLength: 100}}
+                        recentReplyIDs: {type: array, maxItems: 20, items: {type: string}}
+                        replyCount: {type: integer, minimum: 0}
+                        quietRemainingMinutes: {type: integer, minimum: 0}
                 questions:
                   type: object
-                  required: [mood, reaction]
+                  required: [mood, reaction, utterance]
                   additionalProperties:
                     type: object
                     required: [type, instructions, criteria]
@@ -36,7 +74,7 @@ paths:
                       criteria: {type: object, additionalProperties: {type: string}}
       responses:
         '200':
-          description: Named choice answers; confidence must be finite and between zero and one. The response model must match the requested model.
+          description: Named choice answers; confidence must be finite and between zero and one. The response model must match the requested model. Utterance must be one of the current request choices; routine events also offer quiet. Wording probabilities rank equally eligible sentences. The 0.55 reaction gate applies to routine events and legacy responses; direct messages with a valid utterance receive a reply. Uncertain mood stays neutral. Legacy responses without utterance use a local eligible line.
           content:
             application/json:
               schema:
@@ -59,6 +97,7 @@ paths:
                 answers:
                   mood: {type: choice, choice: happy, confidence: 0.97}
                   reaction: {type: choice, choice: notice, confidence: 0.96}
+                  utterance: {type: choice, choice: work.1, confidence: 0.36}
         '400': {description: Invalid request}
         '401': {description: Authentication needed}
         '429': {description: Rate limited}

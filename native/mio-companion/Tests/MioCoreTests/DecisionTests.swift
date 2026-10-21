@@ -2,6 +2,19 @@ import XCTest
 @testable import MioCore
 
 final class DecisionTests: XCTestCase {
+    func testRequestIncludesTimePersonaConversationAndConcreteReplyChoice() throws {
+        let client = ClefClient(configuration: ClefConfiguration())
+        let body = try XCTUnwrap(JSONSerialization.jsonObject(with: client.requestBody(for:
+            SystemEvent(kind: "message", summary: "今晚还有一点工作"))) as? [String: Any])
+        let state = try XCTUnwrap(body["state"] as? [String: Any])
+        XCTAssertNotNil(state["context"], "Decisions need local time and bounded conversation context")
+        XCTAssertTrue(String(describing: state["persona"]).contains("澪"))
+        let questions = try XCTUnwrap(body["questions"] as? [String: Any])
+        XCTAssertNotNil(questions["utterance"], "Clef must choose a concrete contextual line, not just one of five reactions")
+        let utterance = try XCTUnwrap(questions["utterance"] as? [String:Any])
+        let criteria = try XCTUnwrap(utterance["criteria"] as? [String:String])
+        XCTAssertNil(criteria["quiet"], "Recent replies must not suppress a new direct question")
+    }
     func response(mood: String = "happy", reaction: String = "notice", confidence: Double = 0.9, model: String = "clef-omni") -> Data {
         try! JSONSerialization.data(withJSONObject: ["model": model, "answers": [
             "mood": ["choice": mood, "confidence": confidence],
@@ -66,9 +79,12 @@ final class DecisionTests: XCTestCase {
         let client = ClefClient(configuration: ClefConfiguration(baseURL: baseURL))
         let result = try await client.decide(SystemEvent(kind: "message", summary: "hello"))
         XCTAssertEqual(result.source, "Clef 决策"); XCTAssertEqual(result.mood, .happy)
-        let quiet = try await client.decide(SystemEvent(kind: "message", summary: "__lowconfidence__"))
+        XCTAssertNotNil(result.utteranceID)
+        let direct = try await client.decide(SystemEvent(kind:"message",summary:"__lowconfidence__"))
+        XCTAssertEqual(direct.reaction,.notice)
+        let quiet = try await client.decide(SystemEvent(kind:"app.active",summary:"",metadata:["bundle_id":"__lowconfidence__"]))
         XCTAssertEqual(quiet.reaction, .none)
-        for message in ["__unknown__", "__wrongmodel__", "__invalid__", "__status500__", "__html__", "__redirect__"] {
+        for message in ["__unknown__", "__unknown_utterance__", "__wrongmodel__", "__invalid__", "__status500__", "__html__", "__redirect__"] {
             do {
                 _ = try await client.decide(SystemEvent(kind: "message", summary: message))
                 XCTFail("Invalid upstream response was accepted: \(message)")
