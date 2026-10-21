@@ -60,7 +60,9 @@ def main():
         for obsolete in (runtime/'motions').glob('*.motion3.json'):
             if obsolete.name not in {name+'.motion3.json' for name in names}: obsolete.unlink()
         physics = []
-        for index,(part,delay,mobility) in enumerate([('Front',0.65,0.85),('Back',0.85,0.9)],1):
+        strands=[('Front',0.65,0.85,'Front hair'),('Back',0.85,0.9,'Back hair'),
+                 ('SideL',0.72,0.86,'Left side hair'),('SideR',0.92,0.88,'Right side hair')]
+        for index,(part,delay,mobility,_) in enumerate(strands,1):
             physics.append({'Id':f'PhysicsSetting{index}',
                 'Input':[{'Source':{'Target':'Parameter','Id':param},'Weight':weight,'Type':kind,'Reflect':False}
                          for param,weight,kind in [('ParamAngleX',60,'X'),('ParamAngleZ',30,'Angle'),('ParamBodyAngleZ',10,'Angle')]],
@@ -68,9 +70,9 @@ def main():
                 'Vertices':[{'Position':{'X':0,'Y':0},'Mobility':1,'Delay':1,'Acceleration':1,'Radius':0},
                             {'Position':{'X':0,'Y':8},'Mobility':mobility,'Delay':delay,'Acceleration':1.5,'Radius':8}],
                 'Normalization':{'Position':{'Minimum':-10,'Default':0,'Maximum':10},'Angle':{'Minimum':-30,'Default':0,'Maximum':30}}})
-        physics_json = {'Version':3,'Meta':{'PhysicsSettingCount':2,'TotalInputCount':6,'TotalOutputCount':2,'VertexCount':4,
+        physics_json = {'Version':3,'Meta':{'PhysicsSettingCount':len(strands),'TotalInputCount':len(strands)*3,'TotalOutputCount':len(strands),'VertexCount':len(strands)*2,
             'EffectiveForces':{'Gravity':{'X':0,'Y':-1},'Wind':{'X':0,'Y':0}},
-            'PhysicsDictionary':[{'Id':f'PhysicsSetting{i+1}','Name':name} for i,name in enumerate(['Front hair','Back hair'])]},'PhysicsSettings':physics}
+            'PhysicsDictionary':[{'Id':f'PhysicsSetting{i+1}','Name':strand[3]} for i,strand in enumerate(strands)]},'PhysicsSettings':physics}
         (runtime/'Mio.physics3.json').write_text(json.dumps(physics_json,indent=2)+'\n')
         manifest = {'Version':3,'FileReferences':{'Moc':'Mio.moc3','Textures':[str(p.relative_to(built)) for p in sorted((built/'textures').glob('*.png'))], 'DisplayInfo':'Mio.cdi3.json','Physics':'Mio.physics3.json','Motions':{('Idle' if name=='idle' else name):[{'File':f'motions/{name}.motion3.json','FadeInTime':0.35,'FadeOutTime':0.35}] for name in names}},'Groups':[{'Target':'Parameter','Name':'EyeBlink','Ids':['ParamEyeLOpen','ParamEyeROpen']},{'Target':'Parameter','Name':'LipSync','Ids':['ParamMouthOpenY']}]}
         manifest['FileReferences']['Expressions'] = [{'Name':name,'File':f'expressions/{name}.exp3.json'} for name in ['neutral','happy','thinking','concerned','sleepy','warm','joyful','curious','surprised','determined']]

@@ -4,6 +4,7 @@ This crops QA screenshots only; source artwork is not modified. The neutral
 pixel check catches identity drift, while contact sheets need visual review.
 """
 import argparse
+import hashlib
 import json
 from pathlib import Path
 
@@ -37,6 +38,10 @@ def main():
         return sum(ImageStat.Stat(difference).mean) / 3
     report = {'eyeRegion': box, 'neutralEyeMeanAbsoluteError': error(current),
               'threshold': 3, 'pixelCheckPassed': error(current) <= 3,
+              'referencePath': str(args.reference),
+              'referenceSHA256': hashlib.sha256(args.reference.read_bytes()).hexdigest(),
+              'currentPath': str(args.current / 'default.png'),
+              'currentSHA256': hashlib.sha256((args.current / 'default.png').read_bytes()).hexdigest(),
               'visualAcceptance': 'Requires review of face and blink contact sheets'}
     if args.rejected:
         report['rejectedEyeMeanAbsoluteError'] = error(load(args.rejected))

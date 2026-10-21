@@ -102,6 +102,16 @@
       "Name": "ParamHairBack"
     },
     {
+      "Id": "ParamHairSideL",
+      "GroupId": "Mio",
+      "Name": "ParamHairSideL"
+    },
+    {
+      "Id": "ParamHairSideR",
+      "GroupId": "Mio",
+      "Name": "ParamHairSideR"
+    },
+    {
       "Id": "ParamShoulderL",
       "GroupId": "Mio",
       "Name": "ParamShoulderL"

@@ -42,7 +42,16 @@ for var layer in layers {
         }
     } else { articulated.append(layer) }
 }
-layers=articulated
+layers=[]
+for layer in articulated {
+    if layer.id == "hair_front" {
+        for component in ["crown","right","left"] {
+            var part=layer;part.component=component
+            if component != "crown" { part.id="hair_front_"+component }
+            layers.append(part)
+        }
+    } else { layers.append(layer) }
+}
 let parameters: [Parameter] = [
     .init(id:"ParamAngleX",min:-30,max:30,value:0),.init(id:"ParamAngleY",min:-30,max:30,value:0),
     .init(id:"ParamAngleZ",min:-12,max:12,value:0),.init(id:"ParamBodyAngleZ",min:-3,max:3,value:0),
@@ -56,6 +65,7 @@ let parameters: [Parameter] = [
     .init(id:"ParamBrowLAngle",min:-1,max:1,value:0),.init(id:"ParamBrowRAngle",min:-1,max:1,value:0),
     .init(id:"ParamMouthRound",min:0,max:1,value:0),
     .init(id:"ParamHairFront",min:-1,max:1,value:0),.init(id:"ParamHairBack",min:-1,max:1,value:0),
+    .init(id:"ParamHairSideL",min:-1,max:1,value:0),.init(id:"ParamHairSideR",min:-1,max:1,value:0),
     .init(id:"ParamShoulderL",min:-2.2,max:2.2,value:-0.38),.init(id:"ParamShoulderR",min:-2.2,max:2.2,value:0.38),
     .init(id:"ParamElbowL",min:0,max:1.6,value:0.04),.init(id:"ParamElbowR",min:-2.9,max:3.1,value:-0.04),
     .init(id:"ParamWristL",min:-0.2,max:0.2,value:0),.init(id:"ParamWristR",min:-0.2,max:0.2,value:0),
@@ -123,10 +133,13 @@ for (order,layer) in layers.enumerated() {
         parent = "Head";pivot = SIMD2(375,305)
         bindings = [("ParamAngleX",[-30,0,30]),("ParamAngleY",[-30,0,30])]
         if layer.group == "hair" { bindings.append((layer.id == "hair_back" ? "ParamHairBack" : "ParamHairFront",[-1,0,1])) }
+        if layer.id == "hair_front_left" { bindings.append(("ParamHairSideL",[-1,0,1])) }
+        if layer.id == "hair_front_right" { bindings.append(("ParamHairSideR",[-1,0,1])) }
         if eye {
             if layer.component == "brow" { bindings += [("ParamBrow"+side+"Y",[-1,0,1]),("ParamBrow"+side+"Angle",[-1,0,1])] }
             else if layer.component == "iris" { bindings += [("ParamEyeBallX",[-1,0,1]),("ParamEyeBallY",[-1,0,1])] }
-            else if layer.component != "closed" { bindings += [("ParamEye"+side+"Open",[0,0.35,0.7,1,1.12]),("ParamEye"+side+"Smile",[0,1])] }
+            else if layer.component == "closed" { bindings += [("ParamEye"+side+"Smile",[0,1])] }
+            else { bindings += [("ParamEye"+side+"Open",[0,0.35,0.7,1,1.12]),("ParamEye"+side+"Smile",[0,1])] }
         }
         if layer.group.hasPrefix("mouth_") {
             bindings += [("ParamMouthForm",[-1,0,1]),("ParamMouthRound",[0,1])]
@@ -192,11 +205,14 @@ for (order,layer) in layers.enumerated() {
                     p = FaceParts.mouthPoint(p,form:values["ParamMouthForm"] ?? 0,round:values["ParamMouthRound"] ?? 0,
                         open:layer.group == "mouth_open" ? values["ParamMouthOpenY"] ?? 0:nil,part:layer.component!)
                 }
-                p = FaceRig.turn(p,x:values["ParamAngleX"] ?? 0,y:values["ParamAngleY"] ?? 0,group:layer.id)
+                p = FaceRig.turn(p,x:values["ParamAngleX"] ?? 0,y:values["ParamAngleY"] ?? 0,group:layer.id.hasPrefix("hair_front") ? "hair_front":layer.id)
                 // Small-angle source keyforms preserve neutral identity.
                 if layer.group == "hair" {
                     let sway = values[layer.id == "hair_back" ? "ParamHairBack" : "ParamHairFront"] ?? 0
                     p.x += sway*5*pow(max(0,(p.y-95)/200),2)
+                    if layer.id == "hair_front_left" || layer.id == "hair_front_right" {
+                        p=HairParts.point(p,sway:values[layer.id == "hair_front_left" ? "ParamHairSideL":"ParamHairSideR"] ?? 0)
+                    }
                 }
                 // Head translation is authored on its parent rotation deformer.
             } else if layer.group == "lower_body" {
@@ -272,6 +288,8 @@ let rasters: [(SourceRig.Layer,[UInt8])] = layers.reversed().map { layer in
                 if let owner=FingerParts.owner(point,left:left) {
                     keep=component == "finger_"+String(owner) || (component == "palm" && FingerParts.rootOverlap(point,index:owner,left:left))
                 } else { keep=component == "palm" }
+            } else if layer.group == "hair" {
+                keep=HairParts.contains(SIMD2(Float(x)+0.5-75,Float(y)+0.5),component:component)
             } else if layer.group.hasPrefix("eyes_") {
                 if component == "closed" { keep=sy>=48 }
                 else {

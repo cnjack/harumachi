@@ -1,6 +1,6 @@
 {
   "date": "2026-10-22",
-  "revision": "mio-emotion-v18",
+  "revision": "mio-emotion-v18.1",
   "method": "Deterministic decomposition of approved PNG pixels and authored Cubism keyforms; original artwork unchanged",
   "referenceProjects": [
     {
@@ -18,8 +18,8 @@
     "format": "Cubism MOC3",
     "target": "Cubism 4.0",
     "mocVersion": 3,
-    "parameters": 36,
-    "artMeshes": 53,
+    "parameters": 38,
+    "artMeshes": 55,
     "textures": 3,
     "motions": [
       "Idle",
@@ -37,7 +37,9 @@
       "surprised",
       "determined",
       "sleepy"
-    ]
+    ],
+    "authoredKeyforms": 2970,
+    "physicsStrands": 4
   },
   "decisionModel": "clef-omni /v1/systemone",
   "extraEmbeddingModel": false,
@@ -45,12 +47,16 @@
   "originalPNGCount": 29,
   "originalPNGsUnchanged": true,
   "files": {
-    "art/live2d/mio/cubism/Mio.cmo3": "302dfbe29f57fe7978795567239ad3b718690db57bff709fac1b38259b72d574",
-    "art/live2d/mio/cubism/Mio.psd": "3f35e32b7eefab3ef35135c7080dd803765d718750fc79e53a4a2890722a6052",
-    "native/mio-companion/Sources/MioApp/Resources/MioCubism/Mio.moc3": "e380afbdc8652b6b8d4ca3edb365d2e26ac51539e93dcffbdbe199552018cc8d",
+    "art/live2d/mio/cubism/Mio.cmo3": "b369be15fba6f3f6bf4d05d8a38c87febf20274335c3d9027b2f4b72252dae1e",
+    "art/live2d/mio/cubism/Mio.psd": "2d4e3cc93bb583cef94fa2d9873d591d375fe55071084bc42725c77164135a21",
+    "native/mio-companion/Sources/MioApp/Resources/MioCubism/Mio.moc3": "d026735e96cffdba5c509fd9a7bb8b19405728383ba9b32ad26bb8ca07653c65",
     "native/mio-companion/Sources/MioApp/Resources/Mio/Face.parts.json": "b70e8a47b19127ca5f31a53cbde7634cdc0dfdd27f2b2708cf2551489574c372",
     "native/mio-companion/Sources/MioApp/Resources/Mio/Mouth.parts.json": "1de03d04c9d97b837c2cd05e48ce63230365d119f6037de7c406acf5dcb64d74"
   },
   "verification": "evidence/mio_emotion_20261022/verification.json",
-  "record": "docs/game-design/MIO_EMOTION_20261022.md"
+  "record": "docs/game-design/MIO_EMOTION_20261022.md",
+  "refinements": [
+    "Neutral closed lids distinct from smiling lids",
+    "Front hair split into crown and two independently delayed side locks; roots remain attached"
+  ]
 }

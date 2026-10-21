@@ -36,7 +36,14 @@ public enum FaceParts {
             return p-SIMD2(0,brow*2.4+angle*2.4*inner)
         }
         if part == "iris" { return p+SIMD2(gaze.x*1.2,gaze.y*0.65) }
-        if part == "closed" { return p }
+        if part == "closed" {
+            // The source closed drawing is a smiling arc. A neutral blink meets
+            // the closing aperture with a flatter lid, while smile keeps the
+            // original arc. Translate along y by x, never mirror the mesh.
+            let cx: Float=side == "left" ? 323:277
+            let center=max(0,1-pow((p.x-cx)/14,2))
+            return p+SIMD2(0,3*(1-smile)*center)
+        }
         let aperture=max(0,min(1.12,open)),cx: Float=side == "left" ? 323:277
         let lift=smile*2*PuppetMotion.smooth(208,218,p.y)*max(0,1-pow((p.x-cx)/20,2))*aperture
         return SIMD2(p.x,211+(p.y-211)*aperture-lift)

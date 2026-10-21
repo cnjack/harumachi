@@ -183,6 +183,22 @@ final class EmotionTests: XCTestCase {
         }
     }
 
+    func testClosedLidSmileIsAuthoredSeparatelyFromNeutralBlink() throws {
+        guard FileManager.default.fileExists(atPath:"/Applications/Live2D Cubism 5.3/res/libLive2DCubismCoreJNI.dylib") else { throw XCTSkip("Official Core is installed separately") }
+        let model=try CubismModel(manifest:assets.appendingPathComponent("Mio.model3.json"))
+        let topology=try JSONDecoder().decode(CubismRigGeometry.self,from:Data(contentsOf:assets.appendingPathComponent("Mio.bindings.json")))
+        try model.update(["ParamEyeLOpen":0,"ParamEyeROpen":0])
+        let neutral=try model.meshes()
+        try model.update(["ParamEyeLOpen":0,"ParamEyeROpen":0,"ParamEyeLSmile":1,"ParamEyeRSmile":1])
+        let smiling=try model.meshes()
+        for (side,x) in [("left",Float(323)),("right",Float(277))] {
+            let a=try XCTUnwrap(neutral.first {$0.id == "eyes_closed_"+side}),b=try XCTUnwrap(smiling.first {$0.id == a.id})
+            let point=SIMD2<Float>(x,209),ordinary=try topology.point(point,mesh:a),happy=try topology.point(point,mesh:b)
+            XCTAssertGreaterThan(ordinary.y-happy.y,2,"Neutral and concerned blinks must not force the smiling lid arc")
+            XCTAssertEqual(ordinary.x,happy.x,accuracy:0.01,"Blink styling does not move the eye horizontally")
+        }
+    }
+
     func testInvalidSemanticChoicesCannotBecomeParameterCommands() throws {
         func response(_ style: String,_ confidence: String = "0.9") -> Data {
             Data("""

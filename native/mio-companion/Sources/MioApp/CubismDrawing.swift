@@ -10,6 +10,8 @@ final class CubismDrawing {
     let motions: MotionLibrary
     private var hair: CubismPhysics
     private var expression = EmotionPlayback()
+    /// Only source-review entry points set these; the normal player leaves nil.
+    var reviewParameters: [String:Float]?
     private var prepared: [CubismModel.Mesh] = []
     private var vertices: [Int:MTLBuffer] = [:]
     private var indices: [Int:MTLBuffer] = [:]
@@ -72,7 +74,9 @@ final class CubismDrawing {
     private func key(_ masks: [Int]) -> String { masks.sorted().map(String.init).joined(separator:",") }
     func prepare(_ command: MTLCommandBuffer,size: CGSize,pose: RigPose,motion: PuppetMotion) throws {
         let values = expression.apply(CubismParameters.values(pose:pose,motion:motion),expression:pose.expression ?? EmotionalExpression(style:.from(pose.mood)),time:pose.time,mouthOwned:pose.speaking || pose.speech != nil)
-        try model.update(hair.update(values,time:pose.time))
+        var final=hair.update(values,time:pose.time)
+        if let reviewParameters { final.merge(reviewParameters,uniquingKeysWith: { _,review in review }) }
+        try model.update(final)
         prepared = try model.meshes()
         let scale=min(Float(size.width)/model.width,Float(size.height)/model.height)
         let offset=SIMD2((Float(size.width)-model.width*scale)/2,(Float(size.height)-model.height*scale)/2)

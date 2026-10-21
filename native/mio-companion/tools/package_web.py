@@ -12,7 +12,7 @@ README = '''# 澪 Live2D 网页模型
 入口：Mio/Mio.model3.json。请解压整个 Mio 目录并保持相对路径，使用 HTTP/HTTPS 提供文件。
 可导入支持 Cubism 4 的播放器；ZIP 导入功能由播放器决定。
 
-- 格式：官方导出 MOC3，目标 Cubism 4.0，36 参数、53 ArtMesh。
+- 格式：官方导出 MOC3，目标 Cubism 4.0，38 参数、55 ArtMesh。
 - 动作组：Idle（12 秒自动待机）、wave（招手）、think（思考）、talk（说话）、encourage（加油）。后四项各 5 秒。
 - 标准 exp3 表情：neutral、warm、joyful、curious、concerned、surprised、determined、sleepy；兼容 happy、thinking 别名。通过 model.expression(name) 选择。
 - 支持标准 physics3 头发物理及眼口遮罩；播放器应开启物理和自动待机。

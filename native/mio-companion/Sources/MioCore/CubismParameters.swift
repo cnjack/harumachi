@@ -15,7 +15,7 @@ public enum CubismParameters {
             "ParamBrowLY":pose.resolvedGesture == .think ? 0.35 : (pose.speaking ? 0.2*Float(sin(pose.time*2.7)) : 0),
             "ParamBrowRY":pose.resolvedGesture == .think ? -0.15 : (pose.speaking ? 0.15*Float(sin(pose.time*2.7-0.3)) : 0),
             "ParamMouthForm":pose.speaking ? 0.25 : 0,"ParamMouthRound":0,"ParamEyeLSmile":0,"ParamEyeRSmile":0,"ParamBrowLAngle":0,"ParamBrowRAngle":0,
-            "ParamHairFront":0,"ParamHairBack":0,
+            "ParamHairFront":0,"ParamHairBack":0,"ParamHairSideL":0,"ParamHairSideR":0,
             "ParamShoulderL":m.leftShoulder,"ParamShoulderR":m.rightShoulder,
             "ParamElbowL":m.leftElbow,"ParamElbowR":m.rightElbow,"ParamWristL":m.leftWrist,"ParamWristR":m.rightWrist,
             "ParamFingerSpreadL":m.leftHand.y*(0.16+0.22*Float(sin(pose.resolvedTime*3.7))),

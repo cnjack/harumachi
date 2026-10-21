@@ -1,10 +1,10 @@
 # 澪 Cubism 模型
 
-当前 v18：`Mio.cmo3` 为可编辑 Cubism 工程，`Mio.psd` 为 RGB/8、53 层导入素材。正式入口为 `native/mio-companion/Sources/MioApp/Resources/MioCubism/Mio.model3.json`。
+当前 v18：`Mio.cmo3` 为可编辑 Cubism 工程，`Mio.psd` 为 RGB/8、55 层导入素材。正式入口为 `native/mio-companion/Sources/MioApp/Resources/MioCubism/Mio.model3.json`。
 
-模型通过本机 Cubism Editor 5.3.04 官方导出，目标 Cubism 4.0（MOC version 3），36 个有效参数、53 个 ArtMesh。保留 0.736 头部比例及用户认可的 v14 衣袖连接，保留原眼睛、中性脸轮廓，使用 3×3 小角度投影关键形，所有五官及下巴协同变化；原眼睛拆为独立眉毛、眼白、虹膜、上下眼睑和闭眼线，虹膜按眼白开口剪裁。嘴部拆成七层；掌心左右各拆出五根完整手指并固定指根。提供 Idle、wave、think、talk、encourage 五组动作；伸懒腰已移除。
+模型通过本机 Cubism Editor 5.3.04 官方导出，目标 Cubism 4.0（MOC version 3），38 个有效参数、55 个 ArtMesh。保留 0.736 头部比例及用户认可的 v14 衣袖连接，保留原眼睛、中性脸轮廓，使用 3×3 小角度投影关键形，所有五官及下巴协同变化；原眼睛拆为独立眉毛、眼白、虹膜、上下眼睑和闭眼线，虹膜按眼白开口剪裁。嘴部拆成七层；掌心左右各拆出五根完整手指并固定指根。提供 Idle、wave、think、talk、encourage 五组动作；伸懒腰已移除。
 
-`Mio.physics3.json` 提供前后发两组物理。Idle 为 12 秒闭环，动作淡入淡出 0.35 秒；手型 ID 曲线单独关闭淡入淡出，避免多手叠影。实际复验包括官方 Core、Swift Metal 和 Pixi Cubism4 网页播放器，八种 exp3 表情为 neutral / warm / joyful / curious / concerned / surprised / determined / sleepy，并保留 happy / thinking 别名。详见 [v18 记录](../../../../docs/game-design/MIO_EMOTION_20261022.md)。
+`Mio.physics3.json` 提供前额、后发、左侧发梢和右侧发梢四组物理。Idle 为 12 秒闭环，动作淡入淡出 0.35 秒；手型 ID 曲线单独关闭淡入淡出，避免多手叠影。实际复验包括官方 Core、Swift Metal 和 Pixi Cubism4 网页播放器，八种 exp3 表情为 neutral / warm / joyful / curious / concerned / surprised / determined / sleepy，并保留 happy / thinking 别名。详见 [v18 记录](../../../../docs/game-design/MIO_EMOTION_20261022.md)。
 
 在仓库根运行 `python3 art/tools/live2d/export_mio.py` 重建。工具先注册透明脸部件，再生成源关键形、PSD 和动作，调用本机 Editor 及 JDK 21 导出；`--editor` / `--jdk` 可指定安装目录。桥接依据 autoLive2d MIT 工具，来源、固定提交和许可证在 `art/tools/live2d/vendor/autolive2d/`。不下载软件、不修改许可证、不分发厂商二进制。
 
