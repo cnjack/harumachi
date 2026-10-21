@@ -31,7 +31,7 @@ final class ThinkingPoseTests: XCTestCase {
             XCTAssertEqual(motion.thoughtOpacity,1)
             XCTAssertEqual(motion.rightChin,1)
         }
-        for gesture in [CharacterGesture.idle,.wave,.stretch,.talk] {
+        for gesture in [CharacterGesture.idle,.wave,.talk] {
             XCTAssertEqual(PuppetMotion(pose:RigPose(time:2,gesture:gesture)).thoughtOpacity,0)
         }
     }

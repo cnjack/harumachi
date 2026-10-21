@@ -37,17 +37,15 @@ public struct PuppetMotion: Sendable {
             if pose.speaking { gesture = .talk; phase = t.truncatingRemainder(dividingBy: 5) }
             else if cycle < 5 { gesture = .wave; phase = cycle }
             else if cycle >= 16 && cycle < 21 { gesture = .think; phase = cycle - 16 }
-            else if cycle >= 34 && cycle < 41 { gesture = .stretch; phase = cycle - 34 }
             else { gesture = .idle; phase = 0 }
         }
-        let rise: Float = gesture == .stretch ? 0.85 : (gesture == .wave ? 0.55 : 0.48)
-        let blend = Self.envelope(phase, duration: gesture.duration,rise:rise,fall:gesture == .stretch ? 0.85 : 0.6)
+        let rise: Float = gesture == .wave ? 0.55 : 0.48
+        let blend = Self.envelope(phase, duration: gesture.duration,rise:rise,fall:0.6)
         // The source artwork spreads its arms for rigging. The authored rest
         // pose closes the shoulders so both wrists hang beside the hips.
         // Release only the arm used by the gesture, preserving held targets.
-        let leftActivity = gesture == .stretch ? blend : 0
         let rightActivity = gesture == .idle || gesture == .automatic ? 0 : blend
-        leftShoulder -= 0.38 * (1-leftActivity)
+        leftShoulder -= 0.38
         rightShoulder += 0.38 * (1-rightActivity)
         let handBlend = Self.smooth(0,0.22,Float(phase))
             * (1-Self.smooth(Float(gesture.duration-0.4),Float(gesture.duration),Float(phase)))
@@ -65,31 +63,6 @@ public struct PuppetMotion: Sendable {
             rightWrist = 0.19 * Float(sin(phase*8.6-0.65)) * blend
             head += (0.045+0.026*Float(sin(phase*4.3-0.7))) * blend
             torso += (-0.032+0.006*Float(sin(phase*4.3-1))) * blend
-        case .stretch:
-            // Close before lifting and release after lowering, with the wrist
-            // aligned to the forearm throughout the relaxed overhead stretch.
-            let grip = Self.smooth(0,0.18,Float(phase))
-                * (1-Self.smooth(Float(gesture.duration-0.35),Float(gesture.duration),Float(phase)))
-            leftFist = grip; rightFist = grip
-            leftHand = SIMD4(1-grip,0,0,0)
-            rightHand = leftHand
-            // Lift outwards throughout the motion; the previous anticipation
-            // reversed the shoulder and folded the elbow almost 180 degrees.
-            let liftedShoulder = 1.85 * Self.smooth(0, 1, blend)
-            leftShoulder += liftedShoulder; rightShoulder -= liftedShoulder
-            let foldedElbow = 1.25 * sin(.pi * blend) + 0.25 * blend
-            leftElbow += foldedElbow; rightElbow -= foldedElbow
-            let settle = Self.smooth(0.65,1.05,Float(phase))*blend
-            leftShoulder += 0.045*Float(sin((phase-0.65)*2.8))*settle
-            rightShoulder -= 0.045*Float(sin((phase-0.78)*2.8))*settle
-            leftElbow += 0.055*Float(sin(phase*2.8-0.5))*settle
-            rightElbow -= 0.055*Float(sin(phase*2.8-0.9))*settle
-            leftWrist = 0.07*Float(sin(phase*2.8-1))*settle
-            rightWrist = -0.07*Float(sin(phase*2.8-1.4))*settle
-            headShift.y -= 3 * blend
-            torsoLift = 5 * blend
-            torso += Float(sin(phase * 1.6)) * 0.025 * blend
-            head += Float(sin(phase * 2-0.4)) * 0.035 * blend
         case .think:
             rightChin = handBlend
             rightHand = SIMD4(1-handBlend,0,0,0)

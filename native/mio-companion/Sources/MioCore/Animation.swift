@@ -1,18 +1,17 @@
 import Foundation
 
 public enum CharacterGesture: String, CaseIterable, Sendable {
-    case automatic, idle, wave, stretch, think, talk
+    case automatic, idle, wave, think, talk
     public var title: String {
         switch self {
         case .automatic: return "自动"
         case .idle: return "放下"
         case .wave: return "招手"
-        case .stretch: return "伸懒腰"
         case .think: return "思考"
         case .talk: return "说话"
         }
     }
-    public var duration: Double { self == .stretch ? 7 : 5 }
+    public var duration: Double { 5 }
 }
 
 public struct RigPose: Sendable, Equatable {

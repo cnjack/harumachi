@@ -106,7 +106,7 @@ final class PosePartsTests: XCTestCase {
             XCTAssertGreaterThan(minimumFacing,0.15,"\(gesture) \(prefix): the presented thumb points away from the head")
         }
     }
-    func testStretchUsesCompactFistsBeforeRaisingAndReleasesAfterLowering() throws {
+    func testTransitionFistArtworkKeepsCompactProportions() throws {
         let resources = URL(fileURLWithPath:#filePath).deletingLastPathComponent()
             .deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("Sources/MioApp/Resources/Mio")
         let rig = try XCTUnwrap(JSONSerialization.jsonObject(with:Data(contentsOf:
@@ -140,20 +140,6 @@ final class PosePartsTests: XCTestCase {
             print("Fist \(side): reach \(reach), half-width \(across)")
             XCTAssertTrue((27...43).contains(reach),"A fist must not retain the open hand's long fingers")
             XCTAssertTrue((13...23).contains(across),"Keep the closed fist proportional to the wrist")
-        }
-        for time in [0.35,1,2,4,6.65] {
-            let motion = PuppetMotion(pose:RigPose(time:time,gesture:.stretch))
-            XCTAssertEqual(motion.leftFist,1,accuracy:0.0001)
-            XCTAssertEqual(motion.rightFist,1,accuracy:0.0001)
-            XCTAssertEqual(motion.leftHand,.zero)
-            XCTAssertEqual(motion.rightHand,.zero)
-        }
-        for time in [0.0,7.0] {
-            let motion = PuppetMotion(pose:RigPose(time:time,gesture:.stretch))
-            XCTAssertEqual(motion.leftFist,0)
-            XCTAssertEqual(motion.rightFist,0)
-            XCTAssertEqual(motion.leftHand,SIMD4(1,0,0,0))
-            XCTAssertEqual(motion.rightHand,SIMD4(1,0,0,0))
         }
     }
     func testPalmBackAndInwardThumbsHaveCorrectHandednessInActualTextures() throws {
@@ -224,13 +210,8 @@ final class PosePartsTests: XCTestCase {
     }
     func testHandChoicesAndTransitionsKeepFullCoverage() {
         let wave = PuppetMotion(pose: RigPose(time: 2, gesture: .wave))
-        let stretch = PuppetMotion(pose: RigPose(time: 2, gesture: .stretch))
         let think = PuppetMotion(pose: RigPose(time: 2, gesture: .think))
         XCTAssertEqual(wave.rightHand, SIMD4(0,1,0,0))
-        XCTAssertEqual(stretch.leftHand,.zero)
-        XCTAssertEqual(stretch.rightHand,.zero)
-        XCTAssertEqual(stretch.leftFist,1)
-        XCTAssertEqual(stretch.rightFist,1)
         XCTAssertEqual(think.rightHand,.zero)
         XCTAssertEqual(think.rightChin,1)
         for gesture in CharacterGesture.allCases {
@@ -245,7 +226,7 @@ final class PosePartsTests: XCTestCase {
             }
         }
         for frame in 0...210 {
-            let motion = PuppetMotion(pose: RigPose(time: Double(frame)/30, gesture: .stretch))
+            let motion = PuppetMotion(pose: RigPose(time: Double(frame)/30, gesture: .think))
             let waist = SIMD2<Float>(300,432), foot = SIMD2<Float>(350,980)
             XCTAssertEqual(motion.lowerBodyPoint(waist), motion.torsoPoint(waist))
             XCTAssertEqual(motion.lowerBodyPoint(foot), foot)

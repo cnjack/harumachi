@@ -40,4 +40,14 @@ for record in data['records']:
 report={'frames':len(data['records']),'band_pixels':tested,'minimum_band_alpha':alpha_min,'alpha_threshold':250,'worst_alpha':alpha_worst,'maximum_attachment_gap_px':gap_max,'gap_threshold_px':0.15,'worst_gap':gap_worst,'groups':groups,'failures':failures,'scope':'Actual MOC vertex anchors and 15 pixels across each inner joint band. Exterior folds/outlines require contact-sheet review.'}
 (root/'arm-connections.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps({**report,'failures':failures[:12]},indent=2))
-raise SystemExit(bool(failures) or len(data['records'])<6000)
+actions = ['idle','wave','think','talk']
+expected = {f'gesture-{name}':210 for name in actions}
+expected.update({f'switch-{a}-{b}':121 for a in actions for b in actions})
+expected.update({f'late-{clock}-{a}-{b}':121 for clock in [100,3600]
+                 for a,b in [('think','wave'),('wave','think')]})
+expected.update({'automatic':1567,'look-extremes':len(actions)*5})
+expected.update({f'automatic-speech-{time}':121 for time in [2,18,36]})
+coverage = {name:group['frames'] for name,group in groups.items()}
+if coverage != expected:
+    print('Incomplete motion coverage:', coverage, 'expected:', expected)
+raise SystemExit(bool(failures) or coverage != expected)

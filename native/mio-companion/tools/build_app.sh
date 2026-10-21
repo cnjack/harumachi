@@ -10,6 +10,13 @@ cp "$bin/MioCompanion" "$app/Contents/MacOS/MioCompanion"
 for bundle in "$bin"/*.bundle; do
   [ -d "$bundle" ] && ditto "$bundle" "$app/Contents/Resources/$(basename "$bundle")"
 done
+# Incremental SwiftPM/ditto copies can retain deleted source assets. Replace
+# these two owned resource trees so removed motions cannot ship in the app.
+resources="$app/Contents/Resources/MioCompanion_MioApp.bundle/Resources"
+for name in Mio MioCubism; do
+  rm -rf "$resources/$name"
+  ditto "$PWD/Sources/MioApp/Resources/$name" "$resources/$name"
+done
 cat > "$app/Contents/Info.plist" <<'PLIST'
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">

@@ -61,7 +61,7 @@ final class ArmDeformationTests: XCTestCase {
             // Each newly separated piece occupies a different fraction of the
             // common texture rectangle. Keep dense sampling of its actual art.
             XCTAssertGreaterThan(triangles.count,max(24,Int(expectedSamples*0.65)))
-            let gestures: [CharacterGesture] = [.idle, .wave, .stretch, .think, .talk]
+            let gestures: [CharacterGesture] = [.idle, .wave, .think, .talk]
             var sequences = gestures.map { gesture in
                 (gesture.rawValue, (0...210).map { PuppetMotion(pose: RigPose(time: Double($0) / 30, gesture: gesture)) })
             }
@@ -120,13 +120,6 @@ final class ArmDeformationTests: XCTestCase {
             let think = PuppetMotion(pose: RigPose(time: time, gesture: .think))
             XCTAssertTrue((320...390).contains(hand(think).x),"Thinking wrist stays beside and below the chin")
             XCTAssertTrue((300...365).contains(hand(think).y),"The index reaches up to the chin")
-        }
-        for frame in 0...210 {
-            let motion = PuppetMotion(pose: RigPose(time: Double(frame) / 30, gesture: .stretch))
-            let idle = PuppetMotion(pose: RigPose(time: Double(frame) / 30, gesture: .idle))
-            XCTAssertLessThanOrEqual(motion.rightShoulder, idle.rightShoulder + 0.0001, "Right shoulder must lift outwards throughout")
-            XCTAssertGreaterThanOrEqual(motion.leftShoulder, idle.leftShoulder - 0.0001, "Left shoulder must lift outwards throughout")
-            XCTAssertLessThan(abs(motion.rightElbow), 1.6, "Do not overfold the elbow during anticipation")
         }
     }
 }

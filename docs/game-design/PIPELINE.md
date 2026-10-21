@@ -1,5 +1,7 @@
 # 模型、工程与交付流程
 
+澪统一从 `open_mio_companion.command` 启动原桌面来信，旧预览启动器同样转入该应用。当前四动作；标准导出和构建清理已移除 motion3。复验 5210 帧和 16 组切换，另用 `--smoke-test <目录>` 验证主窗口及桌面角色两处 Cubism 渲染、来信和暂停。详见[应用接入记录](MIO_MAIL_INTEGRATION_20261021.md)。
+
 澪 v14 恢复旧整袖原画的肘部与袖口，保留 v13 肩部源修改。注册后先运行 `native/mio-companion/tools/audit_elbow_artwork.py --output <报告.json>`，再导出 PSD/CMO3 并检查真实 Core 动作及现有屏幕；原图像素一致不替代自然度。流程和边界见[肘部恢复](MIO_ELBOW_RESTORE_20261021.md)。
 
 澪桌面角色 v13 肩部流程：两份新透明源图 → `pack_assets.swift` 上臂注册与袖窿局部合成 → `export_psd.swift` 28 层 PSD → `export_mio.py` 官方 30 ArtMesh CMO3/MOC3。先用 `--review-shoulders` 对照源布局与正式 Core，再跑全动作切换和现有屏幕验收。只检查关节中心不够，必须放大看肩线、腋下、肘部外缘；用户已认可的招手抬起侧保持原位置。详见[肩部修复](MIO_SHOULDER_20261021.md)。

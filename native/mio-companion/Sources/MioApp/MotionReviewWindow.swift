@@ -18,10 +18,9 @@ import MioCore
     var poseMeasurements: [String:[String:Any]] = [:]
     var sentSpeech = false
     var revision = 100
-    let schedule: [(Double,CharacterGesture)] = [(0,.idle),(1,.wave),(4.5,.stretch),(9.5,.think),(14.5,.talk),(19,.automatic)]
-    // Stretch -> think uses the safe lowered-arm waypoint. Capture the held
-    // pose after contact and the cloud's 0.25 s fade, not during that fade.
-    let captures: [(Double,String)] = [(0.8,"idle"),(2.6,"wave"),(6.5,"stretch"),(12.2,"think"),(16.2,"talk"),(25,"automatic")]
+    let schedule: [(Double,CharacterGesture)] = [(0,.idle),(1,.wave),(9.5,.think),(14.5,.talk),(19,.automatic)]
+    // Capture the held thinking pose after contact and the cloud's fade.
+    let captures: [(Double,String)] = [(0.8,"idle"),(2.6,"wave"),(12.2,"think"),(16.2,"talk"),(25,"automatic")]
 
     init(at directory: URL, persistent: Bool) throws {
         self.directory = directory
@@ -94,9 +93,7 @@ import MioCore
                     poseChecks[name] = hand.variant == "relaxed" && left.y > 525 && right.y > 525
                         && abs(left.x-231) < 60 && abs(right.x-369) < 60
                 } else if name == "wave" { poseChecks[name] = hand.variant == "palm" && wrist(false).y < 300 }
-                else if name == "stretch" {
-                    poseChecks[name] = hand.variant == "fist" && wrist(false).y < 240 && wrist(true).y < 240
-                } else if name == "think" {
+                else if name == "think" {
                     let finger = motion.armPoint(PuppetMotion.thinkingFinger,shoulder:SIMD2(369,320),
                         elbow:SIMD2(427,418),wrist:SIMD2(486,508),left:false)
                     let target = motion.torsoPoint(motion.headPoint(SIMD2(300,268))+SIMD2(1,1))
@@ -122,7 +119,7 @@ import MioCore
                     "audioEnabled":false,"virtualDisplayCreated":false]
                 try JSONSerialization.data(withJSONObject:report,options:[.prettyPrinted,.sortedKeys])
                     .write(to:directory.appendingPathComponent("native-window.json"))
-                guard Double(renderer.frameCount)/elapsed>=50,captured.count==6,poseChecks.values.allSatisfy({$0}) else { throw MioRenderer.RenderError.unavailable }
+                guard Double(renderer.frameCount)/elapsed>=50,captured.count==captures.count,poseChecks.values.allSatisfy({$0}) else { throw MioRenderer.RenderError.unavailable }
                 exit(0)
             }
         } catch { fputs("Motion window acceptance failed: \(error)\n",stderr);exit(1) }

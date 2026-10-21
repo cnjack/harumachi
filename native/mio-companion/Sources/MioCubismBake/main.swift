@@ -250,7 +250,12 @@ print("Cubism input: \(layers.count) source layers, \(descriptions.reduce(0) { $
 
 let motions = out.appendingPathComponent("motions")
 try FileManager.default.createDirectory(at:motions,withIntermediateDirectories:true)
-for gesture in [CharacterGesture.idle,.wave,.stretch,.think,.talk] {
+let retainedMotions = Set(["idle", "wave", "think", "talk"].map { $0 + ".motion3.json" })
+for file in try FileManager.default.contentsOfDirectory(at:motions,includingPropertiesForKeys:nil)
+    where file.lastPathComponent.hasSuffix(".motion3.json") && !retainedMotions.contains(file.lastPathComponent) {
+    try FileManager.default.removeItem(at:file)
+}
+for gesture in [CharacterGesture.idle,.wave,.think,.talk] {
     let frames = Int(gesture.duration*30)
     let samples = (0...frames).map { frame -> [String:Float] in
         let t = Double(frame)/30

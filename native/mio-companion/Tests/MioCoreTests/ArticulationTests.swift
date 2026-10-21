@@ -4,7 +4,7 @@ import XCTest
 final class ArticulationTests: XCTestCase {
     func testRestingArmsHangBesideTheBodyAndGesturesReturnThere() {
         for time in [0.0,2.0,7.0,16.0] {
-            for gesture in [CharacterGesture.idle,.wave,.stretch,.think,.talk] {
+            for gesture in [CharacterGesture.idle,.wave,.think,.talk] {
                 let motion = PuppetMotion(pose:RigPose(time:time,gesture:gesture,
                     gestureTime:gesture == .idle ? 0 : gesture.duration+1))
                 for left in [true,false] {
@@ -52,7 +52,7 @@ final class ArticulationTests: XCTestCase {
     }
     func testGesturesEaseInAndReturnWithoutSnapping() {
         let old = PuppetMotion(pose: RigPose(time: 2, gesture: .wave))
-        let next = PuppetMotion(pose: RigPose(time: 0, gesture: .stretch))
+        let next = PuppetMotion(pose: RigPose(time: 0, gesture: .think))
         XCTAssertEqual(next.blended(from: old, fraction: 0).rightElbow, old.rightElbow)
         XCTAssertEqual(next.blended(from: old, fraction: 1).rightElbow, next.rightElbow)
         XCTAssertEqual(next.blended(from: old, fraction: 0.5).rightElbow, (old.rightElbow + next.rightElbow) / 2, accuracy: 0.0001)
@@ -74,7 +74,7 @@ final class ArticulationTests: XCTestCase {
         let lowered = idle.armPoint(wrist, shoulder: shoulder, elbow: elbow, wrist: wrist, left: false)
         XCTAssertLessThan(raised.y, lowered.y - 160)
         XCTAssertEqual(wave.armPoint(shoulder, shoulder: shoulder, elbow: elbow, wrist: wrist, left: false), wave.torsoPoint(shoulder))
-        for gesture in [CharacterGesture.wave, .stretch, .think, .talk] {
+        for gesture in [CharacterGesture.wave, .think, .talk] {
             for frame in 0...210 {
                 let pose = RigPose(time: Double(frame) / 30, gesture: gesture)
                 let motion = PuppetMotion(pose: pose)

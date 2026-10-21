@@ -36,7 +36,7 @@ enum CubismReview {
             }
             frameCount += 1
         }
-        let gestures: [CharacterGesture] = [.idle,.wave,.stretch,.think,.talk]
+        let gestures: [CharacterGesture] = [.idle,.wave,.think,.talk]
         for gesture in gestures {
             let sourcePose = RigPose(time:3,speaking:gesture == .talk,gesture:gesture,gestureTime:3)
             try original.snapshot(to:directory.appendingPathComponent("source-\(gesture.rawValue).png"),pose:sourcePose,motion:PuppetMotion(pose:sourcePose))
@@ -61,7 +61,7 @@ enum CubismReview {
                 try verify(pose,playback.sample(pose))
             }
         } }
-        let report: [String:Any] = ["format":"Cubism MOC3","coreVersion":core.coreVersion,"mocVersion":core.mocVersion,"parameters":checks,"drawables":try core.meshes().count,"coreFrames":frameCount,"metalSnapshots":21,"parameterEngine":"official Cubism Core","renderer":"Swift Metal indexed drawables","networkRequests":0,"systemMonitoringStarted":false,"audioEnabled":false,"virtualDisplayCreated":false,"visibleWindowAcceptance":false]
+        let report: [String:Any] = ["format":"Cubism MOC3","coreVersion":core.coreVersion,"mocVersion":core.mocVersion,"parameters":checks,"drawables":try core.meshes().count,"coreFrames":frameCount,"metalSnapshots":1+gestures.count*5,"parameterEngine":"official Cubism Core","renderer":"Swift Metal indexed drawables","networkRequests":0,"systemMonitoringStarted":false,"audioEnabled":false,"virtualDisplayCreated":false,"visibleWindowAcceptance":false]
         try JSONSerialization.data(withJSONObject:report,options:[.prettyPrinted,.sortedKeys]).write(to:directory.appendingPathComponent("verification.json"))
         print("Cubism Core/Metal: \(checks.count) effective parameters, \(frameCount) verified frames at \(directory.path)")
     }

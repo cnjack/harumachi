@@ -26,7 +26,9 @@ final class ShoulderSilhouetteTests: XCTestCase {
             }
         }
         for frame in 30...90 {
-            let pose=RigPose(time:Double(frame)/30,gesture:.stretch),motion=PuppetMotion(pose:pose)
+            var motion=PuppetMotion(pose:RigPose(time:Double(frame)/30,gesture:.idle))
+            motion.leftShoulder = 1.85; motion.rightShoulder = -1.85
+            let pose=RigPose(time:Double(frame)/30,gesture:.idle)
             try model.update(CubismParameters.values(pose:pose,motion:motion))
             let meshes=try model.meshes()
             for left in [true,false] {

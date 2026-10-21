@@ -37,7 +37,6 @@ public struct MotionPlayback {
                 targetPose.gestureTime = 1.25 + max(0, pose.time - start - duration)
             } else if cycle < 5 { resolved = .wave; targetPose.gestureTime = cycle }
             else if cycle >= 16 && cycle < 21 { resolved = .think; targetPose.gestureTime = cycle - 16 }
-            else if cycle >= 34 && cycle < 41 { resolved = .stretch; targetPose.gestureTime = cycle - 34 }
             else { resolved = .idle; targetPose.gestureTime = 0 }
         } else if manualStart != nil {
             targetPose.gestureTime = pending ? 1.25 : 1.25 + max(0, pose.time - start - duration)

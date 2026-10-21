@@ -45,9 +45,6 @@ final class ArmEnergyTests: XCTestCase {
     func testAuthoredActionsReachTheirReadablePosePromptly() {
         let wave=PuppetMotion(pose:RigPose(time:0.7,gesture:.wave))
         XCTAssertLessThan(wrist(wave).y,290,"Greeting should raise the hand within 0.7 seconds")
-        let stretch=PuppetMotion(pose:RigPose(time:1.0,gesture:.stretch))
-        XCTAssertLessThan(wrist(stretch).y,200)
-        XCTAssertLessThan(wrist(stretch,left:true).y,200)
         let think=PuppetMotion(pose:RigPose(time:0.75,gesture:.think))
         let finger=think.armPoint(PuppetMotion.thinkingFinger,shoulder:SIMD2(369,320),elbow:SIMD2(427,418),wrist:SIMD2(486,508),left:false)
         let chin=think.torsoPoint(think.headPoint(SIMD2(300,268))+SIMD2(1,1))

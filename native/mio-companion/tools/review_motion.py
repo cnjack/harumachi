@@ -31,7 +31,7 @@ def main():
             continue
     else:
         font = ImageFont.load_default()
-    names = dict(idle="放下", wave="招手", stretch="伸懒腰", think="思考", talk="说话")
+    names = dict(idle="放下", wave="招手", think="思考", talk="说话")
 
     def picture(entry, box=None, size=None, background="#faf9f4"):
         with Image.open(root / entry["frame"]) as source:
@@ -50,7 +50,7 @@ def main():
                ("wrist_left", "左手腕"), ("wrist_right", "右手腕"),
                ("neck", "颈部"), ("waist", "腰部")]
     for gesture in names:
-        phases = [0, 8, 15, 25, 45, 105, 195, 207] if gesture == "stretch" else [0, 8, 15, 25, 45, 75, 129, 147]
+        phases = [0, 8, 15, 25, 45, 75, 129, 147]
         sheet = Image.new("RGB", (1360, 40 + len(regions) * 176), "#eeede8")
         draw = ImageDraw.Draw(sheet)
         for col, frame in enumerate(phases):
@@ -85,7 +85,7 @@ def main():
     if late:
         gallery("late-clock.png", late, [0, 3, 9, 18, 30, 45, 75, 120],
                 lambda e: f'{e["group"]} {int(Path(e["frame"]).stem)/30:.2f}s')
-    gallery("look-extremes.png", [groups["look-extremes"][i:i + 5] for i in range(0, 25, 5)],
+    gallery("look-extremes.png", [groups["look-extremes"][i:i + 5] for i in range(0, len(names)*5, 5)],
             list(range(5)), lambda e: f'{names[e["gesture"]]} 视线 {e["look"]}')
     auto_phases = [0, 8, 15, 30, 75, 137, 149, 150, 479, 488, 495, 510, 540, 617, 629, 630,
                    1019, 1028, 1035, 1050, 1080, 1217, 1229, 1230, 1559, 1560, 1563, 1566]

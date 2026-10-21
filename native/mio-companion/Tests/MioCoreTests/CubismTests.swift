@@ -17,7 +17,7 @@ final class CubismTests: XCTestCase {
         let display = try JSONSerialization.jsonObject(with:Data(contentsOf:assets.appendingPathComponent("Mio.cdi3.json"))) as! [String:Any]
         let ids = Set((display["Parameters"] as! [[String:Any]]).map { $0["Id"] as! String })
         XCTAssertEqual(ids.count,24)
-        for name in ["idle","wave","stretch","think","talk"] {
+        for name in ["idle","wave","think","talk"] {
             let motion = try JSONSerialization.jsonObject(with:Data(contentsOf:assets.appendingPathComponent("motions/\(name).motion3.json"))) as! [String:Any]
             XCTAssertEqual(motion["Version"] as? Int,3)
             let curves = motion["Curves"] as! [[String:Any]],meta = motion["Meta"] as! [String:Any]
@@ -54,7 +54,7 @@ final class CubismTests: XCTestCase {
         }
         let topology=try JSONDecoder().decode(CubismRigGeometry.self,from:Data(contentsOf:assets.appendingPathComponent("Mio.bindings.json")))
         func distance(_ a: SIMD2<Float>,_ b: SIMD2<Float>) -> Float {let d=a-b;return sqrt(d.x*d.x+d.y*d.y)}
-        for gesture in [CharacterGesture.idle,.wave,.stretch,.think,.talk] {
+        for gesture in [CharacterGesture.idle,.wave,.think,.talk] {
             for frame in stride(from:0,through:Int(gesture.duration*30),by:1) {
                 let pose=RigPose(time:Double(frame)/30,gesture:gesture),motion=PuppetMotion(pose:pose)
                 try model.update(CubismParameters.values(pose:pose,motion:motion))

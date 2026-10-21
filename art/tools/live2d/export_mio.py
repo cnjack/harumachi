@@ -50,7 +50,9 @@ def main():
         shutil.copy2(bake/'Mio.bindings.json',runtime/'Mio.bindings.json')
         for name in ('textures','motions'):
             shutil.copytree((built if name=='textures' else bake)/name,runtime/name,dirs_exist_ok=True)
-        names = ['idle','wave','stretch','think','talk']
+        names = ['idle','wave','think','talk']
+        for obsolete in (runtime/'motions').glob('*.motion3.json'):
+            if obsolete.name not in {name+'.motion3.json' for name in names}: obsolete.unlink()
         manifest = {'Version':3,'FileReferences':{'Moc':'Mio.moc3','Textures':[str(p.relative_to(built)) for p in sorted((built/'textures').glob('*.png'))], 'DisplayInfo':'Mio.cdi3.json','Motions':{name:[{'File':f'motions/{name}.motion3.json','FadeInTime':0,'FadeOutTime':0}] for name in names}},'Groups':[{'Target':'Parameter','Name':'EyeBlink','Ids':['ParamEyeLOpen','ParamEyeROpen']},{'Target':'Parameter','Name':'LipSync','Ids':['ParamMouthOpenY']}]}
         (runtime/'Mio.model3.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
         params = json.loads((bake/'bake.json').read_text())['parameters']

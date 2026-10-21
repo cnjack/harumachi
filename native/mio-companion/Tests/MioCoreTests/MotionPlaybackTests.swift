@@ -25,7 +25,7 @@ final class MotionPlaybackTests: XCTestCase {
         }
     }
     func testAllInterruptionsStayWithinAnActualHandSpeedLimit() {
-        let gestures: [CharacterGesture] = [.idle,.wave,.stretch,.think,.talk]
+        let gestures: [CharacterGesture] = [.idle,.wave,.think,.talk]
         for from in gestures { for to in gestures {
             var player = MotionPlayback()
             let before = RigPose(time:2,gesture:from)
@@ -42,21 +42,21 @@ final class MotionPlaybackTests: XCTestCase {
         } }
     }
     func testRetriggeringAnActiveGestureKeepsItsPhase() {
-        for gesture in [CharacterGesture.wave,.stretch,.think,.talk] {
+        for gesture in [CharacterGesture.wave,.think,.talk] {
             var player = MotionPlayback()
             let pose = RigPose(time:2,gesture:gesture)
             _ = player.sample(pose)
             XCTAssertFalse(player.select(gesture,pose:pose),"Do not lower and restart the same active gesture")
         }
     }
-    func testThinkingLowersBeforeStartingTheOppositeOverheadFold() {
+    func testThinkingLowersBeforeStartingTheOppositeWaveFold() {
         for start in [2.0,100.0,3600.0] {
             var player = MotionPlayback()
             let pose = RigPose(time:start,gesture:.think,gestureTime:2)
             _ = player.sample(pose)
-            _ = player.select(.stretch,pose:pose)
+            _ = player.select(.wave,pose:pose)
             for frame in 0...150 {
-                let motion = player.sample(RigPose(time:start+Double(frame)/30,gesture:.stretch,gestureTime:Double(frame)/30))
+                let motion = player.sample(RigPose(time:start+Double(frame)/30,gesture:.wave,gestureTime:Double(frame)/30))
                 if motion.rightElbow>0.6 {
                     let resting = PuppetMotion(pose:RigPose(time:start+Double(frame)/30,gesture:.idle))
                     XCTAssertLessThan(abs(motion.leftShoulder-resting.leftShoulder),0.08,"Do not lift the other arm while the thinking elbow folds down, clock \(start)")

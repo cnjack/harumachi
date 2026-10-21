@@ -24,7 +24,7 @@ final class ArmAnatomyTests: XCTestCase {
     }
     func testBoneSegmentsKeepLengthAndRemainStraight() {
         func distance(_ a: SIMD2<Float>,_ b: SIMD2<Float>) -> Float { let d=a-b;return sqrt(d.x*d.x+d.y*d.y) }
-        for gesture in [CharacterGesture.idle,.wave,.stretch,.think,.talk] {
+        for gesture in [CharacterGesture.idle,.wave,.think,.talk] {
             for frame in stride(from:0,through:210,by:5) {
                 let m=PuppetMotion(pose:RigPose(time:Double(frame)/30,gesture:gesture))
                 for left in [true,false] {

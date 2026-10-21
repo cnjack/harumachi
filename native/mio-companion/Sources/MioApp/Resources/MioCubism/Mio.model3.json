@@ -22,13 +22,6 @@
           "FadeOutTime": 0
         }
       ],
-      "stretch": [
-        {
-          "File": "motions/stretch.motion3.json",
-          "FadeInTime": 0,
-          "FadeOutTime": 0
-        }
-      ],
       "think": [
         {
           "File": "motions/think.motion3.json",

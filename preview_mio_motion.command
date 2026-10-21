@@ -1,5 +1,5 @@
 #!/bin/bash
 set -euo pipefail
 cd "$(dirname "$0")"
-./native/mio-companion/tools/build_app.sh
-exec ./native/mio-companion/dist/Mio.app/Contents/MacOS/MioCompanion --preview-motion
+# Keep existing shortcuts working; all user launchers open Desktop Mail.
+exec ./open_mio_companion.command

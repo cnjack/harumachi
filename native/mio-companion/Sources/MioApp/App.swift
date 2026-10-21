@@ -86,13 +86,15 @@ import MioCore
     }
     private func runSmoke() {
         guard let directory = smokeDirectory else { return }
-        let preview: [(Double, CharacterGesture)] = [(0.4, .wave), (2.6, .stretch), (4.8, .think), (7.0, .talk)]
+        let preview: [(Double, CharacterGesture)] = [(0.4, .wave), (2.6, .idle), (4.8, .think), (7.0, .talk)]
         for (delay, gesture) in preview {
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in self?.state.play(gesture) }
             DispatchQueue.main.asyncAfter(deadline: .now() + delay + 1.3) { [weak self] in
                 guard let self, let renderer = self.state.renderer, renderer.pose.gesture == gesture else { return }
                 do {
                     try renderer.snapshot(to: directory.appendingPathComponent("live-\(gesture.rawValue).png"), pose: renderer.pose)
+                    try saveOwnWindow(self.dashboard, to: directory.appendingPathComponent("dashboard-\(gesture.rawValue).png"))
+                    try saveOwnWindow(self.companion, to: directory.appendingPathComponent("desktop-\(gesture.rawValue).png"))
                     self.smokeGestures.append(gesture.rawValue)
                 } catch { fputs("Gesture snapshot failed: \(error)\n", stderr) }
             }
@@ -115,6 +117,14 @@ import MioCore
                 self.state.receive(SystemEvent(kind: "message", summary: "must be ignored"))
                 let pauseWorks = before == self.state.events.count
                 self.state.togglePause()
+                func renderers(in view: NSView) -> [MioRenderer] {
+                    let own = (view as? TrackingMetalView)?.rigRenderer.map { [$0] } ?? []
+                    return own + view.subviews.flatMap { renderers(in: $0) }
+                }
+                let embedded = renderers(in: self.dashboard.contentView!)
+                let desktop = renderers(in: self.companion.contentView!)
+                let bothUseCubism = embedded.count == 1 && desktop.count == 1
+                    && (embedded + desktop).allSatisfy { $0.cubism != nil && $0.frameCount >= 120 }
                 let summary: [String: Any] = ["renderedFrames": self.state.frames,
                     "rendererFrames": renderer.frameCount, "pauseBlocksEvents": pauseWorks,
                     "inboxReceived": self.state.events.contains { $0.kind == "message" && $0.metadata["source"] == "inbox" },
@@ -122,11 +132,16 @@ import MioCore
                     "decisions": self.state.decisions, "connection": self.state.connection,
                     "decisionSource": decisionSource, "mood": self.state.mood.rawValue,
                     "previewedGestures": self.smokeGestures,
+                    "availableActions": CharacterGesture.allCases.map(\.rawValue),
+                    "dashboardRendererFrames": embedded.map(\.frameCount),
+                    "desktopRendererFrames": desktop.map(\.frameCount),
+                    "bothViewsUseOfficialCubism": bothUseCubism,
                     "virtualDisplayCreated": false, "audioEnabled": false,
                     "screenshotMethod": "own view tree cache plus own Metal render target composition; no display capture API"]
                 try JSONSerialization.data(withJSONObject: summary, options: [.prettyPrinted, .sortedKeys]).write(to: directory.appendingPathComponent("smoke.json"))
                 guard self.state.frames >= 120, renderer.frameCount >= 120, pauseWorks,
-                      summary["inboxReceived"] as? Bool == true, self.smokeGestures.count == 4 else { throw MioRenderer.RenderError.unavailable }
+                      bothUseCubism, summary["inboxReceived"] as? Bool == true,
+                      Set(self.smokeGestures) == Set(["idle", "wave", "think", "talk"]) else { throw MioRenderer.RenderError.unavailable }
                 self.state.stop(); exit(0)
             } catch { fputs("Smoke failed: \(error)\n", stderr); self.state.stop(); exit(1) }
         }
@@ -174,7 +189,7 @@ import MioCore
                 try FileManager.default.createDirectory(at:directory,withIntermediateDirectories:true)
                 guard let device = MTLCreateSystemDefaultDevice() else { throw MioRenderer.RenderError.unavailable }
                 let renderer = try MioRenderer(device:device)
-                for gesture in [CharacterGesture.idle,.wave,.stretch,.think,.talk] {
+                for gesture in [CharacterGesture.idle,.wave,.think,.talk] {
                     for time in [0.0,0.3,0.6,1.0,2.0,3.0] {
                         let pose = RigPose(time:time,speaking:gesture == .talk,gesture:gesture,gestureTime:time)
                         try renderer.snapshot(to:directory.appendingPathComponent("\(gesture.rawValue)-\(time).png"),
@@ -203,7 +218,7 @@ import MioCore
                 try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
                 guard let device = MTLCreateSystemDefaultDevice() else { throw MioRenderer.RenderError.unavailable }
                 let renderer = try MioRenderer(device: device)
-                let gestures: [CharacterGesture] = [.idle, .wave, .stretch, .think, .talk]
+                let gestures: [CharacterGesture] = [.idle, .wave, .think, .talk]
                 var probes: [[String: Any]] = []
                 for (index, gesture) in gestures.enumerated() {
                     for frame in 0..<210 {

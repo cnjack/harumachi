@@ -1,6 +1,8 @@
 # 澪 · 晴町桌面来信
 
-macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用真正 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 30 层 PSD 在 `art/live2d/mio/cubism/`。当前 v14 恢复旧版连续袖子褶皱及袖口，保留 v13 垂手上提、伸展内收的肩位，保留 v12 的厚度与动作节奏，模型含 24 个参数、五套标准 motion3，CLI 生成与兼容边界见[本轮记录](../../docs/game-design/MIO_CUBISM_20261021.md)。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肘部恢复见[修复记录](../../docs/game-design/MIO_ELBOW_RESTORE_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。仅看动作可双击根目录 `preview_mio_motion.command`；完整常驻版使用 `open_mio_companion.command`。构建：
+2026-10-21：按用户要求移除伸懒腰，并将当前角色放回原「桌面来信」。统一入口及本轮验收见[接入记录](../../docs/game-design/MIO_MAIL_INTEGRATION_20261021.md)。
+
+macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用真正 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 30 层 PSD 在 `art/live2d/mio/cubism/`。当前 v14 恢复旧版连续袖子褶皱及袖口，保留 v13 垂手上提、伸展内收的肩位，保留 v12 的厚度与动作节奏，模型含 24 个参数、四套标准 motion3，CLI 生成与兼容边界见[本轮记录](../../docs/game-design/MIO_CUBISM_20261021.md)。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肘部恢复见[修复记录](../../docs/game-design/MIO_ELBOW_RESTORE_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。角色已接入原来的「桌面来信」，统一使用 `open_mio_companion.command`；旧 `preview_mio_motion.command` 也转到同一入口。构建：
 
 ```bash
 ./native/mio-companion/tools/build_app.sh
@@ -22,13 +24,13 @@ dist/Mio.app/Contents/MacOS/MioCompanion --review-motion /tmp/mio-joints
 python3 tools/review_motion.py /tmp/mio-joints
 ```
 
-从此目录执行，Python 工具需要 Pillow。输出 6514 张真实 Metal PNG、关节坐标、五动作十部位放大图、25 组各 4 秒切换表、自动周期/说话打断、长时钟及视线极值表。测量包含画幅、关节中心 alpha、邻帧腕位移；工具不自动判定自然度。另用 `python3 tools/check_joint_seams.py /tmp/mio-joints` 检查实际皮肤连接带暗线。
+从此目录执行，Python 工具需要 Pillow。输出 5210 张真实 Metal PNG、关节坐标、四动作十部位放大图、16 组各 4 秒切换表、自动周期/说话打断、长时钟及视线极值表。测量包含画幅、关节中心 alpha、邻帧腕位移；工具不自动判定自然度。另用 `python3 tools/check_joint_seams.py /tmp/mio-joints` 检查实际皮肤连接带暗线。
 
-只看角色动作可双击仓库根目录 [`preview_mio_motion.command`](../../preview_mio_motion.command)。它打开带动作按钮的本地预览，不创建系统监控或网络客户端。`--review-motion-window <目录>` 运行 28 秒的隔离可见窗口验收。
+用户入口统一为仓库根目录 [`open_mio_companion.command`](../../open_mio_companion.command)，同时显示来信主窗口与桌面角色。独立预览仅保留为开发调试参数 `--preview-motion`。`--review-motion-window <目录>` 运行 28 秒的隔离可见窗口验收。
 
 ## 角色和渲染
 
-当前待机为双臂自然垂下，点击「放下」可平滑退出当前动作；动作结束回到垂手，招手和托腮时空闲手臂也保持下垂。正式 Cubism 模型、源码与五套标准 motion3 同步，当前验收见[肩部修复记录](../../docs/game-design/MIO_SHOULDER_20261021.md)。
+当前待机为双臂自然垂下，点击「放下」可平滑退出当前动作；动作结束回到垂手，招手和托腮时空闲手臂也保持下垂。正式 Cubism 模型、源码与四套标准 motion3 同步，当前验收见[肩部修复记录](../../docs/game-design/MIO_SHOULDER_20261021.md)。
 
 源素材在 [`art/live2d/mio/`](../../art/live2d/mio/)：透明原始部件图、28 层 RGB/8 PSD、源布局 `Mio.rig.json`，以及 `cubism/` 下的可编辑 CMO3 和独立左右眼的 30 层 PSD。PNG 部件随 Swift Package 打包。上身、腰裙、独立上下臂衣袖、公共前臂、五套常用左右手型、一套食指托腮手型与七个头部部件分别成层；手臂使用 24×64 网格，身体 20×64，头部 20×24。Metal 对预乘纹理进行过滤和透明混合，手型使用独立实心源图与几何过渡。当前含呼吸、轻摆、头发运动、眨眼、说话口型和角色区域内的鼠标视线。默认 60 FPS，全程静音；离线全组复拍按 30 FPS 取样。
 
@@ -59,7 +61,7 @@ swift native/mio-companion/tools/export_psd.swift "$PWD"
 
 肩包及肩带已从新身体素材中移除，身体和双臂分别成层。手臂有肩、肘、腕三个关节，颈部从下颌到衣领连续变形；头部视线平滑跟随，带轻微摆头、点头和延迟发梢摆动。保留上一轮缩小 8% 的头部及五官相对比例。
 
-窗口动作按钮提供自动、轻摆、招手、伸懒腰、思考、说话。自动状态约 52 秒穿插一次完整动作组，来信回应期间使用说话手势；手动动作结束后回到轻摆，可点击自动恢复循环。肩部整体转动，肘腕沿保宽弧形弯曲；伸展向外抬肩，思考收向胸前；中途切换用 0.4 秒缓动衔接当前姿势。只控制角色自身动画。
+窗口动作按钮提供自动、放下、招手、思考、说话。自动循环为 52 秒，穿插招手和思考，其余时间垂手；来信回应期间使用说话手势。手动动作结束回到垂手，可点击自动恢复循环。中途切换沿实际手部速度约束衔接。伸懒腰已从按钮、调度、源码动作和标准模型动作包删除。
 
 素材使用内置 imagegen，提示词在 `art/manifests/prompts/live2d/mio-articulated-body.txt`，新增源图在 `art/live2d/mio/articulated/body-arms-atlas.png`；旧头部原始图保留。`--render-motion <目录>` 导出轻摆、招手、伸展、思考、说话各 7 秒，共 1050 帧 / 30 FPS。证据在 `evidence/mio_animation_20261020/`。
 
@@ -96,7 +98,7 @@ python3 native/mio-companion/tools/check_pose_frames.py /tmp/mio-motion
 swift native/mio-companion/tools/preview_motion.swift /tmp/mio-motion
 ```
 
-## 握拳伸懒腰与内收手方向（2026-10-20）
+## 握拳伸懒腰与内收手方向（历史记录，2026-10-20，动作已移除）
 
 用户指出伸手手指方向错误，并确认伸懒腰应握拳。新增内置 imagegen 绘制的 `pose-parts/fists.png`，四指自然收拢，拇指压在弯曲手指外侧；左右手按实际源图列与腕点注册。原始图片与提示词 `art/manifests/prompts/live2d/mio-fists.txt` 均入库，增加两层后为 25 层 PSD。
 
