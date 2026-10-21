@@ -11,7 +11,11 @@ from pathlib import Path
 from PIL import Image
 
 root = Path(sys.argv[1])
-records = json.loads((root / "review-frames.json").read_text())["records"]
+source = json.loads((root / "review-frames.json").read_text())
+records = source["records"]
+join = int(source.get("skin_join_along",-54))
+first_along = join-5
+last_along = join+5
 failures = []
 tested = 0
 maximum = 0.0
@@ -25,7 +29,7 @@ for entry in records:
             normal = [-direction[1], direction[0]]
             rows = []
             valid = True
-            for along in range(-61, -46):
+            for along in range(first_along,last_along+1):
                 pixels = []
                 for across in [-5, -3, 0, 3, 5]:
                     x = round(wrist[0] + direction[0] * along + normal[0] * across)
@@ -48,7 +52,7 @@ for entry in records:
             last = statistics.mean(sum(r[:3]) / 3 for r in rows[-2:])
             if abs(last - first) > 4:
                 continue
-            deficits = [first + (last - first) * i / 14 - sum(row[:3]) / 3
+            deficits = [first + (last - first) * i / (last_along-first_along) - sum(row[:3]) / 3
                         for i, row in enumerate(rows)]
             deficit = max(deficits[2:-2])
             tested += 1

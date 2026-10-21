@@ -10,6 +10,7 @@ enum MotionReview {
         guard let device = MTLCreateSystemDefaultDevice() else { throw MioRenderer.RenderError.unavailable }
         let gestures: [CharacterGesture] = [.idle, .wave, .stretch, .think, .talk]
         var records: [[String: Any]] = []
+        let catalog = try JSONDecoder().decode(CubismRigGeometry.self,from:Data(contentsOf:MioResources.directory("MioCubism").appendingPathComponent("Mio.bindings.json")))
         func capture(_ renderer: MioRenderer, pose: RigPose, group: String, frame: Int,
                      extra: [String: Any] = [:]) throws {
             let name = String(format: "%@/%04d.png", group, frame)
@@ -31,12 +32,32 @@ enum MotionReview {
                     centers[name + "_" + side] = [q.x + 75, q.y]
                 }
             }
+            var gaps: [String:Float] = [:]
+            if let core=renderer.cubism?.model {
+                let output=try core.meshes(),byID=Dictionary(uniqueKeysWithValues:output.map { ($0.id,$0) })
+                func point(_ id: String,_ p: SIMD2<Float>) throws -> SIMD2<Float> {
+                    guard let mesh=byID[id] else { throw CubismModel.Failure(message:"Missing QA mesh \(id)") }
+                    return try catalog.point(p,mesh:mesh)
+                }
+                for left in [true,false] {
+                    let side=left ? "left":"right",s=SIMD2<Float>(left ? 231:369,320),e=SIMD2<Float>(left ? 173:427,418),w=SIMD2<Float>(left ? 114:486,508)
+                    let axis=w-e,direction=axis/sqrt(axis.x*axis.x+axis.y*axis.y)
+                    let hand=output.first { $0.id.hasPrefix("hand_"+side) && $0.opacity>0.001 }!
+                    for (name,id,p) in [("shoulder","arm_"+side,s),("elbow","lower_sleeve_"+side,e),("cuff","forearm_"+side,w-direction*40),("wrist","forearm_"+side,w),("sleeve_cuff","lower_sleeve_"+side,w-direction*54)] {
+                        let q=try point(id,p);centers[name+"_"+side]=[q.x,q.y]
+                    }
+                    let pairs=[("elbow",try point("arm_"+side,e),try point("lower_sleeve_"+side,e)),
+                               ("wrist",try point("forearm_"+side,w),try catalog.point(w,mesh:hand)),
+                               ("cuff",try point("lower_sleeve_"+side,w-direction*54),try point("forearm_"+side,w-direction*54))]
+                    for (joint,a,b) in pairs {let delta=a-b;gaps[joint+"_"+side]=sqrt(delta.x*delta.x+delta.y*delta.y)}
+                }
+            }
             let neck = motion.torsoPoint(motion.neckPoint(SIMD2(300, 278)))
             let waist = motion.torsoPoint(SIMD2(300, 432))
             centers["neck"] = [neck.x + 75, neck.y]
             centers["waist"] = [waist.x + 75, waist.y]
             var record: [String: Any] = ["frame": name, "group": group, "time": pose.time,
-                "phase": pose.gestureTime, "gesture": pose.gesture.rawValue, "centers": centers,
+                "phase": pose.gestureTime,"attachmentGaps":gaps,"attachmentMeasurement":"actual Cubism Core vertices", "gesture": pose.gesture.rawValue, "centers": centers,
                 "look": [pose.lookX, pose.lookY], "rightElbow": motion.rightElbow,
                 "rightHand": [motion.rightHand.x, motion.rightHand.y, motion.rightHand.z,
                     motion.rightHand.w, motion.rightFist, motion.rightChin]]
@@ -98,7 +119,7 @@ enum MotionReview {
                     group: "automatic-speech-\(Int(start))", frame: frame)
             }
         }
-        let report: [String: Any] = ["frames": records.count, "fps": 30, "size": [750, 1000],
+        let report: [String: Any] = ["frames": records.count,"skin_join_along":-46, "fps": 30, "size": [750, 1000],
             "systemMonitoringStarted": false, "networkRequests": 0, "audioEnabled": false,
             "virtualDisplayCreated": false, "records": records]
         try JSONSerialization.data(withJSONObject: report, options: [.sortedKeys])

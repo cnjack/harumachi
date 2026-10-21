@@ -152,7 +152,7 @@ final class MioRenderer: NSObject, MTKViewDelegate {
                                     elbow: SIMD2(joints[1][0], joints[1][1]),
                                     wrist: SIMD2(joints[2][0], joints[2][1]), left: layer.group.hasSuffix("_left"),
                                     elbowBendSpan: layer.bendSpans?[0] ?? 104, wristBendSpan: layer.bendSpans?[1] ?? 30,
-                                    upperArm:layer.jointPiece.map { $0 == "upper" })
+                                    upperArm:layer.jointPiece.map { $0 == "upper" },hand:layer.group.hasPrefix("hand_"))
             } else if layer.group == "thought_cloud" {
                 p += motion.headShift+SIMD2(motion.head*30,Float(sin(pose.time*2))*1.2)
                 p = motion.torsoPoint(p)

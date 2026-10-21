@@ -7,18 +7,20 @@ public struct HandPresentation {
     public let index: Int
     public let width: Float
     public let length: Float
+    public let closure: Float
     public var variant: String { Self.variants[index] }
     public init(motion: PuppetMotion, left: Bool) {
         let w = left ? motion.leftHand : motion.rightHand
         let weights = [w.x,w.y,w.z,w.w,left ? motion.leftFist : motion.rightFist,left ? 0 : motion.rightChin]
         let dominant = weights.indices.max { weights[$0] < weights[$1] }!
-        let intermediate = weights[4]+weights[5] > 0.0001 ? 4 : 3
+        closure = PuppetMotion.smooth(0,0.15,weights[4]+weights[5])
+        let intermediate = closure > 0.5 ? 4 : 3
         let openness = PuppetMotion.smooth(0.8,1,weights[dominant])
         index = weights[dominant] < 0.8 ? intermediate : dominant
         let reach: [Float] = [73,68,68,62,38,95]
         let halfWidth: [Float] = [20,34,34,20,20,40]
         let widthRatio = halfWidth[intermediate]/halfWidth[index]
-        let lengthRatio = reach[intermediate]/reach[index]
+        let lengthRatio = (62-24*closure-24)/(reach[index]-24)
         width = widthRatio+(1-widthRatio)*openness
         length = lengthRatio+(1-lengthRatio)*openness
     }
@@ -29,11 +31,12 @@ public struct HandPresentation {
         let delta = p-wrist
         let along = delta.x*direction.x+delta.y*direction.y
         let across = delta.x*normal.x+delta.y*normal.y
-        let influence = PuppetMotion.smooth(0,16,along)
-        let x = max(0,min(1,along/16))
-        // Integrate the local longitudinal scale. Multiplying distance by a
+        let influence = PuppetMotion.smooth(16,32,along)
+        let x = max(0,min(1,(along-16)/16))
+        // Keep the wrist neighbourhood fixed, then integrate finger compression.
+        // Multiplying distance by a
         // changing scale folds the wrist where the scale decreases quickly.
-        let integral = 16*(x*x*x-0.5*x*x*x*x)+max(0,along-16)
+        let integral = 16*(x*x*x-0.5*x*x*x*x)+max(0,along-32)
         return wrist+direction*(along-(1-length)*integral)
             + normal*(across*(1+(width-1)*influence))
     }

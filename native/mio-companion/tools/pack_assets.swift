@@ -72,7 +72,7 @@ for (name, crop, originalRect, group) in crops {
     if group == "arm_left" { layer["joints"] = [[231, 320], [173, 418], [114, 508]] }
     if group == "arm_right" { layer["joints"] = [[369, 320], [427, 418], [486, 508]] }
     if group.hasPrefix("arm_") {
-        layer["bendSpans"] = [116, 30]
+        layer["bendSpans"] = [0, 0]
         layer["binding"] = "rigid-shoulder-arc-elbow-wrist"
     }
     layers.append(layer)
@@ -131,6 +131,8 @@ layers.removeAll { $0["id"] as? String == "body" }
 // Sampling is a geometric registration of imagegen pixels, not new painting.
 let continuousArms = load("art/live2d/mio/articulated/arms-continuous.png")
 let continuousPixels = rgba(continuousArms)
+let segmentedArms = load("art/live2d/mio/articulated/arm-segments-20261021.png")
+let segmentedPixels = rgba(segmentedArms)
 for side in ["left","right"] {
     let i = layers.firstIndex { $0["id"] as? String == "arm_\(side)" }!
     let r = layers[i]["rect"] as! [Double]
@@ -340,6 +342,64 @@ for side in ["left", "right"] {
         }
         layers.append(hand)
     }
+    // Independent source upper/lower sleeves. Register authored overlap at
+    // the same elbow, with the lower cuff and wrist as separate landmarks.
+    let segmentWidth = Int(r[2]*3),segmentHeight = Int(r[3]*3)
+    let upperStart = CGPoint(x:side == "left" ? 300:940,y:side == "left" ? 150:160)
+    let upperEnd = CGPoint(x:side == "left" ? 220:1020,y:645)
+    let upperAxis = CGPoint(x:upperEnd.x-upperStart.x,y:upperEnd.y-upperStart.y)
+    let upperLength = hypot(upperAxis.x,upperAxis.y),upperTargetLength = hypot(elbow.x-shoulder.x,elbow.y-shoulder.y)
+    let ud = CGPoint(x:upperAxis.x/upperLength,y:upperAxis.y/upperLength)
+    let td = CGPoint(x:(elbow.x-shoulder.x)/upperTargetLength,y:(elbow.y-shoulder.y)/upperTargetLength)
+    let lowerX: Double = side == "left" ? 590:1240
+    func smooth(_ low: Double,_ high: Double,_ value: Double) -> Double {
+        let q = max(0,min(1,(value-low)/(high-low)));return q*q*(3-2*q)
+    }
+    func sample(_ sx: Double,_ sy: Double,_ bounds: ClosedRange<Double>,_ opacity: Double,_ result: inout [UInt8],_ index: Int) {
+        let ix = Int(floor(sx)),iy = Int(floor(sy))
+        guard ix>=0,iy>=0,ix+1<segmentedArms.width,iy+1<segmentedArms.height,bounds.contains(sx) else { return }
+        let fx=sx-Double(ix),fy=sy-Double(iy)
+        for c in 0..<4 {
+            let a=Double(segmentedPixels[(iy*segmentedArms.width+ix)*4+c]),b=Double(segmentedPixels[(iy*segmentedArms.width+ix+1)*4+c])
+            let e=Double(segmentedPixels[((iy+1)*segmentedArms.width+ix)*4+c]),f=Double(segmentedPixels[((iy+1)*segmentedArms.width+ix+1)*4+c])
+            result[index+c] = UInt8(max(0,min(255,((a*(1-fx)+b*fx)*(1-fy)+(e*(1-fx)+f*fx)*fy)*opacity)))
+        }
+    }
+    var upperBytes=[UInt8](repeating:0,count:segmentWidth*segmentHeight*4)
+    var lowerBytes=upperBytes,skinBytes=upperBytes,frontBytes=upperBytes
+    for y in 0..<segmentHeight { for x in 0..<segmentWidth {
+        let px=r[0]+(Double(x)+0.5)/3,py=r[1]+(Double(y)+0.5)/3,index=(y*segmentWidth+x)*4
+        let ux=(px-shoulder.x)*td.x+(py-shoulder.y)*td.y,uy = -(px-shoulder.x)*td.y+(py-shoulder.y)*td.x
+        let su=ux*upperLength/upperTargetLength,sv=uy/(upperTargetLength/upperLength*0.85)
+        let sx=upperStart.x+ud.x*su-ud.y*sv,sy=upperStart.y+ud.y*su+ud.x*sv
+        // Fade only the hidden attachment edge. The other segment supplies
+        // opaque fabric underneath; exterior shoulder and sleeve art remain.
+        let upperOpacity=(1-smooth(upperTargetLength+2,upperTargetLength+15,ux))*(1-smooth(19,22,abs(uy)))
+        sample(sx,sy,side == "left" ? 100...420:820...1120,upperOpacity,&upperBytes,index)
+        let frontOpacity=smooth(16,52,ux)
+        for c in 0..<4 { frontBytes[index+c]=UInt8(Double(upperBytes[index+c])*frontOpacity) }
+        let lx=(px-elbow.x)*d.x+(py-elbow.y)*d.y,ly = -(px-elbow.x)*d.y+(py-elbow.y)*d.x
+        let cuffDistance=length-54
+        let sourceY = lx<=cuffDistance ? 260+lx*(650-260)/cuffDistance : 650+(lx-cuffDistance)*(900-650)/54
+        let sourceX=lowerX+ly/0.20
+        let lowerOpacity=smooth(-18,-6,lx)
+        if lx<length-42 { sample(sourceX,sourceY,side == "left" ? 470...710:1125...1350,lowerOpacity,&lowerBytes,index) }
+        if lx>=length-50 && lx<length+2 { sample(sourceX,sourceY,side == "left" ? 470...710:1125...1350,1,&skinBytes,index) }
+    } }
+    write(makeImage(upperBytes,width:segmentWidth,height:segmentHeight),"arm_\(side)")
+    write(makeImage(frontBytes,width:segmentWidth,height:segmentHeight),"sleeve_\(side)")
+    write(makeImage(lowerBytes,width:segmentWidth,height:segmentHeight),"lower_sleeve_\(side)")
+    write(makeImage(skinBytes,width:segmentWidth,height:segmentHeight),"forearm_\(side)")
+    for id in ["arm_\(side)","sleeve_\(side)","forearm_\(side)"] {
+        let index = layers.firstIndex { $0["id"] as? String == id }!
+        layers[index]["jointPiece"] = id.hasPrefix("forearm") ? "forearm":"upper"
+        layers[index]["sourceAtlas"] = "articulated/arm-segments-20261021.png"
+        layers[index]["binding"] = "anatomical-two-bone-overlap"
+    }
+    var lower=arm;lower["id"]="lower_sleeve_\(side)";lower["texture"]="lower_sleeve_\(side).png"
+    lower["jointPiece"]="forearm";lower["sourceAtlas"]="articulated/arm-segments-20261021.png";lower["binding"]="anatomical-two-bone-overlap"
+    layers.append(lower)
+    for index in layers.indices where (layers[index]["group"] as? String) == "hand_\(side)" { layers[index]["jointPiece"] = "forearm";layers[index]["binding"] = "anatomical-two-bone-overlap" }
     // Measure the painted wrist contour, then weld every source drawing to
     // the same forearm width/centre. A shared bone alone does not align art.
     let forearmImage = load("native/mio-companion/Sources/MioApp/Resources/Mio/forearm_\(side).png")
@@ -419,14 +479,14 @@ write(cloud.makeImage()!,"thought_cloud")
 layers.append(["id":"thought_cloud","texture":"thought_cloud.png","rect":[365,12,156,95],
                "group":"thought_cloud","defaultVisible":false,"source":"native-vector-path"])
 let order = ["hair_back", "lower_body", "shoulder_left", "shoulder_right", "arm_left", "arm_right", "torso",
-             "forearm_left", "forearm_right",
+             "sleeve_left", "sleeve_right", "lower_sleeve_left", "lower_sleeve_right", "forearm_left", "forearm_right",
              "hand_left_relaxed", "hand_left_palm", "hand_left_back", "hand_left_inward", "hand_left_fist",
              "hand_right_relaxed", "hand_right_palm", "hand_right_back", "hand_right_inward", "hand_right_fist", "hand_right_chin",
-             "sleeve_left", "sleeve_right", "face", "eyes_open", "eyes_closed", "mouth_closed", "mouth_open", "hair_front", "hand_right_chin_front", "thought_cloud"]
+             "face", "eyes_open", "eyes_closed", "mouth_closed", "mouth_open", "hair_front", "hand_right_chin_front", "thought_cloud"]
 layers.sort { order.firstIndex(of: $0["id"] as! String)! < order.firstIndex(of: $1["id"] as! String)! }
 let manifest: [String: Any] = ["format": "harumachi-layer-rig", "version": 1, "name": "澪", "canvas": [750, 1000],
                               "origin": [-75, 0],
-                              "layoutRevision": "20261020-continuous-v10",
+                              "layoutRevision": "20261021-articulated-v11",
                               "cubismCompatible": false, "layers": layers,
                               "parameters": ["ParamAngleX", "ParamAngleY", "ParamBodyAngleZ", "ParamBreath", "ParamEyeLOpen", "ParamEyeROpen", "ParamMouthOpenY"]]
 let json = try JSONSerialization.data(withJSONObject: manifest, options: [.prettyPrinted, .sortedKeys])

@@ -1,6 +1,6 @@
 # 澪 · 晴町桌面来信
 
-macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用真正 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 32 层 PSD 在 `art/live2d/mio/cubism/`。模型含 22 个参数、五套标准 motion3，CLI 生成与兼容边界见[本轮记录](../../docs/game-design/MIO_CUBISM_20261021.md)。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。格式转换沿用原素材，先前手臂自然度反馈仍待修整。仅看动作可双击根目录 `preview_mio_motion.command`；完整常驻版使用 `open_mio_companion.command`。构建：
+macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用真正 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 34 层 PSD 在 `art/live2d/mio/cubism/`。当前 v11 补画独立上臂/前臂衣袖并重做肩肘腕变形器，模型含 24 个参数、五套标准 motion3，CLI 生成与兼容边界见[本轮记录](../../docs/game-design/MIO_CUBISM_20261021.md)。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮源素材与绑定修复及逐动作验收见[手臂修复记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。仅看动作可双击根目录 `preview_mio_motion.command`；完整常驻版使用 `open_mio_companion.command`。构建：
 
 ```bash
 ./native/mio-companion/tools/build_app.sh

@@ -102,6 +102,16 @@
       "Name": "ParamHandOpenR"
     },
     {
+      "Id": "ParamHandCloseL",
+      "GroupId": "Mio",
+      "Name": "ParamHandCloseL"
+    },
+    {
+      "Id": "ParamHandCloseR",
+      "GroupId": "Mio",
+      "Name": "ParamHandCloseR"
+    },
+    {
       "Id": "ParamThought",
       "GroupId": "Mio",
       "Name": "ParamThought"

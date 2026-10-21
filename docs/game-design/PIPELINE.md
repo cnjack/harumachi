@@ -1,5 +1,7 @@
 # 模型、工程与交付流程
 
+澪的肩肘腕源修复与全动作复拍见 [MIO_ARM_NATURALNESS_20261021.md](MIO_ARM_NATURALNESS_20261021.md)。`--review-motion` 输出实际 Core 顶点接合与真实 Metal 图；`audit_arm_connections.py` 检查内部连接带，`check_joint_seams.py` 按注册的皮肤接缝位置检查暗线，并逐项复核放大图。
+
 澪桌面角色的正式 Cubism CLI 导出、Swift Core/Metal 渲染与离线验收见 [MIO_CUBISM_20261021.md](MIO_CUBISM_20261021.md)。入口 `python3 art/tools/live2d/export_mio.py`，使用已安装 Editor，不分发厂商库；`--review-cubism` 不启动监控或网络。
 
 ## 澪的 Swift 桌面角色（2026-10-20）

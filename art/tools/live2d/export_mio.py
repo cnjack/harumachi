@@ -41,11 +41,12 @@ def main():
         reports = [json.loads(line) for line in result.stdout.splitlines() if line.startswith('{"status"')]
         if not reports: raise SystemExit('Exporter produced no report; see '+str(work/'export.log'))
         report = reports[-1]
-        assert report['selectedConsistency'] and report['selectedParameterCount']==22 and report['selectedDrawableCount']==32, report
+        assert report['selectedConsistency'] and report['selectedParameterCount']==24 and report['selectedDrawableCount']==34, report
         assert report['selectedMocVersion']==3 and report['intermediateArchiveSaved'], report
         runtime = ROOT/'native/mio-companion/Sources/MioApp/Resources/MioCubism'
         runtime.mkdir(exist_ok=True)
         shutil.copy2(built/'Mio.moc3',runtime/'Mio.moc3')
+        shutil.copy2(bake/'Mio.bindings.json',runtime/'Mio.bindings.json')
         for name in ('textures','motions'):
             shutil.copytree((built if name=='textures' else bake)/name,runtime/name,dirs_exist_ok=True)
         names = ['idle','wave','stretch','think','talk']

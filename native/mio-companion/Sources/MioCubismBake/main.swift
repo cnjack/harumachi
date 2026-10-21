@@ -36,10 +36,11 @@ let parameters: [Parameter] = [
     .init(id:"ParamMouthOpenY",min:0,max:1,value:0),
     .init(id:"ParamHairFront",min:-1,max:1,value:0),.init(id:"ParamHairBack",min:-1,max:1,value:0),
     .init(id:"ParamShoulderL",min:-2.2,max:2.2,value:-0.38),.init(id:"ParamShoulderR",min:-2.2,max:2.2,value:0.38),
-    .init(id:"ParamElbowL",min:0,max:1.6,value:0.04),.init(id:"ParamElbowR",min:-2.2,max:4,value:-0.04),
+    .init(id:"ParamElbowL",min:0,max:1.6,value:0.04),.init(id:"ParamElbowR",min:-2.2,max:3.1,value:-0.04),
     .init(id:"ParamWristL",min:-0.2,max:0.2,value:0),.init(id:"ParamWristR",min:-0.2,max:0.2,value:0),
     .init(id:"ParamHandL",min:0,max:4,value:0),.init(id:"ParamHandR",min:0,max:5,value:0),
     .init(id:"ParamHandOpenL",min:0,max:1,value:1),.init(id:"ParamHandOpenR",min:0,max:1,value:1),
+    .init(id:"ParamHandCloseL",min:0,max:1,value:0),.init(id:"ParamHandCloseR",min:0,max:1,value:0),
     .init(id:"ParamThought",min:0,max:1,value:0),.init(id:"ParamTorsoLift",min:0,max:5,value:0)
 ]
 let defaults = Dictionary(uniqueKeysWithValues:parameters.map { ($0.id,$0.value) })
@@ -81,15 +82,15 @@ for (order,layer) in layers.enumerated() {
     var parent = "Body"
     var pivot = SIMD2<Float>(375,432)
     if arm {
-        parent = left ? "ShoulderL" : "ShoulderR"
-        pivot = SIMD2(left ? 306 : 444,320)
-        let elbows: [Float] = left ? [0,0.04,0.2,0.4,0.6,0.8,1,1.2,1.4,1.6] : [-2.2,-2,-1.8,-1.6,-1.4,-1.2,-1,-0.8,-0.6,-0.4,-0.2,-0.04,0,0.4,0.8,1.2,1.6,2,2.4,2.8,3.2,3.6,4]
-        bindings.append(("ParamElbow"+side,elbows))
-        if hand || layer.id.hasPrefix("forearm_") { bindings.append(("ParamWrist"+side,[-0.2,0,0.2])) }
-        if hand { bindings.append(("ParamHandOpen"+side,[0,0.5,1])) }
+        let upper = layer.jointPiece == "upper"
+        parent = (hand ? "Wrist" : (upper ? "Shoulder" : "Elbow"))+side
+        if hand { pivot = SIMD2(left ? 189:561,508) }
+        else if upper { pivot = SIMD2(left ? 306:444,320) }
+        else { pivot = SIMD2(left ? 248:502,418) }
+        if hand { bindings = [("ParamHandOpen"+side,[0,0.5,1]),("ParamHandClose"+side,[0,1])] }
     } else if head {
         parent = "Head";pivot = SIMD2(375,305)
-        bindings = [("ParamAngleX",[-30,0,30]),("ParamAngleY",[-30,0,30])]
+        bindings = []
         if layer.group == "hair" { bindings.append((layer.id == "hair_back" ? "ParamHairBack" : "ParamHairFront",[-1,0,1])) }
     } else if layer.group == "lower_body" {
         parent = "";pivot = .zero
@@ -113,7 +114,8 @@ for (order,layer) in layers.enumerated() {
     for keyValues in combinations(bindings.map(\.1)) {
         var values = defaults
         for ((id,_),value) in zip(bindings,keyValues) { values[id] = value }
-        let motion = poseMotion(values)
+        var motion = poseMotion(values)
+        if arm { motion.leftElbow=0;motion.rightElbow=0;motion.leftWrist=0;motion.rightWrist=0 }
         var positions: [Float] = []
         for i in stride(from:0,to:base.count,by:2) {
             var p = SIMD2(base[i]-75,base[i+1])
@@ -126,30 +128,31 @@ for (order,layer) in layers.enumerated() {
                     let variantIndex = HandPresentation.variants.firstIndex(of:variant) ?? 0
                     let reaches: [Float] = [73,68,68,62,38,95],widths: [Float] = [20,34,34,20,20,40]
                     let open = values["ParamHandOpen"+side] ?? 1
-                    let targetReach: Float = variantIndex>=4 ? 38 : 62
-                    let length = targetReach/reaches[variantIndex]+(1-targetReach/reaches[variantIndex])*open
+                    let targetReach: Float = 62-24*(values["ParamHandClose"+side] ?? 0)
+                    let closedLength = (targetReach-24)/(reaches[variantIndex]-24)
+                    let length = closedLength+(1-closedLength)*open
                     let width = 20/widths[variantIndex]+(1-20/widths[variantIndex])*open
-                    let q = max(0,min(1,along/16)),integral = 16*(q*q*q-0.5*q*q*q*q)+max(0,along-16)
-                    p = wrist+direction*(along-(1-length)*integral)+normal*(across*(1+(width-1)*PuppetMotion.smooth(0,16,along)))
+                    let q = max(0,min(1,(along-16)/16)),integral = 16*(q*q*q-0.5*q*q*q*q)+max(0,along-32)
+                    p = wrist+direction*(along-(1-length)*integral)+normal*(across*(1+(width-1)*PuppetMotion.smooth(16,32,along)))
                 }
-                p = motion.armPoint(p,shoulder:shoulder,elbow:elbow,wrist:wrist,left:left,elbowBendSpan:layer.bendSpans?[0] ?? 104,wristBendSpan:layer.bendSpans?[1] ?? 30,upperArm:layer.jointPiece.map { $0 == "upper" })
+                p = motion.armPoint(p,shoulder:shoulder,elbow:elbow,wrist:wrist,left:left,elbowBendSpan:layer.bendSpans?[0] ?? 104,wristBendSpan:layer.bendSpans?[1] ?? 30,upperArm:layer.jointPiece.map { $0 == "upper" },hand:hand)
             } else if head {
                 if layer.group == "hair" {
                     let sway = values[layer.id == "hair_back" ? "ParamHairBack" : "ParamHairFront"] ?? 0
                     p.x += sway*2.6*max(0,(p.y-95)/200)
                 }
-                p += SIMD2((values["ParamAngleX"] ?? 0)*0.1,-(values["ParamAngleY"] ?? 0)*0.1)
+                // Head translation is authored on its parent rotation deformer.
             } else if layer.group == "lower_body" {
                 var lower = motion;lower.torso = (values["ParamBodyAngleZ"] ?? 0)*degree;lower.torsoLift = values["ParamTorsoLift"] ?? 0
                 p = lower.lowerBodyPoint(p)
             } else if layer.group == "thought_cloud" {
-                p += SIMD2((values["ParamAngleX"] ?? 0)*0.1+(values["ParamAngleZ"] ?? 0)*degree*30,-(values["ParamAngleY"] ?? 0)*0.1)
+                p += SIMD2((values["ParamAngleX"] ?? 0)*0.1+(values["ParamAngleZ"] ?? 0)*degree*30,-(values["ParamAngleY"] ?? 0)*0.25)
             } else if layer.group == "torso" {
                 let breath = ((values["ParamBreath"] ?? 0.5)-0.5)*2
                 let upper = max(0,min(1,(750-p.y)/500))
                 p.y -= breath*1.5*upper;p.x = 300+(p.x-300)*(1+breath*0.002*upper)
                 var neck = motion;neck.head = (values["ParamAngleZ"] ?? 0)*degree
-                neck.headShift = SIMD2((values["ParamAngleX"] ?? 0)*0.1,-(values["ParamAngleY"] ?? 0)*0.1)
+                neck.headShift = SIMD2((values["ParamAngleX"] ?? 0)*0.1,-(values["ParamAngleY"] ?? 0)*0.25)
                 p = neck.neckPoint(p)
                 p.y += (values["ParamTorsoLift"] ?? 0)*PuppetMotion.smooth(310,650,p.y)
             }
@@ -170,11 +173,15 @@ for (order,layer) in layers.enumerated() {
     } else if layer.group == "thought_cloud" {
         opacity = ["parameter":"ParamThought","keys":[0,1],"values":[0,1]]
     }
-    descriptions.append(["id":layer.id,"parent":parent,"base":base,"indices":indices,"bindings":bindings.map { ["id":$0.0,"keys":$0.1] },"forms":forms,"opacity":opacity,"drawOrder":order*10])
+    descriptions.append(["id":layer.id,"parent":parent,"base":base,"indices":indices,"bindings":bindings.map { ["id":$0.0,"keys":$0.1] },"forms":forms,"opacity":opacity,"drawOrder":order*10,"rect":layer.rect.map { $0 },"columns":columns,"rows":rows])
 }
+let anchors = descriptions.map { spec -> [String:Any] in
+    ["id":spec["id"]!,"rect":spec["rect"]!,"columns":spec["columns"]!,"rows":spec["rows"]!]
+}
+try JSONSerialization.data(withJSONObject:["meshes":anchors],options:[.prettyPrinted,.sortedKeys]).write(to:out.appendingPathComponent("Mio.bindings.json"))
 try binary.write(to:out.appendingPathComponent("forms.bin"))
 let encodedParameters = try JSONSerialization.jsonObject(with:JSONEncoder().encode(parameters))
-try JSONSerialization.data(withJSONObject:["parameters":encodedParameters,"meshes":descriptions,"sourceLayout":"20261020-continuous-v10"],options:[.sortedKeys]).write(to:out.appendingPathComponent("bake.json"))
+try JSONSerialization.data(withJSONObject:["parameters":encodedParameters,"meshes":descriptions,"sourceLayout":"20261021-articulated-v11"],options:[.sortedKeys]).write(to:out.appendingPathComponent("bake.json"))
 
 // Produce a conventional RGB/8 PSD with the resolution resource required by
 // Cubism's importer and independent left/right eyelid source layers.

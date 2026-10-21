@@ -87,18 +87,12 @@ public struct PuppetMotion: Sendable {
             // tip, keeping contact as the head tilts and follows the pointer.
             let shoulder = SIMD2<Float>(369,320), elbow = SIMD2<Float>(427,418)
             let target = headPoint(SIMD2(300,268))+SIMD2(1,1)
-            let axis = SIMD2<Float>(59,90)
-            let direction = axis/sqrt(axis.x*axis.x+axis.y*axis.y)
-            let reach = target-shoulder
-            let distance = sqrt(reach.x*reach.x+reach.y*reach.y)
-            var low: Float = 2.5, high: Float = 4.15
-            for _ in 0..<22 {
-                let angle = (low+high)/2
-                let p = Self.bend(Self.thinkingFinger,at:elbow,direction:direction,angle:angle,span:116)-shoulder
-                if sqrt(p.x*p.x+p.y*p.y) > distance { low = angle } else { high = angle }
-            }
-            let angle = (low+high)/2
-            let bent = Self.bend(Self.thinkingFinger,at:elbow,direction:direction,angle:angle,span:116)-shoulder
+            let upper = elbow-shoulder,lower = Self.thinkingFinger-elbow,reach = target-shoulder
+            let l1 = sqrt(upper.x*upper.x+upper.y*upper.y),l2 = sqrt(lower.x*lower.x+lower.y*lower.y)
+            let cosine = max(-1,min(1,(reach.x*reach.x+reach.y*reach.y-l1*l1-l2*l2)/(2*l1*l2)))
+            let offset = atan2(lower.y,lower.x)-atan2(upper.y,upper.x)
+            let angle = acos(cosine)-offset
+            let bent = upper+Self.rotate(lower,around:.zero,by:angle)
             let rawShoulder = atan2(reach.y,reach.x)-atan2(bent.y,bent.x)
             let solvedShoulder = atan2(sin(rawShoulder),cos(rawShoulder))
             rightShoulder += (solvedShoulder-rightShoulder)*blend
@@ -168,39 +162,23 @@ public struct PuppetMotion: Sendable {
         // planted. Artwork overlap carries the joint through the full bend.
         torsoPoint(point, influence: 1 - Self.smooth(432, 690, point.y))
     }
-    /// Bend a strip through a circular arc, preserving its transverse width.
-    /// Blending rotated positions collapses the inside of a bent sleeve and can
-    /// reverse triangles. Here the centreline has unit arc length and the radius
-    /// stays larger than the sleeve half-width, as checked against opaque pixels.
-    private static func bend(_ point: SIMD2<Float>, at origin: SIMD2<Float>,
-                             direction: SIMD2<Float>, angle: Float, span: Float) -> SIMD2<Float> {
-        guard abs(angle) > 0.0001 else { return point }
-        let normal = SIMD2(-direction.y, direction.x)
-        let delta = point - origin
-        let along = delta.x * direction.x + delta.y * direction.y
-        let across = delta.x * normal.x + delta.y * normal.y
-        let half = span / 2
-        guard along > -half else { return point }
-        let distance = min(span, along + half)
-        let turn = angle * distance / span
-        let radius = span / angle
-        let tangent = direction * cos(turn) + normal * sin(turn)
-        let side = normal * cos(turn) - direction * sin(turn)
-        let center = origin - direction * half
-            + direction * (sin(turn) * radius) + normal * ((1 - cos(turn)) * radius)
-            + tangent * max(0, along - half)
-        return center + side * across
-    }
+    /// Two rigid bone segments meet at the painted elbow overlap. The hand
+    /// turns about the wrist independently. Source pieces own their hidden
+    /// overlap; no long strip is stretched into a sleeve-shaped spline.
     public func armPoint(_ point: SIMD2<Float>, shoulder: SIMD2<Float>, elbow: SIMD2<Float>, wrist: SIMD2<Float>, left: Bool,
-                         elbowBendSpan: Float = 116, wristBendSpan: Float = 30, upperArm: Bool? = nil) -> SIMD2<Float> {
-        let axis = wrist - elbow
-        let direction = axis / max(1, sqrt(axis.x * axis.x + axis.y * axis.y))
-        var p = Self.bend(point, at: wrist, direction: direction,
-                          angle: left ? leftWrist : rightWrist, span: wristBendSpan)
-        p = Self.bend(p,at:elbow,direction:direction,angle:left ? leftElbow : rightElbow,span:elbowBendSpan)
-        // The whole shoulder cap belongs to the upper arm. A Y mask here pins
-        // half the cap to the torso and twists it when the arm is raised.
-        p = Self.rotate(p, around: shoulder, by: left ? leftShoulder : rightShoulder)
-        return torsoPoint(p)
+                         elbowBendSpan: Float = 116, wristBendSpan: Float = 30, upperArm: Bool? = nil,
+                         hand: Bool = false) -> SIMD2<Float> {
+        let axis = wrist-elbow,direction = axis/max(1,sqrt(axis.x*axis.x+axis.y*axis.y))
+        let delta = point-elbow,lower = upperArm.map { !$0 } ?? (delta.x*direction.x+delta.y*direction.y >= -0.001)
+        var p = point
+        if lower {
+            let dw = p-wrist
+            if hand || (upperArm == nil && dw.x*direction.x+dw.y*direction.y > 0) {
+                p = Self.rotate(p,around:wrist,by:left ? leftWrist:rightWrist)
+            }
+            p = Self.rotate(p,around:elbow,by:left ? leftElbow:rightElbow)
+        }
+        p = Self.rotate(p,around:shoulder,by:left ? leftShoulder:rightShoulder)
+        return Self.rotate(p-SIMD2(0,torsoLift),around:SIMD2(300,432),by:torso)
     }
 }

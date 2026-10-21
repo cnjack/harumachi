@@ -56,9 +56,11 @@ final class ArmDeformationTests: XCTestCase {
             } }
             // The new registered arm rectangle has more transparent margin;
             // wrist-only source pieces cover fewer cells than full sleeves.
-            let minimumSamples = arm.group.hasPrefix("hand_") ? 24 :
-                (arm.id.hasPrefix("forearm_") ? 45 : (arm.id.contains("sleeve_") ? 150 : 300))
-            XCTAssertGreaterThan(triangles.count, minimumSamples)
+            let opaquePixels = stride(from:3,to:pixels.count,by:4).reduce(0) { $0+(pixels[$1]>220 ? 1:0) }
+            let expectedSamples = Float(opaquePixels)/Float(image.width*image.height)*Float(columns*rows*2)
+            // Each newly separated piece occupies a different fraction of the
+            // common texture rectangle. Keep dense sampling of its actual art.
+            XCTAssertGreaterThan(triangles.count,max(24,Int(expectedSamples*0.65)))
             let gestures: [CharacterGesture] = [.idle, .wave, .stretch, .think, .talk]
             var sequences = gestures.map { gesture in
                 (gesture.rawValue, (0...210).map { PuppetMotion(pose: RigPose(time: Double($0) / 30, gesture: gesture)) })
@@ -83,7 +85,7 @@ final class ArmDeformationTests: XCTestCase {
                     let deformed = points.map {
                         motion.armPoint($0, shoulder: joints[0], elbow: joints[1], wrist: joints[2], left: arm.group.hasSuffix("_left"),
                             elbowBendSpan: arm.bendSpans?[0] ?? 104, wristBendSpan: arm.bendSpans?[1] ?? 30,
-                            upperArm:arm.jointPiece.map { $0 == "upper" })
+                            upperArm:arm.jointPiece.map { $0 == "upper" },hand:arm.group.hasPrefix("hand_"))
                     }
                     for (a, b, c) in triangles {
                         let ratio = cross(deformed[b] - deformed[a], deformed[c] - deformed[a])

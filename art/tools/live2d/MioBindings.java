@@ -48,9 +48,13 @@ public final class MioBindings {
     source.getParameterSourceSet().updateMap();source.updateParamInstance(true);
     if(source.getAllParameters().size()!=parameters.size())throw new IllegalStateException("Parameter tree registration failed");
     rotation("Body","",new String[]{"ParamBodyAngleZ","ParamTorsoLift"},new float[][]{{-3,0,3},{0,5}});
-    rotation("Head","Body",new String[]{"ParamAngleZ"},new float[][]{{-12,0,12}});
+    rotation("Head","Body",new String[]{"ParamAngleZ","ParamAngleX","ParamAngleY"},new float[][]{{-12,0,12},{-30,0,30},{-30,0,30}});
     rotation("ShoulderL","Body",new String[]{"ParamShoulderL"},new float[][]{{-2.2f,-0.38f,0,2.2f}});
     rotation("ShoulderR","Body",new String[]{"ParamShoulderR"},new float[][]{{-2.2f,0,0.38f,2.2f}});
+    rotation("ElbowL","ShoulderL",new String[]{"ParamElbowL"},new float[][]{{0,0.04f,1.6f}});
+    rotation("ElbowR","ShoulderR",new String[]{"ParamElbowR"},new float[][]{{-2.2f,-0.04f,0,3.1f}});
+    rotation("WristL","ElbowL",new String[]{"ParamWristL"},new float[][]{{-0.2f,0,0.2f}});
+    rotation("WristR","ElbowR",new String[]{"ParamWristR"},new float[][]{{-0.2f,0,0.2f}});
     Map<String,CArtMeshSource> meshes=new HashMap<>();for(var mesh:source.getAllArtMeshes())meshes.put(mesh.getLocalName(),mesh);
     for(Object object:(List<?>)data.get("meshes")) {
       Map<String,Object> spec=(Map<String,Object>)object;String id=(String)spec.get("id");
@@ -117,8 +121,14 @@ public final class MioBindings {
       float angle=values[0];
       if(name.equals("Body")) {
         double radians=Math.toRadians(angle);float lift=values[1];form.setOriginX(375+(float)Math.sin(radians)*lift);form.setOriginY(432-(float)Math.cos(radians)*lift);
-      } else if(name.equals("Head")) { form.setOriginX(0);form.setOriginY(-127); }
-      else { form.setOriginX(name.equals("ShoulderL")?-69:69);form.setOriginY(-112);angle=(float)Math.toDegrees(angle); }
+      } else if(name.equals("Head")) { form.setOriginX(values[1]*0.1f);form.setOriginY(-127-values[2]*0.25f); }
+      else {
+        boolean left=name.endsWith("L");
+        if(name.startsWith("Shoulder")){form.setOriginX(left?-69:69);form.setOriginY(-112);}
+        else if(name.startsWith("Elbow")){form.setOriginX(left?-58:58);form.setOriginY(98);}
+        else {form.setOriginX(left?-59:59);form.setOriginY(90);}
+        angle=(float)Math.toDegrees(angle);
+      }
       form.setAngle(angle);deformer.getKeyforms().add(form);guids.add(form.getGuid());
     }
     List<Pair<CParameterGuid,float[]>> keySpecs=new ArrayList<>();for(int i=0;i<ids.length;i++)keySpecs.add(new Pair<>(parameters.get(ids[i]).getGuid(),keys[i]));

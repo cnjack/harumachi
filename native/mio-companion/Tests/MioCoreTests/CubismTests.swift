@@ -16,7 +16,7 @@ final class CubismTests: XCTestCase {
     func testStandardMotionCountsAndIDs() throws {
         let display = try JSONSerialization.jsonObject(with:Data(contentsOf:assets.appendingPathComponent("Mio.cdi3.json"))) as! [String:Any]
         let ids = Set((display["Parameters"] as! [[String:Any]]).map { $0["Id"] as! String })
-        XCTAssertEqual(ids.count,22)
+        XCTAssertEqual(ids.count,24)
         for name in ["idle","wave","stretch","think","talk"] {
             let motion = try JSONSerialization.jsonObject(with:Data(contentsOf:assets.appendingPathComponent("motions/\(name).motion3.json"))) as! [String:Any]
             XCTAssertEqual(motion["Version"] as? Int,3)
@@ -41,15 +41,40 @@ final class CubismTests: XCTestCase {
         let core = "/Applications/Live2D Cubism 5.3/res/libLive2DCubismCoreJNI.dylib"
         guard FileManager.default.fileExists(atPath:core) else { throw XCTSkip("Separately installed official Cubism Core required") }
         let model = try CubismModel(manifest:assets.appendingPathComponent("Mio.model3.json"))
-        XCTAssertEqual(model.parameters.count,22);XCTAssertEqual(try model.meshes().count,32)
+        XCTAssertEqual(model.parameters.count,24);XCTAssertEqual(try model.meshes().count,34)
         XCTAssertEqual(model.mocVersion,3)
         for parameter in model.parameters {
-            try model.update([parameter.id:parameter.minimum]);let low = try model.meshes()
-            try model.update([parameter.id:parameter.maximum]);let high = try model.meshes()
+            var values: [String:Float] = ["ParamHandOpenL":0,"ParamHandOpenR":0];values[parameter.id]=parameter.minimum
+            try model.update(values);let low = try model.meshes()
+            values[parameter.id]=parameter.maximum;try model.update(values);let high = try model.meshes()
             let changed = zip(low,high).contains { a,b in
                 abs(a.opacity-b.opacity)>0.0001 || zip(a.positions,b.positions).contains { abs($0-$1)>0.0001 }
             }
             XCTAssertTrue(changed,"Unbound \(parameter.id)")
+        }
+        let topology=try JSONDecoder().decode(CubismRigGeometry.self,from:Data(contentsOf:assets.appendingPathComponent("Mio.bindings.json")))
+        func distance(_ a: SIMD2<Float>,_ b: SIMD2<Float>) -> Float {let d=a-b;return sqrt(d.x*d.x+d.y*d.y)}
+        for gesture in [CharacterGesture.idle,.wave,.stretch,.think,.talk] {
+            for frame in stride(from:0,through:Int(gesture.duration*30),by:1) {
+                let pose=RigPose(time:Double(frame)/30,gesture:gesture),motion=PuppetMotion(pose:pose)
+                try model.update(CubismParameters.values(pose:pose,motion:motion))
+                let output=try model.meshes(),byID=Dictionary(uniqueKeysWithValues:output.map { ($0.id,$0) })
+                for left in [true,false] {
+                    let side=left ? "left":"right",s=SIMD2<Float>(left ? 231:369,320),e=SIMD2<Float>(left ? 173:427,418),w=SIMD2<Float>(left ? 114:486,508)
+                    let upper=try XCTUnwrap(byID["arm_"+side]),lower=try XCTUnwrap(byID["lower_sleeve_"+side]),skin=try XCTUnwrap(byID["forearm_"+side])
+                    let a=try topology.point(s,mesh:upper),b=try topology.point(e,mesh:upper),c=try topology.point(e,mesh:lower),d=try topology.point(w,mesh:skin)
+                    XCTAssertEqual(distance(a,b),distance(s,e),accuracy:0.01)
+                    XCTAssertEqual(distance(c,d),distance(e,w),accuracy:0.01)
+                    XCTAssertLessThan(distance(b,c),0.01,"Official Core elbow attachment")
+                    let selected=try XCTUnwrap(output.first { $0.id.hasPrefix("hand_"+side) && $0.opacity>0.001 })
+                    XCTAssertLessThan(distance(d,try topology.point(w,mesh:selected)),0.01,"Official Core wrist attachment")
+                    if !left,gesture == .think,(30...114).contains(frame) {
+                        let finger=try topology.point(PuppetMotion.thinkingFinger,mesh:selected)
+                        let chin=try topology.point(SIMD2(300,268),mesh:XCTUnwrap(byID["face"]))
+                        XCTAssertLessThan(distance(finger,chin),1.75,"Actual MOC fingertip/chin contact")
+                    }
+                }
+            }
         }
         let temp = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         try FileManager.default.createDirectory(at:temp,withIntermediateDirectories:true)

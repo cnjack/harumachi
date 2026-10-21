@@ -1,5 +1,7 @@
 # 澪正式 Cubism 格式与 Swift Core 接入（2026-10-21）
 
+本页保留首次正式格式导出的历史状态；当前 v11 的源素材、24 参数、34 ArtMesh 和可见窗口验收见[后续手臂修复](MIO_ARM_NATURALNESS_20261021.md)。
+
 用户要求正式 Live2D 兼容格式，随后明确要求在锁屏情况下用 CLI 完成。此前的 `harumachi-layer-rig` 保留为源布局和对照工具，不能作为 Cubism 运行模型。新默认后端读取真正的 `.model3.json` / `.moc3`。
 
 ## 交付与生成

@@ -12,8 +12,9 @@ enum CubismReview {
         guard let core = renderer.cubism?.model else { throw CubismModel.Failure(message:"Review requires official Cubism Core") }
         var checks: [[String:Any]] = []
         for parameter in core.parameters {
-            try core.update([parameter.id:parameter.minimum]);let low = try core.meshes()
-            try core.update([parameter.id:parameter.maximum]);let high = try core.meshes()
+            var values: [String:Float] = ["ParamHandOpenL":0,"ParamHandOpenR":0];values[parameter.id]=parameter.minimum
+            try core.update(values);let low = try core.meshes()
+            values[parameter.id]=parameter.maximum;try core.update(values);let high = try core.meshes()
             var geometry: Float = 0,opacity: Float = 0
             for (a,b) in zip(low,high) {
                 geometry = max(geometry,zip(a.positions,b.positions).map { abs($0-$1) }.max() ?? 0)
@@ -24,7 +25,7 @@ enum CubismReview {
             checks.append(["id":parameter.id,"maximumVertexDelta":geometry,"maximumOpacityDelta":opacity])
         }
         try renderer.snapshot(to:directory.appendingPathComponent("default.png"),pose:RigPose(time:0,gesture:.idle))
-        guard core.parameters.count == 22 else { throw CubismModel.Failure(message:"Expected 22 live parameters") }
+        guard core.parameters.count == 24 else { throw CubismModel.Failure(message:"Expected 24 live parameters") }
         var frameCount = 0
         func verify(_ pose: RigPose,_ motion: PuppetMotion) throws {
             try core.update(CubismParameters.values(pose:pose,motion:motion))

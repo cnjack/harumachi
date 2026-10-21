@@ -4238,6 +4238,17 @@
         "art/references/promo_20261015/bridge.png"
       ],
       "purpose": "user-selected anime CG promotional trailer"
+    },
+    {
+      "file": "art/live2d/mio/articulated/arm-segments-20261021.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "prompt": "art/manifests/prompts/live2d/mio-arm-segments-20261021.txt",
+      "reference": "art/live2d/mio/articulated/arms-continuous.png",
+      "supporting_references": [
+        "evidence/mio_cubism_20261021/render/default.png"
+      ],
+      "purpose": "Mio independently articulated upper/lower sleeves and hidden elbow overlap; preserve original face/body/hand assets"
     }
   ]
 }
