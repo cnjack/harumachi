@@ -1,0 +1,13 @@
+Tool: built-in image_gen. Transparent PNG output, preserved alpha.
+
+Torso armhole edit (target: the existing registered torso.png):
+Use case: precise-object-edit. Asset type: production Live2D separated torso texture. Keep the neck, neckline, blouse, button band, buttons, pockets, hems, colors and thin anime outlines. Remove only the rounded fixed sleeve-cap lobes outside the cardigan armhole seams and their pointed flaps. Keep plain cream fabric underlap for separately animated sleeves. No arms, hands, floating patches or outlined circular holes. Preserve front-facing composition and transparent background.
+Output: torso-armholes-20261021.png. Only the two upper side regions are registered into the original torso by pack_assets.swift; original central/lower pixels are retained.
+
+Sleeve cloth draft (no character input):
+A clean 2D anime garment design asset sheet: two matching cream cardigan sleeve pattern pieces displayed flat, mirrored side by side. Clothing only, no people or body parts. One continuous outline per panel, no extra cap or side lobe. Thin warm brown outline, ivory fabric, sparse peach fold shadows. Upright layout, transparent background, no labels or glow.
+This draft had unwanted knit texture and was not used directly.
+
+Final sleeve cloth edit (target: the generated garment draft):
+Keep the two cloth panels and mirrored layout. Replace all knit grain, cable patterns and surface detail with smooth flat ivory fabric (#fff0dd), two or three broad pale peach cel-shaded folds (#efd1b6), and thin clean warm brown outlines. No hatching or photorealism. Soften pointed shoulder corners, keep one continuous contour with no extra overlapping cap or side lobe, remove the inner lower hem ellipse. Clothing-only assets with transparent PNG alpha.
+Output: upper-sleeves-clean-20261021.png. Register only upper-arm fabric; original lower sleeves, forearms and all hands are preserved.

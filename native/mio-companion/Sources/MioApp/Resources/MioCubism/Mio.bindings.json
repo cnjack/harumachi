@@ -23,28 +23,6 @@
       "rows" : 64
     },
     {
-      "columns" : 20,
-      "id" : "shoulder_left",
-      "rect" : [
-        220,
-        307,
-        30,
-        51
-      ],
-      "rows" : 64
-    },
-    {
-      "columns" : 20,
-      "id" : "shoulder_right",
-      "rect" : [
-        350,
-        307,
-        30,
-        51
-      ],
-      "rows" : 64
-    },
-    {
       "columns" : 24,
       "id" : "arm_left",
       "rect" : [
@@ -74,28 +52,6 @@
         252,
         210,
         290
-      ],
-      "rows" : 64
-    },
-    {
-      "columns" : 24,
-      "id" : "sleeve_left",
-      "rect" : [
-        34,
-        280,
-        230,
-        320
-      ],
-      "rows" : 64
-    },
-    {
-      "columns" : 24,
-      "id" : "sleeve_right",
-      "rect" : [
-        336,
-        280,
-        230,
-        320
       ],
       "rows" : 64
     },

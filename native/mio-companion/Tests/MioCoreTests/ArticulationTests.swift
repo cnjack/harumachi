@@ -12,9 +12,11 @@ final class ArticulationTests: XCTestCase {
                     let wrist = SIMD2<Float>(left ? 114 : 486,508)
                     let actual = motion.armPoint(wrist,shoulder:shoulder,
                         elbow:SIMD2(left ? 173 : 427,418),wrist:wrist,left:left)
-                    let origin = motion.torsoPoint(shoulder)
+                    let origin = motion.armPoint(shoulder,shoulder:shoulder,
+                        elbow:SIMD2(left ? 173 : 427,418),wrist:wrist,left:left)
                     XCTAssertLessThan(abs(actual.x-origin.x),55,"Resting arms must hang beside the hips, not stay spread out")
                     XCTAssertGreaterThan(actual.y-origin.y,210,"The relaxed wrist must lower beneath the waist")
+                    XCTAssertGreaterThan(actual.y,525,"The raised shoulder must not pull the relaxed hand above the hips")
                 }
             }
         }

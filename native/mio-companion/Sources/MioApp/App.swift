@@ -136,7 +136,7 @@ import MioCore
 @main struct MioMain {
     @MainActor static func main() {
         let args = CommandLine.arguments
-        let supported: Set<String> = ["--preview-motion","--review-motion-window","--review-motion","--render-samples","--render-motion","--review-cubism","--smoke-test","--connection-test"]
+        let supported: Set<String> = ["--preview-motion","--review-motion-window","--review-motion","--review-shoulders","--render-samples","--render-motion","--review-cubism","--smoke-test","--connection-test"]
         if let unknown = args.dropFirst().first(where: { $0.hasPrefix("--") && !supported.contains($0) }) {
             fputs("Unknown Mio argument: \(unknown)\n",stderr);exit(2)
         }
@@ -167,6 +167,22 @@ import MioCore
                 try MotionReview.run(at: URL(fileURLWithPath: args[at + 1], isDirectory: true))
                 exit(0)
             } catch { fputs("Motion review failed: \(error)\n", stderr); exit(1) }
+        }
+        if let at = args.firstIndex(of: "--review-shoulders"), at + 1 < args.count {
+            do {
+                let directory = URL(fileURLWithPath:args[at+1],isDirectory:true)
+                try FileManager.default.createDirectory(at:directory,withIntermediateDirectories:true)
+                guard let device = MTLCreateSystemDefaultDevice() else { throw MioRenderer.RenderError.unavailable }
+                let renderer = try MioRenderer(device:device)
+                for gesture in [CharacterGesture.idle,.wave,.stretch,.think,.talk] {
+                    for time in [0.0,0.3,0.6,1.0,2.0,3.0] {
+                        let pose = RigPose(time:time,speaking:gesture == .talk,gesture:gesture,gestureTime:time)
+                        try renderer.snapshot(to:directory.appendingPathComponent("\(gesture.rawValue)-\(time).png"),
+                            pose:pose,motion:PuppetMotion(pose:pose))
+                    }
+                }
+                exit(0)
+            } catch { fputs("Shoulder review failed: \(error)\n",stderr);exit(1) }
         }
         if let at = args.firstIndex(of: "--render-samples"), at + 1 < args.count {
             do {

@@ -1,5 +1,7 @@
 # 模型、工程与交付流程
 
+澪桌面角色 v13 肩部流程：两份新透明源图 → `pack_assets.swift` 上臂注册与袖窿局部合成 → `export_psd.swift` 28 层 PSD → `export_mio.py` 官方 30 ArtMesh CMO3/MOC3。先用 `--review-shoulders` 对照源布局与正式 Core，再跑全动作切换和现有屏幕验收。只检查关节中心不够，必须放大看肩线、腋下、肘部外缘；用户已认可的招手抬起侧保持原位置。详见[肩部修复](MIO_SHOULDER_20261021.md)。
+
 澪 v12 的手臂粗细与动作节奏见 [MIO_ARM_ENERGY_20261021.md](MIO_ARM_ENERGY_20261021.md)。源宽度从 PNG alpha 实测，动作响应通过 30/60 FPS 两种时钟回归；每次重注册后重新导出 PSD/CMO3、图集和标准 motion3，并复拍全部动作及切换。可见窗口目标 60 FPS，独立验收要求平均至少 50 FPS。
 
 澪的肩肘腕源修复与全动作复拍见 [MIO_ARM_NATURALNESS_20261021.md](MIO_ARM_NATURALNESS_20261021.md)。`--review-motion` 输出实际 Core 顶点接合与真实 Metal 图；`audit_arm_connections.py` 检查内部连接带，`check_joint_seams.py` 按注册的皮肤接缝位置检查暗线，并逐项复核放大图。

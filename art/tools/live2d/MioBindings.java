@@ -49,8 +49,9 @@ public final class MioBindings {
     if(source.getAllParameters().size()!=parameters.size())throw new IllegalStateException("Parameter tree registration failed");
     rotation("Body","",new String[]{"ParamBodyAngleZ","ParamTorsoLift"},new float[][]{{-3,0,3},{0,5}});
     rotation("Head","Body",new String[]{"ParamAngleZ","ParamAngleX","ParamAngleY"},new float[][]{{-12,0,12},{-30,0,30},{-30,0,30}});
-    rotation("ShoulderL","Body",new String[]{"ParamShoulderL"},new float[][]{{-2.2f,-0.38f,0,2.2f}});
-    rotation("ShoulderR","Body",new String[]{"ParamShoulderR"},new float[][]{{-2.2f,0,0.38f,2.2f}});
+    float[] shoulderKeys=new float[45];for(int i=0;i<45;i++)shoulderKeys[i]=(i-22)/10f;
+    rotation("ShoulderL","Body",new String[]{"ParamShoulderL"},new float[][]{shoulderKeys});
+    rotation("ShoulderR","Body",new String[]{"ParamShoulderR"},new float[][]{shoulderKeys});
     rotation("ElbowL","ShoulderL",new String[]{"ParamElbowL"},new float[][]{{0,0.04f,1.6f}});
     rotation("ElbowR","ShoulderR",new String[]{"ParamElbowR"},new float[][]{{-2.2f,-0.04f,0,3.1f}});
     rotation("WristL","ElbowL",new String[]{"ParamWristL"},new float[][]{{-0.2f,0,0.2f}});
@@ -124,7 +125,17 @@ public final class MioBindings {
       } else if(name.equals("Head")) { form.setOriginX(values[1]*0.1f);form.setOriginY(-127-values[2]*0.25f); }
       else {
         boolean left=name.endsWith("L");
-        if(name.startsWith("Shoulder")){form.setOriginX(left?-69:69);form.setOriginY(-112);}
+        if(name.startsWith("Shoulder")){
+          // Author clavicle lift in the parent deformer so every child keeps
+          // its attachment, including third-party Cubism motion playback.
+          float outward=left?angle:-angle,t=Math.max(0,Math.min(1,(outward-0.9f)/0.65f));
+          float raised=t*t*(3-2*t);
+          float a=Math.max(0,Math.min(1,(outward+0.65f)/0.17f));
+          float b=Math.max(0,Math.min(1,(outward+0.3f)/0.22f));
+          float resting=a*a*(3-2*a)*(1-b*b*(3-2*b));
+          form.setOriginX((left?-69:69)+(left?12:-12)*raised);
+          form.setOriginY(-112-7*resting-20*raised);
+        }
         else if(name.startsWith("Elbow")){form.setOriginX(left?-58:58);form.setOriginY(98);}
         else {form.setOriginX(left?-59:59);form.setOriginY(90);}
         angle=(float)Math.toDegrees(angle);

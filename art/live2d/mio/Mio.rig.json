@@ -43,42 +43,6 @@
       "texture" : "lower_body.png"
     },
     {
-      "group" : "shoulder_left",
-      "id" : "shoulder_left",
-      "rect" : [
-        220,
-        307,
-        30,
-        51
-      ],
-      "sourceAtlas" : "pose-parts\/torso-overlaps.png",
-      "sourceCrop" : [
-        1130,
-        150,
-        150,
-        280
-      ],
-      "texture" : "shoulder_left.png"
-    },
-    {
-      "group" : "shoulder_right",
-      "id" : "shoulder_right",
-      "rect" : [
-        350,
-        307,
-        30,
-        51
-      ],
-      "sourceAtlas" : "pose-parts\/torso-overlaps.png",
-      "sourceCrop" : [
-        1320,
-        150,
-        150,
-        280
-      ],
-      "texture" : "shoulder_right.png"
-    },
-    {
       "bendSpans" : [
         0,
         0
@@ -107,7 +71,7 @@
         230,
         320
       ],
-      "sourceAtlas" : "articulated\/arm-segments-20261021.png",
+      "sourceAtlas" : "articulated\/upper-sleeves-clean-20261021.png",
       "sourceShoulder" : [
         581,
         150
@@ -147,7 +111,7 @@
         230,
         320
       ],
-      "sourceAtlas" : "articulated\/arm-segments-20261021.png",
+      "sourceAtlas" : "articulated\/upper-sleeves-clean-20261021.png",
       "sourceShoulder" : [
         955,
         150
@@ -167,6 +131,7 @@
         210,
         290
       ],
+      "shoulderSourceAtlas" : "pose-parts\/torso-armholes-20261021.png",
       "sourceAtlas" : "pose-parts\/torso-overlaps.png",
       "sourceCrop" : [
         55,
@@ -175,86 +140,6 @@
         670
       ],
       "texture" : "torso.png"
-    },
-    {
-      "bendSpans" : [
-        0,
-        0
-      ],
-      "binding" : "anatomical-two-bone-overlap",
-      "group" : "arm_left",
-      "id" : "sleeve_left",
-      "jointPiece" : "upper",
-      "joints" : [
-        [
-          231,
-          320
-        ],
-        [
-          173,
-          418
-        ],
-        [
-          114,
-          508
-        ]
-      ],
-      "rect" : [
-        34,
-        280,
-        230,
-        320
-      ],
-      "sourceAtlas" : "articulated\/arm-segments-20261021.png",
-      "sourceShoulder" : [
-        581,
-        150
-      ],
-      "sourceWrist" : [
-        211,
-        800
-      ],
-      "texture" : "sleeve_left.png"
-    },
-    {
-      "bendSpans" : [
-        0,
-        0
-      ],
-      "binding" : "anatomical-two-bone-overlap",
-      "group" : "arm_right",
-      "id" : "sleeve_right",
-      "jointPiece" : "upper",
-      "joints" : [
-        [
-          369,
-          320
-        ],
-        [
-          427,
-          418
-        ],
-        [
-          486,
-          508
-        ]
-      ],
-      "rect" : [
-        336,
-        280,
-        230,
-        320
-      ],
-      "sourceAtlas" : "articulated\/arm-segments-20261021.png",
-      "sourceShoulder" : [
-        955,
-        150
-      ],
-      "sourceWrist" : [
-        1325,
-        800
-      ],
-      "texture" : "sleeve_right.png"
     },
     {
       "bendSpans" : [
@@ -1219,7 +1104,7 @@
       "texture" : "thought_cloud.png"
     }
   ],
-  "layoutRevision" : "20261021-articulated-v12",
+  "layoutRevision" : "20261021-shoulder-v13",
   "name" : "澪",
   "origin" : [
     -75,

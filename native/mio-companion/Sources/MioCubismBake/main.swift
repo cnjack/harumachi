@@ -10,7 +10,7 @@ struct SourceRig: Decodable {
         var id: String; var texture: String; var rect: [Float]; var group: String
         var joints: [[Float]]?; var defaultVisible: Bool?; var bendSpans: [Float]?; var jointPiece: String?
     }
-    var canvas: [Int]; var origin: [Float]; var layers: [Layer]
+    var canvas: [Int]; var origin: [Float]; var layers: [Layer]; var layoutRevision: String
 }
 struct Parameter: Codable {
     var id: String; var min: Float; var max: Float; var value: Float
@@ -88,6 +88,11 @@ for (order,layer) in layers.enumerated() {
         else if upper { pivot = SIMD2(left ? 306:444,320) }
         else { pivot = SIMD2(left ? 248:502,418) }
         if hand { bindings = [("ParamHandOpen"+side,[0,0.5,1]),("ParamHandClose"+side,[0,1])] }
+        else if upper {
+            // Root-only tuck is authored in the MOC, under the same rotation
+            // deformer as the rigid shaft. External players get identical art.
+            bindings = [("ParamShoulder"+side,(-22...22).map { Float($0)/10 })]
+        }
     } else if head {
         parent = "Head";pivot = SIMD2(375,305)
         bindings = []
@@ -136,6 +141,10 @@ for (order,layer) in layers.enumerated() {
                     p = wrist+direction*(along-(1-length)*integral)+normal*(across*(1+(width-1)*PuppetMotion.smooth(16,32,along)))
                 }
                 p = motion.armPoint(p,shoulder:shoulder,elbow:elbow,wrist:wrist,left:left,elbowBendSpan:layer.bendSpans?[0] ?? 104,wristBendSpan:layer.bendSpans?[1] ?? 30,upperArm:layer.jointPiece.map { $0 == "upper" },hand:hand)
+                if layer.jointPiece == "upper" {
+                    let angle = values["ParamShoulder"+side] ?? 0
+                    p = PuppetMotion.sleeveRoot(p,shoulder:shoulder,elbow:elbow,lift:left ? angle:-angle)
+                }
             } else if head {
                 if layer.group == "hair" {
                     let sway = values[layer.id == "hair_back" ? "ParamHairBack" : "ParamHairFront"] ?? 0
@@ -181,7 +190,7 @@ let anchors = descriptions.map { spec -> [String:Any] in
 try JSONSerialization.data(withJSONObject:["meshes":anchors],options:[.prettyPrinted,.sortedKeys]).write(to:out.appendingPathComponent("Mio.bindings.json"))
 try binary.write(to:out.appendingPathComponent("forms.bin"))
 let encodedParameters = try JSONSerialization.jsonObject(with:JSONEncoder().encode(parameters))
-try JSONSerialization.data(withJSONObject:["parameters":encodedParameters,"meshes":descriptions,"sourceLayout":"20261021-articulated-v11"],options:[.sortedKeys]).write(to:out.appendingPathComponent("bake.json"))
+try JSONSerialization.data(withJSONObject:["parameters":encodedParameters,"meshes":descriptions,"sourceLayout":source.layoutRevision],options:[.sortedKeys]).write(to:out.appendingPathComponent("bake.json"))
 
 // Produce a conventional RGB/8 PSD with the resolution resource required by
 // Cubism's importer and independent left/right eyelid source layers.

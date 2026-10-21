@@ -41,7 +41,8 @@ def main():
         reports = [json.loads(line) for line in result.stdout.splitlines() if line.startswith('{"status"')]
         if not reports: raise SystemExit('Exporter produced no report; see '+str(work/'export.log'))
         report = reports[-1]
-        assert report['selectedConsistency'] and report['selectedParameterCount']==24 and report['selectedDrawableCount']==34, report
+        expected_meshes = len(json.loads((bake/'bake.json').read_text())['meshes'])
+        assert report['selectedConsistency'] and report['selectedParameterCount']==24 and report['selectedDrawableCount']==expected_meshes, report
         assert report['selectedMocVersion']==3 and report['intermediateArchiveSaved'], report
         runtime = ROOT/'native/mio-companion/Sources/MioApp/Resources/MioCubism'
         runtime.mkdir(exist_ok=True)

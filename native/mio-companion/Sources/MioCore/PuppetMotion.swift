@@ -98,14 +98,22 @@ public struct PuppetMotion: Sendable {
             // tip, keeping contact as the head tilts and follows the pointer.
             let shoulder = SIMD2<Float>(369,320), elbow = SIMD2<Float>(427,418)
             let target = headPoint(SIMD2(300,268))+SIMD2(1,1)
-            let upper = elbow-shoulder,lower = Self.thinkingFinger-elbow,reach = target-shoulder
+            let upper = elbow-shoulder,lower = Self.thinkingFinger-elbow
             let l1 = sqrt(upper.x*upper.x+upper.y*upper.y),l2 = sqrt(lower.x*lower.x+lower.y*lower.y)
-            let cosine = max(-1,min(1,(reach.x*reach.x+reach.y*reach.y-l1*l1-l2*l2)/(2*l1*l2)))
             let offset = atan2(lower.y,lower.x)-atan2(upper.y,upper.x)
-            let angle = acos(cosine)-offset
-            let bent = upper+Self.rotate(lower,around:.zero,by:angle)
-            let rawShoulder = atan2(reach.y,reach.x)-atan2(bent.y,bent.x)
-            let solvedShoulder = atan2(sin(rawShoulder),cos(rawShoulder))
+            var solvedShoulder = rightShoulder,angle = rightElbow
+            // Solve against the placed shoulder, including its small garment
+            // lift. Re-evaluate because placement depends on shoulder angle.
+            for _ in 0..<48 {
+                let placed = shoulder+SIMD2(-Self.shoulderInset(-solvedShoulder),-Self.shoulderLift(-solvedShoulder))
+                let reach = target-placed
+                let cosine = max(-1,min(1,(reach.x*reach.x+reach.y*reach.y-l1*l1-l2*l2)/(2*l1*l2)))
+                angle = acos(cosine)-offset
+                let bent = upper+Self.rotate(lower,around:.zero,by:angle)
+                let rawShoulder = atan2(reach.y,reach.x)-atan2(bent.y,bent.x)
+                let correction = atan2(sin(rawShoulder-solvedShoulder),cos(rawShoulder-solvedShoulder))
+                solvedShoulder += correction*0.25
+            }
             rightShoulder += (solvedShoulder-rightShoulder)*blend
             rightElbow += (angle-rightElbow)*blend
             thoughtOpacity = Self.smooth(0.55,0.8,Float(phase))
@@ -185,7 +193,9 @@ public struct PuppetMotion: Sendable {
                          hand: Bool = false) -> SIMD2<Float> {
         let axis = wrist-elbow,direction = axis/max(1,sqrt(axis.x*axis.x+axis.y*axis.y))
         let delta = point-elbow,lower = upperArm.map { !$0 } ?? (delta.x*direction.x+delta.y*direction.y >= -0.001)
-        var p = point
+        let shoulderAngle = left ? leftShoulder:rightShoulder
+        var p = upperArm == true ? Self.sleeveRoot(point,shoulder:shoulder,elbow:elbow,
+            lift:left ? shoulderAngle:-shoulderAngle) : point
         if lower {
             let dw = p-wrist
             if hand || (upperArm == nil && dw.x*direction.x+dw.y*direction.y > 0) {
@@ -194,6 +204,33 @@ public struct PuppetMotion: Sendable {
             p = Self.rotate(p,around:elbow,by:left ? leftElbow:rightElbow)
         }
         p = Self.rotate(p,around:shoulder,by:left ? leftShoulder:rightShoulder)
-        return Self.rotate(p-SIMD2(0,torsoLift),around:SIMD2(300,432),by:torso)
+        let outward = left ? shoulderAngle:-shoulderAngle
+        let lift = Self.shoulderLift(outward)
+        let inset = Self.shoulderInset(outward)*(left ? 1:-1)
+        return Self.rotate(p+SIMD2(inset,-torsoLift-lift),around:SIMD2(300,432),by:torso)
+    }
+    public static func shoulderLift(_ outwardAngle: Float) -> Float {
+        // Raise the resting sleeve to the garment shoulder, preserving the
+        // approved wave. Match interpolation between exported parent keyforms
+        // so the fingertip solver and standalone MOC playback share a pivot.
+        func key(_ angle: Float) -> Float {
+            let resting = smooth(-0.65,-0.48,angle)*(1-smooth(-0.3,-0.08,angle))
+            return 7*resting+20*smooth(0.9,1.55,angle)
+        }
+        let low = floor(outwardAngle*10)/10,fraction = (outwardAngle-low)*10
+        return key(low)+(key(low+0.1)-key(low))*fraction
+    }
+    public static func shoulderInset(_ outwardAngle: Float) -> Float { 12*smooth(0.9,1.55,outwardAngle) }
+    /// Tuck only the painted overlap behind the armhole as the arm rises.
+    /// The visible upper arm and all bone anchors retain their rigid shape.
+    /// These same points are authored as Cubism shoulder keyforms by the baker.
+    public static func sleeveRoot(_ p: SIMD2<Float>,shoulder: SIMD2<Float>,elbow: SIMD2<Float>,lift: Float) -> SIMD2<Float> {
+        let axis=elbow-shoulder,direction=axis/sqrt(axis.x*axis.x+axis.y*axis.y)
+        let normal=SIMD2(-direction.y,direction.x),delta=p-shoulder
+        let along=delta.x*direction.x+delta.y*direction.y,across=delta.x*normal.x+delta.y*normal.y
+        let raised=smooth(0.9,1.55,lift)
+        let longitudinal=1-0.5*raised*(1-smooth(12,42,along))
+        let transverse=1-0.5*raised*(1-smooth(12,45,along))
+        return shoulder+direction*(along*longitudinal)+normal*(across*transverse)
     }
 }

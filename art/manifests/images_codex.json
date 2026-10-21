@@ -6,7 +6,9 @@
       "tool": "codex image_gen built-in",
       "prompt": "art/manifests/prompts/live2d/mio-parts.txt",
       "reference": "art/library/characters/references/mio_front.png",
-      "supporting_references": ["game/assets/ui/portraits/mio_neutral.png"],
+      "supporting_references": [
+        "game/assets/ui/portraits/mio_neutral.png"
+      ],
       "purpose": "Mio Swift desktop companion layered source"
     },
     {
@@ -4249,6 +4251,26 @@
         "evidence/mio_cubism_20261021/render/default.png"
       ],
       "purpose": "Mio independently articulated upper/lower sleeves and hidden elbow overlap; preserve original face/body/hand assets"
+    },
+    {
+      "file": "art/live2d/mio/pose-parts/torso-armholes-20261021.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "prompt": "art/manifests/prompts/live2d/mio-shoulder-repair.txt",
+      "reference": "native/mio-companion/Sources/MioApp/Resources/Mio/torso.png",
+      "purpose": "Remove static sleeve caps from upper torso; register side armholes only",
+      "generated_output": "exec-664a8825-8643-4094-8322-8ec11609df8e.png",
+      "sha256": "9dc655adb2fe59dc41e4526e55c373d16d8dbd432b8afb86cf7e89ec2dd11dad"
+    },
+    {
+      "file": "art/live2d/mio/articulated/upper-sleeves-clean-20261021.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "prompt": "art/manifests/prompts/live2d/mio-shoulder-repair.txt",
+      "reference": "exec-5d3290f1-c0b2-4ba7-9aaf-40a3973f2f96.png",
+      "purpose": "Single-contour flat upper-sleeve artwork without duplicate oval cap",
+      "generated_output": "exec-00e9b127-0d05-487a-b07e-f6121df73ae0.png",
+      "sha256": "4c60d3102ef32a7aad0849d62895b4a86c1ece8d8cd69318c6654bc4ebcc06fd"
     }
   ]
 }

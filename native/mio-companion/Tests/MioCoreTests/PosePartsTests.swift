@@ -211,8 +211,8 @@ final class PosePartsTests: XCTestCase {
             let expected: Set<String> = side == "right" ? ["relaxed","palm","back","inward","fist","chin"] : ["relaxed","palm","back","inward","fist"]
             XCTAssertEqual(Set(hands.compactMap { $0["variant"] as? String }), expected,
                 "Rotating one hand texture cannot turn its palm toward the viewer")
-            XCTAssertNotNil(layers.first { $0["id"] as? String == "shoulder_\(side)" },
-                "The shoulder needs drawn underarm coverage")
+            XCTAssertNotNil(layers.first { $0["id"] as? String == "arm_\(side)" },
+                "The moving sleeve owns the shoulder overlap")
         }
         let upper = layers.first { $0["group"] as? String == "torso" }
         let lower = layers.first { $0["group"] as? String == "lower_body" }
