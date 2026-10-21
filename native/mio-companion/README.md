@@ -1,6 +1,6 @@
 # 澪 · 晴町桌面来信
 
-macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用真正 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 30 层 PSD 在 `art/live2d/mio/cubism/`。当前 v13 用单轮廓上臂素材和独立袖窿替换重复肩片，垂手上提肩头、伸展时内收袖根，保留 v12 的厚度与动作节奏，模型含 24 个参数、五套标准 motion3，CLI 生成与兼容边界见[本轮记录](../../docs/game-design/MIO_CUBISM_20261021.md)。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肩部修订见[修复记录](../../docs/game-design/MIO_SHOULDER_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。仅看动作可双击根目录 `preview_mio_motion.command`；完整常驻版使用 `open_mio_companion.command`。构建：
+macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用真正 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 30 层 PSD 在 `art/live2d/mio/cubism/`。当前 v14 恢复旧版连续袖子褶皱及袖口，保留 v13 垂手上提、伸展内收的肩位，保留 v12 的厚度与动作节奏，模型含 24 个参数、五套标准 motion3，CLI 生成与兼容边界见[本轮记录](../../docs/game-design/MIO_CUBISM_20261021.md)。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肘部恢复见[修复记录](../../docs/game-design/MIO_ELBOW_RESTORE_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。仅看动作可双击根目录 `preview_mio_motion.command`；完整常驻版使用 `open_mio_companion.command`。构建：
 
 ```bash
 ./native/mio-companion/tools/build_app.sh
@@ -32,7 +32,7 @@ python3 tools/review_motion.py /tmp/mio-joints
 
 源素材在 [`art/live2d/mio/`](../../art/live2d/mio/)：透明原始部件图、28 层 RGB/8 PSD、源布局 `Mio.rig.json`，以及 `cubism/` 下的可编辑 CMO3 和独立左右眼的 30 层 PSD。PNG 部件随 Swift Package 打包。上身、腰裙、独立上下臂衣袖、公共前臂、五套常用左右手型、一套食指托腮手型与七个头部部件分别成层；手臂使用 24×64 网格，身体 20×64，头部 20×24。Metal 对预乘纹理进行过滤和透明混合，手型使用独立实心源图与几何过渡。当前含呼吸、轻摆、头发运动、眨眼、说话口型和角色区域内的鼠标视线。默认 60 FPS，全程静音；离线全组复拍按 30 FPS 取样。
 
-当前头部采用用户在叠图预览中选定的「再缩小 20%」版本：相对前一版为 0.8，相对最初布局为 `0.92 × 0.8 = 0.736`。七个头部图层围绕 `(300, 268)` 的颈部基点一起缩放，五官相对比例保持原值。当前 `20261021-shoulder-v13` 保留按用户照片制作的食指抵下巴和思考云，使用分段衣袖、公共前臂及实心手型过渡；源 rig、PSD、CMO3 和应用资源同步。
+当前头部采用用户在叠图预览中选定的「再缩小 20%」版本：相对前一版为 0.8，相对最初布局为 `0.92 × 0.8 = 0.736`。七个头部图层围绕 `(300, 268)` 的颈部基点一起缩放，五官相对比例保持原值。当前 `20261021-elbow-v14` 保留按用户照片制作的食指抵下巴和思考云，使用分段衣袖、公共前臂及实心手型过渡；源 rig、PSD、CMO3 和应用资源同步。
 
 `Mio.rig.json` 仅用于作者源布局；正式入口是 `MioCubism/Mio.model3.json`，其 `.moc3` 由已安装的 Cubism Editor 官方导出器生成。早期自有分层版本和格式核对保留在[历史记录](../../docs/game-design/MIO_REST_AND_FORMAT_20261020.md)。
 

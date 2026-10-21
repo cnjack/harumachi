@@ -1,0 +1,24 @@
+{
+  "layout": "20261021-elbow-v14",
+  "source": "art/live2d/mio/articulated/body-arms-atlas.png",
+  "sha256": "41164c8d88892eb391da38f0dfd93cca9c028e0926c703e8ee5003ab24c3dc87",
+  "preferredReference": "user third image codex-clipboard-b4508e06-abe0-4af8-8dd8-15d4cf17cf16.png",
+  "originalLayoutCommit": "b288444",
+  "reuse": "Original continuous elbow folds, lower sleeves, cuff and forearm; no new image generation",
+  "shoulderSource": "art/live2d/mio/articulated/upper-sleeves-clean-20261021.png",
+  "registrationTool": "native/mio-companion/tools/pack_assets.swift",
+  "changes": [
+    "Blend original sleeve artwork beyond the preserved upper shoulder root",
+    "Round hidden upper/lower overlap cuts; retain original visible folds",
+    "Centre distal forearm artwork on wrist bones before registering all hand variants"
+  ],
+  "preserved": [
+    "v13 shoulder placement and torso armholes",
+    "v12 timing and arm volume",
+    "head scale 0.736",
+    "24 Cubism parameters and five standard motions"
+  ],
+  "sourceLayers": 28,
+  "cubismArtMeshes": 30,
+  "verification": "evidence/mio_elbow_restore_20261021/verification.json"
+}

@@ -48,6 +48,7 @@
         0
       ],
       "binding" : "anatomical-two-bone-overlap",
+      "elbowSourceAtlas" : "articulated\/body-arms-atlas.png",
       "group" : "arm_left",
       "id" : "arm_left",
       "jointPiece" : "upper",
@@ -88,6 +89,7 @@
         0
       ],
       "binding" : "anatomical-two-bone-overlap",
+      "elbowSourceAtlas" : "articulated\/body-arms-atlas.png",
       "group" : "arm_right",
       "id" : "arm_right",
       "jointPiece" : "upper",
@@ -170,7 +172,7 @@
         230,
         320
       ],
-      "sourceAtlas" : "articulated\/arm-segments-20261021.png",
+      "sourceAtlas" : "articulated\/body-arms-atlas.png",
       "sourceShoulder" : [
         581,
         150
@@ -210,7 +212,7 @@
         230,
         320
       ],
-      "sourceAtlas" : "articulated\/arm-segments-20261021.png",
+      "sourceAtlas" : "articulated\/body-arms-atlas.png",
       "sourceShoulder" : [
         955,
         150
@@ -250,7 +252,7 @@
         230,
         320
       ],
-      "sourceAtlas" : "articulated\/arm-segments-20261021.png",
+      "sourceAtlas" : "articulated\/body-arms-atlas.png",
       "sourceShoulder" : [
         581,
         150
@@ -290,7 +292,7 @@
         230,
         320
       ],
-      "sourceAtlas" : "articulated\/arm-segments-20261021.png",
+      "sourceAtlas" : "articulated\/body-arms-atlas.png",
       "sourceShoulder" : [
         955,
         150
@@ -344,8 +346,8 @@
       "texture" : "hand_left_relaxed.png",
       "variant" : "relaxed",
       "wristProfile" : [
-        1,
-        9.75
+        0.375,
+        11.375
       ],
       "wristRegistration" : [
         114,
@@ -402,8 +404,8 @@
       "texture" : "hand_left_palm.png",
       "variant" : "palm",
       "wristProfile" : [
-        1,
-        9.75
+        0.375,
+        11.375
       ],
       "wristRegistration" : [
         114,
@@ -460,8 +462,8 @@
       "texture" : "hand_left_back.png",
       "variant" : "back",
       "wristProfile" : [
-        1,
-        9.75
+        0.375,
+        11.375
       ],
       "wristRegistration" : [
         114,
@@ -518,8 +520,8 @@
       "texture" : "hand_left_inward.png",
       "variant" : "inward",
       "wristProfile" : [
-        1,
-        9.75
+        0.375,
+        11.375
       ],
       "wristRegistration" : [
         114,
@@ -576,8 +578,8 @@
       "texture" : "hand_left_fist.png",
       "variant" : "fist",
       "wristProfile" : [
-        1,
-        9.75
+        0.375,
+        11.375
       ],
       "wristRegistration" : [
         114,
@@ -628,7 +630,7 @@
       "variant" : "relaxed",
       "wristProfile" : [
         0.125,
-        9.625
+        11.625
       ],
       "wristRegistration" : [
         486,
@@ -686,7 +688,7 @@
       "variant" : "palm",
       "wristProfile" : [
         0.125,
-        9.625
+        11.625
       ],
       "wristRegistration" : [
         486,
@@ -744,7 +746,7 @@
       "variant" : "back",
       "wristProfile" : [
         0.125,
-        9.625
+        11.625
       ],
       "wristRegistration" : [
         486,
@@ -802,7 +804,7 @@
       "variant" : "inward",
       "wristProfile" : [
         0.125,
-        9.625
+        11.625
       ],
       "wristRegistration" : [
         486,
@@ -860,7 +862,7 @@
       "variant" : "fist",
       "wristProfile" : [
         0.125,
-        9.625
+        11.625
       ],
       "wristRegistration" : [
         486,
@@ -926,7 +928,7 @@
       "variant" : "chin",
       "wristProfile" : [
         0.125,
-        9.625
+        11.625
       ],
       "wristRegistration" : [
         486,
@@ -1087,7 +1089,7 @@
       "texture" : "hand_right_chin_front.png",
       "wristProfile" : [
         0.125,
-        9.625
+        11.625
       ]
     },
     {
@@ -1104,7 +1106,7 @@
       "texture" : "thought_cloud.png"
     }
   ],
-  "layoutRevision" : "20261021-shoulder-v13",
+  "layoutRevision" : "20261021-elbow-v14",
   "name" : "澪",
   "origin" : [
     -75,

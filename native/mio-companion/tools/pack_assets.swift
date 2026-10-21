@@ -155,10 +155,14 @@ layers[torsoIndex]["shoulderSourceAtlas"]="pose-parts/torso-armholes-20261021.pn
 // Sampling is a geometric registration of imagegen pixels, not new painting.
 let continuousArms = load("art/live2d/mio/articulated/arms-continuous.png")
 let continuousPixels = rgba(continuousArms)
-let segmentedArms = load("art/live2d/mio/articulated/arm-segments-20261021.png")
-let segmentedPixels = rgba(segmentedArms)
 let cleanUpperSleeves = load("art/live2d/mio/articulated/upper-sleeves-clean-20261021.png")
 let cleanUpperPixels = rgba(cleanUpperSleeves)
+// Preserve the original continuous folds used in the user's preferred elbow
+// reference, before the later hand-registration pass replaces these sprites.
+let originalSleeves = Dictionary(uniqueKeysWithValues:["left","right"].map {
+    let image=load("native/mio-companion/Sources/MioApp/Resources/Mio/arm_\($0).png")
+    return ($0,makeImage(rgba(image),width:image.width,height:image.height))
+})
 for side in ["left","right"] {
     let i = layers.firstIndex { $0["id"] as? String == "arm_\(side)" }!
     let r = layers[i]["rect"] as! [Double]
@@ -377,13 +381,28 @@ for side in ["left", "right"] {
     let upperLength = hypot(upperAxis.x,upperAxis.y),upperTargetLength = hypot(elbow.x-shoulder.x,elbow.y-shoulder.y)
     let ud = CGPoint(x:upperAxis.x/upperLength,y:upperAxis.y/upperLength)
     let td = CGPoint(x:(elbow.x-shoulder.x)/upperTargetLength,y:(elbow.y-shoulder.y)/upperTargetLength)
-    let lowerX: Double = side == "left" ? 590:1240
+    let legacySleeve = originalSleeves[side]!,legacyPixels = rgba(originalSleeves[side]!)
+    let legacyRect: [Double] = [side == "left" ? 65:341,285,194,280]
+    // The original drawing's wrist contour is offset from the bone. Register
+    // its distal skin to the bone centre without moving the approved elbow or
+    // cuff. Every hand then shares an anatomical pivot, not just a seam.
+    var legacyWristSamples: [Double] = []
+    for step in -160...160 {
+        let across=Double(step)/4,px=wrist.x-d.y*across,py=wrist.y+d.x*across
+        let x=Int((px-legacyRect[0])/legacyRect[2]*Double(legacySleeve.width))
+        let y=Int((py-legacyRect[1])/legacyRect[3]*Double(legacySleeve.height))
+        if x>=0 && y>=0 && x<legacySleeve.width && y<legacySleeve.height && legacyPixels[(y*legacySleeve.width+x)*4+3]>=128 {
+            legacyWristSamples.append(across)
+        }
+    }
+    precondition(legacyWristSamples.count>12)
+    let legacyWristOffset=(legacyWristSamples.first!+legacyWristSamples.last!)/2
     func smooth(_ low: Double,_ high: Double,_ value: Double) -> Double {
         let q = max(0,min(1,(value-low)/(high-low)));return q*q*(3-2*q)
     }
-    func sample(_ sx: Double,_ sy: Double,_ bounds: ClosedRange<Double>,_ opacity: Double,_ result: inout [UInt8],_ index: Int,upper: Bool = false) {
-        let image = upper ? cleanUpperSleeves:segmentedArms
-        let pixels = upper ? cleanUpperPixels:segmentedPixels
+    func sample(_ sx: Double,_ sy: Double,_ bounds: ClosedRange<Double>,_ opacity: Double,_ result: inout [UInt8],_ index: Int,legacy: Bool = false) {
+        let image = legacy ? legacySleeve:cleanUpperSleeves
+        let pixels = legacy ? legacyPixels:cleanUpperPixels
         let ix = Int(floor(sx)),iy = Int(floor(sy))
         guard ix>=0,iy>=0,ix+1<image.width,iy+1<image.height,bounds.contains(sx) else { return }
         let fx=sx-Double(ix),fy=sy-Double(iy)
@@ -394,10 +413,11 @@ for side in ["left", "right"] {
         }
     }
     var upperBytes=[UInt8](repeating:0,count:segmentWidth*segmentHeight*4)
-    var lowerBytes=upperBytes,skinBytes=upperBytes,frontBytes=upperBytes
+    var lowerBytes=upperBytes,skinBytes=upperBytes,frontBytes=upperBytes,legacyBytes=upperBytes
     for y in 0..<segmentHeight { for x in 0..<segmentWidth {
         let px=r[0]+(Double(x)+0.5)/3,py=r[1]+(Double(y)+0.5)/3,index=(y*segmentWidth+x)*4
         let ux=(px-shoulder.x)*td.x+(py-shoulder.y)*td.y,uy = -(px-shoulder.x)*td.y+(py-shoulder.y)*td.x
+        let lx=(px-elbow.x)*d.x+(py-elbow.y)*d.y,ly = -(px-elbow.x)*d.y+(py-elbow.y)*d.x
         // Restore the loose cardigan volume instead of squeezing the source
         // width to fit its bone length. Longitudinal registration stays fixed.
         let su=ux*upperLength/upperTargetLength,sv=uy/0.19
@@ -406,21 +426,28 @@ for side in ["left", "right"] {
         // opaque fabric underneath; exterior shoulder and sleeve art remain.
         let rootRadius=26.0
         let rootSide=ux<0 ? sqrt(max(0,rootRadius*rootRadius-ux*ux)) : rootRadius+6*smooth(0,40,ux)
-        let elbowEnd=max(0,ux-(upperTargetLength-15))
-        let elbowSide=ux<upperTargetLength-15 ? 100.0 : sqrt(max(0,22*22-elbowEnd*elbowEnd))
-        let upperOpacity=(1-smooth(upperTargetLength+2,upperTargetLength+15,ux))
+        let upperOpacity=(1-smooth(29,31,hypot(max(0,lx),ly)))
             * (1-smooth(rootSide-1,rootSide,abs(uy)))
-            * (1-smooth(elbowSide-1,elbowSide,abs(uy)))
-        sample(sx,sy,side == "left" ? 300...720:816...1236,upperOpacity,&upperBytes,index,upper:true)
+        sample(sx,sy,side == "left" ? 300...720:816...1236,upperOpacity,&upperBytes,index)
+        let legacyX=(px-legacyRect[0])/legacyRect[2]*Double(legacySleeve.width)
+        let legacyY=(py-legacyRect[1])/legacyRect[3]*Double(legacySleeve.height)
+        sample(legacyX,legacyY,0...Double(legacySleeve.width),1,&legacyBytes,index,legacy:true)
+        let oldFold=smooth(42,72,ux)
+        for c in 0..<4 {
+            upperBytes[index+c]=UInt8(Double(upperBytes[index+c])*(1-oldFold)+Double(legacyBytes[index+c])*upperOpacity*oldFold)
+        }
         let frontOpacity=smooth(16,52,ux)
         for c in 0..<4 { frontBytes[index+c]=UInt8(Double(upperBytes[index+c])*frontOpacity) }
-        let lx=(px-elbow.x)*d.x+(py-elbow.y)*d.y,ly = -(px-elbow.x)*d.y+(py-elbow.y)*d.x
-        let cuffDistance=length-54
-        let sourceY = lx<=cuffDistance ? 260+lx*(650-260)/cuffDistance : 650+(lx-cuffDistance)*(900-650)/54
-        let sourceX=lowerX+ly/0.28
-        let lowerOpacity=smooth(-18,-6,lx)
-        if lx<length-42 { sample(sourceX,sourceY,side == "left" ? 470...710:1125...1350,lowerOpacity,&lowerBytes,index) }
-        if lx>=length-50 && lx<length+2 { sample(sourceX,sourceY,side == "left" ? 470...710:1125...1350,1,&skinBytes,index) }
+        let lowerOpacity=lx>=10 ? 1:1-smooth(28,30,hypot(lx-10,ly))
+        if lx<length-42 {
+            for c in 0..<4 { lowerBytes[index+c]=UInt8(Double(legacyBytes[index+c])*lowerOpacity) }
+        }
+        if lx>=length-62 && lx<length+2 {
+            let shift=legacyWristOffset*smooth(-42,-12,lx-length)
+            sample(legacyX-d.y*shift/legacyRect[2]*Double(legacySleeve.width),
+                legacyY+d.x*shift/legacyRect[3]*Double(legacySleeve.height),
+                0...Double(legacySleeve.width),1,&skinBytes,index,legacy:true)
+        }
     } }
     write(makeImage(upperBytes,width:segmentWidth,height:segmentHeight),"arm_\(side)")
     write(makeImage(frontBytes,width:segmentWidth,height:segmentHeight),"sleeve_\(side)")
@@ -429,11 +456,12 @@ for side in ["left", "right"] {
     for id in ["arm_\(side)","sleeve_\(side)","forearm_\(side)"] {
         let index = layers.firstIndex { $0["id"] as? String == id }!
         layers[index]["jointPiece"] = id.hasPrefix("forearm") ? "forearm":"upper"
-        layers[index]["sourceAtlas"] = id.hasPrefix("forearm") ? "articulated/arm-segments-20261021.png":"articulated/upper-sleeves-clean-20261021.png"
+        layers[index]["sourceAtlas"] = id.hasPrefix("forearm") ? "articulated/body-arms-atlas.png":"articulated/upper-sleeves-clean-20261021.png"
         layers[index]["binding"] = "anatomical-two-bone-overlap"
+        if !id.hasPrefix("forearm") { layers[index]["elbowSourceAtlas"]="articulated/body-arms-atlas.png" }
     }
     var lower=arm;lower["id"]="lower_sleeve_\(side)";lower["texture"]="lower_sleeve_\(side).png"
-    lower["jointPiece"]="forearm";lower["sourceAtlas"]="articulated/arm-segments-20261021.png";lower["binding"]="anatomical-two-bone-overlap"
+    lower["jointPiece"]="forearm";lower["sourceAtlas"]="articulated/body-arms-atlas.png";lower["binding"]="anatomical-two-bone-overlap"
     layers.append(lower)
     for index in layers.indices where (layers[index]["group"] as? String) == "hand_\(side)" { layers[index]["jointPiece"] = "forearm";layers[index]["binding"] = "anatomical-two-bone-overlap" }
     // Measure the painted wrist contour, then weld every source drawing to
@@ -528,7 +556,7 @@ let order = ["hair_back", "lower_body", "shoulder_left", "shoulder_right", "arm_
 layers.sort { order.firstIndex(of: $0["id"] as! String)! < order.firstIndex(of: $1["id"] as! String)! }
 let manifest: [String: Any] = ["format": "harumachi-layer-rig", "version": 1, "name": "澪", "canvas": [750, 1000],
                               "origin": [-75, 0],
-                              "layoutRevision": "20261021-shoulder-v13",
+                              "layoutRevision": "20261021-elbow-v14",
                               "cubismCompatible": false, "layers": layers,
                               "parameters": ["ParamAngleX", "ParamAngleY", "ParamBodyAngleZ", "ParamBreath", "ParamEyeLOpen", "ParamEyeROpen", "ParamMouthOpenY"]]
 let json = try JSONSerialization.data(withJSONObject: manifest, options: [.prettyPrinted, .sortedKeys])

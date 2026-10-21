@@ -119,7 +119,7 @@ enum MotionReview {
                     group: "automatic-speech-\(Int(start))", frame: frame)
             }
         }
-        let report: [String: Any] = ["frames": records.count,"skin_join_along":-46, "fps": 30, "size": [750, 1000],
+        let report: [String: Any] = ["frames": records.count,"skin_join_along":-42, "fps": 30, "size": [750, 1000],
             "systemMonitoringStarted": false, "networkRequests": 0, "audioEnabled": false,
             "virtualDisplayCreated": false, "records": records]
         try JSONSerialization.data(withJSONObject: report, options: [.sortedKeys])

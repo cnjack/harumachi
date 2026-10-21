@@ -1,5 +1,7 @@
 # 模型、工程与交付流程
 
+澪 v14 恢复旧整袖原画的肘部与袖口，保留 v13 肩部源修改。注册后先运行 `native/mio-companion/tools/audit_elbow_artwork.py --output <报告.json>`，再导出 PSD/CMO3 并检查真实 Core 动作及现有屏幕；原图像素一致不替代自然度。流程和边界见[肘部恢复](MIO_ELBOW_RESTORE_20261021.md)。
+
 澪桌面角色 v13 肩部流程：两份新透明源图 → `pack_assets.swift` 上臂注册与袖窿局部合成 → `export_psd.swift` 28 层 PSD → `export_mio.py` 官方 30 ArtMesh CMO3/MOC3。先用 `--review-shoulders` 对照源布局与正式 Core，再跑全动作切换和现有屏幕验收。只检查关节中心不够，必须放大看肩线、腋下、肘部外缘；用户已认可的招手抬起侧保持原位置。详见[肩部修复](MIO_SHOULDER_20261021.md)。
 
 澪 v12 的手臂粗细与动作节奏见 [MIO_ARM_ENERGY_20261021.md](MIO_ARM_ENERGY_20261021.md)。源宽度从 PNG alpha 实测，动作响应通过 30/60 FPS 两种时钟回归；每次重注册后重新导出 PSD/CMO3、图集和标准 motion3，并复拍全部动作及切换。可见窗口目标 60 FPS，独立验收要求平均至少 50 FPS。
@@ -18,7 +20,7 @@
 
 头身及五官比例从 `native/mio-companion/tools/pack_assets.swift` 的源布局修订，再生成两个 rig、PSD 和应用，不能只在运行时缩放蒙混过去。整体头部缩放需以颈部为共同锚点应用到全部七个头部图层。`FaceProportionsTests` 约束头部外轮廓占身体宽高、颈部衔接、眼宽占脸宽、嘴型宽高、眼鼻嘴留白及表情切换中心；新增检查先对旧布局运行，保留失败日志。前后原生渲染使用相同时间和视线参数，至少看静态、闭眼与张嘴，并在现有显示器复验应用。
 
-来信界面入口 `open_mio_companion.command`，本地动作预览入口 `preview_mio_motion.command`，源码和工具位于 `native/mio-companion/`。imagegen 参考澪的定稿生成透明部件，当前分段衣袖使用 `articulated/arm-segments-20261021.png`，手型及肩腰部件来自 `pose-parts/`。肩、肘、腕及腕部轮廓注册写入 rig；`tools/pack_assets.swift` 输出自有布局，`tools/export_psd.swift` 导出同布局 32 层 RGB/8 PSD。它们不是 Cubism 模型编译器，不能产出 `.moc3`。Swift Package 与系统 Metal 构建，无第三方下载；`.app` 放忽略的 `dist/`，不进游戏 `builds/`。
+来信界面入口 `open_mio_companion.command`，本地动作预览入口 `preview_mio_motion.command`，源码和工具位于 `native/mio-companion/`。imagegen 参考澪的定稿生成透明部件，当前上臂根部使用 `articulated/upper-sleeves-clean-20261021.png`，肘部和下袖恢复 `articulated/body-arms-atlas.png`，手型及肩腰部件来自 `pose-parts/`。肩、肘、腕及腕部轮廓注册写入 rig；`tools/pack_assets.swift` 输出自有布局，`tools/export_psd.swift` 导出同布局 28 层 RGB/8 PSD。它们不是 Cubism 模型编译器，不能产出 `.moc3`。Swift Package 与系统 Metal 构建，无第三方下载；`.app` 放忽略的 `dist/`，不进游戏 `builds/`。
 
 动作验收用 `--review-motion <目录>` 导出 6514 帧，再运行 `tools/review_motion.py` 和 `tools/check_joint_seams.py`；检查五动作、25 组各 4 秒的中断、自动周期、说话打断、长时钟和视线极值。`MotionPlaybackTests` 检查实际腕速、重播与相反折肘落臂顺序；`--review-motion-window <目录>` 在现有显示器持续渲染并只缓存本程序视图。动作入口不创建系统监控、Inbox 或网络客户端。API 改动另外使用 `tools/test_simulation.sh`；真实 Clef 固定消息已验证，常驻监控外发的授权边界见[桌面角色 README](../../native/mio-companion/README.md)。静音，不创建虚拟屏幕。
 
