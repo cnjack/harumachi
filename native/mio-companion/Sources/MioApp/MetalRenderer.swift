@@ -31,6 +31,7 @@ final class MioRenderer: NSObject, MTKViewDelegate {
     var isPaused = false
     var speakingUntil = Date.distantPast
     var performance: PerformanceCue?
+    var expressionOverride: ExpressionStyle?
     var gestureRevision = -1
     var gestureStart: Double = 0
     var lastFrameTime: Double?
@@ -132,7 +133,7 @@ final class MioRenderer: NSObject, MTKViewDelegate {
         }
         pose.gestureTime = pose.time - gestureStart
         pose.speaking = Date() < speakingUntil || (pose.gesture == .talk && pose.gestureTime < CharacterGesture.talk.duration)
-        pose.present(performance,elapsed:performance.map { Date().timeIntervalSince($0.started) } ?? 0)
+        pose.present(performance,elapsed:performance.map { Date().timeIntervalSince($0.started) } ?? 0,expressionOverride:expressionOverride)
         encode(command: command, pass: pass, size: view.drawableSize, pose: pose)
         command.present(drawable); command.commit()
         frameCount += 1

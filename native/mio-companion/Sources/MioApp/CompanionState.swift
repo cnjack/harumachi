@@ -6,6 +6,7 @@ import MioCore
     @Published var performance: PerformanceCue?
     private var performanceDirector = PerformanceDirector()
     @Published var mood: Mood = .neutral
+    @Published var expressionOverride: ExpressionStyle?
     @Published var gesture: CharacterGesture = .automatic
     @Published var gestureRevision = 0
     func play(_ value: CharacterGesture) { gesture = value; gestureRevision += 1 }

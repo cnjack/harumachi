@@ -57,4 +57,41 @@ final class PerformanceTests: XCTestCase {
         XCTAssertNotEqual(FaceRig.attention(3),FaceRig.attention(15))
         XCTAssertNotEqual(FaceRig.blink(4.25),FaceRig.blink(16.25))
     }
+    func testFinishedReplyReleasesRestingExpressionMouth() {
+        let cue=PerformanceCue(intent:.reply,mood:.thinking,text:"哦！",expression:.init(style:.surprised))
+        var pose=RigPose(time:0)
+        cue.apply(to:&pose,elapsed:cue.speech.duration+0.1)
+        // A completed speech timeline must not suppress the surprised O mouth.
+        XCTAssertNil(pose.speech)
+        XCTAssertEqual(pose.expression?.style,.surprised)
+        cue.apply(to:&pose,elapsed:0.2)
+        XCTAssertNotNil(pose.speech)
+        cue.apply(to:&pose,elapsed:-0.1)
+        XCTAssertNil(pose.speech)
+    }
+
+    func testManualExpressionKeepsSpeechAndHandsAndAutomaticRestoresLatestCue() {
+        let cue=PerformanceCue(intent:.reply,mood:.thinking,text:"先想一想，我们一起把这件事情慢慢弄清楚。",expression:.init(style:.curious,hand:.chin))
+        var pose=RigPose(time:1)
+        let t=(cue.speech.beats[0].start+cue.speech.beats[0].end)/2
+        for style in ExpressionStyle.allCases {
+            pose.present(cue,elapsed:t,expressionOverride:style)
+            XCTAssertEqual(pose.expression?.style,style)
+            XCTAssertEqual(pose.expression?.hand,.chin)
+            XCTAssertEqual(pose.resolvedGesture,.think)
+            XCTAssertEqual(pose.mouthAmount,cue.speech.mouth(at:t),accuracy:0.001)
+        }
+        pose.gesture = .wave
+        pose.present(cue,elapsed:t,expressionOverride:.joyful)
+        XCTAssertEqual(pose.resolvedGesture,.wave)
+        XCTAssertEqual(pose.expression?.style,.joyful)
+        pose.present(cue,elapsed:t)
+        XCTAssertEqual(pose.expression?.style,.curious)
+        pose.present(cue,elapsed:100,expressionOverride:.surprised)
+        XCTAssertEqual(pose.expression?.style,.surprised)
+        XCTAssertNil(pose.speech)
+        pose.present(cue,elapsed:100)
+        XCTAssertEqual(pose.expression?.style,.neutral)
+    }
+
 }

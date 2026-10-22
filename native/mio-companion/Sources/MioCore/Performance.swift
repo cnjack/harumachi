@@ -2,7 +2,7 @@ import Foundation
 
 extension RigPose {
     /// Select the performance channels owned by the current user mode.
-    public mutating func present(_ cue: PerformanceCue?,elapsed: Double) {
+    public mutating func present(_ cue: PerformanceCue?,elapsed: Double,expressionOverride: ExpressionStyle? = nil) {
         if let cue { cue.apply(to:&self,elapsed:elapsed) }
         else { cueGesture=nil;speech=nil;nod=0;expression=nil }
         if gesture != .automatic {
@@ -12,6 +12,12 @@ extension RigPose {
             if gesture == .talk && gestureTime < gesture.duration && !speaking {
                 speaking=true;speech=nil;speechTime=0
             }
+        }
+        if let style = expressionOverride {
+            // Manual face selection owns eyebrows/eyes/lip shape only. Keep the
+            // latest decision's hand and speech channels, including punctuation.
+            expression = EmotionalExpression(style:style,hand:expression?.hand ?? .rest)
+            mood = style.mood
         }
     }
 }
@@ -64,8 +70,11 @@ public struct PerformanceCue: Sendable, Equatable {
         pose.mood = expression?.style.mood ?? mood
         pose.expression = expression
         pose.cueGesture = .idle;pose.cueTime = max(0,elapsed)
-        pose.speech = speech;pose.speechTime = elapsed-(intent == .welcome ? 0.35:0)
-        pose.speaking = !text.isEmpty && pose.speechTime >= 0 && pose.speechTime < speech.duration
+        pose.speechTime = elapsed-(intent == .welcome ? 0.35:0)
+        let speechActive = !text.isEmpty && intent != .waiting && intent != .quiet
+            && pose.speechTime >= 0 && pose.speechTime < speech.duration
+        pose.speech = speechActive ? speech:nil
+        pose.speaking = speechActive
         pose.nod = 0
         switch intent {
         case .welcome:

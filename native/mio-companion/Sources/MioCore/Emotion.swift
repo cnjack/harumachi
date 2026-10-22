@@ -4,6 +4,18 @@ import Foundation
 /// Soullink's semantic layer and channel ownership; independently authored for Mio.
 public enum ExpressionStyle: String, Codable, CaseIterable, Sendable {
     case neutral, warm, joyful, curious, concerned, surprised, determined, sleepy
+    public var title: String {
+        switch self {
+        case .neutral: return "平静"
+        case .warm: return "温柔"
+        case .joyful: return "喜悦"
+        case .curious: return "好奇"
+        case .concerned: return "关心"
+        case .surprised: return "惊讶"
+        case .determined: return "坚定"
+        case .sleepy: return "困倦"
+        }
+    }
     public var description: String {
         switch self {
         case .neutral: return "平静倾听：眉眼放松，嘴角自然"

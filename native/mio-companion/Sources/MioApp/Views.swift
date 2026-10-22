@@ -30,6 +30,7 @@ struct CharacterView: NSViewRepresentable {
         context.coordinator.renderer?.pose.mood = state.mood
         context.coordinator.renderer?.speakingUntil = state.speakingUntil
         context.coordinator.renderer?.performance = state.performance
+        context.coordinator.renderer?.expressionOverride = state.expressionOverride
         context.coordinator.renderer?.isPaused = state.paused
         nsView.isPaused = state.paused
     }
@@ -100,6 +101,13 @@ struct Dashboard: View {
                         Button(gesture.title) { state.play(gesture) }.disabled(state.paused)
                     }
                 }.controlSize(.small)
+                HStack(alignment: .top, spacing: 8) {
+                    Text("表情").font(.system(size: 11)).foregroundStyle(muted).padding(.top, 5)
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 6), count: 5), spacing: 6) {
+                        expressionButton(nil)
+                        ForEach(ExpressionStyle.allCases, id: \.self) { expressionButton($0) }
+                    }
+                }.controlSize(.small)
                 VStack(alignment: .leading, spacing: 7) {
                     Text("CLEF").font(.system(size: 10, weight: .semibold)).tracking(2).foregroundStyle(accent)
                     HStack { TextField("服务地址", text: $state.baseURL); TextField("模型", text: $state.model).frame(width: 105); Button("连接", action: state.reconnect) }
@@ -135,6 +143,20 @@ struct Dashboard: View {
                 }
             }.padding(26).background(Color(red: 0.995, green: 0.991, blue: 0.976))
         }.foregroundStyle(ink).frame(minWidth: 860, minHeight: 670).preferredColorScheme(.light)
+    }
+    private func expressionButton(_ style: ExpressionStyle?) -> some View {
+        let selected = state.expressionOverride == style
+        let button = Button { state.expressionOverride = style } label: {
+            Text(style?.title ?? "自动").frame(maxWidth: .infinity)
+        }
+        return Group {
+            if selected { button.buttonStyle(.borderedProminent).tint(accent) }
+            else { button.buttonStyle(.bordered) }
+        }
+        .disabled(state.paused)
+        .accessibilityLabel("表情：\(style?.title ?? "自动")")
+        .accessibilityValue(selected ? "已选择" : "未选择")
+        .help(style?.description ?? "跟随 Clef 决策，回应结束后自然回到平静")
     }
     private func metric(_ label: String, _ value: String) -> some View {
         VStack(alignment: .leading, spacing: 3) {

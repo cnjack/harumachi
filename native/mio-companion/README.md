@@ -1,5 +1,7 @@
 # 澪 · 晴町桌面来信
 
+2026-10-22 v23：原桌面来信补齐八种表情与自动切换，两个角色视图同步；修复已结束语句持续占有口形。源模型仍为 v22。入口与双窗口验收见[桌面表情记录](../../docs/game-design/MIO_DESKTOP_EXPRESSIONS_20261022.md)。
+
 2026-10-22 v22：增加标准身体转面参数，胸肩随转头小幅转向，腰腿保持稳定。39 参数、58 部件，正面原画与 v21 逐像素一致；原桌面来信和网页同步。来源与验收见[身体转面记录](../../docs/game-design/MIO_BODY_TURN_20261022.md)。
 
 2026-10-22 v21：按歪颈、眼线倾斜反馈收敛脸部关键形，取消 Head 横移和待机歪头；正面原画保持一致，正式模型与原桌面来信同步。35 角度、五动作及实窗复验见[头颈修正](../../docs/game-design/MIO_HEAD_ALIGNMENT_20261022.md)。下方 v20 为被用户否定观感的历史。
@@ -18,7 +20,7 @@
 
 2026-10-21：按用户要求移除伸懒腰，并将当前角色放回原「桌面来信」。统一入口及本轮验收见[接入记录](../../docs/game-design/MIO_MAIL_INTEGRATION_20261021.md)。
 
-macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用正式 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 58 层 PSD 在 `art/live2d/mio/cubism/`。当前 v22 保留认可的衣袖拼接、原眼睛及中性脸型，模型含 39 参数、五组标准 motion3、八种标准表情和 happy/thinking 兼容别名。眉眼、口腔、手指可独立编辑，左右转面、眼口遮罩和物理仍由源模型提供。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肘部恢复见[修复记录](../../docs/game-design/MIO_ELBOW_RESTORE_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。角色已接入原来的「桌面来信」，统一使用 `open_mio_companion.command`；旧 `preview_mio_motion.command` 也转到同一入口。构建：
+macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用正式 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 58 层 PSD 在 `art/live2d/mio/cubism/`。当前源模型 v22 保留认可的衣袖拼接、原眼睛及中性脸型，模型含 39 参数、五组标准 motion3、八种标准表情和 happy/thinking 兼容别名。眉眼、口腔、手指可独立编辑，左右转面、眼口遮罩和物理仍由源模型提供。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肘部恢复见[修复记录](../../docs/game-design/MIO_ELBOW_RESTORE_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。角色已接入原来的「桌面来信」，统一使用 `open_mio_companion.command`；旧 `preview_mio_motion.command` 也转到同一入口。构建：
 
 ```bash
 ./native/mio-companion/tools/build_app.sh
