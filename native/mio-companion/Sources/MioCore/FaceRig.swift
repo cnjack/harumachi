@@ -3,6 +3,13 @@ import Foundation
 /// Keyform authoring shared with the editable Cubism source. These functions
 /// run at export time; the renderer receives already-deformed Core meshes.
 public enum FaceRig {
+    /// Final source-model proportion. Keep all authored facial relationships
+    /// and scale the complete head around its chin/neck attachment.
+    public static let headScale: Float = 0.8
+    public static func fittedHead(_ point: SIMD2<Float>,x: Float = 0,y: Float = 0) -> SIMD2<Float> {
+        let anchor = turn(SIMD2<Float>(300,268),x:x,y:y)
+        return anchor + (point-anchor)*headScale
+    }
     /// Tiny local shifts within the original eye drawing. Neutral values are
     /// the exact source artwork, including its iris, lashes and eyebrows.
     public static func sourceEye(_ p: SIMD2<Float>,side: String,closed: Bool,open: Float,gaze: SIMD2<Float>,brow: Float) -> SIMD2<Float> {

@@ -26,7 +26,9 @@ final class HeadVolumeTests: XCTestCase {
             if let nose=turned["nose"],let ear=turned[yaw>0 ? "ear_left":"ear_right"] {
                 let noseTravel=try point(300,231,nose).x-point(300,231,front["nose"]!).x
                 let earTravel=try point(yaw>0 ? 353:247,220,ear).x-point(yaw>0 ? 353:247,220,front[ear.id]!).x
-                XCTAssertGreaterThan((noseTravel-earTravel)*(yaw>0 ? 1:-1),8,"Nose and ear cannot slide together on one plane")
+                // Compare depth to the measured skull width: a uniform head
+                // resize must preserve the same relative parallax threshold.
+                XCTAssertGreaterThan((noseTravel-earTravel)*(yaw>0 ? 1:-1)/original,8.0/164.0,"Nose and ear cannot slide together on one plane")
             }
         } }
     }

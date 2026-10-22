@@ -220,6 +220,9 @@ for (order,layer) in layers.enumerated() {
                         p=HairParts.point(p,sway:values[layer.id == "hair_front_left" ? "ParamHairSideL":"ParamHairSideR"] ?? 0)
                     }
                 }
+                // Uniformly resize every head keyform, including hair and all
+                // facial components. UVs retain the original source artwork.
+                p = FaceRig.fittedHead(p,x:values["ParamAngleX"] ?? 0,y:values["ParamAngleY"] ?? 0)
                 // Head translation is authored on its parent rotation deformer.
             } else if layer.group == "lower_body" {
                 var lower = motion;lower.torso = (values["ParamBodyAngleZ"] ?? 0)*degree;lower.torsoLift = values["ParamTorsoLift"] ?? 0

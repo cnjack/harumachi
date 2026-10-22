@@ -12,7 +12,10 @@ enum BodyTurnReview {
             for direction: Float in [-1,0,1] {
                 let pose=RigPose(time:2,lookX:direction,speaking:gesture == .talk,gesture:gesture,gestureTime:2)
                 let name="\(gesture.rawValue)-\(Int(direction)).png"
-                try renderer.snapshot(to:directory.appendingPathComponent(name),pose:pose)
+                // Fixed-pose inspection must sample the clip directly. A new
+                // gesture's first playback frame is still the idle transition.
+                let motion = renderer.cubism!.motions.motion(for:pose)
+                try renderer.snapshot(to:directory.appendingPathComponent(name),pose:pose,motion:motion)
                 samples.append(["file":name,"gesture":gesture.rawValue,"headDirection":direction])
             }
         }
