@@ -62,9 +62,11 @@ import MioCore
         }
     }
     func receive(_ event: SystemEvent) {
+        // Capture shutdown must run for every lock/sleep, even if notification
+        // deduplication suppresses the corresponding timeline entry.
+        if ["sleep","session.inactive"].contains(event.kind) { voice.stopListening() }
         guard !paused, gate.accepts(event) else { return }
         dialogueMemory.observe(event)
-        if ["sleep","session.inactive"].contains(event.kind) { voice.stopListening() }
         if event.kind == "message" {
             latestMessageID = event.id
             performance = PerformanceCue(intent:.waiting,mood:.thinking,at:event.date)

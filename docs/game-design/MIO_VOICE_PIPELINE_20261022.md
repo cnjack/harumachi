@@ -107,6 +107,7 @@ python3 native/mio-companion/tools/voice_services.py status
 - `frontend-benchmark.json`：三个正确发音正例均触发；两个普通中文负例未触发。另保留 TTS 错读原字的失败样本，不能将这个小样本当作误唤醒率评测。
 - `native-final/`：生产唤醒/VAD/ASR 路径的实际声学回放、模拟 LM 对话、多轮历史、取消、进程读取、网页读取和窗口截图；测试静音，没有麦克风采集。
 - `tests.log`：112 项 Swift XCTest，108 通过、4 项其他可选网络测试跳过、0 失败；真实本机语音与模拟 LM 测试显式启用。
+- `lock-negative.log`：修复前重复锁屏被事件去重挡住，负例退出码 1；修复后停采集先于去重，完整原生回放退出码 0。
 - `project-check.log`：仓库 8,082 项检查通过。最终原应用前台复核时 Mac 锁屏，CUA 无法查看前台；自有窗口渲染与声学回放证据不能替代真人麦克风验收。
 
 测试接口 `tools/voice_lm_fixture.py` 仅监听 127.0.0.1:8320，支持碎片 UTF-8、分段工具参数、截断和 HTTP 503；仅供回归，不作为实际模型。原生 `--review-voice <目录>` 必须设置 `MIO_VOICE_TEST_SILENT=1`。可用 `MIO_VOICE_REPLAY_WAV` 指向合成语音 WAV，经真实生产入口回放。`MIO_VOICE_WEB_TEST=1` 增加公开网页只读验证。

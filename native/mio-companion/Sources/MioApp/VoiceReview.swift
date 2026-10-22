@@ -10,6 +10,12 @@ extension AppDelegate {
             state.baseURL="http://127.0.0.1:9"
             do {
                 guard env["MIO_VOICE_TEST_SILENT"]=="1",voice.configured else{throw VoiceError.configuration}
+                let lockEvent=SystemEvent(kind:"session.inactive",summary:"synthetic voice lock check")
+                state.receive(lockEvent)
+                voice.listening=true // State-only probe; never opens the microphone.
+                state.receive(lockEvent)
+                guard !voice.listening else{throw VoiceError.service("Repeated lock was deduplicated before stopping voice")}
+                state.receive(SystemEvent(kind:"session.active",summary:"synthetic voice resume"))
                 @MainActor func waitForReply() async throws {
                     let deadline=Date().addingTimeInterval(35)
                     while voice.busy,Date()<deadline {try await Task.sleep(nanoseconds:50_000_000)}
