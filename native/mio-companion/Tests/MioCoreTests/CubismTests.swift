@@ -73,6 +73,15 @@ final class CubismTests: XCTestCase {
                         let chin=try topology.point(SIMD2(300,268),mesh:XCTUnwrap(byID["face"]))
                         XCTAssertLessThan(distance(finger,chin),1.75,"Actual MOC fingertip/chin contact")
                     }
+                    if !left,gesture == .encourage,(30...114).contains(frame) {
+                        let axis = w-e,unit = axis/distance(w,e),normal = SIMD2(unit.y,-unit.x)
+                        let center = try topology.point(w+unit*22,mesh:selected)
+                        let thumb = try topology.point(w+unit*22-normal*13,mesh:selected)
+                        let face = try topology.point(SIMD2(300,230),mesh:XCTUnwrap(byID["face"]))
+                        let towardHead = face-center,radial = thumb-center
+                        let facing = (towardHead.x*radial.x+towardHead.y*radial.y)/(distance(face,center)*distance(thumb,center))
+                        XCTAssertLessThan(facing,-0.2,"Dorsal raised fist must keep the thumb on its outer radial edge")
+                    }
                 }
             }
         }

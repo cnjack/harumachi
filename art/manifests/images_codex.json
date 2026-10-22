@@ -4284,6 +4284,16 @@
       "purpose": "Independent sclera, irises, brows and closed lids for source Cubism keyforms",
       "generated_output": "exec-9354a052-07a9-450b-987a-782d9505ad3c.png",
       "sha256": "cb1de75b8a13167befa847512591c0b8a54c1ac8ed4a2a3d57cc1db44256edaf"
+    },
+    {
+      "file": "art/live2d/mio/pose-parts/fists-back-20261022.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "prompt": "art/manifests/prompts/live2d/mio-fists-back-20261022.txt",
+      "reference": "art/live2d/mio/pose-parts/fists.png",
+      "purpose": "Dorsal paired fists for encouragement: palms toward character, four curled fingers behind knuckles; preserve anatomical left/right and straight wrist",
+      "generated_output": "exec-21d2912c-33b0-4ff0-b5cb-466ff5c69439.png",
+      "sha256": "573f61dcb7026e70b27a2ee7bd91ac24a8934e00ee5cf5c8a84b861bb8ad4c14"
     }
   ]
 }

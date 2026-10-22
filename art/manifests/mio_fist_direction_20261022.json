@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-22",
+  "revision": "mio-fist-direction-v18.2",
+  "reason": "Encouragement needs palms toward the character instead of reusing the outward-facing palm fist drawn for the removed stretch.",
+  "tool": "codex image_gen built-in",
+  "prompt": "art/manifests/prompts/live2d/mio-fists-back-20261022.txt",
+  "reference": "art/live2d/mio/pose-parts/fists.png",
+  "source": "art/live2d/mio/pose-parts/fists-back-20261022.png",
+  "registration": {
+    "sheetSize": [
+      1536,
+      1024
+    ],
+    "view": "dorsal-palm-inward",
+    "screenRight": {
+      "anatomicalHand": "left",
+      "sourceColumn": "left",
+      "sourceWrist": [
+        426,
+        565
+      ]
+    },
+    "screenLeft": {
+      "anatomicalHand": "right",
+      "sourceColumn": "right",
+      "sourceWrist": [
+        1110,
+        565
+      ]
+    },
+    "scale": [
+      0.17,
+      0.16
+    ],
+    "sharedWristContour": "unchanged; measured from existing forearm"
+  },
+  "model": {
+    "parameters": 38,
+    "artMeshes": 55,
+    "mocVersion": 3,
+    "motions": [
+      "Idle",
+      "wave",
+      "think",
+      "talk",
+      "encourage"
+    ],
+    "geometryAndMotionsUnchanged": true
+  },
+  "files": {
+    "art/live2d/mio/pose-parts/fists.png": "fe4b09f3c913da483c8899cf4fbb22955d00970f00cc2f17444d8d336bd92249",
+    "art/live2d/mio/pose-parts/fists-back-20261022.png": "573f61dcb7026e70b27a2ee7bd91ac24a8934e00ee5cf5c8a84b861bb8ad4c14",
+    "art/live2d/mio/Mio.layers.psd": "4a4546d87fa9a730e368107ff106804814ca83bbf2299190e10158e26072c7d6",
+    "art/live2d/mio/cubism/Mio.cmo3": "bcfc32d9128d89499f8f89ec57617b1e21501934c97ec94cefa8aa9181e920ea",
+    "art/live2d/mio/cubism/Mio.psd": "831dd5ffcf07edb8b383958036750786549e4b6ea88c98f86edb30b06ef63f82",
+    "native/mio-companion/Sources/MioApp/Resources/Mio/hand_left_fist.png": "b56fceafc059654ada57de090457127b12a85aa17793868b43af1f712ba28a89",
+    "native/mio-companion/Sources/MioApp/Resources/Mio/hand_right_fist.png": "31500b5c447cf6ca0fdf478cba70c7ce8d11ff20188236df0d98cd6b244b801c",
+    "native/mio-companion/Sources/MioApp/Resources/MioCubism/Mio.moc3": "d026735e96cffdba5c509fd9a7bb8b19405728383ba9b32ad26bb8ca07653c65",
+    "native/mio-companion/Sources/MioApp/Resources/MioCubism/textures/texture_00.png": "c9d0272ec9c85617e52fbca07445bf290e315d6e1ffdeb051d0e12cb5ef5631c",
+    "native/mio-companion/Sources/MioApp/Resources/MioCubism/textures/texture_01.png": "140daeeb671e66e6ef53800b17ecd95c348ccbe0348a4b664226f1733bd1b14c"
+  },
+  "record": "docs/game-design/MIO_FIST_DIRECTION_20261022.md",
+  "verification": "evidence/mio_fist_direction_20261022/verification.json"
+}

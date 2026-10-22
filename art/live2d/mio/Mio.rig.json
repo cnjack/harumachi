@@ -559,7 +559,7 @@
         270,
         370
       ],
-      "sourceAtlas" : "pose-parts\/fists.png",
+      "sourceAtlas" : "pose-parts\/fists-back-20261022.png",
       "sourceColumn" : "right",
       "sourceCrop" : [
         850,
@@ -577,6 +577,7 @@
       ],
       "texture" : "hand_left_fist.png",
       "variant" : "fist",
+      "view" : "dorsal-palm-inward",
       "wristProfile" : [
         0.375,
         11.375
@@ -842,7 +843,7 @@
         270,
         370
       ],
-      "sourceAtlas" : "pose-parts\/fists.png",
+      "sourceAtlas" : "pose-parts\/fists-back-20261022.png",
       "sourceColumn" : "left",
       "sourceCrop" : [
         150,
@@ -860,6 +861,7 @@
       ],
       "texture" : "hand_right_fist.png",
       "variant" : "fist",
+      "view" : "dorsal-palm-inward",
       "wristProfile" : [
         0.125,
         11.625

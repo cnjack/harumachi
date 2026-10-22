@@ -261,8 +261,9 @@ for side in ["left", "right"] {
     let relaxedContext = context()
     relaxedContext.draw(relaxed,in:CGRect(x:20,y:30,width:r[2],height:r[3]))
     write(relaxedContext.makeImage()!,"hand_\(side)_relaxed")
-    // Register each sheet by its actual thumb/knuckle view. The inward sheet
-    // has the opposite anatomical column order from the palm/back/fist sheets.
+    // Register each sheet by its actual anatomical hand. The dorsal fists
+    // rotate the view of the same hands; their column order does not change.
+    // The inward sheet has the opposite anatomical column order.
     func sourceLeft(for variant: String) -> Bool {
         variant == "inward" ? side == "left" : side == "right"
     }
@@ -270,7 +271,7 @@ for side in ["left", "right"] {
         ("palm","palms-out",CGPoint(x: sourceLeft(for:"palm") ? 425 : 1110,y:500)),
         ("back","hands-back",CGPoint(x: sourceLeft(for:"back") ? 443 : 1092,y:500)),
         ("inward","hands-inward",CGPoint(x: sourceLeft(for:"inward") ? 437 : 1092,y:465)),
-        ("fist","fists",CGPoint(x: sourceLeft(for:"fist") ? 426 : 1110,y:565))
+        ("fist","fists-back-20261022",CGPoint(x: sourceLeft(for:"fist") ? 426 : 1110,y:565))
     ]
     for (variant, file, pivot) in variants {
         let atlas = load("art/live2d/mio/pose-parts/\(file).png")
@@ -353,10 +354,11 @@ for side in ["left", "right"] {
         hand["rect"] = handRect
         hand["variant"] = variant
         hand["defaultVisible"] = variant == "relaxed"
-        let atlasName = variant == "fist" ? "fists" : (variant == "palm" ? "palms-out" : "hands-\(variant)")
+        let atlasName = variant == "fist" ? "fists-back-20261022" : (variant == "palm" ? "palms-out" : "hands-\(variant)")
         hand["sourceAtlas"] = variant == "relaxed" ? "articulated/arms-continuous.png" : "pose-parts/\(atlasName).png"
         hand["wristRegistration"] = [wrist.x,wrist.y]
         hand["anatomicalHand"] = side == "left" ? "right" : "left"
+        if variant == "fist" { hand["view"] = "dorsal-palm-inward" }
         if variant != "relaxed" {
             hand["sourceColumn"] = sourceLeft(for:variant) ? "left" : "right"
             hand["sourceCrop"] = [sourceLeft(for:variant) ? 150 : 850,40,600,930]

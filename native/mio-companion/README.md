@@ -1,5 +1,7 @@
 # 澪 · 晴町桌面来信
 
+2026-10-22 v18.2：加油握拳改为手背朝外、掌心朝角色，源 PSD/CMO3 与图集同步。89 项测试中 85 通过、4 项可选网络跳过；解锁后的最终 55 部件版实窗平均 59.53 FPS，原桌面来信和网页均已复核。见[手型方向修复](../../docs/game-design/MIO_FIST_DIRECTION_20261022.md)。
+
 2026-10-22 v18：原素材拆成 55 个可编辑部件，增加独立眉角、笑眼、圆口、十根手指和两侧发梢；普通闭眼与笑眼分别制作。现有 Clef 直接选择八种表情、三档强度与五种手势含义，不使用 embedding；肩旁握拳「加油」接入原窗口。来源、原画对照和验收见[语义表情记录](../../docs/game-design/MIO_EMOTION_20261022.md)。
 
 2026-10-21 v16：按用户反馈恢复原眼睛原画、眼位和脸型，撤回 v15 新眼形及脸颊横移形变。保留动作节奏、头发跟随、网页 Idle 和手型防重影。见[脸部恢复记录](../../docs/game-design/MIO_FACE_RESTORE_20261021.md)。
@@ -8,7 +10,7 @@
 
 2026-10-21：按用户要求移除伸懒腰，并将当前角色放回原「桌面来信」。统一入口及本轮验收见[接入记录](../../docs/game-design/MIO_MAIL_INTEGRATION_20261021.md)。
 
-macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用正式 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 55 层 PSD 在 `art/live2d/mio/cubism/`。当前 v18 保留认可的衣袖拼接、原眼睛及中性脸型，模型含 38 参数、五组标准 motion3、八种标准表情和 happy/thinking 兼容别名。眉眼、口腔、手指可独立编辑，小角度转头、眼口遮罩和物理仍由源模型提供。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肘部恢复见[修复记录](../../docs/game-design/MIO_ELBOW_RESTORE_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。角色已接入原来的「桌面来信」，统一使用 `open_mio_companion.command`；旧 `preview_mio_motion.command` 也转到同一入口。构建：
+macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用正式 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 55 层 PSD 在 `art/live2d/mio/cubism/`。当前 v18.2 保留认可的衣袖拼接、原眼睛及中性脸型，模型含 38 参数、五组标准 motion3、八种标准表情和 happy/thinking 兼容别名。眉眼、口腔、手指可独立编辑，小角度转头、眼口遮罩和物理仍由源模型提供。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肘部恢复见[修复记录](../../docs/game-design/MIO_ELBOW_RESTORE_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。角色已接入原来的「桌面来信」，统一使用 `open_mio_companion.command`；旧 `preview_mio_motion.command` 也转到同一入口。构建：
 
 ```bash
 ./native/mio-companion/tools/build_app.sh

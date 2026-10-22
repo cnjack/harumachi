@@ -114,7 +114,7 @@ final class PosePartsTests: XCTestCase {
         let layers = try XCTUnwrap(rig["layers"] as? [[String:Any]])
         for side in ["left","right"] {
             let layer = try XCTUnwrap(layers.first { $0["id"] as? String == "hand_\(side)_fist" },
-                "Stretch needs a separately drawn closed hand")
+                "Encouragement needs a separately drawn closed hand")
             let rect = layer["rect"] as! [Double], joints = layer["joints"] as! [[Double]]
             let source = try XCTUnwrap(CGImageSourceCreateWithURL(resources.appendingPathComponent(layer["texture"] as! String) as CFURL,nil))
             let image = try XCTUnwrap(CGImageSourceCreateImageAtIndex(source,0,nil))
@@ -140,6 +140,63 @@ final class PosePartsTests: XCTestCase {
             print("Fist \(side): reach \(reach), half-width \(across)")
             XCTAssertTrue((27...43).contains(reach),"A fist must not retain the open hand's long fingers")
             XCTAssertTrue((13...23).contains(across),"Keep the closed fist proportional to the wrist")
+        }
+    }
+    func testEncouragementShowsBackOfFistInsteadOfPalmCreases() throws {
+        let resources = URL(fileURLWithPath:#filePath).deletingLastPathComponent()
+            .deletingLastPathComponent().deletingLastPathComponent()
+            .appendingPathComponent("Sources/MioApp/Resources/Mio")
+        let root = ProcessInfo.processInfo.environment["MIO_FIST_FIXTURE"].map { URL(fileURLWithPath:$0) } ?? resources
+        let rig = try XCTUnwrap(JSONSerialization.jsonObject(with:Data(contentsOf:root.appendingPathComponent("Mio.rig.json"))) as? [String:Any])
+        let layers = try XCTUnwrap(rig["layers"] as? [[String:Any]])
+        for side in ["left","right"] {
+            let layer = try XCTUnwrap(layers.first { $0["id"] as? String == "hand_\(side)_fist" })
+            let source = try XCTUnwrap(CGImageSourceCreateWithURL(root.appendingPathComponent(layer["texture"] as! String) as CFURL,nil))
+            let image = try XCTUnwrap(CGImageSourceCreateImageAtIndex(source,0,nil))
+            var pixels = [UInt8](repeating:0,count:image.width*image.height*4)
+            pixels.withUnsafeMutableBytes { p in
+                let context = CGContext(data:p.baseAddress,width:image.width,height:image.height,bitsPerComponent:8,
+                    bytesPerRow:image.width*4,space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue)!
+                context.draw(image,in:CGRect(x:0,y:0,width:image.width,height:image.height))
+            }
+            let rect = layer["rect"] as! [Double], joints = layer["joints"] as! [[Double]]
+            let wrist = SIMD2(joints[2][0],joints[2][1]),axis = wrist-SIMD2(joints[1][0],joints[1][1])
+            let d = axis/sqrt(axis.x*axis.x+axis.y*axis.y),normal = SIMD2(d.y,-d.x)
+            // The old palm view has a crossing thumb outline and palm crease
+            // fan in this actual painted region. The dorsal view has a clear
+            // metacarpal surface, with finger outlines beyond its distal edge.
+            var opaque = 0, crease = 0
+            for along in 56..<112 { for across in -32...32 {
+                let p = wrist+d*(Double(along)/4)+normal*(Double(across)/4)
+                let x = Int((p.x-rect[0])/rect[2]*Double(image.width))
+                let y = Int((p.y-rect[1])/rect[3]*Double(image.height))
+                let i = (y*image.width+x)*4
+                if pixels[i+3]>200 {
+                    opaque += 1
+                    if pixels[i]<180 && pixels[i+1]<130 { crease += 1 }
+                }
+            } }
+            XCTAssertGreaterThan(opaque,3400,"The back of the hand must remain solid skin")
+            let fraction = Double(crease)/Double(max(1,opaque))
+            print("Encouragement \(side) dorsal crease fraction: \(fraction)")
+            XCTAssertLessThan(fraction,0.01,"Palm-facing fist reused for an inward encouragement gesture")
+            // The thumb's short inner outline sits on one radial edge, not
+            // across the middle. Check painted pixels on BOTH hands so a
+            // later atlas-column swap cannot silently mirror this gesture.
+            func thumbLine(_ sign: Double) -> Double {
+                var count = 0
+                for along in 72..<104 { for across in 40..<60 {
+                    let p = wrist+d*(Double(along)/4)+normal*(sign*Double(across)/4)
+                    let x = Int((p.x-rect[0])/rect[2]*Double(image.width))
+                    let y = Int((p.y-rect[1])/rect[3]*Double(image.height))
+                    let i = (y*image.width+x)*4
+                    if pixels[i+3]>200 && pixels[i]<180 && pixels[i+1]<130 { count += 1 }
+                } }
+                return Double(count)/640
+            }
+            let radialSide: Double = side == "left" ? 1:-1
+            XCTAssertGreaterThan(thumbLine(radialSide),0.04,"Missing thumb outline on the anatomical side")
+            XCTAssertLessThan(thumbLine(-radialSide),0.01,"Dorsal fist attached to the opposite arm")
         }
     }
     func testPalmBackAndInwardThumbsHaveCorrectHandednessInActualTextures() throws {
