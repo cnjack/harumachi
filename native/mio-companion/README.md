@@ -1,5 +1,7 @@
 # 澪 · 晴町桌面来信
 
+2026-10-22 v27：修正衣身与手臂宽度关系，开衫每侧内收调整为 2.5 像素，袖筒与上下肘部衣料统一收窄最多 8%，保留裸露手臂。正式模型与原窗口同步；102 项检查、6,514 动作帧及局部对照见[比例修正](../../docs/game-design/MIO_UPPER_BALANCE_20261022.md)。v26 的比例观感已被用户指出问题。
+
 2026-10-22 v26：仅收窄开衫外侧与袖子中段衣料，保留裸露手臂粗细、肩肘腕连接和原动作。正式源模型及原窗口同步；102 项回归和 6,514 动作帧检查见[开衫调整](../../docs/game-design/MIO_CARDIGAN_WIDTH_20261022.md)。
 
 2026-10-22 v25：裙摆最宽处在正式源模型中收窄 6%，腰线与腿部坐标保留，继续使用 v24 头部比例。18 张动作/转面对照及原窗口复验见[裙摆调整](../../docs/game-design/MIO_SKIRT_WIDTH_20261022.md)。
@@ -26,7 +28,7 @@
 
 2026-10-21：按用户要求移除伸懒腰，并将当前角色放回原「桌面来信」。统一入口及本轮验收见[接入记录](../../docs/game-design/MIO_MAIL_INTEGRATION_20261021.md)。
 
-macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用正式 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 58 层 PSD 在 `art/live2d/mio/cubism/`。当前源模型 v24 保留认可的衣袖拼接、原眼睛及中性脸型，模型含 39 参数、五组标准 motion3、八种标准表情和 happy/thinking 兼容别名。眉眼、口腔、手指可独立编辑，左右转面、眼口遮罩和物理仍由源模型提供。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肘部恢复见[修复记录](../../docs/game-design/MIO_ELBOW_RESTORE_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。角色已接入原来的「桌面来信」，统一使用 `open_mio_companion.command`；旧 `preview_mio_motion.command` 也转到同一入口。构建：
+macOS 14+ 的 Swift / Metal 桌面角色。当前默认使用正式 Cubism `.model3.json` / `.moc3`，通过官方 Core 计算形变；可编辑工程和 58 层 PSD 在 `art/live2d/mio/cubism/`。当前源模型 v27 保留认可的衣袖拼接、原眼睛及中性脸型，模型含 39 参数、五组标准 motion3、八种标准表情和 happy/thinking 兼容别名。眉眼、口腔、手指可独立编辑，左右转面、眼口遮罩和物理仍由源模型提供。运行需要本机已安装的 Cubism Core（默认读取 Cubism 5.3 安装，也可设置 `MIO_CUBISM_CORE_PATH`），不将厂商库打包进应用。本轮肘部恢复见[修复记录](../../docs/game-design/MIO_ELBOW_RESTORE_20261021.md)，分段绑定来源见[前轮记录](../../docs/game-design/MIO_ARM_NATURALNESS_20261021.md)。角色已接入原来的「桌面来信」，统一使用 `open_mio_companion.command`；旧 `preview_mio_motion.command` 也转到同一入口。构建：
 
 ```bash
 ./native/mio-companion/tools/build_app.sh

@@ -1,6 +1,6 @@
 # 澪 Cubism 模型
 
-当前 v26：`Mio.cmo3` 为可编辑 Cubism 工程，`Mio.psd` 为 RGB/8、58 层导入素材。正式入口为 `native/mio-companion/Sources/MioApp/Resources/MioCubism/Mio.model3.json`。开衫侧边各收进最多 4 像素、袖子中段横向收窄最多 6%，保留裸露手臂和关节连接，见[开衫调整](../../../../docs/game-design/MIO_CARDIGAN_WIDTH_20261022.md)。v25 裙摆与 v24 头部比例继续保留，见[裙摆调整](../../../../docs/game-design/MIO_SKIRT_WIDTH_20261022.md)。
+当前 v27：`Mio.cmo3` 为可编辑 Cubism 工程，`Mio.psd` 为 RGB/8、58 层导入素材。正式入口为 `native/mio-companion/Sources/MioApp/Resources/MioCubism/Mio.model3.json`。开衫侧边各收进最多 2.5 像素，袖筒和上下肘部衣料统一横向收窄最多 8%，保留裸露手臂、肩根、袖口和关节中心，见[比例修正](../../../../docs/game-design/MIO_UPPER_BALANCE_20261022.md)。v25 裙摆与 v24 头部比例继续保留，见[裙摆调整](../../../../docs/game-design/MIO_SKIRT_WIDTH_20261022.md)。
 
 模型通过本机 Cubism Editor 5.3.04 官方导出，目标 Cubism 4.0（MOC version 3），39 个有效参数、58 个 ArtMesh。在 0.736 原图布局基础上，将全部头部关键形等比缩小 20%，围绕各姿态原下巴位置缩放；PSD 保留原素材分辨率，CMO3/MOC3 包含最终缩放。保留用户认可的 v14 衣袖连接，保留原眼睛、中性脸轮廓，使用 3×3 小角度投影关键形，所有五官及下巴协同变化；原眼睛拆为独立眉毛、眼白、虹膜、上下眼睑和闭眼线，虹膜按眼白开口剪裁。嘴部拆成七层；掌心左右各拆出五根完整手指并固定指根。提供 Idle、wave、think、talk、encourage 五组动作；伸懒腰已移除。
 

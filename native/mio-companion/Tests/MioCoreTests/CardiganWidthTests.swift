@@ -13,7 +13,7 @@ final class CardiganWidthTests: XCTestCase {
         func point(_ p: SIMD2<Float>,_ id: String) throws -> SIMD2<Float> { try geometry.point(p,mesh:XCTUnwrap(meshes[id])) }
         func distance(_ a: SIMD2<Float>,_ b: SIMD2<Float>) -> Float { let d=a-b;return sqrt(d.x*d.x+d.y*d.y) }
         let leftEdge = try point(SIMD2(195,425),"torso"),rightEdge = try point(SIMD2(405,425),"torso")
-        XCTAssertEqual(rightEdge.x-leftEdge.x,202,accuracy:0.1,"The old cardigan measures 210 at this source row")
+        XCTAssertEqual(rightEdge.x-leftEdge.x,205,accuracy:0.1,"Keep more of the original 210-wide torso; v26 over-tapered it to 202")
         for p: SIMD2<Float> in [SIMD2(300,285),SIMD2(300,370),SIMD2(270,400),SIMD2(330,400)] {
             XCTAssertLessThan(try distance(point(p,"torso"),p+SIMD2(75,0)),0.03,"Keep neck and central blouse intact")
         }
@@ -24,8 +24,15 @@ final class CardiganWidthTests: XCTestCase {
                 let axis=end-start,d=axis/sqrt(axis.x*axis.x+axis.y*axis.y),n=SIMD2(-d.y,d.x)
                 let center=start+d*along
                 let width=try distance(point(center+n*20,id),point(center-n*20,id))
-                XCTAssertGreaterThan(width,37.3,"Keep at least 93% of the sleeve volume")
+                XCTAssertGreaterThan(width,36.5,"Keep at least 91% of loose fabric width; skin remains unchanged")
                 XCTAssertLessThan(width,38.6,"The old sleeve span is 40; only fabric narrows")
+            }
+            // v26 narrowed only the sleeve shafts while leaving both elbow
+            // caps full-sized. Match their fabric widths to remove that bulge.
+            for (id,axis) in [("arm_"+side,e-s),("lower_sleeve_"+side,w-e)] {
+                let d=axis/sqrt(axis.x*axis.x+axis.y*axis.y),n=SIMD2(-d.y,d.x)
+                let width=try distance(point(e+n*20,id),point(e-n*20,id))
+                XCTAssertEqual(width,36.8,accuracy:0.12,"The upper and lower elbow artwork must narrow together")
             }
             for (id,p) in [("arm_"+side,s),("arm_"+side,e),("lower_sleeve_"+side,e),("forearm_"+side,w)] {
                 XCTAssertLessThan(try distance(point(p,id),p+SIMD2(75,0)),0.04,"Do not move shoulder/elbow/wrist anchors")
