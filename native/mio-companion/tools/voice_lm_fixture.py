@@ -17,6 +17,8 @@ def main():
             with lock,a.log.open('a') as f:f.write(json.dumps(body,ensure_ascii=False)+'\n')
             if body['model']=='fixture-http-error':
                 self.send_response(503);self.send_header('Content-Length','0');self.end_headers();return
+            if body['model'].split('/')[-1].startswith('deepseek') and body.get('thinking')!={'type':'disabled'}:
+                self.send_response(400);self.send_header('Content-Length','0');self.end_headers();return
             self.send_response(200);self.send_header('Content-Type','text/event-stream');self.send_header('Connection','close');self.end_headers()
             if body['model']=='fixture-truncated':
                 self.wfile.write(b'data: {"choices":[{"delta":{"content":"partial"}}]}\n\n');self.wfile.flush();self.close_connection=True;return

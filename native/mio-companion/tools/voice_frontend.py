@@ -15,7 +15,7 @@ class Frontend:
         # Mandarin xiao3 ling2: recognize pronunciation, not the rare character.
         keywords.write_text('x iǎo l íng @小澪\n',encoding='utf-8')
         suffix='epoch-13-avg-2-chunk-8-left-64'
-        self.kws=sherpa_onnx.KeywordSpotter(tokens=str(model/'tokens.txt'),encoder=str(model/f'encoder-{suffix}.int8.onnx'),decoder=str(model/f'decoder-{suffix}.onnx'),joiner=str(model/f'joiner-{suffix}.int8.onnx'),keywords_file=str(keywords),num_threads=1,keywords_score=1.5,keywords_threshold=.3)
+        self.kws=sherpa_onnx.KeywordSpotter(tokens=str(model/'tokens.txt'),encoder=str(model/f'encoder-{suffix}.int8.onnx'),decoder=str(model/f'decoder-{suffix}.onnx'),joiner=str(model/f'joiner-{suffix}.int8.onnx'),keywords_file=str(keywords),num_threads=1,keywords_score=1.5,keywords_threshold=.2)
         self.config=sherpa_onnx.VadModelConfig();self.config.sample_rate=16000
         self.config.silero_vad.model=str(root/'silero_vad.onnx')
         self.config.silero_vad.min_silence_duration=.032

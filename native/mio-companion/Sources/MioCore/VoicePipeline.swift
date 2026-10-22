@@ -78,14 +78,21 @@ public struct WakeWindow: Sendable {
     public var words=["小澪","你好澪","澪澪","小零","小玲"]
     public var expires=Date.distantPast
     public init() {}
-    public mutating func accept(_ raw: String,now: Date,always: Bool = false) -> String? {
+    public mutating func accept(_ raw: String,now: Date,always: Bool = false,requirePrefix:Bool=false) -> String? {
         let text=raw.trimmingCharacters(in:.whitespacesAndNewlines)
         if ["停止聆听","结束对话","退下吧"].contains(text.trimmingCharacters(in:.punctuationCharacters)) { expires = .distantPast;return nil }
-        for word in words.sorted(by:{$0.count>$1.count}) where text.hasPrefix(word) {
-            expires=now.addingTimeInterval(25)
-            return String(text.dropFirst(word.count)).trimmingCharacters(in:.punctuationCharacters.union(.whitespacesAndNewlines))
+        for greeting in ["","你好","嗨","嘿"] where text.hasPrefix(greeting) {
+            let addressed=String(text.dropFirst(greeting.count)).trimmingCharacters(in:.punctuationCharacters.union(.whitespacesAndNewlines))
+            // Accept common ASR n/ng spelling errors only after the independent
+            // acoustic xiao3-ling2 detector has confirmed the wake pronunciation.
+            let aliases=words+(requirePrefix ? ["小林","小琳","小铃"]:[])
+            for word in aliases.sorted(by:{$0.count>$1.count}) where addressed.hasPrefix(word) {
+                expires=now.addingTimeInterval(25)
+                return String(addressed.dropFirst(word.count)).trimmingCharacters(in:.punctuationCharacters.union(.whitespacesAndNewlines))
+            }
         }
-        if always || now < expires {expires=now.addingTimeInterval(25);return text}
+        if always || (!requirePrefix && now < expires) {expires=now.addingTimeInterval(25);return text}
+        if requirePrefix {expires = .distantPast}
         return nil
     }
 }
@@ -171,7 +178,9 @@ public final class VoiceHTTP: @unchecked Sendable {
     public func language(messages:[[String:Any]],configuration c:VoiceConfiguration,key:String,tools:[[String:Any]],onEvent:@escaping (LMEvent) async throws -> Void) async throws {
         var body:[String:Any]=["model":c.lmModel,"messages":messages,"stream":true,"temperature":0.6,"max_tokens":220]
         if !tools.isEmpty {body["tools"]=tools;body["tool_choice"]="auto"}
-        if c.lmModel.lowercased().hasPrefix("glm") {body["thinking"]=["type":"disabled"]}
+        // TokenHub Flash defaults to reasoning; voice uses explicit non-thinking mode.
+        let model=c.lmModel.lowercased().split(separator:"/").last.map(String.init) ?? ""
+        if model.hasPrefix("glm") || model.hasPrefix("deepseek") {body["thinking"]=["type":"disabled"]}
         var req=URLRequest(url:try c.endpoint(c.lmURL,"chat/completions"));req.httpMethod="POST";req.httpBody=try JSONSerialization.data(withJSONObject:body);req.setValue("application/json",forHTTPHeaderField:"Content-Type")
         if !key.isEmpty {req.setValue("Bearer \(key)",forHTTPHeaderField:"Authorization")}
         var calls=[Int:VoiceToolCall](),gotFinish=false

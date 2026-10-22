@@ -169,6 +169,10 @@ import MioCore
 @main struct MioMain {
     @MainActor static func main() {
         let args = CommandLine.arguments
+        if args.dropFirst()==["--import-jcode-tencent"] {
+            do {try VoiceController.importJCodeTencent();print("Tencent DeepSeek Flash configured; credential verified in Keychain.");exit(0)}
+            catch {fputs("Tencent import failed: \(error.localizedDescription)\n",stderr);exit(1)}
+        }
         let supported: Set<String> = ["--review-voice","--preview-motion","--review-motion-window","--review-motion","--review-shoulders","--render-samples","--render-motion","--review-cubism","--review-performance","--review-emotion","--review-expression-matrix","--review-hair","--review-head","--review-body","--smoke-test","--connection-test","--review-dialogue","--review-desktop-expressions"]
         if let unknown = args.dropFirst().first(where: { $0.hasPrefix("--") && !supported.contains($0) }) {
             fputs("Unknown Mio argument: \(unknown)\n",stderr);exit(2)

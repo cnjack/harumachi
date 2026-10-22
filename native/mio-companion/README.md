@@ -218,3 +218,6 @@ MIO_TEST_CLEF_URL=https://clef.scgzyun.com swift test --filter DialogueTests.tes
 设置 `MIO_TEST_APP` 为已构建应用的绝对可执行路径，再运行 `tools/test_simulation.sh`，会额外验证原生窗口接收 Postman 模拟的 Clef 响应并更新角色。该模拟验证与上方真实 Clef 服务连通验证分别记录。
 
 肩部局部复拍：`MioCompanion --review-shoulders <目录>`，保存五动作各六相位；设置 `MIO_LEGACY_RIG=1` 得到源布局对照。此入口不启动监控或网络。最终应结合 `--review-motion` 全动作切换检查，不能仅凭连接中心 alpha 判断轮廓自然。
+
+
+Tencent 语音模型已支持从 JCode 显式导入：`dist/Mio.app/Contents/MacOS/MioCompanion --import-jcode-tencent`。Flash 使用非思考流式模式，密钥只保存到钥匙串。真实音频回放延迟及剩余真人验收见 [Tencent Flash 实测](../../docs/game-design/MIO_VOICE_FLASH_20261022.md)。

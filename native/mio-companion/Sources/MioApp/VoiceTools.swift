@@ -10,6 +10,15 @@ enum VoiceTools {
         ["type":"function","function":["name":"list_processes","description":"查看当前进程名称、PID、CPU和内存占用；可按名称过滤。只能查看。","parameters":["type":"object","properties":["query":["type":"string"]],"additionalProperties":false]]],
         ["type":"function","function":["name":"read_website","description":"读取用户明确给出的公开 HTTPS 网站页面摘要；不登录、不操作页面。","parameters":["type":"object","properties":["url":["type":"string"]],"required":["url"],"additionalProperties":false]]]
     ]
+    static func schemas(for text:String)->[[String:Any]] {
+        // Keep daily conversation prompts small; only expose tools whose input
+        // can already be authorized from this turn's actual user message.
+        var selected=[[String:Any]]()
+        if ["进程","程序","cpu","内存","应用","process"].contains(where:text.lowercased().contains) {selected.append(schemas[0])}
+        if let detector=try? NSDataDetector(types:NSTextCheckingResult.CheckingType.link.rawValue),
+           detector.matches(in:text,range:NSRange(text.startIndex...,in:text)).contains(where:{$0.url?.scheme=="https"}) {selected.append(schemas[1])}
+        return selected
+    }
     static func execute(_ call:VoiceToolCall,userText:String) async -> String {
         do {
             try Task.checkCancellation()

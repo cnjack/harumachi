@@ -4,7 +4,7 @@
 
 本机适合复用已安装的 audio.cpp / Metal：Qwen3-ASR-0.6B 识别，Qwen3-TTS-1.7B CustomVoice 流式合成，外接 OpenAI 兼容的文本 LM。Swift 负责采集、回声处理、会话、取消、工具和播放，继续使用原 `io.harumachi.MioCompanion` 应用。Clef 并行选择表情，不阻塞生成第一句话；没有 embedding，也没有另建桌面应用。
 
-已实现并验证的链路是：合成语音回放 → 声学唤醒 → 神经 VAD → 真实本机 ASR → **模拟 LM** → 真实本机 TTS → 原生静音播放与 Live2D 口形。真实进程查询、公开网页读取、多轮上下文和取消也已验证。实际 LM 的地址、模型和密钥尚待用户选择；真人麦克风、扬声器回声、日常噪声误唤醒和真实端到端延迟尚未验收。不能把本轮模拟 LM 的耗时当作真实对话性能。
+基础实现先通过了模拟 LM 回归；随后已按用户指定接入 Tencent `deepseek/deepseek-flash`。真实模型的六组实时音频回放、上下文、只读工具及打断通过，说完到播放人声中位数 2.54 秒。当前结果与验收边界见[Tencent Flash 实测](MIO_VOICE_FLASH_20261022.md)。真人麦克风、外放回声和环境噪声仍待解锁后验证。
 
 “最快、最好”必须限定硬件、中文语料、噪声、音色和统计口径。本轮选取可复用本机模型且已经实测的方案；没有跨供应商同条件质量评测，不声称它在所有环境下最快。
 
@@ -93,7 +93,7 @@ python3 native/mio-companion/tools/voice_services.py status
 ./open_mio_companion.command
 ```
 
-前端运行库安装在本项目 `.build/voice-frontend`，模型在 `.build/voice-models`，下载有 SHA-256 校验，不修改系统 Python。三个进程的配置、PID、日志位于 `.build/voice-services`。原共享 8300 服务不受影响。原应用包已更新并重启，麦克风保持未开启，实际 LM 未配置。
+前端运行库安装在本项目 `.build/voice-frontend`，模型在 `.build/voice-models`，下载有 SHA-256 校验，不修改系统 Python。三个进程的配置、PID、日志位于 `.build/voice-services`。原共享 8300 服务不受影响。原应用包已更新，麦克风保持未开启；已导入用户指定的 Tencent Flash 配置。
 
 在“语音对话 → 设置”填写 LM Base URL（包含 `/v1` 或服务自己的前缀）、模型 ID、Key，保存后开启语音。也支持 `MIO_LM_BASE_URL`、`MIO_LM_MODEL`、`MIO_LM_API_KEY` 环境变量。现有 Clef `/v1/systemone` 只做决策，不能充当开放式 LM 回答接口。
 
@@ -112,4 +112,4 @@ python3 native/mio-companion/tools/voice_services.py status
 
 测试接口 `tools/voice_lm_fixture.py` 仅监听 127.0.0.1:8320，支持碎片 UTF-8、分段工具参数、截断和 HTTP 503；仅供回归，不作为实际模型。原生 `--review-voice <目录>` 必须设置 `MIO_VOICE_TEST_SILENT=1`。可用 `MIO_VOICE_REPLAY_WAV` 指向合成语音 WAV，经真实生产入口回放。`MIO_VOICE_WEB_TEST=1` 增加公开网页只读验证。
 
-待用户选择 LM 后：测真实首字/首句、中文回答、工具决策及网络尾延迟；在用户麦克风上检查小声、距离、电视声、外放回声与打断。然后优先评估 Smart Turn 的中文句中停顿与语义结束判断、增加误唤醒长时负例，并据真实测量调整 450 ms 端点。暂不提前调用工具，也不把未经确认的部分转写送去执行。
+真实 LM 首字/首句、中文回答与工具决策已完成本轮小样本验证，长期公网尾延迟仍需更多数据；在用户麦克风上检查小声、距离、电视声、外放回声与打断。然后优先评估 Smart Turn 的中文句中停顿与语义结束判断、增加误唤醒长时负例，并据真实测量调整 450 ms 端点。暂不提前调用工具，也不把未经确认的部分转写送去执行。

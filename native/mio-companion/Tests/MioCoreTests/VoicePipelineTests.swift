@@ -11,6 +11,13 @@ final class VoicePipelineTests:XCTestCase {
         XCTAssertEqual(gate.accept("小澪",now:now),"")
         XCTAssertNil(gate.accept("停止聆听",now:now))
         XCTAssertNil(gate.accept("普通话",now:now.addingTimeInterval(1)))
+        gate.expires=now.addingTimeInterval(25) // acoustic KWS hears xiao3 ling2 inside a noun
+        XCTAssertNil(gate.accept("这个小零件放在桌子上。",now:now,requirePrefix:true))
+        XCTAssertNil(gate.accept("普通话",now:now.addingTimeInterval(1)))
+        XCTAssertEqual(gate.accept("你好，小玲，今天好吗？",now:now,requirePrefix:true),"今天好吗")
+        gate.expires = .distantPast
+        XCTAssertNil(gate.accept("小林，我有点累了。",now:now))
+        XCTAssertEqual(gate.accept("小林，我有点累了。",now:now,requirePrefix:true),"我有点累了")
     }
     func testClausesDoNotWaitForFullReplyOrLoseText() {
         var c=SpokenClauses();var out=[String]()
@@ -73,6 +80,11 @@ final class VoicePipelineTests:XCTestCase {
         let http=VoiceHTTP();var text="",calls=[VoiceToolCall]()
         try await http.language(messages:[["role":"user","content":"你好"]],configuration:c,key:"",tools:[]){event in if case .text(let value)=event {text += value}}
         XCTAssertEqual(text,"我在这里。今天辛苦了，我们慢慢聊。")
+        c.lmModel="deepseek/deepseek-flash"
+        // The fixture rejects the request if Flash can enter its default slow
+        // reasoning mode, covering the provider-qualified JCode model ID.
+        try await http.language(messages:[["role":"user","content":"你好"]],configuration:c,key:"",tools:[]){_ in}
+        c.lmModel="fixture"
         try await http.language(messages:[["role":"user","content":"查看进程"]],configuration:c,key:"",tools:[]){event in if case .tools(let value)=event {calls=value}}
         XCTAssertEqual(calls.count,1);XCTAssertEqual(calls.first?.name,"list_processes");XCTAssertEqual(calls.first?.arguments,"{\"query\":\"Mio\"}")
         for model in ["fixture-http-error","fixture-truncated"] {
