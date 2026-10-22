@@ -25,6 +25,7 @@ public struct RigPose: Sendable, Equatable {
     public var gestureTime: Double
     public var cueGesture: CharacterGesture?
     public var cueTime: Double = 0
+    public var audioMouth: Float?
     public var speech: SpeechTimeline?
     public var speechTime: Double = 0
     public var nod: Float = 0
@@ -42,6 +43,7 @@ public struct RigPose: Sendable, Equatable {
     public var sway: Float { Float(sin(time * 0.8)) }
     public var mouthOpen: Bool { mouthAmount > 0.15 }
     public var mouthAmount: Float {
+        if let audioMouth { return max(0,min(1,audioMouth)) }
         guard speaking else { return 0 }
         return (speech ?? SpeechTimeline("嗯，我在听。慢慢说就好。" )).mouth(at:speech == nil ? gestureTime.truncatingRemainder(dividingBy:5) : speechTime)
     }

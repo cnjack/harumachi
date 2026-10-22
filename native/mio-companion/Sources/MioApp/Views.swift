@@ -28,6 +28,7 @@ struct CharacterView: NSViewRepresentable {
     func updateNSView(_ nsView: MTKView, context: Context) {
         context.coordinator.renderer?.selectGesture(state.gesture, revision: state.gestureRevision)
         context.coordinator.renderer?.pose.mood = state.mood
+        context.coordinator.renderer?.voiceMouth = state.voiceMouth
         context.coordinator.renderer?.speakingUntil = state.speakingUntil
         context.coordinator.renderer?.performance = state.performance
         context.coordinator.renderer?.expressionOverride = state.expressionOverride
@@ -115,6 +116,7 @@ struct Dashboard: View {
                     Text(state.connection).font(.system(size: 11)).foregroundStyle(muted)
                     if !state.error.isEmpty { Text(state.error).font(.system(size: 11)).foregroundStyle(.orange) }
                 }
+                VoicePanel(voice:state.voice).disabled(state.paused)
                 HStack {
                     Text("最近来信").font(.system(size: 14, weight: .medium))
                     Spacer()

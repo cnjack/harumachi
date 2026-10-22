@@ -29,6 +29,7 @@ cat > "$app/Contents/Info.plist" <<'PLIST'
 <key>CFBundleShortVersionString</key><string>0.1.0</string>
 <key>LSMinimumSystemVersion</key><string>14.0</string>
 <key>NSHighResolutionCapable</key><true/>
+<key>NSMicrophoneUsageDescription</key><string>在你开启语音后，本机识别唤醒词和对话；可随时停止聆听。</string>
 </dict></plist>
 PLIST
 codesign --force --deep --sign - "$app"

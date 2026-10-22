@@ -8,6 +8,7 @@ import MioCore
     var dashboard: NSWindow!
     var companion: NSPanel!
     var statusItem: NSStatusItem!
+    var voiceReviewDirectory: URL?
     var smokeDirectory: URL?
     var connectionTestDirectory: URL?
     var dialogueReviewDirectory: URL?
@@ -15,6 +16,10 @@ import MioCore
     var smokeGestures: [String] = []
     func applicationDidFinishLaunching(_ notification: Notification) {
         let args = CommandLine.arguments
+        if let at=args.firstIndex(of:"--review-voice"),at+1<args.count {
+            voiceReviewDirectory=URL(fileURLWithPath:args[at+1],isDirectory:true)
+            try? FileManager.default.createDirectory(at:voiceReviewDirectory!,withIntermediateDirectories:true)
+        }
         if let at = args.firstIndex(of:"--review-desktop-expressions"), at+1 < args.count {
             desktopExpressionDirectory = URL(fileURLWithPath:args[at+1],isDirectory:true)
             try? FileManager.default.createDirectory(at:desktopExpressionDirectory!,withIntermediateDirectories:true)
@@ -31,7 +36,7 @@ import MioCore
             dialogueReviewDirectory = URL(fileURLWithPath:args[at+1],isDirectory:true)
             try? FileManager.default.createDirectory(at:dialogueReviewDirectory!,withIntermediateDirectories:true)
         }
-        state = CompanionState(dataDirectory: (desktopExpressionDirectory ?? dialogueReviewDirectory ?? connectionTestDirectory ?? smokeDirectory)?.appendingPathComponent("runtime"))
+        state = CompanionState(dataDirectory: (voiceReviewDirectory ?? desktopExpressionDirectory ?? dialogueReviewDirectory ?? connectionTestDirectory ?? smokeDirectory)?.appendingPathComponent("runtime"))
         dashboard = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 972, height: 710), styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: false)
         dashboard.title = "澪 · 晴町桌面来信"; dashboard.isReleasedWhenClosed = false
         dashboard.contentView = NSHostingView(rootView: Dashboard(state: state))
@@ -60,9 +65,10 @@ import MioCore
         menu.addItem(withTitle: "退出澪", action: #selector(quit), keyEquivalent: "q")
         for item in menu.items { item.target = self }
         statusItem.menu = menu
-        if dialogueReviewDirectory == nil && desktopExpressionDirectory == nil { state.start(monitorSystemEvents:connectionTestDirectory == nil) }
+        if voiceReviewDirectory == nil && dialogueReviewDirectory == nil && desktopExpressionDirectory == nil { state.start(monitorSystemEvents:connectionTestDirectory == nil) }
         NSApp.activate(ignoringOtherApps: true)
-        if let directory = desktopExpressionDirectory { runDesktopExpressionReview(at:directory) }
+        if let directory=voiceReviewDirectory {runVoiceReview(at:directory)}
+        else if let directory = desktopExpressionDirectory { runDesktopExpressionReview(at:directory) }
         else if let directory = dialogueReviewDirectory { runDialogueReview(at:directory) }
         else if connectionTestDirectory != nil { runConnectionTest() }
         else if smokeDirectory != nil { runSmoke() }
@@ -163,7 +169,7 @@ import MioCore
 @main struct MioMain {
     @MainActor static func main() {
         let args = CommandLine.arguments
-        let supported: Set<String> = ["--preview-motion","--review-motion-window","--review-motion","--review-shoulders","--render-samples","--render-motion","--review-cubism","--review-performance","--review-emotion","--review-expression-matrix","--review-hair","--review-head","--review-body","--smoke-test","--connection-test","--review-dialogue","--review-desktop-expressions"]
+        let supported: Set<String> = ["--review-voice","--preview-motion","--review-motion-window","--review-motion","--review-shoulders","--render-samples","--render-motion","--review-cubism","--review-performance","--review-emotion","--review-expression-matrix","--review-hair","--review-head","--review-body","--smoke-test","--connection-test","--review-dialogue","--review-desktop-expressions"]
         if let unknown = args.dropFirst().first(where: { $0.hasPrefix("--") && !supported.contains($0) }) {
             fputs("Unknown Mio argument: \(unknown)\n",stderr);exit(2)
         }

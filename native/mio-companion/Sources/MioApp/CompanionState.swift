@@ -3,6 +3,8 @@ import SwiftUI
 import MioCore
 
 @MainActor final class CompanionState: ObservableObject {
+    lazy var voice = VoiceController(owner:self)
+    @Published var voiceMouth: Float?
     @Published var performance: PerformanceCue?
     private var performanceDirector = PerformanceDirector()
     @Published var mood: Mood = .neutral
@@ -62,10 +64,11 @@ import MioCore
     func receive(_ event: SystemEvent) {
         guard !paused, gate.accepts(event) else { return }
         dialogueMemory.observe(event)
+        if ["sleep","session.inactive"].contains(event.kind) { voice.stopListening() }
         if event.kind == "message" {
             latestMessageID = event.id
             performance = PerformanceCue(intent:.waiting,mood:.thinking,at:event.date)
-        } else if ["sleep","session.inactive","app.active"].contains(event.kind), Date() >= speakingUntil {
+        } else if ["sleep","session.inactive","app.active"].contains(event.kind), Date() >= speakingUntil, !voice.busy, !voice.listening {
             performance = PerformanceCue(intent:.quiet,mood:event.kind == "sleep" ? .sleepy:.neutral,at:event.date)
         }
         events.insert(event, at: 0)
@@ -117,6 +120,7 @@ import MioCore
                 // message, nor speak after the session became inactive.
                 guard self.dialogueMemory.shouldConsider(event,now:Date()),
                       event.kind == "message" || !self.pending.contains(where: { $0.kind == "message" }) else { continue }
+                guard !self.voice.busy, !self.voice.listening else { continue }
                 if let line = SpeechCatalog.resolve(decision,event:event,context:context) {
                     self.mood = decision.expression?.style.mood ?? decision.mood
                     self.phrase = line.text
@@ -131,13 +135,14 @@ import MioCore
     func send() {
         let value = draft.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !value.isEmpty, !paused else { return }
-        receive(SystemEvent(kind: "message", summary: value, metadata: ["source": "user"]))
+        if voice.configured { voice.submit(value) }
+        else { receive(SystemEvent(kind: "message", summary: value, metadata: ["source": "user"])) }
         draft = ""
     }
     func togglePause() {
         paused.toggle(); epoch += 1; task?.cancel(); task = nil; pending.removeAll()
         renderer?.isPaused = paused
-        if paused { monitor?.stop(); source = "已暂停接收";performance = nil;speakingUntil = .distantPast }
+        if paused { voice.stopListening(); monitor?.stop(); source = "已暂停接收";performance = nil;speakingUntil = .distantPast }
         else { gate = EventGate(); monitor?.start(); retryAfter = .distantPast; source = "等待事件" }
     }
     func reconnect() {
@@ -148,5 +153,5 @@ import MioCore
             gate = EventGate(); receive(SystemEvent(kind: "startup", summary: "重新连接 Clef"))
         } catch { self.error = "请输入不含账号、密码和查询参数的 HTTP(S) 服务地址" }
     }
-    func stop() { epoch += 1; task?.cancel(); task = nil; pending.removeAll(); monitor?.stop() }
+    func stop() { voice.stopListening(); epoch += 1; task?.cancel(); task = nil; pending.removeAll(); monitor?.stop() }
 }
