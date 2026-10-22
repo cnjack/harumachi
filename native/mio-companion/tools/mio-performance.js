@@ -89,7 +89,7 @@ export class MioPerformanceController {
   constructor(model,hold,talk,encourage,profile,clips={}) {
     this.model=model;this.hold=hold;this.talk=talk;this.encourage=encourage;this.profile=profile;this.emotion=new EmotionMixer(profile);this.arm=new ArmTransitionGuard();this.clips=clips;this.thought=0;this.thoughtTime=null;
     this.started=performance.now()/1000;this.lastWelcome=-Infinity;this.cue=null;this.manualExpression={style:'neutral'};this.state={intent:'quiet',mood:'neutral',mouth:0};
-    this.faceListener=()=>{const t=performance.now()/1000-this.started,core=model.internalModel.coreModel,attention=faceAttention(t);for(const id of ['ParamEyeLOpen','ParamEyeROpen'])core.setParameterValueById(id,1-faceBlink(t));core.setParameterValueById('ParamEyeBallX',attention[0]);core.setParameterValueById('ParamEyeBallY',attention[1]);};
+    this.faceListener=()=>{const t=performance.now()/1000-this.started,core=model.internalModel.coreModel,attention=faceAttention(t);this.authoredRoll=core.getParameterValueById('ParamAngleZ');for(const id of ['ParamEyeLOpen','ParamEyeROpen'])core.setParameterValueById(id,1-faceBlink(t));core.setParameterValueById('ParamEyeBallX',attention[0]);core.setParameterValueById('ParamEyeBallY',attention[1]);};
     model.internalModel.on('afterMotionUpdate',this.faceListener);
     this.listener=()=>this.update();model.internalModel.on('beforeModelUpdate',this.listener);
     this.model.internalModel.motionManager.on('motionStart',this.motionListener=(group)=>{this.current=group;const sample=(clip,t)=>clip?Object.fromEntries(armIDs.map(id=>{const c=clip.Curves.find(c=>c.Id===id);return [id,c?sampleCurve(c,t):0];})):null;this.arm.select(sample(this.clips[group],group==='Idle'?0:1.25),sample(this.clips.Idle,0),performance.now()/1000);});
@@ -112,6 +112,10 @@ export class MioPerformanceController {
   manual(group){this.cue=null;this.state={intent:'manual',mood:this.manualExpression.style,phase:group,mouth:0};return this.model.motion(group,0,3);}
   update(){
     const core=this.model.internalModel.coreModel,clock=performance.now()/1000-this.started;
+    // Pixi 0.4 adds pointer X*Y to roll and a separate breathing roll after
+    // motion playback. Keep the authored gesture tilt; pointer attention owns
+    // yaw/pitch instead. Held source poses below may still set their own tilt.
+    core.setParameterValueById('ParamAngleZ',this.authoredRoll??0);
     let expression=this.manualExpression;
     if(this.cue){
       const c=this.cue,t=performance.now()/1000-c.started,st=t-(c.intent==='welcome'?.35:0);

@@ -19,17 +19,23 @@ public enum FaceRig {
         q.y = 211+(q.y-211)*(1-(1-max(0,min(1,open)))*lid)
         return q
     }
-    /// Authored 3 x 3 small-angle surface. All landmarks, including the chin,
+    /// Authored 3 x 3 yaw/pitch surface. All landmarks, including the chin,
     /// participate; neutral is exactly the original artwork. Interpolation here
     /// matches the exported keyforms for fingertip contact and neck attachment.
     public static func turn(_ p: SIMD2<Float>,x: Float,y: Float,group: String = "face") -> SIMD2<Float> {
         func key(_ yaw: Float,_ pitch: Float) -> SIMD2<Float> {
-            let a = yaw/30*0.17,b = pitch/30*0.10
+            let a = yaw/30*0.50,b = pitch/30*0.10
             let dx=p.x-300,dy=p.y-214
             let shape=max(0,1-pow(dx/78,2)-pow(dy/88,2))
             let depth: Float = group == "hair_back" ? -7 : (group == "hair_front" ? 9:14)
             let z=depth*sqrt(shape)
-            return SIMD2(300+dx*cos(a)+z*sin(a),214+dy*cos(b)-z*sin(b))
+            // A finite-slope facial surface gives the near/far eyes different
+            // widths and moves the nose/chin relative to the cheek outline.
+            // A spherical silhouette has an infinite edge slope and folds
+            // the 2D mesh at larger yaw; this shallow paraboloid stays ordered.
+            let yawDepth: Float = group == "hair_back" ? -12 : (group == "hair_front" ? 38:50)
+            let yawZ=yawDepth*max(0,1-pow(dx/90,2))*max(0,1-pow(dy/105,2))
+            return SIMD2(300+dx*cos(a)+yawZ*sin(a),214+dy*cos(b)-z*sin(b))
         }
         let u=min(1,abs(x)/30),v=min(1,abs(y)/30)
         let sx: Float=x<0 ? -30:30,sy: Float=y<0 ? -30:30

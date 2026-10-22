@@ -25,7 +25,7 @@ public struct PuppetMotion: Sendable {
     public init(pose: RigPose) {
         let t = pose.time
         torso = pose.sway * 0.012
-        head = pose.lookX * 0.055 + Float(sin(t * 0.72 - 0.5)) * 0.022
+        head = Float(sin(t * 0.72 - 0.5)) * 0.022
         let attention = FaceRig.attention(t-0.12)
         headShift = SIMD2((pose.lookX+attention.x)*3, -(pose.lookY+attention.y)*3 + Float(sin(t * 1.8 - 0.4)) * 1.2)
         leftShoulder = Float(sin(t * 1.15)) * 0.018
@@ -107,10 +107,11 @@ public struct PuppetMotion: Sendable {
             torso += Float(sin(phase * 2.9-0.8))*0.012*blend
         case .encourage:
             rightFist=handBlend;rightHand=SIMD4(1-handBlend,0,0,0)
-            // One small reassuring fist near the shoulder. No punch or thrust.
+            // Let the elbow sit outside the torso so the raised forearm can
+            // lean inward toward the cheek without reversing the elbow bend.
             let beat=Self.phrase(Float(phase),keys:[(0,0),(0.8,0),(1.1,0.8),(1.5,0),(2.2,0.45),(2.6,0),(5,0)])
-            rightShoulder += (0.50+0.025*beat)*blend
-            rightElbow += (-2.66-0.06*beat)*blend
+            rightShoulder += (0.08+0.015*beat)*blend
+            rightElbow += (-2.82-0.025*beat)*blend
             rightWrist = -0.05*blend
             torso -= 0.016*blend;head += 0.03*blend;headShift.y += beat*0.7
         case .idle, .automatic: break

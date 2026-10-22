@@ -37,6 +37,19 @@ final class CubismTests: XCTestCase {
             XCTAssertEqual(meta["TotalPointCount"] as? Int,pointCount)
         }
     }
+    func testEncouragementForearmLeansTowardFace() throws {
+        let library=try MotionLibrary(directory:assets)
+        for time in [1.5,2.5,3.5] {
+            let pose=RigPose(time:time,gesture:.encourage,gestureTime:time)
+            for motion in [PuppetMotion(pose:pose),library.motion(for:pose)] {
+                let s=SIMD2<Float>(369,320),e=SIMD2<Float>(427,418),w=SIMD2<Float>(486,508)
+                let elbow=motion.armPoint(e,shoulder:s,elbow:e,wrist:w,left:false)
+                let wrist=motion.armPoint(w,shoulder:s,elbow:e,wrist:w,left:false)
+                XCTAssertLessThan(wrist.x,elbow.x-12,"Encouragement should bring the wrist inward toward the face")
+                XCTAssertLessThan(wrist.y,elbow.y-80,"Keep a raised supportive fist, not a horizontal punch")
+            }
+        }
+    }
     func testOfficialCoreAndCorruptMoc() throws {
         let core = "/Applications/Live2D Cubism 5.3/res/libLive2DCubismCoreJNI.dylib"
         guard FileManager.default.fileExists(atPath:core) else { throw XCTSkip("Separately installed official Cubism Core required") }

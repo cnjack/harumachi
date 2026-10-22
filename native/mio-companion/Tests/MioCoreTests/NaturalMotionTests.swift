@@ -2,7 +2,44 @@ import XCTest
 @testable import MioCore
 
 final class NaturalMotionTests: XCTestCase {
-    private var assets: URL { URL(fileURLWithPath:#filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("Sources/MioApp/Resources/MioCubism") }
+    private var assets: URL { ProcessInfo.processInfo.environment["MIO_TURN_FIXTURE"].map { URL(fileURLWithPath:$0) } ?? URL(fileURLWithPath:#filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent().appendingPathComponent("Sources/MioApp/Resources/MioCubism") }
+
+    func testHorizontalLookTurnsWithoutAddingRoll() throws {
+        let library = try MotionLibrary(directory:assets)
+        for gesture in [CharacterGesture.idle,.wave,.think,.talk,.encourage] {
+            let a = RigPose(time:2,lookX:-1,gesture:gesture,gestureTime:2)
+            let b = RigPose(time:2,lookX:1,gesture:gesture,gestureTime:2)
+            for (left,right) in [(PuppetMotion(pose:a),PuppetMotion(pose:b)),(library.motion(for:a),library.motion(for:b))] {
+                XCTAssertEqual(left.head,right.head,accuracy:0.0001,"Horizontal attention must turn the face, not tilt the ear toward the shoulder")
+                let l=CubismParameters.values(pose:a,motion:left),r=CubismParameters.values(pose:b,motion:right)
+                XCTAssertLessThan(l["ParamAngleX"]!,-20);XCTAssertGreaterThan(r["ParamAngleX"]!,20)
+            }
+        }
+    }
+
+    func testOfficialYawHasVisibleFacialPerspectiveWithoutEyeLineTilt() throws {
+        guard FileManager.default.fileExists(atPath:"/Applications/Live2D Cubism 5.3/res/libLive2DCubismCoreJNI.dylib") else { throw XCTSkip("Official Core is installed separately") }
+        let model=try CubismModel(manifest:assets.appendingPathComponent("Mio.model3.json"))
+        let geometry=try JSONDecoder().decode(CubismRigGeometry.self,from:Data(contentsOf:assets.appendingPathComponent("Mio.bindings.json")))
+        try model.update([:]);let front=try XCTUnwrap(model.meshes().first {$0.id == "face"})
+        func point(_ x: Float,_ y: Float,_ mesh: CubismModel.Mesh) throws -> SIMD2<Float> { try geometry.point(SIMD2(x,y),mesh:mesh) }
+        for yaw: Float in [-30,30] {
+            try model.update(["ParamAngleX":yaw,"ParamAngleY":0,"ParamAngleZ":0])
+            let face=try XCTUnwrap(model.meshes().first {$0.id == "face"})
+            let centerShift=try point(300,214,face)-point(300,214,front)
+            let cheekMid=try (point(245,214,face)+point(355,214,face))/2
+            let originalCheekMid=try (point(245,214,front)+point(355,214,front))/2
+            let sideShift=cheekMid-originalCheekMid
+            XCTAssertGreaterThan(centerShift.x*(yaw>0 ? 1:-1),14,"The face must visibly turn toward the requested side")
+            XCTAssertGreaterThan(abs(centerShift.x-sideShift.x),5,"A rigid sideways slide does not provide face perspective")
+            let leftWidth=try point(286,205,face).x-point(268,205,face).x
+            let rightWidth=try point(332,205,face).x-point(314,205,face).x
+            let ratio=yaw>0 ? rightWidth/leftWidth:leftWidth/rightWidth
+            XCTAssertTrue((0.60...0.85).contains(ratio),"Near/far facial widths must reflect yaw without collapsing the eye: \(ratio)")
+            let eyeLine=try point(323,205,face).y-point(277,205,face).y
+            XCTAssertEqual(eyeLine,0,accuracy:0.1,"Pure horizontal yaw keeps the eye line level")
+        }
+    }
 
     func testWebIdleAndSeamlessLoop() throws {
         let manifest = try JSONSerialization.jsonObject(with:Data(contentsOf:assets.appendingPathComponent("Mio.model3.json"))) as! [String:Any]
@@ -20,7 +57,7 @@ final class NaturalMotionTests: XCTestCase {
         }
     }
 
-    func testSmallAngleSourceHeadHasCoherentProjection() throws {
+    func testSourceHeadHasCoherentYawAndPreservedPitch() throws {
         guard FileManager.default.fileExists(atPath:"/Applications/Live2D Cubism 5.3/res/libLive2DCubismCoreJNI.dylib") else { throw XCTSkip("Official Core is installed separately") }
         let model = try CubismModel(manifest:assets.appendingPathComponent("Mio.model3.json"))
         try model.update([:]);let front = try XCTUnwrap(model.meshes().first {$0.id == "face"})
@@ -31,7 +68,7 @@ final class NaturalMotionTests: XCTestCase {
                 let delta = stride(from:axis,to:front.positions.count,by:2).map { turned.positions[$0]-front.positions[$0] }
                 let spread=(delta.max() ?? 0)-(delta.min() ?? 0)
                 XCTAssertGreaterThan(spread,0.5,"Turning needs source surface depth, not only translation")
-                XCTAssertLessThan(spread,4,"Small-angle projection must not stretch the face")
+                XCTAssertLessThan(spread,axis == 0 ? 40:4,"Yaw changes perspective; pitch keeps its accepted range")
             }
         } }
     }
@@ -43,7 +80,7 @@ final class NaturalMotionTests: XCTestCase {
         XCTAssertGreaterThan(abs(chin.x)+abs(chin.y),0.5)
         for x: Float in [-30,0,30] { for y: Float in [-30,0,30] {
             let a=FaceRig.turn(landmarks[1],x:x,y:y),b=FaceRig.turn(landmarks[2],x:x,y:y)
-            XCTAssertEqual(b.x-a.x,46*cos(x/30*0.17),accuracy:0.001)
+            XCTAssertTrue((40...46.001).contains(b.x-a.x),"Turned eye separation stays within the original face proportions")
             XCTAssertEqual(a.y,b.y,accuracy:0.001,"Do not skew one eye above the other")
         } }
     }

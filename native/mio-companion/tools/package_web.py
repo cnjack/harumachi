@@ -20,6 +20,7 @@ README = '''# 澪 Live2D 网页模型
 - Clef 决策可直接传 controller.respond(decision,text)，decision.expression 为 {style:"joyful",intensity:"normal",hand:"explain"}。不含 embedding 或第二个判断模型。
 - intent 支持 welcome / quiet / waiting / reply；欢迎有 180 秒冷却，文字按标点停顿。JS 是 Pixi 0.4.0 适配层，其他播放器直接加载标准模型文件。
 - 手型曲线禁用淡入淡出，避免两只手叠影。标准播放器使用 0.35 秒淡入淡出；可选控制器增加手腕速度约束与反向屈肘经放下姿态的过渡，适合中途打断动作。
+- 左右转面由源模型 ParamAngleX（-30～30）控制，正面原画不变；ParamAngleZ 留给动作中的歪头。可选控制器保留动作角度，移除 Pixi 鼠标 X×Y 和呼吸额外叠加的歪头，避免左右看变成左右倾斜。
 - Pixi Live2D 示例：Live2DModel.from('/Mio/Mio.model3.json')；手动招手 model.motion('wave', 0, 3)。
 
 本包不含 Live2D Core 或播放器。请在自己的网页中使用已获得的兼容运行库。

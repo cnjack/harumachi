@@ -18,9 +18,9 @@ import MioCore
     var poseMeasurements: [String:[String:Any]] = [:]
     var sentSpeech = false
     var revision = 100
-    let schedule: [(Double,CharacterGesture)] = [(0,.idle),(1,.wave),(9.5,.think),(14.5,.talk),(19,.encourage),(24.5,.automatic)]
+    let schedule: [(Double,CharacterGesture)] = [(0,.idle),(1,.wave),(9.5,.think),(14.5,.talk),(19,.encourage),(24.5,.automatic),(31,.idle)]
     // Capture the held thinking pose after contact and the cloud's fade.
-    let captures: [(Double,String)] = [(0.8,"idle"),(2.6,"wave"),(12.2,"think"),(16.2,"talk"),(21,"encourage"),(30.5,"automatic")]
+    let captures: [(Double,String)] = [(0.8,"idle"),(2.6,"wave"),(12.2,"think"),(16.2,"talk"),(21,"encourage"),(30.5,"automatic"),(33,"look-left"),(36,"look-front"),(39,"look-right")]
 
     init(at directory: URL, persistent: Bool) throws {
         self.directory = directory
@@ -75,6 +75,7 @@ import MioCore
             renderer.selectGesture(schedule[index].1,revision:index+1)
         }
         if elapsed>=25.5 && !sentSpeech { renderer.speakingUntil = Date().addingTimeInterval(0.6);sentSpeech = true }
+        if elapsed>=31 { renderer.targetLook = SIMD2(elapsed<34 ? -1:elapsed<37 ? 0:1,0) }
         progress.append(["wallTime":elapsed,"frames":renderer.frameCount,"animationTime":renderer.pose.time])
         do {
             for (time,name) in captures where elapsed>=time && !captured.contains(name) {
@@ -88,7 +89,15 @@ import MioCore
                     "gestureTime":renderer.pose.gestureTime,"hand":hand.variant,
                     "thoughtOpacity":motion.thoughtOpacity,
                     "leftWristY":wrist(true).y,"rightWristY":wrist(false).y]
-                if name == "idle" {
+                if name.hasPrefix("look-") {
+                    let values=CubismParameters.values(pose:renderer.pose,motion:motion)
+                    let yaw=values["ParamAngleX"]!,roll=values["ParamAngleZ"]!
+                    poseMeasurements[name]?["lookX"]=renderer.pose.lookX
+                    poseMeasurements[name]?["yaw"]=yaw;poseMeasurements[name]?["roll"]=roll
+                    let target: Float=name == "look-left" ? -1:name == "look-right" ? 1:0
+                    poseChecks[name] = abs(renderer.pose.lookX-target)<0.01 && abs(roll)<2
+                        && (target == 0 ? abs(yaw)<11:yaw*target>20)
+                } else if name == "idle" {
                     let left = wrist(true),right = wrist(false)
                     poseChecks[name] = hand.variant == "relaxed" && left.y > 525 && right.y > 525
                         && abs(left.x-231) < 60 && abs(right.x-369) < 60
@@ -111,7 +120,7 @@ import MioCore
                 try renderer.snapshot(to:directory.appendingPathComponent(name+".png"),pose:renderer.pose)
                 captured.insert(name)
             }
-            if elapsed>=33.5 {
+            if elapsed>=40.5 {
                 try saveOwnWindow(window,to:directory.appendingPathComponent("window.png"))
                 let report: [String:Any] = ["wallTime":elapsed,"frames":renderer.frameCount,
                     "averageFPS":Double(renderer.frameCount)/elapsed,"captured":captured.sorted(),
