@@ -24,18 +24,55 @@ public enum FaceRig {
     /// matches the exported keyforms for fingertip contact and neck attachment.
     public static func turn(_ p: SIMD2<Float>,x: Float,y: Float,group: String = "face") -> SIMD2<Float> {
         func key(_ yaw: Float,_ pitch: Float) -> SIMD2<Float> {
-            let a = yaw/30*0.50,b = pitch/30*0.10
+            let direction=yaw/30,amount=abs(direction),b=pitch/30*0.12
             let dx=p.x-300,dy=p.y-214
-            let shape=max(0,1-pow(dx/78,2)-pow(dy/88,2))
-            let depth: Float = group == "hair_back" ? -7 : (group == "hair_front" ? 9:14)
-            let z=depth*sqrt(shape)
-            // A finite-slope facial surface gives the near/far eyes different
-            // widths and moves the nose/chin relative to the cheek outline.
-            // A spherical silhouette has an infinite edge slope and folds
-            // the 2D mesh at larger yaw; this shallow paraboloid stays ordered.
-            let yawDepth: Float = group == "hair_back" ? -12 : (group == "hair_front" ? 38:50)
-            let yawZ=yawDepth*max(0,1-pow(dx/90,2))*max(0,1-pow(dy/105,2))
-            return SIMD2(300+dx*cos(a)+yawZ*sin(a),214+dy*cos(b)-z*sin(b))
+            var q=p,depth: Float=18
+            if group == "hair_back" {
+                // The back of the skull stays broad and travels behind the face.
+                q.x=300+dx*(1+0.01*amount)-direction*4
+                depth = -8
+            } else if group.hasPrefix("hair_front") {
+                // Crown and side locks share an identical root shape. Lower
+                // locks wrap around the far cheek instead of sliding with it.
+                let crown=2+9*max(0,1-pow(dx/95,2))
+                let near=dx*direction<0
+                let wrap: Float=near ? -2:7
+                let lower=PuppetMotion.smooth(200,270,p.y)
+                q.x=300+dx*(1-0.01*amount)+direction*(crown*(1-lower)+wrap*lower)
+                depth=12*max(0,1-pow(dx/105,2))
+            } else if group.hasPrefix("ear_") {
+                let cx: Float=group == "ear_left" ? 353:247
+                let near=(cx-300)*direction<0
+                let scale: Float=near ? 1:0.68
+                let rootScale: Float=near ? 0.94:0.90
+                q.x=300+(cx-300)*(1+(rootScale-1)*amount)+(p.x-cx)*(1+(scale-1)*amount)+direction*(near ? 14:-4)
+                depth = -2
+            } else if group.hasPrefix("eyes_") || group.hasPrefix("brow_") {
+                let cx: Float=group.hasSuffix("_left") ? 323:277
+                let near=(cx-300)*direction<0
+                // Preserve the round source eye. Perspective belongs to the
+                // socket placement; the far eye itself is only mildly narrower.
+                let scale: Float=near ? 1.02:0.88
+                q.x=300+(cx-300)*(1-0.07*amount)+direction*12+(p.x-cx)*(1+(scale-1)*amount)
+                depth=25
+            } else if group == "nose" {
+                q.x=300+dx*(1-0.17*amount)+direction*23
+                depth=34
+            } else if group.hasPrefix("mouth_") {
+                q.x=300+dx*(1-0.09*amount)+direction*18.5
+                depth=24
+            } else {
+                // Cheek and jaw key shape: broad near cheek, short far cheek,
+                // turning chin and a stable neck attachment, not a flat oval.
+                let cheek=PuppetMotion.smooth(155,209,p.y)
+                let jaw=PuppetMotion.smooth(235,269,p.y)
+                let center=4+14*cheek-4*jaw
+                let envelope=max(0,1-pow(dx/76,2))
+                q.x=300+dx*(1-0.06*amount)+direction*(4+(center-4)*envelope)
+                depth=18*max(0,1-pow(dx/78,2)-pow(dy/100,2))
+            }
+            q.y=214+dy*cos(b)-depth*sin(b)
+            return q
         }
         let u=min(1,abs(x)/30),v=min(1,abs(y)/30)
         let sx: Float=x<0 ? -30:30,sy: Float=y<0 ? -30:30

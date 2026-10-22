@@ -1,0 +1,29 @@
+{
+  "revision": "v20",
+  "date": "2026-10-22",
+  "prompt": "art/manifests/prompts/live2d/mio-nose-fill-20261022.txt",
+  "sourceAuthoring": [
+    "native/mio-companion/Sources/MioCore/FaceRig.swift",
+    "native/mio-companion/Sources/MioCore/HeadParts.swift",
+    "native/mio-companion/Sources/MioCubismBake/main.swift"
+  ],
+  "sourceParts": 58,
+  "parameters": 38,
+  "headScale": 0.736,
+  "files": {
+    "art/live2d/mio/cubism/Mio.cmo3": "9c6bc8ce508182e4df74a23c51e61c1bfb13e46f843d6ba327aada7aba2bae57",
+    "art/live2d/mio/cubism/Mio.psd": "13322211824b33785b768bc3530ce270c548e27a6475be73beabb7483a2f4da6",
+    "native/mio-companion/Sources/MioApp/Resources/Mio/face.png": "099116f78553235f8983dd8d29789f39d7f92ef06c4bba7ae8355fcce1e22587",
+    "native/mio-companion/Sources/MioApp/Resources/Mio/face_nose_fill.png": "22a39d5fc188dd7518111a6d0fb7cf6dbd458fb3420dbf1ebb0f1417b9f67eb2",
+    "native/mio-companion/Sources/MioApp/Resources/MioCubism/Mio.moc3": "56481933ccaf760c3aba7dfe6411f1560b384243afa917d270286697768fbbdb"
+  },
+  "verification": "evidence/mio_head_volume_20261022/verification.json",
+  "notes": "Only generated skin under the independent nose is used. Original eyes, mouth and head proportions retained. Hand and sleeve bindings remain v19.",
+  "psdStorage": {
+    "compression": "PSD PackBits lossless",
+    "beforeBytes": 177005374,
+    "afterBytes": 6980788,
+    "identicalDecodedPlanes": 232,
+    "runtimeFilesIdenticalAfterOfficialReexport": 24
+  }
+}

@@ -24,7 +24,12 @@ var layers: [SourceRig.Layer] = []
 let faceParts = try JSONDecoder().decode([SourceRig.Layer].self,from:Data(contentsOf:resources.appendingPathComponent("Face.parts.json")))
 let mouthParts = try JSONDecoder().decode([SourceRig.Layer].self,from:Data(contentsOf:resources.appendingPathComponent("Mouth.parts.json")))
 for layer in source.layers {
-    if layer.group == "eyes_open" { layers += faceParts }
+    if layer.id == "face" {
+        for name in ["ear_right","ear_left","face","nose"] {
+            var part=layer;part.id=name;part.component=name
+            layers.append(part)
+        }
+    } else if layer.group == "eyes_open" { layers += faceParts }
     else if layer.group == "mouth_closed" { layers += mouthParts }
     else if !["eyes_closed","mouth_open"].contains(layer.group) { layers.append(layer) }
 }
@@ -205,7 +210,7 @@ for (order,layer) in layers.enumerated() {
                     p = FaceParts.mouthPoint(p,form:values["ParamMouthForm"] ?? 0,round:values["ParamMouthRound"] ?? 0,
                         open:layer.group == "mouth_open" ? values["ParamMouthOpenY"] ?? 0:nil,part:layer.component!)
                 }
-                p = FaceRig.turn(p,x:values["ParamAngleX"] ?? 0,y:values["ParamAngleY"] ?? 0,group:layer.id.hasPrefix("hair_front") ? "hair_front":layer.id)
+                p = FaceRig.turn(p,x:values["ParamAngleX"] ?? 0,y:values["ParamAngleY"] ?? 0,group:layer.id)
                 // Small-angle source keyforms preserve neutral identity.
                 if layer.group == "hair" {
                     let sway = values[layer.id == "hair_back" ? "ParamHairBack" : "ParamHairFront"] ?? 0
@@ -264,6 +269,12 @@ extension Data {
     mutating func ascii(_ s: String) { append(contentsOf:s.utf8) }
 }
 let width = 750,height = 1000,pixelCount = width*height
+let fillImage=CGImageSourceCreateImageAtIndex(CGImageSourceCreateWithURL(resources.appendingPathComponent("face_nose_fill.png") as CFURL,nil)!,0,nil)!
+var noseFill=[UInt8](repeating:0,count:302*318*4)
+noseFill.withUnsafeMutableBytes { ptr in
+    let context=CGContext(data:ptr.baseAddress,width:302,height:318,bitsPerComponent:8,bytesPerRow:302*4,space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue)!
+    context.draw(fillImage,in:CGRect(x:0,y:0,width:302,height:318))
+}
 let rasters: [(SourceRig.Layer,[UInt8])] = layers.reversed().map { layer in
     let image = CGImageSourceCreateImageAtIndex(CGImageSourceCreateWithURL(resources.appendingPathComponent(layer.texture) as CFURL,nil)!,0,nil)!
     var pixels = [UInt8](repeating:0,count:pixelCount*4)
@@ -283,7 +294,20 @@ let rasters: [(SourceRig.Layer,[UInt8])] = layers.reversed().map { layer in
             let sx=(Float(x)+0.5-r[0]-75)/r[2]*Float(image.width)
             let sy=(Float(y)+0.5-r[1])/r[3]*Float(image.height)
             var keep=false
-            if layer.group.hasPrefix("hand_") {
+            if layer.group == "head" {
+                let p=SIMD2(sx,sy)
+                keep=HeadParts.contains(p,part:component)
+                if component == "face" {
+                    let weight=HeadParts.fillWeight(p)
+                    if weight>0 {
+                        let j=(max(0,min(317,Int(sy)))*302+max(0,min(301,Int(sx))))*4
+                        for c in 0..<3 { pixels[i+c]=UInt8(Float(pixels[i+c])*(1-weight)+Float(noseFill[j+c])*weight) }
+                    }
+                } else if component == "nose" {
+                    let weight=HeadParts.noseWeight(p)
+                    for c in 0..<4 { pixels[i+c]=UInt8(Float(pixels[i+c])*weight) }
+                }
+            } else if layer.group.hasPrefix("hand_") {
                 let point=SIMD2(Float(x)+0.5-75,Float(y)+0.5),left=layer.group.hasSuffix("_left")
                 if let owner=FingerParts.owner(point,left:left) {
                     keep=component == "finger_"+String(owner) || (component == "palm" && FingerParts.rootOverlap(point,index:owner,left:left))
@@ -323,17 +347,52 @@ func plane(_ pixels: [UInt8],_ channel: Int) -> Data {
     }
     return result
 }
+// PSD PackBits compresses each scanline independently. Full-canvas transparent
+// layers otherwise add three megabytes apiece despite containing tiny parts.
+// Keep the composite raw; only layer storage changes, never channel samples.
+func packedPlane(_ pixels: [UInt8],_ channel: Int) -> Data {
+    let raw=[UInt8](plane(pixels,channel))
+    var lengths=Data(),payload=Data()
+    for row in 0..<height {
+        let end=(row+1)*width
+        var i=row*width,packed=Data()
+        func run(_ at: Int) -> Int {
+            var n=1
+            while at+n<end && n<128 && raw[at+n] == raw[at] { n+=1 }
+            return n
+        }
+        while i<end {
+            let n=run(i)
+            if n>=3 {
+                packed.append(UInt8(257-n));packed.append(raw[i]);i+=n
+            } else {
+                let start=i;i+=n
+                while i<end && i-start<128 {
+                    let next=run(i)
+                    if next>=3 { break }
+                    i+=min(next,128-(i-start))
+                }
+                packed.append(UInt8(i-start-1));packed.append(contentsOf:raw[start..<i])
+            }
+        }
+        lengths.u16(packed.count);payload.append(packed)
+    }
+    var result=Data();result.u16(1);result.append(lengths);result.append(payload)
+    return result
+}
+let packedChannels=rasters.map { _,pixels in (0..<4).map { packedPlane(pixels,$0) } }
 var info = Data();info.u16(rasters.count)
-for (layer,_) in rasters {
+for (index,raster) in rasters.enumerated() {
+    let layer=raster.0
     info.u32(0);info.u32(0);info.u32(height);info.u32(width);info.u16(4)
-    for channel in [0,1,2,-1] { info.u16(channel&65535);info.u32(2+pixelCount) }
+    for (c,channel) in [0,1,2,-1].enumerated() { info.u16(channel&65535);info.u32(packedChannels[index][c].count) }
     info.ascii("8BIMnorm");info.append(contentsOf:[255,0,layer.defaultVisible == false || layer.group.hasPrefix("eyes_closed") || layer.group == "mouth_open" ? 2 : 0,0])
     var extra = Data();extra.u32(0);extra.u32(0)
     let name = Array(layer.id.utf8);extra.append(UInt8(name.count));extra.append(contentsOf:name)
     while extra.count%4 != 0 { extra.append(0) }
     info.u32(extra.count);info.append(extra)
 }
-for (_,pixels) in rasters { for channel in 0..<4 { info.u16(0);info.append(plane(pixels,channel)) } }
+for channels in packedChannels { for channel in channels { info.append(channel) } }
 if info.count%2 != 0 { info.append(0) }
 var mask = Data();mask.u32(info.count);mask.append(info);mask.u32(0)
 var resolution = Data();resolution.ascii("8BIM");resolution.u16(1005);resolution.u16(0);resolution.u32(16)

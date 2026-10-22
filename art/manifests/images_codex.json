@@ -4294,6 +4294,16 @@
       "purpose": "Dorsal paired fists for encouragement: palms toward character, four curled fingers behind knuckles; preserve anatomical left/right and straight wrist",
       "generated_output": "exec-21d2912c-33b0-4ff0-b5cb-466ff5c69439.png",
       "sha256": "573f61dcb7026e70b27a2ee7bd91ac24a8934e00ee5cf5c8a84b861bb8ad4c14"
+    },
+    {
+      "file": "native/mio-companion/Sources/MioApp/Resources/Mio/face_nose_fill.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "prompt": "art/manifests/prompts/live2d/mio-nose-fill-20261022.txt",
+      "reference": "native/mio-companion/Sources/MioApp/Resources/Mio/face.png",
+      "purpose": "Local skin fill beneath independently moving nose; apply only feathered 26x30 source-pixel patch, preserve original facial artwork elsewhere",
+      "generated_output": "exec-6c85778e-9c21-4953-b1ed-ae47015a44b0.png",
+      "sha256": "22a39d5fc188dd7518111a6d0fb7cf6dbd458fb3420dbf1ebb0f1417b9f67eb2"
     }
   ]
 }

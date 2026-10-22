@@ -1,0 +1,5 @@
+Edit this isolated anime character face-skin source layer for a Live2D rig. Keep precisely the same front-facing oval silhouette, pointed soft chin, ears, neck, peach skin tones, blush, fine brown outlines, original flat anime shading and transparent background. There are intentionally NO eyes, NO eyebrows, NO mouth and NO hair; do not add any. Make only one small local correction: remove the small white nose-tip oval highlight at the center of the lower face and fill its former location seamlessly with the adjacent peach skin/blush. All other source artwork and proportions must remain unchanged. This is a technical inpainting layer, not a redesign. Preserve both existing ears exactly. Output a single transparent PNG, centered and aligned to the reference.
+
+Reference: native/mio-companion/Sources/MioApp/Resources/Mio/face.png
+Tool: built-in imagegen; transparent_background=true
+Use: only a feathered 26 x 30 source-pixel patch under the separated nose. Original ears, contour, eyes and mouth are retained; the generated full face is not substituted.
