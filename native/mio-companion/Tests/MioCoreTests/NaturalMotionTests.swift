@@ -30,12 +30,14 @@ final class NaturalMotionTests: XCTestCase {
             let cheekMid=try (point(245,214,face)+point(355,214,face))/2
             let originalCheekMid=try (point(245,214,front)+point(355,214,front))/2
             let sideShift=cheekMid-originalCheekMid
-            XCTAssertGreaterThan(centerShift.x*(yaw>0 ? 1:-1),14,"The face must visibly turn toward the requested side")
-            XCTAssertGreaterThan(abs(centerShift.x-sideShift.x),5,"A rigid sideways slide does not provide face perspective")
+            // A readable small turn does not require moving the whole face
+            // 14+ pixels away from its neck (the rejected v20 behavior).
+            XCTAssertGreaterThan(centerShift.x*(yaw>0 ? 1:-1),8,"The face must visibly turn toward the requested side")
+            XCTAssertGreaterThan(abs(centerShift.x-sideShift.x),3,"A rigid sideways slide does not provide face perspective")
             let leftWidth=try point(286,205,face).x-point(268,205,face).x
             let rightWidth=try point(332,205,face).x-point(314,205,face).x
             let ratio=yaw>0 ? rightWidth/leftWidth:leftWidth/rightWidth
-            XCTAssertTrue((0.60...0.85).contains(ratio),"Near/far facial widths must reflect yaw without collapsing the eye: \(ratio)")
+            XCTAssertTrue((0.78...0.96).contains(ratio),"A moderate turn needs mild facial perspective without crushing the far side: \(ratio)")
             let eyeLine=try point(323,205,face).y-point(277,205,face).y
             XCTAssertEqual(eyeLine,0,accuracy:0.1,"Pure horizontal yaw keeps the eye line level")
         }

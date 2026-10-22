@@ -25,7 +25,8 @@ public struct PuppetMotion: Sendable {
     public init(pose: RigPose) {
         let t = pose.time
         torso = pose.sway * 0.012
-        head = Float(sin(t * 0.72 - 0.5)) * 0.022
+        // Resting attention turns the face; roll belongs to explicit gestures.
+        head = 0
         let attention = FaceRig.attention(t-0.12)
         headShift = SIMD2((pose.lookX+attention.x)*3, -(pose.lookY+attention.y)*3 + Float(sin(t * 1.8 - 0.4)) * 1.2)
         leftShoulder = Float(sin(t * 1.15)) * 0.018
@@ -161,7 +162,7 @@ public struct PuppetMotion: Sendable {
         return pivot + SIMD2(q.x * cos(angle) - q.y * sin(angle), q.x * sin(angle) + q.y * cos(angle))
     }
     public func headPoint(_ point: SIMD2<Float>) -> SIMD2<Float> {
-        Self.rotate(FaceRig.turn(point,x:headShift.x*10,y:-headShift.y*4), around: SIMD2(300, 305), by: head) + headShift
+        Self.rotate(FaceRig.turn(point,x:headShift.x*10,y:-headShift.y*4), around: SIMD2(300, 305), by: head) + SIMD2(0,headShift.y*0.32)
     }
     public func neckPoint(_ point: SIMD2<Float>) -> SIMD2<Float> {
         let influence = 1 - Self.smooth(272, 310, point.y)

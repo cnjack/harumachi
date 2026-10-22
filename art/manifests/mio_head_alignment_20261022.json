@@ -1,0 +1,18 @@
+{
+  "revision": "v21",
+  "date": "2026-10-22",
+  "reason": "User rejected v20 neck shear and eye-line roll",
+  "sourceArtworkChanged": false,
+  "sourceFiles": [
+    "art/tools/live2d/MioBindings.java",
+    "native/mio-companion/Sources/MioCore/FaceRig.swift",
+    "native/mio-companion/Sources/MioCore/PuppetMotion.swift"
+  ],
+  "sourceModel": "art/live2d/mio/cubism/Mio.cmo3",
+  "sourceModelSha256": "c1dddf21805805ef0a37fce1d552c84d5a5518e4d216c7862ebed83e6154a66c",
+  "mocSha256": "1ce1bdb7758c0ca5c2caa9212cb59361ebc552216663e58d1c4e6e04388d88aa",
+  "parameters": 38,
+  "artMeshes": 58,
+  "evidence": "evidence/mio_head_alignment_20261022",
+  "visualReview": "35 fixed angles, five gestures and extreme looks inspected; user acceptance remains separate"
+}

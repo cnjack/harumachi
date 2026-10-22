@@ -91,7 +91,6 @@ public struct MotionLibrary {
         m.torsoLift=values["ParamTorsoLift"] ?? 0
         if gesture != .think {
             m.head=(values["ParamAngleZ"] ?? 0)*Float.pi/180
-            m.head += Float(sin(pose.time*0.72-0.5)-sin(time*0.72-0.5))*0.022
         }
         return m
     }

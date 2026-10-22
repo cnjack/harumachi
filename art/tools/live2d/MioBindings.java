@@ -131,7 +131,7 @@ public final class MioBindings {
       float angle=values[0];
       if(name.equals("Body")) {
         double radians=Math.toRadians(angle);float lift=values[1];form.setOriginX(375+(float)Math.sin(radians)*lift);form.setOriginY(432-(float)Math.cos(radians)*lift);
-      } else if(name.equals("Head")) { form.setOriginX(values[1]*0.1f);form.setOriginY(-127-values[2]*0.25f); }
+      } else if(name.equals("Head")) { form.setOriginX(0);form.setOriginY(-127-values[2]*0.08f); }
       else {
         boolean left=name.endsWith("L");
         if(name.startsWith("Shoulder")){

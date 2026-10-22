@@ -29,14 +29,14 @@ public enum FaceRig {
             var q=p,depth: Float=18
             if group == "hair_back" {
                 // The back of the skull stays broad and travels behind the face.
-                q.x=300+dx*(1+0.01*amount)-direction*4
+                q.x=300+dx*(1+0.01*amount)-direction*2
                 depth = -8
             } else if group.hasPrefix("hair_front") {
                 // Crown and side locks share an identical root shape. Lower
                 // locks wrap around the far cheek instead of sliding with it.
-                let crown=2+9*max(0,1-pow(dx/95,2))
+                let crown=2+6*max(0,1-pow(dx/95,2))
                 let near=dx*direction<0
-                let wrap: Float=near ? -2:7
+                let wrap: Float=near ? -1:5
                 let lower=PuppetMotion.smooth(200,270,p.y)
                 q.x=300+dx*(1-0.01*amount)+direction*(crown*(1-lower)+wrap*lower)
                 depth=12*max(0,1-pow(dx/105,2))
@@ -45,30 +45,30 @@ public enum FaceRig {
                 let near=(cx-300)*direction<0
                 let scale: Float=near ? 1:0.68
                 let rootScale: Float=near ? 0.94:0.90
-                q.x=300+(cx-300)*(1+(rootScale-1)*amount)+(p.x-cx)*(1+(scale-1)*amount)+direction*(near ? 14:-4)
+                q.x=300+(cx-300)*(1+(rootScale-1)*amount)+(p.x-cx)*(1+(scale-1)*amount)+direction*(near ? 8:-4)
                 depth = -2
             } else if group.hasPrefix("eyes_") || group.hasPrefix("brow_") {
                 let cx: Float=group.hasSuffix("_left") ? 323:277
                 let near=(cx-300)*direction<0
                 // Preserve the round source eye. Perspective belongs to the
                 // socket placement; the far eye itself is only mildly narrower.
-                let scale: Float=near ? 1.02:0.88
-                q.x=300+(cx-300)*(1-0.07*amount)+direction*12+(p.x-cx)*(1+(scale-1)*amount)
+                let scale: Float=near ? 1:0.94
+                q.x=300+(cx-300)*(1-0.035*amount)+direction*11+(p.x-cx)*(1+(scale-1)*amount)
                 depth=25
             } else if group == "nose" {
-                q.x=300+dx*(1-0.17*amount)+direction*23
+                q.x=300+dx*(1-0.10*amount)+direction*15
                 depth=34
             } else if group.hasPrefix("mouth_") {
-                q.x=300+dx*(1-0.09*amount)+direction*18.5
+                q.x=300+dx*(1-0.05*amount)+direction*10
                 depth=24
             } else {
                 // Cheek and jaw key shape: broad near cheek, short far cheek,
                 // turning chin and a stable neck attachment, not a flat oval.
                 let cheek=PuppetMotion.smooth(155,209,p.y)
                 let jaw=PuppetMotion.smooth(235,269,p.y)
-                let center=4+14*cheek-4*jaw
+                let center=3+9*cheek-6*jaw
                 let envelope=max(0,1-pow(dx/76,2))
-                q.x=300+dx*(1-0.06*amount)+direction*(4+(center-4)*envelope)
+                q.x=300+dx*(1-0.035*amount)+direction*(3+(center-3)*envelope)
                 depth=18*max(0,1-pow(dx/78,2)-pow(dy/100,2))
             }
             q.y=214+dy*cos(b)-depth*sin(b)
