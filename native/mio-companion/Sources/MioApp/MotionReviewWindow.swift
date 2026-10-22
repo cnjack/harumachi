@@ -91,12 +91,14 @@ import MioCore
                     "leftWristY":wrist(true).y,"rightWristY":wrist(false).y]
                 if name.hasPrefix("look-") {
                     let values=CubismParameters.values(pose:renderer.pose,motion:motion)
-                    let yaw=values["ParamAngleX"]!,roll=values["ParamAngleZ"]!
+                    let yaw=values["ParamAngleX"]!,roll=values["ParamAngleZ"]!,bodyYaw=values["ParamBodyAngleX"]!
                     poseMeasurements[name]?["lookX"]=renderer.pose.lookX
                     poseMeasurements[name]?["yaw"]=yaw;poseMeasurements[name]?["roll"]=roll
+                    poseMeasurements[name]?["bodyYaw"]=bodyYaw
                     let target: Float=name == "look-left" ? -1:name == "look-right" ? 1:0
                     poseChecks[name] = abs(renderer.pose.lookX-target)<0.01 && abs(roll)<2
                         && (target == 0 ? abs(yaw)<11:yaw*target>20)
+                        && abs(bodyYaw)<=6.001 && (target == 0 ? abs(bodyYaw)<2.2:bodyYaw*target>4)
                 } else if name == "idle" {
                     let left = wrist(true),right = wrist(false)
                     poseChecks[name] = hand.variant == "relaxed" && left.y > 525 && right.y > 525

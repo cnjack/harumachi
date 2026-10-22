@@ -23,6 +23,7 @@ public final class MioBindings {
   private static CModelSource model;
   private static Map<String,CParameterSource> parameters;
   private static Map<String,CRotationDeformerSource> deformers;
+  private static Map<String,float[]> bodyAttachments;
   private static CoordType local,canvas;
   private static float number(Object value) { return ((Number)value).floatValue(); }
   private static float[] floats(List<?> values) {
@@ -35,6 +36,8 @@ public final class MioBindings {
   public static void apply(CModelSource source,Path directory) throws Exception {
     model=source;
     Map<String,Object> data=(Map<String,Object>)new JSONParser().parse(Files.readString(directory.resolve("bake.json")));
+    bodyAttachments=new HashMap<>();
+    for(var entry:((Map<String,List<?>>)data.get("bodyAttachments")).entrySet())bodyAttachments.put(entry.getKey(),floats(entry.getValue()));
     ByteBuffer positions=ByteBuffer.wrap(Files.readAllBytes(directory.resolve("forms.bin"))).order(ByteOrder.LITTLE_ENDIAN);
     local=(CoordType)CoordType.class.getMethod("b").invoke(null);
     canvas=(CoordType)CoordType.class.getMethod("c").invoke(null);
@@ -48,10 +51,10 @@ public final class MioBindings {
     source.getParameterSourceSet().updateMap();source.updateParamInstance(true);
     if(source.getAllParameters().size()!=parameters.size())throw new IllegalStateException("Parameter tree registration failed");
     rotation("Body","",new String[]{"ParamBodyAngleZ","ParamTorsoLift"},new float[][]{{-3,0,3},{0,5}});
-    rotation("Head","Body",new String[]{"ParamAngleZ","ParamAngleX","ParamAngleY"},new float[][]{{-12,0,12},{-30,0,30},{-30,0,30}});
+    rotation("Head","Body",new String[]{"ParamAngleZ","ParamAngleX","ParamAngleY","ParamBodyAngleX"},new float[][]{{-12,0,12},{-30,0,30},{-30,0,30},{-10,0,10}});
     float[] shoulderKeys=new float[45];for(int i=0;i<45;i++)shoulderKeys[i]=(i-22)/10f;
-    rotation("ShoulderL","Body",new String[]{"ParamShoulderL"},new float[][]{shoulderKeys});
-    rotation("ShoulderR","Body",new String[]{"ParamShoulderR"},new float[][]{shoulderKeys});
+    rotation("ShoulderL","Body",new String[]{"ParamShoulderL","ParamBodyAngleX"},new float[][]{shoulderKeys,{-10,0,10}});
+    rotation("ShoulderR","Body",new String[]{"ParamShoulderR","ParamBodyAngleX"},new float[][]{shoulderKeys,{-10,0,10}});
     rotation("ElbowL","ShoulderL",new String[]{"ParamElbowL"},new float[][]{{0,0.04f,1.6f}});
     rotation("ElbowR","ShoulderR",new String[]{"ParamElbowR"},new float[][]{{-2.9f,-0.04f,0,3.1f}});
     rotation("WristL","ElbowL",new String[]{"ParamWristL"},new float[][]{{-0.2f,0,0.2f}});
@@ -131,7 +134,7 @@ public final class MioBindings {
       float angle=values[0];
       if(name.equals("Body")) {
         double radians=Math.toRadians(angle);float lift=values[1];form.setOriginX(375+(float)Math.sin(radians)*lift);form.setOriginY(432-(float)Math.cos(radians)*lift);
-      } else if(name.equals("Head")) { form.setOriginX(0);form.setOriginY(-127-values[2]*0.08f); }
+      } else if(name.equals("Head")) { form.setOriginX(bodyOffset("head",values[3]));form.setOriginY(-127-values[2]*0.08f); }
       else {
         boolean left=name.endsWith("L");
         if(name.startsWith("Shoulder")){
@@ -142,7 +145,7 @@ public final class MioBindings {
           float a=Math.max(0,Math.min(1,(outward+0.65f)/0.17f));
           float b=Math.max(0,Math.min(1,(outward+0.3f)/0.22f));
           float resting=a*a*(3-2*a)*(1-b*b*(3-2*b));
-          form.setOriginX((left?-69:69)+(left?12:-12)*raised);
+          form.setOriginX((left?-69:69)+(left?12:-12)*raised+bodyOffset(left?"left":"right",values[1]));
           form.setOriginY(-112-7*resting-20*raised);
         }
         else if(name.startsWith("Elbow")){form.setOriginX(left?-58:58);form.setOriginY(98);}
@@ -153,6 +156,10 @@ public final class MioBindings {
     }
     List<Pair<CParameterGuid,float[]>> keySpecs=new ArrayList<>();for(int i=0;i<ids.length;i++)keySpecs.add(new Pair<>(parameters.get(ids[i]).getGuid(),keys[i]));
     grid(deformer,keySpecs,guids);deformers.put(name,deformer);
+  }
+  private static float bodyOffset(String part,float yaw) {
+    float[] positions=bodyAttachments.get(part);
+    return positions[1]+(positions[yaw<0?0:2]-positions[1])*Math.min(1,Math.abs(yaw)/10);
   }
   private static void opacityPart(CArtMeshSource mesh,String id,float[] keys,float[] values) throws Exception {
     CRotationDeformerSource visibility=new CRotationDeformerSource(model);

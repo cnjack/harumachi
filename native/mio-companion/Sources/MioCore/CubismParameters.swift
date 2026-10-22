@@ -7,7 +7,7 @@ public enum CubismParameters {
             return PuppetMotion.smooth(0.8,1,max(w.x,w.y,w.z,w.w,left ? m.leftFist : m.rightFist,left ? 0 : m.rightChin))
         }
         return ["ParamAngleX":m.headShift.x*10,"ParamAngleY":-m.headShift.y*4,
-            "ParamAngleZ":m.head*180 / .pi,"ParamBodyAngleZ":m.torso*180 / .pi,
+            "ParamAngleZ":m.head*180 / .pi,"ParamBodyAngleZ":m.torso*180 / .pi,"ParamBodyAngleX":m.torsoYaw,
             "ParamBreath":(pose.breath+1)/2,"ParamEyeLOpen":1-pose.blink,
             "ParamEyeROpen":1-pose.blink,"ParamMouthOpenY":pose.mouthAmount,
             "ParamEyeBallX":max(-1,min(1,pose.lookX+FaceRig.attention(pose.time).x)),

@@ -3,6 +3,7 @@ import Foundation
 public struct PuppetMotion: Sendable {
     public var torso: Float = 0
     public var torsoLift: Float = 0
+    public var torsoYaw: Float = 0
     public var head: Float = 0
     public var headShift = SIMD2<Float>.zero
     public var leftShoulder: Float = 0
@@ -29,6 +30,7 @@ public struct PuppetMotion: Sendable {
         head = 0
         let attention = FaceRig.attention(t-0.12)
         headShift = SIMD2((pose.lookX+attention.x)*3, -(pose.lookY+attention.y)*3 + Float(sin(t * 1.8 - 0.4)) * 1.2)
+        torsoYaw = BodyRig.follow(headYaw:headShift.x*10)
         leftShoulder = Float(sin(t * 1.15)) * 0.018
         rightShoulder = Float(sin(t * 1.15 + 0.7)) * 0.018
         leftElbow = 0.04; rightElbow = -0.04
@@ -71,7 +73,7 @@ public struct PuppetMotion: Sendable {
             // Solve the two painted sleeve pieces against the actual index
             // tip, keeping contact as the head tilts and follows the pointer.
             let shoulder = SIMD2<Float>(369,320), elbow = SIMD2<Float>(427,418)
-            let target = headPoint(SIMD2(300,268))+SIMD2(1,1)
+            let target = BodyRig.turn(headPoint(SIMD2(300,268))+SIMD2(1,1),yaw:torsoYaw)
             let upper = elbow-shoulder,lower = Self.thinkingFinger-elbow
             let l1 = sqrt(upper.x*upper.x+upper.y*upper.y),l2 = sqrt(lower.x*lower.x+lower.y*lower.y)
             let offset = atan2(lower.y,lower.x)-atan2(upper.y,upper.x)
@@ -79,7 +81,7 @@ public struct PuppetMotion: Sendable {
             // Solve against the placed shoulder, including its small garment
             // lift. Re-evaluate because placement depends on shoulder angle.
             for _ in 0..<48 {
-                let placed = shoulder+SIMD2(-Self.shoulderInset(-solvedShoulder),-Self.shoulderLift(-solvedShoulder))
+                let placed = shoulder+SIMD2(-Self.shoulderInset(-solvedShoulder),-Self.shoulderLift(-solvedShoulder))+BodyRig.shoulderOffset(left:false,yaw:torsoYaw)
                 let reach = target-placed
                 let cosine = max(-1,min(1,(reach.x*reach.x+reach.y*reach.y-l1*l1-l2*l2)/(2*l1*l2)))
                 angle = acos(cosine)-offset
@@ -138,6 +140,7 @@ public struct PuppetMotion: Sendable {
         var result = self
         result.torso = mix(previous.torso, torso)
         result.torsoLift = mix(previous.torsoLift,torsoLift)
+        result.torsoYaw = mix(previous.torsoYaw,torsoYaw)
         result.head = mix(previous.head, head)
         result.headShift = previous.headShift + (headShift - previous.headShift) * t
         result.leftShoulder = mix(previous.leftShoulder, leftShoulder)
@@ -169,7 +172,7 @@ public struct PuppetMotion: Sendable {
         return point + (headPoint(point) - point) * influence
     }
     public func torsoPoint(_ point: SIMD2<Float>, influence: Float = 1) -> SIMD2<Float> {
-        var p = point
+        var p = BodyRig.turn(point,yaw:torsoYaw)
         p.y -= torsoLift*(1-Self.smooth(310,650,p.y))*influence
         return Self.rotate(p, around: SIMD2(300, 432), by: torso * influence)
     }
@@ -200,7 +203,7 @@ public struct PuppetMotion: Sendable {
         let outward = left ? shoulderAngle:-shoulderAngle
         let lift = Self.shoulderLift(outward)
         let inset = Self.shoulderInset(outward)*(left ? 1:-1)
-        return Self.rotate(p+SIMD2(inset,-torsoLift-lift),around:SIMD2(300,432),by:torso)
+        return Self.rotate(p+SIMD2(inset,-torsoLift-lift)+BodyRig.shoulderOffset(left:left,yaw:torsoYaw),around:SIMD2(300,432),by:torso)
     }
     public static func shoulderLift(_ outwardAngle: Float) -> Float {
         // Raise the resting sleeve to the garment shoulder, preserving the

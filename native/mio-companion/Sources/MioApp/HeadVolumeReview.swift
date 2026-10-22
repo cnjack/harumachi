@@ -12,7 +12,7 @@ enum HeadVolumeReview {
         let core=renderer.cubism!.model
         var samples: [[String:Any]]=[]
         for y: Float in [-30,-15,0,15,30] { for x: Float in [-30,-20,-10,0,10,20,30] {
-            renderer.cubism!.reviewParameters=["ParamAngleX":x,"ParamAngleY":y,"ParamAngleZ":0,"ParamBodyAngleZ":0,
+            renderer.cubism!.reviewParameters=["ParamAngleX":x,"ParamAngleY":y,"ParamAngleZ":0,"ParamBodyAngleZ":0,"ParamBodyAngleX":0,
                 "ParamEyeBallX":0,"ParamEyeBallY":0,"ParamHairFront":0,"ParamHairBack":0,"ParamHairSideL":0,"ParamHairSideR":0,
                 "ParamEyeLOpen":1,"ParamEyeROpen":1,"ParamMouthOpenY":0]
             let name="head-\(Int(x))-\(Int(y)).png"

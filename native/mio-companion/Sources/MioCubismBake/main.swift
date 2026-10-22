@@ -60,6 +60,7 @@ for layer in articulated {
 let parameters: [Parameter] = [
     .init(id:"ParamAngleX",min:-30,max:30,value:0),.init(id:"ParamAngleY",min:-30,max:30,value:0),
     .init(id:"ParamAngleZ",min:-12,max:12,value:0),.init(id:"ParamBodyAngleZ",min:-3,max:3,value:0),
+    .init(id:"ParamBodyAngleX",min:-10,max:10,value:0),
     .init(id:"ParamBreath",min:0,max:1,value:0.5),
     .init(id:"ParamEyeLOpen",min:0,max:1.12,value:1),.init(id:"ParamEyeROpen",min:0,max:1.12,value:1),
     .init(id:"ParamMouthOpenY",min:0,max:1,value:0),
@@ -84,7 +85,7 @@ let defaults = Dictionary(uniqueKeysWithValues:parameters.map { ($0.id,$0.value)
 let degree = Float.pi/180
 func poseMotion(_ values: [String:Float]) -> PuppetMotion {
     var m = PuppetMotion(pose:RigPose(time:0,gesture:.idle))
-    m.torso = 0;m.torsoLift = 0;m.head = 0;m.headShift = .zero
+    m.torso = 0;m.torsoLift = 0;m.torsoYaw = 0;m.head = 0;m.headShift = .zero
     m.leftShoulder = 0;m.rightShoulder = 0;m.leftElbow = values["ParamElbowL"] ?? 0.04
     m.rightElbow = values["ParamElbowR"] ?? -0.04
     m.leftWrist = values["ParamWristL"] ?? 0;m.rightWrist = values["ParamWristR"] ?? 0
@@ -152,11 +153,11 @@ for (order,layer) in layers.enumerated() {
         }
     } else if layer.group == "lower_body" {
         parent = "";pivot = .zero
-        bindings = [("ParamBodyAngleZ",[-3,-2,-1,0,1,2,3]),("ParamTorsoLift",[0,5])]
+        bindings = [("ParamBodyAngleZ",[-3,-2,-1,0,1,2,3]),("ParamTorsoLift",[0,5]),("ParamBodyAngleX",[-10,0,10])]
     } else if layer.group == "thought_cloud" {
-        bindings = [("ParamAngleX",[-30,0,30]),("ParamAngleY",[-30,0,30]),("ParamAngleZ",[-12,0,12])]
+        bindings = [("ParamAngleX",[-30,0,30]),("ParamAngleY",[-30,0,30]),("ParamAngleZ",[-12,0,12]),("ParamBodyAngleX",[-10,0,10])]
     } else if layer.group == "torso" {
-        bindings = [("ParamAngleZ",[-12,-6,0,6,12]),("ParamAngleX",[-30,0,30]),("ParamAngleY",[-30,0,30]),("ParamBreath",[0,0.5,1]),("ParamTorsoLift",[0,5])]
+        bindings = [("ParamAngleZ",[-12,-6,0,6,12]),("ParamAngleX",[-30,0,30]),("ParamAngleY",[-30,0,30]),("ParamBreath",[0,0.5,1]),("ParamTorsoLift",[0,5]),("ParamBodyAngleX",[-10,0,10])]
     }
     let columns = hand ? 12 : (arm ? 24 : (head ? 16 : 20))
     let rows = hand ? 32 : (head ? 32 : 64)
@@ -222,9 +223,11 @@ for (order,layer) in layers.enumerated() {
                 // Head translation is authored on its parent rotation deformer.
             } else if layer.group == "lower_body" {
                 var lower = motion;lower.torso = (values["ParamBodyAngleZ"] ?? 0)*degree;lower.torsoLift = values["ParamTorsoLift"] ?? 0
+                lower.torsoYaw = values["ParamBodyAngleX"] ?? 0
                 p = lower.lowerBodyPoint(p)
             } else if layer.group == "thought_cloud" {
                 p += SIMD2((values["ParamAngleX"] ?? 0)*0.1+(values["ParamAngleZ"] ?? 0)*degree*30,-(values["ParamAngleY"] ?? 0)*0.25)
+                p.x += BodyRig.turn(SIMD2(300,305),yaw:values["ParamBodyAngleX"] ?? 0).x-300
             } else if layer.group == "torso" {
                 let breath = ((values["ParamBreath"] ?? 0.5)-0.5)*2
                 let upper = max(0,min(1,(750-p.y)/500))
@@ -232,6 +235,7 @@ for (order,layer) in layers.enumerated() {
                 var neck = motion;neck.head = (values["ParamAngleZ"] ?? 0)*degree
                 neck.headShift = SIMD2((values["ParamAngleX"] ?? 0)*0.1,-(values["ParamAngleY"] ?? 0)*0.25)
                 p = neck.neckPoint(p)
+                p = BodyRig.turn(p,yaw:values["ParamBodyAngleX"] ?? 0)
                 p.y += (values["ParamTorsoLift"] ?? 0)*PuppetMotion.smooth(310,650,p.y)
             }
             positions += [p.x+75-pivot.x,p.y-pivot.y]
@@ -259,7 +263,11 @@ let anchors = descriptions.map { spec -> [String:Any] in
 try JSONSerialization.data(withJSONObject:["meshes":anchors],options:[.prettyPrinted,.sortedKeys]).write(to:out.appendingPathComponent("Mio.bindings.json"))
 try binary.write(to:out.appendingPathComponent("forms.bin"))
 let encodedParameters = try JSONSerialization.jsonObject(with:JSONEncoder().encode(parameters))
-try JSONSerialization.data(withJSONObject:["parameters":encodedParameters,"meshes":descriptions,"sourceLayout":source.layoutRevision],options:[.sortedKeys]).write(to:out.appendingPathComponent("bake.json"))
+let bodyAttachments: [String:[Float]] = [
+    "head": [-10,0,10].map { BodyRig.turn(SIMD2(300,305),yaw:Float($0)).x-300 },
+    "left": [-10,0,10].map { BodyRig.shoulderOffset(left:true,yaw:Float($0)).x },
+    "right": [-10,0,10].map { BodyRig.shoulderOffset(left:false,yaw:Float($0)).x }]
+try JSONSerialization.data(withJSONObject:["parameters":encodedParameters,"meshes":descriptions,"sourceLayout":source.layoutRevision,"bodyAttachments":bodyAttachments],options:[.sortedKeys]).write(to:out.appendingPathComponent("bake.json"))
 
 // Produce a conventional RGB/8 PSD with the resolution resource required by
 // Cubism's importer and independent left/right eyelid source layers.

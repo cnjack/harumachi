@@ -22,6 +22,11 @@
       "Name": "ParamBodyAngleZ"
     },
     {
+      "Id": "ParamBodyAngleX",
+      "GroupId": "Mio",
+      "Name": "ParamBodyAngleX"
+    },
+    {
       "Id": "ParamBreath",
       "GroupId": "Mio",
       "Name": "ParamBreath"

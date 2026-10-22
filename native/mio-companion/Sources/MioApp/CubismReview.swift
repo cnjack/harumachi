@@ -25,7 +25,7 @@ enum CubismReview {
             checks.append(["id":parameter.id,"maximumVertexDelta":geometry,"maximumOpacityDelta":opacity])
         }
         try renderer.snapshot(to:directory.appendingPathComponent("default.png"),pose:RigPose(time:0,gesture:.idle))
-        guard core.parameters.count == 38 else { throw CubismModel.Failure(message:"Expected 38 live parameters") }
+        guard core.parameters.count == 39 else { throw CubismModel.Failure(message:"Expected 39 live parameters") }
         for x in [-1,0,1] { for y in [-1,0,1] {
             try renderer.snapshot(to:directory.appendingPathComponent("face-\(x)-\(y).png"),pose:RigPose(time:0,lookX:Float(x),lookY:Float(y),gesture:.idle))
         } }

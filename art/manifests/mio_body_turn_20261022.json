@@ -1,0 +1,27 @@
+{
+  "revision": "v22",
+  "date": "2026-10-22",
+  "reason": "User requested a subtle body turn",
+  "sourceArtworkChanged": false,
+  "sourceFiles": [
+    "native/mio-companion/Sources/MioCore/BodyRig.swift",
+    "native/mio-companion/Sources/MioCore/PuppetMotion.swift",
+    "native/mio-companion/Sources/MioCubismBake/main.swift",
+    "art/tools/live2d/MioBindings.java"
+  ],
+  "sourceModel": "art/live2d/mio/cubism/Mio.cmo3",
+  "sourceModelSha256": "15933b2a31002ad997b280eb0b2a58f7205b834c00df2c1d49517488fa57a25d",
+  "mocSha256": "fd081d0d58edf909664dd2b0982e319c003583e476ee02ecee7f8eb36d93a523",
+  "parameters": 39,
+  "artMeshes": 58,
+  "bodyParameter": "ParamBodyAngleX",
+  "sourceBodyKeys": [
+    -10,
+    0,
+    10
+  ],
+  "dailyBodyLimit": 6,
+  "headFollowRatio": 0.2,
+  "evidence": "evidence/mio_body_turn_20261022",
+  "visualReview": "18 body/head views and five-gesture extreme views inspected; user acceptance remains separate"
+}

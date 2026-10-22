@@ -16,7 +16,7 @@ final class CubismTests: XCTestCase {
     func testStandardMotionCountsAndIDs() throws {
         let display = try JSONSerialization.jsonObject(with:Data(contentsOf:assets.appendingPathComponent("Mio.cdi3.json"))) as! [String:Any]
         let ids = Set((display["Parameters"] as! [[String:Any]]).map { $0["Id"] as! String })
-        XCTAssertEqual(ids.count,38)
+        XCTAssertEqual(ids.count,39)
         for name in ["idle","wave","think","talk","encourage"] {
             let motion = try JSONSerialization.jsonObject(with:Data(contentsOf:assets.appendingPathComponent("motions/\(name).motion3.json"))) as! [String:Any]
             XCTAssertEqual(motion["Version"] as? Int,3)
@@ -54,7 +54,7 @@ final class CubismTests: XCTestCase {
         let core = "/Applications/Live2D Cubism 5.3/res/libLive2DCubismCoreJNI.dylib"
         guard FileManager.default.fileExists(atPath:core) else { throw XCTSkip("Separately installed official Cubism Core required") }
         let model = try CubismModel(manifest:assets.appendingPathComponent("Mio.model3.json"))
-        XCTAssertEqual(model.parameters.count,38);XCTAssertEqual(try model.meshes().count,58)
+        XCTAssertEqual(model.parameters.count,39);XCTAssertEqual(try model.meshes().count,58)
         XCTAssertEqual(model.mocVersion,3)
         for parameter in model.parameters {
             var values: [String:Float] = ["ParamHandOpenL":0,"ParamHandOpenR":0];values[parameter.id]=parameter.minimum

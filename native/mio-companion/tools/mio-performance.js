@@ -142,6 +142,9 @@ export class MioPerformanceController {
     const thoughtTarget=armStep(desired,guarded)>3?0:core.getParameterValueById('ParamThought'),thoughtStep=Math.max(0,Math.min(.1,clock-(this.thoughtTime??clock)))*4;
     this.thoughtTime=clock;this.thought=Math.max(this.thought-thoughtStep,Math.min(this.thought+thoughtStep,thoughtTarget));core.setParameterValueById('ParamThought',this.thought);
     for(const id of ['ParamHandL','ParamHandR'])core.setParameterValueById(id,Math.round(core.getParameterValueById(id)));
+    // The source owns chest perspective and joint attachment. Here we only
+    // couple the standard body parameter to the final horizontal attention.
+    core.setParameterValueById('ParamBodyAngleX',Math.max(-30,Math.min(30,core.getParameterValueById('ParamAngleX')))*.2);
   }
   destroy(){this.model.internalModel.off('afterMotionUpdate',this.faceListener);this.model.internalModel.off('beforeModelUpdate',this.listener);this.model.internalModel.motionManager.off('motionStart',this.motionListener);}
 }
