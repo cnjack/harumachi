@@ -1,6 +1,8 @@
 # 澪 · 晴町桌面来信
 
-2026-10-22 v28：原窗口接入声学唤醒、Silero VAD、本机 Qwen3-ASR、可配置流式 LM、本机 Qwen3-TTS、打断与音频口形。只读工具可查看进程和用户给出的公开网站。真实本机语音与模拟 LM 已贯通；实际 LM 配置、真人麦克风及外放回声仍待验收。方案比较、实测口径和启动方法见[语音管线](../../docs/game-design/MIO_VOICE_PIPELINE_20261022.md)。角色源模型仍为 v27。
+2026-10-23 研究：完成近似全双工方案与隔离对照，建议先补可恢复暂停和话轮控制，保留现有模型。尚未发布这些功能；测量口径、证据和实施顺序见[研究报告](../../docs/game-design/MIO_DUPLEX_RESEARCH_20261023.md)，离线播放器复现见[研究探针](tools/research/README.md)。
+
+2026-10-22 v28：原窗口接入声学唤醒、Silero VAD、本机 Qwen3-ASR、可配置流式 LM、本机 Qwen3-TTS、打断与音频口形。只读工具可查看进程和用户给出的公开网站。本机 ASR/TTS 与 Tencent `deepseek/deepseek-flash` 的真实音频回放已通过；真人麦克风及外放回声仍待验收。方案和启动方法见[语音管线](../../docs/game-design/MIO_VOICE_PIPELINE_20261022.md)，最终真实 LM 结果见[Flash 实测](../../docs/game-design/MIO_VOICE_FLASH_20261022.md)。角色源模型仍为 v27。
 
 2026-10-22 v27：修正衣身与手臂宽度关系，开衫每侧内收调整为 2.5 像素，袖筒与上下肘部衣料统一收窄最多 8%，保留裸露手臂。正式模型与原窗口同步；102 项检查、6,514 动作帧及局部对照见[比例修正](../../docs/game-design/MIO_UPPER_BALANCE_20261022.md)。v26 的比例观感已被用户指出问题。
 
