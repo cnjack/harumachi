@@ -4,6 +4,15 @@ import Foundation
 /// gain perspective, and the lower skirt/legs remain anchored. The three keys
 /// use the same interpolation as the exported Cubism source.
 public enum BodyRig {
+    /// Source-only tailoring of the skirt, before motion keyforms are baked.
+    /// This ArtMesh also contains legs: preserve the waistband and return to
+    /// the original coordinates at its y=690 mesh row above the visible knees.
+    public static func fittedSkirt(_ p: SIMD2<Float>) -> SIMD2<Float> {
+        let hem = PuppetMotion.smooth(450,620,p.y)
+            * (1-PuppetMotion.smooth(671.75,690,p.y))
+        return SIMD2(300+(p.x-300)*(1-0.06*hem),p.y)
+    }
+
     public static func turn(_ p: SIMD2<Float>, yaw: Float) -> SIMD2<Float> {
         let amount=min(1,abs(yaw)/10),a: Float=(yaw<0 ? -10:10) * .pi / 180
         let chest=PuppetMotion.smooth(310,345,p.y)

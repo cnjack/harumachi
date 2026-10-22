@@ -227,7 +227,7 @@ for (order,layer) in layers.enumerated() {
             } else if layer.group == "lower_body" {
                 var lower = motion;lower.torso = (values["ParamBodyAngleZ"] ?? 0)*degree;lower.torsoLift = values["ParamTorsoLift"] ?? 0
                 lower.torsoYaw = values["ParamBodyAngleX"] ?? 0
-                p = lower.lowerBodyPoint(p)
+                p = lower.lowerBodyPoint(BodyRig.fittedSkirt(p))
             } else if layer.group == "thought_cloud" {
                 p += SIMD2((values["ParamAngleX"] ?? 0)*0.1+(values["ParamAngleZ"] ?? 0)*degree*30,-(values["ParamAngleY"] ?? 0)*0.25)
                 p.x += BodyRig.turn(SIMD2(300,305),yaw:values["ParamBodyAngleX"] ?? 0).x-300
