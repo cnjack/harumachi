@@ -180,6 +180,9 @@ for (order,layer) in layers.enumerated() {
             var p = SIMD2(base[i]-75,base[i+1])
             if arm,let joints = layer.joints {
                 let shoulder = SIMD2(joints[0][0],joints[0][1]),elbow = SIMD2(joints[1][0],joints[1][1]),wrist = SIMD2(joints[2][0],joints[2][1])
+                if layer.jointPiece == "upper" || layer.id.hasPrefix("lower_sleeve_") {
+                    p = BodyRig.fittedSleeve(p,shoulder:shoulder,elbow:elbow,wrist:wrist,upper:layer.jointPiece == "upper")
+                }
                 if hand {
                     if let part=layer.component,part.hasPrefix("finger_"),let index=Int(part.dropFirst(7)) {
                         p=FingerParts.point(p,index:index,left:left,spread:values["ParamFingerSpread"+side] ?? 0)
@@ -232,6 +235,7 @@ for (order,layer) in layers.enumerated() {
                 p += SIMD2((values["ParamAngleX"] ?? 0)*0.1+(values["ParamAngleZ"] ?? 0)*degree*30,-(values["ParamAngleY"] ?? 0)*0.25)
                 p.x += BodyRig.turn(SIMD2(300,305),yaw:values["ParamBodyAngleX"] ?? 0).x-300
             } else if layer.group == "torso" {
+                p = BodyRig.fittedCardigan(p)
                 let breath = ((values["ParamBreath"] ?? 0.5)-0.5)*2
                 let upper = max(0,min(1,(750-p.y)/500))
                 p.y -= breath*1.5*upper;p.x = 300+(p.x-300)*(1+breath*0.002*upper)
