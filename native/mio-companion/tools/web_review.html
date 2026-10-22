@@ -37,6 +37,9 @@ try {
  let controller=await MioPerformanceController.create(model);
  let lookPreset=null;
  model.internalModel.on('beforeMotionUpdate',()=>{if(lookPreset!==null)model.internalModel.focusController.focus(lookPreset,0,true);});
+ // A fixed review direction owns the final yaw/pitch. The player's idle
+ // motion otherwise adds its attention curve even to the "front" preset.
+ model.internalModel.on('beforeModelUpdate',()=>{if(lookPreset!==null){const core=model.internalModel.coreModel;core.setParameterValueById('ParamAngleX',lookPreset*30);core.setParameterValueById('ParamAngleY',0);core.setParameterValueById('ParamEyeBallX',0);core.setParameterValueById('ParamEyeBallY',0);}});
  document.querySelectorAll('[data-look]').forEach(button=>button.onclick=()=>{lookPreset=button.dataset.look==='auto'?null:Number(button.dataset.look);});
  let phases=new Set(),moods=new Set(),speechFrames=0,pauseFrames=0;
  let emotionCase=null,emotionSamples=[],emotionChecks=[],rendered={mouth:0,hand:0};
