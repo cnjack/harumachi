@@ -8,7 +8,7 @@ func _init(tester: Node) -> void:
 func run() -> void:
 	var player: Player = t.main.player
 	var rig: CameraRig = t.main.rig
-	t.check("MOTION_CLARITY", "4x MSAA keeps character edges without the FXAA blur pass", t.get_viewport().msaa_3d == Viewport.MSAA_4X and t.get_viewport().screen_space_aa == Viewport.SCREEN_SPACE_AA_DISABLED)
+	t.check("MOTION_CLARITY", "profile MSAA keeps character edges without the FXAA blur pass", t.get_viewport().msaa_3d == int(PerformanceMode.PROFILES[PerformanceMode.profile].msaa) and t.get_viewport().screen_space_aa == Viewport.SCREEN_SPACE_AA_DISABLED)
 	var unfiltered: Array[String] = []
 	var actors: Array[Node3D] = [player.model]
 	for npc: NPC in t.main.npcs.values(): actors.append(npc.model)

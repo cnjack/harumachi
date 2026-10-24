@@ -137,7 +137,7 @@ func _settings() -> void:
 	for c in panel_layer.get_children():
 		c.queue_free()
 	var p := PanelContainer.new()
-	p.position = Vector2(560, 420)
+	p.position = Vector2(560, 120)
 	panel_layer.add_child(p)
 	p.add_child(UIKitComponents.resting_cat(76,.82))
 	var v := VBoxContainer.new()
@@ -153,3 +153,9 @@ func _settings() -> void:
 	b.pressed.connect(func(): p.queue_free())
 	v.add_child(b)
 	b.grab_focus()
+	_center_settings.call_deferred(p)
+
+
+func _center_settings(panel: Control) -> void:
+	if is_instance_valid(panel):
+		panel.position = (get_viewport_rect().size - panel.size) * .5

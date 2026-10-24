@@ -32,6 +32,7 @@ func toggle() -> void:
 	for npc: NPC in main.npcs.values():_tags.append({"tag":npc.tag,"visible":npc.tag.visible});npc.tag.visible=false
 	camera.global_transform=main.rig.cam.global_transform;camera.fov=main.rig.cam.fov
 	_yaw=camera.rotation.y;_pitch=camera.rotation.x;camera.make_current()
+	PerformanceMode.refresh_foliage()
 	_build_tools()
 
 func _build_tools() -> void:
@@ -102,6 +103,8 @@ func _process(delta: float) -> void:
 func save_picture() -> void:
 	if not active or _saving:return
 	_saving=true
+	# A quick shutter press must not wait for the periodic grass budget refresh.
+	PerformanceMode.refresh_foliage()
 	var shown:=tools.visible;tools.visible=false
 	var render:=SubViewport.new();render.name="PhotoRender";render.size=capture_size
 	render.world_3d=main.get_world_3d();render.msaa_3d=Viewport.MSAA_4X
@@ -127,6 +130,7 @@ func save_picture() -> void:
 func finish() -> void:
 	if not active:return
 	active=false;_drag=false;main.rig.cam.make_current()
+	PerformanceMode.refresh_foliage()
 	main.world.env.fog_enabled=_old_distance_fog
 	main.player.model_root.visible=_old_actor;main.marker.visible=_old_marker
 	for tag: Dictionary in _tags:

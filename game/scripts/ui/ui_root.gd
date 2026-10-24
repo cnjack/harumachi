@@ -1096,6 +1096,24 @@ func open_settings() -> void:
 
 static func build_settings_rows(v: VBoxContainer) -> void:
 	var s: Dictionary = GameState.settings
+	var graphics_row := HBoxContainer.new()
+	var graphics_label := UITheme.label("画面与耗电", 26)
+	graphics_label.custom_minimum_size = Vector2(220, 0)
+	graphics_row.add_child(graphics_label)
+	var graphics := OptionButton.new()
+	graphics.name = "GraphicsProfile"
+	graphics.custom_minimum_size = Vector2(340, 44)
+	for label_text: String in PerformanceMode.LABELS: graphics.add_item(label_text)
+	graphics.select(PerformanceMode.IDS.find(PerformanceMode.valid_profile(str(s.get("graphics_profile", "balanced")))))
+	graphics.item_selected.connect(func(index: int):
+		s["graphics_profile"] = PerformanceMode.IDS[index]
+		GameState.save_settings())
+	graphics_row.add_child(graphics)
+	v.add_child(graphics_row)
+	var hint := UITheme.label("均衡适合日常游玩；节能降低发热，原画质保留更多细节。", 19)
+	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	hint.custom_minimum_size.x = 580
+	v.add_child(hint)
 	var slider := func(label_text: String, key: String, lo: float, hi: float, step: float, pct := false):
 		var h := HBoxContainer.new()
 		var l := UITheme.label(label_text, 26)

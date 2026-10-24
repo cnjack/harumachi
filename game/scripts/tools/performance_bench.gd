@@ -79,12 +79,12 @@ func _run() -> void:
 	_resolve_monitors()
 	# Measure raw frame cost: never let an engine cap masquerade as a 119-120 FPS plateau.
 	_max_fps_at_start = Engine.max_fps
-	Engine.max_fps = 0
+	if _user_arg("frame-policy", "raw") == "raw": Engine.max_fps = 0
 	# A paused tree would freeze every _process/_physics_process (NPC roaming, cloth,
 	# weather), which would make a "static" scene look far cheaper than real play.
 	_paused_at_start = paused
 	paused = false
-	root.msaa_3d = _msaa_enum()
+	if _user_arg("graphics-profile", "").is_empty(): root.msaa_3d = _msaa_enum()
 	RenderingServer.viewport_set_measure_render_time(root.get_viewport_rid(), true)
 	var main: Node = (load("res://scenes/main.tscn") as PackedScene).instantiate()
 	root.add_child(main)
@@ -205,11 +205,15 @@ func _run_view(main: Node, view_id: String, spec: Dictionary, views: Dictionary)
 	var start_physics_frames: int = Engine.get_physics_frames()
 	var physics_ticks: int = roundi(float(spec.get("physics_seconds", 0.0)) * Engine.physics_ticks_per_second)
 	if spec.has("motion"): main.get("player").set("auto_move", Vector3(-1.0, 0.0, 0.0))
+	print("BENCH_SAMPLE_BEGIN ", view_id)
 	var row: Dictionary = await _sample(main, sample_frames, physics_ticks)
+	print("BENCH_SAMPLE_END ", view_id)
 	if row.is_empty(): return
 	main.get("player").set("auto_move", Vector3.ZERO)
 	row["view"] = view_id
 	row["label"] = str(spec.get("label", ""))
+	var mode: Node = root.get_node_or_null("PerformanceMode")
+	row["graphics"] = mode.call("snapshot") if mode != null else {"profile": "before", "fps_cap": Engine.max_fps, "scale": root.scaling_3d_scale}
 	row["world"] = str(spec.get("world", "town"))
 	row["minute"] = minute
 	row["weather"] = weather
@@ -364,7 +368,8 @@ func _sample(main: Node, frames: int, physics_ticks: int = 0) -> Dictionary:
 	var first_physics_frame: int = Engine.get_physics_frames()
 	var started: int = last
 	var index := 0
-	while (index < frames if physics_ticks == 0 else Engine.get_physics_frames() - first_physics_frame < physics_ticks):
+	var seconds: float = float(_user_arg("sample-seconds", "0"))
+	while (Engine.get_physics_frames() - first_physics_frame < physics_ticks if physics_ticks > 0 else (Time.get_ticks_usec() - started < seconds * 1000000.0 if seconds > 0.0 else index < frames)):
 		await process_frame
 		if physics_ticks > 0 and Time.get_ticks_usec() - started > 30_000_000:
 			printerr("BENCH_FAIL motion did not complete six physics seconds")
@@ -399,12 +404,15 @@ func _sample(main: Node, frames: int, physics_ticks: int = 0) -> Dictionary:
 		var cost: Dictionary = actor_after[key]
 		var before: Dictionary = actor_before[key]
 		cost["measured_updates"] = int(cost.updates) - int(before.updates)
+		cost["measured_budget_skipped"] = int(cost.get("budget_skipped", 0)) - int(before.get("budget_skipped", 0))
+		cost["measured_budget_solved"] = int(cost.get("budget_solved", 0)) - int(before.get("budget_solved", 0))
 		cost["ms_per_frame"] = float(int(cost.total_usec) - int(before.total_usec)) / (1000.0 * intervals.size())
 		var phases: Dictionary = {}
 		for counter: String in cost.get("counters", {}):
 			phases[counter.trim_suffix("_usec")] = float(int(cost.counters[counter]) - int(before.counters[counter])) / (1000.0 * intervals.size())
 		if not phases.is_empty(): cost["phase_ms_per_frame"] = phases
 		cost.erase("counters")
+	summary["elapsed_seconds"] = float(Time.get_ticks_usec() - started) / 1000000.0
 	summary["actor_modifiers"] = actor_after
 	return summary
 
@@ -419,6 +427,10 @@ func _actor_metrics(main: Node) -> Dictionary:
 			var modifier: Node = actor.find_child(modifier_name, true, false)
 			if modifier == null: continue
 			result[id + "/" + modifier_name] = {"total_usec": int(modifier.get("total_usec")), "updates": int(modifier.get("updates")), "visible": actor.is_visible_in_tree()}
+			if modifier.has_method("native_contact_original_performance"):
+				var stats: Dictionary = modifier.call("native_contact_original_performance")
+				result[id + "/" + modifier_name]["budget_skipped"] = stats.get("budget_skipped", 0)
+				result[id + "/" + modifier_name]["budget_solved"] = stats.get("budget_solved", 0)
 			if modifier_name == "CharacterGarmentSupport":
 				var counters: Dictionary = {}
 				for counter: String in ["total_bounds_usec", "total_tree_build_usec", "total_query_usec", "skin_total_usec"]:

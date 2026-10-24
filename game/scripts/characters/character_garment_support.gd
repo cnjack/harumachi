@@ -91,6 +91,7 @@ var cached_matrices: Array[Transform3D] = []
 var cached_full_pose: Array[Transform3D] = []
 var cached_original_values := PackedFloat32Array()
 var cached_amounts := PackedFloat32Array()
+var visual_budget = preload("res://scripts/performance/character_visual_budget.gd").new()
 var cached_enabled := true
 var cache_hits := 0
 # Idle breathing changes every bone matrix by a fraction of a millimetre, so an
@@ -152,7 +153,7 @@ func native_contact_original_performance() -> Dictionary:
 	var solve_p95: int = solved[mini(solved.size() - 1, int(ceil(solved.size() * .95)) - 1)] if not solved.is_empty() else 0
 	var current: Array[float] = []
 	for value: float in amounts: current.append(value)
-	return {"updates": updates, "mean_usec": float(total_usec) / maxi(updates, 1), "max_usec": max_usec, "p95_usec_recent_240": p95, "solve_mean_usec": float(solve_total_usec) / maxi(updates - cache_hits - steady_fast_updates, 1), "solve_p95_usec_recent_240": solve_p95, "skin_mean_usec": float(skin_total_usec) / maxi(updates - cache_hits - steady_fast_updates, 1), "contact_mean_usec": float(contact_total_usec) / maxi(updates - cache_hits - steady_fast_updates, 1), "skin_max_usec": skin_max_usec, "contact_max_usec": contact_max_usec, "proxy_candidates": proxy_candidates,
+	return {"budget_skipped": visual_budget.skipped, "budget_solved": visual_budget.solved, "budget_tier": visual_budget.tier, "updates": updates, "mean_usec": float(total_usec) / maxi(updates, 1), "max_usec": max_usec, "p95_usec_recent_240": p95, "solve_mean_usec": float(solve_total_usec) / maxi(updates - cache_hits - steady_fast_updates, 1), "solve_p95_usec_recent_240": solve_p95, "skin_mean_usec": float(skin_total_usec) / maxi(updates - cache_hits - steady_fast_updates, 1), "contact_mean_usec": float(contact_total_usec) / maxi(updates - cache_hits - steady_fast_updates, 1), "skin_max_usec": skin_max_usec, "contact_max_usec": contact_max_usec, "proxy_candidates": proxy_candidates,
 		"steady_morph_policy": steady_morph_policy, "steady_morph_plan_valid": bool(steady_morph_plan.get("valid", false)), "steady_fast_updates": steady_fast_updates, "full_solve_updates": updates - cache_hits - steady_fast_updates, "last_callback_frame": last_callback_frame, "last_branch": last_branch, "last_steady_reason": last_steady_reason, "steady_proof_match": steady_proof_match, "steady_model_fingerprint": steady_model_fingerprint, "steady_invalidation_reason": steady_invalidation_reason, "steady_watched_carriers": steady_carriers.size(), "steady_watched_resources": steady_resources.size(),
 		"iterations_mean": float(total_iterations) / maxi(updates - cache_hits - steady_fast_updates, 1), "tree_build_mean_usec": float(total_tree_build_usec) / maxi(updates - cache_hits - steady_fast_updates, 1), "bounds_mean_usec": float(total_bounds_usec) / maxi(updates - cache_hits - steady_fast_updates, 1), "query_constraints_mean_usec": float(total_query_usec) / maxi(updates - cache_hits - steady_fast_updates, 1), "tree_builds_mean": float(total_tree_builds) / maxi(updates - cache_hits - steady_fast_updates, 1),
 		"proxy_target_triangles": proxy_target_triangles, "diagnostic_proxy_override": diagnostic_proxy_override, "diagnostic_fine_contact": diagnostic_fine_contact,
@@ -170,6 +171,7 @@ func native_contact_original_performance() -> Dictionary:
 		"cloth_triangles_back": (faces.back as PackedInt32Array).size() / 3, "local_weights": current, "pose_cache_hits": cache_hits, "pose_tolerance_cache_hits": tolerance_cache_hits, "pose_cache_tolerance_m": pose_cache_tolerance_m, "last_pose_delta_m": last_pose_delta_m, "ray_queries_mean": float(total_ray_queries) / maxi(updates, 1), "broadphase_skips_mean": float(total_broadphase_skips) / maxi(updates, 1)}
 
 func reset_performance() -> void:
+	visual_budget.reset()
 	native_geometry_calls = 0
 	native_geometry_fallbacks = 0
 	native_contact_layers = 0
@@ -206,6 +208,7 @@ func reset_performance() -> void:
 	steady_fast_updates = 0
 
 func invalidate_steady_proof() -> void:
+	visual_budget.reset()
 	steady_proof_match = false
 	steady_invalidation_reason = "certified resource changed"
 	# A previous certified/cache result must not hide the new guard outcome.
@@ -772,6 +775,11 @@ func _snapshot_full_pose(skeleton: Skeleton3D) -> Array[Transform3D]:
 
 func _process_modification() -> void:
 	if mesh == null or not mesh.is_visible_in_tree(): return
+	if enabled and cached_enabled == enabled and cached_amounts.size() == local_indices.size() and not visual_budget.allow(self, mesh, character, steady_animation, steady_actor):
+		for shape: int in disabled_indices: mesh.set_blend_shape_value(shape, 0)
+		for patch: int in local_indices.size(): mesh.set_blend_shape_value(local_indices[patch], cached_amounts[patch])
+		last_branch = "visual_budget"
+		return
 	var began: int = Time.get_ticks_usec()
 	last_callback_frame = Engine.get_process_frames()
 	frame_ray_queries = 0

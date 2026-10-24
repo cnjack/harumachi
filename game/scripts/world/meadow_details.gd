@@ -42,6 +42,7 @@ func _place(parent: Node3D,at: Vector2,y: float,kind: String,rng: RandomNumberGe
 	for mesh_node: MeshInstance3D in WorldBuilder.find_meshes(node):
 		mesh_node.visibility_range_end=42.0;mesh_node.visibility_range_end_margin=6.0
 		mesh_node.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		PerformanceMode.register_foliage(mesh_node)
 	roots.append({"at":at,"y":y,"kind":kind,"region":"farm" if parent.get_parent() is FarmBuilder else "town","node":node})
 
 func _town_blocked(world: WorldBuilder,at: Vector2) -> bool:

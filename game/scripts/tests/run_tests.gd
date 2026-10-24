@@ -50,7 +50,9 @@ func _ready() -> void:
 	main.ui.instant = true
 	main.ui.auto_work_priority = true # this suite follows its declared work route; the topic-choice suite overrides it
 	await frames(10)
-	if OS.get_cmdline_user_args().has("--only=shopkeeper-presence"):
+	if OS.get_cmdline_user_args().has("--only=performance-mode"):
+		await load("res://scripts/tests/performance_mode_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=shopkeeper-presence"):
 		await load("res://scripts/tests/shopkeeper_presence_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=vehicle-finish"):
 		await load("res://scripts/tests/vehicle_finish_checks.gd").new(self).run()
@@ -339,6 +341,7 @@ func _ready() -> void:
 		await load("res://scripts/tests/plaza_quality_checks.gd").new(self).run()
 		await load("res://scripts/tests/foliage_depth_checks.gd").new(self).run()
 		await load("res://scripts/tests/outdoor_render_checks.gd").new(self).run()
+		await load("res://scripts/tests/performance_mode_checks.gd").new(self).run()
 		await load("res://scripts/tests/public_place_art_checks.gd").new(self).run()
 		await load("res://scripts/tests/inhabited_places_checks.gd").new(self).run()
 		await load("res://scripts/tests/character_visual_checks.gd").new(self).run()

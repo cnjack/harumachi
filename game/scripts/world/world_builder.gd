@@ -426,6 +426,7 @@ func _build_environment() -> void:
 	sun.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS
 	sun.rotation_degrees = Vector3(-48, -35, 0)
 	add_child(sun)
+	PerformanceMode.apply_world(self)
 
 
 func _plane(rect: Array, mat: Material, y: float = 0.0) -> MeshInstance3D:
@@ -1476,6 +1477,7 @@ func set_indoor_look(on: bool,public_kind: String="") -> void:
 	env.glow_bloom = 0.08 if on else 0.04
 	sun.directional_shadow_max_distance = 40.0 if on else 90.0
 	apply_phase(GameState.phase, false)
+	PerformanceMode.apply_world(self)
 
 
 func _sync_indoor_visibility() -> void:

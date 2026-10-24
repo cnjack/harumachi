@@ -11,6 +11,7 @@ static var _mat: ShaderMaterial
 static var _mesh: ArrayMesh
 static var _blade_mat := {}
 static var _clumps := {}
+static var _budget_clumps := {}
 
 ## per style: blade height range (m), blades per clump, clump radius, lean, draw distance, palette tweak
 const STYLES := {
@@ -119,6 +120,29 @@ static func clump_mesh(style: String, variant: int) -> ArrayMesh:
 	return m
 
 
+## Reuse the original vertices, roots and blade tips; only distant triangle lists change.
+static func budget_meshes(style: String, variant: int) -> Array[ArrayMesh]:
+	var key := "%s%d" % [style, variant]
+	if _budget_clumps.has(key): return _budget_clumps[key]
+	var full: ArrayMesh = clump_mesh(style, variant)
+	var arrays: Array = full.surface_get_arrays(0)
+	var source: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
+	var medium := PackedInt32Array()
+	var far := PackedInt32Array()
+	for offset: int in range(0, source.size(), 15):
+		for corner: int in [0, 1, 8, 0, 8, 11, 12, 13, 14]: medium.append(source[offset + corner])
+		for corner: int in [0, 1, 14]: far.append(source[offset + corner])
+	var result: Array[ArrayMesh] = [full]
+	for indices: PackedInt32Array in [medium, far]:
+		var reduced: Array = arrays.duplicate()
+		reduced[Mesh.ARRAY_INDEX] = indices
+		var mesh_lod := ArrayMesh.new()
+		mesh_lod.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, reduced)
+		result.append(mesh_lod)
+	_budget_clumps[key] = result
+	return result
+
+
 ## Blade grass over rects. density = clumps per square metre.
 func lawn(rects: Array, avoid: Array = [], style: String = "lawn", density: float = 4.0, seed_n: int = 1, y: float = 0.0, height_at: Callable = Callable(), keep: Callable = Callable()) -> int:
 	var rng := RandomNumberGenerator.new()
@@ -184,7 +208,10 @@ func lawn(rects: Array, avoid: Array = [], style: String = "lawn", density: floa
 			mi.visibility_range_end = float(S.range)
 			mi.visibility_range_end_margin = 6.0
 			mi.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
+			mi.set_meta("budget_grass_meshes", budget_meshes(style, v))
+			mi.set_meta("budget_grass_bounds", mm.get_aabb())
 			add_child(mi)
+			PerformanceMode.register_foliage(mi)
 			count += list.size()
 	return count
 
@@ -264,6 +291,7 @@ func scatter(rects: Array, density: float, avoid: Array = [], mix: Array = MIX_L
 		mi.visibility_range_end_margin = 8.0
 		mi.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
 		add_child(mi)
+		PerformanceMode.register_foliage(mi)
 		count += list.size()
 	return count
 

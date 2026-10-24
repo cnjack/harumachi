@@ -22,6 +22,8 @@ config/macos_native_icon="res://harumachi.icns"
 
 [autoload]
 
+PerformanceMode="*res://scripts/autoload/performance_mode.gd"
+
 SaveDB="*res://scripts/autoload/save_db.gd"
 Audio="*res://scripts/autoload/audio.gd"
 GameState="*res://scripts/autoload/game_state.gd"
