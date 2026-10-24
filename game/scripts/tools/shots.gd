@@ -339,6 +339,7 @@ func _run() -> void:
 	catalog.merge(load("res://scripts/tools/plaza_signage_capture.gd").capture_views())
 	catalog.merge(load("res://scripts/tools/farm_approach_capture.gd").capture_views())
 	catalog.merge(load("res://scripts/tools/plaza_timber_capture.gd").capture_views())
+	catalog.merge(load("res://scripts/tools/vehicle_finish_capture.gd").capture_views())
 	for hour: float in [12.0,21.0]:
 		catalog["bridge_lantern_%d"%int(hour)]={"farm":true,"time":hour,"weather":"sunny","player":Vector3(0,.8,17),"camera_at":Vector3(3.4,2.25,20.6),"camera_focus":Vector3(.95,1.65,19.3),"fov":43.0}
 	var bridge_planter_at: Vector3=load("res://scripts/world/bridge_dressing.gd").PLANTERS[0]

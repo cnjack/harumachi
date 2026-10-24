@@ -1,8 +1,12 @@
 # 模型、工程与交付流程
 
+## 车辆细节与深色木材（2026-10-24）
+
+当前完整回归 2813 项；`--only=vehicle-finish` 5 项，`--only=plaza-timber` 8 项。公交/货车源参数通过 `preserve_source_materials` 与 `VehicleFinish` 保留，只有命名金属部件允许非零金属度；其他模型规则不变。重建后须同步源、游戏、素材库、支撑面与完整模型审计，并复拍轮拱内部、转角、门、灯具和夜间玻璃。两种车辆的源审计、实机性能与本轮桌面交付见[流程与证据](VEHICLE_FINISH_20261024.md)。
+
 ## 室外性能优化（2026-10-24）
 
-当前完整回归 2806 项；`--only=outdoor-render` 共 7 项，按旧源码负例和 126 对完整衣物求解校验。原生库二进制与约束不变；旧平台或缺少方法时继续走原 GDScript。
+当轮完整回归 2806 项；`--only=outdoor-render` 共 7 项，按旧源码负例和 126 对完整衣物求解校验。原生库二进制与约束不变；旧平台或缺少方法时继续走原 GDScript。
 
 `tools/performance/run_bench.py` 串行复制临时工程、为每个变体隔离存档并关闭测试声音，拒绝与其他 Godot 重叠。静态采样保留居民活动，走跑预热后记录相同 360 个物理帧；GPU 时间、真实出帧数与 PNG 尺寸一并记录，截图编码放在计时外。现有屏幕会限制超宽窗口，报告按实际像素而非请求尺寸标注。macOS ZIP 已重新导出，解压应用 211 项完整演示通过并原子替换交付包；默认 104 份存档与照片摘要不变，Web 未发布。 见[复现命令与结果](OUTDOOR_PERFORMANCE_20261024.md)。
 
@@ -362,7 +366,7 @@ Godot 这边是 `Audio` 自动加载（`game/scripts/autoload/audio.gd`）：
 
 - **测试入口（2026-10-24）**：F5 用于普通试玩；F6 误开 `tests.tscn` 会回到标题。测试必须同时提供 `--run-tests` / `--only=…` / `--out=…` / `--test-db=…` 中的显式参数，以及真正独立的存档目录。例如 `HARUMACHI_SAVE_DIR="$(mktemp -d /tmp/harumachi-tests.XXXXXX)" timeout 240 ./tools/godot --headless --audio-driver Dummy --path game res://scenes/tests.tscn -- --only=dialogue-ui --out=/tmp/dialogue-ui.json`。对话专项现为 24 项，座位专项 27 项；完整回归未在本轮重跑。入口负例和复现见 [INTERACTION_ENTRY_20261024.md](INTERACTION_ENTRY_20261024.md)，独立检查为 `python3 tools/check_test_entry.py`。
 
-- 自动测试：`res://scenes/tests.tscn`，当前 2799 项独占完整功能回归通过、退出 0，见[试玩场景整合](SCENE_FEEDBACK_20261024.md)。独立 `HARUMACHI_SAVE_DIR`、超时和 SCRIPT/SHADER ERROR 检查必须同时使用，全量不与其他 Godot 并发。原 5mm 衣面、12cm 模板及 8ms 求解门槛不变。dummy renderer 与主动制造的保存失败日志已分类，不能称为严格零 ERROR；最终数量以 JSON 报告为准。
+- 自动测试：`res://scenes/tests.tscn`，当前 2813 项独占完整功能回归通过、退出 0，见[车辆细节与深色木材](VEHICLE_FINISH_20261024.md)。独立 `HARUMACHI_SAVE_DIR`、超时和 SCRIPT/SHADER ERROR 检查必须同时使用，全量不与其他 Godot 并发。原 5mm 衣面、12cm 模板及 8ms 求解门槛不变。dummy renderer 与主动制造的保存失败日志已分类，不能称为严格零 ERROR；最终数量以 JSON 报告为准。
 - 卡顿检查要让时钟实际推进，记录逐帧耗时，不能只看平均FPS。工具`evidence/desktop_stutter_20261007/perf_probe.gd`的`--fixed`模式在真实起床卧室和商店街记录480帧，截图回读放在计时之后；使用固定引擎、置顶原生窗口和独立存档。运动清晰度检查在固定镜头距离下核对人物与镜头的渲染插值位置，镜头避障另跑`--only=camera-body`。桌面缓存用晚会专项检查移动、旋转后的实际食物支撑；方法与结果见[卡顿修复](DESKTOP_STUTTER_20261008.md)。
 - 自动演示：普通标题入口`--autoplay`沿实际碰撞路径、Story交互、摆放控制器、料理面板、灯笼输入、日历赴约和拍照完成新夏季至Q15，检查控制与保存恢复。本轮解压包205项通过，最终报告及关键截图在本轮证据目录。自动对白与阶段暂停明确记录，不作为自然四小时；`--showcase`是节日展示夹具。打印的AP mark/frame用于录像剪辑。
 - 录制时游戏窗口不能被别的窗口完全挡住：macOS 会停止给被挡住的窗口画帧，演示就停在原地。默认使用独立虚拟屏幕，实测屏幕编号与Godot像素坐标后设置`--screen`、`-t --position`，并在测试进程使用`--audio-driver Dummy`。以下历史命令中的机位须按当前隔离屏幕替换。

@@ -1400,7 +1400,8 @@
       "level": false,
       "tex": 2048,
       "provider": "Blender pressed cab, rounded tyres, four rolled arches, inset lamps and mirrors, drop-side hardware; original textured produce cargo retained",
-      "prev_src": "raw/D07_kei_truck_h3d/model.glb"
+      "prev_src": "raw/D07_kei_truck_h3d/model.glb",
+      "preserve_source_materials": true
     },
     "I01_deck_oven": {
       "src": "raw/I01_deck_oven_pix/model.glb",
@@ -1872,8 +1873,9 @@
       "level": false,
       "tex": 4096,
       "image_format": "AUTO",
-      "provider": "Owned Rodin painted lower shell and roof; Blender source cabin repair with fitted panes and mounted route box, 2026-10-24",
-      "note": "Source repair: actual open apertures, fitted glass, moving doors, seats and a mounted route lightbox. See art/library/vehicles and art/manifests/models_bus_cabin_20261024.json."
+      "provider": "Owned Rodin source contours; Blender continuous lower body, tyres and cabin finish, 2026-10-24",
+      "note": "Preserves actual wheel and door pivots and 13 cabin panes. Fair enamel panels, single-layer headlamp lenses, fitted mechanical details and source PBR finish.",
+      "preserve_source_materials": true
     },
     "V01_fern": {
       "src": "raw/free_foliage_20261004/ready/V01_fern.glb",

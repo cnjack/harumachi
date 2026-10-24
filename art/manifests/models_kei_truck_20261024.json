@@ -9,17 +9,117 @@
   "rebuilt": [
     "broad crowned roof and bowed pressed nose",
     "four rolled wheel-arch returns",
-    "curved tyre cross-sections and vented steel rims",
-    "shut lines and stood-off door pulls",
-    "inset lamp bowls and lenses",
+    "curved tyre cross-sections, actual tread grooves and moulded sidewall rings",
+    "dished steel rims with open radial slots, stepped hubs, washers, nuts and valve stems",
+    "shut lines, recessed door pressings, stood-off pulls and lock barrels",
+    "single transmitting crown-shaped lamp lenses over metal reflector bowls and bulbs",
     "rear-facing inset mirror lenses",
-    "formed drop-side gates, rolled rails, hinges, latches and tie-down anchors"
+    "recessed drop-side and tailgate pressings with rolled rails and ribbed floor",
+    "segmented hinge knuckles, captive pins, folded latch levers, fasteners and tie-down anchors"
   ],
   "nose_axis": "+Z",
   "wheel_radius_m": 0.325,
   "glass": "Four thin separate quads with clear apertures",
   "rear_guard": "Crossbar follows the cab header at 1.755 m; side legs reach the cargo floor, outside the rear-glass aperture",
   "new_paid_generations": 0,
-  "audit": "art/tools/audit_kei_truck_detail.py",
-  "native_visual_review_required": true
+  "materials": {
+    "Original_textured_produce_and_bed": {
+      "Metallic": 0.0,
+      "Roughness": 0.92,
+      "Alpha": 1.0
+    },
+    "Rubber_seals_and_grille": {
+      "Metallic": 0.0,
+      "Roughness": 0.9,
+      "Alpha": 1.0
+    },
+    "Blue_grey_trim": {
+      "Metallic": 0.0,
+      "Roughness": 0.62,
+      "Alpha": 1.0
+    },
+    "Ivory_painted_body": {
+      "Metallic": 0.0,
+      "Roughness": 0.43,
+      "Alpha": 1.0
+    },
+    "Galvanized_gate_hardware": {
+      "Metallic": 0.72,
+      "Roughness": 0.31,
+      "Alpha": 1.0
+    },
+    "Thin_blue_glass": {
+      "Metallic": 0.0,
+      "Roughness": 0.23,
+      "Alpha": 0.14
+    },
+    "Matte_wheel_steel": {
+      "Metallic": 0.68,
+      "Roughness": 0.34,
+      "Alpha": 1.0
+    },
+    "Headlamp_reflector_steel": {
+      "Metallic": 0.82,
+      "Roughness": 0.25,
+      "Alpha": 1.0
+    },
+    "Headlamp_optical_glass": {
+      "Metallic": 0.0,
+      "Roughness": 0.22,
+      "Alpha": 0.34
+    },
+    "Headlamp_bulb_ceramic": {
+      "Metallic": 0.0,
+      "Roughness": 0.34,
+      "Alpha": 1.0
+    },
+    "Amber_signal": {
+      "Metallic": 0.0,
+      "Roughness": 0.29,
+      "Alpha": 1.0
+    },
+    "Yellow_local_plate": {
+      "Metallic": 0.0,
+      "Roughness": 0.63,
+      "Alpha": 1.0
+    },
+    "Blue_woven_seats": {
+      "Metallic": 0.0,
+      "Roughness": 0.94,
+      "Alpha": 1.0
+    },
+    "Tyre_rubber": {
+      "Metallic": 0.0,
+      "Roughness": 0.91,
+      "Alpha": 1.0
+    },
+    "Red_tail_lamp": {
+      "Metallic": 0.0,
+      "Roughness": 0.3,
+      "Alpha": 1.0
+    }
+  },
+  "material_pipeline": "Source PBR colour, metallic and roughness retained by exporter; VehicleFinish adds restrained toon response; TruckGlazing supplies view-dependent single-layer cab reflection",
+  "draw_call_policy": "Static small hardware is merged by material; named door latches, rear hinges and original structural parts remain independently auditable",
+  "added_realtime_lights": 0,
+  "source_sha256": "94f83daaa8e5b88aae275fbe74ea1ca6f3090e53d2f1a9f83d403f5af735b7c6",
+  "authoring_sha256": "8f5a2fb9c495f1ad84a86980937f63c86cf0e0571c0e079a05776bd6937d59ab",
+  "audit": "art/tools/audit_kei_truck_finish.py",
+  "baseline_failures": "8 new finish checks reject the preceding D07; original 9 geometry checks remain required",
+  "native_visual_review_required": true,
+  "native_visual_review": {
+    "evidence": "evidence/vehicle_finish_20261024/final_visual_review.json",
+    "kind": "Internal inspection, not user acceptance",
+    "game_sha256": "2342e4c0e1dcb2f6cdf14597d113a6bd06afa3b3ea4db281c42189955d20e816",
+    "views": [
+      "truck_town_front",
+      "truck_town_side",
+      "truck_town_cab_close",
+      "truck_town_tailgate_close",
+      "finish_truck_wheel",
+      "finish_truck_bed",
+      "finish_truck_night",
+      "finish_truck_rain"
+    ]
+  }
 }

@@ -118,6 +118,37 @@ def assembly_report(path, spec, topology):
     return {'ok':closed and not missing,'actual_material_area_m2':areas,'insufficient_parts':missing,'closed_edges':closed,'topology':topology}
 
 
+def material_report(path, spec):
+    """Allow reviewed scalar metal finishes only on their named, used parts.
+
+    Keep rejecting inherited normal/ORM maps and metallic values on every
+    unlisted material. Unused declarations cannot satisfy a required finish.
+    """
+    g,b=load(path);used={};failures=[]
+    for primitive,vertices,indices,_ in primitives(g,b):
+        faces=vertices[indices]
+        area=float(np.linalg.norm(np.cross(faces[:,1]-faces[:,0],faces[:,2]-faces[:,0]),axis=1).sum()*.5)
+        index=primitive.get('material',0);used[index]=used.get(index,0.)+area
+    actual={}
+    for index,area in used.items():
+        material=g['materials'][index];name=material.get('name',str(index));pbr=material.get('pbrMetallicRoughness',{})
+        metal=pbr.get('metallicFactor',1.);rough=pbr.get('roughnessFactor',1.)
+        actual[name]={'metallic':metal,'roughness':rough,'area_m2':round(area,6)}
+        if 'normalTexture' in material or 'metallicRoughnessTexture' in pbr:
+            failures.append(name+': inherited normal/ORM map')
+        approved=spec.get(name)
+        if approved:
+            for field,value in [('metallic',metal),('roughness',rough)]:
+                low,high=approved[field]
+                if not low<=value<=high:failures.append(f'{name}: {field} {value} outside {low}..{high}')
+            if area<approved['minimum_area_m2']:failures.append(name+': insufficient used surface')
+        elif metal>0:
+            failures.append(name+': unapproved metallic response')
+    for name in spec:
+        if name not in actual:failures.append(name+': missing used finish')
+    return {'ok':not failures,'actual':actual,'failures':failures}
+
+
 if __name__=='__main__':
     ap=argparse.ArgumentParser();ap.add_argument('model_dir',type=Path);ap.add_argument('output',type=Path)
     ap.add_argument('--contracts',type=Path);args=ap.parse_args()
@@ -127,7 +158,15 @@ if __name__=='__main__':
         except Exception as e:report['errors'][path.stem]=str(e)
     if args.contracts:
         contract=json.loads(args.contracts.read_text());models=report['models'];checks={};details={}
-        details['matte']=[k for k,m in models.items() if m['inherited_pbr_maps'] or m['metallic_max']>0]
+        details['matte']=[];details['authored_vehicle_materials']={}
+        approved_vehicle_finishes=contract.get('authored_vehicle_materials',{})
+        for k,m in models.items():
+            if k in approved_vehicle_finishes:
+                result=material_report(args.model_dir/(k+'.glb'),approved_vehicle_finishes[k])
+                details['authored_vehicle_materials'][k]=result
+                if not result['ok']:details['matte'].append(k)
+            elif m['inherited_pbr_maps'] or m['metallic_max']>0:
+                details['matte'].append(k)
         checks['matte_materials']=not details['matte']
         details['fragmented']=[]
         details['assembly_surfaces']={}

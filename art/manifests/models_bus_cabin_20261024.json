@@ -2,7 +2,7 @@
   "asset": "B01_bus",
   "date": "2026-10-24",
   "source": "art/library/vehicles/source/B01_painted_predecessor.glb",
-  "method": "Repair of owned Rodin lower shell and roof; precise cut planes, authored window apertures, articulated doors, glazing, cabin and roof-mounted route box",
+  "method": "Owned Rodin roof and measured body contours; continuous formed lower shell and closed tyre casings, authored apertures, articulated doors, glazing, cabin, mounted route box and material-specific vehicle details",
   "generator": "art/tools/rebuild_bus_cabin.py",
   "output": "art/models/raw/B01_bus_cabin_20261024/ready.glb",
   "authoring": "art/library/vehicles/authoring/B01_bus.blend",
@@ -11,6 +11,256 @@
   "preserve_origin": true,
   "level": false,
   "game_image_format": "AUTO",
+  "preserve_source_materials": true,
+  "vehicle_finish": {
+    "method": "source geometry and separated PBR finish; single-layer view-dependent window shader",
+    "added_groups": [
+      "BusExteriorMetal",
+      "BusExteriorRubber",
+      "BusWheelHousings",
+      "HeadlampFinish",
+      "RearLampFinish",
+      "HubFinish_0",
+      "HubFinish_1",
+      "HubFinish_2",
+      "HubFinish_3",
+      "DoorHardware_0",
+      "DoorHardware_1"
+    ],
+    "inner_wings": {
+      "count": 4,
+      "arc_segments": 36,
+      "inner_radius_m": 0.38,
+      "outer_radius_m": 0.386,
+      "inboard_wall_depth_m": 0.565,
+      "thickness_m": 0.006,
+      "static_batch": "BusWheelHousings"
+    },
+    "body_finish": {
+      "paint_faces": 83115,
+      "faired_vertices": 1497,
+      "maximum_point_move_m": 0.0025,
+      "two_tone_line": "side 1.055m; front .985m; linear corner transition x1.95..2.15m"
+    },
+    "formed_lower_shell": {
+      "radial_sections": 508,
+      "height_rows": 66,
+      "source_paint_hits": 25954,
+      "sample_count": 33528,
+      "sheet_thickness_m": 0.008,
+      "fairing": "paint-only measured widths, end depths and broad crown fitted as continuous rounded cross-sections; upper rim joins fitted sill",
+      "original_lower_faces_removed": true
+    },
+    "continuous_tyres": [
+      {
+        "wheel": 0,
+        "original_bounds": [
+          [
+            -1.370745301246643,
+            -0.8979932069778442,
+            0.0
+          ],
+          [
+            -0.7179999947547913,
+            -0.6100000143051147,
+            0.6471826434135437
+          ]
+        ],
+        "axis": [
+          -1.062999963760376,
+          -0.800000011920929,
+          0.3221360445022583
+        ],
+        "profile_rows": 22,
+        "angular_segments": 96,
+        "closed_surface": true,
+        "tread_groove_depth_m": 0.0016
+      },
+      {
+        "wheel": 1,
+        "original_bounds": [
+          [
+            -1.371496558189392,
+            0.6100000143051147,
+            0.0
+          ],
+          [
+            -0.7179999947547913,
+            0.8961037397384644,
+            0.6480311155319214
+          ]
+        ],
+        "axis": [
+          -1.062999963760376,
+          0.800000011920929,
+          0.32238537073135376
+        ],
+        "profile_rows": 22,
+        "angular_segments": 96,
+        "closed_surface": true,
+        "tread_groove_depth_m": 0.0016
+      },
+      {
+        "wheel": 2,
+        "original_bounds": [
+          [
+            1.3320000171661377,
+            -0.9015756249427795,
+            0.0
+          ],
+          [
+            2.0220000743865967,
+            -0.6100000143051147,
+            0.6437786817550659
+          ]
+        ],
+        "axis": [
+          1.6770000457763672,
+          -0.800000011920929,
+          0.3219451606273651
+        ],
+        "profile_rows": 22,
+        "angular_segments": 96,
+        "closed_surface": true,
+        "tread_groove_depth_m": 0.0016
+      },
+      {
+        "wheel": 3,
+        "original_bounds": [
+          [
+            1.332810401916504,
+            0.6100000143051147,
+            0.0
+          ],
+          [
+            2.0220000743865967,
+            0.8999944925308228,
+            0.6502965688705444
+          ]
+        ],
+        "axis": [
+          1.6770000457763672,
+          0.800000011920929,
+          0.3273042142391205
+        ],
+        "profile_rows": 22,
+        "angular_segments": 96,
+        "closed_surface": true,
+        "tread_groove_depth_m": 0.0016
+      }
+    ],
+    "waist_curve_samples": [
+      25,
+      10,
+      39
+    ],
+    "headlamp_centres_blender": [
+      [
+        2.22,
+        -0.684,
+        0.724
+      ],
+      [
+        2.22,
+        0.684,
+        0.724
+      ]
+    ],
+    "extra_lights": 0,
+    "headlamp_single_layer_lenses": 2,
+    "window_panes": 13,
+    "motion_parents_preserved": true,
+    "materials": {
+      "Bus_amber_optic": {
+        "roughness": 0.25,
+        "metallic": 0.0
+      },
+      "Bus_body_paint": {
+        "roughness": 0.41999998688697815,
+        "metallic": 0.0
+      },
+      "Bus_body_paint_atlas": {
+        "roughness": 0.41999998688697815,
+        "metallic": 0.0
+      },
+      "Bus_detail_rubber": {
+        "roughness": 0.9200000166893005,
+        "metallic": 0.0
+      },
+      "Bus_fitted_clear_glass": {
+        "roughness": 0.23999999463558197,
+        "metallic": 0.0
+      },
+      "Bus_headlamp_bulb": {
+        "roughness": 0.4000000059604645,
+        "metallic": 0.0
+      },
+      "Bus_headlamp_optic": {
+        "roughness": 0.23000000417232513,
+        "metallic": 0.0
+      },
+      "Bus_lamp_reflector": {
+        "roughness": 0.28999999165534973,
+        "metallic": 0.6499999761581421
+      },
+      "Bus_red_optic": {
+        "roughness": 0.25,
+        "metallic": 0.0
+      },
+      "Bus_reverse_optic": {
+        "roughness": 0.25,
+        "metallic": 0.0
+      },
+      "Bus_satin_hardware": {
+        "roughness": 0.3199999928474426,
+        "metallic": 0.6800000071525574
+      },
+      "Bus_stamped_wheel_steel": {
+        "roughness": 0.36000001430511475,
+        "metallic": 0.6200000047683716
+      },
+      "Bus_tyre_rubber": {
+        "roughness": 0.9200000166893005,
+        "metallic": 0.0
+      },
+      "Cabin_floor": {
+        "roughness": 0.949999988079071,
+        "metallic": 0.0
+      },
+      "Cabin_ivory_enamel": {
+        "roughness": 0.4399999976158142,
+        "metallic": 0.0
+      },
+      "Door_jade_enamel": {
+        "roughness": 0.41999998688697815,
+        "metallic": 0.0
+      },
+      "Quiet_teal_upholstery": {
+        "roughness": 0.9399999976158142,
+        "metallic": 0.0
+      },
+      "Rolled_arch_enamel": {
+        "roughness": 0.4399999976158142,
+        "metallic": 0.0
+      },
+      "Route_rollsign_face": {
+        "roughness": 0.9200000166893005,
+        "metallic": 0.0
+      },
+      "Satin_aluminium": {
+        "roughness": 0.3400000035762787,
+        "metallic": 0.6499999761581421
+      },
+      "Seat_edge_piping": {
+        "roughness": 0.8799999952316284,
+        "metallic": 0.0
+      },
+      "Window_rubber_seal": {
+        "roughness": 0.9100000262260437,
+        "metallic": 0.0
+      }
+    }
+  },
   "route_text_at_godot": [
     2.184,
     2.02,
@@ -167,16 +417,34 @@
       "existing_vertices_moved": 0
     }
   ],
+  "shape_reference": "art/library/vehicles/source/B01_bus_shape_reference.json",
   "notes": [
-    "Original sculpted front, rear, grille, lamps, side skirts and roof UV texture retained",
-    "Interior removal bounded to longitudinal -1.78..1.78m, lateral -0.70..0.70m and height 0.59..1.105m",
-    "Opaque exterior ray profiles must match the predecessor within 5mm; this rejects missing panels and flat replacement caps",
-    "Complete original body and old partial wheel pieces are recombined, then four real tyres are repartitioned around measured rim centres",
-    "True wheel centres are rear x=-1.063m and front x=1.677m; 345mm tyre partitions, 381mm real apertures and solid 35mm rolled flanges follow those axes",
-    "No painted vertices are radially projected or stretched; inherited small seam gaps use original boundary vertices and adjacent UVs",
-    "Game export keeps source PNG pixels; JPEG introduced green atlas bleeding onto tyre UV boundaries",
-    "A 64mm fixed front entrance return closes the inherited door-edge gap; the original side recess has a backing and three horizontal louvres",
-    "No new paid generation",
-    "Runtime only assigns glass material, text and articulated motion"
-  ]
+    "Owned source roof and underbody remain; the fractured lower skin is replaced by a continuous curved shell measured from the source, with an 8mm inner return",
+    "Original window apertures, four verified wheel axes, door pivots, cabin and roof-mounted route box remain unchanged",
+    "Real radiator vanes and backed headlamp wells replace fragmented source details; separate ray checks validate those recesses and their physical fixtures",
+    "Paint shape checks retain body envelopes, axes and required opaque backing; the front-quarter dent, rear-centre paint lump, backed intake and straight window-sill joint are documented local forming regions, with added dimple and corner-continuity checks",
+    "Four closed rubber casings preserve the complete accepted tyres' measured axes, casing bounds and ground support; the independent source reference records the original SHA256",
+    "Rolled 35mm wheel flanges, genuine inner wheel openings, seated metal rims, six recessed vents and raised hex fasteners remain separate from body paint",
+    "Four 6mm dark inner wings follow the rear arch returns, with curved upper shells and inboard D-shaped walls; one static batch blocks opposite-pavement sightlines without moving accepted outer meshes",
+    "Clean cream/jade enamel and rubber use independent colour materials; retained source image regions keep PNG pixels",
+    "Each headlamp has one thin alpha lens, a 38mm reflector bowl, an unlit bulb and a curved contacting housing; formed bumper corners, tow recesses, door hinges and locks are batched by material and movement parent",
+    "Runtime preserves source PBR differences with VehicleFinish; view-dependent single-layer glass uses no emissive whitening or added real-time lights",
+    "No new paid generation"
+  ],
+  "native_visual_review": {
+    "evidence": "evidence/vehicle_finish_20261024/final_visual_review.json",
+    "kind": "Internal inspection, not user acceptance",
+    "game_sha256": "f08d568951628cee743425cf0053059026e972af8ee1d94eb5ab807be16692ee",
+    "views": [
+      "detail_bus_front",
+      "bus_cabin_rear",
+      "bus_cabin_side",
+      "bus_route_close",
+      "bus_cabin_door_open",
+      "finish_bus_lamps",
+      "finish_bus_wheel",
+      "finish_bus_night",
+      "finish_bus_rain"
+    ]
+  }
 }

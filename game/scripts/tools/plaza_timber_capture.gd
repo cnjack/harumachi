@@ -11,6 +11,7 @@ static func capture_views() -> Dictionary:
 		"plaza_timber_stage": {"camera_at": Vector3(-3.5, 2.8, 16.2), "camera_focus": Vector3(-9.8, .9, 20.4), "fov": 48.0, "day": 17, "time": 16.25, "lifecycle_fixture": "resident_fallback"},
 		"plaza_timber_rain": {"camera_at": Vector3(-6, 2.6, 2), "camera_focus": Vector3(.3, .9, 8.5), "fov": 48.0, "weather": "rain"},
 		"plaza_timber_evening": {"camera_at": Vector3(-6, 2.6, 2), "camera_focus": Vector3(.3, .9, 8.5), "fov": 48.0, "time": 18.5},
+		"plaza_timber_night": {"camera_at": Vector3(-6, 2.6, 2), "camera_focus": Vector3(.3, .9, 8.5), "fov": 48.0, "time": 20.0},
 	}
 	for key: String in views:
 		var view: Dictionary = views[key]

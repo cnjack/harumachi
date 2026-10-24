@@ -98,6 +98,7 @@ func run() -> void:
 	var coverage_errors: Array[String] = []
 	var preserved_errors: Array[String] = []
 	var nonwood_errors: Array[String] = []
+	var pale_surface_errors: Array[String] = []
 	var wood_count: int = 0
 	var nonwood_count: int = 0
 	for model: Node3D in _roots():
@@ -119,6 +120,10 @@ func run() -> void:
 					preserved_errors.append(key)
 				var sample: Vector4 = _surface_sample(mesh, surface, source)
 				totals[id] = (totals.get(id, Vector4.ZERO) as Vector4) + sample
+				if sample.w > .000001:
+					var surface_mean: float = _luminance(Color(sample.x, sample.y, sample.z) / sample.w)
+					if surface_mean < .045 or surface_mean > .155:
+						pale_surface_errors.append("%s/%s %.4f" % [key, str(mesh.name), surface_mean])
 	var minimum: float = INF
 	var maximum: float = -INF
 	var means: Dictionary = {}
@@ -129,7 +134,9 @@ func run() -> void:
 		means[id] = snappedf(luminance, .0001)
 		minimum = minf(minimum, luminance)
 		maximum = maxf(maximum, luminance)
-	check("the seven courtyard wood assets stay within one cedar albedo range", totals.size() == 7 and maximum - minimum <= .10 and maximum <= .35 and minimum >= .18, str({"linear_luminance": means, "spread": maximum - minimum}))
+	check("the seven courtyard wood assets stay within one cedar albedo range", totals.size() == 7 and maximum - minimum <= .10 and maximum <= .35 and minimum >= .045, str({"linear_luminance": means, "spread": maximum - minimum}))
+	check("all seven courtyard assets use dark brown timber rather than the rejected pale honey finish", totals.size() == 7 and minimum >= .06 and maximum <= .14 and maximum - minimum <= .045, str({"linear_luminance": means, "spread": maximum - minimum}))
+	check("every sampled wooden surface stays dark without hiding pale boards inside an averaged asset", wood_count > 15 and pale_surface_errors.is_empty(), str(pale_surface_errors))
 	check("all courtyard timber including the player's placed picnic table receives the cedar finish", wood_count > 15 and coverage_errors.is_empty(), str({"surfaces": wood_count, "errors": coverage_errors}))
 	check("cedar calibration retains original images and source material tints", wood_count > 15 and preserved_errors.is_empty(), str(preserved_errors))
 	check("canvas foliage steel enamel and stage pennants are not recoloured as wood", nonwood_count >= 8 and nonwood_errors.is_empty(), str({"surfaces": nonwood_count, "errors": nonwood_errors}))

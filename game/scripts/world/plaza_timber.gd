@@ -1,9 +1,11 @@
 extends RefCounted
-## One maintained cedar palette for the furniture in this courtyard. Imported
+## One deep chestnut-stained cedar palette for this courtyard. Imported
 ## images, UVs, small age differences and non-timber parts remain independent.
 const IDS: Array[String] = ["A12_bench", "P01", "P03", "P05", "P09", "P10", "MS14_event_board"]
 const COURTYARD := Rect2(-13.0, -5.5, 30.0, 29.5)
-const CEDAR: Array[Color] = [Color("be8b55"), Color("ba8752"), Color("b78350"), Color("ac794a")]
+# The user's dark-wood choice: rubbed boards retain a warmer tone while frames
+# and end grain remain slightly deeper. Do not lift the whole set to honey yellow.
+const CEDAR: Array[Color] = [Color("80563b"), Color("7a5138"), Color("70482f"), Color("68422b")]
 # Area-weighted linear fibre means measured from each asset's actual UVs.
 # art/tools/audit_plaza_timber.py records/rechecks these without changing images.
 const FIBRE_MEAN := {

@@ -5,6 +5,7 @@ Dimensions are authored in Godot metres (+Z is the nose). Windows are actual
 openings with separate thin glazing, not painted seats on an opaque windscreen.
 """
 import json
+import hashlib
 import math
 from pathlib import Path
 
@@ -29,18 +30,25 @@ for point, normal in [((0, -.17, 0), (0, 1, 0)), ((0, 0, .72), (0, 0, 1))]:
 bm.to_mesh(old.data); bm.free()
 old.name = 'TexturedBedAndCargo'
 old.data.materials[0].name = 'Original_textured_produce_and_bed'
+# The retained atlas describes produce and timber, not exposed polished metal.
+for node in old.data.materials[0].node_tree.nodes:
+    if node.type == 'BSDF_PRINCIPLED':
+        node.inputs['Roughness'].default_value = .92
+        node.inputs['Metallic'].default_value = 0
+        node.inputs['Specular IOR Level'].default_value = .12
 
 
 def srgb(values):
     return tuple(v / 12.92 if v <= .04045 else ((v + .055) / 1.055) ** 2.4 for v in values)
 
 
-def material(name, colour, textured=False, alpha=1.0):
+def material(name, colour, textured=False, alpha=1.0, roughness=.85, metallic=0.0, specular=.14):
     m = bpy.data.materials.new(name); m.use_nodes = True
     p = m.node_tree.nodes['Principled BSDF']
     p.inputs['Base Color'].default_value = (*srgb(colour), alpha)
-    p.inputs['Roughness'].default_value = .85
-    p.inputs['Specular IOR Level'].default_value = 0
+    p.inputs['Roughness'].default_value = roughness
+    p.inputs['Metallic'].default_value = metallic
+    p.inputs['Specular IOR Level'].default_value = specular
     p.inputs['Alpha'].default_value = alpha
     if alpha < 1:
         m.surface_render_method = 'DITHERED'
@@ -51,7 +59,11 @@ def material(name, colour, textured=False, alpha=1.0):
         border = np.minimum(np.minimum(x, 1-x), np.minimum(y, 1-y))
         wash = .972 + .022 * np.clip(border * 20, 0, 1) + .005*np.sin(x*23+y*6)
         rgba = np.ones((512, 512, 4), np.float32)
-        rgba[:, :, :3] = np.array(colour)[None, None, :] * wash[:, :, None]
+        # Image pixel buffers contain linear values. Treating sRGB values as
+        # linear made the previous off-white paint almost solid display white.
+        authored = np.array(colour)[None, None, :] * wash[:, :, None]
+        rgba[:, :, :3] = np.where(authored <= .04045, authored / 12.92,
+                                  ((authored + .055) / 1.055) ** 2.4)
         img = bpy.data.images.new(name + '_paint', width=512, height=512, alpha=False)
         img.pixels.foreach_set(rgba.ravel()); img.filepath_raw = str(OUT / (name + '.png'))
         img.file_format = 'PNG'; img.save(); img.pack()
@@ -60,17 +72,20 @@ def material(name, colour, textured=False, alpha=1.0):
     return m
 
 
-paint = material('Ivory_painted_body', (.94, .945, .92), True)
-trim = material('Blue_grey_trim', (.30, .40, .45), True)
-rubber = material('Tyre_rubber', (.20, .235, .25), True)
-cloth = material('Blue_woven_seats', (.34, .44, .51), True)
-silver = material('Matte_wheel_steel', (.76, .80, .80), True)
-dark = material('Rubber_seals_and_grille', (.16, .22, .25))
-lamp = material('Cream_headlamp', (.94, .94, .77), True)
-amber = material('Amber_signal', (.94, .57, .17))
-red = material('Red_tail_lamp', (.78, .22, .19))
-glass = material('Thin_blue_glass', (.66, .83, .91), alpha=.16)
-plate = material('Yellow_local_plate', (.93, .78, .32))
+paint = material('Ivory_painted_body', (.88, .90, .87), True, roughness=.43, specular=.26)
+trim = material('Blue_grey_trim', (.28, .35, .39), True, roughness=.62, specular=.20)
+rubber = material('Tyre_rubber', (.16, .19, .205), True, roughness=.91, specular=.10)
+cloth = material('Blue_woven_seats', (.32, .41, .47), True, roughness=.94, specular=.08)
+silver = material('Matte_wheel_steel', (.57, .64, .67), True, roughness=.34, metallic=.68, specular=.32)
+zinc = material('Galvanized_gate_hardware', (.66, .71, .73), roughness=.31, metallic=.72, specular=.32)
+reflector_metal = material('Headlamp_reflector_steel', (.78, .81, .80), roughness=.25, metallic=.82, specular=.35)
+dark = material('Rubber_seals_and_grille', (.12, .17, .19), roughness=.90, specular=.10)
+lamp = material('Headlamp_optical_glass', (.80, .87, .88), alpha=.34, roughness=.22, specular=.32)
+bulb = material('Headlamp_bulb_ceramic', (.91, .90, .81), roughness=.34, specular=.25)
+amber = material('Amber_signal', (.91, .49, .09), roughness=.29, specular=.30)
+red = material('Red_tail_lamp', (.68, .15, .13), roughness=.30, specular=.28)
+glass = material('Thin_blue_glass', (.65, .78, .85), alpha=.14, roughness=.23, specular=.28)
+plate = material('Yellow_local_plate', (.90, .74, .29), roughness=.63, specular=.16)
 
 
 def pos(v):
@@ -96,7 +111,9 @@ def box(name, size, at, mat=paint, bevel=.015):
     bpy.ops.mesh.primitive_cube_add(size=1, location=pos(at))
     o = bpy.context.object; o.dimensions = (size[0], size[2], size[1])
     bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
-    return finish(o, name, mat, bevel)
+    # Millimetre-scale hems and ribs need two bevel segments, not the four
+    # used on body corners. Keep this detail from multiplying draw geometry.
+    return finish(o, name, mat, bevel, 2 if bevel <= .010 else 4)
 
 
 def beam(name, start, end, width, mat=paint):
@@ -218,7 +235,9 @@ def tyre(name,side,z):
     # Cross-section closes at the bead. Broad sidewall curves produce a
     # ballooned rubber silhouette and leave the rim truly inset.
     profile=[(-.095,.205),(-.118,.230),(-.126,.263),(-.118,.285),(-.101,.310),
-             (-.070,.322),(-.034,.325),(.034,.325),(.070,.322),(.101,.310),
+             (-.070,.322),(-.049,.325),(-.043,.325),(-.039,.315),(-.032,.315),
+             (-.028,.325),(.028,.325),(.032,.315),(.039,.315),(.043,.325),(.049,.325),
+             (.070,.322),(.101,.310),
              (.118,.285),(.126,.263),(.118,.230),(.095,.205)]
     for axial,radius in profile:
         for i in range(steps):
@@ -231,11 +250,87 @@ def tyre(name,side,z):
     return mesh_object(name,verts,faces,rubber,True)
 
 
+def pressed_rim(name, side, z):
+    # A stamped dish sits 25 mm behind the rolled flange. The holes go through
+    # the real bowl into a dark brake drum, instead of being dark face dots.
+    profile=[(.062,.882),(.103,.880),(.118,.860),(.151,.854),(.177,.858),
+             (.190,.875),(.199,.883),(.208,.881),(.215,.872),(.208,.850),
+             (.192,.848),(.177,.844),(.103,.851),(.062,.860)]
+    verts=[];faces=[];count=64
+    for radius,axial in profile:
+        for step in range(count):
+            a=math.tau*step/count
+            verts.append((side*axial,.325+radius*math.cos(a),z+radius*math.sin(a)))
+    for row in range(len(profile)):
+        for step in range(count):
+            nxt=(step+1)%count
+            other=(row+1)%len(profile)
+            faces.append((row*count+step,row*count+nxt,other*count+nxt,other*count+step))
+    rim=mesh_object(name,verts,faces,silver,True)
+    for index in range(6):
+        angle=index*math.tau/6
+        # Elliptical slots follow the radial pressing, with actual open area.
+        vertices=[]
+        for xx in [side*.81,side*.93]:
+            for step in range(20):
+                q=step*math.tau/20
+                radial=.148+.028*math.cos(q);tangent=.019*math.sin(q)
+                vertices.append((xx,.325+radial*math.cos(angle)-tangent*math.sin(angle),
+                                 z+radial*math.sin(angle)+tangent*math.cos(angle)))
+        polys=[tuple(reversed(range(20))),tuple(range(20,40))]
+        polys += [(i,(i+1)%20,(i+1)%20+20,i+20) for i in range(20)]
+        cutter=mesh_object('Rim_slot_cutter',vertices,polys,dark)
+        cut(rim,cutter,'Open_stamped_slot_'+str(index))
+    # Reset boolean normals so the dish does not inherit normals from a cutter.
+    for polygon in rim.data.polygons:polygon.use_smooth=True
+    return rim
+
+
+def optical_lens(name, centre_x):
+    # One shallow transmitting shell. The microflutes are the lens surface,
+    # not bright opaque bars drawn over a flat cream cover.
+    width=.275; height=.145; corner=.023; cols=32; rows=12
+    verts=[];faces=[]
+    for row in range(rows+1):
+        yy=-height/2+height*row/rows
+        top=max(0,abs(yy)-(height/2-corner))
+        half=width/2-corner+math.sqrt(max(0,corner*corner-top*top))
+        for col in range(cols+1):
+            xx=-half+2*half*col/cols
+            crown=.011*max(0,1-(xx/(width/2))**2)*max(0,1-(yy/(height/2))**2)
+            flute=.0006*math.cos(xx*math.pi*16/width)
+            verts.append((centre_x+xx,.947+yy,1.713+crown+flute))
+    for row in range(rows):
+        for col in range(cols):
+            a=row*(cols+1)+col;faces.append((a,a+1,a+cols+2,a+cols+1))
+    border=list(range(cols+1))
+    border += [row*(cols+1)+cols for row in range(1,rows+1)]
+    border += [rows*(cols+1)+col for col in range(cols-1,-1,-1)]
+    border += [row*(cols+1) for row in range(rows-1,0,-1)]
+    start=len(verts)
+    verts += [(verts[index][0],verts[index][1],1.707) for index in border]
+    for index in range(len(border)):
+        following=(index+1)%len(border)
+        faces.append((border[index],border[following],start+following,start+index))
+    faces.append(tuple(range(start,len(verts))))
+    return mesh_object(name,verts,faces,lamp,True)
+
+
+def ring(name, at, radius, thickness, mat, axis='X', steps=48):
+    bpy.ops.mesh.primitive_torus_add(major_radius=radius,minor_radius=thickness,
+                                    major_segments=steps,minor_segments=6,location=pos(at))
+    obj=bpy.context.object
+    if axis=='X':obj.rotation_euler.y=math.pi/2
+    elif axis=='Z':obj.rotation_euler.x=math.pi/2
+    return finish(obj,name,mat)
+
+
 def cylinder_link(name,start,end,radius,mat):
     a,b=pos(start),pos(end)
-    bpy.ops.mesh.primitive_cylinder_add(vertices=20,radius=radius,depth=(b-a).length,location=(a+b)*.5)
+    tiny=radius<=.010
+    bpy.ops.mesh.primitive_cylinder_add(vertices=12 if tiny else 20,radius=radius,depth=(b-a).length,location=(a+b)*.5)
     obj=bpy.context.object;obj.rotation_euler=(b-a).to_track_quat('Z','Y').to_euler()
-    return finish(obj,name,mat,.003,3)
+    return finish(obj,name,mat,min(.003,radius*.25),1 if tiny else 3)
 
 
 def join_named(objects,name):
@@ -258,10 +353,14 @@ for side in [-1, 1]:
     # True wheel arch removes the panel behind each front tyre.
     cutter = cylinder('Wheel_arch_cutter', (side*.795, .325, 1.075), .352, .3, dark,vertices=64)
     cut(panel,cutter,'Open_wheel_arch')
+    recess=box('Door_press_cutter',(.030,.192,.91),(side*.840,.938,.892),paint,.014)
+    cut(panel,recess,'Pressed_door_recess')
     box('Door_handle_recess', (.012, .076, .235), (side*.839, 1.083, .49),trim,.022)
     for dz in [-.078,.078]:
         box('Door_handle_foot', (.045,.031,.031), (side*.855,1.083,.49+dz),dark,.012)
     box('Door_handle_pull', (.024,.029,.182), (side*.883,1.083,.49),dark,.013)
+    cylinder('Door_lock_cylinder',(side*.851,1.073,.654),.014,.012,zinc,vertices=20)
+    box('Door_lock_slot',(.003,.010,.002),(side*.858,1.073,.654),dark,.0008)
     box('Door_moulding', (.016, .022, 1.19), (side*.842, 1.157, .965), paint, .007)
     for a,b in [((side*.838,.74,.335),(side*.838,1.18,.335)),
                 ((side*.838,1.18,.335),(side*.838,1.18,1.55)),
@@ -302,16 +401,20 @@ for side in [-1, 1]:
     label='Left' if side<0 else 'Right'
     cutter=box('Lamp_body_aperture',(.345,.218,.25),(side*.542,.947,1.675),dark,.038)
     cut(nose,cutter,'Recessed_headlamp_'+label)
-    reflector=box('Headlight_'+label+'_Reflector',(.335,.205,.084),(side*.542,.947,1.648),silver,.037)
+    reflector=box('Headlight_'+label+'_Reflector',(.335,.205,.084),(side*.542,.947,1.648),reflector_metal,.037)
     bucket_cut=box('Reflector_cavity',(.275,.145,.064),(side*.542,.947,1.699),dark,.030)
     cut(reflector,bucket_cut,'Reflector_bowl')
-    # The warm opaque lens is recessed inside a physical border. Its broad
-    # restrained highlights read as enamel-era glass in the game's toon light.
-    box('Headlight_'+label+'_Lens',(.275,.145,.020),(side*.542,.947,1.699),lamp,.030)
-    for dx in [-.072,-.024,.024,.072]:
-        box('Headlight_flute',(.004,.108,.003),(side*.542+dx,.947,1.710),silver,.001)
+    optical_lens('Headlight_'+label+'_Lens',side*.542)
+    cylinder('Headlamp_bulb_base',(side*.542,.947,1.673),.025,.011,zinc,axis='Z',vertices=20)
+    cylinder('Headlamp_bulb',(side*.542,.947,1.684),.017,.018,bulb,axis='Z',vertices=20)
+    for dx in [-.148,.148]:
+        cylinder('Headlamp_adjuster',(side*.542+dx,.947,1.694),.007,.006,zinc,axis='Z',vertices=12)
+    for row in [-1,1]:
+        box('Headlamp_reflector_rib',(.238,.007,.010),(side*.542,.947+row*.046,1.674),reflector_metal,.002)
     box('Front_indicator_socket',(.082,.145,.042),(side*.753,.94,1.665),dark,.021)
     box('Front_indicator', (.061, .119, .026), (side*.753, .94, 1.695), amber, .015)
+    for y in [.905,.928,.951,.974]:
+        box('Indicator_moulded_ridge',(.047,.0025,.002),(side*.753,y,1.709),amber,.001)
     box('Bumper_insert', (.30, .065, .021), (side*.55, .609, 1.708), trim,.019)
     beam('Wiper', (side*.51, 1.222, 1.669), (side*.20, 1.26, 1.650), .018, dark)
 # Booleans must not borrow rounded cutter normals across the entire sheet.
@@ -350,6 +453,8 @@ beam('Gear_lever', (.02, .73, 1.04), (.02, .975, 1.0), .027, dark)
 # Formed steel gates enclose the retained painted vegetable crates. Each gate
 # rests on the floor rim and has a top return, shallow pressings and fasteners.
 box('Cargo_floor',(1.715,.065,1.845),(0,.723,-.764),trim,.018)
+for index in range(12):
+    box('Bed_floor_rolled_rib',(.034,.010,1.73),(-.715+index*.13,.760,-.764),trim,.004)
 for side in [-1,1]:
     gate=box('Cargo_sidegate',(.060,.345,1.80),(side*.858,.878,-.765),paint,.018)
     cutter=cylinder('Bed_wheel_aperture',(side*.83,.325,-1.11),.352,.35,dark,vertices=64)
@@ -357,27 +462,45 @@ for side in [-1,1]:
     box('Cargo_top_return',(.071,.041,1.814),(side*.86,1.059,-.765),paint,.015)
     box('Cargo_lower_return',(.074,.039,1.803),(side*.86,.718,-.765),paint,.013)
     for z in [-1.39,-.76,-.12]:
-        box('Cargo_pressing',(.012,.18,.43),(side*.895,.876,z),paint,.026)
+        pressing=box('Side_pressing_cutter',(.024,.192,.454),(side*.894,.878,z),paint,.010)
+        cut(gate,pressing,'Recessed_sidegate_pressing')
     for z in [-1.57,.05]:
         box('Cargo_corner_socket',(.065,.285,.079),(side*.86,.895,z),paint,.012)
-        parts=[box('Latch_mount',(.026,.093,.073),(side*.902,.984,z),trim,.009),
-               box('Latch_lever',(.040,.071,.020),(side*.921,.976,z),silver,.008)]
+        parts=[box('Latch_mount',(.018,.112,.086),(side*.902,.978,z),zinc,.007),
+               cylinder('Latch_pivot',(side*.920,.975,z),.014,.028,zinc,vertices=20),
+               cylinder_link('Latch_folded_lever',(side*.932,.978,z),
+                             (side*.939,.927,z+.014),.009,zinc),
+               cylinder_link('Latch_handle_return',(side*.939,.927,z+.014),
+                             (side*.921,.927,z+.014),.009,zinc),
+               cylinder('Captive_lock_pin',(side*.930,1.022,z),.008,.116,zinc,axis='Z',vertices=20)]
+        for dz in [-.036,.036]:
+            parts.append(cylinder('Lock_sleeve',(side*.930,1.022,z+dz),.012,.018,zinc,axis='Z',vertices=20))
+            parts.append(cylinder_link('Lock_standoff',(side*.903,1.022,z+dz),
+                                       (side*.931,1.022,z+dz),.009,zinc))
+        for y in [.943,1.007]:
+            parts.append(cylinder('Latch_mount_bolt',(side*.914,y,z),.007,.008,silver,vertices=6))
         join_named(parts,'SidegateLatch_'+('Left' if side<0 else 'Right')+('_Back' if z<0 else '_Front'))
     for z in [-1.35,-.32]:
         cylinder_link('Tie_down_anchor',(side*.904,.763,z-.035),(side*.904,.763,z+.035),.010,trim)
         for dz in [-.035,.035]:
             cylinder_link('Tie_down_mount',(side*.880,.76,z+dz),(side*.904,.763,z+dz),.008,trim)
-box('Cargo_tailgate',(1.71,.342,.055),(0,.878,-1.685),paint,.018)
+tailgate=box('Cargo_tailgate',(1.71,.342,.055),(0,.878,-1.685),paint,.018)
 box('Tailgate_top_return',(1.736,.042,.073),(0,1.060,-1.687),paint,.014)
 for x in [-.51,0,.51]:
-    box('Tailgate_pressed_panel',(.40,.18,.014),(x,.876,-1.718),paint,.026)
+    pressing=box('Tailgate_press_cutter',(.415,.192,.026),(x,.878,-1.718),paint,.010)
+    cut(tailgate,pressing,'Recessed_tailgate_pressing')
 for index,x in enumerate([-.55,.55]):
-    pieces=[box('Hinge_upper_leaf',(.13,.067,.022),(x,.776,-1.720),silver,.007),
-            box('Hinge_lower_leaf',(.13,.059,.025),(x,.704,-1.722),silver,.007),
-            cylinder('Hinge_pin',(x,.741,-1.727),.023,.176,silver,vertices=24)]
+    pieces=[box('Hinge_upper_leaf',(.13,.067,.018),(x,.782,-1.720),zinc,.006),
+            box('Hinge_lower_leaf',(.13,.059,.018),(x,.704,-1.720),zinc,.006),
+            cylinder('Hinge_pin',(x,.741,-1.731),.009,.205,zinc,vertices=24)]
+    for dx in [-.060,0,.060]:
+        pieces.append(cylinder('Hinge_knuckle',(x+dx,.741,-1.731),.021,.047,zinc,vertices=24))
+    for dx in [-.102,.102]:
+        pieces.append(cylinder('Hinge_pin_cap',(x+dx,.741,-1.731),.013,.009,silver,vertices=16))
+    for y in [.696,.801]:
+        for dx in [-.040,.040]:
+            pieces.append(cylinder('Hinge_fastener',(x+dx,y,-1.733),.0065,.007,silver,axis='Z',vertices=6))
     join_named(pieces,'TailgateHinge_'+str(index))
-    for y in [.696,.790]:
-        cylinder('Hinge_rivet',(x,y,-1.737),.007,.004,dark,axis='Z',vertices=12)
 # Protect the cab at its header and side pillars. A mid-height crossbar would
 # occlude the clear rear glass; all three members stay outside that aperture.
 box('Cab_cargo_guard',(1.47,.045,.045),(0,1.755,.125),paint,.013)
@@ -389,27 +512,33 @@ for side in [-1, 1]:
         label='Left' if side<0 else 'Right'
         tyre('Tyre_'+axle+'_'+label,side,z)
         arc_fender('WheelArch_'+axle+'_'+label,side,z)
-        cylinder('Brake_drum',(side*.831,.325,z),.199,.032,dark,vertices=48)
-        rim=cylinder('Pressed_steel_rim', (side*.862, .325, z), .212, .022, silver, vertices=48)
-        for index in range(6):
-            a=index*math.tau/6
-            cutter=cylinder('Vent_cutter',(side*.862,.325+math.cos(a)*.148,z+math.sin(a)*.148),.023,.075,dark,vertices=16)
-            cut(rim,cutter,'Pressed_vent_'+str(index))
-        for polygon in rim.data.polygons:polygon.use_smooth=False
-        bpy.ops.mesh.primitive_torus_add(major_radius=.202,minor_radius=.010,major_segments=48,minor_segments=8,
-                                        location=pos((side*.874,.325,z)))
-        rim_roll=bpy.context.object;rim_roll.rotation_euler.y=math.pi/2
-        finish(rim_roll,'Rolled_rim_edge',silver)
-        cylinder('Hub', (side*.881, .325, z), .069, .028, trim, vertices=32)
+        cylinder('Brake_drum',(side*.825,.325,z),.196,.024,dark,vertices=48)
+        pressed_rim('Pressed_steel_rim',side,z)
+        cylinder('Hub_gasket',(side*.886,.325,z),.069,.012,dark,vertices=32)
+        cylinder('Hub', (side*.899, .325, z), .059, .026, zinc, vertices=32)
+        ring('Hub_rolled_edge',(side*.910,.325,z),.047,.0035,silver,steps=32)
+        for radius,axial in [(.265,.873),(.281,.866)]:
+            ring('Sidewall_moulding',(side*axial,.325,z),radius,.0015,rubber)
         for index in range(4):
             angle=index*math.tau/4
-            cylinder('Wheel_lug',(side*.882,.325+math.cos(angle)*.094,z+math.sin(angle)*.094),.012,.019,silver,vertices=6)
+            yy=.325+math.cos(angle)*.088;zz=z+math.sin(angle)*.088
+            cylinder('Wheel_lug_washer',(side*.884,yy,zz),.017,.006,trim,vertices=20)
+            cylinder('Wheel_lug',(side*.898,yy,zz),.012,.020,zinc,vertices=6)
+        angle=math.radians(-45)
+        yy=.325+.177*math.cos(angle);zz=z+.177*math.sin(angle)
+        cylinder_link('Wheel_valve_stem',(side*.880,yy,zz),(side*.913,yy,zz),.007,dark)
+        cylinder('Wheel_valve_cap',(side*.916,yy,zz),.008,.010,trim,vertices=12)
     box('Rear_mudflap', (.24, .24, .028), (side*.75, .35, -1.49), rubber, .009)
 box('Rear_bumper', (1.51, .075, .07), (0, .50, -1.643), trim)
 for side in [-1, 1]:
     box('Tail_lamp_surround', (.28, .12, .045), (side*.60, .65, -1.676), dark, .014)
     box('Tail_lamp_red', (.19, .078, .018), (side*.574, .65, -1.706), red, .009)
     box('Tail_lamp_amber', (.055, .078, .018), (side*.706, .65, -1.706), amber, .008)
+    for y in [.626,.642,.658,.674]:
+        box('Tail_lamp_red_flute',(.169,.003,.003),(side*.574,y,-1.716),red,.001)
+        box('Tail_lamp_amber_flute',(.041,.003,.003),(side*.706,y,-1.716),amber,.001)
+    box('Reverse_light_mount',(.080,.043,.014),(side*.436,.648,-1.715),dark,.006)
+    box('Reverse_light_lens',(.066,.032,.005),(side*.436,.648,-1.725),bulb,.005)
 box('Rear_plate', (.30, .135, .018), (0, .65, -1.711), plate, .009)
 for x in [-.074, .015, .082]:
     box('Rear_plate_mark', (.019, .057, .004), (x, .646, -1.723), dark, .002)
@@ -438,16 +567,37 @@ bpy.context.preferences.filepaths.save_version=0
 bpy.ops.wm.save_as_mainfile(filepath=str(authoring))
 source=ROOT/'art/library/vehicles/source/D07_kei_truck.glb'
 bpy.ops.export_scene.gltf(filepath=str(source),export_format='GLB',export_yup=True,export_apply=True,export_animations=False)
+authored_materials={}
+for obj in bpy.context.scene.objects:
+    if obj.type!='MESH':continue
+    for mat in obj.data.materials:
+        if not mat or not mat.use_nodes:continue
+        principled=next((node for node in mat.node_tree.nodes if node.type=='BSDF_PRINCIPLED'),None)
+        if principled:
+            authored_materials[mat.name]={key:round(float(principled.inputs[key].default_value),4)
+                                          for key in ['Metallic','Roughness','Alpha']}
 manifest={'model':'D07_kei_truck','date':'2026-10-24','source':str(source.relative_to(ROOT)),
           'authoring':str(authoring.relative_to(ROOT)), 'builder':'art/tools/rebuild_kei_truck.py',
           'predecessor':'art/library/vehicles/source/D07_textured_predecessor.glb',
           'retained':'Original UV texture on produce crates and flatbed; no opaque original cab remains',
           'rebuilt':['broad crowned roof and bowed pressed nose','four rolled wheel-arch returns',
-                     'curved tyre cross-sections and vented steel rims','shut lines and stood-off door pulls',
-                     'inset lamp bowls and lenses','rear-facing inset mirror lenses',
-                     'formed drop-side gates, rolled rails, hinges, latches and tie-down anchors'],
+                     'curved tyre cross-sections, actual tread grooves and moulded sidewall rings',
+                     'dished steel rims with open radial slots, stepped hubs, washers, nuts and valve stems',
+                     'shut lines, recessed door pressings, stood-off pulls and lock barrels',
+                     'single transmitting crown-shaped lamp lenses over metal reflector bowls and bulbs',
+                     'rear-facing inset mirror lenses',
+                     'recessed drop-side and tailgate pressings with rolled rails and ribbed floor',
+                     'segmented hinge knuckles, captive pins, folded latch levers, fasteners and tie-down anchors'],
           'nose_axis':'+Z','wheel_radius_m':.325,'glass':'Four thin separate quads with clear apertures',
           'rear_guard':'Crossbar follows the cab header at 1.755 m; side legs reach the cargo floor, outside the rear-glass aperture',
           'new_paid_generations':0,
-          'audit':'art/tools/audit_kei_truck_detail.py','native_visual_review_required':True}
+          'materials':authored_materials,
+          'material_pipeline':'Source PBR colour, metallic and roughness retained by exporter; VehicleFinish adds restrained toon response; TruckGlazing supplies view-dependent single-layer cab reflection',
+          'draw_call_policy':'Static small hardware is merged by material; named door latches, rear hinges and original structural parts remain independently auditable',
+          'added_realtime_lights':0,
+          'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),
+          'authoring_sha256':hashlib.sha256(authoring.read_bytes()).hexdigest(),
+          'audit':'art/tools/audit_kei_truck_finish.py',
+          'baseline_failures':'8 new finish checks reject the preceding D07; original 9 geometry checks remain required',
+          'native_visual_review_required':True}
 (ROOT/'art/manifests/models_kei_truck_20261024.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')

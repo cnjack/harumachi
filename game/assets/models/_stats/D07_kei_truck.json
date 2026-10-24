@@ -3,18 +3,22 @@
  "src": "../library/vehicles/source/D07_kei_truck.glb",
  "provider": "Blender pressed cab, rounded tyres, four rolled arches, inset lamps and mirrors, drop-side hardware; original textured produce cargo retained",
  "preserve_parts": true,
+ "preserve_source_materials": true,
  "origin_preserved": true,
- "tris": 77402,
+ "tris": 94918,
  "tex": 2048,
- "bytes": 2668680,
+ "bytes": 3185892,
  "godot_size_m_xyz": [
   2.035,
   1.881,
-  3.476
+  3.478
  ],
  "mesh_nodes": [
   "Body_Amber_signal",
   "Body_Blue_grey_trim",
+  "Body_Galvanized_gate_hardware",
+  "Body_Headlamp_bulb_ceramic",
+  "Body_Headlamp_reflector_steel",
   "Body_Ivory_painted_body",
   "Body_Matte_wheel_steel",
   "Body_Red_tail_lamp",

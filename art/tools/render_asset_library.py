@@ -27,10 +27,11 @@ for index,asset in enumerate(catalog['assets']):
   meshes=[o for o in bpy.context.scene.objects if o.type=='MESH'];points=[o.matrix_world@v.co for o in meshes for v in o.data.vertices]
   lo=Vector([min(p[a] for p in points) for a in range(3)]);hi=Vector([max(p[a] for p in points) for a in range(3)]);centre=(lo+hi)*.5;size=hi-lo
   world=bpy.data.worlds.new('LibraryBackdrop');world.use_nodes=True;world.node_tree.nodes['Background'].inputs[0].default_value=(.77,.81,.73,1);world.node_tree.nodes['Background'].inputs[1].default_value=.75;bpy.context.scene.world=world
-  for material in bpy.data.materials:
-   if material.use_nodes:
-    bs=material.node_tree.nodes.get('Principled BSDF')
-    if bs:bs.inputs['Roughness'].default_value=1;bs.inputs['Specular IOR Level'].default_value=0
+  if not asset.get('metrics',{}).get('preserve_source_materials',False):
+   for material in bpy.data.materials:
+    if material.use_nodes:
+     bs=material.node_tree.nodes.get('Principled BSDF')
+     if bs:bs.inputs['Roughness'].default_value=1;bs.inputs['Specular IOR Level'].default_value=0
   sun=bpy.data.objects.new('LibrarySun',bpy.data.lights.new('LibrarySun','SUN'));bpy.context.collection.objects.link(sun);sun.data.energy=2.2;sun.rotation_euler=(.7,-.2,-.5)
   fill=bpy.data.objects.new('LibraryFill',bpy.data.lights.new('LibraryFill','AREA'));bpy.context.collection.objects.link(fill);fill.location=centre+Vector((-2,-3,3))*max(size);fill.rotation_euler=(centre-fill.location).to_track_quat('-Z','Y').to_euler();fill.data.energy=60*max(size)**2;fill.data.shape='DISK';fill.data.size=max(size)*3
   camera=bpy.data.objects.new('LibraryCamera',bpy.data.cameras.new('LibraryCamera'));bpy.context.collection.objects.link(camera);camera.data.type='ORTHO';camera.data.ortho_scale=max(size)*1.45;camera.location=centre+Vector((1,-1,.65)).normalized()*size.length*2;camera.rotation_euler=(centre-camera.location).to_track_quat('-Z','Y').to_euler()

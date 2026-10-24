@@ -1,10 +1,10 @@
 class_name TruckGlazing
 extends RefCounted
-## Keep the remade cab transparent through the shared matte asset pipeline.
+## Retain source vehicle finishes and one thin layer for each real cab window.
 const GLASS: Shader = preload("res://shaders/truck_glass.gdshader")
 
 static func apply(root: Node3D) -> void:
-	HouseBuilder.toonify(root)
+	VehicleFinish.apply(root)
 	var glazing := ShaderMaterial.new()
 	glazing.shader = GLASS
 	for mesh: MeshInstance3D in WorldBuilder.find_meshes(root):

@@ -14,7 +14,7 @@ func build(world: WorldBuilder) -> void:
 	name="CountryBus";position=Vector3(-44.8,0,-11.3)
 	var model:=world.spawn("B01_bus",Vector3.ZERO,0,0,self)
 	if model==null:return
-	HouseBuilder.toonify(model)
+	VehicleFinish.apply(model)
 	for i in 4:
 		var wheel:=model.find_child("Wheel_%d"%i,true,false) as Node3D
 		if wheel:wheels.append(wheel);wheel_rest_bases.append(wheel.basis)

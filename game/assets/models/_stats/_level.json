@@ -156,17 +156,17 @@
     "verts": 196838
   },
   "B01_bus": {
-    "base_frac": 0.52,
+    "base_frac": 0.513,
     "normal": [
       0.0,
       0.0,
       -1.0
     ],
-    "rect_fill": 0.906,
-    "source_sha256": "37e3ac892e07912798c6bf54512948a5d5f7a4b537980b7620fecd38dabe5cdd",
-    "square_deg": 0.05,
+    "rect_fill": 0.913,
+    "source_sha256": "f08d568951628cee743425cf0053059026e972af8ee1d94eb5ab807be16692ee",
+    "square_deg": 0.0,
     "tilt": 0.0,
-    "verts": 281043
+    "verts": 238864
   },
   "B01_melon_pan": {
     "base_frac": 0.265,
@@ -740,17 +740,17 @@
     "verts": 11798
   },
   "D07_kei_truck": {
-    "base_frac": 0.544,
+    "base_frac": 0.539,
     "normal": [
       0.0,
       0.0,
       -1.0
     ],
-    "rect_fill": 0.981,
-    "source_sha256": "ba8d4b39021b1c1b37f9e11769ebb8362354cc5016db36bdecacd92e51e85aa7",
+    "rect_fill": 0.98,
+    "source_sha256": "2342e4c0e1dcb2f6cdf14597d113a6bd06afa3b3ea4db281c42189955d20e816",
     "square_deg": 0.0,
     "tilt": 0.0,
-    "verts": 60258
+    "verts": 74139
   },
   "D08_tool_rack": {
     "base_frac": 0.976,

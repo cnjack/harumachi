@@ -376,7 +376,7 @@ def export_preserved(aid, s):
         if not mat.use_nodes:
             continue
         for node in mat.node_tree.nodes:
-            if node.type == 'BSDF_PRINCIPLED':
+            if node.type == 'BSDF_PRINCIPLED' and not s.get('preserve_source_materials', False):
                 node.inputs['Metallic'].default_value = 0
                 node.inputs['Roughness'].default_value = 1
                 if 'Specular IOR Level' in node.inputs:
@@ -393,6 +393,7 @@ def export_preserved(aid, s):
                               export_animations=False,export_image_format=s.get('image_format','JPEG'),export_jpeg_quality=92)
     size = mx-mn
     stats = {'id':aid,'src':s['src'],'provider':s.get('provider'),'preserve_parts':True,
+             'preserve_source_materials':bool(s.get('preserve_source_materials',False)),
              'origin_preserved':True,'tris':tris,'tex':s.get('tex',2048),'bytes':os.path.getsize(out),
              'godot_size_m_xyz':[round(size.x,4),round(size.z,4),round(size.y,4)],
              'mesh_nodes':sorted(o.name for o in meshes)}

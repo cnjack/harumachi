@@ -230,5 +230,88 @@
       ]
     }
   },
-  "bounds_revision": "2026-10-03: uniformly normalized Hyper3D replacements; sizes intentionally changed with scene clearance review; density threshold retained"
+  "bounds_revision": "2026-10-03: uniformly normalized Hyper3D replacements; sizes intentionally changed with scene clearance review; density threshold retained",
+  "authored_vehicle_materials": {
+    "B01_bus": {
+      "Satin_aluminium": {
+        "metallic": [
+          0.625,
+          0.675
+        ],
+        "roughness": [
+          0.315,
+          0.365
+        ],
+        "minimum_area_m2": 0.001
+      },
+      "Bus_stamped_wheel_steel": {
+        "metallic": [
+          0.595,
+          0.645
+        ],
+        "roughness": [
+          0.335,
+          0.385
+        ],
+        "minimum_area_m2": 0.001
+      },
+      "Bus_satin_hardware": {
+        "metallic": [
+          0.655,
+          0.705
+        ],
+        "roughness": [
+          0.295,
+          0.345
+        ],
+        "minimum_area_m2": 0.001
+      },
+      "Bus_lamp_reflector": {
+        "metallic": [
+          0.625,
+          0.675
+        ],
+        "roughness": [
+          0.265,
+          0.315
+        ],
+        "minimum_area_m2": 0.001
+      }
+    },
+    "D07_kei_truck": {
+      "Matte_wheel_steel": {
+        "metallic": [
+          0.655,
+          0.705
+        ],
+        "roughness": [
+          0.315,
+          0.365
+        ],
+        "minimum_area_m2": 0.001
+      },
+      "Galvanized_gate_hardware": {
+        "metallic": [
+          0.695,
+          0.745
+        ],
+        "roughness": [
+          0.285,
+          0.335
+        ],
+        "minimum_area_m2": 0.001
+      },
+      "Headlamp_reflector_steel": {
+        "metallic": [
+          0.795,
+          0.845
+        ],
+        "roughness": [
+          0.225,
+          0.275
+        ],
+        "minimum_area_m2": 0.001
+      }
+    }
+  }
 }

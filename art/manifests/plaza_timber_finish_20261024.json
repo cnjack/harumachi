@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-24",
+  "change": "Deep chestnut-stained cedar for the previously unified courtyard timber",
+  "request": "Use dark timber instead of the previous pale honey colour",
+  "palette_srgb": [
+    "80563b",
+    "7a5138",
+    "70482f",
+    "68422b"
+  ],
+  "applied_models": [
+    "A12_bench",
+    "P01",
+    "P03",
+    "P05",
+    "P09",
+    "P10",
+    "MS14_event_board"
+  ],
+  "scope": "Existing courtyard rectangle only, including the player placement path; outside benches retain their authored finish",
+  "material_entry": "game/scripts/world/plaza_timber.gd",
+  "shader": "game/shaders/furniture_wood.gdshader",
+  "shader_changed": false,
+  "source_models_or_textures_changed": false,
+  "preserved": [
+    "geometry",
+    "UVs",
+    "original embedded atlas images",
+    "source material tints",
+    "non-timber components",
+    "existing material roughness and reflection values"
+  ],
+  "source_hashes": {
+    "game/scripts/world/plaza_timber.gd": "747b5c184adc0b1558bfacb0103a692bbc614b25d1729707a348dd3c1f4cb4cf",
+    "game/scripts/tests/plaza_timber_checks.gd": "104f54a6cdccdafbdb58c0f102bfa5c055239ee9cdb84c2bf6c591c7da7d5c42",
+    "game/scripts/tools/plaza_timber_capture.gd": "39d7fd3cdd53d186fb60c55348217e5a3bc6e7390185f39cf41714accacabff6",
+    "art/tools/audit_plaza_timber.py": "b639686b3a95bb23e3f74e57da5f42079a54264e2f60dfc39ae0c45dc03cfba3"
+  },
+  "shader_sha256": "1d1a957677c90326338c7123303e9dd64aed2c445df0d78739ee7717473826be",
+  "game_model_sha256": {
+    "A12_bench": "43ef728153fa42f8b648d05d060654d1239f2445c0995e2080087b9a6b283add",
+    "P01": "6772f2d73704061eb55793c207dac0281ed49e215e0243ae08009d7d186f3cdc",
+    "P03": "162aa1ba658cb532483fec0b36665f7996eaaa40294b1d349d55eb02b17f277a",
+    "P05": "4065390b629e7cf484e1509721c641a3ff6dc12f2d0e2626b4bd87a89337fe18",
+    "P09": "640b45803712b82b5d57c893a6f6d135888ad866ea1c2891ae5e518a69dad100",
+    "P10": "be0dea1f3509dfdd6f7cf29f8cad2efd5781a80fecd34f89e24d933777dbfe2e",
+    "MS14_event_board": "037044505dcb582fd0d88966412c0002c324a61178a66ea723ce7fa74e93d0a6"
+  },
+  "base_colour_contract": {
+    "asset_linear_luminance": [
+      0.06,
+      0.14
+    ],
+    "surface_linear_luminance": [
+      0.045,
+      0.155
+    ],
+    "maximum_asset_spread": 0.045
+  },
+  "verification": {
+    "python_old_palette_negative": "evidence/vehicle_finish_20261024/timber/pale_negative.json",
+    "python_new_palette": "evidence/vehicle_finish_20261024/timber/dark_candidate.json",
+    "python_negative_failure_count": 25,
+    "runtime_group": "plaza-timber",
+    "runtime_check_count": 8,
+    "native_visual_review": "evidence/vehicle_finish_20261024/timber/native_review.json",
+    "native_review_scope": "Internal review of seven native day/rain/evening/night views; dark chestnut applied, plank seams and outlines readable. Fine grain is weak at night. User acceptance is not inferred.",
+    "final_native_visual_review": "evidence/vehicle_finish_20261024/final_visual_review.json"
+  },
+  "captures": [
+    "plaza_timber_day",
+    "plaza_timber_close",
+    "plaza_timber_pergola",
+    "plaza_timber_stage",
+    "plaza_timber_rain",
+    "plaza_timber_evening",
+    "plaza_timber_night"
+  ]
+}

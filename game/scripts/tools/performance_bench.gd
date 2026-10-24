@@ -55,6 +55,7 @@ var _paused_at_start := false
 static func bench_views() -> Dictionary:
 	return {
 		"street": {"source": "qa_street_east_lane", "world": "town", "minute": NOON, "label": "商店街东段 · 巷口与路牌"},
+		"bus_stop": {"source": "qa_street_west_bus", "world": "town", "minute": NOON, "label": "公交站 · 车身、玻璃和驾驶室"},
 		"plaza_day": {"source": "qa_plaza_reverse", "world": "town", "minute": NOON, "label": "广场 · 南侧回望（白天）"},
 		"farm": {"source": "qa_farm_entry", "world": "farm", "minute": NOON, "label": "农园 · 入口与全景"},
 		"lake": {"source": "qa_lake_pier", "world": "farm", "minute": NOON, "label": "湖边 · 栈桥"},

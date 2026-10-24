@@ -667,27 +667,27 @@
     },
     "B01_bus": {
       "id": "B01_bus",
-      "sha256": "37e3ac892e07912798c6bf54512948a5d5f7a4b537980b7620fecd38dabe5cdd",
-      "source_mtime": 1792826325.749149,
-      "triangles": 268680,
+      "sha256": "f08d568951628cee743425cf0053059026e972af8ee1d94eb5ab807be16692ee",
+      "source_mtime": 1792843217.5027978,
+      "triangles": 270096,
       "bounds_godot": {
         "min": [
-          -2.3002383708953857,
+          -2.298997402191162,
           0.0,
           -1.0569999776780605
         ],
         "max": [
-          2.3001465797424316,
+          2.3097047805786133,
           2.1449999809265137,
           1.0569999776780605
         ]
       },
       "size_m": [
-        4.600384950637817,
+        4.608702182769775,
         2.1449999809265137,
         2.113999955356121
       ],
-      "surface_area_m2": 109.259,
+      "surface_area_m2": 117.363,
       "albedo_image_sizes": [
         [
           2048,
@@ -695,30 +695,26 @@
         ]
       ],
       "topology": {
-        "components": 3078,
-        "largest_component_area_fraction": 0.1685,
-        "boundary_edge_fraction": 0.2387
+        "components": 1226,
+        "largest_component_area_fraction": 0.1458,
+        "boundary_edge_fraction": 0.0771
       },
       "uv_density_px_m": {
-        "p10": 153.78,
-        "median": 174.93
+        "p10": 152.49,
+        "median": 175.02
       },
       "material_density_px_m": {
-        "model": {
-          "p10": 153.78,
-          "median": 174.93
+        "Bus_body_paint_atlas": {
+          "p10": 152.49,
+          "median": 175.02
         }
       },
       "node_density_px_m": {
-        "RetainedPaintedShell": 175.09,
-        "Wheel_0": 172.9,
-        "Wheel_1": 174.08,
-        "Wheel_2": 173.5,
-        "Wheel_3": 172.94
+        "RetainedPaintedShell": 175.02
       },
-      "untextured_area_fraction": 0.5771,
+      "untextured_area_fraction": 0.937,
       "inherited_pbr_maps": 0,
-      "metallic_max": 0
+      "metallic_max": 0.6800000071525574
     },
     "B01_melon_pan": {
       "id": "B01_melon_pan",
@@ -3127,14 +3123,14 @@
     },
     "D07_kei_truck": {
       "id": "D07_kei_truck",
-      "sha256": "ba8d4b39021b1c1b37f9e11769ebb8362354cc5016db36bdecacd92e51e85aa7",
-      "source_mtime": 1792820355.3562677,
-      "triangles": 77402,
+      "sha256": "2342e4c0e1dcb2f6cdf14597d113a6bd06afa3b3ea4db281c42189955d20e816",
+      "source_mtime": 1792839638.3838675,
+      "triangles": 94918,
       "bounds_godot": {
         "min": [
           -1.0174999237060547,
           0.0,
-          -1.75
+          -1.7519999742507935
         ],
         "max": [
           1.0174999237060547,
@@ -3145,9 +3141,9 @@
       "size_m": [
         2.0349998474121094,
         1.88100004196167,
-        3.4760000705718994
+        3.478000044822693
       ],
-      "surface_area_m2": 83.134,
+      "surface_area_m2": 83.742,
       "albedo_image_sizes": [
         [
           512,
@@ -3159,9 +3155,9 @@
         ]
       ],
       "topology": {
-        "components": 220,
-        "largest_component_area_fraction": 0.2014,
-        "boundary_edge_fraction": 0.0037
+        "components": 345,
+        "largest_component_area_fraction": 0.2,
+        "boundary_edge_fraction": 0.003
       },
       "uv_density_px_m": {
         "p10": 71.96,
@@ -3177,16 +3173,12 @@
           "median": 162.43
         },
         "Matte_wheel_steel": {
-          "p10": 488.44,
-          "median": 579.62
+          "p10": 26.31,
+          "median": 60.76
         },
         "Tyre_rubber": {
-          "p10": 48.1,
-          "median": 108.59
-        },
-        "Cream_headlamp": {
-          "p10": 641.0,
-          "median": 641.0
+          "p10": 47.75,
+          "median": 107.31
         },
         "Blue_woven_seats": {
           "p10": 253.58,
@@ -3200,12 +3192,8 @@
       "node_density_px_m": {
         "Body_Blue_grey_trim": 86.82,
         "Body_Ivory_painted_body": 162.43,
-        "Body_Matte_wheel_steel": 579.62,
+        "Body_Matte_wheel_steel": 57.84,
         "Body_Tyre_rubber": 533.33,
-        "Headlight_Left_Lens": 641.0,
-        "Headlight_Left_Reflector": 641.0,
-        "Headlight_Right_Lens": 641.0,
-        "Headlight_Right_Reflector": 641.0,
         "Headrest_Left": 709.57,
         "Headrest_Right": 709.57,
         "Mirror_Left_Lens": 1034.82,
@@ -3214,25 +3202,25 @@
         "Seat_Right": 256.21,
         "Seatback_Left": 253.58,
         "Seatback_Right": 253.58,
-        "SidegateLatch_Left_Back": 2401.88,
-        "SidegateLatch_Left_Front": 2401.88,
-        "SidegateLatch_Right_Back": 2401.88,
-        "SidegateLatch_Right_Front": 2401.88,
-        "TailgateHinge_0": 2273.34,
-        "TailgateHinge_1": 2273.34,
+        "SidegateLatch_Left_Back": 14761.37,
+        "SidegateLatch_Left_Front": 14761.35,
+        "SidegateLatch_Right_Back": 14761.37,
+        "SidegateLatch_Right_Front": 14761.35,
+        "TailgateHinge_0": 9452.22,
+        "TailgateHinge_1": 9452.22,
         "TexturedBedAndCargo": 192.36,
-        "Tyre_Front_Left": 107.31,
-        "Tyre_Front_Right": 107.31,
-        "Tyre_Rear_Left": 107.31,
-        "Tyre_Rear_Right": 107.31,
+        "Tyre_Front_Left": 99.03,
+        "Tyre_Front_Right": 99.03,
+        "Tyre_Rear_Left": 99.03,
+        "Tyre_Rear_Right": 99.03,
         "WheelArch_Front_Left": 116.66,
         "WheelArch_Front_Right": 116.66,
         "WheelArch_Rear_Left": 116.66,
         "WheelArch_Rear_Right": 116.66
       },
-      "untextured_area_fraction": 0.2038,
+      "untextured_area_fraction": 0.2158,
       "inherited_pbr_maps": 0,
-      "metallic_max": 0
+      "metallic_max": 0.8199999928474426
     },
     "D08_tool_rack": {
       "id": "D08_tool_rack",
@@ -15409,6 +15397,205 @@
   },
   "details": {
     "matte": [],
+    "authored_vehicle_materials": {
+      "B01_bus": {
+        "ok": true,
+        "actual": {
+          "Bus_detail_rubber": {
+            "metallic": 0,
+            "roughness": 0.9200000166893005,
+            "area_m2": 7.728252
+          },
+          "Bus_satin_hardware": {
+            "metallic": 0.6800000071525574,
+            "roughness": 0.3199999928474426,
+            "area_m2": 1.532958
+          },
+          "Cabin_ivory_enamel": {
+            "metallic": 0,
+            "roughness": 0.4399999976158142,
+            "area_m2": 39.276871
+          },
+          "Cabin_floor": {
+            "metallic": 0,
+            "roughness": 0.949999988079071,
+            "area_m2": 12.935729
+          },
+          "Quiet_teal_upholstery": {
+            "metallic": 0,
+            "roughness": 0.9399999976158142,
+            "area_m2": 9.928056
+          },
+          "Satin_aluminium": {
+            "metallic": 0.6499999761581421,
+            "roughness": 0.3400000035762787,
+            "area_m2": 1.979224
+          },
+          "Door_jade_enamel": {
+            "metallic": 0,
+            "roughness": 0.41999998688697815,
+            "area_m2": 0.98757
+          },
+          "Window_rubber_seal": {
+            "metallic": 0,
+            "roughness": 0.9100000262260437,
+            "area_m2": 5.23682
+          },
+          "Bus_fitted_clear_glass": {
+            "metallic": 0,
+            "roughness": 0.23999999463558197,
+            "area_m2": 6.992275
+          },
+          "Bus_lamp_reflector": {
+            "metallic": 0.6499999761581421,
+            "roughness": 0.28999999165534973,
+            "area_m2": 0.21192
+          },
+          "Bus_headlamp_bulb": {
+            "metallic": 0,
+            "roughness": 0.4000000059604645,
+            "area_m2": 0.002691
+          },
+          "Bus_headlamp_optic": {
+            "metallic": 0,
+            "roughness": 0.23000000417232513,
+            "area_m2": 0.075042
+          },
+          "Bus_red_optic": {
+            "metallic": 0,
+            "roughness": 0.25,
+            "area_m2": 0.118895
+          },
+          "Bus_amber_optic": {
+            "metallic": 0,
+            "roughness": 0.25,
+            "area_m2": 0.159594
+          },
+          "Bus_reverse_optic": {
+            "metallic": 0,
+            "roughness": 0.25,
+            "area_m2": 0.058005
+          },
+          "Bus_body_paint_atlas": {
+            "metallic": 0,
+            "roughness": 0.41999998688697815,
+            "area_m2": 7.391128
+          },
+          "Bus_body_paint": {
+            "metallic": 0,
+            "roughness": 0.41999998688697815,
+            "area_m2": 16.712326
+          },
+          "Route_rollsign_face": {
+            "metallic": 0,
+            "roughness": 0.9200000166893005,
+            "area_m2": 0.22698
+          },
+          "Seat_edge_piping": {
+            "metallic": 0,
+            "roughness": 0.8799999952316284,
+            "area_m2": 0.234278
+          },
+          "Bus_tyre_rubber": {
+            "metallic": 0,
+            "roughness": 0.9200000166893005,
+            "area_m2": 4.508296
+          },
+          "Bus_stamped_wheel_steel": {
+            "metallic": 0.6200000047683716,
+            "roughness": 0.36000001430511475,
+            "area_m2": 0.602336
+          },
+          "Rolled_arch_enamel": {
+            "metallic": 0,
+            "roughness": 0.4399999976158142,
+            "area_m2": 0.46345
+          }
+        },
+        "failures": []
+      },
+      "D07_kei_truck": {
+        "ok": true,
+        "actual": {
+          "Amber_signal": {
+            "metallic": 0,
+            "roughness": 0.28999999165534973,
+            "area_m2": 0.065922
+          },
+          "Blue_grey_trim": {
+            "metallic": 0,
+            "roughness": 0.6200000047683716,
+            "area_m2": 15.359024
+          },
+          "Galvanized_gate_hardware": {
+            "metallic": 0.7200000286102295,
+            "roughness": 0.3100000023841858,
+            "area_m2": 0.46882
+          },
+          "Headlamp_bulb_ceramic": {
+            "metallic": 0,
+            "roughness": 0.3400000035762787,
+            "area_m2": 0.014492
+          },
+          "Headlamp_reflector_steel": {
+            "metallic": 0.8199999928474426,
+            "roughness": 0.25,
+            "area_m2": 0.415717
+          },
+          "Ivory_painted_body": {
+            "metallic": 0,
+            "roughness": 0.4300000071525574,
+            "area_m2": 24.455508
+          },
+          "Rubber_seals_and_grille": {
+            "metallic": 0,
+            "roughness": 0.8999999761581421,
+            "area_m2": 14.063892
+          },
+          "Matte_wheel_steel": {
+            "metallic": 0.6800000071525574,
+            "roughness": 0.3400000035762787,
+            "area_m2": 1.405983
+          },
+          "Red_tail_lamp": {
+            "metallic": 0,
+            "roughness": 0.30000001192092896,
+            "area_m2": 0.082367
+          },
+          "Tyre_rubber": {
+            "metallic": 0,
+            "roughness": 0.9100000262260437,
+            "area_m2": 4.817586
+          },
+          "Yellow_local_plate": {
+            "metallic": 0,
+            "roughness": 0.6299999952316284,
+            "area_m2": 0.178595
+          },
+          "Thin_blue_glass": {
+            "metallic": 0,
+            "roughness": 0.23000000417232513,
+            "area_m2": 2.612241
+          },
+          "Headlamp_optical_glass": {
+            "metallic": 0,
+            "roughness": 0.2199999988079071,
+            "area_m2": 0.167647
+          },
+          "Blue_woven_seats": {
+            "metallic": 0,
+            "roughness": 0.9399999976158142,
+            "area_m2": 2.887689
+          },
+          "Original_textured_produce_and_bed": {
+            "metallic": 0,
+            "roughness": 0.9200000166893005,
+            "area_m2": 16.746283
+          }
+        },
+        "failures": []
+      }
+    },
     "fragmented": [],
     "assembly_surfaces": {
       "P_deck_oven": {
@@ -15445,5 +15632,5 @@
     },
     "bounds": []
   },
-  "contract_sha256": "4a4c3f20695df8934e0d0c6298978484ed3a1eef8d8906c259fb000e4fc01b0c"
+  "contract_sha256": "6401b3cf7d971795ba0954e800b2572cb4038b347e14fe093539f1b6724e1a9b"
 }

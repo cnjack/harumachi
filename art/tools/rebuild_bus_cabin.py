@@ -1,12 +1,15 @@
 """Repair the owned country bus: precise apertures, fitted glass and roof route box.
 
 Blender -b --factory-startup -P art/tools/rebuild_bus_cabin.py
-Keeps the existing painted lower shell and roof. All dimensions below are Godot
-metres (+X is the nose); doors and wheels retain the gameplay articulation names.
+Keeps the painted source roof and reconstructs the lower shell and tyres from
+measured complete-source contours, with an authored finish pass in detail_bus.
+Layout dimensions below are Godot metres (+X is the nose); doors and wheels
+retain the gameplay articulation names and their verified axes.
 """
 from pathlib import Path
 import json
 import math
+import sys
 
 import bpy
 import bmesh
@@ -437,6 +440,10 @@ for index in range(2):
     join_group(f"DoorFrame_{index}", [f"DoorRail_{index}", f"DoorHeader_{index}", f"DoorWaist_{index}"])
     join_group(f"DoorRubberSeal_{index}", [f"DoorSeal_{index}_"])
 
+sys.path.insert(0,str(ROOT / "art/tools"))
+from detail_bus import apply_bus_finish
+finish_record = apply_bus_finish()
+
 source = OUT / "ready.glb"
 bpy.ops.wm.save_as_mainfile(filepath=str(LIBRARY / "authoring/B01_bus.blend"))
 bpy.ops.export_scene.gltf(filepath=str(source), export_format="GLB", export_yup=True, export_animations=False)
@@ -444,26 +451,33 @@ bpy.ops.export_scene.gltf(filepath=str(LIBRARY / "source/B01_bus.glb"), export_f
 record = {
     "asset": "B01_bus", "date": "2026-10-24",
     "source": "art/library/vehicles/source/B01_painted_predecessor.glb",
-    "method": "Repair of owned Rodin lower shell and roof; precise cut planes, authored window apertures, articulated doors, glazing, cabin and roof-mounted route box",
+    "method": "Owned Rodin roof and measured body contours; continuous formed lower shell and closed tyre casings, authored apertures, articulated doors, glazing, cabin, mounted route box and material-specific vehicle details",
     "generator": "art/tools/rebuild_bus_cabin.py", "output": str(source.relative_to(ROOT)),
     "authoring": "art/library/vehicles/authoring/B01_bus.blend",
     "library_source": "art/library/vehicles/source/B01_bus.glb",
     "preserve_parts": True, "preserve_origin": True, "level": False,
     "game_image_format": "AUTO",
+    "preserve_source_materials": True,
+    "vehicle_finish": finish_record,
     "route_text_at_godot": [2.184, 2.02, 0],
     "wheel_cleanup": wheel_cleanup,
     "wheel_layout": wheel_layout,
     "arch_boundary_repairs": arch_boundary_repairs,
     "sheet_repairs": sheet_repairs,
-    "notes": ["Original sculpted front, rear, grille, lamps, side skirts and roof UV texture retained",
-              "Interior removal bounded to longitudinal -1.78..1.78m, lateral -0.70..0.70m and height 0.59..1.105m",
-              "Opaque exterior ray profiles must match the predecessor within 5mm; this rejects missing panels and flat replacement caps",
-              "Complete original body and old partial wheel pieces are recombined, then four real tyres are repartitioned around measured rim centres",
-              "True wheel centres are rear x=-1.063m and front x=1.677m; 345mm tyre partitions, 381mm real apertures and solid 35mm rolled flanges follow those axes",
-        "No painted vertices are radially projected or stretched; inherited small seam gaps use original boundary vertices and adjacent UVs",
-              "Game export keeps source PNG pixels; JPEG introduced green atlas bleeding onto tyre UV boundaries",
-        "A 64mm fixed front entrance return closes the inherited door-edge gap; the original side recess has a backing and three horizontal louvres",
-        "No new paid generation", "Runtime only assigns glass material, text and articulated motion"],
+    "shape_reference": "art/library/vehicles/source/B01_bus_shape_reference.json",
+    "notes": [
+        "Owned source roof and underbody remain; the fractured lower skin is replaced by a continuous curved shell measured from the source, with an 8mm inner return",
+        "Original window apertures, four verified wheel axes, door pivots, cabin and roof-mounted route box remain unchanged",
+        "Real radiator vanes and backed headlamp wells replace fragmented source details; separate ray checks validate those recesses and their physical fixtures",
+        "Paint shape checks retain body envelopes, axes and required opaque backing; the front-quarter dent, rear-centre paint lump, backed intake and straight window-sill joint are documented local forming regions, with added dimple and corner-continuity checks",
+        "Four closed rubber casings preserve the complete accepted tyres' measured axes, casing bounds and ground support; the independent source reference records the original SHA256",
+        "Rolled 35mm wheel flanges, genuine inner wheel openings, seated metal rims, six recessed vents and raised hex fasteners remain separate from body paint",
+        "Four 6mm dark inner wings follow the rear arch returns, with curved upper shells and inboard D-shaped walls; one static batch blocks opposite-pavement sightlines without moving accepted outer meshes",
+        "Clean cream/jade enamel and rubber use independent colour materials; retained source image regions keep PNG pixels",
+        "Each headlamp has one thin alpha lens, a 38mm reflector bowl, an unlit bulb and a curved contacting housing; formed bumper corners, tow recesses, door hinges and locks are batched by material and movement parent",
+        "Runtime preserves source PBR differences with VehicleFinish; view-dependent single-layer glass uses no emissive whitening or added real-time lights",
+        "No new paid generation"
+    ],
 }
 (ROOT / "art/manifests/models_bus_cabin_20261024.json").write_text(json.dumps(record, ensure_ascii=False, indent=2)+"\n")
 print("BUS_CABIN_REBUILT", source)
