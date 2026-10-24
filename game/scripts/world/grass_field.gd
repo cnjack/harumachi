@@ -50,6 +50,8 @@ static func mesh() -> ArrayMesh:
 			st.set_uv(uv[i])
 			st.set_normal(Vector3.UP)
 			st.add_vertex(v[i])
+	# Share identical corners; positions, normals, UVs and triangle order stay intact.
+	st.index()
 	_mesh = st.commit()
 	return _mesh
 
@@ -110,6 +112,8 @@ static func clump_mesh(style: String, variant: int) -> ArrayMesh:
 				st.set_normal(nrm)
 				st.set_uv(Vector2(q[1], q[2]))
 				st.add_vertex(q[0])
+	# Seven unique corners per blade instead of fifteen repeated vertices.
+	st.index()
 	var m := st.commit()
 	_clumps[key] = m
 	return m

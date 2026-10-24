@@ -169,6 +169,8 @@ func _ready() -> void:
 		await load("res://scripts/tests/inhabited_places_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=public-art"):
 		await load("res://scripts/tests/public_place_art_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=outdoor-render"):
+		await load("res://scripts/tests/outdoor_render_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=foliage-depth"):
 		await load("res://scripts/tests/foliage_depth_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=plaza-quality"):
@@ -334,6 +336,7 @@ func _ready() -> void:
 		await load("res://scripts/tests/scene_quality_checks.gd").new(self).run()
 		await load("res://scripts/tests/plaza_quality_checks.gd").new(self).run()
 		await load("res://scripts/tests/foliage_depth_checks.gd").new(self).run()
+		await load("res://scripts/tests/outdoor_render_checks.gd").new(self).run()
 		await load("res://scripts/tests/public_place_art_checks.gd").new(self).run()
 		await load("res://scripts/tests/inhabited_places_checks.gd").new(self).run()
 		await load("res://scripts/tests/character_visual_checks.gd").new(self).run()

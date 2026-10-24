@@ -1212,13 +1212,14 @@ func performance() -> Dictionary:
 	return result
 
 
-# Optional native bounds/grid construction; old libraries retain full GD work.
+# Optional, numerically identical bounds/grid construction for all clothed residents.
+# Old libraries and unsupported platforms retain the complete GD calculation.
 var native_geometry_enabled := false
 var native_geometry_calls := 0
 var native_geometry_fallbacks := 0
 
 func native_geometry_prepare() -> void:
-	native_geometry_enabled = character == "kazuko"
+	native_geometry_enabled = character in ["kazuko", "mio", "ren"]
 	for native_geometry_argument: String in OS.get_cmdline_user_args():
 		if native_geometry_argument == "--native-geometry=off": native_geometry_enabled = false
 

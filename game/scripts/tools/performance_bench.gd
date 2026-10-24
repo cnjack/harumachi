@@ -2,9 +2,9 @@ extends SceneTree
 ## Native runtime frame benchmark for the shipping scene.
 ##
 ## One process per variant on purpose: feature toggles, MSAA state and shader
-## pipelines never leak between rows. Every view is a fixed camera (the follow
-## rig is disabled after placement), the clock is paused, the HUD is hidden and
-## the same 300+ frames are sampled per view.
+## pipelines never leak between variants. Static views use a fixed camera and
+## 300+ rendered frames; walking/running use the real follow rig for six physics
+## seconds. The game clock is paused and the HUD hidden; NPCs keep animating.
 ##
 ## The cameras come from scripts/tools/environment_visual_qa.gd; the gameplay
 ## camera (default FOV, spring arm) is reused for the bedroom so the framing is
@@ -63,8 +63,8 @@ static func bench_views() -> Dictionary:
 		"plaza_festival_night": {"source": "qa_plaza_reverse", "world": "town", "minute": FESTIVAL_MINUTE, "day": FESTIVAL_DAY, "label": "广场 · 夏祭夜晚（白天同一机位）"},
 		# Moving rows use the real follow camera and the player's own auto_move hook,
 		# so the walk loop, NPC roaming and the garment solver run like normal play.
-		"street_walk": {"source": "qa_street_east_main", "world": "town", "minute": NOON, "motion": "walk", "frames": 600, "label": "商店街东段 · 玩家步行约 6 秒"},
-		"street_run": {"source": "qa_street_east_main", "world": "town", "minute": NOON, "motion": "run", "frames": 600, "label": "商店街东段 · 玩家跑步约 6 秒"},
+		"street_walk": {"source": "qa_street_east_main", "world": "town", "minute": NOON, "motion": "walk", "physics_seconds": 6.0, "label": "商店街东段 · 玩家步行 6 秒"},
+		"street_run": {"source": "qa_street_east_main", "world": "town", "minute": NOON, "motion": "run", "physics_seconds": 6.0, "label": "商店街东段 · 玩家跑步 6 秒"},
 	}
 
 
@@ -84,6 +84,7 @@ func _run() -> void:
 	_paused_at_start = paused
 	paused = false
 	root.msaa_3d = _msaa_enum()
+	RenderingServer.viewport_set_measure_render_time(root.get_viewport_rid(), true)
 	var main: Node = (load("res://scenes/main.tscn") as PackedScene).instantiate()
 	root.add_child(main)
 	current_scene = main
@@ -182,8 +183,6 @@ func _run_view(main: Node, view_id: String, spec: Dictionary, views: Dictionary)
 	state.set("minute", minute)
 	state.set("weather", weather)
 	await _place(main, spec, views)
-	var start_position: Vector3 = (main.get("player") as Node3D).global_position
-	var start_physics_frames: int = Engine.get_physics_frames()
 	var world: Node3D = main.get("world") as Node3D
 	world.call("update_time", minute, weather, true)
 	main.call("_sync_weather")
@@ -199,7 +198,14 @@ func _run_view(main: Node, view_id: String, spec: Dictionary, views: Dictionary)
 		await process_frame
 	_apply_ablation(main)
 	var sample_frames: int = int(spec.get("frames", _frames))
-	var row: Dictionary = await _sample(main, sample_frames)
+	# Start moving only after warm-up, and measure the same six physics seconds
+	# in both builds. A fixed rendered-frame count would cover different streets.
+	var start_position: Vector3 = (main.get("player") as Node3D).global_position
+	var start_physics_frames: int = Engine.get_physics_frames()
+	var physics_ticks: int = roundi(float(spec.get("physics_seconds", 0.0)) * Engine.physics_ticks_per_second)
+	if spec.has("motion"): main.get("player").set("auto_move", Vector3(-1.0, 0.0, 0.0))
+	var row: Dictionary = await _sample(main, sample_frames, physics_ticks)
+	if row.is_empty(): return
 	main.get("player").set("auto_move", Vector3.ZERO)
 	row["view"] = view_id
 	row["label"] = str(spec.get("label", ""))
@@ -209,7 +215,7 @@ func _run_view(main: Node, view_id: String, spec: Dictionary, views: Dictionary)
 	row["day"] = int(spec.get("day", 1))
 	row["source_view"] = str(spec.get("source", ""))
 	row["motion"] = str(spec.get("motion", ""))
-	row["player_travel_m"] = snappedf(start_position.distance_to((main.get("player") as Node3D).global_position), 2)
+	row["player_travel_m"] = snappedf(start_position.distance_to((main.get("player") as Node3D).global_position), .001)
 	row["player_start"] = str(start_position)
 	row["player_end"] = str((main.get("player") as Node3D).global_position)
 	row["tree_paused"] = paused
@@ -221,6 +227,11 @@ func _run_view(main: Node, view_id: String, spec: Dictionary, views: Dictionary)
 	row["physics_frames"] = Engine.get_physics_frames() - start_physics_frames
 	row["settle_frames"] = settle_frames
 	_rows.append(row)
+	# Readback and PNG compression stay outside the measured interval.
+	await RenderingServer.frame_post_draw
+	var shot: Image = root.get_texture().get_image()
+	shot.save_png(_out.path_join(view_id + ".png"))
+	row["rendered_image_size"] = [shot.get_width(), shot.get_height()]
 	print("BENCH_VIEW %s median=%.2fms p95=%.2fms max=%.2fms fps=%.1f" % [
 		view_id, float(row["median_ms"]), float(row["p95_ms"]), float(row["max_ms"]), float(row["fps_median"])])
 
@@ -259,7 +270,6 @@ func _place(main: Node, spec: Dictionary, views: Dictionary) -> void:
 		rig.set("dist", 8.0)
 		rig.call("snap")
 		rig.process_mode = Node.PROCESS_MODE_INHERIT
-		player_node.set("auto_move", Vector3(-1.0, 0.0, 0.0))
 		player_node.set("auto_run", str(spec.get("motion", "walk")) == "run")
 	elif view.has("house"):
 		# the diorama camera the player actually plays with
@@ -337,8 +347,12 @@ func _set_characters_visible(main: Node, on: bool) -> void:
 	player_node.visible = on
 
 
-func _sample(main: Node, frames: int) -> Dictionary:
+func _sample(main: Node, frames: int, physics_ticks: int = 0) -> Dictionary:
 	var intervals: Array[float] = []
+	var render_cpu: Array[float] = []
+	var render_gpu: Array[float] = []
+	var first_render_frame: int = Engine.get_frames_drawn()
+	var actor_before: Dictionary = _actor_metrics(main)
 	var values: Dictionary = {}
 	for name: String in MONITOR_NAMES:
 		values[name] = [] if _monitors.has(name) else null
@@ -346,15 +360,24 @@ func _sample(main: Node, frames: int) -> Dictionary:
 	var last: int = Time.get_ticks_usec()
 	var process_index: int = int(_monitors.get("TIME_PROCESS", -1))
 	var physics_index: int = int(_monitors.get("TIME_PHYSICS_PROCESS", -1))
-	for index: int in frames:
+	var first_physics_frame: int = Engine.get_physics_frames()
+	var started: int = last
+	var index := 0
+	while (index < frames if physics_ticks == 0 else Engine.get_physics_frames() - first_physics_frame < physics_ticks):
 		await process_frame
+		if physics_ticks > 0 and Time.get_ticks_usec() - started > 30_000_000:
+			printerr("BENCH_FAIL motion did not complete six physics seconds")
+			quit(4)
+			return {}
 		var now: int = Time.get_ticks_usec()
 		var interval_ms: float = float(now - last) / 1000.0
 		intervals.append(interval_ms)
 		last = now
+		render_cpu.append(RenderingServer.viewport_get_measured_render_time_cpu(root.get_viewport_rid()))
+		render_gpu.append(RenderingServer.viewport_get_measured_render_time_gpu(root.get_viewport_rid()))
 		if process_index >= 0:
-			trace.append([snappedf(interval_ms, 3), snappedf(Performance.get_monitor(process_index) * 1000.0, 3),
-					snappedf(Performance.get_monitor(physics_index) * 1000.0, 3)])
+			trace.append([snappedf(interval_ms, .001), snappedf(Performance.get_monitor(process_index) * 1000.0, .001),
+					snappedf(Performance.get_monitor(physics_index) * 1000.0, .001)])
 		for name: String in MONITOR_NAMES:
 			if not _monitors.has(name):
 				continue
@@ -362,9 +385,52 @@ func _sample(main: Node, frames: int) -> Dictionary:
 		if _ablation.has("hide-props") or _ablation.has("hide-characters"):
 			if (index + 1) % 60 == 0:
 				_apply_ablation(main)
+		index += 1
 	var summary: Dictionary = _summarize(intervals, values)
 	summary["trace"] = trace
+	summary["render_cpu_ms"] = _time_summary(render_cpu)
+	summary["render_gpu_ms"] = _time_summary(render_gpu)
+	summary["render_frame_start"] = first_render_frame
+	summary["render_frame_end"] = Engine.get_frames_drawn()
+	summary["rendered_frames"] = Engine.get_frames_drawn() - first_render_frame
+	var actor_after: Dictionary = _actor_metrics(main)
+	for key: String in actor_after:
+		var cost: Dictionary = actor_after[key]
+		var before: Dictionary = actor_before[key]
+		cost["measured_updates"] = int(cost.updates) - int(before.updates)
+		cost["ms_per_frame"] = float(int(cost.total_usec) - int(before.total_usec)) / (1000.0 * intervals.size())
+		var phases: Dictionary = {}
+		for counter: String in cost.get("counters", {}):
+			phases[counter.trim_suffix("_usec")] = float(int(cost.counters[counter]) - int(before.counters[counter])) / (1000.0 * intervals.size())
+		if not phases.is_empty(): cost["phase_ms_per_frame"] = phases
+		cost.erase("counters")
+	summary["actor_modifiers"] = actor_after
 	return summary
+
+
+func _actor_metrics(main: Node) -> Dictionary:
+	var result: Dictionary = {}
+	var actors: Dictionary = (main.get("npcs") as Dictionary).duplicate()
+	actors["player"] = main.get("player")
+	for id: String in actors:
+		var actor: Node3D = actors[id] as Node3D
+		for modifier_name: String in ["CharacterGarmentSupport", "CharacterFootSupport"]:
+			var modifier: Node = actor.find_child(modifier_name, true, false)
+			if modifier == null: continue
+			result[id + "/" + modifier_name] = {"total_usec": int(modifier.get("total_usec")), "updates": int(modifier.get("updates")), "visible": actor.is_visible_in_tree()}
+			if modifier_name == "CharacterGarmentSupport":
+				var counters: Dictionary = {}
+				for counter: String in ["total_bounds_usec", "total_tree_build_usec", "total_query_usec", "skin_total_usec"]:
+					counters[counter] = int(modifier.get(counter))
+				result[id + "/" + modifier_name]["counters"] = counters
+				result[id + "/" + modifier_name]["native_geometry"] = bool(modifier.get("native_geometry_enabled"))
+	return result
+
+
+func _time_summary(values: Array[float]) -> Dictionary:
+	var sorted: Array[float] = values.duplicate()
+	sorted.sort()
+	return {"median": sorted[sorted.size() / 2], "p95": sorted[mini(sorted.size() - 1, int(sorted.size() * 0.95))], "max": sorted.back(), "valid": sorted[sorted.size() / 2] > 0.0}
 
 
 func _summarize(intervals: Array[float], values: Dictionary) -> Dictionary:
@@ -415,7 +481,9 @@ func _write_result(status: String) -> void:
 		"gpu_vendor": RenderingServer.get_video_adapter_vendor(),
 		"gpu_api": RenderingServer.get_video_adapter_api_version(),
 		"rendering_method": str(ProjectSettings.get_setting("rendering/renderer/rendering_method", "")),
-		"rendering_driver": str(ProjectSettings.get_setting("rendering/rendering_device/driver", "")),
+		# A platform override can select Metal despite a Vulkan project default.
+		# The runner captures the actual driver from the engine startup banner.
+		"rendering_driver_setting": str(ProjectSettings.get_setting("rendering/rendering_device/driver", "")),
 		"viewport_size": get_root().size,
 		"viewport_visible_rect": get_root().get_visible_rect().size,
 		"window_size": DisplayServer.window_get_size(),

@@ -8,8 +8,8 @@ placed on the requested existing screen with -t so macOS keeps drawing it.
 Every variant writes result.json, engine.log and display.json.
 
 Baselines cover the requested resolutions; feature ablations run the slowest
-views and are compared against a same-process control so the delta is not
-confounded by a different launch.
+views and are compared against a separate control with the same camera order,
+resolution and warm-up. Each process receives a fresh save directory.
 """
 import argparse
 import importlib.util
@@ -65,8 +65,7 @@ def wait_for_quiet(limit=60):
         if not running:
             return
         if time.monotonic() - started > limit:
-            print("warning: another Godot process stayed alive; measuring anyway and recording it: " + "; ".join(running), flush=True)
-            return
+            raise RuntimeError("another Godot process stayed alive; refusing a contaminated benchmark: " + "; ".join(running))
         print("waiting for another Godot process to exit: " + "; ".join(running), flush=True)
         time.sleep(5)
 
@@ -145,7 +144,8 @@ def run_variant(out, folder, command, env, limit, attempts=1):
     for attempt in range(1, attempts + 1):
         if folder.exists():
             shutil.rmtree(folder)
-        record = run(command, folder, env, limit)
+        variant_env = dict(env, HARUMACHI_SAVE_DIR=str(Path(env["HARUMACHI_SAVE_DIR"]) / (folder.name + "-" + str(attempt))))
+        record = run(command, folder, variant_env, limit)
         banner = renderer_banner(folder / "engine.log")
         record["renderer"] = banner
         record["attempt"] = attempt
@@ -153,8 +153,7 @@ def run_variant(out, folder, command, env, limit, attempts=1):
         if not record["other_godot_pids_seen"]:
             return record
         print("retrying %s: another Godot process overlapped attempt %d" % (folder.name, attempt), flush=True)
-    print("warning: %s stayed contaminated by another Godot process" % folder.name, flush=True)
-    return record
+    raise RuntimeError("%s stayed contaminated by another Godot process" % folder.name)
 
 
 def view_rows(result, resolution):
@@ -380,7 +379,7 @@ def main():
             motion_rows = []
             if "motion" in stages and args.motion_views:
                 motion_views = [item.strip() for item in args.motion_views.split(",") if item.strip()]
-                folder = out / "motion-%dx%d" % resolutions[0]
+                folder = out / ("motion-%dx%d" % resolutions[0])
                 run_variant(out, folder, bench_command(folder, resolutions[0], motion_views, "", "motion"), env, args.limit, args.retries)
                 motion_result = finish_variant(folder, motion_views)
                 variants.append(folder)
@@ -432,6 +431,7 @@ def main():
             "display_mode": "existing",
             "virtual_display_created": False,
             "temporary_project_removed": project is not None and not project.exists(),
+            "fresh_save_per_variant": True,
             "variants": [variant.name for variant in variants],
         }
         write(out / "integrity-and-cleanup.json", integrity)
