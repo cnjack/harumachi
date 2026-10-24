@@ -247,11 +247,14 @@ func standing_contract(id: String,model: Node3D,sk: Skeleton3D,support: Node,con
 	check(id+" leg correction preserves original segment lengths and torso articulation",fresh and length_error<.001 and max_torso_shift<.002,"length error %.6fm; torso offset %.6fm"%[length_error,max_torso_shift]+coverage)
 
 func gait_contract(id: String,model: Node3D,sk: Skeleton3D,support: Node,controller: CharAnim,probe: SkeletonModifier3D) -> void:
+	var arm_contracts: RefCounted=load("res://scripts/tests/character_running_arm_checks.gd").new(t)
 	var rest_left_foot: int=LivingPose.bone(sk,"foot.L")
 	var rest_right_foot: int=LivingPose.bone(sk,"foot.R")
 	var rest_track: Vector3=model.global_basis.inverse()*(sk.global_basis*(sk.get_bone_global_rest(rest_left_foot).origin-sk.get_bone_global_rest(rest_right_foot).origin))
 	var track_sign: float=signf(rest_track.x)
 	for clip: String in ["walk","run"]:
+		var cross_chest: bool=id=="sora" and clip=="run" and arm_contracts.cross_chest_profile(model)
+		var cross_peaks: Dictionary={"L":{"front":{},"rear":{}},"R":{"front":{},"rear":{}}}
 		var lowest: float=INF
 		var flight: int=0
 		var min_forward: float=INF
@@ -276,6 +279,7 @@ func gait_contract(id: String,model: Node3D,sk: Skeleton3D,support: Node,control
 			var pose: Dictionary=await sample(controller,clip,float(index)/32.0,probe)
 			if not bool(pose.get("fresh",false)):continue
 			fresh_samples+=1
+			if cross_chest:arm_contracts.accumulate_cross_chest(cross_peaks,pose,sk,model)
 			if clip in (REBUILT[id] as Array):
 				chest_roll_max=maxf(chest_roll_max,absf(lateral_roll(pose,LivingPose.bone(sk,"chest"),model,sk)))
 				head_roll_max=maxf(head_roll_max,absf(lateral_roll(pose,LivingPose.bone(sk,"head"),model,sk)))
@@ -344,7 +348,12 @@ func gait_contract(id: String,model: Node3D,sk: Skeleton3D,support: Node,control
 		if clip in (REBUILT[id] as Array):
 			check(id+" "+clip+" knees stay forward after safety IK",fresh and min_forward>=-.004,"minimum forward knee offset %.5fm"%min_forward+coverage)
 			if clip=="run":check(id+" running retains real simultaneous shoe flight after safety IK",fresh and flight>=2,"%d/32 phases both complete shoes >25mm"%flight+coverage)
-		if id=="sora" and clip=="run":check("Sora running forearms stay beside the ribs instead of splaying outward",fresh and max_elbow_out<.050 and max_wrist_out<.060,"elbow %.4fm; wrist %.4fm outside shoulder"%[max_elbow_out,max_wrist_out]+coverage)
+		if id=="sora" and clip=="run":
+			# Revision 3 deliberately crosses the chest and swings outward behind.
+			# Use its existing measured angle/fist contract, not the superseded
+			# straight-beside-ribs limit. The legacy profile retains that limit.
+			if cross_chest:check("Sora running retains the authored cross-chest front and outward rear peaks",fresh and arm_contracts.cross_chest_peaks_ok(cross_peaks),str(cross_peaks)+coverage)
+			else:check("Sora running forearms stay beside the ribs instead of splaying outward",fresh and max_elbow_out<.050 and max_wrist_out<.060,"elbow %.4fm; wrist %.4fm outside shoulder"%[max_elbow_out,max_wrist_out]+coverage)
 		if id=="mio" and clip=="run":check("Mio running ankles retain separated tracks instead of crossing inward",fresh and min_ankle_span>=.12,"minimum directed ankle track separation %.4fm; rest left/right sign %.0f; maximum toe forward yaw %.2f degrees"%[min_ankle_span,track_sign,max_foot_yaw]+coverage)
 		if clip in (REBUILT[id] as Array):
 			var left_hands: Array[float]=[]

@@ -25,6 +25,9 @@ uniform float roughness_base = .72;
 uniform float roughness_polished = .48;
 uniform float reflectance = .36;
 uniform float authored_detail_strength = 0.;
+// A calibrated outdoor palette can retain the actual UV fibres around their
+// measured mean; the default keeps every existing indoor finish unchanged.
+uniform float authored_fibre_reference = .65;
 uniform vec3 part_min = vec3(-.5);
 uniform vec3 part_size = vec3(1.);
 uniform int component_count = 0;
@@ -104,7 +107,7 @@ void fragment() {
 		// The source-image contrast remains visible beneath the lacquer reflection.
 		float fibre_contrast = 1. + (grain - .4) * grain_strength;
 		if (has_original) {
-			float image_detail = clamp(1. + (authored_fibre - .65) * authored_detail_strength, .72, 1.15);
+			float image_detail = clamp(1. + (authored_fibre - authored_fibre_reference) * authored_detail_strength, .72, 1.15);
 			fibre_contrast = authored_detail_strength > 0. ? image_detail : (fibre_contrast * (.96 + .08 * authored_fibre));
 		}
 		vec3 art_wood = finish_tint.rgb * fibre_contrast;

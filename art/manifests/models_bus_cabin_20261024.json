@@ -1,0 +1,182 @@
+{
+  "asset": "B01_bus",
+  "date": "2026-10-24",
+  "source": "art/library/vehicles/source/B01_painted_predecessor.glb",
+  "method": "Repair of owned Rodin lower shell and roof; precise cut planes, authored window apertures, articulated doors, glazing, cabin and roof-mounted route box",
+  "generator": "art/tools/rebuild_bus_cabin.py",
+  "output": "art/models/raw/B01_bus_cabin_20261024/ready.glb",
+  "authoring": "art/library/vehicles/authoring/B01_bus.blend",
+  "library_source": "art/library/vehicles/source/B01_bus.glb",
+  "preserve_parts": true,
+  "preserve_origin": true,
+  "level": false,
+  "game_image_format": "AUTO",
+  "route_text_at_godot": [
+    2.184,
+    2.02,
+    0
+  ],
+  "wheel_cleanup": [
+    {
+      "wheel": 0,
+      "repartitioned_from_complete_source": true,
+      "green_sheet_faces_excluded": 75,
+      "faces": 11184
+    },
+    {
+      "wheel": 1,
+      "repartitioned_from_complete_source": true,
+      "green_sheet_faces_excluded": 60,
+      "faces": 11840
+    },
+    {
+      "wheel": 2,
+      "repartitioned_from_complete_source": true,
+      "green_sheet_faces_excluded": 280,
+      "faces": 13193
+    },
+    {
+      "wheel": 3,
+      "repartitioned_from_complete_source": true,
+      "green_sheet_faces_excluded": 352,
+      "faces": 12785
+    }
+  ],
+  "wheel_layout": [
+    {
+      "wheel": 0,
+      "axis_x": -1.063,
+      "axis_z": 0.3221360415220261,
+      "source_axis_z": 0.325,
+      "source_ground_offset": 0.002863958477973938,
+      "tyre_partition_radius": 0.345,
+      "body_aperture_radius": 0.381,
+      "arch_outer_radius": 0.414
+    },
+    {
+      "wheel": 1,
+      "axis_x": -1.063,
+      "axis_z": 0.32238537217490376,
+      "source_axis_z": 0.325,
+      "source_ground_offset": 0.0026146278250962496,
+      "tyre_partition_radius": 0.345,
+      "body_aperture_radius": 0.381,
+      "arch_outer_radius": 0.414
+    },
+    {
+      "wheel": 2,
+      "axis_x": 1.677,
+      "axis_z": 0.3219451529951766,
+      "source_axis_z": 0.32,
+      "source_ground_offset": -0.0019451529951766133,
+      "tyre_partition_radius": 0.345,
+      "body_aperture_radius": 0.381,
+      "arch_outer_radius": 0.414
+    },
+    {
+      "wheel": 3,
+      "axis_x": 1.677,
+      "axis_z": 0.3273042353615165,
+      "source_axis_z": 0.32,
+      "source_ground_offset": -0.007304235361516476,
+      "tyre_partition_radius": 0.345,
+      "body_aperture_radius": 0.381,
+      "arch_outer_radius": 0.414
+    }
+  ],
+  "arch_boundary_repairs": [],
+  "sheet_repairs": [
+    {
+      "centre": [
+        -1.190999984741211,
+        0.878000020980835,
+        0.7229999899864197
+      ],
+      "added_local_triangles": 26,
+      "max_new_edge_m": 0.042,
+      "existing_vertices_moved": 0
+    },
+    {
+      "centre": [
+        2.0269999504089355,
+        -0.8629999756813049,
+        0.6050000190734863
+      ],
+      "added_local_triangles": 102,
+      "max_new_edge_m": 0.042,
+      "existing_vertices_moved": 0
+    },
+    {
+      "centre": [
+        2.0969998836517334,
+        -0.859000027179718,
+        0.6610000133514404
+      ],
+      "added_local_triangles": 83,
+      "max_new_edge_m": 0.042,
+      "existing_vertices_moved": 0
+    },
+    {
+      "centre": [
+        1.36899995803833,
+        -0.8619999885559082,
+        0.6499999761581421
+      ],
+      "added_local_triangles": 100,
+      "max_new_edge_m": 0.042,
+      "existing_vertices_moved": 0
+    },
+    {
+      "centre": [
+        1.246000051498413,
+        -0.8519999980926514,
+        0.6470000147819519
+      ],
+      "added_local_triangles": 3,
+      "max_new_edge_m": 0.072,
+      "existing_vertices_moved": 0
+    },
+    {
+      "centre": [
+        1.7059999704360962,
+        0.875,
+        0.7459999918937683
+      ],
+      "added_local_triangles": 35,
+      "max_new_edge_m": 0.042,
+      "existing_vertices_moved": 0
+    },
+    {
+      "centre": [
+        1.5089999437332153,
+        0.871999979019165,
+        0.7120000123977661
+      ],
+      "added_local_triangles": 134,
+      "max_new_edge_m": 0.042,
+      "existing_vertices_moved": 0
+    },
+    {
+      "centre": [
+        1.4700000286102295,
+        0.8700000047683716,
+        0.6930000185966492
+      ],
+      "added_local_triangles": 50,
+      "max_new_edge_m": 0.042,
+      "existing_vertices_moved": 0
+    }
+  ],
+  "notes": [
+    "Original sculpted front, rear, grille, lamps, side skirts and roof UV texture retained",
+    "Interior removal bounded to longitudinal -1.78..1.78m, lateral -0.70..0.70m and height 0.59..1.105m",
+    "Opaque exterior ray profiles must match the predecessor within 5mm; this rejects missing panels and flat replacement caps",
+    "Complete original body and old partial wheel pieces are recombined, then four real tyres are repartitioned around measured rim centres",
+    "True wheel centres are rear x=-1.063m and front x=1.677m; 345mm tyre partitions, 381mm real apertures and solid 35mm rolled flanges follow those axes",
+    "No painted vertices are radially projected or stretched; inherited small seam gaps use original boundary vertices and adjacent UVs",
+    "Game export keeps source PNG pixels; JPEG introduced green atlas bleeding onto tyre UV boundaries",
+    "A 64mm fixed front entrance return closes the inherited door-edge gap; the original side recess has a backing and three horizontal louvres",
+    "No new paid generation",
+    "Runtime only assigns glass material, text and articulated motion"
+  ]
+}

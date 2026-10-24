@@ -6,17 +6,37 @@ var trial_lantern: RepresentativeLantern
 var festival_mount: Node3D
 var festival_lantern: RepresentativeLantern
 var activity_frames: Node3D
+const PLAZA_SIGNAGE: Script = preload("res://scripts/world/plaza_signage.gd")
 
 func setup(builder: InteriorBuilder) -> void:
 	world = builder.wb
 	name = "WorkroomProject"
 	activity_frames=Node3D.new();activity_frames.name="CommunityActivityNotes";world.add_child(activity_frames)
 	for index in 2:
-		var at: Vector3=[Vector3(-3.9,0,-4.6),Vector3(3.1,0,9.8)][index]
-		var frame: Node3D=paper_frame(activity_frames,at,world.house.wood_mat(false),world.house.flat_mat(Color(.95,.88,.68),"field_work_note"))
-		frame.name="ActivityNote_%d"%index
+		var at: Vector3=[Vector3(-4.4,0,-3.8),Vector3(3.1,0,9.8)][index]
+		PLAZA_SIGNAGE.make_activity_note(world,activity_frames,at,index)
+	# WorldBuilder toggles its top-level nodes when changing region. The children
+	# retain their activity state, and the visibility signal updates collisions.
+	activity_frames.visibility_changed.connect(_sync_activity_notes)
+	GameState.time_changed.connect(_on_activity_time)
 	GameState.state_changed.connect(sync_state)
 	sync_state()
+
+func _on_activity_time(_minute: float) -> void:
+	_sync_activity_notes()
+
+func _sync_activity_notes() -> void:
+	var context: String = SummerGathering.context()
+	var festival: Dictionary = GameState.festival("natsumatsuri")
+	var before_opening: bool = GameState.day < int(festival.day) or GameState.day == int(festival.day) and GameState.hour() < float(festival.start)
+	var preparing: bool = GameState.day >= int(festival.prep_day) and before_opening and (str(WorkshopProject.state().phase) != "invitation" or GameState.qstate("Q13") in ["active","done"])
+	if context.is_empty() and preparing: context = "preparing"
+	var shown: bool = not context.is_empty() and world.region == "town" and not world.indoor
+	for index: int in activity_frames.get_child_count():
+		var frame: Node3D = activity_frames.get_child(index) as Node3D
+		frame.visible = shown
+		for body: StaticBody3D in frame.find_children("*","StaticBody3D",true,false): body.collision_layer = WorldBuilder.L_SOLID if shown else 0
+		if shown: PLAZA_SIGNAGE.set_note_title(frame,context,index)
 
 func sync_state() -> void:
 	var p: Dictionary = WorkshopProject.state()
@@ -28,9 +48,7 @@ func sync_state() -> void:
 	trial_lantern = null
 	festival_lantern = null
 	festival_mount = null
-	var activity: bool=(GameState.day>=16 and GameState.day<=17) or SummerGathering.context()=="reunion"
-	activity_frames.visible=activity and world.region=="town"
-	for body in activity_frames.find_children("*","StaticBody3D",true,false): body.collision_layer=WorldBuilder.L_SOLID if activity else 0
+	_sync_activity_notes()
 	if str(p.phase) == "invitation": return
 	if not p.get("site_preview", false) and (int(p.joints) < 3 or p.stored):
 		specimen = RepresentativeLantern.new()

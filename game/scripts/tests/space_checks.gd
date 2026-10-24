@@ -37,7 +37,13 @@ func run() -> void:
 	PlacementSystem.project_context = "space"
 	t.check("SPACE_REGION", "project editing reaches actual southern decisions outside the old zone", PlacementSystem.zone()[3] == 24.0 and PlacementSystem.check_rect(Vector2(2.5, 19), Vector2(2, 2)) == "")
 	t.check("SPACE_OCCUPANCY", "an actual future dance footprint rejects furniture", PlacementSystem.check_rect(SummerSpace.DANCE_CENTER, Vector2(2, 2)) != "")
-	t.check("SPACE_OCCUPANCY", "fixed stage and pergola collision cannot be disguised as usable ground", PlacementSystem.check_rect(Vector2(-9.8, 20.4), Vector2(2, 2)) != "" and PlacementSystem.check_rect(Vector2(-9.8, 13.2), Vector2(2, 2)) != "")
+	# P10 is stored on an ordinary day. Its genuine practice loan deploys the
+	# same platform and collision that furniture placement must then respect.
+	var stage_loan: int = main.world.lifecycle.begin_practice("taiko")
+	await t.frames(3)
+	t.check("SPACE_OCCUPANCY", "a stage in use and the permanent pergola cannot be disguised as usable ground", PlacementSystem.check_rect(Vector2(-9.8, 20.4), Vector2(2, 2)) != "" and PlacementSystem.check_rect(Vector2(-9.8, 13.2), Vector2(2, 2)) != "")
+	main.world.lifecycle.end_practice("taiko", stage_loan)
+	await t.frames(3)
 	PlacementSystem.project_context = ""
 	t.check("SPACE_REGION", "ordinary placement still uses its original bounds", PlacementSystem.check_rect(Vector2(2.5, 19), Vector2(2, 2)) != "")
 	for key: String in ["east", "west"]:

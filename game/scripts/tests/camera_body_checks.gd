@@ -8,6 +8,12 @@ func run() -> void:
 	if main.in_room:
 		if main.room_kind=="house":await main.exit_room()
 		else:await main.exit_interior()
+	GameState.clock_paused=true
+	main.world.set_region("town")
+	# The follow camera is tested beside the actual deployed tasting counter.
+	# Borrow it through the same lifetime-bound entry used by ProjectTasting.
+	var tasting:=ProjectTasting.new();main.add_child(tasting);tasting.s=main.story
+	var tasting_loan: int=main.world.lifecycle.stalls.begin_tasting(tasting)
 	var old_view:=Vector3(main.rig.yaw,main.rig.pitch,main.rig.dist)
 	var old_fixed: bool=main.rig.fixed
 	var old_frozen: bool=main.player.frozen
@@ -28,4 +34,5 @@ func run() -> void:
 	check("render visibility preserves the full physical character",main.player.collision_layer==layer and main.player.collision_mask==mask)
 	main.rig.cam.make_current();other.queue_free()
 	main.rig.yaw=old_view.x;main.rig.pitch=old_view.y;main.rig.dist=old_view.z;main.rig.fixed=old_fixed;main.player.frozen=old_frozen
+	main.world.lifecycle.stalls.end_tasting(tasting_loan);tasting.queue_free()
 	GameState.from_dict(original);GameState.clock_paused=true;main._restore();main.rig.snap()

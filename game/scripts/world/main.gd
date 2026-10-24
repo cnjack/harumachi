@@ -28,6 +28,7 @@ var _hud_room := false
 var _marker_target: Variant = null
 var _last_fest := ""
 var dancing := false
+const SHOPKEEPERS = preload("res://scripts/world/shopkeeper_presence.gd")
 const FEST_POINTS := [
 	["tanabata_bamboo", -1.1, -3.0, 1.0, 2.6], ["contest_table", -6.2, 8.0, 1.0, 2.0], ["yagura", -2.6, 16.1, 1.0, 2.4],
 	["yatai", 5.8, 19.5, 1.0, 1.7], ["yatai", 9.2, 19.5, 1.0, 1.7], ["offer_stand", -1.4, -1.4, 0.6, 1.6],
@@ -454,22 +455,28 @@ func update_npcs(force: bool) -> void:
 			if force or n.fest_key != room_kind+":visit":n.place(visit_spec.origin+rest.at,float(rest.yaw));n.set_pose("idle")
 			n.fest_key=room_kind+":visit"
 			continue
-		# Main owns indoor keeper placement. Festival and outdoor schedules must wait until exit.
-		var keeper_id: String = {"bakery": "ren", "store": "kazuko"}.get(room_kind, "")
-		if in_room and id == keeper_id:
-			if shop_life and shop_life.controls_keeper(id):
-				if force:shop_life.cancel_work()
-				else:continue
-			var keeper_spec: Dictionary = InteriorBuilder.spec_for(room_kind)
-			n.set_home(false)
-			if force or n.fest_key != room_kind + ":counter":
-				n.place(keeper_spec.origin + keeper_spec.keeper, keeper_spec.keeper_yaw)
-			n.fest_key = room_kind + ":counter"
-			continue
 		if fest_on and (f.get("npc", {}) as Dictionary).has(id) and not (id == "aoi" and G.day < 2):
+			if shop_life and shop_life.controls_keeper(id): shop_life.cancel_work()
 			if not dancing:
 				n.apply_fest(f.npc[id], fid)
 			continue
+		# The same keeper stays in the real shop while the player enters, leaves,
+		# or loads the street. Festival attendance and errands retain their own
+		# locations; looking into a different room never summons a second role.
+		var workplace: String = SHOPKEEPERS.working_room(id) if G.phase != "market" else ""
+		if workplace != "":
+			if shop_life and shop_life.controls_keeper(id):
+				if force:shop_life.cancel_work()
+				else:continue
+			var keeper_spec: Dictionary = InteriorBuilder.spec_for(workplace)
+			n.set_home(false)
+			if force or n.fest_key != workplace + ":counter":
+				n.place(keeper_spec.origin + keeper_spec.keeper, keeper_spec.keeper_yaw)
+				n.set_pose("idle")
+			n.fest_key = workplace + ":counter"
+			SHOPKEEPERS.show_in_room(n, in_room and room_kind == workplace)
+			continue
+		if shop_life and shop_life.controls_keeper(id): shop_life.cancel_work()
 		if n.fest_key != "":
 			n.fest_key = ""
 			n.sched_i = -1
@@ -482,6 +489,10 @@ func update_npcs(force: bool) -> void:
 		if story.busy and n.talking:
 			continue
 		n.apply_schedule(G.hour(), player.global_position, force)
+
+
+func shopkeeper_present(kind: String) -> bool:
+	return SHOPKEEPERS.present(self, kind)
 
 
 func _on_new_day(_d: int) -> void:
@@ -708,6 +719,7 @@ func _sync_weather() -> void:
 func _sync_location_props() -> void:
 	# Entering/leaving a region or room need not emit a minute/state change.
 	# Restore this real table, tea and collisions before the next interaction.
+	if is_instance_valid(world.lifecycle): world.lifecycle.sync_state()
 	if is_instance_valid(story) and is_instance_valid(story.neighbours) and is_instance_valid(story.neighbours.view):
 		story.neighbours.view.sync_state()
 	if is_instance_valid(story) and story.visits!=null and is_instance_valid(story.visits.view):story.visits.view.sync_state()
@@ -762,6 +774,9 @@ func to_market_positions(for_walk: bool) -> void:
 	for id in npcs:
 		var info: Dictionary = Layout.NPC[id]
 		var n: NPC = npcs[id]
+		if n.fest_key.ends_with(":counter"):
+			if shop_life and shop_life.controls_keeper(id): shop_life.cancel_work()
+			n.fest_key = ""
 		n.set_home(false)
 		n.set_pose("idle")
 		if for_walk:
@@ -858,14 +873,6 @@ func enter_interior(k: String) -> void:
 	rig.pitch = float(InteriorBuilder.spec_for(k).get("camera_pitch",46.0))
 	rig.snap()
 	update_npcs(true)
-	if k == "bakery" and not npcs.ren.home:
-		var sp := InteriorBuilder.spec_for("bakery")
-		npcs.ren.place(sp.origin + sp.keeper, sp.keeper_yaw)
-		npcs.ren.fest_key = "bakery:counter"
-	elif k == "store" and not npcs.kazuko.home:
-		var sp2 := InteriorBuilder.spec_for("store")
-		npcs.kazuko.place(sp2.origin + sp2.keeper, sp2.keeper_yaw)
-		npcs.kazuko.fest_key = "store:counter"
 	Audio.set_indoor(true)
 	Audio.play_music("shop", 1.5)
 	await ui.fade_in(0.35)
@@ -915,14 +922,6 @@ func exit_interior() -> void:
 	rig.dist = 7.0
 	rig.snap()
 	update_npcs(true)
-	if npcs.ren.fest_key == "bakery:counter":
-		npcs.ren.fest_key = ""
-		npcs.ren.sched_i = -1
-		update_npcs(true)
-	if npcs.kazuko.fest_key == "store:counter":
-		npcs.kazuko.fest_key = ""
-		npcs.kazuko.sched_i = -1
-		update_npcs(true)
 	await ui.fade_in(0.35)
 	Loading.finish()
 	GameState.unlock_input("transition")

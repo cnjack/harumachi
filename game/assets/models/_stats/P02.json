@@ -1,20 +1,18 @@
 {
  "id": "P02",
- "src": "raw/P02/model.glb",
- "provider": "hunyuan hy-3d-3.1",
- "tris_src": 20000,
- "tris": 8000,
- "size_m": [
-  2.718,
-  0.988,
-  2.301
- ],
- "godot_size_m_xyz": [
-  2.718,
-  2.301,
-  0.988
- ],
+ "src": "../library/signage/P02.glb",
+ "provider": "Hunyuan 3.1 with local planar notice mount",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 8222,
  "tex": 1024,
- "bytes": 587120,
- "yaw_fix": 0
+ "bytes": 596860,
+ "godot_size_m_xyz": [
+  2.7185,
+  2.3008,
+  0.9878
+ ],
+ "mesh_nodes": [
+  "P02"
+ ]
 }

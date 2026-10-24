@@ -1,0 +1,63 @@
+{
+  "asset": "P02",
+  "provider": "Tencent Hunyuan 3.1; local support-surface repair",
+  "source": "art/library/signage/source/P02_textured_predecessor.glb",
+  "source_sha256": "ba78648fe04276a4280e3e42bf97be24064993e2a240570d562f889f902609af",
+  "authored": "art/library/signage/P02.glb",
+  "authored_sha256": "e05b3c00d3d3f91c35b8cd65701e802e1969433abbad26f6cb37b13a4ed37877",
+  "authoring_tool": "art/tools/repair_noticeboard_mount.py",
+  "repair": "Existing relief removed only beneath the notice, remeshed into a single planar support with sampled original UVs, and joined to a 20 mm transition. No added cover mesh.",
+  "paper_bounds_xy": [
+    0.07,
+    0.65,
+    0.77,
+    1.59
+  ],
+  "flat_bounds_xy": [
+    0.066,
+    0.654,
+    0.766,
+    1.594
+  ],
+  "transition_bounds_xy": [
+    0.046,
+    0.674,
+    0.746,
+    1.614
+  ],
+  "front_before_m": [
+    0.06677805212999438,
+    0.09195900708436966
+  ],
+  "front_after_m": [
+    0.08,
+    0.08
+  ],
+  "paper_gap_m": 0.003,
+  "triangles_before": 8000,
+  "triangles_after": 8222,
+  "source_triangles_partitioned": 191,
+  "unmodified_triangles_preserved_exactly": 7809,
+  "relief_pieces_replaced": 170,
+  "support_boundary_vertices": 69,
+  "vertices_after": 10683,
+  "front_ray_hits": {
+    "1": 289
+  },
+  "original_encoded_images_unchanged": true,
+  "image_sha256": [
+    "36789792655b1fb4140a1cf93bc38ec3f8e7a37f1ae560a2564fc4107a8b722a"
+  ],
+  "game_export": "game/assets/models/P02.glb",
+  "game_export_options": {
+    "src": "../library/signage/P02.glb",
+    "preserve_parts": true,
+    "preserve_origin": true,
+    "level": false,
+    "tex": 1024,
+    "image_format": "AUTO",
+    "provider": "Hunyuan 3.1 with local planar notice mount"
+  },
+  "exported_sha256": "84bb95932579bff21d09a5a6852e446b1baed33725eb89b9b1708c5b54b3ba45",
+  "exported_texture_matches_original": true
+}

@@ -96,11 +96,13 @@
       ]
     },
     "P02": {
-      "src": "raw/P02/model.glb",
-      "fit": "h",
-      "size": 2.3,
-      "tris": 8000,
-      "tex": 1024
+      "src": "../library/signage/P02.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "Hunyuan 3.1 with local planar notice mount"
     },
     "P04": {
       "src": "raw/P04/model.glb",
@@ -110,14 +112,14 @@
       "tex": 1024
     },
     "P05": {
-      "src": "raw/plaza_paintover_20261009/P05.glb",
+      "src": "../library/plaza/source/P05.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 2048,
       "image_format": "AUTO",
-      "provider": "Blender joinery from accepted imagegen plaza paintover",
-      "license": "项目自制；生成素材服务条款",
+      "provider": "Blender authored continuous slide and cedar joinery (2026-10-24)",
+      "license": "项目自制",
       "reference_images": [
         "art/references/plaza_paintover_20261009/plaza_facilities_inspiration.png"
       ]
@@ -1392,12 +1394,12 @@
       "yaw_note": "v0.6 review (round 2): the roof frame was 52 deg off-axis (first review wrongly treated the well as round); turned square, the open side with the bucket to +Z"
     },
     "D07_kei_truck": {
-      "src": "raw/D07_kei_truck_glass_20261014/ready.glb",
+      "src": "../library/vehicles/source/D07_kei_truck.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 2048,
-      "provider": "Blender remade hollow cab, glazing, chassis and wheels; retained original Hyper3D UV cargo bed",
+      "provider": "Blender pressed cab, rounded tyres, four rolled arches, inset lamps and mirrors, drop-side hardware; original textured produce cargo retained",
       "prev_src": "raw/D07_kei_truck_h3d/model.glb"
     },
     "I01_deck_oven": {
@@ -1864,13 +1866,14 @@
       "yaw_note": "Rigid correction from measured tray footprint"
     },
     "B01_bus": {
-      "src": "raw/scene_polish_20261004/assembled/B01_bus.glb",
+      "src": "../library/vehicles/source/B01_bus.glb",
       "preserve_parts": true,
       "preserve_origin": true,
       "level": false,
       "tex": 4096,
-      "provider": "Hyper3D Rodin Gen-2.5-High Raw 1000000 faces, imagegen reference; UV-preserving game assembly",
-      "note": "Tree trunk and foliage separate; original maximum-detail outputs retained. Bus glazing cut for independent transparent panes."
+      "image_format": "AUTO",
+      "provider": "Owned Rodin painted lower shell and roof; Blender source cabin repair with fitted panes and mounted route box, 2026-10-24",
+      "note": "Source repair: actual open apertures, fitted glass, moving doors, seats and a mounted route lightbox. See art/library/vehicles and art/manifests/models_bus_cabin_20261024.json."
     },
     "V01_fern": {
       "src": "raw/free_foliage_20261004/ready/V01_fern.glb",
@@ -2262,6 +2265,16 @@
         "art/references/inhabited_places_20261010/grocer_grouped_layout.png"
       ],
       "license": "项目自制；生成素材服务条款"
+    },
+    "I07_ice_freezer": {
+      "src": "../library/appliances/source/I07_ice_freezer.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 1024,
+      "image_format": "AUTO",
+      "provider": "Blender authored cavity, enamel shell, wire baskets, sealed stock and sliding glass lids",
+      "note": "Replaces the opaque product photograph and solid cabinet. Source and geometry audit: art/manifests/models_freezer_20261024.json"
     },
     "B12_strawberry_slice": {
       "src": "raw/inhabited_places_20261010/B12_strawberry_slice.glb",
@@ -3437,11 +3450,21 @@
         "MS04_wall_plaque"
       ],
       "license": "Hyper3D account-generated assets; authorized game commercial use and public source repository"
+    },
+    "T12_street_zelkova": {
+      "src": "../library/street_trees/source/T12_street_zelkova.glb",
+      "preserve_parts": true,
+      "preserve_origin": true,
+      "level": false,
+      "tex": 2048,
+      "image_format": "AUTO",
+      "provider": "Project Blender authoring; existing painted zelkova sprigs",
+      "license": "Project-authored geometry; existing generated artwork under service terms"
     }
   },
   "procedural_overrides": {
     "I03_drink_fridge": "v0.6 review: Pixal3D (raw/I03_drink_fridge_pix) turned glass and steel into a grey blob; now built by art/tools/proc_models.py I03_drink_fridge with a codex texture",
-    "I07_ice_freezer": "v0.6 review: Pixal3D (raw/I07_ice_freezer_pix) turned glass and steel into a grey blob; now built by art/tools/proc_models.py I07_ice_freezer with a codex texture",
+    "I07_ice_freezer": "2026-10-24: rebuild_ice_freezer.py authors a real cavity, four stock baskets and two transparent sliding lids; source: art/library/appliances.",
     "P_gondola": "2026-10-01 wooden joinery model from japanese_joinery.py; same footprint and stocked shelf heights as original",
     "P_signpost": "2026-10-01 material and UV upgrade of original procedural GLB; texture_landmarks.py; physical parts retained",
     "P_bridge": "2026-10-01 material and UV upgrade of original procedural GLB; texture_landmarks.py; physical parts retained"

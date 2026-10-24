@@ -80,6 +80,9 @@ func run() -> void:
 	G.inventory.erase("cucumber")
 	t.check("BAKERY", "missing produce cannot partially debit the delivery", G.bakery_deliver() != "" and G.count("tomato") == 2 and G.coins == before)
 	G.add_item("cucumber", 1, true)
+	# Enter the market layout as the real opening flow does; assigning the
+	# phase alone leaves working shopkeepers inside their closed shops.
+	main.to_market_positions(false)
 	main.update_npcs(true)
 	var expected: int = G.sale_value("tomato", 2, G.MARKET_RATE) + G.sale_value("cucumber", 1, G.MARKET_RATE)
 	await t.use("stall", [0])
@@ -111,6 +114,8 @@ func run() -> void:
 	G.day = 17
 	G.minute = 18.0 * 60.0
 	G.phase = "market"
+	G.state_changed.emit()
+	main.to_market_positions(false)
 	main.update_npcs(true)
 	await t.use("stall", [1])
 	t.check("BAKERY", "shop-stock alternative advances honestly and pays no produce reward", G.at_step("Q16", "bakery_followup") and not G.flags.bakery_supplied_first and G.coins == before)

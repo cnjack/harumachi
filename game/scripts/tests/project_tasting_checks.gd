@@ -68,6 +68,7 @@ func run() -> void:
 		else:await main.exit_interior()
 	batch=fresh();await t.frames(3)
 	var view:=ProjectTasting.new();main.add_child(view);view.s=main.story
+	var surface_loan: int = main.world.lifecycle.stalls.begin_tasting(view)
 	t.check("TASTING_SUPPORT","the existing P09 has a complete sample patch clear of its basket",view.find_surface("mio") and ProjectTasting.patch_supported(view.support,view.surface))
 	var edge: Vector3=view.surface+Vector3(0,0,.4)
 	t.check("TASTING_SUPPORT","a paper corner or plate edge beyond the actual counter fails",not ProjectTasting.patch_supported(view.support,edge))
@@ -77,6 +78,7 @@ func run() -> void:
 		cut.clock=cut.duration*.7;cut._process(0)
 		t.check("TASTING_MESH","%s retains its empty serving base when only this portion disappears"%style,not cut.meal_food.visible and cut.prop.visible and GameState.count(str(batch.iid))==3)
 		cut.queue_free()
+	main.world.lifecycle.stalls.end_tasting(surface_loan)
 	view.queue_free();await t.frames(2)
 	await movement_checks()
 	GameState.from_dict(original);GameState.clock_paused=true

@@ -59,6 +59,9 @@ func npc_name(id: String) -> String:
 
 # ================================================================== prompts
 func prompt_for(id: String) -> String:
+	if id in ["stall", "opening_site"] and is_instance_valid(world.lifecycle) and not world.lifecycle.stalls.available(): return ""
+	var counter_shop: String = {"store_counter": "store", "bakery_counter": "bakery"}.get(id, "")
+	if counter_shop != "" and not main.shopkeeper_present(counter_shop): return "看看空着的柜台"
 	var G := GameState
 	var visit_prompt: Variant = visits.prompt(id)
 	if visit_prompt != null: return str(visit_prompt)
@@ -71,6 +74,8 @@ func prompt_for(id: String) -> String:
 	var hp: Variant = homage.prompt(id)
 	if hp != null:
 		return str(hp)
+	if id == "center_door" and not lore.pending(id) and not G.at_step("Q04", "get_sign"):
+		return "社区工作间 · 借用活动用具"
 	var workshop_prompt: Variant = workshop.prompt(id)
 	if workshop_prompt != null: return str(workshop_prompt)
 	var space_prompt: Variant = space.prompt(id)
@@ -127,9 +132,9 @@ func prompt_for(id: String) -> String:
 		"house_garden":
 			return "看看院子"
 		"goldfish_pool":
-			return "看看金鱼水槽"
+			return "看看金鱼水槽" if world.lifecycle.equipment_available("goldfish") else ""
 		"taiko_drum":
-			return "看看排练的太鼓"
+			return "看看排练的太鼓" if world.lifecycle.equipment_available("taiko") else ""
 		"board":
 			if G.at_step("Q04", "post_sign") and G.has("event_sign"):
 				return "贴上活动标牌"
@@ -176,6 +181,8 @@ func marker_target() -> Variant:
 	if ResidentVisits.tracked() and not visit_hud.is_empty():
 		return _point(str(visit_hud.target))
 	if SummerProjects.state().tracked:
+		if SummerProjects.phase() == "done" and int(SummerProjects.opening().service.get("remaining", 0)) <= 0 and G.phase != "market":
+			return _point("opening_paper" if main.in_room and main.room_kind == "bakery" else "bakery")
 		if SummerProjects.phase() == "ready" and G.phase != "market":
 			if G.at_step("Q05", "invite"): return _npc_head("ren" if not G.invited("ren") else "haru")
 			return _npc_head("mio")
@@ -376,7 +383,10 @@ func interact(it: Interactable) -> void:
 	if npc != null:
 		await CONVERSATION.introduce(self, it.id)
 		personal_handled = await CONVERSATION.personal_event(self, it.id)
-	if personal_handled:
+	var counter_shop: String = {"store_counter": "store", "bakery_counter": "bakery"}.get(it.id, "")
+	if counter_shop != "" and not main.shopkeeper_present(counter_shop):
+		await farm._counter_unstaffed(counter_shop)
+	elif personal_handled:
 		pass
 	elif visits.handles(it.id):
 		await visits.handle(it.id)
@@ -390,6 +400,8 @@ func interact(it: Interactable) -> void:
 		await daily.handle(it.id)
 	elif homage.handles(it.id):
 		await homage.handle(it.id)
+	elif it.id == "center_door":
+		await _i_festival_storage()
 	elif workshop.handles(it.id):
 		await workshop.handle(it.id)
 	elif food_use.handles(it.id):
@@ -1001,21 +1013,56 @@ func _i_house_garden() -> void:
 
 
 func _i_goldfish_pool() -> void:
+	if not world.lifecycle.equipment_available("goldfish"): return
+	var loan: int = world.lifecycle.begin_practice("goldfish")
 	if not GameState.flags.get("goldfish_seen", false):
 		GameState.flags["goldfish_seen"] = true
 		await say("narrator", "", "花架旁摆着一个捞金鱼的水槽，牌子上写着：“集市练习用 · 随便玩”。")
 	StoryKnowledge.observe_activity("goldfish")
 	await play_mg("goldfish")
+	world.lifecycle.end_practice("goldfish", loan)
 
 
 func _i_taiko_drum() -> void:
-	world.lifecycle.begin_practice("taiko")
+	if not world.lifecycle.equipment_available("taiko"): return
+	var loan: int = world.lifecycle.begin_practice("taiko")
 	if not GameState.flags.get("taiko_seen", false):
 		GameState.flags["taiko_seen"] = true
 		await say("narrator", "", "小舞台边放着一面太鼓。鼓面上贴着纸条：“祭典排练中，欢迎试打！”")
 	StoryKnowledge.observe_activity("taiko")
 	await play_mg("taiko")
-	world.lifecycle.end_practice("taiko")
+	world.lifecycle.end_practice("taiko", loan)
+
+
+## The existing community doorway is also the return point for portable activity gear.
+## Quest pickups keep their direct route; ordinary visits can borrow one actual setup.
+func _i_festival_storage() -> void:
+	if lore.pending("center_door") or GameState.at_step("Q04", "get_sign"):
+		if workshop.handles("center_door"): await workshop.handle("center_door")
+		elif lore.pending("center_door"): await lore.handle("center_door")
+		else: await _i_center_door()
+		return
+	var choice: int = await ui.choose(["走进社区工作间", "借太鼓，到庭院练一会儿", "借水槽和纸网，到庭院试试", "之后再来"])
+	if choice == 0:
+		await workshop.handle("center_door")
+		return
+	if choice not in [1, 2]: return
+	var kind: String = "taiko" if choice == 1 else "goldfish"
+	var point: Variant = physical_point("taiko_drum" if kind == "taiko" else "goldfish_pool")
+	if not point is Vector3: return
+	await say("narrator", "", "你和街坊从储物间取出太鼓，摆好练习台。练完再一起收回。" if kind == "taiko" else "你和街坊搬出水槽，放好纸网。玩完把鱼送回饲养缸，水槽也要收好。")
+	await ui.fade_out(.2)
+	var loan: int = world.lifecycle.begin_practice(kind)
+	player.global_position = Vector3(point.x, .05, point.z + 1.6)
+	player.velocity = Vector3.ZERO
+	player.face_towards(point)
+	main.rig.snap()
+	await ui.fade_in(.2)
+	if kind == "taiko": await _i_taiko_drum()
+	else: await _i_goldfish_pool()
+	world.lifecycle.end_practice(kind, loan)
+	if not world.lifecycle.equipment_available(kind):
+		await say("narrator", "", "用具收回社区储物间了。下次想玩，再到门口来借。")
 
 
 ## Neighbours happily take one home-made onigiri each (+1 familiarity, once per person).
@@ -1077,11 +1124,11 @@ func _i_board() -> void:
 
 
 func _i_stall() -> void:
+	if is_instance_valid(world.lifecycle) and not world.lifecycle.stalls.available(): return
 	var G := GameState
 	if G.at_step("Q02", "deliver_basket"):
 		if G.take_all({"bread_basket": 1}):
 			Audio.fx_at("basket",player.global_position+Vector3.UP*.8,-8)
-			world.stall_bread.visible = true
 			if world.lifecycle != null: world.lifecycle.record_delivery("bread")
 			await say("narrator", "", "你把面包篮放在摊位中央。黄油的香味一下子飘开了。")
 			G.advance("Q02", "deliver_basket")
@@ -1090,9 +1137,9 @@ func _i_stall() -> void:
 	if G.phase == "market":
 		await say("narrator", "", "摊位前排起了小队，面包和蔬菜都快卖完了。")
 	elif world.stall_bread.visible:
-		await say("narrator", "", "莲的面包篮已经摆好了，就等周末了。")
+		await say("narrator", "", "今天送来的面包篮摆在摊上，散场前会收好。")
 	else:
-		await say("narrator", "", "空荡荡的集市摊位。遮阳棚被晒得暖暖的。")
+		await say("narrator", "", "木托盘和干净纸托备好了，取餐的位置留在桌前。")
 
 
 func _i_planter() -> void:
@@ -1259,7 +1306,7 @@ func _market_sequence() -> void:
 	main.rig.pitch = 26.0
 	main.rig.dist = 8.0
 	main.rig.snap()
-	world.stall_bread.visible = true
+	if is_instance_valid(world.lifecycle): world.lifecycle.sync_state()
 	world.poster.visible = true
 	world.set_crop_stage(GameState.crop_stage)
 	ui.set_hud_visible(false)

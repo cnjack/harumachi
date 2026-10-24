@@ -1,7 +1,9 @@
 extends Node3D
 ## Render existing story facts with the same physical props, not a second quest ledger.
 const MESH_PARTS = preload("res://scripts/world/scene_lifecycle_meshes.gd")
+const STALL_LIFECYCLE = preload("res://scripts/world/stall_lifecycle.gd")
 var world: Node
+var stalls: Node3D
 var stage_parts: Array[Node3D] = []
 var stage: Node3D
 var stage_collision: StaticBody3D
@@ -17,7 +19,8 @@ var seedling: Node3D
 var harvest: Node3D
 var taiko_cover: MeshInstance3D
 var taiko_sticks: Node3D
-var _taiko_practice := 0
+var _equipment_loans: Dictionary = {}
+var _next_loan := 0
 var _last: Dictionary = {}
 var _poster_texture: Texture2D
 var _poster_photo_path := ""
@@ -38,19 +41,44 @@ func setup(owner_world: Node) -> void:
 	_build_taiko_cover()
 	seedling = world.get_node_or_null("ModelDiversity/N17_seedling_tray")
 	harvest = world.farm.get_node_or_null("ModelDiversity/N18_harvest_basket")
-	for child: Node in world.poster.get_children():
-		if child is MeshInstance3D:
-			_poster_texture = (child.material_override as StandardMaterial3D).albedo_texture; break
+	var illustration: MeshInstance3D = world.poster.get_node_or_null("NoticeIllustration") as MeshInstance3D
+	if illustration != null:
+		_poster_texture = (illustration.material_override as StandardMaterial3D).albedo_texture
+	stalls = STALL_LIFECYCLE.new(); add_child(stalls); stalls.setup(self)
 	GameState.state_changed.connect(sync_state, CONNECT_DEFERRED)
 	GameState.time_changed.connect(func(_minute: int): sync_state())
 	GameState.plots_changed.connect(sync_state)
 	sync_state()
 
-func begin_practice(kind: String) -> void:
-	if kind == "taiko": _taiko_practice += 1; sync_state()
+func begin_practice(kind: String) -> int:
+	if kind not in ["taiko", "goldfish"]: return -1
+	_next_loan += 1
+	# A loan belongs to this running interaction, never to a saved quest flag.
+	# Reloading a save or beginning another day cannot leave an interrupted loan outside.
+	_equipment_loans[_next_loan] = {"kind": kind, "day": GameState.day, "flags": GameState.flags}
+	sync_state()
+	return _next_loan
 
-func end_practice(kind: String) -> void:
-	if kind == "taiko": _taiko_practice = maxi(0, _taiko_practice - 1); sync_state()
+func end_practice(kind: String, loan: int = -1) -> void:
+	if loan >= 0:
+		if str(_equipment_loans.get(loan, {}).get("kind", "")) == kind: _equipment_loans.erase(loan)
+	else:
+		for token: int in _equipment_loans:
+			if str(_equipment_loans[token].kind) == kind:
+				_equipment_loans.erase(token)
+				break
+	sync_state()
+
+func _in_use(kind: String) -> bool:
+	for token: int in _equipment_loans.keys():
+		var loan: Dictionary = _equipment_loans[token]
+		if int(loan.day) != GameState.day or not is_same(loan.flags, GameState.flags):
+			_equipment_loans.erase(token)
+	return _equipment_loans.values().any(func(loan: Dictionary) -> bool: return str(loan.kind) == kind)
+
+func equipment_available(kind: String) -> bool:
+	var prop: Node3D = world.taiko_drum if kind == "taiko" else world.goldfish_tank
+	return world.region == "town" and not world.indoor and prop.is_visible_in_tree() and str(prop.get_meta("lifecycle_state", "stored")) in ["ready", "open", "practice"]
 
 func _process(delta: float) -> void:
 	_tick += delta
@@ -104,18 +132,10 @@ func snapshot() -> Dictionary:
 		elif moved > 0 or str(space.get("phase", "invitation")) != "invitation" or resident_finished: phase = "building"
 	elif GameState.day < prep_day and (moved > 0 or str(space.get("phase", "invitation")) != "invitation"):
 		phase = "building"
-	var opening: Dictionary = GameState.flags.get("summer_projects", {}).get("opening", {})
-	var service: Dictionary = opening.get("service", {})
 	var deliveries: Dictionary = GameState.flags.get("scene_lifecycle", {}).get("deliveries", {})
-	var bread_delivery: Dictionary = deliveries.get("bread", {})
 	var harvest_delivery: Dictionary = deliveries.get("harvest", {})
 	var market: bool = GameState.phase == "market" or now == "natsumatsuri"
-	var bread: String = "stored"
-	# Cooperative portions already have a real batch/remaining count in ProjectView.
-	# This basket is the resident's legacy bread stock, not a duplicate of that food.
-	if service.is_empty():
-		if market: bread = "resident_market"
-		elif int(bread_delivery.get("day", -1)) == GameState.day and GameState.minute >= float(bread_delivery.get("minute", 0.0)) and GameState.hour() < 20.0: bread = "delivered"
+	var stall_state: Dictionary = stalls.snapshot(market)
 	var court: Dictionary = GameState.plots.get("court", {})
 	var nursery: bool = GameState.qstate("Q03") == "active" and str(court.get("crop", "")).is_empty()
 	var sale: bool = int(harvest_delivery.get("day", -1)) == GameState.day and GameState.minute >= float(harvest_delivery.get("minute", 0.0)) and GameState.hour() >= 8.0 and GameState.hour() < 19.0
@@ -125,7 +145,7 @@ func snapshot() -> Dictionary:
 	if market or phase in ["ready", "open"]: sign = "open"
 	if phase == "cleanup": sign = "cleanup"
 	return {"festival": phase, "resident_finished": resident_finished, "wood_moved": moved, "wood_used": retained or phase in ["ready", "open", "cleanup"] or GameState.day > festival_day,
-		"public_equipment": market, "taiko_practice": _taiko_practice > 0, "bread": bread, "nursery": nursery, "harvest": sale, "tea": tea_state(), "sign": sign,
+		"public_equipment": market, "taiko_practice": _in_use("taiko"), "goldfish_practice": _in_use("goldfish"), "bread": str(stall_state.bread), "stall": stall_state, "nursery": nursery, "harvest": sale, "tea": tea_state(), "sign": sign,
 		"poster": GameState.qstate("Q04") == "done" or GameState.qstate("Q05") == "done" or market,
 		"market_day": GameState.next_market_day(), "day": GameState.day, "region": str(world.region), "indoor": bool(world.indoor)}
 
@@ -137,8 +157,18 @@ func sync_state() -> void:
 	var drum_in_use: bool = bool(state.public_equipment) or bool(state.taiko_practice)
 	taiko_cover.visible = not drum_in_use
 	if taiko_sticks: taiko_sticks.visible = drum_in_use
-	world.taiko_drum.set_meta("lifecycle_state", "practice" if state.taiko_practice else "open" if state.public_equipment else "covered")
-	stage.set_meta("lifecycle_state", "event" if state.public_equipment else "daily")
+	var prepared: bool = str(state.festival) == "ready"
+	var stage_out: bool = bool(state.public_equipment) or prepared or str(state.festival) == "cleanup" or bool(state.taiko_practice)
+	var drum_out: bool = bool(state.public_equipment) or prepared or bool(state.taiko_practice)
+	var pool_out: bool = bool(state.public_equipment) or prepared or bool(state.goldfish_practice)
+	# set_region() restores top-level visibility. Reapply all three states here,
+	# including their bodies, before the player can target a stored object.
+	activate(stage, stage_out and local_town)
+	activate(world.taiko_drum, drum_out and local_town)
+	activate(world.goldfish_tank, pool_out and local_town)
+	world.taiko_drum.set_meta("lifecycle_state", "practice" if state.taiko_practice else "open" if state.public_equipment else "ready" if prepared else "stored")
+	world.goldfish_tank.set_meta("lifecycle_state", "practice" if state.goldfish_practice else "open" if state.public_equipment else "ready" if prepared else "stored")
+	stage.set_meta("lifecycle_state", "open" if state.public_equipment else "practice" if state.taiko_practice else "ready" if prepared else "cleanup" if state.festival == "cleanup" else "stored")
 	if stage_collision and (_last.is_empty() or bool(_last.get("public_equipment", false)) != bool(state.public_equipment)):
 		var shape: CollisionShape3D = stage_collision.get_child(0) as CollisionShape3D
 		var bounds: AABB = stage_event_bounds if state.public_equipment else stage_daily_bounds
@@ -148,8 +178,7 @@ func sync_state() -> void:
 			shape.shape.size = bounds.size * .90; shape.position = bounds.get_center()
 	_sync_festival(state, local_town)
 	_sync_wood(state, local_town)
-	world.stall_bread.visible = str(state.bread) != "stored" and world.region == "town"
-	world.stall_bread.set_meta("lifecycle_state", state.bread)
+	stalls.sync_state(state.stall, local_town)
 	_sync_poster(state)
 	var sign: Node3D = world.get_node("BuildSign")
 	activate(sign, str(state.sign) != "stored" and local_town)
@@ -203,14 +232,16 @@ func _sync_poster(state: Dictionary) -> void:
 	if state.public_equipment: caption = "今天开摊\n庭院 · 慢慢尝"
 	elif str(state.festival) == "building": caption = "今年的夏祭\n场地试摆中"
 	elif GameState.day > 17 and Progress.found("col_photo_new"): caption = "今年一起留下的照片\n下次，还在树下"
-	for child: Node in world.poster.get_children():
-		if child is Label3D: child.text = caption
-		if child is MeshInstance3D:
-			var material: StandardMaterial3D = child.material_override
-			var path: String = GameState.photo_path() if Progress.found("col_photo_new") and GameState.day > 17 and FileAccess.file_exists(GameState.photo_path()) else ""
-			if path != _poster_photo_path:
-				material.albedo_texture = _poster_texture if path.is_empty() else ImageTexture.create_from_image(Image.load_from_file(path))
-				_poster_photo_path = path
+	var notice: Label3D = world.poster.get_node_or_null("NoticeCaption") as Label3D
+	if notice != null: notice.text = caption
+	var path: String = GameState.photo_path() if Progress.found("col_photo_new") and GameState.day > 17 and FileAccess.file_exists(GameState.photo_path()) else ""
+	if path != _poster_photo_path:
+		var texture: Texture2D = _poster_texture
+		if not path.is_empty():
+			var photograph: Image = Image.load_from_file(path)
+			if photograph != null and not photograph.is_empty(): texture = ImageTexture.create_from_image(photograph)
+		preload("res://scripts/world/plaza_signage.gd").set_illustration(world.poster, texture)
+		_poster_photo_path = path
 	world.poster.set_meta("lifecycle_caption", caption)
 
 static func activate(prop: Node3D, enabled: bool) -> void:

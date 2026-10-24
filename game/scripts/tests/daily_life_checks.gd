@@ -234,8 +234,11 @@ func run() -> void:
 	G.minute = 12.0 * 60
 	main.update_npcs(true)
 	await t.frames(8)
-	await t.use("life_bakery_card", [0])
+	# At this hour Ren is working at the real indoor counter. The helper enters
+	# through the bakery door before using its supported paper-sign interaction.
+	await t.use("life_bakery_card_in", [0])
 	t.check("DAILY_LIFE", "the actual sign interaction records helping without fictional market supply", rules.done("card") and rules.event("card").get("helped_sign", false) and G.qstate("Q05") != "done")
+	await t.use("bakery_exit")
 	# Eating and tea both use supported props, never a hand or mouth target.
 	for mode: String in ["eat", "sip"]:
 		var action := LivingAction.new()

@@ -119,6 +119,7 @@ func spawn(id: String, pos: Vector3, yaw_deg: float, collide: int = 1, parent: N
 	SurfaceFinish.apply(n,id)
 	ModelDiversity.apply(n,id)
 	FurnitureWoodFinish.apply(n,id)
+	preload("res://scripts/world/plaza_timber.gd").apply(n,id)
 	ApplianceFinish.apply(n,id)
 	if id == "D07_kei_truck":
 		TruckGlazing.apply(n)
@@ -366,6 +367,9 @@ func _spawn_building(spec: Array) -> void:
 func _spawn_plant(spec: Array) -> void:
 	var tree := spawn(spec[0], Vector3(spec[1], 0, spec[2]), spec[3], 0, null, spec[4])
 	if tree:
+		if str(spec[0]) == StreetTree.MODEL:
+			StreetTree.plant(self, tree)
+			return
 		if str(spec[0]).begins_with("T"):
 			rest_on_terrain(tree,-0.03 if float(spec[2]) < -25.2 else .008)
 		var radius: float = {"T05_old_shade_tree": 1.35, "T01_courtyard_tree": 0.5, "M12d_flower_bush": 0.5, "M12b_shrub": 0.4}.get(spec[0], 0.35)
@@ -444,7 +448,8 @@ func _build_ground() -> void:
 		if not mats.has(g[0]):
 			mats[g[0]] = ground_material(g[0])
 		# later patches sit a hair higher so overlaps never z-fight
-		_plane([g[1], g[2], g[3], g[4]], mats[g[0]], 0.002 * i)
+		for ground_rect: Array in StreetTree.ground_patches([g[1], g[2], g[3], g[4]]):
+			_plane(ground_rect, mats[g[0]], 0.002 * i)
 		i += 1
 	# curbs between street and sidewalks (visual only)
 	var curb := StandardMaterial3D.new()
@@ -829,35 +834,7 @@ func sync_bakery_menu() -> void:
 
 
 func _build_board_poster() -> void:
-	poster = Node3D.new()
-	poster.name = "Poster"
-	# notice board faces north (-Z); the poster sits just in front of its panel
-	poster.position = Vector3(-8.1, 1.45, -5.16)
-	poster.rotation.y = PI
-	var q := MeshInstance3D.new()
-	var qm := QuadMesh.new()
-	qm.size = Vector2(0.62, 0.85)
-	q.mesh = qm
-	var pm := StandardMaterial3D.new()
-	var tex_path := "res://assets/ui/poster.png"
-	if ResourceLoader.exists(tex_path):
-		pm.albedo_texture = load(tex_path)
-	else:
-		pm.albedo_color = Color(1.0, 0.93, 0.78)
-	pm.roughness = 1.0
-	q.material_override = pm
-	poster.add_child(q)
-	var lbl := Label3D.new()
-	lbl.text = "周末小集市\n庭院 · 周六傍晚"
-	lbl.font_size = 48
-	lbl.pixel_size = 0.0028
-	lbl.modulate = Color(0.35, 0.18, 0.1)
-	lbl.outline_size = 0
-	lbl.position = Vector3(0, -0.28, 0.004)
-	lbl.double_sided = false
-	poster.add_child(lbl)
-	poster.visible = false
-	add_child(poster)
+	poster = preload("res://scripts/world/plaza_signage.gd").make_poster(self)
 
 
 func _build_lamps() -> void:
@@ -975,7 +952,7 @@ func _sign_label(text: String, pos: Vector3, yaw: float, size: int = 28) -> void
 ## The east end of the street opens under the same lantern gate that stands at the farm's entrance, and a
 ## gravel lane drops away between grass banks into the trees. The farm side has the matching climb
 ## (FarmBuilder._lane_up), so leaving and coming back read as one road.
-const EXIT_CUT := Rect2(42.7, -19.0, 21.3, 16.0)     # x 42.7..64, z -19..-3: where the far ground is cut away
+const EXIT_CUT := Rect2(42.7, -19.0, 89.3, 16.0)     # open road bed, bending and returning to meadow at x132
 const EXIT_GATE := Vector3(43.7, 0, -11.0)
 
 
@@ -1047,16 +1024,19 @@ static func _tri(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3) -> void:
 
 
 static func lane_depth(x: float) -> float:
-	return lerpf(0.0, -3.4, smoothstep(45.6, 63.0, x))
+	var descent: float = lerpf(0.0, -3.4, smoothstep(45.6, 63.0, x))
+	return lerpf(descent, -.03, smoothstep(72.0, 126.0, x))
 
 
 func _build_town_exit() -> void:
 	var path := ground_material("gravel")
 	path.set_shader_parameter("tint", Color(0.95, 0.9, 0.82))
-	var bank := ground_material("grass")
-	bank.set_shader_parameter("feather", 0.0)   # match FarmBuilder._lane_up so both ends of the lane read the same
+	var bank := ShaderMaterial.new()
+	bank.shader = load("res://shaders/lane_bank.gdshader")
+	bank.set_shader_parameter("albedo_tex", load("res://assets/textures/town_detail/grass.png"))
 	var c: Rect2 = EXIT_CUT
-	lane(self, c.position.x, c.end.x, Layout.STREET_Z, 1.3, c.size.y / 2.0, 45.6, 63.0, 0.0, -3.4, path, bank, true)
+	var terrain: Script = load("res://scripts/world/farm_approach_terrain.gd")
+	terrain.build(self, c, path, bank)
 	# gravel apron where the stone street gives way to the lane
 	_plane([42.7, Layout.STREET_Z - 2.2, 45.6, Layout.STREET_Z + 2.2], path, 0.004)
 	# the same lantern gate as the farm's, so the two ends match
@@ -1089,17 +1069,17 @@ func _build_town_exit() -> void:
 	# the lane runs down into the trees; a few stand on the banks
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 61
-	for t in [[63.2, 0.0, 15.0], [61.0, -6.0, 12.0], [61.4, 5.4, 12.0], [55.0, -7.4, 9.0], [56.5, 6.8, 9.5], [50.0, -7.8, 7.0], [49.4, 7.6, 7.5]]:
+	for t in [[68.0, -5.5, 15.0], [61.0, -6.0, 12.0], [61.4, 5.4, 12.0], [55.0, -7.4, 9.0], [56.5, 6.8, 9.5], [50.0, -7.8, 7.0], [49.4, 7.6, 7.5]]:
 		var x: float = t[0]
 		var z: float = Layout.STREET_Z + t[1]
-		var off := absf(t[1]) / (c.size.y / 2.0)
-		var y := lane_depth(x) * clampf(1.0 - (off - 0.16) / 0.84, 0.0, 1.0)
+		var y: float = terrain.surface_height(Vector2(x, z), c)
 		var lane_tree := spawn(NEAR_TREES[rng.randi() % NEAR_TREES.size()], Vector3(x, y, z), rng.randf_range(-180.0,180.0), 0, self, clampf(float(t[2])/10.0,.78,1.28))
 		if lane_tree:
 			lane_tree.set_meta("near_background_tree", true)
 			rest_on_terrain(lane_tree,y)
 	for x in [47.6, 52.4]:
-		spawn("P_toro", Vector3(x, lane_side_y(lane_depth(x), 2.0, 1.3, c.size.y / 2.0), Layout.STREET_Z - 2.0), 90.0, 0, self, 0.8)
+		var lantern_z: float = Layout.STREET_Z - 2.0
+		spawn("P_toro", Vector3(x, terrain.surface_height(Vector2(x, lantern_z), c), lantern_z), 90.0, 0, self, 0.8)
 
 
 func _block(size: Vector3, pos: Vector3, layer: int) -> StaticBody3D:
@@ -1147,14 +1127,14 @@ func _build_town_v05() -> void:
 		lawn_avoid.append_array(ModelDiversity.ground_exclusions("town"))
 		n += g.lawn([lw[0]], lawn_avoid, "plaza" if plaza_lawn else "lawn", 12.0 if plaza_lawn else 6.0, 3 + n)
 		fl += g.scatter([lw[0]], 0.1, lawn_avoid, GrassField.MIX_FLOWERS, Vector2(0.2, 0.34), 5 + fl)
-	# meadow blades on the flat crest of the exit-lane bank (EXIT_CUT), same style as the farm side's
-	# FarmBuilder._lane_up, so the two ends of the lane match instead of the town side reading as a bare
-	# painted hill. Only the crest is safe: the lane() bank mesh only holds height 0 near x<=45.6 and at
-	# the outer edges z<=-17 / z>=-5, everywhere else it slopes down into the cut.
+	# Keep the existing near-gate meadow planting, with roots on the road bed's
+	# actual triangles instead of the former height-zero crest assumption.
 	var gate_apron := [Vector2(EXIT_GATE.x, EXIT_GATE.z), 3.4]
 	var lane_crest := [[42.7, -19.0, 45.6, -3.0], [42.7, -19.0, 64.0, -17.0], [42.7, -5.0, 64.0, -3.0]]
-	n += g.lawn(lane_crest, [gate_apron], "meadow", 5.0, 30)
-	fl += g.scatter(lane_crest, 0.3, [gate_apron], GrassField.MIX_FLOWERS, Vector2(0.24, 0.42), 31)
+	var lane_surface: Callable = func(point: Vector2) -> float:
+		return preload("res://scripts/world/farm_approach_terrain.gd").surface_height(point, EXIT_CUT)
+	n += g.lawn(lane_crest, [gate_apron], "meadow", 5.0, 30, 0.0, lane_surface)
+	fl += g.scatter(lane_crest, 0.3, [gate_apron], GrassField.MIX_FLOWERS, Vector2(0.24, 0.42), 31, 0.0, lane_surface)
 	# weeds along the foot of the courtyard walls and the lane walls
 	var walls := [[-13.0, -5.2, -12.4, 9.8], [-13.0, 23.6, 17.0, 24.1], [16.6, -5.2, 17.1, 6.8], [16.6, 10.2, 17.1, 18.0],
 			[17.3, 10.0, 17.8, 30.0], [21.6, -5.0, 22.1, 0.8]]

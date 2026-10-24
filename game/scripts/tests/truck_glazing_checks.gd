@@ -24,11 +24,13 @@ func run() -> void:
 	check("town approach and farm each contain one actual truck",errors)
 	var dimensions: Array[String]=[];var glazing: Array[String]=[];var holes: Array[String]=[];var interiors: Array[String]=[]
 	var wheels: Array[String]=[];var textures: Array[String]=[];var cargo_shape: Array[String]=[];var solids: Array[String]=[]
+	var formed_body: Array[String]=[]
 	for truck: Node3D in trucks:
 		var label: String="farm" if truck.global_position.x>600 else "town"
 		var bounds: AABB=WorldBuilder.local_aabb(truck)
 		if bounds.size.x>2.05 or bounds.size.x<1.4 or bounds.size.z>3.50 or bounds.size.z<3.25 or bounds.size.y>1.89 or bounds.size.y<1.7:dimensions.append("%s real XYZ=%s"%[label,bounds.size])
 		var all: Array[MeshInstance3D]=WorldBuilder.find_meshes(truck)
+		formed_body.append_array(_formed_body_errors(truck,all,label))
 		var wind: MeshInstance3D=_named(all,"Glass_Windshield")
 		for pane_name: String in PANES:
 			var pane: MeshInstance3D=_named(all,pane_name)
@@ -85,6 +87,7 @@ func run() -> void:
 	check("window sight segments are not sealed by opaque predecessor or body faces",holes)
 	check("actual seat backs and steering are visible through the windshield",interiors)
 	check("four separate tyres per truck meet rendered physical ground",wheels)
+	check("roof crown, rounded tyre shoulders and four rolled arches use actual shaped surfaces",formed_body)
 	check("retained cargo material preserves the predecessor diffuse atlas and UVs",textures)
 	check("retained textured cargo stays behind the cab and above the rebuilt chassis",cargo_shape)
 	check("the rebuilt vehicle still blocks an ordinary player capsule",solids)
@@ -96,6 +99,43 @@ func run() -> void:
 		var sweep: PackedFloat32Array=main.get_world_3d().direct_space_state.cast_motion(lane_probe)
 		if not main.get_world_3d().direct_space_state.intersect_shape(lane_probe,1).is_empty() or sweep[0]<.999:routes.append("%s to %s fraction=%s"%[segment[0],segment[1],sweep])
 	check("both existing pedestrian lanes remain clear for a full capsule sweep",routes)
+
+func _formed_body_errors(truck: Node3D,meshes: Array[MeshInstance3D],label: String) -> Array[String]:
+	var errors: Array[String]=[]
+	var roof_heights: Array[float]=[]
+	for x: float in [0.0,-.58,.58]:
+		var roof_hit: Dictionary=_first_opaque(meshes,truck.to_global(Vector3(x,2,.83)),truck.to_global(Vector3(x,1.73,.83)))
+		if roof_hit.is_empty():roof_heights.append(0.0)
+		else:roof_heights.append(truck.to_local(roof_hit.at as Vector3).y)
+	if roof_heights[0]-maxf(roof_heights[1],roof_heights[2])<.018:errors.append(label+" roof is a flat slab: "+str(roof_heights))
+	for tyre_name: String in TYRES:
+		var tyre: MeshInstance3D=_named(meshes,tyre_name)
+		if tyre==null:errors.append(label+" missing shaped tyre "+tyre_name);continue
+		var local_transform: Transform3D=truck.global_transform.affine_inverse()*tyre.global_transform
+		var local_box: AABB=local_transform*tyre.get_aabb()
+		var centre: Vector3=local_box.get_center()
+		var half_width: float=local_box.size.x*.5
+		var middle_radius: float=0.0;var outer_radius: float=0.0
+		for vertex: Vector3 in _faces(tyre):
+			var offset: Vector3=local_transform*vertex-centre
+			var radius: float=Vector2(offset.y,offset.z).length()
+			if absf(offset.x)<half_width*.30:middle_radius=maxf(middle_radius,radius)
+			if absf(offset.x)>half_width*.88:outer_radius=maxf(outer_radius,radius)
+		if middle_radius-outer_radius<.025:errors.append("%s %s flat sidewall radii=%s/%s"%[label,tyre_name,middle_radius,outer_radius])
+	for side: float in [-1.0,1.0]:
+		for axle: String in ["Front","Rear"]:
+			var arch_name: String="WheelArch_"+axle+("_Left" if side<0 else "_Right")
+			var arch: MeshInstance3D=_named(meshes,arch_name)
+			if arch==null:errors.append(label+" missing rolled arch "+arch_name);continue
+			var axle_z: float=1.075 if axle=="Front" else -1.11
+			var arch_meshes: Array[MeshInstance3D]=[arch]
+			for degrees: float in [25.0,55.0,90.0,125.0,155.0]:
+				var angle: float=deg_to_rad(degrees)
+				var at: Vector3=Vector3(side,.325+.365*sin(angle),axle_z+.365*cos(angle))
+				var end: Vector3=Vector3(side*.60,at.y,at.z)
+				if _first_opaque(arch_meshes,truck.to_global(at),truck.to_global(end)).is_empty():
+					errors.append("%s %s has no physical lip at %s degrees"%[label,arch_name,degrees])
+	return errors
 
 func _named(meshes: Array[MeshInstance3D],label: String) -> MeshInstance3D:
 	for mesh: MeshInstance3D in meshes:

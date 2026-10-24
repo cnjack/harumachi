@@ -1,0 +1,37 @@
+{
+  "font": "game/assets/fonts/LXGWWenKai-Medium.ttf",
+  "font_sha256": "d4bdeb38a39151d74d084cba5090f8cb7d20bf83eedb78c35939ae70b9f4e3f6",
+  "use": "Short titles engraved into both faces of MS14 activity boards; stored between activities.",
+  "assets": [
+    {
+      "title": "夏祭准备",
+      "mask": "game/assets/textures/engraving/6d46f0e1f35061b52fb12f40e41476bc.png",
+      "sha256": "daf596d1af014bb1b176ef005023865a96f7b086e8927d18179dc8c5cefb36f0"
+    },
+    {
+      "title": "灯笼试挂",
+      "mask": "game/assets/textures/engraving/0e6e4c9f276a7b1aeadb7894845b91d4.png",
+      "sha256": "0a561639defb2189b439f71021a5be4b7ff3c0b21c64ac9363422eb5925f3232"
+    },
+    {
+      "title": "夏祭入口",
+      "mask": "game/assets/textures/engraving/6726e3810efb734db7f60706fd1ceef3.png",
+      "sha256": "8df0b48c4f0de324f539a3a33a41526542084f004c7d04dec9f7ea15db24722e"
+    },
+    {
+      "title": "树下集合",
+      "mask": "game/assets/textures/engraving/17bf5e2bd5934e2a58417dc873bd1cbe.png",
+      "sha256": "6107ffcf4726785b7a00edcdbe020d1105be35ea838d5e566497c4698229a56b"
+    },
+    {
+      "title": "树下晚会",
+      "mask": "game/assets/textures/engraving/de9adae5ff03710994408733a6c30ff1.png",
+      "sha256": "eeed56ed24857185aafbc8ca4b67392bb8c237f4f864aca246536adcd41e32c5"
+    },
+    {
+      "title": "围坐聊天",
+      "mask": "game/assets/textures/engraving/b40eac7bc28edf516b9c845b2c73d4ce.png",
+      "sha256": "a4522352078f930dcfa5892f0600864040012b3c388465061d242bee3f666fa7"
+    }
+  ]
+}

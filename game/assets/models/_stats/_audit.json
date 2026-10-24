@@ -667,27 +667,27 @@
     },
     "B01_bus": {
       "id": "B01_bus",
-      "sha256": "89e26519272245af943ab4718e2e2b447ae5101cbc8bd8b201a1e45ccb55709f",
-      "source_mtime": 1791123991.5723536,
-      "triangles": 191494,
+      "sha256": "37e3ac892e07912798c6bf54512948a5d5f7a4b537980b7620fecd38dabe5cdd",
+      "source_mtime": 1792826325.749149,
+      "triangles": 268680,
       "bounds_godot": {
         "min": [
           -2.3002383708953857,
-          -0.007304235361516476,
-          -1.027929425239563
+          0.0,
+          -1.0569999776780605
         ],
         "max": [
           2.3001465797424316,
-          2.1361706256866455,
-          1.026700735092163
+          2.1449999809265137,
+          1.0569999776780605
         ]
       },
       "size_m": [
         4.600384950637817,
-        2.143474861048162,
-        2.054630160331726
+        2.1449999809265137,
+        2.113999955356121
       ],
-      "surface_area_m2": 77.387,
+      "surface_area_m2": 109.259,
       "albedo_image_sizes": [
         [
           2048,
@@ -695,30 +695,28 @@
         ]
       ],
       "topology": {
-        "components": 4624,
-        "largest_component_area_fraction": 0.8097,
-        "boundary_edge_fraction": 0.4445
+        "components": 3078,
+        "largest_component_area_fraction": 0.1685,
+        "boundary_edge_fraction": 0.2387
       },
       "uv_density_px_m": {
-        "p10": 153.46,
-        "median": 174.95
+        "p10": 153.78,
+        "median": 174.93
       },
       "material_density_px_m": {
         "model": {
-          "p10": 153.46,
-          "median": 174.95
+          "p10": 153.78,
+          "median": 174.93
         }
       },
       "node_density_px_m": {
-        "DoorLeaf_0": 173.28,
-        "DoorLeaf_1": 176.31,
-        "GeneratedBody": 174.89,
-        "Wheel_0": 178.33,
-        "Wheel_1": 176.63,
-        "Wheel_2": 173.91,
-        "Wheel_3": 173.56
+        "RetainedPaintedShell": 175.09,
+        "Wheel_0": 172.9,
+        "Wheel_1": 174.08,
+        "Wheel_2": 173.5,
+        "Wheel_3": 172.94
       },
-      "untextured_area_fraction": 0.0,
+      "untextured_area_fraction": 0.5771,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -3129,27 +3127,27 @@
     },
     "D07_kei_truck": {
       "id": "D07_kei_truck",
-      "sha256": "6b9eb587e2cbf3dd432fcc6ee2848a3fd3e4baa9bdb1a1510a90d9f4078bca04",
-      "source_mtime": 1791939802.155458,
-      "triangles": 19427,
+      "sha256": "ba8d4b39021b1c1b37f9e11769ebb8362354cc5016db36bdecacd92e51e85aa7",
+      "source_mtime": 1792820355.3562677,
+      "triangles": 77402,
       "bounds_godot": {
         "min": [
-          -1.0130000114440918,
+          -1.0174999237060547,
           0.0,
-          -1.725000023841858
+          -1.75
         ],
         "max": [
-          1.0130000114440918,
-          1.8550000190734863,
-          1.7265000343322754
+          1.0174999237060547,
+          1.88100004196167,
+          1.7260000705718994
         ]
       },
       "size_m": [
-        2.0260000228881836,
-        1.8550000190734863,
-        3.4515000581741333
+        2.0349998474121094,
+        1.88100004196167,
+        3.4760000705718994
       ],
-      "surface_area_m2": 70.112,
+      "surface_area_m2": 83.134,
       "albedo_image_sizes": [
         [
           512,
@@ -3161,63 +3159,78 @@
         ]
       ],
       "topology": {
-        "components": 135,
-        "largest_component_area_fraction": 0.2851,
-        "boundary_edge_fraction": 0.0179
+        "components": 220,
+        "largest_component_area_fraction": 0.2014,
+        "boundary_edge_fraction": 0.0037
       },
       "uv_density_px_m": {
-        "p10": 90.86,
-        "median": 197.85
+        "p10": 71.96,
+        "median": 162.43
       },
       "material_density_px_m": {
         "Blue_grey_trim": {
-          "p10": 86.82,
+          "p10": 71.96,
           "median": 86.82
         },
-        "Cream_headlamp": {
-          "p10": 604.06,
-          "median": 604.06
-        },
         "Ivory_painted_body": {
-          "p10": 90.86,
-          "median": 141.7
+          "p10": 136.7,
+          "median": 162.43
         },
         "Matte_wheel_steel": {
-          "p10": 574.2,
-          "median": 574.21
+          "p10": 488.44,
+          "median": 579.62
         },
         "Tyre_rubber": {
-          "p10": 378.09,
-          "median": 378.09
+          "p10": 48.1,
+          "median": 108.59
+        },
+        "Cream_headlamp": {
+          "p10": 641.0,
+          "median": 641.0
         },
         "Blue_woven_seats": {
           "p10": 253.58,
-          "median": 292.85
+          "median": 256.21
         },
         "Original_textured_produce_and_bed": {
-          "p10": 118.5,
-          "median": 188.46
+          "p10": 130.12,
+          "median": 192.36
         }
       },
       "node_density_px_m": {
         "Body_Blue_grey_trim": 86.82,
-        "Body_Cream_headlamp": 604.06,
-        "Body_Ivory_painted_body": 141.7,
-        "Body_Matte_wheel_steel": 574.21,
+        "Body_Ivory_painted_body": 162.43,
+        "Body_Matte_wheel_steel": 579.62,
         "Body_Tyre_rubber": 533.33,
-        "Headrest_Left": 703.19,
-        "Headrest_Right": 703.19,
-        "Seat_Left": 292.86,
-        "Seat_Right": 292.86,
+        "Headlight_Left_Lens": 641.0,
+        "Headlight_Left_Reflector": 641.0,
+        "Headlight_Right_Lens": 641.0,
+        "Headlight_Right_Reflector": 641.0,
+        "Headrest_Left": 709.57,
+        "Headrest_Right": 709.57,
+        "Mirror_Left_Lens": 1034.82,
+        "Mirror_Right_Lens": 1034.82,
+        "Seat_Left": 256.21,
+        "Seat_Right": 256.21,
         "Seatback_Left": 253.58,
         "Seatback_Right": 253.58,
-        "TexturedBedAndCargo": 188.46,
-        "Tyre_Front_Left": 378.09,
-        "Tyre_Front_Right": 378.09,
-        "Tyre_Rear_Left": 378.09,
-        "Tyre_Rear_Right": 378.09
+        "SidegateLatch_Left_Back": 2401.88,
+        "SidegateLatch_Left_Front": 2401.88,
+        "SidegateLatch_Right_Back": 2401.88,
+        "SidegateLatch_Right_Front": 2401.88,
+        "TailgateHinge_0": 2273.34,
+        "TailgateHinge_1": 2273.34,
+        "TexturedBedAndCargo": 192.36,
+        "Tyre_Front_Left": 107.31,
+        "Tyre_Front_Right": 107.31,
+        "Tyre_Rear_Left": 107.31,
+        "Tyre_Rear_Right": 107.31,
+        "WheelArch_Front_Left": 116.66,
+        "WheelArch_Front_Right": 116.66,
+        "WheelArch_Rear_Left": 116.66,
+        "WheelArch_Rear_Right": 116.66
       },
-      "untextured_area_fraction": 0.2196,
+      "untextured_area_fraction": 0.2038,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -6506,52 +6519,40 @@
     },
     "I07_ice_freezer": {
       "id": "I07_ice_freezer",
-      "sha256": "27338f1e243d83d322cfa8088ccdc7b790eb620b65f1c501bc06a0972744f9c7",
-      "source_mtime": 1790528767.8675141,
-      "triangles": 290,
+      "sha256": "9f7a0311045a797a5714faa6a1f7736562f75aad0eb522abf3ec1b86f648de0d",
+      "source_mtime": 1792818908.7055655,
+      "triangles": 26176,
       "bounds_godot": {
         "min": [
-          -0.6570000052452087,
-          -0.0030422620475292206,
-          -0.3619999885559082
+          -0.656000018119812,
+          0.0,
+          -0.35999998450279236
         ],
         "max": [
-          0.6660000085830688,
-          0.8700000047683716,
-          0.3669999837875366
+          0.6675000190734863,
+          0.8955652117729187,
+          0.36550000309944153
         ]
       },
       "size_m": [
-        1.3230000138282776,
-        0.8730422668159008,
-        0.7289999723434448
+        1.3235000371932983,
+        0.8955652117729187,
+        0.7254999876022339
       ],
-      "surface_area_m2": 7.491,
-      "albedo_image_sizes": [
-        [
-          768,
-          384
-        ]
-      ],
+      "surface_area_m2": 17.707,
+      "albedo_image_sizes": [],
       "topology": {
-        "components": 14,
-        "largest_component_area_fraction": 0.6598,
-        "boundary_edge_fraction": 0.0092
+        "components": 198,
+        "largest_component_area_fraction": 0.1522,
+        "boundary_edge_fraction": 0.0333
       },
       "uv_density_px_m": {
-        "p10": 645.4,
-        "median": 645.4
+        "p10": null,
+        "median": null
       },
-      "material_density_px_m": {
-        "icecream": {
-          "p10": 645.4,
-          "median": 645.4
-        }
-      },
-      "node_density_px_m": {
-        "freezer": 645.4
-      },
-      "untextured_area_fraction": 0.9055,
+      "material_density_px_m": {},
+      "node_density_px_m": {},
+      "untextured_area_fraction": 1.0,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -9551,9 +9552,9 @@
     },
     "P02": {
       "id": "P02",
-      "sha256": "ba78648fe04276a4280e3e42bf97be24064993e2a240570d562f889f902609af",
-      "source_mtime": 1790438571.188624,
-      "triangles": 8000,
+      "sha256": "84bb95932579bff21d09a5a6852e446b1baed33725eb89b9b1708c5b54b3ba45",
+      "source_mtime": 1792822108.067028,
+      "triangles": 8222,
       "bounds_godot": {
         "min": [
           -1.3588956594467163,
@@ -9571,7 +9572,7 @@
         2.300827248720452,
         0.9877837002277374
       ],
-      "surface_area_m2": 24.819,
+      "surface_area_m2": 24.771,
       "albedo_image_sizes": [
         [
           1024,
@@ -9580,21 +9581,21 @@
       ],
       "topology": {
         "components": 4,
-        "largest_component_area_fraction": 0.8376,
-        "boundary_edge_fraction": 0.0
+        "largest_component_area_fraction": 0.8373,
+        "boundary_edge_fraction": 0.0037
       },
       "uv_density_px_m": {
-        "p10": 139.26,
-        "median": 153.07
+        "p10": 139.39,
+        "median": 153.1
       },
       "material_density_px_m": {
         "M_P02": {
-          "p10": 139.26,
-          "median": 153.07
+          "p10": 139.39,
+          "median": 153.1
         }
       },
       "node_density_px_m": {
-        "P02": 153.07
+        "P02": 153.1
       },
       "untextured_area_fraction": 0.0,
       "inherited_pbr_maps": 0,
@@ -9704,67 +9705,40 @@
     },
     "P05": {
       "id": "P05",
-      "sha256": "ff75c80a6d1c4646f3af7addb07768d5eb5832cdeb7dd9414402c72b76eaa26b",
-      "source_mtime": 1791541245.1860964,
-      "triangles": 2292,
+      "sha256": "4065390b629e7cf484e1509721c641a3ff6dc12f2d0e2626b4bd87a89337fe18",
+      "source_mtime": 1792821130.964649,
+      "triangles": 43832,
       "bounds_godot": {
         "min": [
-          -0.7200000248849392,
-          0.0,
-          -1.4228056845087749
+          -0.7200000286102295,
+          -1.1920928955078125e-07,
+          -1.4190000295639038
         ],
         "max": [
           0.7199999690055847,
-          2.130242009544153,
-          2.0099999606609344
+          2.130000114440918,
+          2.009999990463257
         ]
       },
       "size_m": [
-        1.439999993890524,
-        2.130242009544153,
-        3.4328056451697093
+        1.4399999976158142,
+        2.1300002336502075,
+        3.4290000200271606
       ],
-      "surface_area_m2": 17.988,
-      "albedo_image_sizes": [
-        [
-          1254,
-          1254
-        ]
-      ],
+      "surface_area_m2": 30.141,
+      "albedo_image_sizes": [],
       "topology": {
-        "components": 19,
-        "largest_component_area_fraction": 0.2853,
+        "components": 112,
+        "largest_component_area_fraction": 0.1843,
         "boundary_edge_fraction": 0.0
       },
       "uv_density_px_m": {
-        "p10": 483.32,
-        "median": 1124.11
+        "p10": null,
+        "median": null
       },
-      "material_density_px_m": {
-        "CedarAge_0": {
-          "p10": 483.31,
-          "median": 483.32
-        },
-        "CedarAge_1": {
-          "p10": 1096.19,
-          "median": 1096.19
-        },
-        "CedarAge_2": {
-          "p10": 1124.11,
-          "median": 1124.11
-        },
-        "CedarAge_3": {
-          "p10": 1357.49,
-          "median": 1357.49
-        }
-      },
-      "node_density_px_m": {
-        "CedarAge_0": 483.32,
-        "CedarAge_1": 1096.19,
-        "CedarAge_2": 1124.11,
-        "CedarAge_3": 1357.49
-      },
-      "untextured_area_fraction": 0.3354,
+      "material_density_px_m": {},
+      "node_density_px_m": {},
+      "untextured_area_fraction": 1.0,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },
@@ -11853,9 +11827,9 @@
       "node_density_px_m": {
         "cedar__display": 1087.18,
         "cedar_dark__display": 4519.11,
-        "Lettering_当日鲜蔬__display": 46445.82,
-        "Lettering_当日鲜蔬__display.001": 46445.3,
-        "Lettering_当日鲜蔬__display.002": 46445.82,
+        "Lettering_\u5f53\u65e5\u9c9c\u852c__display": 46445.82,
+        "Lettering_\u5f53\u65e5\u9c9c\u852c__display.001": 46445.3,
+        "Lettering_\u5f53\u65e5\u9c9c\u852c__display.002": 46445.82,
         "paper__display": 895.71,
         "Pixal_whole_cucumbers_0__display": 759.71,
         "Pixal_whole_cucumbers_1__display": 759.71,
@@ -12761,6 +12735,71 @@
         "Foliage_T11_young_zelkova": 1038.68
       },
       "untextured_area_fraction": 0.1041,
+      "inherited_pbr_maps": 0,
+      "metallic_max": 0
+    },
+    "T12_street_zelkova": {
+      "id": "T12_street_zelkova",
+      "sha256": "2061e9612996873eca291fc8508cb260accd84dd299dd674ed7779a9692bd4fb",
+      "source_mtime": 1792821989.7038271,
+      "triangles": 9580,
+      "bounds_godot": {
+        "min": [
+          -1.3837453126907349,
+          0.0,
+          -1.2470982074737549
+        ],
+        "max": [
+          1.3568073511123657,
+          3.4123611450195312,
+          1.0165830850601196
+        ]
+      },
+      "size_m": [
+        2.7405526638031006,
+        3.4123611450195312,
+        2.2636812925338745
+      ],
+      "surface_area_m2": 41.028,
+      "albedo_image_sizes": [
+        [
+          1254,
+          1254
+        ]
+      ],
+      "topology": {
+        "components": 286,
+        "largest_component_area_fraction": 0.0434,
+        "boundary_edge_fraction": 0.1123
+      },
+      "uv_density_px_m": {
+        "p10": 1442.42,
+        "median": 1622.56
+      },
+      "material_density_px_m": {
+        "Painted_zelkova_sprigs": {
+          "p10": 1442.42,
+          "median": 1622.56
+        }
+      },
+      "node_density_px_m": {
+        "Foliage_Branch_00": 1552.16,
+        "Foliage_Branch_01": 1699.58,
+        "Foliage_Branch_02": 1599.12,
+        "Foliage_Branch_03": 1664.02,
+        "Foliage_Branch_04": 1658.88,
+        "Foliage_Branch_05": 1558.69,
+        "Foliage_Branch_06": 1602.5,
+        "Foliage_Branch_07": 1657.88,
+        "Foliage_Branch_08": 1613.64,
+        "Foliage_Branch_09": 1598.66,
+        "Foliage_Branch_10": 1659.64,
+        "Foliage_Branch_11": 1622.6,
+        "Foliage_Branch_12": 1642.5,
+        "Foliage_Branch_13": 1675.68,
+        "Foliage_Branch_14": 1629.38
+      },
+      "untextured_area_fraction": 0.0434,
       "inherited_pbr_maps": 0,
       "metallic_max": 0
     },

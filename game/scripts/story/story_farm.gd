@@ -183,7 +183,10 @@ func handle(id: String) -> void:
 			await _sell(GameState.MARKET_RATE, "集市摊位")
 		"shop_store":
 			await _enter_shop("store")
-		"store_counter", "kazuko":
+		"store_counter":
+			if await _counter_unstaffed("store"):return
+			await _kazuko()
+		"kazuko":
 			await _kazuko()
 		"store_exit", "bakery_exit":
 			s.ui.dialogue_end()
@@ -194,6 +197,7 @@ func handle(id: String) -> void:
 		"store_freezer":
 			await _say("narrator", "", "冰柜里是一根根冰棍和雪糕。和子阿姨说，小葵每天下午都来挑一根。")
 		"bakery_counter":
+			if await _counter_unstaffed("bakery"):return
 			await _ren_counter()
 		"bakery_oven", "bakery_mill":
 			await _oven()
@@ -401,6 +405,19 @@ func _open_shop(sid: String) -> void:
 
 
 ## v0.6: the general store and the bakery are rooms you walk into (InteriorBuilder).
+func _counter_unstaffed(kind: String) -> bool:
+	if s.main.shopkeeper_present(kind):return false
+	var who: String = "ren" if kind == "bakery" else "kazuko"
+	var event: Dictionary = GameState.festival(str(s.npcs[who].fest_key))
+	var absence: String = "店主暂时出门了，晚些时候再来吧。"
+	var closed: String = GameState.shop_closed_reason(kind)
+	if closed != "": absence = closed + "。"
+	elif not event.is_empty(): absence = "店主去参加%s了，散场后再来吧。" % str(event.name)
+	elif GameState.phase == "market": absence = "店主去庭院参加集市了。"
+	await _say("narrator", "", absence)
+	return true
+
+
 func _enter_shop(k: String) -> void:
 	var why := GameState.shop_closed_reason(k)
 	if why != "":

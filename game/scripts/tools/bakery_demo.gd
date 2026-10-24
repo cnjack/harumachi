@@ -65,8 +65,7 @@ func _ready() -> void:
 	await _use("bakery")
 	main.update_npcs(true)
 	G.skip_to(G.minute + 1.0)
-	var keeper_spec: Dictionary = InteriorBuilder.spec_for("bakery")
-	_check("festival-day keeper stays indoors", main.npcs.ren.global_position.distance_to(keeper_spec.origin + keeper_spec.keeper) < 0.1)
+	_check("visiting the bakery preserves Ren's cooking-contest assignment", main.npcs.ren.fest_key == "contest" and InteriorBuilder.at(main.npcs.ren.global_position) == "")
 	main.player.global_position = InteriorBuilder.SPECS.bakery.origin + Vector3(-2.35, 0.05, 2.7)
 	main.rig.pitch = 22.0
 	main.rig.dist = 4.3

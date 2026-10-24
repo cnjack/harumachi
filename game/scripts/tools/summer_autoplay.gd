@@ -212,7 +212,9 @@ func point(id: String) -> Interactable:
 
 func use(id: String, choices: Array=[]) -> bool:
 	var it: Interactable=point(id)
-	if not record("visible interaction exists: "+id,it!=null and it.is_visible_in_tree()): return false
+	if it==null: return record("visible interaction exists: "+id,false)
+	if not await reach_room(it): return record("real doorway route to target: "+id,false)
+	if not record("visible interaction exists: "+id,it.is_visible_in_tree()): return false
 	var held: NPC=main.npcs.get(id)
 	if held: held.hold=true
 	var ready: bool=await approach(it)
@@ -224,6 +226,27 @@ func use(id: String, choices: Array=[]) -> bool:
 	await main.story.interact(it)
 	if held: held.hold=false
 	return await idle()
+
+## Follow the same room/door chain as the quest marker. Keepers work inside
+## even while the player is outside; the outdoor path grid cannot reach them.
+func reach_room(it: Interactable) -> bool:
+	for attempt in 8:
+		var target_room: String=main.story._marker_room(it.global_position)
+		var current_room: String=main.room_kind if main.in_room else ""
+		if target_room==current_room: return true
+		var next_room: String=target_room
+		var parent_room: String=str(ResidentPlaces.SPECS.get(next_room,{}).get("return_room",""))
+		while next_room!="" and parent_room!=current_room and parent_room!="":
+			next_room=parent_room
+			parent_room=str(ResidentPlaces.SPECS.get(next_room,{}).get("return_room",""))
+		if next_room!="" and parent_room==current_room:
+			var door_id: String=main.story._entry_id(next_room)
+			if door_id=="" or not await use(door_id): return false
+			if not main.in_room or main.room_kind!=next_room: return false
+		elif main.in_room:
+			if not await leave(): return false
+		else: return false
+	return false
 
 func leave() -> bool:
 	if not main.in_room: return record("inside before leaving through doorway",false)

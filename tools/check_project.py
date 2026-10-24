@@ -34,6 +34,11 @@ for folder in ['game/data', 'game/ui_kit', 'art/manifests']:
             errors.append(str(file.relative_to(ROOT)) + ': ' + str(error))
 
 lock = json.loads((ROOT / 'tools/godot-version.json').read_text())
+asset_config = json.loads((ROOT / 'art/models/game_assets.json').read_text(), object_pairs_hook=unique_object)
+check(isinstance(asset_config.get('assets'), dict), 'Model export config must contain an assets object')
+for key, value in asset_config.items():
+    check(not (isinstance(value, dict) and 'src' in value),
+          'Model export entry is outside assets and will be skipped: ' + key)
 project = (ROOT / 'game/project.godot').read_text()
 check('"' + lock['feature_version'] + '"' in project.split('config/features=')[1].splitlines()[0], 'Godot feature version differs from version lock')
 check('config/custom_user_dir_name="晴町日常"' in project, 'Player save-directory compatibility changed')

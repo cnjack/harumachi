@@ -23,6 +23,7 @@ var sample_batch := -1
 var location := ""
 var checked_at := -1.0
 var checked_surface := false
+var stall_loan := -1
 
 func _input(event: InputEvent) -> void:
 	if active and (event.is_action_pressed("cancel") or event.is_action_pressed("pause")):
@@ -112,8 +113,14 @@ func run(story: Story, who: String, presentation: String) -> Dictionary:
 	var batch: Dictionary=SummerProjects.current_batch()
 	if batch.is_empty():return {"error":"先把这一份做出来，再请街坊尝。"}
 	sample_id=str(batch.iid);sample_batch=int(batch.id)
-	if not present() or not find_surface(who): return {"error":"附近还没有留出能放下小份的空面。这份先收着。"}
+	if not present(): return {"error":"附近还没有留出能放下小份的空面。这份先收着。"}
 	if not MealModels.can_display(sample_id):return {"error":"这一小份还没摆好，先收着。"}
+	var found_surface: bool = find_surface(who)
+	if not found_surface and not s.main.in_room and is_instance_valid(s.world.lifecycle):
+		stall_loan = s.world.lifecycle.stalls.begin_tasting(self)
+		found_surface = find_surface(who)
+	if not found_surface:
+		_release_stall(); return {"error":"附近还没有留出能放下小份的空面。这份先收着。"}
 	saved_frozen=s.player.frozen;saved_auto=s.player.auto_move;saved_run=s.player.auto_run
 	saved_talking=actor.talking;saved_speed=actor.speed
 	active=true;GameState.lock_input("project_tasting");actor.set_talking(true);actor.speed=Player.WALK
@@ -237,16 +244,24 @@ func stop_player() -> void:
 	s.player.velocity.x=0;s.player.velocity.z=0
 
 func cleanup() -> void:
-	if not active:return
+	if not active:
+		_release_stall(); return
 	active=false;stage=""
 	stop_player();s.player.auto_move=saved_auto
 	if is_instance_valid(actor):
 		actor.cancel_safe_walk();actor.speed=saved_speed;actor.set_talking(saved_talking)
 		if not s.main.in_room: actor.sched_i=-1
-	if is_instance_valid(action):action.queue_free()
+	if is_instance_valid(action):action.visible = false; action.queue_free()
 	if is_instance_valid(prior_camera):prior_camera.make_current()
 	if is_instance_valid(camera):camera.queue_free()
 	GameState.unlock_input("project_tasting");s.ui.dialogue_begin()
+	_release_stall()
+
+func _release_stall() -> void:
+	if stall_loan < 0: return
+	var token: int = stall_loan; stall_loan = -1
+	if is_instance_valid(s) and is_instance_valid(s.world) and is_instance_valid(s.world.lifecycle):
+		s.world.lifecycle.stalls.end_tasting(token)
 
 func _exit_tree() -> void:
 	cleanup()

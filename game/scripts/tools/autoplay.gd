@@ -337,7 +337,7 @@ func play() -> void:
 	await shot("bread_on_stall")
 	# courtyard station: scoop goldfish at the practice tank
 	shot_later(26.0, "goldfish_play")
-	await use("goldfish_pool")
+	await use("center_door", [2])
 	await shot("goldfish_done")
 	# Q03 — Haru's planter
 	await use("haru", [0])

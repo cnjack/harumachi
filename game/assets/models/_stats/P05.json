@@ -1,23 +1,29 @@
 {
  "id": "P05",
- "src": "raw/plaza_paintover_20261009/P05.glb",
- "provider": "Blender reference-built joinery from accepted imagegen plaza paintover",
+ "src": "../library/plaza/source/P05.glb",
+ "provider": "Blender authored continuous slide and cedar joinery (2026-10-24)",
  "preserve_parts": true,
  "origin_preserved": true,
- "tris": 2292,
- "tex": 2048,
- "bytes": 1807876,
+ "tris": 43832,
+ "tex": 0,
+ "bytes": 1751808,
  "godot_size_m_xyz": [
   1.44,
-  2.1302,
-  3.4328
+  2.13,
+  3.429
  ],
  "mesh_nodes": [
-  "CedarAge_0",
-  "CedarAge_1",
-  "CedarAge_2",
-  "CedarAge_3",
-  "SlideIndigoBlue",
-  "WarmYellowRails"
+  "ChuteSupports",
+  "DeckBearers",
+  "FrameBraces",
+  "JointHardware",
+  "LadderHandrails",
+  "LadderStringers",
+  "LadderTreads",
+  "PlatformDeck",
+  "PlatformGuards",
+  "SlideChuteShell",
+  "SlideRolledRims",
+  "TimberPosts"
  ]
 }

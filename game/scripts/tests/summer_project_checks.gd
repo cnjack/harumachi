@@ -80,8 +80,15 @@ func run() -> void:
 	G.remove_placement(extra)
 	result.revision = SummerProjects.layout_fingerprint()
 	SummerProjects.record_layout(result, "mio", true)
+	# The earlier self-meal took place inside the house. A real outdoor service
+	# must leave that room before its counter and supported servings are deployed.
+	if main.in_room:
+		if main.room_kind == "house": await main.exit_room()
+		else: await main.exit_interior()
+	main.world.set_region("town")
 	G.phase = "market"
 	SummerProjects.apply("shop")
+	await t.frames(3)
 	var small: Dictionary = SummerProjects.opening().service.ingredients.duplicate(true)
 	t.check("PROJECT_USE", "small servings allocate one real recipe rather than three full dishes", int(small.tomato) == 2 and int(SummerProjects.opening().service.servings) == 3 and SummerProjects.opening().service.maker == "ren")
 	var view: ProjectView=null

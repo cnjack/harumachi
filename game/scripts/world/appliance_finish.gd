@@ -69,7 +69,7 @@ static func _profile(id: String, role: String) -> Dictionary:
 			return {"kind": 1, "roughness": .38, "gloss": .23, "wear": .18}
 		if role in ["freezer_white", "freezer_band"]:
 			return {"kind": 0, "roughness": .52, "gloss": .12, "wear": .07}
-		if role == "icecream":
-			# This is an opaque painting of the contents, not an empty transparent box.
-			return {"kind": 3, "roughness": .45, "gloss": .15, "wear": 0.0}
+		if role == "freezer_glass":
+			# Actual sliding panes reveal the recessed baskets and sealed stock in the source mesh.
+			return {"glass": true, "gloss": .12}
 	return {}

@@ -69,6 +69,7 @@ func greet(kind: String,inside: bool) -> bool:
 	if elapsed-float(last_greeting[kind])<45.0:return false
 	var npc: NPC=main.npcs["ren" if kind=="bakery" else "kazuko"]
 	if npc.home or npc.talking:return false
+	if inside and (not main.in_room or main.room_kind != kind or not main.shopkeeper_present(kind)):return false
 	if not inside and npc.global_position.distance_to(InteriorBuilder.spec_for(kind).exit)>7.0:return false
 	var key: String=kind+ ("_morning" if GameState.hour()<12.0 else "_later")
 	var line: Dictionary=_lines[key]
@@ -101,6 +102,7 @@ func _reach_station(npc: NPC,target: Vector3) -> void:
 
 func perform_work(kind: String,force: bool=false) -> bool:
 	if _working or main.story.busy or main.ui.modal!="" or not opened(kind) or not main.in_room or main.room_kind!=kind:return false
+	if not main.shopkeeper_present(kind):return false
 	var npc: NPC=main.npcs["ren" if kind=="bakery" else "kazuko"]
 	if npc.home or npc.talking or (npc.anim.busy() and not force):return false
 	var spec: Dictionary=InteriorBuilder.spec_for(kind)

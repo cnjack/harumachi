@@ -90,7 +90,7 @@ const PLANTS := [
 	["T01_courtyard_tree", -11.4, 22.6, 140, 0.52], ["T01_courtyard_tree", 15.6, 22.8, 250, 0.48],
 	["T01_courtyard_tree", -47.5, -2.6, 90, 0.66], ["T01_courtyard_tree", 40.6, -3.6, 0, 0.62],
 	["T01_courtyard_tree", 24.0, 10.8, 220, 0.46], ["T01_courtyard_tree", 24.2, 20.4, 30, 0.5],
-	["T01_courtyard_tree", -18.0, -16.2, 10, 0.42], ["T01_courtyard_tree", 32.1, -28.2, 150, 0.42], # rear greenbelt; apartment stair is unobstructed
+	["T12_street_zelkova", -18.0, -16.2, 10, 1.0], ["T01_courtyard_tree", 32.1, -28.2, 150, 0.42], # rear greenbelt; apartment stair is unobstructed
 	["M12d_flower_bush", -11.6, -3.0, 200, 1.0], ["M12d_flower_bush", 16.1, -3.4, 70, 0.95],
 	["M12d_flower_bush", 6.9, -16.3, 300, 0.9], ["M12d_flower_bush", -16.2, -3.0, 260, 0.9],
 	["M12d_flower_bush", 16.3, 19.0, 40, 0.8], ["M12d_flower_bush", -12.2, 12.6, 100, 0.85],

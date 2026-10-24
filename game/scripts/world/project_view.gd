@@ -6,7 +6,10 @@ var tray: Node3D
 var food: Node3D
 
 func _process(_delta: float) -> void:
-	if is_instance_valid(board):board.visible=s.world.region=="town" and not s.main.in_room and GameState.qstate("Q01")=="done" and s.player.global_position.distance_to(board.global_position)<5.0
+	if is_instance_valid(board): board.visible = _show_hint()
+
+func _show_hint() -> bool:
+	return s.world.region == "town" and not s.main.in_room and GameState.qstate("Q01") == "done" and s.player.global_position.distance_to(board.global_position) < 5.0 and is_instance_valid(s.world.lifecycle) and s.world.lifecycle.stalls.available()
 
 func setup(story: Story) -> void:
 	s = story
@@ -26,22 +29,26 @@ func setup(story: Story) -> void:
 	food = Node3D.new()
 	food.name = "OpeningFood"
 	add_child(food)
+	if is_instance_valid(s.world.lifecycle): s.world.lifecycle.stalls.project_food = food
 	GameState.state_changed.connect(sync_state)
 	sync_state()
 
 func sync_state() -> void:
 	var p: Dictionary = SummerProjects.opening()
+	# Publish the same counter state before placing its servings. Region changes
+	# later toggle only food.visible through StallLifecycle, without rebuilding it.
+	if is_instance_valid(s.world.lifecycle): s.world.lifecycle.sync_state()
 	board.text = "一小篮的合作\n面包店有试做纸签" if str(p.menu) == "" else "%s\n试走 · 取餐 · 收好" % SummerProjects.MENU_NAMES.get(str(p.menu), "这次合作")
-	board.visible = s.world.region == "town" and not s.main.in_room and GameState.qstate("Q01") == "done" and s.player.global_position.distance_to(board.global_position)<5.0
+	board.visible = _show_hint()
 	for child in food.get_children():
 		food.remove_child(child)
 		child.queue_free()
-	food.visible = s.world.region == "town" and not p.service.is_empty()
+	food.visible = s.world.region == "town" and not s.world.indoor and not p.service.is_empty() and int(p.service.get("remaining", 0)) > 0
 	if not food.visible: return
 	var output: String = str(SummerProjects.MENUS.get(str(p.final.menu), "veg_sandwich"))
 	var remaining: int = int(p.service.remaining)
 	var counter: Node3D = s.world.get_node_or_null("P09")
-	if counter==null:food.visible=false;return
+	if counter==null or not counter.is_visible_in_tree():food.visible=false;return
 	var height: float=WorldBuilder.rendered_support_height(counter,counter.global_position+Vector3(.45,0,0),1.5,true)
 	if not is_finite(height):food.visible=false;return
 	for index in remaining:

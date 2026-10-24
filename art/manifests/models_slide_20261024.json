@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-24",
+  "asset": "P05",
+  "tool": "art/tools/rebuild_plaza_slide.py",
+  "source": "art/library/plaza/source/P05.glb",
+  "authoring": "art/library/plaza/authoring/P05.blend",
+  "raw_copy": "art/models/raw/P05_slide_20261024/P05.glb",
+  "game": "game/assets/models/P05.glb",
+  "source_sha256": "4065390b629e7cf484e1509721c641a3ff6dc12f2d0e2626b4bd87a89337fe18",
+  "config": {
+    "src": "../library/plaza/source/P05.glb",
+    "preserve_parts": true,
+    "preserve_origin": true,
+    "level": false,
+    "tex": 2048,
+    "image_format": "AUTO",
+    "provider": "Blender authored continuous slide and cedar joinery (2026-10-24)",
+    "license": "项目自制"
+  },
+  "license": "项目自制",
+  "reference": "evidence/visual_rework_20261024/references/10.png",
+  "construction": "Continuous C2 chute profile, closed 20 mm shell, swept 64 mm rolled edges, 30 cm horizontal buffer, deck bearers, six joined ladder treads, cedar guards, cross braces and inset fasteners.",
+  "placement": {
+    "unchanged_world_xyz": [
+      -10.4,
+      0,
+      7
+    ],
+    "unchanged_yaw_degrees": 90
+  },
+  "materials_srgb": {
+    "CedarAge_0": "be8b55",
+    "CedarAge_1": "ba8752",
+    "CedarAge_2": "b78350",
+    "CedarAge_3": "ac794a",
+    "SlideIndigoBlue": "3585c7",
+    "SlideJointSteel": "71858c"
+  },
+  "material_note": "CedarAge_0..3 use narrowly grouped warm cedar swatches; compatible with the outdoor timber palette pass. Blue enamel and embedded steel fasteners retain separate materials.",
+  "stats": {
+    "id": "P05",
+    "src": "../library/plaza/source/P05.glb",
+    "provider": "Blender authored continuous slide and cedar joinery (2026-10-24)",
+    "preserve_parts": true,
+    "origin_preserved": true,
+    "tris": 43832,
+    "tex": 0,
+    "bytes": 1751808,
+    "godot_size_m_xyz": [
+      1.44,
+      2.13,
+      3.429
+    ],
+    "mesh_nodes": [
+      "ChuteSupports",
+      "DeckBearers",
+      "FrameBraces",
+      "JointHardware",
+      "LadderHandrails",
+      "LadderStringers",
+      "LadderTreads",
+      "PlatformDeck",
+      "PlatformGuards",
+      "SlideChuteShell",
+      "SlideRolledRims",
+      "TimberPosts"
+    ]
+  },
+  "verification": "evidence/visual_rework_20261024/slide/",
+  "geometry_verification": {
+    "positive": "evidence/visual_rework_20261024/slide/new-positive.json",
+    "negative": "evidence/visual_rework_20261024/slide/old-negative.json",
+    "level": "evidence/visual_rework_20261024/slide/level.json",
+    "checks": 13,
+    "positive_passed": 13,
+    "predecessor_failed": 9,
+    "verified_sha256": "4065390b629e7cf484e1509721c641a3ff6dc12f2d0e2626b4bd87a89337fe18"
+  },
+  "native_acceptance": "pending root-agent Godot capture and placement verification"
+}

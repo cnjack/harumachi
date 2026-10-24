@@ -1,0 +1,29 @@
+{
+  "id": "R06_StopName",
+  "revision": "20261024",
+  "label": "晴町候车亭屋檐安装站名牌",
+  "source": "项目自制程序几何；保留原 Hunyuan R06 候车亭、MS06 站杆及 MS07 导乘框",
+  "recipe": "game/scripts/world/transit_stop.gd::_station_name",
+  "support_source": "game/assets/models/R06.glb",
+  "reference": "evidence/visual_rework_20261024/references/06.png",
+  "style": "日式生活动画场景；绿漆金属壳、暖白字、克制搪瓷光泽、真实倒角与固定件",
+  "construction": {
+    "local_origin_xyz_m": [-0.35, 2.185, 1.01],
+    "casing_xyz_m": [2.46, 0.32, 0.078],
+    "casing_chamfer_m": 0.006,
+    "enamel_insert_xyz_m": [2.34, 0.238, 0.012],
+    "lettering_gap_m": 0.0008,
+    "lower_edge_m": 2.025,
+    "mounts": "两套实体背带、弯折钢臂与屋檐固定片，连接至原 R06 的实际三角面；四角螺钉固定外壳",
+    "existing_eave_front_z_m": "约 0.9024–0.9028；固定片限制在平直檐板 y=2.233–2.283，后表面 z=0.9015，嵌入约 0.9–1.3 毫米",
+    "lettering": ["晴町", "HARUMACHI"]
+  },
+  "unchanged": ["R06 原始网格与外景", "MS06 站杆", "MS07 路线图与时刻表", "公交路线与交互", "现有碰撞与周边树木", "ClearSignage 通用牌面"],
+  "regression": {
+    "script": "game/scripts/tests/bus_stop_sign_checks.gd",
+    "checks": 12,
+    "measurements": "实际三角面穿射板厚、字体实际尺寸九点贴面间隙、原屋檐八点接触、两只挂架连续实体通路、实际底边净空",
+    "negative_cases": "旧18毫米薄片/11毫米悬浮字/无支撑；固定片外移30毫米；移开连接臂",
+    "before_measurements": "evidence/visual_rework_20261024/bus_stop_sign/shelter_mount_measurements.json"
+  }
+}

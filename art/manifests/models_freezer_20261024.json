@@ -1,0 +1,22 @@
+{
+  "model": "I07_ice_freezer",
+  "date": "2026-10-24",
+  "authoring_script": "art/tools/rebuild_ice_freezer.py",
+  "reference": "evidence/visual_rework_20261024/references/01.png",
+  "source": "art/library/appliances/source/I07_ice_freezer.glb",
+  "authoring": "art/library/appliances/authoring/I07_ice_freezer.blend",
+  "source_sha256": "ca0238accdcc66617447987ae863c143eb811e779d50b2bcb8eab43418e74387",
+  "material": "Original procedural geometry and flat color materials; no product photograph or emissive atlas",
+  "license": "Project-authored",
+  "export": {
+    "src": "../library/appliances/source/I07_ice_freezer.glb",
+    "preserve_parts": true,
+    "preserve_origin": true,
+    "level": false,
+    "tex": 1024,
+    "image_format": "AUTO",
+    "provider": "Blender authored cavity, enamel shell, wire baskets, sealed stock and sliding glass lids",
+    "note": "Replaces the opaque product photograph and solid cabinet. Source and geometry audit: art/manifests/models_freezer_20261024.json"
+  },
+  "verification": "evidence/visual_rework_20261024/freezer/"
+}

@@ -1,5 +1,11 @@
 # 模型、工程与交付流程
 
+## 试玩场景修整（2026-10-24）
+
+本轮六个模型的权威源统一在 `art/library/`，导出配置必须放在 `game_assets.json` 的 `assets` 对象内。修改后更新模型统计、真实支撑面和完整模型审计，再进行原生复拍。公交轮胎须按完整轮圈确定轴心，不能只检查已经分出的局部轮胎；海报要同时检查承载面与最终插画材质。当前全量 2799 项，原生场景复拍及解压应用 211 项完整演示通过，见[本轮流程与交付](SCENE_FEEDBACK_20261024.md)。
+
+`--only=garment-steady-guards` 共 22 项：原认证的真实 revision2 样本保留 19 项保护检查，当前 revision3 另验 3 项安全回退。样本核对原始导入参数、源摘要和真实导入指纹；不将当前动画补签为旧认证。所有测试资源均在导出包排除，成品 PCK 另作实查。
+
 澪 v17：保留原眼睛注册及中性脸轮廓，`FaceRig.turn` 写入 3×3 小角度源关键形；`MioBindings` 给眼口添加真实脸部遮罩。`--review-performance` 验证 1680 帧情境、45 组表情/视线组合，`verify_web_performance.mjs` 比对 Swift/JS 文字口型；完整接缝仍用 `--review-motion` 与实际可见窗口。`export_mio.py --runtime <独立目录> --inverse-mask-fixture --work <已有工作目录> --reuse-bake` 可导出反向遮罩反例，不覆盖正式源工程。包内五个 exp3 与四个 motion3、physics3 一起分发。详见[表现完善记录](MIO_PERFORMANCE_20261021.md)。下列旧版本流程为历史。
 
 澪 v16 脸部恢复流程：`prepare_face.swift` 从原 `Mio.rig.json` 注册四个原画左右睁闭眼层，不重画或重定眼位；脸型由父级轻微移动和旋转，源脸网格不再作固定下巴的横向扭曲。`review_face.py` 从真实 Core 图批量输出九方向、眨眼和四动作脸部表，并对照原版眼区像素。不能用“参数有变化”证明角色长相正确。见[脸部恢复记录](MIO_FACE_RESTORE_20261021.md)。
@@ -350,7 +356,7 @@ Godot 这边是 `Audio` 自动加载（`game/scripts/autoload/audio.gd`）：
 
 - **测试入口（2026-10-24）**：F5 用于普通试玩；F6 误开 `tests.tscn` 会回到标题。测试必须同时提供 `--run-tests` / `--only=…` / `--out=…` / `--test-db=…` 中的显式参数，以及真正独立的存档目录。例如 `HARUMACHI_SAVE_DIR="$(mktemp -d /tmp/harumachi-tests.XXXXXX)" timeout 240 ./tools/godot --headless --audio-driver Dummy --path game res://scenes/tests.tscn -- --only=dialogue-ui --out=/tmp/dialogue-ui.json`。对话专项现为 24 项，座位专项 27 项；完整回归未在本轮重跑。入口负例和复现见 [INTERACTION_ENTRY_20261024.md](INTERACTION_ENTRY_20261024.md)，独立检查为 `python3 tools/check_test_entry.py`。
 
-- 自动测试：`res://scenes/tests.tscn`，最新源衣物/手臂/平地接触组合2628项独占完整功能回归通过、退出0，含102项步态、112项跑步手臂/手型、47项手势和45项衣物专项，见[本轮源修复](SOURCE_CLOTH_ARMS_20261018.md)。独立 HARUMACHI_SAVE_DIR、超时和 SCRIPT/SHADER ERROR 检查必须同时使用，全量不与其他 Godot 并发。原5mm衣面、12cm模板及8ms求解门槛不变，原始 ERROR 分组保留，严格无 ERROR 日志资格为false。最终数量以JSON报告为准。
+- 自动测试：`res://scenes/tests.tscn`，当前 2799 项独占完整功能回归通过、退出 0，见[试玩场景整合](SCENE_FEEDBACK_20261024.md)。独立 `HARUMACHI_SAVE_DIR`、超时和 SCRIPT/SHADER ERROR 检查必须同时使用，全量不与其他 Godot 并发。原 5mm 衣面、12cm 模板及 8ms 求解门槛不变。dummy renderer 与主动制造的保存失败日志已分类，不能称为严格零 ERROR；最终数量以 JSON 报告为准。
 - 卡顿检查要让时钟实际推进，记录逐帧耗时，不能只看平均FPS。工具`evidence/desktop_stutter_20261007/perf_probe.gd`的`--fixed`模式在真实起床卧室和商店街记录480帧，截图回读放在计时之后；使用固定引擎、置顶原生窗口和独立存档。运动清晰度检查在固定镜头距离下核对人物与镜头的渲染插值位置，镜头避障另跑`--only=camera-body`。桌面缓存用晚会专项检查移动、旋转后的实际食物支撑；方法与结果见[卡顿修复](DESKTOP_STUTTER_20261008.md)。
 - 自动演示：普通标题入口`--autoplay`沿实际碰撞路径、Story交互、摆放控制器、料理面板、灯笼输入、日历赴约和拍照完成新夏季至Q15，检查控制与保存恢复。本轮解压包205项通过，最终报告及关键截图在本轮证据目录。自动对白与阶段暂停明确记录，不作为自然四小时；`--showcase`是节日展示夹具。打印的AP mark/frame用于录像剪辑。
 - 录制时游戏窗口不能被别的窗口完全挡住：macOS 会停止给被挡住的窗口画帧，演示就停在原地。默认使用独立虚拟屏幕，实测屏幕编号与Godot像素坐标后设置`--screen`、`-t --position`，并在测试进程使用`--audio-driver Dummy`。以下历史命令中的机位须按当前隔离屏幕替换。

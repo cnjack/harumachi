@@ -124,7 +124,10 @@ static func configure_components(material: ShaderMaterial,mesh: Mesh,surface: in
 	material.set_meta("measured_timber_components",boxes.size())
 
 static func notice_frame(root: Node3D) -> void:
+	var poster: Node=root.get_node_or_null("Poster")
 	for mesh: MeshInstance3D in WorldBuilder.find_meshes(root):
+		# The runtime notice is paper, printed artwork and fixings, not frame wood.
+		if poster!=null and poster.is_ancestor_of(mesh):continue
 		for index: int in mesh.mesh.get_surface_count():
 			var original: StandardMaterial3D=mesh.get_active_material(index) as StandardMaterial3D
 			if original==null or original.albedo_texture==null:continue

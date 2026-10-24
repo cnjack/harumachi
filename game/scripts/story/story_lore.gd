@@ -489,13 +489,21 @@ func future_direction(origin: String) -> void:
 
 # ------------------------------------------------------------------ Q14 the promise at the goldfish stall
 func _goldfish_promise() -> void:
+	# Acquire only after an activity is chosen, but return from every early exit.
+	# A nested optional photo cannot release the surrounding scene's own loan.
+	var loan: Dictionary = {}
+	await _goldfish_promise_at_pool(loan)
+	if loan.has("token"): s.world.lifecycle.end_practice("goldfish", int(loan.token))
+
+func _goldfish_promise_at_pool(loan: Dictionary) -> void:
 	var G := GameState
 	var had_photo := Progress.found("col_photo2011")
 	var shared: Dictionary = G.flags.get("summer_shared", {})
 	if shared.is_empty():
 		await _say("mio", "happy", "金鱼摊的水槽还在。一起待一会儿？想试试纸网，或坐旁边看看都行。")
 		var activity: int = await s.ui.choose(["一起试试纸网", "坐在水槽边，陪澪看一会儿", "只在这里拍张合影", "今天先回去，之后再约"])
-		if activity == 3: return
+		if activity not in [0, 1, 2]: return
+		loan.token = s.world.lifecycle.begin_practice("goldfish")
 		if not await _stand_by_pool(): return
 		if activity == 0:
 			await _say("mio", "neutral", "慢一点。按住纸网沉进水里，松手就捞起；泡久了会破，按 Esc 随时回来。")
@@ -539,8 +547,9 @@ func _stand_by_pool() -> bool:
 		if s.main.room_kind == "house": await s.main.exit_room()
 		else: await s.main.exit_interior()
 	if s.main.world.region == "farm": await s.main.leave_farm()
+	s.world.lifecycle.sync_state()
 	var pool: Variant = s.physical_point("goldfish_pool")
-	if pool == null or not s.npcs.has("mio"): return false
+	if pool == null or not s.npcs.has("mio") or not s.world.lifecycle.equipment_available("goldfish"): return false
 	var at: Vector3 = pool
 	await s.ui.fade_out(0.2)
 	s.player.global_position = Vector3(at.x - .55, .05, at.z + 1.6)
@@ -558,6 +567,12 @@ func _stand_by_pool() -> bool:
 
 ## The new group photo: frame the player and Mio at the goldfish pool and save the picture.
 func _photo() -> bool:
+	var loan: int = s.world.lifecycle.begin_practice("goldfish")
+	var saved: bool = await _photo_at_pool()
+	s.world.lifecycle.end_practice("goldfish", loan)
+	return saved
+
+func _photo_at_pool() -> bool:
 	var m = s.main
 	if not await _stand_by_pool(): return false
 	var pool: Variant = s.physical_point("goldfish_pool")

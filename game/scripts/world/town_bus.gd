@@ -31,21 +31,23 @@ func build(world: WorldBuilder) -> void:
 				var thigh:=skeleton.find_bone("thigh."+side);var shin:=skeleton.find_bone("shin."+side)
 				if thigh>=0:skeleton.set_bone_pose_rotation(thigh,Quaternion(Vector3.RIGHT,-PI*.45))
 				if shin>=0:skeleton.set_bone_pose_rotation(shin,Quaternion(Vector3.RIGHT,PI*.45))
-	var route:=ClearSignage.plate(model,"RoutePlate",Vector2(.75,.18),Vector3(2.17,1.96,0),PI*.5,Color(.12,.26,.28))
-	route.add_child(ClearSignage.label("07 晴町",Vector3(0,0,.02),0,.13,Color(.98,.96,.80)))
+	# The source model supplies the formed housing, inset rollsign and roof mounts.
+	# Only the readable ink is dynamic; no detached board is placed over the glass.
+	var route:=ClearSignage.label("07 晴町",Vector3(2.184,2.02,0),PI*.5,.105,Color(.98,.96,.80))
+	route.name="RouteLettering";route.shaded=true
+	ClearSignage.fit(route,Vector2(.79,.13),.008)
+	model.add_child(route)
 	var collider:=StaticBody3D.new();collider.name="BusCollider";collider.collision_layer=WorldBuilder.L_SOLID;collider.set_meta("model_part",true)
 	var shape:=CollisionShape3D.new();var box:=BoxShape3D.new();box.size=Vector3(4.05,1.9,1.60);shape.shape=box;shape.position.y=1.05;collider.add_child(shape);model.add_child(collider)
 	var driver:=Interactable.new();driver.name="BusDriver";driver.id="bus_driver";driver.radius=2.2;driver.position=Vector3(1.0,1.1,1.10);driver.body=collider;add_child(driver)
 
 func _glazing(model: Node3D) -> void:
 	var glass:=ShaderMaterial.new();glass.shader=load("res://shaders/bus_glass.gdshader")
-	var rectangles: Array[Vector2]=[Vector2(-1.92,-1.22),Vector2(-1.12,-.42),Vector2(-.32,.44),Vector2(1.32,1.94)]
-	for side in [-1.0,1.0]:
-		for index in rectangles.size():
-			var limits: Vector2=rectangles[index];var pane:=MeshInstance3D.new();pane.name="Glass_%d_%d"%[int(side),index]
-			var quad:=QuadMesh.new();quad.size=Vector2(limits.y-limits.x,.72);pane.mesh=quad;pane.material_override=glass;pane.position=Vector3((limits.x+limits.y)/2,1.49,side*.848)
-			pane.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF;model.add_child(pane)
-	var front:=MeshInstance3D.new();front.name="Glass_Windscreen";var windscreen:=QuadMesh.new();windscreen.size=Vector2(1.26,.78);front.mesh=windscreen;front.material_override=glass;front.position=Vector3(2.15,1.53,0);front.rotation.y=PI*.5;front.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF;model.add_child(front)
+	for pane: MeshInstance3D in WorldBuilder.find_meshes(model):
+		if not str(pane.name).begins_with("Glass_"):continue
+		for surface: int in pane.mesh.get_surface_count():pane.set_surface_override_material(surface,null)
+		pane.material_override=glass
+		pane.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 
 func part(label: String, extent: Vector3, at: Vector3, material: Material, parent: Node3D=null) -> void:
 	var piece:=MeshInstance3D.new();piece.name=label

@@ -4,8 +4,7 @@ extends RefCounted
 static func build(world: WorldBuilder) -> void:
 	var shelter:=world.get_node_or_null("R06") as Node3D
 	if shelter:
-		var header:=ClearSignage.plate(shelter,"StopName",Vector2(2.4,.28),Vector3(0,2.13,1.02),0,Color(.19,.40,.36))
-		header.add_child(ClearSignage.label("晴町  HARUMACHI",Vector3(0,0,.02),0,.21,Color(.99,.96,.83)))
+		_station_name(shelter)
 		ClearSignage.plate(shelter,"RouteBacking",Vector2(2.42,1.12),Vector3(0,1.53,.15),0,Color(.32,.40,.38))
 		var timetable: Node3D=ModularProps.part(world,shelter,"MS07_timetable_case","Timetable",Vector3(.62,1.005,.18),Vector3(1.05,1.05,.08))
 		for index in 5:
@@ -54,6 +53,122 @@ static func build(world: WorldBuilder) -> void:
 	if sandbox:
 		var patch:=MeshInstance3D.new();patch.name="SandpitSurface";var plane:=PlaneMesh.new();plane.size=Vector2(1.61,1.61);patch.mesh=plane;patch.material_override=WorldBuilder.ground_material("sand");patch.position.y=.31;sandbox.add_child(patch)
 	_replace_small_signs(world)
+
+static func _station_name(shelter: Node3D) -> void:
+	# The original R06 eave is at z=.903 around y=2.27. Two bent steel
+	# brackets bridge it to this 78 mm casing; the bottom stays above 2.02 m.
+	var header := Node3D.new()
+	header.name = "StopName"
+	header.position = Vector3(-.35, 2.185, 1.01)
+	shelter.add_child(header)
+	var casing: StandardMaterial3D = JapaneseArchitecture._flat(Color(.16, .30, .28))
+	casing.specular_mode = BaseMaterial3D.SPECULAR_TOON
+	casing.metallic = .12
+	casing.metallic_specular = .22
+	casing.roughness = .58
+	var enamel: StandardMaterial3D = JapaneseArchitecture._flat(Color(.20, .40, .35))
+	enamel.specular_mode = BaseMaterial3D.SPECULAR_TOON
+	enamel.metallic_specular = .18
+	enamel.roughness = .62
+	var steel: StandardMaterial3D = JapaneseArchitecture._flat(Color(.42, .48, .44))
+	steel.specular_mode = BaseMaterial3D.SPECULAR_TOON
+	steel.metallic = .38
+	steel.metallic_specular = .25
+	steel.roughness = .55
+	_sign_block(header, "Board", Vector3(2.46, .32, .078), Vector3.ZERO, casing, .006)
+	# A distinct enamel insert seats in the casing; only 0.8 mm separates the
+	# shaded printed glyphs from its actual front triangles.
+	_sign_block(header, "EnamelFace", Vector3(2.34, .238, .012), Vector3(0, 0, .035), enamel, .002)
+	var station: Label3D = ClearSignage.label("晴町", Vector3(-.73, 0, .0418), 0, .205, Color(.98, .96, .84))
+	station.name = "StationNameInk"
+	station.shaded = true
+	station.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	ClearSignage.fit(station, Vector2(.72, .206), .006)
+	header.add_child(station)
+	var romanization: Label3D = ClearSignage.label("HARUMACHI", Vector3(.38, 0, .0418), 0, .14, Color(.98, .96, .84))
+	romanization.name = "RomanizationInk"
+	romanization.shaded = true
+	romanization.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	ClearSignage.fit(romanization, Vector2(1.30, .168), .006)
+	header.add_child(romanization)
+	for side: int in 2:
+		var mount := Node3D.new()
+		mount.name = "RoofMount_Left" if side == 0 else "RoofMount_Right"
+		mount.position = Vector3(-.92 if side == 0 else .92, .085, -.105)
+		header.add_child(mount)
+		# Keep both screws on the flat timber fascia, below its projecting
+		# roof lip. The rear enters the measured face by only about 1 mm.
+		_sign_block(mount, "EaveAnchor", Vector3(.105, .050, .012), Vector3(0, -.012, .0025), steel, .001)
+		_sign_block(mount, "BentArm", Vector3(.070, .016, .084), Vector3(0, -.025, .036), steel, .001)
+		_sign_block(mount, "RearStrap", Vector3(.105, .16, .014), Vector3(0, -.040, .071), steel, .001)
+		for bolt: int in 2:
+			_sign_bolt(mount, "EaveBolt_%d" % bolt, Vector3(-.027 if bolt == 0 else .027, -.012, .0105), steel)
+	for column: int in 2:
+		for row: int in 2:
+			_sign_bolt(header, "CasingBolt_%d_%d" % [column, row], Vector3(-1.193 if column == 0 else 1.193, -.126 if row == 0 else .126, .041), steel)
+
+static func _sign_bolt(parent: Node3D, label_name: String, at: Vector3, material: Material) -> void:
+	var bolt := MeshInstance3D.new()
+	bolt.name = label_name
+	var cylinder := CylinderMesh.new()
+	cylinder.top_radius = .0075
+	cylinder.bottom_radius = .009
+	cylinder.height = .004
+	cylinder.radial_segments = 12
+	bolt.mesh = cylinder
+	bolt.material_override = material
+	bolt.position = at
+	bolt.rotation.x = PI * .5
+	parent.add_child(bolt)
+	_sign_block(parent, label_name + "Slot", Vector3(.009, .0015, .0008), at + Vector3(0, 0, .0022), JapaneseArchitecture._flat(Color(.22, .29, .27)), .0001)
+
+static func _sign_block(parent: Node3D, label_name: String, size: Vector3, at: Vector3, material: Material, bevel: float) -> MeshInstance3D:
+	var block := MeshInstance3D.new()
+	block.name = label_name
+	block.position = at
+	block.mesh = _sign_casing_mesh(size, bevel)
+	block.material_override = material
+	parent.add_child(block)
+	return block
+
+static func _sign_ring(half_size: Vector2, corner: float, depth: float) -> PackedVector3Array:
+	var x: float = half_size.x
+	var y: float = half_size.y
+	return PackedVector3Array([
+		Vector3(-x + corner, -y, depth), Vector3(-x, -y + corner, depth),
+		Vector3(-x, y - corner, depth), Vector3(-x + corner, y, depth),
+		Vector3(x - corner, y, depth), Vector3(x, y - corner, depth),
+		Vector3(x, -y + corner, depth), Vector3(x - corner, -y, depth),
+	])
+
+static func _sign_triangle(surface: SurfaceTool, a: Vector3, b: Vector3, c: Vector3) -> void:
+	var normal: Vector3 = (c - a).cross(b - a).normalized()
+	for point: Vector3 in [a, b, c]:
+		surface.set_normal(normal)
+		surface.add_vertex(point)
+
+static func _sign_casing_mesh(size: Vector3, bevel: float) -> ArrayMesh:
+	# Closed solid with real corner and depth chamfers, rather than a bright
+	# line pretending to be an edge. The face remains flat for the lettering.
+	var half_size := Vector2(size.x, size.y) * .5
+	var corner: float = minf(bevel * 2.5, minf(size.x, size.y) * .15)
+	var depth: float = size.z * .5
+	var rings: Array[PackedVector3Array] = [
+		_sign_ring(half_size - Vector2.ONE * bevel, corner * .5, -depth),
+		_sign_ring(half_size, corner, -depth + bevel),
+		_sign_ring(half_size, corner, depth - bevel),
+		_sign_ring(half_size - Vector2.ONE * bevel, corner * .5, depth),
+	]
+	var surface := SurfaceTool.new()
+	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for edge: int in 8:
+		var following: int = (edge + 1) % 8
+		_sign_triangle(surface, Vector3(0, 0, -depth), rings[0][following], rings[0][edge])
+		_sign_triangle(surface, Vector3(0, 0, depth), rings[3][edge], rings[3][following])
+		for band: int in 3:
+			_sign_triangle(surface, rings[band + 1][edge], rings[band][edge], rings[band][following])
+			_sign_triangle(surface, rings[band + 1][edge], rings[band][following], rings[band + 1][following])
+	return surface.commit()
 
 static func _replace_small_signs(world: WorldBuilder) -> void:
 	var directions:=world.get_node_or_null("R09") as Node3D

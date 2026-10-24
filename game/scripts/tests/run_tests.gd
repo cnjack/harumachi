@@ -50,7 +50,23 @@ func _ready() -> void:
 	main.ui.instant = true
 	main.ui.auto_work_priority = true # this suite follows its declared work route; the topic-choice suite overrides it
 	await frames(10)
-	if OS.get_cmdline_user_args().has("--only=modular-props"):
+	if OS.get_cmdline_user_args().has("--only=shopkeeper-presence"):
+		await load("res://scripts/tests/shopkeeper_presence_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=bus-cabin"):
+		await load("res://scripts/tests/bus_cabin_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=plaza-signage"):
+		await load("res://scripts/tests/plaza_signage_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=street-tree"):
+		await load("res://scripts/tests/street_tree_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=farm-approach"):
+		await load("res://scripts/tests/farm_approach_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=stall-lifecycle"):
+		await load("res://scripts/tests/stall_lifecycle_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=plaza-timber"):
+		await load("res://scripts/tests/plaza_timber_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=bus-stop-sign"):
+		await load("res://scripts/tests/bus_stop_sign_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=modular-props"):
 		await load("res://scripts/tests/modular_props_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=furniture-hyper3d"):
 		await load("res://scripts/tests/hyper3d_furniture_checks.gd").new(self).run()
@@ -349,6 +365,14 @@ func _ready() -> void:
 		await load("res://scripts/tests/fishing_tolerance_checks.gd").new(self).run()
 		await load("res://scripts/tests/truck_glazing_checks.gd").new(self).run()
 		await load("res://scripts/tests/seating_checks.gd").new(self).run()
+		await load("res://scripts/tests/shopkeeper_presence_checks.gd").new(self).run()
+		await load("res://scripts/tests/bus_cabin_checks.gd").new(self).run()
+		await load("res://scripts/tests/plaza_signage_checks.gd").new(self).run()
+		await load("res://scripts/tests/street_tree_checks.gd").new(self).run()
+		await load("res://scripts/tests/farm_approach_checks.gd").new(self).run()
+		await load("res://scripts/tests/stall_lifecycle_checks.gd").new(self).run()
+		await load("res://scripts/tests/plaza_timber_checks.gd").new(self).run()
+		await load("res://scripts/tests/bus_stop_sign_checks.gd").new(self).run()
 	var fails := results.filter(func(r): return not r.ok).size()
 	print("\n==== %d checks, %d failed ====" % [results.size(), fails])
 	var out := ""
@@ -428,7 +452,10 @@ func keeper_continuity_checks() -> void:
 		G.skip_to(G.minute + 1.0)
 		await frames(4)
 		var keeper: NPC = main.npcs[who]
-		check("KEEPER", "%s stays behind the counter during festival and minute updates" % shop, keeper.global_position.distance_to(spec.origin + spec.keeper) < 0.1 and keeper.fest_key == shop + ":counter")
+		if who == "ren":
+			check("KEEPER", "the bakery visit leaves Ren at his actual festival assignment", keeper.fest_key == "contest" and InteriorBuilder.at(keeper.global_position) == "")
+		else:
+			check("KEEPER", "the working store keeper remains at her counter during minute updates", keeper.global_position.distance_to(spec.origin + spec.keeper) < 0.1 and keeper.fest_key == shop + ":counter")
 		await main.exit_interior()
 		await frames(4)
 	check("KEEPER", "leaving the bakery restores Ren's festival assignment", main.npcs.ren.fest_key == "contest" and main.npcs.ren.global_position.x < 50.0)
@@ -493,6 +520,10 @@ func _free_side(it: Interactable) -> Vector3:
 
 
 func use(id: String, choices: Array = [], distance: float = 1.2) -> bool:
+	var destination: Interactable = point(id)
+	if destination == null or not await _reach_interaction_room(destination):
+		check("infra", "target room can be reached through its actual door: " + id, false)
+		return false
 	var it := stand_at(id, distance)
 	await frames(3)
 	main.ui.auto_choices = choices.duplicate()
@@ -514,6 +545,29 @@ func use(id: String, choices: Array = [], distance: float = 1.2) -> bool:
 	await main.story.interact(it)
 	await frames(2)
 	return true
+
+
+## Logical tests may stand near a target, but must still enter its actual
+## room. An indoor keeper is deliberately hidden while the player is outside.
+func _reach_interaction_room(it: Interactable) -> bool:
+	for attempt in 8:
+		var target_room: String = main.story._marker_room(it.global_position)
+		var current_room: String = main.room_kind if main.in_room else ""
+		if target_room == current_room: return true
+		var next_room: String = target_room
+		var parent_room: String = str(ResidentPlaces.SPECS.get(next_room, {}).get("return_room", ""))
+		while next_room != "" and parent_room != current_room and parent_room != "":
+			next_room = parent_room
+			parent_room = str(ResidentPlaces.SPECS.get(next_room, {}).get("return_room", ""))
+		if next_room != "" and parent_room == current_room:
+			var door_id: String = main.story._entry_id(next_room)
+			if door_id == "" or not await use(door_id): return false
+			if not main.in_room or main.room_kind != next_room: return false
+		elif main.in_room:
+			var exit_id: String = main.story._exit_id(current_room)
+			if exit_id == "" or not await use(exit_id): return false
+		else: return false
+	return false
 
 
 ## v0.6: shops are rooms: go in through the street door, use a point inside, walk back out.
@@ -618,9 +672,9 @@ func house_checks() -> void:
 
 ## The two courtyard stations: goldfish scooping and the festival drum.
 func courtyard_minigames() -> void:
-	await use("goldfish_pool")
+	await use("center_door", [2])
 	check("MG", "goldfish at the courtyard tank brings a fish home", int(G.mg_record("goldfish").stars) >= 1 and G.flags.get("goldfish_home", false))
-	await use("taiko_drum")
+	await use("center_door", [1])
 	check("MG", "the taiko drum records a clear", int(G.mg_record("taiko").plays) == 1 and G.flags.get("taiko_cleared", false) == (int(G.mg_record("taiko").stars) >= 1))
 	check("MG", "the goldfish bowl appears on the engawa", main.world.house.goldfish.visible)
 
@@ -672,8 +726,11 @@ func run_all() -> void:
 	check("Q01", "checklist key item granted once", G.count("checklist") == 1)
 
 	# ---------- Q02 + AC2/AC3
-	await use("stall")
-	check("AC2", "stall without basket changes nothing", G.at_step("Q02", "talk_ren") and G.count("support_token") == 0)
+	var idle_stall := stand_at("stall")
+	await frames(3)
+	check("AC2", "empty stall stays stored and untargetable before the basket is assigned",
+		main.player.target != idle_stall and not main.world.get_node("P09").is_visible_in_tree()
+		and G.at_step("Q02", "talk_ren") and G.count("support_token") == 0)
 	await use("ren", [0])
 	check("Q02", "Ren gives one basket and a melon pan", G.count("bread_basket") == 1 and G.count("melon_pan") == 1 and G.at_step("Q02", "deliver_basket"))
 	await use("ren")
@@ -1620,7 +1677,7 @@ func v06_checks() -> void:
 		"ren at %s" % (main.npcs.ren as NPC).global_position)
 	await use("bakery_exit")
 	await frames(8)
-	check("SHOPIN", "Ren goes back to his routine when you leave", not main.in_room and (main.npcs.ren as NPC).fest_key == "")
+	check("SHOPIN", "leaving keeps Ren working inside without an exterior duplicate", not main.in_room and main.npcs.ren.fest_key == "bakery:counter" and main.npcs.ren.global_position.distance_to(bakery_sp.origin + bakery_sp.keeper) < .08 and not main.npcs.ren.visible and main.npcs.ren.talk.radius == 0.0)
 	G.day = 21     # a Wednesday: the store is closed
 	await use("shop_store")
 	await frames(4)

@@ -1,0 +1,25 @@
+{
+  "model": "D07_kei_truck",
+  "date": "2026-10-24",
+  "source": "art/library/vehicles/source/D07_kei_truck.glb",
+  "authoring": "art/library/vehicles/authoring/D07_kei_truck.blend",
+  "builder": "art/tools/rebuild_kei_truck.py",
+  "predecessor": "art/library/vehicles/source/D07_textured_predecessor.glb",
+  "retained": "Original UV texture on produce crates and flatbed; no opaque original cab remains",
+  "rebuilt": [
+    "broad crowned roof and bowed pressed nose",
+    "four rolled wheel-arch returns",
+    "curved tyre cross-sections and vented steel rims",
+    "shut lines and stood-off door pulls",
+    "inset lamp bowls and lenses",
+    "rear-facing inset mirror lenses",
+    "formed drop-side gates, rolled rails, hinges, latches and tie-down anchors"
+  ],
+  "nose_axis": "+Z",
+  "wheel_radius_m": 0.325,
+  "glass": "Four thin separate quads with clear apertures",
+  "rear_guard": "Crossbar follows the cab header at 1.755 m; side legs reach the cargo floor, outside the rear-glass aperture",
+  "new_paid_generations": 0,
+  "audit": "art/tools/audit_kei_truck_detail.py",
+  "native_visual_review_required": true
+}

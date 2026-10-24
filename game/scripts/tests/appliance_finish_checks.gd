@@ -223,13 +223,19 @@ func run() -> void:
 	check("both cold cabinet glass doors preserve their clear twelve percent tint", _glass(_surfaces(fridge, "Glass"), 2, .12))
 	var freezer_paint: Array[Dictionary] = _surfaces(freezer, "freezer_white")
 	freezer_paint.append_array(_surfaces(freezer, "freezer_band"))
-	check("freezer lid trim gains metal while white blue paint keeps its enamel role and castors remain unchanged", _metal(_surfaces(freezer, "freezer_trim"), 1, 1) and _metal(freezer_paint, 0, 2) and _kept(freezer, ["castor"], 1))
-	var picture_rows: Array[Dictionary] = _surfaces(freezer, "icecream")
-	var picture_ok: bool = _metal(picture_rows, 3, 1, false)
-	if picture_ok:
-		var finish: ShaderMaterial = picture_rows[0].active as ShaderMaterial
-		var source: StandardMaterial3D = picture_rows[0].original as StandardMaterial3D
-		picture_ok = is_equal_approx(_number(finish, "opacity"), 1.0) and source.emission_texture != null and bool(finish.get_shader_parameter("has_emission")) and _same_texture(finish.get_shader_parameter("emission_tex"), source.emission_texture) and _same_color(finish.get_shader_parameter("emission_color"), source.emission * source.emission_energy_multiplier)
-	check("freezer contents remain an opaque authored picture with their original emissive texture", picture_ok)
+	check("freezer lid frames baskets and ventilation keep steel while shell keeps enamel and casters stay rubber", _metal_area(_surfaces(freezer, "freezer_trim"), 1, .35) and _metal_area(freezer_paint, 0, 2.0) and _kept_roles(freezer, ["castor", "freezer_liner", "freezer_seal"]))
+	var recessed_stock: bool = freezer != null and _glass(_surfaces(freezer, "freezer_glass"), 2, .08) and _surfaces(freezer, "icecream").is_empty()
+	if recessed_stock:
+		recessed_stock = _contains_geometry(freezer, "freezer_liner", Vector3(0, .44, 0), .025)
+		var stock_count: int = 0
+		for stock_mesh: MeshInstance3D in WorldBuilder.find_meshes(freezer):
+			if not str(stock_mesh.name).begins_with("Stock_"):
+				continue
+			var stock_transform: Transform3D = freezer.global_transform.affine_inverse() * stock_mesh.global_transform
+			var stock_bounds: AABB = stock_transform * stock_mesh.get_aabb()
+			recessed_stock = recessed_stock and stock_bounds.size.y >= .045 and stock_bounds.end.y <= .733 and stock_bounds.position.y >= .49
+			stock_count += 1
+		recessed_stock = recessed_stock and stock_count >= 12
+	check("freezer has two clear sliding panes above a 39cm cavity and fourteen solid recessed packages", recessed_stock)
 	var changed: Array[String] = _unchanged_geometry()
 	check("finishing preserves every imported node transform vertex normal UV and index stream", changed.is_empty(), str(changed))

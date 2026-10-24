@@ -335,6 +335,10 @@ func _run() -> void:
 		catalog["hyper3d_room_"+room_id]={"interior":room_id,"at":Vector3(0,.05,1.0),"time":12.0,"pitch":49.0,"dist":maxf(room_size.x,room_size.y)*.85+2.0,"face":180.0}
 	catalog.merge(load("res://scripts/world/distant_mountains.gd").capture_views())
 	catalog.merge(load("res://scripts/world/scene_lifecycle_capture.gd").capture_views())
+	catalog.merge(load("res://scripts/tools/scene_feedback_capture.gd").capture_views())
+	catalog.merge(load("res://scripts/tools/plaza_signage_capture.gd").capture_views())
+	catalog.merge(load("res://scripts/tools/farm_approach_capture.gd").capture_views())
+	catalog.merge(load("res://scripts/tools/plaza_timber_capture.gd").capture_views())
 	for hour: float in [12.0,21.0]:
 		catalog["bridge_lantern_%d"%int(hour)]={"farm":true,"time":hour,"weather":"sunny","player":Vector3(0,.8,17),"camera_at":Vector3(3.4,2.25,20.6),"camera_focus":Vector3(.95,1.65,19.3),"fov":43.0}
 	var bridge_planter_at: Vector3=load("res://scripts/world/bridge_dressing.gd").PLANTERS[0]
@@ -414,6 +418,12 @@ func _run() -> void:
 		if v.has("lifecycle_fixture"):
 			if not load("res://scripts/world/scene_lifecycle_capture.gd").prepare(main, str(v.lifecycle_fixture)):
 				get_tree().quit(2); return
+		if v.has("signage_fixture"):
+			if not load("res://scripts/tools/plaza_signage_capture.gd").prepare(main, str(v.signage_fixture)):
+				get_tree().quit(2); return
+		if v.has("timber_fixture"):
+			if not load("res://scripts/tools/plaza_timber_capture.gd").prepare(main):
+				get_tree().quit(2); return
 		main.world.update_time(GameState.minute, GameState.weather, true)
 		main.update_npcs(true)
 		main.ui.refresh_hud()
@@ -463,9 +473,6 @@ func _run() -> void:
 			main.rig.dist = v.get("dist", 8.6)
 			main.rig.snap()
 			main.update_npcs(true)
-			if str(v.interior) == "bakery":
-				var sp := InteriorBuilder.spec_for("bakery")
-				main.npcs.ren.place(sp.origin + sp.keeper, sp.keeper_yaw)
 			if v.has("inside_camera"):
 				main.player.visible=bool(v.get("show_actor",false));main.rig.process_mode=Node.PROCESS_MODE_DISABLED
 				main.rig.cam.global_position=InteriorBuilder.spec_for(str(v.interior)).origin+v.inside_camera
@@ -603,6 +610,9 @@ func _run() -> void:
 				main.rig.cam.look_at(main.rig.cam.global_position+main.world.sun.global_basis.z*100.0)
 		if v.has("settle_seconds"):
 			await get_tree().create_timer(float(v.settle_seconds)).timeout
+		if v.has("bus_doors"):
+			main.world.bus.park_at_stop()
+			main.world.bus.open_doors(float(v.bus_doors))
 		for i in (80 if v.get("fireworks", false) else 25):
 			await get_tree().process_frame
 		if wallpaper:
@@ -611,6 +621,7 @@ func _run() -> void:
 			main.photo.finish()
 		var img := get_viewport().get_texture().get_image()
 		img.save_png("%s/%s.png" % [dir, n])
+		manifest[-1]["render_frame"] = Engine.get_frames_drawn()
 		print("SHOT ", n)
 	var manifest_file := FileAccess.open(dir.path_join("manifest.json"), FileAccess.WRITE)
 	manifest_file.store_string(JSON.stringify({"engine": Engine.get_version_info().string, "shots": manifest}, "\t"))

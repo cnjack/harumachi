@@ -207,6 +207,7 @@ func rebuild() -> void:
 		n.position = Vector3(p.x, 0, p.z)
 		n.rotation.y = deg_to_rad(90.0 * int(p.rot))
 		placed_root.add_child(n)
+		preload("res://scripts/world/plaza_timber.gd").apply(n, str(GameState.item(p.item).get("model", p.item)))
 		for mi in WorldBuilder.find_meshes(n):
 			mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 		if p.item=="bunting":

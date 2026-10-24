@@ -1,0 +1,25 @@
+{
+  "asset_id": "T12_street_zelkova",
+  "role": "One shop-street tree at (-18, 0, -16.2); other courtyard and landscape trees keep T01",
+  "provider": "Project Blender authoring; existing project imagegen leaf atlas reused",
+  "license": "Project-authored geometry; existing generated artwork under service terms",
+  "source": "art/library/street_trees/source/T12_street_zelkova.glb",
+  "authoring": "art/library/street_trees/authoring/T12_street_zelkova.blend",
+  "recipe": "art/tools/rebuild_street_tree.py",
+  "audit": "art/tools/audit_street_tree.py",
+  "foliage_atlas": "art/references/model_diversity_20261013/foliage_atlas.png",
+  "foliage_atlas_sha256": "20b58d0c1925839c276181a1f73b0cb5bee3e822b6bc8e149ba6c5739be2b202",
+  "foliage_atlas_cell": "bottom-right: painted small serrated zelkova sprig",
+  "source_sha256": "afeab7673a596078f6b08372203cf2dd76d3850985feea18979d97974da758da",
+  "bark_cleanup": {
+    "voxel_tip_fragments_removed": 118,
+    "removed_area_fraction": 0.016100640921948177,
+    "collapsed_boundary_caps": 0
+  },
+  "geometry": "Slender gently asymmetric stem, three unequal rounded root buttresses turning beneath the soil, four staggered primary forks, fifteen terminal twig groups. Bent alpha sprigs follow twigs, with gaps and unequal crown heights.",
+  "bark_finish": "Four restrained warm grey-brown matte regions follow the limb frames: broad bark plates, shallow recesses and sparse interrupted longitudinal lines. These are authored material regions, with no photographic noise and no runtime overlay.",
+  "source_finish_feedback": "After native 13/13 street-tree and 12/12 placement checks, the uniform light bark and pointed star-shaped root outline were refined in the source. Native rephotography remains pending.",
+  "street_support": "street_tree.gd cuts a 1.24 m square through stone/gravel patches, recesses exposed soil and installs an open stone perimeter; root collar rests in that soil.",
+  "legacy_negative": "evidence/visual_rework_20261024/street_tree/negative_old_scaled.json",
+  "native_review": "Before source finish: street-tree 13/13 and placement 12/12 passed. The source bark/root refinement awaits native rephotography."
+}

@@ -156,16 +156,17 @@
     "verts": 196838
   },
   "B01_bus": {
-    "base_frac": 0.527,
+    "base_frac": 0.52,
     "normal": [
-      -0.0039,
-      -0.0001,
+      0.0,
+      0.0,
       -1.0
     ],
-    "rect_fill": 0.92,
+    "rect_fill": 0.906,
+    "source_sha256": "37e3ac892e07912798c6bf54512948a5d5f7a4b537980b7620fecd38dabe5cdd",
     "square_deg": 0.05,
-    "tilt": 0.22,
-    "verts": 233875
+    "tilt": 0.0,
+    "verts": 281043
   },
   "B01_melon_pan": {
     "base_frac": 0.265,
@@ -739,16 +740,17 @@
     "verts": 11798
   },
   "D07_kei_truck": {
-    "base_frac": 0.603,
+    "base_frac": 0.544,
     "normal": [
       0.0,
       0.0,
       -1.0
     ],
-    "rect_fill": 0.986,
+    "rect_fill": 0.981,
+    "source_sha256": "ba8d4b39021b1c1b37f9e11769ebb8362354cc5016db36bdecacd92e51e85aa7",
     "square_deg": 0.0,
     "tilt": 0.0,
-    "verts": 34942
+    "verts": 60258
   },
   "D08_tool_rack": {
     "base_frac": 0.976,
@@ -1471,16 +1473,17 @@
     "verts": 4082
   },
   "I07_ice_freezer": {
-    "base_frac": 0.651,
+    "base_frac": 0.594,
     "normal": [
       0.0,
       0.0,
       -1.0
     ],
-    "rect_fill": 0.998,
+    "rect_fill": 0.995,
+    "source_sha256": "9f7a0311045a797a5714faa6a1f7736562f75aad0eb522abf3ec1b86f648de0d",
     "square_deg": 0.0,
     "tilt": 0.0,
-    "verts": 532
+    "verts": 44734
   },
   "I07_monstera": {
     "base_frac": 0.209,
@@ -2186,9 +2189,10 @@
       -1.0
     ],
     "rect_fill": 0.979,
+    "source_sha256": "84bb95932579bff21d09a5a6852e446b1baed33725eb89b9b1708c5b54b3ba45",
     "square_deg": 0.03,
     "tilt": 0.0,
-    "verts": 10537
+    "verts": 10801
   },
   "P03": {
     "base_frac": 0.642,
@@ -2215,16 +2219,17 @@
     "verts": 13751
   },
   "P05": {
-    "base_frac": 0.781,
+    "base_frac": 0.981,
     "normal": [
       0.0,
       0.0,
       -1.0
     ],
-    "rect_fill": 0.907,
+    "rect_fill": 0.906,
+    "source_sha256": "4065390b629e7cf484e1509721c641a3ff6dc12f2d0e2626b4bd87a89337fe18",
     "square_deg": 0.0,
     "tilt": 0.0,
-    "verts": 3248
+    "verts": 49270
   },
   "P06": {
     "base_frac": 0.723,
@@ -3509,5 +3514,18 @@
     "square_deg": 0.0,
     "tilt": 0.0,
     "verts": 384
+  },
+  "T12_street_zelkova": {
+    "base_frac": 0.01,
+    "normal": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "rect_fill": 0.557,
+    "source_sha256": "2061e9612996873eca291fc8508cb260accd84dd299dd674ed7779a9692bd4fb",
+    "square_deg": 44.6,
+    "tilt": 0.0,
+    "verts": 14544
   }
 }

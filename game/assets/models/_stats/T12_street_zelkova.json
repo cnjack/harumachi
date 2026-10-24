@@ -1,0 +1,33 @@
+{
+ "id": "T12_street_zelkova",
+ "src": "../library/street_trees/source/T12_street_zelkova.glb",
+ "provider": "Project Blender authoring; existing painted zelkova sprigs",
+ "preserve_parts": true,
+ "origin_preserved": true,
+ "tris": 9580,
+ "tex": 2048,
+ "bytes": 1984584,
+ "godot_size_m_xyz": [
+  2.7406,
+  3.4124,
+  2.2637
+ ],
+ "mesh_nodes": [
+  "Foliage_Branch_00",
+  "Foliage_Branch_01",
+  "Foliage_Branch_02",
+  "Foliage_Branch_03",
+  "Foliage_Branch_04",
+  "Foliage_Branch_05",
+  "Foliage_Branch_06",
+  "Foliage_Branch_07",
+  "Foliage_Branch_08",
+  "Foliage_Branch_09",
+  "Foliage_Branch_10",
+  "Foliage_Branch_11",
+  "Foliage_Branch_12",
+  "Foliage_Branch_13",
+  "Foliage_Branch_14",
+  "Trunk_Zelkova"
+ ]
+}

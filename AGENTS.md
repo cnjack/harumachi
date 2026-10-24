@@ -10,7 +10,7 @@
 - 设计文档：`docs/game-design/`，入口 [README.md](docs/game-design/README.md)，当前事实集中在 [CURRENT_STATUS.md](docs/game-design/CURRENT_STATUS.md)
 - 素材源文件和工具：`art/`
 - 录像、截图、测试结果：`evidence/`
-- 导出包：`builds/HareMachi.zip`，Godot4.8-dev7；最新组合道具交付见`evidence/modular_props_20261015/delivery.json`。
+- 导出包：`builds/HareMachi.zip`，Godot4.8-dev7；最新试玩场景修整交付见`evidence/visual_rework_20261024/delivery.json`。
 - 官方网站与网页试玩：`site/`，说明在 `site/README.md`
 
 ## builds 只保留最新交付（2026-10-05）
@@ -45,17 +45,25 @@ PY=/Users/jack/.copilot/session-state/ca10e179-b441-4d77-b938-250cea2ee4c6/files
 BLENDER=/Applications/Blender.app/Contents/MacOS/Blender
 
 $GODOT --headless --path game --import                               # 加了素材或 class_name 之后必须先跑
-$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前2628项；单独运行，套timeout）
+$GODOT --headless --path game res://scenes/tests.tscn -- --out=/tmp/t.json   # 全部测试（当前2799项；单独运行，套timeout）
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=modular-props # 50项：真实单体、拼柜支撑、相框凹槽、刻字与提示牌清理
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=furniture-forms # 87项：圆角、弧背、真实支撑、UV、反射与材质回归
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=furniture-hyper3d # 11项：真实来源复用、玻璃、承重面、缓存与墙面接触
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=furniture-finish # 44项：木纹、接触区域、局部光泽、家电部件、原图与矩阵
-$GODOT --headless --path game res://scenes/tests.tscn -- --only=truck-glazing # 10项：真实窗洞、玻璃内饰、贴图和四轮接地
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=truck-glazing # 11项：真实窗洞、玻璃内饰、曲面轮拱、贴图和四轮接地
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=shopkeeper-presence # 32项：唯一位置、营业/外出/节庆、空柜台与保存恢复
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=bus-cabin # 8项：真实窗洞、玻璃、车门、座椅与实体线路牌
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=plaza-signage # 23项：海报真实支撑、插画/照片、活动木牌与收纳
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=bus-stop-sign # 12项：牌盒厚度、文字贴合、棚檐固定与通路
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=street-tree # 13项：分枝、树池、根颈、冠层与通路
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=farm-approach # 12项：连续坡地、实际UV、植物支撑与双向入口
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=plaza-timber # 6项：庭院木材统一、原纹理与非木材保护
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=stall-lifecycle # 31项：平日收纳、真实库存、试吃、活动、取消与恢复
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=seating # 27项：9张长椅、取消/起身、保存过夜与旧花火入口
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=fishing-tolerance # 13项：3秒反应、350ms控鱼、短时出界与真实失败
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=resident-interiors # 124项：11处室内、真实门口、支撑、通路、邀请与读档
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=resident-visits    # 43项：约定、两种试坐、照片、回访、延期与恢复
-$GODOT --headless --path game res://scenes/tests.tscn -- --only=props-lifecycle    # 48项：收纳、准备、练习、开场、散场、木料与晨间茶盘
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=props-lifecycle    # 70项：整组收纳、实际借用、准备/开场/散场、木料与晨间茶盘
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=narrative-continuity # 41项：相认、复办门槛、目标、阶段回顾与真实后续
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=public-visits      # 23项：新商铺室内、原交易与收藏兼容
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=scene-life # 41项：桥12、两猫12、水山鱼9、语音默认8
@@ -88,7 +96,7 @@ $GODOT --headless --path game res://scenes/tests.tscn -- --only=props        # �
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=display      # 19 项真实橱窗、陈列和近树检查
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=ui-map       # 26 项地图标签、图标、背景和布局检查
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=ui-kit       # 16 项素材、控件状态和共用皮肤检查
-$GODOT --headless --path game res://scenes/tests.tscn -- --only=dialogue-ui  # 16 项对话会话清理、通知补播、恢复和键鼠检查
+$GODOT --headless --path game res://scenes/tests.tscn -- --only=dialogue-ui  # 24 项对话会话清理、通知补播、恢复和键鼠检查
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=placement    # 12 项树根、动物支撑、入口、楼梯和移除物检查
 $GODOT --headless --path game res://scenes/tests.tscn -- --only=daily-save   # 8 项结算自动保存、次日位置、失败与备份检查
 python art/tools/audit_ui_kit.py                                          # UI / 小游戏私有边框审计
@@ -111,7 +119,7 @@ $GODOT --headless --path game --export-release "Windows Desktop" "$HARUMACHI_BUI
 
 ## 必须知道的坑
 
-- **引擎固定4.8-dev7**：精确版本`4.8.dev7.official.c971f93e7`，配置在`tools/godot-version.json`；优先运行`./tools/godot`，它会校验版本。不要依赖可能被自动更新的`/Applications/Godot.app`。`project.godot` features为"4.8"，导出模板为`4.8.dev7`。这是用户要求的开发快照迁移。当前组合道具批次2296项独占全量、40张解压包原生截图及205项完整演示已通过。验收记录不能与历史4.7.2混用。
+- **引擎固定4.8-dev7**：精确版本`4.8.dev7.official.c971f93e7`，配置在`tools/godot-version.json`；优先运行`./tools/godot`，它会校验版本。不要依赖可能被自动更新的`/Applications/Godot.app`。`project.godot` features为"4.8"，导出模板为`4.8.dev7`。这是用户要求的开发快照迁移。当前试玩场景修整 2799 项独占全量、逐项原生复拍及解压包 211 项完整演示已通过。验收记录不能与历史4.7.2混用。
 - **卡顿要查真实时钟和渲染帧**：未使用的晚会桌面不能随每个游戏分钟重扫三角面；桌面测量按实例、变换与来源缓存。只有玩家和跟随镜头启用物理插值，普通移动不能误清插值快照；传送与镜头snap须复位。见`docs/game-design/DESKTOP_STUTTER_20261008.md`。大榕树镜头球扫使用实测1.6万面独立代理，不能重新生成17万面可见树皮碰撞，见`docs/game-design/TREE_LOCOMOTION_20261012.md`。
 - **警告当错误**：推断成 Variant 的变量要写明类型（`var p: Vector3 = ...`）；同一个函数里变量不能重名（嵌套循环里也不行）；字典字面量不能有重复键；不要写叫 `_set` 的方法。
 - **窗口被挡住就停帧**：macOS 不给完全被遮住的窗口画帧，自动演示、录像、截图都会停住。需要带窗口渲染时用 `-t --position <x>,<y>`，并确认持续出帧。
@@ -127,7 +135,7 @@ $GODOT --headless --path game --export-release "Windows Desktop" "$HARUMACHI_BUI
 - **同一个父节点下节点重名会被自动改名**（变成 `@MeshInstance3D@123`），之后按名字就找不到。代码里批量建的节点，名字要带编号。
 - **Blender 和 Godot 的坐标**：GLB 导进 Blender 是 Z 朝上，Godot 的 (x, y, z) 对应 Blender 的 (x, z, −y)。在 Blender 里量模型尺寸、深度时别搞混。
 - **所有模型都经 `WorldBuilder.spawn()` 放**：它给实例打 `model_id` 标记，摆放普查（`scripts/tests/prop_audit.gd`）只查带标记的。代码里给某个模型单独补的碰撞体，要加 meta `model_part`，不然普查会把它当成一堵墙。
-- **店主的站位不写在日程里**：莲和和子阿姨进店时由 `Main.enter_interior()` 放到 `InteriorBuilder.SPECS.<店>.keeper`，出店后回到日程。日程里不要写室内坐标（和子阿姨穿进柜台就是这么来的）。
+- **店主位置由实际日程决定**：莲和和子阿姨的营业状态经 `ShopkeeperPresence` 映射到 `InteriorBuilder.SPECS.<店>.keeper`；进出店只切换所在空间的可见、碰撞和交互，不把同一人搬回门外。外出、定休、节庆和集市优先于柜台；空柜台不能隔空交易。日程仍使用室外语义点，不写室内坐标。
 - **橱窗位置是按店铺模型量出来的**（`scripts/world/shop_windows.gd` 的 `WINDOWS`）：重新导出 S01、S02、S03、S05、S08 以后要重新量，方法见 PIPELINE 第 15 节。
 - **别用顶点统计猜模型歪了多少**：回归、主成分、上下截面质心对不对称的模型（带顶棚的货架、带把手的推车）结果从 11° 到 37° 都有。用 `art/tools/level_util.py` 的 `support_plane()`（凸包最大的朝下的面），最后以游戏里的截图为准。
 - **摆放不能只跑旧PropAudit**：它按模型脚印检查，动物/树属于跳过项，也不单列嵌套商品。现在镇与农园都检查；还要跑PLACEMENT的实际渲染地面、墙帽/座面支撑和树冠净空。见 [摆放修复记录](docs/game-design/PLACEMENT_REVIEW_20261003.md)。
@@ -137,7 +145,7 @@ $GODOT --headless --path game --export-release "Windows Desktop" "$HARUMACHI_BUI
 - 小镇、农园及湖边9张现有长椅由`OutdoorSeating`接入；湖畔有纪念册的座位按实际`HomageDisplay`位置偏向空侧，不能占住蓝羽书签彩蛋；原`farm_bench`复用已有点，普通休息必须让出有效花火节和错过花火后的剧情入口。坐姿切区、过夜、读档前清理，取消Tween不能留下等待中的协程；E/Esc起身先于暂停菜单。
 - 喝水和交接不再创建手持杯、手掌抓握或嘴部目标；杯子留在真实桌面/茶盘，咖啡完成后才扣库存，取消茶水不记作完成。不要按旧抓握断言恢复已移除的动作。
 - 钓鱼窗口3.6秒，短暂出界缓冲0.35秒；验证要覆盖350毫秒反应延迟及持续拉紧/不操作的失败，鱼种、奖励、扣饵和时间成本保持原规则。
-- `--lake-demo`、`--seating-demo`与`--shots=<绝对路径>`可从标题或解压应用直接启动，使用独立`HARUMACHI_SAVE_DIR`，不与`--newgame`混用。该动作批次模型264件、配音436条；当前组合道具批次292件模型，整包结果见顶部最新交付。
+- `--lake-demo`、`--seating-demo`与`--shots=<绝对路径>`可从标题或解压应用直接启动，使用独立`HARUMACHI_SAVE_DIR`，不与`--newgame`混用。该动作批次模型264件、配音436条；历史组合道具批次292件模型；当前场景修整293件模型，整包结果见顶部最新交付。
 
 ## 代码地图
 
