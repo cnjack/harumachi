@@ -15,6 +15,26 @@ func check(case_id: String, name: String, ok: bool, detail: String = "") -> void
 
 
 func _ready() -> void:
+	# F6 can launch this scene from the editor. Do not drive the player's game
+	# (or delete its saves) unless the caller explicitly requested a test run.
+	var requested := false
+	var isolated := not OS.get_environment("HARUMACHI_SAVE_DIR").is_empty()
+	for argument: String in OS.get_cmdline_user_args():
+		if argument == "--run-tests" or argument.begins_with("--only=") or argument.begins_with("--out="):
+			requested = true
+		if argument.begins_with("--test-db="):
+			requested = true
+			isolated = not argument.trim_prefix("--test-db=").is_empty()
+	if not requested:
+		print("TEST_ENTRY: no test requested; opening the title screen. Use F5 to play.")
+		get_tree().change_scene_to_file.call_deferred("res://scenes/title.tscn")
+		return
+	# A flag pointing back at the player's real folder is not isolation.
+	isolated = isolated and ProjectSettings.globalize_path(SaveDB.database_path).get_base_dir().simplify_path() != OS.get_user_data_dir().simplify_path()
+	if not isolated:
+		push_error("Tests require an isolated HARUMACHI_SAVE_DIR or --test-db path.")
+		get_tree().quit(2)
+		return
 	G = GameState
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--test-db="):

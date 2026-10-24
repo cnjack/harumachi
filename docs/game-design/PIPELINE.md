@@ -348,6 +348,8 @@ Godot 这边是 `Audio` 自动加载（`game/scripts/autoload/audio.gd`）：
 
 - **材质视频样板（2026-10-06）**：`art/poc/material_review_20261006/godot/` 是独立 Godot 4.7.2 Forward+ 工程，六种地表各有 A/B；四张 imagegen 图用于实际材质，已有 Hyper3D 住宅用于实景。运行 `python3 art/poc/material_review_20261006/record.py --tag review` 原生录制 40 秒 1080p/30fps 并编码 MP4；视频、8 张截图、日志和检查在 `evidence/material_review_20261006_v1/`。窗口 override 与录制分辨率保持一致，避免 Movie Maker 输出 720p 而截图仍为 1080p。隔离工程不加载游戏 autoload，不修改默认存档。详见该 POC 的 README。
 
+- **测试入口（2026-10-24）**：F5 用于普通试玩；F6 误开 `tests.tscn` 会回到标题。测试必须同时提供 `--run-tests` / `--only=…` / `--out=…` / `--test-db=…` 中的显式参数，以及真正独立的存档目录。例如 `HARUMACHI_SAVE_DIR="$(mktemp -d /tmp/harumachi-tests.XXXXXX)" timeout 240 ./tools/godot --headless --audio-driver Dummy --path game res://scenes/tests.tscn -- --only=dialogue-ui --out=/tmp/dialogue-ui.json`。对话专项现为 24 项，座位专项 27 项；完整回归未在本轮重跑。入口负例和复现见 [INTERACTION_ENTRY_20261024.md](INTERACTION_ENTRY_20261024.md)，独立检查为 `python3 tools/check_test_entry.py`。
+
 - 自动测试：`res://scenes/tests.tscn`，最新源衣物/手臂/平地接触组合2628项独占完整功能回归通过、退出0，含102项步态、112项跑步手臂/手型、47项手势和45项衣物专项，见[本轮源修复](SOURCE_CLOTH_ARMS_20261018.md)。独立 HARUMACHI_SAVE_DIR、超时和 SCRIPT/SHADER ERROR 检查必须同时使用，全量不与其他 Godot 并发。原5mm衣面、12cm模板及8ms求解门槛不变，原始 ERROR 分组保留，严格无 ERROR 日志资格为false。最终数量以JSON报告为准。
 - 卡顿检查要让时钟实际推进，记录逐帧耗时，不能只看平均FPS。工具`evidence/desktop_stutter_20261007/perf_probe.gd`的`--fixed`模式在真实起床卧室和商店街记录480帧，截图回读放在计时之后；使用固定引擎、置顶原生窗口和独立存档。运动清晰度检查在固定镜头距离下核对人物与镜头的渲染插值位置，镜头避障另跑`--only=camera-body`。桌面缓存用晚会专项检查移动、旋转后的实际食物支撑；方法与结果见[卡顿修复](DESKTOP_STUTTER_20261008.md)。
 - 自动演示：普通标题入口`--autoplay`沿实际碰撞路径、Story交互、摆放控制器、料理面板、灯笼输入、日历赴约和拍照完成新夏季至Q15，检查控制与保存恢复。本轮解压包205项通过，最终报告及关键截图在本轮证据目录。自动对白与阶段暂停明确记录，不作为自然四小时；`--showcase`是节日展示夹具。打印的AP mark/frame用于录像剪辑。

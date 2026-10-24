@@ -2,6 +2,7 @@ extends RefCounted
 var t: Node
 var ui: Node
 var _choice_result := -1
+var _interaction_count := 0
 func _init(runner: Node) -> void:
 	t=runner;ui=runner.main.ui
 func check(name: String,ok: bool) -> void:
@@ -17,6 +18,85 @@ func key(code: Key) -> void:
 		var event:=InputEventKey.new();event.keycode=code;event.physical_keycode=code;event.pressed=pressed
 		ui.get_viewport().push_input(event,true)
 		await t.frames(2)
+func interaction_requested(_target: Interactable) -> void:
+	_interaction_count += 1
+func wait_for_dialogue() -> void:
+	var deadline: int = Time.get_ticks_msec() + 2000
+	while not ui.dlg.visible and Time.get_ticks_msec() < deadline:
+		await t.frames(1)
+func input_lifecycle() -> void:
+	var main: Node = t.main
+	var saved: Dictionary = GameState.to_dict().duplicate(true)
+	var original_priority: bool = ui.auto_work_priority
+	var original_roam: bool = NPC.roam_enabled
+	var original_clock_paused: bool = GameState.clock_paused
+	GameState.new_game()
+	GameState.clock_paused = true
+	NPC.roam_enabled = false
+	main._restore()
+	_interaction_count = 0
+	main.player.interact_requested.connect(interaction_requested)
+	ui.instant = false
+	ui.auto = false
+	ui.auto_work_priority = false
+	main.world.set_region("town")
+	GameState.player_region = "town"
+	main.in_room = false
+	GameState.player_in_room = false
+	main.world.set_indoor_look(false)
+	var point: Interactable = main.story.public_life.outdoor.points[0]
+	main.player.global_position = point.get_parent().to_global(point.get_meta("stand_position"))
+	main.player.velocity = Vector3.ZERO
+	main.player.face_towards(point.global_position)
+	await t.frames(8)
+	main.player._update_target()
+	check("approaching a real bench shows its target without opening dialogue or seating the player",main.player.target == point and not ui.dlg.visible and not main.story.busy and not main.player.seated and _interaction_count == 0)
+	await key(KEY_E)
+	await wait_for_dialogue()
+	check("one E press starts exactly one seating interaction",_interaction_count == 1 and main.player.seated and ui.dlg.visible)
+	# Keyboard repeat events must neither advance a line nor start another use.
+	var repeat := InputEventKey.new()
+	repeat.keycode = KEY_E
+	repeat.physical_keycode = KEY_E
+	repeat.pressed = true
+	repeat.echo = true
+	for index in 8:
+		main.get_viewport().push_input(repeat,true)
+		await t.frames(1)
+	check("held E repeat events cannot restart the seat or close its line",_interaction_count == 1 and ui.dlg.visible and main.story.busy)
+	# Finish typing, then dismiss the line with a separate press.
+	await main.get_tree().create_timer(.2).timeout
+	await key(KEY_E)
+	if ui.dlg.visible: await key(KEY_E)
+	await t.frames(8)
+	check("finishing the bench line releases dialogue while keeping the player seated",not main.story.busy and not ui.dlg.visible and not GameState.input_locked() and main.player.seated)
+	await key(KEY_ESCAPE)
+	var deadline: int = Time.get_ticks_msec() + 2000
+	while main.player.seated and Time.get_ticks_msec() < deadline: await t.frames(1)
+	await t.frames(30)
+	check("Esc stands up and waiting beside the bench cannot reopen dialogue",not main.player.seated and not main.story.busy and not ui.dlg.visible and ui.modal == "" and _interaction_count == 1)
+	# A real NPC uses the same input route; it must not begin another session
+	# after its two introductory lines have been dismissed.
+	var npc_point: Interactable = t.stand_at("mio")
+	await t.frames(6)
+	main.player._update_target()
+	check("approaching a neighbour only selects the interaction target",main.player.target == npc_point and not ui.dlg.visible and not main.story.busy and _interaction_count == 1)
+	await key(KEY_SPACE)
+	check("one Space press starts exactly one neighbour conversation",_interaction_count == 2 and ui.dlg.visible and main.story.busy)
+	deadline = Time.get_ticks_msec() + 6000
+	while main.story.busy and Time.get_ticks_msec() < deadline:
+		await main.get_tree().create_timer(.17).timeout
+		await key(KEY_E)
+	await t.frames(30)
+	check("finishing a neighbour conversation stays closed without further input",not main.story.busy and not ui.dlg.visible and not main.player.frozen and not GameState.input_locked() and _interaction_count == 2)
+	main.player.interact_requested.disconnect(interaction_requested)
+	main.story.public_life.stand(true)
+	ui.dialogue_end()
+	ui.auto_work_priority = original_priority
+	GameState.from_dict(saved)
+	GameState.clock_paused = original_clock_paused
+	NPC.roam_enabled = original_roam
+	main._restore()
 func run() -> void:
 	ui.dialogue_end();ui.close_modal()
 	var old_instant: bool=ui.instant;var old_auto: bool=ui.auto
@@ -78,4 +158,5 @@ func run() -> void:
 			(ui.panels.get("_cards") as Array).erase(card)
 			card.queue_free()
 	await t.frames(4)
+	await input_lifecycle()
 	ui.instant=old_instant;ui.auto=old_auto;ui.set_hud_visible(old_hud);ui.panels.set_cards_visible(old_cards);ui.place_bar.visible=old_place
