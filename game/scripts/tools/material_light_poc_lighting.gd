@@ -2,11 +2,11 @@ extends RefCounted
 ## Art-directed lighting profiles for the opt-in POC, not physical lux calibration.
 const PROFILES: Dictionary = {
 	"morning":{"sun":1.70, "ambient":.44, "sky":Color(.67,.76,1.0), "warm":Color(1.0,.88,.69), "fog":Color(.68,.78,.94), "begin":42.0, "end":180.0},
-	"noon":{"sun":1.85, "ambient":.48, "sky":Color(.67,.77,1.0), "warm":Color(1.0,.95,.83), "fog":Color(.69,.82,.96), "begin":50.0, "end":190.0},
+	"noon":{"sun":1.85, "ambient":.48, "sky":Color(.67,.77,1.0), "warm":Color(1.0,.95,.83), "fog":Color(.69,.82,.96), "begin":72.0, "end":230.0},
 	"overcast":{"sun":.32, "ambient":.66, "sky":Color(.79,.83,.96), "warm":Color(.93,.96,1.0), "fog":Color(.69,.77,.86), "begin":35.0, "end":160.0},
-	"rain":{"sun":.12, "ambient":.48, "sky":Color(.65,.76,.90), "warm":Color(.79,.86,1.0), "fog":Color(.49,.62,.76), "begin":22.0, "end":135.0},
+	"rain":{"sun":.12, "ambient":.48, "sky":Color(.65,.76,.90), "warm":Color(.79,.86,1.0), "fog":Color(.39,.51,.66), "begin":28.0, "end":175.0},
 	"sunset":{"sun":1.65, "ambient":.44, "sky":Color(.65,.68,.96), "warm":Color(1.0,.76,.46), "fog":Color(.70,.66,.79), "begin":35.0, "end":175.0},
-	"night":{"sun":.25, "ambient":.29, "sky":Color(.53,.64,.94), "warm":Color(.63,.73,1.0), "fog":Color(.18,.25,.42), "begin":35.0, "end":170.0}
+	"night":{"sun":1.10, "ambient":.65, "sky":Color(.50,.63,1.0), "warm":Color(.46,.66,1.0), "fog":Color(.13,.22,.39), "begin":48.0, "end":210.0}
 }
 var probe: ReflectionProbe
 var window_light: SpotLight3D
@@ -20,11 +20,7 @@ const SKY_TEXTURES: Dictionary = {
 }
 
 func prepare(world: WorldBuilder) -> void:
-	var sky_code: String = FileAccess.get_file_as_string("res://shaders/sky_blend.gdshader")
-	assert(sky_code.count("vec2 uv = SKY_COORDS;") == 1, "POC sky source changed")
-	sky_shader = Shader.new()
-	# Compress the panorama's oversized cloud banks toward the horizon in both sky and water.
-	sky_shader.code = sky_code.replace("vec2 uv = SKY_COORDS;", "vec2 uv = vec2(SKY_COORDS.x, clamp(.5 + (SKY_COORDS.y - .5) * 2.7, 0., 1.));")
+	sky_shader = preload("res://shaders/material_poc_sky.gdshader")
 	original_sun = {"angular":world.sun.light_angular_distance, "blur":world.sun.shadow_blur, "bias":world.sun.shadow_bias, "normal_bias":world.sun.shadow_normal_bias}
 	probe = ReflectionProbe.new()
 	probe.name = "POC_BakeryReflection"
@@ -65,6 +61,12 @@ func apply(world: WorldBuilder, condition: Dictionary, region: String, enabled: 
 	# The new panoramas have no painted sun and retain matching cloud coordinates.
 	world.sky_mat.set_shader_parameter("dusk_offset", 0.0)
 	world.sky_mat.set_shader_parameter("night_offset", 0.0)
+	world.sky_mat.set_shader_parameter("drift", .46)
+	world.sky_mat.set_shader_parameter("moon_tex", load("res://assets/textures/moon.png"))
+	if condition.id == "night":
+		world.sun.rotation_degrees = Vector3(-15.0,140.0,0.0)
+		world.moon.visible = false
+	world.sky_mat.set_shader_parameter("sun_direction", world.sun.global_basis.z.normalized())
 	var profile: Dictionary = PROFILES[condition.id]
 	world.sun.light_energy = float(profile.sun)
 	world.sun.light_color = profile.warm
@@ -95,10 +97,11 @@ func apply(world: WorldBuilder, condition: Dictionary, region: String, enabled: 
 	env.fog_depth_end = float(profile.end)
 	env.fog_depth_curve = 1.45
 	env.fog_aerial_perspective = .20
+	env.fog_sky_affect = 0.0
 	env.glow_bloom = 0.0
 	env.glow_intensity = .25
 	env.glow_hdr_threshold = 1.55
-	window_light.light_energy = 2.0 if condition.id == "night" else (.8 if condition.id == "rain" else .12)
+	window_light.light_energy = 3.2 if condition.id == "night" else (.8 if condition.id == "rain" else .12)
 	# UPDATE_ONCE is refreshed on time/weather changes, never every rendered frame.
 	refresh_index += 1
 	probe.position.x = -24.0 + float(refresh_index % 2) * .001

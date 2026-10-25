@@ -1,0 +1,74 @@
+{
+  "purpose": "opt-in material/light POC, not a replacement game asset",
+  "source": "game/assets/models/P_bridge.glb",
+  "source_sha256": "58f5d236c6b5667aeb968fa44dfe01b672241c705fc0d3ea9e61a8a319831937",
+  "output": "game/assets/material_light_poc/P_bridge_beveled.glb",
+  "sha256": "9d01a140fc2abcc8580c28c8c87c03ed4ae56eb6c40cffffff631e228df8e1b0",
+  "blender": "5.2.1 LTS",
+  "parts": [
+    {
+      "name": "abutments",
+      "width_m": 0.008,
+      "segments": 3,
+      "polygons_before": 168,
+      "polygons_after": 1272,
+      "vertices_before": 288,
+      "vertices_after": 1152,
+      "material_slots": [
+        "stone",
+        "wood_dark"
+      ]
+    },
+    {
+      "name": "beams",
+      "width_m": 0.012,
+      "segments": 3,
+      "polygons_before": 288,
+      "polygons_after": 2496,
+      "vertices_before": 588,
+      "vertices_after": 2304,
+      "material_slots": [
+        "wood_dark"
+      ]
+    },
+    {
+      "name": "deck",
+      "width_m": 0.012,
+      "segments": 3,
+      "polygons_before": 80,
+      "polygons_after": 80,
+      "vertices_before": 168,
+      "vertices_after": 82,
+      "material_slots": [
+        "wood"
+      ]
+    },
+    {
+      "name": "planks",
+      "width_m": 0.006,
+      "segments": 3,
+      "polygons_before": 312,
+      "polygons_after": 2704,
+      "vertices_before": 626,
+      "vertices_after": 2496,
+      "material_slots": [
+        "wood",
+        "wood_light"
+      ]
+    },
+    {
+      "name": "railings",
+      "width_m": 0.012,
+      "segments": 3,
+      "polygons_before": 1224,
+      "polygons_after": 10608,
+      "vertices_before": 2464,
+      "vertices_after": 9792,
+      "material_slots": [
+        "wood_dark",
+        "wood"
+      ]
+    }
+  ],
+  "generator": "art/tools/build_material_light_bridge_poc.py"
+}

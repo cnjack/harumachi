@@ -2,7 +2,7 @@
 
 ## 材质与光影实验（2026-10-25）
 
-`python3 tools/material_light_poc.py review` 在现有屏幕打开两个实际场景；1/2 切场景，左右切六个天气时段，空格切四种材质／光照组合，Q/E 转镜头，R 复位。`capture` 默认输出 48 张真实截图和 `evidence/material_light_poc_20261025/final/index.html`，图库另列 imagegen 方向参考。工具静音、使用临时存档并校验默认存档摘要、几何和真实出帧。该入口不由正常游戏加载；具体教程、材质绑定、天空来源与水面限制见[研究记录](MATERIAL_LIGHT_RESEARCH_20261025.md)。
+`python3 tools/material_light_poc.py review` 在现有屏幕打开两处实际场景；1/2 切场景，左右切六种天气时段，空格切四种对照，Q/E 转镜头，R 复位。`capture` 默认输出 48 张原图及 `evidence/material_light_refine_20261025/round4/index.html`，不覆盖首版；`--orbit=-25` 或 `25` 可复拍侧向视角。图库可选择原版、首版 POC 和前三轮，另列 imagegen 参考。工具静音并隔离存档，检查真实出帧；临时还原候选桥后核对原网格、MultiMesh 和碰撞摘要，新增草量单独记录。该入口与候选资源从正式导出排除；复现命令、倒角生成器、SSR 限制和性能边界见[四轮记录](MATERIAL_LIGHT_ITERATIONS_20261025.md)。
 
 ## 跑步、农场与捞金鱼对照（2026-10-25）
 

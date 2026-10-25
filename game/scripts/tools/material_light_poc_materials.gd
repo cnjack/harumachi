@@ -41,7 +41,11 @@ func sync_water_environment(world: WorldBuilder, lighting_enabled: bool) -> void
 	water_candidate.set_shader_parameter("sky_dusk_offset", world.sky_mat.get_shader_parameter("dusk_offset"))
 	water_candidate.set_shader_parameter("sky_night_offset", world.sky_mat.get_shader_parameter("night_offset"))
 	water_candidate.set_shader_parameter("cloud_cover", world.sky_mat.get_shader_parameter("cloud_cover"))
-	water_candidate.set_shader_parameter("sky_vertical_scale", 2.7 if lighting_enabled else 1.0)
+	water_candidate.set_shader_parameter("sky_vertical_scale", 2.4 if lighting_enabled else 1.0)
+	water_candidate.set_shader_parameter("poc_sky", lighting_enabled)
+	if lighting_enabled:
+		water_candidate.set_shader_parameter("sun_direction",world.sun.global_basis.z.normalized())
+		water_candidate.set_shader_parameter("moon_position",FarmBuilder.ORIGIN+Vector3(94,0,41)+world.sun.global_basis.z.normalized()*10000.0)
 
 func _candidate(original: Material, node_path: String) -> Material:
 	if original is ShaderMaterial:
@@ -53,6 +57,8 @@ func _candidate(original: Material, node_path: String) -> Material:
 			bridge_material.set_shader_parameter("roughness_base", .86)
 			bridge_material.set_shader_parameter("roughness_polished", .68)
 			bridge_material.set_shader_parameter("reflectance", .27)
+			bridge_material.set_shader_parameter("authored_detail_strength", 1.35)
+			bridge_material.set_shader_parameter("sheen_strength", .24)
 			bridge_material.resource_name = "POC current dark bridge timber response"
 			return bridge_material
 		if path.ends_with("material_options/water.gdshader"):
@@ -96,6 +102,11 @@ func _response_shader(path: String) -> Shader:
 	ROUGHNESS = mix(.90, .61 + (grain - .5) * .12, joinery);
 	ROUGHNESS = mix(ROUGHNESS, .96, cloth);
 	SPECULAR = mix(.10, .33, joinery) * (1. - cloth * .85);
+	// Quiet high-frequency plaster stains only; painted joints and coloured parts stay sharp.
+	float neutral = 1. - smoothstep(.035, .12, max(c.r,max(c.g,c.b))-min(c.r,min(c.g,c.b)));
+	float plaster = neutral * smoothstep(.30,.60,min(c.r,min(c.g,c.b))) * (1.-cloth);
+	vec3 broad_paint = textureLod(albedo_tex, UV, 1.5).rgb * albedo_color.rgb;
+	c.rgb = mix(c.rgb, broad_paint*.92+vec3(.05,.045,.035), plaster*.6);
 	float height_m = (grain - .5) * .0018 * joinery + (weave - .5) * .00035 * cloth;
 	NORMAL = poc_surface_normal(NORMAL, VERTEX, height_m);
 	ALBEDO = c.rgb;
@@ -144,20 +155,31 @@ func _water_shader() -> Shader:
 	# This optical study evaluates reflected sky once, separately from diffuse scene light.
 	var code: String = FileAccess.get_file_as_string("res://shaders/lakeside_water_surface.gdshaderinc")
 	var changes: Dictionary = {
-		"varying vec2 p;":"uniform float sky_drift=0.;\nuniform float sky_dusk_offset=0.;\nuniform float sky_night_offset=0.;\nuniform float sky_vertical_scale=1.;\nuniform float cloud_cover=.28;\nvarying vec2 p;",
-		"vec3 sky=mix(":"sky_uv.y=clamp(.5+(sky_uv.y-.5)*sky_vertical_scale,0.,1.);\n vec3 sky=mix(",
-		"vec2 slopes=ripple.xy+water_fine_slopes(p,t);":"vec2 slopes=ripple.xy+water_fine_slopes(p,t)*.45;",
+		"varying vec2 p;":"uniform float sky_drift=0.;\nuniform float sky_dusk_offset=0.;\nuniform float sky_night_offset=0.;\nuniform float sky_vertical_scale=1.;\nuniform float cloud_cover=.28;\nuniform bool poc_sky=false;\n#include \"res://shaders/material_poc_water_reflection.gdshaderinc\"\nvarying vec2 p;",
+		# Godot SKY_COORDS uses atan(x,-z), whereas the inherited water UV uses
+		# atan(z,x)+PI: subtract a quarter turn before applying the POC panorama scale.
+		"vec3 sky=mix(":"sky_uv.y=clamp((poc_sky?.55:.5)+(sky_uv.y-.5)*sky_vertical_scale,0.,1.);\n if(poc_sky)sky_uv.x-=.25;\n sky_uv.x*=poc_sky?3.:1.;\n vec3 sky=mix(",
+		"vec2 slopes=ripple.xy+water_fine_slopes(p,t);":"vec2 slopes=ripple.xy*.65+water_fine_slopes(p,t)*.18;",
 		"texture(sky_day,sky_uv)":"texture(sky_day,sky_uv+vec2(sky_drift,0.))",
-		"texture(sky_dusk,sky_uv)":"texture(sky_dusk,sky_uv+vec2(sky_dusk_offset+sky_drift*.5,0.))",
-		"texture(sky_night,sky_uv)":"texture(sky_night,sky_uv+vec2(sky_night_offset+sky_drift*.25,0.))",
-		"col=mix(col,sky,.09+fresnel*.23);":"sky=mix(sky,vec3(.28,.39,.52),smoothstep(.45,.96,cloud_cover)*.82);\n col*=mix(1.0,.32,night_w);\n col=mix(col,sky,.10+fresnel*.38);",
+		"texture(sky_dusk,sky_uv)":"texture(sky_dusk,sky_uv+vec2(sky_dusk_offset+sky_drift*(poc_sky?1.:.5),0.))",
+		"texture(sky_night,sky_uv)":"texture(sky_night,sky_uv+vec2(sky_night_offset+sky_drift*(poc_sky?1.:.25),0.))",
+		"col=mix(col,sky,.09+fresnel*.23);":"""
+	 sky=mix(sky,vec3(.20,.28,.38),smoothstep(.45,.96,cloud_cover)*.80);
+	 vec3 reflection_origin=(VIEW_MATRIX*vec4(world_position+normal*.06,1.)).xyz;
+	 vec3 reflection_ray=normalize((VIEW_MATRIX*vec4(reflected,0.)).xyz);
+	 vec4 scene_hit=poc_scene_reflection(reflection_origin,reflection_ray,PROJECTION_MATRIX,INV_PROJECTION_MATRIX,INV_VIEW_MATRIX,world_position.y);
+	 sky=mix(sky,scene_hit.rgb,scene_hit.a);
+	 col*=mix(1.0,.22,night_w);
+	 col=mix(col,sky,.16+fresnel*.72);
+""",
+		"col=mix(col,night_palette,night_w*.55);":"col=mix(col,night_palette,night_w*.12);",
 		"ALBEDO=col*surface_tint;":"ALBEDO=col;",
-		"EMISSION=col*mix(surface_tint*.075,vec3(.16),night_w)+sun_color*sun_glints*.42+":"EMISSION=sun_color*sun_glints*.42+",
+		"EMISSION=col*mix(surface_tint*.075,vec3(.16),night_w)+sun_color*sun_glints*.42+":"EMISSION=col*.70+sun_color*sun_glints*.42+",
 		"ALPHA=clamp(mix(shallow_opacity,.98,smoothstep(.12,2.2,depth))+rain_amount*.035,0.0,1.0);":"ALPHA=clamp(mix(.65,.99,smoothstep(.08,1.1,depth))+rain_amount*.035,0.0,1.0);"
 	}
 	for token: String in changes:
 		assert(code.count(token) == 1, "POC water source changed: " + token)
 		code = code.replace(token, changes[token])
 	var shader: Shader = Shader.new()
-	shader.code = "shader_type spatial;\nrender_mode blend_mix,depth_draw_never,unshaded,cull_disabled;\n" + code
+	shader.code = "shader_type spatial;\nrender_mode blend_mix,depth_draw_never,ambient_light_disabled,cull_disabled;\n" + code + "\nvoid light(){if(LIGHT_IS_DIRECTIONAL)DIFFUSE_LIGHT+=vec3(.30)*ATTENUATION;}\n"
 	return shader

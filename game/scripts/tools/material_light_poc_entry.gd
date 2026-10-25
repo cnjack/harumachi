@@ -23,7 +23,18 @@ func _start() -> void:
 			return
 		await process_frame
 	for frame: int in range(8): await process_frame
+	(root.get_node("Audio") as Node).call("silence")
 	main.process_mode = Node.PROCESS_MODE_DISABLED
 	var review: Node = load("res://scripts/tools/material_light_poc.gd").new() as Node
 	review.process_mode = Node.PROCESS_MODE_ALWAYS
 	main.add_child(review)
+
+func finish_review(code: int = 0) -> void:
+	# Release the scene while rendering and resource services are still alive.
+	(root.get_node("Audio") as Node).call("silence")
+	var scene: Node = current_scene
+	current_scene = null
+	if is_instance_valid(scene): scene.queue_free()
+	await process_frame
+	await process_frame
+	quit(code)

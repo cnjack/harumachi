@@ -28,6 +28,8 @@ var geometry: String
 var orbit_degrees: float = 0.0
 var materials: RefCounted = preload("res://scripts/tools/material_light_poc_materials.gd").new()
 var lighting: RefCounted = preload("res://scripts/tools/material_light_poc_lighting.gd").new()
+var landscape: RefCounted = preload("res://scripts/tools/material_light_poc_landscape.gd").new()
+var bridge: RefCounted = preload("res://scripts/tools/material_light_poc_geometry.gd").new()
 
 func _ready() -> void:
 	RenderingServer.viewport_set_measure_render_time(get_viewport().get_viewport_rid(), true)
@@ -37,6 +39,7 @@ func _ready() -> void:
 	world = main.get("world") as WorldBuilder
 	cam = (main.get("rig") as CameraRig).cam
 	output = _arg("poc-out", "")
+	orbit_degrees = clampf(float(_arg("poc-orbit", "0")), -35.0, 35.0)
 	capture_mode = not output.is_empty()
 	main.get("ui").call("set_hud_visible", false)
 	(main.get("ui").get("panels") as RefCounted).call("set_cards_visible", false)
@@ -48,12 +51,15 @@ func _ready() -> void:
 	geometry = MaterialChoiceProfile._geometry_signature(world)
 	materials.prepare(world)
 	lighting.prepare(world)
+	landscape.prepare(world, self)
+	bridge.prepare(world)
 	if capture_mode:
 		DirAccess.make_dir_recursive_absolute(output)
 		_inventory()
 		_write("material-bindings.json", materials.report)
 		_capture.call_deferred()
 	else:
+		mode_index = 3
 		_build_controls()
 		_apply()
 
@@ -92,7 +98,9 @@ func _apply() -> void:
 	world.farm.water_mat.set_shader_parameter("rain_amount", weather.rain)
 	world.farm.water_mat.set_shader_parameter("wave_strength", weather.wind)
 	RenderingServer.global_shader_parameter_set("wind_strength", float(weather.wind))
+	bridge.apply(mode_index == 1 or mode_index == 3)
 	materials.apply(mode_index == 1 or mode_index == 3)
+	landscape.apply(mode_index == 1 or mode_index == 3, spot.region, condition.id == "night")
 	lighting.apply(world, condition, spot.region, mode_index == 2 or mode_index == 3)
 	materials.sync_water_environment(world, mode_index == 2 or mode_index == 3)
 	# Their normal per-frame callback is disabled together with Main for repeatable views.
@@ -132,12 +140,17 @@ func _capture() -> void:
 				var picture: Image = get_viewport().get_texture().get_image()
 				var error: Error = picture.save_png(output.path_join(name_value))
 				if error != OK:
-					get_tree().quit(4)
+					get_tree().call_deferred("finish_review",4)
 					return
 				rows.append({"file":name_value, "scene":SPOTS[scene_index].id, "condition":CONDITIONS[condition_index], "mode":MODES[mode_index], "frames":Engine.get_frames_drawn()-frame_start, "seconds":elapsed, "fps":float(sample_frames)/elapsed, "size":[picture.get_width(),picture.get_height()], "sun_energy":world.sun.light_energy, "ambient":world.env.ambient_light_energy, "fps_limit":Engine.max_fps, "vsync":DisplayServer.window_get_vsync_mode(), "gpu_median_ms":gpu_ms[int(sample_frames * .5)], "gpu_p95_ms":gpu_ms[int(sample_frames * .95)], "sky_dusk":world.sky_mat.get_shader_parameter("dusk_w"), "sky_night":world.sky_mat.get_shader_parameter("night_w")})
-				_write("manifest.json", {"engine":Engine.get_version_info(), "renderer":RenderingServer.get_current_rendering_method(), "geometry_unchanged":geometry==MaterialChoiceProfile._geometry_signature(world), "screens":DisplayServer.get_screen_count(), "shots":rows})
+				rows.back()["orbit_degrees"] = orbit_degrees
+				rows.back()["candidate_bridge"] = bridge.enabled
+				var unchanged: bool = geometry == MaterialChoiceProfile._geometry_signature(world)
+				var restored: bool = geometry == bridge.source_signature(world)
+				assert(restored, "Only the documented bridge candidate may change source geometry; collisions must remain identical")
+				_write("manifest.json", {"engine":Engine.get_version_info(), "renderer":RenderingServer.get_current_rendering_method(), "geometry_unchanged":unchanged, "source_geometry_and_collisions_preserved":restored, "bridge_candidate":bridge.report, "sky_candidate_sha256":lighting.sky_shader.code.sha256_text(), "water_candidate_sha256":materials.water_candidate.shader.code.sha256_text(), "candidate_grass_clumps":landscape.clumps, "landscape_bindings":landscape.bindings.size(), "screens":DisplayServer.get_screen_count(), "shots":rows})
 				print("POC_CAPTURE ", name_value)
-	get_tree().quit(0)
+	get_tree().call_deferred("finish_review",0)
 
 func _inventory() -> void:
 	var surfaces: Array[Dictionary] = []
@@ -178,6 +191,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		KEY_Q: orbit_degrees = clampf(orbit_degrees - 5.0, -35.0, 35.0)
 		KEY_E: orbit_degrees = clampf(orbit_degrees + 5.0, -35.0, 35.0)
 		KEY_R: orbit_degrees = 0.0
-		KEY_ESCAPE: get_tree().quit(0)
+		KEY_ESCAPE:
+			get_tree().call_deferred("finish_review",0)
+			return
 		_: return
 	_apply()
