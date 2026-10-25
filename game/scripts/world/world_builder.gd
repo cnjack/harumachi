@@ -138,6 +138,7 @@ func spawn(id: String, pos: Vector3, yaw_deg: float, collide: int = 1, parent: N
 				if plant_material:plant_material.set_shader_parameter("stem_palette",palette)
 	if SWAY.has(id):
 		make_sway(n, SWAY[id][0], SWAY[id][1])
+	preload("res://scripts/world/farm_timber.gd").apply(n, id)
 	if collide > 0:
 		add_box_collider(n, 0.9 if collide == 1 else 0.6, L_SOLID)
 	return n
@@ -1031,7 +1032,7 @@ static func lane_depth(x: float) -> float:
 
 func _build_town_exit() -> void:
 	var path := ground_material("gravel")
-	path.set_shader_parameter("tint", Color(0.95, 0.9, 0.82))
+	path.set_shader_parameter("tint", preload("res://scripts/world/farm_timber.gd").ROAD)
 	var bank := ShaderMaterial.new()
 	bank.shader = load("res://shaders/lane_bank.gdshader")
 	bank.set_shader_parameter("albedo_tex", load("res://assets/textures/town_detail/grass.png"))

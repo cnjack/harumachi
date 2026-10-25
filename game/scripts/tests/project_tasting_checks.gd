@@ -172,7 +172,8 @@ func material_checks() -> void:
 					var finish: ShaderMaterial=override as ShaderMaterial
 					var old_wood: bool=finish.shader==LakesideMaterials.WOOD_SHADER
 					var refined_wood: bool=finish.shader==SurfaceFinish.SHADER and finish.get_shader_parameter("timber_detail")==true and finish.get_shader_parameter("wood_tex") is Texture2D
-					if old_wood or refined_wood:
+					var farm_wood: bool=finish.shader==FurnitureWoodFinish.SHADER and finish.get_shader_parameter("farm_finish")==true and finish.get_shader_parameter("grain_tex") is Texture2D and int(finish.get_shader_parameter("component_count"))>0
+					if old_wood or refined_wood or farm_wood:
 						aged=true
 						if part.material_override!=null:dual=true
 	t.check("TASTING_MATERIAL","the real aged bridge preserves surface shading without a second whole-mesh override",aged and not dual)

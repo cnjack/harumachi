@@ -127,7 +127,7 @@ func _ground() -> void:
 	lakeside.build(wb)
 	water_mat = lakeside.water_mat
 	var path := WorldBuilder.ground_material("gravel")
-	path.set_shader_parameter("tint", Color(0.95, 0.9, 0.82))
+	path.set_shader_parameter("tint", preload("res://scripts/world/farm_timber.gd").ROAD)
 	path.set_shader_parameter("feather", 0.3)        # grass creeps over the path edges
 	_plane([-32, -0.9, 20, 1.5], path, 0.012)            # main path along the field
 	_plane([-1.1, 1.5, 1.1, RIVER[0]], path, 0.012)      # to the bridge
@@ -168,7 +168,7 @@ func _river() -> void:
 func _field() -> void:
 	# low cedar fence round the beds, open toward the path
 	var wood := StandardMaterial3D.new()
-	wood.albedo_color = Color(0.5, 0.36, 0.24)
+	wood.albedo_color = preload("res://scripts/world/farm_timber.gd").FENCE
 	wood.roughness = 0.95
 	var rect := [-5.4, -9.4, 5.4, -1.6]
 	var posts := []
@@ -296,7 +296,7 @@ func _lamps() -> void:
 		cm.height = 3.6
 		post.mesh = cm
 		var wood := StandardMaterial3D.new()
-		wood.albedo_color = Color(0.42, 0.33, 0.25)
+		wood.albedo_color = Color("624831")
 		post.material_override = wood
 		post.position = p + Vector3(0, 1.8, 0)
 		add_child(post)
@@ -383,7 +383,7 @@ static func lane_height(x: float) -> float:
 
 func _lane_up(trees: Array) -> void:
 	var path := WorldBuilder.ground_material("gravel")
-	path.set_shader_parameter("tint", Color(0.95, 0.9, 0.82))
+	path.set_shader_parameter("tint", preload("res://scripts/world/farm_timber.gd").ROAD)
 	var bank := WorldBuilder.ground_material("grass")
 	bank.set_shader_parameter("feather", 0.0)
 	WorldBuilder.lane(self, -56.0, -30.2, LANE_Z, 1.2, LANE_BANK, -50.0, -32.5, 3.2, 0.0, path, bank, false)

@@ -41,6 +41,11 @@ func run() -> void:
                 var strength: Variant=material.get_shader_parameter("grain_strength")
                 var parts: Variant=material.get_shader_parameter("component_count")
                 if detail==true and material.get_shader_parameter("wood_tex") is Texture2D and strength!=null and float(strength)>=.4 and parts!=null and int(parts)>=2:bridge_texture=true
+                if material.shader==FurnitureWoodFinish.SHADER and material.get_shader_parameter("farm_finish")==true:
+                    var original: StandardMaterial3D=mesh.mesh.surface_get_material(surface) as StandardMaterial3D
+                    var original_grain: bool=original!=null and original.albedo_texture!=null and material.get_shader_parameter("albedo_tex")==original.albedo_texture
+                    var authored_detail: Variant=material.get_shader_parameter("authored_detail_strength")
+                    if original_grain and authored_detail!=null and float(authored_detail)>=1.0 and legacy_wear!=null and float(legacy_wear)>=.3 and parts!=null and int(parts)>=2:bridge_texture=true
     runner.call("check","LAKESIDE_POLISH","bridge timber has painted wear and board variation",bridge_texture)
     var sign: Node = world.farm.get_node_or_null("FarmNameSign")
     runner.call("check","LAKESIDE_POLISH","allotment sign has a decorated aged face",sign!=null and sign.has_meta("decorated_sign"))

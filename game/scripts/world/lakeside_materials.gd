@@ -20,6 +20,7 @@ static func wood(origin: Vector3,dark: bool=false,vertical: bool=false) -> Shade
 static func decorate_bridge(root: Node3D) -> void:
     if root==null:return
     SurfaceFinish.decorate_timber(root)
+    preload("res://scripts/world/farm_timber.gd").apply(root,"P_bridge")
     root.set_meta("bridge_wood_aged",true)
 static func stone(root: Node3D,index: int) -> void:
     if root==null:return

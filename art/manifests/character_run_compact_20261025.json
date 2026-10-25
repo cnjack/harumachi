@@ -1,0 +1,422 @@
+{
+  "version": 1,
+  "batch": "character_run_compact_20261025",
+  "date": "2026-10-25",
+  "kind": "Lower compact source run arms, six rotation channels only",
+  "status": "validated source, native poses, continuous runtime, full regression and packaged autoplay",
+  "characters": [
+    {
+      "id": "CH_sora",
+      "src": "character_run_compact_20261025/exports/CH_sora.glb",
+      "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+      "preserve_rigged_character": true,
+      "tris": 94032,
+      "bytes": 12609428,
+      "bones": 66,
+      "animations": [
+        "idle",
+        "walk",
+        "run",
+        "wave",
+        "bow",
+        "look",
+        "stretch",
+        "tend",
+        "talk",
+        "cheer",
+        "dance",
+        "reference"
+      ],
+      "sha256": "22f967a720acbefb144918446d269e65db05c0f56ff20586a5dfd7fc1c71f3a1",
+      "character_pipeline": "characters-apose-20261004",
+      "input_sha256": "c9ade8067d706b13cf61062d05debc82c5e2bda17e8400282824ceb850ef1c2d",
+      "changed_run_rotation_tracks": 6,
+      "mesh_skin_other_clips_preserved": true,
+      "front_peak": {
+        "Left": {
+          "side": "Left",
+          "time": 0.32499998807907104,
+          "frontness": 1.0,
+          "forearm_elevation_deg": 15.999999999999899,
+          "elbow_flex_deg": 96.00000000000001,
+          "upper_pitch_world_deg": 4.00868848513944,
+          "upper_front_lateral_deg": -8.0,
+          "fist_relative_chest": [
+            -0.07217537367534448,
+            0.011491992625489927,
+            0.225019767914585
+          ]
+        },
+        "Right": {
+          "side": "Right",
+          "time": 0.0,
+          "frontness": 1.0,
+          "forearm_elevation_deg": 15.999999999999892,
+          "elbow_flex_deg": 96.00000000000001,
+          "upper_pitch_world_deg": 3.9692486811315146,
+          "upper_front_lateral_deg": -8.000000000000002,
+          "fist_relative_chest": [
+            0.07643588043293863,
+            0.00995308836330815,
+            0.2285245640430917
+          ]
+        }
+      }
+    },
+    {
+      "id": "CH_mio",
+      "src": "character_run_compact_20261025/exports/CH_mio.glb",
+      "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+      "preserve_rigged_character": true,
+      "tris": 96748,
+      "bytes": 69869784,
+      "bones": 66,
+      "animations": [
+        "idle",
+        "walk",
+        "run",
+        "wave",
+        "bow",
+        "look",
+        "stretch",
+        "tend",
+        "talk",
+        "cheer",
+        "dance",
+        "reference"
+      ],
+      "sha256": "a7a0dc058569505f06a0ddc9227e203079f7215596cf9181a9df72e14689978c",
+      "character_pipeline": "characters-apose-20261004",
+      "input_sha256": "c640c3a0e1150fbc85760ebef612a1bda0aaf8f3946dd4c9d6c5201824f7b375",
+      "changed_run_rotation_tracks": 6,
+      "mesh_skin_other_clips_preserved": true,
+      "front_peak": {
+        "Left": {
+          "side": "Left",
+          "time": 0.3391358256340027,
+          "frontness": 1.0,
+          "forearm_elevation_deg": 15.999999999999899,
+          "elbow_flex_deg": 96.00000000000001,
+          "upper_pitch_world_deg": 3.974052255094185,
+          "upper_front_lateral_deg": -7.999999999999998,
+          "fist_relative_chest": [
+            -0.04104275484399683,
+            -0.013409517064704975,
+            0.1979851930868122
+          ]
+        },
+        "Right": {
+          "side": "Right",
+          "time": 0.0,
+          "frontness": 1.0,
+          "forearm_elevation_deg": 15.999999999999895,
+          "elbow_flex_deg": 96.00000000000001,
+          "upper_pitch_world_deg": 3.9071430019763156,
+          "upper_front_lateral_deg": -7.999999999999998,
+          "fist_relative_chest": [
+            0.03311450672313053,
+            -0.00525759795687405,
+            0.18219154739250262
+          ]
+        }
+      }
+    },
+    {
+      "id": "CH_ren",
+      "src": "character_run_compact_20261025/exports/CH_ren.glb",
+      "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+      "preserve_rigged_character": true,
+      "tris": 94957,
+      "bytes": 19581444,
+      "bones": 54,
+      "animations": [
+        "idle",
+        "walk",
+        "run",
+        "wave",
+        "bow",
+        "look",
+        "stretch",
+        "tend",
+        "talk",
+        "cheer",
+        "dance",
+        "reference"
+      ],
+      "sha256": "480c39953fe09ac800fa5c0d8402a43296372e72ac569ceeea37ae45c7230e3f",
+      "character_pipeline": "characters-apose-20261004",
+      "input_sha256": "c84375fcc33b46300f06293ecf83c6d303efdd8ab7a22f46749ce4a4bea72238",
+      "changed_run_rotation_tracks": 6,
+      "mesh_skin_other_clips_preserved": true,
+      "front_peak": {
+        "Left": {
+          "side": "Left",
+          "time": 0.3391358256340027,
+          "frontness": 1.0,
+          "forearm_elevation_deg": 16.000000000013237,
+          "elbow_flex_deg": 96.00000000000001,
+          "upper_pitch_world_deg": 4.227605207097139,
+          "upper_front_lateral_deg": -8.000000000000005,
+          "fist_relative_chest": [
+            -0.0769817934233045,
+            0.06937328378901597,
+            0.2752682511361232
+          ]
+        },
+        "Right": {
+          "side": "Right",
+          "time": 0.0,
+          "frontness": 1.0,
+          "forearm_elevation_deg": 16.000000000016026,
+          "elbow_flex_deg": 96.00000000000001,
+          "upper_pitch_world_deg": 3.5444660298901867,
+          "upper_front_lateral_deg": -8.000000000000005,
+          "fist_relative_chest": [
+            0.09445843707310354,
+            0.04316682036952026,
+            0.28068292206951617
+          ]
+        }
+      }
+    },
+    {
+      "id": "CH_haru",
+      "src": "character_run_compact_20261025/exports/CH_haru.glb",
+      "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+      "preserve_rigged_character": true,
+      "tris": 89683,
+      "bytes": 8520316,
+      "bones": 54,
+      "animations": [
+        "idle",
+        "walk",
+        "run",
+        "wave",
+        "bow",
+        "look",
+        "stretch",
+        "tend",
+        "talk",
+        "cheer",
+        "dance",
+        "reference"
+      ],
+      "sha256": "ded7df758780201e0757885173912e844b204b794f4c7627fd912ee4ded8fed1",
+      "character_pipeline": "characters-apose-20261004",
+      "input_sha256": "f6308f5a1b0458d8ed42900a3ba12b4b76af22b2a74123d82d2099aa7066fb4e",
+      "changed_run_rotation_tracks": 6,
+      "mesh_skin_other_clips_preserved": true,
+      "front_peak": {
+        "Left": {
+          "side": "Left",
+          "time": 0.375,
+          "frontness": 1.0,
+          "forearm_elevation_deg": 15.999999999999797,
+          "elbow_flex_deg": 96.00000000000001,
+          "upper_pitch_world_deg": 2.9289561206726837,
+          "upper_front_lateral_deg": -7.999999999999997,
+          "fist_relative_chest": [
+            -0.04901690754334667,
+            -0.07442621182754182,
+            0.1926991836597917
+          ]
+        },
+        "Right": {
+          "side": "Right",
+          "time": 0.02499999850988388,
+          "frontness": 1.0,
+          "forearm_elevation_deg": 15.999999999999806,
+          "elbow_flex_deg": 96.00000000000001,
+          "upper_pitch_world_deg": 2.766775955476807,
+          "upper_front_lateral_deg": -8.000000000000002,
+          "fist_relative_chest": [
+            0.05593477103853394,
+            -0.07554633834617906,
+            0.2014378902068549
+          ]
+        }
+      }
+    },
+    {
+      "id": "CH_aoi",
+      "src": "character_run_compact_20261025/exports/CH_aoi.glb",
+      "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+      "preserve_rigged_character": true,
+      "tris": 92351,
+      "bytes": 11197516,
+      "bones": 54,
+      "animations": [
+        "idle",
+        "walk",
+        "run",
+        "wave",
+        "bow",
+        "look",
+        "stretch",
+        "tend",
+        "talk",
+        "cheer",
+        "dance",
+        "reference"
+      ],
+      "sha256": "ec8504eb16c06ce378b1c08c951beb5727773f2670967978c836f7e0e7edeeda",
+      "character_pipeline": "characters-apose-20261004",
+      "input_sha256": "75b051ee775f8cd3268b8230f018ba3387c043d110b6123b55e2156ec84746b2",
+      "changed_run_rotation_tracks": 6,
+      "mesh_skin_other_clips_preserved": true,
+      "front_peak": {
+        "Left": {
+          "side": "Left",
+          "time": 0.28913041949272156,
+          "frontness": 1.0,
+          "forearm_elevation_deg": 15.999999999999918,
+          "elbow_flex_deg": 96.00000000000001,
+          "upper_pitch_world_deg": 3.8366086172812537,
+          "upper_front_lateral_deg": -7.999999999999996,
+          "fist_relative_chest": [
+            -0.057479730612678616,
+            -0.047716061485794235,
+            0.17784633623130225
+          ]
+        },
+        "Right": {
+          "side": "Right",
+          "time": 0.0,
+          "frontness": 1.0,
+          "forearm_elevation_deg": 15.99999999999992,
+          "elbow_flex_deg": 96.00000000000001,
+          "upper_pitch_world_deg": 3.752552335766291,
+          "upper_front_lateral_deg": -8.0,
+          "fist_relative_chest": [
+            0.05353852064977293,
+            -0.04896880802660152,
+            0.17204128347284547
+          ]
+        }
+      }
+    },
+    {
+      "id": "CH_tanaka",
+      "src": "character_run_compact_20261025/exports/CH_tanaka.glb",
+      "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+      "preserve_rigged_character": true,
+      "tris": 89902,
+      "bytes": 20040996,
+      "bones": 54,
+      "animations": [
+        "idle",
+        "walk",
+        "run",
+        "wave",
+        "bow",
+        "look",
+        "stretch",
+        "tend",
+        "talk",
+        "cheer",
+        "dance",
+        "reference"
+      ],
+      "sha256": "2405cc1af4bc8b84f98d380713cb2bc8940ea3e30afa0dc4b815380983deb167",
+      "character_pipeline": "characters-apose-20261004",
+      "input_sha256": "cc0f307a5025e60a437bced5e8337080ffddf6d8881dd31f6c984a5e01dc04fe",
+      "changed_run_rotation_tracks": 6,
+      "mesh_skin_other_clips_preserved": true,
+      "front_peak": {
+        "Left": {
+          "side": "Left",
+          "time": 0.3241558372974396,
+          "frontness": 1.0,
+          "forearm_elevation_deg": 15.999999999999783,
+          "elbow_flex_deg": 82.0,
+          "upper_pitch_world_deg": 25.12459668537957,
+          "upper_front_lateral_deg": -8.0,
+          "fist_relative_chest": [
+            -0.12219458401564219,
+            0.027205183420044746,
+            0.1419050716642476
+          ]
+        },
+        "Right": {
+          "side": "Right",
+          "time": 0.0,
+          "frontness": 1.0,
+          "forearm_elevation_deg": 15.999999999998906,
+          "elbow_flex_deg": 82.0,
+          "upper_pitch_world_deg": 24.88718880475475,
+          "upper_front_lateral_deg": -7.999999999999996,
+          "fist_relative_chest": [
+            0.06170281986953634,
+            -0.028781159836214428,
+            0.13784302607531446
+          ]
+        }
+      }
+    },
+    {
+      "id": "CH_kazuko",
+      "src": "character_run_compact_20261025/exports/CH_kazuko.glb",
+      "provider": "Hyper3D Rodin / welded anatomical character pipeline",
+      "preserve_rigged_character": true,
+      "tris": 97948,
+      "bytes": 44392020,
+      "bones": 54,
+      "animations": [
+        "idle",
+        "walk",
+        "run",
+        "wave",
+        "bow",
+        "look",
+        "stretch",
+        "tend",
+        "talk",
+        "cheer",
+        "dance",
+        "reference"
+      ],
+      "sha256": "dc3be276155cc85514442d32d6bfbdace421ae1bc48a7fa7d9936f5170a13491",
+      "character_pipeline": "characters-apose-20261004",
+      "input_sha256": "f972fd3250754b470791c04df509f74048d53c12e3fbbb89c1e3bfb6e71ac0d6",
+      "changed_run_rotation_tracks": 6,
+      "mesh_skin_other_clips_preserved": true,
+      "front_peak": {
+        "Left": {
+          "side": "Left",
+          "time": 0.3241558372974396,
+          "frontness": 1.0,
+          "forearm_elevation_deg": 16.0000000000119,
+          "elbow_flex_deg": 96.00000000000001,
+          "upper_pitch_world_deg": 3.780731392377938,
+          "upper_front_lateral_deg": -7.999999999999998,
+          "fist_relative_chest": [
+            -0.07030845019270801,
+            -0.015434748476700979,
+            0.21877939949503536
+          ]
+        },
+        "Right": {
+          "side": "Right",
+          "time": 0.0,
+          "frontness": 1.0,
+          "forearm_elevation_deg": 16.000000000012374,
+          "elbow_flex_deg": 96.00000000000001,
+          "upper_pitch_world_deg": 3.6874368382057936,
+          "upper_front_lateral_deg": -8.000000000000002,
+          "fist_relative_chest": [
+            0.07733987436539323,
+            -0.011194410490385614,
+            0.2215434324747876
+          ]
+        }
+      }
+    }
+  ],
+  "verification": {
+    "full_checks": 2861,
+    "native_continuous_cases": 14,
+    "packaged_autoplay_checks": 211,
+    "evidence": "evidence/feedback_run_farm_fish_20261025/delivery.json",
+    "existing_garment_certificates": "historical; new source uses guarded fallback, not resigned certificates"
+  }
+}

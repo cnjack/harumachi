@@ -50,6 +50,8 @@ func setup(world: WorldBuilder, plot_id: String, with_bed: bool = true, bed_scal
 					var m := mi.mesh.surface_get_material(si)
 					if m is StandardMaterial3D:
 						var d := (m as StandardMaterial3D).duplicate() as StandardMaterial3D
+						if plot_id.begins_with("farm") or plot_id.begins_with("gh"):
+							d.albedo_color *= preload("res://scripts/world/farm_timber.gd").BED
 						mi.set_surface_override_material(si, d)
 						soil_mats.append(d)
 						soil_base.append(d.albedo_color)

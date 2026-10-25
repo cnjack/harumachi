@@ -248,6 +248,7 @@ func _paths_and_shores() -> void:
 	material.shader = load("res://shaders/lakeside_path.gdshader")
 	material.set_shader_parameter("albedo_tex",load("res://assets/textures/lakeside_polish/path.png"))
 	material.set_shader_parameter("wear_strength",.30)
+	material.set_shader_parameter("path_tint",Color("b6a28b"))
 	for route: PackedVector2Array in LakesideLayout.walk_paths():
 		_ribbon(route,2.6,material,true)
 	var shore := LakesideLayout.lake_outline(120,.7)

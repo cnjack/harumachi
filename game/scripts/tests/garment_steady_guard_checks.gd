@@ -1,7 +1,7 @@
 extends RefCounted
 ## Actual final-modifier regressions for certified revision2 and current Ren.
 ## The immutable revision2 fixture retains the original certificate positives;
-## current revision3 must use the real unverified-content fallback.
+## current revision4 must use the real unverified-content fallback.
 ## No observational modifier is attached: it must not change the eligibility
 ## inventory it measures. Only the support's real callback counters acknowledge
 ## completion; absent instrumentation is a failure, never an empty success.
@@ -42,9 +42,9 @@ const CASE_NAMES: Array[String] = [
 	"Ren real place then controller idle keeps unfinished AP blend outside certified bypass even after contact reset",
 ]
 const CURRENT_CASE_NAMES: Array[String] = [
-	"Current revision3 Ren idle uses real uncertified fallback",
-	"Current revision3 Ren walk uses real uncertified fallback",
-	"Current revision3 Ren run uses real uncertified fallback",
+	"Current revision4 Ren idle uses real uncertified fallback",
+	"Current revision4 Ren walk uses real uncertified fallback",
+	"Current revision4 Ren run uses real uncertified fallback",
 ]
 const CERTIFIED_MODEL := "res://scripts/tests/fixtures/ren_certified_revision2/CH_ren.glb"
 const FIXTURE_SOURCE := "res://scripts/tests/fixtures/ren_certified_revision2/source.json"

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "purpose": "Immutable, already-certified revision2 source for the original 19 steady guard tests. This is neither a new certificate nor certification of current revision3.",
+  "purpose": "Immutable, already-certified revision2 source for the original 19 steady guard tests. This is neither a new certificate nor certification of current production animation.",
   "source": "art/models/character_run_arm_20261019/exports/CH_ren.glb",
   "source_manifest": "art/manifests/character_run_arm_20261019.json",
   "source_model_sha256": "c2fb3e6c2a4be6b3b3135fdefcda80d9820692eac5236fc7964f77fe5c061707",
@@ -69,10 +69,10 @@
   },
   "uncertified_production": {
     "asset": "res://assets/models/CH_ren.glb",
-    "revision": 3,
-    "source_model_sha256": "c84375fcc33b46300f06293ecf83c6d303efdd8ab7a22f46749ce4a4bea72238",
+    "revision": 4,
+    "source_model_sha256": "480c39953fe09ac800fa5c0d8402a43296372e72ac569ceeea37ae45c7230e3f",
     "expected_behavior": "No matching certificate. Real full/pose cache fallback, with the support enabled and no steady fast counter increment.",
-    "document": "docs/game-design/RUN_ARM_POSE_20261019.md"
+    "document": "docs/game-design/RUN_FARM_FISH_20261025.md"
   },
   "release_exclusion": "Existing export_presets.cfg scripts/tests/* filter excludes this fixture for every platform.",
   "historical_import_parameters_path": "res://scripts/tests/fixtures/ren_certified_revision2/certified_import.cfg",

@@ -1,6 +1,7 @@
 extends MiniGame
 
 const WATER := Rect2(47.0, 62.0, 1144.0, 631.0)
+const SWIM_SHADER: Shader = preload("res://shaders/goldfish_swim.gdshader")
 const PAPER_RADIUS := 53.0
 const FISH_POINTS := [10, 20, 30, 60]
 const FISH_WEIGHT := [8.0, 13.0, 17.0, 29.0]
@@ -281,12 +282,15 @@ func _spawn_fish(t: int) -> void:
 	var angle := rng.randf_range(0.0, TAU)
 	var sp := Sprite2D.new()
 	sp.texture = FISH_TEX[t]
+	var swim_material := ShaderMaterial.new()
+	swim_material.shader = SWIM_SHADER
+	sp.material = swim_material
 	sp.position = pos
 	sp.rotation = angle
 	sp.modulate = Color(1.0, 1.0, 1.0, rng.randf_range(0.83, 1.0))
 	stage.add_child(sp)
 	stage.move_child(sp, _ripple_layer.get_index())
-	fish.append({"type": t, "pos": pos, "vel": Vector2.RIGHT.rotated(angle) * FISH_SPEED[t], "sprite": sp, "turn": rng.randf_range(-1.0, 1.0), "turn_wait": rng.randf_range(0.3, 1.3), "startle": 0.0, "phase": rng.randf_range(0.0, TAU), "depth": rng.randf_range(0.86, 1.02)})
+	fish.append({"type": t, "pos": pos, "vel": Vector2.RIGHT.rotated(angle) * FISH_SPEED[t], "sprite": sp, "turn": rng.randf_range(-1.0, 1.0), "turn_wait": rng.randf_range(0.3, 1.3), "startle": 0.0, "phase": rng.randf_range(0.0, TAU), "depth": rng.randf_range(0.86, 1.02), "swim_phase": angle, "glide_phase": angle, "flee": Vector2.ZERO})
 
 func _random_type() -> int:
 	var roll := rng.randf()
@@ -322,15 +326,26 @@ func _move_fish(i: int, delta: float) -> void:
 	if poi_dipped and f.startle <= 0.0 and f.pos.distance_to(poi_pos) < 137.0 and _should_startle(f.pos, f.vel, poi_pos, poi_pos.distance_to(poi_target) * 9.5):
 		desired += (f.pos - poi_pos).normalized() * 4.0
 		f.startle = 0.85
+		f.flee = (f.pos - poi_pos).normalized()
 		sfx("splash", -13.0, 1.2)
+	if f.startle > 0.3: desired += (f.flee as Vector2) * 2.4
 	var heading: Vector2 = desired.normalized() if desired.length_squared() > 0.01 else f.vel.normalized()
-	var speed: float = FISH_SPEED[int(f.type)] * (1.8 if f.startle > 0.3 else 1.0)
-	f.vel = f.vel.lerp(heading * speed, minf(1.0, delta * 3.5))
+	f.glide_phase += delta * (2.4 + float(f.type) * .31)
+	var pulse: float = pow(maxf(0.0, sin(float(f.glide_phase))), 2.0)
+	var pace: float = 1.8 if f.startle > 0.3 else .72 + 1.02 * pulse
+	var speed: float = FISH_SPEED[int(f.type)] * pace
+	f.vel = f.vel.lerp(heading * speed, 1.0 - exp(-delta * (7.0 if f.startle > 0.3 else 5.0)))
 	f.pos = _fish_clamp(f.pos + f.vel * delta)
 	var sp: Sprite2D = f.sprite
 	sp.position = f.pos
-	sp.rotation = f.vel.angle() + sin(swim_t * 8.0 + float(f.phase)) * 0.065
-	sp.scale = Vector2(float(f.depth), float(f.depth) * (1.0 + sin(swim_t * 12.0 + float(f.phase)) * 0.065))
+	var turn_angle: float = wrapf((f.vel as Vector2).angle() - sp.rotation, -PI, PI)
+	sp.rotation = lerp_angle(sp.rotation, (f.vel as Vector2).angle(), 1.0 - exp(-delta * 12.0))
+	sp.scale = Vector2.ONE * float(f.depth)
+	f.swim_phase += delta * (7.0 + (f.vel as Vector2).length() / FISH_SPEED[int(f.type)] * 8.0)
+	var material: ShaderMaterial = sp.material as ShaderMaterial
+	material.set_shader_parameter("swim_phase", float(f.swim_phase))
+	material.set_shader_parameter("effort", clampf(pace * .7, .45, 1.25))
+	material.set_shader_parameter("bend", clampf(turn_angle * .3, -.08, .08))
 
 func _water_clamp(p: Vector2) -> Vector2:
 	return Vector2(clampf(p.x, WATER.position.x + 62.0, WATER.end.x - 65.0), clampf(p.y, WATER.position.y + 65.0, WATER.end.y - 80.0))

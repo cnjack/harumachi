@@ -145,7 +145,7 @@ func run() -> void:
 	for mesh: MeshInstance3D in WorldBuilder.find_meshes(ignored):
 		for surface: int in mesh.mesh.get_surface_count(): excluded = excluded and not bool(_value(mesh.get_active_material(surface), "has_finish_tint", false))
 	ignored.queue_free()
-	check("outdoor benches outside the courtyard keep their original timber palette", excluded)
+	check("town benches outside the courtyard keep their original timber palette", excluded)
 	var table: Node3D = main.placement.placed_nodes.get(-424) as Node3D
 	var first: Vector4 = Vector4.ZERO
 	for mesh: MeshInstance3D in WorldBuilder.find_meshes(table):

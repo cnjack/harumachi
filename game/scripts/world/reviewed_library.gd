@@ -56,6 +56,7 @@ static func _place(world: WorldBuilder,parent: Node3D,entry: Array,farm: bool) -
 	var at: Vector3=entry[1]
 	WorldBuilder.rest_on_terrain(model,LakesideLayout.height_at(Vector2(at.x,at.z)) if farm else .01,.001)
 	finish(model,int(entry[3]))
+	if farm: preload("res://scripts/world/farm_timber.gd").apply(model, str(entry[0]))
 	if str(entry[0])=="P_library_bucket":
 		var water:=MeshInstance3D.new();water.name="ShallowWater"
 		var disk:=CylinderMesh.new();disk.top_radius=.142;disk.bottom_radius=.142;disk.height=.004;disk.radial_segments=32

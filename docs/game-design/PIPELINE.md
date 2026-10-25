@@ -1,12 +1,16 @@
 # 模型、工程与交付流程
 
-## 均衡档光影 POC 录像（2026-10-25）
+## 跑步、农场与捞金鱼对照（2026-10-25）
 
-`tools/lighting_poc/run.py` 按 `prepare → preview → bench → record → finish` 在临时工程制作四场景对照，POC 控制器不进入正式 `game/`。`summarize.py` 汇总未录屏的 30 秒采样，`encode.py` 输出四组并排、八段原尺寸视频及 48 秒合集，并完整解码核对。两侧固定相同机位、时间和均衡设置；录像的 30 FPS 固定时间步不能作为游戏实时帧率。工具只使用现有 screen 0，拒绝并发渲染，隔离存档并静音。完整命令、效果范围和实测见[光影 POC](LIGHTING_POC_20261025.md)。
+当前完整回归 2861 项，解压包完整演示 211 项通过。`--only=farm-fish-feedback` 共 16 项，覆盖实际农场材质、旧桥装饰后的最终颜色、城镇隔离、道路和小游戏游动。新增断言先在旧版本失败，再验证新版本；现有材质检查同时识别新木材着色器，仍核对原纹理、木件分区和重复覆盖。
+
+`author_crossbody_running_style.py --compact` 只接受明确的 revision3 源，只改 run 六条旋转曲线。导出后同步游戏、素材库、`model_audit.measure()` 和静止 `level_check.py` 实测，不复制旧摘要。最终源为 `art/models/character_run_compact_20261025/exports/`，清单为 `art/manifests/character_run_compact_20261025.json`。原衣物认证保留历史范围，新源失配时继续完整辅助，不补签旧证明。
+
+`tools/feedback_review/README.md` 给出静音、隔离存档、现有屏幕和原生录像命令。对照固定 30 FPS，动态图验证使用均衡档与 `--graphics-benchmark` 避免无焦点窗口的后台限帧；不能由录像推断帧率或发热变化。使用场景同机位、同时段比较，七人分别复拍并检查连续跑动，田中追加四方向四相位。见[证据与限制](RUN_FARM_FISH_20261025.md)。
 
 ## 画面与耗电对照（2026-10-24）
 
-当前完整回归 2845 项、原生检查 18 项与解压应用完整演示 211 项通过。菜单、近景人物和实际包内场景另留原生截图；这些检查不代表用户的长时间体感验收。
+该批次完整回归 2845 项、原生检查 18 项与解压应用完整演示 211 项通过。菜单、近景人物和实际包内场景另留原生截图；这些检查不代表用户的长时间体感验收。
 
 `--only=performance-mode` 共 32 项，检查三档、SQLite 设置恢复、室内外光照切换、草叶几何、实际 LOD 切换、相机变焦和拍照即时恢复、人物预算和低帧率物理补算。`scripts/tools/performance_mode_review.gd` 在现有屏幕检查真实菜单、出帧、人物远近/转镜头以及 5 FPS 下的实际物理时钟；全部使用独立 `HARUMACHI_SAVE_DIR` 和 `--audio-driver Dummy`。
 
@@ -28,7 +32,7 @@ CPU 来自进程累计用户与内核 CPU 时间，在 Apple Silicon 上按 `mac
 
 本轮六个模型的权威源统一在 `art/library/`，导出配置必须放在 `game_assets.json` 的 `assets` 对象内。修改后更新模型统计、真实支撑面和完整模型审计，再进行原生复拍。公交轮胎须按完整轮圈确定轴心，不能只检查已经分出的局部轮胎；海报要同时检查承载面与最终插画材质。当轮全量 2799 项，原生场景复拍及解压应用 211 项完整演示通过，见[本轮流程与交付](SCENE_FEEDBACK_20261024.md)。
 
-`--only=garment-steady-guards` 共 22 项：原认证的真实 revision2 样本保留 19 项保护检查，当前 revision3 另验 3 项安全回退。样本核对原始导入参数、源摘要和真实导入指纹；不将当前动画补签为旧认证。所有测试资源均在导出包排除，成品 PCK 另作实查。
+`--only=garment-steady-guards` 共 22 项：原认证的真实 revision2 样本保留 19 项保护检查，未获新认证的后续源动画另验 3 项安全回退。样本核对原始导入参数、源摘要和真实导入指纹；不将当前动画补签为旧认证。所有测试资源均在导出包排除，成品 PCK 另作实查。
 
 澪 v17：保留原眼睛注册及中性脸轮廓，`FaceRig.turn` 写入 3×3 小角度源关键形；`MioBindings` 给眼口添加真实脸部遮罩。`--review-performance` 验证 1680 帧情境、45 组表情/视线组合，`verify_web_performance.mjs` 比对 Swift/JS 文字口型；完整接缝仍用 `--review-motion` 与实际可见窗口。`export_mio.py --runtime <独立目录> --inverse-mask-fixture --work <已有工作目录> --reuse-bake` 可导出反向遮罩反例，不覆盖正式源工程。包内五个 exp3 与四个 motion3、physics3 一起分发。详见[表现完善记录](MIO_PERFORMANCE_20261021.md)。下列旧版本流程为历史。
 
@@ -66,7 +70,7 @@ CPU 来自进程累计用户与内核 CPU 时间，在 Apple Silicon 上按 `mac
 
 ## 跑步摆臂源修订（2026-10-19）
 
-当前七人源输出为`art/models/character_run_arm_cross_20261019/exports/`，清单为`art/manifests/character_run_arm_cross_20261019.json`。从明确的revision2源运行`author_crossbody_running_style.py`，只重写run六条Arm/ForeArm/Hand旋转曲线，实现前臂斜向对侧上胸、后臂向后外侧，保留手指及其余源数据；工具拒绝重复叠加revision3。用户要求本轮结束测试，现有屏幕28张姿态预览后仅继续编译和必要包检查，完整动态验收未重跑。旧112项/加密衣物检查属于revision2，莲新源摘要未获得零辅助证明。见[参数与结果](RUN_ARM_POSE_20261019.md)。
+2026-10-19 当时的七人源输出为`art/models/character_run_arm_cross_20261019/exports/`，清单为`art/manifests/character_run_arm_cross_20261019.json`。从明确的revision2源运行`author_crossbody_running_style.py`，只重写run六条Arm/ForeArm/Hand旋转曲线，实现前臂斜向对侧上胸、后臂向后外侧，保留手指及其余源数据；工具拒绝重复叠加revision3。用户要求本轮结束测试，现有屏幕28张姿态预览后仅继续编译和必要包检查，完整动态验收未重跑。旧112项/加密衣物检查属于revision2，莲新源摘要未获得零辅助证明。见[参数与结果](RUN_ARM_POSE_20261019.md)。
 
 ## 本轮源衣物与跑步修复（2026-10-18）
 
@@ -380,7 +384,7 @@ Godot 这边是 `Audio` 自动加载（`game/scripts/autoload/audio.gd`）：
 
 - **测试入口（2026-10-24）**：F5 用于普通试玩；F6 误开 `tests.tscn` 会回到标题。测试必须同时提供 `--run-tests` / `--only=…` / `--out=…` / `--test-db=…` 中的显式参数，以及真正独立的存档目录。例如 `HARUMACHI_SAVE_DIR="$(mktemp -d /tmp/harumachi-tests.XXXXXX)" timeout 240 ./tools/godot --headless --audio-driver Dummy --path game res://scenes/tests.tscn -- --only=dialogue-ui --out=/tmp/dialogue-ui.json`。对话专项现为 24 项，座位专项 27 项；完整回归未在本轮重跑。入口负例和复现见 [INTERACTION_ENTRY_20261024.md](INTERACTION_ENTRY_20261024.md)，独立检查为 `python3 tools/check_test_entry.py`。
 
-- 自动测试：`res://scenes/tests.tscn`，当前 2845 项独占完整功能回归通过、退出 0，见[画面与耗电优化](POWER_PROFILES_20261024.md)。独立 `HARUMACHI_SAVE_DIR`、超时和 SCRIPT/SHADER ERROR 检查必须同时使用，全量不与其他 Godot 并发。原 5mm 衣面、12cm 模板及 8ms 求解门槛不变。dummy renderer 与主动制造的保存失败日志已分类，不能称为严格零 ERROR；最终数量以 JSON 报告为准。
+- 自动测试：`res://scenes/tests.tscn`，当前 2861 项独占完整功能回归通过、退出 0，见[跑步、农场与捞金鱼](RUN_FARM_FISH_20261025.md)。独立 `HARUMACHI_SAVE_DIR`、超时和 SCRIPT/SHADER ERROR 检查必须同时使用，全量不与其他 Godot 并发。原 5mm 衣面、12cm 模板及 8ms 求解门槛不变。dummy renderer 与主动制造的保存失败日志已分类，不能称为严格零 ERROR；最终数量以 JSON 报告为准。
 - 卡顿检查要让时钟实际推进，记录逐帧耗时，不能只看平均FPS。工具`evidence/desktop_stutter_20261007/perf_probe.gd`的`--fixed`模式在真实起床卧室和商店街记录480帧，截图回读放在计时之后；使用固定引擎、置顶原生窗口和独立存档。运动清晰度检查在固定镜头距离下核对人物与镜头的渲染插值位置，镜头避障另跑`--only=camera-body`。桌面缓存用晚会专项检查移动、旋转后的实际食物支撑；方法与结果见[卡顿修复](DESKTOP_STUTTER_20261008.md)。
 - 自动演示：普通标题入口`--autoplay`沿实际碰撞路径、Story交互、摆放控制器、料理面板、灯笼输入、日历赴约和拍照完成新夏季至Q15，检查控制与保存恢复。本轮解压包205项通过，最终报告及关键截图在本轮证据目录。自动对白与阶段暂停明确记录，不作为自然四小时；`--showcase`是节日展示夹具。打印的AP mark/frame用于录像剪辑。
 - 录制时游戏窗口不能被别的窗口完全挡住：macOS 会停止给被挡住的窗口画帧，演示就停在原地。本会话按用户要求只使用现有显示器，不创建或启动虚拟屏幕；实测屏幕编号与 Godot 像素坐标后设置 `--screen`、`-t --position`，并在测试进程使用 `--audio-driver Dummy`。以下历史命令中的机位须按当前可见屏幕调整。

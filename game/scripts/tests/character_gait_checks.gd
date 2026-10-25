@@ -349,10 +349,10 @@ func gait_contract(id: String,model: Node3D,sk: Skeleton3D,support: Node,control
 			check(id+" "+clip+" knees stay forward after safety IK",fresh and min_forward>=-.004,"minimum forward knee offset %.5fm"%min_forward+coverage)
 			if clip=="run":check(id+" running retains real simultaneous shoe flight after safety IK",fresh and flight>=2,"%d/32 phases both complete shoes >25mm"%flight+coverage)
 		if id=="sora" and clip=="run":
-			# Revision 3 deliberately crosses the chest and swings outward behind.
+			# The compact source profile keeps the cross-body motion at a lower height.
 			# Use its existing measured angle/fist contract, not the superseded
 			# straight-beside-ribs limit. The legacy profile retains that limit.
-			if cross_chest:check("Sora running retains the authored cross-chest front and outward rear peaks",fresh and arm_contracts.cross_chest_peaks_ok(cross_peaks),str(cross_peaks)+coverage)
+			if cross_chest:check("Sora running retains the compact source arm peaks",fresh and arm_contracts.cross_chest_peaks_ok(cross_peaks,id),str(cross_peaks)+coverage)
 			else:check("Sora running forearms stay beside the ribs instead of splaying outward",fresh and max_elbow_out<.050 and max_wrist_out<.060,"elbow %.4fm; wrist %.4fm outside shoulder"%[max_elbow_out,max_wrist_out]+coverage)
 		if id=="mio" and clip=="run":check("Mio running ankles retain separated tracks instead of crossing inward",fresh and min_ankle_span>=.12,"minimum directed ankle track separation %.4fm; rest left/right sign %.0f; maximum toe forward yaw %.2f degrees"%[min_ankle_span,track_sign,max_foot_yaw]+coverage)
 		if clip in (REBUILT[id] as Array):

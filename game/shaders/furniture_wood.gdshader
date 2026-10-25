@@ -7,6 +7,11 @@ uniform sampler2D grain_tex : source_color, filter_linear_mipmap_anisotropic, re
 uniform vec4 base_color : source_color = vec4(.66, .49, .31, 1.);
 uniform vec4 finish_tint : source_color = vec4(1.);
 uniform bool has_finish_tint = false;
+uniform bool farm_timber_mask = false;
+uniform bool farm_finish = false;
+uniform bool farm_preserve_hat = false;
+uniform bool farm_preserve_compost = false;
+uniform float farm_wood_top = 100.;
 uniform bool has_original = false;
 uniform vec2 uv_scale = vec2(1.);
 uniform vec2 uv_offset = vec2(0.);
@@ -49,6 +54,7 @@ varying vec3 board_normal;
 varying vec3 board_min;
 varying vec3 board_size;
 varying float board_horizontal;
+varying float board_axis;
 varying float finish_polish;
 varying float reflection_f0;
 varying float reflection_roughness;
@@ -62,6 +68,7 @@ void vertex() {
 	board_normal = NORMAL;
 	board_min = part_min;
 	board_size = part_size;
+	board_axis = float(grain_axis);
 	board_horizontal = 1. - step(max(part_size.x, part_size.z) * .60, part_size.y);
 	for (int index = 0; index < 64; index++) {
 		if (index >= component_count) { break; }
@@ -69,6 +76,7 @@ void vertex() {
 			board_min = component_min[index].xyz;
 			board_size = component_max[index].xyz - component_min[index].xyz;
 			board_horizontal = component_max[index].w;
+			board_axis = component_min[index].w;
 			break;
 		}
 	}
@@ -79,8 +87,11 @@ void fragment() {
 	NORMAL_MAP_DEPTH = 0.;
 	vec3 extent = max(board_size, vec3(.001));
 	vec3 q = clamp((board_p - board_min) / extent, vec3(0.), vec3(1.));
-	float along = grain_axis == 1 ? root_p.y : (grain_axis == 2 ? root_p.z : root_p.x);
-	float across = grain_axis == 1 ? (abs(root_normal.x) > .5 ? root_p.z : root_p.x) : (grain_axis == 2 ? (abs(root_normal.y) > .5 ? root_p.x : root_p.y) : (abs(root_normal.y) > .5 ? root_p.z : root_p.y));
+	int axis = farm_finish ? int(board_axis + .5) : grain_axis;
+	vec3 grain_p = farm_finish ? board_p : root_p;
+	vec3 grain_n = farm_finish ? board_normal : root_normal;
+	float along = axis == 1 ? grain_p.y : (axis == 2 ? grain_p.z : grain_p.x);
+	float across = axis == 1 ? (abs(grain_n.x) > .5 ? grain_p.z : grain_p.x) : (axis == 2 ? (abs(grain_n.y) > .5 ? grain_p.x : grain_p.y) : (abs(grain_n.y) > .5 ? grain_p.z : grain_p.y));
 	vec2 grain_uv = vec2(across * 2.2, along * .75);
 	float grain = dot(texture(grain_tex, grain_uv).rgb, vec3(.2126, .7152, .0722));
 	vec3 original = has_original ? texture(albedo_tex, UV * uv_scale + uv_offset).rgb * base_color.rgb : base_color.rgb * (.94 + grain * .14);
@@ -90,6 +101,16 @@ void fragment() {
 		timber = smoothstep(1.08, 1.24, original.r / max(original.g, .005)) * smoothstep(1.04, 1.22, original.g / max(original.b, .005));
 		timber *= 1. - smoothstep(.66, .82, min(original.r, min(original.g, original.b)));
 	}
+	if (farm_timber_mask) {
+		// Exclude saturated red/orange produce and the flowers above wooden boxes.
+		timber *= smoothstep(.26, .38, original.g / max(original.r, .005));
+		timber *= 1. - smoothstep(farm_wood_top, farm_wood_top + .015, root_p.y);
+	}
+	if (farm_preserve_hat) {
+		vec2 hat = (root_p.xy - vec2(-.42, 1.22)) / vec2(.32, .31);
+		if (dot(hat, hat) < 1. && root_p.z > .035) { timber = 0.; }
+	}
+	if (farm_preserve_compost && abs(root_p.x) < .29 && abs(root_p.z) < .43 && root_p.y > .45 && root_p.y < .75 && root_normal.y > .3) { timber = 0.; }
 	if (atlas_mode == 2) {
 		bool top = root_normal.y > .7 && root_p.y > .66 && root_p.y < .82 && abs(root_p.x) < .54 && abs(root_p.z) < .36;
 		timber *= top ? 1. : 0.;
@@ -107,7 +128,7 @@ void fragment() {
 		// The source-image contrast remains visible beneath the lacquer reflection.
 		float fibre_contrast = 1. + (grain - .4) * grain_strength;
 		if (has_original) {
-			float image_detail = clamp(1. + (authored_fibre - authored_fibre_reference) * authored_detail_strength, .72, 1.15);
+			float image_detail = clamp(1. + (authored_fibre - authored_fibre_reference) * authored_detail_strength, farm_finish ? .35 : .72, farm_finish ? 1.75 : 1.15);
 			fibre_contrast = authored_detail_strength > 0. ? image_detail : (fibre_contrast * (.96 + .08 * authored_fibre));
 		}
 		vec3 art_wood = finish_tint.rgb * fibre_contrast;
@@ -149,6 +170,7 @@ void fragment() {
 	}
 	if (structural) { polished = 0.; rubbed *= .35; marks = 0.; }
 	vec3 colour = original;
+	if (farm_finish) { colour *= 1. - timber * .12 * (1. - smoothstep(0., .35, root_p.y)); }
 	if (use_profile == 2 && !structural) {
 		float luminance = dot(original, vec3(.2126, .7152, .0722));
 		vec3 quieter = mix(original, vec3(luminance), .10);

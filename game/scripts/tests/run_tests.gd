@@ -123,6 +123,8 @@ func _ready() -> void:
 		await load("res://scripts/tests/landscape_coverage_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=tree-locomotion"):
 		await load("res://scripts/tests/tree_locomotion_checks.gd").new(self).run()
+	elif OS.get_cmdline_user_args().has("--only=farm-fish-feedback"):
+		await load("res://scripts/tests/farm_fish_feedback_checks.gd").new(self).run()
 	elif OS.get_cmdline_user_args().has("--only=material-detail"):
 		await load("res://scripts/tests/material_refinement_checks.gd").new(self).run()
 		await load("res://scripts/tests/material_water_checks.gd").new(self).run()
@@ -342,6 +344,7 @@ func _ready() -> void:
 		await load("res://scripts/tests/foliage_depth_checks.gd").new(self).run()
 		await load("res://scripts/tests/outdoor_render_checks.gd").new(self).run()
 		await load("res://scripts/tests/performance_mode_checks.gd").new(self).run()
+		await load("res://scripts/tests/farm_fish_feedback_checks.gd").new(self).run()
 		await load("res://scripts/tests/public_place_art_checks.gd").new(self).run()
 		await load("res://scripts/tests/inhabited_places_checks.gd").new(self).run()
 		await load("res://scripts/tests/character_visual_checks.gd").new(self).run()
