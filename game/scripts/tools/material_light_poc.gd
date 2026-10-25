@@ -2,7 +2,11 @@ extends Node
 ## Real game scenes, reversible material/lighting overrides and a four-way comparison.
 const SPOTS: Array[Dictionary] = [
 	{"id":"bakery", "label":"面包房门前", "region":"town", "at":Vector3(-24,.1,-12), "camera":Vector3(-28.5,3.1,-8.8), "focus":Vector3(-24,2.85,-19.3)},
-	{"id":"lake", "label":"湖畔木栈桥", "region":"farm", "at":Vector3(94,.2,46), "camera":Vector3(89.8,2.1,48.7), "focus":Vector3(96,.9,35)}
+	{"id":"lake", "label":"湖畔木栈桥", "region":"farm", "at":Vector3(94,.2,46), "camera":Vector3(89.8,2.1,48.7), "focus":Vector3(96,.9,35)},
+	{"id":"bakery_joinery", "label":"二楼窗框与檐口", "region":"town", "at":Vector3(-24,.1,-12), "camera":Vector3(-24.1,4.3,-12.4), "focus":Vector3(-24.1,4.3,-16.4)},
+	{"id":"bakery_entry", "label":"布篷与底层橱窗", "region":"town", "at":Vector3(-24,.1,-12), "camera":Vector3(-26.4,2.8,-13.8), "focus":Vector3(-24,1.9,-16.1)},
+	{"id":"lake_grass", "label":"湖畔草叶近景", "region":"farm", "at":Vector3(94,.2,46), "camera":Vector3(92,.75,45.4), "focus":Vector3(91,.22,42.5)},
+	{"id":"bakery_cedar", "label":"杉树冠层近景", "region":"town", "at":Vector3(-24,.1,-12), "camera":Vector3(-28,4.8,-23), "focus":Vector3(-31.35,6.0,-31)}
 ]
 const CONDITIONS: Array[Dictionary] = [
 	{"id":"morning", "label":"晴晨 08:00", "minute":480.0, "weather":"sunny"},
@@ -30,6 +34,7 @@ var materials: RefCounted = preload("res://scripts/tools/material_light_poc_mate
 var lighting: RefCounted = preload("res://scripts/tools/material_light_poc_lighting.gd").new()
 var landscape: RefCounted = preload("res://scripts/tools/material_light_poc_landscape.gd").new()
 var bridge: RefCounted = preload("res://scripts/tools/material_light_poc_geometry.gd").new()
+var shapes: RefCounted = preload("res://scripts/tools/material_light_poc_shapes.gd").new()
 
 func _ready() -> void:
 	RenderingServer.viewport_set_measure_render_time(get_viewport().get_viewport_rid(), true)
@@ -53,6 +58,7 @@ func _ready() -> void:
 	lighting.prepare(world)
 	landscape.prepare(world, self)
 	bridge.prepare(world)
+	shapes.prepare(world,self)
 	if capture_mode:
 		DirAccess.make_dir_recursive_absolute(output)
 		_inventory()
@@ -67,6 +73,14 @@ func _arg(key: String, fallback: String) -> String:
 	for argument: String in OS.get_cmdline_user_args():
 		if argument.begins_with("--" + key + "="): return argument.get_slice("=", 1)
 	return fallback
+
+func release_candidates() -> void:
+	# Let rendering dependencies switch back before releasing the shared candidate
+	# meshes/materials. Metal otherwise reports stale material RIDs during teardown.
+	mode_index = 0
+	_apply()
+	await RenderingServer.frame_post_draw
+	await RenderingServer.frame_post_draw
 
 func _apply() -> void:
 	var spot: Dictionary = SPOTS[scene_index]
@@ -101,6 +115,7 @@ func _apply() -> void:
 	bridge.apply(mode_index == 1 or mode_index == 3)
 	materials.apply(mode_index == 1 or mode_index == 3)
 	landscape.apply(mode_index == 1 or mode_index == 3, spot.region, condition.id == "night")
+	shapes.apply(mode_index == 1 or mode_index == 3, condition,spot.region)
 	lighting.apply(world, condition, spot.region, mode_index == 2 or mode_index == 3)
 	materials.sync_water_environment(world, mode_index == 2 or mode_index == 3)
 	# Their normal per-frame callback is disabled together with Main for repeatable views.
@@ -110,7 +125,7 @@ func _apply() -> void:
 	(main.get("weather_fx") as WeatherFX).rig = cam
 	(main.get("weather_fx") as WeatherFX)._update_origin()
 	if caption:
-		caption.text = "%s    %s    %s\n1/2 场景   ←/→ 天气时段   空格 四种对照   Q/E 转动视角   R 复位   Esc 退出" % [spot.label, condition.label, MODES[mode_index]]
+		caption.text = "%s    %s    %s\n1/2 全景 · 3 窗框 · 4 布篷 · 5 草叶 · 6 杉树   ←/→ 时段   空格 对照   Q/E 转动   R 复位   Esc 退出" % [spot.label, condition.label, MODES[mode_index]]
 
 func _capture() -> void:
 	var sample_frames: int = maxi(60, int(_arg("poc-sample-frames", "60")))
@@ -146,10 +161,11 @@ func _capture() -> void:
 				rows.back()["orbit_degrees"] = orbit_degrees
 				rows.back()["candidate_bridge"] = bridge.enabled
 				var unchanged: bool = geometry == MaterialChoiceProfile._geometry_signature(world)
-				var restored: bool = geometry == bridge.source_signature(world)
-				assert(restored, "Only the documented bridge candidate may change source geometry; collisions must remain identical")
+				var restored: bool = geometry == shapes.source_signature(world, bridge)
+				assert(restored, "Documented mesh candidates must restore all source geometry and collisions")
 				_write("manifest.json", {"engine":Engine.get_version_info(), "renderer":RenderingServer.get_current_rendering_method(), "geometry_unchanged":unchanged, "source_geometry_and_collisions_preserved":restored, "bridge_candidate":bridge.report, "sky_candidate_sha256":lighting.sky_shader.code.sha256_text(), "water_candidate_sha256":materials.water_candidate.shader.code.sha256_text(), "candidate_grass_clumps":landscape.clumps, "landscape_bindings":landscape.bindings.size(), "screens":DisplayServer.get_screen_count(), "shots":rows})
 				print("POC_CAPTURE ", name_value)
+				_write("shape-bindings.json",shapes.report)
 	get_tree().call_deferred("finish_review",0)
 
 func _inventory() -> void:
@@ -185,6 +201,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	match key.keycode:
 		KEY_1: scene_index = 0
 		KEY_2: scene_index = 1
+		KEY_3: scene_index = 2
+		KEY_4: scene_index = 3
+		KEY_5: scene_index = 4
+		KEY_6: scene_index = 5
 		KEY_RIGHT: condition_index = (condition_index + 1) % CONDITIONS.size()
 		KEY_LEFT: condition_index = posmod(condition_index - 1, CONDITIONS.size())
 		KEY_SPACE: mode_index = (mode_index + 1) % MODES.size()

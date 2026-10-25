@@ -4384,6 +4384,42 @@
       "purpose": "Local skin fill beneath independently moving nose; apply only feathered 26x30 source-pixel patch, preserve original facial artwork elsewhere",
       "generated_output": "exec-6c85778e-9c21-4953-b1ed-ae47015a44b0.png",
       "sha256": "22a39d5fc188dd7518111a6d0fb7cf6dbd458fb3420dbf1ebb0f1417b9f67eb2"
+    },
+    {
+      "file": "game/assets/material_light_poc/shape/leaf_atlas.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "date": "2026-10-25",
+      "prompt": "art/manifests/prompts/material_shape_leaf_atlas_20261025.txt",
+      "purpose": "Transparent broadleaf atlas for opt-in tree source candidates",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "b487ac6bd7dcd8d64d86bc66beffc860557328524156c59d52128ec5c7bf47d8",
+      "status": "candidate, awaiting art review",
+      "id": "material_shape_leaf_atlas_20261025",
+      "transparent_background": true,
+      "provider_output_name": "exec-dd1f8df3-ff1d-4598-a9e2-aab73ef530d2.png",
+      "notes": "Original imagegen output copied unmodified. Broadleaf sprays for source-authored crowns."
+    },
+    {
+      "id": "material_shape_cedar_atlas_20261025",
+      "file": "game/assets/material_light_poc/shape/cedar_atlas.png",
+      "tool": "codex image_gen built-in",
+      "date": "2026-10-25",
+      "transparent_background": true,
+      "sha256": "223cd3674c9eaf4b94ff363d4d2ab7332a9c9b36702e0c35a141d2b454c21181",
+      "status": "candidate POC; art review pending",
+      "notes": "Original imagegen output copied unmodified. Stylized cedar scale-leaf fans for source-authored crowns.",
+      "exists": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "prompt": "art/manifests/prompts/material_shape_cedar_atlas_20261025.txt",
+      "purpose": "Transparent cedar fan atlas for opt-in tree source candidates",
+      "provider_output_name": "exec-12ba3a3e-fdff-4f8c-9c73-847e651512c7.png"
     }
   ]
 }

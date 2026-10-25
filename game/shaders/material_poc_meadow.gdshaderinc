@@ -2,7 +2,7 @@
 uniform float poc_night=0.;
 vec3 poc_meadow(vec2 p){
  float macro=field_noise(p*.19)*.7+field_noise(p*.61+13.)*.3;
- vec3 colour=mix(vec3(.075,.21,.075),vec3(.23,.36,.08),smoothstep(.24,.79,macro));
+ vec3 colour=mix(vec3(.065,.215,.055),vec3(.20,.35,.065),smoothstep(.24,.79,macro));
  float distance_fade=1.-smoothstep(.12,.55,length(fwidth(p)));
  vec2 q=p*vec2(6.,10.);
  vec2 cell=floor(q),f=fract(q);

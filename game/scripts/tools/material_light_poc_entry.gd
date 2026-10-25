@@ -33,6 +33,9 @@ func finish_review(code: int = 0) -> void:
 	# Release the scene while rendering and resource services are still alive.
 	(root.get_node("Audio") as Node).call("silence")
 	var scene: Node = current_scene
+	if is_instance_valid(scene):
+		for child: Node in scene.get_children():
+			if child.has_method("release_candidates"): await child.call("release_candidates")
 	current_scene = null
 	if is_instance_valid(scene): scene.queue_free()
 	await process_frame

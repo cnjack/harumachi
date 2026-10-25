@@ -45,7 +45,7 @@ func prepare(world: WorldBuilder, owner: Node) -> void:
 	extras.add_child(grass)
 	var keep: Callable = func(p: Vector2) -> bool: return LakesideLayout.water_distance(p) > .85 and LakesideLayout.path_distance(p) > 1.4 and not (absf(p.x-94.)<2.05 and p.y>35. and p.y<49.)
 	var height_at: Callable = func(p: Vector2) -> float: return LakesideLayout.height_at(p)
-	clumps = grass.lawn([[78,28,118,57]],[],"lawn",6.8,20261025,0.,height_at,keep)
+	clumps = grass.lawn([[78,28,118,57]],[],"lawn",9.3,20261025,0.,height_at,keep)
 	for node: Node in owner.get_tree().current_scene.find_children("*","MultiMeshInstance3D",true,false):
 		var multi: MultiMeshInstance3D = node as MultiMeshInstance3D
 		if multi.get_meta("landscape_tree",false) and multi.multimesh.mesh.get_surface_count() == 1:

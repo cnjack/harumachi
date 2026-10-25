@@ -2,7 +2,7 @@
 
 ## 材质与光影实验（2026-10-25）
 
-`python3 tools/material_light_poc.py review` 在现有屏幕打开两处实际场景；1/2 切场景，左右切六种天气时段，空格切四种对照，Q/E 转镜头，R 复位。`capture` 默认输出 48 张原图及 `evidence/material_light_refine_20261025/round4/index.html`，不覆盖首版；`--orbit=-25` 或 `25` 可复拍侧向视角。图库可选择原版、首版 POC 和前三轮，另列 imagegen 参考。工具静音并隔离存档，检查真实出帧；临时还原候选桥后核对原网格、MultiMesh 和碰撞摘要，新增草量单独记录。该入口与候选资源从正式导出排除；复现命令、倒角生成器、SSR 限制和性能边界见[四轮记录](MATERIAL_LIGHT_ITERATIONS_20261025.md)。
+`python3 tools/material_light_poc.py review` 在现有屏幕打开原生候选；1/2 切两处全景，3/4 看窗框和布篷，5/6 看草叶和杉树，左右切时段，空格切模式，Q/E 转镜头，R 复位。`capture` 默认输出 48 张主图及 `evidence/material_shape_refine_20261025/round8/index.html`；保留已有证据时指定新 `--out`。`--orbit=-25` 或 `25` 可补侧面；图库并列原版、首版、各轮及 imagegen 参考。工具静音、隔离存档并检查真实出帧，恢复原网格后核对网格／MultiMesh／碰撞摘要，候选资源与入口从正式导出排除。源模型生成、草根与树冠检查、近景命令和实测边界见[第 5–8 轮](MATERIAL_SHAPE_ITERATIONS_20261025.md)。
 
 ## 跑步、农场与捞金鱼对照（2026-10-25）
 

@@ -1,0 +1,296 @@
+{
+  "iteration": 8,
+  "blender": "5.2.1 LTS",
+  "generator": "art/tools/build_material_shape_poc.py",
+  "scope": "candidate source assets, not production integration",
+  "trees": [
+    {
+      "id": "T01_courtyard_tree",
+      "source_sha256": "6d4ea91efe0e20bb20160bbf63689b5e6c4c2efb9ad72feaa29be9eb6ecaa483",
+      "candidate_sha256": "805b1fe9fd68c2d7d47ad2db4eaf346bea4d427b96a479509ec352677edf6455",
+      "foliage_part": "Foliage_1",
+      "original_vertices": 3840,
+      "vertices": 1802,
+      "triangles": 1904,
+      "leaf_sprays": 272,
+      "crown_groups": 17,
+      "inner_crown_volumes": 17,
+      "trunk": "retained without geometry edits",
+      "seed": 261025
+    },
+    {
+      "id": "T02_summer_tree",
+      "source_sha256": "abc6a4f1c8891bcc3bcbed3354e89be80df94d815a6947adbc6fcab40f0ef2da",
+      "candidate_sha256": "0742c5f8600af7566b9007eaa73de9e5169bdea9154b3ec45a72f11422544b30",
+      "foliage_part": "Foliage_1",
+      "original_vertices": 3600,
+      "vertices": 2226,
+      "triangles": 2352,
+      "leaf_sprays": 336,
+      "crown_groups": 21,
+      "inner_crown_volumes": 21,
+      "trunk": "retained without geometry edits",
+      "seed": 261404
+    },
+    {
+      "id": "T03_round_ginkgo",
+      "source_sha256": "2b609aeb8da1a8b710cb6614cfddaf226013f31f681411d0cdef409248f33b9b",
+      "candidate_sha256": "e87b2f0a5f0a00c37b7bcb2b576676835511f2916279804962c6cda486783ead",
+      "foliage_part": "Foliage_1",
+      "original_vertices": 2600,
+      "vertices": 2226,
+      "triangles": 2352,
+      "leaf_sprays": 336,
+      "crown_groups": 21,
+      "inner_crown_volumes": 21,
+      "trunk": "retained without geometry edits",
+      "seed": 261783
+    },
+    {
+      "id": "T04_slender_cedar",
+      "source_sha256": "3866763e5553d0907ea2da5acc964de93b59461506470486c976b3763561c9a3",
+      "candidate_sha256": "8fc9f4895ea6bca64fcd76a8210c82ff9e881bc322eb80e6c8fd4e3f3c96a684",
+      "foliage_part": "Foliage_CedarSprays",
+      "original_vertices": 7718,
+      "vertices": 2862,
+      "triangles": 3024,
+      "leaf_sprays": 432,
+      "crown_groups": 27,
+      "inner_crown_volumes": 27,
+      "trunk": "retained without geometry edits",
+      "seed": 262162
+    }
+  ],
+  "grass": [
+    {
+      "name": "Grass_backdrop_0",
+      "blades": 50,
+      "short_blades": 31,
+      "vertices": 621,
+      "triangles": 528,
+      "main_width_m": [
+        0.02508,
+        0.04332
+      ],
+      "godot_root_v": 0
+    },
+    {
+      "name": "Grass_backdrop_1",
+      "blades": 50,
+      "short_blades": 31,
+      "vertices": 621,
+      "triangles": 528,
+      "main_width_m": [
+        0.02508,
+        0.04332
+      ],
+      "godot_root_v": 0
+    },
+    {
+      "name": "Grass_backdrop_2",
+      "blades": 50,
+      "short_blades": 31,
+      "vertices": 621,
+      "triangles": 528,
+      "main_width_m": [
+        0.02508,
+        0.04332
+      ],
+      "godot_root_v": 0
+    },
+    {
+      "name": "Grass_plaza_0",
+      "blades": 50,
+      "short_blades": 31,
+      "vertices": 621,
+      "triangles": 528,
+      "main_width_m": [
+        0.02508,
+        0.04332
+      ],
+      "godot_root_v": 0
+    },
+    {
+      "name": "Grass_plaza_1",
+      "blades": 50,
+      "short_blades": 31,
+      "vertices": 621,
+      "triangles": 528,
+      "main_width_m": [
+        0.02508,
+        0.04332
+      ],
+      "godot_root_v": 0
+    },
+    {
+      "name": "Grass_plaza_2",
+      "blades": 50,
+      "short_blades": 31,
+      "vertices": 621,
+      "triangles": 528,
+      "main_width_m": [
+        0.02508,
+        0.04332
+      ],
+      "godot_root_v": 0
+    },
+    {
+      "name": "Grass_lawn_0",
+      "blades": 50,
+      "short_blades": 31,
+      "vertices": 621,
+      "triangles": 528,
+      "main_width_m": [
+        0.02508,
+        0.04332
+      ],
+      "godot_root_v": 0
+    },
+    {
+      "name": "Grass_lawn_1",
+      "blades": 50,
+      "short_blades": 31,
+      "vertices": 621,
+      "triangles": 528,
+      "main_width_m": [
+        0.02508,
+        0.04332
+      ],
+      "godot_root_v": 0
+    },
+    {
+      "name": "Grass_lawn_2",
+      "blades": 50,
+      "short_blades": 31,
+      "vertices": 621,
+      "triangles": 528,
+      "main_width_m": [
+        0.02508,
+        0.04332
+      ],
+      "godot_root_v": 0
+    },
+    {
+      "name": "Grass_meadow_0",
+      "blades": 50,
+      "short_blades": 31,
+      "vertices": 621,
+      "triangles": 528,
+      "main_width_m": [
+        0.02508,
+        0.04332
+      ],
+      "godot_root_v": 0
+    },
+    {
+      "name": "Grass_meadow_1",
+      "blades": 50,
+      "short_blades": 31,
+      "vertices": 621,
+      "triangles": 528,
+      "main_width_m": [
+        0.02508,
+        0.04332
+      ],
+      "godot_root_v": 0
+    },
+    {
+      "name": "Grass_meadow_2",
+      "blades": 50,
+      "short_blades": 31,
+      "vertices": 621,
+      "triangles": 528,
+      "main_width_m": [
+        0.02508,
+        0.04332
+      ],
+      "godot_root_v": 0
+    },
+    {
+      "name": "Grass_tall_0",
+      "blades": 50,
+      "short_blades": 31,
+      "vertices": 621,
+      "triangles": 528,
+      "main_width_m": [
+        0.02508,
+        0.04332
+      ],
+      "godot_root_v": 0
+    },
+    {
+      "name": "Grass_tall_1",
+      "blades": 50,
+      "short_blades": 31,
+      "vertices": 621,
+      "triangles": 528,
+      "main_width_m": [
+        0.02508,
+        0.04332
+      ],
+      "godot_root_v": 0
+    },
+    {
+      "name": "Grass_tall_2",
+      "blades": 50,
+      "short_blades": 31,
+      "vertices": 621,
+      "triangles": 528,
+      "main_width_m": [
+        0.02508,
+        0.04332
+      ],
+      "godot_root_v": 0
+    }
+  ],
+  "atlas_sha256": "b487ac6bd7dcd8d64d86bc66beffc860557328524156c59d52128ec5c7bf47d8",
+  "cedar_atlas_sha256": "223cd3674c9eaf4b94ff363d4d2ab7332a9c9b36702e0c35a141d2b454c21181",
+  "architecture": {
+    "source": "game/assets/models/S02.glb",
+    "plaster_faces": 16748,
+    "removed_faces_total": 5365,
+    "removed_window_faces": 1762,
+    "removed_fascia_faces": 953,
+    "added_parts": [
+      "DisplayJoinery_Left",
+      "DisplayJoinery_Right",
+      "DisplayJoinery_Top",
+      "DisplayJoinery_Sill",
+      "DoorJoinery_Left",
+      "DoorJoinery_Right",
+      "DoorJoinery_Top",
+      "DoorJoinery_Sill",
+      "UpperJoinery_Left",
+      "UpperJoinery_Right",
+      "UpperJoinery_Top",
+      "UpperJoinery_Sill",
+      "UpperMullion_0",
+      "UpperMullion_1",
+      "UpperTransom_0",
+      "UpperTransom_1",
+      "UpperGlass",
+      "UpperDripCap",
+      "GableFascia_Left",
+      "GableFascia_Right",
+      "ContinuousFrontFascia",
+      "VentRecess",
+      "VentLouver_0",
+      "VentLouver_1",
+      "VentLouver_2",
+      "VentLouver_3",
+      "TensionedCanvas",
+      "ScallopedCanvas",
+      "CanvasPaleSeam",
+      "AwningDiagonal_0",
+      "AwningDiagonal_1"
+    ],
+    "ground_floor_display_cavities": "retained",
+    "upper_window": "surface and joinery rebuilt; no full interior room",
+    "ground_glass_rectangles": "ShopWindows.WINDOWS.S02 unchanged",
+    "joinery_bevel_m": 0.006,
+    "canvas_thickness_m": 0.012,
+    "repair_boundaries_clipped": true,
+    "source_sha256": "2747ab8bb3fcc2e4481ffb455d6fa08f1ab150ddca4967abc4f529150274805e",
+    "candidate_sha256": "3d9cd5b65b0ede256a056cc16472375169504cf02e6aa4a9b7216ebe4d9fc3f4"
+  }
+}

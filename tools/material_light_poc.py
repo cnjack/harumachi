@@ -13,7 +13,7 @@ import tempfile
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT = ROOT / "evidence/material_light_refine_20261025/round4"
+DEFAULT = ROOT / "evidence/material_shape_refine_20261025/round8"
 CONDITIONS = "morning,noon,overcast,rain,sunset,night"
 MODES = "baseline,material,lighting,combined"
 
@@ -99,9 +99,19 @@ def run(args):
 
 def gallery(out):
     manifest = json.loads((out / "manifest.json").read_text())
+    # Keep each native capture manifest intact; combine only the review payload.
+    if out.name == "round8" and out.parent.name == "material_shape_refine_20261025":
+        for directory, suffix in (("round8-close", ""), ("orbit-left", "_left"), ("orbit-right", "_right")):
+            folder = out.parent / directory
+            if not (folder / "manifest.json").exists():
+                continue
+            for shot in json.loads((folder / "manifest.json").read_text())["shots"]:
+                manifest["shots"].append(dict(shot, scene=shot["scene"] + suffix,
+                                              file=os.path.relpath(folder / shot["file"], out)))
     manifest["history"] = []
     versions = [("initial", "优化前 POC", ROOT / "evidence/material_light_poc_20261025/final")]
-    versions += [(f"round{i}", f"第 {i} 轮", ROOT / f"evidence/material_light_refine_20261025/round{i}") for i in (1, 2, 3)]
+    versions += [(f"round{i}", f"第 {i} 轮", ROOT / f"evidence/material_light_refine_20261025/round{i}") for i in (1, 2, 3, 4)]
+    versions += [(f"round{i}", f"第 {i} 轮 · 本次优化", ROOT / f"evidence/material_shape_refine_20261025/round{i}") for i in (5, 6, 7)]
     for ident, label, folder in versions:
         if folder.resolve() == out or not (folder / "manifest.json").exists():
             continue
@@ -119,27 +129,27 @@ def gallery(out):
 <style>
 :root{color-scheme:dark;font-family:system-ui,sans-serif;background:#101924;color:#e8edf3}body{max-width:1500px;margin:32px auto;padding:0 24px}h1{font-size:28px;font-weight:600;margin-bottom:8px}p{color:#b6c4d4;line-height:1.6}nav{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}select,button{font:inherit;padding:9px 14px;background:#233345;border:1px solid #496077;color:inherit;border-radius:6px}.stage{position:relative;aspect-ratio:16/9;overflow:hidden;background:#080c12}.stage img{display:block;position:absolute;width:100%;height:100%;object-fit:contain}.stage .after{clip-path:inset(0 0 0 50%)}.line{position:absolute;top:0;bottom:0;left:50%;width:2px;background:white;pointer-events:none}.labels{display:flex;justify-content:space-between;margin:10px 0}.range{width:100%;accent-color:#e6bc7d}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:26px 0}.grid img{width:100%;display:block}figure{margin:0}figcaption{padding:7px 0;color:#c5d1de}small{color:#93a7bd}a{color:#e8c28d}.hint{border-left:3px solid #e8c28d;padding-left:14px}details{line-height:1.6;margin-top:20px}button{cursor:pointer}@media(max-width:700px){.grid{grid-template-columns:1fr}body{padding:0 12px}}
 </style>
-<h1>材质与光影 / 两处实景迭代</h1>
+<h1>树形、草叶与建筑 / 两处实景迭代</h1>
 <p>真实 Godot 4.8-dev7 渲染。选择原版或此前轮次，拖动分隔线比较；下方四张图拆开材质、局部模型细化与光照的贡献。</p>
 <nav><select id="scene" aria-label="场景"></select><select id="condition" aria-label="天气与时间"></select><select id="version" aria-label="对照轮次"><option value="baseline">正式游戏原版</option></select><select id="mode" aria-label="比较模式"><option value="combined">完整候选</option><option value="material">材质与局部细化</option><option value="lighting">只改灯光</option></select><button id="original">打开候选原图</button></nav>
 <div class="labels"><span id="before-label">原版</span><span id="candidate">完整候选</span></div>
 <div class="stage"><img id="before" alt="原版实景"><img id="after" class="after" alt="候选实景"><div class="line"></div></div>
 <input class="range" id="wipe" type="range" min="0" max="100" value="50" aria-label="对照分隔线">
 <small id="meta"></small><div class="grid" id="grid"></div>
-<p class="hint">这是待审的视觉方案，未替换正式游戏或交付包。帧率取自静态场景短样本，不能代表完整游戏性能；动态树叶、水面和雨滴的相位可能不同。</p>
-<details><summary>四轮改动与边界</summary><p>第一轮：树冠分组明暗、草地与天空。第二轮：接缝、草叶透光、木材与夜景可读性。第三轮：水面岸树／桥身倒影、桥下阴影、远景树冠。第四轮：独立桥模型倒角、天空构图、阴雨配色和月光方向。增加 3615 丛近岸草；桥候选保留原材质槽和碰撞，正式 GLB 未改。原图没有后期修饰。</p><p>水面 SSR 只能反射屏幕内的不透明物体，离屏时回退天空；这仍有边缘缺失和透明物体缺失的限制。夜间月亮、主光和水面高光采用统一的美术方向，不是天文模拟。</p></details>
+<p class="hint">这是待审的视觉方案，未替换正式游戏或交付包。此图库用于画面对比；性能另以不限帧样本记录。动态树叶、水面和雨滴的相位可能不同。</p>
+<details><summary>轮次与原图说明</summary><p>此前第 1–4 轮处理光照、天空、水面、木桥和材质。本次从第 5 轮开始，修改树冠、草叶与面包房的候选源模型；每轮保留当时的原图与源码。图中的树叶、草叶、窗框和布篷由实时场景渲染，截图没有后期修饰。历史轮次只显示当时实际拍过的条件。</p><p>候选使用独立的 Blender 源文件和 GLB，原模型、地形、实例位置及碰撞可恢复；水面 SSR 仍有离屏缺失的限制。默认正式游戏和交付包未替换。</p></details>
 <details open><summary>imagegen 视觉方向图（生成参考，不是游戏实拍）</summary><p>从场景截图生成的四时天气方向，顺序为晴午、雨天、夕照、夜晚。用于比较色彩、明暗、材质和空间层次；生成图调整了树形、建筑比例与局部细节，不能当作引擎已经达到的效果。</p><img id="concept" alt="imagegen 方向图，非游戏画面" style="width:100%"></details>
 <script>const data=PAYLOAD;
-const names={bakery:'面包房门前',lake:'湖畔木栈桥'}, modes={baseline:'正式游戏原版',material:'材质与局部细化',lighting:'只改灯光',combined:'完整候选'};
+const names={bakery:'面包房门前',lake:'湖畔木栈桥',bakery_joinery:'二楼窗框与檐口',bakery_entry:'布篷与底层橱窗',lake_grass:'湖畔草叶近景',bakery_cedar:'杉树冠层近景',bakery_left:'面包房 · 左侧',bakery_right:'面包房 · 右侧',lake_left:'木栈桥 · 左侧',lake_right:'木栈桥 · 右侧'}, modes={baseline:'正式游戏原版',material:'材质与局部细化',lighting:'只改灯光',combined:'完整候选'};
 const byId=id=>document.getElementById(id), scene=byId('scene'),condition=byId('condition'),mode=byId('mode'),version=byId('version');
 for(const v of data.history)version.add(new Option(v.label,v.id));
-if(data.history.some(v=>v.id==='initial'))version.value='initial';
-for(const id of [...new Set(data.shots.map(x=>x.scene))])scene.add(new Option(names[id],id));
+if(data.history.some(v=>v.id==='round4'))version.value='round4';
+for(const id of [...new Set(data.shots.map(x=>x.scene))])scene.add(new Option(names[id]||id,id));
 for(const row of data.shots){if(![...condition.options].some(x=>x.value===row.condition.id))condition.add(new Option(row.condition.label,row.condition.id));}
 if([...condition.options].some(x=>x.value==='noon'))condition.value='noon';
 function find(m){return data.shots.find(x=>x.scene===scene.value&&x.condition.id===condition.value&&x.mode===m)}
 function oldShot(id){return data.history.find(v=>v.id===id)?.shots.find(x=>x.scene===scene.value&&x.condition.id===condition.value)}
-function refresh(){for(const option of version.options)option.disabled=option.value!=='baseline'&&!oldShot(option.value);if(version.selectedOptions[0].disabled)version.value='baseline';byId('concept').src='concept-'+scene.value+'.png';const b=oldShot(version.value)||find('baseline'),a=find(mode.value)||find('baseline');byId('before').src=b.file;byId('before-label').textContent=version.selectedOptions[0].text;byId('after').src=a.file;byId('candidate').textContent=modes[a.mode];byId('meta').textContent=`${a.size.join(' × ')} · ${data.engine.string} · ${a.frames} 帧 / ${a.seconds.toFixed(2)} 秒 · ${a.fps.toFixed(1)} FPS（静态短样本）`;byId('grid').replaceChildren();for(const m of Object.keys(modes)){const r=find(m);if(!r)continue;const f=document.createElement('figure'),img=document.createElement('img'),caption=document.createElement('figcaption');img.src=r.file;img.alt=modes[m];img.loading='lazy';caption.textContent=modes[m];f.append(img,caption);byId('grid').append(f)}}
+function refresh(){for(const option of condition.options)option.disabled=!data.shots.some(x=>x.scene===scene.value&&x.condition.id===option.value);if(condition.selectedOptions[0].disabled)condition.value=[...condition.options].find(x=>!x.disabled).value;for(const option of mode.options)option.disabled=!find(option.value);if(mode.selectedOptions[0].disabled)mode.value=[...mode.options].find(x=>!x.disabled)?.value||'combined';for(const option of version.options)option.disabled=option.value!=='baseline'&&!oldShot(option.value);if(version.selectedOptions[0].disabled)version.value='baseline';byId('concept').src='concept-'+(scene.value.startsWith('bakery')?'bakery':'lake')+'.png';const b=oldShot(version.value)||find('baseline'),a=find(mode.value)||find('baseline');byId('before').src=b.file;byId('before-label').textContent=version.selectedOptions[0].text;byId('after').src=a.file;byId('candidate').textContent=modes[a.mode];byId('meta').textContent=`${a.size.join(' × ')} · ${data.engine.string} · ${a.frames} 帧后采样 · 原生截图`;byId('grid').replaceChildren();for(const m of Object.keys(modes)){const r=find(m);if(!r)continue;const f=document.createElement('figure'),img=document.createElement('img'),caption=document.createElement('figcaption');img.src=r.file;img.alt=modes[m];img.loading='lazy';caption.textContent=modes[m];f.append(img,caption);byId('grid').append(f)}}
 for(const el of [scene,condition,mode,version])el.onchange=refresh;
 byId('wipe').oninput=e=>{byId('after').style.clipPath=`inset(0 0 0 ${e.target.value}%)`;document.querySelector('.line').style.left=e.target.value+'%'};
 byId('original').onclick=()=>window.open((find(mode.value)||find('baseline')).file,'_blank');refresh();
@@ -166,7 +176,7 @@ def main():
         parser.error("--sample-frames must be at least 60")
     if not -35 <= args.orbit <= 35:
         parser.error("--orbit must be between -35 and 35 degrees")
-    for values, allowed in ((args.scenes, "bakery,lake"), (args.conditions, CONDITIONS), (args.modes, MODES)):
+    for values, allowed in ((args.scenes, "bakery,lake,bakery_joinery,bakery_entry,lake_grass,bakery_cedar"), (args.conditions, CONDITIONS), (args.modes, MODES)):
         if not set(values.split(",")) <= set(allowed.split(",")):
             parser.error("Unknown scene, condition or mode")
     if args.action == "capture" and "baseline" not in args.modes.split(","):
