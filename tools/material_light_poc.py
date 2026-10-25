@@ -13,7 +13,7 @@ import tempfile
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT = ROOT / "evidence/material_shape_refine_20261025/round8"
+DEFAULT = ROOT / "evidence/bakery_detail_restore_20261025/final"
 CONDITIONS = "morning,noon,overcast,rain,sunset,night"
 MODES = "baseline,material,lighting,combined"
 
@@ -94,14 +94,23 @@ def run(args):
         preserved = manifest.get("source_geometry_and_collisions_preserved", manifest["geometry_unchanged"])
         if not preserved or any(row["frames"] < 60 for row in manifest["shots"]):
             raise SystemExit("Source geometry/collisions could not be restored or native frames did not advance")
+        if manifest.get("bakery_source_required") and any(
+                row.get("bakery_details", {}).get("evaluated") and not row["bakery_details"]["passed"]
+                for row in manifest["shots"]):
+            raise SystemExit("Displayed bakery lost original geometry, UVs, paint or source visibility")
         gallery(out)
 
 
 def gallery(out):
     manifest = json.loads((out / "manifest.json").read_text())
     # Keep each native capture manifest intact; combine only the review payload.
+    extras = []
     if out.name == "round8" and out.parent.name == "material_shape_refine_20261025":
-        for directory, suffix in (("round8-close", ""), ("orbit-left", "_left"), ("orbit-right", "_right")):
+        extras = [("round8-close", ""), ("orbit-left", "_left"), ("orbit-right", "_right")]
+    elif out.name == "final" and out.parent.name == "bakery_detail_restore_20261025":
+        extras = [("close", ""), ("orbit-left", "_left"), ("orbit-right", "_right")]
+    if extras:
+        for directory, suffix in extras:
             folder = out.parent / directory
             if not (folder / "manifest.json").exists():
                 continue
@@ -111,11 +120,15 @@ def gallery(out):
     manifest["history"] = []
     versions = [("initial", "优化前 POC", ROOT / "evidence/material_light_poc_20261025/final")]
     versions += [(f"round{i}", f"第 {i} 轮", ROOT / f"evidence/material_light_refine_20261025/round{i}") for i in (1, 2, 3, 4)]
-    versions += [(f"round{i}", f"第 {i} 轮 · 本次优化", ROOT / f"evidence/material_shape_refine_20261025/round{i}") for i in (5, 6, 7)]
+    versions += [(f"round{i}", f"第 {i} 轮", ROOT / f"evidence/material_shape_refine_20261025/round{i}") for i in (5, 6, 7, 8)]
     for ident, label, folder in versions:
         if folder.resolve() == out or not (folder / "manifest.json").exists():
             continue
         shots = json.loads((folder / "manifest.json").read_text())["shots"]
+        close = folder.parent / (folder.name + "-close")
+        if (close / "manifest.json").exists():
+            shots += [dict(r, file=os.path.relpath(close / r["file"], folder))
+                      for r in json.loads((close / "manifest.json").read_text())["shots"]]
         combined = [dict(r, file=os.path.relpath(folder / r["file"], out))
                     for r in shots if r["mode"] == "combined"]
         manifest["history"].append({"id": ident, "label": label, "shots": combined})
@@ -144,6 +157,7 @@ const names={bakery:'面包房门前',lake:'湖畔木栈桥',bakery_joinery:'二
 const byId=id=>document.getElementById(id), scene=byId('scene'),condition=byId('condition'),mode=byId('mode'),version=byId('version');
 for(const v of data.history)version.add(new Option(v.label,v.id));
 if(data.history.some(v=>v.id==='round4'))version.value='round4';
+if(data.bakery_source_required){document.querySelector('h1').textContent='面包房细节恢复 / 实景对照';document.querySelector('h1+p').textContent='恢复原有灰泥纹理、窗帘、细窗格与布篷褶皱，保留第 8 轮的灯光和植被。左侧可切换修复前和更早版本。';modes.combined='细节恢复版';mode.querySelector('[value="combined"]').textContent=modes.combined;if(data.history.some(v=>v.id==='round8'))version.value='round8';}
 for(const id of [...new Set(data.shots.map(x=>x.scene))])scene.add(new Option(names[id]||id,id));
 for(const row of data.shots){if(![...condition.options].some(x=>x.value===row.condition.id))condition.add(new Option(row.condition.label,row.condition.id));}
 if([...condition.options].some(x=>x.value==='noon'))condition.value='noon';

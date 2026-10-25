@@ -291,6 +291,9 @@
     "canvas_thickness_m": 0.012,
     "repair_boundaries_clipped": true,
     "source_sha256": "2747ab8bb3fcc2e4481ffb455d6fa08f1ab150ddca4967abc4f529150274805e",
-    "candidate_sha256": "3d9cd5b65b0ede256a056cc16472375169504cf02e6aa4a9b7216ebe4d9fc3f4"
-  }
+    "candidate_sha256": "3d9cd5b65b0ede256a056cc16472375169504cf02e6aa4a9b7216ebe4d9fc3f4",
+    "status": "Rejected after user review: plaster, window and canvas details were lost; inactive by default."
+  },
+  "architecture_active": false,
+  "bakery_source_sha256": "2747ab8bb3fcc2e4481ffb455d6fa08f1ab150ddca4967abc4f529150274805e"
 }

@@ -2,7 +2,7 @@
 
 ## 材质与光影实验（2026-10-25）
 
-`python3 tools/material_light_poc.py review` 在现有屏幕打开原生候选；1/2 切两处全景，3/4 看窗框和布篷，5/6 看草叶和杉树，左右切时段，空格切模式，Q/E 转镜头，R 复位。`capture` 默认输出 48 张主图及 `evidence/material_shape_refine_20261025/round8/index.html`；保留已有证据时指定新 `--out`。`--orbit=-25` 或 `25` 可补侧面；图库并列原版、首版、各轮及 imagegen 参考。工具静音、隔离存档并检查真实出帧，恢复原网格后核对网格／MultiMesh／碰撞摘要，候选资源与入口从正式导出排除。源模型生成、草根与树冠检查、近景命令和实测边界见[第 5–8 轮](MATERIAL_SHAPE_ITERATIONS_20261025.md)。
+`python3 tools/material_light_poc.py review` 使用现有屏幕和隔离存档；1/2 全景，3/4 窗框与布篷，5/6 草叶与杉树，左右切时段，空格切模式，Q/E 转镜头，R 复位。`capture` 默认写入 `evidence/bakery_detail_restore_20261025/final/`，保留旧证据时指定新 `--out`。图库默认与第 8 轮比较，并合并 `close/` 近景。建筑恢复检查在实际显示时核对原网格、UV、贴图和颜色运算，不能只在临时还原后证明原资源还存在。生成器默认保留原面包房，旧替换仅在显式 `--experimental-bakery-source` 下重建。见[面包房修复流程](BAKERY_DETAIL_RESTORE_20261025.md)和[植被源模型记录](MATERIAL_SHAPE_ITERATIONS_20261025.md)。
 
 ## 跑步、农场与捞金鱼对照（2026-10-25）
 

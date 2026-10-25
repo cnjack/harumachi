@@ -35,6 +35,7 @@ var lighting: RefCounted = preload("res://scripts/tools/material_light_poc_light
 var landscape: RefCounted = preload("res://scripts/tools/material_light_poc_landscape.gd").new()
 var bridge: RefCounted = preload("res://scripts/tools/material_light_poc_geometry.gd").new()
 var shapes: RefCounted = preload("res://scripts/tools/material_light_poc_shapes.gd").new()
+var bakery_guard: RefCounted = preload("res://scripts/tools/material_light_poc_bakery_guard.gd").new()
 
 func _ready() -> void:
 	RenderingServer.viewport_set_measure_render_time(get_viewport().get_viewport_rid(), true)
@@ -54,6 +55,7 @@ func _ready() -> void:
 	for actor: Node3D in (main.get("npcs") as Dictionary).values(): actor.visible = false
 	baseline_env = world.env.duplicate(true) as Environment
 	geometry = MaterialChoiceProfile._geometry_signature(world)
+	bakery_guard.prepare(world)
 	materials.prepare(world)
 	lighting.prepare(world)
 	landscape.prepare(world, self)
@@ -124,6 +126,8 @@ func _apply() -> void:
 	(main.get("weather_fx") as WeatherFX).set_weather(condition.weather, false)
 	(main.get("weather_fx") as WeatherFX).rig = cam
 	(main.get("weather_fx") as WeatherFX)._update_origin()
+	if bakery_guard.required and spot.region == "town":
+		assert(bakery_guard.inspect().passed,"Bakery source geometry, paint or visibility was lost")
 	if caption:
 		caption.text = "%s    %s    %s\n1/2 全景 · 3 窗框 · 4 布篷 · 5 草叶 · 6 杉树   ←/→ 时段   空格 对照   Q/E 转动   R 复位   Esc 退出" % [spot.label, condition.label, MODES[mode_index]]
 
@@ -160,10 +164,11 @@ func _capture() -> void:
 				rows.append({"file":name_value, "scene":SPOTS[scene_index].id, "condition":CONDITIONS[condition_index], "mode":MODES[mode_index], "frames":Engine.get_frames_drawn()-frame_start, "seconds":elapsed, "fps":float(sample_frames)/elapsed, "size":[picture.get_width(),picture.get_height()], "sun_energy":world.sun.light_energy, "ambient":world.env.ambient_light_energy, "fps_limit":Engine.max_fps, "vsync":DisplayServer.window_get_vsync_mode(), "gpu_median_ms":gpu_ms[int(sample_frames * .5)], "gpu_p95_ms":gpu_ms[int(sample_frames * .95)], "sky_dusk":world.sky_mat.get_shader_parameter("dusk_w"), "sky_night":world.sky_mat.get_shader_parameter("night_w")})
 				rows.back()["orbit_degrees"] = orbit_degrees
 				rows.back()["candidate_bridge"] = bridge.enabled
+				rows.back()["bakery_details"] = bakery_guard.inspect() if SPOTS[scene_index].region == "town" else {"evaluated":false}
 				var unchanged: bool = geometry == MaterialChoiceProfile._geometry_signature(world)
 				var restored: bool = geometry == shapes.source_signature(world, bridge)
 				assert(restored, "Documented mesh candidates must restore all source geometry and collisions")
-				_write("manifest.json", {"engine":Engine.get_version_info(), "renderer":RenderingServer.get_current_rendering_method(), "geometry_unchanged":unchanged, "source_geometry_and_collisions_preserved":restored, "bridge_candidate":bridge.report, "sky_candidate_sha256":lighting.sky_shader.code.sha256_text(), "water_candidate_sha256":materials.water_candidate.shader.code.sha256_text(), "candidate_grass_clumps":landscape.clumps, "landscape_bindings":landscape.bindings.size(), "screens":DisplayServer.get_screen_count(), "shots":rows})
+				_write("manifest.json", {"engine":Engine.get_version_info(), "renderer":RenderingServer.get_current_rendering_method(), "geometry_unchanged":unchanged, "source_geometry_and_collisions_preserved":restored, "bridge_candidate":bridge.report, "sky_candidate_sha256":lighting.sky_shader.code.sha256_text(), "water_candidate_sha256":materials.water_candidate.shader.code.sha256_text(), "candidate_grass_clumps":landscape.clumps, "landscape_bindings":landscape.bindings.size(), "bakery_source_required":bakery_guard.required, "screens":DisplayServer.get_screen_count(), "shots":rows})
 				print("POC_CAPTURE ", name_value)
 				_write("shape-bindings.json",shapes.report)
 	get_tree().call_deferred("finish_review",0)

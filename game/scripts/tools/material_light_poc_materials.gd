@@ -102,11 +102,8 @@ func _response_shader(path: String) -> Shader:
 	ROUGHNESS = mix(.90, .61 + (grain - .5) * .12, joinery);
 	ROUGHNESS = mix(ROUGHNESS, .96, cloth);
 	SPECULAR = mix(.10, .33, joinery) * (1. - cloth * .85);
-	// Quiet high-frequency plaster stains only; painted joints and coloured parts stay sharp.
-	float neutral = 1. - smoothstep(.035, .12, max(c.r,max(c.g,c.b))-min(c.r,min(c.g,c.b)));
-	float plaster = neutral * smoothstep(.30,.60,min(c.r,min(c.g,c.b))) * (1.-cloth);
-	vec3 broad_paint = textureLod(albedo_tex, UV, 1.5).rgb * albedo_color.rgb;
-	c.rgb = mix(c.rgb, broad_paint*.92+vec3(.05,.045,.035), plaster*.6);
+	// Keep all source paint: plaster wear, curtain folds, window divisions and seams.
+	// Only the material response changes; do not blur or recolour the source atlas.
 	float height_m = (grain - .5) * .0018 * joinery + (weave - .5) * .00035 * cloth;
 	NORMAL = poc_surface_normal(NORMAL, VERTEX, height_m);
 	ALBEDO = c.rgb;

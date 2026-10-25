@@ -87,6 +87,8 @@ func prepare(world: WorldBuilder, owner: Node) -> void:
 		binding["transform"] = (binding.node as Node3D).global_transform
 		if binding.node is MultiMeshInstance3D: binding["buffer_hash"] = hash((binding.node as MultiMeshInstance3D).multimesh.buffer)
 	report = {"iteration":config.iteration,"tree_instances":trees,"grass_batches":grass,"mesh_bindings":bindings.size(),"grass_root_vertices_checked":roots_checked,"inner_crown_vertices_checked":inner_vertices,"source_assets":"art/library/material_shape_poc_20261025/authoring","original_collisions":"retained"}
+	report["architecture_active"] = bool(config.architecture)
+	report["bakery_source_sha256"] = FileAccess.get_sha256("res://assets/models/S02.glb")
 	if bool(config.architecture): _prepare_architecture(world,owner)
 	var hashes: Dictionary = {}
 	for id: String in IDS: hashes[id+".glb"] = FileAccess.get_sha256(FOLDER+id+".glb")

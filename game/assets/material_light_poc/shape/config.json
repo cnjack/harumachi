@@ -1,4 +1,5 @@
 {
   "iteration": 8,
-  "architecture": true
+  "architecture": false,
+  "bakery_source_required": true
 }
