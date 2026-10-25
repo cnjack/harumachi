@@ -1,6 +1,86 @@
 {
   "images": [
     {
+      "file": "art/direction/material_light_20261025/bakery-direction.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "date": "2026-10-25",
+      "prompt": "art/manifests/prompts/material_light_directions_20261025.json",
+      "prompt_key": "bakery",
+      "reference": "evidence/material_light_poc_20261025/round2/bakery_noon_baseline.png",
+      "purpose": "Generated concept, not an engine render",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "4aecd91b76a157a1fb0530a47473c7c3ac9a9ce79c2d3599a8bc902af102586b",
+      "status": "candidate, awaiting art review"
+    },
+    {
+      "file": "art/direction/material_light_20261025/lake-direction.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "date": "2026-10-25",
+      "prompt": "art/manifests/prompts/material_light_directions_20261025.json",
+      "prompt_key": "lake",
+      "reference": "evidence/material_light_poc_20261025/round2/lake_noon_baseline.png",
+      "purpose": "Generated concept, not an engine render",
+      "size": [
+        1672,
+        941
+      ],
+      "sha256": "9cadb709089b95b7607d7661e30b1cfe64a65f9257655404600d1867cf21d00d",
+      "status": "candidate, awaiting art review"
+    },
+    {
+      "file": "game/assets/material_light_poc/sky_day.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "date": "2026-10-25",
+      "prompt": "art/manifests/prompts/material_light_sky_20261025.json",
+      "prompt_key": "day",
+      "reference": "art/direction/material_light_20261025/lake-direction.png",
+      "purpose": "Opt-in POC sky texture; not loaded in normal game",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "1593b2f65dd58cc48be82d30f9749c22bf7d6fafa5a8fa701abcc0bfbc65fbf1",
+      "status": "candidate, awaiting art review"
+    },
+    {
+      "file": "game/assets/material_light_poc/sky_dusk.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "date": "2026-10-25",
+      "prompt": "art/manifests/prompts/material_light_sky_20261025.json",
+      "prompt_key": "dusk",
+      "reference": "game/assets/material_light_poc/sky_day.png",
+      "purpose": "Opt-in POC sky texture; not loaded in normal game",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "b5db4bdffefb440818cafbd8f44360374fa3c7d52960877371d7fe13b2063742",
+      "status": "candidate, awaiting art review"
+    },
+    {
+      "file": "game/assets/material_light_poc/sky_night.png",
+      "exists": true,
+      "tool": "codex image_gen built-in",
+      "date": "2026-10-25",
+      "prompt": "art/manifests/prompts/material_light_sky_20261025.json",
+      "prompt_key": "night",
+      "reference": "game/assets/material_light_poc/sky_day.png",
+      "purpose": "Opt-in POC sky texture; not loaded in normal game",
+      "size": [
+        1774,
+        887
+      ],
+      "sha256": "8127bfb8948ff7c8e0d78880b3f4e56934817dc0136b33f8b32debb7d27589ce",
+      "status": "candidate, awaiting art review"
+    },
+    {
       "file": "art/live2d/mio/parts-atlas.png",
       "exists": true,
       "tool": "codex image_gen built-in",
