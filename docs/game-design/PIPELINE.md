@@ -1,5 +1,9 @@
 # 模型、工程与交付流程
 
+## 实时神经预览测量（2026-10-26）
+
+`tools/neural_rendering_poc/live_game.gd` 与外部应用 `--live-trial` 同时运行；`run_live.py` 串行采集两场景原生、捕获、512/768 与 30/60 捕获配置，`analyze_live.py` 区分游戏、处理、预览和覆盖窗口。源帧 ID 与非零 Metal 呈现时间配对；零时间戳不以 GPU 完成代替。录屏另跑，不与计时重叠，结果不能称为输入到光子。使用隔离存档、静音和现有显示器，结束后发送 quit 并核对存档摘要。见[方法与覆盖兼容性限制](NEURAL_RENDERING_LIVE_20261026.md)及[工具命令](../../tools/neural_rendering_poc/README.md)。
+
 ## 外部神经渲染对照（2026-10-26）
 
 `tools/neural_rendering_poc/` 采集两个原生场景，再通过用户指定 macOS overlay 的未改动渲染器离线处理 PNG。必须隔离存档、静音并使用现有显示器；保留输入、逐帧结果、来源摘要、色彩回写验证与处理耗时。模型和 DLL 不提交；离线处理帧率、原视频播放帧率与游戏实际帧率分别记录。复现见[工具说明](../../tools/neural_rendering_poc/README.md)，本轮结果见[实验记录](NEURAL_RENDERING_POC_20261026.md)。
