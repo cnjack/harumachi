@@ -1,5 +1,9 @@
 # 模型、工程与交付流程
 
+## 外部神经渲染对照（2026-10-26）
+
+`tools/neural_rendering_poc/` 采集两个原生场景，再通过用户指定 macOS overlay 的未改动渲染器离线处理 PNG。必须隔离存档、静音并使用现有显示器；保留输入、逐帧结果、来源摘要、色彩回写验证与处理耗时。模型和 DLL 不提交；离线处理帧率、原视频播放帧率与游戏实际帧率分别记录。复现见[工具说明](../../tools/neural_rendering_poc/README.md)，本轮结果见[实验记录](NEURAL_RENDERING_POC_20261026.md)。
+
 ## 材质与光影实验（2026-10-25）
 
 `python3 tools/material_light_poc.py review` 使用现有屏幕和隔离存档；1/2 全景，3/4 窗框与布篷，5/6 草叶与杉树，左右切时段，空格切模式，Q/E 转镜头，R 复位。`capture` 默认写入 `evidence/bakery_detail_restore_20261025/final/`，保留旧证据时指定新 `--out`。图库默认与第 8 轮比较，并合并 `close/` 近景。建筑恢复检查在实际显示时核对原网格、UV、贴图和颜色运算，不能只在临时还原后证明原资源还存在。生成器默认保留原面包房，旧替换仅在显式 `--experimental-bakery-source` 下重建。见[面包房修复流程](BAKERY_DETAIL_RESTORE_20261025.md)和[植被源模型记录](MATERIAL_SHAPE_ITERATIONS_20261025.md)。
